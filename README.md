@@ -1,2 +1,6 @@
 # bazaar
-思源笔记社区集市。SiYuan community bazaar.
+
+思源笔记社区集市，主要包括：
+
+* 主题
+* 插件（TBD）
