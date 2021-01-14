@@ -4,4 +4,5 @@ SiYuan Community Bazaar:
 
 * Themes
 * Icons (TBD)
+* Templates  
 * Plugins (TBD)
