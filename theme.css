@@ -1,0 +1,752 @@
+/*主题字体采用思源字体“Noto Sans SC”*/
+
+
+    /* 字体 */
+    --b3-font-family: "Noto Sans SC","FZVariable-YouHeiJ","方正悠黑简体", "DejaVu Sans", "Hiragino Sans GB", "Microsoft Yahei", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
+    --b3-font-family-code: "晴圆等宽",mononoki, Consolas, "Liberation Mono", Menlo, Courier, monospace, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
+
+
+/* 页签 */
+/* 页签文字 */
+.layout-tab-bar .item__text {
+    white-space: nowrap;
+    flex: 1;
+    max-width: 300px;
+    overflow: hidden;
+    position: relative;
+}
+.layout-tab-bar .item__text {
+    white-space: nowrap;
+    flex: 1;
+    max-width: 321px;
+    overflow: hidden;
+    position: relative;
+}
+/* 解决因展开文字页签出现白条的问题 */
+.layout-tab-bar .item--focus .item__text::after {
+    content: revert;
+}
+.layout-tab-bar .item__text::after {
+    content: revert;
+    position: relative;
+    left: 140px;
+    width: 16px;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(0,0,0,0.001), var(--b3-theme-background));
+    pointer-events: none;
+}
+/* 点击页签，页签是橙色椭圆形，黑色边框的样式 */
+.layout__wnd--active .layout-tab-bar .item--focus {
+    border-color: #000000;
+}
+li.item.item--focus{
+    background-color: rgb(255 156 0 / 75%);
+    border-top: solid 1px #000000;
+    border-right: solid 1px #000000;
+    border-bottom: solid 1px #000000;
+    border-left: solid 1px #000000;
+}
+
+.b3-list--background .b3-list-item--focus {
+    background-color: rgb(255 156 0 / 75%) !important;
+    border-top: solid 1px #000000;
+    border-right: solid 1px #000000;
+    border-bottom: solid 1px #000000;
+    border-left: solid 1px #000000
+}
+
+/* 非焦点页签重置样式，并设置了动画效果 */
+.layout-tab-bar .item {
+    border-radius:20px;
+    margin-right: 0.5px;
+    box-shadow: none;
+    border-top: solid 1px #000000;
+    border-right: solid 1px #000000;
+    border-bottom: solid 1px #000000;
+    border-left: solid 1px #000000;
+    transition: all 300ms ease-in-out 0s;
+}
+/*文件树字体采用思源字体并放大*/
+.layout-tab-bar .item {
+font-size: 18px;
+font-family: Noto Sans SC;
+}
+
+.block__logo {
+    white-space: nowrap;
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-family: 'Noto Sans SC';
+}
+/*点击文件树会着重文字*/
+.layout-tab-bar .item--focus {
+font-weight: bold;
+
+/*文件树列表项设置*/
+}
+.b3-list-item__graphic {
+    margin-right: 9px;
+    flex-shrink: 0;
+    height: 12px;
+    width: 12px;
+}
+/*文件树列表鼠标移动有颜色*/
+.b3-list--background .b3-list-item:hover {
+    background-color: rgb(255 156 0 / 45%);
+
+}
+/*文件树列表项*/
+.b3-list-item {
+    font-family: Noto Sans SC;
+    padding: 11px 20px ;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    position: relative;
+    background-color: transparent;
+    text-align: left;
+    border: 0px;
+    border-radius: 9px;
+    color: #000000;
+    font-size: 18px;
+    transition: all 200ms ease-in-out 0s;
+}
+
+.b3-list-item.b3-list-item--hide-action.b3-list-item--focus span:nth-child(2) {
+    font-weight: 800;
+    font-size: 20px;
+}
+/*文件树图标大小设置*/
+.block__icon svg {
+    height: 17px;
+    width: 17px;
+    padding: 8px 4px;
+    display: flex;
+}
+/*文件树文件名前图标大小设置*/
+.b3-list-item__graphic {
+    margin-right: 9px;
+    flex-shrink: 0;
+    height: 12px;
+    width: 12px;
+
+}
+/*文件树引用按钮的样式修改*/
+.counter {
+    margin-left: 8px;
+    background-color: rgb(0 0 0 / 10%);
+    line-height: 20px;
+    padding: 0 8px;
+    color: var(--b3-theme-on-surface);
+    border-radius: 12px;
+    font-size: 12px;
+    user-select: none;
+    font-weight: 1000;
+}
+
+/* 文件树箭头修改 */
+.file-tree .b3-list-item__graphic--arrow:not(.fn__hidden) {
+    opacity: 0;
+}
+.b3-list-item__graphic--arrow {
+    height: 12px !important;
+    width: 12px !important;
+    transition: transform 0.15s cubic-bezier(0, 0, 0.2, 1),opacity 1s cubic-bezier(0, 0, 0.2, 1);
+
+    margin-right: 0;
+}
+.b3-list-item__graphic--arrow-open {
+    transform: rotate(90deg);
+    padding-right: 8px;
+    width: 12px;
+    height: 12px;
+}
+.b3-list-item__graphic {
+    margin-right: 8px;
+    flex-shrink: 0;
+    height: 16px;
+    width: 16px;
+    
+}
+
+
+/*文件树右侧竖线颜色设置*/
+.layout__resize--lr {
+    cursor: col-resize;
+    width: 10px;
+    margin: 0 -3px;
+    height: auto;
+    
+}
+.layout__resize:after {
+    background-color: rgba(0,0,0,.2);
+}
+/*两侧图标样式修改*/
+svg{
+fill:black
+}
+.dock--vertical .dock__item {
+    flex-direction: column;
+    padding: 12px 4px;
+    width: 16px;
+    height: auto;
+    text-align: center;
+}
+.dock--vertical .dock__item:hover {
+    background-color: rgb(255 156 0 / 65%);
+}
+/* 最上端工具栏 */
+.vditor-toolbar__item {
+    float: left;
+    color: var(--b3-theme-on-surface);
+    border: 0;
+    background-color: transparent;
+    height: var(--b3-vditor-toolbar-height);
+    box-sizing: border-box;
+    font-size: 0;
+    padding: 0 12px;
+}
+/* 工具栏图标变大 */
+.vditor-toolbar__item svg {
+    fill: currentColor;
+    display: inline-block;
+    stroke-width: 0;
+    stroke: currentColor;
+    width: 14px;
+    height: 14px;
+    transform: scale(1.3);
+}
+/* 顶部工具栏图标变大，鼠标移动会变大 调整布局 */
+.toolbar__item:hover svg {
+    transform: scale(1.3);
+    z-index: 333;
+}
+.toolbar__item svg {
+    height: 24px;
+    width: 18px;
+}
+.toolbar__item {
+    cursor: pointer;
+    color: var(--b3-theme-on-surface);
+    padding: 0 12px;
+    height: 24px;
+    box-sizing: border-box;
+    transition: var(--b3-transition);
+}
+.vditor-toolbar {
+    white-space: nowrap;
+    border-bottom: 1px solid rgb(0 0 0 / 0.2);
+    padding: 0 8px;
+    line-height: 1;
+    background-color: var(--b3-theme-surface);
+    z-index: 1;
+}
+
+.b3-tooltips__sw:hover {
+    background-color: #00000000 !important;
+}
+.vditor-ir {
+    background-color: #ffffff;
+}
+.block__icons {
+    background-color: #ffffff;
+}
+.vditor-ir__tag {
+    display: inline-block;
+    padding: 0.05em 0.7em;
+    margin: 0;
+    border-radius: 15px;
+    /* background-size: 20px 20px; */
+    /* word-break: break-word; */
+    cursor: pointer;
+    white-space: pre-wrap;
+    background-color: #f3a92f;
+    color: #ffffff;
+    font-family: var(--b3-font-family-code);
+    font-size: 80%;
+    font-weight: normal;
+    text-decoration: none !important;
+    text-align: center;
+}
+/*设置面板的列表高度*/
+.b3-list-item--big {
+    padding: 13px 24px !important;
+    line-height: 1.5;
+    transform: scale(0.9);
+}
+/*引用文字块样式*/
+blockquote {
+    border-radius: 0.2rem;
+    background-color:#f5f7f9!important;
+    border-color: #3884ff !important;
+    padding: 1rem !important;
+}
+/*修改1-4级标题的样式*/
+.vditor-reset h1 {
+    font-size: 1.65em;
+    border-bottom: 2px solid rgb(0 0 0);
+    line-height: 20px;
+    border-left: 15px solid #c33;
+    text-align: justify;
+    padding: 10px 0 10px 20px;
+    font-family: Noto Sans SC;
+    color:#c33;
+}
+.vditor-reset h2 {
+    font-size: 1.45em;
+    border-bottom: 2px solid rgb(0 0 0);
+    line-height: 20px;
+    border-left: 12px solid #399839;
+    text-align: justify;
+    padding: 10px 0 10px 20px;
+    font-family: Noto Sans SC;
+    color:#399839;
+}
+.vditor-reset h3 {
+    font-size: 1.25em;
+    border-bottom: 2px solid rgb(0 0 0);
+    line-height: 20px;
+    border-left: 8px solid #4285f4;
+    text-align: justify;
+    padding: 10px 0 10px 20px;
+    font-family: Noto Sans SC;
+    color:#4285f4;
+}
+.vditor-reset h4 {
+    font-size: 1.15em;
+    border-bottom: 2px solid rgb(0 0 0);
+    line-height: 20px;
+    border-left: 6px solid #f98451;
+    text-align: justify;
+    padding: 10px 0 10px 20px;
+    font-family: Noto Sans SC;
+    color:#f98451;
+}
+
+ /* 表格样式修改*/
+.vditor-reset table td, .vditor-reset table th {
+    padding: 6px 13px;
+    border: 1px solid rgb(0 0 0 / 93%);
+    word-break: normal;
+} 
+
+
+/* 关闭按钮（直接使用OnlyMe主题里的按钮） */
+.b3-dialog__close {
+    position: absolute;
+    cursor: pointer;
+    top: 0px;
+    right: -40px;
+    background-color: var(--MyOnly-setting-theme-color);
+    height: 20px;
+    width: 20px;
+    padding: 10px;
+    border-top-left-radius:3px;
+    border-bottom-left-radius:3px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    z-index: 0;
+}
+
+/*分割线样式修改 */
+.vditor-reset hr {
+    height: 2px;
+    padding: 0;
+    margin: 12px 0;
+    background-color: rgb(0 0 0 / 59%);
+    border: 0;
+}
+/*引用块的格式修改*/
+.vditor-ir__blockref {
+    color: rgba(255,86,65,255);
+    background-color: rgba(254,229,223,255);
+    font-family: Noto Sans SC;
+    padding: 0 4px;
+    border-radius: 3px;
+}
+.vditor-ir__blockref:hover {
+    background-color: rgb(240 216 210);
+}
+
+/*菜单的样式修改*/
+.b3-menu__item {
+    padding: 2px 24px;
+    display: flex;
+    line-height: 32px;
+    cursor: pointer;
+    white-space: nowrap;
+    border: 0px;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    color: var(--b3-theme-on-background);
+    position: relative;
+    border-radius: 8px;
+    font-size: larger;
+}
+.b3-menu__icon {
+    align-self: center;
+    height: 17px;
+    width: 17px;
+    margin-right: 8px;
+    color: var(--b3-theme-on-background);
+}
+.b3-menu__item:hover {
+    background-color: rgb(255 156 0 / 65%)!important;
+}
+
+/*任务列表的图标的样式修改*/
+.vditor-task input {
+    margin: 0 .5em .25em -1.6em;
+    font-size: 75%;
+    vertical-align: middle;
+    transform: scale(1.4);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /* 设定各类颜色样式（方便引用） */
+:root {
+    /* 主色 */
+    /* 更改为橙色 */
+    --b3-theme-primary:rgb(255 156 0 / 75%);
+    --b3-theme-primary-light: #d4d4d452;
+    --b3-theme-primary-lighter: rgba(66, 133, 244, 0.38);
+    --b3-theme-primary-lightest: rgba(255, 255, 255, 0);
+    --b3-theme-secondary: #f3a92f;
+    --b3-theme-background: #ffffff96;
+    --b3-theme-surface: #ffffff;
+    --b3-theme-error: #d23f31;
+
+    /* 文字颜色 */
+    --b3-theme-on-primary: #000000;
+    --b3-theme-on-secondary: #fff;
+    --b3-theme-on-background: #202124;
+    --b3-theme-on-surface: #5f6368;
+    --b3-theme-on-error: #fff;
+
+
+
+    /* 线条 */
+    --b3-border-color: rgba(0, 0, 0,.01);
+
+    /* 滚动条 */
+    --b3-scroll-color: rgba(0, 0, 0, .3);
+
+    /* 列表 */
+    --b3-list-hover: rgba(0, 0, 0, .06);
+
+    /* 页签 */
+    --b3-tab-background: rgba(255,255,255,0.85);
+    --b3-tab-background-hover: #ffffff;
+
+    /* 提示 */
+    --b3-tooltips-color: rgba(0, 0, 0, 0.54);
+
+    /* 卡片背景 */
+    --b3-card-error-color: rgb(97, 26, 21);
+    --b3-card-error-background: rgb(253, 236, 234);
+    --b3-card-warning-color: rgb(102, 60, 0);
+    --b3-card-warning-background: rgb(255, 244, 229);
+    --b3-card-info-color: rgb(13, 60, 97);
+    --b3-card-info-background: rgb(232, 244, 253);
+    --b3-card-success-color: rgb(30, 70, 32);
+    --b3-card-success-background: rgb(237, 247, 237);
+
+    /* 动画效果 */
+    --b3-transition: all .15s cubic-bezier(0, 0, .2, 1) 0ms;
+
+    /* 阴影 */
+    --b3-point-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+    --b3-dialog-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
+
+    /* diff */
+    --b3-diff-add: #dfd;
+    --b3-diff-add-surface: #97f295;
+    --b3-diff-del: #fee8e9;
+    --b3-diff-del-surface: #ffb6ba;
+
+    /* 图表颜色 */
+    --b3-graph-point: #202124;
+    --b3-graph-line: #5f6368;
+    --b3-graph-hl-point: #f3a92f;
+    --b3-graph-hl-line: #d23f31;
+
+    /* 编辑器工具栏高度 */
+    --b3-vditor-toolbar-height: 29px;
+    --b3-vditor-toolbar-height-space: 6px;
+
+    /* 编辑器搜索颜色 */
+    --b3-vditor-search-background: #ffe955;
+    --b3-vditor-search-border-color: #f2e680;
+    --b3-vditor-search-current-background: #a5d3fe;
+
+    /* 代码片段背景 */
+    --b3-vditor-code-background: rgba(27, 31, 35, .05);
+
+    /* 即时渲染标记符颜色 */
+    --b3-vditor-mark-heading-color: #660e7a;
+    --b3-vditor-mark-title-color: #808080;
+    --b3-vditor-mark-em-color: #0033b3;
+    --b3-vditor-mark-strong-color: #0033b3;
+    --b3-vditor-mark-backslash-color: #0033b3;
+    --b3-vditor-mark-s-color: #5f6368;
+    --b3-vditor-mark-mark-color: #5f6368;
+    --b3-vditor-mark-link-color: #008000;
+    --b3-vditor-mark-bracket-color: #0000ff;
+    --b3-vditor-mark-paren-color: #008000;
+    --b3-vditor-mark-block-color: #660e7a;
+    --b3-vditor-mark-tag-color: #0033b3;
+
+    /* 即时渲染行内元素颜色 */
+    --b3-vditor-inline-strong-color: #202124;
+    --b3-vditor-inline-em-color: #202124;
+    --b3-vditor-inline-s-color: #202124;
+    --b3-vditor-inline-link-color: #4285f4;
+    --b3-vditor-inline-mark-background: #ffe955;
+    --b3-vditor-inline-mark-color: #202124;
+    --b3-vditor-inline-tag-color: #5f6368;
+    --b3-vditor-inline-blockref-color: rgba(0,104,255,255);
+
+    /* OnlyMe自定义颜色 */
+    /* 表头背景颜色 */
+    /* 表格第一列背景颜色 */
+    --MyOnly-table-thead-tr-background-color:#c7c7c7;
+    --MyOnly-table-lineou-color:rgba(220,220,220,.5);
+    
+    /* 标题颜色 */
+    /* 一级标题 */
+    --MyOnly-h1-color:rgba(0,0,0,1);
+    /* 二级标题 */
+    --MyOnly-h2-color:rgba(0,0,0,1);
+    /* 三级标题 */
+    --MyOnly-h3-color:rgba(0,0,0,1);
+    /* 四级标题 */
+    --MyOnly-h4-color:rgba(0,0,0,.9);
+    /* 五级标题 */
+    --MyOnly-h5-color:rgba(0,0,0,.7);
+    /* 六级标题 */
+    --MyOnly-h6-color:rgba(0,0,0,.5);
+
+    /* 代码块中颜色设置 */
+    --MyOnly-code-line-number-color:#000000;
+    --MyOnly-code-line-color:#c7c7c7;
+    
+
+    /* 页签颜色 */
+    --MyOnly-tab-bar-theme-color:#ff9c00;
+
+    /* 设置面板 */
+    --MyOnly-setting-theme-color:#d8d8d833;
+}
+
+.language-graphviz polygon {
+    fill: transparent;
+}
+
+
+
+
+
+/* 列表样式修改（主要参考OnlyMe和gitbook-azure） */
+/* 无序列表 */
+
+.vditor-reset .b3-list, .vditor-reset .b3-list ul {
+    padding-left: 0;
+    font-size: 14px;
+    border: 0;
+    margin-bottom: 0;
+}
+
+ul > li.b3-list-item {
+    border-left: 0;
+}
+
+.vditor-reset ul {
+    margin-left: .5em;
+    padding-left: 2em;
+    margin-top: 0;
+    margin-bottom: 16px;
+    border-left: solid 2px rgba(0,0,0,.5);
+}
+.vditor ol {
+    counter-reset: counter;
+    list-style: none;
+}
+
+.vditor ol > li {
+    counter-increment: counter;
+} 
+
+.vditor ol > li::before {
+    content: counters(counter, '.') '   ';
+    font-family: var(--b3-font-family) ;
+    font-weight: bold;
+    float: left;
+    margin-left: -1.25em;
+}
+
+.vditor-reset ol {
+    margin-left: .5em;
+    padding-left: 2em;
+    margin-top: 0;
+    margin-bottom: 16px;
+    border-left: solid 2px rgba(0,0,0,.5);
+
+.vditor-reset ol  li:hover{
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.vditor ol {
+    counter-reset: counter;
+    list-style: disc;
+}
+
+
+/* 有序列表 */
+.vditor-reset ul {
+    margin-left: 0.5em;
+    padding-left: 2em;
+    margin-top: 0;
+    margin-bottom: 16px;
+    border-left: solid 2px rgba(0,0,0,.5);
+
+
+ul > li:not(.task-list-item) {
+    position: relative;
+    padding-left: 6px;
+    list-style-position: inside;
+    border-radius: 5px;
+    width: initial;
+    margin-bottom: 8px;
+    padding-right: 6px;
+    transition: all 300ms ease-in-out;
+}
+
+ul > li:not(.task-list-item):focus{
+    /* 清空列表项轮廓 */
+    /* outline: solid 2px rgba(0, 0, 0, 0.3); */
+    /* box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.3); */
+    outline: none;
+    box-shadow: none;
+    /* background-color: rgba(255, 165, 0, .3); */
+}
+ul > li:not(.task-list-item):hover{
+    border: none;
+    box-shadow: none;
+    background-color: rgba(255, 165, 0, .12);
+}
+ul > li:not(.task-list-item):active{
+    border: none;
+    box-shadow: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 代码块（OnlyMe原装） */
+.vditor-reset pre>code {
+    margin: 0;
+    /* 让代码块完整显示,不要折叠 */
+    max-height: unset !important;
+    font-size: 1em;
+    padding: 0.5em;
+    padding-bottom: 1.05em;
+    border-radius: 5px;
+    display: block;
+    overflow: auto;
+    white-space: pre;
+    font-family: var(--b3-font-family-code);
+    background-size: 20px 20px;
+    background-color: rgba(220,220,220,.5);
+    word-break: initial;
+    word-wrap: normal;
+}
+/* 代码块前置内容（OnlyMe原装） */
+code::before {
+    color: #ffffff !important;
+    opacity: 0.7;
+    font-size: 17px;
+    font-weight: 600;
+    display: block;
+    padding: 1px 0px;
+    padding-left: 90%;
+}
+/* 代码块行数（OnlyMe原装） */
+.vditor-linenumber__rows {
+    position: absolute;
+    pointer-events: none;
+    /* 注意这里 */
+    /* top: 2.2em; */
+    left: 0;
+    width: 3em;
+    user-select: none;
+    counter-reset: linenumber;
+}
+.vditor-linenumber__rows>span {
+    pointer-events: none;
+    display: block;
+    border-right: solid 1px var(--MyOnly-code-line-number-color);
+    opacity: .5;
+}
+.vditor-linenumber__rows>span::before {
+    counter-increment: linenumber;
+    content: counter(linenumber);
+    color: var(--MyOnly-code-line-number-color);
+    opacity: 1;
+    display: block;
+    padding-right: 1em;
+    text-align: right;
+
+
+

@@ -1,8 +1,19 @@
-# bazaar <a title="Hits" target="_blank" href="https://github.com/siyuan-note/bazaar"><img src="https://hits.b3log.org/siyuan-note/bazaar.svg"></a>
+## Sunlight
 
-SiYuan Community Bazaar:
 
-* Themes
-* Icons (TBD)
-* Templates  
-* Plugins (TBD)
+## 描述
+
+该主题是以OnlyMe主题为基础进行改编的，借鉴了各个已有主题的优秀之处加以学习和改进。颜色以橙色为主。
+
+1、标题部分有所创新，感谢ReedDark主题提供的思路。
+2、页签样式采用椭圆形、修改了页签可以展示的长度、
+3、参考Blue Topaz Light主题的页签动画效果
+4、隐去了箭头，让文件树更加简洁
+5、参考了ReedDark主题的文件树点击会强调这一特点，点击的页签和文件树列表都会放大字号
+6、放大了原来样式中较小的图标，菜单，任务列表前的图标
+7、参考了wolai引用内容时的颜色样式
+8、注重部分线条的样式，让线条更加明显。
+9、直接使用了OnlyMe主题的按钮和列表样式，gitbook-azure的数字列表样式
+
+## 感想
+联想到自己修改过程中磕磕绊绊，就把修改的详细备注写上去了，以供参考。
