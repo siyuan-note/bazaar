@@ -3,6 +3,7 @@
 SiYuan Community Bazaar:
 
 * Themes
-* Icons (TBD)
-* Templates  
-* Plugins (TBD)
+* Icons
+* Templates
+* Widgets (TBD)  
+* Content Blocks (TBD)
