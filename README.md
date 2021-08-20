@@ -5,5 +5,5 @@ SiYuan Community Bazaar:
 * Themes
 * Icons
 * Templates
-* Widgets (TBD)  
+* Widgets
 * Content Blocks (TBD)
