@@ -1,10 +1,6 @@
 name: Stage
 
 on: [ push, pull_request ]
-  watch:
-    types: started
-  schedule:
-    - cron: '0 8 * * *'
 
 jobs:
   build:
