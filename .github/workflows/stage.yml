@@ -4,21 +4,23 @@ on:
   watch:
     types: started
   schedule:
-    - cron:  '0 8 * * *'
+    - cron: '0 8 * * *'
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Check out repo
-      uses: actions/checkout@v2
-    - uses: actions/setup-go@v2
-    - name: Go stagging
-      run: go run stage/main.go
-    - name: Commit and push
-      run: |-
-        git config --global user.email "bot@github.com" && git config --global user.name "Bot"
-        git diff
-        git add . && git commit -m ":bookmark: Stagging" || exit 0
-        git push
+      - name: Check out repo
+        uses: actions/checkout@v2
+      - uses: actions/setup-go@v2
+        with:
+          go-version: '1.16.7'
+      - name: Go stagging
+        run: go run stage/main.go
+      - name: Commit and push
+        run: |-
+          git config --global user.email "bot@github.com" && git config --global user.name "Bot"
+          git diff
+          git add . && git commit -m ":bookmark: Stagging" || exit 0
+          git push
