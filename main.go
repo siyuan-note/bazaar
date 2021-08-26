@@ -39,6 +39,7 @@ func main() {
 			URL:     repo,
 			Updated: t,
 		})
+		logger.Infof("updated repo [%s]", repo)
 	})
 	for _, repo := range repos {
 		waitGroup.Add(1)

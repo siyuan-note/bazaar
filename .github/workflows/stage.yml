@@ -1,6 +1,6 @@
 name: Stage
 
-on:
+on: [ push, pull_request ]
   watch:
     types: started
   schedule:
