@@ -17,17 +17,28 @@ var logger = gulu.Log.NewLogger(os.Stdout)
 func main() {
 	logger.Infof("bazaar is staging...")
 
-	data, err := os.ReadFile("themes.json")
+	performStage("themes")
+	performStage("templates")
+	performStage("icons")
+	performStage("widgets")
+
+	logger.Infof("bazaar staged")
+}
+
+func performStage(typ string) {
+	logger.Infof("staging [%s]", typ)
+
+	data, err := os.ReadFile(typ + ".json")
 	if nil != err {
-		logger.Fatalf("read themes.json failed: %s", err)
+		logger.Fatalf("read [%s.json] failed: %s", typ, err)
 	}
 
-	themes := map[string]interface{}{}
-	if err = gulu.JSON.UnmarshalJSON(data, &themes); nil != err {
-		logger.Fatalf("unmarshal themes.json failed: %s", err)
+	original := map[string]interface{}{}
+	if err = gulu.JSON.UnmarshalJSON(data, &original); nil != err {
+		logger.Fatalf("unmarshal [%s.json] failed: %s", typ, err)
 	}
 
-	repos := themes["repos"].([]interface{})
+	repos := original["repos"].([]interface{})
 	var stageRepos []interface{}
 	waitGroup := &sync.WaitGroup{}
 
@@ -48,20 +59,20 @@ func main() {
 	waitGroup.Wait()
 	p.Release()
 
-	stageThemes := map[string]interface{}{
+	staged := map[string]interface{}{
 		"repos": stageRepos,
 	}
 
-	data, err = gulu.JSON.MarshalIndentJSON(stageThemes, "", "  ")
+	data, err = gulu.JSON.MarshalIndentJSON(staged, "", "  ")
 	if nil != err {
-		logger.Fatalf("marshal stage themes.json failed: %s", err)
+		logger.Fatalf("marshal stage [%s.json] failed: %s", typ, err)
 	}
 
-	if err = os.WriteFile("stage/themes.json", data, 0644); nil != err {
-		logger.Fatalf("write stage themes.json failed: %s", err)
+	if err = os.WriteFile("stage/"+typ+".json", data, 0644); nil != err {
+		logger.Fatalf("write stage [%s.json] failed: %s", typ, err)
 	}
 
-	logger.Infof("bazaar staged")
+	logger.Infof("staged [%s]", typ)
 }
 
 func repoUpdateTime(repoURL string) string {
