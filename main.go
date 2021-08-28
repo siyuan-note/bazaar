@@ -3,6 +3,7 @@ package main
 import (
 	"crypto/tls"
 	"os"
+	"sort"
 	"strings"
 	"sync"
 	"time"
@@ -58,6 +59,10 @@ func performStage(typ string) {
 	}
 	waitGroup.Wait()
 	p.Release()
+
+	sort.SliceStable(stageRepos, func(i, j int) bool {
+		return stageRepos[i].(*stageRepo).Updated > stageRepos[j].(*stageRepo).Updated
+	})
 
 	staged := map[string]interface{}{
 		"repos": stageRepos,
