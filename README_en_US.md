@@ -1,11 +1,11 @@
 # bazaar <a title="Hits" target="_blank" href="https://github.com/siyuan-note/bazaar"><img src="https://hits.b3log.org/siyuan-note/bazaar.svg"></a>
 
-思源笔记社区集市。
+SiYuan community bazaar.
 
-请参考思源用户指南进行贡献 :heart:
+Please refer to the SiYuan User Guide to contribute :heart:
 
-* 主题
-* 图标
-* 模板
-* 挂件
-* 内容块（TBD）
+* Themes
+* Icons
+* Templates
+* Widgets
+* Content Blocks (TBD)
