@@ -1,5 +1,7 @@
 # bazaar <a title="Hits" target="_blank" href="https://github.com/siyuan-note/bazaar"><img src="https://hits.b3log.org/siyuan-note/bazaar.svg"></a>
 
+[中文](https://github.com/siyuan-note/siyuan-chrome/blob/main/README.md)
+
 SiYuan community bazaar.
 
 Please refer to the SiYuan User Guide to contribute :heart:
