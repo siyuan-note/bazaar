@@ -1,6 +1,6 @@
 # bazaar <a title="Hits" target="_blank" href="https://github.com/siyuan-note/bazaar"><img src="https://hits.b3log.org/siyuan-note/bazaar.svg"></a>
 
-[English](https://github.com/siyuan-note/siyuan-chrome/blob/main/README_en_US.md)
+[English](https://github.com/siyuan-note/bazaar/blob/main/README_en_US.md)
 
 思源笔记社区集市。
 
