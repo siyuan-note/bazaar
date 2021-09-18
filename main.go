@@ -109,7 +109,9 @@ func repoStars(repoURL string) int {
 	repoURL = repoURL[:strings.LastIndex(repoURL, "@")]
 	result := map[string]interface{}{}
 	request := gorequest.New().TLSClientConfig(&tls.Config{InsecureSkipVerify: true})
+	pat := os.Getenv("secrets.SuperSecret")
 	resp, _, errs := request.Get("https://api.github.com/repos/"+repoURL).
+		Set("Authorization", "Token "+pat).
 		Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").Timeout(7*time.Second).
 		Retry(1, time.Second).EndStruct(&result)
 	if nil != errs {
