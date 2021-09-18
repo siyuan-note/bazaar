@@ -47,8 +47,10 @@ func performStage(typ string) {
 		defer waitGroup.Done()
 		repo := arg.(string)
 		t := repoUpdateTime(repo)
+		stars := repoStars(repo)
 		stageRepos = append(stageRepos, &stageRepo{
 			URL:     repo,
+			Stars:   stars,
 			Updated: t,
 		})
 		logger.Infof("updated repo [%s]", repo)
@@ -103,9 +105,31 @@ func repoUpdateTime(repoURL string) string {
 	return ""
 }
 
+func repoStars(repoURL string) int {
+	repoURL = repoURL[:strings.LastIndex(repoURL, "@")]
+	result := map[string]interface{}{}
+	request := gorequest.New().TLSClientConfig(&tls.Config{InsecureSkipVerify: true})
+	resp, _, errs := request.Get("https://api.github.com/repos/"+repoURL).
+		Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").Timeout(7*time.Second).
+		Retry(1, time.Second).EndStruct(&result)
+	if nil != errs {
+		logger.Errorf("get repo stars failed: %s", errs)
+		return 0
+	}
+	if 200 != resp.StatusCode {
+		logger.Errorf("get repo stars failed: %s", errs)
+		return 0
+	}
+	for k, v := range resp.Header {
+		logger.Infof("%s=%s]", k, v)
+	}
+	return int(result["stargazers_count"].(float64))
+}
+
 type stageRepo struct {
 	URL     string `json:"url"`
 	Updated string `json:"updated"`
+	Stars   int    `json:"stars"`
 }
 
 type filetree struct {
