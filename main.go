@@ -120,9 +120,8 @@ func repoStars(repoURL string) int {
 		logger.Errorf("get repo stars failed: %s", errs)
 		return 0
 	}
-	for k, v := range resp.Header {
-		logger.Infof("%s=%s]", k, v)
-	}
+
+	logger.Infof("X-Ratelimit-Remaining=%s]", resp.Header.Get("X-Ratelimit-Remaining"))
 	return int(result["stargazers_count"].(float64))
 }
 
