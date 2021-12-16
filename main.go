@@ -83,23 +83,34 @@ func performStage(typ string) {
 }
 
 func repoUpdateTime(repoURL string) string {
-	result := filetree{}
+	hash := strings.Split(repoURL, "@")[1]
+	ownerRepo := repoURL[:strings.Index(repoURL, "@")]
+	pat := os.Getenv("PAT")
+	result := map[string]interface{}{}
 	request := gorequest.New().TLSClientConfig(&tls.Config{InsecureSkipVerify: true})
-	resp, _, errs := request.Get("https://data.jsdelivr.com/v1/package/gh/"+repoURL).
+	resp, _, errs := request.Get("https://api.github.com/repos/"+ownerRepo+"/git/commits/"+hash).
+		Set("Authorization", "Token "+pat).
 		Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").Timeout(7*time.Second).
 		Retry(1, time.Second).EndStruct(&result)
 	if nil != errs {
-		//util.LogErrorf("get repo file tree failed: %s", errs)
+		logger.Errorf("get repo update time failed: %s", errs)
 		return ""
 	}
 	if 200 != resp.StatusCode {
-		logger.Errorf("get repo file tree failed: %s", errs)
+		logger.Errorf("get repo update time failed: %s", errs)
 		return ""
 	}
 
-	for _, f := range result.Files {
-		if strings.HasSuffix(f.Name, ".json") {
-			return f.Time
+	if nil != result["author"] {
+		author := result["author"].(map[string]interface{})
+		if date := author["date"]; nil != date {
+			return date.(string)
+		}
+	}
+	if nil != result["committer"] {
+		committer := result["committer"].(map[string]interface{})
+		if date := committer["date"]; nil != date {
+			return date.(string)
 		}
 	}
 	return ""
@@ -131,16 +142,4 @@ type stageRepo struct {
 	URL     string `json:"url"`
 	Updated string `json:"updated"`
 	Stars   int    `json:"stars"`
-}
-
-type filetree struct {
-	Files []*file `json:"files"`
-}
-
-type file struct {
-	Type  string  `json:"type"`
-	Name  string  `json:"name"`
-	Time  string  `json:"time"`
-	Data  []byte  `json:"data"`
-	Files []*file `json:"files"`
 }
