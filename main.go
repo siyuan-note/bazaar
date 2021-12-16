@@ -55,7 +55,7 @@ func performStage(typ string) {
 				return
 			}
 			if updated.Before(verTime) {
-				logger.Infof("skip legacy theme package [%s], the latest updated at [%s]", repo, t)
+				logger.Infof("skip legacy theme package [%s], last updated at [%s]", repo, t)
 				return
 			}
 		}
