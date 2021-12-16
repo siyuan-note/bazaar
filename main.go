@@ -43,10 +43,23 @@ func performStage(typ string) {
 	var stageRepos []interface{}
 	waitGroup := &sync.WaitGroup{}
 
+	verTime, _ := time.Parse("2006-01-02T15:04:05Z", "2021-07-01T00:00:00Z")
 	p, _ := ants.NewPoolWithFunc(8, func(arg interface{}) {
 		defer waitGroup.Done()
 		repo := arg.(string)
 		t := repoUpdateTime(repo)
+		if "themes" == typ {
+			updated, err := time.Parse("2006-01-02T15:04:05Z", t)
+			if nil != err {
+				logger.Errorf("parse repo updated [%s] failed: %s", t, err)
+				return
+			}
+			if updated.Before(verTime) {
+				logger.Infof("skip legacy theme package [%s]", repo)
+				return
+			}
+		}
+
 		stars := repoStars(repo)
 		stageRepos = append(stageRepos, &stageRepo{
 			URL:     repo,
@@ -82,7 +95,7 @@ func performStage(typ string) {
 	logger.Infof("staged [%s]", typ)
 }
 
-func repoUpdateTime(repoURL string) string {
+func repoUpdateTime(repoURL string) (t string) {
 	hash := strings.Split(repoURL, "@")[1]
 	ownerRepo := repoURL[:strings.Index(repoURL, "@")]
 	pat := os.Getenv("PAT")
