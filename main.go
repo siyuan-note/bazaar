@@ -109,7 +109,7 @@ func uploadRepoZip(repoURL string, data []byte) {
 	ak := os.Getenv("QINIU_AK")
 	sk := os.Getenv("QINIU_SK")
 
-	key := time.Now().Format("package/" + strings.ReplaceAll(repoURL, "@", "/"))
+	key := time.Now().Format("package/" + repoURL)
 	putPolicy := storage.PutPolicy{
 		Scope: fmt.Sprintf("%s:%s", bucket, key), // overwrite if exists
 	}
