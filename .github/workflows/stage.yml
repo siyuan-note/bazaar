@@ -15,6 +15,9 @@ jobs:
       - name: Go stagging
         env:
           PAT: ${{ secrets.PAT }}
+          QINIU_BUCKET: ${{ secrets.QINIU_BUCKET }}
+          QINIU_AK: ${{ secrets.QINIU_AK }}
+          QINIU_SK: ${{ secrets.QINIU_SK }}
         run: go run main.go
       - name: Commit and push
         run: |-
