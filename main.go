@@ -1,7 +1,10 @@
 package main
 
 import (
+	"bytes"
+	"context"
 	"crypto/tls"
+	"fmt"
 	"os"
 	"sort"
 	"strings"
@@ -11,6 +14,8 @@ import (
 	"github.com/88250/gulu"
 	ants "github.com/panjf2000/ants/v2"
 	"github.com/parnurzeal/gorequest"
+	"github.com/qiniu/go-sdk/v7/auth/qbox"
+	"github.com/qiniu/go-sdk/v7/storage"
 )
 
 var logger = gulu.Log.NewLogger(os.Stdout)
@@ -60,8 +65,9 @@ func performStage(typ string) {
 			}
 		}
 
-		// 包下载测试
-		fetchRepoZip(repo)
+		// 包下载后上传 CDN
+		zipData := downloadRepoZip(repo)
+		uploadRepoZip(repo, zipData)
 
 		stars := repoStars(repo)
 		stageRepos = append(stageRepos, &stageRepo{
@@ -98,7 +104,25 @@ func performStage(typ string) {
 	logger.Infof("staged [%s]", typ)
 }
 
-func fetchRepoZip(repoURL string) {
+func uploadRepoZip(repoURL string, data []byte) {
+	bucket := os.Getenv("QINIU_BUCKET")
+	ak := os.Getenv("QINIU_AK")
+	sk := os.Getenv("QINIU_SK")
+
+	key := time.Now().Format("package/" + repoURL)
+	putPolicy := storage.PutPolicy{
+		Scope: fmt.Sprintf("%s:%s", bucket, key), // overwrite if exists
+	}
+	formUploader := storage.NewFormUploader(nil)
+	if err := formUploader.Put(context.Background(), nil, putPolicy.UploadToken(qbox.NewMac(ak, sk)),
+		key, bytes.NewReader(data), int64(len(data)), nil); nil != err {
+		logger.Fatalf("upload package [%s] failed: %s", repoURL, err)
+	}
+
+	logger.Infof("uploaded package [%s]", repoURL)
+}
+
+func downloadRepoZip(repoURL string) []byte {
 	hash := strings.Split(repoURL, "@")[1]
 	ownerRepo := repoURL[:strings.Index(repoURL, "@")]
 	resp, data, errs := gorequest.New().Get("https://github.com/"+ownerRepo+"/archive/"+hash+".zip").
@@ -106,18 +130,15 @@ func fetchRepoZip(repoURL string) {
 		Timeout(30 * time.Second).EndBytes()
 	if nil != errs {
 		logger.Errorf("get repo zip failed: %s", errs)
-		return
+		return nil
 	}
 	if 200 != resp.StatusCode {
 		logger.Errorf("get repo zip failed: %s", errs)
-		return
+		return nil
 	}
-	name := strings.Split(ownerRepo, "/")[1] + ".zip"
-	if err := os.WriteFile(name, data, 0644); nil != err {
-		logger.Errorf("write zip failed: %s", err)
-		return
-	}
+
 	logger.Infof("downloaded package [%s], size [%d]", repoURL, len(data))
+	return data
 }
 
 func repoUpdateTime(repoURL string) (t string) {
