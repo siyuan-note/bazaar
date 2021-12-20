@@ -60,6 +60,9 @@ func performStage(typ string) {
 			}
 		}
 
+		// 包下载测试
+		fetchRepoZip(repo)
+
 		stars := repoStars(repo)
 		stageRepos = append(stageRepos, &stageRepo{
 			URL:     repo,
@@ -93,6 +96,28 @@ func performStage(typ string) {
 	}
 
 	logger.Infof("staged [%s]", typ)
+}
+
+func fetchRepoZip(repoURL string) {
+	hash := strings.Split(repoURL, "@")[1]
+	ownerRepo := repoURL[:strings.Index(repoURL, "@")]
+	resp, data, errs := gorequest.New().Get("https://github.com/"+ownerRepo+"/archive/"+hash+".zip").
+		Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").
+		Timeout(30 * time.Second).EndBytes()
+	if nil != errs {
+		logger.Errorf("get repo zip failed: %s", errs)
+		return
+	}
+	if 200 != resp.StatusCode {
+		logger.Errorf("get repo zip failed: %s", errs)
+		return
+	}
+	name := strings.Split(ownerRepo, "/")[1] + ".zip"
+	if err := os.WriteFile(name, data, 0644); nil != err {
+		logger.Errorf("write zip failed: %s", err)
+		return
+	}
+	logger.Infof("downloaded package [%s], size [%d]", repoURL, len(data))
 }
 
 func repoUpdateTime(repoURL string) (t string) {
