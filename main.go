@@ -113,7 +113,9 @@ func uploadRepoZip(repoURL string, data []byte) {
 	putPolicy := storage.PutPolicy{
 		Scope: fmt.Sprintf("%s:%s", bucket, key), // overwrite if exists
 	}
-	formUploader := storage.NewFormUploader(nil)
+	cfg := storage.Config{}
+	cfg.Zone = &storage.ZoneHuanan
+	formUploader := storage.NewFormUploader(&cfg)
 	if err := formUploader.Put(context.Background(), nil, putPolicy.UploadToken(qbox.NewMac(ak, sk)),
 		key, bytes.NewReader(data), int64(len(data)), nil); nil != err {
 		logger.Fatalf("upload package [%s] failed: %s", repoURL, err)
