@@ -68,6 +68,8 @@ func stageIndex(hash string, index string) {
 	}
 	cfg := storage.Config{}
 	cfg.Zone = &storage.ZoneHuanan
+	cfg.UseCdnDomains = true
+	cfg.UseHTTPS = true
 	formUploader := storage.NewFormUploader(&cfg)
 	if err := formUploader.Put(context.Background(), nil, putPolicy.UploadToken(qbox.NewMac(ak, sk)),
 		key, bytes.NewReader(data), int64(len(data)), nil); nil != err {
