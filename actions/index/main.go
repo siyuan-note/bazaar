@@ -11,9 +11,6 @@
 package main
 
 import (
-	"bytes"
-	"context"
-	"fmt"
 	"os"
 	"os/exec"
 	"strings"
@@ -21,8 +18,7 @@ import (
 
 	"github.com/88250/gulu"
 	"github.com/parnurzeal/gorequest"
-	"github.com/qiniu/go-sdk/v7/auth/qbox"
-	"github.com/qiniu/go-sdk/v7/storage"
+	"github.com/siyuan-note/bazaar/actions/util"
 )
 
 var logger = gulu.Log.NewLogger(os.Stdout)
@@ -59,20 +55,9 @@ func stageIndex(hash string, index string) {
 		return
 	}
 
-	bucket := os.Getenv("QINIU_BUCKET")
-	ak := os.Getenv("QINIU_AK")
-	sk := os.Getenv("QINIU_SK")
 	key := time.Now().Format("bazaar@" + hash + "/stage/" + index + ".json")
-	putPolicy := storage.PutPolicy{
-		Scope: fmt.Sprintf("%s:%s", bucket, key), // overwrite if exists
-	}
-	cfg := storage.Config{}
-	cfg.Zone = &storage.ZoneHuanan
-	cfg.UseCdnDomains = true
-	cfg.UseHTTPS = true
-	formUploader := storage.NewFormUploader(&cfg)
-	if err := formUploader.Put(context.Background(), nil, putPolicy.UploadToken(qbox.NewMac(ak, sk)),
-		key, bytes.NewReader(data), int64(len(data)), nil); nil != err {
-		logger.Fatalf("upload bazaar [%s] stage index [%s] failed: %s", hash, index, err)
+	err := util.UploadOSS(key, data)
+	if nil != err {
+		logger.Fatalf("upload bazaar stage index [%s] failed: %s", key, err)
 	}
 }

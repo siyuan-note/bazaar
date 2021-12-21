@@ -11,10 +11,7 @@
 package main
 
 import (
-	"bytes"
-	"context"
 	"crypto/tls"
-	"fmt"
 	"os"
 	"sort"
 	"strings"
@@ -24,8 +21,7 @@ import (
 	"github.com/88250/gulu"
 	ants "github.com/panjf2000/ants/v2"
 	"github.com/parnurzeal/gorequest"
-	"github.com/qiniu/go-sdk/v7/auth/qbox"
-	"github.com/qiniu/go-sdk/v7/storage"
+	"github.com/siyuan-note/bazaar/actions/util"
 )
 
 var logger = gulu.Log.NewLogger(os.Stdout)
@@ -76,8 +72,7 @@ func performStage(typ string) {
 		}
 
 		// 包下载后上传 CDN
-		zipData := downloadRepoZip(repo)
-		uploadRepoZip(repo, zipData)
+		indexPackage(repo)
 
 		stars := repoStars(repo)
 		stageRepos = append(stageRepos, &stageRepo{
@@ -114,29 +109,7 @@ func performStage(typ string) {
 	logger.Infof("staged [%s]", typ)
 }
 
-func uploadRepoZip(repoURL string, data []byte) {
-	bucket := os.Getenv("QINIU_BUCKET")
-	ak := os.Getenv("QINIU_AK")
-	sk := os.Getenv("QINIU_SK")
-
-	key := time.Now().Format("package/" + repoURL)
-	putPolicy := storage.PutPolicy{
-		Scope: fmt.Sprintf("%s:%s", bucket, key), // overwrite if exists
-	}
-	cfg := storage.Config{}
-	cfg.Zone = &storage.ZoneHuanan
-	cfg.UseCdnDomains = true
-	cfg.UseHTTPS = true
-	formUploader := storage.NewFormUploader(&cfg)
-	if err := formUploader.Put(context.Background(), nil, putPolicy.UploadToken(qbox.NewMac(ak, sk)),
-		key, bytes.NewReader(data), int64(len(data)), nil); nil != err {
-		logger.Fatalf("upload package [%s] failed: %s", repoURL, err)
-	}
-
-	logger.Infof("uploaded package [%s]", repoURL)
-}
-
-func downloadRepoZip(repoURL string) []byte {
+func indexPackage(repoURL string) {
 	hash := strings.Split(repoURL, "@")[1]
 	ownerRepo := repoURL[:strings.Index(repoURL, "@")]
 	resp, data, errs := gorequest.New().Get("https://github.com/"+ownerRepo+"/archive/"+hash+".zip").
@@ -144,15 +117,32 @@ func downloadRepoZip(repoURL string) []byte {
 		Timeout(30 * time.Second).EndBytes()
 	if nil != errs {
 		logger.Errorf("get repo zip failed: %s", errs)
-		return nil
+		return
 	}
 	if 200 != resp.StatusCode {
 		logger.Errorf("get repo zip failed: %s", errs)
-		return nil
+		return
 	}
 
 	logger.Infof("downloaded package [%s], size [%d]", repoURL, len(data))
-	return data
+
+	key := time.Now().Format("package/" + repoURL)
+	err := util.UploadOSS(key, data)
+	if nil != err {
+		logger.Fatalf("upload package [%s] failed: %s", repoURL)
+	}
+
+	resp, data, errs = gorequest.New().Get("https://raw.githubusercontent.com/"+ownerRepo+"/"+hash+"/README.md").
+		Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").
+		Timeout(30 * time.Second).EndBytes()
+	if nil != errs {
+		logger.Errorf("get repo zip failed: %s", errs)
+		return
+	}
+	if 200 != resp.StatusCode {
+		logger.Errorf("get repo zip failed: %s", errs)
+		return
+	}
 }
 
 func repoUpdateTime(repoURL string) (t string) {
