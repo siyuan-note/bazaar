@@ -43,15 +43,16 @@ func main() {
 }
 
 func stageIndex(hash string, index string) {
-	resp, data, errs := gorequest.New().Get("https://raw.githubusercontent.com/siyuan-note/bazaar/"+hash+"/stage/"+index+".json").
+	u := "https://raw.githubusercontent.com/siyuan-note/bazaar/" + hash + "/stage/" + index + ".json"
+	resp, data, errs := gorequest.New().Get(u).
 		Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").
 		Timeout(30 * time.Second).EndBytes()
 	if nil != errs {
-		logger.Fatalf("get failed: %s", errs)
+		logger.Fatalf("get [%s] failed: %s", u, errs)
 		return
 	}
 	if 200 != resp.StatusCode {
-		logger.Fatalf("get failed: %d", resp.StatusCode)
+		logger.Fatalf("get [%s] failed: %d", u, resp.StatusCode)
 		return
 	}
 

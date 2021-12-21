@@ -112,15 +112,16 @@ func performStage(typ string) {
 func indexPackage(repoURL, typ string) {
 	hash := strings.Split(repoURL, "@")[1]
 	ownerRepo := repoURL[:strings.Index(repoURL, "@")]
-	resp, data, errs := gorequest.New().Get("https://github.com/"+ownerRepo+"/archive/"+hash+".zip").
+	u := "https://github.com/" + ownerRepo + "/archive/" + hash + ".zip"
+	resp, data, errs := gorequest.New().Get(u).
 		Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").
 		Timeout(30 * time.Second).EndBytes()
 	if nil != errs {
-		logger.Fatalf("get failed: %s", errs)
+		logger.Fatalf("get [%s] failed: %s", u, errs)
 		return
 	}
 	if 200 != resp.StatusCode {
-		logger.Fatalf("getfailed: %d", resp.StatusCode)
+		logger.Fatalf("get [%s] failed: %d", u, resp.StatusCode)
 		return
 	}
 
@@ -136,15 +137,16 @@ func indexPackage(repoURL, typ string) {
 }
 
 func indexPackageFile(ownerRepo, hash, filePath string) {
-	resp, data, errs := gorequest.New().Get("https://raw.githubusercontent.com/"+ownerRepo+"/"+hash+filePath).
+	u := "https://raw.githubusercontent.com/" + ownerRepo + "/" + hash + filePath
+	resp, data, errs := gorequest.New().Get(u).
 		Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").
 		Timeout(30 * time.Second).EndBytes()
 	if nil != errs {
-		logger.Fatalf("get failed: %s", errs)
+		logger.Fatalf("get [%s] failed: %s", u, errs)
 		return
 	}
 	if 200 != resp.StatusCode {
-		logger.Fatalf("get failed: %d", resp.StatusCode)
+		logger.Fatalf("get [%s] failed: %d", u, resp.StatusCode)
 		return
 	}
 
@@ -161,16 +163,17 @@ func repoUpdateTime(repoURL string) (t string) {
 	pat := os.Getenv("PAT")
 	result := map[string]interface{}{}
 	request := gorequest.New().TLSClientConfig(&tls.Config{InsecureSkipVerify: true})
-	resp, _, errs := request.Get("https://api.github.com/repos/"+ownerRepo+"/git/commits/"+hash).
+	u := "https://api.github.com/repos/" + ownerRepo + "/git/commits/" + hash
+	resp, _, errs := request.Get(u).
 		Set("Authorization", "Token "+pat).
 		Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").Timeout(7*time.Second).
 		Retry(1, time.Second).EndStruct(&result)
 	if nil != errs {
-		logger.Fatalf("get failed: %s", errs)
+		logger.Fatalf("get [%s] failed: %s", u, errs)
 		return ""
 	}
 	if 200 != resp.StatusCode {
-		logger.Fatalf("get failed: %d", resp.StatusCode)
+		logger.Fatalf("get [%s] failed: %d", u, resp.StatusCode)
 		return ""
 	}
 
@@ -194,16 +197,17 @@ func repoStars(repoURL string) int {
 	result := map[string]interface{}{}
 	request := gorequest.New().TLSClientConfig(&tls.Config{InsecureSkipVerify: true})
 	pat := os.Getenv("PAT")
-	resp, _, errs := request.Get("https://api.github.com/repos/"+repoURL).
+	u := "https://api.github.com/repos/" + repoURL
+	resp, _, errs := request.Get(u).
 		Set("Authorization", "Token "+pat).
 		Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").Timeout(7*time.Second).
 		Retry(1, time.Second).EndStruct(&result)
 	if nil != errs {
-		logger.Fatalf("get failed: %s", errs)
+		logger.Fatalf("get [%s] failed: %s", u, errs)
 		return 0
 	}
 	if 200 != resp.StatusCode {
-		logger.Fatalf("get failed: %d", resp.StatusCode)
+		logger.Fatalf("get [%s] failed: %d", u, resp.StatusCode)
 		return 0
 	}
 
