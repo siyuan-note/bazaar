@@ -66,7 +66,7 @@ func performStage(typ string) {
 				return
 			}
 			if updated.Before(verTime) {
-				logger.Infof("skip legacy theme package [%s], last updated at [%s]", repo, t)
+				//logger.Infof("skip legacy theme package [%s], last updated at [%s]", repo, t)
 				return
 			}
 		}
@@ -222,7 +222,7 @@ func repoStars(repoURL string) int {
 		return 0
 	}
 
-	logger.Infof("X-Ratelimit-Remaining=%s]", resp.Header.Get("X-Ratelimit-Remaining"))
+	//logger.Infof("X-Ratelimit-Remaining=%s]", resp.Header.Get("X-Ratelimit-Remaining"))
 	return int(result["stargazers_count"].(float64))
 }
 
