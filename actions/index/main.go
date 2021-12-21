@@ -29,55 +29,48 @@ var logger = gulu.Log.NewLogger(os.Stdout)
 
 func main() {
 	logger.Infof("bazaar is indexing...")
-	indexBazaar()
-	logger.Infof("indexed bazaar")
-}
 
-func indexBazaar() {
 	cmd := exec.Command("git", "rev-parse", "HEAD")
 	data, err := cmd.CombinedOutput()
 	if nil != err {
 		logger.Fatalf("get git hash failed: %s", err)
 	}
-	hash := string(data)
-	repoURL := "siyuan-note/bazaar@" + hash
-	logger.Infof("bazaar [%s]", repoURL)
-	data = downloadRepoZip(repoURL)
+	hash := strings.TrimSpace(string(data))
+	logger.Infof("bazaar [%s]", hash)
+
+	stageIndex(hash, "themes")
+	stageIndex(hash, "templates")
+	stageIndex(hash, "icons")
+	stageIndex(hash, "widgets")
+
+	logger.Infof("indexed bazaar")
+}
+
+func stageIndex(hash string, index string) {
+	resp, data, errs := gorequest.New().Get("https://raw.githubusercontent.com/siyuan-note/bazaar/"+hash+"/stage/"+index+".json").
+		Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").
+		Timeout(30 * time.Second).EndBytes()
+	if nil != errs {
+		logger.Errorf("get repo zip failed: %s", errs)
+		return
+	}
+	if 200 != resp.StatusCode {
+		logger.Errorf("get repo zip failed: %s", errs)
+		return
+	}
 
 	bucket := os.Getenv("QINIU_BUCKET")
 	ak := os.Getenv("QINIU_AK")
 	sk := os.Getenv("QINIU_SK")
-
-	key := time.Now().Format("bazaar/" + repoURL)
+	key := time.Now().Format("bazaar@" + hash + "/stage/" + index + ".json")
 	putPolicy := storage.PutPolicy{
 		Scope: fmt.Sprintf("%s:%s", bucket, key), // overwrite if exists
 	}
 	cfg := storage.Config{}
 	cfg.Zone = &storage.ZoneHuanan
 	formUploader := storage.NewFormUploader(&cfg)
-	if err = formUploader.Put(context.Background(), nil, putPolicy.UploadToken(qbox.NewMac(ak, sk)),
+	if err := formUploader.Put(context.Background(), nil, putPolicy.UploadToken(qbox.NewMac(ak, sk)),
 		key, bytes.NewReader(data), int64(len(data)), nil); nil != err {
-		logger.Fatalf("upload index [%s] failed: %s", hash, err)
+		logger.Fatalf("upload bazaar [%s] stage index [%s] failed: %s", hash, index, err)
 	}
-
-	logger.Infof("uploaded package [%s]", repoURL)
-}
-
-func downloadRepoZip(repoURL string) []byte {
-	hash := strings.Split(repoURL, "@")[1]
-	ownerRepo := repoURL[:strings.Index(repoURL, "@")]
-	resp, data, errs := gorequest.New().Get("https://github.com/"+ownerRepo+"/archive/"+hash+".zip").
-		Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").
-		Timeout(30 * time.Second).EndBytes()
-	if nil != errs {
-		logger.Errorf("get repo zip failed: %s", errs)
-		return nil
-	}
-	if 200 != resp.StatusCode {
-		logger.Errorf("get repo zip failed: %s", errs)
-		return nil
-	}
-
-	logger.Infof("downloaded package [%s], size [%d]", repoURL, len(data))
-	return data
 }
