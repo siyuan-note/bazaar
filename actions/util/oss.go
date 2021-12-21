@@ -28,10 +28,7 @@ func UploadOSS(key string, data []byte) (err error) {
 	putPolicy := storage.PutPolicy{
 		Scope: fmt.Sprintf("%s:%s", bucket, key), // overwrite if exists
 	}
-	cfg := storage.Config{}
-	cfg.Zone = &storage.ZoneHuanan
-	cfg.UseCdnDomains = true
-	cfg.UseHTTPS = true
+	cfg := storage.Config{Zone: &storage.ZoneHuadong, UseCdnDomains: true, UseHTTPS: true}
 	formUploader := storage.NewFormUploader(&cfg)
 	if err = formUploader.Put(context.Background(), nil, putPolicy.UploadToken(qbox.NewMac(ak, sk)),
 		key, bytes.NewReader(data), int64(len(data)), nil); nil != err {
