@@ -133,7 +133,7 @@ func indexPackage(repoURL, typ string) {
 
 	indexPackageFile(ownerRepo, hash, "/README.md")
 	indexPackageFile(ownerRepo, hash, "/preview.png")
-	indexPackageFile(ownerRepo, hash, strings.ReplaceAll(typ, "s.json", ".json"))
+	indexPackageFile(ownerRepo, hash, "/"+strings.TrimSuffix(typ, "s")+".json")
 }
 
 func indexPackageFile(ownerRepo, hash, filePath string) {
