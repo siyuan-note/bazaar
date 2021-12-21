@@ -71,8 +71,10 @@ func performStage(typ string) {
 			}
 		}
 
-		// 包下载后上传 CDN
-		indexPackage(repo, typ)
+		// 索引包上传 CDN
+		if !indexPackage(repo, typ) {
+			return
+		}
 
 		stars := repoStars(repo)
 		stageRepos = append(stageRepos, &stageRepo{
@@ -109,7 +111,7 @@ func performStage(typ string) {
 	logger.Infof("staged [%s]", typ)
 }
 
-func indexPackage(repoURL, typ string) {
+func indexPackage(repoURL, typ string) bool {
 	hash := strings.Split(repoURL, "@")[1]
 	ownerRepo := repoURL[:strings.Index(repoURL, "@")]
 	u := "https://github.com/" + ownerRepo + "/archive/" + hash + ".zip"
@@ -117,12 +119,12 @@ func indexPackage(repoURL, typ string) {
 		Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").
 		Timeout(30 * time.Second).EndBytes()
 	if nil != errs {
-		logger.Fatalf("get [%s] failed: %s", u, errs)
-		return
+		logger.Errorf("get [%s] failed: %s", u, errs)
+		return false
 	}
 	if 200 != resp.StatusCode {
-		logger.Fatalf("get [%s] failed: %d", u, resp.StatusCode)
-		return
+		logger.Errorf("get [%s] failed: %d", u, resp.StatusCode)
+		return false
 	}
 
 	key := "package/" + repoURL
@@ -131,30 +133,39 @@ func indexPackage(repoURL, typ string) {
 		logger.Fatalf("upload package [%s] failed: %s", repoURL)
 	}
 
-	indexPackageFile(ownerRepo, hash, "/README.md")
-	indexPackageFile(ownerRepo, hash, "/preview.png")
-	indexPackageFile(ownerRepo, hash, "/"+strings.TrimSuffix(typ, "s")+".json")
+	if ok := indexPackageFile(ownerRepo, hash, "/README.md"); !ok {
+		return false
+	}
+	if ok := indexPackageFile(ownerRepo, hash, "/preview.png"); !ok {
+		return false
+	}
+	if ok := indexPackageFile(ownerRepo, hash, "/"+strings.TrimSuffix(typ, "s")+".json"); !ok {
+		return false
+	}
+	return true
 }
 
-func indexPackageFile(ownerRepo, hash, filePath string) {
+func indexPackageFile(ownerRepo, hash, filePath string) bool {
 	u := "https://raw.githubusercontent.com/" + ownerRepo + "/" + hash + filePath
 	resp, data, errs := gorequest.New().Get(u).
 		Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").
 		Timeout(30 * time.Second).EndBytes()
 	if nil != errs {
-		logger.Fatalf("get [%s] failed: %s", u, errs)
-		return
+		logger.Errorf("get [%s] failed: %s", u, errs)
+		return false
 	}
 	if 200 != resp.StatusCode {
-		logger.Fatalf("get [%s] failed: %d", u, resp.StatusCode)
-		return
+		logger.Errorf("get [%s] failed: %d", u, resp.StatusCode)
+		return false
 	}
 
 	key := "package/" + ownerRepo + "@" + hash + filePath
 	err := util.UploadOSS(key, data)
 	if nil != err {
-		logger.Fatalf("upload package file [%s] failed: %s", key)
+		logger.Errorf("upload package file [%s] failed: %s", key)
+		return false
 	}
+	return true
 }
 
 func repoUpdateTime(repoURL string) (t string) {
