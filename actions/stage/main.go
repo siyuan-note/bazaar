@@ -116,11 +116,11 @@ func indexPackage(repoURL, typ string) {
 		Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").
 		Timeout(30 * time.Second).EndBytes()
 	if nil != errs {
-		logger.Fatalf("get repo zip failed: %s", errs)
+		logger.Fatalf("get failed: %s", errs)
 		return
 	}
 	if 200 != resp.StatusCode {
-		logger.Fatalf("get repo zip failed: %s", errs)
+		logger.Fatalf("getfailed: %d", resp.StatusCode)
 		return
 	}
 
@@ -140,11 +140,11 @@ func indexPackageFile(ownerRepo, hash, filePath string) {
 		Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").
 		Timeout(30 * time.Second).EndBytes()
 	if nil != errs {
-		logger.Fatalf("get repo zip failed: %s", errs)
+		logger.Fatalf("get failed: %s", errs)
 		return
 	}
 	if 200 != resp.StatusCode {
-		logger.Fatalf("get repo zip failed: %s", errs)
+		logger.Fatalf("get failed: %d", resp.StatusCode)
 		return
 	}
 
@@ -166,11 +166,11 @@ func repoUpdateTime(repoURL string) (t string) {
 		Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").Timeout(7*time.Second).
 		Retry(1, time.Second).EndStruct(&result)
 	if nil != errs {
-		logger.Fatalf("get repo update time failed: %s", errs)
+		logger.Fatalf("get failed: %s", errs)
 		return ""
 	}
 	if 200 != resp.StatusCode {
-		logger.Fatalf("get repo update time failed: %s", errs)
+		logger.Fatalf("get failed: %d", resp.StatusCode)
 		return ""
 	}
 
@@ -199,11 +199,11 @@ func repoStars(repoURL string) int {
 		Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").Timeout(7*time.Second).
 		Retry(1, time.Second).EndStruct(&result)
 	if nil != errs {
-		logger.Fatalf("get repo stars failed: %s", errs)
+		logger.Fatalf("get failed: %s", errs)
 		return 0
 	}
 	if 200 != resp.StatusCode {
-		logger.Fatalf("get repo stars failed: %s", errs)
+		logger.Fatalf("get failed: %d", resp.StatusCode)
 		return 0
 	}
 

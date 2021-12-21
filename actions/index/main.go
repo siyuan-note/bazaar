@@ -47,11 +47,11 @@ func stageIndex(hash string, index string) {
 		Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").
 		Timeout(30 * time.Second).EndBytes()
 	if nil != errs {
-		logger.Fatalf("get repo zip failed: %s", errs)
+		logger.Fatalf("get failed: %s", errs)
 		return
 	}
 	if 200 != resp.StatusCode {
-		logger.Fatalf("get repo zip failed: %s", errs)
+		logger.Fatalf("get failed: %d", resp.StatusCode)
 		return
 	}
 
