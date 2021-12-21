@@ -17,7 +17,7 @@ jobs:
         with:
           go-version: '1.17'
       - name: Go stagging
-        run: go run actions/stage
+        run: go run ./actions/stage
       - name: Commit and push
         run: |-
           git config --global user.email "bot@github.com" && git config --global user.name "Bot"
@@ -25,4 +25,4 @@ jobs:
           git add . && git commit -m ":bookmark: Stagging" || exit 0
           git push
       - name: Index bazaar
-        run: go run actions/index
+        run: go run ./actions/index
