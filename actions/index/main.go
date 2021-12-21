@@ -29,11 +29,11 @@ var logger = gulu.Log.NewLogger(os.Stdout)
 
 func main() {
 	logger.Infof("bazaar is indexing...")
-	indexTemplates()
+	indexBazaar()
 	logger.Infof("indexed bazaar")
 }
 
-func indexTemplates() {
+func indexBazaar() {
 	cmd := exec.Command("git", "rev-parse", "HEAD")
 	data, err := cmd.CombinedOutput()
 	if nil != err {
