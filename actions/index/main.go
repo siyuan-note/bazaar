@@ -29,7 +29,7 @@ var logger = gulu.Log.NewLogger(os.Stdout)
 
 func main() {
 	logger.Infof("bazaar is indexing...")
-
+	indexTemplates()
 	logger.Infof("indexed bazaar")
 }
 
