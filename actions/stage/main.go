@@ -136,7 +136,7 @@ func indexPackage(repoURL, typ string) {
 }
 
 func indexPackageFile(ownerRepo, hash, filePath string) {
-	resp, data, errs := gorequest.New().Get("https://raw.githubusercontent.com/"+ownerRepo+"/"+hash+"/README.md").
+	resp, data, errs := gorequest.New().Get("https://raw.githubusercontent.com/"+ownerRepo+"/"+hash+filePath).
 		Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").
 		Timeout(30 * time.Second).EndBytes()
 	if nil != errs {
