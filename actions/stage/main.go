@@ -130,7 +130,7 @@ func indexPackage(repoURL, typ string) bool {
 	key := "package/" + repoURL
 	err := util.UploadOSS(key, data)
 	if nil != err {
-		logger.Fatalf("upload package [%s] failed: %s", repoURL)
+		logger.Fatalf("upload package [%s] failed: %s", repoURL, err)
 	}
 
 	if ok := indexPackageFile(ownerRepo, hash, "/README.md"); !ok {
