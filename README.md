@@ -68,7 +68,7 @@
 
 * icon.json（请确保 JSON 格式正确）
 * icon.js
-* preview.png（请压缩图片大小在 128 KB 以内）
+* preview.png（请压缩图片大小在 512 KB 以内）
 * README.md（请注意大小写）
 
 确认无误以后请通过对[社区集市](https://github.com/siyuan-note/bazaar)仓库[发起 pull request](https://docs.github.com/cn/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request)，修改 icons.json 文件。该文件是所有社区图标仓库的索引，格式为：
