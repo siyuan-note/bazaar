@@ -54,7 +54,7 @@ func performStage(typ string) {
 	var stageRepos []interface{}
 	waitGroup := &sync.WaitGroup{}
 
-	verTime, _ := time.Parse("2006-01-02T15:04:05Z", "2021-07-01T00:00:00Z")
+	verTime, _ := time.Parse("2006-01-02T15:04:05Z", "2021-12-01T00:00:00Z")
 	p, _ := ants.NewPoolWithFunc(8, func(arg interface{}) {
 		defer waitGroup.Done()
 		repo := arg.(string)
