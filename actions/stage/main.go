@@ -54,7 +54,7 @@ func performStage(typ string) {
 	var stageRepos []interface{}
 	waitGroup := &sync.WaitGroup{}
 
-	verTime, _ := time.Parse("2006-01-02T15:04:05Z", "2021-07-01T00:00:00Z")
+	verTime, _ := time.Parse("2006-01-02T15:04:05Z", "2021-12-01T00:00:00Z")
 	p, _ := ants.NewPoolWithFunc(8, func(arg interface{}) {
 		defer waitGroup.Done()
 		repo := arg.(string)
@@ -117,7 +117,7 @@ func indexPackage(repoURL, typ string) bool {
 	u := "https://github.com/" + ownerRepo + "/archive/" + hash + ".zip"
 	resp, data, errs := gorequest.New().Get(u).
 		Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").
-		Timeout(30 * time.Second).EndBytes()
+		Retry(1, 3*time.Second).Timeout(30 * time.Second).EndBytes()
 	if nil != errs {
 		logger.Errorf("get [%s] failed: %s", u, errs)
 		return false
@@ -149,7 +149,7 @@ func indexPackageFile(ownerRepo, hash, filePath string) bool {
 	u := "https://raw.githubusercontent.com/" + ownerRepo + "/" + hash + filePath
 	resp, data, errs := gorequest.New().Get(u).
 		Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").
-		Timeout(30 * time.Second).EndBytes()
+		Retry(1, 3*time.Second).Timeout(30 * time.Second).EndBytes()
 	if nil != errs {
 		logger.Errorf("get [%s] failed: %s", u, errs)
 		return false
@@ -178,7 +178,7 @@ func repoUpdateTime(repoURL string) (t string) {
 	resp, _, errs := request.Get(u).
 		Set("Authorization", "Token "+pat).
 		Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").Timeout(7*time.Second).
-		Retry(1, time.Second).EndStruct(&result)
+		Retry(1, 3*time.Second).EndStruct(&result)
 	if nil != errs {
 		logger.Fatalf("get [%s] failed: %s", u, errs)
 		return ""
@@ -212,7 +212,7 @@ func repoStars(repoURL string) int {
 	resp, _, errs := request.Get(u).
 		Set("Authorization", "Token "+pat).
 		Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").Timeout(7*time.Second).
-		Retry(1, time.Second).EndStruct(&result)
+		Retry(1, 3*time.Second).EndStruct(&result)
 	if nil != errs {
 		logger.Fatalf("get [%s] failed: %s", u, errs)
 		return 0
