@@ -76,11 +76,12 @@ func performStage(typ string) {
 			return
 		}
 
-		stars := repoStars(repo)
+		stars, openIssues := repoStats(repo)
 		stageRepos = append(stageRepos, &stageRepo{
-			URL:     repo,
-			Stars:   stars,
-			Updated: t,
+			URL:        repo,
+			Stars:      stars,
+			OpenIssues: openIssues,
+			Updated:    t,
 		})
 		logger.Infof("updated repo [%s]", repo)
 	})
@@ -203,7 +204,7 @@ func repoUpdateTime(repoURL string) (t string) {
 	return ""
 }
 
-func repoStars(repoURL string) int {
+func repoStats(repoURL string) (stars, openIssues int) {
 	repoURL = repoURL[:strings.LastIndex(repoURL, "@")]
 	result := map[string]interface{}{}
 	request := gorequest.New().TLSClientConfig(&tls.Config{InsecureSkipVerify: true})
@@ -215,19 +216,22 @@ func repoStars(repoURL string) int {
 		Retry(1, 3*time.Second).EndStruct(&result)
 	if nil != errs {
 		logger.Fatalf("get [%s] failed: %s", u, errs)
-		return 0
+		return 0, 0
 	}
 	if 200 != resp.StatusCode {
 		logger.Fatalf("get [%s] failed: %d", u, resp.StatusCode)
-		return 0
+		return 0, 0
 	}
 
 	//logger.Infof("X-Ratelimit-Remaining=%s]", resp.Header.Get("X-Ratelimit-Remaining"))
-	return int(result["stargazers_count"].(float64))
+	stars = int(result["stargazers_count"].(float64))
+	openIssues = int(result["open_issues_count"].(float64))
+	return
 }
 
 type stageRepo struct {
-	URL     string `json:"url"`
-	Updated string `json:"updated"`
-	Stars   int    `json:"stars"`
+	URL        string `json:"url"`
+	Updated    string `json:"updated"`
+	Stars      int    `json:"stars"`
+	OpenIssues int    `json:"openIssues"`
 }
