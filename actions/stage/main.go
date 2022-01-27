@@ -134,19 +134,20 @@ func indexPackage(repoURL, typ string) bool {
 		logger.Fatalf("upload package [%s] failed: %s", repoURL, err)
 	}
 
-	if ok := indexPackageFile(ownerRepo, hash, "/README.md"); !ok {
+	size := int64(len(data))
+	if ok := indexPackageFile(ownerRepo, hash, "/README.md", 0); !ok {
 		return false
 	}
-	if ok := indexPackageFile(ownerRepo, hash, "/preview.png"); !ok {
+	if ok := indexPackageFile(ownerRepo, hash, "/preview.png", 0); !ok {
 		return false
 	}
-	if ok := indexPackageFile(ownerRepo, hash, "/"+strings.TrimSuffix(typ, "s")+".json"); !ok {
+	if ok := indexPackageFile(ownerRepo, hash, "/"+strings.TrimSuffix(typ, "s")+".json", size); !ok {
 		return false
 	}
 	return true
 }
 
-func indexPackageFile(ownerRepo, hash, filePath string) bool {
+func indexPackageFile(ownerRepo, hash, filePath string, size int64) bool {
 	u := "https://raw.githubusercontent.com/" + ownerRepo + "/" + hash + filePath
 	resp, data, errs := gorequest.New().Get(u).
 		Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").
@@ -158,6 +159,22 @@ func indexPackageFile(ownerRepo, hash, filePath string) bool {
 	if 200 != resp.StatusCode {
 		logger.Errorf("get [%s] failed: %d", u, resp.StatusCode)
 		return false
+	}
+
+	if strings.HasSuffix(filePath, ".json") {
+		// 统计包大小
+		meta := map[string]interface{}{}
+		if err := gulu.JSON.UnmarshalJSON(data, &meta); nil != err {
+			logger.Errorf("stat package size failed: %s", err)
+			return false
+		}
+		meta["size"] = size
+		var err error
+		data, err = gulu.JSON.MarshalIndentJSON(meta, "", "  ")
+		if nil != err {
+			logger.Errorf("marshal package meta json failed: %s", err)
+			return false
+		}
 	}
 
 	key := "package/" + ownerRepo + "@" + hash + filePath
