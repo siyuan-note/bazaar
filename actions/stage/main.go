@@ -71,8 +71,10 @@ func performStage(typ string) {
 			}
 		}
 
+		var size int64
+		var ok bool
 		// 索引包上传 CDN
-		if !indexPackage(repo, typ) {
+		if ok, size = indexPackage(repo, typ); !ok {
 			return
 		}
 
@@ -82,6 +84,7 @@ func performStage(typ string) {
 			Stars:      stars,
 			OpenIssues: openIssues,
 			Updated:    t,
+			Size:       size,
 		})
 		logger.Infof("updated repo [%s]", repo)
 	})
@@ -112,7 +115,7 @@ func performStage(typ string) {
 	logger.Infof("staged [%s]", typ)
 }
 
-func indexPackage(repoURL, typ string) bool {
+func indexPackage(repoURL, typ string) (ok bool, size int64) {
 	hash := strings.Split(repoURL, "@")[1]
 	ownerRepo := repoURL[:strings.Index(repoURL, "@")]
 	u := "https://github.com/" + ownerRepo + "/archive/" + hash + ".zip"
@@ -121,11 +124,11 @@ func indexPackage(repoURL, typ string) bool {
 		Retry(1, 3*time.Second).Timeout(30 * time.Second).EndBytes()
 	if nil != errs {
 		logger.Errorf("get [%s] failed: %s", u, errs)
-		return false
+		return
 	}
 	if 200 != resp.StatusCode {
 		logger.Errorf("get [%s] failed: %d", u, resp.StatusCode)
-		return false
+		return
 	}
 
 	key := "package/" + repoURL
@@ -134,17 +137,17 @@ func indexPackage(repoURL, typ string) bool {
 		logger.Fatalf("upload package [%s] failed: %s", repoURL, err)
 	}
 
-	size := int64(len(data))
-	if ok := indexPackageFile(ownerRepo, hash, "/README.md", 0); !ok {
-		return false
+	size = int64(len(data))
+	if ok = indexPackageFile(ownerRepo, hash, "/README.md", 0); !ok {
+		return
 	}
-	if ok := indexPackageFile(ownerRepo, hash, "/preview.png", 0); !ok {
-		return false
+	if ok = indexPackageFile(ownerRepo, hash, "/preview.png", 0); !ok {
+		return
 	}
-	if ok := indexPackageFile(ownerRepo, hash, "/"+strings.TrimSuffix(typ, "s")+".json", size); !ok {
-		return false
+	if ok = indexPackageFile(ownerRepo, hash, "/"+strings.TrimSuffix(typ, "s")+".json", size); !ok {
+		return
 	}
-	return true
+	return
 }
 
 func indexPackageFile(ownerRepo, hash, filePath string, size int64) bool {
@@ -251,4 +254,5 @@ type stageRepo struct {
 	Updated    string `json:"updated"`
 	Stars      int    `json:"stars"`
 	OpenIssues int    `json:"openIssues"`
+	Size       int64  `json:"size"`
 }
