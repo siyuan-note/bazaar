@@ -57,7 +57,7 @@ func stageIndex(hash string, index string) {
 	}
 
 	key := "bazaar@" + hash + "/stage/" + index + ".json"
-	err := util.UploadOSS(key, data)
+	err := util.UploadOSS(key, "application/json", data)
 	if nil != err {
 		logger.Fatalf("upload bazaar stage index [%s] failed: %s", key, err)
 	}
