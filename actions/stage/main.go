@@ -132,7 +132,7 @@ func indexPackage(repoURL, typ string) (ok bool, size int64) {
 	}
 
 	key := "package/" + repoURL
-	err := util.UploadOSS(key, "application/octet-stream", data)
+	err := util.UploadOSS(key, "application/zip", data)
 	if nil != err {
 		logger.Fatalf("upload package [%s] failed: %s", repoURL, err)
 	}
