@@ -71,16 +71,20 @@ func performStage(typ string) {
 			}
 		}
 
+		var size int64
+		var ok bool
 		// 索引包上传 CDN
-		if !indexPackage(repo, typ) {
+		if ok, size = indexPackage(repo, typ); !ok {
 			return
 		}
 
-		stars := repoStars(repo)
+		stars, openIssues := repoStats(repo)
 		stageRepos = append(stageRepos, &stageRepo{
-			URL:     repo,
-			Stars:   stars,
-			Updated: t,
+			URL:        repo,
+			Stars:      stars,
+			OpenIssues: openIssues,
+			Updated:    t,
+			Size:       size,
 		})
 		logger.Infof("updated repo [%s]", repo)
 	})
@@ -111,7 +115,7 @@ func performStage(typ string) {
 	logger.Infof("staged [%s]", typ)
 }
 
-func indexPackage(repoURL, typ string) bool {
+func indexPackage(repoURL, typ string) (ok bool, size int64) {
 	hash := strings.Split(repoURL, "@")[1]
 	ownerRepo := repoURL[:strings.Index(repoURL, "@")]
 	u := "https://github.com/" + ownerRepo + "/archive/" + hash + ".zip"
@@ -120,11 +124,11 @@ func indexPackage(repoURL, typ string) bool {
 		Retry(1, 3*time.Second).Timeout(30 * time.Second).EndBytes()
 	if nil != errs {
 		logger.Errorf("get [%s] failed: %s", u, errs)
-		return false
+		return
 	}
 	if 200 != resp.StatusCode {
 		logger.Errorf("get [%s] failed: %d", u, resp.StatusCode)
-		return false
+		return
 	}
 
 	key := "package/" + repoURL
@@ -133,19 +137,20 @@ func indexPackage(repoURL, typ string) bool {
 		logger.Fatalf("upload package [%s] failed: %s", repoURL, err)
 	}
 
-	if ok := indexPackageFile(ownerRepo, hash, "/README.md"); !ok {
-		return false
+	size = int64(len(data))
+	if ok = indexPackageFile(ownerRepo, hash, "/README.md", 0); !ok {
+		return
 	}
-	if ok := indexPackageFile(ownerRepo, hash, "/preview.png"); !ok {
-		return false
+	if ok = indexPackageFile(ownerRepo, hash, "/preview.png", 0); !ok {
+		return
 	}
-	if ok := indexPackageFile(ownerRepo, hash, "/"+strings.TrimSuffix(typ, "s")+".json"); !ok {
-		return false
+	if ok = indexPackageFile(ownerRepo, hash, "/"+strings.TrimSuffix(typ, "s")+".json", size); !ok {
+		return
 	}
-	return true
+	return
 }
 
-func indexPackageFile(ownerRepo, hash, filePath string) bool {
+func indexPackageFile(ownerRepo, hash, filePath string, size int64) bool {
 	u := "https://raw.githubusercontent.com/" + ownerRepo + "/" + hash + filePath
 	resp, data, errs := gorequest.New().Get(u).
 		Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").
@@ -157,6 +162,22 @@ func indexPackageFile(ownerRepo, hash, filePath string) bool {
 	if 200 != resp.StatusCode {
 		logger.Errorf("get [%s] failed: %d", u, resp.StatusCode)
 		return false
+	}
+
+	if strings.HasSuffix(filePath, ".json") {
+		// 统计包大小
+		meta := map[string]interface{}{}
+		if err := gulu.JSON.UnmarshalJSON(data, &meta); nil != err {
+			logger.Errorf("stat package size failed: %s", err)
+			return false
+		}
+		meta["size"] = size
+		var err error
+		data, err = gulu.JSON.MarshalIndentJSON(meta, "", "  ")
+		if nil != err {
+			logger.Errorf("marshal package meta json failed: %s", err)
+			return false
+		}
 	}
 
 	key := "package/" + ownerRepo + "@" + hash + filePath
@@ -203,7 +224,7 @@ func repoUpdateTime(repoURL string) (t string) {
 	return ""
 }
 
-func repoStars(repoURL string) int {
+func repoStats(repoURL string) (stars, openIssues int) {
 	repoURL = repoURL[:strings.LastIndex(repoURL, "@")]
 	result := map[string]interface{}{}
 	request := gorequest.New().TLSClientConfig(&tls.Config{InsecureSkipVerify: true})
@@ -215,19 +236,23 @@ func repoStars(repoURL string) int {
 		Retry(1, 3*time.Second).EndStruct(&result)
 	if nil != errs {
 		logger.Fatalf("get [%s] failed: %s", u, errs)
-		return 0
+		return 0, 0
 	}
 	if 200 != resp.StatusCode {
 		logger.Fatalf("get [%s] failed: %d", u, resp.StatusCode)
-		return 0
+		return 0, 0
 	}
 
 	//logger.Infof("X-Ratelimit-Remaining=%s]", resp.Header.Get("X-Ratelimit-Remaining"))
-	return int(result["stargazers_count"].(float64))
+	stars = int(result["stargazers_count"].(float64))
+	openIssues = int(result["open_issues_count"].(float64))
+	return
 }
 
 type stageRepo struct {
-	URL     string `json:"url"`
-	Updated string `json:"updated"`
-	Stars   int    `json:"stars"`
+	URL        string `json:"url"`
+	Updated    string `json:"updated"`
+	Stars      int    `json:"stars"`
+	OpenIssues int    `json:"openIssues"`
+	Size       int64  `json:"size"`
 }
