@@ -132,7 +132,7 @@ func indexPackage(repoURL, typ string) (ok bool, size int64) {
 	}
 
 	key := "package/" + repoURL
-	err := util.UploadOSS(key, data)
+	err := util.UploadOSS(key, "application/zip", data)
 	if nil != err {
 		logger.Fatalf("upload package [%s] failed: %s", repoURL, err)
 	}
@@ -164,7 +164,11 @@ func indexPackageFile(ownerRepo, hash, filePath string, size int64) bool {
 		return false
 	}
 
-	if strings.HasSuffix(filePath, ".json") {
+	var contentType string
+	if strings.HasSuffix(filePath, ".md") {
+		contentType = "text/markdown"
+	} else if strings.HasSuffix(filePath, ".json") {
+		contentType = "application/json"
 		// 统计包大小
 		meta := map[string]interface{}{}
 		if err := gulu.JSON.UnmarshalJSON(data, &meta); nil != err {
@@ -181,7 +185,7 @@ func indexPackageFile(ownerRepo, hash, filePath string, size int64) bool {
 	}
 
 	key := "package/" + ownerRepo + "@" + hash + filePath
-	err := util.UploadOSS(key, data)
+	err := util.UploadOSS(key, contentType, data)
 	if nil != err {
 		logger.Errorf("upload package file [%s] failed: %s", key)
 		return false
