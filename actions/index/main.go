@@ -46,7 +46,7 @@ func stageIndex(hash string, index string) {
 	u := "https://raw.githubusercontent.com/siyuan-note/bazaar/" + hash + "/stage/" + index + ".json"
 	resp, data, errs := gorequest.New().Get(u).
 		Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").
-		Timeout(30 * time.Second).EndBytes()
+		Retry(1, 3*time.Second).Timeout(30 * time.Second).EndBytes()
 	if nil != errs {
 		logger.Fatalf("get [%s] failed: %s", u, errs)
 		return
@@ -57,7 +57,7 @@ func stageIndex(hash string, index string) {
 	}
 
 	key := "bazaar@" + hash + "/stage/" + index + ".json"
-	err := util.UploadOSS(key, data)
+	err := util.UploadOSS(key, "application/json", data)
 	if nil != err {
 		logger.Fatalf("upload bazaar stage index [%s] failed: %s", key, err)
 	}
