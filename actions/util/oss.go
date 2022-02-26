@@ -20,7 +20,7 @@ import (
 	"github.com/qiniu/go-sdk/v7/storage"
 )
 
-func UploadOSS(key string, data []byte) (err error) {
+func UploadOSS(key, contentType string, data []byte) (err error) {
 	bucket := os.Getenv("QINIU_BUCKET")
 	ak := os.Getenv("QINIU_AK")
 	sk := os.Getenv("QINIU_SK")
@@ -31,7 +31,7 @@ func UploadOSS(key string, data []byte) (err error) {
 	cfg := storage.Config{Zone: &storage.ZoneHuadong, UseCdnDomains: true, UseHTTPS: true}
 	formUploader := storage.NewFormUploader(&cfg)
 	if err = formUploader.Put(context.Background(), nil, putPolicy.UploadToken(qbox.NewMac(ak, sk)),
-		key, bytes.NewReader(data), int64(len(data)), nil); nil != err {
+		key, bytes.NewReader(data), int64(len(data)), &storage.PutExtra{MimeType: contentType}); nil != err {
 		return
 	}
 	return
