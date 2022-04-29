@@ -5,7 +5,11 @@ on: [ push ]
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    env:
+      PAT: ${{ secrets.PAT }}
+      QINIU_BUCKET: ${{ secrets.QINIU_BUCKET }}
+      QINIU_AK: ${{ secrets.QINIU_AK }}
+      QINIU_SK: ${{ secrets.QINIU_SK }}
     steps:
       - name: Check out repo
         uses: actions/checkout@v2
@@ -13,12 +17,12 @@ jobs:
         with:
           go-version: '1.17'
       - name: Go stagging
-        env:
-          PAT: ${{ secrets.PAT }}
-        run: go run main.go
+        run: go run ./actions/stage
       - name: Commit and push
         run: |-
           git config --global user.email "bot@github.com" && git config --global user.name "Bot"
           git diff
           git add . && git commit -m ":bookmark: Stagging" || exit 0
           git push
+      - name: Index bazaar
+        run: go run ./actions/index
