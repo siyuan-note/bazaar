@@ -37,8 +37,10 @@ func UploadOSS(key, contentType string, data []byte) (err error) {
 		logger.Warnf("upload [%s] failed: %s, retry it", key, err)
 		if err = formUploader.Put(context.Background(), nil, putPolicy.UploadToken(qbox.NewMac(ak, sk)),
 			key, bytes.NewReader(data), int64(len(data)), &storage.PutExtra{MimeType: contentType}); nil != err {
+			logger.Errorf("retry upload [%s] failed: %s", key, err)
 			return
 		}
+		logger.Infof("retry upload [%s] success", key)
 	}
 	return
 }
