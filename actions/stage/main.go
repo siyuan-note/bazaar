@@ -187,7 +187,7 @@ func indexPackageFile(ownerRepo, hash, filePath string, size int64) bool {
 	key := "package/" + ownerRepo + "@" + hash + filePath
 	err := util.UploadOSS(key, contentType, data)
 	if nil != err {
-		logger.Errorf("upload package file [%s] failed: %s", key)
+		logger.Errorf("upload package file [%s] failed: %s", key, err)
 		return false
 	}
 	return true

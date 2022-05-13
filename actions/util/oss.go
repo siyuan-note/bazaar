@@ -16,15 +16,17 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/88250/gulu"
 	"github.com/qiniu/go-sdk/v7/auth/qbox"
 	"github.com/qiniu/go-sdk/v7/storage"
 )
+
+var logger = gulu.Log.NewLogger(os.Stdout)
 
 func UploadOSS(key, contentType string, data []byte) (err error) {
 	bucket := os.Getenv("QINIU_BUCKET")
 	ak := os.Getenv("QINIU_AK")
 	sk := os.Getenv("QINIU_SK")
-
 	putPolicy := storage.PutPolicy{
 		Scope: fmt.Sprintf("%s:%s", bucket, key), // overwrite if exists
 	}
@@ -32,7 +34,13 @@ func UploadOSS(key, contentType string, data []byte) (err error) {
 	formUploader := storage.NewFormUploader(&cfg)
 	if err = formUploader.Put(context.Background(), nil, putPolicy.UploadToken(qbox.NewMac(ak, sk)),
 		key, bytes.NewReader(data), int64(len(data)), &storage.PutExtra{MimeType: contentType}); nil != err {
-		return
+		logger.Warnf("upload [%s] failed: %s, retry it", key, err)
+		if err = formUploader.Put(context.Background(), nil, putPolicy.UploadToken(qbox.NewMac(ak, sk)),
+			key, bytes.NewReader(data), int64(len(data)), &storage.PutExtra{MimeType: contentType}); nil != err {
+			logger.Errorf("retry upload [%s] failed: %s", key, err)
+			return
+		}
+		logger.Infof("retry upload [%s] success", key)
 	}
 	return
 }
