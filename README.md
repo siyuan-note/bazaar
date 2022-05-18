@@ -1,115 +1,115 @@
-# SiYuan community bazaar <a title="Hits" target="_blank" href="https://github.com/siyuan-note/bazaar"><img src="https://hits.b3log.org/siyuan-note/bazaar.svg"></a>
+# 思源笔记社区集市 <a title="Hits" target="_blank" href="https://github.com/siyuan-note/bazaar"><img src="https://hits.b3log.org/siyuan-note/bazaar.svg"></a>
 
-[中文](https://github.com/siyuan-note/bazaar/blob/main/README.md)
+[English](https://github.com/siyuan-note/bazaar/blob/main/README_en_US.md)
 
-The SiYuan community bazaar is divided into four parts:
+思源笔记社区集市分为四个部分：
 
-* Theme bazaar
-* Template bazaar
-* Icon bazaar
-* Widget bazaar
+* 主题集市
+* 模板集市
+* 图标集市
+* 挂件集市
 
-Please refer to the following methods for listing.
+请分别参考下面的方式进行上架。
 
-## Push to theme bazaar
+## 上架主题集市
 
-Please make sure that the root path of your theme repository contains at least the following files before listing ([repo example](https://github.com/88250/Comfortably-Numb)):
+上架前请确认你的主题仓库根路径下至少包含以下文件（[仓库示例](https://github.com/88250/Comfortably-Numb)）：
 
 * theme.css
-* theme.json (please make sure the JSON format is correct)
-* preview.png (please compress the image size within 512 KB)
-* README.md (please note the case)
+* theme.json（请确保 JSON 格式正确）
+* preview.png（请压缩图片大小在 512 KB 以内）
+* README.md（请注意大小写）
 
-After confirmation, please [create a pull request](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request) to the [Community Bazaar](https://github.com/siyuan-note/bazaar) repository and modify the themes.json file in it. This file is the index of all community theme repositories, the format is:
-
-```json
-{
-   "repos": [
-     "username/reponame@commithash"
-   ]
-}
-```
-
-Among them, `commithash`, please fill in the Git commit hash of the latest released version on your theme repository, please use the full hash value instead of the 7-digit short value.
-
-If the theme you developed has an updated version, please remember:
-
-* Update the version field in your theme.json
-* Create a Pull Request to the community bazaar
-
-## Push to template bazaar
-
-Please make sure that the root path of your template repository contains at least the following files before listing ([repo example](https://github.com/88250/November-Rain)):
-
-* template.json (please make sure the JSON format is correct)
-* preview.png (please compress the image size within 512 KB)
-* README.md (please note the case)
-
-After confirmation, please [create a pull request](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request) to the [Community Bazaar](https://github.com/siyuan-note/bazaar) repository and modify the themes.json file in it. This file is the index file of all community template repositories, the format is:
+确认无误以后请通过对[社区集市](https://github.com/siyuan-note/bazaar)仓库[发起 pull request](https://docs.github.com/cn/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request)，修改 themes.json 文件。该文件是所有社区主题仓库的索引，格式为：
 
 ```json
 {
-   "repos": [
-     "username/reponame@commithash"
-   ]
+  "repos": [
+    "username/reponame@commithash"
+  ]
 }
 ```
 
-Among them, `commithash`, please fill in the Git commit hash of the latest released version on your template repository, please use the full hash value instead of the 7-digit short value.
+其中 `commithash` 请填写你的主题仓库上最近一次发布版本的 Git 提交哈希值，请使用完整哈希值，不要使用 7 位短值。
 
-If the template you developed has an updated version, please remember:
+如果你开发的主题更新了版本，请记得：
 
-* Update the version field in your template.json
-* Create a Pull Request to the community bazaar
+* 更新你的主题配置 theme.json 中的 version 字段
+* 再次对社区集市发起 Pull Request
 
-## Push to icon bazaar
+## 上架模板集市
 
-Please make sure that the root path of your icon repository contains at least the following files before listing:
+上架前请确认你的模板仓库根路径下至少包含以下文件（[仓库示例](https://github.com/88250/November-Rain)）：
 
+* template.json（请确保 JSON 格式正确）
+* preview.png（请压缩图片大小在 512 KB 以内）
+* README.md（请注意大小写）
+
+确认无误以后请通过对[社区集市](https://github.com/siyuan-note/bazaar)仓库[发起 pull request](https://docs.github.com/cn/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request)，修改 templates.json 文件。该文件是所有社区模板仓库的索引，格式为：
+
+```json
+{
+  "repos": [
+    "username/reponame@commithash"
+  ]
+}
+```
+
+其中 `commithash` 请填写你的模板仓库上最近一次发布版本的 Git 提交哈希值，请使用完整哈希值，不要使用 7 位短值。
+
+如果你开发的模板更新了版本，请记得：
+
+* 更新你的模板配置 template.json 中的 version 字段
+* 再次对社区集市发起 Pull Request
+
+## 上架图标集市
+
+上架前请确认你的图标仓库根路径下至少包含以下文件：
+
+* icon.json（请确保 JSON 格式正确）
 * icon.js
-* icon.json (please make sure the JSON format is correct)
-* preview.png (please compress the image size within 512 KB)
-* README.md (please note the case)
+* preview.png（请压缩图片大小在 512 KB 以内）
+* README.md（请注意大小写）
 
-After confirmation, please [create a pull request](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request) to the [Community Bazaar](https://github.com/siyuan-note/bazaar) repository and modify the consi.json file in it. This file is the index of all community icon repositories, the format is:
+确认无误以后请通过对[社区集市](https://github.com/siyuan-note/bazaar)仓库[发起 pull request](https://docs.github.com/cn/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request)，修改 icons.json 文件。该文件是所有社区图标仓库的索引，格式为：
 
 ```json
 {
-   "repos": [
-     "username/reponame@commithash"
-   ]
+  "repos": [
+    "username/reponame@commithash"
+  ]
 }
 ```
 
-Among them, `commithash`, please fill in the Git commit hash of the latest released version on your icon repository, please use the full hash value instead of the 7-digit short value.
+其中 `commithash` 请填写你的图标仓库上最近一次发布版本的 Git 提交哈希值，请使用完整哈希值，不要使用 7 位短值。
 
-If the icon you developed has an updated version, please remember:
+如果你开发的图标更新了版本，请记得：
 
-* Update the version field in your icon.json
-* Create a Pull Request to the community bazaar
+* 更新你的图标配置 icon.json 中的 version 字段
+* 再次对社区集市发起 Pull Request
 
-## Push to widget bazaar
+## 上架挂件集市
 
-Please make sure that the root path of your icon repository contains at least the following files before listing:
+上架前请确认你的模板仓库根路径下至少包含以下文件（[仓库示例](https://github.com/88250/Stairway-To-Heaven)）：
 
-* icon.json (please make sure the JSON format is correct)
+* widget.json（请确保 JSON 格式正确）
 * index.html
-* preview.png (please compress the image size within 512 KB)
-* README.md (please note the case)
+* preview.png（请压缩图片大小在 512 KB 以内）
+* README.md（请注意大小写）
 
-After confirmation, please [create a pull request](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request) to the [Community Bazaar](https://github.com/siyuan-note/bazaar) repository and modify the consi.json file in it. This file is the index of all community icon repositories, the format is:
+确认无误以后请通过对[社区集市](https://github.com/siyuan-note/bazaar)仓库[发起 pull request](https://docs.github.com/cn/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request)，修改 widgets.json 文件。该文件是所有社区模板仓库的索引，格式为：
 
 ```json
 {
-   "repos": [
-     "username/reponame@commithash"
-   ]
+  "repos": [
+    "username/reponame@commithash"
+  ]
 }
 ```
 
-Among them, `commithash`, please fill in the Git commit hash of the latest released version on your icon repository, please use the full hash value instead of the 7-digit short value.
+其中 `commithash` 请填写你的模板仓库上最近一次发布版本的 Git 提交哈希值，请使用完整哈希值，不要使用 7 位短值。
 
-If the widget you developed has an updated version, please remember:
+如果你开发的挂件更新了版本，请记得：
 
-* Update the version field in your widget.json
-* Create a Pull Request to the community bazaar
+* 更新你的挂件配置 widget.json 中的 version 字段
+* 再次对社区集市发起 Pull Request
