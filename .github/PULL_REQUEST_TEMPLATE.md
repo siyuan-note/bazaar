@@ -4,12 +4,12 @@
 
 * theme.css
 * theme.json（JSON 格式的正确性）
-* preview.png（大小小于 100 KB）
+* preview.png（大小小于 512 KB）
 
 Please confirm that these three files are included in the root path of the repository:
 
 * theme.css
 * theme.json (correctness of the JSON format)
-* preview.png (less than 100 KB in size)
+* preview.png (less than 512 KB in size)
 
 -->
