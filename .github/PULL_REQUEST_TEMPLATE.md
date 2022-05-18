@@ -1,6 +1,6 @@
 ## 请确认仓库公开可访问
 
-* [ ] 请在这里填写你的仓库地址 Please fill in your warehouse address here
+* [ ] 请在这里填写你的仓库地址 Please fill in your repo address here
 * [ ] 仓库是公开的 The repository is public
 
 ## 请确认你要提交的集市包类型和必要的文件 Please confirm the type of bazaar package you are submitting and the necessary files
