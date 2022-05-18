@@ -90,10 +90,10 @@ If the icon you developed has an updated version, please remember:
 
 ## Push to widget bazaar
 
-Please make sure that the root path of your icon repository contains at least the following files before listing:
+Please make sure that the root path of your widget repository contains at least the following files before listing:
 
-* icon.json (please make sure the JSON format is correct)
 * index.html
+* widget.json (please make sure the JSON format is correct)
 * preview.png (please compress the image size within 512 KB)
 * README.md (please note the case)
 

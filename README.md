@@ -90,10 +90,10 @@
 
 ## 上架挂件集市
 
-上架前请确认你的模板仓库根路径下至少包含以下文件（[仓库示例](https://github.com/88250/Stairway-To-Heaven)）：
+上架前请确认你的挂件仓库根路径下至少包含以下文件（[仓库示例](https://github.com/88250/Stairway-To-Heaven)）：
 
-* widget.json（请确保 JSON 格式正确）
 * index.html
+* widget.json（请确保 JSON 格式正确）
 * preview.png（请压缩图片大小在 512 KB 以内）
 * README.md（请注意大小写）
 
