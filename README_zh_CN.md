@@ -2,6 +2,8 @@
 
 [English](https://github.com/siyuan-note/bazaar/blob/main/README_en_US.md)
 
+## 概述
+
 思源笔记社区集市分为四个部分：
 
 * 主题集市
