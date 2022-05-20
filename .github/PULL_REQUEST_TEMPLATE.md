@@ -23,7 +23,7 @@
   * [ ] `README.md` (请注意大小写 please note the case)
 * [ ] 挂件
   * [ ] `index.html`
-  * [ ] `wdiget.json` (JSON 格式的正确性 please make sure the JSON format is correct)
+  * [ ] `widget.json` (JSON 格式的正确性 please make sure the JSON format is correct)
   * [ ] `preview.png` (大小小于 512 KB please compress the image size within 512 KB)
   * [ ] `README.md` (请注意大小写 please note the case)
 
