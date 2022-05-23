@@ -1,3 +1,5 @@
+如果是初次提交新的集市包，请确认如下信息。 If you are submitting a new bazaar package for the first time, please confirm the following information.
+
 ## 请确认仓库公开可访问
 
 * [ ] 请在这里填写你的仓库地址 Please fill in your repo address here
