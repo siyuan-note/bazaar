@@ -1,3 +1,5 @@
+如果是初次提交新的集市包，请确认如下信息。 If you are submitting a new bazaar package for the first time, please confirm the following information.
+
 ## 请确认仓库公开可访问
 
 * [ ] 请在这里填写你的仓库地址 Please fill in your repo address here
@@ -23,7 +25,7 @@
   * [ ] `README.md` (请注意大小写 please note the case)
 * [ ] 挂件
   * [ ] `index.html`
-  * [ ] `wdiget.json` (JSON 格式的正确性 please make sure the JSON format is correct)
+  * [ ] `widget.json` (JSON 格式的正确性 please make sure the JSON format is correct)
   * [ ] `preview.png` (大小小于 512 KB please compress the image size within 512 KB)
   * [ ] `README.md` (请注意大小写 please note the case)
 
