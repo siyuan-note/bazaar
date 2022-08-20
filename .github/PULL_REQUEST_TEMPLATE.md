@@ -1,4 +1,6 @@
-## 请确认仓库公开可访问
+如果是初次提交新的集市包，请确认如下信息。 If you are submitting a new bazaar package for the first time, please confirm the following information.
+
+## 请确认你的仓库信息和设置 Please confirm your repo information and settings
 
 * [ ] 请在这里填写你的仓库地址 Please fill in your repo address here
 * [ ] 仓库是公开的 The repository is public
