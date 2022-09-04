@@ -194,6 +194,11 @@ func indexPackageFile(ownerRepo, hash, filePath string, size int64) bool {
 }
 
 func repoUpdateTime(repoURL string) (t string) {
+	if !strings.Contains(repoURL, "@") {
+		logger.Fatalf("invalid repo url [%s]", repoURL)
+		return
+	}
+
 	hash := strings.Split(repoURL, "@")[1]
 	ownerRepo := repoURL[:strings.Index(repoURL, "@")]
 	pat := os.Getenv("PAT")
