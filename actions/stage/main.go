@@ -225,6 +225,11 @@ func getRepoLatestRelease(repoURL string) (hash, published string) {
 		return
 	}
 	if 200 != resp.StatusCode {
+		if 404 != resp.StatusCode {
+			logger.Warnf("get release hash [%s] failed: %d", u, resp.StatusCode)
+			return
+		}
+
 		var commits []interface{}
 		u = "https://api.github.com/repos/" + repoURL + "/commits"
 		resp, _, errs = request.Get(u).
