@@ -21,23 +21,22 @@
 * theme.json（请确保 JSON 格式正确）
 * preview.png（请压缩图片大小在 512 KB 以内）
 * README.md（请注意大小写）
+* 在 GitHub 上创建 Release
 
 确认无误以后请通过对[社区集市](https://github.com/siyuan-note/bazaar)仓库[发起 pull request](https://docs.github.com/cn/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request)，修改 themes.json 文件。该文件是所有社区主题仓库的索引，格式为：
 
 ```json
 {
   "repos": [
-    "username/reponame@commithash"
+    "username/reponame"
   ]
 }
 ```
 
-其中 `commithash` 请填写你的主题仓库上最近一次发布版本的 Git 提交哈希值，请使用完整哈希值，不要使用 7 位短值。
-
 如果你开发的主题更新了版本，请记得：
 
 * 更新你的主题配置 theme.json 中的 version 字段
-* 再次对社区集市发起 Pull Request
+* 在 GitHub 上创建一个新的 Release
 
 ## 上架模板集市
 
@@ -46,23 +45,22 @@
 * template.json（请确保 JSON 格式正确）
 * preview.png（请压缩图片大小在 512 KB 以内）
 * README.md（请注意大小写）
+* 在 GitHub 上创建 Release
 
 确认无误以后请通过对[社区集市](https://github.com/siyuan-note/bazaar)仓库[发起 pull request](https://docs.github.com/cn/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request)，修改 templates.json 文件。该文件是所有社区模板仓库的索引，格式为：
 
 ```json
 {
   "repos": [
-    "username/reponame@commithash"
+    "username/reponame"
   ]
 }
 ```
 
-其中 `commithash` 请填写你的模板仓库上最近一次发布版本的 Git 提交哈希值，请使用完整哈希值，不要使用 7 位短值。
-
 如果你开发的模板更新了版本，请记得：
 
 * 更新你的模板配置 template.json 中的 version 字段
-* 再次对社区集市发起 Pull Request
+* 在 GitHub 上创建一个新的 Release
 
 ## 上架图标集市
 
@@ -72,23 +70,22 @@
 * icon.js
 * preview.png（请压缩图片大小在 512 KB 以内）
 * README.md（请注意大小写）
+* 在 GitHub 上创建 Release
 
 确认无误以后请通过对[社区集市](https://github.com/siyuan-note/bazaar)仓库[发起 pull request](https://docs.github.com/cn/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request)，修改 icons.json 文件。该文件是所有社区图标仓库的索引，格式为：
 
 ```json
 {
   "repos": [
-    "username/reponame@commithash"
+    "username/reponame"
   ]
 }
 ```
 
-其中 `commithash` 请填写你的图标仓库上最近一次发布版本的 Git 提交哈希值，请使用完整哈希值，不要使用 7 位短值。
-
 如果你开发的图标更新了版本，请记得：
 
 * 更新你的图标配置 icon.json 中的 version 字段
-* 再次对社区集市发起 Pull Request
+* 在 GitHub 上创建一个新的 Release
 
 ## 上架挂件集市
 
@@ -98,20 +95,19 @@
 * widget.json（请确保 JSON 格式正确）
 * preview.png（请压缩图片大小在 512 KB 以内）
 * README.md（请注意大小写）
+* 在 GitHub 上创建 Release
 
-确认无误以后请通过对[社区集市](https://github.com/siyuan-note/bazaar)仓库[发起 pull request](https://docs.github.com/cn/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request)，修改 widgets.json 文件。该文件是所有社区模板仓库的索引，格式为：
+确认无误以后请通过对[社区集市](https://github.com/siyuan-note/bazaar)仓库[发起 pull request](https://docs.github.com/cn/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request)，修改 widgets.json 文件。该文件是所有社区挂件仓库的索引，格式为：
 
 ```json
 {
   "repos": [
-    "username/reponame@commithash"
+    "username/reponame"
   ]
 }
 ```
 
-其中 `commithash` 请填写你的模板仓库上最近一次发布版本的 Git 提交哈希值，请使用完整哈希值，不要使用 7 位短值。
-
 如果你开发的挂件更新了版本，请记得：
 
 * 更新你的挂件配置 widget.json 中的 version 字段
-* 再次对社区集市发起 Pull Request
+* 在 GitHub 上创建一个新的 Release
