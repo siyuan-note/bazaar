@@ -51,6 +51,7 @@ func performStage(typ string) {
 	}
 
 	repos := original["repos"].([]interface{})
+	lock := sync.Mutex{}
 	var stageRepos []interface{}
 	waitGroup := &sync.WaitGroup{}
 
@@ -66,8 +67,11 @@ func performStage(typ string) {
 		}
 
 		stars, openIssues := repoStats(repo, hash)
+
+		lock.Lock()
+		defer lock.Unlock()
 		stageRepos = append(stageRepos, &stageRepo{
-			URL:        repo,
+			URL:        repo + "@" + hash,
 			Stars:      stars,
 			OpenIssues: openIssues,
 			Updated:    updated,
