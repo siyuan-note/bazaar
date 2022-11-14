@@ -225,7 +225,29 @@ func getRepoLatestRelease(repoURL string) (hash, published string) {
 		return
 	}
 	if 200 != resp.StatusCode {
-		logger.Warnf("get release hash [%s] failed: %d", u, resp.StatusCode)
+		var commits []interface{}
+		u = "https://api.github.com/repos/" + repoURL + "/commits"
+		resp, _, errs = request.Get(u).
+			Set("Authorization", "Token "+pat).
+			Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").Timeout(7*time.Second).
+			Retry(1, 3*time.Second).EndStruct(&commits)
+		if nil != errs {
+			logger.Fatalf("get release hash [%s] failed: %s", u, errs)
+			return
+		}
+		if 200 != resp.StatusCode {
+			logger.Warnf("get release hash [%s] failed: %d", u, resp.StatusCode)
+			return
+		}
+
+		if 1 > len(commits) {
+			logger.Warnf("get release hash [%s] failed: no commits", u)
+			return
+		}
+
+		latest := commits[0].(map[string]interface{})
+		hash = latest["sha"].(string)
+		published = latest["commit"].(map[string]interface{})["committer"].(map[string]interface{})["date"].(string)
 		return
 	}
 
