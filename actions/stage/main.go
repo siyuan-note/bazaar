@@ -51,39 +51,30 @@ func performStage(typ string) {
 	}
 
 	repos := original["repos"].([]interface{})
+	lock := sync.Mutex{}
 	var stageRepos []interface{}
 	waitGroup := &sync.WaitGroup{}
 
-	verTime, _ := time.Parse("2006-01-02T15:04:05Z", "2021-12-01T00:00:00Z")
 	p, _ := ants.NewPoolWithFunc(8, func(arg interface{}) {
 		defer waitGroup.Done()
 		repo := arg.(string)
-		t := repoUpdateTime(repo)
-		if "themes" == typ {
-			updated, err := time.Parse("2006-01-02T15:04:05Z", t)
-			if nil != err {
-				logger.Fatalf("parse repo updated [%s] failed: %s", t, err)
-				return
-			}
-			if updated.Before(verTime) {
-				//logger.Infof("skip legacy theme package [%s], last updated at [%s]", repo, t)
-				return
-			}
-		}
-
+		var hash, updated string
 		var size int64
 		var ok bool
 		// 索引包上传 CDN
-		if ok, size = indexPackage(repo, typ); !ok {
+		if ok, hash, updated, size = indexPackage(repo, typ); !ok {
 			return
 		}
 
-		stars, openIssues := repoStats(repo)
+		stars, openIssues := repoStats(repo, hash)
+
+		lock.Lock()
+		defer lock.Unlock()
 		stageRepos = append(stageRepos, &stageRepo{
-			URL:        repo,
+			URL:        repo + "@" + hash,
 			Stars:      stars,
 			OpenIssues: openIssues,
-			Updated:    t,
+			Updated:    updated,
 			Size:       size,
 		})
 		logger.Infof("updated repo [%s]", repo)
@@ -115,10 +106,13 @@ func performStage(typ string) {
 	logger.Infof("staged [%s]", typ)
 }
 
-func indexPackage(repoURL, typ string) (ok bool, size int64) {
-	hash := strings.Split(repoURL, "@")[1]
-	ownerRepo := repoURL[:strings.Index(repoURL, "@")]
-	u := "https://github.com/" + ownerRepo + "/archive/" + hash + ".zip"
+func indexPackage(repoURL, typ string) (ok bool, hash, published string, size int64) {
+	hash, published = getRepoLatestRelease(repoURL)
+	if "" == hash {
+		return false, "", "", 0
+	}
+
+	u := "https://github.com/" + repoURL + "/archive/" + hash + ".zip"
 	resp, data, errs := gorequest.New().Get(u).
 		Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").
 		Retry(1, 3*time.Second).Timeout(30 * time.Second).EndBytes()
@@ -131,20 +125,20 @@ func indexPackage(repoURL, typ string) (ok bool, size int64) {
 		return
 	}
 
-	key := "package/" + repoURL
+	key := "package/" + repoURL + "@" + hash
 	err := util.UploadOSS(key, "application/zip", data)
 	if nil != err {
 		logger.Fatalf("upload package [%s] failed: %s", repoURL, err)
 	}
 
 	size = int64(len(data))
-	if ok = indexPackageFile(ownerRepo, hash, "/README.md", 0); !ok {
+	if ok = indexPackageFile(repoURL, hash, "/README.md", 0); !ok {
 		return
 	}
-	if ok = indexPackageFile(ownerRepo, hash, "/preview.png", 0); !ok {
+	if ok = indexPackageFile(repoURL, hash, "/preview.png", 0); !ok {
 		return
 	}
-	if ok = indexPackageFile(ownerRepo, hash, "/"+strings.TrimSuffix(typ, "s")+".json", size); !ok {
+	if ok = indexPackageFile(repoURL, hash, "/"+strings.TrimSuffix(typ, "s")+".json", size); !ok {
 		return
 	}
 	return
@@ -193,48 +187,7 @@ func indexPackageFile(ownerRepo, hash, filePath string, size int64) bool {
 	return true
 }
 
-func repoUpdateTime(repoURL string) (t string) {
-	if !strings.Contains(repoURL, "@") {
-		logger.Fatalf("invalid repo url [%s]", repoURL)
-		return
-	}
-
-	hash := strings.Split(repoURL, "@")[1]
-	ownerRepo := repoURL[:strings.Index(repoURL, "@")]
-	pat := os.Getenv("PAT")
-	result := map[string]interface{}{}
-	request := gorequest.New().TLSClientConfig(&tls.Config{InsecureSkipVerify: true})
-	u := "https://api.github.com/repos/" + ownerRepo + "/git/commits/" + hash
-	resp, _, errs := request.Get(u).
-		Set("Authorization", "Token "+pat).
-		Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").Timeout(7*time.Second).
-		Retry(1, 3*time.Second).EndStruct(&result)
-	if nil != errs {
-		logger.Fatalf("get [%s] failed: %s", u, errs)
-		return ""
-	}
-	if 200 != resp.StatusCode {
-		logger.Fatalf("get [%s] failed: %d", u, resp.StatusCode)
-		return ""
-	}
-
-	if nil != result["author"] {
-		author := result["author"].(map[string]interface{})
-		if date := author["date"]; nil != date {
-			return date.(string)
-		}
-	}
-	if nil != result["committer"] {
-		committer := result["committer"].(map[string]interface{})
-		if date := committer["date"]; nil != date {
-			return date.(string)
-		}
-	}
-	return ""
-}
-
-func repoStats(repoURL string) (stars, openIssues int) {
-	repoURL = repoURL[:strings.LastIndex(repoURL, "@")]
+func repoStats(repoURL, hash string) (stars, openIssues int) {
 	result := map[string]interface{}{}
 	request := gorequest.New().TLSClientConfig(&tls.Config{InsecureSkipVerify: true})
 	pat := os.Getenv("PAT")
@@ -255,6 +208,89 @@ func repoStats(repoURL string) (stars, openIssues int) {
 	//logger.Infof("X-Ratelimit-Remaining=%s]", resp.Header.Get("X-Ratelimit-Remaining"))
 	stars = int(result["stargazers_count"].(float64))
 	openIssues = int(result["open_issues_count"].(float64))
+	return
+}
+
+func getRepoLatestRelease(repoURL string) (hash, published string) {
+	result := map[string]interface{}{}
+	request := gorequest.New().TLSClientConfig(&tls.Config{InsecureSkipVerify: true})
+	pat := os.Getenv("PAT")
+	u := "https://api.github.com/repos/" + repoURL + "/releases/latest"
+	resp, _, errs := request.Get(u).
+		Set("Authorization", "Token "+pat).
+		Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").Timeout(7*time.Second).
+		Retry(1, 3*time.Second).EndStruct(&result)
+	if nil != errs {
+		logger.Fatalf("get release hash [%s] failed: %s", u, errs)
+		return
+	}
+	if 200 != resp.StatusCode {
+		if 404 != resp.StatusCode {
+			logger.Warnf("get release hash [%s] failed: %d", u, resp.StatusCode)
+			return
+		}
+
+		var commits []interface{}
+		u = "https://api.github.com/repos/" + repoURL + "/commits"
+		resp, _, errs = request.Get(u).
+			Set("Authorization", "Token "+pat).
+			Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").Timeout(7*time.Second).
+			Retry(1, 3*time.Second).EndStruct(&commits)
+		if nil != errs {
+			logger.Fatalf("get release hash [%s] failed: %s", u, errs)
+			return
+		}
+		if 200 != resp.StatusCode {
+			logger.Warnf("get release hash [%s] failed: %d", u, resp.StatusCode)
+			return
+		}
+
+		if 1 > len(commits) {
+			logger.Warnf("get release hash [%s] failed: no commits", u)
+			return
+		}
+
+		latest := commits[0].(map[string]interface{})
+		hash = latest["sha"].(string)
+		published = latest["commit"].(map[string]interface{})["committer"].(map[string]interface{})["date"].(string)
+		return
+	}
+
+	published = result["published_at"].(string)
+	tagName := result["tag_name"].(string)
+	u = "https://api.github.com/repos/" + repoURL + "/git/ref/tags/" + tagName
+	resp, _, errs = request.Get(u).
+		Set("Authorization", "Token "+pat).
+		Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").Timeout(7*time.Second).
+		Retry(1, 3*time.Second).EndStruct(&result)
+	if nil != errs {
+		logger.Warnf("get release hash [%s] failed: %s", u, errs)
+		return
+	}
+	if 200 != resp.StatusCode {
+		logger.Warnf("get release hash [%s] failed: %d", u, resp.StatusCode)
+		return
+	}
+
+	hash = result["object"].(map[string]interface{})["sha"].(string)
+	typ := result["object"].(map[string]interface{})["type"].(string)
+	if "tag" == typ {
+		u = "https://api.github.com/repos/" + repoURL + "/git/tags/" + hash
+		resp, _, errs = request.Get(u).
+			Set("Authorization", "Token "+pat).
+			Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").Timeout(7*time.Second).
+			Retry(1, 3*time.Second).EndStruct(&result)
+		if nil != errs {
+			logger.Fatalf("get release hash [%s] failed: %s", u, errs)
+			return
+		}
+		if 200 != resp.StatusCode {
+			logger.Fatalf("get release hash [%s] failed: %d", u, resp.StatusCode)
+			return
+		}
+
+		hash = result["object"].(map[string]interface{})["sha"].(string)
+	}
 	return
 }
 
