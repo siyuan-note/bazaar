@@ -44,3 +44,5 @@ func UploadOSS(key, contentType string, data []byte) (err error) {
 	}
 	return
 }
+
+const UserAgent = "bazaar/1.0.0 https://github.com/siyuan-note/bazaar"

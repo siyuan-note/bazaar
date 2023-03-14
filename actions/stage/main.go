@@ -114,7 +114,7 @@ func indexPackage(repoURL, typ string) (ok bool, hash, published string, size in
 
 	u := "https://github.com/" + repoURL + "/archive/" + hash + ".zip"
 	resp, data, errs := gorequest.New().Get(u).
-		Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").
+		Set("User-Agent", util.UserAgent).
 		Retry(1, 3*time.Second).Timeout(30 * time.Second).EndBytes()
 	if nil != errs {
 		logger.Errorf("get [%s] failed: %s", u, errs)
@@ -147,7 +147,7 @@ func indexPackage(repoURL, typ string) (ok bool, hash, published string, size in
 func indexPackageFile(ownerRepo, hash, filePath string, size int64) bool {
 	u := "https://raw.githubusercontent.com/" + ownerRepo + "/" + hash + filePath
 	resp, data, errs := gorequest.New().Get(u).
-		Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").
+		Set("User-Agent", util.UserAgent).
 		Retry(1, 3*time.Second).Timeout(30 * time.Second).EndBytes()
 	if nil != errs {
 		logger.Errorf("get [%s] failed: %s", u, errs)
@@ -194,7 +194,7 @@ func repoStats(repoURL, hash string) (stars, openIssues int) {
 	u := "https://api.github.com/repos/" + repoURL
 	resp, _, errs := request.Get(u).
 		Set("Authorization", "Token "+pat).
-		Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").Timeout(7*time.Second).
+		Set("User-Agent", util.UserAgent).Timeout(7*time.Second).
 		Retry(1, 3*time.Second).EndStruct(&result)
 	if nil != errs {
 		logger.Fatalf("get [%s] failed: %s", u, errs)
@@ -218,7 +218,7 @@ func getRepoLatestRelease(repoURL string) (hash, published string) {
 	u := "https://api.github.com/repos/" + repoURL + "/releases/latest"
 	resp, _, errs := request.Get(u).
 		Set("Authorization", "Token "+pat).
-		Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").Timeout(7*time.Second).
+		Set("User-Agent", util.UserAgent).Timeout(7*time.Second).
 		Retry(1, 3*time.Second).EndStruct(&result)
 	if nil != errs {
 		logger.Fatalf("get release hash [%s] failed: %s", u, errs)
@@ -234,7 +234,7 @@ func getRepoLatestRelease(repoURL string) (hash, published string) {
 		u = "https://api.github.com/repos/" + repoURL + "/commits"
 		resp, _, errs = request.Get(u).
 			Set("Authorization", "Token "+pat).
-			Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").Timeout(7*time.Second).
+			Set("User-Agent", util.UserAgent).Timeout(7*time.Second).
 			Retry(1, 3*time.Second).EndStruct(&commits)
 		if nil != errs {
 			logger.Fatalf("get release hash [%s] failed: %s", u, errs)
@@ -261,7 +261,7 @@ func getRepoLatestRelease(repoURL string) (hash, published string) {
 	u = "https://api.github.com/repos/" + repoURL + "/git/ref/tags/" + tagName
 	resp, _, errs = request.Get(u).
 		Set("Authorization", "Token "+pat).
-		Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").Timeout(7*time.Second).
+		Set("User-Agent", util.UserAgent).Timeout(7*time.Second).
 		Retry(1, 3*time.Second).EndStruct(&result)
 	if nil != errs {
 		logger.Warnf("get release hash [%s] failed: %s", u, errs)
@@ -278,7 +278,7 @@ func getRepoLatestRelease(repoURL string) (hash, published string) {
 		u = "https://api.github.com/repos/" + repoURL + "/git/tags/" + hash
 		resp, _, errs = request.Get(u).
 			Set("Authorization", "Token "+pat).
-			Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").Timeout(7*time.Second).
+			Set("User-Agent", util.UserAgent).Timeout(7*time.Second).
 			Retry(1, 3*time.Second).EndStruct(&result)
 		if nil != errs {
 			logger.Fatalf("get release hash [%s] failed: %s", u, errs)
