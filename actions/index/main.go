@@ -45,7 +45,7 @@ func main() {
 func stageIndex(hash string, index string) {
 	u := "https://raw.githubusercontent.com/siyuan-note/bazaar/" + hash + "/stage/" + index + ".json"
 	resp, data, errs := gorequest.New().Get(u).
-		Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").
+		Set("User-Agent", util.UserAgent).
 		Retry(1, 3*time.Second).Timeout(30 * time.Second).EndBytes()
 	if nil != errs {
 		logger.Fatalf("get [%s] failed: %s", u, errs)
