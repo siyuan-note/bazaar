@@ -111,3 +111,11 @@
 
 * 更新你的挂件配置 widget.json 中的 version 字段
 * 在 GitHub 上创建一个新的 Release
+
+---
+
+## 仓库名称由来
+
+该仓库的名称来源于书籍《[The Cathedral and the Bazaar](https://en.wikipedia.org/wiki/The_Cathedral_and_the_Bazaar)》。
+
+我们的本意不是为了标新立异，而是为了延续开源软件的传统。

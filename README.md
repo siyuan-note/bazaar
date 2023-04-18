@@ -111,3 +111,11 @@ If the widget you developed has an updated version, please remember:
 
 * Update the version field in your widget.json
 * Create a new release on GitHub
+
+---
+
+## Why is repo named bazaar?
+
+The name of the repository is inspired by the book _[The Cathedral and the Bazaar](https://en.wikipedia.org/wiki/The_Cathedral_and_the_Bazaar)_. 
+
+The original intention is not to be unconventional, but to continue the tradition of open source software.
