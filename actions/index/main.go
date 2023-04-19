@@ -38,6 +38,7 @@ func main() {
 	stageIndex(hash, "templates")
 	stageIndex(hash, "icons")
 	stageIndex(hash, "widgets")
+	stageIndex(hash, "plugins")
 
 	logger.Infof("indexed bazaar")
 }
