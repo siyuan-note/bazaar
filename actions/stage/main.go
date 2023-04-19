@@ -33,6 +33,7 @@ func main() {
 	performStage("templates")
 	performStage("icons")
 	performStage("widgets")
+	performStage("plugins")
 
 	logger.Infof("bazaar staged")
 }
