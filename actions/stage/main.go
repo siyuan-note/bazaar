@@ -108,15 +108,15 @@ func performStage(typ string) {
 }
 
 func indexPackage(repoURL, typ string) (ok bool, hash, published string, size int64) {
-	hash, published, distZip := getRepoLatestRelease(repoURL)
+	hash, published, packageZip := getRepoLatestRelease(repoURL)
 	if "" == hash {
 		return false, "", "", 0
 	}
 
 	u := "https://github.com/" + repoURL + "/archive/" + hash + ".zip"
-	// TODO: 6 月份下架不使用 dist.zip 发布的包 https://github.com/siyuan-note/bazaar/issues/1105
-	if "" != distZip {
-		u = distZip
+	// TODO: 下架不使用 package.zip 发布的包 https://github.com/siyuan-note/bazaar/issues/1105
+	if "" != packageZip {
+		u = packageZip
 	}
 
 	resp, data, errs := gorequest.New().Get(u).
@@ -222,7 +222,7 @@ func repoStats(repoURL, hash string) (stars, openIssues int) {
 	return
 }
 
-func getRepoLatestRelease(repoURL string) (hash, published, distZip string) {
+func getRepoLatestRelease(repoURL string) (hash, published, packageZip string) {
 	result := map[string]interface{}{}
 	request := gorequest.New().TLSClientConfig(&tls.Config{InsecureSkipVerify: true})
 	pat := os.Getenv("PAT")
@@ -271,8 +271,8 @@ func getRepoLatestRelease(repoURL string) (hash, published, distZip string) {
 	if 0 < len(assets) {
 		for _, asset := range assets {
 			asset := asset.(map[string]interface{})
-			if name := asset["name"].(string); "dist.zip" == name {
-				distZip = asset["browser_download_url"].(string)
+			if name := asset["name"].(string); "package.zip" == name {
+				packageZip = asset["browser_download_url"].(string)
 			}
 		}
 	}
