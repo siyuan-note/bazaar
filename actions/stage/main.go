@@ -364,6 +364,7 @@ type Package struct {
 	Version     string       `json:"version"`
 	Description *Description `json:"description"`
 	Readme      *Readme      `json:"readme"`
+	I18N        []string     `json:"i18n"`
 	Funding     *Funding     `json:"funding"`
 }
 
