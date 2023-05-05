@@ -11,9 +11,12 @@
 package hash
 
 import (
+	"github.com/parnurzeal/gorequest"
+	"github.com/siyuan-note/bazaar/actions/util"
 	"os"
 	"os/exec"
 	"strings"
+	"time"
 
 	"github.com/88250/gulu"
 )
@@ -31,11 +34,22 @@ func main() {
 	hash := strings.TrimSpace(string(data))
 	logger.Infof("bazaar [%s]", hash)
 
-	stageIndex(hash, "themes")
-	stageIndex(hash, "templates")
-	stageIndex(hash, "icons")
-	stageIndex(hash, "widgets")
-	stageIndex(hash, "plugins")
+	u := "https://rhythm.b3log.org/api/siyuan/bazaar/hash"
+	resp, data, errs := gorequest.New().Post(u).
+		SendMap(map[string]interface{}{
+			"token": os.Getenv("RHYTHEM_TOKEN"),
+			"hash":  hash,
+		}).
+		Set("User-Agent", util.UserAgent).
+		Retry(3, 3*time.Second).Timeout(30 * time.Second).EndBytes()
+	if nil != errs {
+		logger.Fatalf("hash [%s] failed: %s", u, errs)
+		return
+	}
+	if 200 != resp.StatusCode {
+		logger.Fatalf("hash [%s] failed: %d", u, resp.StatusCode)
+		return
+	}
 
-	logger.Infof("indexed bazaar")
+	logger.Infof("Hashed bazaar")
 }
