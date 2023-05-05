@@ -162,6 +162,9 @@ func indexPackageFile(ownerRepo, hash, filePath string, size int64) bool {
 		return false
 	}
 	if 200 != resp.StatusCode {
+		if "/icon.png" == filePath {
+			return false
+		}
 		logger.Errorf("get [%s] failed: %d", u, resp.StatusCode)
 		return false
 	}
