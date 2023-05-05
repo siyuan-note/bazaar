@@ -138,21 +138,22 @@ func indexPackage(repoURL, typ string) (ok bool, hash, published string, size in
 	}
 
 	size = int64(len(data))
-	if ok = indexPackageFile(repoURL, hash, "/README.md", 0); !ok {
-		return
-	}
-	if ok = indexPackageFile(repoURL, hash, "/preview.png", 0); !ok {
-		return
-	}
-	indexPackageFile(repoURL, hash, "/icon.png", 0)
 
-	if ok = indexPackageFile(repoURL, hash, "/"+strings.TrimSuffix(typ, "s")+".json", size); !ok {
-		return
-	}
+	wg := &sync.WaitGroup{}
+	go indexPackageFile(repoURL, hash, "/README.md", 0, wg)
+	go indexPackageFile(repoURL, hash, "/README_zh_CN.md", 0, wg)
+	go indexPackageFile(repoURL, hash, "/README_en_US.md", 0, wg)
+	go indexPackageFile(repoURL, hash, "/preview.png", 0, wg)
+	go indexPackageFile(repoURL, hash, "/icon.png", 0, wg)
+	go indexPackageFile(repoURL, hash, "/"+strings.TrimSuffix(typ, "s")+".json", size, wg)
+	wg.Wait()
 	return
 }
 
-func indexPackageFile(ownerRepo, hash, filePath string, size int64) bool {
+func indexPackageFile(ownerRepo, hash, filePath string, size int64, wg *sync.WaitGroup) bool {
+	wg.Add(1)
+	defer wg.Done()
+
 	u := "https://raw.githubusercontent.com/" + ownerRepo + "/" + hash + filePath
 	resp, data, errs := gorequest.New().Get(u).
 		Set("User-Agent", util.UserAgent).
@@ -162,10 +163,6 @@ func indexPackageFile(ownerRepo, hash, filePath string, size int64) bool {
 		return false
 	}
 	if 200 != resp.StatusCode {
-		if "/icon.png" == filePath {
-			return false
-		}
-		logger.Errorf("get [%s] failed: %d", u, resp.StatusCode)
 		return false
 	}
 
