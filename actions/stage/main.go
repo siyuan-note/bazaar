@@ -110,6 +110,7 @@ func performStage(typ string) {
 func indexPackage(repoURL, typ string) (ok bool, hash, published string, size int64) {
 	hash, published, packageZip := getRepoLatestRelease(repoURL)
 	if "" == hash {
+		logger.Warnf("get [%s] latest release failed", repoURL)
 		return false, "", "", 0
 	}
 
@@ -148,6 +149,7 @@ func indexPackage(repoURL, typ string) (ok bool, hash, published string, size in
 	go indexPackageFile(repoURL, hash, "/icon.png", 0, wg)
 	go indexPackageFile(repoURL, hash, "/"+strings.TrimSuffix(typ, "s")+".json", size, wg)
 	wg.Wait()
+	ok = true
 	return
 }
 
