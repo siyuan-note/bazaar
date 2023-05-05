@@ -15,6 +15,7 @@ jobs:
       QINIU_BUCKET: ${{ secrets.QINIU_BUCKET }}
       QINIU_AK: ${{ secrets.QINIU_AK }}
       QINIU_SK: ${{ secrets.QINIU_SK }}
+      RHYTHEM_TOKEN: ${{ secrets.RHYTHEM_TOKEN }}
     steps:
       - name: Check out repo
         uses: actions/checkout@v3
