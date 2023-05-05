@@ -108,12 +108,17 @@ func performStage(typ string) {
 }
 
 func indexPackage(repoURL, typ string) (ok bool, hash, published string, size int64) {
-	hash, published = getRepoLatestRelease(repoURL)
+	hash, published, distZip := getRepoLatestRelease(repoURL)
 	if "" == hash {
 		return false, "", "", 0
 	}
 
 	u := "https://github.com/" + repoURL + "/archive/" + hash + ".zip"
+	// TODO: 6 月份下架不使用 dist.zip 发布的包 https://github.com/siyuan-note/bazaar/issues/1105
+	if "" != distZip {
+		u = distZip
+	}
+
 	resp, data, errs := gorequest.New().Get(u).
 		Set("User-Agent", util.UserAgent).
 		Retry(1, 3*time.Second).Timeout(30 * time.Second).EndBytes()
@@ -139,6 +144,8 @@ func indexPackage(repoURL, typ string) (ok bool, hash, published string, size in
 	if ok = indexPackageFile(repoURL, hash, "/preview.png", 0); !ok {
 		return
 	}
+	indexPackageFile(repoURL, hash, "/icon.png", 0)
+
 	if ok = indexPackageFile(repoURL, hash, "/"+strings.TrimSuffix(typ, "s")+".json", size); !ok {
 		return
 	}
@@ -212,7 +219,7 @@ func repoStats(repoURL, hash string) (stars, openIssues int) {
 	return
 }
 
-func getRepoLatestRelease(repoURL string) (hash, published string) {
+func getRepoLatestRelease(repoURL string) (hash, published, distZip string) {
 	result := map[string]interface{}{}
 	request := gorequest.New().TLSClientConfig(&tls.Config{InsecureSkipVerify: true})
 	pat := os.Getenv("PAT")
@@ -255,6 +262,16 @@ func getRepoLatestRelease(repoURL string) (hash, published string) {
 		hash = latest["sha"].(string)
 		published = latest["commit"].(map[string]interface{})["committer"].(map[string]interface{})["date"].(string)
 		return
+	}
+
+	assets := result["assets"].([]interface{})
+	if 0 < len(assets) {
+		for _, asset := range assets {
+			asset := asset.(map[string]interface{})
+			if name := asset["name"].(string); "dist.zip" == name {
+				distZip = asset["browser_download_url"].(string)
+			}
+		}
 	}
 
 	published = result["published_at"].(string)
