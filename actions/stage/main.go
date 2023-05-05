@@ -63,7 +63,7 @@ func performStage(typ string) {
 		var size int64
 		var ok bool
 		var pkg *Package
-		// 索引包上传 CDN
+
 		if ok, hash, updated, size, pkg = indexPackage(repo, typ); !ok {
 			return
 		}
