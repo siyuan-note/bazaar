@@ -11,14 +11,14 @@
 package hash
 
 import (
-	"github.com/parnurzeal/gorequest"
-	"github.com/siyuan-note/bazaar/actions/util"
 	"os"
 	"os/exec"
 	"strings"
 	"time"
 
 	"github.com/88250/gulu"
+	"github.com/parnurzeal/gorequest"
+	"github.com/siyuan-note/bazaar/actions/util"
 )
 
 var logger = gulu.Log.NewLogger(os.Stdout)
