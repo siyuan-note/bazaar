@@ -5,7 +5,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '0 23 * * *'
+    - cron: '0 * * * *'
 
 jobs:
   build:
@@ -31,3 +31,5 @@ jobs:
           git push
       - name: Index bazaar
         run: go run ./actions/index
+      - name: Go hashing
+        run: go run ./actions/hash
