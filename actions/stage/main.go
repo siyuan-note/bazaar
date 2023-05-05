@@ -140,6 +140,7 @@ func indexPackage(repoURL, typ string) (ok bool, hash, published string, size in
 	size = int64(len(data))
 
 	wg := &sync.WaitGroup{}
+	wg.Add(6)
 	go indexPackageFile(repoURL, hash, "/README.md", 0, wg)
 	go indexPackageFile(repoURL, hash, "/README_zh_CN.md", 0, wg)
 	go indexPackageFile(repoURL, hash, "/README_en_US.md", 0, wg)
@@ -151,7 +152,6 @@ func indexPackage(repoURL, typ string) (ok bool, hash, published string, size in
 }
 
 func indexPackageFile(ownerRepo, hash, filePath string, size int64, wg *sync.WaitGroup) bool {
-	wg.Add(1)
 	defer wg.Done()
 
 	u := "https://raw.githubusercontent.com/" + ownerRepo + "/" + hash + filePath
