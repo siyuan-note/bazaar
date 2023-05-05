@@ -1,0 +1,22 @@
+name: Stage
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '10 * * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      RHYTHEM_TOKEN: ${{ secrets.RHYTHEM_TOKEN }}
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v3
+      - uses: actions/setup-go@v3
+        with:
+          go-version: '1.19'
+      - name: Go hashing
+        run: go run ./actions/hash
