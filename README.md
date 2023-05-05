@@ -1,14 +1,8 @@
 # SiYuan community bazaar <a title="Hits" target="_blank" href="https://github.com/siyuan-note/bazaar"><img src="https://hits.b3log.org/siyuan-note/bazaar.svg"></a>
 
-The SiYuan community bazaar is divided into five parts:
+## Dev bazaar package and listing
 
-* Theme bazaar
-* Template bazaar
-* Icon bazaar
-* Widget bazaar
-* Plugin bazaar
-
-Please get started with: 
+Please get started with:
 
 * [SiYuan theme sample](https://github.com/siyuan-note/theme-sample)
 * [SiYuan icon sample](https://github.com/siyuan-note/icon-sample)
