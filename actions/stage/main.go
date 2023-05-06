@@ -145,6 +145,7 @@ func indexPackage(repoURL, typ string) (ok bool, hash, published string, size in
 	wg := &sync.WaitGroup{}
 	wg.Add(7)
 	go func() {
+		defer wg.Done()
 		pkg = getPackage(repoURL, hash, typ)
 	}()
 	go indexPackageFile(repoURL, hash, "/README.md", 0, wg)
