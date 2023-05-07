@@ -8,6 +8,11 @@
 * [SiYuan widget sample](https://github.com/siyuan-note/widget-sample)
 * [SiYuan plugin sample](https://github.com/siyuan-note/plugin-sample)
 
+## How long does it take to see the package in the marketplace after the PR is merged?
+
+Under normal circumstances, the community bazaar repo will automatically update the index and deploy every hour,
+and you can check the deployment status at https://github.com/siyuan-note/bazaar/actions.
+
 ## Why is repo named bazaar?
 
 The name of the repository is inspired by the book _[The Cathedral and the Bazaar](https://en.wikipedia.org/wiki/The_Cathedral_and_the_Bazaar)_. 
