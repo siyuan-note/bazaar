@@ -342,6 +342,12 @@ func getRepoLatestRelease(repoURL string) (hash, published, packageZip string) {
 	return
 }
 
+type DisplayName struct {
+	Default string `json:"default"`
+	ZhCN    string `json:"zh_CN"`
+	EnUS    string `json:"en_US"`
+}
+
 type Description struct {
 	Default string `json:"default"`
 	ZhCN    string `json:"zh_CN"`
@@ -362,9 +368,11 @@ type Funding struct {
 }
 
 type Package struct {
+	Name        string       `json:"name"`
 	Author      string       `json:"author"`
 	URL         string       `json:"url"`
 	Version     string       `json:"version"`
+	DisplayName *DisplayName `json:"displayName"`
 	Description *Description `json:"description"`
 	Readme      *Readme      `json:"readme"`
 	I18N        []string     `json:"i18n"`
