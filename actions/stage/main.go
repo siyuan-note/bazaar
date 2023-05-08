@@ -1,7 +1,7 @@
 // SiYuan community bazaar.
 // Copyright (c) 2021-present, b3log.org
 //
-// Pipe is licensed under Mulan PSL v2.
+// Bazaar is licensed under Mulan PSL v2.
 // You can use this software according to the terms and conditions of the Mulan PSL v2.
 // You may obtain a copy of Mulan PSL v2 at:
 //         http://license.coscl.org.cn/MulanPSL2
@@ -33,6 +33,7 @@ func main() {
 	performStage("templates")
 	performStage("icons")
 	performStage("widgets")
+	performStage("plugins")
 
 	logger.Infof("bazaar staged")
 }
@@ -61,8 +62,9 @@ func performStage(typ string) {
 		var hash, updated string
 		var size int64
 		var ok bool
-		// 索引包上传 CDN
-		if ok, hash, updated, size = indexPackage(repo, typ); !ok {
+		var pkg *Package
+
+		if ok, hash, updated, size, pkg = indexPackage(repo, typ); !ok {
 			return
 		}
 
@@ -70,12 +72,13 @@ func performStage(typ string) {
 
 		lock.Lock()
 		defer lock.Unlock()
-		stageRepos = append(stageRepos, &stageRepo{
+		stageRepos = append(stageRepos, &StageRepo{
 			URL:        repo + "@" + hash,
 			Stars:      stars,
 			OpenIssues: openIssues,
 			Updated:    updated,
 			Size:       size,
+			Package:    pkg,
 		})
 		logger.Infof("updated repo [%s]", repo)
 	})
@@ -87,7 +90,7 @@ func performStage(typ string) {
 	p.Release()
 
 	sort.SliceStable(stageRepos, func(i, j int) bool {
-		return stageRepos[i].(*stageRepo).Updated > stageRepos[j].(*stageRepo).Updated
+		return stageRepos[i].(*StageRepo).Updated > stageRepos[j].(*StageRepo).Updated
 	})
 
 	staged := map[string]interface{}{
@@ -106,13 +109,19 @@ func performStage(typ string) {
 	logger.Infof("staged [%s]", typ)
 }
 
-func indexPackage(repoURL, typ string) (ok bool, hash, published string, size int64) {
-	hash, published = getRepoLatestRelease(repoURL)
+func indexPackage(repoURL, typ string) (ok bool, hash, published string, size int64, pkg *Package) {
+	hash, published, packageZip := getRepoLatestRelease(repoURL)
 	if "" == hash {
-		return false, "", "", 0
+		logger.Warnf("get [%s] latest release failed", repoURL)
+		return
 	}
 
 	u := "https://github.com/" + repoURL + "/archive/" + hash + ".zip"
+	// TODO: 下架不使用 package.zip 发布的包 https://github.com/siyuan-note/bazaar/issues/1105
+	if "" != packageZip {
+		u = packageZip
+	}
+
 	resp, data, errs := gorequest.New().Get(u).
 		Set("User-Agent", util.UserAgent).
 		Retry(1, 3*time.Second).Timeout(30 * time.Second).EndBytes()
@@ -132,19 +141,49 @@ func indexPackage(repoURL, typ string) (ok bool, hash, published string, size in
 	}
 
 	size = int64(len(data))
-	if ok = indexPackageFile(repoURL, hash, "/README.md", 0); !ok {
+
+	wg := &sync.WaitGroup{}
+	wg.Add(7)
+	go func() {
+		defer wg.Done()
+		pkg = getPackage(repoURL, hash, typ)
+	}()
+	go indexPackageFile(repoURL, hash, "/README.md", 0, wg)
+	go indexPackageFile(repoURL, hash, "/README_zh_CN.md", 0, wg)
+	go indexPackageFile(repoURL, hash, "/README_en_US.md", 0, wg)
+	go indexPackageFile(repoURL, hash, "/preview.png", 0, wg)
+	go indexPackageFile(repoURL, hash, "/icon.png", 0, wg)
+	go indexPackageFile(repoURL, hash, "/"+strings.TrimSuffix(typ, "s")+".json", size, wg)
+	wg.Wait()
+	ok = true
+	return
+}
+
+func getPackage(ownerRepo, hash, typ string) (ret *Package) {
+	u := "https://raw.githubusercontent.com/" + ownerRepo + "/" + hash + "/" + strings.TrimSuffix(typ, "s") + ".json"
+	resp, data, errs := gorequest.New().Get(u).
+		Set("User-Agent", util.UserAgent).
+		Retry(1, 3*time.Second).Timeout(30 * time.Second).EndBytes()
+	if nil != errs {
+		logger.Errorf("get [%s] failed: %s", u, errs)
 		return
 	}
-	if ok = indexPackageFile(repoURL, hash, "/preview.png", 0); !ok {
+	if 200 != resp.StatusCode {
 		return
 	}
-	if ok = indexPackageFile(repoURL, hash, "/"+strings.TrimSuffix(typ, "s")+".json", size); !ok {
+
+	ret = &Package{}
+	if err := gulu.JSON.UnmarshalJSON(data, ret); nil != err {
+		logger.Errorf("unmarshal [%s.json] failed: %s", typ, err)
+		ret = nil
 		return
 	}
 	return
 }
 
-func indexPackageFile(ownerRepo, hash, filePath string, size int64) bool {
+func indexPackageFile(ownerRepo, hash, filePath string, size int64, wg *sync.WaitGroup) bool {
+	defer wg.Done()
+
 	u := "https://raw.githubusercontent.com/" + ownerRepo + "/" + hash + filePath
 	resp, data, errs := gorequest.New().Get(u).
 		Set("User-Agent", util.UserAgent).
@@ -154,7 +193,6 @@ func indexPackageFile(ownerRepo, hash, filePath string, size int64) bool {
 		return false
 	}
 	if 200 != resp.StatusCode {
-		logger.Errorf("get [%s] failed: %d", u, resp.StatusCode)
 		return false
 	}
 
@@ -211,7 +249,7 @@ func repoStats(repoURL, hash string) (stars, openIssues int) {
 	return
 }
 
-func getRepoLatestRelease(repoURL string) (hash, published string) {
+func getRepoLatestRelease(repoURL string) (hash, published, packageZip string) {
 	result := map[string]interface{}{}
 	request := gorequest.New().TLSClientConfig(&tls.Config{InsecureSkipVerify: true})
 	pat := os.Getenv("PAT")
@@ -256,6 +294,16 @@ func getRepoLatestRelease(repoURL string) (hash, published string) {
 		return
 	}
 
+	assets := result["assets"].([]interface{})
+	if 0 < len(assets) {
+		for _, asset := range assets {
+			asset := asset.(map[string]interface{})
+			if name := asset["name"].(string); "package.zip" == name {
+				packageZip = asset["browser_download_url"].(string)
+			}
+		}
+	}
+
 	published = result["published_at"].(string)
 	tagName := result["tag_name"].(string)
 	u = "https://api.github.com/repos/" + repoURL + "/git/ref/tags/" + tagName
@@ -294,10 +342,49 @@ func getRepoLatestRelease(repoURL string) (hash, published string) {
 	return
 }
 
-type stageRepo struct {
+type DisplayName struct {
+	Default string `json:"default"`
+	ZhCN    string `json:"zh_CN"`
+	EnUS    string `json:"en_US"`
+}
+
+type Description struct {
+	Default string `json:"default"`
+	ZhCN    string `json:"zh_CN"`
+	EnUS    string `json:"en_US"`
+}
+
+type Readme struct {
+	Default string `json:"default"`
+	ZhCN    string `json:"zh_CN"`
+	EnUS    string `json:"en_US"`
+}
+
+type Funding struct {
+	OpenCollective string   `json:"openCollective"`
+	Patreon        string   `json:"patreon"`
+	GitHub         string   `json:"github"`
+	Custom         []string `json:"custom"`
+}
+
+type Package struct {
+	Name        string       `json:"name"`
+	Author      string       `json:"author"`
+	URL         string       `json:"url"`
+	Version     string       `json:"version"`
+	DisplayName *DisplayName `json:"displayName"`
+	Description *Description `json:"description"`
+	Readme      *Readme      `json:"readme"`
+	I18N        []string     `json:"i18n"`
+	Funding     *Funding     `json:"funding"`
+}
+
+type StageRepo struct {
 	URL        string `json:"url"`
 	Updated    string `json:"updated"`
 	Stars      int    `json:"stars"`
 	OpenIssues int    `json:"openIssues"`
 	Size       int64  `json:"size"`
+
+	Package *Package `json:"package"`
 }
