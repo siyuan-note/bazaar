@@ -1,0 +1,51 @@
+name: PR Check
+
+# REF https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request_target
+on:
+  pull_request_target:
+    types:
+      - opened
+      - synchronize
+      - reopened
+    branches:
+      - main
+    paths:
+      - icons.json
+      - plugins.json
+      - templates.json
+      - themes.json
+      - widgets.json
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    env:
+      PAT: ${{ secrets.PAT }}
+    steps:
+      - name: Check out current repo
+        uses: actions/checkout@v3
+
+      # REF https://github.com/marketplace/actions/checkout#checkout-multiple-repos-nested
+      # REF https://github.com/marketplace/actions/checkout#checkout-pull-request-head-commit-instead-of-merge-commit
+      - name: Check out PR repo
+        uses: actions/checkout@v3
+        with:
+          path: pr-repo
+          ref: ${{ github.event.pull_request.head.sha }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          token: ${{ secrets.PAT }}
+
+      - name: Setup Golang
+        uses: actions/setup-go@v3
+        with:
+          go-version: '1.19'
+
+      - name: Go Check
+        run: go run ./actions/check
+
+      # REF https://github.com/marketplace/actions/comment-pull-request
+      - name: Comment PR with execution number
+        uses: thollander/actions-comment-pull-request@v2
+        with:
+          filePath: ./actions/check/comment.md
+          comment_tag: execution
