@@ -11,11 +11,12 @@
 package main
 
 var CheckResultTestExample = CheckResult{
-	Icons: []IconRepo{
+	Icons: []Icon{
 		{
-			Name: "icon-sample",
-			Path: "siyuan-note/icon-sample",
-			Home: "https://github.com/siyuan-note/icon-sample",
+			RepoInfo: RepoInfo{
+				Path: "siyuan-note/icon-sample",
+				Home: "https://github.com/siyuan-note/icon-sample",
+			},
 			Release: Release{
 				Pass: true,
 				LatestRelease: LatestRelease{
@@ -29,29 +30,20 @@ var CheckResultTestExample = CheckResult{
 			},
 			Files: IconFiles{
 				Pass: true,
-				IconJs: File{
-					Pass: true,
-					Name: "icon.js",
-					URL:  "https://github.com/siyuan-note/icon-sample/blob/95e07499bd1e0880155134628aacc4d07da419aa/icon.js",
-				},
 				IconJson: File{
 					Pass: true,
-					Name: "icon.json",
 					URL:  "https://github.com/siyuan-note/icon-sample/blob/95e07499bd1e0880155134628aacc4d07da419aa/icon.json",
 				},
 				IconPng: File{
 					Pass: true,
-					Name: "icon.png",
 					URL:  "https://github.com/siyuan-note/icon-sample/blob/95e07499bd1e0880155134628aacc4d07da419aa/icon.png",
 				},
 				PreviewPng: File{
 					Pass: true,
-					Name: "preview.png",
 					URL:  "https://github.com/siyuan-note/icon-sample/blob/95e07499bd1e0880155134628aacc4d07da419aa/preview.png",
 				},
 				ReadmeMd: File{
 					Pass: true,
-					Name: "README.md",
 					URL:  "https://github.com/siyuan-note/icon-sample/blob/95e07499bd1e0880155134628aacc4d07da419aa/README.md",
 				},
 			},
@@ -77,9 +69,10 @@ var CheckResultTestExample = CheckResult{
 			},
 		},
 		{
-			Name: "icon-sample",
-			Path: "siyuan-note/icon-sample",
-			Home: "https://github.com/siyuan-note/icon-sample",
+			RepoInfo: RepoInfo{
+				Path: "siyuan-note/icon-sample",
+				Home: "https://github.com/siyuan-note/icon-sample",
+			},
 			Release: Release{
 				Pass: false,
 				LatestRelease: LatestRelease{
@@ -91,25 +84,17 @@ var CheckResultTestExample = CheckResult{
 			},
 			Files: IconFiles{
 				Pass: false,
-				IconJs: File{
-					Pass: false,
-					Name: "icon.js",
-				},
 				IconJson: File{
 					Pass: false,
-					Name: "icon.json",
 				},
 				IconPng: File{
 					Pass: false,
-					Name: "icon.png",
 				},
 				PreviewPng: File{
 					Pass: false,
-					Name: "preview.png",
 				},
 				ReadmeMd: File{
 					Pass: false,
-					Name: "README.md",
 				},
 			},
 			Attrs: Attrs{
@@ -130,11 +115,12 @@ var CheckResultTestExample = CheckResult{
 			},
 		},
 	},
-	Plugins: []PluginRepo{
+	Plugins: []Plugin{
 		{
-			Name: "plugin-sample",
-			Path: "siyuan-note/plugin-sample",
-			Home: "https://github.com/siyuan-note/plugin-sample",
+			RepoInfo: RepoInfo{
+				Path: "siyuan-note/plugin-sample",
+				Home: "https://github.com/siyuan-note/plugin-sample",
+			},
 			Release: Release{
 				Pass: true,
 				LatestRelease: LatestRelease{
@@ -150,27 +136,18 @@ var CheckResultTestExample = CheckResult{
 				Pass: true,
 				IconPng: File{
 					Pass: true,
-					Name: "icon.png",
 					URL:  "https://github.com/siyuan-note/plugin-sample/blob/979f77bbeec0bc9d123305a7e18d1936ae67b009/icon.png",
-				},
-				IndexJs: File{
-					Pass: true,
-					Name: "index.js",
-					URL:  "https://github.com/siyuan-note/plugin-sample/blob/979f77bbeec0bc9d123305a7e18d1936ae67b009/index.js",
 				},
 				PluginJson: File{
 					Pass: true,
-					Name: "plugin.json",
 					URL:  "https://github.com/siyuan-note/plugin-sample/blob/979f77bbeec0bc9d123305a7e18d1936ae67b009/plugin.json",
 				},
 				PreviewPng: File{
 					Pass: true,
-					Name: "preview.png",
 					URL:  "https://github.com/siyuan-note/plugin-sample/blob/979f77bbeec0bc9d123305a7e18d1936ae67b009/preview.png",
 				},
 				ReadmeMd: File{
 					Pass: true,
-					Name: "README.md",
 					URL:  "https://github.com/siyuan-note/plugin-sample/blob/979f77bbeec0bc9d123305a7e18d1936ae67b009/README.md",
 				},
 			},
@@ -196,9 +173,10 @@ var CheckResultTestExample = CheckResult{
 			},
 		},
 		{
-			Name: "plugin-sample",
-			Path: "siyuan-note/plugin-sample",
-			Home: "https://github.com/siyuan-note/plugin-sample",
+			RepoInfo: RepoInfo{
+				Path: "siyuan-note/plugin-sample",
+				Home: "https://github.com/siyuan-note/plugin-sample",
+			},
 			Release: Release{
 				Pass: false,
 				LatestRelease: LatestRelease{
@@ -212,23 +190,15 @@ var CheckResultTestExample = CheckResult{
 				Pass: false,
 				IconPng: File{
 					Pass: false,
-					Name: "icon.png",
-				},
-				IndexJs: File{
-					Pass: false,
-					Name: "index.js",
 				},
 				PluginJson: File{
 					Pass: false,
-					Name: "plugin.json",
 				},
 				PreviewPng: File{
 					Pass: false,
-					Name: "preview.png",
 				},
 				ReadmeMd: File{
 					Pass: false,
-					Name: "README.md",
 				},
 			},
 			Attrs: Attrs{
@@ -249,11 +219,12 @@ var CheckResultTestExample = CheckResult{
 			},
 		},
 	},
-	Templates: []TemplateRepo{
+	Templates: []Template{
 		{
-			Name: "template-sample",
-			Path: "siyuan-note/template-sample",
-			Home: "https://github.com/siyuan-note/template-sample",
+			RepoInfo: RepoInfo{
+				Path: "siyuan-note/template-sample",
+				Home: "https://github.com/siyuan-note/template-sample",
+			},
 			Release: Release{
 				Pass: true,
 				LatestRelease: LatestRelease{
@@ -269,22 +240,18 @@ var CheckResultTestExample = CheckResult{
 				Pass: true,
 				IconPng: File{
 					Pass: true,
-					Name: "icon.png",
 					URL:  "https://github.com/siyuan-note/template-sample/blob/280b81c2ca51c2fccb65662a56c02fc2fb050a9d/icon.png",
 				},
 				PreviewPng: File{
 					Pass: true,
-					Name: "preview.png",
 					URL:  "https://github.com/siyuan-note/template-sample/blob/280b81c2ca51c2fccb65662a56c02fc2fb050a9d/preview.png",
 				},
 				ReadmeMd: File{
 					Pass: true,
-					Name: "README.md",
 					URL:  "https://github.com/siyuan-note/template-sample/blob/280b81c2ca51c2fccb65662a56c02fc2fb050a9d/README.md",
 				},
 				TemplateJson: File{
 					Pass: true,
-					Name: "template.json",
 					URL:  "https://github.com/siyuan-note/template-sample/blob/280b81c2ca51c2fccb65662a56c02fc2fb050a9d/template.json",
 				},
 			},
@@ -310,9 +277,10 @@ var CheckResultTestExample = CheckResult{
 			},
 		},
 		{
-			Name: "template-sample",
-			Path: "siyuan-note/template-sample",
-			Home: "https://github.com/siyuan-note/template-sample",
+			RepoInfo: RepoInfo{
+				Path: "siyuan-note/template-sample",
+				Home: "https://github.com/siyuan-note/template-sample",
+			},
 			Release: Release{
 				Pass: false,
 				LatestRelease: LatestRelease{
@@ -326,19 +294,15 @@ var CheckResultTestExample = CheckResult{
 				Pass: false,
 				IconPng: File{
 					Pass: false,
-					Name: "icon.png",
 				},
 				PreviewPng: File{
 					Pass: false,
-					Name: "preview.png",
 				},
 				ReadmeMd: File{
 					Pass: false,
-					Name: "README.md",
 				},
 				TemplateJson: File{
 					Pass: false,
-					Name: "template.json",
 				},
 			},
 			Attrs: Attrs{
@@ -359,11 +323,12 @@ var CheckResultTestExample = CheckResult{
 			},
 		},
 	},
-	Themes: []ThemeRepo{
+	Themes: []Theme{
 		{
-			Name: "theme-sample",
-			Path: "siyuan-note/theme-sample",
-			Home: "https://github.com/siyuan-note/theme-sample",
+			RepoInfo: RepoInfo{
+				Path: "siyuan-note/theme-sample",
+				Home: "https://github.com/siyuan-note/theme-sample",
+			},
 			Release: Release{
 				Pass: true,
 				LatestRelease: LatestRelease{
@@ -379,27 +344,18 @@ var CheckResultTestExample = CheckResult{
 				Pass: true,
 				IconPng: File{
 					Pass: true,
-					Name: "icon.png",
 					URL:  "https://github.com/siyuan-note/theme-sample/blob/14665b04a381b8265ed27e5a4ad0156e7c0c05cc/icon.png",
 				},
 				PreviewPng: File{
 					Pass: true,
-					Name: "preview.png",
 					URL:  "https://github.com/siyuan-note/theme-sample/blob/14665b04a381b8265ed27e5a4ad0156e7c0c05cc/preview.png",
 				},
 				ReadmeMd: File{
 					Pass: true,
-					Name: "README.md",
 					URL:  "https://github.com/siyuan-note/theme-sample/blob/14665b04a381b8265ed27e5a4ad0156e7c0c05cc/README.md",
-				},
-				ThemeCss: File{
-					Pass: true,
-					Name: "theme.css",
-					URL:  "https://github.com/siyuan-note/theme-sample/blob/14665b04a381b8265ed27e5a4ad0156e7c0c05cc/theme.css",
 				},
 				ThemeJson: File{
 					Pass: true,
-					Name: "theme.json",
 					URL:  "https://github.com/siyuan-note/theme-sample/blob/14665b04a381b8265ed27e5a4ad0156e7c0c05cc/theme.json",
 				},
 			},
@@ -425,9 +381,10 @@ var CheckResultTestExample = CheckResult{
 			},
 		},
 		{
-			Name: "theme-sample",
-			Path: "siyuan-note/theme-sample",
-			Home: "https://github.com/siyuan-note/theme-sample",
+			RepoInfo: RepoInfo{
+				Path: "siyuan-note/theme-sample",
+				Home: "https://github.com/siyuan-note/theme-sample",
+			},
 			Release: Release{
 				Pass: false,
 				LatestRelease: LatestRelease{
@@ -441,23 +398,15 @@ var CheckResultTestExample = CheckResult{
 				Pass: false,
 				IconPng: File{
 					Pass: false,
-					Name: "icon.png",
 				},
 				PreviewPng: File{
 					Pass: false,
-					Name: "preview.png",
 				},
 				ReadmeMd: File{
 					Pass: false,
-					Name: "README.md",
-				},
-				ThemeCss: File{
-					Pass: false,
-					Name: "theme.css",
 				},
 				ThemeJson: File{
 					Pass: false,
-					Name: "theme.json",
 				},
 			},
 			Attrs: Attrs{
@@ -478,11 +427,12 @@ var CheckResultTestExample = CheckResult{
 			},
 		},
 	},
-	Widgets: []WidgetRepo{
+	Widgets: []Widget{
 		{
-			Name: "widget-sample",
-			Path: "siyuan-note/widget-sample",
-			Home: "https://github.com/siyuan-note/widget-sample",
+			RepoInfo: RepoInfo{
+				Path: "siyuan-note/widget-sample",
+				Home: "https://github.com/siyuan-note/widget-sample",
+			},
 			Release: Release{
 				Pass: true,
 				LatestRelease: LatestRelease{
@@ -498,27 +448,18 @@ var CheckResultTestExample = CheckResult{
 				Pass: true,
 				IconPng: File{
 					Pass: true,
-					Name: "icon.png",
 					URL:  "https://github.com/siyuan-note/widget-sample/blob/272314c056116dc32afbe61c85d541a509157948/icon.png",
-				},
-				IndexHtml: File{
-					Pass: true,
-					Name: "index.html",
-					URL:  "https://github.com/siyuan-note/widget-sample/blob/272314c056116dc32afbe61c85d541a509157948/index.html",
 				},
 				PreviewPng: File{
 					Pass: true,
-					Name: "preview.png",
 					URL:  "https://github.com/siyuan-note/widget-sample/blob/272314c056116dc32afbe61c85d541a509157948/preview.png",
 				},
 				ReadmeMd: File{
 					Pass: true,
-					Name: "README.md",
 					URL:  "https://github.com/siyuan-note/widget-sample/blob/272314c056116dc32afbe61c85d541a509157948/README.md",
 				},
 				WidgetJson: File{
 					Pass: true,
-					Name: "widget.json",
 					URL:  "https://github.com/siyuan-note/widget-sample/blob/272314c056116dc32afbe61c85d541a509157948/widget.json",
 				},
 			},
@@ -544,9 +485,10 @@ var CheckResultTestExample = CheckResult{
 			},
 		},
 		{
-			Name: "widget-sample",
-			Path: "siyuan-note/widget-sample",
-			Home: "https://github.com/siyuan-note/widget-sample",
+			RepoInfo: RepoInfo{
+				Path: "siyuan-note/widget-sample",
+				Home: "https://github.com/siyuan-note/widget-sample",
+			},
 			Release: Release{
 				Pass: false,
 				LatestRelease: LatestRelease{
@@ -560,23 +502,15 @@ var CheckResultTestExample = CheckResult{
 				Pass: false,
 				IconPng: File{
 					Pass: false,
-					Name: "icon.png",
-				},
-				IndexHtml: File{
-					Pass: false,
-					Name: "index.html",
 				},
 				PreviewPng: File{
 					Pass: false,
-					Name: "preview.png",
 				},
 				ReadmeMd: File{
 					Pass: false,
-					Name: "README.md",
 				},
 				WidgetJson: File{
 					Pass: false,
-					Name: "widget.json",
 				},
 			},
 			Attrs: Attrs{
