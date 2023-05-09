@@ -41,12 +41,12 @@ func main() {
 func performStage(typ string) {
 	logger.Infof("staging [%s]", typ)
 
-	data, err := os.ReadFile(typ + ".json")
+	data, err := os.ReadFile(typ + ".json") // 读取配置文件
 	if nil != err {
 		logger.Fatalf("read [%s.json] failed: %s", typ, err)
 	}
 
-	original := map[string]interface{}{}
+	original := map[string]interface{}{} // 解析配置文件
 	if err = gulu.JSON.UnmarshalJSON(data, &original); nil != err {
 		logger.Fatalf("unmarshal [%s.json] failed: %s", typ, err)
 	}
@@ -109,6 +109,7 @@ func performStage(typ string) {
 	logger.Infof("staged [%s]", typ)
 }
 
+/* 索引包 */
 func indexPackage(repoURL, typ string) (ok bool, hash, published string, size int64, pkg *Package) {
 	hash, published, packageZip := getRepoLatestRelease(repoURL)
 	if "" == hash {
@@ -116,6 +117,7 @@ func indexPackage(repoURL, typ string) (ok bool, hash, published string, size in
 		return
 	}
 
+	/* 下载 package.zip 文件 */
 	u := "https://github.com/" + repoURL + "/archive/" + hash + ".zip"
 	// TODO: 下架不使用 package.zip 发布的包 https://github.com/siyuan-note/bazaar/issues/1105
 	if "" != packageZip {
@@ -134,13 +136,14 @@ func indexPackage(repoURL, typ string) (ok bool, hash, published string, size in
 		return
 	}
 
+	/* 将 package.zip 上传到 OSS */
 	key := "package/" + repoURL + "@" + hash
 	err := util.UploadOSS(key, "application/zip", data)
 	if nil != err {
 		logger.Fatalf("upload package [%s] failed: %s", repoURL, err)
 	}
 
-	size = int64(len(data))
+	size = int64(len(data)) // 计算包大小
 
 	wg := &sync.WaitGroup{}
 	wg.Add(7)
@@ -159,6 +162,7 @@ func indexPackage(repoURL, typ string) (ok bool, hash, published string, size in
 	return
 }
 
+/* 获取 release 对应提交中的 *.json 配置文件 */
 func getPackage(ownerRepo, hash, typ string) (ret *Package) {
 	u := "https://raw.githubusercontent.com/" + ownerRepo + "/" + hash + "/" + strings.TrimSuffix(typ, "s") + ".json"
 	resp, data, errs := gorequest.New().Get(u).
@@ -181,6 +185,7 @@ func getPackage(ownerRepo, hash, typ string) (ret *Package) {
 	return
 }
 
+/* 索引 package 中的文件 */
 func indexPackageFile(ownerRepo, hash, filePath string, size int64, wg *sync.WaitGroup) bool {
 	defer wg.Done()
 
@@ -249,10 +254,12 @@ func repoStats(repoURL, hash string) (stars, openIssues int) {
 	return
 }
 
+/* 获取仓库最新发布的版本 */
 func getRepoLatestRelease(repoURL string) (hash, published, packageZip string) {
 	result := map[string]interface{}{}
 	request := gorequest.New().TLSClientConfig(&tls.Config{InsecureSkipVerify: true})
 	pat := os.Getenv("PAT")
+	// REF https://docs.github.com/en/rest/releases/releases#get-the-latest-release
 	u := "https://api.github.com/repos/" + repoURL + "/releases/latest"
 	resp, _, errs := request.Get(u).
 		Set("Authorization", "Token "+pat).
@@ -294,6 +301,7 @@ func getRepoLatestRelease(repoURL string) (hash, published, packageZip string) {
 		return
 	}
 
+	/* 获取 package.zip 下载 url packageZip */
 	assets := result["assets"].([]interface{})
 	if 0 < len(assets) {
 		for _, asset := range assets {
@@ -304,8 +312,10 @@ func getRepoLatestRelease(repoURL string) (hash, published, packageZip string) {
 		}
 	}
 
+	/* 获取 release 对应的 tag */
 	published = result["published_at"].(string)
 	tagName := result["tag_name"].(string)
+	// REF https://docs.github.com/en/rest/git/refs#get-a-reference
 	u = "https://api.github.com/repos/" + repoURL + "/git/ref/tags/" + tagName
 	resp, _, errs = request.Get(u).
 		Set("Authorization", "Token "+pat).
@@ -320,9 +330,11 @@ func getRepoLatestRelease(repoURL string) (hash, published, packageZip string) {
 		return
 	}
 
+	/* 获取 release 对应的提交的 hash */
 	hash = result["object"].(map[string]interface{})["sha"].(string)
 	typ := result["object"].(map[string]interface{})["type"].(string)
 	if "tag" == typ {
+		// REF https://docs.github.com/en/rest/git/tags#get-a-tag
 		u = "https://api.github.com/repos/" + repoURL + "/git/tags/" + hash
 		resp, _, errs = request.Get(u).
 			Set("Authorization", "Token "+pat).
