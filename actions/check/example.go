@@ -39,6 +39,11 @@ var CheckResultTestExample = CheckResult{
 					Name: "icon.json",
 					URL:  "https://github.com/siyuan-note/icon-sample/blob/95e07499bd1e0880155134628aacc4d07da419aa/icon.json",
 				},
+				IconPng: File{
+					Pass: true,
+					Name: "icon.png",
+					URL:  "https://github.com/siyuan-note/icon-sample/blob/95e07499bd1e0880155134628aacc4d07da419aa/icon.png",
+				},
 				PreviewPng: File{
 					Pass: true,
 					Name: "preview.png",
@@ -60,6 +65,14 @@ var CheckResultTestExample = CheckResult{
 				Version: Attr{
 					Pass:  true,
 					Value: "0.0.1",
+				},
+				Author: Attr{
+					Pass:  true,
+					Value: "Vanessa",
+				},
+				URL: Attr{
+					Pass:  true,
+					Value: "https://github.com/siyuan-note/icon-sample",
 				},
 			},
 		},
@@ -86,6 +99,10 @@ var CheckResultTestExample = CheckResult{
 					Pass: false,
 					Name: "icon.json",
 				},
+				IconPng: File{
+					Pass: false,
+					Name: "icon.png",
+				},
 				PreviewPng: File{
 					Pass: false,
 					Name: "preview.png",
@@ -102,6 +119,12 @@ var CheckResultTestExample = CheckResult{
 					Unique: false,
 				},
 				Version: Attr{
+					Pass: false,
+				},
+				Author: Attr{
+					Pass: false,
+				},
+				URL: Attr{
 					Pass: false,
 				},
 			},
@@ -125,6 +148,11 @@ var CheckResultTestExample = CheckResult{
 			},
 			Files: PluginFiles{
 				Pass: true,
+				IconPng: File{
+					Pass: true,
+					Name: "icon.png",
+					URL:  "https://github.com/siyuan-note/plugin-sample/blob/979f77bbeec0bc9d123305a7e18d1936ae67b009/icon.png",
+				},
 				IndexJs: File{
 					Pass: true,
 					Name: "index.js",
@@ -157,6 +185,14 @@ var CheckResultTestExample = CheckResult{
 					Pass:  true,
 					Value: "0.0.1",
 				},
+				Author: Attr{
+					Pass:  true,
+					Value: "Vanessa",
+				},
+				URL: Attr{
+					Pass:  true,
+					Value: "https://github.com/siyuan-note/plugin-sample",
+				},
 			},
 		},
 		{
@@ -174,6 +210,10 @@ var CheckResultTestExample = CheckResult{
 			},
 			Files: PluginFiles{
 				Pass: false,
+				IconPng: File{
+					Pass: false,
+					Name: "icon.png",
+				},
 				IndexJs: File{
 					Pass: false,
 					Name: "index.js",
@@ -200,6 +240,12 @@ var CheckResultTestExample = CheckResult{
 				Version: Attr{
 					Pass: false,
 				},
+				Author: Attr{
+					Pass: false,
+				},
+				URL: Attr{
+					Pass: false,
+				},
 			},
 		},
 	},
@@ -221,6 +267,11 @@ var CheckResultTestExample = CheckResult{
 			},
 			Files: TemplateFiles{
 				Pass: true,
+				IconPng: File{
+					Pass: true,
+					Name: "icon.png",
+					URL:  "https://github.com/siyuan-note/template-sample/blob/280b81c2ca51c2fccb65662a56c02fc2fb050a9d/icon.png",
+				},
 				PreviewPng: File{
 					Pass: true,
 					Name: "preview.png",
@@ -248,6 +299,14 @@ var CheckResultTestExample = CheckResult{
 					Pass:  true,
 					Value: "0.0.1",
 				},
+				Author: Attr{
+					Pass:  true,
+					Value: "Vanessa",
+				},
+				URL: Attr{
+					Pass:  true,
+					Value: "https://github.com/siyuan-note/template-sample",
+				},
 			},
 		},
 		{
@@ -265,6 +324,10 @@ var CheckResultTestExample = CheckResult{
 			},
 			Files: TemplateFiles{
 				Pass: false,
+				IconPng: File{
+					Pass: false,
+					Name: "icon.png",
+				},
 				PreviewPng: File{
 					Pass: false,
 					Name: "preview.png",
@@ -285,6 +348,12 @@ var CheckResultTestExample = CheckResult{
 					Unique: false,
 				},
 				Version: Attr{
+					Pass: false,
+				},
+				Author: Attr{
+					Pass: false,
+				},
+				URL: Attr{
 					Pass: false,
 				},
 			},
@@ -308,6 +377,11 @@ var CheckResultTestExample = CheckResult{
 			},
 			Files: ThemeFiles{
 				Pass: true,
+				IconPng: File{
+					Pass: true,
+					Name: "icon.png",
+					URL:  "https://github.com/siyuan-note/theme-sample/blob/14665b04a381b8265ed27e5a4ad0156e7c0c05cc/icon.png",
+				},
 				PreviewPng: File{
 					Pass: true,
 					Name: "preview.png",
@@ -340,6 +414,14 @@ var CheckResultTestExample = CheckResult{
 					Pass:  true,
 					Value: "0.0.1",
 				},
+				Author: Attr{
+					Pass:  true,
+					Value: "Vanessa",
+				},
+				URL: Attr{
+					Pass:  true,
+					Value: "https://github.com/siyuan-note/theme-sample",
+				},
 			},
 		},
 		{
@@ -357,6 +439,10 @@ var CheckResultTestExample = CheckResult{
 			},
 			Files: ThemeFiles{
 				Pass: false,
+				IconPng: File{
+					Pass: false,
+					Name: "icon.png",
+				},
 				PreviewPng: File{
 					Pass: false,
 					Name: "preview.png",
@@ -383,6 +469,12 @@ var CheckResultTestExample = CheckResult{
 				Version: Attr{
 					Pass: false,
 				},
+				Author: Attr{
+					Pass: false,
+				},
+				URL: Attr{
+					Pass: false,
+				},
 			},
 		},
 	},
@@ -404,6 +496,11 @@ var CheckResultTestExample = CheckResult{
 			},
 			Files: WidgetFiles{
 				Pass: true,
+				IconPng: File{
+					Pass: true,
+					Name: "icon.png",
+					URL:  "https://github.com/siyuan-note/widget-sample/blob/272314c056116dc32afbe61c85d541a509157948/icon.png",
+				},
 				IndexHtml: File{
 					Pass: true,
 					Name: "index.html",
@@ -436,6 +533,14 @@ var CheckResultTestExample = CheckResult{
 					Pass:  true,
 					Value: "0.0.1",
 				},
+				Author: Attr{
+					Pass:  true,
+					Value: "Vanessa",
+				},
+				URL: Attr{
+					Pass:  true,
+					Value: "https://github.com/siyuan-note/widget-sample",
+				},
 			},
 		},
 		{
@@ -453,6 +558,10 @@ var CheckResultTestExample = CheckResult{
 			},
 			Files: WidgetFiles{
 				Pass: false,
+				IconPng: File{
+					Pass: false,
+					Name: "icon.png",
+				},
 				IndexHtml: File{
 					Pass: false,
 					Name: "index.html",
@@ -477,6 +586,12 @@ var CheckResultTestExample = CheckResult{
 					Unique: false,
 				},
 				Version: Attr{
+					Pass: false,
+				},
+				Author: Attr{
+					Pass: false,
+				},
+				URL: Attr{
 					Pass: false,
 				},
 			},

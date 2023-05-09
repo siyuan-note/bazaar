@@ -55,6 +55,7 @@ func main() {
 	}
 
 	commentTpl.Execute(commentFile, CheckResultTestExample)
+	// commentTpl.Execute(commentFile, CheckResult{})
 	logger.Infof("PR Check finished")
 }
 
@@ -83,6 +84,7 @@ type IconFiles struct {
 
 	IconJs     File `json:"icon.js"`
 	IconJson   File `json:"icon.json"`
+	IconPng    File `json:"icon.png"`
 	PreviewPng File `json:"preview.png"`
 	ReadmeMd   File `json:"README.md"`
 }
@@ -101,6 +103,7 @@ type PluginRepo struct {
 type PluginFiles struct {
 	Pass bool `json:"pass"`
 
+	IconPng    File `json:"icon.png"`
 	IndexJs    File `json:"index.js"`
 	PluginJson File `json:"plugin.json"`
 	PreviewPng File `json:"preview.png"`
@@ -121,6 +124,7 @@ type TemplateRepo struct {
 type TemplateFiles struct {
 	Pass bool `json:"pass"`
 
+	IconPng      File `json:"icon.png"`
 	PreviewPng   File `json:"preview.png"`
 	ReadmeMd     File `json:"README.md"`
 	TemplateJson File `json:"template.json"`
@@ -140,6 +144,7 @@ type ThemeRepo struct {
 type ThemeFiles struct {
 	Pass bool `json:"pass"`
 
+	IconPng    File `json:"icon.png"`
 	PreviewPng File `json:"preview.png"`
 	ReadmeMd   File `json:"README.md"`
 	ThemeCss   File `json:"theme.css"`
@@ -160,6 +165,7 @@ type WidgetRepo struct {
 type WidgetFiles struct {
 	Pass bool `json:"pass"`
 
+	IconPng    File `json:"icon.png"`
 	IndexHtml  File `json:"index.html"`
 	PreviewPng File `json:"preview.png"`
 	ReadmeMd   File `json:"README.md"`
@@ -187,16 +193,20 @@ type PackageZip struct {
 
 /* 文件 */
 type File struct {
-	Pass bool   `json:"pass"` // 文件是否存在
+	Pass bool `json:"pass"` // 文件是否存在
+
 	Name string `json:"name"` // 文件名
 	URL  string `json:"url"`  // 文件 URL
 }
 
 /* 配置文件属性 */
 type Attrs struct {
-	Pass    bool `json:"pass"` // 配置文件必要属性相关内容是否都存在
+	Pass bool `json:"pass"` // 配置文件属性检查是否通过
+
 	Name    Attr `json:"name"`
 	Version Attr `json:"version"`
+	Author  Attr `json:"author"`
+	URL     Attr `json:"url"`
 }
 
 type Attr struct {
