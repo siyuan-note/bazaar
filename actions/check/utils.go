@@ -12,7 +12,7 @@ package main
 
 import "fmt"
 
-/* 判断字符串是否在集合中 */
+// isKeyInSet 判断字符串是否在集合中
 func isKeyInSet(
 	key string,
 	set StringSet,
@@ -22,7 +22,7 @@ func isKeyInSet(
 	return
 }
 
-/* 构造文件下载地址 */
+// buildFileDownloadURL 构造文件下载地址
 func buildFileDownloadURL(
 	repoOwner string,
 	repoName string,
@@ -32,7 +32,7 @@ func buildFileDownloadURL(
 	return fmt.Sprintf("https://raw.githubusercontent.com/%s/%s/%s/%s", repoOwner, repoName, hash, filePath)
 }
 
-/* 构造仓库主页地址 */
+// buildRepoHomeURL 构造仓库主页地址
 func buildRepoHomeURL(
 	repoOwner string,
 	repoName string,

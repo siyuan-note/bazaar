@@ -13,7 +13,7 @@ package main
 type ResourceType int                 // 资源类型
 type StringSet map[string]interface{} // 字符串集合
 
-/* 检查结果 */
+// CheckResult 检查结果
 type CheckResult struct {
 	Icons     []Icon     `json:"icons"`
 	Plugins   []Plugin   `json:"plugins"`
@@ -22,7 +22,7 @@ type CheckResult struct {
 	Widgets   []Widget   `json:"widgets"`
 }
 
-/* 图标 */
+// Icon 图标
 type Icon struct {
 	RepoInfo RepoInfo  `json:"repo"`    // 仓库
 	Release  Release   `json:"release"` // 发行版
@@ -39,7 +39,7 @@ type IconFiles struct {
 	ReadmeMd   File `json:"README.md"`
 }
 
-/* 插件 */
+// Plugin 插件
 type Plugin struct {
 	RepoInfo RepoInfo    `json:"repo"`    // 仓库
 	Release  Release     `json:"release"` // 发行版
@@ -56,7 +56,7 @@ type PluginFiles struct {
 	ReadmeMd   File `json:"README.md"`
 }
 
-/* 模板 */
+// Template 模板
 type Template struct {
 	RepoInfo RepoInfo      `json:"repo"`    // 仓库
 	Release  Release       `json:"release"` // 发行版
@@ -73,7 +73,7 @@ type TemplateFiles struct {
 	TemplateJson File `json:"template.json"`
 }
 
-/* 主题 */
+// Theme 主题
 type Theme struct {
 	RepoInfo RepoInfo   `json:"repo"`    // 仓库
 	Release  Release    `json:"release"` // 发行版
@@ -90,7 +90,7 @@ type ThemeFiles struct {
 	ThemeJson  File `json:"theme.json"`
 }
 
-/* 挂件 */
+// Widget 挂件
 type Widget struct {
 	RepoInfo RepoInfo    `json:"repo"`    // 仓库
 	Release  Release     `json:"release"` // 发行版
@@ -107,7 +107,7 @@ type WidgetFiles struct {
 	WidgetJson File `json:"widget.json"`
 }
 
-/* 仓库信息 */
+// RepoInfo 仓库信息
 type RepoInfo struct {
 	Owner string `json:"owner"` // 仓库拥有者
 	Name  string `json:"name"`  // 仓库名
@@ -115,13 +115,13 @@ type RepoInfo struct {
 	Home  string `json:"home"`  // 仓库主页
 }
 
-/* 发行版 */
+// Release 发行版
 type Release struct {
 	Pass          bool          `json:"pass"`           // 必要的发行版是否检查通过
 	LatestRelease LatestRelease `json:"latest_release"` // 最新发行版
 }
 
-/* 最新发行版 */
+// LatestRelease 最新发行版
 type LatestRelease struct {
 	Pass       bool       `json:"pass"`        // 最新发行版是否存在
 	URL        string     `json:"url"`         // 最新发行版 URL
@@ -130,20 +130,20 @@ type LatestRelease struct {
 	PackageZip PackageZip `json:"package_zip"` // package.zip 包
 }
 
-/* 最新发行版的 package.zip 包 */
+// PackageZip 最新发行版的 package.zip 包
 type PackageZip struct {
 	Pass bool   `json:"pass"` // package.zip 包是否存在
 	URL  string `json:"url"`  // package.zip 包 URL
 }
 
-/* 文件 */
+// File 文件
 type File struct {
 	Pass bool `json:"pass"` // 文件是否存在
 
 	URL string `json:"url"` // 文件 URL
 }
 
-/* 配置文件属性 */
+// Attrs 清单文件属性
 type Attrs struct {
 	Pass bool `json:"pass"` // 配置文件属性检查是否通过
 

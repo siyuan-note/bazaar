@@ -10,7 +10,7 @@
 
 package main
 
-/* 资源类型枚举常量 */
+// 资源类型枚举常量
 const (
 	icons ResourceType = iota
 	plugins
@@ -22,12 +22,12 @@ const (
 const (
 	FILE_PATH_CHECK_RESULT_TEMPLATE = "./templates/check-result.md.tpl" // 检查结果模板文件路径
 
-	/* 所有类型集市资源都需要存在的文件 */
+	// 所有类型集市资源都需要存在的文件
 	FILE_PATH_ICON_PNG    = "icon.png"
 	FILE_PATH_PREVIEW_PNG = "preview.png"
 	FILE_PATH_README_MD   = "README.md"
 
-	/* 各类型集市资源的清单文件 */
+	// 各类型集市资源的清单文件
 	FILE_PATH_ICON_JSON     = "icon.json"
 	FILE_PATH_PLUGIN_JSON   = "plugin.json"
 	FILE_PATH_TEMPLATE_JSON = "template.json"

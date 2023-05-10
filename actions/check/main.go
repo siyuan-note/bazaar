@@ -60,14 +60,14 @@ var (
 func main() {
 	logger.Infof("PR Check running...")
 
-	/* 获取检查结果模板文件 */
+	// 获取检查结果模板文件
 	check_result_template, err := template.ParseFiles(FILE_PATH_CHECK_RESULT_TEMPLATE)
 	if nil != err {
 		logger.Fatalf("load check result template file <\033[7m%s\033[0m> failed: %s", FILE_PATH_CHECK_RESULT_TEMPLATE, err)
 		panic(err)
 	}
 
-	/* 打开检查结果输出文件 */
+	// 打开检查结果输出文件
 	check_result_output_file, err := os.OpenFile(FILE_PATH_CHECK_RESULT_OUTPUT, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0666)
 	if nil != err {
 		logger.Fatalf("open check result output file <\033[7m%s\033[0m> failed: %s", FILE_PATH_CHECK_RESULT_OUTPUT, err)
@@ -95,14 +95,14 @@ func main() {
 
 	wait_group.Wait() // 等待所有检查完成
 
-	/* 将检查结果写入文件 */
+	// 将检查结果写入文件
 	// check_result_template.Execute(check_result_output_file, CheckResultTestExample)
 	check_result_template.Execute(check_result_output_file, check_result)
 
 	logger.Infof("PR Check finished")
 }
 
-/* 检查集市资源仓库列表 */
+// checkRepos 检查集市资源仓库列表
 func checkRepos(
 	targetFilePath,
 	originFilePath string,
@@ -113,7 +113,7 @@ func checkRepos(
 	defer waitGroup.Done()
 	logger.Infof("start repes check <\033[7m%s\033[0m>", targetFilePath)
 
-	/* 读取 PR 中的文件 */
+	// 读取 PR 中的文件
 	target_file, err := os.ReadFile(targetFilePath)
 	if nil != err {
 		logger.Fatalf("read file <\033[7m%s\033[0m> failed: %s", targetFilePath, err)
@@ -125,7 +125,7 @@ func checkRepos(
 		panic(err)
 	}
 
-	/* 读取 stage 中的文件 */
+	// 读取 stage 中的文件
 	origin_file, err := os.ReadFile(originFilePath)
 	if nil != err {
 		logger.Fatalf("read file <\033[7m%s\033[0m> failed: %s", originFilePath, err)
@@ -137,7 +137,7 @@ func checkRepos(
 		panic(err)
 	}
 
-	/* 获取新增的仓库列表 */
+	// 获取新增的仓库列表
 	target_repos := target["repos"].([]interface{})       // PR 中的仓库列表
 	origin_repos := origin["repos"].([]interface{})       // stage 中的仓库列表
 	origin_repo_set := make(StringSet, len(origin_repos)) // stage 中的仓库 owner/name 集合
@@ -158,13 +158,14 @@ func checkRepos(
 		}
 	}
 
-	/* 检查每个集市资源仓库 */
+	// 检查每个集市资源仓库
 	result_channel := make(chan interface{}, 4) // 检查结果输出通道
 	wait_group_check := &sync.WaitGroup{}       // 等待所有检查完成
 	wait_group_result := &sync.WaitGroup{}      // 等待所有检查结果处理完成
 
 	wait_group_result.Add(1)
-	go func() { // 处理输出地检查结果
+	// 处理输出地检查结果
+	go func() {
 		for result := range result_channel {
 			switch result.(type) {
 			case *Icon:
@@ -193,7 +194,7 @@ func checkRepos(
 	logger.Infof("finish repos check <\033[7m%s\033[0m>", targetFilePath)
 }
 
-/* 检查集市资源仓库 */
+// checkRepo 检查集市资源仓库
 func checkRepo(
 	repoPath string,
 	nameSet StringSet,
@@ -206,7 +207,7 @@ func checkRepo(
 	logger.Infof("start repo check <\033[7m%s\033[0m>", repoPath)
 	var err error
 
-	/* 检查 latest release */
+	// 检查 latest release
 	repo_meta := strings.Split(repoPath, "/")
 	repo_owner := repo_meta[0]
 	repo_name := repo_meta[1]
@@ -219,9 +220,9 @@ func checkRepo(
 	release_check_result := checkRepoLatestRelease(repo_owner, repo_name)
 
 	if release_check_result.LatestRelease.Hash != "" {
-		/* 获得 latest release 成功, 可以进一步检查文件与属性 */
+		// 获得 latest release 成功, 可以进一步检查文件与属性
 
-		/* 检查清单文件中的属性 */
+		// 检查清单文件中的属性
 		var attrs_check_result *Attrs
 		var manifest_file_path string // 清单文件路径
 		switch resourceType {
@@ -248,7 +249,7 @@ func checkRepo(
 			logger.Warnf("check repo <\033[7m%s\033[0m> manifest file <\033[7m%s\033[0m> failed: %s", repoPath, manifest_file_url, err)
 		} else {
 			if attrs_check_result.Name.Value != "" {
-				/* 字段唯一性检查 */
+				// 字段唯一性检查
 				if isKeyInSet(attrs_check_result.Name.Value, nameSet) {
 					logger.Warnf("repo <\033[7m%s\033[0m> name <\033[7m%s\033[0m> already exists", repoPath, attrs_check_result.Name.Value)
 				} else {
@@ -264,10 +265,10 @@ func checkRepo(
 			}
 		}
 
-		/* 检查文件 */
+		// 检查文件
 		var files_check_result interface{} // 文件检查结果
 
-		/* 检查所有类型集市资源必要的文件 */
+		// 检查所有类型集市资源必要的文件
 		icon_png_check_result, err := checkFileExist(buildFileDownloadURL(
 			repo_owner,
 			repo_name,
@@ -298,7 +299,7 @@ func checkRepo(
 			logger.Warn(err.Error())
 		}
 
-		/* 检查各类型集市资源其他必要的文件 */
+		// 检查各类型集市资源其他必要的文件
 		switch resourceType {
 		case icons:
 			{
@@ -428,7 +429,7 @@ func checkRepo(
 		default:
 		}
 
-		/* 返回检查结果 */
+		// 返回检查结果
 		switch resourceType {
 		case icons:
 			resultChannel <- &Icon{
@@ -468,7 +469,7 @@ func checkRepo(
 		default:
 		}
 	} else {
-		/* 无法检查文件与属性, 直接返回结果 */
+		// 无法检查文件与属性, 直接返回结果
 		switch resourceType {
 		case icons:
 			resultChannel <- &Icon{
@@ -502,14 +503,14 @@ func checkRepo(
 	logger.Infof("finish repo check <\033[7m%s\033[0m>", repoPath)
 }
 
-/* 检查最新发行信息 */
+// checkRepoLatestRelease 检查最新发行信息
 func checkRepoLatestRelease(
 	repoOwner string,
 	repoName string,
 ) (releaseCheckResult *Release) {
 	releaseCheckResult = &Release{}
 
-	/* 获取 latest release */
+	// 获取 latest release
 	github_release, _, err := github_client.Repositories.GetLatestRelease(github_contest, repoOwner, repoName)
 	if nil != err {
 		logger.Warnf("get repo <\033[7m%s/%s\033[0m> latest release failed: %s", repoOwner, repoName, err)
@@ -518,11 +519,11 @@ func checkRepoLatestRelease(
 
 	releaseCheckResult.LatestRelease.Pass = true // 最新发行版存在
 
-	/* 获取 tag 名称 */
+	// 获取 tag 名称
 	releaseCheckResult.LatestRelease.Tag = github_release.GetTagName()
 	releaseCheckResult.LatestRelease.URL = github_release.GetHTMLURL()
 
-	/* 获取 package.zip 下载地址 */
+	// 获取 package.zip 下载地址
 	for _, asset := range github_release.Assets {
 		if asset.GetName() == "package.zip" {
 			releaseCheckResult.LatestRelease.PackageZip.Pass = true
@@ -531,7 +532,7 @@ func checkRepoLatestRelease(
 		}
 	}
 
-	/* 获取 hash */
+	// 获取 hash
 	// REF https://pkg.go.dev/github.com/google/go-github/v52/github#GitService.GetRef
 	github_reference, _, err := github_client.Git.GetRef(github_contest, repoOwner, repoName, "tags/"+releaseCheckResult.LatestRelease.Tag)
 	if nil != err {
@@ -546,7 +547,7 @@ func checkRepoLatestRelease(
 	return
 }
 
-/* 检查文件是否存在 */
+// checkFileExist 检查文件是否存在
 func checkFileExist(url string) (
 	fileCheckResult *File,
 	err error,
@@ -576,7 +577,7 @@ func checkFileExist(url string) (
 	}
 }
 
-/* 检查清单属性 */
+// checkManifestAttrs 检查清单属性
 func checkManifestAttrs(fileURL string) (attrsCheckResult *Attrs, err error) {
 	attrsCheckResult = &Attrs{}
 	response, data, errs := gorequest.
@@ -595,13 +596,13 @@ func checkManifestAttrs(fileURL string) (attrsCheckResult *Attrs, err error) {
 		return
 	}
 
-	/* 解析清单 */
+	// 解析清单
 	manifest := map[string]interface{}{}
 	if err = gulu.JSON.UnmarshalJSON(data, &manifest); nil != err {
 		return
 	}
 
-	/* 检查清单文件 */
+	// 检查清单文件
 	if name := manifest["name"]; name != nil {
 		if value := name.(string); value != "" {
 			attrsCheckResult.Name.Value = value
