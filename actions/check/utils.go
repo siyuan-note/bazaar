@@ -22,14 +22,24 @@ func isKeyInSet(
 	return
 }
 
-// buildFileDownloadURL 构造文件下载地址
-func buildFileDownloadURL(
+// buildFileRawURL 构造文件原始访问地址
+func buildFileRawURL(
 	repoOwner string,
 	repoName string,
 	hash string,
 	filePath string,
 ) string {
 	return fmt.Sprintf("https://raw.githubusercontent.com/%s/%s/%s/%s", repoOwner, repoName, hash, filePath)
+}
+
+// buildFilePreviewURL 构造文件预览地址
+func buildFilePreviewURL(
+	repoOwner string,
+	repoName string,
+	hash string,
+	filePath string,
+) string {
+	return fmt.Sprintf("https://github.com/%s/%s/blob/%s/%s", repoOwner, repoName, hash, filePath)
 }
 
 // buildRepoHomeURL 构造仓库主页地址
