@@ -29,8 +29,8 @@
   - {{ if $repo.Release.LatestRelease.Pass }}[x] [Current Latest Release](<{{ $repo.Release.LatestRelease.URL }}>){{ else }}[ ] Current Latest Release{{ end }}
   - {{ if $repo.Release.LatestRelease.PackageZip.Pass }}[x] [package.zip](<{{ $repo.Release.LatestRelease.PackageZip.URL }}>){{ else }}[ ] `package.zip`{{ end }}
 - {{ if $repo.Files.Pass }}[x]{{ else }}[ ]{{ end }} Files that must exist
-  - {{ if $repo.Files.IconPng.Pass }}[x] [icon.png](<{{ $repo.Files.IconPng.URL }}>){{ else }}[ ] `icon.png`{{ end }}
   - {{ if $repo.Files.PluginJson.Pass }}[x] [plugin.json](<{{ $repo.Files.PluginJson.URL }}>){{ else }}[ ] `plugin.json`{{ end }}
+  - {{ if $repo.Files.IconPng.Pass }}[x] [icon.png](<{{ $repo.Files.IconPng.URL }}>){{ else }}[ ] `icon.png`{{ end }}
   - {{ if $repo.Files.PreviewPng.Pass }}[x] [preview.png](<{{ $repo.Files.PreviewPng.URL }}>){{ else }}[ ] `preview.png`{{ end }}
   - {{ if $repo.Files.ReadmeMd.Pass }}[x] [README.md](<{{ $repo.Files.ReadmeMd.URL }}>){{ else }}[ ] `README.md`{{ end }}
 - {{ if $repo.Attrs.Pass }}[x]{{ else }}[ ]{{ end }} Attributes that must exist in `plugin.json`
@@ -50,10 +50,10 @@
   - {{ if $repo.Release.LatestRelease.Pass }}[x] [Current Latest Release](<{{ $repo.Release.LatestRelease.URL }}>){{ else }}[ ] Current Latest Release{{ end }}
   - {{ if $repo.Release.LatestRelease.PackageZip.Pass }}[x] [package.zip](<{{ $repo.Release.LatestRelease.PackageZip.URL }}>){{ else }}[ ] `package.zip`{{ end }}
 - {{ if $repo.Files.Pass }}[x]{{ else }}[ ]{{ end }} Files that must exist
+  - {{ if $repo.Files.TemplateJson.Pass }}[x] [template.json](<{{ $repo.Files.TemplateJson.URL }}>){{ else }}[ ] `template.json`{{ end }}
   - {{ if $repo.Files.IconPng.Pass }}[x] [icon.png](<{{ $repo.Files.IconPng.URL }}>){{ else }}[ ] `icon.png`{{ end }}
   - {{ if $repo.Files.PreviewPng.Pass }}[x] [preview.png](<{{ $repo.Files.PreviewPng.URL }}>){{ else }}[ ] `preview.png`{{ end }}
   - {{ if $repo.Files.ReadmeMd.Pass }}[x] [README.md](<{{ $repo.Files.ReadmeMd.URL }}>){{ else }}[ ] `README.md`{{ end }}
-  - {{ if $repo.Files.TemplateJson.Pass }}[x] [template.json](<{{ $repo.Files.TemplateJson.URL }}>){{ else }}[ ] `template.json`{{ end }}
 - {{ if $repo.Attrs.Pass }}[x]{{ else }}[ ]{{ end }} Attributes that must exist in `template.json`
   - {{ if $repo.Attrs.Name.Pass }}[x] `name`: `{{ $repo.Attrs.Name.Value }}`{{ else }}[ ] `name`{{ end }} 
     - {{ if $repo.Attrs.Name.Unique }}[x]{{ else }}[ ]{{ end }} Not conflict with other template name
@@ -71,10 +71,10 @@
   - {{ if $repo.Release.LatestRelease.Pass }}[x] [Current Latest Release](<{{ $repo.Release.LatestRelease.URL }}>){{ else }}[ ] Current Latest Release{{ end }}
   - {{ if $repo.Release.LatestRelease.PackageZip.Pass }}[x] [package.zip](<{{ $repo.Release.LatestRelease.PackageZip.URL }}>){{ else }}[ ] `package.zip`{{ end }}
 - {{ if $repo.Files.Pass }}[x]{{ else }}[ ]{{ end }} Files that must exist
+  - {{ if $repo.Files.ThemeJson.Pass }}[x] [theme.json](<{{ $repo.Files.ThemeJson.URL }}>){{ else }}[ ] `theme.json`{{ end }}
   - {{ if $repo.Files.IconPng.Pass }}[x] [icon.png](<{{ $repo.Files.IconPng.URL }}>){{ else }}[ ] `icon.png`{{ end }}
   - {{ if $repo.Files.PreviewPng.Pass }}[x] [preview.png](<{{ $repo.Files.PreviewPng.URL }}>){{ else }}[ ] `preview.png`{{ end }}
   - {{ if $repo.Files.ReadmeMd.Pass }}[x] [README.md](<{{ $repo.Files.ReadmeMd.URL }}>){{ else }}[ ] `README.md`{{ end }}
-  - {{ if $repo.Files.ThemeJson.Pass }}[x] [theme.json](<{{ $repo.Files.ThemeJson.URL }}>){{ else }}[ ] `theme.json`{{ end }}
 - {{ if $repo.Attrs.Pass }}[x]{{ else }}[ ]{{ end }} Attributes that must exist in `theme.json`
   - {{ if $repo.Attrs.Name.Pass }}[x] `name`: `{{ $repo.Attrs.Name.Value }}`{{ else }}[ ] `name`{{ end }} 
     - {{ if $repo.Attrs.Name.Unique }}[x]{{ else }}[ ]{{ end }} Not conflict with other theme name
@@ -92,10 +92,10 @@
   - {{ if $repo.Release.LatestRelease.Pass }}[x] [Current Latest Release](<{{ $repo.Release.LatestRelease.URL }}>){{ else }}[ ] Current Latest Release{{ end }}
   - {{ if $repo.Release.LatestRelease.PackageZip.Pass }}[x] [package.zip](<{{ $repo.Release.LatestRelease.PackageZip.URL }}>){{ else }}[ ] `package.zip`{{ end }}
 - {{ if $repo.Files.Pass }}[x]{{ else }}[ ]{{ end }} Files that must exist
+  - {{ if $repo.Files.WidgetJson.Pass }}[x] [widget.json](<{{ $repo.Files.WidgetJson.URL }}>){{ else }}[ ] `widget.json`{{ end }}
   - {{ if $repo.Files.IconPng.Pass }}[x] [icon.png](<{{ $repo.Files.IconPng.URL }}>){{ else }}[ ] `icon.png`{{ end }}
   - {{ if $repo.Files.PreviewPng.Pass }}[x] [preview.png](<{{ $repo.Files.PreviewPng.URL }}>){{ else }}[ ] `preview.png`{{ end }}
   - {{ if $repo.Files.ReadmeMd.Pass }}[x] [README.md](<{{ $repo.Files.ReadmeMd.URL }}>){{ else }}[ ] `README.md`{{ end }}
-  - {{ if $repo.Files.WidgetJson.Pass }}[x] [widget.json](<{{ $repo.Files.WidgetJson.URL }}>){{ else }}[ ] `widget.json`{{ end }}
 - {{ if $repo.Attrs.Pass }}[x]{{ else }}[ ]{{ end }} Attributes that must exist in `widget.json`
   - {{ if $repo.Attrs.Name.Pass }}[x] `name`: `{{ $repo.Attrs.Name.Value }}`{{ else }}[ ] `name`{{ end }} 
     - {{ if $repo.Attrs.Name.Unique }}[x]{{ else }}[ ]{{ end }} Not conflict with other widget name

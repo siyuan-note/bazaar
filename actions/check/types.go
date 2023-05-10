@@ -50,8 +50,8 @@ type Plugin struct {
 type PluginFiles struct {
 	Pass bool `json:"pass"`
 
-	IconPng    File `json:"icon.png"`
 	PluginJson File `json:"plugin.json"`
+	IconPng    File `json:"icon.png"`
 	PreviewPng File `json:"preview.png"`
 	ReadmeMd   File `json:"README.md"`
 }
@@ -67,10 +67,10 @@ type Template struct {
 type TemplateFiles struct {
 	Pass bool `json:"pass"`
 
+	TemplateJson File `json:"template.json"`
 	IconPng      File `json:"icon.png"`
 	PreviewPng   File `json:"preview.png"`
 	ReadmeMd     File `json:"README.md"`
-	TemplateJson File `json:"template.json"`
 }
 
 // Theme 主题
@@ -84,10 +84,10 @@ type Theme struct {
 type ThemeFiles struct {
 	Pass bool `json:"pass"`
 
+	ThemeJson  File `json:"theme.json"`
 	IconPng    File `json:"icon.png"`
 	PreviewPng File `json:"preview.png"`
 	ReadmeMd   File `json:"README.md"`
-	ThemeJson  File `json:"theme.json"`
 }
 
 // Widget 挂件
@@ -101,10 +101,10 @@ type Widget struct {
 type WidgetFiles struct {
 	Pass bool `json:"pass"`
 
+	WidgetJson File `json:"widget.json"`
 	IconPng    File `json:"icon.png"`
 	PreviewPng File `json:"preview.png"`
 	ReadmeMd   File `json:"README.md"`
-	WidgetJson File `json:"widget.json"`
 }
 
 // RepoInfo 仓库信息
