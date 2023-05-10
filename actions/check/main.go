@@ -238,7 +238,7 @@ func checkRepo(
 			manifest_file_path = "widget.json"
 		default:
 		}
-		manifest_file_url := buildFileDownloadURL(
+		manifest_file_url := buildFileRawURL(
 			repo_owner,
 			repo_name,
 			release_check_result.LatestRelease.Hash,
@@ -269,32 +269,32 @@ func checkRepo(
 		var files_check_result interface{} // 文件检查结果
 
 		// 检查所有类型集市资源必要的文件
-		icon_png_check_result, err := checkFileExist(buildFileDownloadURL(
+		icon_png_check_result, err := checkFileExist(
 			repo_owner,
 			repo_name,
 			release_check_result.LatestRelease.Hash,
 			FILE_PATH_ICON_PNG,
-		))
+		)
 		if err != nil {
 			logger.Warn(err.Error())
 		}
 
-		preview_png_check_result, err := checkFileExist(buildFileDownloadURL(
+		preview_png_check_result, err := checkFileExist(
 			repo_owner,
 			repo_name,
 			release_check_result.LatestRelease.Hash,
 			FILE_PATH_PREVIEW_PNG,
-		))
+		)
 		if err != nil {
 			logger.Warn(err.Error())
 		}
 
-		readme_md_check_result, err := checkFileExist(buildFileDownloadURL(
+		readme_md_check_result, err := checkFileExist(
 			repo_owner,
 			repo_name,
 			release_check_result.LatestRelease.Hash,
 			FILE_PATH_README_MD,
-		))
+		)
 		if err != nil {
 			logger.Warn(err.Error())
 		}
@@ -303,12 +303,12 @@ func checkRepo(
 		switch resourceType {
 		case icons:
 			{
-				icon_json_check_result, err := checkFileExist(buildFileDownloadURL(
+				icon_json_check_result, err := checkFileExist(
 					repo_owner,
 					repo_name,
 					release_check_result.LatestRelease.Hash,
 					FILE_PATH_ICON_JSON,
-				))
+				)
 				if err != nil {
 					logger.Warn(err.Error())
 				}
@@ -328,12 +328,12 @@ func checkRepo(
 			}
 		case plugins:
 			{
-				plugin_json_check_result, err := checkFileExist(buildFileDownloadURL(
+				plugin_json_check_result, err := checkFileExist(
 					repo_owner,
 					repo_name,
 					release_check_result.LatestRelease.Hash,
 					FILE_PATH_PLUGIN_JSON,
-				))
+				)
 				if err != nil {
 					logger.Warn(err.Error())
 				}
@@ -353,12 +353,12 @@ func checkRepo(
 			}
 		case templates:
 			{
-				template_json_check_result, err := checkFileExist(buildFileDownloadURL(
+				template_json_check_result, err := checkFileExist(
 					repo_owner,
 					repo_name,
 					release_check_result.LatestRelease.Hash,
 					FILE_PATH_TEMPLATE_JSON,
-				))
+				)
 				if err != nil {
 					logger.Warn(err.Error())
 				}
@@ -378,12 +378,12 @@ func checkRepo(
 			}
 		case themes:
 			{
-				theme_json_check_result, err := checkFileExist(buildFileDownloadURL(
+				theme_json_check_result, err := checkFileExist(
 					repo_owner,
 					repo_name,
 					release_check_result.LatestRelease.Hash,
 					FILE_PATH_THEME_JSON,
-				))
+				)
 				if err != nil {
 					logger.Warn(err.Error())
 				}
@@ -403,12 +403,12 @@ func checkRepo(
 			}
 		case widgets:
 			{
-				widget_json_check_result, err := checkFileExist(buildFileDownloadURL(
+				widget_json_check_result, err := checkFileExist(
 					repo_owner,
 					repo_name,
 					release_check_result.LatestRelease.Hash,
 					FILE_PATH_WIDGET_JSON,
-				))
+				)
 				if err != nil {
 					logger.Warn(err.Error())
 				}
@@ -548,21 +548,38 @@ func checkRepoLatestRelease(
 }
 
 // checkFileExist 检查文件是否存在
-func checkFileExist(url string) (
+func checkFileExist(
+	repoOwner string,
+	repoName string,
+	hash string,
+	filePath string,
+) (
 	fileCheckResult *File,
 	err error,
 ) {
 	fileCheckResult = &File{}
-	fileCheckResult.URL = url
+	raw_url := buildFileRawURL(
+		repoOwner,
+		repoName,
+		hash,
+		filePath,
+	) // 文件访问地址
+	fileCheckResult.URL = buildFilePreviewURL(
+		repoOwner,
+		repoName,
+		hash,
+		filePath,
+	) // 文件预览地址
+
 	response, _, errs := gorequest.
 		New().
-		Head(fileCheckResult.URL).
+		Head(raw_url).
 		Set("User-Agent", util.UserAgent).
 		Retry(REQUEST_RETRY_COUNT, REQUEST_RETRY_DURATION).
 		Timeout(REQUEST_TIMEOUT).
 		End()
 	if nil != errs {
-		logger.Fatalf("HTTP HEAD request <\033[7m%s\033[0m> failed: %s", fileCheckResult.URL, errs)
+		logger.Fatalf("HTTP HEAD request <\033[7m%s\033[0m> failed: %s", raw_url, errs)
 		panic(errs)
 	}
 	if response.StatusCode == http.StatusOK {
@@ -572,7 +589,7 @@ func checkFileExist(url string) (
 		fileCheckResult.Pass = false
 		return
 	} else {
-		err = fmt.Errorf("HTTP HEAD request <\033[7m%s\033[0m> failed: %s", fileCheckResult.URL, response.Status)
+		err = fmt.Errorf("HTTP HEAD request <\033[7m%s\033[0m> failed: %s", raw_url, response.Status)
 		return
 	}
 }

@@ -1,4 +1,4 @@
-## PR Check Result:
+## Pull Request Check Report
 
 ### Add `{{ len .Icons }}` Icon Repo
 
