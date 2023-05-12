@@ -59,7 +59,7 @@ func isKeyInSet(
 // isValieName 判断资源名称是否有效
 func isValieName(name string) (valid bool, err error) {
 	// 是否均为可打印的 ASCii 字符
-	if valid, err = regexp.MatchString("^[\\x20-\\x7E]*$", name); err != nil {
+	if valid, err = regexp.MatchString("^[\\x20-\\x7E]+$", name); err != nil {
 		panic(err)
 	} else if !valid {
 		err = fmt.Errorf("name <\033[7m%s\033[0m> contains characters other than printable ASCII characters", name)
@@ -67,7 +67,7 @@ func isValieName(name string) (valid bool, err error) {
 	}
 
 	// 是否均为有效字符
-	if valid, err = regexp.MatchString("^[^\\\\/:*?<>|. ][^\\\\/:*?<>|]*[^\\\\/:*?<>|. ]$", name); err != nil {
+	if valid, err = regexp.MatchString("^[^\\\\/:*?\"<>|. ][^\\\\/:*?\"<>|]*[^\\\\/:*?\"<>|. ]$", name); err != nil {
 		panic(err)
 	} else if !valid {
 		err = fmt.Errorf("name <\033[7m%s\033[0m> contains invalid characters", name)
