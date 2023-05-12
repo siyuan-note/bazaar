@@ -14,6 +14,7 @@
   - {{ if $repo.Files.ReadmeMd.Pass }}[x] [README.md](<{{ $repo.Files.ReadmeMd.URL }}>){{ else }}[ ] `README.md`{{ end }}
 - {{ if $repo.Attrs.Pass }}[x]{{ else }}[ ]{{ end }} Attributes that must exist in `icon.json`
   - {{ if $repo.Attrs.Name.Pass }}[x] `name`: `{{ $repo.Attrs.Name.Value }}`{{ else }}[ ] `name`{{ end }} 
+    - {{ if $repo.Attrs.Name.Valid }}[x]{{ else }}[ ]{{ end }} Is a valid name
     - {{ if $repo.Attrs.Name.Unique }}[x]{{ else }}[ ]{{ end }} Not conflict with other icon name
   - {{ if $repo.Attrs.Version.Pass }}[x] `version`: `{{ $repo.Attrs.Version.Value }}`{{ else }}[ ] `version`{{ end }} 
   - {{ if $repo.Attrs.Author.Pass }}[x] `author`: `{{ $repo.Attrs.Author.Value }}`{{ else }}[ ] `author`{{ end }} 
@@ -35,6 +36,7 @@
   - {{ if $repo.Files.ReadmeMd.Pass }}[x] [README.md](<{{ $repo.Files.ReadmeMd.URL }}>){{ else }}[ ] `README.md`{{ end }}
 - {{ if $repo.Attrs.Pass }}[x]{{ else }}[ ]{{ end }} Attributes that must exist in `plugin.json`
   - {{ if $repo.Attrs.Name.Pass }}[x] `name`: `{{ $repo.Attrs.Name.Value }}`{{ else }}[ ] `name`{{ end }} 
+    - {{ if $repo.Attrs.Name.Valid }}[x]{{ else }}[ ]{{ end }} Is a valid name
     - {{ if $repo.Attrs.Name.Unique }}[x]{{ else }}[ ]{{ end }} Not conflict with other plugin name
   - {{ if $repo.Attrs.Version.Pass }}[x] `version`: `{{ $repo.Attrs.Version.Value }}`{{ else }}[ ] `version`{{ end }} 
   - {{ if $repo.Attrs.Author.Pass }}[x] `author`: `{{ $repo.Attrs.Author.Value }}`{{ else }}[ ] `author`{{ end }} 
@@ -56,6 +58,7 @@
   - {{ if $repo.Files.ReadmeMd.Pass }}[x] [README.md](<{{ $repo.Files.ReadmeMd.URL }}>){{ else }}[ ] `README.md`{{ end }}
 - {{ if $repo.Attrs.Pass }}[x]{{ else }}[ ]{{ end }} Attributes that must exist in `template.json`
   - {{ if $repo.Attrs.Name.Pass }}[x] `name`: `{{ $repo.Attrs.Name.Value }}`{{ else }}[ ] `name`{{ end }} 
+    - {{ if $repo.Attrs.Name.Valid }}[x]{{ else }}[ ]{{ end }} Is a valid name
     - {{ if $repo.Attrs.Name.Unique }}[x]{{ else }}[ ]{{ end }} Not conflict with other template name
   - {{ if $repo.Attrs.Version.Pass }}[x] `version`: `{{ $repo.Attrs.Version.Value }}`{{ else }}[ ] `version`{{ end }} 
   - {{ if $repo.Attrs.Author.Pass }}[x] `author`: `{{ $repo.Attrs.Author.Value }}`{{ else }}[ ] `author`{{ end }} 
@@ -77,6 +80,7 @@
   - {{ if $repo.Files.ReadmeMd.Pass }}[x] [README.md](<{{ $repo.Files.ReadmeMd.URL }}>){{ else }}[ ] `README.md`{{ end }}
 - {{ if $repo.Attrs.Pass }}[x]{{ else }}[ ]{{ end }} Attributes that must exist in `theme.json`
   - {{ if $repo.Attrs.Name.Pass }}[x] `name`: `{{ $repo.Attrs.Name.Value }}`{{ else }}[ ] `name`{{ end }} 
+    - {{ if $repo.Attrs.Name.Valid }}[x]{{ else }}[ ]{{ end }} Is a valid name
     - {{ if $repo.Attrs.Name.Unique }}[x]{{ else }}[ ]{{ end }} Not conflict with other theme name
   - {{ if $repo.Attrs.Version.Pass }}[x] `version`: `{{ $repo.Attrs.Version.Value }}`{{ else }}[ ] `version`{{ end }} 
   - {{ if $repo.Attrs.Author.Pass }}[x] `author`: `{{ $repo.Attrs.Author.Value }}`{{ else }}[ ] `author`{{ end }} 
@@ -98,6 +102,7 @@
   - {{ if $repo.Files.ReadmeMd.Pass }}[x] [README.md](<{{ $repo.Files.ReadmeMd.URL }}>){{ else }}[ ] `README.md`{{ end }}
 - {{ if $repo.Attrs.Pass }}[x]{{ else }}[ ]{{ end }} Attributes that must exist in `widget.json`
   - {{ if $repo.Attrs.Name.Pass }}[x] `name`: `{{ $repo.Attrs.Name.Value }}`{{ else }}[ ] `name`{{ end }} 
+    - {{ if $repo.Attrs.Name.Valid }}[x]{{ else }}[ ]{{ end }} Is a valid name
     - {{ if $repo.Attrs.Name.Unique }}[x]{{ else }}[ ]{{ end }} Not conflict with other widget name
   - {{ if $repo.Attrs.Version.Pass }}[x] `version`: `{{ $repo.Attrs.Version.Value }}`{{ else }}[ ] `version`{{ end }} 
   - {{ if $repo.Attrs.Author.Pass }}[x] `author`: `{{ $repo.Attrs.Author.Value }}`{{ else }}[ ] `author`{{ end }} 

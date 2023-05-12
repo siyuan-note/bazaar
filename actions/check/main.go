@@ -74,6 +74,9 @@ func main() {
 		panic(err)
 	}
 
+	// check_result_template.Execute(check_result_output_file, CheckResultTestExample)
+	// return
+
 	check_result := &CheckResult{
 		Icons:     []Icon{},
 		Plugins:   []Plugin{},
@@ -85,18 +88,17 @@ func main() {
 	github_client.Client().Timeout = REQUEST_TIMEOUT // 设置请求超时时间
 
 	wait_group := &sync.WaitGroup{}
-	wait_group.Add(5)
+	wait_group.Add(1)
 
-	go checkRepos(PR_REPO_PATH+"/icons.json", "./stage/icons.json", icons, check_result, wait_group)
+	// go checkRepos(PR_REPO_PATH+"/icons.json", "./stage/icons.json", icons, check_result, wait_group)
 	go checkRepos(PR_REPO_PATH+"/plugins.json", "./stage/plugins.json", plugins, check_result, wait_group)
-	go checkRepos(PR_REPO_PATH+"/templates.json", "./stage/templates.json", templates, check_result, wait_group)
-	go checkRepos(PR_REPO_PATH+"/themes.json", "./stage/themes.json", themes, check_result, wait_group)
-	go checkRepos(PR_REPO_PATH+"/widgets.json", "./stage/widgets.json", widgets, check_result, wait_group)
+	// go checkRepos(PR_REPO_PATH+"/templates.json", "./stage/templates.json", templates, check_result, wait_group)
+	// go checkRepos(PR_REPO_PATH+"/themes.json", "./stage/themes.json", themes, check_result, wait_group)
+	// go checkRepos(PR_REPO_PATH+"/widgets.json", "./stage/widgets.json", widgets, check_result, wait_group)
 
 	wait_group.Wait() // 等待所有检查完成
 
 	// 将检查结果写入文件
-	// check_result_template.Execute(check_result_output_file, CheckResultTestExample)
 	check_result_template.Execute(check_result_output_file, check_result)
 
 	logger.Infof("PR Check finished")
@@ -104,7 +106,7 @@ func main() {
 
 // checkRepos 检查集市资源仓库列表
 func checkRepos(
-	targetFilePath,
+	targetFilePath string,
 	originFilePath string,
 	resourceType ResourceType,
 	checkResult *CheckResult,
@@ -144,15 +146,19 @@ func checkRepos(
 	origin_name_set := make(StringSet, len(origin_repos)) // stage 中的 name 字段集合
 	for _, origin_repo := range origin_repos {
 		origin_url := origin_repo.(map[string]interface{})["url"].(string)
-		origin_repo_set[strings.Split(origin_url, "@")[0]] = nil
+		origin_url = strings.Split(origin_url, "@")[0]
+		origin_url = strings.ToLower(origin_url)
+		origin_repo_set[origin_url] = nil
 
 		origin_name := origin_repo.(map[string]interface{})["package"].(map[string]interface{})["name"].(string)
+		origin_name = strings.ToLower(origin_name)
 		origin_name_set[origin_name] = nil
 	}
 
 	new_repos := []string{} // 新增的仓库列表
 	for _, target_repo := range target_repos {
 		target_repo_path := target_repo.(string)
+		target_repo_path = strings.ToLower(target_repo_path)
 		if !isKeyInSet(target_repo_path, origin_repo_set) {
 			new_repos = append(new_repos, target_repo_path)
 		}
@@ -248,20 +254,28 @@ func checkRepo(
 		if attrs_check_result, err = checkManifestAttrs(manifest_file_url); err != nil {
 			logger.Warnf("check repo <\033[7m%s\033[0m> manifest file <\033[7m%s\033[0m> failed: %s", repoPath, manifest_file_url, err)
 		} else {
-			if attrs_check_result.Name.Value != "" {
+			name := strings.ToLower(attrs_check_result.Name.Value)
+			if name != "" {
 				// 字段唯一性检查
-				if isKeyInSet(attrs_check_result.Name.Value, nameSet) {
-					logger.Warnf("repo <\033[7m%s\033[0m> name <\033[7m%s\033[0m> already exists", repoPath, attrs_check_result.Name.Value)
+				if isKeyInSet(name, nameSet) {
+					logger.Warnf("repo <\033[7m%s\033[0m> name <\033[7m%s\033[0m> already exists", repoPath, name)
 				} else {
-					nameSet[attrs_check_result.Name.Value] = nil // 新的 name 添加到检查集合中
-					attrs_check_result.Name.Unique = true        // name 字段通过唯一性检查
-					attrs_check_result.Name.Pass = true          // name 字段通过检查
-
-					attrs_check_result.Pass = attrs_check_result.Name.Pass &&
-						attrs_check_result.Version.Pass &&
-						attrs_check_result.Author.Pass &&
-						attrs_check_result.URL.Pass
+					nameSet[name] = nil                   // 新的 name 添加到检查集合中
+					attrs_check_result.Name.Unique = true // name 字段通过唯一性检查
 				}
+
+				// 字段有效性检查
+				if attrs_check_result.Name.Valid, err = isValieName(name); err != nil {
+					logger.Warn(err)
+				}
+
+				attrs_check_result.Name.Pass = attrs_check_result.Name.Unique &&
+					attrs_check_result.Name.Valid
+
+				attrs_check_result.Pass = attrs_check_result.Name.Pass &&
+					attrs_check_result.Version.Pass &&
+					attrs_check_result.Author.Pass &&
+					attrs_check_result.URL.Pass
 			}
 		}
 

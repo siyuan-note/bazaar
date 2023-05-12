@@ -147,14 +147,21 @@ type File struct {
 type Attrs struct {
 	Pass bool `json:"pass"` // 配置文件属性检查是否通过
 
-	Name    Attr `json:"name"`
+	Name    Name `json:"name"`
 	Version Attr `json:"version"`
 	Author  Attr `json:"author"`
 	URL     Attr `json:"url"`
 }
 
+type Name struct {
+	Pass  bool   `json:"pass"`  // name 字段是否存在
+	Value string `json:"value"` // name 字段值
+
+	Valid  bool `json:"valid"`  // name 字段值是否有效 (在不同平台均为合法的目录名)
+	Unique bool `json:"unique"` // name 字段值在同类资源中是否唯一 (大小写不敏感)
+}
+
 type Attr struct {
-	Pass   bool   `json:"pass"`   // 配置文件属性是否存在
-	Unique bool   `json:"unique"` // 配置文件属性是否唯一
-	Value  string `json:"value"`  // 配置文件属性值
+	Pass  bool   `json:"pass"`  // 配置文件属性是否存在
+	Value string `json:"value"` // 配置文件属性值
 }
