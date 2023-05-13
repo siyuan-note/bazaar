@@ -49,9 +49,10 @@ var CheckResultTestExample = CheckResult{
 			},
 			Attrs: Attrs{
 				Pass: true,
-				Name: Attr{
+				Name: Name{
 					Pass:   true,
 					Unique: true,
+					Valid:  true,
 					Value:  "icon-sample",
 				},
 				Version: Attr{
@@ -99,9 +100,10 @@ var CheckResultTestExample = CheckResult{
 			},
 			Attrs: Attrs{
 				Pass: false,
-				Name: Attr{
+				Name: Name{
 					Pass:   false,
 					Unique: false,
+					Valid:  false,
 				},
 				Version: Attr{
 					Pass: false,
@@ -153,9 +155,10 @@ var CheckResultTestExample = CheckResult{
 			},
 			Attrs: Attrs{
 				Pass: true,
-				Name: Attr{
+				Name: Name{
 					Pass:   true,
 					Unique: true,
+					Valid:  true,
 					Value:  "plugin-sample",
 				},
 				Version: Attr{
@@ -203,9 +206,10 @@ var CheckResultTestExample = CheckResult{
 			},
 			Attrs: Attrs{
 				Pass: false,
-				Name: Attr{
+				Name: Name{
 					Pass:   false,
 					Unique: false,
+					Valid:  false,
 				},
 				Version: Attr{
 					Pass: false,
@@ -257,9 +261,10 @@ var CheckResultTestExample = CheckResult{
 			},
 			Attrs: Attrs{
 				Pass: true,
-				Name: Attr{
+				Name: Name{
 					Pass:   true,
 					Unique: true,
+					Valid:  true,
 					Value:  "template-sample",
 				},
 				Version: Attr{
@@ -307,9 +312,10 @@ var CheckResultTestExample = CheckResult{
 			},
 			Attrs: Attrs{
 				Pass: false,
-				Name: Attr{
+				Name: Name{
 					Pass:   false,
 					Unique: false,
+					Valid:  false,
 				},
 				Version: Attr{
 					Pass: false,
@@ -361,9 +367,10 @@ var CheckResultTestExample = CheckResult{
 			},
 			Attrs: Attrs{
 				Pass: true,
-				Name: Attr{
+				Name: Name{
 					Pass:   true,
 					Unique: true,
+					Valid:  true,
 					Value:  "theme-sample",
 				},
 				Version: Attr{
@@ -411,9 +418,10 @@ var CheckResultTestExample = CheckResult{
 			},
 			Attrs: Attrs{
 				Pass: false,
-				Name: Attr{
+				Name: Name{
 					Pass:   false,
 					Unique: false,
+					Valid:  false,
 				},
 				Version: Attr{
 					Pass: false,
@@ -465,9 +473,10 @@ var CheckResultTestExample = CheckResult{
 			},
 			Attrs: Attrs{
 				Pass: true,
-				Name: Attr{
+				Name: Name{
 					Pass:   true,
 					Unique: true,
+					Valid:  true,
 					Value:  "widget-sample",
 				},
 				Version: Attr{
@@ -515,9 +524,10 @@ var CheckResultTestExample = CheckResult{
 			},
 			Attrs: Attrs{
 				Pass: false,
-				Name: Attr{
+				Name: Name{
 					Pass:   false,
 					Unique: false,
+					Valid:  false,
 				},
 				Version: Attr{
 					Pass: false,

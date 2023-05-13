@@ -52,29 +52,32 @@ var (
 	REQUEST_RETRY_COUNT    = 3                // 请求重试次数
 	REQUEST_RETRY_DURATION = 10 * time.Second // 请求重试间隔时间
 
-	logger         = gulu.Log.NewLogger(os.Stdout)
-	github_contest = context.Background()
-	github_client  = github.NewTokenClient(github_contest, GITHUB_TOKEN)
+	logger        = gulu.Log.NewLogger(os.Stdout)
+	githubContest = context.Background()
+	githubClient  = github.NewTokenClient(githubContest, GITHUB_TOKEN)
 )
 
 func main() {
 	logger.Infof("PR Check running...")
 
 	// 获取检查结果模板文件
-	check_result_template, err := template.ParseFiles(FILE_PATH_CHECK_RESULT_TEMPLATE)
+	checkResultTemplate, err := template.ParseFiles(FILE_PATH_CHECK_RESULT_TEMPLATE)
 	if nil != err {
 		logger.Fatalf("load check result template file <\033[7m%s\033[0m> failed: %s", FILE_PATH_CHECK_RESULT_TEMPLATE, err)
 		panic(err)
 	}
 
 	// 打开检查结果输出文件
-	check_result_output_file, err := os.OpenFile(FILE_PATH_CHECK_RESULT_OUTPUT, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0666)
+	checkResultOutputFile, err := os.OpenFile(FILE_PATH_CHECK_RESULT_OUTPUT, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0666)
 	if nil != err {
 		logger.Fatalf("open check result output file <\033[7m%s\033[0m> failed: %s", FILE_PATH_CHECK_RESULT_OUTPUT, err)
 		panic(err)
 	}
 
-	check_result := &CheckResult{
+	// check_result_template.Execute(check_result_output_file, CheckResultTestExample)
+	// return
+
+	checkResult := &CheckResult{
 		Icons:     []Icon{},
 		Plugins:   []Plugin{},
 		Templates: []Template{},
@@ -82,29 +85,28 @@ func main() {
 		Widgets:   []Widget{},
 	} // 检查结果
 
-	github_client.Client().Timeout = REQUEST_TIMEOUT // 设置请求超时时间
+	githubClient.Client().Timeout = REQUEST_TIMEOUT // 设置请求超时时间
 
-	wait_group := &sync.WaitGroup{}
-	wait_group.Add(5)
+	wg := &sync.WaitGroup{}
+	wg.Add(5)
 
-	go checkRepos(PR_REPO_PATH+"/icons.json", "./stage/icons.json", icons, check_result, wait_group)
-	go checkRepos(PR_REPO_PATH+"/plugins.json", "./stage/plugins.json", plugins, check_result, wait_group)
-	go checkRepos(PR_REPO_PATH+"/templates.json", "./stage/templates.json", templates, check_result, wait_group)
-	go checkRepos(PR_REPO_PATH+"/themes.json", "./stage/themes.json", themes, check_result, wait_group)
-	go checkRepos(PR_REPO_PATH+"/widgets.json", "./stage/widgets.json", widgets, check_result, wait_group)
+	go checkRepos(PR_REPO_PATH+"/icons.json", "./stage/icons.json", icons, checkResult, wg)
+	go checkRepos(PR_REPO_PATH+"/plugins.json", "./stage/plugins.json", plugins, checkResult, wg)
+	go checkRepos(PR_REPO_PATH+"/templates.json", "./stage/templates.json", templates, checkResult, wg)
+	go checkRepos(PR_REPO_PATH+"/themes.json", "./stage/themes.json", themes, checkResult, wg)
+	go checkRepos(PR_REPO_PATH+"/widgets.json", "./stage/widgets.json", widgets, checkResult, wg)
 
-	wait_group.Wait() // 等待所有检查完成
+	wg.Wait() // 等待所有检查完成
 
 	// 将检查结果写入文件
-	// check_result_template.Execute(check_result_output_file, CheckResultTestExample)
-	check_result_template.Execute(check_result_output_file, check_result)
+	checkResultTemplate.Execute(checkResultOutputFile, checkResult)
 
 	logger.Infof("PR Check finished")
 }
 
 // checkRepos 检查集市资源仓库列表
 func checkRepos(
-	targetFilePath,
+	targetFilePath string,
 	originFilePath string,
 	resourceType ResourceType,
 	checkResult *CheckResult,
@@ -114,59 +116,63 @@ func checkRepos(
 	logger.Infof("start repes check <\033[7m%s\033[0m>", targetFilePath)
 
 	// 读取 PR 中的文件
-	target_file, err := os.ReadFile(targetFilePath)
+	targetFile, err := os.ReadFile(targetFilePath)
 	if nil != err {
 		logger.Fatalf("read file <\033[7m%s\033[0m> failed: %s", targetFilePath, err)
 		panic(err)
 	}
 	target := map[string]interface{}{}
-	if err = gulu.JSON.UnmarshalJSON(target_file, &target); nil != err {
+	if err = gulu.JSON.UnmarshalJSON(targetFile, &target); nil != err {
 		logger.Fatalf("unmarshal file <\033[7m%s\033[0m> failed: %s", targetFilePath, err)
 		panic(err)
 	}
 
 	// 读取 stage 中的文件
-	origin_file, err := os.ReadFile(originFilePath)
+	originFile, err := os.ReadFile(originFilePath)
 	if nil != err {
 		logger.Fatalf("read file <\033[7m%s\033[0m> failed: %s", originFilePath, err)
 		panic(err)
 	}
 	origin := map[string]interface{}{}
-	if err = gulu.JSON.UnmarshalJSON(origin_file, &origin); nil != err {
+	if err = gulu.JSON.UnmarshalJSON(originFile, &origin); nil != err {
 		logger.Fatalf("unmarshal file <\033[7m%s\033[0m> failed: %s", originFilePath, err)
 		panic(err)
 	}
 
 	// 获取新增的仓库列表
-	target_repos := target["repos"].([]interface{})       // PR 中的仓库列表
-	origin_repos := origin["repos"].([]interface{})       // stage 中的仓库列表
-	origin_repo_set := make(StringSet, len(origin_repos)) // stage 中的仓库 owner/name 集合
-	origin_name_set := make(StringSet, len(origin_repos)) // stage 中的 name 字段集合
-	for _, origin_repo := range origin_repos {
-		origin_url := origin_repo.(map[string]interface{})["url"].(string)
-		origin_repo_set[strings.Split(origin_url, "@")[0]] = nil
+	targetRepos := target["repos"].([]interface{})     // PR 中的仓库列表
+	originRepos := origin["repos"].([]interface{})     // stage 中的仓库列表
+	originRepoSet := make(StringSet, len(originRepos)) // stage 中的仓库 owner/name 集合
+	originNameSet := make(StringSet, len(originRepos)) // stage 中的 name 字段集合
+	for _, originRepo := range originRepos {
+		originUrl := originRepo.(map[string]interface{})["url"].(string)
+		originUrl = strings.Split(originUrl, "@")[0]
+		originUrl = strings.ToLower(originUrl)
+		originRepoSet[originUrl] = nil
 
-		origin_name := origin_repo.(map[string]interface{})["package"].(map[string]interface{})["name"].(string)
-		origin_name_set[origin_name] = nil
+		originName := originRepo.(map[string]interface{})["package"].(map[string]interface{})["name"].(string)
+		originName = strings.ToLower(originName)
+		originNameSet[originName] = nil
 	}
 
-	new_repos := []string{} // 新增的仓库列表
-	for _, target_repo := range target_repos {
-		target_repo_path := target_repo.(string)
-		if !isKeyInSet(target_repo_path, origin_repo_set) {
-			new_repos = append(new_repos, target_repo_path)
+	newRepos := []string{} // 新增的仓库列表
+	for _, targetRepo := range targetRepos {
+		targetRepoPath := targetRepo.(string)
+		targetRepoPath = strings.ToLower(targetRepoPath)
+		if !isKeyInSet(targetRepoPath, originRepoSet) {
+			newRepos = append(newRepos, targetRepoPath)
 		}
 	}
 
 	// 检查每个集市资源仓库
-	result_channel := make(chan interface{}, 4) // 检查结果输出通道
-	wait_group_check := &sync.WaitGroup{}       // 等待所有检查完成
-	wait_group_result := &sync.WaitGroup{}      // 等待所有检查结果处理完成
+	resultChannel := make(chan interface{}, 4) // 检查结果输出通道
+	waitGroupCheck := &sync.WaitGroup{}        // 等待所有检查完成
+	waitGroupResult := &sync.WaitGroup{}       // 等待所有检查结果处理完成
 
-	wait_group_result.Add(1)
+	waitGroupResult.Add(1)
 	// 处理输出地检查结果
 	go func() {
-		for result := range result_channel {
+		for result := range resultChannel {
 			switch result.(type) {
 			case *Icon:
 				checkResult.Icons = append(checkResult.Icons, *result.(*Icon))
@@ -181,16 +187,16 @@ func checkRepos(
 			default:
 			}
 		}
-		wait_group_result.Done()
+		waitGroupResult.Done()
 	}()
 
-	for _, new_repo := range new_repos {
-		wait_group_check.Add(1)
-		go checkRepo(new_repo, origin_name_set, resourceType, result_channel, wait_group_check) // 检查每个仓库
+	for _, new_repo := range newRepos {
+		waitGroupCheck.Add(1)
+		go checkRepo(new_repo, originNameSet, resourceType, resultChannel, waitGroupCheck) // 检查每个仓库
 	}
-	wait_group_check.Wait()  // 等待检查完成
-	close(result_channel)    // 关闭检查结果输出通道
-	wait_group_result.Wait() // 等待检查结果处理完成
+	waitGroupCheck.Wait()  // 等待检查完成
+	close(resultChannel)   // 关闭检查结果输出通道
+	waitGroupResult.Wait() // 等待检查结果处理完成
 	logger.Infof("finish repos check <\033[7m%s\033[0m>", targetFilePath)
 }
 
@@ -208,91 +214,100 @@ func checkRepo(
 	var err error
 
 	// 检查 latest release
-	repo_meta := strings.Split(repoPath, "/")
-	repo_owner := repo_meta[0]
-	repo_name := repo_meta[1]
-	repo_info := &RepoInfo{
-		Owner: repo_owner,
-		Name:  repo_name,
+	repoMeta := strings.Split(repoPath, "/")
+	repoOwner := repoMeta[0]
+	repoName := repoMeta[1]
+	repoInfo := &RepoInfo{
+		Owner: repoOwner,
+		Name:  repoName,
 		Path:  repoPath,
-		Home:  buildRepoHomeURL(repo_owner, repo_name),
+		Home:  buildRepoHomeURL(repoOwner, repoName),
 	}
-	release_check_result := checkRepoLatestRelease(repo_owner, repo_name)
+	releaseCheckResult := checkRepoLatestRelease(repoOwner, repoName)
 
-	if release_check_result.LatestRelease.Hash != "" {
+	if releaseCheckResult.LatestRelease.Hash != "" {
 		// 获得 latest release 成功, 可以进一步检查文件与属性
 
 		// 检查清单文件中的属性
-		var attrs_check_result *Attrs
-		var manifest_file_path string // 清单文件路径
+		var attrsCheckResult *Attrs
+		var manifestFilePath string // 清单文件路径
 		switch resourceType {
 		case icons:
-			manifest_file_path = "icon.json"
+			manifestFilePath = "icon.json"
 		case plugins:
-			manifest_file_path = "plugin.json"
+			manifestFilePath = "plugin.json"
 		case templates:
-			manifest_file_path = "template.json"
+			manifestFilePath = "template.json"
 		case themes:
-			manifest_file_path = "theme.json"
+			manifestFilePath = "theme.json"
 		case widgets:
-			manifest_file_path = "widget.json"
+			manifestFilePath = "widget.json"
 		default:
 		}
-		manifest_file_url := buildFileRawURL(
-			repo_owner,
-			repo_name,
-			release_check_result.LatestRelease.Hash,
-			manifest_file_path,
+		manifestFileUrl := buildFileRawURL(
+			repoOwner,
+			repoName,
+			releaseCheckResult.LatestRelease.Hash,
+			manifestFilePath,
 		) // 清单文件下载地址
 
-		if attrs_check_result, err = checkManifestAttrs(manifest_file_url); err != nil {
-			logger.Warnf("check repo <\033[7m%s\033[0m> manifest file <\033[7m%s\033[0m> failed: %s", repoPath, manifest_file_url, err)
+		if attrsCheckResult, err = checkManifestAttrs(manifestFileUrl); err != nil {
+			logger.Warnf("check repo <\033[7m%s\033[0m> manifest file <\033[7m%s\033[0m> failed: %s", repoPath, manifestFileUrl, err)
 		} else {
-			if attrs_check_result.Name.Value != "" {
+			name := strings.ToLower(attrsCheckResult.Name.Value)
+			if name != "" {
 				// 字段唯一性检查
-				if isKeyInSet(attrs_check_result.Name.Value, nameSet) {
-					logger.Warnf("repo <\033[7m%s\033[0m> name <\033[7m%s\033[0m> already exists", repoPath, attrs_check_result.Name.Value)
+				if isKeyInSet(name, nameSet) {
+					logger.Warnf("repo <\033[7m%s\033[0m> name <\033[7m%s\033[0m> already exists", repoPath, name)
 				} else {
-					nameSet[attrs_check_result.Name.Value] = nil // 新的 name 添加到检查集合中
-					attrs_check_result.Name.Unique = true        // name 字段通过唯一性检查
-					attrs_check_result.Name.Pass = true          // name 字段通过检查
+					nameSet[name] = nil // 新的 name 添加到检查集合中
 
-					attrs_check_result.Pass = attrs_check_result.Name.Pass &&
-						attrs_check_result.Version.Pass &&
-						attrs_check_result.Author.Pass &&
-						attrs_check_result.URL.Pass
+					attrsCheckResult.Name.Unique = true // name 字段通过唯一性检查
 				}
+
+				// 字段有效性检查
+				if attrsCheckResult.Name.Valid, err = isValieName(name); err != nil {
+					logger.Warn(err)
+				}
+
+				attrsCheckResult.Name.Pass = attrsCheckResult.Name.Unique &&
+					attrsCheckResult.Name.Valid
+
+				attrsCheckResult.Pass = attrsCheckResult.Name.Pass &&
+					attrsCheckResult.Version.Pass &&
+					attrsCheckResult.Author.Pass &&
+					attrsCheckResult.URL.Pass
 			}
 		}
 
 		// 检查文件
-		var files_check_result interface{} // 文件检查结果
+		var filesCheckResult interface{} // 文件检查结果
 
 		// 检查所有类型集市资源必要的文件
-		icon_png_check_result, err := checkFileExist(
-			repo_owner,
-			repo_name,
-			release_check_result.LatestRelease.Hash,
+		iconPngCheckResult, err := checkFileExist(
+			repoOwner,
+			repoName,
+			releaseCheckResult.LatestRelease.Hash,
 			FILE_PATH_ICON_PNG,
 		)
 		if err != nil {
 			logger.Warn(err.Error())
 		}
 
-		preview_png_check_result, err := checkFileExist(
-			repo_owner,
-			repo_name,
-			release_check_result.LatestRelease.Hash,
+		previewPngCheckResult, err := checkFileExist(
+			repoOwner,
+			repoName,
+			releaseCheckResult.LatestRelease.Hash,
 			FILE_PATH_PREVIEW_PNG,
 		)
 		if err != nil {
 			logger.Warn(err.Error())
 		}
 
-		readme_md_check_result, err := checkFileExist(
-			repo_owner,
-			repo_name,
-			release_check_result.LatestRelease.Hash,
+		readmeMdCheckResult, err := checkFileExist(
+			repoOwner,
+			repoName,
+			releaseCheckResult.LatestRelease.Hash,
 			FILE_PATH_README_MD,
 		)
 		if err != nil {
@@ -303,127 +318,127 @@ func checkRepo(
 		switch resourceType {
 		case icons:
 			{
-				icon_json_check_result, err := checkFileExist(
-					repo_owner,
-					repo_name,
-					release_check_result.LatestRelease.Hash,
+				iconJsonCheckResult, err := checkFileExist(
+					repoOwner,
+					repoName,
+					releaseCheckResult.LatestRelease.Hash,
 					FILE_PATH_ICON_JSON,
 				)
 				if err != nil {
 					logger.Warn(err.Error())
 				}
 
-				files_check_result = &IconFiles{
-					Pass: icon_json_check_result.Pass &&
-						icon_png_check_result.Pass &&
-						preview_png_check_result.Pass &&
-						readme_md_check_result.Pass,
+				filesCheckResult = &IconFiles{
+					Pass: iconJsonCheckResult.Pass &&
+						iconPngCheckResult.Pass &&
+						previewPngCheckResult.Pass &&
+						readmeMdCheckResult.Pass,
 
-					IconJson: *icon_json_check_result,
+					IconJson: *iconJsonCheckResult,
 
-					IconPng:    *icon_png_check_result,
-					PreviewPng: *preview_png_check_result,
-					ReadmeMd:   *readme_md_check_result,
+					IconPng:    *iconPngCheckResult,
+					PreviewPng: *previewPngCheckResult,
+					ReadmeMd:   *readmeMdCheckResult,
 				}
 			}
 		case plugins:
 			{
-				plugin_json_check_result, err := checkFileExist(
-					repo_owner,
-					repo_name,
-					release_check_result.LatestRelease.Hash,
+				pluginJsonCheckResult, err := checkFileExist(
+					repoOwner,
+					repoName,
+					releaseCheckResult.LatestRelease.Hash,
 					FILE_PATH_PLUGIN_JSON,
 				)
 				if err != nil {
 					logger.Warn(err.Error())
 				}
 
-				files_check_result = &PluginFiles{
-					Pass: plugin_json_check_result.Pass &&
-						icon_png_check_result.Pass &&
-						preview_png_check_result.Pass &&
-						readme_md_check_result.Pass,
+				filesCheckResult = &PluginFiles{
+					Pass: pluginJsonCheckResult.Pass &&
+						iconPngCheckResult.Pass &&
+						previewPngCheckResult.Pass &&
+						readmeMdCheckResult.Pass,
 
-					PluginJson: *plugin_json_check_result,
+					PluginJson: *pluginJsonCheckResult,
 
-					IconPng:    *icon_png_check_result,
-					PreviewPng: *preview_png_check_result,
-					ReadmeMd:   *readme_md_check_result,
+					IconPng:    *iconPngCheckResult,
+					PreviewPng: *previewPngCheckResult,
+					ReadmeMd:   *readmeMdCheckResult,
 				}
 			}
 		case templates:
 			{
-				template_json_check_result, err := checkFileExist(
-					repo_owner,
-					repo_name,
-					release_check_result.LatestRelease.Hash,
+				templateJsonCheckResult, err := checkFileExist(
+					repoOwner,
+					repoName,
+					releaseCheckResult.LatestRelease.Hash,
 					FILE_PATH_TEMPLATE_JSON,
 				)
 				if err != nil {
 					logger.Warn(err.Error())
 				}
 
-				files_check_result = &TemplateFiles{
-					Pass: template_json_check_result.Pass &&
-						icon_png_check_result.Pass &&
-						preview_png_check_result.Pass &&
-						readme_md_check_result.Pass,
+				filesCheckResult = &TemplateFiles{
+					Pass: templateJsonCheckResult.Pass &&
+						iconPngCheckResult.Pass &&
+						previewPngCheckResult.Pass &&
+						readmeMdCheckResult.Pass,
 
-					TemplateJson: *template_json_check_result,
+					TemplateJson: *templateJsonCheckResult,
 
-					IconPng:    *icon_png_check_result,
-					PreviewPng: *preview_png_check_result,
-					ReadmeMd:   *readme_md_check_result,
+					IconPng:    *iconPngCheckResult,
+					PreviewPng: *previewPngCheckResult,
+					ReadmeMd:   *readmeMdCheckResult,
 				}
 			}
 		case themes:
 			{
-				theme_json_check_result, err := checkFileExist(
-					repo_owner,
-					repo_name,
-					release_check_result.LatestRelease.Hash,
+				themeJsonCheckResult, err := checkFileExist(
+					repoOwner,
+					repoName,
+					releaseCheckResult.LatestRelease.Hash,
 					FILE_PATH_THEME_JSON,
 				)
 				if err != nil {
 					logger.Warn(err.Error())
 				}
 
-				files_check_result = &ThemeFiles{
-					Pass: theme_json_check_result.Pass &&
-						icon_png_check_result.Pass &&
-						preview_png_check_result.Pass &&
-						readme_md_check_result.Pass,
+				filesCheckResult = &ThemeFiles{
+					Pass: themeJsonCheckResult.Pass &&
+						iconPngCheckResult.Pass &&
+						previewPngCheckResult.Pass &&
+						readmeMdCheckResult.Pass,
 
-					ThemeJson: *theme_json_check_result,
+					ThemeJson: *themeJsonCheckResult,
 
-					IconPng:    *icon_png_check_result,
-					PreviewPng: *preview_png_check_result,
-					ReadmeMd:   *readme_md_check_result,
+					IconPng:    *iconPngCheckResult,
+					PreviewPng: *previewPngCheckResult,
+					ReadmeMd:   *readmeMdCheckResult,
 				}
 			}
 		case widgets:
 			{
-				widget_json_check_result, err := checkFileExist(
-					repo_owner,
-					repo_name,
-					release_check_result.LatestRelease.Hash,
+				widgetJsonCheckResult, err := checkFileExist(
+					repoOwner,
+					repoName,
+					releaseCheckResult.LatestRelease.Hash,
 					FILE_PATH_WIDGET_JSON,
 				)
 				if err != nil {
 					logger.Warn(err.Error())
 				}
 
-				files_check_result = &WidgetFiles{
-					Pass: widget_json_check_result.Pass &&
-						icon_png_check_result.Pass &&
-						preview_png_check_result.Pass &&
-						readme_md_check_result.Pass,
+				filesCheckResult = &WidgetFiles{
+					Pass: widgetJsonCheckResult.Pass &&
+						iconPngCheckResult.Pass &&
+						previewPngCheckResult.Pass &&
+						readmeMdCheckResult.Pass,
 
-					WidgetJson: *widget_json_check_result,
+					WidgetJson: *widgetJsonCheckResult,
 
-					IconPng:    *icon_png_check_result,
-					PreviewPng: *preview_png_check_result,
-					ReadmeMd:   *readme_md_check_result,
+					IconPng:    *iconPngCheckResult,
+					PreviewPng: *previewPngCheckResult,
+					ReadmeMd:   *readmeMdCheckResult,
 				}
 			}
 		default:
@@ -433,38 +448,38 @@ func checkRepo(
 		switch resourceType {
 		case icons:
 			resultChannel <- &Icon{
-				RepoInfo: *repo_info,
-				Release:  *release_check_result,
-				Files:    *files_check_result.(*IconFiles),
-				Attrs:    *attrs_check_result,
+				RepoInfo: *repoInfo,
+				Release:  *releaseCheckResult,
+				Files:    *filesCheckResult.(*IconFiles),
+				Attrs:    *attrsCheckResult,
 			}
 		case plugins:
 			resultChannel <- &Plugin{
-				RepoInfo: *repo_info,
-				Release:  *release_check_result,
-				Files:    *files_check_result.(*PluginFiles),
-				Attrs:    *attrs_check_result,
+				RepoInfo: *repoInfo,
+				Release:  *releaseCheckResult,
+				Files:    *filesCheckResult.(*PluginFiles),
+				Attrs:    *attrsCheckResult,
 			}
 		case templates:
 			resultChannel <- &Template{
-				RepoInfo: *repo_info,
-				Release:  *release_check_result,
-				Files:    *files_check_result.(*TemplateFiles),
-				Attrs:    *attrs_check_result,
+				RepoInfo: *repoInfo,
+				Release:  *releaseCheckResult,
+				Files:    *filesCheckResult.(*TemplateFiles),
+				Attrs:    *attrsCheckResult,
 			}
 		case themes:
 			resultChannel <- &Theme{
-				RepoInfo: *repo_info,
-				Release:  *release_check_result,
-				Files:    *files_check_result.(*ThemeFiles),
-				Attrs:    *attrs_check_result,
+				RepoInfo: *repoInfo,
+				Release:  *releaseCheckResult,
+				Files:    *filesCheckResult.(*ThemeFiles),
+				Attrs:    *attrsCheckResult,
 			}
 		case widgets:
 			resultChannel <- &Widget{
-				RepoInfo: *repo_info,
-				Release:  *release_check_result,
-				Files:    *files_check_result.(*WidgetFiles),
-				Attrs:    *attrs_check_result,
+				RepoInfo: *repoInfo,
+				Release:  *releaseCheckResult,
+				Files:    *filesCheckResult.(*WidgetFiles),
+				Attrs:    *attrsCheckResult,
 			}
 		default:
 		}
@@ -473,28 +488,28 @@ func checkRepo(
 		switch resourceType {
 		case icons:
 			resultChannel <- &Icon{
-				RepoInfo: *repo_info,
-				Release:  *release_check_result,
+				RepoInfo: *repoInfo,
+				Release:  *releaseCheckResult,
 			}
 		case plugins:
 			resultChannel <- &Plugin{
-				RepoInfo: *repo_info,
-				Release:  *release_check_result,
+				RepoInfo: *repoInfo,
+				Release:  *releaseCheckResult,
 			}
 		case templates:
 			resultChannel <- &Template{
-				RepoInfo: *repo_info,
-				Release:  *release_check_result,
+				RepoInfo: *repoInfo,
+				Release:  *releaseCheckResult,
 			}
 		case themes:
 			resultChannel <- &Theme{
-				RepoInfo: *repo_info,
-				Release:  *release_check_result,
+				RepoInfo: *repoInfo,
+				Release:  *releaseCheckResult,
 			}
 		case widgets:
 			resultChannel <- &Widget{
-				RepoInfo: *repo_info,
-				Release:  *release_check_result,
+				RepoInfo: *repoInfo,
+				Release:  *releaseCheckResult,
 			}
 		default:
 		}
@@ -511,7 +526,7 @@ func checkRepoLatestRelease(
 	releaseCheckResult = &Release{}
 
 	// 获取 latest release
-	github_release, _, err := github_client.Repositories.GetLatestRelease(github_contest, repoOwner, repoName)
+	githubRelease, _, err := githubClient.Repositories.GetLatestRelease(githubContest, repoOwner, repoName)
 	if nil != err {
 		logger.Warnf("get repo <\033[7m%s/%s\033[0m> latest release failed: %s", repoOwner, repoName, err)
 		return
@@ -520,11 +535,11 @@ func checkRepoLatestRelease(
 	releaseCheckResult.LatestRelease.Pass = true // 最新发行版存在
 
 	// 获取 tag 名称
-	releaseCheckResult.LatestRelease.Tag = github_release.GetTagName()
-	releaseCheckResult.LatestRelease.URL = github_release.GetHTMLURL()
+	releaseCheckResult.LatestRelease.Tag = githubRelease.GetTagName()
+	releaseCheckResult.LatestRelease.URL = githubRelease.GetHTMLURL()
 
 	// 获取 package.zip 下载地址
-	for _, asset := range github_release.Assets {
+	for _, asset := range githubRelease.Assets {
 		if asset.GetName() == "package.zip" {
 			releaseCheckResult.LatestRelease.PackageZip.Pass = true
 			releaseCheckResult.LatestRelease.PackageZip.URL = asset.GetBrowserDownloadURL()
@@ -534,13 +549,13 @@ func checkRepoLatestRelease(
 
 	// 获取 hash
 	// REF https://pkg.go.dev/github.com/google/go-github/v52/github#GitService.GetRef
-	github_reference, _, err := github_client.Git.GetRef(github_contest, repoOwner, repoName, "tags/"+releaseCheckResult.LatestRelease.Tag)
+	githubReference, _, err := githubClient.Git.GetRef(githubContest, repoOwner, repoName, "tags/"+releaseCheckResult.LatestRelease.Tag)
 	if nil != err {
 		logger.Warnf("get repo <\033[7m%s/%s\033[0m> tag <\033[7m%s\033[0m> failed: %s", repoOwner, repoName, releaseCheckResult.LatestRelease.Tag, err)
 		return
 	}
 
-	releaseCheckResult.LatestRelease.Hash = github_reference.GetObject().GetSHA()
+	releaseCheckResult.LatestRelease.Hash = githubReference.GetObject().GetSHA()
 	releaseCheckResult.Pass = releaseCheckResult.LatestRelease.Pass &&
 		releaseCheckResult.LatestRelease.PackageZip.Pass // 通过发行版检查
 
@@ -558,7 +573,7 @@ func checkFileExist(
 	err error,
 ) {
 	fileCheckResult = &File{}
-	raw_url := buildFileRawURL(
+	rawUrl := buildFileRawURL(
 		repoOwner,
 		repoName,
 		hash,
@@ -573,13 +588,13 @@ func checkFileExist(
 
 	response, _, errs := gorequest.
 		New().
-		Head(raw_url).
+		Head(rawUrl).
 		Set("User-Agent", util.UserAgent).
 		Retry(REQUEST_RETRY_COUNT, REQUEST_RETRY_DURATION).
 		Timeout(REQUEST_TIMEOUT).
 		End()
 	if nil != errs {
-		logger.Fatalf("HTTP HEAD request <\033[7m%s\033[0m> failed: %s", raw_url, errs)
+		logger.Fatalf("HTTP HEAD request <\033[7m%s\033[0m> failed: %s", rawUrl, errs)
 		panic(errs)
 	}
 	if response.StatusCode == http.StatusOK {
@@ -589,7 +604,7 @@ func checkFileExist(
 		fileCheckResult.Pass = false
 		return
 	} else {
-		err = fmt.Errorf("HTTP HEAD request <\033[7m%s\033[0m> failed: %s", raw_url, response.Status)
+		err = fmt.Errorf("HTTP HEAD request <\033[7m%s\033[0m> failed: %s", rawUrl, response.Status)
 		return
 	}
 }

@@ -10,7 +10,41 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"regexp"
+	"strings"
+)
+
+var (
+	// 文件/目录名称保留字
+	RESERVED_WORDS = StringSet{
+		"CON":  nil,
+		"PRN":  nil,
+		"AUX":  nil,
+		"NUL":  nil,
+		"COM0": nil,
+		"COM1": nil,
+		"COM2": nil,
+		"COM3": nil,
+		"COM4": nil,
+		"COM5": nil,
+		"COM6": nil,
+		"COM7": nil,
+		"COM8": nil,
+		"COM9": nil,
+		"LPT0": nil,
+		"LPT1": nil,
+		"LPT2": nil,
+		"LPT3": nil,
+		"LPT4": nil,
+		"LPT5": nil,
+		"LPT6": nil,
+		"LPT7": nil,
+		"LPT8": nil,
+		"LPT9": nil,
+	}
+)
 
 // isKeyInSet 判断字符串是否在集合中
 func isKeyInSet(
@@ -18,6 +52,34 @@ func isKeyInSet(
 	set StringSet,
 ) (exist bool) {
 	_, exist = set[key]
+
+	return
+}
+
+// isValieName 判断资源名称是否有效
+func isValieName(name string) (valid bool, err error) {
+	// 是否均为可打印的 ASCii 字符
+	if valid, err = regexp.MatchString("^[\\x20-\\x7E]+$", name); err != nil {
+		panic(err)
+	} else if !valid {
+		err = fmt.Errorf("name <\033[7m%s\033[0m> contains characters other than printable ASCII characters", name)
+		return
+	}
+
+	// 是否均为有效字符
+	if valid, err = regexp.MatchString("^[^\\\\/:*?\"<>|. ][^\\\\/:*?\"<>|]*[^\\\\/:*?\"<>|. ]$", name); err != nil {
+		panic(err)
+	} else if !valid {
+		err = fmt.Errorf("name <\033[7m%s\033[0m> contains invalid characters", name)
+		return
+	}
+
+	// 是否为保留字
+	// REF https://learn.microsoft.com/zh-cn/windows/win32/fileio/naming-a-file#naming-conventions
+	if valid = !isKeyInSet(strings.ToUpper(name), RESERVED_WORDS); !valid {
+		err = fmt.Errorf("name <\033[7m%s\033[0m> is a reserved word", name)
+		return
+	}
 
 	return
 }
