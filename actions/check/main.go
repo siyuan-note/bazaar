@@ -150,9 +150,14 @@ func checkRepos(
 		originUrl = strings.ToLower(originUrl)
 		originRepoSet[originUrl] = nil
 
-		originName := originRepo.(map[string]interface{})["package"].(map[string]interface{})["name"].(string)
-		originName = strings.ToLower(originName)
-		originNameSet[originName] = nil
+		originPackage := originRepo.(map[string]interface{})["package"]
+		if originPackage != nil {
+			originPackageName := originPackage.(map[string]interface{})["name"]
+			if originPackageName != nil {
+				originName := strings.ToLower(originPackageName.(string))
+				originNameSet[originName] = nil
+			}
+		}
 	}
 
 	newRepos := []string{} // 新增的仓库列表
