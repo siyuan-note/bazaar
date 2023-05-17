@@ -164,7 +164,8 @@ func indexPackage(repoURL, typ string) (ok bool, hash, published string, size in
 
 // getPackage 获取 release 对应提交中的 *.json 配置文件
 func getPackage(ownerRepo, hash, typ string) (ret *Package) {
-	u := "https://raw.githubusercontent.com/" + ownerRepo + "/" + hash + "/" + strings.TrimSuffix(typ, "s") + ".json"
+	name := strings.TrimSuffix(typ, "s")
+	u := "https://raw.githubusercontent.com/" + ownerRepo + "/" + hash + "/" + name + ".json"
 	resp, data, errs := gorequest.New().Get(u).
 		Set("User-Agent", util.UserAgent).
 		Retry(1, 3*time.Second).Timeout(30 * time.Second).EndBytes()
@@ -178,7 +179,7 @@ func getPackage(ownerRepo, hash, typ string) (ret *Package) {
 
 	ret = &Package{}
 	if err := gulu.JSON.UnmarshalJSON(data, ret); nil != err {
-		logger.Errorf("unmarshal [%s.json] failed: %s", typ, err)
+		logger.Errorf("unmarshal [%s] failed: %s", u, err)
 		ret = nil
 		return
 	}
@@ -209,14 +210,14 @@ func indexPackageFile(ownerRepo, hash, filePath string, size int64, wg *sync.Wai
 		// 统计包大小
 		meta := map[string]interface{}{}
 		if err := gulu.JSON.UnmarshalJSON(data, &meta); nil != err {
-			logger.Errorf("stat package size failed: %s", err)
+			logger.Errorf("stat package [%s] size failed: %s", u, err)
 			return false
 		}
 		meta["size"] = size
 		var err error
 		data, err = gulu.JSON.MarshalIndentJSON(meta, "", "  ")
 		if nil != err {
-			logger.Errorf("marshal package meta json failed: %s", err)
+			logger.Errorf("marshal package [%s] meta json failed: %s", u, err)
 			return false
 		}
 	}
