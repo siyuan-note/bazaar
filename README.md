@@ -7,6 +7,7 @@
 * [SiYuan template sample](https://github.com/siyuan-note/template-sample)
 * [SiYuan widget sample](https://github.com/siyuan-note/widget-sample)
 * [SiYuan plugin sample](https://github.com/siyuan-note/plugin-sample)
+* [SiYuan plugin sample (Vite & Svelte)](https://github.com/siyuan-note/plugin-sample-vite-svelte)
 
 ## How long does it take to see the package in the marketplace after the PR is merged?
 
