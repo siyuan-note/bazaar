@@ -35,12 +35,12 @@ import (
 	获取仓库最新 release
 	获取仓库最新 release 的 tag
 	获取仓库最新 release 的 hash
-	获取配置文件 *.json
-		检查配置文件是否具有必要的字段
-		检查资源名称是否与 stage/*.json 中的重复
 	检查必要的文件是否存在
+	获取清单文件 *.json
+		检查清单文件是否存在必要的字段
+			检查清单中 name 字段值是否与 stage/*.json 中的重复
 	生成检查结果并输出文件 (使用 go 模板)
-	使用 thollander/actions-comment-pull-request@v2.3.1 将检查结果输出到到 PR 中
+	使用 thollander/actions-comment-pull-request 将检查结果输出到到 PR 中
 */
 
 var (
@@ -556,11 +556,28 @@ func checkRepoLatestRelease(
 	// REF https://pkg.go.dev/github.com/google/go-github/v52/github#GitService.GetRef
 	githubReference, _, err := githubClient.Git.GetRef(githubContest, repoOwner, repoName, "tags/"+releaseCheckResult.LatestRelease.Tag)
 	if nil != err {
-		logger.Warnf("get repo <\033[7m%s/%s\033[0m> tag <\033[7m%s\033[0m> failed: %s", repoOwner, repoName, releaseCheckResult.LatestRelease.Tag, err)
+		logger.Warnf("get repo <\033[7m%s/%s\033[0m> reference tag <\033[7m%s\033[0m> failed: %s", repoOwner, repoName, releaseCheckResult.LatestRelease.Tag, err)
 		return
 	}
 
-	releaseCheckResult.LatestRelease.Hash = githubReference.GetObject().GetSHA()
+	referenceType := githubReference.GetObject().GetType()
+
+	switch referenceType {
+	case "commit":
+		releaseCheckResult.LatestRelease.Hash = githubReference.GetObject().GetSHA()
+	case "tag":
+		tagSha := githubReference.GetObject().GetSHA()
+		githubTag, _, err := githubClient.Git.GetTag(githubContest, repoOwner, repoName, tagSha)
+		if nil != err {
+			logger.Warnf("get repo <\033[7m%s/%s\033[0m> tag <\033[7m%s:%s\033[0m> failed: %s", repoOwner, repoName, releaseCheckResult.LatestRelease.Tag, tagSha, err)
+			return
+		}
+		releaseCheckResult.LatestRelease.Hash = githubTag.GetObject().GetSHA()
+	default:
+		logger.Warnf("get repo <\033[7m%s/%s\033[0m> reference tag <\033[7m%s\033[0m> failed: unknown type <\033[7m%s\033[0m>", repoOwner, repoName, releaseCheckResult.LatestRelease.Tag, referenceType)
+		return
+	}
+
 	releaseCheckResult.Pass = releaseCheckResult.LatestRelease.Pass &&
 		releaseCheckResult.LatestRelease.PackageZip.Pass // 通过发行版检查
 
