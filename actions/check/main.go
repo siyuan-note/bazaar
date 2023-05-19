@@ -574,7 +574,7 @@ func checkRepoLatestRelease(
 		}
 		releaseCheckResult.LatestRelease.Hash = githubTag.GetObject().GetSHA()
 	default:
-		logger.Warnf("get repo <\033[7m%s/%s\033[0m> reference tag <\033[7m%s\033[0m> failed: unknown type <\033[7m%s\033[0m>", repoOwner, repoName, releaseCheckResult.LatestRelease.Tag, referenceType)
+		logger.Warnf("parse repo <\033[7m%s/%s\033[0m> reference tag <\033[7m%s\033[0m> failed: unknown type <\033[7m%s\033[0m>", repoOwner, repoName, releaseCheckResult.LatestRelease.Tag, referenceType)
 		return
 	}
 
