@@ -552,7 +552,7 @@ func checkRepoLatestRelease(
 		}
 	}
 
-	// 获取 hash
+	// 获取 tag
 	// REF https://pkg.go.dev/github.com/google/go-github/v52/github#GitService.GetRef
 	githubReference, _, err := githubClient.Git.GetRef(githubContest, repoOwner, repoName, "tags/"+releaseCheckResult.LatestRelease.Tag)
 	if nil != err {
@@ -567,11 +567,15 @@ func checkRepoLatestRelease(
 		releaseCheckResult.LatestRelease.Hash = githubReference.GetObject().GetSHA()
 	case "tag":
 		tagSha := githubReference.GetObject().GetSHA()
+
+		// 获取 commit hash
+		// REF https://pkg.go.dev/github.com/google/go-github/v52/github#GitService.GetTag
 		githubTag, _, err := githubClient.Git.GetTag(githubContest, repoOwner, repoName, tagSha)
 		if nil != err {
 			logger.Warnf("get repo <\033[7m%s/%s\033[0m> tag <\033[7m%s:%s\033[0m> failed: %s", repoOwner, repoName, releaseCheckResult.LatestRelease.Tag, tagSha, err)
 			return
 		}
+
 		releaseCheckResult.LatestRelease.Hash = githubTag.GetObject().GetSHA()
 	default:
 		logger.Warnf("parse repo <\033[7m%s/%s\033[0m> reference tag <\033[7m%s\033[0m> failed: unknown type <\033[7m%s\033[0m>", repoOwner, repoName, releaseCheckResult.LatestRelease.Tag, referenceType)
