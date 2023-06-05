@@ -28,17 +28,14 @@ func UploadOSS(key, contentType string, data []byte) (err error) {
 	ak := os.Getenv("QINIU_AK")
 	sk := os.Getenv("QINIU_SK")
 
-	logger.Infof("stating [%s]", key)
 	cfg := storage.Config{Zone: &storage.ZoneHuadong, UseCdnDomains: true, UseHTTPS: true}
 	mac := qbox.NewMac(ak, sk)
 	bucketManager := storage.NewBucketManager(mac, &cfg)
 	stat, err := bucketManager.Stat(bucket, key)
-	logger.Infof("stat [%s] result: %+v", key, stat)
 	if nil != err {
 		logger.Warnf("stat [%s] failed: %s", key, err)
 	} else {
 		if "" != stat.Hash {
-			logger.Infof("[%s] exists, skip it", key)
 			return
 		}
 	}
