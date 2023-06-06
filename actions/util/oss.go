@@ -27,10 +27,23 @@ func UploadOSS(key, contentType string, data []byte) (err error) {
 	bucket := os.Getenv("QINIU_BUCKET")
 	ak := os.Getenv("QINIU_AK")
 	sk := os.Getenv("QINIU_SK")
+
+	cfg := storage.Config{Zone: &storage.ZoneHuadong, UseCdnDomains: true, UseHTTPS: true}
+	mac := qbox.NewMac(ak, sk)
+	bucketManager := storage.NewBucketManager(mac, &cfg)
+	stat, err := bucketManager.Stat(bucket, key)
+	if nil != err {
+		logger.Warnf("stat [%s] failed: %s", key, err)
+	} else {
+		if "" != stat.Hash {
+			return
+		}
+	}
+
 	putPolicy := storage.PutPolicy{
 		Scope: fmt.Sprintf("%s:%s", bucket, key), // overwrite if exists
 	}
-	cfg := storage.Config{Zone: &storage.ZoneHuadong, UseCdnDomains: true, UseHTTPS: true}
+
 	formUploader := storage.NewFormUploader(&cfg)
 	if err = formUploader.Put(context.Background(), nil, putPolicy.UploadToken(qbox.NewMac(ak, sk)),
 		key, bytes.NewReader(data), int64(len(data)), &storage.PutExtra{MimeType: contentType}); nil != err {
