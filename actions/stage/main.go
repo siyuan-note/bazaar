@@ -1,7 +1,7 @@
 // SiYuan community bazaar.
 // Copyright (c) 2021-present, b3log.org
 //
-// Pipe is licensed under Mulan PSL v2.
+// Bazaar is licensed under Mulan PSL v2.
 // You can use this software according to the terms and conditions of the Mulan PSL v2.
 // You may obtain a copy of Mulan PSL v2 at:
 //         http://license.coscl.org.cn/MulanPSL2
@@ -33,6 +33,7 @@ func main() {
 	performStage("templates")
 	performStage("icons")
 	performStage("widgets")
+	performStage("plugins")
 
 	logger.Infof("bazaar staged")
 }
@@ -40,12 +41,12 @@ func main() {
 func performStage(typ string) {
 	logger.Infof("staging [%s]", typ)
 
-	data, err := os.ReadFile(typ + ".json")
+	data, err := os.ReadFile(typ + ".json") // 读取配置文件
 	if nil != err {
 		logger.Fatalf("read [%s.json] failed: %s", typ, err)
 	}
 
-	original := map[string]interface{}{}
+	original := map[string]interface{}{} // 解析配置文件
 	if err = gulu.JSON.UnmarshalJSON(data, &original); nil != err {
 		logger.Fatalf("unmarshal [%s.json] failed: %s", typ, err)
 	}
@@ -61,8 +62,9 @@ func performStage(typ string) {
 		var hash, updated string
 		var size int64
 		var ok bool
-		// 索引包上传 CDN
-		if ok, hash, updated, size = indexPackage(repo, typ); !ok {
+		var pkg *Package
+
+		if ok, hash, updated, size, pkg = indexPackage(repo, typ); !ok {
 			return
 		}
 
@@ -70,12 +72,13 @@ func performStage(typ string) {
 
 		lock.Lock()
 		defer lock.Unlock()
-		stageRepos = append(stageRepos, &stageRepo{
+		stageRepos = append(stageRepos, &StageRepo{
 			URL:        repo + "@" + hash,
 			Stars:      stars,
 			OpenIssues: openIssues,
 			Updated:    updated,
 			Size:       size,
+			Package:    pkg,
 		})
 		logger.Infof("updated repo [%s]", repo)
 	})
@@ -87,7 +90,7 @@ func performStage(typ string) {
 	p.Release()
 
 	sort.SliceStable(stageRepos, func(i, j int) bool {
-		return stageRepos[i].(*stageRepo).Updated > stageRepos[j].(*stageRepo).Updated
+		return stageRepos[i].(*StageRepo).Updated > stageRepos[j].(*StageRepo).Updated
 	})
 
 	staged := map[string]interface{}{
@@ -106,15 +109,23 @@ func performStage(typ string) {
 	logger.Infof("staged [%s]", typ)
 }
 
-func indexPackage(repoURL, typ string) (ok bool, hash, published string, size int64) {
-	hash, published = getRepoLatestRelease(repoURL)
+// indexPackage 索引包
+func indexPackage(repoURL, typ string) (ok bool, hash, published string, size int64, pkg *Package) {
+	hash, published, packageZip := getRepoLatestRelease(repoURL)
 	if "" == hash {
-		return false, "", "", 0
+		logger.Warnf("get [%s] latest release failed", repoURL)
+		return
 	}
 
+	// 下载 package.zip 文件
 	u := "https://github.com/" + repoURL + "/archive/" + hash + ".zip"
+	// TODO: 下架不使用 package.zip 发布的包 https://github.com/siyuan-note/bazaar/issues/1105
+	if "" != packageZip {
+		u = packageZip
+	}
+
 	resp, data, errs := gorequest.New().Get(u).
-		Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").
+		Set("User-Agent", util.UserAgent).
 		Retry(1, 3*time.Second).Timeout(30 * time.Second).EndBytes()
 	if nil != errs {
 		logger.Errorf("get [%s] failed: %s", u, errs)
@@ -125,36 +136,69 @@ func indexPackage(repoURL, typ string) (ok bool, hash, published string, size in
 		return
 	}
 
+	// 将 package.zip 上传到 OSS
 	key := "package/" + repoURL + "@" + hash
 	err := util.UploadOSS(key, "application/zip", data)
 	if nil != err {
 		logger.Fatalf("upload package [%s] failed: %s", repoURL, err)
 	}
 
-	size = int64(len(data))
-	if ok = indexPackageFile(repoURL, hash, "/README.md", 0); !ok {
+	size = int64(len(data)) // 计算包大小
+
+	wg := &sync.WaitGroup{}
+	wg.Add(7)
+	go func() {
+		defer wg.Done()
+		pkg = getPackage(repoURL, hash, typ)
+	}()
+	go indexPackageFile(repoURL, hash, "/README.md", 0, wg)
+	go indexPackageFile(repoURL, hash, "/README_zh_CN.md", 0, wg)
+	go indexPackageFile(repoURL, hash, "/README_en_US.md", 0, wg)
+	go indexPackageFile(repoURL, hash, "/preview.png", 0, wg)
+	go indexPackageFile(repoURL, hash, "/icon.png", 0, wg)
+	go indexPackageFile(repoURL, hash, "/"+strings.TrimSuffix(typ, "s")+".json", size, wg)
+	wg.Wait()
+	ok = true
+	return
+}
+
+// getPackage 获取 release 对应提交中的 *.json 配置文件
+func getPackage(ownerRepo, hash, typ string) (ret *Package) {
+	name := strings.TrimSuffix(typ, "s")
+	u := "https://raw.githubusercontent.com/" + ownerRepo + "/" + hash + "/" + name + ".json"
+	resp, data, errs := gorequest.New().Get(u).
+		Set("User-Agent", util.UserAgent).
+		Retry(1, 3*time.Second).Timeout(30 * time.Second).EndBytes()
+	if nil != errs {
+		logger.Errorf("get [%s] failed: %s", u, errs)
 		return
 	}
-	if ok = indexPackageFile(repoURL, hash, "/preview.png", 0); !ok {
+	if 200 != resp.StatusCode {
 		return
 	}
-	if ok = indexPackageFile(repoURL, hash, "/"+strings.TrimSuffix(typ, "s")+".json", size); !ok {
+
+	ret = &Package{}
+	if err := gulu.JSON.UnmarshalJSON(data, ret); nil != err {
+		logger.Errorf("unmarshal [%s] failed: %s", u, err)
+		ret = nil
 		return
 	}
 	return
 }
 
-func indexPackageFile(ownerRepo, hash, filePath string, size int64) bool {
+// indexPackageFile 索引文件
+func indexPackageFile(ownerRepo, hash, filePath string, size int64, wg *sync.WaitGroup) bool {
+	defer wg.Done()
+
 	u := "https://raw.githubusercontent.com/" + ownerRepo + "/" + hash + filePath
 	resp, data, errs := gorequest.New().Get(u).
-		Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").
+		Set("User-Agent", util.UserAgent).
 		Retry(1, 3*time.Second).Timeout(30 * time.Second).EndBytes()
 	if nil != errs {
 		logger.Errorf("get [%s] failed: %s", u, errs)
 		return false
 	}
 	if 200 != resp.StatusCode {
-		logger.Errorf("get [%s] failed: %d", u, resp.StatusCode)
 		return false
 	}
 
@@ -166,14 +210,14 @@ func indexPackageFile(ownerRepo, hash, filePath string, size int64) bool {
 		// 统计包大小
 		meta := map[string]interface{}{}
 		if err := gulu.JSON.UnmarshalJSON(data, &meta); nil != err {
-			logger.Errorf("stat package size failed: %s", err)
+			logger.Errorf("stat package [%s] size failed: %s", u, err)
 			return false
 		}
 		meta["size"] = size
 		var err error
 		data, err = gulu.JSON.MarshalIndentJSON(meta, "", "  ")
 		if nil != err {
-			logger.Errorf("marshal package meta json failed: %s", err)
+			logger.Errorf("marshal package [%s] meta json failed: %s", u, err)
 			return false
 		}
 	}
@@ -194,7 +238,7 @@ func repoStats(repoURL, hash string) (stars, openIssues int) {
 	u := "https://api.github.com/repos/" + repoURL
 	resp, _, errs := request.Get(u).
 		Set("Authorization", "Token "+pat).
-		Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").Timeout(7*time.Second).
+		Set("User-Agent", util.UserAgent).Timeout(7*time.Second).
 		Retry(1, 3*time.Second).EndStruct(&result)
 	if nil != errs {
 		logger.Fatalf("get [%s] failed: %s", u, errs)
@@ -211,14 +255,16 @@ func repoStats(repoURL, hash string) (stars, openIssues int) {
 	return
 }
 
-func getRepoLatestRelease(repoURL string) (hash, published string) {
+// getRepoLatestRelease 获取仓库最新发布的版本
+func getRepoLatestRelease(repoURL string) (hash, published, packageZip string) {
 	result := map[string]interface{}{}
 	request := gorequest.New().TLSClientConfig(&tls.Config{InsecureSkipVerify: true})
 	pat := os.Getenv("PAT")
+	// REF https://docs.github.com/en/rest/releases/releases#get-the-latest-release
 	u := "https://api.github.com/repos/" + repoURL + "/releases/latest"
 	resp, _, errs := request.Get(u).
 		Set("Authorization", "Token "+pat).
-		Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").Timeout(7*time.Second).
+		Set("User-Agent", util.UserAgent).Timeout(7*time.Second).
 		Retry(1, 3*time.Second).EndStruct(&result)
 	if nil != errs {
 		logger.Fatalf("get release hash [%s] failed: %s", u, errs)
@@ -234,7 +280,7 @@ func getRepoLatestRelease(repoURL string) (hash, published string) {
 		u = "https://api.github.com/repos/" + repoURL + "/commits"
 		resp, _, errs = request.Get(u).
 			Set("Authorization", "Token "+pat).
-			Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").Timeout(7*time.Second).
+			Set("User-Agent", util.UserAgent).Timeout(7*time.Second).
 			Retry(1, 3*time.Second).EndStruct(&commits)
 		if nil != errs {
 			logger.Fatalf("get release hash [%s] failed: %s", u, errs)
@@ -256,12 +302,25 @@ func getRepoLatestRelease(repoURL string) (hash, published string) {
 		return
 	}
 
+	// 获取 package.zip 下载 url packageZip
+	assets := result["assets"].([]interface{})
+	if 0 < len(assets) {
+		for _, asset := range assets {
+			asset := asset.(map[string]interface{})
+			if name := asset["name"].(string); "package.zip" == name {
+				packageZip = asset["browser_download_url"].(string)
+			}
+		}
+	}
+
+	// 获取 release 对应的 tag
 	published = result["published_at"].(string)
 	tagName := result["tag_name"].(string)
+	// REF https://docs.github.com/en/rest/git/refs#get-a-reference
 	u = "https://api.github.com/repos/" + repoURL + "/git/ref/tags/" + tagName
 	resp, _, errs = request.Get(u).
 		Set("Authorization", "Token "+pat).
-		Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").Timeout(7*time.Second).
+		Set("User-Agent", util.UserAgent).Timeout(7*time.Second).
 		Retry(1, 3*time.Second).EndStruct(&result)
 	if nil != errs {
 		logger.Warnf("get release hash [%s] failed: %s", u, errs)
@@ -272,13 +331,15 @@ func getRepoLatestRelease(repoURL string) (hash, published string) {
 		return
 	}
 
+	// 获取 release 对应的提交的 hash
 	hash = result["object"].(map[string]interface{})["sha"].(string)
 	typ := result["object"].(map[string]interface{})["type"].(string)
 	if "tag" == typ {
+		// REF https://docs.github.com/en/rest/git/tags#get-a-tag
 		u = "https://api.github.com/repos/" + repoURL + "/git/tags/" + hash
 		resp, _, errs = request.Get(u).
 			Set("Authorization", "Token "+pat).
-			Set("User-Agent", "bazaar/1.0.0 https://github.com/siyuan-note/bazaar").Timeout(7*time.Second).
+			Set("User-Agent", util.UserAgent).Timeout(7*time.Second).
 			Retry(1, 3*time.Second).EndStruct(&result)
 		if nil != errs {
 			logger.Fatalf("get release hash [%s] failed: %s", u, errs)
@@ -294,10 +355,51 @@ func getRepoLatestRelease(repoURL string) (hash, published string) {
 	return
 }
 
-type stageRepo struct {
+type DisplayName struct {
+	Default string `json:"default"`
+	ZhCN    string `json:"zh_CN"`
+	EnUS    string `json:"en_US"`
+}
+
+type Description struct {
+	Default string `json:"default"`
+	ZhCN    string `json:"zh_CN"`
+	EnUS    string `json:"en_US"`
+}
+
+type Readme struct {
+	Default string `json:"default"`
+	ZhCN    string `json:"zh_CN"`
+	EnUS    string `json:"en_US"`
+}
+
+type Funding struct {
+	OpenCollective string   `json:"openCollective"`
+	Patreon        string   `json:"patreon"`
+	GitHub         string   `json:"github"`
+	Custom         []string `json:"custom"`
+}
+
+type Package struct {
+	Name          string       `json:"name"`
+	Author        string       `json:"author"`
+	URL           string       `json:"url"`
+	Version       string       `json:"version"`
+	MinAppVersion string       `json:"minAppVersion"`
+	Backends      []string     `json:"backends"`
+	Frontends     []string     `json:"frontends"`
+	DisplayName   *DisplayName `json:"displayName"`
+	Description   *Description `json:"description"`
+	Readme        *Readme      `json:"readme"`
+	Funding       *Funding     `json:"funding"`
+}
+
+type StageRepo struct {
 	URL        string `json:"url"`
 	Updated    string `json:"updated"`
 	Stars      int    `json:"stars"`
 	OpenIssues int    `json:"openIssues"`
 	Size       int64  `json:"size"`
+
+	Package *Package `json:"package"`
 }

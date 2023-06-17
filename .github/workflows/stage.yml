@@ -5,7 +5,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '0 23 * * *'
+    - cron: '0 * * * *'
 
 jobs:
   build:
@@ -15,6 +15,7 @@ jobs:
       QINIU_BUCKET: ${{ secrets.QINIU_BUCKET }}
       QINIU_AK: ${{ secrets.QINIU_AK }}
       QINIU_SK: ${{ secrets.QINIU_SK }}
+      RHYTHEM_TOKEN: ${{ secrets.RHYTHEM_TOKEN }}
     steps:
       - name: Check out repo
         uses: actions/checkout@v3
@@ -31,3 +32,5 @@ jobs:
           git push
       - name: Index bazaar
         run: go run ./actions/index
+      - name: Go hashing
+        run: go run ./actions/hash

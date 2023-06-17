@@ -24,7 +24,7 @@ import (
 var logger = gulu.Log.NewLogger(os.Stdout)
 
 func main() {
-	logger.Infof("bazaar is indexing...")
+	logger.Infof("bazaar is hashing...")
 
 	cmd := exec.Command("git", "rev-parse", "HEAD")
 	data, err := cmd.CombinedOutput()
@@ -34,32 +34,22 @@ func main() {
 	hash := strings.TrimSpace(string(data))
 	logger.Infof("bazaar [%s]", hash)
 
-	stageIndex(hash, "themes")
-	stageIndex(hash, "templates")
-	stageIndex(hash, "icons")
-	stageIndex(hash, "widgets")
-	stageIndex(hash, "plugins")
-
-	logger.Infof("indexed bazaar")
-}
-
-func stageIndex(hash string, index string) {
-	u := "https://raw.githubusercontent.com/siyuan-note/bazaar/" + hash + "/stage/" + index + ".json"
-	resp, data, errs := gorequest.New().Get(u).
+	u := "https://rhythm.b3log.org/api/siyuan/bazaar/hash"
+	resp, data, errs := gorequest.New().Post(u).
+		SendMap(map[string]interface{}{
+			"token": os.Getenv("RHYTHEM_TOKEN"),
+			"hash":  hash,
+		}).
 		Set("User-Agent", util.UserAgent).
-		Retry(1, 3*time.Second).Timeout(30 * time.Second).EndBytes()
+		Retry(3, 3*time.Second).Timeout(30 * time.Second).EndBytes()
 	if nil != errs {
-		logger.Fatalf("get [%s] failed: %s", u, errs)
+		logger.Fatalf("hash [%s] failed: %s", u, errs)
 		return
 	}
 	if 200 != resp.StatusCode {
-		logger.Fatalf("get [%s] failed: %d", u, resp.StatusCode)
+		logger.Fatalf("hash [%s] failed: %d", u, resp.StatusCode)
 		return
 	}
 
-	key := "bazaar@" + hash + "/stage/" + index + ".json"
-	err := util.UploadOSS(key, "application/json", data)
-	if nil != err {
-		logger.Fatalf("upload bazaar stage index [%s] failed: %s", key, err)
-	}
+	logger.Infof("Hashed bazaar")
 }

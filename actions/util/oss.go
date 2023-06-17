@@ -1,7 +1,7 @@
 // SiYuan community bazaar.
 // Copyright (c) 2021-present, b3log.org
 //
-// Pipe is licensed under Mulan PSL v2.
+// Bazaar is licensed under Mulan PSL v2.
 // You can use this software according to the terms and conditions of the Mulan PSL v2.
 // You may obtain a copy of Mulan PSL v2 at:
 //         http://license.coscl.org.cn/MulanPSL2
@@ -27,10 +27,23 @@ func UploadOSS(key, contentType string, data []byte) (err error) {
 	bucket := os.Getenv("QINIU_BUCKET")
 	ak := os.Getenv("QINIU_AK")
 	sk := os.Getenv("QINIU_SK")
+
+	cfg := storage.Config{Zone: &storage.ZoneHuadong, UseCdnDomains: true, UseHTTPS: true}
+	mac := qbox.NewMac(ak, sk)
+	bucketManager := storage.NewBucketManager(mac, &cfg)
+	stat, err := bucketManager.Stat(bucket, key)
+	if nil != err {
+		logger.Warnf("stat [%s] failed: %s", key, err)
+	} else {
+		if "" != stat.Hash {
+			return
+		}
+	}
+
 	putPolicy := storage.PutPolicy{
 		Scope: fmt.Sprintf("%s:%s", bucket, key), // overwrite if exists
 	}
-	cfg := storage.Config{Zone: &storage.ZoneHuadong, UseCdnDomains: true, UseHTTPS: true}
+
 	formUploader := storage.NewFormUploader(&cfg)
 	if err = formUploader.Put(context.Background(), nil, putPolicy.UploadToken(qbox.NewMac(ak, sk)),
 		key, bytes.NewReader(data), int64(len(data)), &storage.PutExtra{MimeType: contentType}); nil != err {
@@ -44,3 +57,5 @@ func UploadOSS(key, contentType string, data []byte) (err error) {
 	}
 	return
 }
+
+const UserAgent = "bazaar/1.0.0 https://github.com/siyuan-note/bazaar"
