@@ -381,15 +381,17 @@ type Funding struct {
 }
 
 type Package struct {
-	Name        string       `json:"name"`
-	Author      string       `json:"author"`
-	URL         string       `json:"url"`
-	Version     string       `json:"version"`
-	DisplayName *DisplayName `json:"displayName"`
-	Description *Description `json:"description"`
-	Readme      *Readme      `json:"readme"`
-	I18N        []string     `json:"i18n"`
-	Funding     *Funding     `json:"funding"`
+	Name          string       `json:"name"`
+	Author        string       `json:"author"`
+	URL           string       `json:"url"`
+	Version       string       `json:"version"`
+	MinAppVersion string       `json:"minAppVersion"`
+	Backends      []string     `json:"backends"`
+	Frontends     []string     `json:"frontends"`
+	DisplayName   *DisplayName `json:"displayName"`
+	Description   *Description `json:"description"`
+	Readme        *Readme      `json:"readme"`
+	Funding       *Funding     `json:"funding"`
 }
 
 type StageRepo struct {
