@@ -28,7 +28,7 @@ func UploadOSS(key, contentType string, data []byte) (err error) {
 	ak := os.Getenv("QINIU_AK")
 	sk := os.Getenv("QINIU_SK")
 
-	cfg := storage.Config{Zone: &storage.ZoneHuadong, UseCdnDomains: true, UseHTTPS: true}
+	cfg := storage.Config{UseCdnDomains: true, UseHTTPS: true}
 	mac := qbox.NewMac(ak, sk)
 	bucketManager := storage.NewBucketManager(mac, &cfg)
 	stat, err := bucketManager.Stat(bucket, key)
