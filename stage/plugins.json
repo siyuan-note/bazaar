@@ -1,17 +1,96 @@
 {
   "repos": [
     {
-      "url": "zxhd863943427/siyuan-plugin-memo@8908f160fee202c8e9ca863ec1be1c3aa214dc45",
-      "updated": "2023-07-26T04:25:09Z",
-      "stars": 0,
-      "openIssues": 0,
-      "size": 44052,
+      "url": "terwer/siyuan-plugin-publisher@5a35a67dfb7e92a622d3fc12594d39dd36e9ed31",
+      "updated": "2023-08-09T13:05:39Z",
+      "stars": 40,
+      "openIssues": 37,
+      "size": 9078940,
       "package": {
-        "name": "siyuan-plugin-memo",
-        "author": "zxhd863943427",
-        "url": "https://github.com/zxhd863943427/siyuan-plugin-memo",
-        "version": "0.0.1",
-        "minAppVersion": "2.9.5",
+        "name": "siyuan-plugin-publisher",
+        "author": "terwer",
+        "url": "https://github.com/terwer/siyuan-plugin-publisher",
+        "version": "1.6.1",
+        "minAppVersion": "2.9.0",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "browser-desktop"
+        ],
+        "displayName": {
+          "default": "Publisher",
+          "zh_CN": "发布工具",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Publish articles from Siyuan Notes to platforms such as Yuque, Notion, Cnblogs, WordPress, Typecho, Hexo, Zhihu and more",
+          "zh_CN": "将思源笔记的文章发布到语雀、Notion、Cnblogs、WordPress、Typecho、Hexo、知乎 等平台，支持极速发布、图床管理、平台扩展、智能标签等特色功能",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/terwer"
+          ]
+        }
+      }
+    },
+    {
+      "url": "zuoez02/siyuan-plugin-picture-library@cae7e5dd9a3432eeea85353ad4763350a44de8d2",
+      "updated": "2023-08-09T04:41:24Z",
+      "stars": 3,
+      "openIssues": 0,
+      "size": 4621340,
+      "package": {
+        "name": "siyuan-plugin-picture-library",
+        "author": "zuoez02",
+        "url": "https://github.com/zuoez02/siyuan-plugin-picture-library",
+        "version": "0.1.1",
+        "minAppVersion": "",
+        "backends": null,
+        "frontends": null,
+        "displayName": {
+          "default": "图库",
+          "zh_CN": "",
+          "en_US": ""
+        },
+        "description": {
+          "default": "图库插件，将思源变成你的图片管理器，为你的数字花园新增一种新的玩法",
+          "zh_CN": "",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "",
+          "en_US": ""
+        },
+        "funding": null
+      }
+    },
+    {
+      "url": "suka233/siyuan-kmind-plugin@1ea36b7fef4b4d6b85d116b7ec6ad06f91271381",
+      "updated": "2023-08-09T04:10:13Z",
+      "stars": 12,
+      "openIssues": 1,
+      "size": 12922505,
+      "package": {
+        "name": "kmind-plugin",
+        "author": "suka233",
+        "url": "https://github.com/suka233/siyuan-kmind-plugin",
+        "version": "1.0.3",
+        "minAppVersion": "2.8.10",
         "backends": [
           "all"
         ],
@@ -20,16 +99,100 @@
         ],
         "displayName": {
           "default": "",
-          "zh_CN": "备注增强",
-          "en_US": "siyuan memo"
+          "zh_CN": "Kmind思维导图插件",
+          "en_US": "Kmind plugin"
         },
         "description": {
           "default": "",
-          "zh_CN": "备注增强",
-          "en_US": ""
+          "zh_CN": "Kmind思维导图插件",
+          "en_US": "Kmind mind map plugin"
         },
         "readme": {
           "default": "",
+          "zh_CN": "README.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://wj.qq.com/s2/12591272/adf1/"
+          ]
+        }
+      }
+    },
+    {
+      "url": "etchnight/siyuanPlugin-list2table@0000cbb4186a6bf676dbbbf2804e5fc192a6d1fc",
+      "updated": "2023-08-08T17:00:32Z",
+      "stars": 0,
+      "openIssues": 0,
+      "size": 259874,
+      "package": {
+        "name": "siyuanPlugin-list2table",
+        "author": "dualwind",
+        "url": "https://github.com/etchnight/siyuanPlugin-list2table",
+        "version": "1.0.0",
+        "minAppVersion": "2.9.0",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "frontends": [
+          "desktop"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "列表转表格",
+          "en_US": "list to table"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "将列表转化为二维表格",
+          "en_US": "Convert a list into a 2D tablee"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README.md",
+          "en_US": "README_en_US.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/frostime"
+          ]
+        }
+      }
+    },
+    {
+      "url": "zxhd863943427/siyuan-plugin-flash-enhance@3a3f2accd053eb27131c7dd863184fcb31b5cfcb",
+      "updated": "2023-08-08T12:33:34Z",
+      "stars": 9,
+      "openIssues": 5,
+      "size": 67160,
+      "package": {
+        "name": "siyuan-plugin-flash-enhance",
+        "author": "zxhd863943427",
+        "url": "https://github.com/zxhd863943427/siyuan-plugin-flash-enhance",
+        "version": "0.0.10",
+        "minAppVersion": "2.9.3",
+        "backends": null,
+        "frontends": null,
+        "displayName": {
+          "default": "flash-enhance",
+          "zh_CN": "闪卡增强",
+          "en_US": ""
+        },
+        "description": {
+          "default": "This plugin can make the card-making experience in Siyuan as smooth as clouds and flowing water.Supports incremental reading flow.",
+          "zh_CN": "使思源制卡的体验行云流水般流畅, 支持渐进式阅读流程",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
           "zh_CN": "README_zh_CN.md",
           "en_US": ""
         },
@@ -44,16 +207,472 @@
       }
     },
     {
-      "url": "HowcanoeWang/siyuan-plugin-background-cover@55439a16208fa9f925365d9fa2f3e62765943c6b",
-      "updated": "2023-07-25T16:22:09Z",
-      "stars": 4,
+      "url": "frostime/siyuan-dailynote-today@008ee06428cd4aee7fe10e0990a8ce5adc63b2e7",
+      "updated": "2023-08-07T11:06:50Z",
+      "stars": 14,
+      "openIssues": 5,
+      "size": 129432,
+      "package": {
+        "name": "siyuan-dailynote-today",
+        "author": "frostime",
+        "url": "https://github.com/frostime/siyuan-dailynote-today",
+        "version": "1.2.4-patch",
+        "minAppVersion": "2.9.0",
+        "backends": null,
+        "frontends": null,
+        "displayName": {
+          "default": "",
+          "zh_CN": "今日笔记",
+          "en_US": "Daily Note Today"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "自动创建日记 + 快速打开日记 + 日程 TODO 管理 + 移动块功能",
+          "en_US": "Automatically open today's notes + Quickly open today's notes + TODO mangagement for today + Move blocks"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README_en_US.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/frostime"
+          ]
+        }
+      }
+    },
+    {
+      "url": "zuoez02/siyuan-plugin-power-mode@cfb2bdd73fde8b94bb80c9840985a45cc66c18b0",
+      "updated": "2023-08-07T03:11:12Z",
+      "stars": 1,
+      "openIssues": 0,
+      "size": 412963,
+      "package": {
+        "name": "siyuan-plugin-power-mode",
+        "author": "zuoez02",
+        "url": "https://github.com/zuoez02/siyuan-plugin-webview-flomo",
+        "version": "0.1.3",
+        "minAppVersion": "",
+        "backends": null,
+        "frontends": null,
+        "displayName": {
+          "default": "Power Mode",
+          "zh_CN": "Power Mode",
+          "en_US": "Power Mode"
+        },
+        "description": {
+          "default": "光标特效,输入时光标的奇特显示效果",
+          "zh_CN": "光标特效,输入时光标的奇特显示效果",
+          "en_US": "Cursor effects, peculiar display effects of the cursor during input"
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "",
+          "en_US": "README_en.md"
+        },
+        "funding": null
+      }
+    },
+    {
+      "url": "mdzz2048/siyuan-plugin-weread@00391ca3e9091c1fdb74783dce6324304a869225",
+      "updated": "2023-08-06T15:09:03Z",
+      "stars": 9,
+      "openIssues": 2,
+      "size": 64084,
+      "package": {
+        "name": "siyuan-plugin-weread",
+        "author": "mdzz2048",
+        "url": "https://github.com/mdzz2048/siyuan-plugin-weread",
+        "version": "1.2.1",
+        "minAppVersion": "2.9.8",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "android",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "browser-mobile",
+          "browser-desktop"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "微信读书插件",
+          "en_US": "siyuan-weread-plugin"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "同步微信读书笔记",
+          "en_US": "Sync weread notes"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README.md",
+          "en_US": "README_en_US.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": []
+        }
+      }
+    },
+    {
+      "url": "WingDr/siyuan-plugin-citation@0a931d5655e0f6fe7f676d5fc44cdd002358a9d5",
+      "updated": "2023-08-05T15:32:46Z",
+      "stars": 9,
+      "openIssues": 4,
+      "size": 1252896,
+      "package": {
+        "name": "siyuan-plugin-citation",
+        "author": "WingDr",
+        "url": "https://github.com/WingDr/siyuan-plugin-citation",
+        "version": "0.1.4",
+        "minAppVersion": "2.9.8",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "frontends": [
+          "desktop"
+        ],
+        "displayName": {
+          "default": "Citation for SiYuan",
+          "zh_CN": "文献引用",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Insert literature citations to your notes",
+          "zh_CN": "在笔记中插入文献引用",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": []
+        }
+      }
+    },
+    {
+      "url": "zxhd863943427/siyuan-plugin-block-history@1371bfbbba7287ab28404a9e86a356a32877e2af",
+      "updated": "2023-08-04T14:54:50Z",
+      "stars": 1,
+      "openIssues": 4,
+      "size": 72140,
+      "package": {
+        "name": "siyuan-plugin-block-history",
+        "author": "zxhd863943427",
+        "url": "https://github.com/zxhd863943427/siyuan-plugin-block-history",
+        "version": "0.0.1",
+        "minAppVersion": "2.9.0",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "frontends": [
+          "desktop"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "块历史",
+          "en_US": "block history"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "这个块之前是长什么样呢？",
+          "en_US": "What did this block look like before?"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/zxhd86"
+          ]
+        }
+      }
+    },
+    {
+      "url": "OpaqueGlass/syplugin-fakeDocBreadcrumb@d121a6d4364ebb3edbcceb4e2a232fcdb6d3de39",
+      "updated": "2023-08-04T00:05:40Z",
+      "stars": 3,
       "openIssues": 1,
-      "size": 682640,
+      "size": 92488,
+      "package": {
+        "name": "syplugin-fakeDocBreadcrumb",
+        "author": "OpaqueGlass",
+        "url": "https://github.com/OpaqueGlass/syplugin-fakeDocBreadcrumb",
+        "version": "0.2.5",
+        "minAppVersion": "",
+        "backends": null,
+        "frontends": null,
+        "displayName": {
+          "default": "fakeDocBreadcrumb",
+          "zh_CN": "(伪)文档面包屑",
+          "en_US": "Fake Doc Breadcrumb"
+        },
+        "description": {
+          "default": "Add a doc-breadcrumb",
+          "zh_CN": "再添加一个文档面包屑",
+          "en_US": "Add a doc-breadcrumb"
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://wj.qq.com/s2/12395364/b69f/"
+          ]
+        }
+      }
+    },
+    {
+      "url": "Zuoqiu-Yingyi/siyuan-plugin-custom-fonts@6c21c8de66b020f1cb7c4ad8e9335c6891ff356f",
+      "updated": "2023-08-02T17:10:27Z",
+      "stars": 1,
+      "openIssues": 0,
+      "size": 884851,
+      "package": {
+        "name": "custom-fonts",
+        "author": "Zuoqiu Yingyi",
+        "url": "https://github.com/Zuoqiu-Yingyi/siyuan-plugin-custom-fonts",
+        "version": "1.1.0",
+        "minAppVersion": "2.9.8",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "Custom Fonts",
+          "zh_CN": "自定义字体",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Customize the fonts of various elements in the SiYuan interface.",
+          "zh_CN": "自定义思源界面中各种元素的字体。",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/zuoqiu",
+            "https://ko-fi.com/zuoqiu"
+          ]
+        }
+      }
+    },
+    {
+      "url": "zuoez02/siyuan-plugin-keymap@ac7d967194959439e882f7675e1cdb4c617890e5",
+      "updated": "2023-08-02T12:12:37Z",
+      "stars": 0,
+      "openIssues": 0,
+      "size": 927711,
+      "package": {
+        "name": "siyuan-plugin-keymap",
+        "author": "zuoez02",
+        "url": "https://github.com/zuoez02/siyuan-plugin-keymap",
+        "version": "0.1.0",
+        "minAppVersion": "2.9.4",
+        "backends": null,
+        "frontends": null,
+        "displayName": {
+          "default": "快捷键帮助",
+          "zh_CN": "",
+          "en_US": ""
+        },
+        "description": {
+          "default": "快捷键帮助",
+          "zh_CN": "",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "",
+          "en_US": ""
+        },
+        "funding": null
+      }
+    },
+    {
+      "url": "Zuoqiu-Yingyi/siyuan-plugin-webview@2ab6302ffbc25ac61d2fb9d6fe444fce7e0dacd7",
+      "updated": "2023-08-02T08:14:27Z",
+      "stars": 3,
+      "openIssues": 0,
+      "size": 294913,
+      "package": {
+        "name": "webview",
+        "author": "Zuoqiu Yingyi",
+        "url": "https://github.com/Zuoqiu-Yingyi/siyuan-plugin-webview",
+        "version": "1.3.0",
+        "minAppVersion": "2.9.0",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "Web Page View",
+          "zh_CN": "网页视图",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Provide \u003ccode class='fn__code'\u003emulti-tab / multi-window web\u003c/code\u003e page view for SiYuan",
+          "zh_CN": "为思源提供 \u003ccode class='fn__code'\u003e多页签 / 多窗口\u003c/code\u003e 网页视图",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/zuoqiu",
+            "https://ko-fi.com/zuoqiu"
+          ]
+        }
+      }
+    },
+    {
+      "url": "Zuoqiu-Yingyi/siyuan-plugin-monaco-editor@b1c2921f8cdd5a2e171043253bc02de8f4b393fe",
+      "updated": "2023-08-01T14:45:37Z",
+      "stars": 4,
+      "openIssues": 0,
+      "size": 3445464,
+      "package": {
+        "name": "monaco-editor",
+        "author": "Zuoqiu Yingyi",
+        "url": "https://github.com/Zuoqiu-Yingyi/siyuan-plugin-webview",
+        "version": "0.1.0",
+        "minAppVersion": "2.9.8",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop"
+        ],
+        "displayName": {
+          "default": "Integrated Edit Environment",
+          "zh_CN": "集成编辑环境",
+          "en_US": ""
+        },
+        "description": {
+          "default": "A file editing tool integrating \u003ca href='https://microsoft.github.io/monaco-editor/'\u003eMonaco Editor\u003c/a\u003e.",
+          "zh_CN": "一个集成了 \u003ca href='https://microsoft.github.io/monaco-editor/'\u003eMonaco Editor\u003c/a\u003e 的文件编辑工具。",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/zuoqiu",
+            "https://ko-fi.com/zuoqiu"
+          ]
+        }
+      }
+    },
+    {
+      "url": "siyuan-note/plugin-sample@0ba495c7f128ae09540ed97b6ef131b72cd5e94c",
+      "updated": "2023-08-01T02:56:10Z",
+      "stars": 18,
+      "openIssues": 0,
+      "size": 20567,
+      "package": {
+        "name": "plugin-sample",
+        "author": "Vanessa",
+        "url": "https://github.com/siyuan-note/plugin-sample",
+        "version": "0.1.12",
+        "minAppVersion": "2.9.0",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "frontends": [
+          "desktop"
+        ],
+        "displayName": {
+          "default": "Plugin Sample",
+          "zh_CN": "插件示例",
+          "en_US": ""
+        },
+        "description": {
+          "default": "This is a plugin sample",
+          "zh_CN": "这是一个插件示例",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://ld246.com/sponsor"
+          ]
+        }
+      }
+    },
+    {
+      "url": "HowcanoeWang/siyuan-plugin-background-cover@603b8403d59d64b72934e97026f7e57263ce4340",
+      "updated": "2023-07-31T15:31:43Z",
+      "stars": 4,
+      "openIssues": 3,
+      "size": 683032,
       "package": {
         "name": "siyuan-plugin-background-cover",
         "author": "HowcanoeWang",
         "url": "https://github.com/HowcanoeWang/siyuan-plugin-background-cover",
-        "version": "0.3.2",
+        "version": "0.3.3",
         "minAppVersion": "2.9.3",
         "backends": [
           "windows",
@@ -90,50 +709,11 @@
       }
     },
     {
-      "url": "frostime/siyuan-dailynote-today@5e99f65fce708ac602ebd60067f4fee90179434e",
-      "updated": "2023-07-24T10:06:24Z",
-      "stars": 14,
-      "openIssues": 4,
-      "size": 129095,
-      "package": {
-        "name": "siyuan-dailynote-today",
-        "author": "frostime",
-        "url": "https://github.com/frostime/siyuan-dailynote-today",
-        "version": "1.2.3",
-        "minAppVersion": "2.9.0",
-        "backends": null,
-        "frontends": null,
-        "displayName": {
-          "default": "",
-          "zh_CN": "今日笔记",
-          "en_US": "Daily Note Today"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "自动创建日记 + 快速打开日记 + 日程 TODO 管理 + 移动块功能",
-          "en_US": "Automatically open today's notes + Quickly open today's notes + TODO mangagement for today + Move blocks"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README_en_US.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.net/a/frostime"
-          ]
-        }
-      }
-    },
-    {
-      "url": "etchnight/siyuanPlugin-networkCustom@c67d852e47d17e22be2b59ebefbfcc4f5eac65e0",
-      "updated": "2023-07-23T13:19:12Z",
+      "url": "etchnight/siyuanPlugin-networkCustom@378558f8fdecbfba469567848baf073768316d8f",
+      "updated": "2023-07-31T14:38:27Z",
       "stars": 2,
       "openIssues": 0,
-      "size": 258702,
+      "size": 259874,
       "package": {
         "name": "siyuanPligin-TreeAndGraph",
         "author": "dualwind",
@@ -168,6 +748,215 @@
           "patreon": "",
           "github": "",
           "custom": []
+        }
+      }
+    },
+    {
+      "url": "LinuaBio/GeogebraE@1f48557f8b461d8f8b1f46f5fcda61bf94aa7c88",
+      "updated": "2023-07-31T03:21:38Z",
+      "stars": 3,
+      "openIssues": 0,
+      "size": 7031078,
+      "package": {
+        "name": "GeogebraE",
+        "author": "BioLinua",
+        "url": "https://github.com/LinuaBio/GeogebraE",
+        "version": "0.0.7",
+        "minAppVersion": "2.9.7",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "Geogebra嵌入程序",
+          "en_US": "Geogebra For SiYuan"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "让你在思源笔记中使用Geogebra",
+          "en_US": "Use Geogebra in Si-yuan note"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": null
+      }
+    },
+    {
+      "url": "svtardust/Calendar-heatmap@30c0bb82f0322c4d7393966aabffd6c97e10925b",
+      "updated": "2023-07-30T14:28:31Z",
+      "stars": 4,
+      "openIssues": 0,
+      "size": 80067,
+      "package": {
+        "name": "Calendar-heatmap",
+        "author": "svtardust",
+        "url": "https://github.com/svtardust/Calendar-heatmap",
+        "version": "1.0.15",
+        "minAppVersion": "2.8.10",
+        "backends": [
+          "windows",
+          "linux",
+          "docker",
+          "darwin"
+        ],
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window",
+          "browser-mobile"
+        ],
+        "displayName": {
+          "default": "日历热力图",
+          "zh_CN": "",
+          "en_US": ""
+        },
+        "description": {
+          "default": "日历热力图插件,可统计当年每日创建的多少内容块",
+          "zh_CN": "",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "",
+          "en_US": ""
+        },
+        "funding": null
+      }
+    },
+    {
+      "url": "choyy/simple-search@843dba9f709dad5583190e630fd6681d2c7585ef",
+      "updated": "2023-07-26T14:30:42Z",
+      "stars": 2,
+      "openIssues": 0,
+      "size": 215893,
+      "package": {
+        "name": "Simple Search",
+        "author": "chooyy",
+        "url": "https://github.com/choyy/simple-search",
+        "version": "0.0.8",
+        "minAppVersion": "2.8.0",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "browser-desktop"
+        ],
+        "displayName": {
+          "default": "Simple Search",
+          "zh_CN": "简易搜索",
+          "en_US": ""
+        },
+        "description": {
+          "default": "更高效的搜索方式",
+          "zh_CN": "更高效的搜索方式",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": []
+        }
+      }
+    },
+    {
+      "url": "frostime/sy-export-tree@e506d1b898c60cca249b9ac2ea7989ab17e6092c",
+      "updated": "2023-07-26T09:17:39Z",
+      "stars": 0,
+      "openIssues": 1,
+      "size": 297353,
+      "package": {
+        "name": "sy-export-tree",
+        "author": "frostime",
+        "url": "https://github.com/frostime/sy-export-tree",
+        "version": "0.1.1",
+        "minAppVersion": "2.9.0",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "导出文档树结构",
+          "en_US": "Export document tree"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "导出笔记库当中所有的文档树结构",
+          "en_US": "Export the tree structur of all documents"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/frostime"
+          ]
+        }
+      }
+    },
+    {
+      "url": "zxhd863943427/siyuan-plugin-memo@355662420ad714d6bc9d2d31eef05d600c3225ab",
+      "updated": "2023-07-26T06:30:54Z",
+      "stars": 0,
+      "openIssues": 2,
+      "size": 44069,
+      "package": {
+        "name": "siyuan-plugin-memo",
+        "author": "zxhd863943427",
+        "url": "https://github.com/zxhd863943427/siyuan-plugin-memo",
+        "version": "0.0.2",
+        "minAppVersion": "2.9.5",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "备注增强",
+          "en_US": "siyuan memo"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "备注增强",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/zxhd86"
+          ]
         }
       }
     },
@@ -211,51 +1000,6 @@
       }
     },
     {
-      "url": "choyy/simple-search@a387e94240949d80a1fab4a75f315a950ab2f523",
-      "updated": "2023-07-21T13:02:00Z",
-      "stars": 2,
-      "openIssues": 0,
-      "size": 264876,
-      "package": {
-        "name": "Simple Search",
-        "author": "chooyy",
-        "url": "https://github.com/choyy/simple-search",
-        "version": "0.0.7",
-        "minAppVersion": "2.8.0",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker"
-        ],
-        "frontends": [
-          "desktop",
-          "browser-desktop"
-        ],
-        "displayName": {
-          "default": "Simple Search",
-          "zh_CN": "简易搜索",
-          "en_US": ""
-        },
-        "description": {
-          "default": "更高效的搜索方式",
-          "zh_CN": "更高效的搜索方式",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README.md",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": []
-        }
-      }
-    },
-    {
       "url": "zuoez02/siyuan-plugin-background-grid@64ca0ce4cf745da76565a4713912f48595d854cc",
       "updated": "2023-07-21T06:49:15Z",
       "stars": 1,
@@ -291,7 +1035,7 @@
       "url": "zuoez02/siyuan-plugin-card-link@0b66593b1dcb5ea97fbf0d615416eeced92b0b1f",
       "updated": "2023-07-20T11:41:12Z",
       "stars": 0,
-      "openIssues": 0,
+      "openIssues": 1,
       "size": 512862,
       "package": {
         "name": "siyuan-plugin-card-link",
@@ -407,102 +1151,10 @@
       }
     },
     {
-      "url": "siyuan-note/plugin-sample@6eb4a3e36e74f893bb701a652a35ffd0b4e5412c",
-      "updated": "2023-07-18T03:02:16Z",
-      "stars": 17,
-      "openIssues": 1,
-      "size": 20567,
-      "package": {
-        "name": "plugin-sample",
-        "author": "Vanessa",
-        "url": "https://github.com/siyuan-note/plugin-sample",
-        "version": "0.1.11",
-        "minAppVersion": "2.9.0",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "frontends": [
-          "desktop"
-        ],
-        "displayName": {
-          "default": "Plugin Sample",
-          "zh_CN": "插件示例",
-          "en_US": ""
-        },
-        "description": {
-          "default": "This is a plugin sample",
-          "zh_CN": "这是一个插件示例",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://ld246.com/sponsor"
-          ]
-        }
-      }
-    },
-    {
-      "url": "mdzz2048/siyuan-plugin-weread@81e6484222a84630d7d929db5e037ca6c964cd2c",
-      "updated": "2023-07-17T15:49:08Z",
-      "stars": 8,
-      "openIssues": 2,
-      "size": 63605,
-      "package": {
-        "name": "siyuan-plugin-weread",
-        "author": "mdzz2048",
-        "url": "https://github.com/mdzz2048/siyuan-plugin-weread",
-        "version": "1.2.0",
-        "minAppVersion": "2.9.5",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "android",
-          "docker"
-        ],
-        "frontends": [
-          "desktop",
-          "browser-mobile",
-          "browser-desktop"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "微信读书插件",
-          "en_US": "siyuan-weread-plugin"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "同步微信读书笔记",
-          "en_US": "Sync weread notes"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README.md",
-          "en_US": "README_en_US.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": []
-        }
-      }
-    },
-    {
       "url": "zxhd863943427/siyuan-plugin-workflow@2310e7da9375f8dce6427e06603540aa48a2134d",
       "updated": "2023-07-16T16:37:11Z",
-      "stars": 0,
-      "openIssues": 0,
+      "stars": 1,
+      "openIssues": 2,
       "size": 55558,
       "package": {
         "name": "siyuan-plugin-workflow",
@@ -576,8 +1228,8 @@
     {
       "url": "zuoez02/siyuan-plugin-excalidraw@a0127fdc2d354dfe8a4cec2f123ea5c1d511d2d2",
       "updated": "2023-07-14T07:23:05Z",
-      "stars": 10,
-      "openIssues": 4,
+      "stars": 12,
+      "openIssues": 5,
       "size": 7482047,
       "package": {
         "name": "siyuan-plugin-excalidraw",
@@ -608,7 +1260,7 @@
     {
       "url": "zxhd863943427/siyuan-color-scheme@ce619621d023f96653ce025918688ceaca04ecbb",
       "updated": "2023-07-14T05:29:01Z",
-      "stars": 2,
+      "stars": 3,
       "openIssues": 1,
       "size": 154028,
       "package": {
@@ -645,97 +1297,10 @@
       }
     },
     {
-      "url": "Zuoqiu-Yingyi/siyuan-plugin-webview@7f97b49eddedca5ce78fcdbb015d8c9522c51b23",
-      "updated": "2023-07-13T15:32:23Z",
-      "stars": 3,
-      "openIssues": 1,
-      "size": 287913,
-      "package": {
-        "name": "webview",
-        "author": "Zuoqiu Yingyi",
-        "url": "https://github.com/Zuoqiu-Yingyi/siyuan-plugin-webview",
-        "version": "1.3.0",
-        "minAppVersion": "2.9.0",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "Web Page View",
-          "zh_CN": "网页视图",
-          "en_US": ""
-        },
-        "description": {
-          "default": "Provide \u003ccode class='fn__code'\u003emulti-tab / multi-window web\u003c/code\u003e page view for SiYuan",
-          "zh_CN": "为思源提供 \u003ccode class='fn__code'\u003e多页签 / 多窗口\u003c/code\u003e 网页视图",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.net/a/zuoqiu",
-            "https://ko-fi.com/zuoqiu"
-          ]
-        }
-      }
-    },
-    {
-      "url": "WingDr/siyuan-plugin-citation@4327a650ace69bb5d15e0fd0db69ff2e16faa626",
-      "updated": "2023-07-12T08:54:48Z",
-      "stars": 6,
-      "openIssues": 4,
-      "size": 1120474,
-      "package": {
-        "name": "siyuan-plugin-citation",
-        "author": "WingDr",
-        "url": "https://github.com/WingDr/siyuan-plugin-citation",
-        "version": "0.1.0",
-        "minAppVersion": "2.9.4",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "frontends": [
-          "desktop"
-        ],
-        "displayName": {
-          "default": "Citation for SiYuan",
-          "zh_CN": "文献引用",
-          "en_US": ""
-        },
-        "description": {
-          "default": "Insert literature citations to your notes",
-          "zh_CN": "在笔记中插入文献引用",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": []
-        }
-      }
-    },
-    {
       "url": "TinkMingKing/siyuan-plugins-index@4cd391facb72d2bc142adba9bfe0bb7d79ce12d4",
       "updated": "2023-07-10T16:34:56Z",
-      "stars": 3,
-      "openIssues": 1,
+      "stars": 4,
+      "openIssues": 2,
       "size": 137928,
       "package": {
         "name": "siyuan-plugins-index",
@@ -817,7 +1382,7 @@
       "url": "terwer/siyuan-plugin-random-doc@487471eb2f5934ddd624be23eea910c2f81a5f42",
       "updated": "2023-07-09T15:16:49Z",
       "stars": 3,
-      "openIssues": 11,
+      "openIssues": 15,
       "size": 260775,
       "package": {
         "name": "siyuan-plugin-random-doc",
@@ -898,126 +1463,6 @@
       }
     },
     {
-      "url": "OpaqueGlass/syplugin-fakeDocBreadcrumb@f90fd6dcb70eb62efdf5b54e5bee5146828cd5d2",
-      "updated": "2023-07-09T01:59:19Z",
-      "stars": 2,
-      "openIssues": 1,
-      "size": 92451,
-      "package": {
-        "name": "syplugin-fakeDocBreadcrumb",
-        "author": "OpaqueGlass",
-        "url": "https://github.com/OpaqueGlass/syplugin-fakeDocBreadcrumb",
-        "version": "0.2.4",
-        "minAppVersion": "",
-        "backends": null,
-        "frontends": null,
-        "displayName": {
-          "default": "fakeDocBreadcrumb",
-          "zh_CN": "(伪)文档面包屑",
-          "en_US": "Fake Doc Breadcrumb"
-        },
-        "description": {
-          "default": "Add a doc-breadcrumb",
-          "zh_CN": "再添加一个文档面包屑",
-          "en_US": "Add a doc-breadcrumb"
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://wj.qq.com/s2/12395364/b69f/"
-          ]
-        }
-      }
-    },
-    {
-      "url": "svtardust/Calendar-heatmap@a66f2b86355ab604209f15e81b17a87cbf778f7c",
-      "updated": "2023-07-08T04:26:52Z",
-      "stars": 4,
-      "openIssues": 3,
-      "size": 79419,
-      "package": {
-        "name": "Calendar-heatmap",
-        "author": "svtardust",
-        "url": "https://github.com/svtardust/Calendar-heatmap",
-        "version": "1.0.12",
-        "minAppVersion": "2.8.10",
-        "backends": [
-          "windows",
-          "linux",
-          "docker",
-          "darwin"
-        ],
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window",
-          "browser-mobile"
-        ],
-        "displayName": {
-          "default": "日历热力图",
-          "zh_CN": "",
-          "en_US": ""
-        },
-        "description": {
-          "default": "日历热力图插件,可统计当年每日创建的多少内容块",
-          "zh_CN": "",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "",
-          "en_US": ""
-        },
-        "funding": null
-      }
-    },
-    {
-      "url": "zxhd863943427/siyuan-plugin-flash-enhance@c65e37e91abe5155d8f10ebed3e80a1609383d30",
-      "updated": "2023-07-07T11:59:24Z",
-      "stars": 9,
-      "openIssues": 4,
-      "size": 67152,
-      "package": {
-        "name": "siyuan-plugin-flash-enhance",
-        "author": "zxhd863943427",
-        "url": "https://github.com/zxhd863943427/siyuan-plugin-flash-enhance",
-        "version": "0.0.9",
-        "minAppVersion": "2.9.3",
-        "backends": null,
-        "frontends": null,
-        "displayName": {
-          "default": "flash-enhance",
-          "zh_CN": "闪卡增强",
-          "en_US": ""
-        },
-        "description": {
-          "default": "This plugin can make the card-making experience in Siyuan as smooth as clouds and flowing water.Supports incremental reading flow.",
-          "zh_CN": "使思源制卡的体验行云流水般流畅, 支持渐进式阅读流程",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.net/a/zxhd86"
-          ]
-        }
-      }
-    },
-    {
       "url": "leolee9086/headingIndex@751018fdf5f0cca751f2ac40482e8e2aba636a60",
       "updated": "2023-07-05T17:06:23Z",
       "stars": 1,
@@ -1060,7 +1505,7 @@
       "url": "terwer/siyuan-plugin-blog@22c7fa907d452fcdb0e88297a961835d9cff7b0b",
       "updated": "2023-07-03T12:22:22Z",
       "stars": 20,
-      "openIssues": 13,
+      "openIssues": 17,
       "size": 2110310,
       "package": {
         "name": "siyuan-blog",
@@ -1107,7 +1552,7 @@
       "url": "terwer/siyuan-plugin-custom-slug@96ea5e5ea957590cfa13110bb229e3f19ceef288",
       "updated": "2023-06-29T07:43:41Z",
       "stars": 2,
-      "openIssues": 13,
+      "openIssues": 6,
       "size": 987526,
       "package": {
         "name": "siyuan-plugin-custom-slug",
@@ -1185,7 +1630,7 @@
     {
       "url": "terwer/siyuan-plugin-importer@062d75f34cd0a68a7ac034f764e2a58a3490a2fb",
       "updated": "2023-06-25T16:51:45Z",
-      "stars": 14,
+      "stars": 16,
       "openIssues": 23,
       "size": 224240,
       "package": {
@@ -1318,7 +1763,7 @@
       "url": "terwer/siyuan-plugin-picgo@c41ce67fed441c20589b7308d8e644b8583ec954",
       "updated": "2023-06-15T04:00:50Z",
       "stars": 1,
-      "openIssues": 15,
+      "openIssues": 18,
       "size": 5344416,
       "package": {
         "name": "siyuan-plugin-picgo",
@@ -1361,41 +1806,9 @@
       }
     },
     {
-      "url": "zuoez02/siyuan-plugin-power-mode@1db859e96121f371e82d07b3bbed4f21cd0e33e4",
-      "updated": "2023-06-13T09:36:45Z",
-      "stars": 1,
-      "openIssues": 1,
-      "size": 412391,
-      "package": {
-        "name": "siyuan-plugin-power-mode",
-        "author": "zuoez02",
-        "url": "https://github.com/zuoez02/siyuan-plugin-webview-flomo",
-        "version": "0.1.2",
-        "minAppVersion": "",
-        "backends": null,
-        "frontends": null,
-        "displayName": {
-          "default": "Power Mode",
-          "zh_CN": "Power Mode",
-          "en_US": ""
-        },
-        "description": {
-          "default": "光标特效",
-          "zh_CN": "光标特效",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "",
-          "en_US": ""
-        },
-        "funding": null
-      }
-    },
-    {
       "url": "zxhd863943427/siyuan-plugin-pdf-annotate-enhance@c39a9cd0f7fac01feb55957e1902a85e65e377a1",
       "updated": "2023-06-12T14:21:08Z",
-      "stars": 0,
+      "stars": 1,
       "openIssues": 1,
       "size": 399102,
       "package": {
@@ -1595,50 +2008,6 @@
       }
     },
     {
-      "url": "Zuoqiu-Yingyi/siyuan-plugin-custom-fonts@1fa68406c819b0aca1b2dc4ee823f256cc36726f",
-      "updated": "2023-06-08T13:22:19Z",
-      "stars": 1,
-      "openIssues": 0,
-      "size": 864864,
-      "package": {
-        "name": "custom-fonts",
-        "author": "Zuoqiu Yingyi",
-        "url": "https://github.com/Zuoqiu-Yingyi/siyuan-plugin-custom-fonts",
-        "version": "1.0.0",
-        "minAppVersion": "2.9.0",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "Custom Fonts",
-          "zh_CN": "自定义字体",
-          "en_US": ""
-        },
-        "description": {
-          "default": "Customize the fonts of various elements in the SiYuan interface.",
-          "zh_CN": "自定义思源界面中各种元素的字体。",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.net/a/zuoqiu",
-            "https://ko-fi.com/zuoqiu"
-          ]
-        }
-      }
-    },
-    {
       "url": "zuoez02/siyuan-plugin-twitter-emoji@c955ad218b46ceed062802787a7741e1add39709",
       "updated": "2023-06-08T07:22:45Z",
       "stars": 0,
@@ -1700,51 +2069,6 @@
           "en_US": ""
         },
         "funding": null
-      }
-    },
-    {
-      "url": "zxhd863943427/siyuan-plugin-block-history@f3d3a1ce7b9cdf7b2912227dfaa84bac73c25d17",
-      "updated": "2023-06-06T11:03:21Z",
-      "stars": 1,
-      "openIssues": 5,
-      "size": 71654,
-      "package": {
-        "name": "siyuan-plugin-block-history",
-        "author": "zxhd863943427",
-        "url": "https://github.com/zxhd863943427/siyuan-plugin-block-history",
-        "version": "0.0.1",
-        "minAppVersion": "2.9.0",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "frontends": [
-          "desktop"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "块历史",
-          "en_US": "block history"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "这个块之前是长什么样呢？",
-          "en_US": "What did this block look like before?"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.net/a/zxhd86"
-          ]
-        }
       }
     },
     {
@@ -1834,8 +2158,8 @@
     {
       "url": "svchord/siyuan-arco-calendar@ff07de6d28138a2ebde35f050ae877cac840fc79",
       "updated": "2023-05-31T17:38:04Z",
-      "stars": 6,
-      "openIssues": 4,
+      "stars": 7,
+      "openIssues": 6,
       "size": 275452,
       "package": {
         "name": "arco-calendar",
