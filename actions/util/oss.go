@@ -15,6 +15,7 @@ import (
 	"context"
 	"fmt"
 	"os"
+	"strings"
 
 	"github.com/88250/gulu"
 	"github.com/qiniu/go-sdk/v7/auth/qbox"
@@ -33,7 +34,9 @@ func UploadOSS(key, contentType string, data []byte) (err error) {
 	bucketManager := storage.NewBucketManager(mac, &cfg)
 	stat, err := bucketManager.Stat(bucket, key)
 	if nil != err {
-		logger.Warnf("stat [%s] failed: %s", key, err)
+		if !strings.Contains(err.Error(), "no such file or directory") {
+			logger.Warnf("stat [%s] failed: %s", key, err)
+		}
 	} else {
 		if "" != stat.Hash {
 			return
