@@ -1,21 +1,8 @@
-# SiYuan community bazaar <a title="Hits" target="_blank" href="https://github.com/siyuan-note/bazaar"><img src="https://hits.b3log.org/siyuan-note/bazaar.svg"></a>
-
-## Dev bazaar package and listing
-
-* [SiYuan theme sample](https://github.com/siyuan-note/theme-sample)
-* [SiYuan icon sample](https://github.com/siyuan-note/icon-sample)
-* [SiYuan template sample](https://github.com/siyuan-note/template-sample)
-* [SiYuan widget sample](https://github.com/siyuan-note/widget-sample)
-* [SiYuan plugin sample](https://github.com/siyuan-note/plugin-sample)
-* [SiYuan plugin sample (Vite & Svelte)](https://github.com/siyuan-note/plugin-sample-vite-svelte)
-
-## How long does it take to see the package in the marketplace after the PR is merged?
-
-Under normal circumstances, the community bazaar repo will automatically update the index and deploy every hour,
-and you can check the deployment status at https://github.com/siyuan-note/bazaar/actions.
-
-## Why is repo named bazaar?
-
-The name of the repository is inspired by the book _[The Cathedral and the Bazaar](https://en.wikipedia.org/wiki/The_Cathedral_and_the_Bazaar)_. 
-
-The original intention is not to be unconventional, but to continue the tradition of open source software.
+# 功能
+1. 在左侧生成一个视窗
+2. 视窗中以思维导图的方式显示焦点文档  
+4. 思维导图的显示方式有两种
+  1. 只显示一层子节点
+  2. 显示所有子节点
+5. 鼠标移动思维导图
+6. 缩放思维导图
