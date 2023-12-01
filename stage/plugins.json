@@ -1,16 +1,16 @@
 {
   "repos": [
     {
-      "url": "IAliceBobI/sy-tomato-plugin@5b0c7b1bcfb24c1fb7d118b98ee453c4cea7d7ff",
-      "updated": "2023-12-01T06:51:09Z",
+      "url": "IAliceBobI/sy-tomato-plugin@dbd36cedbebda1f370de0bc8042533d663eb0253",
+      "updated": "2023-12-01T09:07:43Z",
       "stars": 3,
       "openIssues": 0,
-      "size": 629887,
+      "size": 630354,
       "package": {
         "name": "sy-tomato-plugin",
         "author": "IAliceBobI",
         "url": "https://github.com/IAliceBobI/sy-tomato-plugin",
-        "version": "0.3.21",
+        "version": "0.3.23",
         "minAppVersion": "2.10.13",
         "backends": [
           "all"
@@ -25,7 +25,7 @@
         },
         "description": {
           "default": "Status bar pomodoro clock, bidirectional linking, regular reminders, reading points, fast list card creation, cleaning up expired flashcards, deleting long content, copying long content, moving long content.",
-          "zh_CN": "状态栏番茄钟、双向互链、定期提醒、阅读点、急速列表制卡、清理失效闪卡、长内容删除、长内容复制、长内容移动",
+          "zh_CN": "状态栏番茄钟、定期提醒、阅读点、极简反链、清理失效闪卡、长内容删除、长内容复制、长内容移动、双向互链、急速列表制卡",
           "en_US": ""
         },
         "readme": {
@@ -62,6 +62,56 @@
           "Time visualization",
           "Progress tracking",
           "Goal setting"
+        ]
+      }
+    },
+    {
+      "url": "IAliceBobI/sy-progressive-plugin@02e744e5a031e2f4acfcca35fc0cb32c52968c95",
+      "updated": "2023-12-01T08:56:29Z",
+      "stars": 5,
+      "openIssues": 0,
+      "size": 765780,
+      "package": {
+        "name": "sy-progressive-plugin",
+        "author": "IAliceBobI",
+        "url": "https://github.com/IAliceBobI/sy-progressive-plugin",
+        "version": "0.6.47",
+        "minAppVersion": "2.10.13",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "Progressive Learning",
+          "zh_CN": "渐进学习",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Document chunking for progressive reading, flashcard-style progressive writing.",
+          "zh_CN": "文档分片渐进阅读，写作式闪卡渐进写作。",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/playerv5"
+          ]
+        },
+        "keywords": [
+          "Learning",
+          "Progressive",
+          "Progressive Learning",
+          "Progressive Reading",
+          "Progressive Writing"
         ]
       }
     },
@@ -244,56 +294,6 @@
       }
     },
     {
-      "url": "IAliceBobI/sy-progressive-plugin@710f8ebeb2b15148af0c447bf17219b1ada4c801",
-      "updated": "2023-11-29T15:25:42Z",
-      "stars": 5,
-      "openIssues": 0,
-      "size": 765209,
-      "package": {
-        "name": "sy-progressive-plugin",
-        "author": "IAliceBobI",
-        "url": "https://github.com/IAliceBobI/sy-progressive-plugin",
-        "version": "0.6.45",
-        "minAppVersion": "2.10.13",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "Progressive Learning",
-          "zh_CN": "渐进学习",
-          "en_US": ""
-        },
-        "description": {
-          "default": "Document chunking for progressive reading, flashcard-style progressive writing.",
-          "zh_CN": "文档分片渐进阅读，写作式闪卡渐进写作。",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.net/a/playerv5"
-          ]
-        },
-        "keywords": [
-          "Learning",
-          "Progressive",
-          "Progressive Learning",
-          "Progressive Reading",
-          "Progressive Writing"
-        ]
-      }
-    },
-    {
       "url": "zuoez02/siyuan-plugin-picture-library@3957135708629e66c41329d25da8d63c8bfef223",
       "updated": "2023-11-29T10:13:17Z",
       "stars": 6,
@@ -392,7 +392,7 @@
       "url": "OpaqueGlass/syplugin-hierarchyNavigate@a3d030a068bf6af3730b9e065f60dfe75fe056d9",
       "updated": "2023-11-29T01:54:30Z",
       "stars": 4,
-      "openIssues": 5,
+      "openIssues": 6,
       "size": 122756,
       "package": {
         "name": "syplugin-hierarchyNavigate",
