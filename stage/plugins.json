@@ -1,6 +1,71 @@
 {
   "repos": [
     {
+      "url": "IAliceBobI/sy-tomato-plugin@886404c8f3ed02677b5da5386812742b04003675",
+      "updated": "2023-12-04T05:06:42Z",
+      "stars": 5,
+      "openIssues": 0,
+      "size": 632007,
+      "package": {
+        "name": "sy-tomato-plugin",
+        "author": "IAliceBobI",
+        "url": "https://github.com/IAliceBobI/sy-tomato-plugin",
+        "version": "0.3.39",
+        "minAppVersion": "2.10.13",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "Tomato toolbox",
+          "zh_CN": "番茄工具箱",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Status bar pomodoro clock, bidirectional linking, regular reminders, reading points, fast list card creation, cleaning up expired flashcards, deleting long content, copying long content, moving long content.",
+          "zh_CN": "状态栏番茄钟、底部反链、定期提醒、阅读点、极简反链、清理失效闪卡、长内容删除、长内容复制、长内容移动、双向互链、急速列表制卡",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/playerv5"
+          ]
+        },
+        "keywords": [
+          "TomatoClock",
+          "Time management",
+          "Productivity",
+          "Pomodoro technique",
+          "Timer plugin",
+          "Task scheduling",
+          "Focus sessions",
+          "Work intervals",
+          "Breaks",
+          "Time tracking",
+          "Timeboxing",
+          "Time optimization",
+          "Efficiency",
+          "Work-life balance",
+          "Distraction management",
+          "Task prioritization",
+          "Time blocking",
+          "Time visualization",
+          "Progress tracking",
+          "Goal setting"
+        ]
+      }
+    },
+    {
       "url": "terwer/siyuan-plugin-publisher@1bc1a03412dd58a0c6c04cf039f6fdde4a59d155",
       "updated": "2023-12-03T16:10:28Z",
       "stars": 75,
@@ -92,71 +157,6 @@
           "custom": []
         },
         "keywords": null
-      }
-    },
-    {
-      "url": "IAliceBobI/sy-tomato-plugin@5b283d4ff754f21ce3aa58d86f2c1ac9a66d3c26",
-      "updated": "2023-12-03T09:29:14Z",
-      "stars": 5,
-      "openIssues": 0,
-      "size": 631864,
-      "package": {
-        "name": "sy-tomato-plugin",
-        "author": "IAliceBobI",
-        "url": "https://github.com/IAliceBobI/sy-tomato-plugin",
-        "version": "0.3.36",
-        "minAppVersion": "2.10.13",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "Tomato toolbox",
-          "zh_CN": "番茄工具箱",
-          "en_US": ""
-        },
-        "description": {
-          "default": "Status bar pomodoro clock, bidirectional linking, regular reminders, reading points, fast list card creation, cleaning up expired flashcards, deleting long content, copying long content, moving long content.",
-          "zh_CN": "状态栏番茄钟、底部反链、定期提醒、阅读点、极简反链、清理失效闪卡、长内容删除、长内容复制、长内容移动、双向互链、急速列表制卡",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.net/a/playerv5"
-          ]
-        },
-        "keywords": [
-          "TomatoClock",
-          "Time management",
-          "Productivity",
-          "Pomodoro technique",
-          "Timer plugin",
-          "Task scheduling",
-          "Focus sessions",
-          "Work intervals",
-          "Breaks",
-          "Time tracking",
-          "Timeboxing",
-          "Time optimization",
-          "Efficiency",
-          "Work-life balance",
-          "Distraction management",
-          "Task prioritization",
-          "Time blocking",
-          "Time visualization",
-          "Progress tracking",
-          "Goal setting"
-        ]
       }
     },
     {
@@ -1266,6 +1266,50 @@
           "en_US": ""
         },
         "funding": null,
+        "keywords": null
+      }
+    },
+    {
+      "url": "frostime/sy-insert-time@17d4c970e2c881388ff58d2cd615d96c3ed9bcb4",
+      "updated": "2023-11-22T08:22:29Z",
+      "stars": 1,
+      "openIssues": 1,
+      "size": 28059,
+      "package": {
+        "name": "sy-insert-time",
+        "author": "frostime",
+        "url": "https://github.com/frostime/sy-insert-time",
+        "version": "1.2.0",
+        "minAppVersion": "2.10.10",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "插入时间",
+          "en_US": "Insert time"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "在编辑器中快速插入当前的时间",
+          "en_US": "Insert current time in editor"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/frostime"
+          ]
+        },
         "keywords": null
       }
     },
@@ -3640,50 +3684,6 @@
           "github": "",
           "custom": [
             "https://wj.qq.com/s2/12975404/0413/"
-          ]
-        },
-        "keywords": null
-      }
-    },
-    {
-      "url": "frostime/sy-insert-time@1a0e122715df6528b74baf4d6efec2a78d47f150",
-      "updated": "2023-08-19T11:58:47Z",
-      "stars": 1,
-      "openIssues": 1,
-      "size": 26325,
-      "package": {
-        "name": "sy-insert-time",
-        "author": "frostime",
-        "url": "https://github.com/frostime/sy-insert-time",
-        "version": "1.1.0",
-        "minAppVersion": "2.9.0",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "插入时间",
-          "en_US": "Insert time"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "在编辑器中快速插入当前的时间",
-          "en_US": "Insert current time in editor"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.net/a/frostime"
           ]
         },
         "keywords": null
