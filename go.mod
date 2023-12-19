@@ -5,7 +5,7 @@ go 1.17
 require (
 	github.com/88250/gulu v1.2.3-0.20230501031728-4d62370997cd
 	github.com/google/go-github/v52 v52.0.0
-	github.com/panjf2000/ants/v2 v2.8.2
+	github.com/panjf2000/ants/v2 v2.9.0
 	github.com/parnurzeal/gorequest v0.2.16
 	github.com/qiniu/go-sdk/v7 v7.18.2
 	golang.org/x/text v0.14.0 // indirect
