@@ -1,16 +1,66 @@
 {
   "repos": [
     {
-      "url": "IAliceBobI/sy-tomato-plugin@ce3b4d8a87728f023232014cd0b9f40d5f7df0b6",
-      "updated": "2024-01-10T09:51:01Z",
+      "url": "IAliceBobI/sy-progressive-plugin@cf5acdaa2457e339be9f2216a2a3bcd79592fa8c",
+      "updated": "2024-01-10T10:20:35Z",
+      "stars": 7,
+      "openIssues": 0,
+      "size": 1213326,
+      "package": {
+        "name": "sy-progressive-plugin",
+        "author": "IAliceBobI",
+        "url": "https://github.com/IAliceBobI/sy-progressive-plugin",
+        "version": "0.11.22",
+        "minAppVersion": "2.12.1",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "Progressive Learning",
+          "zh_CN": "渐进学习",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Document chunking for progressive reading, flashcard-style progressive writing.",
+          "zh_CN": "文档分片渐进阅读，写作式闪卡渐进写作。",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/playerv5"
+          ]
+        },
+        "keywords": [
+          "Learning",
+          "Progressive",
+          "Progressive Learning",
+          "Progressive Reading",
+          "Progressive Writing"
+        ]
+      }
+    },
+    {
+      "url": "IAliceBobI/sy-tomato-plugin@5dfd1512a8f45647c270efa64db7a22ee8deb934",
+      "updated": "2024-01-10T10:18:17Z",
       "stars": 6,
       "openIssues": 0,
-      "size": 1397190,
+      "size": 1397276,
       "package": {
         "name": "sy-tomato-plugin",
         "author": "IAliceBobI",
         "url": "https://github.com/IAliceBobI/sy-tomato-plugin",
-        "version": "0.13.6",
+        "version": "0.13.7",
         "minAppVersion": "2.12.1",
         "backends": [
           "all"
@@ -66,17 +116,17 @@
       }
     },
     {
-      "url": "IAliceBobI/sy-progressive-plugin@e5a6411f5b07cafaf8679b091a6378173fc56e2c",
-      "updated": "2024-01-10T08:00:15Z",
-      "stars": 7,
-      "openIssues": 0,
-      "size": 1213326,
+      "url": "zuoez02/siyuan-plugin-whiteboard@dca2248a384a6091fcd720abdf897af1ea59e099",
+      "updated": "2024-01-10T10:12:04Z",
+      "stars": 8,
+      "openIssues": 12,
+      "size": 3152078,
       "package": {
-        "name": "sy-progressive-plugin",
-        "author": "IAliceBobI",
-        "url": "https://github.com/IAliceBobI/sy-progressive-plugin",
-        "version": "0.11.21",
-        "minAppVersion": "2.12.1",
+        "name": "siyuan-plugin-whiteboard",
+        "author": "zuoez02",
+        "url": "https://github.com/zuoez02/siyuan-plugin-whiteboard",
+        "version": "0.1.7",
+        "minAppVersion": "2.10.11",
         "backends": [
           "all"
         ],
@@ -84,35 +134,29 @@
           "all"
         ],
         "displayName": {
-          "default": "Progressive Learning",
-          "zh_CN": "渐进学习",
-          "en_US": ""
+          "default": "",
+          "zh_CN": "Tldraw白板(预览版)",
+          "en_US": "Tldraw Whiteboard(Preview Version)"
         },
         "description": {
-          "default": "Document chunking for progressive reading, flashcard-style progressive writing.",
-          "zh_CN": "文档分片渐进阅读，写作式闪卡渐进写作。",
-          "en_US": ""
+          "default": "",
+          "zh_CN": "使用Tldraw构建的思源白板插件,目前为预览版",
+          "en_US": "Whiteboard based on tldraw, preview version"
         },
         "readme": {
-          "default": "README.md",
+          "default": "",
           "zh_CN": "README_zh_CN.md",
-          "en_US": ""
+          "en_US": "README.md"
         },
         "funding": {
           "openCollective": "",
           "patreon": "",
           "github": "",
           "custom": [
-            "https://afdian.net/a/playerv5"
+            "https://afdian.net/a/zuoez02"
           ]
         },
-        "keywords": [
-          "Learning",
-          "Progressive",
-          "Progressive Learning",
-          "Progressive Reading",
-          "Progressive Writing"
-        ]
+        "keywords": null
       }
     },
     {
@@ -1634,50 +1678,6 @@
           "github": "",
           "custom": [
             "https://afdian.net/a/shenjinglei"
-          ]
-        },
-        "keywords": null
-      }
-    },
-    {
-      "url": "zuoez02/siyuan-plugin-whiteboard@d27bf03822737dd17b75b09f02f3b02297f4f112",
-      "updated": "2023-12-13T10:18:31Z",
-      "stars": 8,
-      "openIssues": 12,
-      "size": 2913293,
-      "package": {
-        "name": "siyuan-plugin-whiteboard",
-        "author": "zuoez02",
-        "url": "https://github.com/zuoez02/siyuan-plugin-whiteboard",
-        "version": "0.1.4",
-        "minAppVersion": "2.10.11",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "Tldraw白板(预览版)",
-          "en_US": "Tldraw Whiteboard(Preview Version)"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "使用Tldraw构建的思源白板插件,目前为预览版",
-          "en_US": "Whiteboard based on tldraw, preview version"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.net/a/zuoez02"
           ]
         },
         "keywords": null
