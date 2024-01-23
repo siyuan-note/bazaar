@@ -1,16 +1,16 @@
 {
   "repos": [
     {
-      "url": "zuoez02/siyuan-plugin-webview-flomo@b83d7f298efd87a11d7caad34ce412f8ee7b148f",
-      "updated": "2024-01-23T08:20:49Z",
+      "url": "zuoez02/siyuan-plugin-webview-flomo@993ac8d6171f288de0e153a0bc4787114b6651e1",
+      "updated": "2024-01-23T09:41:31Z",
       "stars": 6,
-      "openIssues": 13,
-      "size": 656495,
+      "openIssues": 4,
+      "size": 657388,
       "package": {
         "name": "siyuan-plugin-webapp",
         "author": "zuoez02",
         "url": "https://github.com/zuoez02/siyuan-plugin-webview-flomo",
-        "version": "3.4.5",
+        "version": "3.5.0",
         "minAppVersion": "v2.10.14",
         "backends": [
           "windows",
@@ -47,16 +47,60 @@
       }
     },
     {
-      "url": "IAliceBobI/sy-tomato-plugin@374588c3a6a4b3e85d3ea2822a6341a5494009b9",
-      "updated": "2024-01-23T08:08:19Z",
+      "url": "mdzz2048/siyuan-plugin-hsr@152d6c6a242cb20846eb513728234639d95aa30a",
+      "updated": "2024-01-23T09:39:24Z",
+      "stars": 0,
+      "openIssues": 0,
+      "size": 84728,
+      "package": {
+        "name": "siyuan-plugin-hsr",
+        "author": "mdzz2048",
+        "url": "https://github.com/mdzz2048/siyuan-plugin-hsr",
+        "version": "0.0.1",
+        "minAppVersion": "2.9.8",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "frontends": [
+          "desktop"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "高亮搜索结果",
+          "en_US": "siyuan-weread-hsr"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "在当前文档搜索，并高亮搜索结果",
+          "en_US": "Search in the current document and highlight the search results"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README.md",
+          "en_US": "README_en_US.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": []
+        },
+        "keywords": null
+      }
+    },
+    {
+      "url": "IAliceBobI/sy-tomato-plugin@5bfb5d80b98709f0f13934c2f2264a0088b3b3ed",
+      "updated": "2024-01-23T09:26:28Z",
       "stars": 6,
       "openIssues": 1,
-      "size": 1400340,
+      "size": 1400358,
       "package": {
         "name": "sy-tomato-plugin",
         "author": "IAliceBobI",
         "url": "https://github.com/IAliceBobI/sy-tomato-plugin",
-        "version": "0.14.35",
+        "version": "0.14.36",
         "minAppVersion": "2.12.1",
         "backends": [
           "all"
@@ -108,6 +152,65 @@
           "Time visualization",
           "Progress tracking",
           "Goal setting"
+        ]
+      }
+    },
+    {
+      "url": "makediff/siyuan-wucai@9175b99a53b9edc687207f89fcde70c018ebdc1e",
+      "updated": "2024-01-23T09:18:39Z",
+      "stars": 1,
+      "openIssues": 0,
+      "size": 344114,
+      "package": {
+        "name": "siyuan-wucai",
+        "author": "makediff",
+        "url": "https://github.com/makediff/siyuan-wucai",
+        "version": "24.1.23",
+        "minAppVersion": "2.12.1",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "WuCai Highlights",
+          "zh_CN": "五彩",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Easily and automatically sync all your highlights to SiYuan",
+          "zh_CN": "同步五彩到思源",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://www.dotalk.cn/product/wucai"
+          ]
+        },
+        "keywords": [
+          "五彩",
+          "wucai",
+          "highlight",
+          "网页划线",
+          "网页高亮",
+          "高亮批注"
         ]
       }
     },
@@ -204,65 +307,6 @@
           "Memos",
           "同步",
           "sync"
-        ]
-      }
-    },
-    {
-      "url": "makediff/siyuan-wucai@5cb3b6a6bfafdf7c8939b3fc715a8f1cdadf4053",
-      "updated": "2024-01-22T08:29:11Z",
-      "stars": 1,
-      "openIssues": 0,
-      "size": 344110,
-      "package": {
-        "name": "siyuan-wucai",
-        "author": "makediff",
-        "url": "https://github.com/makediff/siyuan-wucai",
-        "version": "24.1.22",
-        "minAppVersion": "2.12.1",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "WuCai Highlights",
-          "zh_CN": "五彩",
-          "en_US": ""
-        },
-        "description": {
-          "default": "Easily and automatically sync all your highlights to SiYuan",
-          "zh_CN": "同步五彩到思源",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://www.dotalk.cn/product/wucai"
-          ]
-        },
-        "keywords": [
-          "五彩",
-          "wucai",
-          "highlight",
-          "网页划线",
-          "网页高亮",
-          "高亮批注"
         ]
       }
     },
