@@ -1,66 +1,254 @@
 {
   "repos": [
     {
-      "url": "IAliceBobI/sy-progressive-plugin@cd72e9a7aed7ac461322ab30216b516fe7386594",
-      "updated": "2024-01-24T08:54:16Z",
-      "stars": 7,
-      "openIssues": 0,
-      "size": 1217517,
+      "url": "zxkmm/siyuan_doctree_compress@95f60436d9970d2efddfe9b84bb10cd07d48e9cb",
+      "updated": "2024-01-24T12:26:42Z",
+      "stars": 12,
+      "openIssues": 2,
+      "size": 140350,
       "package": {
-        "name": "sy-progressive-plugin",
-        "author": "IAliceBobI",
-        "url": "https://github.com/IAliceBobI/sy-progressive-plugin",
-        "version": "0.13.11",
+        "name": "siyuan_doctree_compress",
+        "author": "zxkmm",
+        "url": "https://github.com/zxkmm/siyuan_doctree_compress",
+        "version": "0.3.2",
         "minAppVersion": "2.12.1",
         "backends": [
-          "all"
+          "windows",
+          "linux",
+          "darwin",
+          "android",
+          "ios"
         ],
         "frontends": [
-          "all"
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
         ],
         "displayName": {
-          "default": "Progressive Learning",
-          "zh_CN": "渐进学习",
-          "en_US": ""
+          "default": "",
+          "zh_CN": "文档树自定义",
+          "en_US": "doctree modify"
         },
         "description": {
-          "default": "Document chunking for progressive reading, flashcard-style progressive writing.",
-          "zh_CN": "文档分片渐进阅读，写作式闪卡渐进写作。",
-          "en_US": ""
+          "default": "",
+          "zh_CN": "（文档树压缩）提供多达20余项功能，包括 流动布局/ 缩进调节/ 隐藏气泡/ 屏蔽按钮/ 字体大小/ 鼠标悬浮/ 层级竖线/ 分割线/ 等等，完全自定义您的文档树",
+          "en_US": "(doctree compress) provides up to 12 functions, including flow layout/ indentation adjustment/ hide bubble/ shield button/ font size/ mouse hover, etc., to completely customize your document tree"
         },
         "readme": {
-          "default": "README.md",
+          "default": "",
           "zh_CN": "README_zh_CN.md",
-          "en_US": ""
+          "en_US": "README.md"
         },
         "funding": {
           "openCollective": "",
           "patreon": "",
           "github": "",
           "custom": [
-            "https://afdian.net/a/playerv5"
+            "https://github.com/zxkmm/zxkmm"
           ]
         },
         "keywords": [
-          "Learning",
-          "Progressive",
-          "Progressive Learning",
-          "Progressive Reading",
-          "Progressive Writing"
+          "文档树",
+          "压缩",
+          "自定义",
+          "compress",
+          "doctree",
+          "modify",
+          "zxkmm",
+          "文档树压缩",
+          "文档树自定义",
+          "siyuan_doctree_compress"
         ]
       }
     },
     {
-      "url": "IAliceBobI/sy-tomato-plugin@ad8434ad4871b3fac5dc267ad1b8440459d2017a",
-      "updated": "2024-01-24T08:30:04Z",
+      "url": "zxkmm/siyuan_marketplace_blacklist@5d7120bec1e8da4ce5b5bd16d4f757686566ff5d",
+      "updated": "2024-01-24T12:12:29Z",
+      "stars": 6,
+      "openIssues": 0,
+      "size": 1200655,
+      "package": {
+        "name": "siyuan_marketplace_blacklist",
+        "author": "zxkmm",
+        "url": "https://github.com/siyuan-note/plugin-sample-vite-svelte",
+        "version": "0.0.2",
+        "minAppVersion": "2.11.4",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "集市黑名单",
+          "en_US": "siyuan_marketplace_blacklist"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "把您不想看到的集市插件/主题/图标/模板/挂件添加到黑名单, 您就再也不会看到它",
+          "en_US": "Add those plugins/ themes/ icons/ templates/ widgets you don't wanna see to black list so you won't see it in marketplace."
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://github.com/zxkmm/zxkmm"
+          ]
+        },
+        "keywords": [
+          "集市",
+          "黑名单",
+          "集市黑名单",
+          "隐藏",
+          "移除",
+          "marketplace blacklist",
+          "marketplace",
+          "blacklist",
+          "blocklist",
+          "remove",
+          "hide"
+        ]
+      }
+    },
+    {
+      "url": "zxkmm/siyuan_leave_to_lock@9a5bd1219346f988ab05b133da93627b747df1d0",
+      "updated": "2024-01-24T11:51:35Z",
+      "stars": 10,
+      "openIssues": 0,
+      "size": 343336,
+      "package": {
+        "name": "siyuan_leave_to_lock",
+        "author": "zxkmm",
+        "url": "https://github.com/siyuan-note/plugin-sample-vite-svelte",
+        "version": "0.2.2",
+        "minAppVersion": "2.12.1",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "离开即锁",
+          "en_US": "SiYuan Leave To Lock"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "当你离开思源笔记时锁定思源。可设置多种监听模式和自定义延迟。",
+          "en_US": "Lock SiYuan when you leave"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://github.com/zxkmm/zxkmm"
+          ]
+        },
+        "keywords": [
+          "锁屏",
+          "离开",
+          "锁定",
+          "Lock",
+          "lock",
+          "Leave",
+          "leave",
+          "siyuan_leave_to_lock",
+          "zxkmm"
+        ]
+      }
+    },
+    {
+      "url": "zxkmm/siyuan_rmv_btn@6f583a9405db0a756914c73dc06b85387d3b2b3f",
+      "updated": "2024-01-24T11:38:12Z",
+      "stars": 12,
+      "openIssues": 3,
+      "size": 174460,
+      "package": {
+        "name": "siyuan_rmv_btn",
+        "author": "zxkmm",
+        "url": "https://github.com/zxkmm/siyuan_rmv_btn",
+        "version": "1.1.2",
+        "minAppVersion": "2.10.14",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android"
+        ],
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "移除按钮",
+          "en_US": "SiYuan remove buttons"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "一个移除你不想要的按钮/菜单项的插件，覆盖电脑和手机",
+          "en_US": "A plugin to remove menu items and buttons you don't really need."
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://github.com/zxkmm/zxkmm"
+          ]
+        },
+        "keywords": [
+          "移除",
+          "隐藏",
+          "菜单",
+          "remove",
+          "hide",
+          "menu",
+          "siyuan_rmv_btn"
+        ]
+      }
+    },
+    {
+      "url": "IAliceBobI/sy-tomato-plugin@80448a23cec0c93ec4778212bf8babc59546b4c8",
+      "updated": "2024-01-24T11:20:30Z",
       "stars": 6,
       "openIssues": 1,
-      "size": 1400675,
+      "size": 1400674,
       "package": {
         "name": "sy-tomato-plugin",
         "author": "IAliceBobI",
         "url": "https://github.com/IAliceBobI/sy-tomato-plugin",
-        "version": "0.14.40",
+        "version": "0.14.41",
         "minAppVersion": "2.12.1",
         "backends": [
           "all"
@@ -112,6 +300,56 @@
           "Time visualization",
           "Progress tracking",
           "Goal setting"
+        ]
+      }
+    },
+    {
+      "url": "IAliceBobI/sy-progressive-plugin@f5d2344d4ef4daaa0d20bdf8a5aa3a45656b0c83",
+      "updated": "2024-01-24T11:19:47Z",
+      "stars": 7,
+      "openIssues": 0,
+      "size": 1217513,
+      "package": {
+        "name": "sy-progressive-plugin",
+        "author": "IAliceBobI",
+        "url": "https://github.com/IAliceBobI/sy-progressive-plugin",
+        "version": "0.13.12",
+        "minAppVersion": "2.12.1",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "Progressive Learning",
+          "zh_CN": "渐进学习",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Document chunking for progressive reading, flashcard-style progressive writing.",
+          "zh_CN": "文档分片渐进阅读，写作式闪卡渐进写作。",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/playerv5"
+          ]
+        },
+        "keywords": [
+          "Learning",
+          "Progressive",
+          "Progressive Learning",
+          "Progressive Reading",
+          "Progressive Writing"
         ]
       }
     },
@@ -841,67 +1079,6 @@
       }
     },
     {
-      "url": "zxkmm/siyuan_doctree_compress@b2502de54ca551419990429edc867d063594429e",
-      "updated": "2024-01-23T11:47:08Z",
-      "stars": 11,
-      "openIssues": 2,
-      "size": 140344,
-      "package": {
-        "name": "siyuan_doctree_compress",
-        "author": "zxkmm",
-        "url": "https://github.com/zxkmm/siyuan_doctree_compress",
-        "version": "0.3.0",
-        "minAppVersion": "2.12.1",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "android",
-          "ios"
-        ],
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "文档树自定义",
-          "en_US": "doctree modify"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "（文档树压缩）提供多达20余项功能，包括 流动布局/ 缩进调节/ 隐藏气泡/ 屏蔽按钮/ 字体大小/ 鼠标悬浮/ 层级竖线/ 分割线/ 等等，完全自定义您的文档树",
-          "en_US": "(doctree compress) provides up to 12 functions, including flow layout/ indentation adjustment/ hide bubble/ shield button/ font size/ mouse hover, etc., to completely customize your document tree"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://github.com/zxkmm/zxkmm"
-          ]
-        },
-        "keywords": [
-          "文档树",
-          "压缩",
-          "自定义",
-          "compress",
-          "doctree",
-          "modify",
-          "zxkmm",
-          "文档树压缩",
-          "文档树自定义",
-          "siyuan_doctree_compress"
-        ]
-      }
-    },
-    {
       "url": "zuoez02/siyuan-plugin-docky@30790842955a1d59d0a9cdb55a75c9b0e6dbc15a",
       "updated": "2024-01-23T10:35:39Z",
       "stars": 0,
@@ -1031,63 +1208,6 @@
       }
     },
     {
-      "url": "zxkmm/siyuan_leave_to_lock@056b39c2c605708b309f01599284799688525f64",
-      "updated": "2024-01-19T16:09:08Z",
-      "stars": 10,
-      "openIssues": 0,
-      "size": 343333,
-      "package": {
-        "name": "siyuan_leave_to_lock",
-        "author": "zxkmm",
-        "url": "https://github.com/siyuan-note/plugin-sample-vite-svelte",
-        "version": "0.2.1",
-        "minAppVersion": "2.12.1",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "frontends": [
-          "desktop",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "离开即锁",
-          "en_US": "SiYuan Leave To Lock"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "当你离开思源笔记时锁定思源。可设置多种监听模式和自定义延迟。",
-          "en_US": "Lock SiYuan when you leave"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://github.com/zxkmm/zxkmm"
-          ]
-        },
-        "keywords": [
-          "锁屏",
-          "离开",
-          "锁定",
-          "Lock",
-          "lock",
-          "Leave",
-          "leave",
-          "siyuan_leave_to_lock",
-          "zxkmm"
-        ]
-      }
-    },
-    {
       "url": "zuoez02/siyuan-plugin-toolbar-plus@d61f571b1b4cc61b15ec33723d8dff5826fef26b",
       "updated": "2024-01-19T01:37:46Z",
       "stars": 1,
@@ -1118,66 +1238,6 @@
         },
         "funding": null,
         "keywords": null
-      }
-    },
-    {
-      "url": "zxkmm/siyuan_rmv_btn@9ee250e787e856535e33c23ef5dddbc10ec31726",
-      "updated": "2024-01-18T16:48:13Z",
-      "stars": 12,
-      "openIssues": 3,
-      "size": 174232,
-      "package": {
-        "name": "siyuan_rmv_btn",
-        "author": "zxkmm",
-        "url": "https://github.com/zxkmm/siyuan_rmv_btn",
-        "version": "1.1.1",
-        "minAppVersion": "2.10.14",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android"
-        ],
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "移除按钮",
-          "en_US": "SiYuan remove buttons"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "一个移除你不想要的按钮/菜单项的插件，覆盖电脑和手机",
-          "en_US": "A plugin to remove menu items and buttons you don't really need."
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://github.com/zxkmm/zxkmm"
-          ]
-        },
-        "keywords": [
-          "移除",
-          "隐藏",
-          "菜单",
-          "remove",
-          "hide",
-          "menu",
-          "siyuan_rmv_btn"
-        ]
       }
     },
     {
@@ -1360,66 +1420,6 @@
         "keywords": [
           "index",
           "目录"
-        ]
-      }
-    },
-    {
-      "url": "zxkmm/siyuan_marketplace_blacklist@8c19b7b7e169ad239b8bb767cdb48c55a5048b8f",
-      "updated": "2024-01-13T09:10:47Z",
-      "stars": 6,
-      "openIssues": 0,
-      "size": 1200367,
-      "package": {
-        "name": "siyuan_marketplace_blacklist",
-        "author": "zxkmm",
-        "url": "https://github.com/siyuan-note/plugin-sample-vite-svelte",
-        "version": "0.0.1",
-        "minAppVersion": "2.11.4",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "集市黑名单",
-          "en_US": "siyuan_marketplace_blacklist"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "把您不想看到的集市插件/主题/图标/模板/挂件添加到黑名单, 您就再也不会看到它",
-          "en_US": "Add those plugins/ themes/ icons/ templates/ widgets you don't wanna see to black list so you won't see it in marketplace."
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://github.com/zxkmm/zxkmm"
-          ]
-        },
-        "keywords": [
-          "集市",
-          "黑名单",
-          "集市黑名单",
-          "隐藏",
-          "移除",
-          "marketplace blacklist",
-          "marketplace",
-          "blacklist",
-          "blocklist",
-          "remove",
-          "hide"
         ]
       }
     },
