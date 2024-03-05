@@ -16,6 +16,6 @@ and you can check the deployment status at https://github.com/siyuan-note/bazaar
 
 ## Why is repo named bazaar?
 
-The name of the repository is inspired by the book _[The Cathedral and the Bazaar](https://en.wikipedia.org/wiki/The_Cathedral_and_the_Bazaar)_. 
+The name of the repository is inspired by the book _[The Cathedral and the Bazaar](https://en.wikipedia.org/wiki/The_Cathedral_and_the_Bazaar)_.
 
 The original intention is not to be unconventional, but to continue the tradition of open source software.
