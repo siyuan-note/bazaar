@@ -1,17 +1,17 @@
 {
   "repos": [
     {
-      "url": "Misuzu2027/syplugin-document-search@71b922d89b2697e55d68fec6496397bd687d72b5",
-      "updated": "2024-03-05T08:54:27Z",
+      "url": "shenjinglei/siyuan-plugin-graph-enhance@7993142b9db9de0f3cd0b6753adafca7a1e10bec",
+      "updated": "2024-03-07T09:24:01Z",
       "stars": 2,
-      "openIssues": 1,
-      "size": 88698,
+      "openIssues": 2,
+      "size": 297102,
       "package": {
-        "name": "syplugin-document-search",
-        "author": "Misuzu2027",
-        "url": "https://github.com/Misuzu2027/syplugin-document-search",
-        "version": "0.6.5",
-        "minAppVersion": "2.10.14",
+        "name": "graph-enhance",
+        "author": "shenjinglei",
+        "url": "https://github.com/shenjinglei/siyuan-plugin-graph-enhance",
+        "version": "0.4.2",
+        "minAppVersion": "2.10.13",
         "backends": [
           "all"
         ],
@@ -19,42 +19,42 @@
           "all"
         ],
         "displayName": {
-          "default": "基于文档搜索",
-          "zh_CN": "基于文档搜索",
-          "en_US": "document search"
+          "default": "Graph Enhanced",
+          "zh_CN": "关系图增强",
+          "en_US": ""
         },
         "description": {
-          "default": "",
-          "zh_CN": "这个插件与系统内置的块级别查询不同，它以文档为单位进行查询。",
-          "en_US": "This plugin operates differently from the built-in block-level queries of the system. It conducts searches on a document basis."
+          "default": "display the relationships between notes",
+          "zh_CN": "显示笔记间的双链关系",
+          "en_US": ""
         },
         "readme": {
-          "default": "README_zh_CN.md",
+          "default": "README.md",
           "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
+          "en_US": ""
         },
-        "funding": null,
-        "keywords": [
-          "document",
-          "search",
-          "query",
-          "文档",
-          "查询",
-          "搜索"
-        ]
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/shenjinglei"
+          ]
+        },
+        "keywords": null
       }
     },
     {
-      "url": "IAliceBobI/sy-tomato-plugin@571e7f5646d0636d0a3706fa26e3bf5b37cfab29",
-      "updated": "2024-03-05T07:40:04Z",
+      "url": "IAliceBobI/sy-tomato-plugin@06dbfcc8fc6d0c8a681689d38a3e58360765607d",
+      "updated": "2024-03-07T04:42:27Z",
       "stars": 8,
-      "openIssues": 2,
-      "size": 1477131,
+      "openIssues": 3,
+      "size": 1478105,
       "package": {
         "name": "sy-tomato-plugin",
         "author": "IAliceBobI",
         "url": "https://github.com/IAliceBobI/sy-tomato-plugin",
-        "version": "0.18.64",
+        "version": "0.18.68",
         "minAppVersion": "2.12.8",
         "backends": [
           "all"
@@ -110,9 +110,936 @@
       }
     },
     {
+      "url": "zxhd863943427/siyuan-plugin-flash-enhance@237997fee69ea7c78c4705fdedea40137f0ae77c",
+      "updated": "2024-03-07T03:26:44Z",
+      "stars": 25,
+      "openIssues": 11,
+      "size": 167519,
+      "package": {
+        "name": "siyuan-plugin-flash-enhance",
+        "author": "zxhd863943427",
+        "url": "https://github.com/zxhd863943427/siyuan-plugin-flash-enhance",
+        "version": "0.1.1",
+        "minAppVersion": "2.9.3",
+        "backends": null,
+        "frontends": null,
+        "displayName": {
+          "default": "flash-enhance",
+          "zh_CN": "闪卡增强",
+          "en_US": ""
+        },
+        "description": {
+          "default": "This plugin can make the card-making experience in Siyuan as smooth as clouds and flowing water.Supports incremental reading flow.",
+          "zh_CN": "使思源制卡的体验行云流水般流畅, 支持渐进式阅读流程、图片制卡",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/zxhd86"
+          ]
+        },
+        "keywords": null
+      }
+    },
+    {
+      "url": "zxkmm/siyuan_marketplace_blacklist@b221dd3290865c4f00c4c9ee273aa8a4440bf182",
+      "updated": "2024-03-07T02:11:10Z",
+      "stars": 8,
+      "openIssues": 0,
+      "size": 1200906,
+      "package": {
+        "name": "siyuan_marketplace_blacklist",
+        "author": "zxkmm",
+        "url": "https://github.com/siyuan-note/plugin-sample-vite-svelte",
+        "version": "0.0.3",
+        "minAppVersion": "2.11.4",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "集市黑名单",
+          "en_US": "siyuan_marketplace_blacklist"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "把您不想看到的集市插件/主题/图标/模板/挂件添加到黑名单, 您就再也不会看到它",
+          "en_US": "Add those plugins/ themes/ icons/ templates/ widgets you don't wanna see to black list so you won't see it in marketplace."
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://github.com/zxkmm/zxkmm"
+          ]
+        },
+        "keywords": [
+          "集市",
+          "黑名单",
+          "集市黑名单",
+          "隐藏",
+          "移除",
+          "marketplace blacklist",
+          "marketplace",
+          "blacklist",
+          "blocklist",
+          "remove",
+          "hide"
+        ]
+      }
+    },
+    {
+      "url": "zxkmm/siyuan_leave_to_lock@bbb9693ac03c74c33f7c112b9b1c2b2b8d772778",
+      "updated": "2024-03-07T02:07:56Z",
+      "stars": 13,
+      "openIssues": 0,
+      "size": 343580,
+      "package": {
+        "name": "siyuan_leave_to_lock",
+        "author": "zxkmm",
+        "url": "https://github.com/siyuan-note/plugin-sample-vite-svelte",
+        "version": "0.2.3",
+        "minAppVersion": "2.12.1",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "离开即锁",
+          "en_US": "SiYuan Leave To Lock"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "当你离开思源笔记时锁定思源。可设置多种监听模式和自定义延迟。",
+          "en_US": "Lock SiYuan when you leave"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://github.com/zxkmm/zxkmm"
+          ]
+        },
+        "keywords": [
+          "锁屏",
+          "离开",
+          "锁定",
+          "Lock",
+          "lock",
+          "Leave",
+          "leave",
+          "siyuan_leave_to_lock",
+          "zxkmm"
+        ]
+      }
+    },
+    {
+      "url": "zxkmm/siyuan_rmv_btn@d8e0500cd4c0dc4016ce700b439f433b00563a6f",
+      "updated": "2024-03-07T02:02:48Z",
+      "stars": 17,
+      "openIssues": 1,
+      "size": 175508,
+      "package": {
+        "name": "siyuan_rmv_btn",
+        "author": "zxkmm",
+        "url": "https://github.com/zxkmm/siyuan_rmv_btn",
+        "version": "1.1.4",
+        "minAppVersion": "2.10.14",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android"
+        ],
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "移除按钮",
+          "en_US": "SiYuan remove buttons"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "一个移除你不想要的按钮/菜单项的插件，覆盖电脑和手机",
+          "en_US": "A plugin to remove menu items and buttons you don't really need."
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://github.com/zxkmm/zxkmm"
+          ]
+        },
+        "keywords": [
+          "移除",
+          "隐藏",
+          "菜单",
+          "remove",
+          "hide",
+          "menu",
+          "siyuan_rmv_btn"
+        ]
+      }
+    },
+    {
+      "url": "zxkmm/siyuan_doctree_compress@a30c98f53b5782eaffd8b6e1f97f72830be6ab76",
+      "updated": "2024-03-07T01:57:42Z",
+      "stars": 19,
+      "openIssues": 4,
+      "size": 141403,
+      "package": {
+        "name": "siyuan_doctree_compress",
+        "author": "zxkmm",
+        "url": "https://github.com/zxkmm/siyuan_doctree_compress",
+        "version": "0.3.6",
+        "minAppVersion": "2.12.1",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "android",
+          "ios"
+        ],
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "文档树自定义",
+          "en_US": "doctree modify"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "（文档树压缩）提供多达20余项功能，包括 流动布局/ 缩进调节/ 隐藏气泡/ 屏蔽按钮/ 字体大小/ 鼠标悬浮/ 层级竖线/ 分割线/ 等等，完全自定义您的文档树",
+          "en_US": "(doctree compress) provides up to 12 functions, including flow layout/ indentation adjustment/ hide bubble/ shield button/ font size/ mouse hover, etc., to completely customize your document tree"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://github.com/zxkmm/zxkmm"
+          ]
+        },
+        "keywords": [
+          "文档树",
+          "压缩",
+          "自定义",
+          "compress",
+          "doctree",
+          "modify",
+          "zxkmm",
+          "文档树压缩",
+          "文档树自定义",
+          "siyuan_doctree_compress"
+        ]
+      }
+    },
+    {
+      "url": "makediff/siyuan-wucai@898eb5186643c227e8b59e0dee0976525a3f1334",
+      "updated": "2024-03-06T09:37:06Z",
+      "stars": 1,
+      "openIssues": 0,
+      "size": 344818,
+      "package": {
+        "name": "siyuan-wucai",
+        "author": "makediff",
+        "url": "https://github.com/makediff/siyuan-wucai",
+        "version": "24.3.6",
+        "minAppVersion": "2.12.1",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "WuCai Highlights",
+          "zh_CN": "五彩",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Easily and automatically sync all your highlights to SiYuan",
+          "zh_CN": "非常方便的将网页划线高亮、页面笔记和剪藏同步到思源，来搭建属于自己的知识库",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://www.dotalk.cn/product/wucai"
+          ]
+        },
+        "keywords": [
+          "五彩",
+          "wucai",
+          "highlight",
+          "网页划线",
+          "网页高亮",
+          "高亮批注"
+        ]
+      }
+    },
+    {
+      "url": "TCOTC/siyuan-css-pin-doc-show@2e21e3007a8a754a7a33a086b85fc664a3354559",
+      "updated": "2024-03-06T09:03:15Z",
+      "stars": 1,
+      "openIssues": 0,
+      "size": 29038,
+      "package": {
+        "name": "siyuan-css-pin-doc-show",
+        "author": "TCOTC",
+        "url": "https://github.com/TCOTC/siyuan-css-pin-doc-show",
+        "version": "0.1.0",
+        "minAppVersion": "",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "Show pinned document name",
+          "zh_CN": "显示钉住文档名",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Pinned documents show icon and doc name",
+          "zh_CN": "钉住的文档显示图标和标题",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/JeffreyChen"
+          ]
+        },
+        "keywords": [
+          "文档",
+          "钉住",
+          "显示",
+          "name",
+          "pin",
+          "doc",
+          "document",
+          "show",
+          "icon"
+        ]
+      }
+    },
+    {
+      "url": "IAliceBobI/sy-progressive-plugin@1dad82b250c63ad21f5c58f22d066092f2248014",
+      "updated": "2024-03-06T08:40:21Z",
+      "stars": 8,
+      "openIssues": 1,
+      "size": 1284840,
+      "package": {
+        "name": "sy-progressive-plugin",
+        "author": "IAliceBobI",
+        "url": "https://github.com/IAliceBobI/sy-progressive-plugin",
+        "version": "0.14.62",
+        "minAppVersion": "2.12.6",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "Progressive Learning",
+          "zh_CN": "渐进学习",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Document chunking for progressive reading, flashcard-style progressive writing.",
+          "zh_CN": "文档分片渐进阅读，写作式闪卡渐进写作。",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/playerv5"
+          ]
+        },
+        "keywords": [
+          "Learning",
+          "Progressive",
+          "Progressive Learning",
+          "Progressive Reading",
+          "Progressive Writing"
+        ]
+      }
+    },
+    {
+      "url": "TCOTC/siyuan-css-image-block-centered@2683d3ec6ca2fc0d4c5da6d9b853b0fe86db80b0",
+      "updated": "2024-03-06T07:24:31Z",
+      "stars": 1,
+      "openIssues": 0,
+      "size": 33307,
+      "package": {
+        "name": "siyuan-css-image-block-centered",
+        "author": "TCOTC",
+        "url": "https://github.com/TCOTC/siyuan-css-image-block-centered",
+        "version": "0.1.0",
+        "minAppVersion": "",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "Center image block",
+          "zh_CN": "居中图片块",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Center the blocks containing images in the document",
+          "zh_CN": "居中显示文档中包含图片的块",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/JeffreyChen"
+          ]
+        },
+        "keywords": [
+          "居中",
+          "图片",
+          "块",
+          "Center",
+          "image",
+          "block",
+          "picture"
+        ]
+      }
+    },
+    {
+      "url": "TCOTC/siyuan-css-dashed-line-memo@02746b9c92f295752b973338508f2243e5778a1b",
+      "updated": "2024-03-06T06:46:04Z",
+      "stars": 1,
+      "openIssues": 0,
+      "size": 22971,
+      "package": {
+        "name": "siyuan-css-dashed-line-memo",
+        "author": "TCOTC",
+        "url": "https://github.com/TCOTC/siyuan-css-dashed-line-memo",
+        "version": "0.1.0",
+        "minAppVersion": "",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "Dashed line memo",
+          "zh_CN": "虚线备注",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Change the style of the memo to a dashed line",
+          "zh_CN": "将备注的样式改为虚线",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/JeffreyChen"
+          ]
+        },
+        "keywords": [
+          "虚线",
+          "dashed",
+          "dash",
+          "line",
+          "memo",
+          "备注",
+          "样式",
+          "css",
+          "CSS",
+          "TCOTC"
+        ]
+      }
+    },
+    {
+      "url": "TCOTC/siyuan-css-hide-bookmark-icon@6be144f754601daa3d728f2528931022f9d0eb01",
+      "updated": "2024-03-06T06:16:57Z",
+      "stars": 1,
+      "openIssues": 0,
+      "size": 35062,
+      "package": {
+        "name": "siyuan-css-hide-bookmark-icon",
+        "author": "TCOTC",
+        "url": "https://github.com/TCOTC/siyuan-css-hide-bookmark-icon",
+        "version": "0.1.0",
+        "minAppVersion": "",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "Bookmark hide icon",
+          "zh_CN": "书签隐藏图标",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Hide the icon in front of the bookmark in the bookmark",
+          "zh_CN": "在书签中隐藏书签前的图标",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/JeffreyChen"
+          ]
+        },
+        "keywords": [
+          "书签",
+          "书签树",
+          "隐藏",
+          "图标",
+          "隐藏图标",
+          "mark",
+          "bookmark",
+          "hide",
+          "icon"
+        ]
+      }
+    },
+    {
+      "url": "TCOTC/siyuan-css-hide-doc-tree-icon@deeb3edc4a0e04f0e9e904a89673404b2f1dde8e",
+      "updated": "2024-03-06T05:57:07Z",
+      "stars": 1,
+      "openIssues": 0,
+      "size": 18352,
+      "package": {
+        "name": "siyuan-css-hide-doc-tree-icon",
+        "author": "TCOTC",
+        "url": "https://github.com/TCOTC/siyuan-css-hide-doc-tree-icon",
+        "version": "0.1.0",
+        "minAppVersion": "",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "Doc Tree hide icon",
+          "zh_CN": "文档树隐藏图标",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Hide the icon in front of the document in the document tree",
+          "zh_CN": "在文档树中隐藏文档前的图标",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/JeffreyChen"
+          ]
+        },
+        "keywords": [
+          "文档",
+          "文档树",
+          "隐藏",
+          "图标",
+          "隐藏图标",
+          "doc",
+          "document",
+          "hide",
+          "icon"
+        ]
+      }
+    },
+    {
+      "url": "yangmingyuan380/syplugin-document-search@2be7bf3d42eff332c897cf9853c18445f22cbb69",
+      "updated": "2024-03-06T02:21:25Z",
+      "stars": 0,
+      "openIssues": 0,
+      "size": 140418,
+      "package": {
+        "name": "syplugin-document-es-search",
+        "author": "Misuzu2027,Rick",
+        "url": "https://github.com/Misuzu2027/syplugin-document-search",
+        "version": "0.6.0",
+        "minAppVersion": "2.10.14",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "基于文档搜索(es)",
+          "zh_CN": "基于文档搜索(es)",
+          "en_US": "document search(es)"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "将数据同步到es，以文档为单位进行查询。",
+          "en_US": "This plugin operates differently from the built-in block-level queries of the system. It conducts searches on a document basis."
+        },
+        "readme": {
+          "default": "README_zh_CN.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": null,
+        "keywords": [
+          "document",
+          "search",
+          "query",
+          "文档",
+          "查询",
+          "搜索"
+        ]
+      }
+    },
+    {
+      "url": "TCOTC/siyuan-ttf-HarmonyOS_Sans_SC-and-Twemoji@99779bc768dba12e4f6e5d14131a61c627b295ea",
+      "updated": "2024-03-05T16:43:07Z",
+      "stars": 1,
+      "openIssues": 0,
+      "size": 6373445,
+      "package": {
+        "name": "siyuan-ttf-HarmonyOS_Sans_SC-and-Twemoji",
+        "author": "TCOTC",
+        "url": "https://github.com/TCOTC/siyuan-ttf-HarmonyOS_Sans_SC-and-Twemoji",
+        "version": "0.1.8",
+        "minAppVersion": "",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "HarmonyOS Sans font and Twitter Emoji",
+          "zh_CN": "鸿蒙字体和 Twitter Emoji",
+          "en_US": ""
+        },
+        "description": {
+          "default": "HarmonyOS Sans SC (font) \u0026 Twemoji (Twitter Emoji)",
+          "zh_CN": "HarmonyOS Sans SC (鸿蒙字体) \u0026 Twemoji (Twitter Emoji)",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/JeffreyChen"
+          ]
+        },
+        "keywords": [
+          "font",
+          "字体",
+          "字",
+          "Harmony",
+          "HarmonyOS",
+          "鸿蒙",
+          "HarmonyOS_Sans_SC",
+          "font",
+          "Twitter",
+          "siyuan-ttf-HarmonyOS_Sans_SC-and-Twemoji",
+          "Twemoji",
+          "Emoji",
+          "emoji",
+          "表情包",
+          "表情",
+          "符号",
+          "图标",
+          "icon"
+        ]
+      }
+    },
+    {
+      "url": "TCOTC/siyuan-ttf-LXGWWenKaiGB-and-Twemoji@ff1f6af2d3cdffe94e146e2dce5a236aeb2d9089",
+      "updated": "2024-03-05T16:40:36Z",
+      "stars": 1,
+      "openIssues": 0,
+      "size": 13807897,
+      "package": {
+        "name": "siyuan-ttf-LXGWWenKaiGB-and-Twemoji",
+        "author": "TCOTC",
+        "url": "https://github.com/TCOTC/siyuan-ttf-LXGWWenKaiGB-and-Twemoji",
+        "version": "0.1.2",
+        "minAppVersion": "",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "霞鹜文楷 font and Twitter Emoji【Chinese】",
+          "zh_CN": "霞鹜文楷字体和 Twitter Emoji",
+          "en_US": ""
+        },
+        "description": {
+          "default": "【only Chinese】LXGW WenKai GB (font) \u0026 Twemoji (Twitter Emoji)",
+          "zh_CN": "LXGW WenKai GB (霞鹜文楷字体) \u0026 Twemoji (Twitter Emoji)",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/JeffreyChen"
+          ]
+        },
+        "keywords": [
+          "font",
+          "字体",
+          "字",
+          "楷",
+          "霞鹜",
+          "霞鹜文楷",
+          "LXGW WenKai GB",
+          "文楷",
+          "中文",
+          "Chinese",
+          "Twitter",
+          "siyuan-ttf-LXGWWenKaiGB-and-Twemoji",
+          "Twemoji",
+          "Emoji",
+          "emoji",
+          "表情包",
+          "表情",
+          "符号",
+          "图标",
+          "icon"
+        ]
+      }
+    },
+    {
+      "url": "leolee9086/SACDownloadManager@92a3433ab898b0a678666a4e952d86f533c68cf0",
+      "updated": "2024-03-05T10:34:39Z",
+      "stars": 0,
+      "openIssues": 2,
+      "size": 97629,
+      "package": {
+        "name": "SACDownloadManager",
+        "author": "椽承设计",
+        "url": "https://github.com/leolee9086/SACDownloadManager",
+        "version": "0.0.6",
+        "minAppVersion": "3.0.0",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "SACDownloadManager",
+          "zh_CN": "sac下载助手",
+          "en_US": ""
+        },
+        "description": {
+          "default": "This is a plugin to download packages",
+          "zh_CN": "这是一个用于下载各种文件的插件,sac插件系列的一部分",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/leolee9086"
+          ]
+        },
+        "keywords": [
+          "download",
+          "示例"
+        ]
+      }
+    },
+    {
+      "url": "Misuzu2027/syplugin-document-search@71b922d89b2697e55d68fec6496397bd687d72b5",
+      "updated": "2024-03-05T08:54:27Z",
+      "stars": 2,
+      "openIssues": 1,
+      "size": 88698,
+      "package": {
+        "name": "syplugin-document-search",
+        "author": "Misuzu2027",
+        "url": "https://github.com/Misuzu2027/syplugin-document-search",
+        "version": "0.6.5",
+        "minAppVersion": "2.10.14",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "基于文档搜索",
+          "zh_CN": "基于文档搜索",
+          "en_US": "document search"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "这个插件与系统内置的块级别查询不同，它以文档为单位进行查询。",
+          "en_US": "This plugin operates differently from the built-in block-level queries of the system. It conducts searches on a document basis."
+        },
+        "readme": {
+          "default": "README_zh_CN.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": null,
+        "keywords": [
+          "document",
+          "search",
+          "query",
+          "文档",
+          "查询",
+          "搜索"
+        ]
+      }
+    },
+    {
       "url": "TCOTC/siyuan-plugin-openmoji-emoji@5da5ba9d91b5dc5dba5db3ec8f15013ab3739183",
       "updated": "2024-03-05T06:39:13Z",
-      "stars": 0,
+      "stars": 1,
       "openIssues": 0,
       "size": 1037734,
       "package": {
@@ -160,56 +1087,6 @@
       }
     },
     {
-      "url": "IAliceBobI/sy-progressive-plugin@55981f8a9307d78b1fc7a70c0e7a05366d791cec",
-      "updated": "2024-03-04T17:55:51Z",
-      "stars": 8,
-      "openIssues": 1,
-      "size": 1284576,
-      "package": {
-        "name": "sy-progressive-plugin",
-        "author": "IAliceBobI",
-        "url": "https://github.com/IAliceBobI/sy-progressive-plugin",
-        "version": "0.14.59",
-        "minAppVersion": "2.12.6",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "Progressive Learning",
-          "zh_CN": "渐进学习",
-          "en_US": ""
-        },
-        "description": {
-          "default": "Document chunking for progressive reading, flashcard-style progressive writing.",
-          "zh_CN": "文档分片渐进阅读，写作式闪卡渐进写作。",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.net/a/playerv5"
-          ]
-        },
-        "keywords": [
-          "Learning",
-          "Progressive",
-          "Progressive Learning",
-          "Progressive Reading",
-          "Progressive Writing"
-        ]
-      }
-    },
-    {
       "url": "OpaqueGlass/syplugin-hierarchyNavigate@d9fb530ad0fe88f17a9f43e71e8fc256833df0c6",
       "updated": "2024-03-04T07:11:14Z",
       "stars": 6,
@@ -247,50 +1124,6 @@
           ]
         },
         "keywords": null
-      }
-    },
-    {
-      "url": "yangmingyuan380/syplugin-document-search@c3513fe884e53a72b6dc597bc85b35baf5e1524b",
-      "updated": "2024-03-04T04:41:18Z",
-      "stars": 0,
-      "openIssues": 0,
-      "size": 140446,
-      "package": {
-        "name": "syplugin-document-es-search",
-        "author": "Misuzu2027,Rick",
-        "url": "https://github.com/Misuzu2027/syplugin-document-search",
-        "version": "0.6.0",
-        "minAppVersion": "2.10.14",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "基于文档搜索(es)",
-          "zh_CN": "基于文档搜索(es)",
-          "en_US": "document search(es)"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "这个插件与系统内置的块级别查询不同，它以文档为单位进行查询。",
-          "en_US": "This plugin operates differently from the built-in block-level queries of the system. It conducts searches on a document basis."
-        },
-        "readme": {
-          "default": "README_zh_CN.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": null,
-        "keywords": [
-          "document",
-          "search",
-          "query",
-          "文档",
-          "查询",
-          "搜索"
-        ]
       }
     },
     {
@@ -656,8 +1489,8 @@
     {
       "url": "terwer/siyuan-plugin-publisher@ce0222d512266cf0f202f5980b48551f20e70988",
       "updated": "2024-02-18T06:23:48Z",
-      "stars": 87,
-      "openIssues": 32,
+      "stars": 92,
+      "openIssues": 40,
       "size": 25552169,
       "package": {
         "name": "siyuan-plugin-publisher",
@@ -1004,7 +1837,7 @@
       "url": "etchnight/siyuan-plugin-table-view@b1c0a6118444514080f7328a25287d7c0848a5b7",
       "updated": "2024-02-02T16:25:51Z",
       "stars": 0,
-      "openIssues": 4,
+      "openIssues": 3,
       "size": 438122,
       "package": {
         "name": "siyuan-plugin-table-view",
@@ -1245,65 +2078,6 @@
           ]
         },
         "keywords": null
-      }
-    },
-    {
-      "url": "makediff/siyuan-wucai@a5d1a666c67843780e661b61ffd49f540ae983f7",
-      "updated": "2024-01-29T01:43:33Z",
-      "stars": 1,
-      "openIssues": 0,
-      "size": 344759,
-      "package": {
-        "name": "siyuan-wucai",
-        "author": "makediff",
-        "url": "https://github.com/makediff/siyuan-wucai",
-        "version": "24.1.29",
-        "minAppVersion": "2.12.1",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "WuCai Highlights",
-          "zh_CN": "五彩",
-          "en_US": ""
-        },
-        "description": {
-          "default": "Easily and automatically sync all your highlights to SiYuan",
-          "zh_CN": "同步五彩到思源",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://www.dotalk.cn/product/wucai"
-          ]
-        },
-        "keywords": [
-          "五彩",
-          "wucai",
-          "highlight",
-          "网页划线",
-          "网页高亮",
-          "高亮批注"
-        ]
       }
     },
     {
@@ -2141,7 +2915,7 @@
     {
       "url": "leolee9086/SiyuanAssistantCollection@2f14dd00a25d2b69b398bbaf666ac534d2a2a767",
       "updated": "2024-01-05T06:30:04Z",
-      "stars": 8,
+      "stars": 9,
       "openIssues": 35,
       "size": 14176836,
       "package": {
@@ -2550,50 +3324,6 @@
       }
     },
     {
-      "url": "shenjinglei/siyuan-plugin-graph-enhance@9df69f2a5853819be54a9fbc2d405022a2324446",
-      "updated": "2023-12-19T02:59:10Z",
-      "stars": 2,
-      "openIssues": 3,
-      "size": 296909,
-      "package": {
-        "name": "graph-enhance",
-        "author": "shenjinglei",
-        "url": "https://github.com/shenjinglei/siyuan-plugin-graph-enhance",
-        "version": "0.4.1",
-        "minAppVersion": "2.10.13",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "Graph Enhanced",
-          "zh_CN": "关系图增强",
-          "en_US": ""
-        },
-        "description": {
-          "default": "display the relationships between notes",
-          "zh_CN": "显示笔记间的双链关系",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.net/a/shenjinglei"
-          ]
-        },
-        "keywords": null
-      }
-    },
-    {
       "url": "frostime/siyuan-center-width@3cc2be72f625cd6fe02d9cb8d7c635b159266371",
       "updated": "2023-12-17T13:46:10Z",
       "stars": 1,
@@ -2686,7 +3416,7 @@
     {
       "url": "winter60/plugin-flomo-sync@4cac8ddb496574f7b8fb7e2b91604171d1dcba99",
       "updated": "2023-12-14T15:52:57Z",
-      "stars": 7,
+      "stars": 8,
       "openIssues": 0,
       "size": 145015,
       "package": {
@@ -2822,7 +3552,7 @@
     {
       "url": "zxhd863943427/siyuan-plugin-data-query@6a83ee07a4cca6ee74b833ab870ce5b163670664",
       "updated": "2023-12-04T12:16:58Z",
-      "stars": 1,
+      "stars": 2,
       "openIssues": 1,
       "size": 105956,
       "package": {
@@ -2976,7 +3706,7 @@
     {
       "url": "Zuoqiu-Yingyi/siyuan-plugin-keepass@361f318cd2cb89f25fee2f42e318aadc8d9c0bdb",
       "updated": "2023-11-30T09:18:13Z",
-      "stars": 2,
+      "stars": 3,
       "openIssues": 4,
       "size": 8041992,
       "package": {
@@ -3153,7 +3883,7 @@
       "url": "WingDr/siyuan-plugin-citation@e1ce6dc44e3dba55b584bc190b0adb249975efb0",
       "updated": "2023-11-23T05:07:57Z",
       "stars": 30,
-      "openIssues": 16,
+      "openIssues": 17,
       "size": 1262386,
       "package": {
         "name": "siyuan-plugin-citation",
@@ -3376,46 +4106,6 @@
           "epub",
           "EPUB阅读器"
         ]
-      }
-    },
-    {
-      "url": "zxhd863943427/siyuan-plugin-flash-enhance@979f1408a04160e15bbd77c2a1ef28e69720f3ee",
-      "updated": "2023-11-14T16:33:37Z",
-      "stars": 24,
-      "openIssues": 13,
-      "size": 166942,
-      "package": {
-        "name": "siyuan-plugin-flash-enhance",
-        "author": "zxhd863943427",
-        "url": "https://github.com/zxhd863943427/siyuan-plugin-flash-enhance",
-        "version": "0.1.0",
-        "minAppVersion": "2.9.3",
-        "backends": null,
-        "frontends": null,
-        "displayName": {
-          "default": "flash-enhance",
-          "zh_CN": "闪卡增强",
-          "en_US": ""
-        },
-        "description": {
-          "default": "This plugin can make the card-making experience in Siyuan as smooth as clouds and flowing water.Supports incremental reading flow.",
-          "zh_CN": "使思源制卡的体验行云流水般流畅, 支持渐进式阅读流程、图片制卡",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.net/a/zxhd86"
-          ]
-        },
-        "keywords": null
       }
     },
     {
@@ -3651,7 +4341,7 @@
       "url": "terwer/siyuan-plugin-code-block@05f951aea684bcdd5101580ea08298c664d31ab2",
       "updated": "2023-11-03T06:03:01Z",
       "stars": 1,
-      "openIssues": 14,
+      "openIssues": 15,
       "size": 374820,
       "package": {
         "name": "siyuan-plugin-code-block",
@@ -4123,7 +4813,7 @@
     {
       "url": "zxhd863943427/siyuan-plugin-memo@8c75baf5dd89bae5031fc962bed051b065131421",
       "updated": "2023-10-22T13:29:03Z",
-      "stars": 1,
+      "stars": 2,
       "openIssues": 3,
       "size": 44751,
       "package": {
@@ -4212,7 +4902,7 @@
       "url": "WingDr/siyuan-plugin-zettelkasten@9dbe191eeaf1f6c0f7fece57ce905f43e6446b79",
       "updated": "2023-10-10T12:27:26Z",
       "stars": 13,
-      "openIssues": 7,
+      "openIssues": 8,
       "size": 105925,
       "package": {
         "name": "siyuan-plugin-zettelkasten",
@@ -4910,7 +5600,7 @@
     {
       "url": "zxhd863943427/siyuan-plugin-block-history@5579cf675f5655bd549b12c777cd80db0000cb3e",
       "updated": "2023-08-10T05:44:06Z",
-      "stars": 1,
+      "stars": 2,
       "openIssues": 5,
       "size": 72162,
       "package": {
@@ -5661,7 +6351,7 @@
     {
       "url": "leolee9086/quickSnippets@baef669c2280e3bf9ab792a5e6923c563791707c",
       "updated": "2023-05-26T08:29:16Z",
-      "stars": 1,
+      "stars": 2,
       "openIssues": 3,
       "size": 330849,
       "package": {
