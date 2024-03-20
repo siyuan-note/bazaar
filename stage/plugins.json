@@ -1,16 +1,66 @@
 {
   "repos": [
     {
-      "url": "IAliceBobI/sy-tomato-plugin@18610a3c41b0a22f74fd63f92485c75b6a79a726",
-      "updated": "2024-03-19T16:56:46Z",
+      "url": "IAliceBobI/sy-progressive-plugin@90f93aa49abda3c8304165bc05a734dac7eaed48",
+      "updated": "2024-03-20T02:07:21Z",
+      "stars": 9,
+      "openIssues": 1,
+      "size": 1286765,
+      "package": {
+        "name": "sy-progressive-plugin",
+        "author": "IAliceBobI",
+        "url": "https://github.com/IAliceBobI/sy-progressive-plugin",
+        "version": "0.14.83",
+        "minAppVersion": "2.12.6",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "Progressive Learning",
+          "zh_CN": "渐进学习",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Document chunking for progressive reading, flashcard-style progressive writing.",
+          "zh_CN": "文档分片渐进阅读，写作式闪卡渐进写作。",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/playerv5"
+          ]
+        },
+        "keywords": [
+          "Learning",
+          "Progressive",
+          "Progressive Learning",
+          "Progressive Reading",
+          "Progressive Writing"
+        ]
+      }
+    },
+    {
+      "url": "IAliceBobI/sy-tomato-plugin@eedb944a49168d203df227f1ca1e013b7dc4e256",
+      "updated": "2024-03-20T01:42:30Z",
       "stars": 10,
       "openIssues": 1,
-      "size": 1573651,
+      "size": 1573655,
       "package": {
         "name": "sy-tomato-plugin",
         "author": "IAliceBobI",
         "url": "https://github.com/IAliceBobI/sy-tomato-plugin",
-        "version": "0.19.68",
+        "version": "0.19.69",
         "minAppVersion": "3.0.3",
         "backends": [
           "all"
@@ -66,17 +116,17 @@
       }
     },
     {
-      "url": "IAliceBobI/sy-progressive-plugin@78a85f4604729a9bbc17228ceec98c0a5ac6a94d",
-      "updated": "2024-03-19T15:28:30Z",
-      "stars": 9,
+      "url": "Misuzu2027/syplugin-document-search@d75fbeedbbe83b29f0ecb86e1951540003b33504",
+      "updated": "2024-03-20T01:30:29Z",
+      "stars": 3,
       "openIssues": 1,
-      "size": 1286735,
+      "size": 92910,
       "package": {
-        "name": "sy-progressive-plugin",
-        "author": "IAliceBobI",
-        "url": "https://github.com/IAliceBobI/sy-progressive-plugin",
-        "version": "0.14.82",
-        "minAppVersion": "2.12.6",
+        "name": "syplugin-document-search",
+        "author": "Misuzu2027",
+        "url": "https://github.com/Misuzu2027/syplugin-document-search",
+        "version": "0.7.0",
+        "minAppVersion": "2.10.14",
         "backends": [
           "all"
         ],
@@ -84,34 +134,28 @@
           "all"
         ],
         "displayName": {
-          "default": "Progressive Learning",
-          "zh_CN": "渐进学习",
-          "en_US": ""
+          "default": "基于文档搜索",
+          "zh_CN": "基于文档搜索",
+          "en_US": "document search"
         },
         "description": {
-          "default": "Document chunking for progressive reading, flashcard-style progressive writing.",
-          "zh_CN": "文档分片渐进阅读，写作式闪卡渐进写作。",
-          "en_US": ""
+          "default": "",
+          "zh_CN": "这个插件与系统内置的块级别查询不同，它以文档为单位进行查询。",
+          "en_US": "This plugin operates differently from the built-in block-level queries of the system. It conducts searches on a document basis."
         },
         "readme": {
-          "default": "README.md",
+          "default": "README_zh_CN.md",
           "zh_CN": "README_zh_CN.md",
-          "en_US": ""
+          "en_US": "README.md"
         },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.net/a/playerv5"
-          ]
-        },
+        "funding": null,
         "keywords": [
-          "Learning",
-          "Progressive",
-          "Progressive Learning",
-          "Progressive Reading",
-          "Progressive Writing"
+          "document",
+          "search",
+          "query",
+          "文档",
+          "查询",
+          "搜索"
         ]
       }
     },
@@ -1667,50 +1711,6 @@
           "符号",
           "图标",
           "icon"
-        ]
-      }
-    },
-    {
-      "url": "Misuzu2027/syplugin-document-search@71b922d89b2697e55d68fec6496397bd687d72b5",
-      "updated": "2024-03-05T08:54:27Z",
-      "stars": 3,
-      "openIssues": 1,
-      "size": 88698,
-      "package": {
-        "name": "syplugin-document-search",
-        "author": "Misuzu2027",
-        "url": "https://github.com/Misuzu2027/syplugin-document-search",
-        "version": "0.6.5",
-        "minAppVersion": "2.10.14",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "基于文档搜索",
-          "zh_CN": "基于文档搜索",
-          "en_US": "document search"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "这个插件与系统内置的块级别查询不同，它以文档为单位进行查询。",
-          "en_US": "This plugin operates differently from the built-in block-level queries of the system. It conducts searches on a document basis."
-        },
-        "readme": {
-          "default": "README_zh_CN.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": null,
-        "keywords": [
-          "document",
-          "search",
-          "query",
-          "文档",
-          "查询",
-          "搜索"
         ]
       }
     },
@@ -5011,7 +5011,7 @@
       "url": "terwer/siyuan-plugin-picgo@0baef34d51c4b2b91c327538d9ee87294046dff9",
       "updated": "2023-10-09T09:17:23Z",
       "stars": 5,
-      "openIssues": 26,
+      "openIssues": 23,
       "size": 9834860,
       "package": {
         "name": "siyuan-plugin-picgo",
