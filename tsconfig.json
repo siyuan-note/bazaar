@@ -1,0 +1,58 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "useDefineForClassFields": true,
+        "module": "ESNext",
+        "lib": [
+            "ES2020",
+            "DOM",
+            "DOM.Iterable"
+        ],
+        "skipLibCheck": true,
+        /* Bundler mode */
+        "moduleResolution": "Node",
+        // "allowImportingTsExtensions": true,
+        "allowSyntheticDefaultImports": true,
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "noEmit": true,
+        "jsx": "preserve",
+        /* Linting */
+        "strict": false,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noFallthroughCasesInSwitch": true,
+        /* Svelte */
+        /**
+         * Typecheck JS in `.svelte` and `.js` files by default.
+         * Disable checkJs if you'd like to use dynamic types in JS.
+         * Note that setting allowJs false does not prevent the use
+         * of JS in `.svelte` files.
+        */
+        "allowJs": true,
+        "checkJs": true,
+        "types": [
+            "node",
+            "vite/client",
+            "svelte"
+        ],
+        // "baseUrl": "./src",
+        "paths": {
+            "@/*": ["./src/*"],
+            "@/libs/*": ["./src/libs/*"],
+        }
+    },
+    "include": [
+        "tools/**/*.ts",
+        "src/**/*.ts",
+        "src/**/*.d.ts",
+        "src/**/*.tsx",
+        "src/**/*.vue"
+    ],
+    "references": [
+        {
+            "path": "./tsconfig.node.json"
+        }
+    ],
+    "root": "."
+}
