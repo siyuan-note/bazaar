@@ -1,16 +1,127 @@
 {
   "repos": [
     {
-      "url": "IAliceBobI/sy-tomato-plugin@dbe6e456405400ae14c8751fa44ed22bbf87b49a",
-      "updated": "2024-03-30T03:16:45Z",
+      "url": "suka233/siyuan-knote@c9bb0b3995d7ee021a8afc503162ab3ab22affc3",
+      "updated": "2024-03-30T04:09:29Z",
+      "stars": 10,
+      "openIssues": 3,
+      "size": 4297313,
+      "package": {
+        "name": "knote-plugin",
+        "author": "suka233",
+        "url": "https://github.com/suka233/siyuan-knote",
+        "version": "2.1.2",
+        "minAppVersion": "2.8.10",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "KNote卡片笔记插件",
+          "en_US": "KNote Plugin for Zettelkasten"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "将daily note无压笔记法和思源结合起来，想到什么就写什么，无压力做笔记。实验功能：当前支持任意格式的日记存储路径解析，新增支持黑暗模式,新增系统级全局快捷输入框,Ctrl+Shift+Q即可全局唤出",
+          "en_US": "Combine daily note and siyuan, write down what you think, and take notes without pressure. Experimental function: the current support for any format of diary storage path analysis, new support for dark mode, new global shortcut input box"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README.md",
+          "en_US": "README_en_US.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://wj.qq.com/s2/12591272/adf1/"
+          ]
+        },
+        "keywords": [
+          "knote",
+          "zettelkasten",
+          "daily note",
+          "siyuan",
+          "笔记",
+          "daily",
+          "note",
+          "daily note",
+          "siyuan",
+          "思源",
+          "卡片笔记",
+          "无压笔记",
+          "callout"
+        ]
+      }
+    },
+    {
+      "url": "terwer/siyuan-plugin-picgo@c27ae734abb0064334c0c959e9353e4ad9b629fb",
+      "updated": "2024-03-30T03:52:57Z",
+      "stars": 5,
+      "openIssues": 15,
+      "size": 10244219,
+      "package": {
+        "name": "siyuan-plugin-picgo",
+        "author": "terwer",
+        "url": "https://github.com/terwer/siyuan-plugin-picgo",
+        "version": "1.9.0",
+        "minAppVersion": "2.9.0",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "android",
+          "ios"
+        ],
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "displayName": {
+          "default": "PicGo picbed",
+          "zh_CN": "PicGo图床",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Your favorite PicGo image bed is still available in Siyuan Notes, wuhu~",
+          "zh_CN": "您喜爱的 PicGo 图床，在思源笔记依然可用，没想到吧~",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/terwer"
+          ]
+        },
+        "keywords": null
+      }
+    },
+    {
+      "url": "IAliceBobI/sy-tomato-plugin@1a6190fe7407a49b4e405c092c1ce76fcb0525d1",
+      "updated": "2024-03-30T03:41:24Z",
       "stars": 11,
       "openIssues": 2,
-      "size": 1522658,
+      "size": 1522667,
       "package": {
         "name": "sy-tomato-plugin",
         "author": "IAliceBobI",
         "url": "https://github.com/IAliceBobI/sy-tomato-plugin",
-        "version": "0.19.104",
+        "version": "0.19.106",
         "minAppVersion": "3.0.3",
         "backends": [
           "all"
@@ -66,69 +177,16 @@
       }
     },
     {
-      "url": "terwer/siyuan-plugin-picgo@91bec062a77da0aaed5c4ffe12264cd7a5f78aad",
-      "updated": "2024-03-29T16:23:11Z",
-      "stars": 5,
-      "openIssues": 15,
-      "size": 10243959,
-      "package": {
-        "name": "siyuan-plugin-picgo",
-        "author": "terwer",
-        "url": "https://github.com/terwer/siyuan-plugin-picgo",
-        "version": "1.8.0",
-        "minAppVersion": "2.9.0",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "android",
-          "ios"
-        ],
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile"
-        ],
-        "displayName": {
-          "default": "PicGo picbed",
-          "zh_CN": "PicGo图床",
-          "en_US": ""
-        },
-        "description": {
-          "default": "Your favorite PicGo image bed is still available in Siyuan Notes, wuhu~",
-          "zh_CN": "您喜爱的 PicGo 图床，在思源笔记依然可用，没想到吧~",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.net/a/terwer"
-          ]
-        },
-        "keywords": null
-      }
-    },
-    {
-      "url": "tengfei-xy/siyuan-plugin-share-system@b4581e529c9b183928ee49845ffcf113501125ae",
-      "updated": "2024-03-29T09:56:11Z",
+      "url": "tengfei-xy/siyuan-plugin-share-system@1f379a80bcbc063dfe7fa43e151739ef5bb10cae",
+      "updated": "2024-03-30T03:20:30Z",
       "stars": 1,
       "openIssues": 0,
-      "size": 1125376,
+      "size": 1125462,
       "package": {
         "name": "siyuan-plugin-share-tool",
         "author": "tengfei-xy",
         "url": "https://github.com/tengfei-xy/siyuan-plugin-share-system",
-        "version": "0.0.1",
+        "version": "0.0.2",
         "minAppVersion": "3.0.0",
         "backends": [
           "windows",
@@ -169,64 +227,6 @@
           "plugin",
           "open",
           "share"
-        ]
-      }
-    },
-    {
-      "url": "suka233/siyuan-knote@a76cf2fa030fd41fd646478bd9da40f222e413a4",
-      "updated": "2024-03-29T09:48:12Z",
-      "stars": 10,
-      "openIssues": 3,
-      "size": 4297050,
-      "package": {
-        "name": "knote-plugin",
-        "author": "suka233",
-        "url": "https://github.com/suka233/siyuan-knote",
-        "version": "2.1.0",
-        "minAppVersion": "2.8.10",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "KNote卡片笔记插件",
-          "en_US": "KNote Plugin for Zettelkasten"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "将daily note无压笔记法和思源结合起来，想到什么就写什么，无压力做笔记。实验功能：当前支持任意格式的日记存储路径解析，新增支持黑暗模式,新增系统级全局快捷输入框,Ctrl+Shift+Q即可全局唤出",
-          "en_US": "Combine daily note and siyuan, write down what you think, and take notes without pressure. Experimental function: the current support for any format of diary storage path analysis, new support for dark mode, new global shortcut input box"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README.md",
-          "en_US": "README_en_US.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://wj.qq.com/s2/12591272/adf1/"
-          ]
-        },
-        "keywords": [
-          "knote",
-          "zettelkasten",
-          "daily note",
-          "siyuan",
-          "笔记",
-          "daily",
-          "note",
-          "daily note",
-          "siyuan",
-          "思源",
-          "卡片笔记",
-          "无压笔记",
-          "callout"
         ]
       }
     },
@@ -605,7 +605,7 @@
     {
       "url": "syh19/siyuan-plugin-task-list@014201ea0f508e60caa61cc0b60ecc99d5fd441a",
       "updated": "2024-03-24T15:25:39Z",
-      "stars": 9,
+      "stars": 10,
       "openIssues": 9,
       "size": 2223639,
       "package": {
