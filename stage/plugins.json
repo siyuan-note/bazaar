@@ -1,44 +1,39 @@
 {
   "repos": [
     {
-      "url": "hqweay/typography-go@59059c9eb44561c213f2cb2cd756adbbfe16a26f",
-      "updated": "2024-04-03T16:31:32Z",
+      "url": "hqweay/typography-go@aac2193eb4cc12274702ce89ecf6e17b23a8801b",
+      "updated": "2024-04-03T18:03:40Z",
       "stars": 0,
       "openIssues": 0,
-      "size": 271318,
-      "package": null
-    },
-    {
-      "url": "frostime/sy-bq-callout@1838c2900302462e804f0e33167f6dbdea7a066a",
-      "updated": "2024-04-03T14:42:38Z",
-      "stars": 1,
-      "openIssues": 1,
-      "size": 86115,
+      "size": 271066,
       "package": {
-        "name": "sy-bq-callout",
-        "author": "roy",
-        "url": "https://github.com/frostime/sy-bq-callout",
-        "version": "0.7.0",
+        "name": "typography-go",
+        "author": "养恐龙",
+        "url": "https://github.com/hqweay/typography-go",
+        "version": "0.1.6",
         "minAppVersion": "3.0.0",
         "backends": [
-          "all"
+          "windows",
+          "linux",
+          "darwin"
         ],
         "frontends": [
-          "all"
+          "desktop",
+          "desktop-window"
         ],
         "displayName": {
           "default": "",
-          "zh_CN": "Savor Callout",
-          "en_US": "Savor Callout"
+          "zh_CN": "中文排版优化",
+          "en_US": "中文排版优化"
         },
         "description": {
           "default": "",
-          "zh_CN": "仿 Savor 主题的 callout",
-          "en_US": "A callout implemented in Savor theme"
+          "zh_CN": "中文排版优化",
+          "en_US": "中文排版优化"
         },
         "readme": {
           "default": "",
-          "zh_CN": "README_zh_CN.md",
+          "zh_CN": "README.md",
           "en_US": "README.md"
         },
         "funding": {
@@ -46,25 +41,77 @@
           "patreon": "",
           "github": "",
           "custom": [
-            "https://afdian.net/a/Savor"
+            "https://afdian.net/a/frostime"
           ]
         },
         "keywords": [
-          "callout"
+          "plugin",
+          "type",
+          "中文"
         ]
       }
     },
     {
-      "url": "hqweay/siyuan-auto-link-title@ef4ae7a374d3d4f7c8a34e0cfcdc8a7d3dd4fae8",
-      "updated": "2024-04-03T12:25:11Z",
+      "url": "IAliceBobI/sy-progressive-plugin@b1892889e2b84c5e7e4df50f511dfd24178b801b",
+      "updated": "2024-04-03T17:45:21Z",
+      "stars": 9,
+      "openIssues": 0,
+      "size": 1291064,
+      "package": {
+        "name": "sy-progressive-plugin",
+        "author": "IAliceBobI",
+        "url": "https://github.com/IAliceBobI/sy-progressive-plugin",
+        "version": "0.15.24",
+        "minAppVersion": "2.12.6",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "Progressive Learning",
+          "zh_CN": "渐进学习",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Document chunking for progressive reading, flashcard-style progressive writing.",
+          "zh_CN": "摘抄式渐进学习、分片式渐进学习、写作式闪卡、列表卡、Daily Card",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/playerv5"
+          ]
+        },
+        "keywords": [
+          "Learning",
+          "Progressive",
+          "Progressive Learning",
+          "Progressive Reading",
+          "Progressive Writing"
+        ]
+      }
+    },
+    {
+      "url": "hqweay/siyuan-auto-link-title@200d9655843193d4ced29dd73be641d62b984037",
+      "updated": "2024-04-03T17:25:25Z",
       "stars": 0,
       "openIssues": 0,
-      "size": 15072,
+      "size": 14739,
       "package": {
         "name": "siyuan-auto-link-title",
         "author": "养恐龙",
         "url": "https://github.com/hqweay/siyuan-auto-link-title",
-        "version": "0.0.1",
+        "version": "0.0.5",
         "minAppVersion": "3.0.0",
         "backends": [
           "windows",
@@ -111,17 +158,17 @@
       }
     },
     {
-      "url": "IAliceBobI/sy-progressive-plugin@a1d6bf5cd50c758ccd6350af8da1b0120662be24",
-      "updated": "2024-04-03T10:33:57Z",
-      "stars": 9,
-      "openIssues": 0,
-      "size": 1291017,
+      "url": "frostime/sy-bq-callout@1838c2900302462e804f0e33167f6dbdea7a066a",
+      "updated": "2024-04-03T14:42:38Z",
+      "stars": 1,
+      "openIssues": 1,
+      "size": 86115,
       "package": {
-        "name": "sy-progressive-plugin",
-        "author": "IAliceBobI",
-        "url": "https://github.com/IAliceBobI/sy-progressive-plugin",
-        "version": "0.15.22",
-        "minAppVersion": "2.12.6",
+        "name": "sy-bq-callout",
+        "author": "roy",
+        "url": "https://github.com/frostime/sy-bq-callout",
+        "version": "0.7.0",
+        "minAppVersion": "3.0.0",
         "backends": [
           "all"
         ],
@@ -129,34 +176,30 @@
           "all"
         ],
         "displayName": {
-          "default": "Progressive Learning",
-          "zh_CN": "渐进学习",
-          "en_US": ""
+          "default": "",
+          "zh_CN": "Savor Callout",
+          "en_US": "Savor Callout"
         },
         "description": {
-          "default": "Document chunking for progressive reading, flashcard-style progressive writing.",
-          "zh_CN": "摘抄式渐进学习、分片式渐进学习、写作式闪卡、列表卡、Daily Card",
-          "en_US": ""
+          "default": "",
+          "zh_CN": "仿 Savor 主题的 callout",
+          "en_US": "A callout implemented in Savor theme"
         },
         "readme": {
-          "default": "README.md",
+          "default": "",
           "zh_CN": "README_zh_CN.md",
-          "en_US": ""
+          "en_US": "README.md"
         },
         "funding": {
           "openCollective": "",
           "patreon": "",
           "github": "",
           "custom": [
-            "https://afdian.net/a/playerv5"
+            "https://afdian.net/a/Savor"
           ]
         },
         "keywords": [
-          "Learning",
-          "Progressive",
-          "Progressive Learning",
-          "Progressive Reading",
-          "Progressive Writing"
+          "callout"
         ]
       }
     },
