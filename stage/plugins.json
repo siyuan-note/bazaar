@@ -1,6 +1,115 @@
 {
   "repos": [
     {
+      "url": "IAliceBobI/sy-tomato-plugin@91c73d08cdda00d5037c0656429d899b6d899531",
+      "updated": "2024-04-15T04:18:09Z",
+      "stars": 11,
+      "openIssues": 5,
+      "size": 1663184,
+      "package": {
+        "name": "sy-tomato-plugin",
+        "author": "IAliceBobI",
+        "url": "https://github.com/IAliceBobI/sy-tomato-plugin",
+        "version": "0.20.22",
+        "minAppVersion": "3.0.3",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "Tomato toolbox",
+          "zh_CN": "番茄工具箱",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Status bar pomodoro clock, bidirectional linking, regular reminders, reading points, fast list card creation, cleaning up expired flashcards, deleting long content, copying long content, moving long content.",
+          "zh_CN": "状态栏番茄钟、写本书、文心一言4、标签转引用、闪卡优先级、文档合并、底部反链、定期提醒、阅读点、双向互链、复习时删卡、闪卡图片挖空、移到今日笔记、列表制卡、清理失效闪卡、长内容工具",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/playerv5"
+          ]
+        },
+        "keywords": [
+          "TomatoClock",
+          "Time management",
+          "Productivity",
+          "Pomodoro technique",
+          "Timer plugin",
+          "Task scheduling",
+          "Focus sessions",
+          "Work intervals",
+          "Breaks",
+          "Time tracking",
+          "Timeboxing",
+          "Time optimization",
+          "Efficiency",
+          "Work-life balance",
+          "Distraction management",
+          "Task prioritization",
+          "Time blocking",
+          "Time visualization",
+          "Progress tracking",
+          "Goal setting"
+        ]
+      }
+    },
+    {
+      "url": "Misuzu2027/syplugin-document-search@8cc3f107b3d5cbbbf146d01f3694a929a63662c8",
+      "updated": "2024-04-15T04:06:42Z",
+      "stars": 2,
+      "openIssues": 1,
+      "size": 120675,
+      "package": {
+        "name": "syplugin-document-search",
+        "author": "Misuzu2027",
+        "url": "https://github.com/Misuzu2027/syplugin-document-search",
+        "version": "0.9.1",
+        "minAppVersion": "2.10.14",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "基于文档搜索",
+          "zh_CN": "基于文档搜索",
+          "en_US": "document search"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "这个插件与系统内置的块级别查询不同，它以文档为单位进行查询。",
+          "en_US": "This plugin operates differently from the built-in block-level queries of the system. It conducts searches on a document basis."
+        },
+        "readme": {
+          "default": "README_zh_CN.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": null,
+        "keywords": [
+          "document",
+          "search",
+          "query",
+          "文档",
+          "查询",
+          "搜索"
+        ]
+      }
+    },
+    {
       "url": "makediff/siyuan-wucai@7ea10c76a1428657fa516ad0049d67a39cd10c7b",
       "updated": "2024-04-15T03:01:25Z",
       "stars": 1,
@@ -161,50 +270,6 @@
       }
     },
     {
-      "url": "Misuzu2027/syplugin-document-search@5c046b4131abed39ef835de9c2a9a4775f93cabd",
-      "updated": "2024-04-14T09:06:48Z",
-      "stars": 2,
-      "openIssues": 1,
-      "size": 119970,
-      "package": {
-        "name": "syplugin-document-search",
-        "author": "Misuzu2027",
-        "url": "https://github.com/Misuzu2027/syplugin-document-search",
-        "version": "0.9.0",
-        "minAppVersion": "2.10.14",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "基于文档搜索",
-          "zh_CN": "基于文档搜索",
-          "en_US": "document search"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "这个插件与系统内置的块级别查询不同，它以文档为单位进行查询。",
-          "en_US": "This plugin operates differently from the built-in block-level queries of the system. It conducts searches on a document basis."
-        },
-        "readme": {
-          "default": "README_zh_CN.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": null,
-        "keywords": [
-          "document",
-          "search",
-          "query",
-          "文档",
-          "查询",
-          "搜索"
-        ]
-      }
-    },
-    {
       "url": "zxkmm/siyuan_doctree_compress@c3240657a31fa5413367d9c9b9d46810cfab8ea5",
       "updated": "2024-04-14T07:49:39Z",
       "stars": 42,
@@ -262,71 +327,6 @@
           "文档树压缩",
           "文档树自定义",
           "siyuan_doctree_compress"
-        ]
-      }
-    },
-    {
-      "url": "IAliceBobI/sy-tomato-plugin@04968938525402bb0fa9a723505b04039d65094c",
-      "updated": "2024-04-14T05:19:29Z",
-      "stars": 11,
-      "openIssues": 5,
-      "size": 1663126,
-      "package": {
-        "name": "sy-tomato-plugin",
-        "author": "IAliceBobI",
-        "url": "https://github.com/IAliceBobI/sy-tomato-plugin",
-        "version": "0.20.21",
-        "minAppVersion": "3.0.3",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "Tomato toolbox",
-          "zh_CN": "番茄工具箱",
-          "en_US": ""
-        },
-        "description": {
-          "default": "Status bar pomodoro clock, bidirectional linking, regular reminders, reading points, fast list card creation, cleaning up expired flashcards, deleting long content, copying long content, moving long content.",
-          "zh_CN": "状态栏番茄钟、写本书、文心一言4、标签转引用、闪卡优先级、文档合并、底部反链、定期提醒、阅读点、双向互链、复习时删卡、闪卡图片挖空、移到今日笔记、列表制卡、清理失效闪卡、长内容工具",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.net/a/playerv5"
-          ]
-        },
-        "keywords": [
-          "TomatoClock",
-          "Time management",
-          "Productivity",
-          "Pomodoro technique",
-          "Timer plugin",
-          "Task scheduling",
-          "Focus sessions",
-          "Work intervals",
-          "Breaks",
-          "Time tracking",
-          "Timeboxing",
-          "Time optimization",
-          "Efficiency",
-          "Work-life balance",
-          "Distraction management",
-          "Task prioritization",
-          "Time blocking",
-          "Time visualization",
-          "Progress tracking",
-          "Goal setting"
         ]
       }
     },
@@ -678,7 +678,7 @@
       "url": "frostime/sy-docs-flow@9eef4074a72e0edc923112b3a0575c9df89bf605",
       "updated": "2024-04-09T03:54:36Z",
       "stars": 5,
-      "openIssues": 9,
+      "openIssues": 10,
       "size": 271421,
       "package": {
         "name": "sy-docs-flow",
