@@ -1,6 +1,115 @@
 {
   "repos": [
     {
+      "url": "IAliceBobI/sy-tomato-plugin@466f8049852bee3762cc634c7ab4287f57991781",
+      "updated": "2024-04-16T07:09:47Z",
+      "stars": 11,
+      "openIssues": 4,
+      "size": 1664214,
+      "package": {
+        "name": "sy-tomato-plugin",
+        "author": "IAliceBobI",
+        "url": "https://github.com/IAliceBobI/sy-tomato-plugin",
+        "version": "0.20.29",
+        "minAppVersion": "3.0.3",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "Tomato toolbox",
+          "zh_CN": "番茄工具箱",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Status bar pomodoro clock, bidirectional linking, regular reminders, reading points, fast list card creation, cleaning up expired flashcards, deleting long content, copying long content, moving long content.",
+          "zh_CN": "状态栏番茄钟、写本书、文心一言4、标签转引用、闪卡优先级、文档合并、底部反链、定期提醒、阅读点、双向互链、复习时删卡、闪卡图片挖空、移到今日笔记、列表制卡、清理失效闪卡、长内容工具",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/playerv5"
+          ]
+        },
+        "keywords": [
+          "TomatoClock",
+          "Time management",
+          "Productivity",
+          "Pomodoro technique",
+          "Timer plugin",
+          "Task scheduling",
+          "Focus sessions",
+          "Work intervals",
+          "Breaks",
+          "Time tracking",
+          "Timeboxing",
+          "Time optimization",
+          "Efficiency",
+          "Work-life balance",
+          "Distraction management",
+          "Task prioritization",
+          "Time blocking",
+          "Time visualization",
+          "Progress tracking",
+          "Goal setting"
+        ]
+      }
+    },
+    {
+      "url": "frostime/sy-quick-attr@da1dcd2a8ec407a21c3e0b9f911b0d9963ece696",
+      "updated": "2024-04-16T06:57:47Z",
+      "stars": 1,
+      "openIssues": 2,
+      "size": 70254,
+      "package": {
+        "name": "sy-quick-attr",
+        "author": "frostime",
+        "url": "https://github.com/frostime/sy-quick-attr",
+        "version": "0.8.0",
+        "minAppVersion": "2.12.1",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "快速添加块属性",
+          "en_US": "Attribute Quick Add"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "快速为块添加预定义的属性",
+          "en_US": "SiYuan plugin sample with vite and svelte"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/frostime"
+          ]
+        },
+        "keywords": null
+      }
+    },
+    {
       "url": "frostime/sy-docs-flow@fa9e907e6ca1df26f10440af3ce8413d37a3e056",
       "updated": "2024-04-16T05:03:44Z",
       "stars": 5,
@@ -144,71 +253,6 @@
           "Progressive Learning",
           "Progressive Reading",
           "Progressive Writing"
-        ]
-      }
-    },
-    {
-      "url": "IAliceBobI/sy-tomato-plugin@871e71ccc44e7c4e624f4103941e069fd87deee1",
-      "updated": "2024-04-16T03:22:08Z",
-      "stars": 11,
-      "openIssues": 5,
-      "size": 1663797,
-      "package": {
-        "name": "sy-tomato-plugin",
-        "author": "IAliceBobI",
-        "url": "https://github.com/IAliceBobI/sy-tomato-plugin",
-        "version": "0.20.28",
-        "minAppVersion": "3.0.3",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "Tomato toolbox",
-          "zh_CN": "番茄工具箱",
-          "en_US": ""
-        },
-        "description": {
-          "default": "Status bar pomodoro clock, bidirectional linking, regular reminders, reading points, fast list card creation, cleaning up expired flashcards, deleting long content, copying long content, moving long content.",
-          "zh_CN": "状态栏番茄钟、写本书、文心一言4、标签转引用、闪卡优先级、文档合并、底部反链、定期提醒、阅读点、双向互链、复习时删卡、闪卡图片挖空、移到今日笔记、列表制卡、清理失效闪卡、长内容工具",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.net/a/playerv5"
-          ]
-        },
-        "keywords": [
-          "TomatoClock",
-          "Time management",
-          "Productivity",
-          "Pomodoro technique",
-          "Timer plugin",
-          "Task scheduling",
-          "Focus sessions",
-          "Work intervals",
-          "Breaks",
-          "Time tracking",
-          "Timeboxing",
-          "Time optimization",
-          "Efficiency",
-          "Work-life balance",
-          "Distraction management",
-          "Task prioritization",
-          "Time blocking",
-          "Time visualization",
-          "Progress tracking",
-          "Goal setting"
         ]
       }
     },
@@ -410,7 +454,7 @@
       "url": "Misuzu2027/syplugin-document-search@8cc3f107b3d5cbbbf146d01f3694a929a63662c8",
       "updated": "2024-04-15T04:06:42Z",
       "stars": 2,
-      "openIssues": 2,
+      "openIssues": 1,
       "size": 120675,
       "package": {
         "name": "syplugin-document-search",
@@ -962,50 +1006,6 @@
           "highlight",
           "search"
         ]
-      }
-    },
-    {
-      "url": "frostime/sy-quick-attr@90600eb116de4b65a72e221e86042f104e426324",
-      "updated": "2024-04-06T14:51:35Z",
-      "stars": 1,
-      "openIssues": 2,
-      "size": 68764,
-      "package": {
-        "name": "sy-quick-attr",
-        "author": "frostime",
-        "url": "https://github.com/frostime/sy-quick-attr",
-        "version": "0.7.2",
-        "minAppVersion": "2.12.1",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "快速添加块属性",
-          "en_US": "Attribute Quick Add"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "快速为块添加预定义的属性",
-          "en_US": "SiYuan plugin sample with vite and svelte"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.net/a/frostime"
-          ]
-        },
-        "keywords": null
       }
     },
     {
