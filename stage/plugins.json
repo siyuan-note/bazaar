@@ -1,49 +1,116 @@
 {
   "repos": [
     {
-      "url": "zuoez02/siyuan-plugin-keymap@64e21de799e1d08437d4495057a834618e2e8438",
-      "updated": "2024-04-16T02:12:00Z",
-      "stars": 0,
-      "openIssues": 1,
-      "size": 930117,
+      "url": "frostime/siyuan-dailynote-today@d2c53d67962be8392f65240d987324bbd2ed80b9",
+      "updated": "2024-04-16T03:42:43Z",
+      "stars": 19,
+      "openIssues": 5,
+      "size": 138971,
       "package": {
-        "name": "siyuan-plugin-keymap",
-        "author": "zuoez02",
-        "url": "https://github.com/zuoez02/siyuan-plugin-keymap",
-        "version": "1.1.1",
-        "minAppVersion": "2.9.4",
+        "name": "siyuan-dailynote-today",
+        "author": "frostime",
+        "url": "https://github.com/frostime/siyuan-dailynote-today",
+        "version": "1.5.1",
+        "minAppVersion": "3.0.0",
         "backends": null,
         "frontends": null,
         "displayName": {
-          "default": "快捷键",
-          "zh_CN": "",
+          "default": "",
+          "zh_CN": "今日笔记",
+          "en_US": "Daily Note Today"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "自动创建日记 + 快速打开日记 + 日程 TODO 管理 + 移动块功能",
+          "en_US": "Automatically open today's notes + Quickly open today's notes + TODO mangagement for today + Move blocks"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README_en_US.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/frostime"
+          ]
+        },
+        "keywords": [
+          "dailynote",
+          "diary",
+          "日记",
+          "笔记",
+          "日程",
+          "TODO",
+          "待办",
+          "预约",
+          "reservation"
+        ]
+      }
+    },
+    {
+      "url": "IAliceBobI/sy-progressive-plugin@3a0af4bfd2fcb091c568943f6c62b0a2b5ca9b2c",
+      "updated": "2024-04-16T03:23:07Z",
+      "stars": 9,
+      "openIssues": 0,
+      "size": 1427109,
+      "package": {
+        "name": "sy-progressive-plugin",
+        "author": "IAliceBobI",
+        "url": "https://github.com/IAliceBobI/sy-progressive-plugin",
+        "version": "0.15.55",
+        "minAppVersion": "2.12.6",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "Progressive Learning",
+          "zh_CN": "渐进学习",
           "en_US": ""
         },
         "description": {
-          "default": "快捷键插件，支持快捷键帮助面板，支持通过命令面板功能根据配置自定义脚本快捷键",
-          "zh_CN": "",
+          "default": "Document chunking for progressive reading, flashcard-style progressive writing.",
+          "zh_CN": "摘抄式渐进学习、分片式渐进学习、写作式闪卡、列表卡、Daily Card",
           "en_US": ""
         },
         "readme": {
           "default": "README.md",
-          "zh_CN": "",
+          "zh_CN": "README_zh_CN.md",
           "en_US": ""
         },
-        "funding": null,
-        "keywords": null
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/playerv5"
+          ]
+        },
+        "keywords": [
+          "Learning",
+          "Progressive",
+          "Progressive Learning",
+          "Progressive Reading",
+          "Progressive Writing"
+        ]
       }
     },
     {
-      "url": "IAliceBobI/sy-tomato-plugin@bc2349f062b71936c3884323657f886550b9848e",
-      "updated": "2024-04-16T01:40:56Z",
+      "url": "IAliceBobI/sy-tomato-plugin@871e71ccc44e7c4e624f4103941e069fd87deee1",
+      "updated": "2024-04-16T03:22:08Z",
       "stars": 11,
       "openIssues": 5,
-      "size": 1663753,
+      "size": 1663797,
       "package": {
         "name": "sy-tomato-plugin",
         "author": "IAliceBobI",
         "url": "https://github.com/IAliceBobI/sy-tomato-plugin",
-        "version": "0.20.27",
+        "version": "0.20.28",
         "minAppVersion": "3.0.3",
         "backends": [
           "all"
@@ -96,6 +163,39 @@
           "Progress tracking",
           "Goal setting"
         ]
+      }
+    },
+    {
+      "url": "zuoez02/siyuan-plugin-keymap@64e21de799e1d08437d4495057a834618e2e8438",
+      "updated": "2024-04-16T02:12:00Z",
+      "stars": 0,
+      "openIssues": 1,
+      "size": 930117,
+      "package": {
+        "name": "siyuan-plugin-keymap",
+        "author": "zuoez02",
+        "url": "https://github.com/zuoez02/siyuan-plugin-keymap",
+        "version": "1.1.1",
+        "minAppVersion": "2.9.4",
+        "backends": null,
+        "frontends": null,
+        "displayName": {
+          "default": "快捷键",
+          "zh_CN": "",
+          "en_US": ""
+        },
+        "description": {
+          "default": "快捷键插件，支持快捷键帮助面板，支持通过命令面板功能根据配置自定义脚本快捷键",
+          "zh_CN": "",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "",
+          "en_US": ""
+        },
+        "funding": null,
+        "keywords": null
       }
     },
     {
@@ -410,56 +510,6 @@
           "任务",
           "代办",
           "列表"
-        ]
-      }
-    },
-    {
-      "url": "IAliceBobI/sy-progressive-plugin@979ff225e641e2f3ca1b60998f9b80ae7c152ba2",
-      "updated": "2024-04-14T09:33:44Z",
-      "stars": 9,
-      "openIssues": 0,
-      "size": 1427050,
-      "package": {
-        "name": "sy-progressive-plugin",
-        "author": "IAliceBobI",
-        "url": "https://github.com/IAliceBobI/sy-progressive-plugin",
-        "version": "0.15.54",
-        "minAppVersion": "2.12.6",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "Progressive Learning",
-          "zh_CN": "渐进学习",
-          "en_US": ""
-        },
-        "description": {
-          "default": "Document chunking for progressive reading, flashcard-style progressive writing.",
-          "zh_CN": "摘抄式渐进学习、分片式渐进学习、写作式闪卡、列表卡、Daily Card",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.net/a/playerv5"
-          ]
-        },
-        "keywords": [
-          "Learning",
-          "Progressive",
-          "Progressive Learning",
-          "Progressive Reading",
-          "Progressive Writing"
         ]
       }
     },
@@ -911,56 +961,6 @@
           "document",
           "highlight",
           "search"
-        ]
-      }
-    },
-    {
-      "url": "frostime/siyuan-dailynote-today@db6a6c67533d389755745e49df2d9896442c7853",
-      "updated": "2024-04-07T11:46:34Z",
-      "stars": 19,
-      "openIssues": 5,
-      "size": 138465,
-      "package": {
-        "name": "siyuan-dailynote-today",
-        "author": "frostime",
-        "url": "https://github.com/frostime/siyuan-dailynote-today",
-        "version": "1.5.0",
-        "minAppVersion": "3.0.0",
-        "backends": null,
-        "frontends": null,
-        "displayName": {
-          "default": "",
-          "zh_CN": "今日笔记",
-          "en_US": "Daily Note Today"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "自动创建日记 + 快速打开日记 + 日程 TODO 管理 + 移动块功能",
-          "en_US": "Automatically open today's notes + Quickly open today's notes + TODO mangagement for today + Move blocks"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README_en_US.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.net/a/frostime"
-          ]
-        },
-        "keywords": [
-          "dailynote",
-          "diary",
-          "日记",
-          "笔记",
-          "日程",
-          "TODO",
-          "待办",
-          "预约",
-          "reservation"
         ]
       }
     },
