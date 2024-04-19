@@ -1,16 +1,16 @@
 {
   "repos": [
     {
-      "url": "Lizhen0628/siyuan-ai@f6a4ae03fde4f86f15d3c5b3fc890764f5fcd679",
-      "updated": "2024-04-19T14:07:09Z",
+      "url": "Lizhen0628/siyuan-ai@3624d626b2f19b40ca413a0c9fb78f4e01e1856e",
+      "updated": "2024-04-19T14:40:22Z",
       "stars": 6,
       "openIssues": 2,
-      "size": 2662649,
+      "size": 2854666,
       "package": {
         "name": "siyuan-ai",
         "author": "lizhen",
         "url": "https://github.com/Lizhen0628/siyuan-ai",
-        "version": "0.0.12",
+        "version": "0.0.13",
         "minAppVersion": "3.0.0",
         "backends": [
           "windows",
@@ -33,7 +33,7 @@
         },
         "description": {
           "default": "",
-          "zh_CN": "思源笔记的人工智能插件",
+          "zh_CN": "思源笔记的人工智能插件，使用OpenAI大模型来生成文本内容。对文章/笔记/博客改写、润色、增强。社交媒体、内容创作者的福音。支持GPT-4最新模型。",
           "en_US": "Siyuan AI plugin developed using vite and svelte"
         },
         "readme": {
@@ -46,7 +46,7 @@
           "patreon": "",
           "github": "",
           "custom": [
-            "https://github.com/Lizhen0628"
+            "https://github.com/Lizhen0628/siyuan-ai"
           ]
         },
         "keywords": [
@@ -55,6 +55,71 @@
           "siyuan-ai",
           "AI",
           "ai"
+        ]
+      }
+    },
+    {
+      "url": "IAliceBobI/sy-tomato-plugin@1748576daeaba9f081cf2617f463295020c995ff",
+      "updated": "2024-04-19T14:32:39Z",
+      "stars": 11,
+      "openIssues": 4,
+      "size": 1664716,
+      "package": {
+        "name": "sy-tomato-plugin",
+        "author": "IAliceBobI",
+        "url": "https://github.com/IAliceBobI/sy-tomato-plugin",
+        "version": "0.20.36",
+        "minAppVersion": "3.0.3",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "Tomato toolbox",
+          "zh_CN": "番茄工具箱",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Status bar pomodoro clock, bidirectional linking, regular reminders, reading points, fast list card creation, cleaning up expired flashcards, deleting long content, copying long content, moving long content.",
+          "zh_CN": "状态栏番茄钟、写本书、文心一言4、标签转引用、闪卡优先级、文档合并、底部反链、定期提醒、阅读点、双向互链、复习时删卡、闪卡图片挖空、移到今日笔记、列表制卡、清理失效闪卡、长内容工具",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/playerv5"
+          ]
+        },
+        "keywords": [
+          "TomatoClock",
+          "Time management",
+          "Productivity",
+          "Pomodoro technique",
+          "Timer plugin",
+          "Task scheduling",
+          "Focus sessions",
+          "Work intervals",
+          "Breaks",
+          "Time tracking",
+          "Timeboxing",
+          "Time optimization",
+          "Efficiency",
+          "Work-life balance",
+          "Distraction management",
+          "Task prioritization",
+          "Time blocking",
+          "Time visualization",
+          "Progress tracking",
+          "Goal setting"
         ]
       }
     },
@@ -399,71 +464,6 @@
           "document",
           "highlight",
           "search"
-        ]
-      }
-    },
-    {
-      "url": "IAliceBobI/sy-tomato-plugin@f28db894bc3a9ec8a374065389aceaa38f2af903",
-      "updated": "2024-04-18T11:42:01Z",
-      "stars": 11,
-      "openIssues": 4,
-      "size": 1664583,
-      "package": {
-        "name": "sy-tomato-plugin",
-        "author": "IAliceBobI",
-        "url": "https://github.com/IAliceBobI/sy-tomato-plugin",
-        "version": "0.20.35",
-        "minAppVersion": "3.0.3",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "Tomato toolbox",
-          "zh_CN": "番茄工具箱",
-          "en_US": ""
-        },
-        "description": {
-          "default": "Status bar pomodoro clock, bidirectional linking, regular reminders, reading points, fast list card creation, cleaning up expired flashcards, deleting long content, copying long content, moving long content.",
-          "zh_CN": "状态栏番茄钟、写本书、文心一言4、标签转引用、闪卡优先级、文档合并、底部反链、定期提醒、阅读点、双向互链、复习时删卡、闪卡图片挖空、移到今日笔记、列表制卡、清理失效闪卡、长内容工具",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.net/a/playerv5"
-          ]
-        },
-        "keywords": [
-          "TomatoClock",
-          "Time management",
-          "Productivity",
-          "Pomodoro technique",
-          "Timer plugin",
-          "Task scheduling",
-          "Focus sessions",
-          "Work intervals",
-          "Breaks",
-          "Time tracking",
-          "Timeboxing",
-          "Time optimization",
-          "Efficiency",
-          "Work-life balance",
-          "Distraction management",
-          "Task prioritization",
-          "Time blocking",
-          "Time visualization",
-          "Progress tracking",
-          "Goal setting"
         ]
       }
     },
