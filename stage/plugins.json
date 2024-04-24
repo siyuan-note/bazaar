@@ -1,22 +1,30 @@
 {
   "repos": [
     {
-      "url": "LinuaBio/GeogebraE@51e7bb05858b124f7ca5a359b5cb9b9da987fe6b",
-      "updated": "2024-04-24T08:17:47Z",
+      "url": "LinuaBio/GeogebraE@82360ef9d112ef2d185485da0418714a871cd7cf",
+      "updated": "2024-04-24T11:25:51Z",
       "stars": 3,
       "openIssues": 1,
-      "size": 7215496,
+      "size": 7214500,
       "package": {
         "name": "GeogebraE",
-        "author": "BioLinua",
+        "author": "Neurocylcq",
         "url": "https://github.com/LinuaBio/GeogebraE",
-        "version": "0.0.8",
-        "minAppVersion": "2.9.7",
+        "version": "0.0.9",
+        "minAppVersion": "3.0.0",
         "backends": [
-          "all"
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android"
         ],
         "frontends": [
-          "all"
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
         ],
         "displayName": {
           "default": "",
@@ -33,8 +41,15 @@
           "zh_CN": "README_zh_CN.md",
           "en_US": "README.md"
         },
-        "funding": null,
-        "keywords": null
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": []
+        },
+        "keywords": [
+          "geogebra"
+        ]
       }
     },
     {
