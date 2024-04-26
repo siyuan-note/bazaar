@@ -117,22 +117,20 @@ func indexPackage(repoURL, typ string) (ok bool, hash, published string, size in
 		return
 	}
 
-	// 下载 package.zip 文件
-	u := "https://github.com/" + repoURL + "/archive/" + hash + ".zip"
-	// TODO: 下架不使用 package.zip 发布的包 https://github.com/siyuan-note/bazaar/issues/1105
-	if "" != packageZip {
-		u = packageZip
+	if "" == packageZip {
+		logger.Warnf("get [%s] package.zip failed", repoURL)
+		return
 	}
 
-	resp, data, errs := gorequest.New().Get(u).
+	resp, data, errs := gorequest.New().Get(packageZip).
 		Set("User-Agent", util.UserAgent).
 		Retry(1, 3*time.Second).Timeout(30 * time.Second).EndBytes()
 	if nil != errs {
-		logger.Errorf("get [%s] failed: %s", u, errs)
+		logger.Errorf("get [%s] failed: %s", packageZip, errs)
 		return
 	}
 	if 200 != resp.StatusCode {
-		logger.Errorf("get [%s] failed: %d", u, resp.StatusCode)
+		logger.Errorf("get [%s] failed: %d", packageZip, resp.StatusCode)
 		return
 	}
 
@@ -271,34 +269,7 @@ func getRepoLatestRelease(repoURL string) (hash, published, packageZip string) {
 		return
 	}
 	if 200 != resp.StatusCode {
-		if 404 != resp.StatusCode {
-			logger.Warnf("get release hash [%s] failed: %d", u, resp.StatusCode)
-			return
-		}
-
-		var commits []interface{}
-		u = "https://api.github.com/repos/" + repoURL + "/commits"
-		resp, _, errs = request.Get(u).
-			Set("Authorization", "Token "+pat).
-			Set("User-Agent", util.UserAgent).Timeout(7*time.Second).
-			Retry(1, 3*time.Second).EndStruct(&commits)
-		if nil != errs {
-			logger.Fatalf("get release hash [%s] failed: %s", u, errs)
-			return
-		}
-		if 200 != resp.StatusCode {
-			logger.Warnf("get release hash [%s] failed: %d", u, resp.StatusCode)
-			return
-		}
-
-		if 1 > len(commits) {
-			logger.Warnf("get release hash [%s] failed: no commits", u)
-			return
-		}
-
-		latest := commits[0].(map[string]interface{})
-		hash = latest["sha"].(string)
-		published = latest["commit"].(map[string]interface{})["committer"].(map[string]interface{})["date"].(string)
+		logger.Warnf("get release hash [%s] failed: %d", u, resp.StatusCode)
 		return
 	}
 
@@ -311,6 +282,10 @@ func getRepoLatestRelease(repoURL string) (hash, published, packageZip string) {
 				packageZip = asset["browser_download_url"].(string)
 			}
 		}
+	}
+
+	if "" == packageZip {
+		return
 	}
 
 	// 获取 release 对应的 tag
