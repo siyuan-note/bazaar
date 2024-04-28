@@ -146,19 +146,26 @@ func indexPackage(repoURL, typ string) (ok bool, hash, published string, size in
 
 	// 解压 package.zip 以计算实际占用空间大小
 	installSize := size
-	tmpZipPath := filepath.Join(os.TempDir(), "bazaar", gulu.Rand.String(7)+".zip")
-	if err = os.WriteFile(tmpZipPath, data, 0644); nil != err {
-		logger.Errorf("write package.zip failed: %s", err)
+	osTmpDir := filepath.Join(os.TempDir(), "bazaar")
+	if err = os.MkdirAll(osTmpDir, 0755); nil != err {
+		logger.Errorf("mkdir [%s] failed: %s", osTmpDir, err)
 	} else {
-		tmpUnzipPath := filepath.Join(os.TempDir(), "bazaar", gulu.Rand.String(7))
-		if err = gulu.Zip.Unzip(tmpZipPath, tmpUnzipPath); nil != err {
-			logger.Errorf("unzip package.zip failed: %s", err)
+		tmpZipPath := filepath.Join(os.TempDir(), "bazaar", gulu.Rand.String(7)+".zip")
+		if err = os.WriteFile(tmpZipPath, data, 0644); nil != err {
+			logger.Errorf("write package.zip failed: %s", err)
 		} else {
-			installSize, err = util.SizeOfDirectory(tmpUnzipPath)
-			if nil != err {
-				logger.Errorf("stat package [%s] size failed: %s", repoURL, err)
+			tmpUnzipPath := filepath.Join(os.TempDir(), "bazaar", gulu.Rand.String(7))
+			if err = gulu.Zip.Unzip(tmpZipPath, tmpUnzipPath); nil != err {
+				logger.Errorf("unzip package.zip failed: %s", err)
+			} else {
+				installSize, err = util.SizeOfDirectory(tmpUnzipPath)
+				if nil != err {
+					logger.Errorf("stat package [%s] size failed: %s", repoURL, err)
+				}
 			}
+			os.RemoveAll(tmpUnzipPath)
 		}
+		os.RemoveAll(tmpZipPath)
 	}
 
 	wg := &sync.WaitGroup{}
