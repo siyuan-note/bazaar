@@ -61,11 +61,11 @@ func performStage(typ string) {
 		defer waitGroup.Done()
 		repo := arg.(string)
 		var hash, updated string
-		var size int64
+		var size, installSize int64
 		var ok bool
 		var pkg *Package
 
-		if ok, hash, updated, size, pkg = indexPackage(repo, typ); !ok {
+		if ok, hash, updated, size, installSize, pkg = indexPackage(repo, typ); !ok {
 			return
 		}
 
@@ -74,12 +74,13 @@ func performStage(typ string) {
 		lock.Lock()
 		defer lock.Unlock()
 		stageRepos = append(stageRepos, &StageRepo{
-			URL:        repo + "@" + hash,
-			Stars:      stars,
-			OpenIssues: openIssues,
-			Updated:    updated,
-			Size:       size,
-			Package:    pkg,
+			URL:         repo + "@" + hash,
+			Stars:       stars,
+			OpenIssues:  openIssues,
+			Updated:     updated,
+			Size:        size,
+			InstallSize: installSize,
+			Package:     pkg,
 		})
 		logger.Infof("updated repo [%s]", repo)
 	})
@@ -111,7 +112,7 @@ func performStage(typ string) {
 }
 
 // indexPackage 索引包
-func indexPackage(repoURL, typ string) (ok bool, hash, published string, size int64, pkg *Package) {
+func indexPackage(repoURL, typ string) (ok bool, hash, published string, size, installSize int64, pkg *Package) {
 	hash, published, packageZip := getRepoLatestRelease(repoURL)
 	if "" == hash {
 		logger.Warnf("get [%s] latest release failed", repoURL)
@@ -145,7 +146,7 @@ func indexPackage(repoURL, typ string) (ok bool, hash, published string, size in
 	size = int64(len(data)) // 计算包大小
 
 	// 解压 package.zip 以计算实际占用空间大小
-	installSize := size
+	installSize = size
 	osTmpDir := filepath.Join(os.TempDir(), "bazaar")
 	if err = os.MkdirAll(osTmpDir, 0755); nil != err {
 		logger.Errorf("mkdir [%s] failed: %s", osTmpDir, err)
@@ -397,11 +398,12 @@ type Package struct {
 }
 
 type StageRepo struct {
-	URL        string `json:"url"`
-	Updated    string `json:"updated"`
-	Stars      int    `json:"stars"`
-	OpenIssues int    `json:"openIssues"`
-	Size       int64  `json:"size"`
+	URL         string `json:"url"`
+	Updated     string `json:"updated"`
+	Stars       int    `json:"stars"`
+	OpenIssues  int    `json:"openIssues"`
+	Size        int64  `json:"size"`
+	InstallSize int64  `json:"installSize"`
 
 	Package *Package `json:"package"`
 }
