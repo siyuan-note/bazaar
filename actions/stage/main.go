@@ -13,6 +13,7 @@ package main
 import (
 	"crypto/tls"
 	"os"
+	"path/filepath"
 	"sort"
 	"strings"
 	"sync"
@@ -143,18 +144,35 @@ func indexPackage(repoURL, typ string) (ok bool, hash, published string, size in
 
 	size = int64(len(data)) // 计算包大小
 
+	// 解压 package.zip 以计算实际占用空间大小
+	installSize := size
+	tmpZipPath := filepath.Join(os.TempDir(), "bazaar", gulu.Rand.String(7)+".zip")
+	if err = os.WriteFile(tmpZipPath, data, 0644); nil != err {
+		logger.Errorf("write package.zip failed: %s", err)
+	} else {
+		tmpUnzipPath := filepath.Join(os.TempDir(), "bazaar", gulu.Rand.String(7))
+		if err = gulu.Zip.Unzip(tmpZipPath, tmpUnzipPath); nil != err {
+			logger.Errorf("unzip package.zip failed: %s", err)
+		} else {
+			installSize, err = util.SizeOfDirectory(tmpUnzipPath)
+			if nil != err {
+				logger.Errorf("stat package [%s] size failed: %s", repoURL, err)
+			}
+		}
+	}
+
 	wg := &sync.WaitGroup{}
 	wg.Add(7)
 	go func() {
 		defer wg.Done()
 		pkg = getPackage(repoURL, hash, typ)
 	}()
-	go indexPackageFile(repoURL, hash, "/README.md", 0, wg)
-	go indexPackageFile(repoURL, hash, "/README_zh_CN.md", 0, wg)
-	go indexPackageFile(repoURL, hash, "/README_en_US.md", 0, wg)
-	go indexPackageFile(repoURL, hash, "/preview.png", 0, wg)
-	go indexPackageFile(repoURL, hash, "/icon.png", 0, wg)
-	go indexPackageFile(repoURL, hash, "/"+strings.TrimSuffix(typ, "s")+".json", size, wg)
+	go indexPackageFile(repoURL, hash, "/README.md", 0, 0, wg)
+	go indexPackageFile(repoURL, hash, "/README_zh_CN.md", 0, 0, wg)
+	go indexPackageFile(repoURL, hash, "/README_en_US.md", 0, 0, wg)
+	go indexPackageFile(repoURL, hash, "/preview.png", 0, 0, wg)
+	go indexPackageFile(repoURL, hash, "/icon.png", 0, 0, wg)
+	go indexPackageFile(repoURL, hash, "/"+strings.TrimSuffix(typ, "s")+".json", size, installSize, wg)
 	wg.Wait()
 	ok = true
 	return
@@ -185,7 +203,7 @@ func getPackage(ownerRepo, hash, typ string) (ret *Package) {
 }
 
 // indexPackageFile 索引文件
-func indexPackageFile(ownerRepo, hash, filePath string, size int64, wg *sync.WaitGroup) bool {
+func indexPackageFile(ownerRepo, hash, filePath string, size, installSize int64, wg *sync.WaitGroup) bool {
 	defer wg.Done()
 
 	u := "https://raw.githubusercontent.com/" + ownerRepo + "/" + hash + filePath
@@ -212,6 +230,7 @@ func indexPackageFile(ownerRepo, hash, filePath string, size int64, wg *sync.Wai
 			return false
 		}
 		meta["size"] = size
+		meta["installSize"] = installSize
 		var err error
 		data, err = gulu.JSON.MarshalIndentJSON(meta, "", "  ")
 		if nil != err {
