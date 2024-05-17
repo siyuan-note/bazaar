@@ -1,17 +1,76 @@
 {
   "repos": [
     {
-      "url": "iamqiz/siyuan-plugin-add-shortcut-to-topbar@439bb96d319e66eb219d55ef716c824e91b6073d",
-      "updated": "2024-05-16T12:49:45Z",
+      "url": "suka233/siyuan-knote@63f414d45ee0f4a95699b0d298e7888bf87090f4",
+      "updated": "2024-05-17T08:46:26Z",
+      "stars": 11,
+      "openIssues": 2,
+      "size": 4310714,
+      "installSize": 9427008,
+      "package": {
+        "name": "knote-plugin",
+        "author": "suka233",
+        "url": "https://github.com/suka233/siyuan-knote",
+        "version": "2.1.3",
+        "minAppVersion": "2.8.10",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "KNote卡片笔记插件",
+          "en_US": "KNote Plugin for Zettelkasten"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "将daily note无压笔记法和思源结合起来，想到什么就写什么，无压力做笔记。实验功能：当前支持任意格式的日记存储路径解析，新增支持黑暗模式,新增系统级全局快捷输入框,Ctrl+Shift+Q即可全局唤出",
+          "en_US": "Combine daily note and siyuan, write down what you think, and take notes without pressure. Experimental function: the current support for any format of diary storage path analysis, new support for dark mode, new global shortcut input box"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README.md",
+          "en_US": "README_en_US.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://wj.qq.com/s2/12591272/adf1/"
+          ]
+        },
+        "keywords": [
+          "knote",
+          "zettelkasten",
+          "daily note",
+          "siyuan",
+          "笔记",
+          "daily",
+          "note",
+          "daily note",
+          "siyuan",
+          "思源",
+          "卡片笔记",
+          "无压笔记",
+          "callout"
+        ]
+      }
+    },
+    {
+      "url": "iamqiz/siyuan-plugin-add-shortcut-to-topbar@5be761d31567564fdb923edc3479bd7713b48a7a",
+      "updated": "2024-05-17T08:23:45Z",
       "stars": 2,
-      "openIssues": 1,
-      "size": 146084,
-      "installSize": 281376,
+      "openIssues": 0,
+      "size": 146530,
+      "installSize": 283100,
       "package": {
         "name": "plugin-add-shortcut-to-topbar",
         "author": "iamqiz",
         "url": "https://github.com/iamqiz/siyuan-plugin-add-shortcut-to-topbar",
-        "version": "1.1.1",
+        "version": "1.1.2",
         "minAppVersion": "3.0.0",
         "backends": [
           "windows",
@@ -33,8 +92,8 @@
           "en_US": ""
         },
         "description": {
-          "default": "在顶栏添加图标,点击之后执行相应的快捷键",
-          "zh_CN": "在顶栏添加图标,点击之后执行相应的快捷键",
+          "default": "在顶栏和编辑器添加图标,点击之后执行相应的快捷键;或调整原有图标的顺序",
+          "zh_CN": "在顶栏和编辑器添加图标,点击之后执行相应的快捷键;或调整原有图标的顺序",
           "en_US": ""
         },
         "readme": {
@@ -2638,65 +2697,6 @@
           "analytics",
           "wakatime",
           "wakapi"
-        ]
-      }
-    },
-    {
-      "url": "suka233/siyuan-knote@c9bb0b3995d7ee021a8afc503162ab3ab22affc3",
-      "updated": "2024-03-30T04:09:29Z",
-      "stars": 11,
-      "openIssues": 3,
-      "size": 4297313,
-      "installSize": 9376320,
-      "package": {
-        "name": "knote-plugin",
-        "author": "suka233",
-        "url": "https://github.com/suka233/siyuan-knote",
-        "version": "2.1.2",
-        "minAppVersion": "2.8.10",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "KNote卡片笔记插件",
-          "en_US": "KNote Plugin for Zettelkasten"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "将daily note无压笔记法和思源结合起来，想到什么就写什么，无压力做笔记。实验功能：当前支持任意格式的日记存储路径解析，新增支持黑暗模式,新增系统级全局快捷输入框,Ctrl+Shift+Q即可全局唤出",
-          "en_US": "Combine daily note and siyuan, write down what you think, and take notes without pressure. Experimental function: the current support for any format of diary storage path analysis, new support for dark mode, new global shortcut input box"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README.md",
-          "en_US": "README_en_US.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://wj.qq.com/s2/12591272/adf1/"
-          ]
-        },
-        "keywords": [
-          "knote",
-          "zettelkasten",
-          "daily note",
-          "siyuan",
-          "笔记",
-          "daily",
-          "note",
-          "daily note",
-          "siyuan",
-          "思源",
-          "卡片笔记",
-          "无压笔记",
-          "callout"
         ]
       }
     },
