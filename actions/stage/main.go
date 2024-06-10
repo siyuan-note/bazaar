@@ -13,6 +13,7 @@ package main
 import (
 	"crypto/tls"
 	"os"
+	"path/filepath"
 	"sort"
 	"strings"
 	"sync"
@@ -60,11 +61,11 @@ func performStage(typ string) {
 		defer waitGroup.Done()
 		repo := arg.(string)
 		var hash, updated string
-		var size int64
+		var size, installSize int64
 		var ok bool
 		var pkg *Package
 
-		if ok, hash, updated, size, pkg = indexPackage(repo, typ); !ok {
+		if ok, hash, updated, size, installSize, pkg = indexPackage(repo, typ); !ok {
 			return
 		}
 
@@ -73,12 +74,13 @@ func performStage(typ string) {
 		lock.Lock()
 		defer lock.Unlock()
 		stageRepos = append(stageRepos, &StageRepo{
-			URL:        repo + "@" + hash,
-			Stars:      stars,
-			OpenIssues: openIssues,
-			Updated:    updated,
-			Size:       size,
-			Package:    pkg,
+			URL:         repo + "@" + hash,
+			Stars:       stars,
+			OpenIssues:  openIssues,
+			Updated:     updated,
+			Size:        size,
+			InstallSize: installSize,
+			Package:     pkg,
 		})
 		logger.Infof("updated repo [%s]", repo)
 	})
@@ -110,7 +112,7 @@ func performStage(typ string) {
 }
 
 // indexPackage 索引包
-func indexPackage(repoURL, typ string) (ok bool, hash, published string, size int64, pkg *Package) {
+func indexPackage(repoURL, typ string) (ok bool, hash, published string, size, installSize int64, pkg *Package) {
 	hash, published, packageZip := getRepoLatestRelease(repoURL)
 	if "" == hash {
 		logger.Warnf("get [%s] latest release failed", repoURL)
@@ -143,18 +145,42 @@ func indexPackage(repoURL, typ string) (ok bool, hash, published string, size in
 
 	size = int64(len(data)) // 计算包大小
 
+	// 解压 package.zip 以计算实际占用空间大小
+	installSize = size
+	osTmpDir := filepath.Join(os.TempDir(), "bazaar")
+	if err = os.MkdirAll(osTmpDir, 0755); nil != err {
+		logger.Errorf("mkdir [%s] failed: %s", osTmpDir, err)
+	} else {
+		tmpZipPath := filepath.Join(os.TempDir(), "bazaar", gulu.Rand.String(7)+".zip")
+		if err = os.WriteFile(tmpZipPath, data, 0644); nil != err {
+			logger.Errorf("write package.zip failed: %s", err)
+		} else {
+			tmpUnzipPath := filepath.Join(os.TempDir(), "bazaar", gulu.Rand.String(7))
+			if err = gulu.Zip.Unzip(tmpZipPath, tmpUnzipPath); nil != err {
+				logger.Errorf("unzip package.zip failed: %s", err)
+			} else {
+				installSize, err = util.SizeOfDirectory(tmpUnzipPath)
+				if nil != err {
+					logger.Errorf("stat package [%s] size failed: %s", repoURL, err)
+				}
+			}
+			os.RemoveAll(tmpUnzipPath)
+		}
+		os.RemoveAll(tmpZipPath)
+	}
+
 	wg := &sync.WaitGroup{}
 	wg.Add(7)
 	go func() {
 		defer wg.Done()
 		pkg = getPackage(repoURL, hash, typ)
 	}()
-	go indexPackageFile(repoURL, hash, "/README.md", 0, wg)
-	go indexPackageFile(repoURL, hash, "/README_zh_CN.md", 0, wg)
-	go indexPackageFile(repoURL, hash, "/README_en_US.md", 0, wg)
-	go indexPackageFile(repoURL, hash, "/preview.png", 0, wg)
-	go indexPackageFile(repoURL, hash, "/icon.png", 0, wg)
-	go indexPackageFile(repoURL, hash, "/"+strings.TrimSuffix(typ, "s")+".json", size, wg)
+	go indexPackageFile(repoURL, hash, "/README.md", 0, 0, wg)
+	go indexPackageFile(repoURL, hash, "/README_zh_CN.md", 0, 0, wg)
+	go indexPackageFile(repoURL, hash, "/README_en_US.md", 0, 0, wg)
+	go indexPackageFile(repoURL, hash, "/preview.png", 0, 0, wg)
+	go indexPackageFile(repoURL, hash, "/icon.png", 0, 0, wg)
+	go indexPackageFile(repoURL, hash, "/"+strings.TrimSuffix(typ, "s")+".json", size, installSize, wg)
 	wg.Wait()
 	ok = true
 	return
@@ -185,7 +211,7 @@ func getPackage(ownerRepo, hash, typ string) (ret *Package) {
 }
 
 // indexPackageFile 索引文件
-func indexPackageFile(ownerRepo, hash, filePath string, size int64, wg *sync.WaitGroup) bool {
+func indexPackageFile(ownerRepo, hash, filePath string, size, installSize int64, wg *sync.WaitGroup) bool {
 	defer wg.Done()
 
 	u := "https://raw.githubusercontent.com/" + ownerRepo + "/" + hash + filePath
@@ -212,6 +238,7 @@ func indexPackageFile(ownerRepo, hash, filePath string, size int64, wg *sync.Wai
 			return false
 		}
 		meta["size"] = size
+		meta["installSize"] = installSize
 		var err error
 		data, err = gulu.JSON.MarshalIndentJSON(meta, "", "  ")
 		if nil != err {
@@ -371,11 +398,12 @@ type Package struct {
 }
 
 type StageRepo struct {
-	URL        string `json:"url"`
-	Updated    string `json:"updated"`
-	Stars      int    `json:"stars"`
-	OpenIssues int    `json:"openIssues"`
-	Size       int64  `json:"size"`
+	URL         string `json:"url"`
+	Updated     string `json:"updated"`
+	Stars       int    `json:"stars"`
+	OpenIssues  int    `json:"openIssues"`
+	Size        int64  `json:"size"`
+	InstallSize int64  `json:"installSize"`
 
 	Package *Package `json:"package"`
 }
