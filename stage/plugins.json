@@ -1,18 +1,18 @@
 {
   "repos": [
     {
-      "url": "syh19/siyuan-plugin-task-list@b9dbc49cca7c19b2324f928b08727fc921837b68",
-      "updated": "2024-08-09T10:33:53Z",
-      "stars": 26,
-      "openIssues": 10,
-      "size": 1173061,
-      "installSize": 2417446,
+      "url": "IAliceBobI/sy-progressive-plugin@d20a28b98ac30759fa0068deb4cea65be7c343d4",
+      "updated": "2024-08-09T14:07:26Z",
+      "stars": 12,
+      "openIssues": 0,
+      "size": 1513369,
+      "installSize": 2801359,
       "package": {
-        "name": "siyuan-plugin-task-list",
-        "author": "sylwair",
-        "url": "https://github.com/syh19/siyuan-plugin-task-list",
-        "version": "0.4.2",
-        "minAppVersion": "2.10.13",
+        "name": "sy-progressive-plugin",
+        "author": "IAliceBobI",
+        "url": "https://github.com/IAliceBobI/sy-progressive-plugin",
+        "version": "1.1.5",
+        "minAppVersion": "2.12.6",
         "backends": [
           "all"
         ],
@@ -20,13 +20,13 @@
           "all"
         ],
         "displayName": {
-          "default": "Task List",
-          "zh_CN": "任务列表",
+          "default": "Progressive Learning",
+          "zh_CN": "渐进学习",
           "en_US": ""
         },
         "description": {
-          "default": "Summarize tasks scattered throughout your workspace and rely on \u003cstrong\u003etask list\u003c/strong\u003e to achieve \u003ccode class='fn__code'\u003eschedule management\u003c/code\u003e and \u003ccode class='fn__code'\u003eto-do list\u003c/code\u003e management",
-          "zh_CN": "汇总散落在整个工作空间的任务，依托\u003cstrong\u003e任务列表\u003c/strong\u003e实现\u003ccode class='fn__code'\u003e日程管理\u003c/code\u003e和\u003ccode class='fn__code'\u003e待办事项\u003c/code\u003e管理",
+          "default": "Excerpt-based Progressive Learning, Fragmented Progressive Learning, Writing-based Flashcards, List Cards, Daily Card",
+          "zh_CN": "摘抄式渐进学习、分片式渐进学习、写作式闪卡、列表卡、Daily Card",
           "en_US": ""
         },
         "readme": {
@@ -39,31 +39,30 @@
           "patreon": "",
           "github": "",
           "custom": [
-            "https://sylwair.com/?utm_source=siyuan-note-app"
+            "https://afdian.com/a/playerv5"
           ]
         },
         "keywords": [
-          "task",
-          "todo",
-          "list",
-          "任务",
-          "代办",
-          "列表"
+          "Learning",
+          "Progressive",
+          "Progressive Learning",
+          "Progressive Reading",
+          "Progressive Writing"
         ]
       }
     },
     {
-      "url": "IAliceBobI/sy-tomato-plugin@e43822a78638080422344a9743ccde57f0084170",
-      "updated": "2024-08-09T05:50:56Z",
+      "url": "IAliceBobI/sy-tomato-plugin@e8da078a5e79910975b0b0562d4e8236d4dc7dd3",
+      "updated": "2024-08-09T14:07:02Z",
       "stars": 13,
       "openIssues": 6,
-      "size": 1817233,
-      "installSize": 3609555,
+      "size": 1817726,
+      "installSize": 3611267,
       "package": {
         "name": "sy-tomato-plugin",
         "author": "IAliceBobI",
         "url": "https://github.com/IAliceBobI/sy-tomato-plugin",
-        "version": "2.1.4",
+        "version": "2.1.5",
         "minAppVersion": "3.0.3",
         "backends": [
           "all"
@@ -115,6 +114,58 @@
           "Time visualization",
           "Progress tracking",
           "Goal setting"
+        ]
+      }
+    },
+    {
+      "url": "syh19/siyuan-plugin-task-list@b9dbc49cca7c19b2324f928b08727fc921837b68",
+      "updated": "2024-08-09T10:33:53Z",
+      "stars": 26,
+      "openIssues": 9,
+      "size": 1173061,
+      "installSize": 2417446,
+      "package": {
+        "name": "siyuan-plugin-task-list",
+        "author": "sylwair",
+        "url": "https://github.com/syh19/siyuan-plugin-task-list",
+        "version": "0.4.2",
+        "minAppVersion": "2.10.13",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "Task List",
+          "zh_CN": "任务列表",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Summarize tasks scattered throughout your workspace and rely on \u003cstrong\u003etask list\u003c/strong\u003e to achieve \u003ccode class='fn__code'\u003eschedule management\u003c/code\u003e and \u003ccode class='fn__code'\u003eto-do list\u003c/code\u003e management",
+          "zh_CN": "汇总散落在整个工作空间的任务，依托\u003cstrong\u003e任务列表\u003c/strong\u003e实现\u003ccode class='fn__code'\u003e日程管理\u003c/code\u003e和\u003ccode class='fn__code'\u003e待办事项\u003c/code\u003e管理",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://sylwair.com/?utm_source=siyuan-note-app"
+          ]
+        },
+        "keywords": [
+          "task",
+          "todo",
+          "list",
+          "任务",
+          "代办",
+          "列表"
         ]
       }
     },
@@ -429,57 +480,6 @@
           "plugin",
           "mobile",
           "移动"
-        ]
-      }
-    },
-    {
-      "url": "IAliceBobI/sy-progressive-plugin@2a9815ced965715a9b398bdd939f6d1eb10a4f16",
-      "updated": "2024-08-03T10:01:09Z",
-      "stars": 12,
-      "openIssues": 2,
-      "size": 1511669,
-      "installSize": 2793891,
-      "package": {
-        "name": "sy-progressive-plugin",
-        "author": "IAliceBobI",
-        "url": "https://github.com/IAliceBobI/sy-progressive-plugin",
-        "version": "1.1.4",
-        "minAppVersion": "2.12.6",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "Progressive Learning",
-          "zh_CN": "渐进学习",
-          "en_US": ""
-        },
-        "description": {
-          "default": "Excerpt-based Progressive Learning, Fragmented Progressive Learning, Writing-based Flashcards, List Cards, Daily Card",
-          "zh_CN": "摘抄式渐进学习、分片式渐进学习、写作式闪卡、列表卡、Daily Card",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.com/a/playerv5"
-          ]
-        },
-        "keywords": [
-          "Learning",
-          "Progressive",
-          "Progressive Learning",
-          "Progressive Reading",
-          "Progressive Writing"
         ]
       }
     },
