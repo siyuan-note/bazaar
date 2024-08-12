@@ -1,17 +1,17 @@
 {
   "repos": [
     {
-      "url": "2234839/toolkit-plugin-siyuan@bb38e982ad37a9b0a44bba8cdafc127c6bc8dc41",
-      "updated": "2024-08-12T05:50:37Z",
+      "url": "2234839/toolkit-plugin-siyuan@94af64a4d03f72a4948e2d26799f16b9fe2123c0",
+      "updated": "2024-08-12T09:59:17Z",
       "stars": 0,
       "openIssues": 0,
-      "size": 38734,
-      "installSize": 91686,
+      "size": 65461,
+      "installSize": 119393,
       "package": {
         "name": "toolkit-plugin-siyuan",
         "author": "崮生",
         "url": "https://github.com/2234839/toolkit-plugin-siyuan",
-        "version": "0.0.5",
+        "version": "0.0.6",
         "minAppVersion": "2.10.3",
         "backends": [
           "all"
@@ -43,6 +43,60 @@
           ]
         },
         "keywords": null
+      }
+    },
+    {
+      "url": "frostime/sy-bind-mdfile@4c44608a256c3a0338c9149bdaa9503ad6e0b432",
+      "updated": "2024-08-12T09:39:01Z",
+      "stars": 1,
+      "openIssues": 1,
+      "size": 98288,
+      "installSize": 182044,
+      "package": {
+        "name": "sy-bind-mdfile",
+        "author": "frostime",
+        "url": "https://github.com/frostime/sy-bind-mdfile",
+        "version": "0.2.0",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios"
+        ],
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "绑定本地 MD 文件",
+          "en_US": "Bind Local MD File"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "将文档和本地的 Markdown 文件双向绑定，便于方便地导入和导出",
+          "en_US": "Bind the document and the local Markdown file to facilitate the import and export of documents"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "plugin",
+          "md",
+          "markdown",
+          "local"
+        ]
       }
     },
     {
@@ -108,60 +162,6 @@
           "Time visualization",
           "Progress tracking",
           "Goal setting"
-        ]
-      }
-    },
-    {
-      "url": "frostime/sy-bind-mdfile@c6e906719b6ff6c45d12ca7c0526e0a034544048",
-      "updated": "2024-08-11T13:18:57Z",
-      "stars": 1,
-      "openIssues": 3,
-      "size": 78762,
-      "installSize": 115863,
-      "package": {
-        "name": "sy-bind-mdfile",
-        "author": "frostime",
-        "url": "https://github.com/frostime/sy-bind-mdfile",
-        "version": "0.1.0",
-        "minAppVersion": "3.0.12",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios"
-        ],
-        "frontends": [
-          "desktop",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "绑定本地 MD 文件",
-          "en_US": "Bind Local MD File"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "将文档和本地的 Markdown 文件双向绑定，便于方便地导入和导出",
-          "en_US": "Bind the document and the local Markdown file to facilitate the import and export of documents"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            ""
-          ]
-        },
-        "keywords": [
-          "plugin",
-          "md",
-          "markdown",
-          "local"
         ]
       }
     },
@@ -4346,7 +4346,7 @@
       "url": "svchord/siyuan-arco-calendar@634099ba0b24174845fbcc2133e97dadbd816541",
       "updated": "2024-04-12T15:24:47Z",
       "stars": 13,
-      "openIssues": 9,
+      "openIssues": 10,
       "size": 268817,
       "installSize": 667729,
       "package": {
