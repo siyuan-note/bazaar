@@ -1,6 +1,53 @@
 {
   "repos": [
     {
+      "url": "emlog/siyuan-to-emlog@20c05bf4ffbd710033e72324eda29f30d277c2cd",
+      "updated": "2024-10-05T07:47:00Z",
+      "stars": 0,
+      "openIssues": 0,
+      "size": 364106,
+      "installSize": 379662,
+      "package": {
+        "name": "plugin-sample",
+        "author": "Vanessa",
+        "url": "https://github.com/siyuan-note/plugin-sample",
+        "version": "0.1.1",
+        "minAppVersion": "2.8.8",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "frontends": [
+          "desktop"
+        ],
+        "displayName": {
+          "default": "Plugin Sample",
+          "zh_CN": "插件示例",
+          "en_US": ""
+        },
+        "description": {
+          "default": "This is a plugin sample",
+          "zh_CN": "这是一个插件示例",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://ld246.com/sponsor"
+          ]
+        },
+        "keywords": null
+      }
+    },
+    {
       "url": "kuangdongksk/siyuan-access-controller@5a8793b02fe97101162f7b7c11d21ab8da222a46",
       "updated": "2024-10-05T05:15:14Z",
       "stars": 2,
@@ -339,53 +386,6 @@
           "md",
           "markdown",
           "local"
-        ]
-      }
-    },
-    {
-      "url": "emlog/siyuan-to-emlog@8f9436104adfbbf6b9429a22137f418d91916ab0",
-      "updated": "2024-10-02T07:55:58Z",
-      "stars": 0,
-      "openIssues": 0,
-      "size": 363921,
-      "installSize": 379212,
-      "package": {
-        "name": "siyuan-to-emlog",
-        "author": "emlog",
-        "url": "https://github.com/emlog/siyuan-to-emlog",
-        "version": "0.1.0",
-        "minAppVersion": "2.11.1",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "emlog sync",
-          "zh_CN": "EMLOG同步",
-          "en_US": ""
-        },
-        "description": {
-          "default": "Synchronize documents to emlog site",
-          "zh_CN": "同步文档到emlog站点",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README.md",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": []
-        },
-        "keywords": [
-          "emlog",
-          "同步",
-          "sync"
         ]
       }
     },
@@ -2111,6 +2111,63 @@
           "script",
           "运行",
           "脚本"
+        ]
+      }
+    },
+    {
+      "url": "zxhd863943427/siyuan-plugin-middle-search@4f743d8f72ac64fc93d12cd2d231612b67b2c0ea",
+      "updated": "2024-09-07T04:04:28Z",
+      "stars": 0,
+      "openIssues": 1,
+      "size": 70650,
+      "installSize": 91754,
+      "package": {
+        "name": "siyuan-plugin-middle-search",
+        "author": "zxhd863943427",
+        "url": "https://github.com/zxhd863943427/siyuan-plugin-middle-search",
+        "version": "0.3.5",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "中级搜索",
+          "en_US": "middle-search"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "更简单存粹的搜索插件",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/zxhd86"
+          ]
+        },
+        "keywords": [
+          "plugin",
+          "search"
         ]
       }
     },
