@@ -633,6 +633,8 @@ func checkFileExist(
 			} else {
 				if img.Width != 160 || img.Height != 160 {
 					logger.Warnf("icon.png file <\033[7m%s\033[0m> size is not 160x160", rawUrl)
+					fileCheckResult.Pass = false
+					return
 				}
 			}
 		}
