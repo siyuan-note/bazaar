@@ -625,16 +625,30 @@ func checkFileExist(
 		panic(errs)
 	}
 	if response.StatusCode == http.StatusOK {
-		if strings.HasSuffix(filePath, "icon.png") && 0 < len(data) {
-			// 图标大小 160*160
-			img, _, err := image.DecodeConfig(strings.NewReader(data))
-			if err != nil {
-				logger.Warnf("check icon.png file <\033[7m%s\033[0m> size failed: %s", rawUrl, err)
-			} else {
-				if img.Width != 160 || img.Height != 160 {
-					logger.Warnf("icon.png file <\033[7m%s\033[0m> size is not 160x160", rawUrl)
-					fileCheckResult.Pass = false
-					return
+		if strings.HasSuffix(filePath, ".png") && 0 < len(data) {
+			if strings.HasSuffix(filePath, "icon.png") {
+				// 图标大小 160*160
+				img, _, err := image.DecodeConfig(strings.NewReader(data))
+				if err != nil {
+					logger.Warnf("check icon.png file <\033[7m%s\033[0m> size failed: %s", rawUrl, err)
+				} else {
+					if img.Width != 160 || img.Height != 160 {
+						logger.Warnf("icon.png file <\033[7m%s\033[0m> size is not 160x160", rawUrl)
+						fileCheckResult.Pass = false
+						return
+					}
+				}
+			} else if strings.HasSuffix(filePath, "preview.png") {
+				// 预览图大小 1024*768
+				img, _, err := image.DecodeConfig(strings.NewReader(data))
+				if err != nil {
+					logger.Warnf("check preview.png file <\033[7m%s\033[0m> size failed: %s", rawUrl, err)
+				} else {
+					if img.Width != 1024 || img.Height != 768 {
+						logger.Warnf("preview.png file <\033[7m%s\033[0m> size is not 1024x768", rawUrl)
+						fileCheckResult.Pass = false
+						return
+					}
 				}
 			}
 		}
