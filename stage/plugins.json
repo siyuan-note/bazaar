@@ -1,6 +1,115 @@
 {
   "repos": [
     {
+      "url": "frostime/sy-bind-mdfile@430c00bb7ab8775422fc1be266f4e2f6765a951b",
+      "updated": "2024-10-20T13:14:18Z",
+      "stars": 2,
+      "openIssues": 2,
+      "size": 101651,
+      "installSize": 192643,
+      "package": {
+        "name": "sy-bind-mdfile",
+        "author": "frostime",
+        "url": "https://github.com/frostime/sy-bind-mdfile",
+        "version": "0.4.1",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios"
+        ],
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "绑定本地 MD 文件",
+          "en_US": "Bind Local MD File"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "将文档和本地的 Markdown 文件双向绑定，便于方便地导入和导出",
+          "en_US": "Bind the document and the local Markdown file to facilitate the import and export of documents"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "plugin",
+          "md",
+          "markdown",
+          "local"
+        ]
+      }
+    },
+    {
+      "url": "Achuan-2/siyuan-plugin-formatPainter@5345d4f45d14ab2df67fd98d2df7743afe885d34",
+      "updated": "2024-10-20T13:02:31Z",
+      "stars": 9,
+      "openIssues": 0,
+      "size": 87758,
+      "installSize": 136678,
+      "package": {
+        "name": "siyuan-plugin-formatPainter",
+        "author": "Achuan-2",
+        "url": "https://github.com/Achuan-2/siyuan-plugin-formatPainter",
+        "version": "1.1.3",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "Format Painter",
+          "zh_CN": "格式刷",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Use the format painter to batch apply styles",
+          "zh_CN": "使用格式刷批量添加样式",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://www.yuque.com/achuan-2"
+          ]
+        },
+        "keywords": [
+          "Format Painter",
+          "格式刷"
+        ]
+      }
+    },
+    {
       "url": "IAliceBobI/sy-tomato-plugin@751a7eb7bff76e1eeffb962dc268dbe2734e92ef",
       "updated": "2024-10-20T08:16:41Z",
       "stars": 19,
@@ -405,7 +514,7 @@
       "url": "Misuzu2027/syplugin-backlink-panel@c050962311b78b9144ffa6db2d23d772dd06a1d9",
       "updated": "2024-10-17T05:58:27Z",
       "stars": 4,
-      "openIssues": 1,
+      "openIssues": 2,
       "size": 104522,
       "installSize": 209928,
       "package": {
@@ -989,61 +1098,6 @@
       }
     },
     {
-      "url": "Achuan-2/siyuan-plugin-formatPainter@435934117bbedfb5e955babc4708f4c689dff0ae",
-      "updated": "2024-10-12T03:00:52Z",
-      "stars": 9,
-      "openIssues": 0,
-      "size": 87758,
-      "installSize": 136586,
-      "package": {
-        "name": "siyuan-plugin-formatPainter",
-        "author": "Achuan-2",
-        "url": "https://github.com/Achuan-2/siyuan-plugin-formatPainter",
-        "version": "1.1.2",
-        "minAppVersion": "3.0.12",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "docker"
-        ],
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "Format Painter",
-          "zh_CN": "格式刷",
-          "en_US": ""
-        },
-        "description": {
-          "default": "Use the format painter to batch apply styles",
-          "zh_CN": "使用格式刷批量添加样式",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://www.yuque.com/achuan-2"
-          ]
-        },
-        "keywords": [
-          "Format Painter",
-          "格式刷"
-        ]
-      }
-    },
-    {
       "url": "kuangdongksk/siyuan-access-controller@e9fd19201dee734de0547f32efc67860c14c0526",
       "updated": "2024-10-09T11:22:05Z",
       "stars": 4,
@@ -1538,60 +1592,6 @@
         },
         "keywords": [
           "callout"
-        ]
-      }
-    },
-    {
-      "url": "frostime/sy-bind-mdfile@15125f5e94784ec4cf919749954bd49d862af0bd",
-      "updated": "2024-10-02T10:16:38Z",
-      "stars": 2,
-      "openIssues": 3,
-      "size": 101482,
-      "installSize": 192239,
-      "package": {
-        "name": "sy-bind-mdfile",
-        "author": "frostime",
-        "url": "https://github.com/frostime/sy-bind-mdfile",
-        "version": "0.4.0",
-        "minAppVersion": "3.0.12",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios"
-        ],
-        "frontends": [
-          "desktop",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "绑定本地 MD 文件",
-          "en_US": "Bind Local MD File"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "将文档和本地的 Markdown 文件双向绑定，便于方便地导入和导出",
-          "en_US": "Bind the document and the local Markdown file to facilitate the import and export of documents"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            ""
-          ]
-        },
-        "keywords": [
-          "plugin",
-          "md",
-          "markdown",
-          "local"
         ]
       }
     },
