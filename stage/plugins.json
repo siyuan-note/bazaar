@@ -1,6 +1,117 @@
 {
   "repos": [
     {
+      "url": "terwer/siyuan-plugin-publisher@7b2805bc8025dc2c59e44a702ba58a767d6c92ee",
+      "updated": "2024-11-26T12:04:58Z",
+      "stars": 137,
+      "openIssues": 61,
+      "size": 22493068,
+      "installSize": 22514342,
+      "package": {
+        "name": "siyuan-plugin-publisher",
+        "author": "terwer",
+        "url": "https://github.com/terwer/siyuan-plugin-publisher",
+        "version": "1.28.0",
+        "minAppVersion": "2.9.0",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "android",
+          "ios"
+        ],
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "displayName": {
+          "default": "Publisher",
+          "zh_CN": "发布工具",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Publish articles from siyuan-note to platforms like Yuque etc. \u003ccode class='fn__code'\u003eFree\u003c/code\u003e and \u003ccode class='fn__code'\u003eopen source\u003c/code\u003e.",
+          "zh_CN": "将思源笔记的文章发布到语雀等平台，\u003ccode class='fn__code'\u003e开源\u003c/code\u003e、\u003ccode class='fn__code'\u003e免费\u003c/code\u003e 。",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/terwer"
+          ]
+        },
+        "keywords": null
+      }
+    },
+    {
+      "url": "pakeh2866/sy-plugin-tab-close@7c1ff8bd2de3d6bd45b84ea573c0046dce9998e8",
+      "updated": "2024-11-26T11:28:05Z",
+      "stars": 0,
+      "openIssues": 0,
+      "size": 37043,
+      "installSize": 57698,
+      "package": {
+        "name": "siyuan-tab-manager",
+        "author": "pakeh",
+        "url": "https://github.com/pakeh2866/siyuan-tab-manager",
+        "version": "0.4.0",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "标签页定时关闭",
+          "en_US": "Tab Manager"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "自动关闭不活跃的标签页，保持工作区整洁并节省资源。",
+          "en_US": "Automatically close inactive tabs to keep your workspace clean and save resources. Closed tabs can be easily restored."
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "tab",
+          "manager",
+          "productivity",
+          "标签页",
+          "管理器",
+          "效率"
+        ]
+      }
+    },
+    {
       "url": "IAliceBobI/sy-progressive-plugin@ef0dadf2eef729b2b9635ddb617359a14be37d61",
       "updated": "2024-11-26T11:18:28Z",
       "stars": 17,
@@ -115,60 +226,6 @@
           "Progress tracking",
           "Goal setting"
         ]
-      }
-    },
-    {
-      "url": "terwer/siyuan-plugin-publisher@8f7ab83ce544458c136ce903085c2566816ec302",
-      "updated": "2024-11-26T09:33:49Z",
-      "stars": 137,
-      "openIssues": 62,
-      "size": 22492541,
-      "installSize": 22513815,
-      "package": {
-        "name": "siyuan-plugin-publisher",
-        "author": "terwer",
-        "url": "https://github.com/terwer/siyuan-plugin-publisher",
-        "version": "1.27.0",
-        "minAppVersion": "2.9.0",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "android",
-          "ios"
-        ],
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile"
-        ],
-        "displayName": {
-          "default": "Publisher",
-          "zh_CN": "发布工具",
-          "en_US": ""
-        },
-        "description": {
-          "default": "Publish articles from siyuan-note to platforms like Yuque etc. \u003ccode class='fn__code'\u003eFree\u003c/code\u003e and \u003ccode class='fn__code'\u003eopen source\u003c/code\u003e.",
-          "zh_CN": "将思源笔记的文章发布到语雀等平台，\u003ccode class='fn__code'\u003e开源\u003c/code\u003e、\u003ccode class='fn__code'\u003e免费\u003c/code\u003e 。",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.net/a/terwer"
-          ]
-        },
-        "keywords": null
       }
     },
     {
@@ -436,63 +493,6 @@
       }
     },
     {
-      "url": "pakeh2866/sy-plugin-tab-close@696c3b75d4fb52f497199c02195e8622c31f2ef5",
-      "updated": "2024-11-25T13:37:07Z",
-      "stars": 0,
-      "openIssues": 0,
-      "size": 37056,
-      "installSize": 57741,
-      "package": {
-        "name": "siyuan-tab-manager",
-        "author": "pakeh",
-        "url": "https://github.com/pakeh2866/siyuan-tab-manager",
-        "version": "0.1.0",
-        "minAppVersion": "3.0.12",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker"
-        ],
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "标签页定时关闭",
-          "en_US": "Tab Manager"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "自动关闭不活跃的标签页，保持工作区整洁并节省资源。",
-          "en_US": "Automatically close inactive tabs to keep your workspace clean and save resources. Closed tabs can be easily restored."
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            ""
-          ]
-        },
-        "keywords": [
-          "tab",
-          "manager",
-          "productivity",
-          "标签页",
-          "管理器",
-          "效率"
-        ]
-      }
-    },
-    {
       "url": "kuangdongksk/siyuan-access-controller@aab37f6e0208cbcd794680c6c41e3100636eb5cb",
       "updated": "2024-11-25T10:31:28Z",
       "stars": 5,
@@ -738,7 +738,7 @@
     {
       "url": "terwer/siyuan-plugin-picgo@f314bc08a1b99bab35d1e695ba76d1f772da4239",
       "updated": "2024-11-22T07:04:52Z",
-      "stars": 19,
+      "stars": 20,
       "openIssues": 48,
       "size": 14666144,
       "installSize": 14703502,
@@ -1228,8 +1228,8 @@
     {
       "url": "frostime/sy-docs-flow@0768e69f5513673fc487789ab268e4d90ebeaa79",
       "updated": "2024-11-17T10:48:08Z",
-      "stars": 7,
-      "openIssues": 7,
+      "stars": 8,
+      "openIssues": 8,
       "size": 278225,
       "installSize": 346429,
       "package": {
