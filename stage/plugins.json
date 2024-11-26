@@ -1,72 +1,68 @@
 {
   "repos": [
     {
-      "url": "loonghfut/siyuan-alist@c1e568cbf14768cb2f2bca4cffe4dfa34a0be3ce",
-      "updated": "2024-11-26T06:29:25Z",
-      "stars": 24,
-      "openIssues": 1,
-      "size": 710450,
-      "installSize": 796224,
+      "url": "IAliceBobI/sy-progressive-plugin@d9a781cec3be42c32b13cc5c158edb88cbf67298",
+      "updated": "2024-11-26T06:57:38Z",
+      "stars": 17,
+      "openIssues": 0,
+      "size": 1571042,
+      "installSize": 2911263,
       "package": {
-        "name": "siyuan-alist",
-        "author": "steve",
-        "url": "https://github.com/loonghfut/siyuan-alist",
-        "version": "0.1.4",
-        "minAppVersion": "3.0.12",
+        "name": "sy-progressive-plugin",
+        "author": "IAliceBobI",
+        "url": "https://github.com/IAliceBobI/sy-progressive-plugin",
+        "version": "1.2.12",
+        "minAppVersion": "2.12.6",
         "backends": [
           "all"
         ],
         "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
+          "all"
         ],
         "displayName": {
-          "default": "",
-          "zh_CN": "Alist附件管理",
-          "en_US": "Alist Attachment Management"
+          "default": "Progressive Learning",
+          "zh_CN": "渐进学习",
+          "en_US": ""
         },
         "description": {
-          "default": "",
-          "zh_CN": "联动Alist，实现大型附件管理，释放思源笔记空间",
-          "en_US": "Link Alist to achieve large attachment management and release the space of Siyuan notes"
+          "default": "Excerpt-based Progressive Learning, Fragmented Progressive Learning, Writing-based Flashcards, List Cards, Daily Card",
+          "zh_CN": "摘抄式渐进学习、分片式渐进学习、原地制卡、列表卡、Daily Card",
+          "en_US": ""
         },
         "readme": {
-          "default": "",
+          "default": "README.md",
           "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
+          "en_US": ""
         },
         "funding": {
           "openCollective": "",
           "patreon": "",
           "github": "",
           "custom": [
-            ""
+            "https://afdian.com/a/playerv5"
           ]
         },
         "keywords": [
-          "plugin",
-          "sample",
-          "alist",
-          "docker",
-          "file"
+          "Learning",
+          "Progressive",
+          "Progressive Learning",
+          "Progressive Reading",
+          "Progressive Writing"
         ]
       }
     },
     {
-      "url": "IAliceBobI/sy-tomato-plugin@fbac373c5373a5b9239ab14064029d61e308bd63",
-      "updated": "2024-11-26T03:55:40Z",
+      "url": "IAliceBobI/sy-tomato-plugin@6d14292700f88d3812ccb3b6ae7833501916d420",
+      "updated": "2024-11-26T06:42:04Z",
       "stars": 19,
       "openIssues": 0,
-      "size": 1980978,
-      "installSize": 4040405,
+      "size": 1980979,
+      "installSize": 4040429,
       "package": {
         "name": "sy-tomato-plugin",
         "author": "IAliceBobI",
         "url": "https://github.com/IAliceBobI/sy-tomato-plugin",
-        "version": "2.5.14",
+        "version": "2.5.15",
         "minAppVersion": "3.0.3",
         "backends": [
           "all"
@@ -118,6 +114,118 @@
           "Time visualization",
           "Progress tracking",
           "Goal setting"
+        ]
+      }
+    },
+    {
+      "url": "zt8989/siyuan-drawio-plugin@9939be4b2506c0d70093c470e5d9fdccd66b48c3",
+      "updated": "2024-11-26T06:38:58Z",
+      "stars": 5,
+      "openIssues": 1,
+      "size": 31673259,
+      "installSize": 78131369,
+      "package": {
+        "name": "siyuan-drawio-plugin",
+        "author": "cowboy",
+        "url": "https://github.com/zt8989/siyuan-drawio-plugin",
+        "version": "0.1.18",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "思源Draw.io插件",
+          "en_US": "Siyuan Draw.io Plugin"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "Draw.io以插件形式集成到思源中",
+          "en_US": "Draw.io integrated as a plugin into Siyuan"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "plugin",
+          "drawio"
+        ]
+      }
+    },
+    {
+      "url": "loonghfut/siyuan-alist@c1e568cbf14768cb2f2bca4cffe4dfa34a0be3ce",
+      "updated": "2024-11-26T06:29:25Z",
+      "stars": 24,
+      "openIssues": 1,
+      "size": 710450,
+      "installSize": 796224,
+      "package": {
+        "name": "siyuan-alist",
+        "author": "steve",
+        "url": "https://github.com/loonghfut/siyuan-alist",
+        "version": "0.1.4",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "Alist附件管理",
+          "en_US": "Alist Attachment Management"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "联动Alist，实现大型附件管理，释放思源笔记空间",
+          "en_US": "Link Alist to achieve large attachment management and release the space of Siyuan notes"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "plugin",
+          "sample",
+          "alist",
+          "docker",
+          "file"
         ]
       }
     },
@@ -220,63 +328,6 @@
         "keywords": [
           "index",
           "目录"
-        ]
-      }
-    },
-    {
-      "url": "zt8989/siyuan-drawio-plugin@302ca527293d859482404fc6af859d1a7b6f31f7",
-      "updated": "2024-11-26T03:05:40Z",
-      "stars": 5,
-      "openIssues": 1,
-      "size": 31673201,
-      "installSize": 78131200,
-      "package": {
-        "name": "siyuan-drawio-plugin",
-        "author": "cowboy",
-        "url": "https://github.com/zt8989/siyuan-drawio-plugin",
-        "version": "0.1.17",
-        "minAppVersion": "3.0.12",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "思源Draw.io插件",
-          "en_US": "Siyuan Draw.io Plugin"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "Draw.io以插件形式集成到思源中",
-          "en_US": "Draw.io integrated as a plugin into Siyuan"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            ""
-          ]
-        },
-        "keywords": [
-          "plugin",
-          "drawio"
         ]
       }
     },
@@ -438,57 +489,6 @@
           "标签页",
           "管理器",
           "效率"
-        ]
-      }
-    },
-    {
-      "url": "IAliceBobI/sy-progressive-plugin@1ac869d91b306ce072fc0de395ef8440922cae34",
-      "updated": "2024-11-25T13:29:36Z",
-      "stars": 17,
-      "openIssues": 0,
-      "size": 1570928,
-      "installSize": 2911225,
-      "package": {
-        "name": "sy-progressive-plugin",
-        "author": "IAliceBobI",
-        "url": "https://github.com/IAliceBobI/sy-progressive-plugin",
-        "version": "1.2.11",
-        "minAppVersion": "2.12.6",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "Progressive Learning",
-          "zh_CN": "渐进学习",
-          "en_US": ""
-        },
-        "description": {
-          "default": "Excerpt-based Progressive Learning, Fragmented Progressive Learning, Writing-based Flashcards, List Cards, Daily Card",
-          "zh_CN": "摘抄式渐进学习、分片式渐进学习、原地制卡、列表卡、Daily Card",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.com/a/playerv5"
-          ]
-        },
-        "keywords": [
-          "Learning",
-          "Progressive",
-          "Progressive Learning",
-          "Progressive Reading",
-          "Progressive Writing"
         ]
       }
     },
