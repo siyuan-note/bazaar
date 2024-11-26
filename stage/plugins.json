@@ -1,17 +1,68 @@
 {
   "repos": [
     {
-      "url": "IAliceBobI/sy-tomato-plugin@cb378f1e75521bcb7066a09a2fd53ac81eb1655d",
-      "updated": "2024-11-26T07:31:25Z",
+      "url": "IAliceBobI/sy-progressive-plugin@1a6be80e15e9730227ddaee408bc4494cfb537a1",
+      "updated": "2024-11-26T10:18:46Z",
+      "stars": 17,
+      "openIssues": 0,
+      "size": 1571071,
+      "installSize": 2911292,
+      "package": {
+        "name": "sy-progressive-plugin",
+        "author": "IAliceBobI",
+        "url": "https://github.com/IAliceBobI/sy-progressive-plugin",
+        "version": "1.2.13",
+        "minAppVersion": "2.12.6",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "Progressive Learning",
+          "zh_CN": "渐进学习",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Excerpt-based Progressive Learning, Fragmented Progressive Learning, Writing-based Flashcards, List Cards, Daily Card",
+          "zh_CN": "摘抄式渐进学习、分片式渐进学习、原地制卡、列表卡、Daily Card",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.com/a/playerv5"
+          ]
+        },
+        "keywords": [
+          "Learning",
+          "Progressive",
+          "Progressive Learning",
+          "Progressive Reading",
+          "Progressive Writing"
+        ]
+      }
+    },
+    {
+      "url": "IAliceBobI/sy-tomato-plugin@82ee926980821d64e2b443f9bd18b4aab53d1b46",
+      "updated": "2024-11-26T10:18:28Z",
       "stars": 19,
       "openIssues": 0,
-      "size": 1981010,
-      "installSize": 4040480,
+      "size": 1981042,
+      "installSize": 4040533,
       "package": {
         "name": "sy-tomato-plugin",
         "author": "IAliceBobI",
         "url": "https://github.com/IAliceBobI/sy-tomato-plugin",
-        "version": "2.5.16",
+        "version": "2.5.17",
         "minAppVersion": "3.0.3",
         "backends": [
           "all"
@@ -67,32 +118,41 @@
       }
     },
     {
-      "url": "IAliceBobI/sy-progressive-plugin@d9a781cec3be42c32b13cc5c158edb88cbf67298",
-      "updated": "2024-11-26T06:57:38Z",
-      "stars": 17,
-      "openIssues": 0,
-      "size": 1571042,
-      "installSize": 2911263,
+      "url": "terwer/siyuan-plugin-publisher@8f7ab83ce544458c136ce903085c2566816ec302",
+      "updated": "2024-11-26T09:33:49Z",
+      "stars": 137,
+      "openIssues": 61,
+      "size": 22492541,
+      "installSize": 22513815,
       "package": {
-        "name": "sy-progressive-plugin",
-        "author": "IAliceBobI",
-        "url": "https://github.com/IAliceBobI/sy-progressive-plugin",
-        "version": "1.2.12",
-        "minAppVersion": "2.12.6",
+        "name": "siyuan-plugin-publisher",
+        "author": "terwer",
+        "url": "https://github.com/terwer/siyuan-plugin-publisher",
+        "version": "1.27.0",
+        "minAppVersion": "2.9.0",
         "backends": [
-          "all"
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "android",
+          "ios"
         ],
         "frontends": [
-          "all"
+          "desktop",
+          "desktop-window",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile"
         ],
         "displayName": {
-          "default": "Progressive Learning",
-          "zh_CN": "渐进学习",
+          "default": "Publisher",
+          "zh_CN": "发布工具",
           "en_US": ""
         },
         "description": {
-          "default": "Excerpt-based Progressive Learning, Fragmented Progressive Learning, Writing-based Flashcards, List Cards, Daily Card",
-          "zh_CN": "摘抄式渐进学习、分片式渐进学习、原地制卡、列表卡、Daily Card",
+          "default": "Publish articles from siyuan-note to platforms like Yuque etc. \u003ccode class='fn__code'\u003eFree\u003c/code\u003e and \u003ccode class='fn__code'\u003eopen source\u003c/code\u003e.",
+          "zh_CN": "将思源笔记的文章发布到语雀等平台，\u003ccode class='fn__code'\u003e开源\u003c/code\u003e、\u003ccode class='fn__code'\u003e免费\u003c/code\u003e 。",
           "en_US": ""
         },
         "readme": {
@@ -105,16 +165,10 @@
           "patreon": "",
           "github": "",
           "custom": [
-            "https://afdian.com/a/playerv5"
+            "https://afdian.net/a/terwer"
           ]
         },
-        "keywords": [
-          "Learning",
-          "Progressive",
-          "Progressive Learning",
-          "Progressive Reading",
-          "Progressive Writing"
-        ]
+        "keywords": null
       }
     },
     {
@@ -227,60 +281,6 @@
           "docker",
           "file"
         ]
-      }
-    },
-    {
-      "url": "terwer/siyuan-plugin-publisher@60748fda2a4bab5580fa6878e84baa5668aa91a1",
-      "updated": "2024-11-26T03:48:43Z",
-      "stars": 137,
-      "openIssues": 63,
-      "size": 22491130,
-      "installSize": 22512404,
-      "package": {
-        "name": "siyuan-plugin-publisher",
-        "author": "terwer",
-        "url": "https://github.com/terwer/siyuan-plugin-publisher",
-        "version": "1.26.0",
-        "minAppVersion": "2.9.0",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "android",
-          "ios"
-        ],
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile"
-        ],
-        "displayName": {
-          "default": "Publisher",
-          "zh_CN": "发布工具",
-          "en_US": ""
-        },
-        "description": {
-          "default": "Publish articles from siyuan-note to platforms like Yuque etc. \u003ccode class='fn__code'\u003eFree\u003c/code\u003e and \u003ccode class='fn__code'\u003eopen source\u003c/code\u003e.",
-          "zh_CN": "将思源笔记的文章发布到语雀等平台，\u003ccode class='fn__code'\u003e开源\u003c/code\u003e、\u003ccode class='fn__code'\u003e免费\u003c/code\u003e 。",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.net/a/terwer"
-          ]
-        },
-        "keywords": null
       }
     },
     {
