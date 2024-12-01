@@ -1,12 +1,12 @@
 {
   "repos": [
     {
-      "url": "Achuan-2/siyuan-plugin-blockref-footnote@df1904edae85530fe162a53588cb6ee33ff9d7fa",
-      "updated": "2024-12-01T14:11:28Z",
-      "stars": 17,
-      "openIssues": 3,
-      "size": 219624,
-      "installSize": 331565,
+      "url": "Achuan-2/siyuan-plugin-blockref-footnote@6de0e19d0393c18d8f3529384f263323e37afee9",
+      "updated": "2024-12-01T15:15:25Z",
+      "stars": 18,
+      "openIssues": 4,
+      "size": 136732,
+      "installSize": 253315,
       "package": {
         "name": "siyuan-plugin-blockref-footnote",
         "author": "Achuan-2",
@@ -60,25 +60,20 @@
       }
     },
     {
-      "url": "kuangdongksk/sy-lively@6497e40e692d5da10e8ab3e606a88aa8233597f8",
-      "updated": "2024-12-01T14:07:33Z",
-      "stars": 0,
-      "openIssues": 0,
-      "size": 1281102,
-      "installSize": 4011273,
+      "url": "loonghfut/siyuan-alist@6d67f75bbc5a2370ae51d8a99edf1ca93070f1c3",
+      "updated": "2024-12-01T14:47:06Z",
+      "stars": 24,
+      "openIssues": 1,
+      "size": 710946,
+      "installSize": 787794,
       "package": {
-        "name": "sy-lively",
-        "author": "kuangdongksk",
-        "url": "https://github.com/kuangdongksk/sy-lively",
-        "version": "P0.1.5-1",
-        "minAppVersion": "3.0.18",
+        "name": "siyuan-alist",
+        "author": "steve",
+        "url": "https://github.com/loonghfut/siyuan-alist",
+        "version": "0.1.9",
+        "minAppVersion": "3.0.12",
         "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android"
+          "all"
         ],
         "frontends": [
           "desktop",
@@ -89,13 +84,13 @@
         ],
         "displayName": {
           "default": "",
-          "zh_CN": "喧嚣",
-          "en_US": "sy-lively"
+          "zh_CN": "Alist附件管理",
+          "en_US": "Alist Attachment Management"
         },
         "description": {
           "default": "",
-          "zh_CN": "日程管理插件，同时提供简单的卡片功能",
-          "en_US": "Calendar management plugin"
+          "zh_CN": "联动Alist，实现大型附件管理，释放思源笔记空间",
+          "en_US": "Link Alist to achieve large attachment management and release the space of Siyuan notes"
         },
         "readme": {
           "default": "",
@@ -112,9 +107,10 @@
         },
         "keywords": [
           "plugin",
-          "日程",
-          "日程管理",
-          "卡片"
+          "sample",
+          "alist",
+          "docker",
+          "file"
         ]
       }
     },
@@ -238,61 +234,6 @@
           "database",
           "properties",
           "attributes"
-        ]
-      }
-    },
-    {
-      "url": "loonghfut/siyuan-alist@df5944ce24ca1ce52b729036a3cf5557810a3274",
-      "updated": "2024-12-01T09:12:45Z",
-      "stars": 24,
-      "openIssues": 1,
-      "size": 710697,
-      "installSize": 786895,
-      "package": {
-        "name": "siyuan-alist",
-        "author": "steve",
-        "url": "https://github.com/loonghfut/siyuan-alist",
-        "version": "0.1.8",
-        "minAppVersion": "3.0.12",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "Alist附件管理",
-          "en_US": "Alist Attachment Management"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "联动Alist，实现大型附件管理，释放思源笔记空间",
-          "en_US": "Link Alist to achieve large attachment management and release the space of Siyuan notes"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            ""
-          ]
-        },
-        "keywords": [
-          "plugin",
-          "sample",
-          "alist",
-          "docker",
-          "file"
         ]
       }
     },
@@ -822,6 +763,65 @@
           "custom": null
         },
         "keywords": null
+      }
+    },
+    {
+      "url": "kuangdongksk/sy-lively@d006fe592223f8959fcad5991744a68c9da63474",
+      "updated": "2024-11-27T00:47:08Z",
+      "stars": 0,
+      "openIssues": 0,
+      "size": 1279614,
+      "installSize": 3991077,
+      "package": {
+        "name": "sy-lively",
+        "author": "kuangdongksk",
+        "url": "https://github.com/kuangdongksk/sy-lively",
+        "version": "P0.1.5-1",
+        "minAppVersion": "3.0.18",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "喧嚣",
+          "en_US": "sy-lively"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "日程管理插件，同时提供简单的卡片功能",
+          "en_US": "Calendar management plugin"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "plugin",
+          "日程",
+          "日程管理",
+          "卡片"
+        ]
       }
     },
     {
@@ -2520,6 +2520,67 @@
           "md",
           "markdown",
           "local"
+        ]
+      }
+    },
+    {
+      "url": "zxkmm/siyuan_marketplace_blacklist@c19001755a44f09fea01722c60c4ba97c89fe97e",
+      "updated": "2024-10-19T08:47:20Z",
+      "stars": 18,
+      "openIssues": 1,
+      "size": 107715,
+      "installSize": 132023,
+      "package": {
+        "name": "siyuan_marketplace_blacklist",
+        "author": "zxkmm",
+        "url": "https://github.com/siyuan-note/plugin-sample-vite-svelte",
+        "version": "1.0.1",
+        "minAppVersion": "2.11.4",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "集市助手",
+          "en_US": "siyuan_marketplace_blacklist"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "把您不想看到的集市插件/主题/图标/模板/挂件添加到黑名单, 您就再也不会看到它",
+          "en_US": "Add those plugins/ themes/ icons/ templates/ widgets you don't wanna see to black list so you won't see it in marketplace."
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://github.com/zxkmm/zxkmm"
+          ]
+        },
+        "keywords": [
+          "集市",
+          "助手",
+          "黑名单",
+          "集市黑名单",
+          "隐藏",
+          "移除",
+          "zxkmm",
+          "marketplace blacklist",
+          "marketplace",
+          "blacklist",
+          "blocklist",
+          "remove",
+          "hide"
         ]
       }
     },
