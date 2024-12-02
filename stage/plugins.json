@@ -1,6 +1,186 @@
 {
   "repos": [
     {
+      "url": "suka233/siyuan-knote@edad2b76ea112df34fd49ff8b0a76d9753fc0d5d",
+      "updated": "2024-12-02T09:55:32Z",
+      "stars": 15,
+      "openIssues": 6,
+      "size": 4315327,
+      "installSize": 9444968,
+      "package": {
+        "name": "knote-plugin",
+        "author": "suka233",
+        "url": "https://github.com/suka233/siyuan-knote",
+        "version": "2.1.5",
+        "minAppVersion": "2.8.10",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "KNote卡片笔记插件",
+          "en_US": "KNote Plugin for Zettelkasten"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "将daily note无压笔记法和思源结合起来，想到什么就写什么，无压力做笔记。实验功能：当前支持任意格式的日记存储路径解析，新增支持黑暗模式,新增系统级全局快捷输入框,Ctrl+Shift+Q即可全局唤出",
+          "en_US": "Combine daily note and siyuan, write down what you think, and take notes without pressure. Experimental function: the current support for any format of diary storage path analysis, new support for dark mode, new global shortcut input box"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README.md",
+          "en_US": "README_en_US.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://wj.qq.com/s2/12591272/adf1/"
+          ]
+        },
+        "keywords": [
+          "knote",
+          "zettelkasten",
+          "daily note",
+          "siyuan",
+          "笔记",
+          "daily",
+          "note",
+          "daily note",
+          "siyuan",
+          "思源",
+          "卡片笔记",
+          "无压笔记",
+          "callout"
+        ]
+      }
+    },
+    {
+      "url": "loonghfut/siyuan-database-display@57b52325da09b1d22017c7585e68e7da03a424ba",
+      "updated": "2024-12-02T09:28:50Z",
+      "stars": 0,
+      "openIssues": 0,
+      "size": 72385,
+      "installSize": 99971,
+      "package": {
+        "name": "siyuan-database-display",
+        "author": "steve",
+        "url": "https://github.com/loonghfut/siyuan-database-display",
+        "version": "0.1.2",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "数据展示",
+          "en_US": "Database Display"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "展示数据库中的数据到文档块的右边",
+          "en_US": "Display data in the database to the right of the document block"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "plugin",
+          "show",
+          "database"
+        ]
+      }
+    },
+    {
+      "url": "anarion80/siyuan-oembed@d64bfddab3060d3cea46423e93c01d916138a202",
+      "updated": "2024-12-02T09:26:46Z",
+      "stars": 4,
+      "openIssues": 0,
+      "size": 248861,
+      "installSize": 648114,
+      "package": {
+        "name": "siyuan-oembed",
+        "author": "anarion80",
+        "url": "https://github.com/anarion80/siyuan-oembed",
+        "version": "0.1.2",
+        "minAppVersion": "3.1.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "Oembed and bookmark cards",
+          "zh_CN": "Oembed和书签卡片",
+          "en_US": "Oembed and bookmark cards"
+        },
+        "description": {
+          "default": "A plugin that extracts oembed data from links and creates a Ghost CMS-style cards as bookmarks",
+          "zh_CN": "一个从链接中提取oembed数据并且创建一个Ghost CMS-style卡片作为书签的插件",
+          "en_US": "A plugin that extracts oembed data from links and creates a Ghost CMS-style cards as bookmarks"
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://buymeacoffee.com/anarion"
+          ]
+        },
+        "keywords": [
+          "plugin",
+          "oembed",
+          "siyuan",
+          "twitter",
+          "metadata",
+          "bookmark",
+          "cards",
+          "link"
+        ]
+      }
+    },
+    {
       "url": "Achuan-2/siyuan-plugin-highlight-cloze@b40303c51c4d623e4639d9d9b6b435ab0bf4e721",
       "updated": "2024-12-02T09:20:54Z",
       "stars": 3,
@@ -125,7 +305,7 @@
       "url": "terwer/siyuan-plugin-publisher@3fe463f05688c61b2fa6ef2abe0833aad5a7e14a",
       "updated": "2024-12-02T03:55:29Z",
       "stars": 138,
-      "openIssues": 63,
+      "openIssues": 62,
       "size": 22493340,
       "installSize": 22514614,
       "package": {
@@ -173,64 +353,6 @@
           ]
         },
         "keywords": null
-      }
-    },
-    {
-      "url": "loonghfut/siyuan-database-display@35783e38c88bf882ee2d47dc2ba3df70803bbddb",
-      "updated": "2024-12-02T02:35:52Z",
-      "stars": 0,
-      "openIssues": 0,
-      "size": 15370,
-      "installSize": 30570,
-      "package": {
-        "name": "siyuan-database-display",
-        "author": "steve",
-        "url": "https://github.com/loonghfut/siyuan-database-display",
-        "version": "0.1.1",
-        "minAppVersion": "3.0.12",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "数据展示",
-          "en_US": "Database Display"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "展示数据库中的数据到文档块的左边",
-          "en_US": "Display data in the database to the left of the document block"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            ""
-          ]
-        },
-        "keywords": [
-          "plugin",
-          "show",
-          "database"
-        ]
       }
     },
     {
@@ -1698,7 +1820,7 @@
       "url": "syh19/siyuan-plugin-task-list@f7875baaf28bdb88ab3d39dc6ab646bc876f3d02",
       "updated": "2024-11-15T15:58:53Z",
       "stars": 37,
-      "openIssues": 14,
+      "openIssues": 15,
       "size": 1254470,
       "installSize": 2719485,
       "package": {
@@ -1888,69 +2010,6 @@
           "threading",
           "nested",
           "list"
-        ]
-      }
-    },
-    {
-      "url": "anarion80/siyuan-oembed@00d6a0bd2f6202d140c612d42cad6b5967264a0a",
-      "updated": "2024-11-06T11:18:53Z",
-      "stars": 4,
-      "openIssues": 0,
-      "size": 243349,
-      "installSize": 636280,
-      "package": {
-        "name": "siyuan-oembed",
-        "author": "anarion80",
-        "url": "https://github.com/anarion80/siyuan-oembed",
-        "version": "0.1.2",
-        "minAppVersion": "3.0.12",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "Oembed and bookmark cards",
-          "zh_CN": "",
-          "en_US": "Oembed and bookmark cards"
-        },
-        "description": {
-          "default": "A plugin that extracts oembed data from links and creates a Ghost CMS-style cards as bookmarks",
-          "zh_CN": "",
-          "en_US": "A plugin that extracts oembed data from links and creates a Ghost CMS-style cards as bookmarks"
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://buymeacoffee.com/anarion"
-          ]
-        },
-        "keywords": [
-          "plugin",
-          "oembed",
-          "siyuan",
-          "twitter",
-          "metadata",
-          "bookmark",
-          "cards",
-          "link"
         ]
       }
     },
@@ -5960,65 +6019,6 @@
           "布局",
           "样式",
           "style"
-        ]
-      }
-    },
-    {
-      "url": "suka233/siyuan-knote@9f272e9d777e38d7e7fb9432101718a707aa35ce",
-      "updated": "2024-05-23T07:56:16Z",
-      "stars": 15,
-      "openIssues": 6,
-      "size": 4311491,
-      "installSize": 9429987,
-      "package": {
-        "name": "knote-plugin",
-        "author": "suka233",
-        "url": "https://github.com/suka233/siyuan-knote",
-        "version": "2.1.4",
-        "minAppVersion": "2.8.10",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "KNote卡片笔记插件",
-          "en_US": "KNote Plugin for Zettelkasten"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "将daily note无压笔记法和思源结合起来，想到什么就写什么，无压力做笔记。实验功能：当前支持任意格式的日记存储路径解析，新增支持黑暗模式,新增系统级全局快捷输入框,Ctrl+Shift+Q即可全局唤出",
-          "en_US": "Combine daily note and siyuan, write down what you think, and take notes without pressure. Experimental function: the current support for any format of diary storage path analysis, new support for dark mode, new global shortcut input box"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README.md",
-          "en_US": "README_en_US.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://wj.qq.com/s2/12591272/adf1/"
-          ]
-        },
-        "keywords": [
-          "knote",
-          "zettelkasten",
-          "daily note",
-          "siyuan",
-          "笔记",
-          "daily",
-          "note",
-          "daily note",
-          "siyuan",
-          "思源",
-          "卡片笔记",
-          "无压笔记",
-          "callout"
         ]
       }
     },
