@@ -13,6 +13,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"image"
 	"net/http"
 	"os"
 	"strings"
@@ -277,6 +278,9 @@ func checkRepo(
 
 				attrsCheckResult.Name.Pass = attrsCheckResult.Name.Unique &&
 					attrsCheckResult.Name.Valid
+				if attrsCheckResult.Name.Value != repoName {
+					attrsCheckResult.Name.Pass = false
+				}
 
 				attrsCheckResult.Pass = attrsCheckResult.Name.Pass &&
 					attrsCheckResult.Version.Pass &&
@@ -612,7 +616,7 @@ func checkFileExist(
 		filePath,
 	) // 文件预览地址
 
-	response, _, errs := gorequest.
+	response, data, errs := gorequest.
 		New().
 		Head(rawUrl).
 		Set("User-Agent", util.UserAgent).
@@ -624,6 +628,34 @@ func checkFileExist(
 		panic(errs)
 	}
 	if response.StatusCode == http.StatusOK {
+		if strings.HasSuffix(filePath, ".png") && 0 < len(data) {
+			if strings.HasSuffix(filePath, "icon.png") {
+				// 图标大小 160*160
+				img, _, decodeErr := image.DecodeConfig(strings.NewReader(data))
+				if decodeErr != nil {
+					logger.Warnf("check icon.png file <\033[7m%s\033[0m> size failed: %s", rawUrl, decodeErr)
+				} else {
+					if img.Width != 160 || img.Height != 160 {
+						logger.Warnf("icon.png file <\033[7m%s\033[0m> size is not 160x160", rawUrl)
+						fileCheckResult.Pass = false
+						return
+					}
+				}
+			} else if strings.HasSuffix(filePath, "preview.png") {
+				// 预览图大小 1024*768
+				img, _, decodeErr := image.DecodeConfig(strings.NewReader(data))
+				if decodeErr != nil {
+					logger.Warnf("check preview.png file <\033[7m%s\033[0m> size failed: %s", rawUrl, decodeErr)
+				} else {
+					if img.Width != 1024 || img.Height != 768 {
+						logger.Warnf("preview.png file <\033[7m%s\033[0m> size is not 1024x768", rawUrl)
+						fileCheckResult.Pass = false
+						return
+					}
+				}
+			}
+		}
+
 		fileCheckResult.Pass = true
 		return
 	} else if response.StatusCode == http.StatusNotFound {
@@ -684,6 +716,5 @@ func checkManifestAttrs(fileURL string) (attrsCheckResult *Attrs, err error) {
 			attrsCheckResult.URL.Pass = true
 		}
 	}
-
 	return
 }
