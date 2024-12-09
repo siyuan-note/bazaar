@@ -1,17 +1,76 @@
 {
   "repos": [
     {
-      "url": "IAliceBobI/sy-tomato-plugin@c02443c6fa922a6e5dded6f0ae53e5766f1bd694",
-      "updated": "2024-12-08T14:58:41Z",
+      "url": "Achuan-2/siyuan-plugin-blockref-footnote@f4c391d27d8c1d504074d2c02cff7d0d8ff4b0b0",
+      "updated": "2024-12-09T02:56:11Z",
+      "stars": 18,
+      "openIssues": 4,
+      "size": 239790,
+      "installSize": 351647,
+      "package": {
+        "name": "siyuan-plugin-blockref-footnote",
+        "author": "Achuan-2",
+        "url": "https://github.com/Achuan-2/siyuan-plugin-blockref-footnote",
+        "version": "1.2.9",
+        "minAppVersion": "3.1.13",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "块引脚注",
+          "en_US": "FootnoteRef"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "使用思源的块引实现脚注和备注功能",
+          "en_US": "Use blockref to implement footnote and memo"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://www.yuque.com/achuan-2"
+          ]
+        },
+        "keywords": [
+          "脚注",
+          "Footnote",
+          "备注",
+          "Memo"
+        ]
+      }
+    },
+    {
+      "url": "IAliceBobI/sy-tomato-plugin@27f613697830c65d9efdef518066c00765bb60e0",
+      "updated": "2024-12-09T02:19:42Z",
       "stars": 19,
       "openIssues": 0,
-      "size": 1989812,
-      "installSize": 4073089,
+      "size": 1990934,
+      "installSize": 4076098,
       "package": {
         "name": "sy-tomato-plugin",
         "author": "IAliceBobI",
         "url": "https://github.com/IAliceBobI/sy-tomato-plugin",
-        "version": "2.6.18",
+        "version": "2.6.20",
         "minAppVersion": "3.0.3",
         "backends": [
           "all"
@@ -63,65 +122,6 @@
           "Time visualization",
           "Progress tracking",
           "Goal setting"
-        ]
-      }
-    },
-    {
-      "url": "Achuan-2/siyuan-plugin-blockref-footnote@a4f8a4cd0bc3bc26b32c1adba7b427d50fe480f8",
-      "updated": "2024-12-08T09:01:47Z",
-      "stars": 18,
-      "openIssues": 4,
-      "size": 239786,
-      "installSize": 351641,
-      "package": {
-        "name": "siyuan-plugin-blockref-footnote",
-        "author": "Achuan-2",
-        "url": "https://github.com/Achuan-2/siyuan-plugin-blockref-footnote",
-        "version": "1.2.8",
-        "minAppVersion": "3.1.13",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "块引脚注",
-          "en_US": "FootnoteRef"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "使用思源的块引实现脚注和备注功能",
-          "en_US": "Use blockref to implement footnote and memo"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://www.yuque.com/achuan-2"
-          ]
-        },
-        "keywords": [
-          "脚注",
-          "Footnote",
-          "备注",
-          "Memo"
         ]
       }
     },
@@ -1834,64 +1834,6 @@
           "tab",
           "代码块",
           "标签"
-        ]
-      }
-    },
-    {
-      "url": "tengfei-xy/siyuan-plugin-share-system@100987fe035efd159171057ca31769e44cd80836",
-      "updated": "2024-11-20T09:45:33Z",
-      "stars": 12,
-      "openIssues": 4,
-      "size": 1100635,
-      "installSize": 1157649,
-      "package": {
-        "name": "siyuan-plugin-share-tool",
-        "author": "tengfei-xy",
-        "url": "https://github.com/tengfei-xy/siyuan-plugin-share-system",
-        "version": "2.2.1",
-        "minAppVersion": "3.0.0",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "all"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "分享笔记",
-          "en_US": "share notes"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "一种分享工具，为个人笔记分享至公网！",
-          "en_US": "A sharing tool for sharing personal notes to the public network!"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.net/a/tengfei-xy"
-          ]
-        },
-        "keywords": [
-          "plugin",
-          "open",
-          "share",
-          "sharing",
-          "note"
         ]
       }
     },
@@ -4989,7 +4931,7 @@
     {
       "url": "TCOTC/siyuan-plugin-hsr-mdzz2048-fork@5eaa68a650b06e4ad2c7a2e6eb43601cdca67799",
       "updated": "2024-08-10T03:32:14Z",
-      "stars": 3,
+      "stars": 4,
       "openIssues": 6,
       "size": 82043,
       "installSize": 155760,
