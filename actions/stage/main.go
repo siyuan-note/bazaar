@@ -20,12 +20,16 @@ import (
 	"time"
 
 	"github.com/88250/gulu"
+	"github.com/microcosm-cc/bluemonday"
 	"github.com/panjf2000/ants/v2"
 	"github.com/parnurzeal/gorequest"
 	"github.com/siyuan-note/bazaar/actions/util"
 )
 
-var logger = gulu.Log.NewLogger(os.Stdout)
+var (
+	logger     = gulu.Log.NewLogger(os.Stdout)
+	sterilizer = bluemonday.UGCPolicy()
+)
 
 func main() {
 	logger.Infof("bazaar is staging...")
@@ -207,6 +211,8 @@ func getPackage(ownerRepo, hash, typ string) (ret *Package) {
 		ret = nil
 		return
 	}
+
+	sanitizePackage(ret)
 	return
 }
 
@@ -355,6 +361,21 @@ func getRepoLatestRelease(repoURL string) (hash, published, packageZip string) {
 		hash = result["object"].(map[string]interface{})["sha"].(string)
 	}
 	return
+}
+
+// sanitizePackage 对 Package 中部分字段消毒
+func sanitizePackage(pkg *Package) {
+	// REF: https://pkg.go.dev/github.com/microcosm-cc/bluemonday#Policy.Sanitize
+	pkg.Name = sterilizer.Sanitize(pkg.Name)
+	pkg.Author = sterilizer.Sanitize(pkg.Author)
+
+	pkg.DisplayName.Default = sterilizer.Sanitize(pkg.DisplayName.Default)
+	pkg.DisplayName.ZhCN = sterilizer.Sanitize(pkg.DisplayName.ZhCN)
+	pkg.DisplayName.EnUS = sterilizer.Sanitize(pkg.DisplayName.EnUS)
+
+	pkg.Description.Default = sterilizer.Sanitize(pkg.Description.Default)
+	pkg.Description.ZhCN = sterilizer.Sanitize(pkg.Description.ZhCN)
+	pkg.Description.EnUS = sterilizer.Sanitize(pkg.Description.EnUS)
 }
 
 type DisplayName struct {
