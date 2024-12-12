@@ -5,7 +5,7 @@ go 1.22.0
 toolchain go1.23.4
 
 require (
-	github.com/88250/gulu v1.2.3-0.20230501031728-4d62370997cd
+	github.com/88250/gulu v1.2.3-0.20241212012748-c4dc08fe45ec
 	github.com/google/go-github/v52 v52.0.0
 	github.com/microcosm-cc/bluemonday v1.0.27
 	github.com/panjf2000/ants/v2 v2.10.0
