@@ -369,13 +369,17 @@ func sanitizePackage(pkg *Package) {
 	pkg.Name = sterilizer.Sanitize(pkg.Name)
 	pkg.Author = sterilizer.Sanitize(pkg.Author)
 
-	pkg.DisplayName.Default = sterilizer.Sanitize(pkg.DisplayName.Default)
-	pkg.DisplayName.ZhCN = sterilizer.Sanitize(pkg.DisplayName.ZhCN)
-	pkg.DisplayName.EnUS = sterilizer.Sanitize(pkg.DisplayName.EnUS)
+	if nil != pkg.DisplayName {
+		pkg.DisplayName.Default = sterilizer.Sanitize(pkg.DisplayName.Default)
+		pkg.DisplayName.ZhCN = sterilizer.Sanitize(pkg.DisplayName.ZhCN)
+		pkg.DisplayName.EnUS = sterilizer.Sanitize(pkg.DisplayName.EnUS)
+	}
 
-	pkg.Description.Default = sterilizer.Sanitize(pkg.Description.Default)
-	pkg.Description.ZhCN = sterilizer.Sanitize(pkg.Description.ZhCN)
-	pkg.Description.EnUS = sterilizer.Sanitize(pkg.Description.EnUS)
+	if nil != pkg.Description {
+		pkg.Description.Default = sterilizer.Sanitize(pkg.Description.Default)
+		pkg.Description.ZhCN = sterilizer.Sanitize(pkg.Description.ZhCN)
+		pkg.Description.EnUS = sterilizer.Sanitize(pkg.Description.EnUS)
+	}
 }
 
 type DisplayName struct {
