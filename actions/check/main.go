@@ -278,6 +278,9 @@ func checkRepo(
 
 				attrsCheckResult.Name.Pass = attrsCheckResult.Name.Unique &&
 					attrsCheckResult.Name.Valid
+				if attrsCheckResult.Name.Value != repoName {
+					attrsCheckResult.Name.Pass = false
+				}
 
 				attrsCheckResult.Pass = attrsCheckResult.Name.Pass &&
 					attrsCheckResult.Version.Pass &&
@@ -713,6 +716,5 @@ func checkManifestAttrs(fileURL string) (attrsCheckResult *Attrs, err error) {
 			attrsCheckResult.URL.Pass = true
 		}
 	}
-
 	return
 }
