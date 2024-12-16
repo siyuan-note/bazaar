@@ -1,6 +1,69 @@
 {
   "repos": [
     {
+      "url": "Achuan-2/siyuan-plugin-text-process@b76707fe742be6ecf93ba27674cdb2ef87fec150",
+      "updated": "2024-12-16T03:50:35Z",
+      "stars": 3,
+      "openIssues": 1,
+      "size": 188181,
+      "installSize": 239811,
+      "package": {
+        "name": "siyuan-plugin-text-process",
+        "author": "Achuan-2",
+        "url": "https://github.com/Achuan-2/siyuan-plugin-text-process",
+        "version": "0.0.7",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "文本处理",
+          "en_US": "Text Process"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "粘贴时自动处理（LaTeX公式转换，ppt、word列表粘贴等，去除上标、去除链接、去除空格、去除换行），对块进行处理（合并块、拆分块、复制到小红书带emoji等）",
+          "en_US": "Automatically process when pasting (laxtex formula conversion, ppt, word list paste, etc.), process blocks (merge blocks, split blocks, etc.)"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://www.yuque.com/achuan-2"
+          ]
+        },
+        "keywords": [
+          "paste",
+          "文本处理",
+          "text process",
+          "合并块",
+          "拆分块",
+          "ppt列表粘贴",
+          "word列表粘贴",
+          "LaTeX公式转换"
+        ]
+      }
+    },
+    {
       "url": "suka233/siyuan-kmind-plugin@0989d7e20a932a9cd541c5341da32254d9534df8",
       "updated": "2024-12-16T03:05:56Z",
       "stars": 59,
@@ -223,69 +286,6 @@
         "keywords": [
           "plugin",
           "tools"
-        ]
-      }
-    },
-    {
-      "url": "Achuan-2/siyuan-plugin-text-process@9ad509b77b00a9dcfd6a652326a53675c0f1bd56",
-      "updated": "2024-12-15T11:53:27Z",
-      "stars": 3,
-      "openIssues": 1,
-      "size": 188176,
-      "installSize": 239798,
-      "package": {
-        "name": "siyuan-plugin-text-process",
-        "author": "Achuan-2",
-        "url": "https://github.com/Achuan-2/siyuan-plugin-text-process",
-        "version": "0.0.6",
-        "minAppVersion": "3.0.12",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "文本处理",
-          "en_US": "Text Process"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "粘贴时自动处理（LaTeX公式转换，ppt、word列表粘贴等，去除上标、去除链接、去除空格、去除换行），对块进行处理（合并块、拆分块、复制到小红书带emoji等）",
-          "en_US": "Automatically process when pasting (laxtex formula conversion, ppt, word list paste, etc.), process blocks (merge blocks, split blocks, etc.)"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://www.yuque.com/achuan-2"
-          ]
-        },
-        "keywords": [
-          "paste",
-          "文本处理",
-          "text process",
-          "合并块",
-          "拆分块",
-          "ppt列表粘贴",
-          "word列表粘贴",
-          "LaTeX公式转换"
         ]
       }
     },
@@ -623,7 +623,7 @@
       "url": "terwer/siyuan-plugin-publisher@01b9a5429499d2eb37adb9463fab503c813c46c2",
       "updated": "2024-12-13T09:34:09Z",
       "stars": 141,
-      "openIssues": 54,
+      "openIssues": 53,
       "size": 22510007,
       "installSize": 22530469,
       "package": {
