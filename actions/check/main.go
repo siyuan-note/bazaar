@@ -280,6 +280,7 @@ func checkRepo(
 					attrsCheckResult.Name.Valid
 				if attrsCheckResult.Name.Value != repoName {
 					attrsCheckResult.Name.Pass = false
+					logger.Warnf("repo <\033[7m%s\033[0m> name <\033[7m%s\033[0m> is not equal to repo name <\033[7m%s\033[0m>", repoPath, attrsCheckResult.Name.Value, repoName)
 				}
 
 				attrsCheckResult.Pass = attrsCheckResult.Name.Pass &&
