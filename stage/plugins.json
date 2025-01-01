@@ -1,6 +1,69 @@
 {
   "repos": [
     {
+      "url": "Achuan-2/siyuan-plugin-text-process@3fc65bd1c7adcc56605777fcced21f5d565f39aa",
+      "updated": "2025-01-01T16:51:37Z",
+      "stars": 3,
+      "openIssues": 3,
+      "size": 188340,
+      "installSize": 239921,
+      "package": {
+        "name": "siyuan-plugin-text-process",
+        "author": "Achuan-2",
+        "url": "https://github.com/Achuan-2/siyuan-plugin-text-process",
+        "version": "0.0.9",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "文本处理",
+          "en_US": "Text Process"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "粘贴时自动处理（LaTeX公式转换，ppt、word列表粘贴，去除上标、去除链接、去除空格、去除换行），对块进行处理（合并块、拆分块、复制到小红书带emoji等）",
+          "en_US": "Automatically process when pasting (laxtex formula conversion, ppt, word list paste, etc.), process blocks (merge blocks, split blocks, etc.)"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://www.yuque.com/achuan-2"
+          ]
+        },
+        "keywords": [
+          "paste",
+          "文本处理",
+          "text process",
+          "合并块",
+          "拆分块",
+          "ppt列表粘贴",
+          "word列表粘贴",
+          "LaTeX公式转换"
+        ]
+      }
+    },
+    {
       "url": "etchnight/siyuan-plugin-block-converter@dce2d8e0ce6fac53f8cf68b7b7283b5abce6639d",
       "updated": "2025-01-01T16:06:51Z",
       "stars": 0,
@@ -172,69 +235,6 @@
           "文档树压缩",
           "文档树自定义",
           "siyuan_doctree_compress"
-        ]
-      }
-    },
-    {
-      "url": "Achuan-2/siyuan-plugin-text-process@b775fb76a0c927155bd3dc5b727e974edf45dd60",
-      "updated": "2025-01-01T09:01:50Z",
-      "stars": 3,
-      "openIssues": 3,
-      "size": 188332,
-      "installSize": 239900,
-      "package": {
-        "name": "siyuan-plugin-text-process",
-        "author": "Achuan-2",
-        "url": "https://github.com/Achuan-2/siyuan-plugin-text-process",
-        "version": "0.0.8",
-        "minAppVersion": "3.0.12",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "文本处理",
-          "en_US": "Text Process"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "粘贴时自动处理（LaTeX公式转换，ppt、word列表粘贴，去除上标、去除链接、去除空格、去除换行），对块进行处理（合并块、拆分块、复制到小红书带emoji等）",
-          "en_US": "Automatically process when pasting (laxtex formula conversion, ppt, word list paste, etc.), process blocks (merge blocks, split blocks, etc.)"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://www.yuque.com/achuan-2"
-          ]
-        },
-        "keywords": [
-          "paste",
-          "文本处理",
-          "text process",
-          "合并块",
-          "拆分块",
-          "ppt列表粘贴",
-          "word列表粘贴",
-          "LaTeX公式转换"
         ]
       }
     },
@@ -7744,6 +7744,61 @@
       }
     },
     {
+      "url": "TCOTC/siyuan-css-pin-doc-show@0992149df67fc5831e28b72a75a0f8131b6c6834",
+      "updated": "2024-03-15T10:35:21Z",
+      "stars": 1,
+      "openIssues": 0,
+      "size": 29207,
+      "installSize": 38616,
+      "package": {
+        "name": "siyuan-css-pin-doc-show",
+        "author": "TCOTC",
+        "url": "https://github.com/TCOTC/siyuan-css-pin-doc-show",
+        "version": "0.2.1",
+        "minAppVersion": "",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "Show pinned document name",
+          "zh_CN": "显示钉住文档名",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Pinned documents show icon and doc name",
+          "zh_CN": "钉住的文档显示图标和标题",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/JeffreyChen"
+          ]
+        },
+        "keywords": [
+          "文档",
+          "钉住",
+          "显示",
+          "name",
+          "pin",
+          "doc",
+          "document",
+          "show",
+          "icon"
+        ]
+      }
+    },
+    {
       "url": "muhanstudio/siyuan-plugin-embedding-html@5060324f9fcdfe8ceafbb9ff895368cd3a06bb79",
       "updated": "2024-03-13T11:08:06Z",
       "stars": 1,
@@ -8266,6 +8321,61 @@
           "隐藏图标",
           "mark",
           "bookmark",
+          "hide",
+          "icon"
+        ]
+      }
+    },
+    {
+      "url": "TCOTC/siyuan-css-hide-doc-tree-icon@deeb3edc4a0e04f0e9e904a89673404b2f1dde8e",
+      "updated": "2024-03-06T05:57:07Z",
+      "stars": 1,
+      "openIssues": 1,
+      "size": 18352,
+      "installSize": 26435,
+      "package": {
+        "name": "siyuan-css-hide-doc-tree-icon",
+        "author": "TCOTC",
+        "url": "https://github.com/TCOTC/siyuan-css-hide-doc-tree-icon",
+        "version": "0.1.0",
+        "minAppVersion": "",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "Doc Tree hide icon",
+          "zh_CN": "文档树隐藏图标",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Hide the icon in front of the document in the document tree",
+          "zh_CN": "在文档树中隐藏文档前的图标",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/JeffreyChen"
+          ]
+        },
+        "keywords": [
+          "文档",
+          "文档树",
+          "隐藏",
+          "图标",
+          "隐藏图标",
+          "doc",
+          "document",
           "hide",
           "icon"
         ]
