@@ -260,9 +260,12 @@ func checkRepo(
 		if attrsCheckResult, err = checkManifestAttrs(manifestFileUrl); err != nil {
 			logger.Warnf("check repo <\033[7m%s\033[0m> manifest file <\033[7m%s\033[0m> failed: %s", repoPath, manifestFileUrl, err)
 		} else {
-			name := strings.ToLower(attrsCheckResult.Name.Value)
-			if name != "" {
-				// 字段唯一性检查
+			// 字段有效性检查
+			attrsCheckResult.Name.Valid = isValieName(attrsCheckResult.Name.Value)
+
+			// 字段唯一性检查
+			if attrsCheckResult.Name.Valid {
+				name := strings.ToLower(attrsCheckResult.Name.Value)
 				if isKeyInSet(name, nameSet) {
 					logger.Warnf("repo <\033[7m%s\033[0m> name <\033[7m%s\033[0m> already exists", repoPath, name)
 				} else {
@@ -270,25 +273,17 @@ func checkRepo(
 
 					attrsCheckResult.Name.Unique = true // name 字段通过唯一性检查
 				}
-
-				// 字段有效性检查
-				if attrsCheckResult.Name.Valid, err = isValieName(name); err != nil {
-					logger.Warn(err)
-				}
-
-				attrsCheckResult.Name.Pass = attrsCheckResult.Name.Unique &&
-					attrsCheckResult.Name.Valid
-				if attrsCheckResult.Name.Value != repoName {
-					attrsCheckResult.Name.Pass = false
-					logger.Warnf("repo <\033[7m%s\033[0m> name <\033[7m%s\033[0m> is not equal to repo name <\033[7m%s\033[0m>", repoPath, attrsCheckResult.Name.Value, repoName)
-				}
-
-				attrsCheckResult.Pass = attrsCheckResult.Name.Pass &&
-					attrsCheckResult.Version.Pass &&
-					attrsCheckResult.Author.Pass &&
-					attrsCheckResult.URL.Pass
 			}
 		}
+
+		attrsCheckResult.Name.Pass = attrsCheckResult.Name.Exist &&
+			attrsCheckResult.Name.Valid &&
+			attrsCheckResult.Name.Unique
+
+		attrsCheckResult.Pass = attrsCheckResult.Name.Pass &&
+			attrsCheckResult.Version.Pass &&
+			attrsCheckResult.Author.Pass &&
+			attrsCheckResult.URL.Pass
 
 		// 检查文件
 		var filesCheckResult interface{} // 文件检查结果
@@ -697,6 +692,7 @@ func checkManifestAttrs(fileURL string) (attrsCheckResult *Attrs, err error) {
 	if name := manifest["name"]; name != nil {
 		if value := name.(string); value != "" {
 			attrsCheckResult.Name.Value = value
+			attrsCheckResult.Name.Exist = true
 		}
 	}
 	if version := manifest["version"]; version != nil {
