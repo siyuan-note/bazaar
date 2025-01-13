@@ -154,14 +154,15 @@ type Attrs struct {
 }
 
 type Name struct {
-	Pass  bool   `json:"pass"`  // name 字段是否存在
+	Pass  bool   `json:"pass"`  // name 字段检查是否通过
 	Value string `json:"value"` // name 字段值
 
+	Exist  bool `json:"exist"`  // name 字段是否存在
 	Valid  bool `json:"valid"`  // name 字段值是否有效 (在不同平台均为合法的目录名)
 	Unique bool `json:"unique"` // name 字段值在同类资源中是否唯一 (大小写不敏感)
 }
 
 type Attr struct {
-	Pass  bool   `json:"pass"`  // 配置文件属性是否存在
+	Pass  bool   `json:"pass"`  // 配置文件属性检查是否通过
 	Value string `json:"value"` // 配置文件属性值
 }

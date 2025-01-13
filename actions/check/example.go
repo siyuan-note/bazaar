@@ -51,6 +51,7 @@ var CheckResultTestExample = CheckResult{
 				Pass: true,
 				Name: Name{
 					Pass:   true,
+					Exist:  true,
 					Unique: true,
 					Valid:  true,
 					Value:  "icon-sample",
@@ -102,6 +103,7 @@ var CheckResultTestExample = CheckResult{
 				Pass: false,
 				Name: Name{
 					Pass:   false,
+					Exist:  false,
 					Unique: false,
 					Valid:  false,
 				},
@@ -157,6 +159,7 @@ var CheckResultTestExample = CheckResult{
 				Pass: true,
 				Name: Name{
 					Pass:   true,
+					Exist:  true,
 					Unique: true,
 					Valid:  true,
 					Value:  "plugin-sample",
@@ -369,6 +372,7 @@ var CheckResultTestExample = CheckResult{
 				Pass: true,
 				Name: Name{
 					Pass:   true,
+					Exist:  true,
 					Unique: true,
 					Valid:  true,
 					Value:  "theme-sample",
@@ -420,6 +424,7 @@ var CheckResultTestExample = CheckResult{
 				Pass: false,
 				Name: Name{
 					Pass:   false,
+					Exist:  false,
 					Unique: false,
 					Valid:  false,
 				},
@@ -475,6 +480,7 @@ var CheckResultTestExample = CheckResult{
 				Pass: true,
 				Name: Name{
 					Pass:   true,
+					Exist:  true,
 					Unique: true,
 					Valid:  true,
 					Value:  "widget-sample",
@@ -526,6 +532,7 @@ var CheckResultTestExample = CheckResult{
 				Pass: false,
 				Name: Name{
 					Pass:   false,
+					Exist:  false,
 					Unique: false,
 					Valid:  false,
 				},

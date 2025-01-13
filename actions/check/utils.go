@@ -57,12 +57,20 @@ func isKeyInSet(
 }
 
 // isValieName 判断资源名称是否有效
-func isValieName(name string) (valid bool, err error) {
+func isValieName(name string) (valid bool) {
+	var err error
+
+	// 是否为空字符串
+	if name == "" {
+		logger.Warnf("name is empty")
+		return
+	}
+
 	// 是否均为可打印的 ASCii 字符
 	if valid, err = regexp.MatchString("^[\\x20-\\x7E]+$", name); err != nil {
 		panic(err)
 	} else if !valid {
-		err = fmt.Errorf("name <\033[7m%s\033[0m> contains characters other than printable ASCII characters", name)
+		logger.Warnf("name <\033[7m%s\033[0m> contains characters other than printable ASCII characters", name)
 		return
 	}
 
@@ -70,14 +78,14 @@ func isValieName(name string) (valid bool, err error) {
 	if valid, err = regexp.MatchString("^[^\\\\/:*?\"<>|. ][^\\\\/:*?\"<>|]*[^\\\\/:*?\"<>|. ]$", name); err != nil {
 		panic(err)
 	} else if !valid {
-		err = fmt.Errorf("name <\033[7m%s\033[0m> contains invalid characters", name)
+		logger.Warnf("name <\033[7m%s\033[0m> contains invalid characters", name)
 		return
 	}
 
 	// 是否为保留字
 	// REF https://learn.microsoft.com/zh-cn/windows/win32/fileio/naming-a-file#naming-conventions
 	if valid = !isKeyInSet(strings.ToUpper(name), RESERVED_WORDS); !valid {
-		err = fmt.Errorf("name <\033[7m%s\033[0m> is a reserved word", name)
+		logger.Warnf("name <\033[7m%s\033[0m> is a reserved word", name)
 		return
 	}
 
