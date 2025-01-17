@@ -1,6 +1,128 @@
 {
   "repos": [
     {
+      "url": "frostime/sy-query-view@737eac2f253a0875b51f05aae009c5533ccb0ea6",
+      "updated": "2025-01-17T14:57:36Z",
+      "stars": 14,
+      "openIssues": 1,
+      "size": 280825,
+      "installSize": 577651,
+      "package": {
+        "name": "sy-query-view",
+        "author": "frostime",
+        "url": "https://github.com/frostime/sy-query-view",
+        "version": "1.0.3",
+        "minAppVersion": "3.1.14",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android",
+          "harmony"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "Query \u0026amp; View",
+          "en_US": "Query \u0026amp; View"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "使用 Javascript 查询, 并自定义渲染为 Dataview 视图",
+          "en_US": "Use Javascript to query and render as Dataview view"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.com/a/frostime"
+          ]
+        },
+        "keywords": [
+          "javascript",
+          "query",
+          "dataview"
+        ]
+      }
+    },
+    {
+      "url": "Achuan-2/siyuan-plugin-text-process@ef4dd245111bc0d2e9f6e0803b9c4610bf8f7795",
+      "updated": "2025-01-17T14:54:47Z",
+      "stars": 4,
+      "openIssues": 0,
+      "size": 189622,
+      "installSize": 243848,
+      "package": {
+        "name": "siyuan-plugin-text-process",
+        "author": "Achuan-2",
+        "url": "https://github.com/Achuan-2/siyuan-plugin-text-process",
+        "version": "0.1.1",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "文本处理",
+          "en_US": "Text Process"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "粘贴时自动处理（LaTeX公式转换，ppt、word列表粘贴，去除上标、去除链接、去除空格、去除换行），对块进行处理（合并块、拆分块、复制到小红书带emoji、去除上标、去除空格、链接转文本、英文符号转中文符号等）",
+          "en_US": "Automatically process when pasting (laxtex formula conversion, ppt, word list paste, etc.), process blocks (merge blocks, split blocks, etc.)"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://www.yuque.com/achuan-2"
+          ]
+        },
+        "keywords": [
+          "paste",
+          "文本处理",
+          "text process",
+          "合并块",
+          "拆分块",
+          "ppt列表粘贴",
+          "word列表粘贴",
+          "LaTeX公式转换"
+        ]
+      }
+    },
+    {
       "url": "IAliceBobI/sy-tomato-plugin@b62c3291a09f3f61a30803d1046d1ab4aa7e82bd",
       "updated": "2025-01-17T13:06:53Z",
       "stars": 21,
@@ -378,69 +500,6 @@
           "frostime",
           "toolbox",
           "misc"
-        ]
-      }
-    },
-    {
-      "url": "Achuan-2/siyuan-plugin-text-process@788831b954eee164d3b276e5c20a2a836ebf350c",
-      "updated": "2025-01-11T17:13:28Z",
-      "stars": 4,
-      "openIssues": 1,
-      "size": 189246,
-      "installSize": 242611,
-      "package": {
-        "name": "siyuan-plugin-text-process",
-        "author": "Achuan-2",
-        "url": "https://github.com/Achuan-2/siyuan-plugin-text-process",
-        "version": "0.1.0",
-        "minAppVersion": "3.0.12",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "文本处理",
-          "en_US": "Text Process"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "粘贴时自动处理（LaTeX公式转换，ppt、word列表粘贴，去除上标、去除链接、去除空格、去除换行），对块进行处理（合并块、拆分块、复制到小红书带emoji、去除上标、去除空格、链接转文本、英文符号转中文符号等）",
-          "en_US": "Automatically process when pasting (laxtex formula conversion, ppt, word list paste, etc.), process blocks (merge blocks, split blocks, etc.)"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://www.yuque.com/achuan-2"
-          ]
-        },
-        "keywords": [
-          "paste",
-          "文本处理",
-          "text process",
-          "合并块",
-          "拆分块",
-          "ppt列表粘贴",
-          "word列表粘贴",
-          "LaTeX公式转换"
         ]
       }
     },
@@ -2092,7 +2151,7 @@
     {
       "url": "terwer/siyuan-plugin-publisher@31969648fdea1d9cc15ca16ed61d13204235f86c",
       "updated": "2024-12-21T09:52:53Z",
-      "stars": 149,
+      "stars": 150,
       "openIssues": 60,
       "size": 22479887,
       "installSize": 22500349,
@@ -2141,65 +2200,6 @@
           ]
         },
         "keywords": null
-      }
-    },
-    {
-      "url": "frostime/sy-query-view@351bf3ce4e0ee7ac98dcdf6232fc22fd3695b100",
-      "updated": "2024-12-20T14:23:10Z",
-      "stars": 14,
-      "openIssues": 2,
-      "size": 280179,
-      "installSize": 575414,
-      "package": {
-        "name": "sy-query-view",
-        "author": "frostime",
-        "url": "https://github.com/frostime/sy-query-view",
-        "version": "1.0.2",
-        "minAppVersion": "3.1.14",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "Query \u0026amp; View",
-          "en_US": "Query \u0026amp; View"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "使用 Javascript 查询, 并自定义渲染为 Dataview 视图",
-          "en_US": "Use Javascript to query and render as Dataview view"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.com/a/frostime"
-          ]
-        },
-        "keywords": [
-          "javascript",
-          "query",
-          "dataview"
-        ]
       }
     },
     {
