@@ -296,7 +296,7 @@ func getRepoLatestRelease(repoURL string) (hash, published, packageZip string) {
 	resp, _, errs := request.Get(u).
 		Set("Authorization", "Token "+pat).
 		Set("User-Agent", util.UserAgent).Timeout(30*time.Second).
-		Retry(1, 3*time.Second).EndStruct(&result)
+		Retry(3, 3*time.Second).EndStruct(&result)
 	if nil != errs {
 		logger.Fatalf("get release hash [%s] failed: %s", u, errs)
 		return
