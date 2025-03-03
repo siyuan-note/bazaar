@@ -13,18 +13,23 @@ package main
 import (
 	"crypto/tls"
 	"os"
+	"path/filepath"
 	"sort"
 	"strings"
 	"sync"
 	"time"
 
 	"github.com/88250/gulu"
+	"github.com/microcosm-cc/bluemonday"
 	"github.com/panjf2000/ants/v2"
 	"github.com/parnurzeal/gorequest"
 	"github.com/siyuan-note/bazaar/actions/util"
 )
 
-var logger = gulu.Log.NewLogger(os.Stdout)
+var (
+	logger     = gulu.Log.NewLogger(os.Stdout)
+	sterilizer = bluemonday.UGCPolicy()
+)
 
 func main() {
 	logger.Infof("bazaar is staging...")
@@ -60,11 +65,11 @@ func performStage(typ string) {
 		defer waitGroup.Done()
 		repo := arg.(string)
 		var hash, updated string
-		var size int64
+		var size, installSize int64
 		var ok bool
 		var pkg *Package
 
-		if ok, hash, updated, size, pkg = indexPackage(repo, typ); !ok {
+		if ok, hash, updated, size, installSize, pkg = indexPackage(repo, typ); !ok {
 			return
 		}
 
@@ -73,12 +78,13 @@ func performStage(typ string) {
 		lock.Lock()
 		defer lock.Unlock()
 		stageRepos = append(stageRepos, &StageRepo{
-			URL:        repo + "@" + hash,
-			Stars:      stars,
-			OpenIssues: openIssues,
-			Updated:    updated,
-			Size:       size,
-			Package:    pkg,
+			URL:         repo + "@" + hash,
+			Stars:       stars,
+			OpenIssues:  openIssues,
+			Updated:     updated,
+			Size:        size,
+			InstallSize: installSize,
+			Package:     pkg,
 		})
 		logger.Infof("updated repo [%s]", repo)
 	})
@@ -110,29 +116,27 @@ func performStage(typ string) {
 }
 
 // indexPackage 索引包
-func indexPackage(repoURL, typ string) (ok bool, hash, published string, size int64, pkg *Package) {
+func indexPackage(repoURL, typ string) (ok bool, hash, published string, size, installSize int64, pkg *Package) {
 	hash, published, packageZip := getRepoLatestRelease(repoURL)
 	if "" == hash {
 		logger.Warnf("get [%s] latest release failed", repoURL)
 		return
 	}
 
-	// 下载 package.zip 文件
-	u := "https://github.com/" + repoURL + "/archive/" + hash + ".zip"
-	// TODO: 下架不使用 package.zip 发布的包 https://github.com/siyuan-note/bazaar/issues/1105
-	if "" != packageZip {
-		u = packageZip
+	if "" == packageZip {
+		logger.Warnf("get [%s] package.zip failed", repoURL)
+		return
 	}
 
-	resp, data, errs := gorequest.New().Get(u).
+	resp, data, errs := gorequest.New().Get(packageZip).
 		Set("User-Agent", util.UserAgent).
 		Retry(1, 3*time.Second).Timeout(30 * time.Second).EndBytes()
 	if nil != errs {
-		logger.Errorf("get [%s] failed: %s", u, errs)
+		logger.Errorf("get [%s] failed: %s", packageZip, errs)
 		return
 	}
 	if 200 != resp.StatusCode {
-		logger.Errorf("get [%s] failed: %d", u, resp.StatusCode)
+		logger.Errorf("get [%s] failed: %d", packageZip, resp.StatusCode)
 		return
 	}
 
@@ -145,18 +149,42 @@ func indexPackage(repoURL, typ string) (ok bool, hash, published string, size in
 
 	size = int64(len(data)) // 计算包大小
 
+	// 解压 package.zip 以计算实际占用空间大小
+	installSize = size
+	osTmpDir := filepath.Join(os.TempDir(), "bazaar")
+	if err = os.MkdirAll(osTmpDir, 0755); nil != err {
+		logger.Errorf("mkdir [%s] failed: %s", osTmpDir, err)
+	} else {
+		tmpZipPath := filepath.Join(os.TempDir(), "bazaar", gulu.Rand.String(7)+".zip")
+		if err = os.WriteFile(tmpZipPath, data, 0644); nil != err {
+			logger.Errorf("write package.zip failed: %s", err)
+		} else {
+			tmpUnzipPath := filepath.Join(os.TempDir(), "bazaar", gulu.Rand.String(7))
+			if err = gulu.Zip.Unzip(tmpZipPath, tmpUnzipPath); nil != err {
+				logger.Errorf("unzip package.zip failed: %s", err)
+			} else {
+				installSize, err = util.SizeOfDirectory(tmpUnzipPath)
+				if nil != err {
+					logger.Errorf("stat package [%s] size failed: %s", repoURL, err)
+				}
+			}
+			os.RemoveAll(tmpUnzipPath)
+		}
+		os.RemoveAll(tmpZipPath)
+	}
+
 	wg := &sync.WaitGroup{}
 	wg.Add(7)
 	go func() {
 		defer wg.Done()
 		pkg = getPackage(repoURL, hash, typ)
 	}()
-	go indexPackageFile(repoURL, hash, "/README.md", 0, wg)
-	go indexPackageFile(repoURL, hash, "/README_zh_CN.md", 0, wg)
-	go indexPackageFile(repoURL, hash, "/README_en_US.md", 0, wg)
-	go indexPackageFile(repoURL, hash, "/preview.png", 0, wg)
-	go indexPackageFile(repoURL, hash, "/icon.png", 0, wg)
-	go indexPackageFile(repoURL, hash, "/"+strings.TrimSuffix(typ, "s")+".json", size, wg)
+	go indexPackageFile(repoURL, hash, "/README.md", 0, 0, wg)
+	go indexPackageFile(repoURL, hash, "/README_zh_CN.md", 0, 0, wg)
+	go indexPackageFile(repoURL, hash, "/README_en_US.md", 0, 0, wg)
+	go indexPackageFile(repoURL, hash, "/preview.png", 0, 0, wg)
+	go indexPackageFile(repoURL, hash, "/icon.png", 0, 0, wg)
+	go indexPackageFile(repoURL, hash, "/"+strings.TrimSuffix(typ, "s")+".json", size, installSize, wg)
 	wg.Wait()
 	ok = true
 	return
@@ -183,11 +211,13 @@ func getPackage(ownerRepo, hash, typ string) (ret *Package) {
 		ret = nil
 		return
 	}
+
+	sanitizePackage(ret)
 	return
 }
 
 // indexPackageFile 索引文件
-func indexPackageFile(ownerRepo, hash, filePath string, size int64, wg *sync.WaitGroup) bool {
+func indexPackageFile(ownerRepo, hash, filePath string, size, installSize int64, wg *sync.WaitGroup) bool {
 	defer wg.Done()
 
 	u := "https://raw.githubusercontent.com/" + ownerRepo + "/" + hash + filePath
@@ -214,6 +244,7 @@ func indexPackageFile(ownerRepo, hash, filePath string, size int64, wg *sync.Wai
 			return false
 		}
 		meta["size"] = size
+		meta["installSize"] = installSize
 		var err error
 		data, err = gulu.JSON.MarshalIndentJSON(meta, "", "  ")
 		if nil != err {
@@ -238,7 +269,7 @@ func repoStats(repoURL, hash string) (stars, openIssues int) {
 	u := "https://api.github.com/repos/" + repoURL
 	resp, _, errs := request.Get(u).
 		Set("Authorization", "Token "+pat).
-		Set("User-Agent", util.UserAgent).Timeout(7*time.Second).
+		Set("User-Agent", util.UserAgent).Timeout(30*time.Second).
 		Retry(1, 3*time.Second).EndStruct(&result)
 	if nil != errs {
 		logger.Fatalf("get [%s] failed: %s", u, errs)
@@ -264,41 +295,14 @@ func getRepoLatestRelease(repoURL string) (hash, published, packageZip string) {
 	u := "https://api.github.com/repos/" + repoURL + "/releases/latest"
 	resp, _, errs := request.Get(u).
 		Set("Authorization", "Token "+pat).
-		Set("User-Agent", util.UserAgent).Timeout(7*time.Second).
-		Retry(1, 3*time.Second).EndStruct(&result)
+		Set("User-Agent", util.UserAgent).Timeout(30*time.Second).
+		Retry(3, 3*time.Second).EndStruct(&result)
 	if nil != errs {
 		logger.Fatalf("get release hash [%s] failed: %s", u, errs)
 		return
 	}
 	if 200 != resp.StatusCode {
-		if 404 != resp.StatusCode {
-			logger.Warnf("get release hash [%s] failed: %d", u, resp.StatusCode)
-			return
-		}
-
-		var commits []interface{}
-		u = "https://api.github.com/repos/" + repoURL + "/commits"
-		resp, _, errs = request.Get(u).
-			Set("Authorization", "Token "+pat).
-			Set("User-Agent", util.UserAgent).Timeout(7*time.Second).
-			Retry(1, 3*time.Second).EndStruct(&commits)
-		if nil != errs {
-			logger.Fatalf("get release hash [%s] failed: %s", u, errs)
-			return
-		}
-		if 200 != resp.StatusCode {
-			logger.Warnf("get release hash [%s] failed: %d", u, resp.StatusCode)
-			return
-		}
-
-		if 1 > len(commits) {
-			logger.Warnf("get release hash [%s] failed: no commits", u)
-			return
-		}
-
-		latest := commits[0].(map[string]interface{})
-		hash = latest["sha"].(string)
-		published = latest["commit"].(map[string]interface{})["committer"].(map[string]interface{})["date"].(string)
+		logger.Warnf("get release hash [%s] failed: %d", u, resp.StatusCode)
 		return
 	}
 
@@ -313,6 +317,10 @@ func getRepoLatestRelease(repoURL string) (hash, published, packageZip string) {
 		}
 	}
 
+	if "" == packageZip {
+		return
+	}
+
 	// 获取 release 对应的 tag
 	published = result["published_at"].(string)
 	tagName := result["tag_name"].(string)
@@ -320,7 +328,7 @@ func getRepoLatestRelease(repoURL string) (hash, published, packageZip string) {
 	u = "https://api.github.com/repos/" + repoURL + "/git/ref/tags/" + tagName
 	resp, _, errs = request.Get(u).
 		Set("Authorization", "Token "+pat).
-		Set("User-Agent", util.UserAgent).Timeout(7*time.Second).
+		Set("User-Agent", util.UserAgent).Timeout(30*time.Second).
 		Retry(1, 3*time.Second).EndStruct(&result)
 	if nil != errs {
 		logger.Warnf("get release hash [%s] failed: %s", u, errs)
@@ -339,7 +347,7 @@ func getRepoLatestRelease(repoURL string) (hash, published, packageZip string) {
 		u = "https://api.github.com/repos/" + repoURL + "/git/tags/" + hash
 		resp, _, errs = request.Get(u).
 			Set("Authorization", "Token "+pat).
-			Set("User-Agent", util.UserAgent).Timeout(7*time.Second).
+			Set("User-Agent", util.UserAgent).Timeout(30*time.Second).
 			Retry(1, 3*time.Second).EndStruct(&result)
 		if nil != errs {
 			logger.Fatalf("get release hash [%s] failed: %s", u, errs)
@@ -353,6 +361,25 @@ func getRepoLatestRelease(repoURL string) (hash, published, packageZip string) {
 		hash = result["object"].(map[string]interface{})["sha"].(string)
 	}
 	return
+}
+
+// sanitizePackage 对 Package 中部分字段消毒
+func sanitizePackage(pkg *Package) {
+	// REF: https://pkg.go.dev/github.com/microcosm-cc/bluemonday#Policy.Sanitize
+	pkg.Name = sterilizer.Sanitize(pkg.Name)
+	pkg.Author = sterilizer.Sanitize(pkg.Author)
+
+	if nil != pkg.DisplayName {
+		pkg.DisplayName.Default = sterilizer.Sanitize(pkg.DisplayName.Default)
+		pkg.DisplayName.ZhCN = sterilizer.Sanitize(pkg.DisplayName.ZhCN)
+		pkg.DisplayName.EnUS = sterilizer.Sanitize(pkg.DisplayName.EnUS)
+	}
+
+	if nil != pkg.Description {
+		pkg.Description.Default = sterilizer.Sanitize(pkg.Description.Default)
+		pkg.Description.ZhCN = sterilizer.Sanitize(pkg.Description.ZhCN)
+		pkg.Description.EnUS = sterilizer.Sanitize(pkg.Description.EnUS)
+	}
 }
 
 type DisplayName struct {
@@ -392,14 +419,16 @@ type Package struct {
 	Description   *Description `json:"description"`
 	Readme        *Readme      `json:"readme"`
 	Funding       *Funding     `json:"funding"`
+	Keywords      []string     `json:"keywords"`
 }
 
 type StageRepo struct {
-	URL        string `json:"url"`
-	Updated    string `json:"updated"`
-	Stars      int    `json:"stars"`
-	OpenIssues int    `json:"openIssues"`
-	Size       int64  `json:"size"`
+	URL         string `json:"url"`
+	Updated     string `json:"updated"`
+	Stars       int    `json:"stars"`
+	OpenIssues  int    `json:"openIssues"`
+	Size        int64  `json:"size"`
+	InstallSize int64  `json:"installSize"`
 
 	Package *Package `json:"package"`
 }

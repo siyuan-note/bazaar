@@ -15,6 +15,7 @@ import (
 	"context"
 	"fmt"
 	"os"
+	"path/filepath"
 	"strings"
 
 	"github.com/88250/gulu"
@@ -62,3 +63,22 @@ func UploadOSS(key, contentType string, data []byte) (err error) {
 }
 
 const UserAgent = "bazaar/1.0.0 https://github.com/siyuan-note/bazaar"
+
+func SizeOfDirectory(path string) (size int64, err error) {
+	err = filepath.Walk(path, func(_ string, info os.FileInfo, err error) error {
+		if nil != err {
+			return err
+		}
+		if !info.IsDir() {
+			s := info.Size()
+			size += s
+		} else {
+			size += 4096
+		}
+		return nil
+	})
+	if nil != err {
+		logger.Errorf("size of dir [%s] failed: %s", path, err)
+	}
+	return
+}

@@ -1,30 +1,38 @@
 module github.com/siyuan-note/bazaar
 
-go 1.17
+go 1.22.0
+
+toolchain go1.23.4
 
 require (
-	github.com/88250/gulu v1.2.3-0.20230501031728-4d62370997cd
+	github.com/88250/gulu v1.2.3-0.20241212012748-c4dc08fe45ec
 	github.com/google/go-github/v52 v52.0.0
-	github.com/panjf2000/ants/v2 v2.8.2
-	github.com/parnurzeal/gorequest v0.2.16
-	github.com/qiniu/go-sdk/v7 v7.17.1
-	golang.org/x/text v0.13.0 // indirect
+	github.com/microcosm-cc/bluemonday v1.0.27
+	github.com/panjf2000/ants/v2 v2.11.1
+	github.com/parnurzeal/gorequest v0.3.0
+	github.com/qiniu/go-sdk/v7 v7.25.2
 )
 
 require (
-	github.com/ProtonMail/go-crypto v0.0.0-20230923063757-afb1ddc0824c // indirect
-	github.com/cloudflare/circl v1.3.3 // indirect
-	github.com/elazarl/goproxy v0.0.0-20210801061803-8e322dfb79c4 // indirect
-	github.com/golang/protobuf v1.5.3 // indirect
+	github.com/BurntSushi/toml v1.4.0 // indirect
+	github.com/ProtonMail/go-crypto v1.1.3 // indirect
+	github.com/alex-ant/gomath v0.0.0-20160516115720-89013a210a82 // indirect
+	github.com/aymerick/douceur v0.2.0 // indirect
+	github.com/cloudflare/circl v1.5.0 // indirect
+	github.com/elazarl/goproxy v0.0.0-20231117061959-7cc037d33fb5 // indirect
+	github.com/gammazero/toposort v0.1.1 // indirect
+	github.com/gofrs/flock v0.12.1 // indirect
+	github.com/google/go-cmp v0.6.0 // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
+	github.com/gorilla/css v1.0.1 // indirect
+	github.com/moul/http2curl v1.0.0 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
-	github.com/smartystreets/goconvey v1.6.4 // indirect
-	golang.org/x/crypto v0.14.0 // indirect
-	golang.org/x/net v0.17.0 // indirect
-	golang.org/x/oauth2 v0.13.0 // indirect
-	golang.org/x/sync v0.4.0 // indirect
-	golang.org/x/sys v0.13.0 // indirect
-	google.golang.org/appengine v1.6.8 // indirect
-	google.golang.org/protobuf v1.31.0 // indirect
-	moul.io/http2curl v1.0.0 // indirect
+	github.com/smartystreets/goconvey v1.8.1 // indirect
+	golang.org/x/crypto v0.33.0 // indirect
+	golang.org/x/net v0.35.0 // indirect
+	golang.org/x/oauth2 v0.24.0 // indirect
+	golang.org/x/sync v0.11.0 // indirect
+	golang.org/x/sys v0.30.0 // indirect
+	golang.org/x/text v0.22.0 // indirect
+	modernc.org/fileutil v1.3.0 // indirect
 )
