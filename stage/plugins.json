@@ -1,6 +1,166 @@
 {
   "repos": [
     {
+      "url": "Achuan-2/siyuan-plugin-text-process@ee10f72c281c467bb81e49ce1db9fe0ff1452867",
+      "updated": "2025-03-04T16:10:56Z",
+      "stars": 8,
+      "openIssues": 2,
+      "size": 190982,
+      "installSize": 251710,
+      "package": {
+        "name": "siyuan-plugin-text-process",
+        "author": "Achuan-2",
+        "url": "https://github.com/Achuan-2/siyuan-plugin-text-process",
+        "version": "0.1.4",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "文本处理",
+          "en_US": "Text Process"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "粘贴时自动处理（LaTeX公式转换，ppt、word列表粘贴，去除上标、去除链接、去除空格、去除换行），对块进行处理（合并块、拆分块、复制到小红书带emoji、去除上标、去除空格、链接转文本、英文符号转中文符号等）",
+          "en_US": "Automatically process when pasting (laxtex formula conversion, ppt, word list paste, etc.), process blocks (merge blocks, split blocks, etc.)"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://www.yuque.com/achuan-2"
+          ]
+        },
+        "keywords": [
+          "paste",
+          "文本处理",
+          "text process",
+          "合并块",
+          "拆分块",
+          "ppt列表粘贴",
+          "word列表粘贴",
+          "LaTeX公式转换"
+        ]
+      }
+    },
+    {
+      "url": "terwer/siyuan-plugin-2md@1297772ec73eec0ff2f078c1d3a6c7fa8f32d40b",
+      "updated": "2025-03-04T16:07:13Z",
+      "stars": 0,
+      "openIssues": 5,
+      "size": 826961,
+      "installSize": 837895,
+      "package": {
+        "name": "siyuan-plugin-2md",
+        "author": "terwer",
+        "url": "https://github.com/terwer/siyuan-plugin-2md",
+        "version": "1.1.0",
+        "minAppVersion": "2.8.9",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "frontends": [
+          "desktop",
+          "browser-desktop"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "Markdown批量转换",
+          "en_US": "Markdown batch conversion"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "将思源笔记的文档批量转换为Markdown文件，支持Mkdocs、Hexo、Hugo、Vitepress、Vuepress、Obsidian等平台️",
+          "en_US": "Batch convert the documents of Siyuan Notes into Markdown files, and support Mkdocs, Hexo, Hugo, Vitepress, Vuepress, Obsidian and other platforms"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.com/a/terwer"
+          ]
+        },
+        "keywords": null
+      }
+    },
+    {
+      "url": "silent1189/siyuan-imageConverter@3f99a06f9c16ab12c2066fdca2308d7a780b323e",
+      "updated": "2025-03-04T15:28:27Z",
+      "stars": 4,
+      "openIssues": 2,
+      "size": 479742,
+      "installSize": 545177,
+      "package": {
+        "name": "siyuan-imageConverter",
+        "author": "c0nt1",
+        "url": "https://github.com/silent1189/siyuan-imageConverter",
+        "version": "0.0.7",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows"
+        ],
+        "frontends": [
+          "desktop"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "思源笔记-插入图片压缩转换",
+          "en_US": "siyuan-imageConverter"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "思源笔记-插入图片压缩转换",
+          "en_US": "siyuan-imageToWebp"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "webp",
+          "图片压缩",
+          "图片格式转换"
+        ]
+      }
+    },
+    {
       "url": "loonghfut/siyuan-steve-tools@bf0f59d4e121d1aef28815065d3c7939c1cae447",
       "updated": "2025-03-04T15:02:27Z",
       "stars": 21,
@@ -176,7 +336,7 @@
     {
       "url": "zt8989/siyuan-drawio-plugin@eec4e1b8f3f36c0e396178bad92258f3f5e37680",
       "updated": "2025-03-04T05:59:29Z",
-      "stars": 17,
+      "stars": 18,
       "openIssues": 7,
       "size": 32414332,
       "installSize": 78650244,
@@ -355,54 +515,6 @@
       }
     },
     {
-      "url": "terwer/siyuan-plugin-2md@503ca7f2c4104b64125717844242588d10beb242",
-      "updated": "2025-03-03T18:53:45Z",
-      "stars": 0,
-      "openIssues": 5,
-      "size": 812548,
-      "installSize": 823482,
-      "package": {
-        "name": "siyuan-plugin-2md",
-        "author": "terwer",
-        "url": "https://github.com/terwer/siyuan-plugin-2md",
-        "version": "1.0.0",
-        "minAppVersion": "2.8.9",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "frontends": [
-          "desktop",
-          "browser-desktop"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "Markdown批量转换",
-          "en_US": "Markdown batch conversion"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "将思源笔记的文档批量转换为Markdown文件，支持转换属性为Hexo、Hugo、Vitepress、Obsidian等平台对应的FrontFormatter\n️",
-          "en_US": "Batch convert the documents of Siyuan Notes into Markdown files, and support the conversion properties of FrontFormatter corresponding to Hexo, Hugo, Vitepress, Obsidian and other platforms"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.com/a/terwer"
-          ]
-        },
-        "keywords": null
-      }
-    },
-    {
       "url": "byname4321/siyuan-plugin-note-to-website@5dd646f06b1a09ced6863a2a523b6f4747aa6144",
       "updated": "2025-03-03T14:06:44Z",
       "stars": 2,
@@ -497,55 +609,6 @@
           "Memos",
           "同步",
           "Sync"
-        ]
-      }
-    },
-    {
-      "url": "silent1189/siyuan-imageConverter@2049ed41eb96ea0369346e2c5d2c34d24bd53b7d",
-      "updated": "2025-03-02T10:52:10Z",
-      "stars": 4,
-      "openIssues": 2,
-      "size": 479589,
-      "installSize": 544846,
-      "package": {
-        "name": "siyuan-imageConverter",
-        "author": "c0nt1",
-        "url": "https://github.com/silent1189/siyuan-imageConverter",
-        "version": "0.0.6",
-        "minAppVersion": "3.0.12",
-        "backends": [
-          "windows"
-        ],
-        "frontends": [
-          "desktop"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "思源笔记-插入图片压缩转换",
-          "en_US": "siyuan-imageConverter"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "思源笔记-插入图片压缩转换",
-          "en_US": "siyuan-imageToWebp"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            ""
-          ]
-        },
-        "keywords": [
-          "webp",
-          "图片压缩",
-          "图片格式转换"
         ]
       }
     },
@@ -1559,69 +1622,6 @@
           "plugin",
           "import",
           "notion"
-        ]
-      }
-    },
-    {
-      "url": "Achuan-2/siyuan-plugin-text-process@cda8817d14774c3d565df1915140e5ed56fcc155",
-      "updated": "2025-02-16T13:20:56Z",
-      "stars": 8,
-      "openIssues": 3,
-      "size": 190999,
-      "installSize": 251940,
-      "package": {
-        "name": "siyuan-plugin-text-process",
-        "author": "Achuan-2",
-        "url": "https://github.com/Achuan-2/siyuan-plugin-text-process",
-        "version": "0.1.2",
-        "minAppVersion": "3.0.12",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "文本处理",
-          "en_US": "Text Process"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "粘贴时自动处理（LaTeX公式转换，ppt、word列表粘贴，去除上标、去除链接、去除空格、去除换行），对块进行处理（合并块、拆分块、复制到小红书带emoji、去除上标、去除空格、链接转文本、英文符号转中文符号等）",
-          "en_US": "Automatically process when pasting (laxtex formula conversion, ppt, word list paste, etc.), process blocks (merge blocks, split blocks, etc.)"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://www.yuque.com/achuan-2"
-          ]
-        },
-        "keywords": [
-          "paste",
-          "文本处理",
-          "text process",
-          "合并块",
-          "拆分块",
-          "ppt列表粘贴",
-          "word列表粘贴",
-          "LaTeX公式转换"
         ]
       }
     },
