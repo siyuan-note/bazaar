@@ -1,6 +1,69 @@
 {
   "repos": [
     {
+      "url": "Achuan-2/siyuan-plugin-text-process@8845927b8911ef48e2372ca1983f7ea4d6fcbbce",
+      "updated": "2025-03-19T02:26:13Z",
+      "stars": 17,
+      "openIssues": 3,
+      "size": 192125,
+      "installSize": 255136,
+      "package": {
+        "name": "siyuan-plugin-text-process",
+        "author": "Achuan-2",
+        "url": "https://github.com/Achuan-2/siyuan-plugin-text-process",
+        "version": "0.2.0",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "文本处理",
+          "en_US": "Text Process"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "粘贴时自动处理（LaTeX公式转换，ppt、word列表粘贴，去除上标、去除链接、去除空格、去除换行），对块进行处理（合并块、拆分块、复制到小红书带emoji、去除上标、去除空格、链接转文本、英文符号转中文符号等）",
+          "en_US": "Automatically process when pasting (laxtex formula conversion, ppt, word list paste, etc.), process blocks (merge blocks, split blocks, etc.)"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://www.yuque.com/achuan-2"
+          ]
+        },
+        "keywords": [
+          "paste",
+          "文本处理",
+          "text process",
+          "合并块",
+          "拆分块",
+          "ppt列表粘贴",
+          "word列表粘贴",
+          "LaTeX公式转换"
+        ]
+      }
+    },
+    {
       "url": "loonghfut/siyuan-steve-tools@4df4c1c682bbebcec0b0fe4fbc7d03502d86d215",
       "updated": "2025-03-18T14:58:48Z",
       "stars": 24,
@@ -304,69 +367,6 @@
           "scrollbar",
           "数据库",
           "滚动条"
-        ]
-      }
-    },
-    {
-      "url": "Achuan-2/siyuan-plugin-text-process@bbc7e0dcaefe96140e6f5ce29bb761a5d21485a9",
-      "updated": "2025-03-17T02:54:29Z",
-      "stars": 17,
-      "openIssues": 3,
-      "size": 192119,
-      "installSize": 255128,
-      "package": {
-        "name": "siyuan-plugin-text-process",
-        "author": "Achuan-2",
-        "url": "https://github.com/Achuan-2/siyuan-plugin-text-process",
-        "version": "0.1.9",
-        "minAppVersion": "3.0.12",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "文本处理",
-          "en_US": "Text Process"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "粘贴时自动处理（LaTeX公式转换，ppt、word列表粘贴，去除上标、去除链接、去除空格、去除换行），对块进行处理（合并块、拆分块、复制到小红书带emoji、去除上标、去除空格、链接转文本、英文符号转中文符号等）",
-          "en_US": "Automatically process when pasting (laxtex formula conversion, ppt, word list paste, etc.), process blocks (merge blocks, split blocks, etc.)"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://www.yuque.com/achuan-2"
-          ]
-        },
-        "keywords": [
-          "paste",
-          "文本处理",
-          "text process",
-          "合并块",
-          "拆分块",
-          "ppt列表粘贴",
-          "word列表粘贴",
-          "LaTeX公式转换"
         ]
       }
     },
@@ -1164,7 +1164,7 @@
     {
       "url": "zxkmm/siyuan_doctree_compress@3842721e46a144cfa9c1fdbbbeb5c4644a074bb1",
       "updated": "2025-03-14T03:37:30Z",
-      "stars": 134,
+      "stars": 135,
       "openIssues": 10,
       "size": 69551,
       "installSize": 116458,
@@ -1753,65 +1753,6 @@
         },
         "keywords": [
           "plugin"
-        ]
-      }
-    },
-    {
-      "url": "frostime/sy-query-view@25bb83e57fc41d2571c9aa748228eacd90b44bfb",
-      "updated": "2025-03-08T09:54:29Z",
-      "stars": 21,
-      "openIssues": 3,
-      "size": 287024,
-      "installSize": 598385,
-      "package": {
-        "name": "sy-query-view",
-        "author": "frostime",
-        "url": "https://github.com/frostime/sy-query-view",
-        "version": "1.1.0",
-        "minAppVersion": "3.1.14",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "Query \u0026amp; View",
-          "en_US": "Query \u0026amp; View"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "使用 Javascript 查询, 并自定义渲染为 Dataview 视图",
-          "en_US": "Use Javascript to query and render as Dataview view"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.com/a/frostime"
-          ]
-        },
-        "keywords": [
-          "javascript",
-          "query",
-          "dataview"
         ]
       }
     },
@@ -4247,7 +4188,7 @@
     {
       "url": "zxkmm/siyuan_doctree_fake_subfolder@41dba24c750cdcc9ad8430167d1e48c73ba213fe",
       "updated": "2025-01-11T13:31:36Z",
-      "stars": 22,
+      "stars": 23,
       "openIssues": 2,
       "size": 53924,
       "installSize": 78811,
