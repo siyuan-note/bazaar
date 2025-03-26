@@ -1,6 +1,69 @@
 {
   "repos": [
     {
+      "url": "mm-o/siyuan-media-player@5089ee93812c7cace50f75ae0de978a956889b16",
+      "updated": "2025-03-26T09:12:55Z",
+      "stars": 5,
+      "openIssues": 2,
+      "size": 451750,
+      "installSize": 1325122,
+      "package": {
+        "name": "siyuan-media-player",
+        "author": "mm-o",
+        "url": "https://github.com/mm-o/siyuan-media-player",
+        "version": "0.1.8",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker",
+          "darwin"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "思源媒体播放器",
+          "en_US": "SiYuan Media Player"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "一个支持音视频播放的思源笔记媒体播放器插件",
+          "en_US": "A media player plugin for SiYuan Note that supports audio and video playback"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://745201.xyz/pay.jpg"
+          ]
+        },
+        "keywords": [
+          "media player",
+          "audio",
+          "video",
+          "播放器",
+          "音频",
+          "视频"
+        ]
+      }
+    },
+    {
       "url": "Asianfleet/siyuan-plugin-aether@a1b5b46cccfb29dc74f5ab5f8f5752949dde735d",
       "updated": "2025-03-25T14:19:17Z",
       "stars": 4,
@@ -1320,17 +1383,17 @@
       }
     },
     {
-      "url": "2234839/vite-plugin-siyuan@9be1d697508b622a69111c8b74938ce4d2069dce",
+      "url": "2234839/siyuan_audio2text@4f30d850555b43d0416c291468bdc19d059d18f4",
       "updated": "2025-03-16T07:20:02Z",
-      "stars": 0,
+      "stars": 1,
       "openIssues": 0,
-      "size": 45720,
-      "installSize": 56668,
+      "size": 35120,
+      "installSize": 50576,
       "package": {
-        "name": "vite-plugin-siyuan",
+        "name": "audio2text_plugin_siyuan",
         "author": "崮生",
-        "url": "https://github.com/2234839/vite-plugin-siyuan",
-        "version": "0.0.26",
+        "url": "https://github.com/2234839/siyuan_audio2text",
+        "version": "0.0.12",
         "minAppVersion": "2.10.3",
         "backends": [
           "all"
@@ -1340,8 +1403,8 @@
         ],
         "displayName": {
           "default": "",
-          "zh_CN": "vite-plugin-siyuan",
-          "en_US": "vite-plugin-siyuan"
+          "zh_CN": "audio2text_plugin_siyuan",
+          "en_US": "audio2text_plugin_siyuan"
         },
         "description": {
           "default": "",
@@ -1365,17 +1428,17 @@
       }
     },
     {
-      "url": "2234839/siyuan_audio2text@4f30d850555b43d0416c291468bdc19d059d18f4",
+      "url": "2234839/vite-plugin-siyuan@9be1d697508b622a69111c8b74938ce4d2069dce",
       "updated": "2025-03-16T07:20:02Z",
-      "stars": 1,
+      "stars": 0,
       "openIssues": 0,
-      "size": 35120,
-      "installSize": 50576,
+      "size": 45720,
+      "installSize": 56668,
       "package": {
-        "name": "audio2text_plugin_siyuan",
+        "name": "vite-plugin-siyuan",
         "author": "崮生",
-        "url": "https://github.com/2234839/siyuan_audio2text",
-        "version": "0.0.12",
+        "url": "https://github.com/2234839/vite-plugin-siyuan",
+        "version": "0.0.26",
         "minAppVersion": "2.10.3",
         "backends": [
           "all"
@@ -1385,8 +1448,8 @@
         ],
         "displayName": {
           "default": "",
-          "zh_CN": "audio2text_plugin_siyuan",
-          "en_US": "audio2text_plugin_siyuan"
+          "zh_CN": "vite-plugin-siyuan",
+          "en_US": "vite-plugin-siyuan"
         },
         "description": {
           "default": "",
@@ -1567,7 +1630,7 @@
     {
       "url": "zxkmm/siyuan_doctree_compress@3842721e46a144cfa9c1fdbbbeb5c4644a074bb1",
       "updated": "2025-03-14T03:37:30Z",
-      "stars": 135,
+      "stars": 134,
       "openIssues": 10,
       "size": 69551,
       "installSize": 116458,
@@ -3777,69 +3840,6 @@
           ]
         },
         "keywords": null
-      }
-    },
-    {
-      "url": "mm-o/siyuan-media-player@79d86a86f4f2317240e284c5c6c5afc86928e7ee",
-      "updated": "2025-02-05T09:55:03Z",
-      "stars": 5,
-      "openIssues": 4,
-      "size": 162267,
-      "installSize": 372109,
-      "package": {
-        "name": "siyuan-media-player",
-        "author": "mm-o",
-        "url": "https://github.com/mm-o/siyuan-media-player",
-        "version": "0.1.7",
-        "minAppVersion": "3.0.12",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker",
-          "darwin"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "思源媒体播放器",
-          "en_US": "SiYuan Media Player"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "一个支持音视频播放的思源笔记媒体播放器插件",
-          "en_US": "A media player plugin for SiYuan Note that supports audio and video playback"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://745201.xyz/pay.jpg"
-          ]
-        },
-        "keywords": [
-          "media player",
-          "audio",
-          "video",
-          "播放器",
-          "音频",
-          "视频"
-        ]
       }
     },
     {
