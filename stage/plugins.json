@@ -1,10 +1,71 @@
 {
   "repos": [
     {
+      "url": "xstarling/sy-git-sync-plugin@f9f1826dc298f1b7c28de463b0bae7565812a413",
+      "updated": "2025-03-28T10:22:36Z",
+      "stars": 0,
+      "openIssues": 0,
+      "size": 195358,
+      "installSize": 446497,
+      "package": {
+        "name": "GIT-SYNC-PLUGIN",
+        "author": "xstarling",
+        "url": "https://github.com/xstarling/sy-git-sync-plugin",
+        "version": "0.1.9",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "GIT同步插件",
+          "en_US": "GIT SYNC PLUGIN"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "Git Sync Plugin 是一款用于将本地笔记文件同步到 GitHub 和 Gitee 仓库的工具。通过集成 GitHub 和 Gitee 的 API，用户可以轻松地将笔记文件推送到远程仓库，实现多设备同步和版本控制。",
+          "en_US": "Git Sync Plugin is a tool for syncing local note files to GitHub and Gitee repositories. By integrating GitHub and Gitee apis, users can easily push note files to remote repositories, enabling multi-device synchronization and version control."
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "git",
+          "GIT",
+          "同步",
+          "sync",
+          "SYNC"
+        ]
+      }
+    },
+    {
       "url": "mm-o/siyuan-media-player@dde5c3d3b8618ca9877e12f272eaf6f5608afa46",
       "updated": "2025-03-28T08:21:39Z",
       "stars": 7,
-      "openIssues": 1,
+      "openIssues": 2,
       "size": 855032,
       "installSize": 2642510,
       "package": {
@@ -106,67 +167,6 @@
           ]
         },
         "keywords": null
-      }
-    },
-    {
-      "url": "xstarling/sy-git-sync-plugin@7ff3aeeec4626e0e2e2a235f55616e2fdb6048ed",
-      "updated": "2025-03-28T04:20:59Z",
-      "stars": 0,
-      "openIssues": 0,
-      "size": 195319,
-      "installSize": 446364,
-      "package": {
-        "name": "GIT-SYNC-PLUGIN",
-        "author": "xstarling",
-        "url": "https://github.com/xstarling/sy-git-sync-plugin",
-        "version": "0.1.8",
-        "minAppVersion": "3.0.12",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "GIT同步插件",
-          "en_US": "GIT SYNC PLUGIN"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "Git Sync Plugin 是一款用于将本地笔记文件同步到 GitHub 和 Gitee 仓库的工具。通过集成 GitHub 和 Gitee 的 API，用户可以轻松地将笔记文件推送到远程仓库，实现多设备同步和版本控制。",
-          "en_US": "Git Sync Plugin is a tool for syncing local note files to GitHub and Gitee repositories. By integrating GitHub and Gitee apis, users can easily push note files to remote repositories, enabling multi-device synchronization and version control."
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            ""
-          ]
-        },
-        "keywords": [
-          "git",
-          "GIT",
-          "同步",
-          "sync",
-          "SYNC"
-        ]
       }
     },
     {
@@ -317,7 +317,7 @@
       "url": "Asianfleet/siyuan-plugin-aether@a1b5b46cccfb29dc74f5ab5f8f5752949dde735d",
       "updated": "2025-03-25T14:19:17Z",
       "stars": 5,
-      "openIssues": 2,
+      "openIssues": 3,
       "size": 5640445,
       "installSize": 9941192,
       "package": {
@@ -876,7 +876,7 @@
       "url": "Achuan-2/siyuan-plugin-text-process@8845927b8911ef48e2372ca1983f7ea4d6fcbbce",
       "updated": "2025-03-19T02:26:13Z",
       "stars": 19,
-      "openIssues": 3,
+      "openIssues": 4,
       "size": 192125,
       "installSize": 255136,
       "package": {
@@ -1037,7 +1037,7 @@
       "url": "zt8989/siyuan-drawio-plugin@717d242d9cd56657eeeac4a6f088f1983894787f",
       "updated": "2025-03-18T00:38:29Z",
       "stars": 21,
-      "openIssues": 3,
+      "openIssues": 4,
       "size": 32417118,
       "installSize": 78658592,
       "package": {
@@ -9489,7 +9489,53 @@
       "openIssues": 0,
       "size": 35062,
       "installSize": 43688,
-      "package": null
+      "package": {
+        "name": "siyuan-css-hide-bookmark-icon",
+        "author": "TCOTC",
+        "url": "https://github.com/TCOTC/siyuan-css-hide-bookmark-icon",
+        "version": "0.1.0",
+        "minAppVersion": "",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "Bookmark hide icon",
+          "zh_CN": "书签隐藏图标",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Hide the icon in front of the bookmark in the bookmark",
+          "zh_CN": "在书签中隐藏书签前的图标",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/JeffreyChen"
+          ]
+        },
+        "keywords": [
+          "书签",
+          "书签树",
+          "隐藏",
+          "图标",
+          "隐藏图标",
+          "mark",
+          "bookmark",
+          "hide",
+          "icon"
+        ]
+      }
     },
     {
       "url": "TCOTC/siyuan-css-hide-doc-tree-icon@deeb3edc4a0e04f0e9e904a89673404b2f1dde8e",
@@ -10188,7 +10234,44 @@
       "openIssues": 15,
       "size": 314632,
       "installSize": 511396,
-      "package": null
+      "package": {
+        "name": "webview",
+        "author": "Zuoqiu Yingyi",
+        "url": "https://github.com/Zuoqiu-Yingyi/siyuan-plugin-webview",
+        "version": "1.4.1",
+        "minAppVersion": "2.10.3",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "Web Page View",
+          "zh_CN": "网页视图",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Provide \u003ccode\u003emulti-tab / multi-window web\u003c/code\u003e page view for SiYuan",
+          "zh_CN": "为思源提供 \u003ccode\u003e多页签 / 多窗口\u003c/code\u003e 网页视图",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/zuoqiu",
+            "https://ko-fi.com/zuoqiu"
+          ]
+        },
+        "keywords": null
+      }
     },
     {
       "url": "zuoez02/siyuan-plugin-slide@350b669a13bd9b5f10140d6e9b47c53db6684390",
