@@ -1,6 +1,69 @@
 {
   "repos": [
     {
+      "url": "mm-o/siyuan-media-player@dde5c3d3b8618ca9877e12f272eaf6f5608afa46",
+      "updated": "2025-03-28T08:21:39Z",
+      "stars": 7,
+      "openIssues": 1,
+      "size": 855032,
+      "installSize": 2642510,
+      "package": {
+        "name": "siyuan-media-player",
+        "author": "mm-o",
+        "url": "https://github.com/mm-o/siyuan-media-player",
+        "version": "0.1.9",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker",
+          "darwin"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "思源媒体播放器",
+          "en_US": "SiYuan Media Player"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "一个支持音视频播放的思源笔记媒体播放器插件",
+          "en_US": "A media player plugin for SiYuan Note that supports audio and video playback"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://745201.xyz/pay.jpg"
+          ]
+        },
+        "keywords": [
+          "media player",
+          "audio",
+          "video",
+          "播放器",
+          "音频",
+          "视频"
+        ]
+      }
+    },
+    {
       "url": "2234839/OceanPress_siyuan_plugin@205d3a61d0a092550f2e3b92af7ddf80b28f67c1",
       "updated": "2025-03-28T05:03:35Z",
       "stars": 4,
@@ -103,69 +166,6 @@
           "同步",
           "sync",
           "SYNC"
-        ]
-      }
-    },
-    {
-      "url": "mm-o/siyuan-media-player@79b2940a8f32e9428250affb25eae8f2fbb34277",
-      "updated": "2025-03-27T13:25:27Z",
-      "stars": 7,
-      "openIssues": 2,
-      "size": 851530,
-      "installSize": 2626259,
-      "package": {
-        "name": "siyuan-media-player",
-        "author": "mm-o",
-        "url": "https://github.com/mm-o/siyuan-media-player",
-        "version": "0.1.8",
-        "minAppVersion": "3.0.12",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker",
-          "darwin"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "思源媒体播放器",
-          "en_US": "SiYuan Media Player"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "一个支持音视频播放的思源笔记媒体播放器插件",
-          "en_US": "A media player plugin for SiYuan Note that supports audio and video playback"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://745201.xyz/pay.jpg"
-          ]
-        },
-        "keywords": [
-          "media player",
-          "audio",
-          "video",
-          "播放器",
-          "音频",
-          "视频"
         ]
       }
     },
@@ -1479,17 +1479,17 @@
       }
     },
     {
-      "url": "2234839/vite-plugin-siyuan@9be1d697508b622a69111c8b74938ce4d2069dce",
+      "url": "2234839/siyuan_audio2text@4f30d850555b43d0416c291468bdc19d059d18f4",
       "updated": "2025-03-16T07:20:02Z",
-      "stars": 0,
+      "stars": 1,
       "openIssues": 0,
-      "size": 45720,
-      "installSize": 56668,
+      "size": 35120,
+      "installSize": 50576,
       "package": {
-        "name": "vite-plugin-siyuan",
+        "name": "audio2text_plugin_siyuan",
         "author": "崮生",
-        "url": "https://github.com/2234839/vite-plugin-siyuan",
-        "version": "0.0.26",
+        "url": "https://github.com/2234839/siyuan_audio2text",
+        "version": "0.0.12",
         "minAppVersion": "2.10.3",
         "backends": [
           "all"
@@ -1499,8 +1499,8 @@
         ],
         "displayName": {
           "default": "",
-          "zh_CN": "vite-plugin-siyuan",
-          "en_US": "vite-plugin-siyuan"
+          "zh_CN": "audio2text_plugin_siyuan",
+          "en_US": "audio2text_plugin_siyuan"
         },
         "description": {
           "default": "",
@@ -1524,17 +1524,17 @@
       }
     },
     {
-      "url": "2234839/siyuan_audio2text@4f30d850555b43d0416c291468bdc19d059d18f4",
+      "url": "2234839/vite-plugin-siyuan@9be1d697508b622a69111c8b74938ce4d2069dce",
       "updated": "2025-03-16T07:20:02Z",
-      "stars": 1,
+      "stars": 0,
       "openIssues": 0,
-      "size": 35120,
-      "installSize": 50576,
+      "size": 45720,
+      "installSize": 56668,
       "package": {
-        "name": "audio2text_plugin_siyuan",
+        "name": "vite-plugin-siyuan",
         "author": "崮生",
-        "url": "https://github.com/2234839/siyuan_audio2text",
-        "version": "0.0.12",
+        "url": "https://github.com/2234839/vite-plugin-siyuan",
+        "version": "0.0.26",
         "minAppVersion": "2.10.3",
         "backends": [
           "all"
@@ -1544,8 +1544,8 @@
         ],
         "displayName": {
           "default": "",
-          "zh_CN": "audio2text_plugin_siyuan",
-          "en_US": "audio2text_plugin_siyuan"
+          "zh_CN": "vite-plugin-siyuan",
+          "en_US": "vite-plugin-siyuan"
         },
         "description": {
           "default": "",
