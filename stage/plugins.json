@@ -1514,7 +1514,62 @@
       "openIssues": 4,
       "size": 192133,
       "installSize": 255151,
-      "package": null
+      "package": {
+        "name": "siyuan-plugin-text-process",
+        "author": "Achuan-2",
+        "url": "https://github.com/Achuan-2/siyuan-plugin-text-process",
+        "version": "0.2.1",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "文本处理",
+          "en_US": "Text Process"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "粘贴时自动处理（LaTeX公式转换，ppt、word列表粘贴，去除上标、去除链接、去除空格、去除换行），对块进行处理（合并块、拆分块、复制到小红书带emoji、去除上标、去除空格、链接转文本、英文符号转中文符号等）",
+          "en_US": "Automatically process when pasting (laxtex formula conversion, ppt, word list paste, etc.), process blocks (merge blocks, split blocks, etc.)"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://www.yuque.com/achuan-2"
+          ]
+        },
+        "keywords": [
+          "paste",
+          "文本处理",
+          "text process",
+          "合并块",
+          "拆分块",
+          "ppt列表粘贴",
+          "word列表粘贴",
+          "LaTeX公式转换"
+        ]
+      }
     },
     {
       "url": "silent1189/siyuan-imageConverter@8156b2be9ffbf15472e7f2ef7d1dd1dba0b17be4",
@@ -2324,17 +2379,17 @@
       }
     },
     {
-      "url": "2234839/vite-plugin-siyuan@9be1d697508b622a69111c8b74938ce4d2069dce",
+      "url": "2234839/siyuan_audio2text@4f30d850555b43d0416c291468bdc19d059d18f4",
       "updated": "2025-03-16T07:20:02Z",
-      "stars": 0,
+      "stars": 1,
       "openIssues": 0,
-      "size": 45720,
-      "installSize": 56668,
+      "size": 35120,
+      "installSize": 50576,
       "package": {
-        "name": "vite-plugin-siyuan",
+        "name": "audio2text_plugin_siyuan",
         "author": "崮生",
-        "url": "https://github.com/2234839/vite-plugin-siyuan",
-        "version": "0.0.26",
+        "url": "https://github.com/2234839/siyuan_audio2text",
+        "version": "0.0.12",
         "minAppVersion": "2.10.3",
         "backends": [
           "all"
@@ -2344,8 +2399,8 @@
         ],
         "displayName": {
           "default": "",
-          "zh_CN": "vite-plugin-siyuan",
-          "en_US": "vite-plugin-siyuan"
+          "zh_CN": "audio2text_plugin_siyuan",
+          "en_US": "audio2text_plugin_siyuan"
         },
         "description": {
           "default": "",
@@ -2369,17 +2424,17 @@
       }
     },
     {
-      "url": "2234839/siyuan_audio2text@4f30d850555b43d0416c291468bdc19d059d18f4",
+      "url": "2234839/vite-plugin-siyuan@9be1d697508b622a69111c8b74938ce4d2069dce",
       "updated": "2025-03-16T07:20:02Z",
-      "stars": 1,
+      "stars": 0,
       "openIssues": 0,
-      "size": 35120,
-      "installSize": 50576,
+      "size": 45720,
+      "installSize": 56668,
       "package": {
-        "name": "audio2text_plugin_siyuan",
+        "name": "vite-plugin-siyuan",
         "author": "崮生",
-        "url": "https://github.com/2234839/siyuan_audio2text",
-        "version": "0.0.12",
+        "url": "https://github.com/2234839/vite-plugin-siyuan",
+        "version": "0.0.26",
         "minAppVersion": "2.10.3",
         "backends": [
           "all"
@@ -2389,8 +2444,8 @@
         ],
         "displayName": {
           "default": "",
-          "zh_CN": "audio2text_plugin_siyuan",
-          "en_US": "audio2text_plugin_siyuan"
+          "zh_CN": "vite-plugin-siyuan",
+          "en_US": "vite-plugin-siyuan"
         },
         "description": {
           "default": "",
@@ -2639,7 +2694,58 @@
       "openIssues": 0,
       "size": 1395831,
       "installSize": 4351617,
-      "package": null
+      "package": {
+        "name": "sy-lively",
+        "author": "kuangdongksk",
+        "url": "https://github.com/kuangdongksk/sy-lively",
+        "version": "P0.2.5",
+        "minAppVersion": "3.0.18",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "喧嚣",
+          "en_US": "sy-lively"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "日程管理插件，同时提供简单的卡片功能",
+          "en_US": "Calendar management plugin"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.com/a/kuangdongksk",
+            "https://afdian.com/item/570e0312ce4d11efbad75254001e7c00"
+          ]
+        },
+        "keywords": [
+          "plugin",
+          "日程",
+          "日程管理",
+          "卡片"
+        ]
+      }
     },
     {
       "url": "frostime/sy-bookmark-plus@32f3c26a2a16866ff12e99197135ea2ae3498d27",
@@ -3225,7 +3331,49 @@
       "openIssues": 0,
       "size": 103624,
       "installSize": 253552,
-      "package": null
+      "package": {
+        "name": "siyuan-plugin-note-to-website",
+        "author": "byname4321",
+        "url": "https://github.com/byname4321/siyuan-plugin-note-to-website",
+        "version": "0.0.7",
+        "minAppVersion": "3.0.16",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "NoteToWebsite",
+          "en_US": "NoteToWebsite"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "将笔记转换为HTML网站",
+          "en_US": "Convert note to website"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": null,
+        "keywords": [
+          "plugin",
+          "NoteToWebsite",
+          "note-to-website",
+          "html"
+        ]
+      }
     },
     {
       "url": "zxkmm/siyuan_online_devices_mgr@5113c8d82a1859f9ec450afee8809c1c88eca3e3",
@@ -6533,7 +6681,59 @@
       "openIssues": 1,
       "size": 107715,
       "installSize": 132023,
-      "package": null
+      "package": {
+        "name": "siyuan_marketplace_blacklist",
+        "author": "zxkmm",
+        "url": "https://github.com/siyuan-note/plugin-sample-vite-svelte",
+        "version": "1.0.1",
+        "minAppVersion": "2.11.4",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "集市助手",
+          "en_US": "siyuan_marketplace_blacklist"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "把您不想看到的集市插件/主题/图标/模板/挂件添加到黑名单, 您就再也不会看到它",
+          "en_US": "Add those plugins/ themes/ icons/ templates/ widgets you don\u0026#39;t wanna see to black list so you won\u0026#39;t see it in marketplace."
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://github.com/zxkmm/zxkmm"
+          ]
+        },
+        "keywords": [
+          "集市",
+          "助手",
+          "黑名单",
+          "集市黑名单",
+          "隐藏",
+          "移除",
+          "zxkmm",
+          "marketplace blacklist",
+          "marketplace",
+          "blacklist",
+          "blocklist",
+          "remove",
+          "hide"
+        ]
+      }
     },
     {
       "url": "SteelDrEgg/siyuan-graph@3948b32120e782533fda5bf1bbb7858b0b53f797",
@@ -9405,7 +9605,56 @@
       "openIssues": 0,
       "size": 140394,
       "installSize": 547129,
-      "package": null
+      "package": {
+        "name": "SACCompiler",
+        "author": "椽承设计",
+        "url": "https://github.com/leolee9086/SACCompiler",
+        "version": "0.0.3",
+        "minAppVersion": "3.0.0",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "SACCompiler",
+          "zh_CN": "SAC代码工具箱",
+          "en_US": ""
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "这是一个用于解析笔记成各种形式内容的插件，例如代码片段和AI的提示词,设计用于方便编写和分享代码片段",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://ld246.com/sponsor"
+          ]
+        },
+        "keywords": [
+          "SAC",
+          "代码片段",
+          "js",
+          "snippets"
+        ]
+      }
     },
     {
       "url": "shenjinglei/siyuan-plugin-graph-enhance@7993142b9db9de0f3cd0b6753adafca7a1e10bec",
@@ -9570,7 +9819,54 @@
       "openIssues": 0,
       "size": 22971,
       "installSize": 31897,
-      "package": null
+      "package": {
+        "name": "siyuan-css-dashed-line-memo",
+        "author": "TCOTC",
+        "url": "https://github.com/TCOTC/siyuan-css-dashed-line-memo",
+        "version": "0.1.0",
+        "minAppVersion": "",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "Dashed line memo",
+          "zh_CN": "虚线备注",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Change the style of the memo to a dashed line",
+          "zh_CN": "将备注的样式改为虚线",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/JeffreyChen"
+          ]
+        },
+        "keywords": [
+          "虚线",
+          "dashed",
+          "dash",
+          "line",
+          "memo",
+          "备注",
+          "样式",
+          "css",
+          "CSS",
+          "TCOTC"
+        ]
+      }
     },
     {
       "url": "TCOTC/siyuan-css-hide-bookmark-icon@6be144f754601daa3d728f2528931022f9d0eb01",
@@ -9944,7 +10240,54 @@
       "openIssues": 3,
       "size": 438122,
       "installSize": 1147609,
-      "package": null
+      "package": {
+        "name": "siyuan-plugin-table-view",
+        "author": "dualwind",
+        "url": "https://github.com/etchnight/siyuan-plugin-table-view",
+        "version": "0.2.3",
+        "minAppVersion": "2.11.4",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android"
+        ],
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "表格预览",
+          "en_US": "Table View"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "抽取笔记内容生成表格，汇总概念及其属性",
+          "en_US": "Extract the content of the notes to generate a table that summarizes concepts and their attributes"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README.md",
+          "en_US": "README_en_US.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/dualwind"
+          ]
+        },
+        "keywords": [
+          "plugin",
+          "table",
+          "表格",
+          "Query View"
+        ]
+      }
     },
     {
       "url": "zuoez02/siyuan-plugin-whiteboard@d114438080637c44d4ac22d6c262a2d9c7a5fdf6",
@@ -11927,7 +12270,39 @@
       "openIssues": 8,
       "size": 268482,
       "installSize": 344472,
-      "package": null
+      "package": {
+        "name": "browserTab",
+        "author": "椽承设计",
+        "url": "https://github.com/leolee9086/browserTab",
+        "version": "0.0.5",
+        "minAppVersion": "",
+        "backends": null,
+        "frontends": null,
+        "displayName": {
+          "default": "browserTab",
+          "zh_CN": "browserTab",
+          "en_US": ""
+        },
+        "description": {
+          "default": "This is a plugin to use siyuan like a browser",
+          "zh_CN": "把思源当成一个简单的浏览器使用",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README.md",
+          "en_US": "README_en_US.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/leolee9086"
+          ]
+        },
+        "keywords": null
+      }
     },
     {
       "url": "Zuoqiu-Yingyi/siyuan-plugin-open-api@adc682fce1b7cb0765b76792c2855574c42defad",
