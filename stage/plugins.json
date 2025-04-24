@@ -1,6 +1,61 @@
 {
   "repos": [
     {
+      "url": "wwxiaoqi/siyuan-mouse-events-plugin@25f35ab6e8d6df26c28f68a1623a0147a8868e3c",
+      "updated": "2025-04-24T02:10:04Z",
+      "stars": 0,
+      "openIssues": 2,
+      "size": 136203,
+      "installSize": 184566,
+      "package": {
+        "name": "mouse-events-plugin",
+        "author": "wwxiaoqi",
+        "url": "https://github.com/wwxiaoqi/siyuan-mouse-events-plugin",
+        "version": "0.1.5",
+        "minAppVersion": "3.1.27",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "Mouse gesture plugin",
+          "zh_CN": "鼠标手势插件",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Use mouse gestures in the Siyuan Editor",
+          "zh_CN": "在思源编辑器中使用鼠标手势",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": []
+        },
+        "keywords": [
+          "mouse",
+          "鼠标",
+          "gesture",
+          "手势"
+        ]
+      }
+    },
+    {
       "url": "Wetoria/sy-plugin-enhance@ce0d908d0dd4d37610ea605ec35df87749268415",
       "updated": "2025-04-23T14:03:50Z",
       "stars": 12,
@@ -65,7 +120,7 @@
     {
       "url": "mm-o/siyuan-media-player@c82e2b35456dd4f6a13eb0d0ca31f8c2f9ec1557",
       "updated": "2025-04-23T09:33:13Z",
-      "stars": 15,
+      "stars": 16,
       "openIssues": 1,
       "size": 1266227,
       "installSize": 3241424,
@@ -122,61 +177,6 @@
           "播放器",
           "音频",
           "视频"
-        ]
-      }
-    },
-    {
-      "url": "wwxiaoqi/siyuan-mouse-events-plugin@9badd0263c75b739e98c4aa6afb78c76325b8945",
-      "updated": "2025-04-23T09:02:09Z",
-      "stars": 0,
-      "openIssues": 2,
-      "size": 135090,
-      "installSize": 180863,
-      "package": {
-        "name": "mouse-events-plugin",
-        "author": "wwxiaoqi",
-        "url": "https://github.com/wwxiaoqi/siyuan-mouse-events-plugin",
-        "version": "0.1.4",
-        "minAppVersion": "3.1.27",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "Mouse gesture plugin",
-          "zh_CN": "鼠标手势插件",
-          "en_US": ""
-        },
-        "description": {
-          "default": "Use mouse gestures in the Siyuan Editor",
-          "zh_CN": "在思源编辑器中使用鼠标手势",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": []
-        },
-        "keywords": [
-          "mouse",
-          "鼠标",
-          "gesture",
-          "手势"
         ]
       }
     },
@@ -1712,56 +1712,7 @@
       "openIssues": 2,
       "size": 32417244,
       "installSize": 78658930,
-      "package": {
-        "name": "siyuan-drawio-plugin",
-        "author": "cowboy",
-        "url": "https://github.com/zt8989/siyuan-drawio-plugin",
-        "version": "0.1.30",
-        "minAppVersion": "3.0.12",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "思源Draw.io插件",
-          "en_US": "Siyuan Draw.io Plugin"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "Draw.io以插件形式集成到思源中",
-          "en_US": "Draw.io integrated as a plugin into Siyuan"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            ""
-          ]
-        },
-        "keywords": [
-          "plugin",
-          "drawio"
-        ]
-      }
+      "package": null
     },
     {
       "url": "loonghfut/siyuan-steve-tools@bc51f611d5d2a9839e4a9ef84e2de625ed6e123b",
@@ -7143,59 +7094,7 @@
       "openIssues": 0,
       "size": 165307,
       "installSize": 203778,
-      "package": {
-        "name": "siyuan-graph",
-        "author": "DrEgg",
-        "url": "https://github.com/SteelDrEgg/siyuan-graph",
-        "version": "0.1.1",
-        "minAppVersion": "3.1.7",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "docker"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "SiYuan Graphing",
-          "zh_CN": "思源绘图",
-          "en_US": ""
-        },
-        "description": {
-          "default": "Vanilla math plotting plugin for SiYuan",
-          "zh_CN": "原生优先的思源数学绘图插件",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "https://github.com/SteelDrEgg",
-          "custom": []
-        },
-        "keywords": [
-          "Graphing",
-          "Math",
-          "Equation",
-          "Function",
-          "绘图",
-          "数学",
-          "公式",
-          "函数"
-        ]
-      }
+      "package": null
     },
     {
       "url": "makediff/siyuan-wucai@ff318b01b1be0a719d6c9ac835a14e093ba3bc5e",
