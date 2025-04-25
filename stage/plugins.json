@@ -3020,17 +3020,17 @@
       }
     },
     {
-      "url": "2234839/vite-plugin-siyuan@9be1d697508b622a69111c8b74938ce4d2069dce",
+      "url": "2234839/siyuan_audio2text@4f30d850555b43d0416c291468bdc19d059d18f4",
       "updated": "2025-03-16T07:20:02Z",
-      "stars": 0,
+      "stars": 1,
       "openIssues": 0,
-      "size": 45720,
-      "installSize": 56668,
+      "size": 35120,
+      "installSize": 50576,
       "package": {
-        "name": "vite-plugin-siyuan",
+        "name": "audio2text_plugin_siyuan",
         "author": "崮生",
-        "url": "https://github.com/2234839/vite-plugin-siyuan",
-        "version": "0.0.26",
+        "url": "https://github.com/2234839/siyuan_audio2text",
+        "version": "0.0.12",
         "minAppVersion": "2.10.3",
         "backends": [
           "all"
@@ -3040,8 +3040,8 @@
         ],
         "displayName": {
           "default": "",
-          "zh_CN": "vite-plugin-siyuan",
-          "en_US": "vite-plugin-siyuan"
+          "zh_CN": "audio2text_plugin_siyuan",
+          "en_US": "audio2text_plugin_siyuan"
         },
         "description": {
           "default": "",
@@ -3065,17 +3065,17 @@
       }
     },
     {
-      "url": "2234839/siyuan_audio2text@4f30d850555b43d0416c291468bdc19d059d18f4",
+      "url": "2234839/vite-plugin-siyuan@9be1d697508b622a69111c8b74938ce4d2069dce",
       "updated": "2025-03-16T07:20:02Z",
-      "stars": 1,
+      "stars": 0,
       "openIssues": 0,
-      "size": 35120,
-      "installSize": 50576,
+      "size": 45720,
+      "installSize": 56668,
       "package": {
-        "name": "audio2text_plugin_siyuan",
+        "name": "vite-plugin-siyuan",
         "author": "崮生",
-        "url": "https://github.com/2234839/siyuan_audio2text",
-        "version": "0.0.12",
+        "url": "https://github.com/2234839/vite-plugin-siyuan",
+        "version": "0.0.26",
         "minAppVersion": "2.10.3",
         "backends": [
           "all"
@@ -3085,8 +3085,8 @@
         ],
         "displayName": {
           "default": "",
-          "zh_CN": "audio2text_plugin_siyuan",
-          "en_US": "audio2text_plugin_siyuan"
+          "zh_CN": "vite-plugin-siyuan",
+          "en_US": "vite-plugin-siyuan"
         },
         "description": {
           "default": "",
@@ -4316,46 +4316,7 @@
       "openIssues": 2,
       "size": 17148,
       "installSize": 35851,
-      "package": {
-        "name": "sy-test-template",
-        "author": "frostime",
-        "url": "https://github.com/frostime/sy-test-template",
-        "version": "0.6.0",
-        "minAppVersion": "3.0.0",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "测试模板语法",
-          "en_US": "Test Template Syntax"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "测试思源内置的 Golang+Sprig 模板语法",
-          "en_US": "Test the built in Golang+Sprig template syntax"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.net/a/frostime"
-          ]
-        },
-        "keywords": [
-          "模板",
-          "Template"
-        ]
-      }
+      "package": null
     },
     {
       "url": "zuoez02/siyuan-plugin-emoji-enhance@cd8d78ba0801b3ee49cdf5864a27424679975f2d",
@@ -5711,6 +5672,63 @@
           "data",
           "statistics",
           "plugin"
+        ]
+      }
+    },
+    {
+      "url": "Achuan-2/siyuan-plugin-imgAddLink@b8860034698530eff1beb35fab172126b86e40d9",
+      "updated": "2024-12-28T14:41:43Z",
+      "stars": 3,
+      "openIssues": 1,
+      "size": 541593,
+      "installSize": 617148,
+      "package": {
+        "name": "siyuan-plugin-imgAddLink",
+        "author": "Achuan-2",
+        "url": "https://github.com/Achuan-2/siyuan-plugin-imgAddLink",
+        "version": "1.0.4",
+        "minAppVersion": "3.1.7",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "imgAddlink",
+          "zh_CN": "图片支持超链接",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Hide the hyperlink behind the image and convert it into an icon. Click to open the link",
+          "zh_CN": "对图片后面的超链接进行隐藏，转变为带超链接的图标",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://www.yuque.com/achuan-2"
+          ]
+        },
+        "keywords": [
+          "picture",
+          "图片"
         ]
       }
     },
@@ -9436,42 +9454,7 @@
       "openIssues": 0,
       "size": 54978,
       "installSize": 75449,
-      "package": {
-        "name": "sy-titled-link",
-        "author": "frostime",
-        "url": "https://github.com/frostime/sy-titled-link",
-        "version": "1.4.0",
-        "minAppVersion": "2.10.0",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "Titled Url",
-          "en_US": "Titled Url"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "获取网页链接的标题",
-          "en_US": "Get the title of the web url"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README.md",
-          "en_US": "README_en_US.md"
-        },
-        "funding": null,
-        "keywords": [
-          "url",
-          "link",
-          "网页链接",
-          "标题",
-          "title"
-        ]
-      }
+      "package": null
     },
     {
       "url": "TCOTC/siyuan-js-open-snippets-dialog@4e258dfbc92646e01e0c44a1ec7785bab51cd412",
