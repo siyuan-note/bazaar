@@ -7,7 +7,53 @@
       "openIssues": 2,
       "size": 137876,
       "installSize": 190434,
-      "package": null
+      "package": {
+        "name": "mouse-events-plugin",
+        "author": "wwxiaoqi",
+        "url": "https://github.com/wwxiaoqi/siyuan-mouse-events-plugin",
+        "version": "0.1.6",
+        "minAppVersion": "3.1.27",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "Mouse gesture plugin",
+          "zh_CN": "鼠标手势插件",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Use mouse gestures in the Siyuan Editor",
+          "zh_CN": "在思源编辑器中使用鼠标手势",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": []
+        },
+        "keywords": [
+          "mouse",
+          "鼠标",
+          "gesture",
+          "手势"
+        ]
+      }
     },
     {
       "url": "Glaube-TY/siyuan-empty-doc-cleaner@abb427fddaa2d8bde10fef49ba4362a6ed7f5543",
@@ -289,7 +335,58 @@
       "openIssues": 0,
       "size": 171471,
       "installSize": 226307,
-      "package": null
+      "package": {
+        "name": "siyuan-douban",
+        "author": "Glaube-TY",
+        "url": "https://github.com/Glaube-TY/siyuan-douban",
+        "version": "1.0.0",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "豆瓣书籍",
+          "en_US": "Douban Book"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "快速获取豆瓣书籍信息并导入书籍数据库",
+          "en_US": "Get book information from Douban and import it into the book database"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://cooperative-ferry-4dc.notion.site/SY-1e3c50d8b56c809bae91e6e059c87e82"
+          ]
+        },
+        "keywords": [
+          "豆瓣读书",
+          "douban",
+          "书籍",
+          "book"
+        ]
+      }
     },
     {
       "url": "chenxuan520/plugin-block-reminder@7fc7a63bf856a59ee8823bb03159f9fdab0f6d3c",
@@ -357,7 +454,41 @@
       "openIssues": 4,
       "size": 10159723,
       "installSize": 16677621,
-      "package": null
+      "package": {
+        "name": "siyuan-plugin-aether",
+        "author": "Asianfleet",
+        "url": "https://github.com/Asianfleet/siyuan-plugin-aether",
+        "version": "0.0.2-beta.4",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "frontends": [
+          "desktop"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "Aether（以太）",
+          "en_US": "Aether"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "侧边栏 AI 对话",
+          "en_US": "Sidebar AI Dialogue"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README.md",
+          "en_US": "README_en_US.md"
+        },
+        "funding": null,
+        "keywords": [
+          "ai",
+          "chat"
+        ]
+      }
     },
     {
       "url": "xstarling/sy-git-sync-plugin@5b326e789ef8ee29f84c31db158bba63c90cf6e2",
@@ -427,7 +558,56 @@
       "openIssues": 4,
       "size": 32417254,
       "installSize": 78659074,
-      "package": null
+      "package": {
+        "name": "siyuan-drawio-plugin",
+        "author": "cowboy",
+        "url": "https://github.com/zt8989/siyuan-drawio-plugin",
+        "version": "0.1.31",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android",
+          "harmony"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "思源Draw.io插件",
+          "en_US": "Siyuan Draw.io Plugin"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "Draw.io以插件形式集成到思源中",
+          "en_US": "Draw.io integrated as a plugin into Siyuan"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "plugin",
+          "drawio"
+        ]
+      }
     },
     {
       "url": "mm-o/siyuan-media-player@8182fbedaa5b4def94936b5bba217221214d3434",
@@ -896,7 +1076,51 @@
       "openIssues": 6,
       "size": 2282389,
       "installSize": 8726741,
-      "package": null
+      "package": {
+        "name": "nb-assistant",
+        "author": "jaar23",
+        "url": "https://github.com/jaar23/nb-assistant",
+        "version": "0.1.4-rc.5",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "笔记小助手",
+          "en_US": "Notebook Assistant"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "一个可以与你聊天以及做文本摘要的智能助手",
+          "en_US": "AI powered assistant for your notebook, you can chat with it or instruct it to tag your note, extract summary and so on."
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "ai",
+          "assistant",
+          "助手",
+          "auto-tag",
+          "summary",
+          "reasoning model",
+          "image generate"
+        ]
+      }
     },
     {
       "url": "suka233/siyuan-kmind-plugin@81eed06346fa265b4a3036d8cfb7c49adf1674b5",
@@ -1396,7 +1620,48 @@
       "openIssues": 3,
       "size": 46438,
       "installSize": 125997,
-      "package": null
+      "package": {
+        "name": "syplugin-dual-doc-list",
+        "author": "Misuzu2027",
+        "url": "https://github.com/Misuzu2027/syplugin-dual-doc-list",
+        "version": "0.0.19",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "二级文档列表",
+          "en_US": "Dual-Level Document List"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "二级文档列表",
+          "en_US": "Dual-Level Document List"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "document",
+          "tree",
+          "文档",
+          "搜索"
+        ]
+      }
     },
     {
       "url": "pablocpas/siyuan-karakeep@4dd27241286a6396608d503ed8b1ee6a60a26565",
@@ -1405,7 +1670,59 @@
       "openIssues": 0,
       "size": 1458865,
       "installSize": 1515886,
-      "package": null
+      "package": {
+        "name": "siyuan-karakeep",
+        "author": "Pablo Caño",
+        "url": "https://github.com/pablocpas/siyuan-karakeep",
+        "version": "0.5.0",
+        "minAppVersion": "3.1.27",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "Karakeep Sync",
+          "zh_CN": "Karakeep 同步",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Synchronize Karakeep bookmarks to SiYuan notebooks",
+          "zh_CN": "将 Karakeep 书签同步到思源笔记本",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://ld246.com/sponsor"
+          ]
+        },
+        "keywords": [
+          "karakeep",
+          "bookmark",
+          "sync",
+          "书签",
+          "同步"
+        ]
+      }
     },
     {
       "url": "function-fun/KoreaderNoteToSiYuan@322a7269b666704e8845af2d69451f0b8baa595c",
@@ -1414,7 +1731,57 @@
       "openIssues": 0,
       "size": 123938,
       "installSize": 142234,
-      "package": null
+      "package": {
+        "name": "KoreaderNoteToSiYuan",
+        "author": "FunctionFun",
+        "url": "https://github.com/function-fun/KoreaderNoteToSiYuan",
+        "version": "0.1.0",
+        "minAppVersion": "3.1.27",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "导入Koreader笔记",
+          "en_US": "KoreaderNoteToSiYuan"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "Koreader 标注笔记导入思源笔记",
+          "en_US": "Koreader Note To SiYuan"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "plugin",
+          "sample",
+          "插件样例"
+        ]
+      }
     },
     {
       "url": "HowcanoeWang/siyuan-plugin-background-cover@55d071ecb1e77cd323538a38c72020db10c4ca51",
@@ -1530,7 +1897,38 @@
       "openIssues": 0,
       "size": 264431,
       "installSize": 341412,
-      "package": null
+      "package": {
+        "name": "siyuan-plugin-simple-search-plus",
+        "author": "Ember_Sky",
+        "url": "https://github.com/Ember-Sky/siyuan-plugin-simple-search-plus",
+        "version": "0.2.2",
+        "minAppVersion": "2.11.4",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop"
+        ],
+        "displayName": {
+          "default": "Simple Search Plus",
+          "zh_CN": "简易搜索 Plus",
+          "en_US": ""
+        },
+        "description": {
+          "default": "更高效的搜索方式, 在 简易搜索v0.2.2 的基础上, 进行魔改",
+          "zh_CN": "更高效的搜索方式, 在 简易搜索v0.2.2 的基础上, 进行魔改",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README.md",
+          "en_US": ""
+        },
+        "funding": null,
+        "keywords": null
+      }
     },
     {
       "url": "2234839/univer-siyuan-plugin@f8bef1ca9dea121e910002be67b0a93dd699629a",
@@ -1830,7 +2228,28 @@
       "openIssues": 0,
       "size": 476941,
       "installSize": 546581,
-      "package": null
+      "package": {
+        "name": "siyuan-plugin-canvas",
+        "author": "B3000Kcn",
+        "url": "https://github.com/B3000Kcn/siyuan-plugin-canvas",
+        "version": "0.2.0",
+        "minAppVersion": "",
+        "backends": null,
+        "frontends": null,
+        "displayName": {
+          "default": "",
+          "zh_CN": "智能画布",
+          "en_US": "Smart Canvas"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "在思源笔记里像 GPT Canvas 和 Cursor 那样编写你的文档",
+          "en_US": "Write your documents in SiYuan Notes like using GPT Canvas and Cursor"
+        },
+        "readme": null,
+        "funding": null,
+        "keywords": null
+      }
     },
     {
       "url": "zxkmm/siyuan_outline_modification@7ce5830abf5a371061abdaa4b29b677ba4f22a63",
@@ -1839,7 +2258,62 @@
       "openIssues": 0,
       "size": 69214,
       "installSize": 114871,
-      "package": null
+      "package": {
+        "name": "siyuan_outline_compress",
+        "author": "zxkmm",
+        "url": "https://github.com/zxkmm/siyuan_outline_compress",
+        "version": "0.4.4",
+        "minAppVersion": "2.12.1",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "android",
+          "ios",
+          "docker",
+          "harmony"
+        ],
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "大纲自定义",
+          "en_US": "outline modify"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "提供多达20余项功能，包括 大纲显示级数调节/ 流动布局/ 缩进调节/ 隐藏气泡/ 屏蔽按钮/ 字体大小/ 鼠标悬浮/ 层级竖线/ 分割线/ 等等，完全自定义您的大纲",
+          "en_US": "provides up to 12 functions, including outline level tune/ flow layout/ indentation adjustment/ hide bubble/ shield button/ font size/ mouse hover, etc., to completely customize your document tree"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://pipe.b3log.org/blogs/zxkmm/articles/2025/02/08/1738993480704"
+          ]
+        },
+        "keywords": [
+          "大纲",
+          "压缩",
+          "自定义",
+          "compress",
+          "outline",
+          "modify",
+          "zxkmm",
+          "大纲压缩",
+          "大纲自定义",
+          "siyuan_outline_compress"
+        ]
+      }
     },
     {
       "url": "zxkmm/siyuan_database_landscape_scrollbar@5dd550a414be59ffd17b2256204a0cca63a08c31",
@@ -2067,7 +2541,47 @@
       "openIssues": 2,
       "size": 479736,
       "installSize": 545149,
-      "package": null
+      "package": {
+        "name": "siyuan-imageConverter",
+        "author": "c0nt1",
+        "url": "https://github.com/silent1189/siyuan-imageConverter",
+        "version": "0.0.8",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows"
+        ],
+        "frontends": [
+          "desktop"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "思源笔记-插入图片压缩转换",
+          "en_US": "siyuan-imageConverter"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "思源笔记-插入图片压缩转换",
+          "en_US": "siyuan-imageToWebp"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "webp",
+          "图片压缩",
+          "图片格式转换"
+        ]
+      }
     },
     {
       "url": "syh19/siyuan-plugin-task-list@9341b3b6d948240f5c2369d24932488bdef33b06",
@@ -2384,7 +2898,56 @@
       "openIssues": 2,
       "size": 98168,
       "installSize": 119352,
-      "package": null
+      "package": {
+        "name": "showtime-siyuan",
+        "author": "Sheld",
+        "url": "https://github.com/mcwz/showtime-siyuan",
+        "version": "0.3.0",
+        "minAppVersion": "3.1.24",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "Show Time",
+          "zh_CN": "显示块时间",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Show block update time",
+          "zh_CN": "此插件可以显示块修改时间，对笔记正文无任何污染。当鼠标移到内容块上时，左侧会显示当前块的修改时间。",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README_zh_CN.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "显示修改时间",
+          "显示块时间"
+        ]
+      }
     },
     {
       "url": "onemorework/SiyuanWechatSync@da3a7cef70f28e1a926f3df6d774d8945b3ffe80",
@@ -2774,7 +3337,51 @@
       "openIssues": 3,
       "size": 54149,
       "installSize": 79058,
-      "package": null
+      "package": {
+        "name": "siyuan-bullet-threading",
+        "author": "anarion80",
+        "url": "https://github.com/anarion80/siyuan-bullet-threading",
+        "version": "0.1.6",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "Bullet threading for lists",
+          "zh_CN": "",
+          "en_US": "Bullet threading for lists"
+        },
+        "description": {
+          "default": "A plugin that adds nice lines to nested list elements (bullets). Based on simliar plugin for LogSeq.",
+          "zh_CN": "",
+          "en_US": "A plugin that adds nice lines to nested list elements (bullets). Based on simliar plugin for LogSeq."
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "",
+          "en_US": "README.md"
+        },
+        "funding": null,
+        "keywords": [
+          "plugin",
+          "bullet",
+          "threading",
+          "nested",
+          "list"
+        ]
+      }
     },
     {
       "url": "zxkmm/siyuan_doctree_compress@3842721e46a144cfa9c1fdbbbeb5c4644a074bb1",
@@ -2847,7 +3454,58 @@
       "openIssues": 0,
       "size": 1395831,
       "installSize": 4351617,
-      "package": null
+      "package": {
+        "name": "sy-lively",
+        "author": "kuangdongksk",
+        "url": "https://github.com/kuangdongksk/sy-lively",
+        "version": "P0.2.5",
+        "minAppVersion": "3.0.18",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "喧嚣",
+          "en_US": "sy-lively"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "日程管理插件，同时提供简单的卡片功能",
+          "en_US": "Calendar management plugin"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.com/a/kuangdongksk",
+            "https://afdian.com/item/570e0312ce4d11efbad75254001e7c00"
+          ]
+        },
+        "keywords": [
+          "plugin",
+          "日程",
+          "日程管理",
+          "卡片"
+        ]
+      }
     },
     {
       "url": "frostime/sy-bookmark-plus@32f3c26a2a16866ff12e99197135ea2ae3498d27",
@@ -2909,7 +3567,53 @@
       "openIssues": 0,
       "size": 44099,
       "installSize": 119624,
-      "package": null
+      "package": {
+        "name": "syplugin-outlink-search",
+        "author": "Misuzu2027",
+        "url": "https://github.com/Misuzu2027/syplugin-outlink-search",
+        "version": "0.0.3",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "出链搜索",
+          "en_US": "Outgoing Links Search"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "可以查看和搜索当前文档中出链块及其子块包含的关键字",
+          "en_US": "可以查看和搜索当前文档中出链块及其子块包含的关键字"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": []
+      }
     },
     {
       "url": "dale0525/siyuan-auto-seq-number@6e07aeb6929b20a2c037791a4371386a0f6eb48e",
@@ -3110,7 +3814,57 @@
       "openIssues": 0,
       "size": 229224,
       "installSize": 264806,
-      "package": null
+      "package": {
+        "name": "siyuan-plugin-doctree-focus",
+        "author": "Achuan-2",
+        "url": "https://github.com/Achuan-2/siyuan-plugin-doctree-focus",
+        "version": "0.0.2",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "文档树聚焦",
+          "en_US": "siyuan-plugin-doctree-focus"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "聚焦文档树",
+          "en_US": "Focus on the document tree"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://www.yuque.com/achuan-2"
+          ]
+        },
+        "keywords": [
+          "doctree",
+          "文档树",
+          "focus",
+          "聚焦"
+        ]
+      }
     },
     {
       "url": "hqweay/siyuan-hqweay-go@59ce2f68b1d17846ee191d8319907f169e5257ef",
@@ -4223,7 +4977,57 @@
       "openIssues": 3,
       "size": 23183,
       "installSize": 42306,
-      "package": null
+      "package": {
+        "name": "ZenType",
+        "author": "寒Orz",
+        "url": "https://github.com/Han-Orz/siyuan-zen",
+        "version": "1.0.6",
+        "minAppVersion": "3.0.0",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "焦点写作",
+          "en_US": "balabala"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "聚焦当前行，打字机模式与顺滑光标",
+          "en_US": "balabala"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "禅",
+          "zen",
+          "打字机"
+        ]
+      }
     },
     {
       "url": "OpaqueGlass/syplugin-fakeDocBreadcrumb@6086a5b3fe637d5d2937c4265f833a477e337150",
@@ -4273,35 +5077,39 @@
       "openIssues": 2,
       "size": 79797,
       "installSize": 105351,
-      "package": null
-    },
-    {
-      "url": "OpaqueGlass/syplugin-hierarchyNavigate@f427b6a0868472244e221609f992fbcd1bd697a5",
-      "updated": "2025-02-01T09:28:30Z",
-      "stars": 13,
-      "openIssues": 3,
-      "size": 186571,
-      "installSize": 408509,
       "package": {
-        "name": "syplugin-hierarchyNavigate",
-        "author": "OpaqueGlass",
-        "url": "https://github.com/OpaqueGlass/syplugin-hierarchyNavigate",
-        "version": "1.5.2",
-        "minAppVersion": "",
-        "backends": null,
-        "frontends": null,
+        "name": "siyuan-database-display",
+        "author": "steve",
+        "url": "https://github.com/loonghfut/siyuan-database-display",
+        "version": "0.4.6",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
         "displayName": {
-          "default": "HierarchyNavigate",
-          "zh_CN": "文档层级导航",
-          "en_US": "HierarchyNavigate"
+          "default": "",
+          "zh_CN": "数据库数据展示",
+          "en_US": "Database Display"
         },
         "description": {
-          "default": "Insert doc-links under current doc title",
-          "zh_CN": "在标题下方显示上下层级文档链接",
-          "en_US": "Insert doc-links under current doc title"
+          "default": "",
+          "zh_CN": "显示块的数据库属性值，支持99%的块！",
+          "en_US": "Display the database properties of the block, support 99% of the blocks!"
         },
         "readme": {
-          "default": "README.md",
+          "default": "",
           "zh_CN": "README_zh_CN.md",
           "en_US": "README.md"
         },
@@ -4310,11 +5118,24 @@
           "patreon": "",
           "github": "",
           "custom": [
-            "https://wj.qq.com/s2/12395364/b69f/"
+            ""
           ]
         },
-        "keywords": null
+        "keywords": [
+          "plugin",
+          "show",
+          "database"
+        ]
       }
+    },
+    {
+      "url": "OpaqueGlass/syplugin-hierarchyNavigate@f427b6a0868472244e221609f992fbcd1bd697a5",
+      "updated": "2025-02-01T09:28:30Z",
+      "stars": 13,
+      "openIssues": 3,
+      "size": 186571,
+      "installSize": 408509,
+      "package": null
     },
     {
       "url": "Misuzu2027/syplugin-misuzu-custom@7df4496e01a34b74d172821d0243a053424faf03",
@@ -4418,7 +5239,65 @@
       "openIssues": 6,
       "size": 2883797,
       "installSize": 3149027,
-      "package": null
+      "package": {
+        "name": "siyuan-plugin-sidebar-widget",
+        "author": "wuchunlin",
+        "url": "https://github.com/wu1233456/siyuan-plugin-sidebar-widget",
+        "version": "1.0.0",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "侧边栏小组件",
+          "en_US": "siyuan-plugin-sidebar-widget"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "思源笔记侧边栏小组件库，给你的侧边栏加点有趣的东西",
+          "en_US": "siyuan-plugin-sidebar-widget"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "sidebar-widget",
+          "时钟",
+          "番茄钟",
+          "倒计时",
+          "习惯打卡",
+          "音乐播放器",
+          "日历",
+          "待办事项",
+          "最近文档",
+          "收藏夹",
+          "侧边栏小组件"
+        ]
+      }
     },
     {
       "url": "frostime/sy-line-height@cd7228b1c4af9a221dc0e10f8a4393fe87f1ef03",
@@ -4623,7 +5502,52 @@
       "openIssues": 12,
       "size": 439492,
       "installSize": 680828,
-      "package": null
+      "package": {
+        "name": "quick-notes",
+        "author": "wuchunlin",
+        "url": "https://github.com/wu1233456/quick-notes",
+        "version": "1.1.4",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "小记",
+          "en_US": "Quick Notes"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "类似于语雀中的小记",
+          "en_US": "Quick Recording function like that of Yuque."
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "quick",
+          "note",
+          "小记"
+        ]
+      }
     },
     {
       "url": "zxhd863943427/siyuan-plugin-math-enhance@2aa621a7eb25643a5ccb80975ec25f8a832dbef6",
@@ -5059,66 +5983,55 @@
       "openIssues": 8,
       "size": 84396,
       "installSize": 121809,
-      "package": null
-    },
-    {
-      "url": "frostime/sy-doc-context@7c4088c8b87399683bcc0ca6259798b61c37dd1c",
-      "updated": "2024-12-15T05:00:38Z",
-      "stars": 6,
-      "openIssues": 2,
-      "size": 150999,
-      "installSize": 187777,
       "package": {
-        "name": "sy-doc-context",
-        "author": "frostime",
-        "url": "https://github.com/frostime/sy-doc-context",
-        "version": "1.2.1",
-        "minAppVersion": "3.0.12",
+        "name": "siyuan-access-controller",
+        "author": "kuangdongksk",
+        "url": "https://github.com/kuangdongksk/siyuan-access-controller.git",
+        "version": "0.1.2",
+        "minAppVersion": "3.0.17",
         "backends": [
           "windows",
           "linux",
           "darwin",
-          "docker",
           "ios",
-          "android"
+          "android",
+          "docker"
         ],
         "frontends": [
           "desktop",
-          "mobile",
           "browser-desktop",
-          "browser-mobile",
           "desktop-window"
         ],
         "displayName": {
-          "default": "",
-          "zh_CN": "文档上下文",
-          "en_US": "Document Context"
+          "default": "access-controller",
+          "zh_CN": "访问控制",
+          "en_US": ""
         },
         "description": {
-          "default": "",
-          "zh_CN": "快速显示当前文档在文档树中的父文档、子文裆和同级文档等信息; 并使用快捷键进行快速跳转",
-          "en_US": "Quickly display the parent document, child document, and sibling document of the current document in the document tree. And use shortcut keys to quickly jump"
+          "default": "This is a access-controller",
+          "zh_CN": "这是一个访问控制插件，纯前端实现",
+          "en_US": ""
         },
         "readme": {
-          "default": "",
+          "default": "README.md",
           "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
+          "en_US": ""
         },
         "funding": {
           "openCollective": "",
           "patreon": "",
-          "github": "",
+          "github": "https://github.com/kuangdongksk",
           "custom": [
-            ""
+            "https://ld246.com/sponsor"
           ]
         },
         "keywords": [
-          "plugin",
-          "document",
-          "document tree",
-          "快捷键",
-          "shortcut",
-          "hotkey"
+          "访问控制",
+          "密码",
+          "加密",
+          "access-controller",
+          "password",
+          "encryption"
         ]
       }
     },
@@ -5181,7 +6094,57 @@
       "openIssues": 6,
       "size": 240002,
       "installSize": 352088,
-      "package": null
+      "package": {
+        "name": "siyuan-plugin-blockref-footnote",
+        "author": "Achuan-2",
+        "url": "https://github.com/Achuan-2/siyuan-plugin-blockref-footnote",
+        "version": "1.3.0",
+        "minAppVersion": "3.1.13",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "块引脚注",
+          "en_US": "FootnoteRef"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "使用思源的块引实现脚注和备注功能",
+          "en_US": "Use blockref to implement footnote and memo"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://www.yuque.com/achuan-2"
+          ]
+        },
+        "keywords": [
+          "脚注",
+          "Footnote",
+          "备注",
+          "Memo"
+        ]
+      }
     },
     {
       "url": "frostime/sy-run-js@25590d87274f3d922f59fc93a8309ecf3cb3fb56",
@@ -5296,7 +6259,60 @@
       "openIssues": 0,
       "size": 116365,
       "installSize": 178745,
-      "package": null
+      "package": {
+        "name": "siyuan-plugin-highlight-cloze",
+        "author": "Achuan-2",
+        "url": "https://github.com/Achuan-2/siyuan-plugin-highlight-cloze",
+        "version": "0.0.7",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "高亮挖空",
+          "en_US": "Highlight Cloze"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "点击顶栏按钮，隐藏/显示高亮文字",
+          "en_US": "Click the top bar button to hide/show the highlighted text"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://www.yuque.com/achuan-2"
+          ]
+        },
+        "keywords": [
+          "高亮",
+          "Mark",
+          "Highlight",
+          "学习",
+          "记忆",
+          "Learning",
+          "Memory"
+        ]
+      }
     },
     {
       "url": "Achuan-2/siyuan-plugin-childdoc-organizer@b34410c6588300a322670312e36eb4969200d326",
@@ -5305,7 +6321,61 @@
       "openIssues": 1,
       "size": 415932,
       "installSize": 546128,
-      "package": null
+      "package": {
+        "name": "siyuan-plugin-childdoc-organizer",
+        "author": "Achuan-2",
+        "url": "https://github.com/Achuan-2/siyuan-plugin-childdoc-organizer",
+        "version": "0.0.4",
+        "minAppVersion": "3.1.15",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "子文档整理",
+          "en_US": "ChildDoc Organizer"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "简化思源笔记子文档创建、子文档归档、子文档排序等步骤",
+          "en_US": "Simplify the steps of creating, archiving, and sorting child documents in SiYuan"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://www.yuque.com/achuan-2"
+          ]
+        },
+        "keywords": [
+          "sort",
+          "排序",
+          "块引",
+          "子文档",
+          "整理",
+          "block_ref",
+          "child_doc",
+          "organizer"
+        ]
+      }
     },
     {
       "url": "Zuoqiu-Yingyi/siyuan-plugin-custom-block@0b44cad3eee9ba9b171ec79aa7a791cb891d6e27",
@@ -5881,43 +6951,7 @@
       "openIssues": 4,
       "size": 73205,
       "installSize": 102655,
-      "package": {
-        "name": "sy-quick-attr",
-        "author": "frostime",
-        "url": "https://github.com/frostime/sy-quick-attr",
-        "version": "1.5.0",
-        "minAppVersion": "3.0.10",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "快速添加块属性",
-          "en_US": "Attribute Quick Add"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "快速为块添加预定义的属性",
-          "en_US": "SiYuan plugin sample with vite and svelte"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.net/a/frostime"
-          ]
-        },
-        "keywords": null
-      }
+      "package": null
     },
     {
       "url": "leolee9086/SACAssetsManager@3e3a4113c640ce83c68869eebfa200d4b16caa15",
@@ -6099,7 +7133,59 @@
       "openIssues": 0,
       "size": 165307,
       "installSize": 203778,
-      "package": null
+      "package": {
+        "name": "siyuan-graph",
+        "author": "DrEgg",
+        "url": "https://github.com/SteelDrEgg/siyuan-graph",
+        "version": "0.1.1",
+        "minAppVersion": "3.1.7",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "SiYuan Graphing",
+          "zh_CN": "思源绘图",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Vanilla math plotting plugin for SiYuan",
+          "zh_CN": "原生优先的思源数学绘图插件",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "https://github.com/SteelDrEgg",
+          "custom": []
+        },
+        "keywords": [
+          "Graphing",
+          "Math",
+          "Equation",
+          "Function",
+          "绘图",
+          "数学",
+          "公式",
+          "函数"
+        ]
+      }
     },
     {
       "url": "makediff/siyuan-wucai@ff318b01b1be0a719d6c9ac835a14e093ba3bc5e",
@@ -6724,7 +7810,49 @@
       "openIssues": 0,
       "size": 53353,
       "installSize": 66047,
-      "package": null
+      "package": {
+        "name": "siyuan_database_modification",
+        "author": "zxkmm",
+        "url": "https://github.com/zxkmm/siyuan_database_modification",
+        "version": "0.0.3",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "数据库方便点击",
+          "en_US": "siyuan_database_modification"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "数据库方便点击链接等单元格",
+          "en_US": "siyuan_database_modification"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "zxkmm",
+          "database",
+          "touchscreen",
+          "数据库",
+          "触屏"
+        ]
+      }
     },
     {
       "url": "zxkmm/siyuan_global_zoom@2ebf5da3c2dc53b40bcd2ca85c6cd913772cdbd6",
@@ -6794,43 +7922,7 @@
       "openIssues": 1,
       "size": 36066,
       "installSize": 64048,
-      "package": {
-        "name": "sy-insert-time",
-        "author": "frostime",
-        "url": "https://github.com/frostime/sy-insert-time",
-        "version": "3.0.0",
-        "minAppVersion": "3.0.12",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "插入时间",
-          "en_US": "Insert time"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "在编辑器中快速插入当前的时间",
-          "en_US": "Insert current time in editor"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.net/a/frostime"
-          ]
-        },
-        "keywords": null
-      }
+      "package": null
     },
     {
       "url": "jzmanu/siyuan-icon-tools@d316f8084863233ca1a187d29885a941eb51a15f",
@@ -10870,44 +11962,7 @@
       "openIssues": 0,
       "size": 609208,
       "installSize": 1364004,
-      "package": {
-        "name": "opencc",
-        "author": "Zuoqiu Yingyi",
-        "url": "https://github.com/Zuoqiu-Yingyi/siyuan-plugin-opencc",
-        "version": "0.1.0",
-        "minAppVersion": "2.9.5",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "Chinese Convert",
-          "zh_CN": "中文转换",
-          "en_US": ""
-        },
-        "description": {
-          "default": "\u003ca href=\"https://github.com/BYVoid/OpenCC\" rel=\"nofollow\"\u003eOpen Chinese Convert (OpenCC)\u003c/a\u003e is an opensource project for conversions between Traditional Chinese, Simplified Chinese and Japanese Kanji (Shinjitai). It supports character-level and phrase-level conversion, character variant conversion and regional idioms among Mainland China, Taiwan and Hong Kong. This is not translation tool between Mandarin and Cantonese, etc.",
-          "zh_CN": "\u003ca href=\"https://github.com/BYVoid/OpenCC\" rel=\"nofollow\"\u003e开放中文转换 (Open Chinese Convert, OpenCC)\u003c/a\u003e是一个中文简繁转换开源项目，支持词汇级别的转换、异体字转换和地区习惯用词转换（中国大陆、台湾、香港、日本新字体）。不提供普通话与粤语的转换。",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.net/a/zuoqiu",
-            "https://ko-fi.com/zuoqiu"
-          ]
-        },
-        "keywords": null
-      }
+      "package": null
     },
     {
       "url": "zxhd863943427/siyuan-plugin-block-history@5579cf675f5655bd549b12c777cd80db0000cb3e",
