@@ -287,7 +287,46 @@
       "openIssues": 11,
       "size": 3038800,
       "installSize": 6077400,
-      "package": null
+      "package": {
+        "name": "siyuan-steve-tools",
+        "author": "steve",
+        "url": "https://github.com/loonghfut/siyuan-steve-tools",
+        "version": "0.8.10",
+        "minAppVersion": "3.0.13",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "STtools",
+          "en_US": "STtools"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "日程管理（基于数据库的看板视图和日历视图）, docker同步感知, ai侧边栏, 图片压缩，画板",
+          "en_US": "schedule management, docker sync awareness, ai sidebar"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "plugin",
+          "tools"
+        ]
+      }
     },
     {
       "url": "Glaube-TY/siyuan-douban@4a639f4d9e3c1e0ec61c61335f47005cd0b09c3f",
@@ -1184,7 +1223,61 @@
       "openIssues": 1,
       "size": 78991,
       "installSize": 110159,
-      "package": null
+      "package": {
+        "name": "better-sync",
+        "author": "DD3Boh",
+        "url": "https://github.com/DD3Boh/better-sync-siyuan",
+        "version": "1.0.1",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "更好同步",
+          "en_US": "Better sync"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "一个让 SiYuan 实例之间同步更简单、更快的插件。",
+          "en_US": "A plugin to make sync between SiYuan instances easier and faster."
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://www.paypal.me/DD3Boh"
+          ]
+        },
+        "keywords": [
+          "sync",
+          "peer",
+          "peer-to-peer",
+          "server",
+          "同步",
+          "点对点",
+          "服务器"
+        ]
+      }
     },
     {
       "url": "Lizhen0628/siyuan-ai@440b1c4a05258c5d6a0980d3170ae57fd048ca10",
@@ -2229,7 +2322,59 @@
       "openIssues": 1,
       "size": 195953,
       "installSize": 397424,
-      "package": null
+      "package": {
+        "name": "siyuan_database_landscape_scrollbar",
+        "author": "zxkmm",
+        "url": "https://github.com/zxkmm/siyuan_database_landscape_scrollbar",
+        "version": "1.1.0",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "块级横向滚动条",
+          "en_US": "Block Landscape Scrollbar"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "给超过屏幕宽度和高度的块添加横向滚动条，免去你需要滚动到块的底部才能用滚动条的麻烦",
+          "en_US": "Add horizontal scrollbar to blocks that exceed the screen width, saving you the trouble of scrolling to the bottom and then scrolling back"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://pipe.b3log.org/blogs/zxkmm/articles/2025/02/08/1738993480704"
+          ]
+        },
+        "keywords": [
+          "plugin",
+          "database",
+          "code block",
+          "scrollbar",
+          "数据库",
+          "代码块",
+          "滚动条"
+        ]
+      }
     },
     {
       "url": "OpaqueGlass/syplugin-doubleClickFileTree@b4a9068a15d71f9d429a2a15e5a71ca4ffe77b67",
@@ -5527,43 +5672,7 @@
       "openIssues": 8,
       "size": 201004,
       "installSize": 234592,
-      "package": {
-        "name": "siyuan-plugin-sidebar-memo",
-        "author": "WingDr",
-        "url": "https://github.com/WingDr/siyuan-plugin-sidebar-memo",
-        "version": "0.2.4",
-        "minAppVersion": "2.10.0",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop"
-        ],
-        "displayName": {
-          "default": "Sidebar Memo",
-          "zh_CN": "侧边备注",
-          "en_US": ""
-        },
-        "description": {
-          "default": "Show the memos on the side of editor.",
-          "zh_CN": "让备注在编辑器侧边展开显示",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": null
-        },
-        "keywords": null
-      }
+      "package": null
     },
     {
       "url": "zxkmm/siyuan_mobile_marketplace@20d6afb673d9be8bd0e587952c3cede1590c48de",
@@ -7280,7 +7389,43 @@
       "openIssues": 0,
       "size": 70319,
       "installSize": 88520,
-      "package": null
+      "package": {
+        "name": "sy-theme-change",
+        "author": "frostime",
+        "url": "https://github.com/frostime/sy-theme-change",
+        "version": "0.3.0",
+        "minAppVersion": "3.1.8",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "切换主题",
+          "en_US": "Theme Change"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "一年逛两次海澜之家, 思源的衣柜 ～(￣▽￣～)(～￣▽￣)～",
+          "en_US": "Quickly change the theme of SiYuan"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/frostime"
+          ]
+        },
+        "keywords": null
+      }
     },
     {
       "url": "loonghfut/siyuan-link@36aec260b9d015043e2e97b492c26b582995c672",
@@ -7748,6 +7893,57 @@
           "remove",
           "hide",
           "隐私模式"
+        ]
+      }
+    },
+    {
+      "url": "zxkmm/siyuan_database_modification@56eb1960743550b71eefbc9582fb9beebab13fc6",
+      "updated": "2024-08-30T04:08:51Z",
+      "stars": 13,
+      "openIssues": 0,
+      "size": 53353,
+      "installSize": 66047,
+      "package": {
+        "name": "siyuan_database_modification",
+        "author": "zxkmm",
+        "url": "https://github.com/zxkmm/siyuan_database_modification",
+        "version": "0.0.3",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "数据库方便点击",
+          "en_US": "siyuan_database_modification"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "数据库方便点击链接等单元格",
+          "en_US": "siyuan_database_modification"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "zxkmm",
+          "database",
+          "touchscreen",
+          "数据库",
+          "触屏"
         ]
       }
     },
@@ -9026,59 +9222,6 @@
       }
     },
     {
-      "url": "LinuaBio/GeogebraE@e9064dfe3d02812fd72ffb19206fb237a5cc3bbd",
-      "updated": "2024-04-24T12:43:12Z",
-      "stars": 4,
-      "openIssues": 1,
-      "size": 7214500,
-      "installSize": 21871927,
-      "package": {
-        "name": "GeogebraE",
-        "author": "Neurocylcq",
-        "url": "https://github.com/LinuaBio/GeogebraE",
-        "version": "0.0.9",
-        "minAppVersion": "3.0.0",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "Geogebra嵌入程序",
-          "en_US": "Geogebra For SiYuan"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "让你在思源笔记中使用Geogebra",
-          "en_US": "Use Geogebra in Si-yuan note"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": []
-        },
-        "keywords": [
-          "geogebra"
-        ]
-      }
-    },
-    {
       "url": "Zuoqiu-Yingyi/siyuan-plugin-typewriter@cbc6ec85d42567ad5db1df67007f669ba478a339",
       "updated": "2024-04-20T11:47:14Z",
       "stars": 3,
@@ -9274,48 +9417,7 @@
       "openIssues": 16,
       "size": 268817,
       "installSize": 667729,
-      "package": {
-        "name": "arco-calendar",
-        "author": "svchord",
-        "url": "https://github.com/svchord/siyuan-arco-calendar",
-        "version": "1.5.0",
-        "minAppVersion": "2.11.1",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "日历面板",
-          "en_US": "Calendar Panel"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "日历面板上快速新建或转到日记",
-          "en_US": "Quickly create a new or go to diary on the calendar panel"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README.md",
-          "en_US": "README_en_US.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.net/a/sevenchord"
-          ]
-        },
-        "keywords": [
-          "calendar",
-          "日历",
-          "日记",
-          "daily"
-        ]
-      }
+      "package": null
     },
     {
       "url": "Zuoqiu-Yingyi/siyuan-plugin-wakatime@20572b49bd184572571f4c58364b037a34638dd1",
@@ -12471,39 +12573,7 @@
       "openIssues": 5,
       "size": 330849,
       "installSize": 572842,
-      "package": {
-        "name": "quickSnippets",
-        "author": "椽承设计",
-        "url": "https://github.com/leolee9086/quickSnippets",
-        "version": "0.0.2",
-        "minAppVersion": "",
-        "backends": null,
-        "frontends": null,
-        "displayName": {
-          "default": "quickSnippets",
-          "zh_CN": "quickSnippets",
-          "en_US": ""
-        },
-        "description": {
-          "default": "This is a plugin add quick swtichs for snippets",
-          "zh_CN": "这就一个用于快速开关代码片段的插件，如果你不怎么用代码片段可能你就不需要它",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README.md",
-          "en_US": "README_en_US.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.net/a/leolee9086"
-          ]
-        },
-        "keywords": null
-      }
+      "package": null
     },
     {
       "url": "leolee9086/browserTab@9e761bab9511c98f2e899d57ffe3f2a40b3e258c",
