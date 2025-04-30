@@ -284,7 +284,7 @@
       "url": "loonghfut/siyuan-steve-tools@d74a621c3fedc7bc69a3a848a9485e1a1526869a",
       "updated": "2025-04-29T04:25:41Z",
       "stars": 35,
-      "openIssues": 11,
+      "openIssues": 12,
       "size": 3038800,
       "installSize": 6077400,
       "package": {
@@ -3139,17 +3139,17 @@
       }
     },
     {
-      "url": "2234839/vite-plugin-siyuan@9be1d697508b622a69111c8b74938ce4d2069dce",
+      "url": "2234839/siyuan_audio2text@4f30d850555b43d0416c291468bdc19d059d18f4",
       "updated": "2025-03-16T07:20:02Z",
-      "stars": 0,
+      "stars": 1,
       "openIssues": 0,
-      "size": 45720,
-      "installSize": 56668,
+      "size": 35120,
+      "installSize": 50576,
       "package": {
-        "name": "vite-plugin-siyuan",
+        "name": "audio2text_plugin_siyuan",
         "author": "崮生",
-        "url": "https://github.com/2234839/vite-plugin-siyuan",
-        "version": "0.0.26",
+        "url": "https://github.com/2234839/siyuan_audio2text",
+        "version": "0.0.12",
         "minAppVersion": "2.10.3",
         "backends": [
           "all"
@@ -3159,8 +3159,8 @@
         ],
         "displayName": {
           "default": "",
-          "zh_CN": "vite-plugin-siyuan",
-          "en_US": "vite-plugin-siyuan"
+          "zh_CN": "audio2text_plugin_siyuan",
+          "en_US": "audio2text_plugin_siyuan"
         },
         "description": {
           "default": "",
@@ -3184,17 +3184,17 @@
       }
     },
     {
-      "url": "2234839/siyuan_audio2text@4f30d850555b43d0416c291468bdc19d059d18f4",
+      "url": "2234839/vite-plugin-siyuan@9be1d697508b622a69111c8b74938ce4d2069dce",
       "updated": "2025-03-16T07:20:02Z",
-      "stars": 1,
+      "stars": 0,
       "openIssues": 0,
-      "size": 35120,
-      "installSize": 50576,
+      "size": 45720,
+      "installSize": 56668,
       "package": {
-        "name": "audio2text_plugin_siyuan",
+        "name": "vite-plugin-siyuan",
         "author": "崮生",
-        "url": "https://github.com/2234839/siyuan_audio2text",
-        "version": "0.0.12",
+        "url": "https://github.com/2234839/vite-plugin-siyuan",
+        "version": "0.0.26",
         "minAppVersion": "2.10.3",
         "backends": [
           "all"
@@ -3204,8 +3204,8 @@
         ],
         "displayName": {
           "default": "",
-          "zh_CN": "audio2text_plugin_siyuan",
-          "en_US": "audio2text_plugin_siyuan"
+          "zh_CN": "vite-plugin-siyuan",
+          "en_US": "vite-plugin-siyuan"
         },
         "description": {
           "default": "",
@@ -5672,7 +5672,43 @@
       "openIssues": 8,
       "size": 201004,
       "installSize": 234592,
-      "package": null
+      "package": {
+        "name": "siyuan-plugin-sidebar-memo",
+        "author": "WingDr",
+        "url": "https://github.com/WingDr/siyuan-plugin-sidebar-memo",
+        "version": "0.2.4",
+        "minAppVersion": "2.10.0",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop"
+        ],
+        "displayName": {
+          "default": "Sidebar Memo",
+          "zh_CN": "侧边备注",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Show the memos on the side of editor.",
+          "zh_CN": "让备注在编辑器侧边展开显示",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": null
+        },
+        "keywords": null
+      }
     },
     {
       "url": "zxkmm/siyuan_mobile_marketplace@20d6afb673d9be8bd0e587952c3cede1590c48de",
@@ -9222,6 +9258,15 @@
       }
     },
     {
+      "url": "LinuaBio/GeogebraE@e9064dfe3d02812fd72ffb19206fb237a5cc3bbd",
+      "updated": "2024-04-24T12:43:12Z",
+      "stars": 4,
+      "openIssues": 1,
+      "size": 7214500,
+      "installSize": 21871927,
+      "package": null
+    },
+    {
       "url": "Zuoqiu-Yingyi/siyuan-plugin-typewriter@cbc6ec85d42567ad5db1df67007f669ba478a339",
       "updated": "2024-04-20T11:47:14Z",
       "stars": 3,
@@ -9417,7 +9462,48 @@
       "openIssues": 16,
       "size": 268817,
       "installSize": 667729,
-      "package": null
+      "package": {
+        "name": "arco-calendar",
+        "author": "svchord",
+        "url": "https://github.com/svchord/siyuan-arco-calendar",
+        "version": "1.5.0",
+        "minAppVersion": "2.11.1",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "日历面板",
+          "en_US": "Calendar Panel"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "日历面板上快速新建或转到日记",
+          "en_US": "Quickly create a new or go to diary on the calendar panel"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README.md",
+          "en_US": "README_en_US.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/sevenchord"
+          ]
+        },
+        "keywords": [
+          "calendar",
+          "日历",
+          "日记",
+          "daily"
+        ]
+      }
     },
     {
       "url": "Zuoqiu-Yingyi/siyuan-plugin-wakatime@20572b49bd184572571f4c58364b037a34638dd1",
@@ -11435,52 +11521,6 @@
       }
     },
     {
-      "url": "muhanstudio/siyuan-homepage@d668840bff629e90df9a64a8ebdc544fc688784e",
-      "updated": "2023-11-18T06:53:39Z",
-      "stars": 1,
-      "openIssues": 6,
-      "size": 15337,
-      "installSize": 32729,
-      "package": {
-        "name": "homepage",
-        "author": "muhanstudio",
-        "url": "https://github.com/muhanstudio/siyuan-homepage",
-        "version": "0.3.0",
-        "minAppVersion": "2.10.10",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "homepage",
-          "zh_CN": "首页",
-          "en_US": ""
-        },
-        "description": {
-          "default": "homepage",
-          "zh_CN": "首页",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": []
-        },
-        "keywords": [
-          "homepage",
-          "首页"
-        ]
-      }
-    },
-    {
       "url": "zuoez02/siyuan-plugin-epub-reader@161476a7b7a16175c16a3aa6251e4afe80315b81",
       "updated": "2023-11-18T03:47:09Z",
       "stars": 2,
@@ -12573,7 +12613,39 @@
       "openIssues": 5,
       "size": 330849,
       "installSize": 572842,
-      "package": null
+      "package": {
+        "name": "quickSnippets",
+        "author": "椽承设计",
+        "url": "https://github.com/leolee9086/quickSnippets",
+        "version": "0.0.2",
+        "minAppVersion": "",
+        "backends": null,
+        "frontends": null,
+        "displayName": {
+          "default": "quickSnippets",
+          "zh_CN": "quickSnippets",
+          "en_US": ""
+        },
+        "description": {
+          "default": "This is a plugin add quick swtichs for snippets",
+          "zh_CN": "这就一个用于快速开关代码片段的插件，如果你不怎么用代码片段可能你就不需要它",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README.md",
+          "en_US": "README_en_US.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/leolee9086"
+          ]
+        },
+        "keywords": null
+      }
     },
     {
       "url": "leolee9086/browserTab@9e761bab9511c98f2e899d57ffe3f2a40b3e258c",
