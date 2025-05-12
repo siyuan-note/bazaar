@@ -56,8 +56,8 @@ func isKeyInSet(
 	return
 }
 
-// isValieName 判断资源名称是否有效
-func isValieName(name string) (valid bool) {
+// isValidName 判断资源名称是否有效
+func isValidName(name string) (valid bool) {
 	var err error
 
 	// 是否为空字符串
