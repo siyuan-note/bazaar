@@ -264,7 +264,7 @@ func checkRepo(
 			attrsCheckResult.Name.Valid = isValidName(attrsCheckResult.Name.Value)
 			if attrsCheckResult.Name.Valid {
 				// name 必须和 repo name 一致
-				attrsCheckResult.Name.Valid = attrsCheckResult.Name.Value != repoName
+				attrsCheckResult.Name.Valid = attrsCheckResult.Name.Value == repoName
 			}
 
 			// 唯一性检查
