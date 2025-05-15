@@ -1247,7 +1247,45 @@
       "openIssues": 1,
       "size": 654340,
       "installSize": 1094679,
-      "package": null
+      "package": {
+        "name": "plugin-memos-sync-helper",
+        "author": "Yimien",
+        "url": "https://github.com/Yimien/plugin-memos-sync-helper",
+        "version": "0.2.15",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "Memos 同步助手",
+          "en_US": "Memos Sync Assistant"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "将 Memos 的数据同步至思源笔记中",
+          "en_US": "Sync Memos data to SiYuan"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": []
+        },
+        "keywords": [
+          "Memos",
+          "同步",
+          "Sync"
+        ]
+      }
     },
     {
       "url": "zxkmm/siyuan_main_window_modification@e4c7c52986be5728550fbee008f225b656de9c60",
@@ -1310,7 +1348,53 @@
       "openIssues": 0,
       "size": 35209,
       "installSize": 79290,
-      "package": null
+      "package": {
+        "name": "syplugin-image-pin-preview",
+        "author": "Misuzu2027",
+        "url": "https://github.com/Misuzu2027/syplugin-image-pin-preview",
+        "version": "0.0.6",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "图片悬浮预览",
+          "en_US": "Image Pin Preview"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "替代原生图片查看功能，让图片支持悬浮预览",
+          "en_US": "替代原生图片查看功能，让图片支持悬浮预览"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": []
+      }
     },
     {
       "url": "wwxiaoqi/siyuan-mouse-events-plugin@69ecd1412243f9efd25574fc2debbc8bc469db94",
@@ -3616,17 +3700,17 @@
       }
     },
     {
-      "url": "2234839/vite-plugin-siyuan@9be1d697508b622a69111c8b74938ce4d2069dce",
+      "url": "2234839/siyuan_audio2text@4f30d850555b43d0416c291468bdc19d059d18f4",
       "updated": "2025-03-16T07:20:02Z",
-      "stars": 0,
+      "stars": 1,
       "openIssues": 0,
-      "size": 45720,
-      "installSize": 56668,
+      "size": 35120,
+      "installSize": 50576,
       "package": {
-        "name": "vite-plugin-siyuan",
+        "name": "audio2text_plugin_siyuan",
         "author": "崮生",
-        "url": "https://github.com/2234839/vite-plugin-siyuan",
-        "version": "0.0.26",
+        "url": "https://github.com/2234839/siyuan_audio2text",
+        "version": "0.0.12",
         "minAppVersion": "2.10.3",
         "backends": [
           "all"
@@ -3636,8 +3720,8 @@
         ],
         "displayName": {
           "default": "",
-          "zh_CN": "vite-plugin-siyuan",
-          "en_US": "vite-plugin-siyuan"
+          "zh_CN": "audio2text_plugin_siyuan",
+          "en_US": "audio2text_plugin_siyuan"
         },
         "description": {
           "default": "",
@@ -3661,17 +3745,17 @@
       }
     },
     {
-      "url": "2234839/siyuan_audio2text@4f30d850555b43d0416c291468bdc19d059d18f4",
+      "url": "2234839/vite-plugin-siyuan@9be1d697508b622a69111c8b74938ce4d2069dce",
       "updated": "2025-03-16T07:20:02Z",
-      "stars": 1,
+      "stars": 0,
       "openIssues": 0,
-      "size": 35120,
-      "installSize": 50576,
+      "size": 45720,
+      "installSize": 56668,
       "package": {
-        "name": "audio2text_plugin_siyuan",
+        "name": "vite-plugin-siyuan",
         "author": "崮生",
-        "url": "https://github.com/2234839/siyuan_audio2text",
-        "version": "0.0.12",
+        "url": "https://github.com/2234839/vite-plugin-siyuan",
+        "version": "0.0.26",
         "minAppVersion": "2.10.3",
         "backends": [
           "all"
@@ -3681,8 +3765,8 @@
         ],
         "displayName": {
           "default": "",
-          "zh_CN": "audio2text_plugin_siyuan",
-          "en_US": "audio2text_plugin_siyuan"
+          "zh_CN": "vite-plugin-siyuan",
+          "en_US": "vite-plugin-siyuan"
         },
         "description": {
           "default": "",
@@ -4942,7 +5026,54 @@
       "openIssues": 7,
       "size": 205796,
       "installSize": 691062,
-      "package": null
+      "package": {
+        "name": "siyuan-ext-importer",
+        "author": "Akkuman",
+        "url": "https://github.com/Akkuman/siyuan-ext-importer",
+        "version": "1.1.2",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android"
+        ],
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "Notion 数据导入",
+          "en_US": "Notion Importer"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "将notion数据导入思源",
+          "en_US": "import notion data to siyuan"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "plugin",
+          "import",
+          "notion"
+        ]
+      }
     },
     {
       "url": "loonghfut/siyuan-alist@121998323c4b6ec7cd487944c25433dd870d21b2",
@@ -7636,7 +7767,52 @@
       "openIssues": 2,
       "size": 434814,
       "installSize": 540765,
-      "package": null
+      "package": {
+        "name": "siyuan-link",
+        "author": "steve",
+        "url": "https://github.com/loonghfut/siyuan-link",
+        "version": "0.2.7",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "连接互传",
+          "en_US": "link notes"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "思源笔记服务之间的数据传输(alist)(主要用于连接本地版和docker版的思源笔记)",
+          "en_US": "This plugin allows you to transfer data between siyuan-local and siyuan-docker"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "plugin",
+          "sample",
+          "连接互传",
+          "docker"
+        ]
+      }
     },
     {
       "url": "zuoez02/siyuan-plugin-webview-flomo@3ce7bb23bc753396477426b7f441a33c3f71f852",
@@ -10046,7 +10222,51 @@
       "openIssues": 1,
       "size": 144913,
       "installSize": 186916,
-      "package": null
+      "package": {
+        "name": "plugin-boardmix",
+        "author": "winter60",
+        "url": "https://github.com/winter60/plugin-boardmix",
+        "version": "0.0.3",
+        "minAppVersion": "3.0.1",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "博思白板",
+          "en_US": "Plugin boardmix"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "博思白板",
+          "en_US": "Plugin boardmix"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/firework"
+          ]
+        },
+        "keywords": [
+          "boardmix",
+          "博思",
+          "白板",
+          "whiteboard"
+        ]
+      }
     },
     {
       "url": "leolee9086/quickRefactor@cf9d9a8cc230bfce84fe8af7573d27aef5e3fb50",
@@ -10158,7 +10378,56 @@
       "openIssues": 0,
       "size": 140394,
       "installSize": 547129,
-      "package": null
+      "package": {
+        "name": "SACCompiler",
+        "author": "椽承设计",
+        "url": "https://github.com/leolee9086/SACCompiler",
+        "version": "0.0.3",
+        "minAppVersion": "3.0.0",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "SACCompiler",
+          "zh_CN": "SAC代码工具箱",
+          "en_US": ""
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "这是一个用于解析笔记成各种形式内容的插件，例如代码片段和AI的提示词,设计用于方便编写和分享代码片段",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://ld246.com/sponsor"
+          ]
+        },
+        "keywords": [
+          "SAC",
+          "代码片段",
+          "js",
+          "snippets"
+        ]
+      }
     },
     {
       "url": "shenjinglei/siyuan-plugin-graph-enhance@7993142b9db9de0f3cd0b6753adafca7a1e10bec",
@@ -10845,7 +11114,49 @@
       "openIssues": 1,
       "size": 121335,
       "installSize": 371083,
-      "package": null
+      "package": {
+        "name": "sy-insert-weather",
+        "author": "owlright",
+        "url": "https://github.com/owlright/sy-insert-weather",
+        "version": "0.0.1",
+        "minAppVersion": "2.12.3",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "Insert current weather",
+          "zh_CN": "插入天气",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Insert the weather based on current time and location",
+          "zh_CN": "插入当前时间当前位置的天气",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://github.com/owlright"
+          ]
+        },
+        "keywords": [
+          "weather",
+          "天气"
+        ]
+      }
     },
     {
       "url": "leolee9086/themeEditor@f8f270e03840cd18872e5357c734c56f07cae366",
