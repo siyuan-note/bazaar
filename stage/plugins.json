@@ -124,63 +124,7 @@
       "openIssues": 1,
       "size": 174474,
       "installSize": 238189,
-      "package": {
-        "name": "siyuan-douban",
-        "author": "Glaube-TY",
-        "url": "https://github.com/Glaube-TY/siyuan-douban",
-        "version": "1.2.0",
-        "minAppVersion": "3.0.12",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "豆瓣书籍",
-          "en_US": "Douban Book"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "快速获取豆瓣书籍信息导入书籍数据库，并可通过自定义模板生成读书笔记",
-          "en_US": "Get book information from Douban and import it into the book database"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://cooperative-ferry-4dc.notion.site/SY-1e3c50d8b56c809bae91e6e059c87e82"
-          ]
-        },
-        "keywords": [
-          "豆瓣读书",
-          "douban",
-          "书籍",
-          "book",
-          "读书笔记",
-          "笔记",
-          "read",
-          "note",
-          "booknote"
-        ]
-      }
+      "package": null
     },
     {
       "url": "frostime/sy-f-misc@7feeb86c187c6c2e4dd1252597ec08b62b71c2dd",
@@ -3700,17 +3644,17 @@
       }
     },
     {
-      "url": "2234839/vite-plugin-siyuan@9be1d697508b622a69111c8b74938ce4d2069dce",
+      "url": "2234839/siyuan_audio2text@4f30d850555b43d0416c291468bdc19d059d18f4",
       "updated": "2025-03-16T07:20:02Z",
-      "stars": 0,
+      "stars": 1,
       "openIssues": 0,
-      "size": 45720,
-      "installSize": 56668,
+      "size": 35120,
+      "installSize": 50576,
       "package": {
-        "name": "vite-plugin-siyuan",
+        "name": "audio2text_plugin_siyuan",
         "author": "崮生",
-        "url": "https://github.com/2234839/vite-plugin-siyuan",
-        "version": "0.0.26",
+        "url": "https://github.com/2234839/siyuan_audio2text",
+        "version": "0.0.12",
         "minAppVersion": "2.10.3",
         "backends": [
           "all"
@@ -3720,8 +3664,8 @@
         ],
         "displayName": {
           "default": "",
-          "zh_CN": "vite-plugin-siyuan",
-          "en_US": "vite-plugin-siyuan"
+          "zh_CN": "audio2text_plugin_siyuan",
+          "en_US": "audio2text_plugin_siyuan"
         },
         "description": {
           "default": "",
@@ -3745,17 +3689,17 @@
       }
     },
     {
-      "url": "2234839/siyuan_audio2text@4f30d850555b43d0416c291468bdc19d059d18f4",
+      "url": "2234839/vite-plugin-siyuan@9be1d697508b622a69111c8b74938ce4d2069dce",
       "updated": "2025-03-16T07:20:02Z",
-      "stars": 1,
+      "stars": 0,
       "openIssues": 0,
-      "size": 35120,
-      "installSize": 50576,
+      "size": 45720,
+      "installSize": 56668,
       "package": {
-        "name": "audio2text_plugin_siyuan",
+        "name": "vite-plugin-siyuan",
         "author": "崮生",
-        "url": "https://github.com/2234839/siyuan_audio2text",
-        "version": "0.0.12",
+        "url": "https://github.com/2234839/vite-plugin-siyuan",
+        "version": "0.0.26",
         "minAppVersion": "2.10.3",
         "backends": [
           "all"
@@ -3765,8 +3709,8 @@
         ],
         "displayName": {
           "default": "",
-          "zh_CN": "audio2text_plugin_siyuan",
-          "en_US": "audio2text_plugin_siyuan"
+          "zh_CN": "vite-plugin-siyuan",
+          "en_US": "vite-plugin-siyuan"
         },
         "description": {
           "default": "",
@@ -6371,7 +6315,59 @@
       "openIssues": 2,
       "size": 150999,
       "installSize": 187777,
-      "package": null
+      "package": {
+        "name": "sy-doc-context",
+        "author": "frostime",
+        "url": "https://github.com/frostime/sy-doc-context",
+        "version": "1.2.1",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "文档上下文",
+          "en_US": "Document Context"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "快速显示当前文档在文档树中的父文档、子文裆和同级文档等信息; 并使用快捷键进行快速跳转",
+          "en_US": "Quickly display the parent document, child document, and sibling document of the current document in the document tree. And use shortcut keys to quickly jump"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "plugin",
+          "document",
+          "document tree",
+          "快捷键",
+          "shortcut",
+          "hotkey"
+        ]
+      }
     },
     {
       "url": "springtwr/siyuan-code-tabs@e8e143d27a0d796ffe80f9b97515499a102027a3",
@@ -9203,7 +9199,39 @@
       "openIssues": 2,
       "size": 91507,
       "installSize": 132970,
-      "package": null
+      "package": {
+        "name": "siyuan-center-width",
+        "author": "frostime",
+        "url": "https://github.com/frostime/siyuan-center-width",
+        "version": "2.0.0",
+        "minAppVersion": "3.0.12",
+        "backends": null,
+        "frontends": null,
+        "displayName": {
+          "default": "编辑器宽度",
+          "zh_CN": "编辑器宽度",
+          "en_US": "Center Editor Width"
+        },
+        "description": {
+          "default": "调节编辑器的宽度",
+          "zh_CN": "调节编辑器的宽度",
+          "en_US": "Change the width of center editor"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README.md",
+          "en_US": "README_en_US.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/frostime"
+          ]
+        },
+        "keywords": null
+      }
     },
     {
       "url": "vanchKong/layout-plugin@59e54ed549659daaf941f6ef40e8a8945af5d993",
@@ -11786,49 +11814,7 @@
       "openIssues": 2,
       "size": 1059336,
       "installSize": 1472902,
-      "package": {
-        "name": "siyuan-plugin-epub-reader",
-        "author": "zuoez02",
-        "url": "https://github.com/zuoez02/siyuan-plugin-epub-reader",
-        "version": "0.3.0",
-        "minAppVersion": "2.10.14",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "frontends": [
-          "desktop",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "EPUB阅读器(先行预览版)",
-          "en_US": ""
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "EPUB阅读器,原生支持epub文件的思源内阅读体验",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.net/a/zuoez02"
-          ]
-        },
-        "keywords": [
-          "epub",
-          "EPUB阅读器"
-        ]
-      }
+      "package": null
     },
     {
       "url": "etchnight/siyuanPlugin-list2table@725727ffb57963f1d437e0af0937627d64e0e0e3",
@@ -12554,7 +12540,39 @@
       "openIssues": 4,
       "size": 154028,
       "installSize": 221081,
-      "package": null
+      "package": {
+        "name": "siyuan-color-scheme",
+        "author": "zxhd963943427",
+        "url": "https://github.com/zxhd863943427/siyuan-color-scheme",
+        "version": "1.0.11",
+        "minAppVersion": "2.8.10",
+        "backends": null,
+        "frontends": null,
+        "displayName": {
+          "default": "color-scheme",
+          "zh_CN": "配色方案",
+          "en_US": ""
+        },
+        "description": {
+          "default": "This is a plugin that allows you to freely control the font display in SiYuan.",
+          "zh_CN": "这是一个允许你自由控制思源中字体显示的插件",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/zxhd86"
+          ]
+        },
+        "keywords": null
+      }
     },
     {
       "url": "terwer/siyuan-plugin-importer@062d75f34cd0a68a7ac034f764e2a58a3490a2fb",
