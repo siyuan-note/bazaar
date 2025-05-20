@@ -690,7 +690,59 @@
       "openIssues": 0,
       "size": 231539,
       "installSize": 641789,
-      "package": null
+      "package": {
+        "name": "siyuan-jsdraw-plugin",
+        "author": "massivebox",
+        "url": "https://git.massive.box/massivebox/siyuan-jsdraw-plugin",
+        "version": "0.4.1",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "",
+          "en_US": "JS-Draw Whiteboard"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "",
+          "en_US": "Include a whiteboard for freehand drawing anywhere in your documents."
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://s.massive.box/jsdraw-plugin-donate"
+          ]
+        },
+        "keywords": [
+          "plugin",
+          "drawing",
+          "freehand",
+          "tablet",
+          "whiteboard"
+        ]
+      }
     },
     {
       "url": "silent1189/siyuan-imageConverter@8156b2be9ffbf15472e7f2ef7d1dd1dba0b17be4",
@@ -856,7 +908,42 @@
       "openIssues": 0,
       "size": 55212,
       "installSize": 75946,
-      "package": null
+      "package": {
+        "name": "sy-titled-link",
+        "author": "frostime",
+        "url": "https://github.com/frostime/sy-titled-link",
+        "version": "1.5.0",
+        "minAppVersion": "2.10.0",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "Titled Url",
+          "en_US": "Titled Url"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "获取网页链接的标题",
+          "en_US": "Get the title of the web url"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README.md",
+          "en_US": "README_en_US.md"
+        },
+        "funding": null,
+        "keywords": [
+          "url",
+          "link",
+          "网页链接",
+          "标题",
+          "title"
+        ]
+      }
     },
     {
       "url": "frostime/sy-bookmark-plus@e4aa39b25df3b18391f4741c8f3bb09662329bfb",
@@ -1646,53 +1733,7 @@
       "openIssues": 2,
       "size": 137876,
       "installSize": 190434,
-      "package": {
-        "name": "mouse-events-plugin",
-        "author": "wwxiaoqi",
-        "url": "https://github.com/wwxiaoqi/siyuan-mouse-events-plugin",
-        "version": "0.1.6",
-        "minAppVersion": "3.1.27",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "Mouse gesture plugin",
-          "zh_CN": "鼠标手势插件",
-          "en_US": ""
-        },
-        "description": {
-          "default": "Use mouse gestures in the Siyuan Editor",
-          "zh_CN": "在思源编辑器中使用鼠标手势",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": []
-        },
-        "keywords": [
-          "mouse",
-          "鼠标",
-          "gesture",
-          "手势"
-        ]
-      }
+      "package": null
     },
     {
       "url": "Misuzu2027/syplugin-backlink-panel@514939f0f540728968b1b7d3a00f40b3429803e4",
@@ -2075,7 +2116,32 @@
       "openIssues": 5,
       "size": 754870,
       "installSize": 795604,
-      "package": null
+      "package": {
+        "name": "siyuan-plugin-tts",
+        "author": "zuoez02",
+        "url": "https://github.com/zuoez02/siyuan-plugin-tts",
+        "version": "1.0.0",
+        "minAppVersion": "3.1.28",
+        "backends": null,
+        "frontends": null,
+        "displayName": {
+          "default": "Text To Speech",
+          "zh_CN": "文本朗读",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Text To Speech for blocks in document",
+          "zh_CN": "使用块菜单中的文本朗读功能，朗读选择的块内容",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "",
+          "en_US": ""
+        },
+        "funding": null,
+        "keywords": null
+      }
     },
     {
       "url": "terwer/siyuan-plugin-publisher@78ddebd1b10423bd896afc030d0d25735d83c63d",
@@ -3059,28 +3125,7 @@
       "openIssues": 0,
       "size": 476941,
       "installSize": 546581,
-      "package": {
-        "name": "siyuan-plugin-canvas",
-        "author": "B3000Kcn",
-        "url": "https://github.com/B3000Kcn/siyuan-plugin-canvas",
-        "version": "0.2.0",
-        "minAppVersion": "",
-        "backends": null,
-        "frontends": null,
-        "displayName": {
-          "default": "",
-          "zh_CN": "智能画布",
-          "en_US": "Smart Canvas"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "在思源笔记里像 GPT Canvas 和 Cursor 那样编写你的文档",
-          "en_US": "Write your documents in SiYuan Notes like using GPT Canvas and Cursor"
-        },
-        "readme": null,
-        "funding": null,
-        "keywords": null
-      }
+      "package": null
     },
     {
       "url": "zxkmm/siyuan_database_landscape_scrollbar@5dd550a414be59ffd17b2256204a0cca63a08c31",
@@ -3400,7 +3445,45 @@
       "openIssues": 0,
       "size": 1116929,
       "installSize": 2619979,
-      "package": null
+      "package": {
+        "name": "syplugin-copyAsImage",
+        "author": "OpaqueGlass",
+        "url": "https://github.com/OpaqueGlass/syplugin-copyAsImage",
+        "version": "0.2.0",
+        "minAppVersion": "2.9.0",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "browser-desktop",
+          "desktop-window",
+          "desktop"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "复制为图片",
+          "en_US": "Copy as Image"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "将公式、Mermaid图形等复制为png图片、下载为SVG。比自带的导出图片清晰一些",
+          "en_US": "Copy Formula, mermaid etc. as png. Or download some blocks as SVG"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://wj.qq.com/s2/12395364/b69f/"
+          ]
+        },
+        "keywords": null
+      }
     },
     {
       "url": "mcwz/showtime-siyuan@7f2c69cb793a862f44327152912591a86d9d1458",
@@ -4290,7 +4373,56 @@
       "openIssues": 1,
       "size": 17545,
       "installSize": 63736,
-      "package": null
+      "package": {
+        "name": "siyuan-tag-enhance",
+        "author": "zxhd863943427",
+        "url": "https://github.com/zxhd863943427/siyuan-tag-enhance",
+        "version": "0.0.8",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "siyuan标签增强",
+          "en_US": "siyuan-tag-enhance"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "在点击插件面板时，提供一个近似反链面板的标签面板",
+          "en_US": "Provides an approximation of the backlink panel\u0026#39;s tab panel when clicking on the plugin panel"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "plugin",
+          "tag",
+          "backlink"
+        ]
+      }
     },
     {
       "url": "terwer/siyuan-plugin-2md@4ae57fe4d5dc3ef94ab0a361e5adac6033816aed",
@@ -4695,7 +4827,52 @@
       "openIssues": 3,
       "size": 102944,
       "installSize": 196378,
-      "package": null
+      "package": {
+        "name": "sy-bind-mdfile",
+        "author": "frostime",
+        "url": "https://github.com/frostime/sy-bind-mdfile",
+        "version": "0.5.0",
+        "minAppVersion": "3.1.22",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios"
+        ],
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "绑定本地 MD 文件",
+          "en_US": "Bind Local MD File"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "将文档和本地的 Markdown 文件双向绑定，便于方便地导入和导出",
+          "en_US": "Bind the document and the local Markdown file to facilitate the import and export of documents"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "plugin",
+          "md",
+          "markdown",
+          "local"
+        ]
+      }
     },
     {
       "url": "frostime/sy-test-template@20f58151dae0ed26443ff4e485d40868b7d17092",
@@ -5760,7 +5937,39 @@
       "openIssues": 4,
       "size": 434065,
       "installSize": 1288748,
-      "package": null
+      "package": {
+        "name": "siyuan-plugin-math-enhance",
+        "author": "zxhd863943427",
+        "url": "https://github.com/zxhd863943427/siyuan-plugin-math-enhance",
+        "version": "0.0.6",
+        "minAppVersion": "2.8.10",
+        "backends": null,
+        "frontends": null,
+        "displayName": {
+          "default": "siyuan-plugin-math-enhance",
+          "zh_CN": "数学增强",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Let your cat write math formulas happily.",
+          "zh_CN": "让你家的猫猫能快乐地写数学公式",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/zxhd86"
+          ]
+        },
+        "keywords": null
+      }
     },
     {
       "url": "RogerHuHu/siyuan-plugin-schedule-manager@ef03ab83e942f596739211d3b1e4111ffb8e216b",
@@ -6268,57 +6477,7 @@
       "openIssues": 10,
       "size": 240002,
       "installSize": 352088,
-      "package": {
-        "name": "siyuan-plugin-blockref-footnote",
-        "author": "Achuan-2",
-        "url": "https://github.com/Achuan-2/siyuan-plugin-blockref-footnote",
-        "version": "1.3.0",
-        "minAppVersion": "3.1.13",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "块引脚注",
-          "en_US": "FootnoteRef"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "使用思源的块引实现脚注和备注功能",
-          "en_US": "Use blockref to implement footnote and memo"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://www.yuque.com/achuan-2"
-          ]
-        },
-        "keywords": [
-          "脚注",
-          "Footnote",
-          "备注",
-          "Memo"
-        ]
-      }
+      "package": null
     },
     {
       "url": "frostime/sy-run-js@25590d87274f3d922f59fc93a8309ecf3cb3fb56",
@@ -6877,7 +7036,55 @@
       "openIssues": 0,
       "size": 37070,
       "installSize": 57712,
-      "package": null
+      "package": {
+        "name": "sy-plugin-tab-close",
+        "author": "pakeh",
+        "url": "https://github.com/pakeh2866/sy-plugin-tab-close",
+        "version": "v0.4.5",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "标签页定时关闭",
+          "en_US": "Tab Manager"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "自动关闭不活跃的标签页，保持工作区整洁并节省资源。",
+          "en_US": "Automatically close inactive tabs to keep your workspace clean and save resources. Closed tabs can be easily restored."
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "tab",
+          "manager",
+          "productivity",
+          "标签页",
+          "管理器",
+          "效率"
+        ]
+      }
     },
     {
       "url": "TinkMingKing/siyuan-plugins-index@dbf655dd0855bfbca0ca157761e326a236d1dbe7",
@@ -7557,7 +7764,45 @@
       "openIssues": 22,
       "size": 663696,
       "installSize": 867800,
-      "package": null
+      "package": {
+        "name": "siyuan-plugin-webapp",
+        "author": "zuoez02",
+        "url": "https://github.com/zuoez02/siyuan-plugin-webview-flomo",
+        "version": "3.6.0",
+        "minAppVersion": "v3.17",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "frontends": [
+          "desktop"
+        ],
+        "displayName": {
+          "default": "Web工具集成",
+          "zh_CN": "Web工具集成",
+          "en_US": ""
+        },
+        "description": {
+          "default": "集成WebAPP在线网页版, 内置Flomo、Cubox、Dida365, 支持自定义",
+          "zh_CN": "集成WebAPP在线网页版, 内置Flomo、Cubox、Dida365, 支持自定义",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/zuoez02"
+          ]
+        },
+        "keywords": null
+      }
     },
     {
       "url": "leolee9086/importHelper@a3129727fe50458658647580ae2d53808b438f12",
@@ -8373,7 +8618,49 @@
       "openIssues": 1,
       "size": 38804,
       "installSize": 50755,
-      "package": null
+      "package": {
+        "name": "siyuan-sync-quicker",
+        "author": "muhanstudio",
+        "url": "https://github.com/muhanstudio/siyuan-sync-quicker",
+        "version": "0.0.2",
+        "minAppVersion": "2.10.10",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "sync-quicker",
+          "zh_CN": "快速同步",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Remove the official 30-second wait limit for automatic synchronization (may cause a BUG, please back up your data in advance) ",
+          "zh_CN": "解除官方自动同步等待30秒的限制（可能导致BUG，请提前备份数据）",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": []
+        },
+        "keywords": [
+          "server",
+          "服务器",
+          "sync",
+          "同步",
+          "quicker",
+          "快速",
+          "sync-quicker"
+        ]
+      }
     },
     {
       "url": "leolee9086/TEColors@1c9cdf5e9d26da895f989821aa8d2faca9465902",
@@ -8382,7 +8669,46 @@
       "openIssues": 1,
       "size": 2014069,
       "installSize": 4149616,
-      "package": null
+      "package": {
+        "name": "TEColors",
+        "author": "椽承设计",
+        "url": "https://github.com/leolee9086/TEColors",
+        "version": "0.0.11",
+        "minAppVersion": "",
+        "backends": null,
+        "frontends": null,
+        "displayName": {
+          "default": "TEColors",
+          "zh_CN": "TE颜色选择器",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Used for quickly adjusting the text color and background color of blocks, as well as simple color management and other functions.",
+          "zh_CN": "用于快速调节块的文字颜色和背景色,以及简单的颜色管理等功能",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "b3log",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/leolee9086"
+          ]
+        },
+        "keywords": [
+          "color",
+          "decoration",
+          "颜色",
+          "样式",
+          "装饰",
+          "椽承设计"
+        ]
+      }
     },
     {
       "url": "frostime/sy-midclick-window@245666cfe237f2825dcf2ce2464526a603af4cb4",
@@ -8913,7 +9239,43 @@
       "openIssues": 2,
       "size": 68978,
       "installSize": 115936,
-      "package": null
+      "package": {
+        "name": "plugin-compact-mode",
+        "author": "Vanch",
+        "url": "https://github.com/vanchKong/layout-plugin",
+        "version": "0.0.1",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "紧凑模式",
+          "en_US": "Compact Mode"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "紧凑模式",
+          "en_US": "Compact Mode"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": null,
+        "keywords": [
+          "plugin",
+          "compact",
+          "紧凑",
+          "布局",
+          "样式",
+          "style"
+        ]
+      }
     },
     {
       "url": "leolee9086/SiyuanAssistantCollection@2e47e3d731b29f407061a0ac365f2310c9ca2538",
@@ -10120,7 +10482,51 @@
       "openIssues": 0,
       "size": 33307,
       "installSize": 41591,
-      "package": null
+      "package": {
+        "name": "siyuan-css-image-block-centered",
+        "author": "TCOTC",
+        "url": "https://github.com/TCOTC/siyuan-css-image-block-centered",
+        "version": "0.1.0",
+        "minAppVersion": "",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "Center image block",
+          "zh_CN": "居中图片块",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Center the blocks containing images in the document",
+          "zh_CN": "居中显示文档中包含图片的块",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/JeffreyChen"
+          ]
+        },
+        "keywords": [
+          "居中",
+          "图片",
+          "块",
+          "Center",
+          "image",
+          "block",
+          "picture"
+        ]
+      }
     },
     {
       "url": "TCOTC/siyuan-css-dashed-line-memo@02746b9c92f295752b973338508f2243e5778a1b",
@@ -10129,7 +10535,54 @@
       "openIssues": 0,
       "size": 22971,
       "installSize": 31897,
-      "package": null
+      "package": {
+        "name": "siyuan-css-dashed-line-memo",
+        "author": "TCOTC",
+        "url": "https://github.com/TCOTC/siyuan-css-dashed-line-memo",
+        "version": "0.1.0",
+        "minAppVersion": "",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "Dashed line memo",
+          "zh_CN": "虚线备注",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Change the style of the memo to a dashed line",
+          "zh_CN": "将备注的样式改为虚线",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/JeffreyChen"
+          ]
+        },
+        "keywords": [
+          "虚线",
+          "dashed",
+          "dash",
+          "line",
+          "memo",
+          "备注",
+          "样式",
+          "css",
+          "CSS",
+          "TCOTC"
+        ]
+      }
     },
     {
       "url": "TCOTC/siyuan-css-hide-bookmark-icon@6be144f754601daa3d728f2528931022f9d0eb01",
@@ -11870,7 +12323,44 @@
       "openIssues": 0,
       "size": 609208,
       "installSize": 1364004,
-      "package": null
+      "package": {
+        "name": "opencc",
+        "author": "Zuoqiu Yingyi",
+        "url": "https://github.com/Zuoqiu-Yingyi/siyuan-plugin-opencc",
+        "version": "0.1.0",
+        "minAppVersion": "2.9.5",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "Chinese Convert",
+          "zh_CN": "中文转换",
+          "en_US": ""
+        },
+        "description": {
+          "default": "\u003ca href=\"https://github.com/BYVoid/OpenCC\" rel=\"nofollow\"\u003eOpen Chinese Convert (OpenCC)\u003c/a\u003e is an opensource project for conversions between Traditional Chinese, Simplified Chinese and Japanese Kanji (Shinjitai). It supports character-level and phrase-level conversion, character variant conversion and regional idioms among Mainland China, Taiwan and Hong Kong. This is not translation tool between Mandarin and Cantonese, etc.",
+          "zh_CN": "\u003ca href=\"https://github.com/BYVoid/OpenCC\" rel=\"nofollow\"\u003e开放中文转换 (Open Chinese Convert, OpenCC)\u003c/a\u003e是一个中文简繁转换开源项目，支持词汇级别的转换、异体字转换和地区习惯用词转换（中国大陆、台湾、香港、日本新字体）。不提供普通话与粤语的转换。",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/zuoqiu",
+            "https://ko-fi.com/zuoqiu"
+          ]
+        },
+        "keywords": null
+      }
     },
     {
       "url": "zxhd863943427/siyuan-plugin-block-history@5579cf675f5655bd549b12c777cd80db0000cb3e",
