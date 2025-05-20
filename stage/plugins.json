@@ -47,7 +47,55 @@
       "openIssues": 1,
       "size": 56942,
       "installSize": 89339,
-      "package": null
+      "package": {
+        "name": "siyuan-plugin-templater",
+        "author": "hogmoff",
+        "url": "https://github.com/siyuan-note/plugin-sample",
+        "version": "0.3.0",
+        "minAppVersion": "3.1.28",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "Templater",
+          "zh_CN": "模板器",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Automatically inserts templates when creating new documents based on their path",
+          "zh_CN": "根据新文档的路径，自动插入特定的模板。",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": []
+        },
+        "keywords": [
+          "template",
+          "path",
+          "automation"
+        ]
+      }
     },
     {
       "url": "Misuzu2027/syplugin-dual-doc-list@67aa34e2def89442649f6366d2a3e2e1d4332eae",
@@ -3712,17 +3760,17 @@
       }
     },
     {
-      "url": "2234839/vite-plugin-siyuan@9be1d697508b622a69111c8b74938ce4d2069dce",
+      "url": "2234839/siyuan_audio2text@4f30d850555b43d0416c291468bdc19d059d18f4",
       "updated": "2025-03-16T07:20:02Z",
-      "stars": 0,
+      "stars": 1,
       "openIssues": 0,
-      "size": 45720,
-      "installSize": 56668,
+      "size": 35120,
+      "installSize": 50576,
       "package": {
-        "name": "vite-plugin-siyuan",
+        "name": "audio2text_plugin_siyuan",
         "author": "崮生",
-        "url": "https://github.com/2234839/vite-plugin-siyuan",
-        "version": "0.0.26",
+        "url": "https://github.com/2234839/siyuan_audio2text",
+        "version": "0.0.12",
         "minAppVersion": "2.10.3",
         "backends": [
           "all"
@@ -3732,8 +3780,8 @@
         ],
         "displayName": {
           "default": "",
-          "zh_CN": "vite-plugin-siyuan",
-          "en_US": "vite-plugin-siyuan"
+          "zh_CN": "audio2text_plugin_siyuan",
+          "en_US": "audio2text_plugin_siyuan"
         },
         "description": {
           "default": "",
@@ -3757,17 +3805,17 @@
       }
     },
     {
-      "url": "2234839/siyuan_audio2text@4f30d850555b43d0416c291468bdc19d059d18f4",
+      "url": "2234839/vite-plugin-siyuan@9be1d697508b622a69111c8b74938ce4d2069dce",
       "updated": "2025-03-16T07:20:02Z",
-      "stars": 1,
+      "stars": 0,
       "openIssues": 0,
-      "size": 35120,
-      "installSize": 50576,
+      "size": 45720,
+      "installSize": 56668,
       "package": {
-        "name": "audio2text_plugin_siyuan",
+        "name": "vite-plugin-siyuan",
         "author": "崮生",
-        "url": "https://github.com/2234839/siyuan_audio2text",
-        "version": "0.0.12",
+        "url": "https://github.com/2234839/vite-plugin-siyuan",
+        "version": "0.0.26",
         "minAppVersion": "2.10.3",
         "backends": [
           "all"
@@ -3777,8 +3825,8 @@
         ],
         "displayName": {
           "default": "",
-          "zh_CN": "audio2text_plugin_siyuan",
-          "en_US": "audio2text_plugin_siyuan"
+          "zh_CN": "vite-plugin-siyuan",
+          "en_US": "vite-plugin-siyuan"
         },
         "description": {
           "default": "",
@@ -3855,7 +3903,51 @@
       "openIssues": 3,
       "size": 54149,
       "installSize": 79058,
-      "package": null
+      "package": {
+        "name": "siyuan-bullet-threading",
+        "author": "anarion80",
+        "url": "https://github.com/anarion80/siyuan-bullet-threading",
+        "version": "0.1.6",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "Bullet threading for lists",
+          "zh_CN": "",
+          "en_US": "Bullet threading for lists"
+        },
+        "description": {
+          "default": "A plugin that adds nice lines to nested list elements (bullets). Based on simliar plugin for LogSeq.",
+          "zh_CN": "",
+          "en_US": "A plugin that adds nice lines to nested list elements (bullets). Based on simliar plugin for LogSeq."
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "",
+          "en_US": "README.md"
+        },
+        "funding": null,
+        "keywords": [
+          "plugin",
+          "bullet",
+          "threading",
+          "nested",
+          "list"
+        ]
+      }
     },
     {
       "url": "zxkmm/siyuan_doctree_compress@3842721e46a144cfa9c1fdbbbeb5c4644a074bb1",
@@ -4235,7 +4327,57 @@
       "openIssues": 0,
       "size": 229224,
       "installSize": 264806,
-      "package": null
+      "package": {
+        "name": "siyuan-plugin-doctree-focus",
+        "author": "Achuan-2",
+        "url": "https://github.com/Achuan-2/siyuan-plugin-doctree-focus",
+        "version": "0.0.2",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "文档树聚焦",
+          "en_US": "siyuan-plugin-doctree-focus"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "聚焦文档树",
+          "en_US": "Focus on the document tree"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://www.yuque.com/achuan-2"
+          ]
+        },
+        "keywords": [
+          "doctree",
+          "文档树",
+          "focus",
+          "聚焦"
+        ]
+      }
     },
     {
       "url": "hqweay/siyuan-hqweay-go@59ce2f68b1d17846ee191d8319907f169e5257ef",
