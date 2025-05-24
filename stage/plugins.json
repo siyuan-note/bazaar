@@ -1,17 +1,81 @@
 {
   "repos": [
     {
-      "url": "IAliceBobI/sy-tomato-plugin@a6de27f6f5c5c19fab1a9a5123ae79fcee1991ec",
-      "updated": "2025-05-24T05:27:43Z",
+      "url": "Glaube-TY/siyuan-douban@3fe8a9b5b35759f5989d3b2cd9aacd0b0ef77d50",
+      "updated": "2025-05-24T15:02:03Z",
+      "stars": 4,
+      "openIssues": 1,
+      "size": 174794,
+      "installSize": 229945,
+      "package": {
+        "name": "siyuan-douban",
+        "author": "Glaube-TY",
+        "url": "https://github.com/Glaube-TY/siyuan-douban",
+        "version": "1.2.4",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "豆瓣书籍",
+          "en_US": "Douban Book"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "快速获取豆瓣书籍信息导入书籍数据库，并可通过自定义模板生成读书笔记。",
+          "en_US": "Get the info you need about imported Douban books into the book database in a flash! Then, customize the template to generate reading notes."
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://ttl8ygt82u.feishu.cn/wiki/VZdjwDNxWi4j0jkdyxMcOg2VnFf?from=from_copylink"
+          ]
+        },
+        "keywords": [
+          "豆瓣读书",
+          "douban",
+          "书籍",
+          "book",
+          "读书笔记",
+          "笔记",
+          "read",
+          "note",
+          "booknote"
+        ]
+      }
+    },
+    {
+      "url": "IAliceBobI/sy-tomato-plugin@b7cfff0f0a418de36b4c07b247bf8d574825f78c",
+      "updated": "2025-05-24T14:30:31Z",
       "stars": 24,
       "openIssues": 0,
-      "size": 1457548,
-      "installSize": 3742093,
+      "size": 1460108,
+      "installSize": 3749057,
       "package": {
         "name": "sy-tomato-plugin",
         "author": "IAliceBobI",
         "url": "https://github.com/IAliceBobI/sy-tomato-plugin",
-        "version": "4.0.44",
+        "version": "4.0.46",
         "minAppVersion": "3.0.3",
         "backends": [
           "all"
@@ -26,7 +90,7 @@
         },
         "description": {
           "default": "Status Bar Pomodoro, Annotation, Bottom Backlinks, Sync Blocks, Block Relationship Graph, Text to Reference, Flash Idea via Camera, Reading Points, Two-Way Mutual Links, AI Knowledge Base Q\u0026amp;A, Streaming AI, Database Backlinks, Flashcard Priority, Document Merge, Recurring Reminders, Delete Cards During Review, Flashcard Image Cloze, Move to Today\u0026#39;s Notes, Clean Up Invalid Flashcards",
-          "zh_CN": "【已开源】状态栏番茄钟、移动端多选、增强折叠、批注、底部反链、同步块、块关系图、文本转引用、拍照闪念、阅读点、双向互链、AI知识库问答、流式AI、数据库反链、闪卡优先级、文档合并、定期提醒、复习时删卡、闪卡图片挖空、移到今日笔记、清理失效闪卡",
+          "zh_CN": "【已开源】状态栏番茄钟、移动端多选、增强折叠、批注、底部反链、同步块、思维导线、块关系图、文本转引用、拍照闪念、阅读点、双向互链、AI知识库问答、流式AI、数据库反链、闪卡优先级、文档合并、定期提醒、复习时删卡、闪卡图片挖空、移到今日笔记、清理失效闪卡",
           "en_US": ""
         },
         "readme": {
@@ -245,71 +309,6 @@
           "Progressive Learning",
           "Progressive Reading",
           "Progressive Writing"
-        ]
-      }
-    },
-    {
-      "url": "Glaube-TY/siyuan-douban@933187ba3a6d49d9a01ad81090e2613c3efc9e14",
-      "updated": "2025-05-22T13:14:49Z",
-      "stars": 4,
-      "openIssues": 1,
-      "size": 174871,
-      "installSize": 238943,
-      "package": {
-        "name": "siyuan-douban",
-        "author": "Glaube-TY",
-        "url": "https://github.com/Glaube-TY/siyuan-douban",
-        "version": "1.2.3",
-        "minAppVersion": "3.0.12",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "豆瓣书籍",
-          "en_US": "Douban Book"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "快速获取豆瓣书籍信息导入书籍数据库，并可通过自定义模板生成读书笔记",
-          "en_US": "Get book information from Douban and import it into the book database"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://ttl8ygt82u.feishu.cn/wiki/VZdjwDNxWi4j0jkdyxMcOg2VnFf?from=from_copylink"
-          ]
-        },
-        "keywords": [
-          "豆瓣读书",
-          "douban",
-          "书籍",
-          "book",
-          "读书笔记",
-          "笔记",
-          "read",
-          "note",
-          "booknote"
         ]
       }
     },
@@ -739,7 +738,7 @@
     {
       "url": "mm-o/siyuan-media-player@eed8fe9806eb430877dd4737ff6cfd40080615bd",
       "updated": "2025-05-18T14:15:19Z",
-      "stars": 23,
+      "stars": 24,
       "openIssues": 9,
       "size": 885119,
       "installSize": 2025317,
