@@ -1,68 +1,72 @@
 {
   "repos": [
     {
-      "url": "IAliceBobI/sy-progressive-plugin@eabba18bc5bc14366949f6373ebf99c14503b9d5",
-      "updated": "2025-05-25T07:34:59Z",
-      "stars": 18,
-      "openIssues": 0,
-      "size": 1265150,
-      "installSize": 2792911,
+      "url": "etchnight/siyuan-plugin-block-converter@9d47e3ac9889e0173d09a2dcf6df369f8054bc8b",
+      "updated": "2025-05-25T15:00:15Z",
+      "stars": 0,
+      "openIssues": 3,
+      "size": 2703368,
+      "installSize": 5798686,
       "package": {
-        "name": "sy-progressive-plugin",
-        "author": "IAliceBobI",
-        "url": "https://github.com/IAliceBobI/sy-progressive-plugin",
-        "version": "2.0.73",
-        "minAppVersion": "2.12.6",
+        "name": "siyuan-plugin-block-converter",
+        "author": "dualwind",
+        "url": "https://github.com/etchnight/siyuan-plugin-block-converter",
+        "version": "1.1.4",
+        "minAppVersion": "3.0.0",
         "backends": [
-          "all"
+          "windows",
+          "linux",
+          "darwin"
         ],
         "frontends": [
-          "all"
+          "desktop",
+          "desktop-window"
         ],
         "displayName": {
-          "default": "Progressive Learning",
-          "zh_CN": "渐进学习",
-          "en_US": ""
+          "default": "Block Converter",
+          "zh_CN": "块转换工具",
+          "en_US": "Block Converter"
         },
         "description": {
-          "default": "Excerpt-based progressive learning, chunk-based progressive learning, multi-line selection on mobile, double-tap to show menu on mobile, word highlighting with explanations, sentence splitting, split block by pressing Enter, merge blocks, word flashcards, multi-line cloze deletion, multi-line card creation, Daily Card, display pinyin for content",
-          "zh_CN": "【已开源】摘抄式渐进学习、分片式渐进学习、移动端双击多行选择、划词解释、断句拆分、按回车拆分块、合并块、单词闪卡、多行挖空、多行制卡、Daily Card、显示拼音",
+          "default": "Provide a series of block conversion tools, such as HTML table block to Siyuan table block...",
+          "zh_CN": "使用自定义代码进行复制、粘贴和更新操作，以块为单位进行操作",
           "en_US": ""
         },
         "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md",
+          "default": "README_en_US.md",
+          "zh_CN": "README.md",
           "en_US": ""
         },
         "funding": {
           "openCollective": "",
           "patreon": "",
           "github": "",
-          "custom": [
-            "https://afdian.com/a/playerv5"
-          ]
+          "custom": []
         },
         "keywords": [
-          "Learning",
-          "Progressive",
-          "Progressive Learning",
-          "Progressive Reading",
-          "Progressive Writing"
+          "plugin",
+          "table",
+          "表格",
+          "转换",
+          "自定义复制",
+          "自定义更新",
+          "自定义粘贴",
+          "运行js"
         ]
       }
     },
     {
-      "url": "IAliceBobI/sy-tomato-plugin@614f6ae8689b8007599c1d1f09ae8b4badd8af33",
-      "updated": "2025-05-25T07:16:23Z",
+      "url": "IAliceBobI/sy-tomato-plugin@4bb5869de4583adf5f658f9a7cbcdd1d233b62c6",
+      "updated": "2025-05-25T14:43:06Z",
       "stars": 25,
       "openIssues": 0,
-      "size": 1462198,
-      "installSize": 3757869,
+      "size": 1464601,
+      "installSize": 3764867,
       "package": {
         "name": "sy-tomato-plugin",
         "author": "IAliceBobI",
         "url": "https://github.com/IAliceBobI/sy-tomato-plugin",
-        "version": "4.0.51",
+        "version": "4.0.52",
         "minAppVersion": "3.0.3",
         "backends": [
           "all"
@@ -114,6 +118,57 @@
           "Time visualization",
           "Progress tracking",
           "Goal setting"
+        ]
+      }
+    },
+    {
+      "url": "IAliceBobI/sy-progressive-plugin@eabba18bc5bc14366949f6373ebf99c14503b9d5",
+      "updated": "2025-05-25T07:34:59Z",
+      "stars": 18,
+      "openIssues": 0,
+      "size": 1265150,
+      "installSize": 2792911,
+      "package": {
+        "name": "sy-progressive-plugin",
+        "author": "IAliceBobI",
+        "url": "https://github.com/IAliceBobI/sy-progressive-plugin",
+        "version": "2.0.73",
+        "minAppVersion": "2.12.6",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "Progressive Learning",
+          "zh_CN": "渐进学习",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Excerpt-based progressive learning, chunk-based progressive learning, multi-line selection on mobile, double-tap to show menu on mobile, word highlighting with explanations, sentence splitting, split block by pressing Enter, merge blocks, word flashcards, multi-line cloze deletion, multi-line card creation, Daily Card, display pinyin for content",
+          "zh_CN": "【已开源】摘抄式渐进学习、分片式渐进学习、移动端双击多行选择、划词解释、断句拆分、按回车拆分块、合并块、单词闪卡、多行挖空、多行制卡、Daily Card、显示拼音",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.com/a/playerv5"
+          ]
+        },
+        "keywords": [
+          "Learning",
+          "Progressive",
+          "Progressive Learning",
+          "Progressive Reading",
+          "Progressive Writing"
         ]
       }
     },
@@ -4685,61 +4740,6 @@
           "在线",
           "管理",
           "剪贴板"
-        ]
-      }
-    },
-    {
-      "url": "etchnight/siyuan-plugin-block-converter@9c7fa0d842ef0c50bba0a7baaa817125376603ec",
-      "updated": "2025-02-28T18:00:06Z",
-      "stars": 0,
-      "openIssues": 3,
-      "size": 2673289,
-      "installSize": 5704161,
-      "package": {
-        "name": "siyuan-plugin-block-converter",
-        "author": "dualwind",
-        "url": "https://github.com/etchnight/siyuan-plugin-block-converter",
-        "version": "1.1.3",
-        "minAppVersion": "3.0.0",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "frontends": [
-          "desktop",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "Block Converter",
-          "zh_CN": "块转换工具",
-          "en_US": "Block Converter"
-        },
-        "description": {
-          "default": "Provide a series of block conversion tools, such as HTML table block to Siyuan table block...",
-          "zh_CN": "使用自定义代码进行复制、粘贴和更新操作，以块为单位进行操作",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README_en_US.md",
-          "zh_CN": "README.md",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": []
-        },
-        "keywords": [
-          "plugin",
-          "table",
-          "表格",
-          "转换",
-          "自定义复制",
-          "自定义更新",
-          "自定义粘贴",
-          "运行js"
         ]
       }
     },
