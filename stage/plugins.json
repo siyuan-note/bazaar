@@ -1,6 +1,63 @@
 {
   "repos": [
     {
+      "url": "hogmoff/siyuan-plugin-templater@180011bdbeaca171a80b8f4581a1b1a8172025c8",
+      "updated": "2025-05-30T10:08:13Z",
+      "stars": 1,
+      "openIssues": 0,
+      "size": 61923,
+      "installSize": 105703,
+      "package": {
+        "name": "siyuan-plugin-templater",
+        "author": "hogmoff",
+        "url": "https://github.com/hogmoff/siyuan-plugin-templater",
+        "version": "0.4.1",
+        "minAppVersion": "3.1.28",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "Templater",
+          "zh_CN": "模板器",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Automatically inserts templates when creating new documents based on their path",
+          "zh_CN": "根据新文档的路径，自动插入特定的模板。",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": []
+        },
+        "keywords": [
+          "template",
+          "path",
+          "automation"
+        ]
+      }
+    },
+    {
       "url": "IAliceBobI/sy-tomato-plugin@cbe3935cb2b8ad5ce126a855feddac1cea5662a9",
       "updated": "2025-05-30T02:22:01Z",
       "stars": 26,
@@ -63,63 +120,6 @@
           "Time visualization",
           "Progress tracking",
           "Goal setting"
-        ]
-      }
-    },
-    {
-      "url": "hogmoff/siyuan-plugin-templater@8b0c5aa45895ac09790c038be5b991c8757f1937",
-      "updated": "2025-05-29T20:32:04Z",
-      "stars": 1,
-      "openIssues": 0,
-      "size": 61944,
-      "installSize": 105770,
-      "package": {
-        "name": "siyuan-plugin-templater",
-        "author": "hogmoff",
-        "url": "https://github.com/hogmoff/siyuan-plugin-templater",
-        "version": "0.4.0",
-        "minAppVersion": "3.1.28",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "Templater",
-          "zh_CN": "模板器",
-          "en_US": ""
-        },
-        "description": {
-          "default": "Automatically inserts templates when creating new documents based on their path",
-          "zh_CN": "根据新文档的路径，自动插入特定的模板。",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": []
-        },
-        "keywords": [
-          "template",
-          "path",
-          "automation"
         ]
       }
     },
@@ -2221,7 +2221,7 @@
       "url": "2234839/feed_siyuan_plugin@e7a074a017fc2e6da05e69807a8fff52faa1e91c",
       "updated": "2025-04-24T07:13:34Z",
       "stars": 6,
-      "openIssues": 0,
+      "openIssues": 1,
       "size": 80166,
       "installSize": 190095,
       "package": {
@@ -3848,17 +3848,17 @@
       }
     },
     {
-      "url": "2234839/siyuan_audio2text@4f30d850555b43d0416c291468bdc19d059d18f4",
+      "url": "2234839/vite-plugin-siyuan@9be1d697508b622a69111c8b74938ce4d2069dce",
       "updated": "2025-03-16T07:20:02Z",
-      "stars": 1,
+      "stars": 0,
       "openIssues": 0,
-      "size": 35120,
-      "installSize": 50576,
+      "size": 45720,
+      "installSize": 56668,
       "package": {
-        "name": "audio2text_plugin_siyuan",
+        "name": "vite-plugin-siyuan",
         "author": "崮生",
-        "url": "https://github.com/2234839/siyuan_audio2text",
-        "version": "0.0.12",
+        "url": "https://github.com/2234839/vite-plugin-siyuan",
+        "version": "0.0.26",
         "minAppVersion": "2.10.3",
         "backends": [
           "all"
@@ -3868,8 +3868,8 @@
         ],
         "displayName": {
           "default": "",
-          "zh_CN": "audio2text_plugin_siyuan",
-          "en_US": "audio2text_plugin_siyuan"
+          "zh_CN": "vite-plugin-siyuan",
+          "en_US": "vite-plugin-siyuan"
         },
         "description": {
           "default": "",
@@ -3893,17 +3893,17 @@
       }
     },
     {
-      "url": "2234839/vite-plugin-siyuan@9be1d697508b622a69111c8b74938ce4d2069dce",
+      "url": "2234839/siyuan_audio2text@4f30d850555b43d0416c291468bdc19d059d18f4",
       "updated": "2025-03-16T07:20:02Z",
-      "stars": 0,
+      "stars": 1,
       "openIssues": 0,
-      "size": 45720,
-      "installSize": 56668,
+      "size": 35120,
+      "installSize": 50576,
       "package": {
-        "name": "vite-plugin-siyuan",
+        "name": "audio2text_plugin_siyuan",
         "author": "崮生",
-        "url": "https://github.com/2234839/vite-plugin-siyuan",
-        "version": "0.0.26",
+        "url": "https://github.com/2234839/siyuan_audio2text",
+        "version": "0.0.12",
         "minAppVersion": "2.10.3",
         "backends": [
           "all"
@@ -3913,8 +3913,8 @@
         ],
         "displayName": {
           "default": "",
-          "zh_CN": "vite-plugin-siyuan",
-          "en_US": "vite-plugin-siyuan"
+          "zh_CN": "audio2text_plugin_siyuan",
+          "en_US": "audio2text_plugin_siyuan"
         },
         "description": {
           "default": "",
@@ -4262,7 +4262,7 @@
       "url": "frostime/siyuan-dailynote-today@267c54ba3c2f103c7991fe6db42626d6a11ae724",
       "updated": "2025-03-11T07:00:08Z",
       "stars": 27,
-      "openIssues": 6,
+      "openIssues": 7,
       "size": 137652,
       "installSize": 269960,
       "package": {
