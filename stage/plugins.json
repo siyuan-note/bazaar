@@ -1,6 +1,69 @@
 {
   "repos": [
     {
+      "url": "Achuan-2/siyuan-plugin-task-note-management@49a7d5a1f48ea4245b14ddbacd6dcd661b8b129f",
+      "updated": "2025-06-14T12:04:13Z",
+      "stars": 8,
+      "openIssues": 0,
+      "size": 17918915,
+      "installSize": 18669527,
+      "package": {
+        "name": "siyuan-plugin-task-note-management",
+        "author": "Achuan-2",
+        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
+        "version": "0.1.7",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "任务笔记管理",
+          "en_US": "Task Note Management"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "一款在思源笔记里实现任务笔记管理功能的插件，为了践行防弹笔记法而开发。支持文档和块提醒、日历视图查看行事历、番茄钟专注等功能",
+          "en_US": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more."
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "reminder",
+          "time",
+          "calendar",
+          "notification",
+          "提醒",
+          "时间",
+          "日历",
+          "通知"
+        ]
+      }
+    },
+    {
       "url": "Yimien/plugin-memos-sync-helper@b777d6b57738a6abf79ea31fabc02f64b9b608e8",
       "updated": "2025-06-14T11:01:32Z",
       "stars": 16,
@@ -156,69 +219,6 @@
           "home",
           "主页",
           "首页"
-        ]
-      }
-    },
-    {
-      "url": "Achuan-2/siyuan-plugin-task-note-management@d63810ae8fa47d7b2cf408ea43f85ce9db6cd0a2",
-      "updated": "2025-06-14T05:23:51Z",
-      "stars": 8,
-      "openIssues": 0,
-      "size": 17918924,
-      "installSize": 18669555,
-      "package": {
-        "name": "siyuan-plugin-task-note-management",
-        "author": "Achuan-2",
-        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
-        "version": "0.1.6",
-        "minAppVersion": "3.0.12",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "任务笔记管理",
-          "en_US": "Task Note Management"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "一款在思源笔记里实现任务笔记管理功能的插件，为了践行防弹笔记法而开发。支持文档和块提醒、日历视图查看行事历、番茄钟专注等功能",
-          "en_US": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more."
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            ""
-          ]
-        },
-        "keywords": [
-          "reminder",
-          "time",
-          "calendar",
-          "notification",
-          "提醒",
-          "时间",
-          "日历",
-          "通知"
         ]
       }
     },
@@ -1947,6 +1947,50 @@
           "气泡",
           "动态背景",
           "壁纸"
+        ]
+      }
+    },
+    {
+      "url": "frostime/sy-titled-link@1b70c09631da0058f3229ac45681feaadd477604",
+      "updated": "2025-05-14T14:06:42Z",
+      "stars": 1,
+      "openIssues": 0,
+      "size": 55212,
+      "installSize": 75946,
+      "package": {
+        "name": "sy-titled-link",
+        "author": "frostime",
+        "url": "https://github.com/frostime/sy-titled-link",
+        "version": "1.5.0",
+        "minAppVersion": "2.10.0",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "Titled Url",
+          "en_US": "Titled Url"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "获取网页链接的标题",
+          "en_US": "Get the title of the web url"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README.md",
+          "en_US": "README_en_US.md"
+        },
+        "funding": null,
+        "keywords": [
+          "url",
+          "link",
+          "网页链接",
+          "标题",
+          "title"
         ]
       }
     },
@@ -4117,17 +4161,17 @@
       }
     },
     {
-      "url": "2234839/vite-plugin-siyuan@9be1d697508b622a69111c8b74938ce4d2069dce",
+      "url": "2234839/siyuan_audio2text@4f30d850555b43d0416c291468bdc19d059d18f4",
       "updated": "2025-03-16T07:20:02Z",
-      "stars": 0,
+      "stars": 1,
       "openIssues": 0,
-      "size": 45720,
-      "installSize": 56668,
+      "size": 35120,
+      "installSize": 50576,
       "package": {
-        "name": "vite-plugin-siyuan",
+        "name": "audio2text_plugin_siyuan",
         "author": "崮生",
-        "url": "https://github.com/2234839/vite-plugin-siyuan",
-        "version": "0.0.26",
+        "url": "https://github.com/2234839/siyuan_audio2text",
+        "version": "0.0.12",
         "minAppVersion": "2.10.3",
         "backends": [
           "all"
@@ -4137,8 +4181,8 @@
         ],
         "displayName": {
           "default": "",
-          "zh_CN": "vite-plugin-siyuan",
-          "en_US": "vite-plugin-siyuan"
+          "zh_CN": "audio2text_plugin_siyuan",
+          "en_US": "audio2text_plugin_siyuan"
         },
         "description": {
           "default": "",
@@ -4162,17 +4206,17 @@
       }
     },
     {
-      "url": "2234839/siyuan_audio2text@4f30d850555b43d0416c291468bdc19d059d18f4",
+      "url": "2234839/vite-plugin-siyuan@9be1d697508b622a69111c8b74938ce4d2069dce",
       "updated": "2025-03-16T07:20:02Z",
-      "stars": 1,
+      "stars": 0,
       "openIssues": 0,
-      "size": 35120,
-      "installSize": 50576,
+      "size": 45720,
+      "installSize": 56668,
       "package": {
-        "name": "audio2text_plugin_siyuan",
+        "name": "vite-plugin-siyuan",
         "author": "崮生",
-        "url": "https://github.com/2234839/siyuan_audio2text",
-        "version": "0.0.12",
+        "url": "https://github.com/2234839/vite-plugin-siyuan",
+        "version": "0.0.26",
         "minAppVersion": "2.10.3",
         "backends": [
           "all"
@@ -4182,8 +4226,8 @@
         ],
         "displayName": {
           "default": "",
-          "zh_CN": "audio2text_plugin_siyuan",
-          "en_US": "audio2text_plugin_siyuan"
+          "zh_CN": "vite-plugin-siyuan",
+          "en_US": "vite-plugin-siyuan"
         },
         "description": {
           "default": "",
