@@ -260,10 +260,14 @@ func checkRepo(
 		if attrsCheckResult, err = checkManifestAttrs(manifestFileUrl); err != nil {
 			logger.Warnf("check repo <\033[7m%s\033[0m> manifest file <\033[7m%s\033[0m> failed: %s", repoPath, manifestFileUrl, err)
 		} else {
-			// 字段有效性检查
-			attrsCheckResult.Name.Valid = isValieName(attrsCheckResult.Name.Value)
+			// 有效性检查
+			attrsCheckResult.Name.Valid = isValidName(attrsCheckResult.Name.Value)
+			if attrsCheckResult.Name.Valid {
+				// name 必须和 repo name 一致
+				attrsCheckResult.Name.Valid = attrsCheckResult.Name.Value == repoName
+			}
 
-			// 字段唯一性检查
+			// 唯一性检查
 			if attrsCheckResult.Name.Valid {
 				name := strings.ToLower(attrsCheckResult.Name.Value)
 				if isKeyInSet(name, nameSet) {
@@ -271,7 +275,7 @@ func checkRepo(
 				} else {
 					nameSet[name] = nil // 新的 name 添加到检查集合中
 
-					attrsCheckResult.Name.Unique = true // name 字段通过唯一性检查
+					attrsCheckResult.Name.Unique = true // name 通过唯一性检查
 				}
 			}
 		}
