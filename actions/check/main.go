@@ -265,6 +265,11 @@ func checkRepo(
 			if attrsCheckResult.Name.Valid {
 				// name 必须和 repo name 一致
 				attrsCheckResult.Name.Valid = attrsCheckResult.Name.Value == repoName
+				if !attrsCheckResult.Name.Valid {
+					logger.Warnf("repo <\033[7m%s\033[0m> name <\033[7m%s\033[0m> is not equal to repo name <\033[7m%s\033[0m>", repoPath, attrsCheckResult.Name.Value, repoName)
+				}
+			} else {
+				logger.Warnf("repo <\033[7m%s\033[0m> name <\033[7m%s\033[0m> is invalid", repoPath, attrsCheckResult.Name.Value)
 			}
 
 			// 唯一性检查
