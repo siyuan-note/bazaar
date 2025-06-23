@@ -164,7 +164,6 @@ func checkRepos(
 	newRepos := []string{} // 新增的仓库列表
 	for _, targetRepo := range targetRepos {
 		targetRepoPath := targetRepo.(string)
-		targetRepoPath = strings.ToLower(targetRepoPath)
 		if !isKeyInSet(targetRepoPath, originRepoSet) {
 			newRepos = append(newRepos, targetRepoPath)
 		}
