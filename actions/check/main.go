@@ -148,14 +148,13 @@ func checkRepos(
 	for _, originRepo := range originRepos {
 		originUrl := originRepo.(map[string]interface{})["url"].(string)
 		originUrl = strings.Split(originUrl, "@")[0]
-		originUrl = strings.ToLower(originUrl)
 		originRepoSet[originUrl] = nil
 
 		originPackage := originRepo.(map[string]interface{})["package"]
 		if originPackage != nil {
 			originPackageName := originPackage.(map[string]interface{})["name"]
 			if originPackageName != nil {
-				originName := strings.ToLower(originPackageName.(string))
+				originName := originPackageName.(string)
 				originNameSet[originName] = nil
 			}
 		}
@@ -273,7 +272,7 @@ func checkRepo(
 
 			// 唯一性检查
 			if attrsCheckResult.Name.Valid {
-				name := strings.ToLower(attrsCheckResult.Name.Value)
+				name := attrsCheckResult.Name.Value
 				if isKeyInSet(name, nameSet) {
 					logger.Warnf("repo <\033[7m%s\033[0m> name <\033[7m%s\033[0m> already exists", repoPath, name)
 				} else {
