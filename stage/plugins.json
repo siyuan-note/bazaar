@@ -1,27 +1,33 @@
 {
   "repos": [
     {
-      "url": "TCOTC/siyuan-plugin-hsr-mdzz2048-fork@30a05c6ae68e459e97b45d1b3113115bbd615f4a",
-      "updated": "2025-07-01T07:31:34Z",
+      "url": "TCOTC/siyuan-plugin-hsr-mdzz2048-fork@180e0f1b6637aabab0f9ce72bf5f42098c42581b",
+      "updated": "2025-07-01T12:40:49Z",
       "stars": 6,
-      "openIssues": 8,
-      "size": 70284,
-      "installSize": 120697,
+      "openIssues": 6,
+      "size": 70652,
+      "installSize": 121524,
       "package": {
         "name": "siyuan-plugin-hsr-mdzz2048-fork",
         "author": "TCOTC",
         "url": "https://github.com/TCOTC/siyuan-plugin-hsr-mdzz2048-fork",
-        "version": "0.6.0",
+        "version": "0.7.0",
         "minAppVersion": "2.9.8",
         "backends": [
           "windows",
           "linux",
           "darwin",
+          "ios",
+          "android",
+          "harmony",
           "docker"
         ],
         "frontends": [
           "desktop",
-          "browser-desktop"
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
         ],
         "displayName": {
           "default": "Document Highlight Search",
@@ -54,6 +60,49 @@
           "document",
           "highlight",
           "search"
+        ]
+      }
+    },
+    {
+      "url": "Asianfleet/siyuan-plugin-aether@6954a1e0e1d13d27f139aca229ec8c7d1c4403bf",
+      "updated": "2025-07-01T12:05:36Z",
+      "stars": 8,
+      "openIssues": 6,
+      "size": 6775630,
+      "installSize": 14074569,
+      "package": {
+        "name": "siyuan-plugin-aether",
+        "author": "Asianfleet",
+        "url": "https://github.com/Asianfleet/siyuan-plugin-aether",
+        "version": "0.2.0-alpha",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "Aether（以太）",
+          "en_US": "Aether"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "侧边栏 AI 对话",
+          "en_US": "Sidebar AI Dialogue"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README.md",
+          "en_US": "README_en_US.md"
+        },
+        "funding": null,
+        "keywords": [
+          "ai",
+          "chat"
         ]
       }
     },
@@ -571,49 +620,6 @@
           "database",
           "properties",
           "attributes"
-        ]
-      }
-    },
-    {
-      "url": "Asianfleet/siyuan-plugin-aether@2a587ae4e9c998c8c842b25d476dc4792349d133",
-      "updated": "2025-06-26T04:42:38Z",
-      "stars": 8,
-      "openIssues": 6,
-      "size": 6802809,
-      "installSize": 14221726,
-      "package": {
-        "name": "siyuan-plugin-aether",
-        "author": "Asianfleet",
-        "url": "https://github.com/Asianfleet/siyuan-plugin-aether",
-        "version": "0.1.0-alpha.3",
-        "minAppVersion": "3.0.12",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "Aether（以太）",
-          "en_US": "Aether"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "侧边栏 AI 对话",
-          "en_US": "Sidebar AI Dialogue"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README.md",
-          "en_US": "README_en_US.md"
-        },
-        "funding": null,
-        "keywords": [
-          "ai",
-          "chat"
         ]
       }
     },
