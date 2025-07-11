@@ -1,17 +1,80 @@
 {
   "repos": [
     {
-      "url": "Glaube-TY/siyuan-homepage@0738bd1e61aed5aafbe8d698e0b2be97c1927034",
-      "updated": "2025-07-11T07:29:33Z",
-      "stars": 13,
+      "url": "mm-o/siyuan-media-player@efe1e2b876f50f13bfbf231b0d917b5980f4982a",
+      "updated": "2025-07-11T12:33:50Z",
+      "stars": 29,
       "openIssues": 3,
-      "size": 1405490,
-      "installSize": 2649209,
+      "size": 923404,
+      "installSize": 2145564,
+      "package": {
+        "name": "siyuan-media-player",
+        "author": "mm-o",
+        "url": "https://github.com/mm-o/siyuan-media-player",
+        "version": "0.3.8",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker",
+          "darwin"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "思源媒体播放器",
+          "en_US": "SiYuan Media Player"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "一个用来在思源笔记中实现视频、音频、B站视频播放，支持时间点跳转、片段循环和播放列表管理的媒体播放器插件",
+          "en_US": "A comprehensive media player for SiYuan Note that supports audio, video, and Bilibili playback with timestamped jumps, loop segments, and playlist management"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://745201.xyz/pay.jpg"
+          ]
+        },
+        "keywords": [
+          "media player",
+          "audio",
+          "video",
+          "播放器",
+          "音频",
+          "视频"
+        ]
+      }
+    },
+    {
+      "url": "Glaube-TY/siyuan-homepage@04778afd1902f694c0da52526595d1f87b1ab5ea",
+      "updated": "2025-07-11T11:50:33Z",
+      "stars": 13,
+      "openIssues": 2,
+      "size": 1408424,
+      "installSize": 2664845,
       "package": {
         "name": "siyuan-homepage",
         "author": "Glaube-TY",
         "url": "https://github.com/Glaube-TY/siyuan-homepage",
-        "version": "1.6.0",
+        "version": "1.7.1",
         "minAppVersion": "3.0.12",
         "backends": [
           "windows",
@@ -74,6 +137,54 @@
           "热力图",
           "热搜",
           "搜索"
+        ]
+      }
+    },
+    {
+      "url": "loonghfut/siyuan-steve-tools@cad5779b139499e478778fa6aed9d9c26f3e5d9c",
+      "updated": "2025-07-11T11:21:39Z",
+      "stars": 46,
+      "openIssues": 17,
+      "size": 3085718,
+      "installSize": 6219329,
+      "package": {
+        "name": "siyuan-steve-tools",
+        "author": "steve",
+        "url": "https://github.com/loonghfut/siyuan-steve-tools",
+        "version": "0.10.5",
+        "minAppVersion": "3.0.13",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "STtools",
+          "en_US": "STtools"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "日程管理（基于数据库的看板视图和日历视图）, docker同步感知, ai侧边栏, 图片压缩，画板",
+          "en_US": "schedule management, docker sync awareness, ai sidebar"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "plugin",
+          "tools"
         ]
       }
     },
@@ -532,54 +643,6 @@
       }
     },
     {
-      "url": "loonghfut/siyuan-steve-tools@2460ea29695d6cad17afb18deb8ff72e4b2cd879",
-      "updated": "2025-07-08T15:18:03Z",
-      "stars": 46,
-      "openIssues": 17,
-      "size": 3084363,
-      "installSize": 6214226,
-      "package": {
-        "name": "siyuan-steve-tools",
-        "author": "steve",
-        "url": "https://github.com/loonghfut/siyuan-steve-tools",
-        "version": "0.10.4",
-        "minAppVersion": "3.0.13",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "STtools",
-          "en_US": "STtools"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "日程管理（基于数据库的看板视图和日历视图）, docker同步感知, ai侧边栏, 图片压缩，画板",
-          "en_US": "schedule management, docker sync awareness, ai sidebar"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            ""
-          ]
-        },
-        "keywords": [
-          "plugin",
-          "tools"
-        ]
-      }
-    },
-    {
       "url": "loonghfut/siyuan-database-display@9843527bae65bba109802f843a37da8a30d2ca44",
       "updated": "2025-07-08T14:09:50Z",
       "stars": 3,
@@ -643,69 +706,6 @@
           "beautify",
           "customizable",
           "settings"
-        ]
-      }
-    },
-    {
-      "url": "mm-o/siyuan-media-player@3ba94026a73c199183cef970967a968212ad2796",
-      "updated": "2025-07-08T03:52:46Z",
-      "stars": 29,
-      "openIssues": 3,
-      "size": 905125,
-      "installSize": 2085998,
-      "package": {
-        "name": "siyuan-media-player",
-        "author": "mm-o",
-        "url": "https://github.com/mm-o/siyuan-media-player",
-        "version": "0.3.7",
-        "minAppVersion": "3.0.12",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker",
-          "darwin"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "思源媒体播放器",
-          "en_US": "SiYuan Media Player"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "一个用来在思源笔记中实现视频、音频、B站视频播放，支持时间点跳转、片段循环和播放列表管理的媒体播放器插件",
-          "en_US": "A comprehensive media player for SiYuan Note that supports audio, video, and Bilibili playback with timestamped jumps, loop segments, and playlist management"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://745201.xyz/pay.jpg"
-          ]
-        },
-        "keywords": [
-          "media player",
-          "audio",
-          "video",
-          "播放器",
-          "音频",
-          "视频"
         ]
       }
     },
@@ -1296,7 +1296,7 @@
       "url": "TCOTC/siyuan-plugin-hsr-mdzz2048-fork@180e0f1b6637aabab0f9ce72bf5f42098c42581b",
       "updated": "2025-07-01T12:40:49Z",
       "stars": 6,
-      "openIssues": 9,
+      "openIssues": 8,
       "size": 70652,
       "installSize": 121524,
       "package": {
@@ -4825,17 +4825,17 @@
       }
     },
     {
-      "url": "2234839/siyuan_audio2text@4f30d850555b43d0416c291468bdc19d059d18f4",
+      "url": "2234839/vite-plugin-siyuan@9be1d697508b622a69111c8b74938ce4d2069dce",
       "updated": "2025-03-16T07:20:02Z",
-      "stars": 1,
+      "stars": 0,
       "openIssues": 0,
-      "size": 35120,
-      "installSize": 50576,
+      "size": 45720,
+      "installSize": 56668,
       "package": {
-        "name": "audio2text_plugin_siyuan",
+        "name": "vite-plugin-siyuan",
         "author": "崮生",
-        "url": "https://github.com/2234839/siyuan_audio2text",
-        "version": "0.0.12",
+        "url": "https://github.com/2234839/vite-plugin-siyuan",
+        "version": "0.0.26",
         "minAppVersion": "2.10.3",
         "backends": [
           "all"
@@ -4845,8 +4845,8 @@
         ],
         "displayName": {
           "default": "",
-          "zh_CN": "audio2text_plugin_siyuan",
-          "en_US": "audio2text_plugin_siyuan"
+          "zh_CN": "vite-plugin-siyuan",
+          "en_US": "vite-plugin-siyuan"
         },
         "description": {
           "default": "",
@@ -4870,17 +4870,17 @@
       }
     },
     {
-      "url": "2234839/vite-plugin-siyuan@9be1d697508b622a69111c8b74938ce4d2069dce",
+      "url": "2234839/siyuan_audio2text@4f30d850555b43d0416c291468bdc19d059d18f4",
       "updated": "2025-03-16T07:20:02Z",
-      "stars": 0,
+      "stars": 1,
       "openIssues": 0,
-      "size": 45720,
-      "installSize": 56668,
+      "size": 35120,
+      "installSize": 50576,
       "package": {
-        "name": "vite-plugin-siyuan",
+        "name": "audio2text_plugin_siyuan",
         "author": "崮生",
-        "url": "https://github.com/2234839/vite-plugin-siyuan",
-        "version": "0.0.26",
+        "url": "https://github.com/2234839/siyuan_audio2text",
+        "version": "0.0.12",
         "minAppVersion": "2.10.3",
         "backends": [
           "all"
@@ -4890,8 +4890,8 @@
         ],
         "displayName": {
           "default": "",
-          "zh_CN": "vite-plugin-siyuan",
-          "en_US": "vite-plugin-siyuan"
+          "zh_CN": "audio2text_plugin_siyuan",
+          "en_US": "audio2text_plugin_siyuan"
         },
         "description": {
           "default": "",
