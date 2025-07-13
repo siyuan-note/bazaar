@@ -1,6 +1,122 @@
 {
   "repos": [
     {
+      "url": "Achuan-2/siyuan-plugin-blockref-footnote@e11ed9f156010b0f3d4b1dbb12ac83b2db402e53",
+      "updated": "2025-07-13T17:17:31Z",
+      "stars": 28,
+      "openIssues": 12,
+      "size": 244761,
+      "installSize": 363685,
+      "package": {
+        "name": "siyuan-plugin-blockref-footnote",
+        "author": "Achuan-2",
+        "url": "https://github.com/Achuan-2/siyuan-plugin-blockref-footnote",
+        "version": "1.4.0",
+        "minAppVersion": "3.1.13",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "块引脚注",
+          "en_US": "FootnoteRef"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "使用思源的块引实现脚注和备注功能",
+          "en_US": "Use blockref to implement footnote and memo"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://www.yuque.com/achuan-2"
+          ]
+        },
+        "keywords": [
+          "脚注",
+          "Footnote",
+          "备注",
+          "Memo"
+        ]
+      }
+    },
+    {
+      "url": "hogmoff/siyuan-plugin-templater@f2ed053fa29ddb13c73eeb24053f37d2fea773b5",
+      "updated": "2025-07-13T16:49:45Z",
+      "stars": 1,
+      "openIssues": 0,
+      "size": 62585,
+      "installSize": 110330,
+      "package": {
+        "name": "siyuan-plugin-templater",
+        "author": "hogmoff",
+        "url": "https://github.com/hogmoff/siyuan-plugin-templater",
+        "version": "0.5.1",
+        "minAppVersion": "3.1.28",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "Templater",
+          "zh_CN": "模板器",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Automatically inserts templates when creating new documents based on their path",
+          "zh_CN": "根据新文档的路径，自动插入特定的模板。",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": []
+        },
+        "keywords": [
+          "template",
+          "path",
+          "automation"
+        ]
+      }
+    },
+    {
       "url": "OpaqueGlass/syplugin-anMCPServer@017732d77bdb95ca855a62176981221c6cd72811",
       "updated": "2025-07-13T16:02:40Z",
       "stars": 8,
@@ -2536,63 +2652,6 @@
           ]
         },
         "keywords": null
-      }
-    },
-    {
-      "url": "hogmoff/siyuan-plugin-templater@31539cdfd70ac9344318f742c8b8350d620f88f9",
-      "updated": "2025-05-30T18:54:22Z",
-      "stars": 1,
-      "openIssues": 2,
-      "size": 62810,
-      "installSize": 108507,
-      "package": {
-        "name": "siyuan-plugin-templater",
-        "author": "hogmoff",
-        "url": "https://github.com/hogmoff/siyuan-plugin-templater",
-        "version": "0.5.0",
-        "minAppVersion": "3.1.28",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "Templater",
-          "zh_CN": "模板器",
-          "en_US": ""
-        },
-        "description": {
-          "default": "Automatically inserts templates when creating new documents based on their path",
-          "zh_CN": "根据新文档的路径，自动插入特定的模板。",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": []
-        },
-        "keywords": [
-          "template",
-          "path",
-          "automation"
-        ]
       }
     },
     {
@@ -7399,65 +7458,6 @@
           "tab",
           "代码块",
           "标签"
-        ]
-      }
-    },
-    {
-      "url": "Achuan-2/siyuan-plugin-blockref-footnote@d3d80c83aeea1a43b804c8ef20d177cccb0e1c00",
-      "updated": "2024-12-13T02:12:12Z",
-      "stars": 28,
-      "openIssues": 12,
-      "size": 240002,
-      "installSize": 352088,
-      "package": {
-        "name": "siyuan-plugin-blockref-footnote",
-        "author": "Achuan-2",
-        "url": "https://github.com/Achuan-2/siyuan-plugin-blockref-footnote",
-        "version": "1.3.0",
-        "minAppVersion": "3.1.13",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "块引脚注",
-          "en_US": "FootnoteRef"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "使用思源的块引实现脚注和备注功能",
-          "en_US": "Use blockref to implement footnote and memo"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://www.yuque.com/achuan-2"
-          ]
-        },
-        "keywords": [
-          "脚注",
-          "Footnote",
-          "备注",
-          "Memo"
         ]
       }
     },
