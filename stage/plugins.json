@@ -1,6 +1,69 @@
 {
   "repos": [
     {
+      "url": "mm-o/siyuan-media-player@720219c88db46fa5fa0205b4dfd39d72e9099fc6",
+      "updated": "2025-07-15T05:12:00Z",
+      "stars": 30,
+      "openIssues": 1,
+      "size": 933279,
+      "installSize": 2185892,
+      "package": {
+        "name": "siyuan-media-player",
+        "author": "mm-o",
+        "url": "https://github.com/mm-o/siyuan-media-player",
+        "version": "0.4.2",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker",
+          "darwin"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "思源媒体播放器",
+          "en_US": "SiYuan Media Player"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "一个用来在思源笔记中实现视频、音频、B站视频播放，支持时间点跳转、片段循环和播放列表管理的媒体播放器插件",
+          "en_US": "A comprehensive media player for SiYuan Note that supports audio, video, and Bilibili playback with timestamped jumps, loop segments, and playlist management"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://745201.xyz/pay.jpg"
+          ]
+        },
+        "keywords": [
+          "media player",
+          "audio",
+          "video",
+          "播放器",
+          "音频",
+          "视频"
+        ]
+      }
+    },
+    {
       "url": "frostime/sy-titled-link@9922477ee2b0176cc42eb95d9f42804f10669650",
       "updated": "2025-07-15T03:00:16Z",
       "stars": 1,
@@ -163,69 +226,6 @@
           "时间",
           "日历",
           "通知"
-        ]
-      }
-    },
-    {
-      "url": "mm-o/siyuan-media-player@7aa48064636a5d6edf249ed4782317d754d39974",
-      "updated": "2025-07-14T16:53:02Z",
-      "stars": 30,
-      "openIssues": 1,
-      "size": 919646,
-      "installSize": 2141903,
-      "package": {
-        "name": "siyuan-media-player",
-        "author": "mm-o",
-        "url": "https://github.com/mm-o/siyuan-media-player",
-        "version": "0.4.0",
-        "minAppVersion": "3.0.12",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker",
-          "darwin"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "思源媒体播放器",
-          "en_US": "SiYuan Media Player"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "一个用来在思源笔记中实现视频、音频、B站视频播放，支持时间点跳转、片段循环和播放列表管理的媒体播放器插件",
-          "en_US": "A comprehensive media player for SiYuan Note that supports audio, video, and Bilibili playback with timestamped jumps, loop segments, and playlist management"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://745201.xyz/pay.jpg"
-          ]
-        },
-        "keywords": [
-          "media player",
-          "audio",
-          "video",
-          "播放器",
-          "音频",
-          "视频"
         ]
       }
     },
@@ -5111,51 +5111,6 @@
       }
     },
     {
-      "url": "2234839/siyuan_expr@ca23d7f9fdb676c04974aa6495e538f7fbeec01a",
-      "updated": "2025-03-16T07:20:06Z",
-      "stars": 0,
-      "openIssues": 0,
-      "size": 103501,
-      "installSize": 224781,
-      "package": {
-        "name": "expr",
-        "author": "崮生_子虚",
-        "url": "https://github.com/2234839/siyuan_expr",
-        "version": "0.0.44",
-        "minAppVersion": "2.10.3",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "expr 思源插件",
-          "en_US": "OceanPress siyuan plugin"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "为 OceanPress 提供更多能力",
-          "en_US": "To bestow OceanPress with enhanced capabilities."
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README.md",
-          "en_US": "README_en.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.com/@llej0"
-          ]
-        },
-        "keywords": null
-      }
-    },
-    {
       "url": "2234839/toolkit-plugin-siyuan@7200d2300d16d2c32167f3d42d31d23d678e7d59",
       "updated": "2025-03-16T07:20:06Z",
       "stars": 0,
@@ -5188,6 +5143,51 @@
           "default": "",
           "zh_CN": "README.md",
           "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.com/@llej0"
+          ]
+        },
+        "keywords": null
+      }
+    },
+    {
+      "url": "2234839/siyuan_expr@ca23d7f9fdb676c04974aa6495e538f7fbeec01a",
+      "updated": "2025-03-16T07:20:06Z",
+      "stars": 0,
+      "openIssues": 0,
+      "size": 103501,
+      "installSize": 224781,
+      "package": {
+        "name": "expr",
+        "author": "崮生_子虚",
+        "url": "https://github.com/2234839/siyuan_expr",
+        "version": "0.0.44",
+        "minAppVersion": "2.10.3",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "expr 思源插件",
+          "en_US": "OceanPress siyuan plugin"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "为 OceanPress 提供更多能力",
+          "en_US": "To bestow OceanPress with enhanced capabilities."
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README.md",
+          "en_US": "README_en.md"
         },
         "funding": {
           "openCollective": "",
