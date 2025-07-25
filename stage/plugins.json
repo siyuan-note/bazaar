@@ -1,60 +1,105 @@
 {
   "repos": [
     {
-      "url": "Asianfleet/siyuan-plugin-aether@1240155293fbe16b9d8f7b8cbb03d7f59556dd55",
-      "updated": "2025-07-25T08:27:54Z",
-      "stars": 9,
-      "openIssues": 7,
-      "size": 7205387,
-      "installSize": 14641348,
+      "url": "zuoez02/siyuan-plugin-webview-flomo@4e76e1c21c5780448b098997c63096f63c391895",
+      "updated": "2025-07-25T09:10:41Z",
+      "stars": 15,
+      "openIssues": 23,
+      "size": 663825,
+      "installSize": 868190,
       "package": {
-        "name": "siyuan-plugin-aether",
-        "author": "Asianfleet",
-        "url": "https://github.com/Asianfleet/siyuan-plugin-aether",
-        "version": "0.14.1",
-        "minAppVersion": "3.0.12",
+        "name": "siyuan-plugin-webapp",
+        "author": "zuoez02",
+        "url": "https://github.com/zuoez02/siyuan-plugin-webview-flomo",
+        "version": "3.6.2",
+        "minAppVersion": "v3.2.0",
         "backends": [
           "windows",
           "linux",
           "darwin"
         ],
         "frontends": [
-          "all"
+          "desktop"
         ],
         "displayName": {
-          "default": "",
-          "zh_CN": "Aether（以太）",
-          "en_US": "Aether"
+          "default": "Web工具集成",
+          "zh_CN": "Web工具集成",
+          "en_US": ""
         },
         "description": {
-          "default": "",
-          "zh_CN": "侧边栏 AI 对话",
-          "en_US": "Sidebar AI Dialogue"
+          "default": "集成WebAPP在线网页版, 内置Flomo、Cubox、Dida365, 支持自定义",
+          "zh_CN": "集成WebAPP在线网页版, 内置Flomo、Cubox、Dida365, 支持自定义",
+          "en_US": ""
         },
         "readme": {
-          "default": "",
-          "zh_CN": "README.md",
-          "en_US": "README_en_US.md"
+          "default": "README.md",
+          "zh_CN": "",
+          "en_US": ""
         },
-        "funding": null,
-        "keywords": [
-          "ai",
-          "chat"
-        ]
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/zuoez02"
+          ]
+        },
+        "keywords": null
       }
     },
     {
-      "url": "Glaube-TY/siyuan-homepage@a48b33f22c7d65bb62a478dda05e3de969a44160",
-      "updated": "2025-07-25T08:23:02Z",
+      "url": "zuoez02/siyuan-plugin-background-grid@6d833ace141fce72c3da07faecd3ba0c7e92edeb",
+      "updated": "2025-07-25T09:08:44Z",
+      "stars": 1,
+      "openIssues": 0,
+      "size": 851765,
+      "installSize": 888687,
+      "package": {
+        "name": "siyuan-plugin-background-grid",
+        "author": "zuoez02",
+        "url": "https://github.com/zuoez02/siyuan-plugin-background-grid",
+        "version": "0.1.7",
+        "minAppVersion": "3.2.0",
+        "backends": null,
+        "frontends": null,
+        "displayName": {
+          "default": "Background Grid",
+          "zh_CN": "背景纹路",
+          "en_US": ""
+        },
+        "description": {
+          "default": "可设置形状和颜色的背景纹路插件，支持配置网格与点阵背景，支持配置颜色、大小、间距",
+          "zh_CN": "可设置形状和颜色的背景纹路插件，支持配置网格与点阵背景，支持配置颜色、大小、间距",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/zuoez02"
+          ]
+        },
+        "keywords": null
+      }
+    },
+    {
+      "url": "Glaube-TY/siyuan-homepage@c36dded07923637bf6dc8551bda3b8be87f4342a",
+      "updated": "2025-07-25T08:46:23Z",
       "stars": 17,
       "openIssues": 2,
-      "size": 3267692,
-      "installSize": 5113718,
+      "size": 3267634,
+      "installSize": 5113437,
       "package": {
         "name": "siyuan-homepage",
         "author": "Glaube-TY",
         "url": "https://github.com/Glaube-TY/siyuan-homepage",
-        "version": "2.0.1",
+        "version": "2.0.2",
         "minAppVersion": "3.0.12",
         "backends": [
           "windows",
@@ -123,6 +168,49 @@
           "热力图",
           "热搜",
           "搜索"
+        ]
+      }
+    },
+    {
+      "url": "Asianfleet/siyuan-plugin-aether@1240155293fbe16b9d8f7b8cbb03d7f59556dd55",
+      "updated": "2025-07-25T08:27:54Z",
+      "stars": 9,
+      "openIssues": 6,
+      "size": 7205387,
+      "installSize": 14641348,
+      "package": {
+        "name": "siyuan-plugin-aether",
+        "author": "Asianfleet",
+        "url": "https://github.com/Asianfleet/siyuan-plugin-aether",
+        "version": "0.14.1",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "Aether（以太）",
+          "en_US": "Aether"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "侧边栏 AI 对话",
+          "en_US": "Sidebar AI Dialogue"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README.md",
+          "en_US": "README_en_US.md"
+        },
+        "funding": null,
+        "keywords": [
+          "ai",
+          "chat"
         ]
       }
     },
@@ -5252,17 +5340,17 @@
       }
     },
     {
-      "url": "2234839/siyuan_audio2text@4f30d850555b43d0416c291468bdc19d059d18f4",
+      "url": "2234839/vite-plugin-siyuan@9be1d697508b622a69111c8b74938ce4d2069dce",
       "updated": "2025-03-16T07:20:02Z",
-      "stars": 1,
+      "stars": 0,
       "openIssues": 0,
-      "size": 35120,
-      "installSize": 50576,
+      "size": 45720,
+      "installSize": 56668,
       "package": {
-        "name": "audio2text_plugin_siyuan",
+        "name": "vite-plugin-siyuan",
         "author": "崮生",
-        "url": "https://github.com/2234839/siyuan_audio2text",
-        "version": "0.0.12",
+        "url": "https://github.com/2234839/vite-plugin-siyuan",
+        "version": "0.0.26",
         "minAppVersion": "2.10.3",
         "backends": [
           "all"
@@ -5272,8 +5360,8 @@
         ],
         "displayName": {
           "default": "",
-          "zh_CN": "audio2text_plugin_siyuan",
-          "en_US": "audio2text_plugin_siyuan"
+          "zh_CN": "vite-plugin-siyuan",
+          "en_US": "vite-plugin-siyuan"
         },
         "description": {
           "default": "",
@@ -5297,17 +5385,17 @@
       }
     },
     {
-      "url": "2234839/vite-plugin-siyuan@9be1d697508b622a69111c8b74938ce4d2069dce",
+      "url": "2234839/siyuan_audio2text@4f30d850555b43d0416c291468bdc19d059d18f4",
       "updated": "2025-03-16T07:20:02Z",
-      "stars": 0,
+      "stars": 1,
       "openIssues": 0,
-      "size": 45720,
-      "installSize": 56668,
+      "size": 35120,
+      "installSize": 50576,
       "package": {
-        "name": "vite-plugin-siyuan",
+        "name": "audio2text_plugin_siyuan",
         "author": "崮生",
-        "url": "https://github.com/2234839/vite-plugin-siyuan",
-        "version": "0.0.26",
+        "url": "https://github.com/2234839/siyuan_audio2text",
+        "version": "0.0.12",
         "minAppVersion": "2.10.3",
         "backends": [
           "all"
@@ -5317,8 +5405,8 @@
         ],
         "displayName": {
           "default": "",
-          "zh_CN": "vite-plugin-siyuan",
-          "en_US": "vite-plugin-siyuan"
+          "zh_CN": "audio2text_plugin_siyuan",
+          "en_US": "audio2text_plugin_siyuan"
         },
         "description": {
           "default": "",
@@ -8537,53 +8625,6 @@
           "连接互传",
           "docker"
         ]
-      }
-    },
-    {
-      "url": "zuoez02/siyuan-plugin-webview-flomo@3ce7bb23bc753396477426b7f441a33c3f71f852",
-      "updated": "2024-09-25T15:02:46Z",
-      "stars": 15,
-      "openIssues": 23,
-      "size": 663696,
-      "installSize": 867800,
-      "package": {
-        "name": "siyuan-plugin-webapp",
-        "author": "zuoez02",
-        "url": "https://github.com/zuoez02/siyuan-plugin-webview-flomo",
-        "version": "3.6.0",
-        "minAppVersion": "v3.17",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "frontends": [
-          "desktop"
-        ],
-        "displayName": {
-          "default": "Web工具集成",
-          "zh_CN": "Web工具集成",
-          "en_US": ""
-        },
-        "description": {
-          "default": "集成WebAPP在线网页版, 内置Flomo、Cubox、Dida365, 支持自定义",
-          "zh_CN": "集成WebAPP在线网页版, 内置Flomo、Cubox、Dida365, 支持自定义",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.net/a/zuoez02"
-          ]
-        },
-        "keywords": null
       }
     },
     {
@@ -11861,47 +11902,6 @@
           "attributes",
           "database"
         ]
-      }
-    },
-    {
-      "url": "zuoez02/siyuan-plugin-background-grid@5887f747f834f7d031e76251125a8c44c950cf33",
-      "updated": "2024-01-02T07:19:04Z",
-      "stars": 1,
-      "openIssues": 0,
-      "size": 851221,
-      "installSize": 889031,
-      "package": {
-        "name": "siyuan-plugin-background-grid",
-        "author": "zuoez02",
-        "url": "https://github.com/zuoez02/siyuan-plugin-background-grid",
-        "version": "0.1.6",
-        "minAppVersion": "2.12.0",
-        "backends": null,
-        "frontends": null,
-        "displayName": {
-          "default": "Background Grid",
-          "zh_CN": "背景纹路",
-          "en_US": ""
-        },
-        "description": {
-          "default": "可设置形状和颜色的背景纹路插件，支持配置网格与点阵背景，支持配置颜色、大小、间距",
-          "zh_CN": "可设置形状和颜色的背景纹路插件，支持配置网格与点阵背景，支持配置颜色、大小、间距",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.net/a/zuoez02"
-          ]
-        },
-        "keywords": null
       }
     },
     {
