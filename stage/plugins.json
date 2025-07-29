@@ -1367,7 +1367,47 @@
       "openIssues": 0,
       "size": 713468,
       "installSize": 723946,
-      "package": null
+      "package": {
+        "name": "roaming-mode-incremental-reading",
+        "author": "ebAobS",
+        "url": "https://github.com/ebAobS/roaming-mode-incremental-reading",
+        "version": "2.1.1",
+        "minAppVersion": "2.9.0",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "browser-desktop"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "漫游式渐进阅读",
+          "en_US": "Roaming Mode Incremental Reading"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "渐进阅读的核心是稍后阅读，而不是对抗遗忘。",
+          "en_US": "The core of incremental reading is reading later on, rather than fighting against forgetting."
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://cdn.jsdelivr.net/gh/ebAobS/pics@main/donate.png"
+          ]
+        },
+        "keywords": null
+      }
     },
     {
       "url": "frostime/sy-titled-link@9922477ee2b0176cc42eb95d9f42804f10669650",
@@ -5108,7 +5148,51 @@
       "openIssues": 0,
       "size": 58614,
       "installSize": 73949,
-      "package": null
+      "package": {
+        "name": "sy-open-dir",
+        "author": "frostime",
+        "url": "https://github.com/frostime/sy-open-dir",
+        "version": "0.3.0",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios"
+        ],
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "打开目录",
+          "en_US": "Open Directory"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "快速在本地文件系统中打开思源中的某些目录",
+          "en_US": "Quickly open SiYuan directories in the local file system"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "plugin",
+          "sample",
+          "插件样例"
+        ]
+      }
     },
     {
       "url": "emlog/siyuan-to-emlog@7033abfec55a4dacd33dd4c4c5bbd414ddf7cea6",
@@ -6876,7 +6960,65 @@
       "openIssues": 8,
       "size": 2883797,
       "installSize": 3149027,
-      "package": null
+      "package": {
+        "name": "siyuan-plugin-sidebar-widget",
+        "author": "wuchunlin",
+        "url": "https://github.com/wu1233456/siyuan-plugin-sidebar-widget",
+        "version": "1.0.0",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "侧边栏小组件",
+          "en_US": "siyuan-plugin-sidebar-widget"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "思源笔记侧边栏小组件库，给你的侧边栏加点有趣的东西",
+          "en_US": "siyuan-plugin-sidebar-widget"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "sidebar-widget",
+          "时钟",
+          "番茄钟",
+          "倒计时",
+          "习惯打卡",
+          "音乐播放器",
+          "日历",
+          "待办事项",
+          "最近文档",
+          "收藏夹",
+          "侧边栏小组件"
+        ]
+      }
     },
     {
       "url": "frostime/sy-line-height@cd7228b1c4af9a221dc0e10f8a4393fe87f1ef03",
@@ -7822,7 +7964,57 @@
       "openIssues": 0,
       "size": 139315,
       "installSize": 207694,
-      "package": null
+      "package": {
+        "name": "siyuan-plugin-doctree-autosort",
+        "author": "Achuan-2",
+        "url": "https://github.com/Achuan-2/siyuan-plugin-doctree-autosort",
+        "version": "0.0.5",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "文档树自定义排序增强",
+          "en_US": "DocTree Custom Sort Automation"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "让自定义排序也能自动化排序，并支持对中文数字排序！",
+          "en_US": "Custom Sort + Automation Sort = Ideal DocTree Sort"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://www.yuque.com/achuan-2"
+          ]
+        },
+        "keywords": [
+          "文档树排序",
+          "DocTree Sort",
+          "自定义排序",
+          "Custom Sort"
+        ]
+      }
     },
     {
       "url": "suka233/siyuan-knote@edad2b76ea112df34fd49ff8b0a76d9753fc0d5d",
@@ -7831,7 +8023,57 @@
       "openIssues": 5,
       "size": 4315327,
       "installSize": 9444968,
-      "package": null
+      "package": {
+        "name": "knote-plugin",
+        "author": "suka233",
+        "url": "https://github.com/suka233/siyuan-knote",
+        "version": "2.1.5",
+        "minAppVersion": "2.8.10",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "KNote卡片笔记插件",
+          "en_US": "KNote Plugin for Zettelkasten"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "将daily note无压笔记法和思源结合起来，想到什么就写什么，无压力做笔记。实验功能：当前支持任意格式的日记存储路径解析，新增支持黑暗模式,新增系统级全局快捷输入框,Ctrl+Shift+Q即可全局唤出",
+          "en_US": "Combine daily note and siyuan, write down what you think, and take notes without pressure. Experimental function: the current support for any format of diary storage path analysis, new support for dark mode, new global shortcut input box"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README.md",
+          "en_US": "README_en_US.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://wj.qq.com/s2/12591272/adf1/"
+          ]
+        },
+        "keywords": [
+          "knote",
+          "zettelkasten",
+          "daily note",
+          "siyuan",
+          "笔记",
+          "daily",
+          "note",
+          "daily note",
+          "siyuan",
+          "思源",
+          "卡片笔记",
+          "无压笔记",
+          "callout"
+        ]
+      }
     },
     {
       "url": "anarion80/siyuan-oembed@d64bfddab3060d3cea46423e93c01d916138a202",
@@ -8720,7 +8962,62 @@
       "openIssues": 4,
       "size": 140315,
       "installSize": 168524,
-      "package": null
+      "package": {
+        "name": "siyuan_streamer_mode",
+        "author": "zxkmm",
+        "url": "https://github.com/zxkmm/siyuan_streamer_mode",
+        "version": "0.2.2",
+        "minAppVersion": "2.11.4",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "android"
+        ],
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window",
+          "mobile"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "隐私模式",
+          "en_US": "siyuan_streamer_mode"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "掩盖敏感信息",
+          "en_US": "Streamer mode for SiYuan."
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://github.com/zxkmm/zxkmm"
+          ]
+        },
+        "keywords": [
+          "集市",
+          "黑名单",
+          "主播模式",
+          "隐藏",
+          "移除",
+          "streamer",
+          "blacklist",
+          "blocklist",
+          "remove",
+          "hide",
+          "隐私模式"
+        ]
+      }
     },
     {
       "url": "zxkmm/siyuan_database_modification@56eb1960743550b71eefbc9582fb9beebab13fc6",
@@ -9300,7 +9597,52 @@
       "openIssues": 3,
       "size": 34521,
       "installSize": 51138,
-      "package": null
+      "package": {
+        "name": "create-file",
+        "author": "Juexe",
+        "url": "https://github.com/Juexe/siyuan-create-file-plugin",
+        "version": "0.1.0",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android"
+        ],
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "Create file(drawio, excalidraw)",
+          "zh_CN": "创建文件(drawio, excalidraw)",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Used to create files within the editor. For example, creating a \u0026#39;. drawio\u0026#39; or \u0026#39;. excalidraw\u0026#39; file that can be easily edited with an external editor",
+          "zh_CN": "用于在编辑器内创建文件。例如创建`.drawio`或`.excalidraw`文件，可用外部编辑器方便编辑。",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "drawio",
+          "excalidraw",
+          "创建文件"
+        ]
+      }
     },
     {
       "url": "chenshinshi/sy-blt@8e8a1a16596cd0032f968012a26eb090de2a7c9a",
@@ -10197,7 +10539,54 @@
       "openIssues": 0,
       "size": 196857,
       "installSize": 523936,
-      "package": null
+      "package": {
+        "name": "wakatime",
+        "author": "Zuoqiu Yingyi",
+        "url": "https://github.com/Zuoqiu-Yingyi/siyuan-plugin-wakatime",
+        "version": "0.3.6",
+        "minAppVersion": "2.10.13",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "WakaTime",
+          "zh_CN": "",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Use \u003ca href=\"https://github.com/muety/wakapi\" rel=\"nofollow\"\u003eWakapi\u003c/a\u003e or \u003ca href=\"https://wakatime.com/\" rel=\"nofollow\"\u003eWakaTime\u003c/a\u003e to count your editing Activity",
+          "zh_CN": "使用 \u003ca href=\"https://github.com/muety/wakapi\" rel=\"nofollow\"\u003eWakapi\u003c/a\u003e 或 \u003ca href=\"https://wakatime.com/\" rel=\"nofollow\"\u003eWakaTime\u003c/a\u003e 统计您的编辑活动",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/zuoqiu",
+            "https://ko-fi.com/zuoqiu"
+          ]
+        },
+        "keywords": [
+          "分析",
+          "统计",
+          "統計",
+          "编辑活动",
+          "編輯活動",
+          "statistics",
+          "analytics",
+          "wakatime",
+          "wakapi"
+        ]
+      }
     },
     {
       "url": "suka233/siyuan-keep-incremental-learning-plugin@aaa8ab1dfda951a69dd41cb0e01f7706701eb95b",
