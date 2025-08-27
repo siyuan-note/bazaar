@@ -1,17 +1,124 @@
 {
   "repos": [
     {
-      "url": "bilenth/syplugin-config-sync@44c62fe8c2e135db50ccb21a3983ac32b05f813c",
-      "updated": "2025-08-27T07:47:36Z",
-      "stars": 0,
+      "url": "TransMux/document-styler@484561adbfd8c6078f0e5dbe321877f3f0e03e6a",
+      "updated": "2025-08-27T09:09:30Z",
+      "stars": 3,
       "openIssues": 0,
-      "size": 60504,
-      "installSize": 103170,
+      "size": 1827526,
+      "installSize": 2036328,
+      "package": {
+        "name": "document-styler",
+        "author": "TransMux",
+        "url": "https://github.com/TransMux/document-styler",
+        "version": "1.8.0",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "M - 文档样式拓展",
+          "en_US": "M - Document Styler"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "让思源胜任专业的报告写作（各种输出场景，例如日报，周报，月报）",
+          "en_US": "Document Styler for Siyuan"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README.md",
+          "en_US": "README_en_US.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "plugin",
+          "sample",
+          "插件样例"
+        ]
+      }
+    },
+    {
+      "url": "loonghfut/siyuan-steve-tools@26a48d841b7ee17eadd5c3f86a3a490fa89d91f6",
+      "updated": "2025-08-27T08:36:54Z",
+      "stars": 56,
+      "openIssues": 16,
+      "size": 3095426,
+      "installSize": 6290120,
+      "package": {
+        "name": "siyuan-steve-tools",
+        "author": "steve",
+        "url": "https://github.com/loonghfut/siyuan-steve-tools",
+        "version": "0.13.3",
+        "minAppVersion": "3.2.1",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "STtools",
+          "en_US": "STtools"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "互联日程管理（基于数据库的看板视图和日历视图）支持ics，qq邮箱日期，滴答清单双向联动, docker同步感知, ai侧边栏, 资源压缩，白板, WPS联动",
+          "en_US": "schedule management, docker sync awareness, ai sidebar"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "plugin",
+          "tools"
+        ]
+      }
+    },
+    {
+      "url": "bilenth/syplugin-config-sync@fcfb0fecc57fc0d590397733eabe0c4f8b05cebe",
+      "updated": "2025-08-27T08:32:08Z",
+      "stars": 1,
+      "openIssues": 0,
+      "size": 60496,
+      "installSize": 103153,
       "package": {
         "name": "syplugin-config-sync",
         "author": "Brian",
         "url": "https://github.com/yourusername/syplugin-config-sync",
-        "version": "0.1.4",
+        "version": "0.1.5",
         "minAppVersion": "3.2.1",
         "backends": [
           "windows",
@@ -351,54 +458,6 @@
           "热力图",
           "热搜",
           "搜索"
-        ]
-      }
-    },
-    {
-      "url": "loonghfut/siyuan-steve-tools@b0d675d4cc2f3170d7765d87e57902545995a6be",
-      "updated": "2025-08-25T07:34:37Z",
-      "stars": 56,
-      "openIssues": 16,
-      "size": 3088918,
-      "installSize": 6269305,
-      "package": {
-        "name": "siyuan-steve-tools",
-        "author": "steve",
-        "url": "https://github.com/loonghfut/siyuan-steve-tools",
-        "version": "0.13.2",
-        "minAppVersion": "3.2.1",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "STtools",
-          "en_US": "STtools"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "互联日程管理（基于数据库的看板视图和日历视图）支持ics，qq邮箱日期，滴答清单双向联动, docker同步感知, ai侧边栏, 资源压缩，白板, WPS联动",
-          "en_US": "schedule management, docker sync awareness, ai sidebar"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            ""
-          ]
-        },
-        "keywords": [
-          "plugin",
-          "tools"
         ]
       }
     },
