@@ -1,6 +1,123 @@
 {
   "repos": [
     {
+      "url": "LeonZ1998/siyuan-plugin-taskmap@0d4078a5bfcbd871cea99f2ed41952cf29f9a5cf",
+      "updated": "2025-08-28T14:02:04Z",
+      "stars": 0,
+      "openIssues": 0,
+      "size": 432684,
+      "installSize": 1477851,
+      "package": {
+        "name": "siyuan-plugin-taskmap",
+        "author": "LeonZ1998",
+        "url": "https://github.com/LeonZ1998/siyuan-plugin-taskmap",
+        "version": "1.1.1",
+        "minAppVersion": "2.10.0",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "TaskMap",
+          "zh_CN": "TaskMap",
+          "en_US": "TaskMap"
+        },
+        "description": {
+          "default": "A modern task management plugin with project tracking, task organization, and focus timer",
+          "zh_CN": "现代化的任务管理插件，支持项目管理、任务分组和专注计时",
+          "en_US": "A modern task management plugin with project tracking, task organization, and focus timer"
+        },
+        "readme": {
+          "default": "README_zh_CN.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": []
+        },
+        "keywords": [
+          "task",
+          "project",
+          "timer",
+          "management",
+          "productivity"
+        ]
+      }
+    },
+    {
+      "url": "Achuan-2/siyuan-plugin-task-note-management@33d43a36f86905cce568b7064ae6f5f6add5c13a",
+      "updated": "2025-08-28T13:41:31Z",
+      "stars": 54,
+      "openIssues": 3,
+      "size": 7319582,
+      "installSize": 9080918,
+      "package": {
+        "name": "siyuan-plugin-task-note-management",
+        "author": "Achuan-2",
+        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
+        "version": "0.7.7",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android",
+          "harmony"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "任务笔记管理",
+          "en_US": "Task Note Management"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "一款在思源笔记里实现任务笔记管理功能的插件，为了践行防弹笔记法而开发。支持文档和块提醒、日历视图查看行事历、番茄钟专注和数据统计、项目看板、四象限面板等功能",
+          "en_US": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more."
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://www.yuque.com/achuan-2"
+          ]
+        },
+        "keywords": [
+          "reminder",
+          "time",
+          "calendar",
+          "notification",
+          "提醒",
+          "时间",
+          "日历",
+          "通知",
+          "番茄钟",
+          "四象限",
+          "任务管理",
+          "项目管理"
+        ]
+      }
+    },
+    {
       "url": "frostime/sy-bq-callout@b01683ea9beafe2b6840f3374b04f7bd590330a1",
       "updated": "2025-08-28T10:11:33Z",
       "stars": 6,
@@ -158,74 +275,6 @@
           "Time visualization",
           "Progress tracking",
           "Goal setting"
-        ]
-      }
-    },
-    {
-      "url": "Achuan-2/siyuan-plugin-task-note-management@4717ba051f189cc02669113a7c9aaf4af8cf2f04",
-      "updated": "2025-08-28T07:11:34Z",
-      "stars": 54,
-      "openIssues": 3,
-      "size": 7319340,
-      "installSize": 9080123,
-      "package": {
-        "name": "siyuan-plugin-task-note-management",
-        "author": "Achuan-2",
-        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
-        "version": "0.7.6",
-        "minAppVersion": "3.0.12",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "任务笔记管理",
-          "en_US": "Task Note Management"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "一款在思源笔记里实现任务笔记管理功能的插件，为了践行防弹笔记法而开发。支持文档和块提醒、日历视图查看行事历、番茄钟专注和数据统计、项目看板、四象限面板等功能",
-          "en_US": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more."
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://www.yuque.com/achuan-2"
-          ]
-        },
-        "keywords": [
-          "reminder",
-          "time",
-          "calendar",
-          "notification",
-          "提醒",
-          "时间",
-          "日历",
-          "通知",
-          "番茄钟",
-          "四象限",
-          "任务管理",
-          "项目管理"
         ]
       }
     },
@@ -642,55 +691,6 @@
           ]
         },
         "keywords": null
-      }
-    },
-    {
-      "url": "LeonZ1998/siyuan-plugin-taskmap@e2778925a68eec91ca866ca812984f1d38d474fd",
-      "updated": "2025-08-26T13:56:20Z",
-      "stars": 0,
-      "openIssues": 0,
-      "size": 771879,
-      "installSize": 2185621,
-      "package": {
-        "name": "siyuan-plugin-taskmap",
-        "author": "LeonZ1998",
-        "url": "https://github.com/LeonZ1998/siyuan-plugin-taskmap",
-        "version": "1.1.0",
-        "minAppVersion": "2.10.0",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "TaskMap",
-          "zh_CN": "TaskMap",
-          "en_US": "TaskMap"
-        },
-        "description": {
-          "default": "A modern task management plugin with project tracking, task organization, and focus timer",
-          "zh_CN": "现代化的任务管理插件，支持项目管理、任务分组和专注计时",
-          "en_US": "A modern task management plugin with project tracking, task organization, and focus timer"
-        },
-        "readme": {
-          "default": "README_zh_CN.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": []
-        },
-        "keywords": [
-          "task",
-          "project",
-          "timer",
-          "management",
-          "productivity"
-        ]
       }
     },
     {
