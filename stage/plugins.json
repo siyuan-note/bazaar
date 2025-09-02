@@ -1,6 +1,113 @@
 {
   "repos": [
     {
+      "url": "bilenth/syplugin-config-sync@3b23e0bcfcc3c329deece42dc5f85cfe52546c71",
+      "updated": "2025-09-02T10:45:20Z",
+      "stars": 2,
+      "openIssues": 0,
+      "size": 64871,
+      "installSize": 112196,
+      "package": {
+        "name": "syplugin-config-sync",
+        "author": "Brian",
+        "url": "https://github.com/bilenth/syplugin-config-sync",
+        "version": "0.2.1",
+        "minAppVersion": "3.2.1",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "配置同步",
+          "en_US": "Config Sync"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "在执行云端同步时，带上想要同步的配置项，比如快捷键、布局等",
+          "en_US": "Sync your preferred configuration items during cloud synchronization, such as keyboard shortcuts, layouts, etc."
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "config",
+          "sync",
+          "配置",
+          "同步",
+          "快捷键",
+          "快捷键同步",
+          "同步快捷键"
+        ]
+      }
+    },
+    {
+      "url": "WingDr/siyuan-plugin-citation@77d1d28bb6241027ef973e231ea954ae0f7ea229",
+      "updated": "2025-09-02T10:32:39Z",
+      "stars": 61,
+      "openIssues": 12,
+      "size": 1725701,
+      "installSize": 3305735,
+      "package": {
+        "name": "siyuan-plugin-citation",
+        "author": "WingDr",
+        "url": "https://github.com/WingDr/siyuan-plugin-citation",
+        "version": "0.4.5",
+        "minAppVersion": "3.3.1",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "Citation for SiYuan",
+          "zh_CN": "文献引用",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Insert literature citations to your notes",
+          "zh_CN": "在笔记中插入文献引用",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": []
+        },
+        "keywords": null
+      }
+    },
+    {
       "url": "IAliceBobI/sy-tomato-plugin@4db78ab53b338808e9df75a588a00275a5abe7a8",
       "updated": "2025-09-02T03:16:46Z",
       "stars": 35,
@@ -755,67 +862,6 @@
           "自定义",
           "time",
           "时间"
-        ]
-      }
-    },
-    {
-      "url": "bilenth/syplugin-config-sync@85898da6cbd7267f4fd3492f1a474e371e339d3c",
-      "updated": "2025-08-29T11:43:27Z",
-      "stars": 2,
-      "openIssues": 1,
-      "size": 63247,
-      "installSize": 111645,
-      "package": {
-        "name": "syplugin-config-sync",
-        "author": "Brian",
-        "url": "https://github.com/bilenth/syplugin-config-sync",
-        "version": "0.2.0",
-        "minAppVersion": "3.2.1",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "配置同步",
-          "en_US": "Config Sync"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "在执行云端同步时，带上你想同步的配置项，比如快捷键、布局等",
-          "en_US": "Sync your preferred configuration items during cloud synchronization, such as keyboard shortcuts, layouts, etc."
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            ""
-          ]
-        },
-        "keywords": [
-          "config",
-          "sync",
-          "配置",
-          "同步",
-          "快捷键",
-          "快捷键同步",
-          "同步快捷键"
         ]
       }
     },
@@ -3967,52 +4013,6 @@
           "reference",
           "引用"
         ]
-      }
-    },
-    {
-      "url": "WingDr/siyuan-plugin-citation@917260fddf4057dcd823989ce78b6dce00355709",
-      "updated": "2025-07-02T03:14:31Z",
-      "stars": 61,
-      "openIssues": 18,
-      "size": 1724338,
-      "installSize": 3300842,
-      "package": {
-        "name": "siyuan-plugin-citation",
-        "author": "WingDr",
-        "url": "https://github.com/WingDr/siyuan-plugin-citation",
-        "version": "0.4.4",
-        "minAppVersion": "3.0.4",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "Citation for SiYuan",
-          "zh_CN": "文献引用",
-          "en_US": ""
-        },
-        "description": {
-          "default": "Insert literature citations to your notes",
-          "zh_CN": "在笔记中插入文献引用",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": []
-        },
-        "keywords": null
       }
     },
     {
