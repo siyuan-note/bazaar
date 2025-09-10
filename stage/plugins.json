@@ -1,6 +1,111 @@
 {
   "repos": [
     {
+      "url": "OpaqueGlass/syplugin-hierarchyNavigate@0158fc8ebf7a12fd5a3bec2e78c1867839df7287",
+      "updated": "2025-09-10T03:15:33Z",
+      "stars": 15,
+      "openIssues": 3,
+      "size": 197144,
+      "installSize": 451975,
+      "package": {
+        "name": "syplugin-hierarchyNavigate",
+        "author": "OpaqueGlass",
+        "url": "https://github.com/OpaqueGlass/syplugin-hierarchyNavigate",
+        "version": "1.7.4",
+        "minAppVersion": "",
+        "backends": null,
+        "frontends": null,
+        "displayName": {
+          "default": "HierarchyNavigate",
+          "zh_CN": "文档层级导航",
+          "en_US": "HierarchyNavigate"
+        },
+        "description": {
+          "default": "Insert doc-links under current doc title",
+          "zh_CN": "在标题下方显示上下层级文档链接",
+          "en_US": "Insert doc-links under current doc title"
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://wj.qq.com/s2/12395364/b69f/"
+          ]
+        },
+        "keywords": null
+      }
+    },
+    {
+      "url": "zxkmm/siyuan_fake_workspace@7f7cc535c058b025bb2b11331206cdb96a56e5b5",
+      "updated": "2025-09-10T03:11:26Z",
+      "stars": 5,
+      "openIssues": 0,
+      "size": 71213,
+      "installSize": 103874,
+      "package": {
+        "name": "siyuan_fake_workspace",
+        "author": "zxkmm",
+        "url": "https://github.com/siyuan-note/siyuan_fake_workspace",
+        "version": "1.0.0",
+        "minAppVersion": "3.2.1",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "智能（假）工作空间",
+          "en_US": "Smart (Fake) Workspace"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "快速的切换笔记本的显示和隐藏",
+          "en_US": "Quickly show and hide notebooks"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "工作空间",
+          "Workspace",
+          "笔记本",
+          "Notebook",
+          "切换",
+          "Switch",
+          "隐藏",
+          "Hide"
+        ]
+      }
+    },
+    {
       "url": "zxbdzh/siyuan-plugin-export-s3-markdown@5318070b3e95aa2fd15b892c89dad87c110668b4",
       "updated": "2025-09-10T02:45:44Z",
       "stars": 1,
@@ -402,70 +507,6 @@
       }
     },
     {
-      "url": "zxkmm/siyuan_fake_workspace@9f873a365d92716a067e64c57bba8920d2f1a72c",
-      "updated": "2025-09-09T06:47:42Z",
-      "stars": 5,
-      "openIssues": 0,
-      "size": 71086,
-      "installSize": 103562,
-      "package": {
-        "name": "siyuan_fake_workspace",
-        "author": "zxkmm",
-        "url": "https://github.com/siyuan-note/siyuan_fake_workspace",
-        "version": "0.0.6",
-        "minAppVersion": "3.2.1",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "智能（假）工作空间",
-          "en_US": "Smart (Fake) Workspace"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "快速的切换笔记本的显示和隐藏",
-          "en_US": "Quickly show and hide notebooks"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            ""
-          ]
-        },
-        "keywords": [
-          "工作空间",
-          "Workspace",
-          "笔记本",
-          "Notebook",
-          "切换",
-          "Switch",
-          "隐藏",
-          "Hide"
-        ]
-      }
-    },
-    {
       "url": "zxkmm/siyuan_doctree_fake_subfolder@90c2f8a7da65588a4c5bd979e819f30379207259",
       "updated": "2025-09-09T06:31:29Z",
       "stars": 43,
@@ -708,7 +749,7 @@
       "url": "loonghfut/siyuan-steve-tools@03ae975ecee281a925919b345ddac21300981358",
       "updated": "2025-09-08T13:52:19Z",
       "stars": 57,
-      "openIssues": 16,
+      "openIssues": 17,
       "size": 3108466,
       "installSize": 6341810,
       "package": {
@@ -1641,7 +1682,7 @@
       "url": "WingDr/siyuan-plugin-citation@77d1d28bb6241027ef973e231ea954ae0f7ea229",
       "updated": "2025-09-02T10:32:39Z",
       "stars": 62,
-      "openIssues": 15,
+      "openIssues": 16,
       "size": 1725701,
       "installSize": 3305735,
       "package": {
@@ -2598,47 +2639,6 @@
       }
     },
     {
-      "url": "OpaqueGlass/syplugin-hierarchyNavigate@26d8896b8ebc9d6fd17283a27ed56a1b128f355d",
-      "updated": "2025-08-20T04:23:35Z",
-      "stars": 15,
-      "openIssues": 3,
-      "size": 196957,
-      "installSize": 451439,
-      "package": {
-        "name": "syplugin-hierarchyNavigate",
-        "author": "OpaqueGlass",
-        "url": "https://github.com/OpaqueGlass/syplugin-hierarchyNavigate",
-        "version": "1.7.3",
-        "minAppVersion": "",
-        "backends": null,
-        "frontends": null,
-        "displayName": {
-          "default": "HierarchyNavigate",
-          "zh_CN": "文档层级导航",
-          "en_US": "HierarchyNavigate"
-        },
-        "description": {
-          "default": "Insert doc-links under current doc title",
-          "zh_CN": "在标题下方显示上下层级文档链接",
-          "en_US": "Insert doc-links under current doc title"
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://wj.qq.com/s2/12395364/b69f/"
-          ]
-        },
-        "keywords": null
-      }
-    },
-    {
       "url": "TransMux/siyuan-optimizer@0689d3bb22db8d17b86bb8d2cc7552f6b20ece2e",
       "updated": "2025-08-20T03:12:39Z",
       "stars": 0,
@@ -2795,7 +2795,7 @@
       "url": "terwer/siyuan-plugin-publisher@084b41c2527a04c3ae8ca689839020d955815dc9",
       "updated": "2025-08-15T09:16:01Z",
       "stars": 192,
-      "openIssues": 83,
+      "openIssues": 84,
       "size": 22466426,
       "installSize": 22485746,
       "package": {
