@@ -1,6 +1,100 @@
 {
   "repos": [
     {
+      "url": "OpaqueGlass/syplugin-fakeDocBreadcrumb@f659aca54bd01e890ffdd6fa111b17594649d901",
+      "updated": "2025-09-25T06:29:13Z",
+      "stars": 9,
+      "openIssues": 3,
+      "size": 81706,
+      "installSize": 193847,
+      "package": {
+        "name": "syplugin-fakeDocBreadcrumb",
+        "author": "OpaqueGlass",
+        "url": "https://github.com/OpaqueGlass/syplugin-fakeDocBreadcrumb",
+        "version": "1.3.0",
+        "minAppVersion": "",
+        "backends": null,
+        "frontends": null,
+        "displayName": {
+          "default": "fakeDocBreadcrumb",
+          "zh_CN": "(伪)文档面包屑",
+          "en_US": "Fake Doc Breadcrumb"
+        },
+        "description": {
+          "default": "Add a doc-breadcrumb",
+          "zh_CN": "再添加一个文档面包屑：在编辑区域顶部添加可跳转的文档路径信息导航条",
+          "en_US": "Add a document breadcrumb. Add document path information that can be jumped to at the top of the editing area."
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://wj.qq.com/s2/12395364/b69f/"
+          ]
+        },
+        "keywords": null
+      }
+    },
+    {
+      "url": "OpaqueGlass/syplugin-imageEditor@7e78e21982b4ea1edf99714ffc804f194d51b3b9",
+      "updated": "2025-09-25T06:26:18Z",
+      "stars": 0,
+      "openIssues": 0,
+      "size": 570390,
+      "installSize": 1926996,
+      "package": {
+        "name": "syplugin-imageEditor",
+        "author": "OpaqueGlass",
+        "url": "https://github.com/OpaqueGlass/syplugin-imageEditor",
+        "version": "0.2.0",
+        "minAppVersion": "2.9.0",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "android",
+          "ios",
+          "harmony"
+        ],
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "browser-mobile",
+          "mobile"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "笔记图片编辑器（预览版）",
+          "en_US": "Image Editor (Preview Edition)"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "在思源笔记中使用开源图片编辑器或调起本地编辑器修改本地笔记图片。提供裁剪、旋转、简单标注等功能。",
+          "en_US": "Edit note image with tui-image-editor or filerobot-image-editor in siyuan-note"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://wj.qq.com/s2/12395364/b69f/"
+          ]
+        },
+        "keywords": null
+      }
+    },
+    {
       "url": "WingDr/siyuan-plugin-citation@f454b17d46a7e2e470f4c33e070661e4f48c782e",
       "updated": "2025-09-25T04:28:29Z",
       "stars": 63,
@@ -50,7 +144,7 @@
       "url": "clouder0/siyuan-typst-plugin@96852c70ee4ffa699c4a7b0d83e60950d4dd4674",
       "updated": "2025-09-25T02:10:46Z",
       "stars": 2,
-      "openIssues": 0,
+      "openIssues": 1,
       "size": 192956,
       "installSize": 307286,
       "package": {
@@ -279,47 +373,6 @@
           ]
         },
         "keywords": []
-      }
-    },
-    {
-      "url": "OpaqueGlass/syplugin-fakeDocBreadcrumb@b22e9e31d0d0b7c9f8a0561039b9c764ae7b4e20",
-      "updated": "2025-09-22T07:28:52Z",
-      "stars": 9,
-      "openIssues": 4,
-      "size": 80144,
-      "installSize": 187447,
-      "package": {
-        "name": "syplugin-fakeDocBreadcrumb",
-        "author": "OpaqueGlass",
-        "url": "https://github.com/OpaqueGlass/syplugin-fakeDocBreadcrumb",
-        "version": "1.2.4-r1",
-        "minAppVersion": "",
-        "backends": null,
-        "frontends": null,
-        "displayName": {
-          "default": "fakeDocBreadcrumb",
-          "zh_CN": "(伪)文档面包屑",
-          "en_US": "Fake Doc Breadcrumb"
-        },
-        "description": {
-          "default": "Add a doc-breadcrumb",
-          "zh_CN": "再添加一个文档面包屑：在编辑区域顶部添加可跳转的文档路径信息导航条",
-          "en_US": "Add a document breadcrumb. Add document path information that can be jumped to at the top of the editing area."
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://wj.qq.com/s2/12395364/b69f/"
-          ]
-        },
-        "keywords": null
       }
     },
     {
@@ -1211,58 +1264,6 @@
           "Progress tracking",
           "Goal setting"
         ]
-      }
-    },
-    {
-      "url": "OpaqueGlass/syplugin-imageEditor@05b1b2e6a688e6c1135e351bbf71aa89cdd59ff5",
-      "updated": "2025-09-13T09:08:02Z",
-      "stars": 0,
-      "openIssues": 0,
-      "size": 569614,
-      "installSize": 1925462,
-      "package": {
-        "name": "syplugin-imageEditor",
-        "author": "OpaqueGlass",
-        "url": "https://github.com/OpaqueGlass/syplugin-imageEditor",
-        "version": "0.1.1",
-        "minAppVersion": "2.9.0",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "android",
-          "ios",
-          "harmony"
-        ],
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "browser-mobile"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "笔记图片编辑器（预览版）",
-          "en_US": "Image Editor (Preview Edition)"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "在思源笔记中使用开源图片编辑器或调起本地编辑器修改本地笔记图片",
-          "en_US": "Edit note image with tui-image-editor or filerobot-image-editor in siyuan-note"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://wj.qq.com/s2/12395364/b69f/"
-          ]
-        },
-        "keywords": null
       }
     },
     {
@@ -3031,7 +3032,7 @@
       "url": "frostime/sy-f-misc@be745632ac73aa812117154e83438598dce427c2",
       "updated": "2025-08-24T09:21:01Z",
       "stars": 22,
-      "openIssues": 6,
+      "openIssues": 7,
       "size": 197004,
       "installSize": 583863,
       "package": {
@@ -6321,7 +6322,7 @@
       "url": "zt8989/siyuan-drawio-plugin@4f91aa04c5ea5647ac5e631045e666e78512eaab",
       "updated": "2025-04-27T07:46:50Z",
       "stars": 32,
-      "openIssues": 6,
+      "openIssues": 7,
       "size": 32417254,
       "installSize": 78659074,
       "package": {
