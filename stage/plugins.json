@@ -1,6 +1,54 @@
 {
   "repos": [
     {
+      "url": "shijianjs/siyuan-plugin-markmap-view@b05bf3f7d72de2aeb244f058b5dcf0e241c745b0",
+      "updated": "2025-10-02T06:39:48Z",
+      "stars": 0,
+      "openIssues": 0,
+      "size": 435198,
+      "installSize": 958717,
+      "package": {
+        "name": "siyuan-plugin-markmap-view",
+        "author": "shijianjs",
+        "url": "https://github.com/shijianjs/siyuan-plugin-markmap-view",
+        "version": "1.2.0",
+        "minAppVersion": "3.2.1",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "Siyuan markmap view plugin",
+          "zh_CN": "思源 markmap 视图插件",
+          "en_US": ""
+        },
+        "description": {
+          "default": "The Siyuan markmap view plugin presents the current notes in the form of a mind map.",
+          "zh_CN": "思源 markmap 视图插件，以思维导图的形式展示当前笔记。",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "脑图",
+          "mindmap"
+        ]
+      }
+    },
+    {
       "url": "loonghfut/siyuan-steve-tools@6199ef1ef22a9796473a678d7b4df55fad2412cb",
       "updated": "2025-10-02T06:20:12Z",
       "stars": 58,
@@ -45,54 +93,6 @@
         "keywords": [
           "plugin",
           "tools"
-        ]
-      }
-    },
-    {
-      "url": "shijianjs/siyuan-plugin-markmap-view@2c16eae6d6294c53720f597d19f5ea00a093acef",
-      "updated": "2025-10-01T06:10:17Z",
-      "stars": 0,
-      "openIssues": 0,
-      "size": 435024,
-      "installSize": 958242,
-      "package": {
-        "name": "siyuan-plugin-markmap-view",
-        "author": "shijianjs",
-        "url": "https://github.com/shijianjs/siyuan-plugin-markmap-view",
-        "version": "1.1.0",
-        "minAppVersion": "3.2.1",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "Siyuan markmap view plugin",
-          "zh_CN": "思源 markmap 视图插件",
-          "en_US": ""
-        },
-        "description": {
-          "default": "The Siyuan markmap view plugin presents the current notes in the form of a mind map.",
-          "zh_CN": "思源 markmap 视图插件，以思维导图的形式展示当前笔记。",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            ""
-          ]
-        },
-        "keywords": [
-          "脑图",
-          "mindmap"
         ]
       }
     },
@@ -563,103 +563,6 @@
           "底部导航栏",
           "底部反链",
           "enhance"
-        ]
-      }
-    },
-    {
-      "url": "zongqir/key-info-navigator@1405138c7a26f360de8155af5a456a7b3d85a5f9",
-      "updated": "2025-09-28T14:55:39Z",
-      "stars": 4,
-      "openIssues": 1,
-      "size": 428845,
-      "installSize": 597895,
-      "package": {
-        "name": "key-info-navigator",
-        "author": "zongqir",
-        "url": "https://github.com/zongqir/key-info-navigator",
-        "version": "1.0.0",
-        "minAppVersion": "3.3.0",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "Key Info Navigator",
-          "zh_CN": "关键信息导航",
-          "en_US": ""
-        },
-        "description": {
-          "default": "Navigate and locate key information in documents with smart sidebar",
-          "zh_CN": "通过智能侧边栏导航和定位文档中的关键信息",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": ""
-        },
-        "funding": null,
-        "keywords": [
-          "navigation",
-          "information",
-          "智能导航"
-        ]
-      }
-    },
-    {
-      "url": "zongqir/highlight_assistant@d26c02eb860ff4ff77a4f5d76a93c588b295463f",
-      "updated": "2025-09-28T14:54:16Z",
-      "stars": 0,
-      "openIssues": 0,
-      "size": 276464,
-      "installSize": 323084,
-      "package": {
-        "name": "highlight-assistant",
-        "author": "zongqir",
-        "url": "https://github.com/zongqir/highlight_assistant",
-        "version": "1.1.0",
-        "minAppVersion": "3.2.1",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "Highlight Assistant",
-          "zh_CN": "高亮助手",
-          "en_US": ""
-        },
-        "description": {
-          "default": "WeChat Reading-style highlight tool for SiYuan. Select text to highlight with floating toolbar, optimized for mobile.",
-          "zh_CN": "类似微信读书的高亮工具。选中文本即可高亮，浮动工具栏操作，移动端优化。",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            ""
-          ]
-        },
-        "keywords": [
-          "annotation",
-          "mobile",
-          "reading",
-          "标注",
-          "阅读"
         ]
       }
     },
@@ -5544,8 +5447,8 @@
     {
       "url": "terwer/siyuan-plugin-importer@a83f94a7455005e2e6f2db6deeb0fad4ff9af7c8",
       "updated": "2025-06-18T06:32:37Z",
-      "stars": 36,
-      "openIssues": 61,
+      "stars": 37,
+      "openIssues": 62,
       "size": 669195,
       "installSize": 680045,
       "package": {
