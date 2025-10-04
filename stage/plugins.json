@@ -1,6 +1,116 @@
 {
   "repos": [
     {
+      "url": "loonghfut/siyuan-steve-tools@d854fbb34876a469872d7314ba835cca2ef9ede7",
+      "updated": "2025-10-04T15:51:41Z",
+      "stars": 58,
+      "openIssues": 16,
+      "size": 3175496,
+      "installSize": 6649031,
+      "package": {
+        "name": "siyuan-steve-tools",
+        "author": "steve",
+        "url": "https://github.com/loonghfut/siyuan-steve-tools",
+        "version": "0.16.10",
+        "minAppVersion": "3.3.1",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "STtools",
+          "en_US": "STtools"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "互联日程管理（基于数据库的看板视图和日历视图）支持ics，qq邮箱日历，滴答清单双向联动, docker同步感知, ai侧边栏, 资源压缩, 白板, WPS联动, （SQL，数据库）聚合可视化",
+          "en_US": "schedule management, docker sync awareness, ai sidebar"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "plugin",
+          "tools"
+        ]
+      }
+    },
+    {
+      "url": "massivebox/syspell@922bdfbff8611112835959e873518352ae5fe385",
+      "updated": "2025-10-04T15:21:33Z",
+      "stars": 1,
+      "openIssues": 0,
+      "size": 84096,
+      "installSize": 151225,
+      "package": {
+        "name": "syspell",
+        "author": "massivebox",
+        "url": "https://git.massive.box/massivebox/syspell",
+        "version": "0.2.0",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "",
+          "en_US": "SySpell - Grammar and Spell Checker"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "",
+          "en_US": "A fully featured grammar checker for SiYuan, like Grammarly or LanguageTool. Supports multiple languages and custom dictionaries. Completely free and open source."
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://s.massive.box/siyuan-plugin-donate"
+          ]
+        },
+        "keywords": [
+          "plugin",
+          "spelling",
+          "grammar",
+          "languagetool",
+          "grammarly",
+          "correction"
+        ]
+      }
+    },
+    {
       "url": "shijianjs/siyuan-plugin-markmap-view@a4da5cf82048cf569eb5a9207b255904bc4c449e",
       "updated": "2025-10-04T08:34:07Z",
       "stars": 0,
@@ -236,54 +346,6 @@
           "Time visualization",
           "Progress tracking",
           "Goal setting"
-        ]
-      }
-    },
-    {
-      "url": "loonghfut/siyuan-steve-tools@5487adce41d5c0d5e994229568e39d375690ffac",
-      "updated": "2025-10-03T08:01:14Z",
-      "stars": 58,
-      "openIssues": 16,
-      "size": 3171219,
-      "installSize": 6621404,
-      "package": {
-        "name": "siyuan-steve-tools",
-        "author": "steve",
-        "url": "https://github.com/loonghfut/siyuan-steve-tools",
-        "version": "0.16.9",
-        "minAppVersion": "3.3.1",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "STtools",
-          "en_US": "STtools"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "互联日程管理（基于数据库的看板视图和日历视图）支持ics，qq邮箱日历，滴答清单双向联动, docker同步感知, ai侧边栏, 资源压缩, 白板, WPS联动, （SQL，数据库）聚合可视化",
-          "en_US": "schedule management, docker sync awareness, ai sidebar"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            ""
-          ]
-        },
-        "keywords": [
-          "plugin",
-          "tools"
         ]
       }
     },
@@ -1489,68 +1551,6 @@
           "嵌套",
           "子文档",
           "展开"
-        ]
-      }
-    },
-    {
-      "url": "massivebox/syspell@a13ac05afb54b0730e123e0df868aa3e8ac1f754",
-      "updated": "2025-09-21T10:10:06Z",
-      "stars": 1,
-      "openIssues": 0,
-      "size": 69275,
-      "installSize": 105010,
-      "package": {
-        "name": "syspell",
-        "author": "massivebox",
-        "url": "https://git.massive.box/massivebox/syspell",
-        "version": "0.1.0",
-        "minAppVersion": "3.0.12",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "",
-          "en_US": "SySpell - Grammar and Spell Checker"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "",
-          "en_US": "A fully featured grammar checker for SiYuan, like Grammarly or LanguageTool. Supports multiple languages and custom dictionaries. Completely free and open source."
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://s.massive.box/siyuan-plugin-donate"
-          ]
-        },
-        "keywords": [
-          "plugin",
-          "spelling",
-          "grammar",
-          "languagetool",
-          "grammarly",
-          "correction"
         ]
       }
     },
