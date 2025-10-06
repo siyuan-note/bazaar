@@ -1,6 +1,68 @@
 {
   "repos": [
     {
+      "url": "massivebox/syspell@095e2a2bb92cd735e83f541349ffddbf105e75d7",
+      "updated": "2025-10-06T09:22:08Z",
+      "stars": 1,
+      "openIssues": 0,
+      "size": 84194,
+      "installSize": 151447,
+      "package": {
+        "name": "syspell",
+        "author": "massivebox",
+        "url": "https://git.massive.box/massivebox/syspell",
+        "version": "0.2.1",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "",
+          "en_US": "SySpell - Grammar and Spell Checker"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "",
+          "en_US": "A fully featured grammar checker for SiYuan, like Grammarly or LanguageTool. Supports multiple languages and custom dictionaries. Completely free and open source."
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://s.massive.box/siyuan-plugin-donate"
+          ]
+        },
+        "keywords": [
+          "plugin",
+          "spelling",
+          "grammar",
+          "languagetool",
+          "grammarly",
+          "correction"
+        ]
+      }
+    },
+    {
       "url": "loonghfut/siyuan-steve-tools@87e2aa5a080f9d7e0a929434b05e45165c09d4f4",
       "updated": "2025-10-05T14:32:29Z",
       "stars": 58,
@@ -187,68 +249,6 @@
           "navigation",
           "information",
           "智能导航"
-        ]
-      }
-    },
-    {
-      "url": "massivebox/syspell@922bdfbff8611112835959e873518352ae5fe385",
-      "updated": "2025-10-04T15:21:33Z",
-      "stars": 1,
-      "openIssues": 0,
-      "size": 84096,
-      "installSize": 151225,
-      "package": {
-        "name": "syspell",
-        "author": "massivebox",
-        "url": "https://git.massive.box/massivebox/syspell",
-        "version": "0.2.0",
-        "minAppVersion": "3.0.12",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "",
-          "en_US": "SySpell - Grammar and Spell Checker"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "",
-          "en_US": "A fully featured grammar checker for SiYuan, like Grammarly or LanguageTool. Supports multiple languages and custom dictionaries. Completely free and open source."
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://s.massive.box/siyuan-plugin-donate"
-          ]
-        },
-        "keywords": [
-          "plugin",
-          "spelling",
-          "grammar",
-          "languagetool",
-          "grammarly",
-          "correction"
         ]
       }
     },
@@ -6802,7 +6802,7 @@
       "url": "suka233/siyuan-kmind-plugin@81eed06346fa265b4a3036d8cfb7c49adf1674b5",
       "updated": "2025-04-22T01:52:42Z",
       "stars": 76,
-      "openIssues": 35,
+      "openIssues": 36,
       "size": 17156691,
       "installSize": 36062199,
       "package": {
