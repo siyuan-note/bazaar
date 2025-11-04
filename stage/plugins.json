@@ -1,12 +1,234 @@
 {
   "repos": [
     {
-      "url": "Asianfleet/siyuan-plugin-aether@e0782afeebe639a85232b8d40e00acc5b345447c",
-      "updated": "2025-11-03T16:27:42Z",
+      "url": "loonghfut/siyuan-steve-tools@749e8badce7802eb618deea88633d8368563cbea",
+      "updated": "2025-11-04T03:36:46Z",
+      "stars": 64,
+      "openIssues": 14,
+      "size": 3296598,
+      "installSize": 7159575,
+      "package": {
+        "name": "siyuan-steve-tools",
+        "author": "steve",
+        "url": "https://github.com/loonghfut/siyuan-steve-tools",
+        "version": "0.20.6",
+        "minAppVersion": "3.3.1",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "STtools",
+          "zh_CN": "STtools",
+          "en_US": ""
+        },
+        "description": {
+          "default": "schedule management, docker sync awareness, ai sidebar",
+          "zh_CN": "互联日程管理（基于数据库的看板视图和日历视图）支持ics，qq邮箱日历，滴答清单双向联动, docker同步感知, ai侧边栏, 资源压缩, 白板, WPS联动, （SQL，数据库）聚合可视化, 随机题头图背景图。",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "plugin",
+          "tools",
+          "schedule",
+          "calendar",
+          "sttools"
+        ]
+      }
+    },
+    {
+      "url": "Achuan-2/siyuan-plugin-task-note-management@13fd9151e9845bfa1f5cc23222b4dbce7c7a77fb",
+      "updated": "2025-11-04T02:41:23Z",
+      "stars": 77,
+      "openIssues": 6,
+      "size": 7478646,
+      "installSize": 9641249,
+      "package": {
+        "name": "siyuan-plugin-task-note-management",
+        "author": "Achuan-2",
+        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
+        "version": "2.4.3",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android",
+          "harmony"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "任务笔记管理",
+          "en_US": "Task Note Management"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "一款在思源笔记里实现任务笔记管理功能的插件，为了践行防弹笔记法而开发。支持文档和块提醒、日历视图查看行事历、番茄钟专注和数据统计、项目看板、四象限面板等功能",
+          "en_US": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more."
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://www.yuque.com/achuan-2"
+          ]
+        },
+        "keywords": [
+          "reminder",
+          "time",
+          "calendar",
+          "notification",
+          "提醒",
+          "时间",
+          "日历",
+          "通知",
+          "番茄钟",
+          "四象限",
+          "任务管理",
+          "项目管理"
+        ]
+      }
+    },
+    {
+      "url": "Achuan-2/siyuan-plugin-copilot@c49295df8cf456ba27dab4439e3dfc95446b1d91",
+      "updated": "2025-11-04T02:25:34Z",
+      "stars": 1,
+      "openIssues": 1,
+      "size": 155300,
+      "installSize": 307473,
+      "package": {
+        "name": "siyuan-plugin-copilot",
+        "author": "Achuan-2",
+        "url": "https://github.com/Achuan-2/siyuan-plugin-copilot",
+        "version": "0.0.5",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "SiYuan Copilot",
+          "zh_CN": "SiYuan Copilot",
+          "en_US": ""
+        },
+        "description": {
+          "default": "SiYuan AI Assistant, supports multiple AI interfaces including OpenAI, Google Gemini, DeepSeek, and more. Supports dragging blocks and tabs to get note context.",
+          "zh_CN": "思源笔记 AI 助手,支持 OpenAI、Google Gemini、DeepSeek 等多种 AI 接口，支持拖动块、页签获取笔记上下文",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ]
+        },
+        "keywords": []
+      }
+    },
+    {
+      "url": "zt8989/siyuan-drawio-plugin@69b2d0197b569468a38c2c9942191fe5cb8ebdab",
+      "updated": "2025-11-04T01:54:49Z",
+      "stars": 35,
+      "openIssues": 4,
+      "size": 33008897,
+      "installSize": 79944669,
+      "package": {
+        "name": "siyuan-drawio-plugin",
+        "author": "cowboy",
+        "url": "https://github.com/zt8989/siyuan-drawio-plugin",
+        "version": "0.1.34",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android",
+          "harmony"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "思源Draw.io插件",
+          "en_US": "Siyuan Draw.io Plugin"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "Draw.io以插件形式集成到思源中",
+          "en_US": "Draw.io integrated as a plugin into Siyuan"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "plugin",
+          "drawio"
+        ]
+      }
+    },
+    {
+      "url": "Asianfleet/siyuan-plugin-aether@d88f90da96c512a5def272d141ce959183096319",
+      "updated": "2025-11-03T17:52:15Z",
       "stars": 13,
       "openIssues": 8,
-      "size": 5569260,
-      "installSize": 9331181,
+      "size": 5569808,
+      "installSize": 9333970,
       "package": null
     },
     {
@@ -126,54 +348,6 @@
           "播放列表",
           "笔记集成",
           "可扩展"
-        ]
-      }
-    },
-    {
-      "url": "loonghfut/siyuan-steve-tools@8d37772ecdb5b08b9a15c1461ee7df8175c5e86b",
-      "updated": "2025-11-03T04:01:45Z",
-      "stars": 64,
-      "openIssues": 14,
-      "size": 3295436,
-      "installSize": 7156088,
-      "package": {
-        "name": "siyuan-steve-tools",
-        "author": "steve",
-        "url": "https://github.com/loonghfut/siyuan-steve-tools",
-        "version": "0.20.5",
-        "minAppVersion": "3.3.1",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "STtools",
-          "en_US": "STtools"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "互联日程管理（基于数据库的看板视图和日历视图）支持ics，qq邮箱日历，滴答清单双向联动, docker同步感知, ai侧边栏, 资源压缩, 白板, WPS联动, （SQL，数据库）聚合可视化, 随机题头图背景图。",
-          "en_US": "schedule management, docker sync awareness, ai sidebar"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            ""
-          ]
-        },
-        "keywords": [
-          "plugin",
-          "tools"
         ]
       }
     },
@@ -378,74 +552,6 @@
           "中文字体",
           "English Font",
           "Japanse Font"
-        ]
-      }
-    },
-    {
-      "url": "Achuan-2/siyuan-plugin-task-note-management@13fd9151e9845bfa1f5cc23222b4dbce7c7a77fb",
-      "updated": "2025-11-02T09:12:24Z",
-      "stars": 77,
-      "openIssues": 6,
-      "size": 7478646,
-      "installSize": 9641249,
-      "package": {
-        "name": "siyuan-plugin-task-note-management",
-        "author": "Achuan-2",
-        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
-        "version": "2.4.3",
-        "minAppVersion": "3.0.12",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "任务笔记管理",
-          "en_US": "Task Note Management"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "一款在思源笔记里实现任务笔记管理功能的插件，为了践行防弹笔记法而开发。支持文档和块提醒、日历视图查看行事历、番茄钟专注和数据统计、项目看板、四象限面板等功能",
-          "en_US": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more."
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://www.yuque.com/achuan-2"
-          ]
-        },
-        "keywords": [
-          "reminder",
-          "time",
-          "calendar",
-          "notification",
-          "提醒",
-          "时间",
-          "日历",
-          "通知",
-          "番茄钟",
-          "四象限",
-          "任务管理",
-          "项目管理"
         ]
       }
     },
@@ -760,17 +866,17 @@
       }
     },
     {
-      "url": "TCOTC/siyuan-ttf-HarmonyOS_Sans_SC-and-Twemoji@6593b2260d7506ad144e1e40edf3b6393a3653b3",
-      "updated": "2025-10-31T22:17:23Z",
+      "url": "TCOTC/siyuan-ttf-HarmonyOS_Sans_SC-and-Twemoji@9aca13f0e403e4d8e231bec336a86b1419f66e6f",
+      "updated": "2025-11-01T00:54:21Z",
       "stars": 5,
       "openIssues": 0,
-      "size": 14550736,
-      "installSize": 15188616,
+      "size": 14551521,
+      "installSize": 15189782,
       "package": {
         "name": "siyuan-ttf-HarmonyOS_Sans_SC-and-Twemoji",
         "author": "TCOTC",
         "url": "https://github.com/TCOTC/siyuan-ttf-HarmonyOS_Sans_SC-and-Twemoji",
-        "version": "1.2.3",
+        "version": "1.2.4",
         "minAppVersion": "3.2.0",
         "backends": [
           "all"
@@ -986,64 +1092,6 @@
           ]
         },
         "keywords": null
-      }
-    },
-    {
-      "url": "zt8989/siyuan-drawio-plugin@8819fb7e31fe747af3d04a52e2af86f6c0b776ce",
-      "updated": "2025-10-29T09:00:55Z",
-      "stars": 34,
-      "openIssues": 4,
-      "size": 33000138,
-      "installSize": 79925368,
-      "package": {
-        "name": "siyuan-drawio-plugin",
-        "author": "cowboy",
-        "url": "https://github.com/zt8989/siyuan-drawio-plugin",
-        "version": "0.1.33",
-        "minAppVersion": "3.0.12",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "思源Draw.io插件",
-          "en_US": "Siyuan Draw.io Plugin"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "Draw.io以插件形式集成到思源中",
-          "en_US": "Draw.io integrated as a plugin into Siyuan"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            ""
-          ]
-        },
-        "keywords": [
-          "plugin",
-          "drawio"
-        ]
       }
     },
     {
