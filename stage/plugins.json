@@ -1,6 +1,113 @@
 {
   "repos": [
     {
+      "url": "Asianfleet/siyuan-plugin-aether@a6668e157c09158f1352f456cfb64bcb9b66db5e",
+      "updated": "2025-11-09T07:48:26Z",
+      "stars": 13,
+      "openIssues": 7,
+      "size": 5575546,
+      "installSize": 9356422,
+      "package": {
+        "name": "siyuan-plugin-aether",
+        "author": "Asianfleet",
+        "url": "https://github.com/Asianfleet/siyuan-plugin-aether",
+        "version": "2.3.1",
+        "minAppVersion": "3.2.1",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "Aether（以太）",
+          "en_US": "Aether"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "侧边栏对话、独立窗口对话，将 AI 生成的内容插入到思源文件内",
+          "en_US": "Sidebar conversation, standalone window conversation, and insert AI-generated content into Siyuan files"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "ai",
+          "chat"
+        ]
+      }
+    },
+    {
+      "url": "loonghfut/siyuan-database-display@5927b1efa2aaecad96307c2c6aa6deaa21713365",
+      "updated": "2025-11-09T07:24:53Z",
+      "stars": 7,
+      "openIssues": 1,
+      "size": 100461,
+      "installSize": 183239,
+      "package": {
+        "name": "siyuan-database-display",
+        "author": "steve",
+        "url": "https://github.com/loonghfut/siyuan-database-display",
+        "version": "0.8.3",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "Database Display",
+          "zh_CN": "数据库数据展示",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Advanced database attribute display plugin with field hiding, date formatting, checkbox beautification, and customizable settings. Supports 99% of blocks!",
+          "zh_CN": "数据库属性显示插件，支持字段隐藏、日期格式化、复选框美化和可自定义设置。支持99%的块！",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "database",
+          "display",
+          "attribute"
+        ]
+      }
+    },
+    {
       "url": "YuxinZhaozyx/siyuan-embed-pseudocode@d5d227595cd2c1395ec9ce351da20c4949fc6721",
       "updated": "2025-11-09T06:38:29Z",
       "stars": 2,
@@ -199,7 +306,7 @@
       "url": "Achuan-2/siyuan-plugin-copilot@d322313d78665fd1c07e0ba2c639bed3ecc02c09",
       "updated": "2025-11-08T16:14:04Z",
       "stars": 10,
-      "openIssues": 9,
+      "openIssues": 6,
       "size": 205720,
       "installSize": 522975,
       "package": {
@@ -326,64 +433,6 @@
           "custom": []
         },
         "keywords": []
-      }
-    },
-    {
-      "url": "Asianfleet/siyuan-plugin-aether@60b308164983fae6ba207e9092b7c96b6c0cafd2",
-      "updated": "2025-11-07T17:26:23Z",
-      "stars": 13,
-      "openIssues": 7,
-      "size": 5574965,
-      "installSize": 9355198,
-      "package": {
-        "name": "siyuan-plugin-aether",
-        "author": "Asianfleet",
-        "url": "https://github.com/Asianfleet/siyuan-plugin-aether",
-        "version": "2.3.0",
-        "minAppVersion": "3.2.1",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "Aether（以太）",
-          "en_US": "Aether"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "侧边栏对话、独立窗口对话，将 AI 生成的内容插入到思源文件内",
-          "en_US": "Sidebar conversation, standalone window conversation, and insert AI-generated content into Siyuan files"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            ""
-          ]
-        },
-        "keywords": [
-          "ai",
-          "chat"
-        ]
       }
     },
     {
@@ -728,55 +777,6 @@
           "Time visualization",
           "Progress tracking",
           "Goal setting"
-        ]
-      }
-    },
-    {
-      "url": "loonghfut/siyuan-database-display@3d5e3f2efc366d66d7e749ae230e3a2918aa12bf",
-      "updated": "2025-11-05T14:38:04Z",
-      "stars": 7,
-      "openIssues": 0,
-      "size": 100318,
-      "installSize": 182794,
-      "package": {
-        "name": "siyuan-database-display",
-        "author": "steve",
-        "url": "https://github.com/loonghfut/siyuan-database-display",
-        "version": "0.8.2",
-        "minAppVersion": "3.0.12",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "Database Display",
-          "zh_CN": "数据库数据展示",
-          "en_US": ""
-        },
-        "description": {
-          "default": "Advanced database attribute display plugin with field hiding, date formatting, checkbox beautification, and customizable settings. Supports 99% of blocks!",
-          "zh_CN": "数据库属性显示插件，支持字段隐藏、日期格式化、复选框美化和可自定义设置。支持99%的块！",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            ""
-          ]
-        },
-        "keywords": [
-          "database",
-          "display",
-          "attribute"
         ]
       }
     },
