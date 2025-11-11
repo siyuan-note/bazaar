@@ -1,58 +1,63 @@
 {
   "repos": [
     {
-      "url": "zuoez02/siyuan-plugin-picture-library@8b0ecd5d8938c37e460cf870b4883ea615cc7b82",
-      "updated": "2025-11-11T14:24:30Z",
-      "stars": 12,
-      "openIssues": 11,
-      "size": 4751902,
-      "installSize": 6071663,
+      "url": "rio-csharp/next-page-button@f019cf8d957170f849fc0b8f0e84cd1be2740fef",
+      "updated": "2025-11-11T15:47:46Z",
+      "stars": 0,
+      "openIssues": 1,
+      "size": 18866,
+      "installSize": 42152,
       "package": {
-        "name": "siyuan-plugin-picture-library",
-        "author": "zuoez02",
-        "url": "https://github.com/zuoez02/siyuan-plugin-picture-library",
-        "version": "0.9.0",
-        "minAppVersion": "3.0.17",
+        "name": "next-page-button",
+        "author": "rio-csharp",
+        "url": "https://github.com/rio-csharp/next-page-button",
+        "version": "0.1.2",
+        "minAppVersion": "3.0.0",
         "backends": [
-          "windows",
-          "linux",
-          "darwin"
+          "all"
         ],
         "frontends": [
-          "desktop",
-          "browser-desktop"
+          "all"
         ],
         "displayName": {
-          "default": "图库",
-          "zh_CN": "",
-          "en_US": "Gallery"
+          "default": "Next Page Button",
+          "zh_CN": "文档导航按钮",
+          "en_US": ""
         },
         "description": {
-          "default": "图库插件，将思源变成你的图片管理器，为你的数字花园新增一种新的玩法",
-          "zh_CN": "",
-          "en_US": "Gallery plugin, turn Siyuan into your picture manager, and add a new way to play your digital garden"
+          "default": "Add previous and next page buttons at the bottom of each document to browse all documents in tree order",
+          "zh_CN": "在每个文档底部添加上一页和下一页按钮,按照文档树顺序浏览所有文档",
+          "en_US": ""
         },
         "readme": {
           "default": "README.md",
-          "zh_CN": "",
-          "en_US": "README_en.md"
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
         },
-        "funding": null,
-        "keywords": null
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": []
+        },
+        "keywords": [
+          "navigation",
+          "翻页"
+        ]
       }
     },
     {
-      "url": "Wetoria/sy-plugin-enhance@cdd3d8c968d3bc575aab2e115ace3f6f7242030f",
-      "updated": "2025-11-11T13:43:01Z",
+      "url": "Wetoria/sy-plugin-enhance@a87564875e96076fee36e592e5c8c264bc9894eb",
+      "updated": "2025-11-11T15:35:13Z",
       "stars": 18,
       "openIssues": 6,
-      "size": 686924,
-      "installSize": 1952330,
+      "size": 688188,
+      "installSize": 1955807,
       "package": {
         "name": "sy-plugin-enhance",
         "author": "Wetoria",
         "url": "https://github.com/Wetoria/sy-plugin-enhance",
-        "version": "0.52.17",
+        "version": "0.52.18",
         "minAppVersion": "3.1.17",
         "backends": [
           "all"
@@ -101,6 +106,47 @@
           "底部反链",
           "enhance"
         ]
+      }
+    },
+    {
+      "url": "zuoez02/siyuan-plugin-picture-library@8b0ecd5d8938c37e460cf870b4883ea615cc7b82",
+      "updated": "2025-11-11T14:24:30Z",
+      "stars": 12,
+      "openIssues": 11,
+      "size": 4751902,
+      "installSize": 6071663,
+      "package": {
+        "name": "siyuan-plugin-picture-library",
+        "author": "zuoez02",
+        "url": "https://github.com/zuoez02/siyuan-plugin-picture-library",
+        "version": "0.9.0",
+        "minAppVersion": "3.0.17",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "frontends": [
+          "desktop",
+          "browser-desktop"
+        ],
+        "displayName": {
+          "default": "图库",
+          "zh_CN": "",
+          "en_US": "Gallery"
+        },
+        "description": {
+          "default": "图库插件，将思源变成你的图片管理器，为你的数字花园新增一种新的玩法",
+          "zh_CN": "",
+          "en_US": "Gallery plugin, turn Siyuan into your picture manager, and add a new way to play your digital garden"
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "",
+          "en_US": "README_en.md"
+        },
+        "funding": null,
+        "keywords": null
       }
     },
     {
@@ -340,52 +386,6 @@
           "custom": []
         },
         "keywords": []
-      }
-    },
-    {
-      "url": "rio-csharp/next-page-button@1e0d5f3465decc632470f94abe284efbbf055d1c",
-      "updated": "2025-11-11T06:18:54Z",
-      "stars": 0,
-      "openIssues": 2,
-      "size": 17662,
-      "installSize": 37603,
-      "package": {
-        "name": "next-page-button",
-        "author": "rio-csharp",
-        "url": "https://github.com/rio-csharp/next-page-button",
-        "version": "0.1.1",
-        "minAppVersion": "3.0.0",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "Next Page Button",
-          "zh_CN": "文档导航按钮",
-          "en_US": ""
-        },
-        "description": {
-          "default": "Add previous and next page buttons at the bottom of each document to browse all documents in tree order",
-          "zh_CN": "在每个文档底部添加上一页和下一页按钮,按照文档树顺序浏览所有文档",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": []
-        },
-        "keywords": [
-          "navigation",
-          "翻页"
-        ]
       }
     },
     {
