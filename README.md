@@ -6,7 +6,7 @@
 * [SiYuan icon sample](https://github.com/siyuan-note/icon-sample)
 * [SiYuan template sample](https://github.com/siyuan-note/template-sample)
 * [SiYuan widget sample](https://github.com/siyuan-note/widget-sample)
-* [SiYuan plugin sample](https://github.com/siyuan-note/plugin-sample)
+* [SiYuan plugin sample](https://github.com/siyuan-note/plugin-sample), please refer to the README in the repository for plugin-related specifications.
 * [SiYuan plugin sample (Vite & Svelte)](https://github.com/siyuan-note/plugin-sample-vite-svelte)
 * [SiYuan plugin sample (Vite & Vue3)](https://github.com/siyuan-note/plugin-sample-vite-vue)
 
