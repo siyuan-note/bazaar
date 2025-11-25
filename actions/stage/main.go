@@ -269,7 +269,7 @@ func repoStats(repoURL, hash string) (stars, openIssues int) {
 	u := "https://api.github.com/repos/" + repoURL
 	resp, _, errs := request.Get(u).
 		Set("Authorization", "Token "+pat).
-		Set("User-Agent", util.UserAgent).Timeout(7*time.Second).
+		Set("User-Agent", util.UserAgent).Timeout(30*time.Second).
 		Retry(1, 3*time.Second).EndStruct(&result)
 	if nil != errs {
 		logger.Fatalf("get [%s] failed: %s", u, errs)
@@ -295,8 +295,8 @@ func getRepoLatestRelease(repoURL string) (hash, published, packageZip string) {
 	u := "https://api.github.com/repos/" + repoURL + "/releases/latest"
 	resp, _, errs := request.Get(u).
 		Set("Authorization", "Token "+pat).
-		Set("User-Agent", util.UserAgent).Timeout(7*time.Second).
-		Retry(1, 3*time.Second).EndStruct(&result)
+		Set("User-Agent", util.UserAgent).Timeout(30*time.Second).
+		Retry(3, 3*time.Second).EndStruct(&result)
 	if nil != errs {
 		logger.Fatalf("get release hash [%s] failed: %s", u, errs)
 		return
@@ -328,7 +328,7 @@ func getRepoLatestRelease(repoURL string) (hash, published, packageZip string) {
 	u = "https://api.github.com/repos/" + repoURL + "/git/ref/tags/" + tagName
 	resp, _, errs = request.Get(u).
 		Set("Authorization", "Token "+pat).
-		Set("User-Agent", util.UserAgent).Timeout(7*time.Second).
+		Set("User-Agent", util.UserAgent).Timeout(30*time.Second).
 		Retry(1, 3*time.Second).EndStruct(&result)
 	if nil != errs {
 		logger.Warnf("get release hash [%s] failed: %s", u, errs)
@@ -347,7 +347,7 @@ func getRepoLatestRelease(repoURL string) (hash, published, packageZip string) {
 		u = "https://api.github.com/repos/" + repoURL + "/git/tags/" + hash
 		resp, _, errs = request.Get(u).
 			Set("Authorization", "Token "+pat).
-			Set("User-Agent", util.UserAgent).Timeout(7*time.Second).
+			Set("User-Agent", util.UserAgent).Timeout(30*time.Second).
 			Retry(1, 3*time.Second).EndStruct(&result)
 		if nil != errs {
 			logger.Fatalf("get release hash [%s] failed: %s", u, errs)
