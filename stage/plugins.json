@@ -1,12 +1,55 @@
 {
   "repos": [
     {
-      "url": "Achuan-2/siyuan-plugin-task-note-management@87d38413be0fd1731219d9e6760adfddf8190bf4",
-      "updated": "2025-12-06T14:05:32Z",
+      "url": "Achuan-2/siyuan-plugin-simplemindmap@acbbf8c4d797a2d1b87f77bd66f1ff7eacd77f71",
+      "updated": "2025-12-06T15:13:12Z",
+      "stars": 5,
+      "openIssues": 13,
+      "size": 5992763,
+      "installSize": 15191134,
+      "package": {
+        "name": "siyuan-plugin-simplemindmap",
+        "author": "Achuan-2",
+        "url": "https://github.com/Achuan-2/siyuan-plugin-simplemindmap",
+        "version": "1.8.0",
+        "minAppVersion": "3.0.0",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "Simple MindMap",
+          "zh_CN": "思绪思维导图",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Automatically save mind maps as images, support image re-editing, support binding maps to blocks, and automatically update content.",
+          "zh_CN": "自动保存思维导图为图片，支持图片二次编辑，支持导图与块绑定，自动更新内容",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README_EN.md",
+          "zh_CN": "README.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": []
+        },
+        "keywords": []
+      }
+    },
+    {
+      "url": "Achuan-2/siyuan-plugin-task-note-management@05a1a0a78f1bf89c7a67551ce3562cdf6a590a1b",
+      "updated": "2025-12-06T14:28:20Z",
       "stars": 97,
       "openIssues": 0,
       "size": 7594377,
-      "installSize": 10369542,
+      "installSize": 10369548,
       "package": {
         "name": "siyuan-plugin-task-note-management",
         "author": "Achuan-2",
@@ -67,49 +110,6 @@
           "项目管理",
           "习惯打卡"
         ]
-      }
-    },
-    {
-      "url": "Achuan-2/siyuan-plugin-simplemindmap@44fd85d5851170a902a73f092882b1e3e8358263",
-      "updated": "2025-12-06T13:44:33Z",
-      "stars": 5,
-      "openIssues": 13,
-      "size": 5992551,
-      "installSize": 15191419,
-      "package": {
-        "name": "siyuan-plugin-simplemindmap",
-        "author": "Achuan-2",
-        "url": "https://github.com/Achuan-2/siyuan-plugin-simplemindmap",
-        "version": "1.7.0",
-        "minAppVersion": "3.0.0",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "Simple MindMap",
-          "zh_CN": "思绪思维导图",
-          "en_US": ""
-        },
-        "description": {
-          "default": "Automatically save mind maps as images, support image re-editing, support binding maps to blocks, and automatically update content.",
-          "zh_CN": "自动保存思维导图为图片，支持图片二次编辑，支持导图与块绑定，自动更新内容",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README_EN.md",
-          "zh_CN": "README.md",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": []
-        },
-        "keywords": []
       }
     },
     {
@@ -9378,6 +9378,60 @@
       }
     },
     {
+      "url": "frostime/sy-bind-mdfile@f28739aa7c6c66c1f9069a1fd24eafaa6001ce84",
+      "updated": "2025-02-24T14:52:19Z",
+      "stars": 5,
+      "openIssues": 3,
+      "size": 102944,
+      "installSize": 196378,
+      "package": {
+        "name": "sy-bind-mdfile",
+        "author": "frostime",
+        "url": "https://github.com/frostime/sy-bind-mdfile",
+        "version": "0.5.0",
+        "minAppVersion": "3.1.22",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios"
+        ],
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "绑定本地 MD 文件",
+          "en_US": "Bind Local MD File"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "将文档和本地的 Markdown 文件双向绑定，便于方便地导入和导出",
+          "en_US": "Bind the document and the local Markdown file to facilitate the import and export of documents"
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "plugin",
+          "md",
+          "markdown",
+          "local"
+        ]
+      }
+    },
+    {
       "url": "frostime/sy-test-template@20f58151dae0ed26443ff4e485d40868b7d17092",
       "updated": "2025-02-23T10:57:46Z",
       "stars": 0,
@@ -11914,6 +11968,48 @@
           "quicker",
           "快速",
           "sync-quicker"
+        ]
+      }
+    },
+    {
+      "url": "frostime/sy-midclick-window@245666cfe237f2825dcf2ce2464526a603af4cb4",
+      "updated": "2024-07-18T12:02:38Z",
+      "stars": 3,
+      "openIssues": 0,
+      "size": 324579,
+      "installSize": 361042,
+      "package": {
+        "name": "sy-midclick-window",
+        "author": "frostime",
+        "url": "https://github.com/frostime/sy-midclick-window",
+        "version": "0.2.1",
+        "minAppVersion": "2.10.0",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "中键小窗",
+          "en_US": "Middle Click Window"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "中键点击块标，在独立小窗口中打开块文档",
+          "en_US": "Middle-click on block icons to open block documents in a standalone mini-window."
+        },
+        "readme": {
+          "default": "",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "funding": null,
+        "keywords": [
+          "plugin",
+          "window",
+          "小窗"
         ]
       }
     },
