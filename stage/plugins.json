@@ -1,12 +1,81 @@
 {
   "repos": [
     {
-      "url": "Achuan-2/siyuan-plugin-simplemindmap@14b26f5b5f1459e64194a7bea16d237e57c92d81",
-      "updated": "2025-12-06T13:14:43Z",
+      "url": "Achuan-2/siyuan-plugin-task-note-management@87d38413be0fd1731219d9e6760adfddf8190bf4",
+      "updated": "2025-12-06T14:05:32Z",
+      "stars": 97,
+      "openIssues": 0,
+      "size": 7594377,
+      "installSize": 10369542,
+      "package": {
+        "name": "siyuan-plugin-task-note-management",
+        "author": "Achuan-2",
+        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
+        "version": "3.5.0",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android",
+          "harmony"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "Task Note Management",
+          "zh_CN": "任务笔记管理",
+          "en_US": ""
+        },
+        "description": {
+          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
+          "zh_CN": "一款在思源笔记里实现任务笔记管理功能的插件，为了践行防弹笔记法而开发。支持文档和块提醒、日历视图查看行事历、番茄钟专注和数据统计、项目看板、四象限面板、习惯打卡等功能",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md",
+          "en_US": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://www.yuque.com/achuan-2"
+          ]
+        },
+        "keywords": [
+          "reminder",
+          "time",
+          "calendar",
+          "notification",
+          "提醒",
+          "时间",
+          "日历",
+          "通知",
+          "番茄钟",
+          "四象限",
+          "任务管理",
+          "项目管理",
+          "习惯打卡"
+        ]
+      }
+    },
+    {
+      "url": "Achuan-2/siyuan-plugin-simplemindmap@44fd85d5851170a902a73f092882b1e3e8358263",
+      "updated": "2025-12-06T13:44:33Z",
       "stars": 5,
-      "openIssues": 12,
-      "size": 5992414,
-      "installSize": 15190629,
+      "openIssues": 13,
+      "size": 5992551,
+      "installSize": 15191419,
       "package": {
         "name": "siyuan-plugin-simplemindmap",
         "author": "Achuan-2",
@@ -826,75 +895,6 @@
         },
         "keywords": [
           "plugin"
-        ]
-      }
-    },
-    {
-      "url": "Achuan-2/siyuan-plugin-task-note-management@1099b107d36e583b223da7be40446fc8da05af5c",
-      "updated": "2025-12-03T14:46:07Z",
-      "stars": 97,
-      "openIssues": 0,
-      "size": 7591507,
-      "installSize": 10361341,
-      "package": {
-        "name": "siyuan-plugin-task-note-management",
-        "author": "Achuan-2",
-        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
-        "version": "3.4.0",
-        "minAppVersion": "3.0.12",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "Task Note Management",
-          "zh_CN": "任务笔记管理",
-          "en_US": ""
-        },
-        "description": {
-          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
-          "zh_CN": "一款在思源笔记里实现任务笔记管理功能的插件，为了践行防弹笔记法而开发。支持文档和块提醒、日历视图查看行事历、番茄钟专注和数据统计、项目看板、四象限面板、习惯打卡等功能",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": ""
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://www.yuque.com/achuan-2"
-          ]
-        },
-        "keywords": [
-          "reminder",
-          "time",
-          "calendar",
-          "notification",
-          "提醒",
-          "时间",
-          "日历",
-          "通知",
-          "番茄钟",
-          "四象限",
-          "任务管理",
-          "项目管理",
-          "习惯打卡"
         ]
       }
     },
@@ -9378,60 +9378,6 @@
       }
     },
     {
-      "url": "frostime/sy-bind-mdfile@f28739aa7c6c66c1f9069a1fd24eafaa6001ce84",
-      "updated": "2025-02-24T14:52:19Z",
-      "stars": 5,
-      "openIssues": 3,
-      "size": 102944,
-      "installSize": 196378,
-      "package": {
-        "name": "sy-bind-mdfile",
-        "author": "frostime",
-        "url": "https://github.com/frostime/sy-bind-mdfile",
-        "version": "0.5.0",
-        "minAppVersion": "3.1.22",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios"
-        ],
-        "frontends": [
-          "desktop",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "绑定本地 MD 文件",
-          "en_US": "Bind Local MD File"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "将文档和本地的 Markdown 文件双向绑定，便于方便地导入和导出",
-          "en_US": "Bind the document and the local Markdown file to facilitate the import and export of documents"
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            ""
-          ]
-        },
-        "keywords": [
-          "plugin",
-          "md",
-          "markdown",
-          "local"
-        ]
-      }
-    },
-    {
       "url": "frostime/sy-test-template@20f58151dae0ed26443ff4e485d40868b7d17092",
       "updated": "2025-02-23T10:57:46Z",
       "stars": 0,
@@ -11968,48 +11914,6 @@
           "quicker",
           "快速",
           "sync-quicker"
-        ]
-      }
-    },
-    {
-      "url": "frostime/sy-midclick-window@245666cfe237f2825dcf2ce2464526a603af4cb4",
-      "updated": "2024-07-18T12:02:38Z",
-      "stars": 3,
-      "openIssues": 0,
-      "size": 324579,
-      "installSize": 361042,
-      "package": {
-        "name": "sy-midclick-window",
-        "author": "frostime",
-        "url": "https://github.com/frostime/sy-midclick-window",
-        "version": "0.2.1",
-        "minAppVersion": "2.10.0",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "中键小窗",
-          "en_US": "Middle Click Window"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "中键点击块标，在独立小窗口中打开块文档",
-          "en_US": "Middle-click on block icons to open block documents in a standalone mini-window."
-        },
-        "readme": {
-          "default": "",
-          "zh_CN": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "funding": null,
-        "keywords": [
-          "plugin",
-          "window",
-          "小窗"
         ]
       }
     },
