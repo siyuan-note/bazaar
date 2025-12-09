@@ -197,10 +197,11 @@ func indexPackage(repoURL, typ string) (ok bool, hash, published string, size, i
 	}
 	// 如果没有配置 readme 字段或所有字段都为空，则上传默认的 README 文件（向后兼容）
 	if 0 == len(readmeFiles) {
-		readmeFiles["/README.md"] = true
 		readmeFiles["/README_zh_CN.md"] = true
 		readmeFiles["/README_en_US.md"] = true
 	}
+	// 无论是否收集到 README.md 文件，都需要上传
+	readmeFiles["/README.md"] = true
 
 	// 并发上传文件
 	wg := &sync.WaitGroup{}
