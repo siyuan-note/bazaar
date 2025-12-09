@@ -44,6 +44,60 @@ func main() {
 	logger.Infof("bazaar staged")
 }
 
+// loadOldStageData 加载现有的 stage 文件数据，返回以 owner/repo 为 key 的映射
+func loadOldStageData(typ string) map[string]*StageRepo {
+	oldStageData := make(map[string]*StageRepo)
+	stageFilePath := "stage/" + typ + ".json"
+
+	stageData, err := os.ReadFile(stageFilePath)
+	if nil != err {
+		return oldStageData
+	}
+
+	oldStaged := map[string]interface{}{}
+	if err = gulu.JSON.UnmarshalJSON(stageData, &oldStaged); nil != err {
+		return oldStageData
+	}
+
+	oldRepos, ok := oldStaged["repos"].([]interface{})
+	if !ok {
+		return oldStageData
+	}
+
+	for _, repo := range oldRepos {
+		repoMap, ok := repo.(map[string]interface{})
+		if !ok {
+			continue
+		}
+
+		url, ok := repoMap["url"].(string)
+		if !ok {
+			continue
+		}
+
+		// 从 URL 中提取 owner/repo（去掉 @hash 部分）
+		idx := strings.Index(url, "@")
+		if idx <= 0 {
+			continue
+		}
+
+		repoKey := url[:idx]
+		stageRepo := &StageRepo{}
+		repoJSON, marshalErr := gulu.JSON.MarshalJSON(repoMap)
+		if nil != marshalErr {
+			continue
+		}
+
+		if err = gulu.JSON.UnmarshalJSON(repoJSON, stageRepo); nil != err {
+			continue
+		}
+
+		oldStageData[repoKey] = stageRepo
+	}
+
+	return oldStageData
+}
+
 func performStage(typ string) {
 	logger.Infof("staging [%s]", typ)
 
@@ -58,6 +112,9 @@ func performStage(typ string) {
 	}
 
 	repos := original["repos"].([]interface{})
+
+	oldStageData := loadOldStageData(typ)
+
 	lock := sync.Mutex{}
 	var stageRepos []interface{}
 	waitGroup := &sync.WaitGroup{}
@@ -71,6 +128,15 @@ func performStage(typ string) {
 		var pkg *Package
 
 		if ok, hash, updated, size, installSize, pkg = indexPackage(repo, typ); !ok {
+			// 如果索引失败，尝试使用旧数据
+			lock.Lock()
+			if oldRepo, exists := oldStageData[repo]; exists {
+				stageRepos = append(stageRepos, oldRepo)
+				logger.Warnf("index failed for [%s], keeping old data", repo)
+			} else {
+				logger.Warnf("index failed for [%s] and no old data found", repo)
+			}
+			lock.Unlock()
 			return
 		}
 
