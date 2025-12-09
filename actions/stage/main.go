@@ -14,6 +14,7 @@ import (
 	"crypto/tls"
 	"os"
 	"path/filepath"
+	"reflect"
 	"sort"
 	"strings"
 	"sync"
@@ -173,15 +174,42 @@ func indexPackage(repoURL, typ string) (ok bool, hash, published string, size, i
 		os.RemoveAll(tmpZipPath)
 	}
 
+	// 先获取插件配置，以便根据配置上传对应的 README 文件
+	pkg = getPackage(repoURL, hash, typ)
+	if nil == pkg {
+		logger.Warnf("get package [%s] failed", repoURL)
+		return
+	}
+
+	// 收集需要上传的 README 文件列表（根据插件配置中的 readme 字段）
+	readmeFiles := make(map[string]bool)
+	if nil != pkg.Readme {
+		readmeValue := reflect.ValueOf(pkg.Readme).Elem()
+		for i := 0; i < readmeValue.NumField(); i++ {
+			fieldValue := readmeValue.Field(i)
+			if fieldValue.Kind() == reflect.String {
+				readmePath := fieldValue.String()
+				if "" != readmePath {
+					readmeFiles["/"+readmePath] = true
+				}
+			}
+		}
+	}
+	// 如果没有配置 readme 字段或所有字段都为空，则上传默认的 README 文件（向后兼容）
+	if 0 == len(readmeFiles) {
+		readmeFiles["/README.md"] = true
+		readmeFiles["/README_zh_CN.md"] = true
+		readmeFiles["/README_en_US.md"] = true
+	}
+
+	// 并发上传文件
 	wg := &sync.WaitGroup{}
-	wg.Add(7)
-	go func() {
-		defer wg.Done()
-		pkg = getPackage(repoURL, hash, typ)
-	}()
-	go indexPackageFile(repoURL, hash, "/README.md", 0, 0, wg)
-	go indexPackageFile(repoURL, hash, "/README_zh_CN.md", 0, 0, wg)
-	go indexPackageFile(repoURL, hash, "/README_en_US.md", 0, 0, wg)
+	wg.Add(3 + len(readmeFiles))
+	// 上传 README 文件
+	for readmeFile := range readmeFiles {
+		go indexPackageFile(repoURL, hash, readmeFile, 0, 0, wg)
+	}
+	// 上传其他固定文件
 	go indexPackageFile(repoURL, hash, "/preview.png", 0, 0, wg)
 	go indexPackageFile(repoURL, hash, "/icon.png", 0, 0, wg)
 	go indexPackageFile(repoURL, hash, "/"+strings.TrimSuffix(typ, "s")+".json", size, installSize, wg)
@@ -396,8 +424,20 @@ type Description struct {
 
 type Readme struct {
 	Default string `json:"default"`
-	ZhCN    string `json:"zh_CN"`
+	ArSA    string `json:"ar_SA"`
+	DeDE    string `json:"de_DE"`
 	EnUS    string `json:"en_US"`
+	EsES    string `json:"es_ES"`
+	FrFR    string `json:"fr_FR"`
+	HeIL    string `json:"he_IL"`
+	ItIT    string `json:"it_IT"`
+	JaJP    string `json:"ja_JP"`
+	KoKR    string `json:"ko_KR"`
+	PlPL    string `json:"pl_PL"`
+	PtBR    string `json:"pt_BR"`
+	RuRU    string `json:"ru_RU"`
+	ZhCHT   string `json:"zh_CHT"`
+	ZhCN    string `json:"zh_CN"`
 }
 
 type Funding struct {
