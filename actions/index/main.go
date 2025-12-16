@@ -11,6 +11,7 @@
 package main
 
 import (
+	"encoding/json"
 	"os"
 	"os/exec"
 	"strings"
@@ -57,8 +58,21 @@ func stageIndex(hash string, index string) {
 		return
 	}
 
+	// 压缩 JSON：解析后重新序列化为压缩格式（移除空格和换行）
+	var jsonData interface{}
+	err := json.Unmarshal(data, &jsonData)
+	if nil != err {
+		logger.Fatalf("unmarshal [%s] failed: %s", u, err)
+		return
+	}
+	data, err = json.Marshal(jsonData)
+	if nil != err {
+		logger.Fatalf("marshal [%s] failed: %s", u, err)
+		return
+	}
+
 	key := "bazaar@" + hash + "/stage/" + index + ".json"
-	err := util.UploadOSS(key, "application/json", data)
+	err = util.UploadOSS(key, "application/json", data)
 	if nil != err {
 		logger.Fatalf("upload bazaar stage index [%s] failed: %s", key, err)
 	}
