@@ -33,6 +33,7 @@ jobs:
           git config --global user.email "bot@github.com" && git config --global user.name "Bot"
           git diff
           git add . && git commit -m ":bookmark: Staging" || exit 0
+          git pull --rebase
           git push
       - name: Index bazaar
         run: go run ./actions/index
