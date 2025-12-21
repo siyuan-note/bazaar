@@ -1,6 +1,196 @@
 {
   "repos": [
     {
+      "url": "Achuan-2/siyuan-plugin-text-process@646919bc9247cf7de864c675662efd2b11cfebbd",
+      "updated": "2025-12-21T02:03:35Z",
+      "stars": 31,
+      "openIssues": 1,
+      "size": 194464,
+      "installSize": 262817,
+      "package": {
+        "name": "siyuan-plugin-text-process",
+        "author": "Achuan-2",
+        "url": "https://github.com/Achuan-2/siyuan-plugin-text-process",
+        "version": "0.4.0",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "displayName": {
+          "default": "",
+          "zh_CN": "文本处理",
+          "en_US": "Text Process"
+        },
+        "description": {
+          "default": "",
+          "zh_CN": "粘贴时自动处理（LaTeX公式转换，ppt、word列表粘贴，去除上标、去除链接、去除空格、去除换行），对块进行处理（合并块、拆分块、复制到小红书带emoji、去除上标、去除空格、链接转文本、英文符号转中文符号等）",
+          "en_US": "Automatically process when pasting (laxtex formula conversion, ppt, word list paste, etc.), process blocks (merge blocks, split blocks, etc.)"
+        },
+        "readme": {
+          "default": "",
+          "ar_SA": "",
+          "de_DE": "",
+          "en_US": "README.md",
+          "es_ES": "",
+          "fr_FR": "",
+          "he_IL": "",
+          "it_IT": "",
+          "ja_JP": "",
+          "ko_KR": "",
+          "pl_PL": "",
+          "pt_BR": "",
+          "ru_RU": "",
+          "zh_CHT": "",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://www.yuque.com/achuan-2"
+          ]
+        },
+        "keywords": [
+          "paste",
+          "文本处理",
+          "text process",
+          "合并块",
+          "拆分块",
+          "ppt列表粘贴",
+          "word列表粘贴",
+          "LaTeX公式转换"
+        ]
+      }
+    },
+    {
+      "url": "Achuan-2/siyuan-plugin-imgReEditor@6d1fb6bae8656d59e3806d8a31063bc913a4342a",
+      "updated": "2025-12-21T01:50:34Z",
+      "stars": 4,
+      "openIssues": 0,
+      "size": 277007,
+      "installSize": 746271,
+      "package": {
+        "name": "siyuan-plugin-imgReEditor",
+        "author": "Achuan-2",
+        "url": "https://github.com/Achuan-2/siyuan-plugin-imgReEditor",
+        "version": "0.5.1",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "ImgReEditor",
+          "zh_CN": "ImgReEditor",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Edit images in SiYuan with crop, shapes, arrows, text, markers and more. Supports re-editing.",
+          "zh_CN": "一款思源笔记图片编辑/标注插件，支持裁剪、旋转图片，支持添加形状、文字、支持添加图片边框、设置图片圆角等功能，最大亮点是已编辑的图片支持再编辑！",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "ar_SA": "",
+          "de_DE": "",
+          "en_US": "",
+          "es_ES": "",
+          "fr_FR": "",
+          "he_IL": "",
+          "it_IT": "",
+          "ja_JP": "",
+          "ko_KR": "",
+          "pl_PL": "",
+          "pt_BR": "",
+          "ru_RU": "",
+          "zh_CHT": "",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ]
+        },
+        "keywords": []
+      }
+    },
+    {
+      "url": "wish5115/siyuan-image-studio@9ce486287e359922ee504c8c9a1dcc3e08727bac",
+      "updated": "2025-12-21T01:23:28Z",
+      "stars": 2,
+      "openIssues": 0,
+      "size": 347894,
+      "installSize": 1251168,
+      "package": {
+        "name": "siyuan-image-studio",
+        "author": "Wilson",
+        "url": "https://github.com/wish5115/siyuan-image-studio",
+        "version": "1.0.0",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "SiYuan Image Studio",
+          "zh_CN": "思源图片编辑器",
+          "en_US": ""
+        },
+        "description": {
+          "default": "A simple image editor for SiYuan Notes, allowing basic annotations, doodling, cropping, flipping, and more.",
+          "zh_CN": "可对思源笔记图片进行简单的标注，涂鸦、裁剪、翻转等操作。",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "ar_SA": "",
+          "de_DE": "",
+          "en_US": "",
+          "es_ES": "",
+          "fr_FR": "",
+          "he_IL": "",
+          "it_IT": "",
+          "ja_JP": "",
+          "ko_KR": "",
+          "pl_PL": "",
+          "pt_BR": "",
+          "ru_RU": "",
+          "zh_CHT": "",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://b3logfile.com/file/2025/06/image-fEA9BRv.png?imageView2/2/interlace/1/format/webp"
+          ]
+        },
+        "keywords": []
+      }
+    },
+    {
       "url": "mm-o/siyuan-sireader@36ced8a06a3b0a59950b736588802fc411a96e98",
       "updated": "2025-12-20T18:04:54Z",
       "stars": 12,
@@ -85,63 +275,6 @@
           "主题",
           "theme"
         ]
-      }
-    },
-    {
-      "url": "Achuan-2/siyuan-plugin-imgReEditor@5ca0b4dda093b1112e3693ba86e637bd974e76e9",
-      "updated": "2025-12-20T17:40:50Z",
-      "stars": 4,
-      "openIssues": 1,
-      "size": 276439,
-      "installSize": 745547,
-      "package": {
-        "name": "siyuan-plugin-imgReEditor",
-        "author": "Achuan-2",
-        "url": "https://github.com/Achuan-2/siyuan-plugin-imgReEditor",
-        "version": "0.5.0",
-        "minAppVersion": "3.0.12",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "ImgReEditor",
-          "zh_CN": "ImgReEditor",
-          "en_US": ""
-        },
-        "description": {
-          "default": "Edit images in SiYuan with crop, shapes, arrows, text, markers and more. Supports re-editing.",
-          "zh_CN": "一款思源笔记图片编辑/标注插件，支持裁剪、旋转图片，支持添加形状、文字、支持添加图片边框、设置图片圆角等功能，最大亮点是已编辑的图片支持再编辑！",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "ar_SA": "",
-          "de_DE": "",
-          "en_US": "",
-          "es_ES": "",
-          "fr_FR": "",
-          "he_IL": "",
-          "it_IT": "",
-          "ja_JP": "",
-          "ko_KR": "",
-          "pl_PL": "",
-          "pt_BR": "",
-          "ru_RU": "",
-          "zh_CHT": "",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ]
-        },
-        "keywords": []
       }
     },
     {
@@ -373,7 +506,7 @@
       "url": "suka233/siyuan-kmind-plugin@f849921c492ed00956a68415455d840d4a429bfb",
       "updated": "2025-12-20T10:11:27Z",
       "stars": 83,
-      "openIssues": 34,
+      "openIssues": 35,
       "size": 11490979,
       "installSize": 47776064,
       "package": {
@@ -838,7 +971,7 @@
       "url": "Achuan-2/siyuan-plugin-copilot@e133696b3f935a5f8efa9d8fbae26657a79d80ef",
       "updated": "2025-12-17T15:43:29Z",
       "stars": 26,
-      "openIssues": 12,
+      "openIssues": 11,
       "size": 330347,
       "installSize": 756867,
       "package": {
@@ -946,82 +1079,6 @@
           ]
         },
         "keywords": null
-      }
-    },
-    {
-      "url": "Achuan-2/siyuan-plugin-text-process@7066edc14c09c7482652a40b6193235947c594ab",
-      "updated": "2025-12-17T03:54:20Z",
-      "stars": 31,
-      "openIssues": 1,
-      "size": 194254,
-      "installSize": 262044,
-      "package": {
-        "name": "siyuan-plugin-text-process",
-        "author": "Achuan-2",
-        "url": "https://github.com/Achuan-2/siyuan-plugin-text-process",
-        "version": "0.3.1",
-        "minAppVersion": "3.0.12",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "文本处理",
-          "en_US": "Text Process"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "粘贴时自动处理（LaTeX公式转换，ppt、word列表粘贴，去除上标、去除链接、去除空格、去除换行），对块进行处理（合并块、拆分块、复制到小红书带emoji、去除上标、去除空格、链接转文本、英文符号转中文符号等）",
-          "en_US": "Automatically process when pasting (laxtex formula conversion, ppt, word list paste, etc.), process blocks (merge blocks, split blocks, etc.)"
-        },
-        "readme": {
-          "default": "",
-          "ar_SA": "",
-          "de_DE": "",
-          "en_US": "README.md",
-          "es_ES": "",
-          "fr_FR": "",
-          "he_IL": "",
-          "it_IT": "",
-          "ja_JP": "",
-          "ko_KR": "",
-          "pl_PL": "",
-          "pt_BR": "",
-          "ru_RU": "",
-          "zh_CHT": "",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://www.yuque.com/achuan-2"
-          ]
-        },
-        "keywords": [
-          "paste",
-          "文本处理",
-          "text process",
-          "合并块",
-          "拆分块",
-          "ppt列表粘贴",
-          "word列表粘贴",
-          "LaTeX公式转换"
-        ]
       }
     },
     {
@@ -1234,63 +1291,6 @@
           "项目管理",
           "习惯打卡"
         ]
-      }
-    },
-    {
-      "url": "wish5115/siyuan-image-studio@3fdf15300c8d59beb9f7493f165f494fec99f5da",
-      "updated": "2025-12-13T23:11:31Z",
-      "stars": 2,
-      "openIssues": 2,
-      "size": 203943,
-      "installSize": 700417,
-      "package": {
-        "name": "siyuan-image-studio",
-        "author": "Wilson",
-        "url": "https://github.com/wish5115/siyuan-image-studio",
-        "version": "0.0.7",
-        "minAppVersion": "3.0.12",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "SiYuan Image Studio",
-          "zh_CN": "思源图片编辑器",
-          "en_US": ""
-        },
-        "description": {
-          "default": "A simple image editor for SiYuan Notes, allowing basic annotations, doodling, cropping, flipping, and more.",
-          "zh_CN": "可对思源笔记图片进行简单的标注，涂鸦、裁剪、翻转等操作。",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "ar_SA": "",
-          "de_DE": "",
-          "en_US": "",
-          "es_ES": "",
-          "fr_FR": "",
-          "he_IL": "",
-          "it_IT": "",
-          "ja_JP": "",
-          "ko_KR": "",
-          "pl_PL": "",
-          "pt_BR": "",
-          "ru_RU": "",
-          "zh_CHT": "",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://b3logfile.com/file/2025/06/image-fEA9BRv.png?imageView2/2/interlace/1/format/webp"
-          ]
-        },
-        "keywords": []
       }
     },
     {
