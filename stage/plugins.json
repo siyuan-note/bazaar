@@ -1,17 +1,17 @@
 {
   "repos": [
     {
-      "url": "Achuan-2/siyuan-plugin-task-note-management@0817e0eab58b5a98130da179f38eee77d5b2190d",
-      "updated": "2025-12-23T04:46:59Z",
+      "url": "Achuan-2/siyuan-plugin-task-note-management@25240384aee86b0613770182af2c36ab774c6102",
+      "updated": "2025-12-23T06:28:56Z",
       "stars": 107,
-      "openIssues": 10,
-      "size": 7739962,
-      "installSize": 10870620,
+      "openIssues": 7,
+      "size": 7739766,
+      "installSize": 10869861,
       "package": {
         "name": "siyuan-plugin-task-note-management",
         "author": "Achuan-2",
         "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
-        "version": "4.0.2",
+        "version": "4.0.3",
         "minAppVersion": "3.0.12",
         "backends": [
           "windows",
@@ -78,6 +78,132 @@
           "任务管理",
           "项目管理",
           "习惯打卡"
+        ]
+      }
+    },
+    {
+      "url": "loonghfut/siyuan-steve-tools@bf9b39ce16630d3da6c20ae0fb8646f9a756a084",
+      "updated": "2025-12-23T06:09:32Z",
+      "stars": 69,
+      "openIssues": 12,
+      "size": 3554820,
+      "installSize": 7983241,
+      "package": {
+        "name": "siyuan-steve-tools",
+        "author": "steve",
+        "url": "https://github.com/loonghfut/siyuan-steve-tools",
+        "version": "0.31.1",
+        "minAppVersion": "3.5.1",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "STtools",
+          "zh_CN": "STtools",
+          "en_US": ""
+        },
+        "description": {
+          "default": "schedule management, docker sync awareness, ai sidebar",
+          "zh_CN": "互联日程管理（基于数据库的看板视图和日历视图）支持ics，qq邮箱日历，滴答清单双向联动, docker同步感知, ai侧边栏, 资源压缩, 白板, WPS联动, （SQL，数据库）聚合可视化, 随机题头图背景图。",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "ar_SA": "",
+          "de_DE": "",
+          "en_US": "",
+          "es_ES": "",
+          "fr_FR": "",
+          "he_IL": "",
+          "it_IT": "",
+          "ja_JP": "",
+          "ko_KR": "",
+          "pl_PL": "",
+          "pt_BR": "",
+          "ru_RU": "",
+          "zh_CHT": "",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://pic.imgdb.cn/item/6751b929d0e0a243d4de55a7.png"
+          ]
+        },
+        "keywords": [
+          "tools",
+          "schedule",
+          "calendar",
+          "st"
+        ]
+      }
+    },
+    {
+      "url": "loonghfut/siyuan-steve-tldraw@5fcd584b455d0012116f2586097d32bf26bbd095",
+      "updated": "2025-12-23T06:08:37Z",
+      "stars": 1,
+      "openIssues": 0,
+      "size": 2853033,
+      "installSize": 5949266,
+      "package": {
+        "name": "siyuan-steve-tldraw",
+        "author": "steve",
+        "url": "https://github.com/loonghfut/siyuan-steve-tldraw",
+        "version": "1.0.5",
+        "minAppVersion": "3.5.1",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "STtldraw",
+          "zh_CN": "ST白板",
+          "en_US": ""
+        },
+        "description": {
+          "default": "(Split from STtools plugin) Integrate tldraw whiteboard tool, deeply linked with SiYuan Note, with interaction part borrowed from affine",
+          "zh_CN": "(拆分自STtools插件)集成 tldraw 白板工具，深度联动思源笔记，交互部分借鉴affine",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "ar_SA": "",
+          "de_DE": "",
+          "en_US": "",
+          "es_ES": "",
+          "fr_FR": "",
+          "he_IL": "",
+          "it_IT": "",
+          "ja_JP": "",
+          "ko_KR": "",
+          "pl_PL": "",
+          "pt_BR": "",
+          "ru_RU": "",
+          "zh_CHT": "",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://pic.imgdb.cn/item/6751b929d0e0a243d4de55a7.png"
+          ]
+        },
+        "keywords": [
+          "白板",
+          "whiteboard",
+          "handwriting",
+          "drawing",
+          "sketch",
+          "mindmap"
         ]
       }
     },
@@ -151,70 +277,6 @@
           "开发者参考",
           "developer reference",
           "示例插件"
-        ]
-      }
-    },
-    {
-      "url": "loonghfut/siyuan-steve-tldraw@c1c6e2494c31890014749ed1672effc07ee6b652",
-      "updated": "2025-12-22T16:02:03Z",
-      "stars": 1,
-      "openIssues": 0,
-      "size": 2850643,
-      "installSize": 5942188,
-      "package": {
-        "name": "siyuan-steve-tldraw",
-        "author": "steve",
-        "url": "https://github.com/loonghfut/siyuan-steve-tldraw",
-        "version": "1.0.4",
-        "minAppVersion": "3.5.1",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "STtldraw",
-          "zh_CN": "ST白板",
-          "en_US": ""
-        },
-        "description": {
-          "default": "(Split from STtools plugin) Integrate tldraw whiteboard tool, deeply linked with SiYuan Note, with interaction part borrowed from affine",
-          "zh_CN": "(拆分自STtools插件)集成 tldraw 白板工具，深度联动思源笔记，交互部分借鉴affine",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "ar_SA": "",
-          "de_DE": "",
-          "en_US": "",
-          "es_ES": "",
-          "fr_FR": "",
-          "he_IL": "",
-          "it_IT": "",
-          "ja_JP": "",
-          "ko_KR": "",
-          "pl_PL": "",
-          "pt_BR": "",
-          "ru_RU": "",
-          "zh_CHT": "",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://pic.imgdb.cn/item/6751b929d0e0a243d4de55a7.png"
-          ]
-        },
-        "keywords": [
-          "白板",
-          "whiteboard",
-          "handwriting",
-          "drawing",
-          "sketch",
-          "mindmap"
         ]
       }
     },
@@ -498,68 +560,6 @@
           ]
         },
         "keywords": null
-      }
-    },
-    {
-      "url": "loonghfut/siyuan-steve-tools@a42a1cb7664ceabaa154f7f00744a85d0fdd45d9",
-      "updated": "2025-12-22T13:30:06Z",
-      "stars": 69,
-      "openIssues": 12,
-      "size": 3553702,
-      "installSize": 7978903,
-      "package": {
-        "name": "siyuan-steve-tools",
-        "author": "steve",
-        "url": "https://github.com/loonghfut/siyuan-steve-tools",
-        "version": "0.31.0",
-        "minAppVersion": "3.5.1",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "STtools",
-          "zh_CN": "STtools",
-          "en_US": ""
-        },
-        "description": {
-          "default": "schedule management, docker sync awareness, ai sidebar",
-          "zh_CN": "互联日程管理（基于数据库的看板视图和日历视图）支持ics，qq邮箱日历，滴答清单双向联动, docker同步感知, ai侧边栏, 资源压缩, 白板, WPS联动, （SQL，数据库）聚合可视化, 随机题头图背景图。",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "ar_SA": "",
-          "de_DE": "",
-          "en_US": "",
-          "es_ES": "",
-          "fr_FR": "",
-          "he_IL": "",
-          "it_IT": "",
-          "ja_JP": "",
-          "ko_KR": "",
-          "pl_PL": "",
-          "pt_BR": "",
-          "ru_RU": "",
-          "zh_CHT": "",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://pic.imgdb.cn/item/6751b929d0e0a243d4de55a7.png"
-          ]
-        },
-        "keywords": [
-          "tools",
-          "schedule",
-          "calendar",
-          "st"
-        ]
       }
     },
     {
@@ -2666,61 +2666,9 @@
       "updated": "2025-12-03T13:00:27Z",
       "stars": 14,
       "openIssues": 12,
-      "size": 278092,
-      "installSize": 347803,
-      "package": {
-        "name": "sy-docs-flow",
-        "author": "frostime",
-        "url": "https://github.com/frostime/sy-docs-flow",
-        "version": "0.14.0",
-        "minAppVersion": "3.4.2",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop",
-          "browser-mobile",
-          "mobile"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "文档流",
-          "en_US": "Documents Flow"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "将文档放入一个流式页面中查看",
-          "en_US": "View documents in a flow page"
-        },
-        "readme": {
-          "default": "",
-          "ar_SA": "",
-          "de_DE": "",
-          "en_US": "README.md",
-          "es_ES": "",
-          "fr_FR": "",
-          "he_IL": "",
-          "it_IT": "",
-          "ja_JP": "",
-          "ko_KR": "",
-          "pl_PL": "",
-          "pt_BR": "",
-          "ru_RU": "",
-          "zh_CHT": "",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.net/a/frostime"
-          ]
-        },
-        "keywords": null
-      }
+      "size": 0,
+      "installSize": 0,
+      "package": null
     },
     {
       "url": "frostime/sy-f-misc@452e202046eb90990639ab57adc71f380c477927",
