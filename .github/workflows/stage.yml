@@ -13,6 +13,7 @@ concurrency:
 
 jobs:
   build:
+    if: ${{ github.repository_owner == 'siyuan-note' }}
     runs-on: ubuntu-latest
     env:
       PAT: ${{ secrets.PAT }}
