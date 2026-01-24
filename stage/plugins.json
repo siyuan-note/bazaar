@@ -1,33 +1,110 @@
 {
   "repos": [
     {
-      "url": "terwerinc/siyuan-plugin-share-pro@31cc6468c460397e61305eb65466019ab500883a",
-      "updated": "2026-01-24T11:44:01Z",
+      "url": "mm-o/siyuan-sireader@aa49a51277d0d5ae0e28c070ea0997aa0ee19d5b",
+      "updated": "2026-01-24T13:07:43Z",
+      "stars": 16,
+      "openIssues": 1,
+      "size": 425571,
+      "installSize": 1166051,
+      "package": {
+        "name": "siyuan-sireader",
+        "author": "mm-o",
+        "url": "https://github.com/mm-o/siyuan-sireader",
+        "version": "0.7.3",
+        "minAppVersion": "2.10.14",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "SiReader",
+          "zh_CN": "思阅",
+          "en_US": "SiReader"
+        },
+        "description": {
+          "default": "专业电子书阅读器，支持 PDF/EPUB/MOBI/TXT/在线小说等格式，智能标注笔记、书签管理、词典卡包、多书源搜索、多主题切换",
+          "zh_CN": "专业电子书阅读器，支持 PDF/EPUB/MOBI/TXT/在线小说等格式，智能标注笔记、书签管理、词典卡包、多书源搜索、多主题切换",
+          "en_US": "Professional eBook reader supporting PDF/EPUB/MOBI/TXT/online novels and more formats with smart annotations, bookmarks, dictionary cards, book sources, and themes"
+        },
+        "readme": {
+          "default": "README.md",
+          "ar_SA": "",
+          "de_DE": "",
+          "en_US": "README.md",
+          "es_ES": "",
+          "fr_FR": "",
+          "he_IL": "",
+          "it_IT": "",
+          "ja_JP": "",
+          "ko_KR": "",
+          "pl_PL": "",
+          "pt_BR": "",
+          "ru_RU": "",
+          "zh_CHT": "",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://745201.xyz/pay.jpg"
+          ]
+        },
+        "keywords": [
+          "阅读",
+          "reading",
+          "电子书",
+          "ebook",
+          "pdf",
+          "epub",
+          "mobi",
+          "txt",
+          "azw3",
+          "fb2",
+          "cbz",
+          "sireader",
+          "思阅",
+          "标注",
+          "annotation",
+          "笔记",
+          "note",
+          "书签",
+          "bookmark",
+          "词典",
+          "dictionary",
+          "卡包",
+          "card deck",
+          "书源",
+          "book source",
+          "在线小说",
+          "online novel",
+          "主题",
+          "theme"
+        ]
+      }
+    },
+    {
+      "url": "terwerinc/siyuan-plugin-share-pro@154c6fd5937f1146d5428b59ba332df8f0d87f0e",
+      "updated": "2026-01-24T13:05:06Z",
       "stars": 7,
       "openIssues": 27,
-      "size": 1802515,
-      "installSize": 1817207,
+      "size": 1802539,
+      "installSize": 1817231,
       "package": {
         "name": "share-pro",
         "author": "terwer",
         "url": "https://github.com/terwerinc/siyuan-plugin-share-pro",
-        "version": "1.15.1",
+        "version": "1.15.2",
         "minAppVersion": "3.0.0",
         "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "android",
-          "ios",
-          "harmony"
+          "all"
         ],
         "frontends": [
-          "desktop",
-          "desktop-window",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile"
+          "all"
         ],
         "displayName": {
           "default": "Share pro",
@@ -65,6 +142,65 @@
           ]
         },
         "keywords": null
+      }
+    },
+    {
+      "url": "c00llin/siyuan-daily-nav@ec32625b5c9486116a6182597a9c97df304b7eaf",
+      "updated": "2026-01-24T13:00:19Z",
+      "stars": 0,
+      "openIssues": 0,
+      "size": 128097,
+      "installSize": 157012,
+      "package": {
+        "name": "siyuan-daily-nav",
+        "author": "Collin Janssen",
+        "url": "https://github.com/c00llin/siyuan-daily-nav",
+        "version": "0.0.2",
+        "minAppVersion": "2.9.0",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "Daily Note Navigation",
+          "zh_CN": "日记导航",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Navigate between daily notes with previous/next day commands",
+          "zh_CN": "使用上一天/下一天命令在日记之间导航",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "ar_SA": "",
+          "de_DE": "",
+          "en_US": "",
+          "es_ES": "",
+          "fr_FR": "",
+          "he_IL": "",
+          "it_IT": "",
+          "ja_JP": "",
+          "ko_KR": "",
+          "pl_PL": "",
+          "pt_BR": "",
+          "ru_RU": "",
+          "zh_CHT": "",
+          "zh_CN": ""
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": []
+        },
+        "keywords": [
+          "daily-note",
+          "navigation",
+          "productivity"
+        ]
       }
     },
     {
@@ -561,93 +697,6 @@
           "任务管理",
           "项目管理",
           "习惯打卡"
-        ]
-      }
-    },
-    {
-      "url": "mm-o/siyuan-sireader@f060d4f94dd9a92d147fc216230f5390d8a9bf4c",
-      "updated": "2026-01-22T14:14:41Z",
-      "stars": 16,
-      "openIssues": 1,
-      "size": 412296,
-      "installSize": 1122979,
-      "package": {
-        "name": "siyuan-sireader",
-        "author": "mm-o",
-        "url": "https://github.com/mm-o/siyuan-sireader",
-        "version": "0.7.1",
-        "minAppVersion": "2.10.14",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "SiReader",
-          "zh_CN": "思阅",
-          "en_US": "SiReader"
-        },
-        "description": {
-          "default": "专业电子书阅读器，支持 PDF/EPUB/MOBI/TXT/在线小说等格式，智能标注笔记、书签管理、词典卡包、多书源搜索、多主题切换",
-          "zh_CN": "专业电子书阅读器，支持 PDF/EPUB/MOBI/TXT/在线小说等格式，智能标注笔记、书签管理、词典卡包、多书源搜索、多主题切换",
-          "en_US": "Professional eBook reader supporting PDF/EPUB/MOBI/TXT/online novels and more formats with smart annotations, bookmarks, dictionary cards, book sources, and themes"
-        },
-        "readme": {
-          "default": "README.md",
-          "ar_SA": "",
-          "de_DE": "",
-          "en_US": "README.md",
-          "es_ES": "",
-          "fr_FR": "",
-          "he_IL": "",
-          "it_IT": "",
-          "ja_JP": "",
-          "ko_KR": "",
-          "pl_PL": "",
-          "pt_BR": "",
-          "ru_RU": "",
-          "zh_CHT": "",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://745201.xyz/pay.jpg"
-          ]
-        },
-        "keywords": [
-          "阅读",
-          "reading",
-          "电子书",
-          "ebook",
-          "pdf",
-          "epub",
-          "mobi",
-          "txt",
-          "azw3",
-          "fb2",
-          "cbz",
-          "sireader",
-          "思阅",
-          "标注",
-          "annotation",
-          "笔记",
-          "note",
-          "书签",
-          "bookmark",
-          "词典",
-          "dictionary",
-          "卡包",
-          "card deck",
-          "书源",
-          "book source",
-          "在线小说",
-          "online novel",
-          "主题",
-          "theme"
         ]
       }
     },
