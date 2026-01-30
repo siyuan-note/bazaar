@@ -1,9 +1,12 @@
 name: Stage
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
+    paths:
+      - '*.json'
   schedule:
     - cron: '0 * * * *'
 
