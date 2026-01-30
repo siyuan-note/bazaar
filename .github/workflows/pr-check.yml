@@ -26,12 +26,12 @@ jobs:
       FILE_PATH_CHECK_RESULT_OUTPUT: ./templates/check-result.md
     steps:
       - name: Check out current repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
 
       # REF https://github.com/marketplace/actions/checkout#checkout-multiple-repos-nested
       # REF https://github.com/marketplace/actions/checkout#checkout-pull-request-head-commit-instead-of-merge-commit
       - name: Check out PR repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
         with:
           path: ${{ env.PR_REPO_PATH }}
           ref: ${{ github.event.pull_request.head.sha }}
@@ -39,9 +39,9 @@ jobs:
           token: ${{ env.PAT }}
 
       - name: Setup Golang
-        uses: actions/setup-go@v3
+        uses: actions/setup-go@v6
         with:
-          go-version: '1.22'
+          go-version-file: 'go.mod'
 
       - name: Go Check
         run: go run ./actions/check
