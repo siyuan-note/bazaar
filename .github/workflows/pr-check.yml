@@ -48,7 +48,7 @@ jobs:
 
       # REF https://github.com/marketplace/actions/comment-pull-request
       - name: Comment PR with check-result
-        uses: thollander/actions-comment-pull-request@v2
+        uses: thollander/actions-comment-pull-request@v3
         with:
-          filePath: ${{ env.FILE_PATH_CHECK_RESULT_OUTPUT }}
-          comment_tag: check-result
+          file-path: ${{ env.FILE_PATH_CHECK_RESULT_OUTPUT }}
+          comment-tag: check-result
