@@ -70,6 +70,8 @@ jobs:
           comment-tag: check-result
           pr-number: ${{ github.event.pull_request.number }}
 
+      # REF https://docs.github.com/zh/rest/issues/labels?apiVersion=2022-11-28#remove-all-labels-from-an-issue
+      # REF https://docs.github.com/zh/actions/tutorials/authenticate-with-github_token#example-2-calling-the-rest-api
       - name: Remove "Check" label
         if: always() && github.event.action == 'labeled' && github.event.label.name == 'Check'
         run: |
