@@ -1,6 +1,63 @@
 {
   "repos": [
     {
+      "url": "Achuan-2/siyuan-plugin-copilot@0ea6c162debe6c10d9f1f48064388ddadf0d7d18",
+      "updated": "2026-02-04T07:03:27Z",
+      "stars": 44,
+      "openIssues": 7,
+      "size": 343079,
+      "installSize": 813741,
+      "package": {
+        "name": "siyuan-plugin-copilot",
+        "author": "Achuan-2",
+        "url": "https://github.com/Achuan-2/siyuan-plugin-copilot",
+        "version": "1.4.0",
+        "minAppVersion": "3.0.12",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "SiYuan Copilot",
+          "zh_CN": "SiYuan Copilot",
+          "en_US": ""
+        },
+        "description": {
+          "default": "SiYuan AI Assistant, supports dragging blocks and tabs to get note context, enabling Q\u0026amp;A and editing based on SiYuan note content",
+          "zh_CN": "思源笔记 AI 助手,支持拖动块、页签获取笔记上下文，实现基于思源笔记内容进行问答和编辑",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README_en_US.md",
+          "ar_SA": "",
+          "de_DE": "",
+          "en_US": "",
+          "es_ES": "",
+          "fr_FR": "",
+          "he_IL": "",
+          "it_IT": "",
+          "ja_JP": "",
+          "ko_KR": "",
+          "pl_PL": "",
+          "pt_BR": "",
+          "ru_RU": "",
+          "zh_CHT": "",
+          "zh_CN": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ]
+        },
+        "keywords": []
+      }
+    },
+    {
       "url": "5kyfkr/siyuan-plugin-docktomato@9acaae51971846d84b617d9746877ece56a2da9f",
       "updated": "2026-02-04T06:25:49Z",
       "stars": 3,
@@ -110,63 +167,6 @@
           ]
         },
         "keywords": null
-      }
-    },
-    {
-      "url": "Achuan-2/siyuan-plugin-copilot@f5d91225560ffa5428d00cfdadce2e75fac07944",
-      "updated": "2026-02-04T04:51:34Z",
-      "stars": 44,
-      "openIssues": 7,
-      "size": 343070,
-      "installSize": 813711,
-      "package": {
-        "name": "siyuan-plugin-copilot",
-        "author": "Achuan-2",
-        "url": "https://github.com/Achuan-2/siyuan-plugin-copilot",
-        "version": "1.4.0",
-        "minAppVersion": "3.0.12",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "SiYuan Copilot",
-          "zh_CN": "SiYuan Copilot",
-          "en_US": ""
-        },
-        "description": {
-          "default": "SiYuan AI Assistant, supports dragging blocks and tabs to get note context, enabling Q\u0026amp;A and editing based on SiYuan note content",
-          "zh_CN": "思源笔记 AI 助手,支持拖动块、页签获取笔记上下文，实现基于思源笔记内容进行问答和编辑",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README_en_US.md",
-          "ar_SA": "",
-          "de_DE": "",
-          "en_US": "",
-          "es_ES": "",
-          "fr_FR": "",
-          "he_IL": "",
-          "it_IT": "",
-          "ja_JP": "",
-          "ko_KR": "",
-          "pl_PL": "",
-          "pt_BR": "",
-          "ru_RU": "",
-          "zh_CHT": "",
-          "zh_CN": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ]
-        },
-        "keywords": []
       }
     },
     {
@@ -321,7 +321,7 @@
       "url": "Szerelem0617/siyuan-plugins-index@d72f294fe9cbdb38dcda9e589d16075c93e797ea",
       "updated": "2026-02-03T04:00:52Z",
       "stars": 24,
-      "openIssues": 7,
+      "openIssues": 6,
       "size": 142580,
       "installSize": 256669,
       "package": {
@@ -898,70 +898,9 @@
       "updated": "2026-01-30T13:59:27Z",
       "stars": 15,
       "openIssues": 0,
-      "size": 387774,
-      "installSize": 1104898,
-      "package": {
-        "name": "siyuan-database-properties-panel",
-        "author": "Macavity",
-        "url": "https://github.com/Macavity/siyuan-database-properties-panel",
-        "version": "1.7.1",
-        "minAppVersion": "3.0.17",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "harmony",
-          "android"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "数据库属性面板",
-          "en_US": "Database Properties Panel"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "提供一个面板，用于查看从数据库创建的页面的数据库属性。",
-          "en_US": "Provides a panel to view database properties of a page created from a database."
-        },
-        "readme": {
-          "default": "",
-          "ar_SA": "",
-          "de_DE": "",
-          "en_US": "README.md",
-          "es_ES": "",
-          "fr_FR": "",
-          "he_IL": "",
-          "it_IT": "",
-          "ja_JP": "",
-          "ko_KR": "",
-          "pl_PL": "",
-          "pt_BR": "",
-          "ru_RU": "",
-          "zh_CHT": "",
-          "zh_CN": "README.zh_CN.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": null
-        },
-        "keywords": [
-          "plugin",
-          "database",
-          "properties",
-          "attributes"
-        ]
-      }
+      "size": 0,
+      "installSize": 0,
+      "package": null
     },
     {
       "url": "zxkmm/siyuan_ios_serving_helper@95476c29451fd6222536e1d4791ddff5b9e6192e",
@@ -7191,62 +7130,9 @@
       "updated": "2025-10-17T04:21:38Z",
       "stars": 5,
       "openIssues": 1,
-      "size": 48434,
-      "installSize": 132807,
-      "package": {
-        "name": "syplugin-dual-doc-list",
-        "author": "Misuzu2027",
-        "url": "https://github.com/Misuzu2027/syplugin-dual-doc-list",
-        "version": "0.0.29",
-        "minAppVersion": "3.0.12",
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "displayName": {
-          "default": "",
-          "zh_CN": "二级文档列表",
-          "en_US": "Dual-Level Document List"
-        },
-        "description": {
-          "default": "",
-          "zh_CN": "二级文档列表",
-          "en_US": "Dual-Level Document List"
-        },
-        "readme": {
-          "default": "",
-          "ar_SA": "",
-          "de_DE": "",
-          "en_US": "README.md",
-          "es_ES": "",
-          "fr_FR": "",
-          "he_IL": "",
-          "it_IT": "",
-          "ja_JP": "",
-          "ko_KR": "",
-          "pl_PL": "",
-          "pt_BR": "",
-          "ru_RU": "",
-          "zh_CHT": "",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            ""
-          ]
-        },
-        "keywords": [
-          "document",
-          "tree",
-          "文档",
-          "搜索"
-        ]
-      }
+      "size": 0,
+      "installSize": 0,
+      "package": null
     },
     {
       "url": "asdfcyt/sy-quickswitch-release@537ba6ff53b87fe00180742ded5404f5877f4f9b",
@@ -15620,73 +15506,9 @@
       "updated": "2024-10-19T02:51:05Z",
       "stars": 2,
       "openIssues": 0,
-      "size": 165307,
-      "installSize": 203778,
-      "package": {
-        "name": "siyuan-graph",
-        "author": "DrEgg",
-        "url": "https://github.com/SteelDrEgg/siyuan-graph",
-        "version": "0.1.1",
-        "minAppVersion": "3.1.7",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "docker"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "displayName": {
-          "default": "SiYuan Graphing",
-          "zh_CN": "思源绘图",
-          "en_US": ""
-        },
-        "description": {
-          "default": "Vanilla math plotting plugin for SiYuan",
-          "zh_CN": "原生优先的思源数学绘图插件",
-          "en_US": ""
-        },
-        "readme": {
-          "default": "README.md",
-          "ar_SA": "",
-          "de_DE": "",
-          "en_US": "",
-          "es_ES": "",
-          "fr_FR": "",
-          "he_IL": "",
-          "it_IT": "",
-          "ja_JP": "",
-          "ko_KR": "",
-          "pl_PL": "",
-          "pt_BR": "",
-          "ru_RU": "",
-          "zh_CHT": "",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "https://github.com/SteelDrEgg",
-          "custom": []
-        },
-        "keywords": [
-          "Graphing",
-          "Math",
-          "Equation",
-          "Function",
-          "绘图",
-          "数学",
-          "公式",
-          "函数"
-        ]
-      }
+      "size": 0,
+      "installSize": 0,
+      "package": null
     },
     {
       "url": "chenshinshi/link-icon@9ef49a0495e47f86f681cb23ee8edb1498753d25",
@@ -18249,9 +18071,67 @@
       "updated": "2024-03-06T06:16:57Z",
       "stars": 1,
       "openIssues": 0,
-      "size": 0,
-      "installSize": 0,
-      "package": null
+      "size": 35062,
+      "installSize": 43688,
+      "package": {
+        "name": "siyuan-css-hide-bookmark-icon",
+        "author": "TCOTC",
+        "url": "https://github.com/TCOTC/siyuan-css-hide-bookmark-icon",
+        "version": "0.1.0",
+        "minAppVersion": "",
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "displayName": {
+          "default": "Bookmark hide icon",
+          "zh_CN": "书签隐藏图标",
+          "en_US": ""
+        },
+        "description": {
+          "default": "Hide the icon in front of the bookmark in the bookmark",
+          "zh_CN": "在书签中隐藏书签前的图标",
+          "en_US": ""
+        },
+        "readme": {
+          "default": "README.md",
+          "ar_SA": "",
+          "de_DE": "",
+          "en_US": "",
+          "es_ES": "",
+          "fr_FR": "",
+          "he_IL": "",
+          "it_IT": "",
+          "ja_JP": "",
+          "ko_KR": "",
+          "pl_PL": "",
+          "pt_BR": "",
+          "ru_RU": "",
+          "zh_CHT": "",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/JeffreyChen"
+          ]
+        },
+        "keywords": [
+          "书签",
+          "书签树",
+          "隐藏",
+          "图标",
+          "隐藏图标",
+          "mark",
+          "bookmark",
+          "hide",
+          "icon"
+        ]
+      }
     },
     {
       "url": "TCOTC/siyuan-css-hide-doc-tree-icon@deeb3edc4a0e04f0e9e904a89673404b2f1dde8e",
