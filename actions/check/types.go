@@ -170,7 +170,7 @@ type Name struct {
 
 	Exist  bool `json:"exist"`  // name 字段是否存在
 	Valid  bool `json:"valid"`  // name 字段值是否有效 (在不同平台均为合法的目录名)
-	Unique bool `json:"unique"` // name 字段值在同类资源中是否唯一 (大小写不敏感)
+	Unique bool `json:"unique"` // name 字段值在所有类型的包中是否唯一 (大小写不敏感)
 }
 
 type Attr struct {

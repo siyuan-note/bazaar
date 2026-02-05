@@ -37,7 +37,7 @@ Diff 流程（以 plugins.json 为例）：
 4. 比较 base 与 head：候选新增 = head 有 base 无，候选删除 = base 有 head 无
 5. 过滤候选新增：排除已在 bazaar head 中的仓库（可能是解决冲突时从 bazaar head 合并来的）
 6. 过滤候选删除：排除在 bazaar head 中已不存在的仓库（可能是其他 PR 删除的）
-7. name 唯一性检查使用 bazaar head 的 name 集合
+7. name 唯一性检查使用 bazaar head 的 stage/*.json 中所有类型的 package.name 集合（跨类型检查）
 8. 对最终新增列表做 release/文件/属性检查，并在 Bot 回复中列出删除列表、更换维护者列表
 
 Check 流程：
@@ -100,14 +100,21 @@ func main() {
 
 	githubClient.Client().Timeout = REQUEST_TIMEOUT // 设置请求超时时间
 
+	// 加载所有类型的 stage nameSet（使用 package.name），用于跨类型 name 唯一性检查
+	allTypesNameSet, err := loadAllTypesNameSet()
+	if err != nil {
+		logger.Fatalf("load all types name set failed: %s", err)
+		panic(err)
+	}
+
 	wg := &sync.WaitGroup{}
 	wg.Add(5)
 
-	go checkRepos(icons, checkResult, wg)
-	go checkRepos(plugins, checkResult, wg)
-	go checkRepos(templates, checkResult, wg)
-	go checkRepos(themes, checkResult, wg)
-	go checkRepos(widgets, checkResult, wg)
+	go checkRepos(icons, checkResult, allTypesNameSet, wg)
+	go checkRepos(plugins, checkResult, allTypesNameSet, wg)
+	go checkRepos(templates, checkResult, allTypesNameSet, wg)
+	go checkRepos(themes, checkResult, allTypesNameSet, wg)
+	go checkRepos(widgets, checkResult, allTypesNameSet, wg)
 
 	wg.Wait() // 等待所有检查完成
 
@@ -117,8 +124,8 @@ func main() {
 	logger.Infof("PR Check finished")
 }
 
-// parseReposFromRootJSON 从集市包列表 JSON（repos 为字符串数组）解析出路径列表、路径集合、名称集合和 name->owner 映射
-func parseReposFromRootJSON(filePath string) (paths []string, pathSet StringSet, nameSet StringSet, nameToOwner map[string]string, err error) {
+// parseReposFromRootJSON 从集市包列表 JSON（repos 为字符串数组）解析出路径列表、路径集合和 name->owner 映射
+func parseReposFromRootJSON(filePath string) (paths []string, pathSet StringSet, nameToOwner map[string]string, err error) {
 	data, err := os.ReadFile(filePath)
 	if err != nil {
 		return
@@ -131,13 +138,11 @@ func parseReposFromRootJSON(filePath string) (paths []string, pathSet StringSet,
 	if repos == nil {
 		paths = []string{}
 		pathSet = make(StringSet)
-		nameSet = make(StringSet)
 		nameToOwner = make(map[string]string)
 		return
 	}
 	paths = make([]string, 0, len(repos))
 	pathSet = make(StringSet, len(repos))
-	nameSet = make(StringSet, len(repos))
 	nameToOwner = make(map[string]string, len(repos))
 	for _, r := range repos {
 		if s, ok := r.(string); ok {
@@ -150,17 +155,80 @@ func parseReposFromRootJSON(filePath string) (paths []string, pathSet StringSet,
 			name := parts[1]
 			paths = append(paths, s)
 			pathSet[s] = nil
-			nameSet[name] = nil
 			nameToOwner[name] = owner
 		}
 	}
 	return
 }
 
+// loadAllTypesNameSet 加载所有类型的 stage nameSet（使用 package.name），用于跨类型 name 唯一性检查
+func loadAllTypesNameSet() (StringSet, error) {
+	allTypesNameSet := make(StringSet)
+	jsonFiles := []string{"icons.json", "plugins.json", "templates.json", "themes.json", "widgets.json"}
+
+	for _, jsonFile := range jsonFiles {
+		// 从 stage 文件夹读取 JSON 文件
+		filePath := filepath.Join(BAZAAR_HEAD_PATH, "stage", jsonFile)
+		nameSet, err := parseNamesFromStageJSON(filePath)
+		if err != nil {
+			return nil, fmt.Errorf("load stage repos [%s] failed: %s", filePath, err)
+		}
+		// 合并所有类型的 nameSet
+		for name := range nameSet {
+			allTypesNameSet[name] = nil
+		}
+	}
+
+	return allTypesNameSet, nil
+}
+
+// parseNamesFromStageJSON 从 stage JSON 文件中解析出所有 package.name
+func parseNamesFromStageJSON(filePath string) (StringSet, error) {
+	data, err := os.ReadFile(filePath)
+	if err != nil {
+		return nil, err
+	}
+
+	var m map[string]interface{}
+	if err = gulu.JSON.UnmarshalJSON(data, &m); err != nil {
+		return nil, err
+	}
+
+	repos, _ := m["repos"].([]interface{})
+	if repos == nil {
+		return make(StringSet), nil
+	}
+
+	nameSet := make(StringSet)
+	for _, r := range repos {
+		repoMap, ok := r.(map[string]interface{})
+		if !ok {
+			continue
+		}
+
+		// 获取 package 对象
+		pkg, ok := repoMap["package"].(map[string]interface{})
+		if !ok {
+			continue
+		}
+
+		// 获取 package.name
+		name, ok := pkg["name"].(string)
+		if !ok || name == "" {
+			continue
+		}
+
+		nameSet[name] = nil
+	}
+
+	return nameSet, nil
+}
+
 // checkRepos 检查集市资源仓库列表
 func checkRepos(
 	resourceType ResourceType,
 	checkResult *CheckResult,
+	allTypesNameSet StringSet,
 	waitGroup *sync.WaitGroup,
 ) {
 	defer waitGroup.Done()
@@ -185,18 +253,18 @@ func checkRepos(
 	prHeadReposPath := filepath.Join(PR_HEAD_PATH, repoListJSONName)
 	logger.Infof("start repos check [%s]", prHeadReposPath)
 
-	// 加载三个版本的集市包列表：bazaar head（用于过滤与 name 唯一性检查）、PR base、PR head（用于 diff）
-	_, bazaarHeadRepoSet, bazaarHeadNameSet, _, err := parseReposFromRootJSON(bazaarHeadReposPath)
+	// 加载三个版本的集市包列表：bazaar head（用于过滤）、PR base、PR head（用于 diff）
+	_, bazaarHeadRepoSet, _, err := parseReposFromRootJSON(bazaarHeadReposPath)
 	if err != nil {
 		logger.Fatalf("load bazaar head repos [%s] failed: %s", bazaarHeadReposPath, err)
 		panic(err)
 	}
-	basePaths, baseSet, _, baseNameToOwner, err := parseReposFromRootJSON(prBaseReposPath)
+	basePaths, baseSet, baseNameToOwner, err := parseReposFromRootJSON(prBaseReposPath)
 	if err != nil {
 		logger.Fatalf("load PR base repos [%s] failed: %s", prBaseReposPath, err)
 		panic(err)
 	}
-	headPaths, headSet, _, _, err := parseReposFromRootJSON(prHeadReposPath)
+	headPaths, headSet, _, err := parseReposFromRootJSON(prHeadReposPath)
 	if err != nil {
 		logger.Fatalf("load PR head repos [%s] failed: %s", prHeadReposPath, err)
 		panic(err)
@@ -303,7 +371,7 @@ func checkRepos(
 	p, _ := ants.NewPoolWithFunc(8, func(arg interface{}) {
 		defer waitGroupCheck.Done()
 		repo := arg.(string)
-		checkRepo(repo, bazaarHeadNameSet, resourceType, resultChannel, nameSetMutex)
+		checkRepo(repo, allTypesNameSet, resourceType, resultChannel, nameSetMutex)
 	})
 	defer p.Release()
 
@@ -320,7 +388,7 @@ func checkRepos(
 // checkRepo 检查集市资源仓库
 func checkRepo(
 	repoPath string,
-	nameSet StringSet,
+	allTypesNameSet StringSet,
 	resourceType ResourceType,
 	resultChannel chan interface{},
 	nameSetMutex *sync.Mutex,
@@ -382,14 +450,14 @@ func checkRepo(
 				logger.Warnf("repo [%s] name [%s] is invalid", repoPath, attrsCheckResult.Name.Value)
 			}
 
-			// 唯一性检查
+			// 唯一性检查：检查 name 是否在所有类型的包中已存在
 			if attrsCheckResult.Name.Valid {
 				name := attrsCheckResult.Name.Value
-				nameSetMutex.Lock() // 保护 nameSet 的并发访问
-				if isKeyInSet(name, nameSet) {
-					logger.Warnf("repo [%s] name [%s] already exists", repoPath, name)
+				nameSetMutex.Lock() // 保护 allTypesNameSet 的并发访问
+				if isKeyInSet(name, allTypesNameSet) {
+					logger.Warnf("repo [%s] name [%s] already exists in all types", repoPath, name)
 				} else {
-					nameSet[name] = nil // 新的 name 添加到检查集合中
+					allTypesNameSet[name] = nil // 新的 name 添加到检查集合中
 
 					attrsCheckResult.Name.Unique = true // name 通过唯一性检查
 				}
