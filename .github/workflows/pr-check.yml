@@ -7,6 +7,7 @@ on:
       - opened
       - synchronize
       - reopened
+      - labeled
     branches:
       - main
     paths:
@@ -18,37 +19,65 @@ on:
 
 jobs:
   check:
-    if: ${{ github.repository_owner == 'siyuan-note' }}
+    if: |
+      github.repository_owner == 'siyuan-note' &&
+      (github.event.action != 'labeled' || github.event.label.name == 'Check')
     runs-on: ubuntu-latest
     env:
       PAT: ${{ secrets.PAT }}
-      PR_REPO_PATH: ./pr-repo
-      FILE_PATH_CHECK_RESULT_OUTPUT: ./templates/check-result.md
+      BAZAAR_HEAD_PATH: .
+      PR_HEAD_PATH: ./pr-head
+      PR_BASE_PATH: ./pr-base
+      CHECK_RESULT_OUTPUT: ./templates/check-result.md
     steps:
-      - name: Check out current repo
-        uses: actions/checkout@v3
+      # 签出 bazaar main 分支最新提交，用于过滤与 name 唯一性检查
+      - name: Check out bazaar head
+        uses: actions/checkout@v6
+        with:
+          ref: main
 
+      # 签出 PR 的 head 提交（PR 分支当前提交）
       # REF https://github.com/marketplace/actions/checkout#checkout-multiple-repos-nested
       # REF https://github.com/marketplace/actions/checkout#checkout-pull-request-head-commit-instead-of-merge-commit
-      - name: Check out PR repo
-        uses: actions/checkout@v3
+      - name: Check out PR head
+        uses: actions/checkout@v6
         with:
-          path: ${{ env.PR_REPO_PATH }}
+          path: ${{ env.PR_HEAD_PATH }}
           ref: ${{ github.event.pull_request.head.sha }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           token: ${{ env.PAT }}
 
-      - name: Setup Golang
-        uses: actions/setup-go@v3
+      # 签出 bazaar 主仓在 PR base 时的提交（PR 分叉点）
+      - name: Check out PR base
+        uses: actions/checkout@v6
         with:
-          go-version: '1.22'
+          path: ${{ env.PR_BASE_PATH }}
+          ref: ${{ github.event.pull_request.base.sha }}
+
+      - name: Setup Golang
+        uses: actions/setup-go@v6
+        with:
+          go-version-file: 'go.mod'
 
       - name: Go Check
         run: go run ./actions/check
 
       # REF https://github.com/marketplace/actions/comment-pull-request
       - name: Comment PR with check-result
-        uses: thollander/actions-comment-pull-request@v2
+        uses: thollander/actions-comment-pull-request@v3
         with:
-          filePath: ${{ env.FILE_PATH_CHECK_RESULT_OUTPUT }}
-          comment_tag: check-result
+          file-path: ${{ env.CHECK_RESULT_OUTPUT }}
+          comment-tag: check-result
+          pr-number: ${{ github.event.pull_request.number }}
+
+      # REF https://docs.github.com/zh/rest/issues/labels?apiVersion=2022-11-28#remove-all-labels-from-an-issue
+      # REF https://docs.github.com/zh/actions/tutorials/authenticate-with-github_token#example-2-calling-the-rest-api
+      - name: Remove "Check" label
+        if: always() && github.event.action == 'labeled' && github.event.label.name == 'Check'
+        run: |
+          curl -L \
+            -X DELETE \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/labels/Check"
