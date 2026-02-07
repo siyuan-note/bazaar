@@ -437,7 +437,9 @@ func checkRepo(
 
 		if attrsCheckResult, err = checkManifestAttrs(manifestFileUrl); err != nil {
 			logger.Warnf("check repo [%s] manifest file [%s] failed: %s", repoPath, manifestFileUrl, err)
-		} else {
+			attrsCheckResult = &Attrs{} // 避免后续访问 nil 导致模板渲染失败
+		}
+		if attrsCheckResult != nil {
 			// 有效性检查
 			attrsCheckResult.Name.Valid = isValidName(attrsCheckResult.Name.Value)
 			if attrsCheckResult.Name.Valid {
@@ -679,32 +681,42 @@ func checkRepo(
 			}
 		}
 	} else {
-		// 无法检查文件与属性, 直接返回结果
+		// 无法检查文件与属性，直接返回结果；填充空 Files/Attrs 避免模板访问 nil 导致渲染中断
 		switch resourceType {
 		case icons:
 			resultChannel <- &Icon{
 				RepoInfo: *repoInfo,
 				Release:  *releaseCheckResult,
+				Files:    IconFiles{},
+				Attrs:    Attrs{},
 			}
 		case plugins:
 			resultChannel <- &Plugin{
 				RepoInfo: *repoInfo,
 				Release:  *releaseCheckResult,
+				Files:    PluginFiles{},
+				Attrs:    Attrs{},
 			}
 		case templates:
 			resultChannel <- &Template{
 				RepoInfo: *repoInfo,
 				Release:  *releaseCheckResult,
+				Files:    TemplateFiles{},
+				Attrs:    Attrs{},
 			}
 		case themes:
 			resultChannel <- &Theme{
 				RepoInfo: *repoInfo,
 				Release:  *releaseCheckResult,
+				Files:    ThemeFiles{},
+				Attrs:    Attrs{},
 			}
 		case widgets:
 			resultChannel <- &Widget{
 				RepoInfo: *repoInfo,
 				Release:  *releaseCheckResult,
+				Files:    WidgetFiles{},
+				Attrs:    Attrs{},
 			}
 		default:
 		}
