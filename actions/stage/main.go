@@ -126,8 +126,9 @@ func performStage(typ string) {
 		var ok bool
 		var pkg *Package
 
-		if ok, hash, updated, size, installSize, pkg = indexPackage(repo, typ); !ok {
-			// 如果索引失败，尝试使用旧数据
+		ok, hash, updated, size, installSize, pkg = indexPackage(repo, typ)
+		if !ok || nil == pkg {
+			// 索引失败或 pkg 为空时使用旧数据，避免 "package": null 的坏数据覆盖
 			lock.Lock()
 			if oldRepo, exists := oldStageData[repo]; exists {
 				stageRepos = append(stageRepos, oldRepo)
@@ -195,8 +196,8 @@ func performStage(typ string) {
 
 // indexPackage 索引包
 func indexPackage(repoURL, typ string) (ok bool, hash, published string, size, installSize int64, pkg *Package) {
-	hash, published, packageZip, ok := getRepoLatestRelease(repoURL)
-	if !ok {
+	hash, published, packageZip, releaseOk := getRepoLatestRelease(repoURL)
+	if !releaseOk {
 		logger.Warnf("get [%s] latest release failed", repoURL)
 		return
 	}
