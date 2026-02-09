@@ -1,6 +1,80 @@
 {
   "repos": [
     {
+      "url": "Achuan-2/siyuan-plugin-copilot@09c42a41633edf1f7409a34a1b3ef3abb4830783",
+      "updated": "2026-02-09T04:47:24Z",
+      "stars": 49,
+      "openIssues": 6,
+      "size": 436227,
+      "installSize": 1054336,
+      "package": {
+        "name": "siyuan-plugin-copilot",
+        "author": "Achuan-2",
+        "url": "https://github.com/Achuan-2/siyuan-plugin-copilot",
+        "version": "1.6.7",
+        "minAppVersion": "3.0.12",
+        "displayName": {
+          "default": "SiYuan Copilot",
+          "zh_CN": "SiYuan Copilot"
+        },
+        "description": {
+          "default": "SiYuan AI Assistant, supports dragging blocks and tabs to get note context, enabling Q\u0026amp;A and editing based on SiYuan note content",
+          "zh_CN": "思源笔记 AI 助手,支持拖动块、页签获取笔记上下文，实现基于思源笔记内容进行问答和编辑"
+        },
+        "readme": {
+          "default": "README_en_US.md",
+          "zh_CN": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ]
+        },
+        "keywords": [],
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": true
+      }
+    },
+    {
+      "url": "zuoez02/siyuan-plugin-tts@c0f88610130dedeb06d2c938fb24d5e4c519d599",
+      "updated": "2026-02-09T04:06:19Z",
+      "stars": 9,
+      "openIssues": 6,
+      "size": 754171,
+      "installSize": 794043,
+      "package": {
+        "name": "siyuan-plugin-tts",
+        "author": "zuoez02",
+        "url": "https://github.com/zuoez02/siyuan-plugin-tts",
+        "version": "1.1.1",
+        "minAppVersion": "3.1.28",
+        "displayName": {
+          "default": "Text To Speech",
+          "zh_CN": "文本朗读"
+        },
+        "description": {
+          "default": "Text To Speech for blocks in document",
+          "zh_CN": "使用块菜单中的文本朗读功能，朗读选择的块内容"
+        },
+        "readme": {
+          "default": "README.md"
+        },
+        "funding": null,
+        "keywords": null,
+        "backends": null,
+        "frontends": null,
+        "disabledInPublish": false
+      }
+    },
+    {
       "url": "mm-o/siyuan-sireader@6a0904d475583018817ea049b349b69120ffdb0d",
       "updated": "2026-02-09T02:37:08Z",
       "stars": 19,
@@ -67,49 +141,6 @@
           "主题",
           "theme"
         ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": true
-      }
-    },
-    {
-      "url": "Achuan-2/siyuan-plugin-copilot@c7211c1e5e25c9551d8e01f1ac35b4d25ac914e9",
-      "updated": "2026-02-08T19:24:35Z",
-      "stars": 49,
-      "openIssues": 6,
-      "size": 435467,
-      "installSize": 1050743,
-      "package": {
-        "name": "siyuan-plugin-copilot",
-        "author": "Achuan-2",
-        "url": "https://github.com/Achuan-2/siyuan-plugin-copilot",
-        "version": "1.6.6",
-        "minAppVersion": "3.0.12",
-        "displayName": {
-          "default": "SiYuan Copilot",
-          "zh_CN": "SiYuan Copilot"
-        },
-        "description": {
-          "default": "SiYuan AI Assistant, supports dragging blocks and tabs to get note context, enabling Q\u0026amp;A and editing based on SiYuan note content",
-          "zh_CN": "思源笔记 AI 助手,支持拖动块、页签获取笔记上下文，实现基于思源笔记内容进行问答和编辑"
-        },
-        "readme": {
-          "default": "README_en_US.md",
-          "zh_CN": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ]
-        },
-        "keywords": [],
         "backends": [
           "all"
         ],
@@ -260,8 +291,8 @@
     {
       "url": "b8l8u8e8/siyuan-plugin-share@18eb19e7cc25dee986f25b69e6165a0b0d2107d0",
       "updated": "2026-02-08T13:02:05Z",
-      "stars": 27,
-      "openIssues": 1,
+      "stars": 28,
+      "openIssues": 4,
       "size": 196852,
       "installSize": 513311,
       "package": {
@@ -6132,39 +6163,30 @@
       "size": 1777056,
       "installSize": 1879710,
       "package": {
+        "name": "shortcut-color-plugin",
         "author": "zhongjiahao",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "description": {
-          "default": "A plugin that allows customizable keyboard shortcuts for text formatting with colors",
-          "zh_CN": "一个支持自定义快捷键进行文本格式化和变色的插件"
-        },
-        "disabledInPublish": false,
+        "url": "https://github.com/zhongjiahao-M/shortcut-color-plugin",
+        "version": "0.4.7",
+        "minAppVersion": "0.1.0",
         "displayName": {
           "default": "Shortcut Font Style",
           "zh_CN": "快捷格式化字体样式"
         },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
+        "description": {
+          "default": "A plugin that allows customizable keyboard shortcuts for text formatting with colors",
+          "zh_CN": "一个支持自定义快捷键进行文本格式化和变色的插件"
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
         "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
           "custom": [
             "https://github.com/zhongjiahao-M"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
+          ]
         },
         "keywords": [
           "shortcut",
@@ -6174,14 +6196,23 @@
           "变色",
           "格式化"
         ],
-        "minAppVersion": "0.1.0",
-        "name": "shortcut-color-plugin",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/zhongjiahao-M/shortcut-color-plugin",
-        "version": "0.4.7"
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "disabledInPublish": false
       }
     },
     {
@@ -9687,37 +9718,6 @@
           "browser-mobile",
           "desktop-window"
         ],
-        "disabledInPublish": false
-      }
-    },
-    {
-      "url": "zuoez02/siyuan-plugin-tts@7d1d719c6e5f34fa4dccac5e90dded54b3f1a9c1",
-      "updated": "2025-04-23T07:10:37Z",
-      "stars": 9,
-      "openIssues": 9,
-      "size": 754870,
-      "installSize": 795604,
-      "package": {
-        "name": "siyuan-plugin-tts",
-        "author": "zuoez02",
-        "url": "https://github.com/zuoez02/siyuan-plugin-tts",
-        "version": "1.0.0",
-        "minAppVersion": "3.1.28",
-        "displayName": {
-          "default": "Text To Speech",
-          "zh_CN": "文本朗读"
-        },
-        "description": {
-          "default": "Text To Speech for blocks in document",
-          "zh_CN": "使用块菜单中的文本朗读功能，朗读选择的块内容"
-        },
-        "readme": {
-          "default": "README.md"
-        },
-        "funding": null,
-        "keywords": null,
-        "backends": null,
-        "frontends": null,
         "disabledInPublish": false
       }
     },
