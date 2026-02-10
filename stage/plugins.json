@@ -44,7 +44,7 @@
       "url": "Macavity/siyuan-database-properties-panel@aeeae100223c1d80d2269515f60ec1fd68cb6254",
       "updated": "2026-02-10T10:07:55Z",
       "stars": 15,
-      "openIssues": 1,
+      "openIssues": 2,
       "size": 390091,
       "installSize": 1113655,
       "package": {
@@ -237,7 +237,7 @@
     {
       "url": "Achuan-2/siyuan-plugin-task-note-management@37c4bf686e970eba89d9b7b0611e641378c8161d",
       "updated": "2026-02-10T08:12:29Z",
-      "stars": 152,
+      "stars": 153,
       "openIssues": 4,
       "size": 10331924,
       "installSize": 16236602,
@@ -394,39 +394,39 @@
       "size": 437142,
       "installSize": 1057183,
       "package": {
-        "name": "siyuan-plugin-copilot",
         "author": "Achuan-2",
-        "url": "https://github.com/Achuan-2/siyuan-plugin-copilot",
-        "version": "1.6.10",
-        "minAppVersion": "3.0.12",
-        "displayName": {
-          "default": "SiYuan Copilot",
-          "zh_CN": "SiYuan Copilot"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "default": "SiYuan AI Assistant, supports dragging blocks and tabs to get note context, enabling Q\u0026amp;A and editing based on SiYuan note content",
           "zh_CN": "思源笔记 AI 助手,支持拖动块、页签获取笔记上下文，实现基于思源笔记内容进行问答和编辑"
         },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan Copilot",
+          "zh_CN": "SiYuan Copilot"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [],
+        "minAppVersion": "3.0.12",
+        "name": "siyuan-plugin-copilot",
         "readme": {
           "default": "README_en_US.md",
           "zh_CN": "README.md"
         },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ]
-        },
-        "keywords": [],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": true
+        "url": "https://github.com/Achuan-2/siyuan-plugin-copilot",
+        "version": "1.6.10"
       }
     },
     {
@@ -909,35 +909,35 @@
       "size": 142580,
       "installSize": 256669,
       "package": {
+        "name": "siyuan-plugins-index",
         "author": "Szerelem0617",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "One click insert a index list in document",
-          "zh_CN": "一键在文档中插入目录或大纲列表"
-        },
-        "disabledInPublish": true,
+        "url": "https://github.com/Szerelem0617/siyuan-plugins-index",
+        "version": "1.8.10",
+        "minAppVersion": "3.3.0",
         "displayName": {
           "default": "Index Plugin",
           "zh_CN": "目录插件"
         },
-        "frontends": [
-          "all"
-        ],
+        "description": {
+          "default": "One click insert a index list in document",
+          "zh_CN": "一键在文档中插入目录或大纲列表"
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
         "funding": null,
         "keywords": [
           "index",
           "目录"
         ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-plugins-index",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/Szerelem0617/siyuan-plugins-index",
-        "version": "1.8.10"
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": true
       }
     },
     {
@@ -3999,33 +3999,33 @@
       "size": 81180,
       "installSize": 124977,
       "package": {
-        "name": "siyuan-unified-search",
         "author": "wyg",
-        "url": "https://github.com/youxia2025-wq/siyuan-unified-search",
-        "version": "1.0.0",
-        "minAppVersion": "3.0.0",
-        "displayName": {
-          "default": "Unified Traditional/Simplified Chinese Search",
-          "zh_CN": "繁简体通用检索",
-          "zh_TW": "繁簡體通用檢索"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "default": "Smart search plugin that works seamlessly with both Traditional and Simplified Chinese characters",
           "zh_CN": "智能繁简体通用检索插件,支持关键词高亮和精确定位",
           "zh_TW": "智能繁簡體通用檢索插件,支持關鍵詞高亮和精確定位"
         },
-        "readme": {
-          "default": "README.md"
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "Unified Traditional/Simplified Chinese Search",
+          "zh_CN": "繁简体通用检索",
+          "zh_TW": "繁簡體通用檢索"
         },
-        "funding": null,
-        "keywords": null,
-        "backends": [
-          "all"
-        ],
         "frontends": [
           "all"
         ],
-        "disabledInPublish": false
+        "funding": null,
+        "keywords": null,
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-unified-search",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/youxia2025-wq/siyuan-unified-search",
+        "version": "1.0.0"
       }
     },
     {
@@ -6058,30 +6058,33 @@
       "size": 298838,
       "installSize": 409644,
       "package": {
-        "name": "highlight-assistant",
         "author": "zongqir",
-        "url": "https://github.com/zongqir/highlight_assistant",
-        "version": "2.2.0",
-        "minAppVersion": "3.2.1",
-        "displayName": {
-          "default": "Annotation Assistant",
-          "zh_CN": "标注助手"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "default": "Quick tag insertion (double-tap/Ctrl+right-click), memo block creation, and multi-color highlighting. WeChat Reading-style experience, optimized for mobile.",
           "zh_CN": "标签快打（双击/Ctrl+右键）、备注块打、多彩高亮功能。类似微信读书的体验，移动端优化。"
         },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "Annotation Assistant",
+          "zh_CN": "标注助手"
         },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
         "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
           "custom": [
             ""
-          ]
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
         },
         "keywords": [
           "annotation",
@@ -6090,17 +6093,14 @@
           "标注",
           "阅读"
         ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "disabledInPublish": false
+        "minAppVersion": "3.2.1",
+        "name": "highlight-assistant",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/zongqir/highlight_assistant",
+        "version": "2.2.0"
       }
     },
     {
@@ -6199,39 +6199,39 @@
       "size": 105095,
       "installSize": 201508,
       "package": {
-        "name": "siyuan-plugin-iconify-emoji",
         "author": "shijianjs",
-        "url": "https://github.com/shijianjs/siyuan-plugin-iconify-emoji",
-        "version": "1.3.0",
-        "minAppVersion": "3.2.1",
-        "displayName": {
-          "default": "Siyuan iconify emoji plugin",
-          "zh_CN": "思源 iconify emoji 插件"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "default": "Seamlessly use over 200,000 open-source icons from Iconify in SiYuan emoji",
           "zh_CN": "在思源emoji中，无缝使用Iconify超20万个开源图标"
         },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Siyuan iconify emoji plugin",
+          "zh_CN": "思源 iconify emoji 插件"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            ""
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [],
+        "minAppVersion": "3.2.1",
+        "name": "siyuan-plugin-iconify-emoji",
         "readme": {
           "default": "README.md",
           "zh_CN": "README_zh_CN.md"
         },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            ""
-          ]
-        },
-        "keywords": [],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": true
+        "url": "https://github.com/shijianjs/siyuan-plugin-iconify-emoji",
+        "version": "1.3.0"
       }
     },
     {
@@ -8551,7 +8551,7 @@
     {
       "url": "syh19/siyuan-plugin-task-list@746f391824503adaf6adda1953531e2fb69c1d80",
       "updated": "2025-07-04T04:26:02Z",
-      "stars": 52,
+      "stars": 53,
       "openIssues": 25,
       "size": 1255109,
       "installSize": 2726516,
@@ -9210,7 +9210,7 @@
       "url": "frostime/sy-bookmark-plus@e4aa39b25df3b18391f4741c8f3bb09662329bfb",
       "updated": "2025-05-14T13:36:45Z",
       "stars": 21,
-      "openIssues": 16,
+      "openIssues": 15,
       "size": 221397,
       "installSize": 336172,
       "package": {
@@ -13677,39 +13677,39 @@
       "size": 299798,
       "installSize": 324344,
       "package": {
+        "name": "sy-export-tree",
         "author": "frostime",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "en_US": "Export the tree structur of all documents",
-          "zh_CN": "导出笔记库当中所有的文档树结构"
-        },
-        "disabledInPublish": false,
+        "url": "https://github.com/frostime/sy-export-tree",
+        "version": "1.0.0",
+        "minAppVersion": "3.0.5",
         "displayName": {
           "en_US": "Export document tree",
           "zh_CN": "导出文档树结构"
         },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.net/a/frostime"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
+        "description": {
+          "en_US": "Export the tree structur of all documents",
+          "zh_CN": "导出笔记库当中所有的文档树结构"
         },
-        "keywords": null,
-        "minAppVersion": "3.0.5",
-        "name": "sy-export-tree",
         "readme": {
           "en_US": "README.md",
           "zh_CN": "README_zh_CN.md"
         },
-        "url": "https://github.com/frostime/sy-export-tree",
-        "version": "1.0.0"
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/frostime"
+          ]
+        },
+        "keywords": null,
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": false
       }
     },
     {
