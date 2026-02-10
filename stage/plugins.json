@@ -190,7 +190,7 @@
     {
       "url": "b8l8u8e8/siyuan-plugin-share@cfe7d68aeaf6045036484be2bb8caeb26ce7a66b",
       "updated": "2026-02-10T09:08:32Z",
-      "stars": 28,
+      "stars": 29,
       "openIssues": 3,
       "size": 196863,
       "installSize": 513376,
@@ -909,35 +909,35 @@
       "size": 142580,
       "installSize": 256669,
       "package": {
-        "name": "siyuan-plugins-index",
         "author": "Szerelem0617",
-        "url": "https://github.com/Szerelem0617/siyuan-plugins-index",
-        "version": "1.8.10",
-        "minAppVersion": "3.3.0",
-        "displayName": {
-          "default": "Index Plugin",
-          "zh_CN": "目录插件"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "default": "One click insert a index list in document",
           "zh_CN": "一键在文档中插入目录或大纲列表"
         },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Index Plugin",
+          "zh_CN": "目录插件"
         },
+        "frontends": [
+          "all"
+        ],
         "funding": null,
         "keywords": [
           "index",
           "目录"
         ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": true
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-plugins-index",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/Szerelem0617/siyuan-plugins-index",
+        "version": "1.8.10"
       }
     },
     {
@@ -1824,7 +1824,7 @@
       "url": "terwerinc/siyuan-plugin-share-pro@154c6fd5937f1146d5428b59ba332df8f0d87f0e",
       "updated": "2026-01-24T13:05:06Z",
       "stars": 7,
-      "openIssues": 27,
+      "openIssues": 28,
       "size": 1802539,
       "installSize": 1817231,
       "package": {
@@ -8211,7 +8211,7 @@
       "url": "ryzencool/dinox-siyuan-sync@370f702e41a7d20327bd3a7c763a89bf31c76a6c",
       "updated": "2025-07-15T13:16:57Z",
       "stars": 4,
-      "openIssues": 3,
+      "openIssues": 4,
       "size": 43961,
       "installSize": 98577,
       "package": {
@@ -10779,7 +10779,7 @@
     {
       "url": "zxkmm/siyuan_rmv_btn_classic@6dd39da170ba37ae3d9046bd0abc1b918962804f",
       "updated": "2025-02-27T09:34:25Z",
-      "stars": 3,
+      "stars": 4,
       "openIssues": 0,
       "size": 141102,
       "installSize": 172043,
@@ -13677,39 +13677,39 @@
       "size": 299798,
       "installSize": 324344,
       "package": {
-        "name": "sy-export-tree",
         "author": "frostime",
-        "url": "https://github.com/frostime/sy-export-tree",
-        "version": "1.0.0",
-        "minAppVersion": "3.0.5",
-        "displayName": {
-          "en_US": "Export document tree",
-          "zh_CN": "导出文档树结构"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "en_US": "Export the tree structur of all documents",
           "zh_CN": "导出笔记库当中所有的文档树结构"
         },
+        "disabledInPublish": false,
+        "displayName": {
+          "en_US": "Export document tree",
+          "zh_CN": "导出文档树结构"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.net/a/frostime"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": null,
+        "minAppVersion": "3.0.5",
+        "name": "sy-export-tree",
         "readme": {
           "en_US": "README.md",
           "zh_CN": "README_zh_CN.md"
         },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.net/a/frostime"
-          ]
-        },
-        "keywords": null,
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": false
+        "url": "https://github.com/frostime/sy-export-tree",
+        "version": "1.0.0"
       }
     },
     {
