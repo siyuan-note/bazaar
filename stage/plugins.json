@@ -82,7 +82,7 @@
     {
       "url": "Achuan-2/siyuan-plugin-task-note-management@2187ebfda72fdc2238a7c0c783b401096b5b99e9",
       "updated": "2026-02-10T15:42:23Z",
-      "stars": 153,
+      "stars": 154,
       "openIssues": 4,
       "size": 8644185,
       "installSize": 12557885,
@@ -10672,30 +10672,7 @@
       "size": 103624,
       "installSize": 253552,
       "package": {
-        "name": "siyuan-plugin-note-to-website",
         "author": "byname4321",
-        "url": "https://github.com/byname4321/siyuan-plugin-note-to-website",
-        "version": "0.0.7",
-        "minAppVersion": "3.0.16",
-        "displayName": {
-          "en_US": "NoteToWebsite",
-          "zh_CN": "NoteToWebsite"
-        },
-        "description": {
-          "en_US": "Convert note to website",
-          "zh_CN": "将笔记转换为HTML网站"
-        },
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "funding": null,
-        "keywords": [
-          "plugin",
-          "NoteToWebsite",
-          "note-to-website",
-          "html"
-        ],
         "backends": [
           "windows",
           "linux",
@@ -10703,6 +10680,15 @@
           "ios",
           "android"
         ],
+        "description": {
+          "en_US": "Convert note to website",
+          "zh_CN": "将笔记转换为HTML网站"
+        },
+        "disabledInPublish": false,
+        "displayName": {
+          "en_US": "NoteToWebsite",
+          "zh_CN": "NoteToWebsite"
+        },
         "frontends": [
           "desktop",
           "mobile",
@@ -10710,7 +10696,21 @@
           "browser-mobile",
           "desktop-window"
         ],
-        "disabledInPublish": false
+        "funding": null,
+        "keywords": [
+          "plugin",
+          "NoteToWebsite",
+          "note-to-website",
+          "html"
+        ],
+        "minAppVersion": "3.0.16",
+        "name": "siyuan-plugin-note-to-website",
+        "readme": {
+          "en_US": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/byname4321/siyuan-plugin-note-to-website",
+        "version": "0.0.7"
       }
     },
     {
@@ -13091,28 +13091,27 @@
       "size": 38804,
       "installSize": 50755,
       "package": {
-        "name": "siyuan-sync-quicker",
         "author": "muhanstudio",
-        "url": "https://github.com/muhanstudio/siyuan-sync-quicker",
-        "version": "0.0.2",
-        "minAppVersion": "2.10.10",
-        "displayName": {
-          "default": "sync-quicker",
-          "zh_CN": "快速同步"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "default": "Remove the official 30-second wait limit for automatic synchronization (may cause a BUG, please back up your data in advance) ",
           "zh_CN": "解除官方自动同步等待30秒的限制（可能导致BUG，请提前备份数据）"
         },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "sync-quicker",
+          "zh_CN": "快速同步"
         },
+        "frontends": [
+          "all"
+        ],
         "funding": {
-          "openCollective": "",
-          "patreon": "",
+          "custom": [],
           "github": "",
-          "custom": []
+          "openCollective": "",
+          "patreon": ""
         },
         "keywords": [
           "server",
@@ -13123,13 +13122,14 @@
           "快速",
           "sync-quicker"
         ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": false
+        "minAppVersion": "2.10.10",
+        "name": "siyuan-sync-quicker",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/muhanstudio/siyuan-sync-quicker",
+        "version": "0.0.2"
       }
     },
     {
