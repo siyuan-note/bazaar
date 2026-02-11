@@ -1,12 +1,57 @@
 {
   "repos": [
     {
-      "url": "dale0525/siyuan-auto-seq-number@bf540f3e994d56aa8dbf88ec68266afbbaeda40a",
-      "updated": "2026-02-11T06:29:15Z",
+      "url": "double3-org/siyuan-pledger@dbdc80693ba2eb92e2f580ed5b5a31f7fdb1ee1f",
+      "updated": "2026-02-11T09:34:32Z",
+      "stars": 0,
+      "openIssues": 0,
+      "size": 380985,
+      "installSize": 811905,
+      "package": {
+        "name": "siyuan-pledger",
+        "author": "li.mian",
+        "url": "https://github.com/double3-org/siyuan-pledger",
+        "version": "0.0.1",
+        "minAppVersion": "3.2.1",
+        "displayName": {
+          "default": "pledger",
+          "zh_CN": "账本"
+        },
+        "description": {
+          "default": "A personal ledger plugin for SiYuan.",
+          "zh_CN": "一个基于思源笔记的账本插件"
+        },
+        "readme": {
+          "default": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.com/a/limian"
+          ]
+        },
+        "keywords": [
+          "ledger",
+          "账本"
+        ],
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": false
+      }
+    },
+    {
+      "url": "dale0525/siyuan-auto-seq-number@757b1e19178b73fc36a8e9cc4261916929174c31",
+      "updated": "2026-02-11T09:06:53Z",
       "stars": 6,
       "openIssues": 6,
-      "size": 37368,
-      "installSize": 69312,
+      "size": 37525,
+      "installSize": 69770,
       "package": {
         "name": "siyuan-auto-seq-number",
         "author": "Logic Tan",
@@ -10672,30 +10717,23 @@
       "size": 103624,
       "installSize": 253552,
       "package": {
+        "name": "siyuan-plugin-note-to-website",
         "author": "byname4321",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android"
-        ],
-        "description": {
-          "en_US": "Convert note to website",
-          "zh_CN": "将笔记转换为HTML网站"
-        },
-        "disabledInPublish": false,
+        "url": "https://github.com/byname4321/siyuan-plugin-note-to-website",
+        "version": "0.0.7",
+        "minAppVersion": "3.0.16",
         "displayName": {
           "en_US": "NoteToWebsite",
           "zh_CN": "NoteToWebsite"
         },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
+        "description": {
+          "en_US": "Convert note to website",
+          "zh_CN": "将笔记转换为HTML网站"
+        },
+        "readme": {
+          "en_US": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
         "funding": null,
         "keywords": [
           "plugin",
@@ -10703,14 +10741,21 @@
           "note-to-website",
           "html"
         ],
-        "minAppVersion": "3.0.16",
-        "name": "siyuan-plugin-note-to-website",
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/byname4321/siyuan-plugin-note-to-website",
-        "version": "0.0.7"
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "disabledInPublish": false
       }
     },
     {
@@ -13091,27 +13136,28 @@
       "size": 38804,
       "installSize": 50755,
       "package": {
+        "name": "siyuan-sync-quicker",
         "author": "muhanstudio",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Remove the official 30-second wait limit for automatic synchronization (may cause a BUG, please back up your data in advance) ",
-          "zh_CN": "解除官方自动同步等待30秒的限制（可能导致BUG，请提前备份数据）"
-        },
-        "disabledInPublish": false,
+        "url": "https://github.com/muhanstudio/siyuan-sync-quicker",
+        "version": "0.0.2",
+        "minAppVersion": "2.10.10",
         "displayName": {
           "default": "sync-quicker",
           "zh_CN": "快速同步"
         },
-        "frontends": [
-          "all"
-        ],
+        "description": {
+          "default": "Remove the official 30-second wait limit for automatic synchronization (may cause a BUG, please back up your data in advance) ",
+          "zh_CN": "解除官方自动同步等待30秒的限制（可能导致BUG，请提前备份数据）"
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
         "funding": {
-          "custom": [],
-          "github": "",
           "openCollective": "",
-          "patreon": ""
+          "patreon": "",
+          "github": "",
+          "custom": []
         },
         "keywords": [
           "server",
@@ -13122,14 +13168,13 @@
           "快速",
           "sync-quicker"
         ],
-        "minAppVersion": "2.10.10",
-        "name": "siyuan-sync-quicker",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/muhanstudio/siyuan-sync-quicker",
-        "version": "0.0.2"
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": false
       }
     },
     {
