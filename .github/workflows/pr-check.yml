@@ -7,6 +7,7 @@ on:
       - opened
       - synchronize
       - reopened
+      - labeled
     branches:
       - main
     paths:
@@ -18,25 +19,58 @@ on:
 
 jobs:
   check:
-    if: ${{ github.repository_owner == 'siyuan-note' }}
+    if: |
+      github.repository_owner == 'siyuan-note' &&
+      (github.event.action != 'labeled' || github.event.label.name == 'Check')
     runs-on: ubuntu-latest
     env:
       PAT: ${{ secrets.PAT }}
-      PR_REPO_PATH: ./pr-repo
-      FILE_PATH_CHECK_RESULT_OUTPUT: ./templates/check-result.md
+      BAZAAR_HEAD_PATH: .
+      PR_HEAD_PATH: ./pr-head
+      PR_BASE_PATH: ./pr-base
+      CHECK_RESULT_OUTPUT: ./templates/check-result.md
     steps:
-      - name: Check out current repo
-        uses: actions/checkout@v6
-
-      # REF https://github.com/marketplace/actions/checkout#checkout-multiple-repos-nested
-      # REF https://github.com/marketplace/actions/checkout#checkout-pull-request-head-commit-instead-of-merge-commit
-      - name: Check out PR repo
+      # 签出 bazaar main 分支最新提交，用于过滤与 name 唯一性检查；fetch-depth: 0 以便后续计算 merge base
+      - name: Check out bazaar head
         uses: actions/checkout@v6
         with:
-          path: ${{ env.PR_REPO_PATH }}
+          ref: main
+          fetch-depth: 0
+
+      # 获取 PR 的 merge base（与 GitHub "Files changed" 一致），避免 PR 分支未同步最新 main 时 diff 错位
+      # REF https://docs.github.com/zh/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-comparing-branches-in-pull-requests
+      - name: Get PR merge base
+        id: merge-base
+        run: |
+          set -e
+          git fetch origin "pull/${{ github.event.pull_request.number }}/head:pr-head-ref"
+          merge_base_sha=$(git merge-base "${{ github.event.pull_request.base.sha }}" pr-head-ref) || {
+            echo "::error::Failed to find merge base (e.g. PR branch has no common history with base)."
+            exit 1
+          }
+          if [ -z "$merge_base_sha" ] || [ ${#merge_base_sha} -ne 40 ]; then
+            echo "::error::Invalid merge base SHA: $merge_base_sha"
+            exit 1
+          fi
+          echo "sha=$merge_base_sha" >> $GITHUB_OUTPUT
+
+      # 签出 PR 的 head 提交（PR 分支当前提交）
+      # REF https://github.com/marketplace/actions/checkout#checkout-multiple-repos-nested
+      # REF https://github.com/marketplace/actions/checkout#checkout-pull-request-head-commit-instead-of-merge-commit
+      - name: Check out PR head
+        uses: actions/checkout@v6
+        with:
+          path: ${{ env.PR_HEAD_PATH }}
           ref: ${{ github.event.pull_request.head.sha }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           token: ${{ env.PAT }}
+
+      # 签出 PR 的 merge base 提交（与 GitHub "Files changed" 的基准一致，确保检查的 diff 即本 PR 实际改动）
+      - name: Check out PR base (merge base)
+        uses: actions/checkout@v6
+        with:
+          path: ${{ env.PR_BASE_PATH }}
+          ref: ${{ steps.merge-base.outputs.sha }}
 
       - name: Setup Golang
         uses: actions/setup-go@v6
@@ -50,5 +84,18 @@ jobs:
       - name: Comment PR with check-result
         uses: thollander/actions-comment-pull-request@v3
         with:
-          file-path: ${{ env.FILE_PATH_CHECK_RESULT_OUTPUT }}
+          file-path: ${{ env.CHECK_RESULT_OUTPUT }}
           comment-tag: check-result
+          pr-number: ${{ github.event.pull_request.number }}
+
+      # REF https://docs.github.com/zh/rest/issues/labels?apiVersion=2022-11-28#remove-all-labels-from-an-issue
+      # REF https://docs.github.com/zh/actions/tutorials/authenticate-with-github_token#example-2-calling-the-rest-api
+      - name: Remove "Check" label
+        if: always() && github.event.action == 'labeled' && github.event.label.name == 'Check'
+        run: |
+          curl -L \
+            -X DELETE \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/labels/Check"

@@ -14,7 +14,6 @@ import (
 	"crypto/tls"
 	"os"
 	"path/filepath"
-	"reflect"
 	"sort"
 	"strings"
 	"sync"
@@ -125,10 +124,11 @@ func performStage(typ string) {
 		var hash, updated string
 		var size, installSize int64
 		var ok bool
-		var pkg *Package
+		var pkg interface{}
 
-		if ok, hash, updated, size, installSize, pkg = indexPackage(repo, typ); !ok {
-			// 如果索引失败，尝试使用旧数据
+		ok, hash, updated, size, installSize, pkg = indexPackage(repo, typ)
+		if !ok || pkg == nil {
+			// 索引失败或 pkg 为空时使用旧数据，避免 "package": null 的坏数据覆盖
 			lock.Lock()
 			if oldRepo, exists := oldStageData[repo]; exists {
 				stageRepos = append(stageRepos, oldRepo)
@@ -194,10 +194,10 @@ func performStage(typ string) {
 	logger.Infof("staged [%s]", typ)
 }
 
-// indexPackage 索引包
-func indexPackage(repoURL, typ string) (ok bool, hash, published string, size, installSize int64, pkg *Package) {
-	hash, published, packageZip, ok := getRepoLatestRelease(repoURL)
-	if !ok {
+// indexPackage 索引包，返回的 pkg 为 *Package / *PluginPackage / *ThemePackage 之一
+func indexPackage(repoURL, typ string) (ok bool, hash, published string, size, installSize int64, pkg interface{}) {
+	hash, published, packageZip, releaseOk := getRepoLatestRelease(repoURL)
+	if !releaseOk {
 		logger.Warnf("get [%s] latest release failed", repoURL)
 		return
 	}
@@ -247,24 +247,20 @@ func indexPackage(repoURL, typ string) (ok bool, hash, published string, size, i
 		os.RemoveAll(tmpZipPath)
 	}
 
-	// 先获取插件配置，以便根据配置上传对应的 README 文件
-	pkg = getPackage(repoURL, hash, typ)
-	if nil == pkg {
+	// 先获取包配置，以便根据配置上传对应的 README 文件
+	var basePkg *Package
+	pkg, basePkg = getPackage(repoURL, hash, typ)
+	if nil == pkg || nil == basePkg {
 		logger.Warnf("get package [%s] failed", repoURL)
 		return
 	}
 
-	// 收集需要上传的 README 文件列表（根据插件配置中的 readme 字段）
+	// 收集需要上传的 README 文件列表（根据包配置中的 readme 字段）
 	readmeFiles := make(map[string]bool)
-	if nil != pkg.Readme {
-		readmeValue := reflect.ValueOf(pkg.Readme).Elem()
-		for i := 0; i < readmeValue.NumField(); i++ {
-			fieldValue := readmeValue.Field(i)
-			if fieldValue.Kind() == reflect.String {
-				readmePath := fieldValue.String()
-				if "" != readmePath {
-					readmeFiles["/"+readmePath] = true
-				}
+	if nil != basePkg.Readme {
+		for _, readmePath := range basePkg.Readme {
+			if normalized, ok := normalizeReadmePath(readmePath); ok {
+				readmeFiles["/"+normalized] = true
 			}
 		}
 	}
@@ -292,8 +288,8 @@ func indexPackage(repoURL, typ string) (ok bool, hash, published string, size, i
 	return
 }
 
-// getPackage 获取 release 对应提交中的 *.json 配置文件
-func getPackage(ownerRepo, hash, typ string) (ret *Package) {
+// getPackage 获取 release 对应提交中的 *.json 配置文件，按 typ 解析为 Package / PluginPackage / ThemePackage，并返回用于 Readme 等的 *Package
+func getPackage(ownerRepo, hash, typ string) (pkgVal interface{}, basePkg *Package) {
 	name := strings.TrimSuffix(typ, "s")
 	u := "https://raw.githubusercontent.com/" + ownerRepo + "/" + hash + "/" + name + ".json"
 	resp, data, errs := gorequest.New().Get(u).
@@ -301,21 +297,56 @@ func getPackage(ownerRepo, hash, typ string) (ret *Package) {
 		Retry(1, 3*time.Second).Timeout(30 * time.Second).EndBytes()
 	if nil != errs {
 		logger.Errorf("get [%s] failed: %s", u, errs)
-		return
+		return nil, nil
 	}
 	if 200 != resp.StatusCode {
-		return
+		return nil, nil
 	}
 
-	ret = &Package{}
-	if err := gulu.JSON.UnmarshalJSON(data, ret); nil != err {
-		logger.Errorf("unmarshal [%s] failed: %s", u, err)
-		ret = nil
-		return
+	switch typ {
+	case "plugins":
+		p := &PluginPackage{Package: &Package{}}
+		if err := gulu.JSON.UnmarshalJSON(data, p); nil != err {
+			logger.Errorf("unmarshal [%s] failed: %s", u, err)
+			return nil, nil
+		}
+		sanitizePackage(p.Package)
+		return p, p.Package
+	case "themes":
+		p := &ThemePackage{Package: &Package{}}
+		if err := gulu.JSON.UnmarshalJSON(data, p); nil != err {
+			logger.Errorf("unmarshal [%s] failed: %s", u, err)
+			return nil, nil
+		}
+		sanitizePackage(p.Package)
+		return p, p.Package
+	default:
+		ret := &Package{}
+		if err := gulu.JSON.UnmarshalJSON(data, ret); nil != err {
+			logger.Errorf("unmarshal [%s] failed: %s", u, err)
+			return nil, nil
+		}
+		sanitizePackage(ret)
+		return ret, ret
 	}
+}
 
-	sanitizePackage(ret)
-	return
+// normalizeReadmePath 规范化并校验 readme 路径，防止路径穿越；返回规范化后的相对路径（无前导斜杠）及是否合法
+func normalizeReadmePath(readmePath string) (string, bool) {
+	readmePath = strings.TrimSpace(readmePath)
+	if readmePath == "" {
+		return "", false
+	}
+	// 去掉前导斜杠/反斜杠，视为相对路径
+	readmePath = strings.TrimLeft(readmePath, "/\\")
+	// 统一为正向斜杠后交给 filepath 做跨平台清理
+	cleaned := filepath.Clean(filepath.FromSlash(readmePath))
+	normalized := filepath.ToSlash(cleaned)
+	// 拒绝含 .. 的路径，防止路径穿越
+	if strings.Contains(normalized, "..") {
+		return "", false
+	}
+	return normalized, true
 }
 
 // indexPackageFile 索引文件
@@ -487,47 +518,20 @@ func sanitizePackage(pkg *Package) {
 	pkg.Author = sterilizer.Sanitize(pkg.Author)
 
 	if nil != pkg.DisplayName {
-		pkg.DisplayName.Default = sterilizer.Sanitize(pkg.DisplayName.Default)
-		pkg.DisplayName.ZhCN = sterilizer.Sanitize(pkg.DisplayName.ZhCN)
-		pkg.DisplayName.EnUS = sterilizer.Sanitize(pkg.DisplayName.EnUS)
+		for k, v := range pkg.DisplayName {
+			pkg.DisplayName[k] = sterilizer.Sanitize(v)
+		}
 	}
 
 	if nil != pkg.Description {
-		pkg.Description.Default = sterilizer.Sanitize(pkg.Description.Default)
-		pkg.Description.ZhCN = sterilizer.Sanitize(pkg.Description.ZhCN)
-		pkg.Description.EnUS = sterilizer.Sanitize(pkg.Description.EnUS)
+		for k, v := range pkg.Description {
+			pkg.Description[k] = sterilizer.Sanitize(v)
+		}
 	}
 }
 
-type DisplayName struct {
-	Default string `json:"default"`
-	ZhCN    string `json:"zh_CN"`
-	EnUS    string `json:"en_US"`
-}
-
-type Description struct {
-	Default string `json:"default"`
-	ZhCN    string `json:"zh_CN"`
-	EnUS    string `json:"en_US"`
-}
-
-type Readme struct {
-	Default string `json:"default"`
-	ArSA    string `json:"ar_SA"`
-	DeDE    string `json:"de_DE"`
-	EnUS    string `json:"en_US"`
-	EsES    string `json:"es_ES"`
-	FrFR    string `json:"fr_FR"`
-	HeIL    string `json:"he_IL"`
-	ItIT    string `json:"it_IT"`
-	JaJP    string `json:"ja_JP"`
-	KoKR    string `json:"ko_KR"`
-	PlPL    string `json:"pl_PL"`
-	PtBR    string `json:"pt_BR"`
-	RuRU    string `json:"ru_RU"`
-	ZhCHT   string `json:"zh_CHT"`
-	ZhCN    string `json:"zh_CN"`
-}
+// LocaleStrings 表示按 locale 键（如 default、zh_CN、en_US）组织的多语言字符串
+type LocaleStrings map[string]string
 
 type Funding struct {
 	OpenCollective string   `json:"openCollective"`
@@ -537,18 +541,30 @@ type Funding struct {
 }
 
 type Package struct {
-	Name          string       `json:"name"`
-	Author        string       `json:"author"`
-	URL           string       `json:"url"`
-	Version       string       `json:"version"`
-	MinAppVersion string       `json:"minAppVersion"`
-	Backends      []string     `json:"backends"`
-	Frontends     []string     `json:"frontends"`
-	DisplayName   *DisplayName `json:"displayName"`
-	Description   *Description `json:"description"`
-	Readme        *Readme      `json:"readme"`
-	Funding       *Funding     `json:"funding"`
-	Keywords      []string     `json:"keywords"`
+	Name          string        `json:"name"`
+	Author        string        `json:"author"`
+	URL           string        `json:"url"`
+	Version       string        `json:"version"`
+	MinAppVersion string        `json:"minAppVersion"`
+	DisplayName   LocaleStrings `json:"displayName"`
+	Description   LocaleStrings `json:"description"`
+	Readme        LocaleStrings `json:"readme"`
+	Funding       *Funding      `json:"funding"`
+	Keywords      []string      `json:"keywords"`
+}
+
+// PluginPackage 插件的 package
+type PluginPackage struct {
+	*Package
+	Backends          []string `json:"backends"`
+	Frontends         []string `json:"frontends"`
+	DisabledInPublish bool     `json:"disabledInPublish"`
+}
+
+// ThemePackage 主题的 package
+type ThemePackage struct {
+	*Package
+	Modes []string `json:"modes"`
 }
 
 type StageRepo struct {
@@ -559,5 +575,6 @@ type StageRepo struct {
 	Size        int64  `json:"size"`
 	InstallSize int64  `json:"installSize"`
 
-	Package *Package `json:"package"`
+	// Package 为 *Package（模板/图标/挂件）、*PluginPackage（插件）或 *ThemePackage（主题）
+	Package interface{} `json:"package"`
 }

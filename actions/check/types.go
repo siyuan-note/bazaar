@@ -20,14 +20,21 @@ type CheckResult struct {
 	Templates []Template `json:"templates"`
 	Themes    []Theme    `json:"themes"`
 	Widgets   []Widget   `json:"widgets"`
+
+	IconsDeleted     []string `json:"icons_deleted"`
+	PluginsDeleted   []string `json:"plugins_deleted"`
+	TemplatesDeleted []string `json:"templates_deleted"`
+	ThemesDeleted    []string `json:"themes_deleted"`
+	WidgetsDeleted   []string `json:"widgets_deleted"`
 }
 
 // Icon 图标
 type Icon struct {
-	RepoInfo RepoInfo  `json:"repo"`    // 仓库
-	Release  Release   `json:"release"` // 发行版
-	Files    IconFiles `json:"files"`   // 文件
-	Attrs    Attrs     `json:"attrs"`   // 属性
+	RepoInfo          RepoInfo  `json:"repo"`               // 仓库
+	Release           Release   `json:"release"`            // 发行版
+	Files             IconFiles `json:"files"`              // 文件
+	Attrs             Attrs     `json:"attrs"`              // 属性
+	MaintainerChanged bool      `json:"maintainer_changed"` // 更换了维护者
 }
 
 type IconFiles struct {
@@ -41,10 +48,11 @@ type IconFiles struct {
 
 // Plugin 插件
 type Plugin struct {
-	RepoInfo RepoInfo    `json:"repo"`    // 仓库
-	Release  Release     `json:"release"` // 发行版
-	Files    PluginFiles `json:"files"`   // 文件
-	Attrs    Attrs       `json:"attrs"`   // 属性
+	RepoInfo          RepoInfo    `json:"repo"`               // 仓库
+	Release           Release     `json:"release"`            // 发行版
+	Files             PluginFiles `json:"files"`              // 文件
+	Attrs             Attrs       `json:"attrs"`              // 属性
+	MaintainerChanged bool        `json:"maintainer_changed"` // 更换了维护者
 }
 
 type PluginFiles struct {
@@ -58,10 +66,11 @@ type PluginFiles struct {
 
 // Template 模板
 type Template struct {
-	RepoInfo RepoInfo      `json:"repo"`    // 仓库
-	Release  Release       `json:"release"` // 发行版
-	Files    TemplateFiles `json:"files"`   // 文件
-	Attrs    Attrs         `json:"attrs"`   // 属性
+	RepoInfo          RepoInfo      `json:"repo"`               // 仓库
+	Release           Release       `json:"release"`            // 发行版
+	Files             TemplateFiles `json:"files"`              // 文件
+	Attrs             Attrs         `json:"attrs"`              // 属性
+	MaintainerChanged bool          `json:"maintainer_changed"` // 更换了维护者
 }
 
 type TemplateFiles struct {
@@ -75,10 +84,11 @@ type TemplateFiles struct {
 
 // Theme 主题
 type Theme struct {
-	RepoInfo RepoInfo   `json:"repo"`    // 仓库
-	Release  Release    `json:"release"` // 发行版
-	Files    ThemeFiles `json:"files"`   // 文件
-	Attrs    Attrs      `json:"attrs"`   // 属性
+	RepoInfo          RepoInfo   `json:"repo"`               // 仓库
+	Release           Release    `json:"release"`            // 发行版
+	Files             ThemeFiles `json:"files"`              // 文件
+	Attrs             Attrs      `json:"attrs"`              // 属性
+	MaintainerChanged bool       `json:"maintainer_changed"` // 更换了维护者
 }
 
 type ThemeFiles struct {
@@ -92,10 +102,11 @@ type ThemeFiles struct {
 
 // Widget 挂件
 type Widget struct {
-	RepoInfo RepoInfo    `json:"repo"`    // 仓库
-	Release  Release     `json:"release"` // 发行版
-	Files    WidgetFiles `json:"files"`   // 文件
-	Attrs    Attrs       `json:"attrs"`   // 属性
+	RepoInfo          RepoInfo    `json:"repo"`               // 仓库
+	Release           Release     `json:"release"`            // 发行版
+	Files             WidgetFiles `json:"files"`              // 文件
+	Attrs             Attrs       `json:"attrs"`              // 属性
+	MaintainerChanged bool        `json:"maintainer_changed"` // 更换了维护者
 }
 
 type WidgetFiles struct {
@@ -159,7 +170,7 @@ type Name struct {
 
 	Exist  bool `json:"exist"`  // name 字段是否存在
 	Valid  bool `json:"valid"`  // name 字段值是否有效 (在不同平台均为合法的目录名)
-	Unique bool `json:"unique"` // name 字段值在同类资源中是否唯一 (大小写不敏感)
+	Unique bool `json:"unique"` // name 字段值在所有类型的包中是否唯一 (大小写不敏感)
 }
 
 type Attr struct {
