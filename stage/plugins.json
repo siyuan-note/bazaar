@@ -1,18 +1,57 @@
 {
   "repos": [
     {
-      "url": "dale0525/siyuan-auto-seq-number@e7f4bad2e232dff9e3afba211de7d176809acb82",
-      "updated": "2026-02-12T05:03:48Z",
+      "url": "5kyfkr/siyuan-plugin-task-horizon@576f56fbf087f00f56f29a3c19c1378bc06c422b",
+      "updated": "2026-02-12T08:19:34Z",
+      "stars": 1,
+      "openIssues": 0,
+      "size": 352391,
+      "installSize": 1032272,
+      "package": {
+        "name": "siyuan-plugin-task-horizon",
+        "author": "5kyfkr",
+        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
+        "version": "1.1.6",
+        "minAppVersion": "3.5.0",
+        "displayName": {
+          "default": "Task Horizon",
+          "zh_CN": "任务管理器"
+        },
+        "description": {
+          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
+          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持时间轴甘特图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动"
+        },
+        "readme": {
+          "default": "README.md"
+        },
+        "funding": null,
+        "keywords": [
+          "task",
+          "manager",
+          "filter"
+        ],
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": true
+      }
+    },
+    {
+      "url": "dale0525/siyuan-auto-seq-number@28d8e6cd774acad9dc95c30261f126853157a086",
+      "updated": "2026-02-12T08:09:23Z",
       "stars": 6,
       "openIssues": 7,
-      "size": 34395,
-      "installSize": 62052,
+      "size": 39192,
+      "installSize": 79785,
       "package": {
         "name": "siyuan-auto-seq-number",
         "author": "Logic Tan",
         "url": "https://github.com/dale0525/siyuan-auto-seq-number",
-        "version": "2.0.2",
-        "minAppVersion": "2.11.1",
+        "version": "2.2.1",
+        "minAppVersion": "3.1.25",
         "displayName": {
           "default": "Auto Header Sequence Number",
           "zh_CN": "自动标题序号"
@@ -22,7 +61,8 @@
           "zh_CN": "自动为标题生成序号的思源笔记插件"
         },
         "readme": {
-          "default": "README.md",
+          "default": "README_zh_CN.md",
+          "en_US": "README.md",
           "zh_CN": "README_zh_CN.md"
         },
         "funding": null,
@@ -30,6 +70,47 @@
           "序号",
           "标题",
           "header"
+        ],
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": false
+      }
+    },
+    {
+      "url": "5kyfkr/siyuan-plugin-docktomato@f21733501700f647c1fe1439d93c90e394a0829e",
+      "updated": "2026-02-12T07:49:14Z",
+      "stars": 3,
+      "openIssues": 0,
+      "size": 413671,
+      "installSize": 1559860,
+      "package": {
+        "name": "siyuan-plugin-docktomato",
+        "author": "5kyfkr",
+        "url": "https://github.com/5kyfkr/siyuan-plugin-docktomato",
+        "version": "1.7.5",
+        "minAppVersion": "3.0.12",
+        "displayName": {
+          "default": "Dock Tomato",
+          "zh_CN": "底栏番茄钟"
+        },
+        "description": {
+          "default": "A dock Tomato Timer for SiYuan.",
+          "zh_CN": "思源底栏番茄钟：支持时间轴视图/任务提醒/日常事务记录/多端状态同步/移动端/数据库联动/块绑定/历史记录/任务管理器联动"
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "funding": null,
+        "keywords": [
+          "tomato",
+          "timer",
+          "pomodoro",
+          "dock"
         ],
         "backends": [
           "all"
@@ -332,49 +413,10 @@
       }
     },
     {
-      "url": "5kyfkr/siyuan-plugin-task-horizon@186c3dd9637470110dd2415ea02f597e0b60121b",
-      "updated": "2026-02-10T18:49:10Z",
-      "stars": 1,
-      "openIssues": 0,
-      "size": 337392,
-      "installSize": 949925,
-      "package": {
-        "name": "siyuan-plugin-task-horizon",
-        "author": "5kyfkr",
-        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "1.1.3",
-        "minAppVersion": "3.5.0",
-        "displayName": {
-          "default": "Task Horizon",
-          "zh_CN": "任务管理器"
-        },
-        "description": {
-          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
-          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持时间轴甘特图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动"
-        },
-        "readme": {
-          "default": "README.md"
-        },
-        "funding": null,
-        "keywords": [
-          "task",
-          "manager",
-          "filter"
-        ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": true
-      }
-    },
-    {
       "url": "Achuan-2/siyuan-plugin-copilot@78af7bd740ef1fdf912caca01bcd540b0f216a43",
       "updated": "2026-02-10T15:38:47Z",
       "stars": 52,
-      "openIssues": 8,
+      "openIssues": 7,
       "size": 449364,
       "installSize": 1095650,
       "package": {
@@ -797,47 +839,6 @@
           "all"
         ],
         "disabledInPublish": true
-      }
-    },
-    {
-      "url": "5kyfkr/siyuan-plugin-docktomato@b724d0b712add06c880635ab9e77165fe181e232",
-      "updated": "2026-02-08T15:53:00Z",
-      "stars": 3,
-      "openIssues": 0,
-      "size": 410546,
-      "installSize": 1532958,
-      "package": {
-        "name": "siyuan-plugin-docktomato",
-        "author": "5kyfkr",
-        "url": "https://github.com/5kyfkr/siyuan-plugin-docktomato",
-        "version": "1.7.3",
-        "minAppVersion": "3.0.12",
-        "displayName": {
-          "default": "Dock Tomato",
-          "zh_CN": "底栏番茄钟"
-        },
-        "description": {
-          "default": "A dock Tomato Timer for SiYuan.",
-          "zh_CN": "思源底栏番茄钟：支持时间轴视图/任务提醒/日常事务记录/多端状态同步/移动端/数据库联动/块绑定/历史记录/任务管理器联动"
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "funding": null,
-        "keywords": [
-          "tomato",
-          "timer",
-          "pomodoro",
-          "dock"
-        ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": false
       }
     },
     {
