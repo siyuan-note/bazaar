@@ -33,7 +33,7 @@ import (
 Diff 流程（以 plugins.json 为例）：
 1. 签出 bazaar head（主分支最新）：读 plugins.json，得到 bazaar head 的 owner/repo 集合与 name 集合，用于过滤和 name 唯一性检查
 2. 签出 PR head：读 plugins.json（PR 当前状态）
-3. 签出 PR base：读 plugins.json（PR 创建时的基准状态）
+3. 签出 PR base（merge base）：读 plugins.json（与 GitHub "Files changed" 的基准一致）
 4. 比较 base 与 head：候选新增 = head 有 base 无，候选删除 = base 有 head 无
 5. 过滤候选新增：排除已在 bazaar head 中的仓库（可能是解决冲突时从 bazaar head 合并来的）
 6. 过滤候选删除：排除在 bazaar head 中已不存在的仓库（可能是其他 PR 删除的）
@@ -55,7 +55,7 @@ Check 流程：
 var (
 	BAZAAR_HEAD_PATH    = os.Getenv("BAZAAR_HEAD_PATH")    // bazaar 主分支最新代码目录（用于过滤与 name 唯一性）
 	PR_HEAD_PATH        = os.Getenv("PR_HEAD_PATH")        // 本 PR 当前提交的代码目录（PR head）
-	PR_BASE_PATH        = os.Getenv("PR_BASE_PATH")        // 本 PR 分叉点的代码目录（PR base，做 diff 的旧侧）
+	PR_BASE_PATH        = os.Getenv("PR_BASE_PATH")        // 本 PR 的 merge base 代码目录（做 diff 的旧侧，与 GitHub "Files changed" 一致）
 	GITHUB_TOKEN        = os.Getenv("PAT")                 // GitHub Token
 	CHECK_RESULT_OUTPUT = os.Getenv("CHECK_RESULT_OUTPUT") // 检查结果输出文件路径
 
@@ -437,7 +437,9 @@ func checkRepo(
 
 		if attrsCheckResult, err = checkManifestAttrs(manifestFileUrl); err != nil {
 			logger.Warnf("check repo [%s] manifest file [%s] failed: %s", repoPath, manifestFileUrl, err)
-		} else {
+			attrsCheckResult = &Attrs{} // 避免后续访问 nil 导致模板渲染失败
+		}
+		if attrsCheckResult != nil {
 			// 有效性检查
 			attrsCheckResult.Name.Valid = isValidName(attrsCheckResult.Name.Value)
 			if attrsCheckResult.Name.Valid {
@@ -679,32 +681,42 @@ func checkRepo(
 			}
 		}
 	} else {
-		// 无法检查文件与属性, 直接返回结果
+		// 无法检查文件与属性，直接返回结果；填充空 Files/Attrs 避免模板访问 nil 导致渲染中断
 		switch resourceType {
 		case icons:
 			resultChannel <- &Icon{
 				RepoInfo: *repoInfo,
 				Release:  *releaseCheckResult,
+				Files:    IconFiles{},
+				Attrs:    Attrs{},
 			}
 		case plugins:
 			resultChannel <- &Plugin{
 				RepoInfo: *repoInfo,
 				Release:  *releaseCheckResult,
+				Files:    PluginFiles{},
+				Attrs:    Attrs{},
 			}
 		case templates:
 			resultChannel <- &Template{
 				RepoInfo: *repoInfo,
 				Release:  *releaseCheckResult,
+				Files:    TemplateFiles{},
+				Attrs:    Attrs{},
 			}
 		case themes:
 			resultChannel <- &Theme{
 				RepoInfo: *repoInfo,
 				Release:  *releaseCheckResult,
+				Files:    ThemeFiles{},
+				Attrs:    Attrs{},
 			}
 		case widgets:
 			resultChannel <- &Widget{
 				RepoInfo: *repoInfo,
 				Release:  *releaseCheckResult,
+				Files:    WidgetFiles{},
+				Attrs:    Attrs{},
 			}
 		default:
 		}

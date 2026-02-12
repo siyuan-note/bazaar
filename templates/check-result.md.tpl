@@ -1,8 +1,10 @@
 ## Pull Request Check Report
 
-{{ if .Icons }}### Add `{{ len .Icons }}` Icon Repo
+{{ if .Icons }}
+### Add `{{ len .Icons }}` Icon Repo
 
-{{ range $i, $repo := .Icons }}#### [{{ $repo.RepoInfo.Path }}]({{ $repo.RepoInfo.Home }}){{ if $repo.MaintainerChanged }} (Change Maintainer){{ end }}
+{{ range $i, $repo := .Icons }}
+#### [{{ $repo.RepoInfo.Path }}]({{ $repo.RepoInfo.Home }}){{ if $repo.MaintainerChanged }} (Change Maintainer){{ end }}
 
 - {{ if $repo.Release.Pass }}[x]{{ else }}[ ]{{ end }} Release that must exist
   - {{ if $repo.Release.LatestRelease.Pass }}[x] [Current Latest Release]({{ $repo.Release.LatestRelease.URL }}){{ else }}[ ] Current Latest Release{{ end }}
@@ -23,15 +25,20 @@
 ---
 {{ end }}
 {{ end }}
-{{ if .IconsDeleted }}### Remove `{{ len .IconsDeleted }}` Icon Repo
+{{ if .IconsDeleted }}
 
-{{ range .IconsDeleted }}- [{{ . }}](https://github.com/{{ . }})
+### Remove `{{ len .IconsDeleted }}` Icon Repo
+
+{{ range .IconsDeleted }}
+- [{{ . }}](https://github.com/{{ . }})
 {{ end }}
 {{ end }}
 
-{{ if .Plugins }}### Add `{{ len .Plugins }}` Plugin Repo
+{{ if .Plugins }}
+### Add `{{ len .Plugins }}` Plugin Repo
 
-{{ range $i, $repo := .Plugins }}#### [{{ $repo.RepoInfo.Path }}]({{ $repo.RepoInfo.Home }}){{ if $repo.MaintainerChanged }} (Change Maintainer){{ end }}
+{{ range $i, $repo := .Plugins }}
+#### [{{ $repo.RepoInfo.Path }}]({{ $repo.RepoInfo.Home }}){{ if $repo.MaintainerChanged }} (Change Maintainer){{ end }}
 
 - {{ if $repo.Release.Pass }}[x]{{ else }}[ ]{{ end }} Release that must exist
   - {{ if $repo.Release.LatestRelease.Pass }}[x] [Current Latest Release]({{ $repo.Release.LatestRelease.URL }}){{ else }}[ ] Current Latest Release{{ end }}
@@ -53,15 +60,20 @@
 ---
 {{ end }}
 {{ end }}
-{{ if .PluginsDeleted }}### Remove `{{ len .PluginsDeleted }}` Plugin Repo
+{{ if .PluginsDeleted }}
 
-{{ range .PluginsDeleted }}- [{{ . }}](https://github.com/{{ . }})
+### Remove `{{ len .PluginsDeleted }}` Plugin Repo
+
+{{ range .PluginsDeleted }}
+- [{{ . }}](https://github.com/{{ . }})
 {{ end }}
 {{ end }}
 
-{{ if .Templates }}### Add `{{ len .Templates }}` Template Repo
+{{ if .Templates }}
+### Add `{{ len .Templates }}` Template Repo
 
-{{ range $i, $repo := .Templates }}#### [{{ $repo.RepoInfo.Path }}]({{ $repo.RepoInfo.Home }}){{ if $repo.MaintainerChanged }} (Change Maintainer){{ end }}
+{{ range $i, $repo := .Templates }}
+#### [{{ $repo.RepoInfo.Path }}]({{ $repo.RepoInfo.Home }}){{ if $repo.MaintainerChanged }} (Change Maintainer){{ end }}
 
 - {{ if $repo.Release.Pass }}[x]{{ else }}[ ]{{ end }} Release that must exist
   - {{ if $repo.Release.LatestRelease.Pass }}[x] [Current Latest Release]({{ $repo.Release.LatestRelease.URL }}){{ else }}[ ] Current Latest Release{{ end }}
@@ -82,15 +94,20 @@
 ---
 {{ end }}
 {{ end }}
-{{ if .TemplatesDeleted }}### Remove `{{ len .TemplatesDeleted }}` Template Repo
+{{ if .TemplatesDeleted }}
 
-{{ range .TemplatesDeleted }}- [{{ . }}](https://github.com/{{ . }})
+### Remove `{{ len .TemplatesDeleted }}` Template Repo
+
+{{ range .TemplatesDeleted }}
+- [{{ . }}](https://github.com/{{ . }})
 {{ end }}
 {{ end }}
 
-{{ if .Themes }}### Add `{{ len .Themes }}` Theme Repo
+{{ if .Themes }}
+### Add `{{ len .Themes }}` Theme Repo
 
-{{ range $i, $repo := .Themes }}#### [{{ $repo.RepoInfo.Path }}]({{ $repo.RepoInfo.Home }}){{ if $repo.MaintainerChanged }} (Change Maintainer){{ end }}
+{{ range $i, $repo := .Themes }}
+#### [{{ $repo.RepoInfo.Path }}]({{ $repo.RepoInfo.Home }}){{ if $repo.MaintainerChanged }} (Change Maintainer){{ end }}
 
 - {{ if $repo.Release.Pass }}[x]{{ else }}[ ]{{ end }} Release that must exist
   - {{ if $repo.Release.LatestRelease.Pass }}[x] [Current Latest Release]({{ $repo.Release.LatestRelease.URL }}){{ else }}[ ] Current Latest Release{{ end }}
@@ -111,15 +128,20 @@
 ---
 {{ end }}
 {{ end }}
-{{ if .ThemesDeleted }}### Remove `{{ len .ThemesDeleted }}` Theme Repo
+{{ if .ThemesDeleted }}
 
-{{ range .ThemesDeleted }}- [{{ . }}](https://github.com/{{ . }})
+### Remove `{{ len .ThemesDeleted }}` Theme Repo
+
+{{ range .ThemesDeleted }}
+- [{{ . }}](https://github.com/{{ . }})
 {{ end }}
 {{ end }}
 
-{{ if .Widgets }}### Add `{{ len .Widgets }}` Widget Repo
+{{ if .Widgets }}
+### Add `{{ len .Widgets }}` Widget Repo
 
-{{ range $i, $repo := .Widgets }}#### [{{ $repo.RepoInfo.Path }}]({{ $repo.RepoInfo.Home }}){{ if $repo.MaintainerChanged }} (Change Maintainer){{ end }}
+{{ range $i, $repo := .Widgets }}
+#### [{{ $repo.RepoInfo.Path }}]({{ $repo.RepoInfo.Home }}){{ if $repo.MaintainerChanged }} (Change Maintainer){{ end }}
 
 - {{ if $repo.Release.Pass }}[x]{{ else }}[ ]{{ end }} Release that must exist
   - {{ if $repo.Release.LatestRelease.Pass }}[x] [Current Latest Release]({{ $repo.Release.LatestRelease.URL }}){{ else }}[ ] Current Latest Release{{ end }}
@@ -140,8 +162,15 @@
 ---
 {{ end }}
 {{ end }}
-{{ if .WidgetsDeleted }}### Remove `{{ len .WidgetsDeleted }}` Widget Repo
+{{ if .WidgetsDeleted }}
 
-{{ range .WidgetsDeleted }}- [{{ . }}](https://github.com/{{ . }})
+### Remove `{{ len .WidgetsDeleted }}` Widget Repo
+
+{{ range .WidgetsDeleted }}
+- [{{ . }}](https://github.com/{{ . }})
 {{ end }}
+{{ end }}
+
+{{ if and (not .Icons) (not .Plugins) (not .Templates) (not .Themes) (not .Widgets) (not .IconsDeleted) (not .PluginsDeleted) (not .TemplatesDeleted) (not .ThemesDeleted) (not .WidgetsDeleted) }}
+No actual changes to the bazaar package list (or changes are already in main). Please check your commit.
 {{ end }}
