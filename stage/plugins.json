@@ -286,7 +286,7 @@
       "url": "Szerelem0617/siyuan-plugins-index@174dfe659ff9bea3f7d1720f071138106b0a2d55",
       "updated": "2026-02-11T13:45:07Z",
       "stars": 25,
-      "openIssues": 3,
+      "openIssues": 2,
       "size": 156676,
       "installSize": 313357,
       "package": {
@@ -2195,33 +2195,31 @@
       "size": 271505,
       "installSize": 450527,
       "package": {
-        "name": "siyuan-plugin-halo-publisher",
         "author": "Sundaydream",
-        "url": "https://github.com/Sundaydream/siyuan-plugin-halo-publisher",
-        "version": "1.0.8",
-        "minAppVersion": "3.5.2",
-        "displayName": {
-          "default": "Halo Publisher",
-          "zh_CHT": "Halo 發佈插件",
-          "zh_CN": "Halo 发布插件"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "default": "Publish SiYuan notes to Halo blog platform",
           "zh_CHT": "將思源筆記文章發佈到 Halo 部落格平台的插件",
           "zh_CN": "将思源笔记文章发布到 Halo 博客平台的插件"
         },
-        "readme": {
-          "default": "README_en_US.md",
-          "zh_CHT": "README_zh_CHT.md",
-          "zh_CN": "README.md"
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Halo Publisher",
+          "zh_CHT": "Halo 發佈插件",
+          "zh_CN": "Halo 发布插件"
         },
+        "frontends": [
+          "all"
+        ],
         "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
           "custom": [
             "https://afdian.com/a/sundaydream"
-          ]
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
         },
         "keywords": [
           "halo",
@@ -2230,13 +2228,15 @@
           "publish",
           "blog"
         ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": true
+        "minAppVersion": "3.5.2",
+        "name": "siyuan-plugin-halo-publisher",
+        "readme": {
+          "default": "README_en_US.md",
+          "zh_CHT": "README_zh_CHT.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/Sundaydream/siyuan-plugin-halo-publisher",
+        "version": "1.0.8"
       }
     },
     {
