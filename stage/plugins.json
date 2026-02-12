@@ -3,7 +3,7 @@
     {
       "url": "Achuan-2/siyuan-plugin-task-note-management@7c0f7028d2f7e3a2b9982552c4deb65183b24ee8",
       "updated": "2026-02-11T17:58:18Z",
-      "stars": 154,
+      "stars": 155,
       "openIssues": 4,
       "size": 8661848,
       "installSize": 12634094,
@@ -1533,7 +1533,7 @@
     {
       "url": "DD3Boh/better-sync-siyuan@c3327dbe85c29eb3b8e24cf9d30c36567b438e41",
       "updated": "2026-01-28T15:42:01Z",
-      "stars": 95,
+      "stars": 96,
       "openIssues": 15,
       "size": 93619,
       "installSize": 159251,
@@ -13722,39 +13722,39 @@
       "size": 299798,
       "installSize": 324344,
       "package": {
-        "name": "sy-export-tree",
         "author": "frostime",
-        "url": "https://github.com/frostime/sy-export-tree",
-        "version": "1.0.0",
-        "minAppVersion": "3.0.5",
-        "displayName": {
-          "en_US": "Export document tree",
-          "zh_CN": "导出文档树结构"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "en_US": "Export the tree structur of all documents",
           "zh_CN": "导出笔记库当中所有的文档树结构"
         },
+        "disabledInPublish": false,
+        "displayName": {
+          "en_US": "Export document tree",
+          "zh_CN": "导出文档树结构"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.net/a/frostime"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": null,
+        "minAppVersion": "3.0.5",
+        "name": "sy-export-tree",
         "readme": {
           "en_US": "README.md",
           "zh_CN": "README_zh_CN.md"
         },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.net/a/frostime"
-          ]
-        },
-        "keywords": null,
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": false
+        "url": "https://github.com/frostime/sy-export-tree",
+        "version": "1.0.0"
       }
     },
     {
