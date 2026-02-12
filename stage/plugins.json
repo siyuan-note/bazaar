@@ -1,6 +1,49 @@
 {
   "repos": [
     {
+      "url": "terwerinc/siyuan-plugin-share-pro@01139320f272d95b8d0e067166d1b04bc373d0e2",
+      "updated": "2026-02-12T03:27:35Z",
+      "stars": 7,
+      "openIssues": 27,
+      "size": 1802568,
+      "installSize": 1817260,
+      "package": {
+        "name": "share-pro",
+        "author": "terwer",
+        "url": "https://github.com/terwerinc/siyuan-plugin-share-pro",
+        "version": "1.15.3",
+        "minAppVersion": "3.0.0",
+        "displayName": {
+          "default": "Share pro",
+          "zh_CN": "在线分享专业版"
+        },
+        "description": {
+          "default": "share your notes from siyuan-note with one click",
+          "zh_CN": "一键分享您的思源笔记"
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.com/a/terwer"
+          ]
+        },
+        "keywords": null,
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": true
+      }
+    },
+    {
       "url": "Achuan-2/siyuan-plugin-task-note-management@7c0f7028d2f7e3a2b9982552c4deb65183b24ee8",
       "updated": "2026-02-11T17:58:18Z",
       "stars": 155,
@@ -71,7 +114,7 @@
       "url": "Szerelem0617/siyuan-plugins-index@174dfe659ff9bea3f7d1720f071138106b0a2d55",
       "updated": "2026-02-11T13:45:07Z",
       "stars": 25,
-      "openIssues": 4,
+      "openIssues": 3,
       "size": 156676,
       "installSize": 313357,
       "package": {
@@ -110,7 +153,7 @@
       "url": "dale0525/siyuan-auto-seq-number@d6803c424d8d0c65a68d167ab0c0a2fba8c9737e",
       "updated": "2026-02-11T13:13:23Z",
       "stars": 6,
-      "openIssues": 6,
+      "openIssues": 7,
       "size": 37817,
       "installSize": 71016,
       "package": {
@@ -1863,49 +1906,6 @@
           "all"
         ],
         "disabledInPublish": true
-      }
-    },
-    {
-      "url": "terwerinc/siyuan-plugin-share-pro@154c6fd5937f1146d5428b59ba332df8f0d87f0e",
-      "updated": "2026-01-24T13:05:06Z",
-      "stars": 7,
-      "openIssues": 28,
-      "size": 1802539,
-      "installSize": 1817231,
-      "package": {
-        "name": "share-pro",
-        "author": "terwer",
-        "url": "https://github.com/terwerinc/siyuan-plugin-share-pro",
-        "version": "1.15.2",
-        "minAppVersion": "3.0.0",
-        "displayName": {
-          "default": "Share pro",
-          "zh_CN": "在线分享专业版"
-        },
-        "description": {
-          "default": "share your notes from siyuan-note with one click",
-          "zh_CN": "一键分享您的思源笔记"
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.com/a/terwer"
-          ]
-        },
-        "keywords": null,
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": false
       }
     },
     {
@@ -12082,7 +12082,7 @@
       "url": "suka233/siyuan-knote@edad2b76ea112df34fd49ff8b0a76d9753fc0d5d",
       "updated": "2024-12-02T09:55:32Z",
       "stars": 19,
-      "openIssues": 5,
+      "openIssues": 6,
       "size": 4315327,
       "installSize": 9444968,
       "package": {
@@ -13722,39 +13722,39 @@
       "size": 299798,
       "installSize": 324344,
       "package": {
+        "name": "sy-export-tree",
         "author": "frostime",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "en_US": "Export the tree structur of all documents",
-          "zh_CN": "导出笔记库当中所有的文档树结构"
-        },
-        "disabledInPublish": false,
+        "url": "https://github.com/frostime/sy-export-tree",
+        "version": "1.0.0",
+        "minAppVersion": "3.0.5",
         "displayName": {
           "en_US": "Export document tree",
           "zh_CN": "导出文档树结构"
         },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.net/a/frostime"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
+        "description": {
+          "en_US": "Export the tree structur of all documents",
+          "zh_CN": "导出笔记库当中所有的文档树结构"
         },
-        "keywords": null,
-        "minAppVersion": "3.0.5",
-        "name": "sy-export-tree",
         "readme": {
           "en_US": "README.md",
           "zh_CN": "README_zh_CN.md"
         },
-        "url": "https://github.com/frostime/sy-export-tree",
-        "version": "1.0.0"
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/frostime"
+          ]
+        },
+        "keywords": null,
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": false
       }
     },
     {
