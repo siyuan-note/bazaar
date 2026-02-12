@@ -1,6 +1,92 @@
 {
   "repos": [
     {
+      "url": "5kyfkr/siyuan-plugin-task-horizon@bc69eecf89add86d71eae4f5bedb20748ad56f41",
+      "updated": "2026-02-12T17:07:38Z",
+      "stars": 1,
+      "openIssues": 0,
+      "size": 354733,
+      "installSize": 1048846,
+      "package": {
+        "name": "siyuan-plugin-task-horizon",
+        "author": "5kyfkr",
+        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
+        "version": "1.1.7",
+        "minAppVersion": "3.5.0",
+        "displayName": {
+          "default": "Task Horizon",
+          "zh_CN": "任务管理器"
+        },
+        "description": {
+          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
+          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持时间轴甘特图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动"
+        },
+        "readme": {
+          "default": "README.md"
+        },
+        "funding": null,
+        "keywords": [
+          "task",
+          "manager",
+          "filter"
+        ],
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": true
+      }
+    },
+    {
+      "url": "b8l8u8e8/siyuan-plugin-share@177f296ac3e13e5e61ef6c9619ac08d7bfb44e60",
+      "updated": "2026-02-12T16:47:48Z",
+      "stars": 29,
+      "openIssues": 1,
+      "size": 205392,
+      "installSize": 559264,
+      "package": {
+        "name": "siyuan-plugin-share",
+        "author": "取舍",
+        "url": "https://github.com/b8l8u8e8/siyuan-plugin-share",
+        "version": "0.4.0",
+        "minAppVersion": "2.9.0",
+        "displayName": {
+          "default": "SiYuan Share",
+          "zh_CN": "思源分享"
+        },
+        "description": {
+          "default": "A free SiYuan Notes sharing plugin that supports generating share links for notebooks, individual documents, and documents with their sub-documents. It allows you to set an access password, expiration time, visitor limit, and view an overview of access to the shared content.",
+          "zh_CN": "一款免费的思源笔记分享插件，支持将笔记本、单篇文档、文档及子文档生成分享链接，设置访问密码、到期时间、访客人数限制，并可以查看分享内容的访问概览。"
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://cos.jie86.cn/LightPicture/2025/03/518c36908c50c51d.jpg"
+          ]
+        },
+        "keywords": [
+          "share",
+          "markdown",
+          "分享"
+        ],
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": true
+      }
+    },
+    {
       "url": "Achuan-2/siyuan-plugin-task-note-management@0887d0650f9cb65f6a93272f42bd99b559d23e58",
       "updated": "2026-02-12T10:30:18Z",
       "stars": 156,
@@ -63,45 +149,6 @@
           "browser-desktop",
           "browser-mobile",
           "desktop-window"
-        ],
-        "disabledInPublish": true
-      }
-    },
-    {
-      "url": "5kyfkr/siyuan-plugin-task-horizon@576f56fbf087f00f56f29a3c19c1378bc06c422b",
-      "updated": "2026-02-12T08:19:34Z",
-      "stars": 1,
-      "openIssues": 0,
-      "size": 352391,
-      "installSize": 1032272,
-      "package": {
-        "name": "siyuan-plugin-task-horizon",
-        "author": "5kyfkr",
-        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "1.1.6",
-        "minAppVersion": "3.5.0",
-        "displayName": {
-          "default": "Task Horizon",
-          "zh_CN": "任务管理器"
-        },
-        "description": {
-          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
-          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持时间轴甘特图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动"
-        },
-        "readme": {
-          "default": "README.md"
-        },
-        "funding": null,
-        "keywords": [
-          "task",
-          "manager",
-          "filter"
-        ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
         ],
         "disabledInPublish": true
       }
@@ -561,53 +608,6 @@
           "all"
         ],
         "disabledInPublish": false
-      }
-    },
-    {
-      "url": "b8l8u8e8/siyuan-plugin-share@cfe7d68aeaf6045036484be2bb8caeb26ce7a66b",
-      "updated": "2026-02-10T09:08:32Z",
-      "stars": 29,
-      "openIssues": 1,
-      "size": 196863,
-      "installSize": 513376,
-      "package": {
-        "name": "siyuan-plugin-share",
-        "author": "取舍",
-        "url": "https://github.com/b8l8u8e8/siyuan-plugin-share",
-        "version": "0.3.9",
-        "minAppVersion": "2.9.0",
-        "displayName": {
-          "default": "SiYuan Share",
-          "zh_CN": "思源分享"
-        },
-        "description": {
-          "default": "A free SiYuan Notes sharing plugin that supports generating share links for notebooks, individual documents, and documents with their sub-documents. It allows you to set an access password, expiration time, visitor limit, and view an overview of access to the shared content.",
-          "zh_CN": "一款免费的思源笔记分享插件，支持将笔记本、单篇文档、文档及子文档生成分享链接，设置访问密码、到期时间、访客人数限制，并可以查看分享内容的访问概览。"
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://cos.jie86.cn/LightPicture/2025/03/518c36908c50c51d.jpg"
-          ]
-        },
-        "keywords": [
-          "share",
-          "markdown",
-          "分享"
-        ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": true
       }
     },
     {
@@ -2195,31 +2195,33 @@
       "size": 271505,
       "installSize": 450527,
       "package": {
+        "name": "siyuan-plugin-halo-publisher",
         "author": "Sundaydream",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Publish SiYuan notes to Halo blog platform",
-          "zh_CHT": "將思源筆記文章發佈到 Halo 部落格平台的插件",
-          "zh_CN": "将思源笔记文章发布到 Halo 博客平台的插件"
-        },
-        "disabledInPublish": true,
+        "url": "https://github.com/Sundaydream/siyuan-plugin-halo-publisher",
+        "version": "1.0.8",
+        "minAppVersion": "3.5.2",
         "displayName": {
           "default": "Halo Publisher",
           "zh_CHT": "Halo 發佈插件",
           "zh_CN": "Halo 发布插件"
         },
-        "frontends": [
-          "all"
-        ],
+        "description": {
+          "default": "Publish SiYuan notes to Halo blog platform",
+          "zh_CHT": "將思源筆記文章發佈到 Halo 部落格平台的插件",
+          "zh_CN": "将思源笔记文章发布到 Halo 博客平台的插件"
+        },
+        "readme": {
+          "default": "README_en_US.md",
+          "zh_CHT": "README_zh_CHT.md",
+          "zh_CN": "README.md"
+        },
         "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
           "custom": [
             "https://afdian.com/a/sundaydream"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
+          ]
         },
         "keywords": [
           "halo",
@@ -2228,15 +2230,13 @@
           "publish",
           "blog"
         ],
-        "minAppVersion": "3.5.2",
-        "name": "siyuan-plugin-halo-publisher",
-        "readme": {
-          "default": "README_en_US.md",
-          "zh_CHT": "README_zh_CHT.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/Sundaydream/siyuan-plugin-halo-publisher",
-        "version": "1.0.8"
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": true
       }
     },
     {
