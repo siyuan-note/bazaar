@@ -7991,7 +7991,38 @@
       "size": 354069,
       "installSize": 675377,
       "package": {
+        "name": "GIT-SYNC-PLUGIN",
         "author": "xstarling",
+        "url": "https://github.com/xstarling/sy-git-sync-plugin",
+        "version": "0.3.0",
+        "minAppVersion": "3.0.12",
+        "displayName": {
+          "en_US": "GIT SYNC PLUGIN",
+          "zh_CN": "GIT同步插件"
+        },
+        "description": {
+          "en_US": "Git Sync Plugin is a tool for syncing local note files to GitHub and Gitee repositories. By integrating GitHub and Gitee apis, users can easily push note files to remote repositories, enabling multi-device synchronization and version control.",
+          "zh_CN": "Git Sync Plugin 是一款用于将本地笔记文件同步到 GitHub 和 Gitee 仓库的工具。通过集成 GitHub 和 Gitee 的 API，用户可以轻松地将笔记文件推送到远程仓库，实现多设备同步和版本控制。"
+        },
+        "readme": {
+          "en_US": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "git",
+          "GIT",
+          "同步",
+          "sync",
+          "SYNC"
+        ],
         "backends": [
           "windows",
           "linux",
@@ -8001,15 +8032,6 @@
           "harmony",
           "docker"
         ],
-        "description": {
-          "en_US": "Git Sync Plugin is a tool for syncing local note files to GitHub and Gitee repositories. By integrating GitHub and Gitee apis, users can easily push note files to remote repositories, enabling multi-device synchronization and version control.",
-          "zh_CN": "Git Sync Plugin 是一款用于将本地笔记文件同步到 GitHub 和 Gitee 仓库的工具。通过集成 GitHub 和 Gitee 的 API，用户可以轻松地将笔记文件推送到远程仓库，实现多设备同步和版本控制。"
-        },
-        "disabledInPublish": false,
-        "displayName": {
-          "en_US": "GIT SYNC PLUGIN",
-          "zh_CN": "GIT同步插件"
-        },
         "frontends": [
           "desktop",
           "mobile",
@@ -8017,29 +8039,7 @@
           "browser-mobile",
           "desktop-window"
         ],
-        "funding": {
-          "custom": [
-            ""
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "git",
-          "GIT",
-          "同步",
-          "sync",
-          "SYNC"
-        ],
-        "minAppVersion": "3.0.12",
-        "name": "GIT-SYNC-PLUGIN",
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/xstarling/sy-git-sync-plugin",
-        "version": "0.3.0"
+        "disabledInPublish": false
       }
     },
     {
@@ -14600,29 +14600,30 @@
       "size": 22971,
       "installSize": 31897,
       "package": {
+        "name": "siyuan-css-dashed-line-memo",
         "author": "TCOTC",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Change the style of the memo to a dashed line",
-          "zh_CN": "将备注的样式改为虚线"
-        },
-        "disabledInPublish": false,
+        "url": "https://github.com/TCOTC/siyuan-css-dashed-line-memo",
+        "version": "0.1.0",
+        "minAppVersion": "",
         "displayName": {
           "default": "Dashed line memo",
           "zh_CN": "虚线备注"
         },
-        "frontends": [
-          "all"
-        ],
+        "description": {
+          "default": "Change the style of the memo to a dashed line",
+          "zh_CN": "将备注的样式改为虚线"
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
         "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
           "custom": [
             "https://afdian.net/a/JeffreyChen"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
+          ]
         },
         "keywords": [
           "虚线",
@@ -14636,14 +14637,13 @@
           "CSS",
           "TCOTC"
         ],
-        "minAppVersion": "",
-        "name": "siyuan-css-dashed-line-memo",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/TCOTC/siyuan-css-dashed-line-memo",
-        "version": "0.1.0"
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": false
       }
     },
     {
