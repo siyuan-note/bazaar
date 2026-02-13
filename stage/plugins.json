@@ -1,6 +1,47 @@
 {
   "repos": [
     {
+      "url": "5kyfkr/siyuan-plugin-docktomato@4fc53ea7a6d7df87e7ebc479beab275b6031fe26",
+      "updated": "2026-02-13T07:31:43Z",
+      "stars": 3,
+      "openIssues": 0,
+      "size": 413789,
+      "installSize": 1560238,
+      "package": {
+        "name": "siyuan-plugin-docktomato",
+        "author": "5kyfkr",
+        "url": "https://github.com/5kyfkr/siyuan-plugin-docktomato",
+        "version": "1.7.6",
+        "minAppVersion": "3.0.12",
+        "displayName": {
+          "default": "Dock Tomato",
+          "zh_CN": "底栏番茄钟"
+        },
+        "description": {
+          "default": "A dock Tomato Timer for SiYuan.",
+          "zh_CN": "思源底栏番茄钟：支持时间轴视图/任务提醒/日常事务记录/多端状态同步/移动端/数据库联动/块绑定/历史记录/任务管理器联动"
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "funding": null,
+        "keywords": [
+          "tomato",
+          "timer",
+          "pomodoro",
+          "dock"
+        ],
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": false
+      }
+    },
+    {
       "url": "Ceysen/siyuan-git-sync@be50d53597492c6c460943e6ee78e1f03c5d7e10",
       "updated": "2026-02-13T06:00:26Z",
       "stars": 0,
@@ -273,47 +314,6 @@
           "序号",
           "标题",
           "header"
-        ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": false
-      }
-    },
-    {
-      "url": "5kyfkr/siyuan-plugin-docktomato@f21733501700f647c1fe1439d93c90e394a0829e",
-      "updated": "2026-02-12T07:49:14Z",
-      "stars": 3,
-      "openIssues": 0,
-      "size": 413671,
-      "installSize": 1559860,
-      "package": {
-        "name": "siyuan-plugin-docktomato",
-        "author": "5kyfkr",
-        "url": "https://github.com/5kyfkr/siyuan-plugin-docktomato",
-        "version": "1.7.5",
-        "minAppVersion": "3.0.12",
-        "displayName": {
-          "default": "Dock Tomato",
-          "zh_CN": "底栏番茄钟"
-        },
-        "description": {
-          "default": "A dock Tomato Timer for SiYuan.",
-          "zh_CN": "思源底栏番茄钟：支持时间轴视图/任务提醒/日常事务记录/多端状态同步/移动端/数据库联动/块绑定/历史记录/任务管理器联动"
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "funding": null,
-        "keywords": [
-          "tomato",
-          "timer",
-          "pomodoro",
-          "dock"
         ],
         "backends": [
           "all"
@@ -7991,38 +7991,7 @@
       "size": 354069,
       "installSize": 675377,
       "package": {
-        "name": "GIT-SYNC-PLUGIN",
         "author": "xstarling",
-        "url": "https://github.com/xstarling/sy-git-sync-plugin",
-        "version": "0.3.0",
-        "minAppVersion": "3.0.12",
-        "displayName": {
-          "en_US": "GIT SYNC PLUGIN",
-          "zh_CN": "GIT同步插件"
-        },
-        "description": {
-          "en_US": "Git Sync Plugin is a tool for syncing local note files to GitHub and Gitee repositories. By integrating GitHub and Gitee apis, users can easily push note files to remote repositories, enabling multi-device synchronization and version control.",
-          "zh_CN": "Git Sync Plugin 是一款用于将本地笔记文件同步到 GitHub 和 Gitee 仓库的工具。通过集成 GitHub 和 Gitee 的 API，用户可以轻松地将笔记文件推送到远程仓库，实现多设备同步和版本控制。"
-        },
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            ""
-          ]
-        },
-        "keywords": [
-          "git",
-          "GIT",
-          "同步",
-          "sync",
-          "SYNC"
-        ],
         "backends": [
           "windows",
           "linux",
@@ -8032,6 +8001,15 @@
           "harmony",
           "docker"
         ],
+        "description": {
+          "en_US": "Git Sync Plugin is a tool for syncing local note files to GitHub and Gitee repositories. By integrating GitHub and Gitee apis, users can easily push note files to remote repositories, enabling multi-device synchronization and version control.",
+          "zh_CN": "Git Sync Plugin 是一款用于将本地笔记文件同步到 GitHub 和 Gitee 仓库的工具。通过集成 GitHub 和 Gitee 的 API，用户可以轻松地将笔记文件推送到远程仓库，实现多设备同步和版本控制。"
+        },
+        "disabledInPublish": false,
+        "displayName": {
+          "en_US": "GIT SYNC PLUGIN",
+          "zh_CN": "GIT同步插件"
+        },
         "frontends": [
           "desktop",
           "mobile",
@@ -8039,7 +8017,29 @@
           "browser-mobile",
           "desktop-window"
         ],
-        "disabledInPublish": false
+        "funding": {
+          "custom": [
+            ""
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "git",
+          "GIT",
+          "同步",
+          "sync",
+          "SYNC"
+        ],
+        "minAppVersion": "3.0.12",
+        "name": "GIT-SYNC-PLUGIN",
+        "readme": {
+          "en_US": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/xstarling/sy-git-sync-plugin",
+        "version": "0.3.0"
       }
     },
     {
@@ -14600,30 +14600,29 @@
       "size": 22971,
       "installSize": 31897,
       "package": {
-        "name": "siyuan-css-dashed-line-memo",
         "author": "TCOTC",
-        "url": "https://github.com/TCOTC/siyuan-css-dashed-line-memo",
-        "version": "0.1.0",
-        "minAppVersion": "",
-        "displayName": {
-          "default": "Dashed line memo",
-          "zh_CN": "虚线备注"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "default": "Change the style of the memo to a dashed line",
           "zh_CN": "将备注的样式改为虚线"
         },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "Dashed line memo",
+          "zh_CN": "虚线备注"
         },
+        "frontends": [
+          "all"
+        ],
         "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
           "custom": [
             "https://afdian.net/a/JeffreyChen"
-          ]
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
         },
         "keywords": [
           "虚线",
@@ -14637,13 +14636,14 @@
           "CSS",
           "TCOTC"
         ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": false
+        "minAppVersion": "",
+        "name": "siyuan-css-dashed-line-memo",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/TCOTC/siyuan-css-dashed-line-memo",
+        "version": "0.1.0"
       }
     },
     {
