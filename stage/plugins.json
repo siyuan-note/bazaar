@@ -1,17 +1,228 @@
 {
   "repos": [
     {
-      "url": "5kyfkr/siyuan-plugin-task-horizon@576f56fbf087f00f56f29a3c19c1378bc06c422b",
-      "updated": "2026-02-12T08:19:34Z",
+      "url": "DUZSSY/siyuan-ai-assistant@2a579628044b91227ea8925172ea95b56ecbc833",
+      "updated": "2026-02-13T20:13:05Z",
+      "stars": 0,
+      "openIssues": 1,
+      "size": 719772,
+      "installSize": 978786,
+      "package": {
+        "name": "siyuan-ai-assistant",
+        "author": "DUZSSY",
+        "url": "https://github.com/DUZSSY/siyuan-ai-assistant",
+        "version": "0.1.10",
+        "minAppVersion": "3.5.3",
+        "displayName": {
+          "default": "AI Assistant",
+          "zh_CN": "AI助手"
+        },
+        "description": {
+          "default": "Block-level AI text editing plugin for SiYuan Note. Select text and edit with one click using OpenAI, Ollama, DeepSeek, etc.",
+          "zh_CN": "专注于文本块级 AI 编辑的思源笔记插件。选中文本即可一键润色、翻译、总结，支持OpenAI、Ollama、DeepSeek等多种AI提供商"
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://www.yuque.com/duzssy/mop740/fm59mkeo86fx5mu9?singleDoc"
+          ]
+        },
+        "keywords": [
+          "ai",
+          "assistant",
+          "ollama",
+          "openai",
+          "deepseek",
+          "chatgpt",
+          "translation",
+          "polish",
+          "summarize",
+          "text-editing",
+          "block-level",
+          "智能助手",
+          "文本编辑"
+        ],
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "disabledInPublish": false
+      }
+    },
+    {
+      "url": "b8l8u8e8/siyuan-plugin-share@a449d70c97b551fe17c2bc8596ed23ab3f9026e8",
+      "updated": "2026-02-13T15:35:19Z",
+      "stars": 29,
+      "openIssues": 0,
+      "size": 207980,
+      "installSize": 567881,
+      "package": {
+        "name": "siyuan-plugin-share",
+        "author": "取舍",
+        "url": "https://github.com/b8l8u8e8/siyuan-plugin-share",
+        "version": "0.4.1",
+        "minAppVersion": "2.9.0",
+        "displayName": {
+          "default": "SiYuan Share",
+          "zh_CN": "思源分享"
+        },
+        "description": {
+          "default": "A free SiYuan Notes sharing plugin that supports generating share links for notebooks, individual documents, and documents with their sub-documents. It allows you to set an access password, expiration time, visitor limit, and view an overview of access to the shared content.",
+          "zh_CN": "一款免费的思源笔记分享插件，支持将笔记本、单篇文档、文档及子文档生成分享链接，设置访问密码、到期时间、访客人数限制，并可以查看分享内容的访问概览。"
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://cos.jie86.cn/LightPicture/2025/03/518c36908c50c51d.jpg"
+          ]
+        },
+        "keywords": [
+          "share",
+          "markdown",
+          "分享"
+        ],
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": true
+      }
+    },
+    {
+      "url": "QYLexpired/Asri-enhance@049e2dd9436861d5ce5e9bd526ebd79f6fde51de",
+      "updated": "2026-02-13T15:27:27Z",
+      "stars": 4,
+      "openIssues": 1,
+      "size": 1031357,
+      "installSize": 1647078,
+      "package": {
+        "name": "Asri-enhance",
+        "author": "QYL",
+        "url": "https://github.com/QYLexpired/Asri-enhance",
+        "version": "2.0.6",
+        "minAppVersion": "3.4.0",
+        "displayName": {
+          "default": "Asri Theme Enhancer",
+          "zh_CN": "Asri主题增强"
+        },
+        "description": {
+          "default": "Asri Theme Enhancer",
+          "zh_CN": "专为Asri主题设计的增强插件"
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.com/a/QYLexpired"
+          ]
+        },
+        "keywords": null,
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": false
+      }
+    },
+    {
+      "url": "massivebox/siyuan-jsdraw-plugin@b3ff0522137b2a8d345cebb8fd099f0de48bf50a",
+      "updated": "2026-02-13T10:33:42Z",
+      "stars": 5,
+      "openIssues": 0,
+      "size": 241987,
+      "installSize": 668958,
+      "package": {
+        "name": "siyuan-jsdraw-plugin",
+        "author": "massivebox",
+        "url": "https://git.boxo.cc/massivebox/siyuan-jsdraw-plugin",
+        "version": "0.6.0",
+        "minAppVersion": "3.0.12",
+        "displayName": {
+          "en_US": "JS-Draw Whiteboard",
+          "zh_CN": "JS-Draw 白板"
+        },
+        "description": {
+          "en_US": "Include a whiteboard for freehand drawing anywhere in your documents.",
+          "zh_CN": "在您的文档中添加一个自由绘图白板。"
+        },
+        "readme": {
+          "en_US": "README.md",
+          "zh_CN": "README-zh_CN.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://s.boxo.cc/jsdraw-plugin-donate"
+          ]
+        },
+        "keywords": [
+          "plugin",
+          "drawing",
+          "freehand",
+          "tablet",
+          "whiteboard"
+        ],
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "disabledInPublish": false
+      }
+    },
+    {
+      "url": "5kyfkr/siyuan-plugin-task-horizon@5b4ee750aa83a2e2e42af9925a8d5ea6004a9b17",
+      "updated": "2026-02-13T09:13:09Z",
       "stars": 1,
       "openIssues": 0,
-      "size": 352391,
-      "installSize": 1032272,
+      "size": 363536,
+      "installSize": 1100491,
       "package": {
         "name": "siyuan-plugin-task-horizon",
         "author": "5kyfkr",
         "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "1.1.6",
+        "version": "1.2.5",
         "minAppVersion": "3.5.0",
         "displayName": {
           "default": "Task Horizon",
@@ -19,7 +230,7 @@
         },
         "description": {
           "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
-          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持时间轴甘特图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动"
+          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持时间轴/看板视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动"
         },
         "readme": {
           "default": "README.md"
@@ -35,6 +246,160 @@
         ],
         "frontends": [
           "all"
+        ],
+        "disabledInPublish": true
+      }
+    },
+    {
+      "url": "5kyfkr/siyuan-plugin-docktomato@4fc53ea7a6d7df87e7ebc479beab275b6031fe26",
+      "updated": "2026-02-13T07:31:43Z",
+      "stars": 3,
+      "openIssues": 0,
+      "size": 413789,
+      "installSize": 1560238,
+      "package": {
+        "name": "siyuan-plugin-docktomato",
+        "author": "5kyfkr",
+        "url": "https://github.com/5kyfkr/siyuan-plugin-docktomato",
+        "version": "1.7.6",
+        "minAppVersion": "3.0.12",
+        "displayName": {
+          "default": "Dock Tomato",
+          "zh_CN": "底栏番茄钟"
+        },
+        "description": {
+          "default": "A dock Tomato Timer for SiYuan.",
+          "zh_CN": "思源底栏番茄钟：支持时间轴视图/任务提醒/日常事务记录/多端状态同步/移动端/数据库联动/块绑定/历史记录/任务管理器联动"
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "funding": null,
+        "keywords": [
+          "tomato",
+          "timer",
+          "pomodoro",
+          "dock"
+        ],
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": false
+      }
+    },
+    {
+      "url": "Ceysen/siyuan-git-sync@be50d53597492c6c460943e6ee78e1f03c5d7e10",
+      "updated": "2026-02-13T06:00:26Z",
+      "stars": 0,
+      "openIssues": 0,
+      "size": 150282,
+      "installSize": 193501,
+      "package": {
+        "name": "siyuan-git-sync",
+        "author": "ceysen",
+        "url": "https://github.com/Ceysen/siyuan-git-sync",
+        "version": "0.0.3",
+        "minAppVersion": "3.5.4",
+        "displayName": {
+          "default": "Siyuan Git Sync",
+          "zh_CN": "Git同步"
+        },
+        "description": {
+          "default": "Sync your SiYuan notes with Git",
+          "zh_CN": "将思源笔记与 Git 同步"
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "github",
+          "备份"
+        ],
+        "backends": [
+          "windows"
+        ],
+        "frontends": [
+          "desktop"
+        ],
+        "disabledInPublish": true
+      }
+    },
+    {
+      "url": "Achuan-2/siyuan-plugin-task-note-management@0887d0650f9cb65f6a93272f42bd99b559d23e58",
+      "updated": "2026-02-12T10:30:18Z",
+      "stars": 156,
+      "openIssues": 3,
+      "size": 8661672,
+      "installSize": 12633658,
+      "package": {
+        "name": "siyuan-plugin-task-note-management",
+        "author": "Achuan-2",
+        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
+        "version": "5.5.3",
+        "minAppVersion": "3.5.1",
+        "displayName": {
+          "default": "Task Note Management",
+          "zh_CN": "任务笔记管理"
+        },
+        "description": {
+          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
+          "zh_CN": "一款在思源笔记里实现任务笔记管理功能的插件，为了践行防弹笔记法而开发。支持文档和块提醒、日历视图查看行事历、番茄钟专注和数据统计、项目看板、四象限面板、习惯打卡等功能"
+        },
+        "readme": {
+          "default": "README_en_US.md",
+          "zh_CN": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://www.yuque.com/achuan-2"
+          ]
+        },
+        "keywords": [
+          "reminder",
+          "time",
+          "calendar",
+          "notification",
+          "提醒",
+          "时间",
+          "日历",
+          "通知",
+          "番茄钟",
+          "四象限",
+          "任务管理",
+          "项目管理",
+          "习惯打卡"
+        ],
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android",
+          "harmony"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
         ],
         "disabledInPublish": true
       }
@@ -70,47 +435,6 @@
           "序号",
           "标题",
           "header"
-        ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": false
-      }
-    },
-    {
-      "url": "5kyfkr/siyuan-plugin-docktomato@f21733501700f647c1fe1439d93c90e394a0829e",
-      "updated": "2026-02-12T07:49:14Z",
-      "stars": 3,
-      "openIssues": 0,
-      "size": 413671,
-      "installSize": 1559860,
-      "package": {
-        "name": "siyuan-plugin-docktomato",
-        "author": "5kyfkr",
-        "url": "https://github.com/5kyfkr/siyuan-plugin-docktomato",
-        "version": "1.7.5",
-        "minAppVersion": "3.0.12",
-        "displayName": {
-          "default": "Dock Tomato",
-          "zh_CN": "底栏番茄钟"
-        },
-        "description": {
-          "default": "A dock Tomato Timer for SiYuan.",
-          "zh_CN": "思源底栏番茄钟：支持时间轴视图/任务提醒/日常事务记录/多端状态同步/移动端/数据库联动/块绑定/历史记录/任务管理器联动"
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "funding": null,
-        "keywords": [
-          "tomato",
-          "timer",
-          "pomodoro",
-          "dock"
         ],
         "backends": [
           "all"
@@ -216,77 +540,10 @@
       }
     },
     {
-      "url": "Achuan-2/siyuan-plugin-task-note-management@7c0f7028d2f7e3a2b9982552c4deb65183b24ee8",
-      "updated": "2026-02-11T17:58:18Z",
-      "stars": 155,
-      "openIssues": 4,
-      "size": 8661848,
-      "installSize": 12634094,
-      "package": {
-        "name": "siyuan-plugin-task-note-management",
-        "author": "Achuan-2",
-        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
-        "version": "5.5.2",
-        "minAppVersion": "3.5.1",
-        "displayName": {
-          "default": "Task Note Management",
-          "zh_CN": "任务笔记管理"
-        },
-        "description": {
-          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
-          "zh_CN": "一款在思源笔记里实现任务笔记管理功能的插件，为了践行防弹笔记法而开发。支持文档和块提醒、日历视图查看行事历、番茄钟专注和数据统计、项目看板、四象限面板、习惯打卡等功能"
-        },
-        "readme": {
-          "default": "README_en_US.md",
-          "zh_CN": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://www.yuque.com/achuan-2"
-          ]
-        },
-        "keywords": [
-          "reminder",
-          "time",
-          "calendar",
-          "notification",
-          "提醒",
-          "时间",
-          "日历",
-          "通知",
-          "番茄钟",
-          "四象限",
-          "任务管理",
-          "项目管理",
-          "习惯打卡"
-        ],
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "disabledInPublish": true
-      }
-    },
-    {
       "url": "Szerelem0617/siyuan-plugins-index@174dfe659ff9bea3f7d1720f071138106b0a2d55",
       "updated": "2026-02-11T13:45:07Z",
       "stars": 25,
-      "openIssues": 3,
+      "openIssues": 2,
       "size": 156676,
       "installSize": 313357,
       "package": {
@@ -415,7 +672,7 @@
     {
       "url": "Achuan-2/siyuan-plugin-copilot@78af7bd740ef1fdf912caca01bcd540b0f216a43",
       "updated": "2026-02-10T15:38:47Z",
-      "stars": 52,
+      "stars": 51,
       "openIssues": 7,
       "size": 449364,
       "installSize": 1095650,
@@ -459,7 +716,7 @@
       "url": "Macavity/siyuan-database-properties-panel@aeeae100223c1d80d2269515f60ec1fd68cb6254",
       "updated": "2026-02-10T10:07:55Z",
       "stars": 15,
-      "openIssues": 3,
+      "openIssues": 2,
       "size": 390091,
       "installSize": 1113655,
       "package": {
@@ -561,53 +818,6 @@
           "all"
         ],
         "disabledInPublish": false
-      }
-    },
-    {
-      "url": "b8l8u8e8/siyuan-plugin-share@cfe7d68aeaf6045036484be2bb8caeb26ce7a66b",
-      "updated": "2026-02-10T09:08:32Z",
-      "stars": 29,
-      "openIssues": 1,
-      "size": 196863,
-      "installSize": 513376,
-      "package": {
-        "name": "siyuan-plugin-share",
-        "author": "取舍",
-        "url": "https://github.com/b8l8u8e8/siyuan-plugin-share",
-        "version": "0.3.9",
-        "minAppVersion": "2.9.0",
-        "displayName": {
-          "default": "SiYuan Share",
-          "zh_CN": "思源分享"
-        },
-        "description": {
-          "default": "A free SiYuan Notes sharing plugin that supports generating share links for notebooks, individual documents, and documents with their sub-documents. It allows you to set an access password, expiration time, visitor limit, and view an overview of access to the shared content.",
-          "zh_CN": "一款免费的思源笔记分享插件，支持将笔记本、单篇文档、文档及子文档生成分享链接，设置访问密码、到期时间、访客人数限制，并可以查看分享内容的访问概览。"
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://cos.jie86.cn/LightPicture/2025/03/518c36908c50c51d.jpg"
-          ]
-        },
-        "keywords": [
-          "share",
-          "markdown",
-          "分享"
-        ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": true
       }
     },
     {
@@ -981,49 +1191,6 @@
         "keywords": [
           "列表转换"
         ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": false
-      }
-    },
-    {
-      "url": "QYLexpired/Asri-enhance@816f50130299d9ae400b17b1db3f29c15406a44f",
-      "updated": "2026-02-07T15:05:53Z",
-      "stars": 3,
-      "openIssues": 0,
-      "size": 1030184,
-      "installSize": 1635441,
-      "package": {
-        "name": "Asri-enhance",
-        "author": "QYL",
-        "url": "https://github.com/QYLexpired/Asri-enhance",
-        "version": "2.0.3",
-        "minAppVersion": "3.4.0",
-        "displayName": {
-          "default": "Asri Theme Enhancer",
-          "zh_CN": "Asri主题增强"
-        },
-        "description": {
-          "default": "Asri Theme Enhancer",
-          "zh_CN": "专为Asri主题设计的增强插件"
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.com/a/QYLexpired"
-          ]
-        },
-        "keywords": null,
         "backends": [
           "all"
         ],
@@ -1435,7 +1602,7 @@
     {
       "url": "loonghfut/siyuan-steve-tools@35b94d8aadd8c660b48d34b3dee0c2b079cb8660",
       "updated": "2026-01-29T08:15:06Z",
-      "stars": 74,
+      "stars": 75,
       "openIssues": 14,
       "size": 3581863,
       "installSize": 8087571,
@@ -1690,7 +1857,7 @@
       "url": "OpaqueGlass/syplugin-anMCPServer@e8ddc7e8ea265ecbc3aed90a1a48b52bc1ffa1d5",
       "updated": "2026-01-28T11:34:41Z",
       "stars": 31,
-      "openIssues": 6,
+      "openIssues": 5,
       "size": 1180599,
       "installSize": 4050720,
       "package": {
@@ -2777,7 +2944,7 @@
     {
       "url": "yongnianliu/siyuan-ttf-maple-font@a8c7db3479e4ff900a7d3f406ea64b18d972c845",
       "updated": "2026-01-14T14:34:56Z",
-      "stars": 0,
+      "stars": 1,
       "openIssues": 0,
       "size": 39295281,
       "installSize": 39478093,
@@ -3654,7 +3821,7 @@
       "url": "Macavity/siyuan-tasks@20aa98e04f479693fec9757f7c6bc016dcf3a761",
       "updated": "2025-12-30T21:29:26Z",
       "stars": 7,
-      "openIssues": 0,
+      "openIssues": 1,
       "size": 97560,
       "installSize": 185297,
       "package": {
@@ -7049,65 +7216,6 @@
         ],
         "frontends": [
           "all"
-        ],
-        "disabledInPublish": false
-      }
-    },
-    {
-      "url": "massivebox/siyuan-jsdraw-plugin@d8cb171142780b8d519ac60e887860e90d57f146",
-      "updated": "2025-09-06T15:23:21Z",
-      "stars": 5,
-      "openIssues": 0,
-      "size": 240965,
-      "installSize": 664963,
-      "package": {
-        "name": "siyuan-jsdraw-plugin",
-        "author": "massivebox",
-        "url": "https://git.massive.box/massivebox/siyuan-jsdraw-plugin",
-        "version": "0.5.2",
-        "minAppVersion": "3.0.12",
-        "displayName": {
-          "en_US": "JS-Draw Whiteboard",
-          "zh_CN": "JS-Draw 白板"
-        },
-        "description": {
-          "en_US": "Include a whiteboard for freehand drawing anywhere in your documents.",
-          "zh_CN": "在您的文档中添加一个自由绘图白板。"
-        },
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README-zh_CN.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://s.massive.box/jsdraw-plugin-donate"
-          ]
-        },
-        "keywords": [
-          "plugin",
-          "drawing",
-          "freehand",
-          "tablet",
-          "whiteboard"
-        ],
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
         ],
         "disabledInPublish": false
       }
@@ -14554,30 +14662,29 @@
       "size": 22971,
       "installSize": 31897,
       "package": {
-        "name": "siyuan-css-dashed-line-memo",
         "author": "TCOTC",
-        "url": "https://github.com/TCOTC/siyuan-css-dashed-line-memo",
-        "version": "0.1.0",
-        "minAppVersion": "",
-        "displayName": {
-          "default": "Dashed line memo",
-          "zh_CN": "虚线备注"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "default": "Change the style of the memo to a dashed line",
           "zh_CN": "将备注的样式改为虚线"
         },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "Dashed line memo",
+          "zh_CN": "虚线备注"
         },
+        "frontends": [
+          "all"
+        ],
         "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
           "custom": [
             "https://afdian.net/a/JeffreyChen"
-          ]
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
         },
         "keywords": [
           "虚线",
@@ -14591,13 +14698,14 @@
           "CSS",
           "TCOTC"
         ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": false
+        "minAppVersion": "",
+        "name": "siyuan-css-dashed-line-memo",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/TCOTC/siyuan-css-dashed-line-memo",
+        "version": "0.1.0"
       }
     },
     {
