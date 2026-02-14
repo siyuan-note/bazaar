@@ -716,7 +716,7 @@
       "url": "Macavity/siyuan-database-properties-panel@aeeae100223c1d80d2269515f60ec1fd68cb6254",
       "updated": "2026-02-10T10:07:55Z",
       "stars": 15,
-      "openIssues": 3,
+      "openIssues": 2,
       "size": 390091,
       "installSize": 1113655,
       "package": {
@@ -14662,30 +14662,29 @@
       "size": 22971,
       "installSize": 31897,
       "package": {
-        "name": "siyuan-css-dashed-line-memo",
         "author": "TCOTC",
-        "url": "https://github.com/TCOTC/siyuan-css-dashed-line-memo",
-        "version": "0.1.0",
-        "minAppVersion": "",
-        "displayName": {
-          "default": "Dashed line memo",
-          "zh_CN": "虚线备注"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "default": "Change the style of the memo to a dashed line",
           "zh_CN": "将备注的样式改为虚线"
         },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "Dashed line memo",
+          "zh_CN": "虚线备注"
         },
+        "frontends": [
+          "all"
+        ],
         "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
           "custom": [
             "https://afdian.net/a/JeffreyChen"
-          ]
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
         },
         "keywords": [
           "虚线",
@@ -14699,13 +14698,14 @@
           "CSS",
           "TCOTC"
         ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": false
+        "minAppVersion": "",
+        "name": "siyuan-css-dashed-line-memo",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/TCOTC/siyuan-css-dashed-line-memo",
+        "version": "0.1.0"
       }
     },
     {
