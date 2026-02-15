@@ -1,6 +1,47 @@
 {
   "repos": [
     {
+      "url": "5kyfkr/siyuan-plugin-docktomato@5d1fdd619e1b661a24a8ff84fda4f02d96d99873",
+      "updated": "2026-02-15T17:46:26Z",
+      "stars": 3,
+      "openIssues": 0,
+      "size": 415096,
+      "installSize": 1567865,
+      "package": {
+        "name": "siyuan-plugin-docktomato",
+        "author": "5kyfkr",
+        "url": "https://github.com/5kyfkr/siyuan-plugin-docktomato",
+        "version": "1.7.7",
+        "minAppVersion": "3.0.12",
+        "displayName": {
+          "default": "Dock Tomato",
+          "zh_CN": "底栏番茄钟"
+        },
+        "description": {
+          "default": "A dock Tomato Timer for SiYuan.",
+          "zh_CN": "思源底栏番茄钟：支持时间轴视图/任务提醒/日常事务记录/多端状态同步/移动端/数据库联动/块绑定/历史记录/任务管理器联动"
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "funding": null,
+        "keywords": [
+          "tomato",
+          "timer",
+          "pomodoro",
+          "dock"
+        ],
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": false
+      }
+    },
+    {
       "url": "QYLexpired/Asri-enhance@edfa574ab3f0d6106980262cd01adfefd8b244ef",
       "updated": "2026-02-15T16:31:46Z",
       "stars": 4,
@@ -295,7 +336,7 @@
     {
       "url": "b8l8u8e8/siyuan-plugin-share@a449d70c97b551fe17c2bc8596ed23ab3f9026e8",
       "updated": "2026-02-13T15:35:19Z",
-      "stars": 30,
+      "stars": 31,
       "openIssues": 0,
       "size": 207980,
       "installSize": 567881,
@@ -406,76 +447,35 @@
       "size": 363536,
       "installSize": 1100491,
       "package": {
-        "name": "siyuan-plugin-task-horizon",
         "author": "5kyfkr",
-        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "1.2.5",
-        "minAppVersion": "3.5.0",
-        "displayName": {
-          "default": "Task Horizon",
-          "zh_CN": "任务管理器"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
           "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持时间轴/看板视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动"
         },
-        "readme": {
-          "default": "README.md"
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Horizon",
+          "zh_CN": "任务管理器"
         },
+        "frontends": [
+          "all"
+        ],
         "funding": null,
         "keywords": [
           "task",
           "manager",
           "filter"
         ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": true
-      }
-    },
-    {
-      "url": "5kyfkr/siyuan-plugin-docktomato@4fc53ea7a6d7df87e7ebc479beab275b6031fe26",
-      "updated": "2026-02-13T07:31:43Z",
-      "stars": 3,
-      "openIssues": 0,
-      "size": 413789,
-      "installSize": 1560238,
-      "package": {
-        "name": "siyuan-plugin-docktomato",
-        "author": "5kyfkr",
-        "url": "https://github.com/5kyfkr/siyuan-plugin-docktomato",
-        "version": "1.7.6",
-        "minAppVersion": "3.0.12",
-        "displayName": {
-          "default": "Dock Tomato",
-          "zh_CN": "底栏番茄钟"
-        },
-        "description": {
-          "default": "A dock Tomato Timer for SiYuan.",
-          "zh_CN": "思源底栏番茄钟：支持时间轴视图/任务提醒/日常事务记录/多端状态同步/移动端/数据库联动/块绑定/历史记录/任务管理器联动"
-        },
+        "minAppVersion": "3.5.0",
+        "name": "siyuan-plugin-task-horizon",
         "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
+          "default": "README.md"
         },
-        "funding": null,
-        "keywords": [
-          "tomato",
-          "timer",
-          "pomodoro",
-          "dock"
-        ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": false
+        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
+        "version": "1.2.5"
       }
     },
     {
