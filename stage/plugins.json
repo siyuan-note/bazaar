@@ -9712,30 +9712,29 @@
       "size": 711924,
       "installSize": 991957,
       "package": {
-        "name": "siyuan-plugin-material-icon",
         "author": "Licardo",
-        "url": "https://github.com/L1cardo/siyuan-plugin-material-icon",
-        "version": "0.0.1",
-        "minAppVersion": "3.0.0",
-        "displayName": {
-          "default": "Material Icon Pack",
-          "zh_CN": "Material 图标包"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "default": "Add Material icons to Emoji selector",
           "zh_CN": "给 Emoji 选择器添加Material图标"
         },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "Material Icon Pack",
+          "zh_CN": "Material 图标包"
         },
+        "frontends": [
+          "all"
+        ],
         "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "l1cardo",
           "custom": [
             "https://raw.githubusercontent.com/L1cardo/Image-Hosting/master/donate/wechat.jpg"
-          ]
+          ],
+          "github": "l1cardo",
+          "openCollective": "",
+          "patreon": ""
         },
         "keywords": [
           "图标",
@@ -9743,13 +9742,14 @@
           "Material Icon",
           "Icon Pack"
         ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": false
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-plugin-material-icon",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/L1cardo/siyuan-plugin-material-icon",
+        "version": "0.0.1"
       }
     },
     {
