@@ -1,6 +1,57 @@
 {
   "repos": [
     {
+      "url": "springtwr/siyuan-code-tabs@50c4bc162f24b07550e40cad3d9fdc09f5fe2ef7",
+      "updated": "2026-02-15T06:02:12Z",
+      "stars": 1,
+      "openIssues": 0,
+      "size": 154746,
+      "installSize": 342129,
+      "package": {
+        "name": "code-tabs",
+        "author": "springtwr",
+        "url": "https://github.com/springtwr/siyuan-code-tabs",
+        "version": "2.0.4",
+        "minAppVersion": "3.5.0",
+        "displayName": {
+          "en_US": "code-tabs",
+          "zh_CN": "code-tabs"
+        },
+        "description": {
+          "en_US": "Siyuan plugin that allows you to put code in multiple languages under a set of tabs",
+          "zh_CN": "这个思源插件允许你将多种语言的代码放在一组标签页下"
+        },
+        "readme": {
+          "en_US": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "funding": null,
+        "keywords": [
+          "code",
+          "tab",
+          "代码块",
+          "标签"
+        ],
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "harmony",
+          "ios",
+          "android",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "disabledInPublish": false
+      }
+    },
+    {
       "url": "DUZSSY/siyuan-ai-assistant@99d7bed6764d9ca07535a9082e2af859c368d566",
       "updated": "2026-02-14T19:51:24Z",
       "stars": 1,
@@ -421,7 +472,7 @@
       "url": "Achuan-2/siyuan-plugin-task-note-management@0887d0650f9cb65f6a93272f42bd99b559d23e58",
       "updated": "2026-02-12T10:30:18Z",
       "stars": 156,
-      "openIssues": 3,
+      "openIssues": 4,
       "size": 8661672,
       "installSize": 12633658,
       "package": {
@@ -1325,57 +1376,6 @@
           "all"
         ],
         "disabledInPublish": true
-      }
-    },
-    {
-      "url": "springtwr/siyuan-code-tabs@16e5a8a42853fe4fb3dc3304199a31a66b98af00",
-      "updated": "2026-02-02T13:08:51Z",
-      "stars": 1,
-      "openIssues": 0,
-      "size": 153208,
-      "installSize": 337199,
-      "package": {
-        "name": "code-tabs",
-        "author": "springtwr",
-        "url": "https://github.com/springtwr/siyuan-code-tabs",
-        "version": "2.0.3",
-        "minAppVersion": "3.5.0",
-        "displayName": {
-          "en_US": "code-tabs",
-          "zh_CN": "code-tabs"
-        },
-        "description": {
-          "en_US": "Siyuan plugin that allows you to put code in multiple languages under a set of tabs",
-          "zh_CN": "这个思源插件允许你将多种语言的代码放在一组标签页下"
-        },
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "funding": null,
-        "keywords": [
-          "code",
-          "tab",
-          "代码块",
-          "标签"
-        ],
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "harmony",
-          "ios",
-          "android",
-          "docker"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "disabledInPublish": false
       }
     },
     {
@@ -8995,36 +8995,7 @@
       "size": 205944,
       "installSize": 691494,
       "package": {
-        "name": "siyuan-ext-importer",
         "author": "Akkuman",
-        "url": "https://github.com/Akkuman/siyuan-ext-importer",
-        "version": "1.1.2",
-        "minAppVersion": "3.0.12",
-        "displayName": {
-          "en_US": "Notion Importer",
-          "zh_CN": "Notion 数据导入"
-        },
-        "description": {
-          "en_US": "import notion data to siyuan",
-          "zh_CN": "将notion数据导入思源"
-        },
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            ""
-          ]
-        },
-        "keywords": [
-          "plugin",
-          "import",
-          "notion"
-        ],
         "backends": [
           "windows",
           "linux",
@@ -9033,12 +9004,41 @@
           "ios",
           "android"
         ],
+        "description": {
+          "en_US": "import notion data to siyuan",
+          "zh_CN": "将notion数据导入思源"
+        },
+        "disabledInPublish": false,
+        "displayName": {
+          "en_US": "Notion Importer",
+          "zh_CN": "Notion 数据导入"
+        },
         "frontends": [
           "desktop",
           "browser-desktop",
           "desktop-window"
         ],
-        "disabledInPublish": false
+        "funding": {
+          "custom": [
+            ""
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "plugin",
+          "import",
+          "notion"
+        ],
+        "minAppVersion": "3.0.12",
+        "name": "siyuan-ext-importer",
+        "readme": {
+          "en_US": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/Akkuman/siyuan-ext-importer",
+        "version": "1.1.2"
       }
     },
     {
@@ -9550,30 +9550,36 @@
       "size": 84483,
       "installSize": 121983,
       "package": {
-        "name": "siyuan-access-controller",
         "author": "kuangdongksk",
-        "url": "https://github.com/kuangdongksk/siyuan-access-controller.git",
-        "version": "0.1.2",
-        "minAppVersion": "3.0.17",
-        "displayName": {
-          "default": "access-controller",
-          "zh_CN": "访问控制"
-        },
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "docker"
+        ],
         "description": {
           "default": "This is a access-controller",
           "zh_CN": "这是一个访问控制插件，纯前端实现"
         },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "access-controller",
+          "zh_CN": "访问控制"
         },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
         "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "https://github.com/kuangdongksk",
           "custom": [
             "https://ld246.com/sponsor"
-          ]
+          ],
+          "github": "https://github.com/kuangdongksk",
+          "openCollective": "",
+          "patreon": ""
         },
         "keywords": [
           "访问控制",
@@ -9583,20 +9589,14 @@
           "password",
           "encryption"
         ],
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "docker"
-        ],
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window"
-        ],
-        "disabledInPublish": false
+        "minAppVersion": "3.0.17",
+        "name": "siyuan-access-controller",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/kuangdongksk/siyuan-access-controller.git",
+        "version": "0.1.2"
       }
     },
     {
@@ -9712,29 +9712,30 @@
       "size": 711924,
       "installSize": 991957,
       "package": {
+        "name": "siyuan-plugin-material-icon",
         "author": "Licardo",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Add Material icons to Emoji selector",
-          "zh_CN": "给 Emoji 选择器添加Material图标"
-        },
-        "disabledInPublish": false,
+        "url": "https://github.com/L1cardo/siyuan-plugin-material-icon",
+        "version": "0.0.1",
+        "minAppVersion": "3.0.0",
         "displayName": {
           "default": "Material Icon Pack",
           "zh_CN": "Material 图标包"
         },
-        "frontends": [
-          "all"
-        ],
+        "description": {
+          "default": "Add Material icons to Emoji selector",
+          "zh_CN": "给 Emoji 选择器添加Material图标"
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
         "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "l1cardo",
           "custom": [
             "https://raw.githubusercontent.com/L1cardo/Image-Hosting/master/donate/wechat.jpg"
-          ],
-          "github": "l1cardo",
-          "openCollective": "",
-          "patreon": ""
+          ]
         },
         "keywords": [
           "图标",
@@ -9742,14 +9743,13 @@
           "Material Icon",
           "Icon Pack"
         ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-plugin-material-icon",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/L1cardo/siyuan-plugin-material-icon",
-        "version": "0.0.1"
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": false
       }
     },
     {
