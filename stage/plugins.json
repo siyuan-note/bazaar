@@ -1,6 +1,49 @@
 {
   "repos": [
     {
+      "url": "QYLexpired/Asri-enhance@edfa574ab3f0d6106980262cd01adfefd8b244ef",
+      "updated": "2026-02-15T16:31:46Z",
+      "stars": 4,
+      "openIssues": 2,
+      "size": 1031272,
+      "installSize": 1648158,
+      "package": {
+        "name": "Asri-enhance",
+        "author": "QYL",
+        "url": "https://github.com/QYLexpired/Asri-enhance",
+        "version": "2.0.7",
+        "minAppVersion": "3.4.0",
+        "displayName": {
+          "default": "Asri Theme Enhancer",
+          "zh_CN": "Asri主题增强"
+        },
+        "description": {
+          "default": "Asri Theme Enhancer",
+          "zh_CN": "专为Asri主题设计的增强插件"
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.com/a/QYLexpired"
+          ]
+        },
+        "keywords": null,
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": false
+      }
+    },
+    {
       "url": "DUZSSY/siyuan-ai-assistant@fb6902b155df7378d6a7fca16c5fb257a9599fd5",
       "updated": "2026-02-15T15:13:26Z",
       "stars": 1,
@@ -294,49 +337,6 @@
           "all"
         ],
         "disabledInPublish": true
-      }
-    },
-    {
-      "url": "QYLexpired/Asri-enhance@049e2dd9436861d5ce5e9bd526ebd79f6fde51de",
-      "updated": "2026-02-13T15:27:27Z",
-      "stars": 4,
-      "openIssues": 2,
-      "size": 1031357,
-      "installSize": 1647078,
-      "package": {
-        "name": "Asri-enhance",
-        "author": "QYL",
-        "url": "https://github.com/QYLexpired/Asri-enhance",
-        "version": "2.0.6",
-        "minAppVersion": "3.4.0",
-        "displayName": {
-          "default": "Asri Theme Enhancer",
-          "zh_CN": "Asri主题增强"
-        },
-        "description": {
-          "default": "Asri Theme Enhancer",
-          "zh_CN": "专为Asri主题设计的增强插件"
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.com/a/QYLexpired"
-          ]
-        },
-        "keywords": null,
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": false
       }
     },
     {
@@ -1500,7 +1500,7 @@
       "url": "shenjinglei/siyuan-plugin-graph-enhance@5813df15fd2b44c863342374e692990768a1a8e2",
       "updated": "2026-02-01T09:16:10Z",
       "stars": 6,
-      "openIssues": 13,
+      "openIssues": 14,
       "size": 301220,
       "installSize": 667300,
       "package": {
@@ -9499,30 +9499,29 @@
       "size": 221397,
       "installSize": 336172,
       "package": {
-        "name": "sy-bookmark-plus",
         "author": "frostime",
-        "url": "https://github.com/frostime/sy-bookmark-plus",
-        "version": "2.1.1",
-        "minAppVersion": "3.1.20",
-        "displayName": {
-          "en_US": "Bookmark+",
-          "zh_CN": "书签+"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "en_US": "A way more powerful bookmark",
           "zh_CN": "一个更加强大的书签功能"
         },
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
+        "disabledInPublish": false,
+        "displayName": {
+          "en_US": "Bookmark+",
+          "zh_CN": "书签+"
         },
+        "frontends": [
+          "all"
+        ],
         "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
           "custom": [
             "https://afdian.com/a/frostime"
-          ]
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
         },
         "keywords": [
           "plugin",
@@ -9533,13 +9532,14 @@
           "Pin",
           "anytype"
         ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": false
+        "minAppVersion": "3.1.20",
+        "name": "sy-bookmark-plus",
+        "readme": {
+          "en_US": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/frostime/sy-bookmark-plus",
+        "version": "2.1.1"
       }
     },
     {
@@ -12542,41 +12542,41 @@
       "size": 26785,
       "installSize": 62677,
       "package": {
-        "name": "sy-doc-toc",
         "author": "frostime",
-        "url": "https://github.com/frostime/sy-doc-toc",
-        "version": "0.6.0",
-        "minAppVersion": "2.10.0",
-        "displayName": {
-          "en_US": "Insert TOC",
-          "zh_CN": "插入文档大纲"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "en_US": "Insert the TOC outline within the document",
           "zh_CN": "在文档中插入一个 TOC 大纲列表"
         },
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
+        "disabledInPublish": false,
+        "displayName": {
+          "en_US": "Insert TOC",
+          "zh_CN": "插入文档大纲"
         },
+        "frontends": [
+          "all"
+        ],
         "funding": {
-          "openCollective": "",
-          "patreon": "",
+          "custom": null,
           "github": "",
-          "custom": null
+          "openCollective": "",
+          "patreon": ""
         },
         "keywords": [
           "plugin",
           "toc",
           "outline"
         ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": false
+        "minAppVersion": "2.10.0",
+        "name": "sy-doc-toc",
+        "readme": {
+          "en_US": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/frostime/sy-doc-toc",
+        "version": "0.6.0"
       }
     },
     {
