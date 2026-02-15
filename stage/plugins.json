@@ -1,6 +1,45 @@
 {
   "repos": [
     {
+      "url": "5kyfkr/siyuan-plugin-task-horizon@29169bdb045395824206f7f217023abdea37bf09",
+      "updated": "2026-02-15T19:38:43Z",
+      "stars": 1,
+      "openIssues": 0,
+      "size": 606643,
+      "installSize": 2297511,
+      "package": {
+        "name": "siyuan-plugin-task-horizon",
+        "author": "5kyfkr",
+        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
+        "version": "1.3.3",
+        "minAppVersion": "3.5.0",
+        "displayName": {
+          "default": "Task Horizon",
+          "zh_CN": "任务管理器"
+        },
+        "description": {
+          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
+          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持时间轴/日历/看板/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动"
+        },
+        "readme": {
+          "default": "README.md"
+        },
+        "funding": null,
+        "keywords": [
+          "task",
+          "manager",
+          "filter"
+        ],
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": true
+      }
+    },
+    {
       "url": "5kyfkr/siyuan-plugin-docktomato@5d1fdd619e1b661a24a8ff84fda4f02d96d99873",
       "updated": "2026-02-15T17:46:26Z",
       "stars": 3,
@@ -437,45 +476,6 @@
           "desktop-window"
         ],
         "disabledInPublish": false
-      }
-    },
-    {
-      "url": "5kyfkr/siyuan-plugin-task-horizon@5b4ee750aa83a2e2e42af9925a8d5ea6004a9b17",
-      "updated": "2026-02-13T09:13:09Z",
-      "stars": 1,
-      "openIssues": 0,
-      "size": 363536,
-      "installSize": 1100491,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
-          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持时间轴/看板视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Horizon",
-          "zh_CN": "任务管理器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": null,
-        "keywords": [
-          "task",
-          "manager",
-          "filter"
-        ],
-        "minAppVersion": "3.5.0",
-        "name": "siyuan-plugin-task-horizon",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "1.2.5"
       }
     },
     {
@@ -9607,37 +9607,30 @@
       "size": 69662,
       "installSize": 115975,
       "package": {
+        "name": "siyuan_outline_modification",
         "author": "zxkmm",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "android",
-          "ios",
-          "docker",
-          "harmony"
-        ],
-        "description": {
-          "en_US": "provides up to 12 functions, including outline level tune/ flow layout/ indentation adjustment/ hide bubble/ shield button/ font size/ mouse hover, etc., to completely customize your document tree",
-          "zh_CN": "提供多达20余项功能，包括 大纲显示级数调节/ 流动布局/ 缩进调节/ 隐藏气泡/ 屏蔽按钮/ 字体大小/ 鼠标悬浮/ 层级竖线/ 分割线/ 等等，完全自定义您的大纲"
-        },
-        "disabledInPublish": false,
+        "url": "https://github.com/zxkmm/siyuan_outline_modification",
+        "version": "0.4.9",
+        "minAppVersion": "2.12.1",
         "displayName": {
           "en_US": "outline modify",
           "zh_CN": "大纲自定义"
         },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window"
-        ],
+        "description": {
+          "en_US": "provides up to 12 functions, including outline level tune/ flow layout/ indentation adjustment/ hide bubble/ shield button/ font size/ mouse hover, etc., to completely customize your document tree",
+          "zh_CN": "提供多达20余项功能，包括 大纲显示级数调节/ 流动布局/ 缩进调节/ 隐藏气泡/ 屏蔽按钮/ 字体大小/ 鼠标悬浮/ 层级竖线/ 分割线/ 等等，完全自定义您的大纲"
+        },
+        "readme": {
+          "en_US": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
         "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
           "custom": [
             "https://pipe.b3log.org/blogs/zxkmm/articles/2025/02/08/1738993480704"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
+          ]
         },
         "keywords": [
           "大纲",
@@ -9651,14 +9644,21 @@
           "大纲自定义",
           "siyuan_outline_modification"
         ],
-        "minAppVersion": "2.12.1",
-        "name": "siyuan_outline_modification",
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/zxkmm/siyuan_outline_modification",
-        "version": "0.4.9"
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "android",
+          "ios",
+          "docker",
+          "harmony"
+        ],
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "disabledInPublish": false
       }
     },
     {
