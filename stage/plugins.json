@@ -2044,7 +2044,7 @@
     {
       "url": "makediff/siyuan-wucai@1eeea74c804e19a114dc63b76656dcae9539f6df",
       "updated": "2026-01-28T00:17:16Z",
-      "stars": 4,
+      "stars": 5,
       "openIssues": 1,
       "size": 372532,
       "installSize": 510763,
@@ -9607,30 +9607,37 @@
       "size": 69662,
       "installSize": 115975,
       "package": {
-        "name": "siyuan_outline_modification",
         "author": "zxkmm",
-        "url": "https://github.com/zxkmm/siyuan_outline_modification",
-        "version": "0.4.9",
-        "minAppVersion": "2.12.1",
-        "displayName": {
-          "en_US": "outline modify",
-          "zh_CN": "大纲自定义"
-        },
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "android",
+          "ios",
+          "docker",
+          "harmony"
+        ],
         "description": {
           "en_US": "provides up to 12 functions, including outline level tune/ flow layout/ indentation adjustment/ hide bubble/ shield button/ font size/ mouse hover, etc., to completely customize your document tree",
           "zh_CN": "提供多达20余项功能，包括 大纲显示级数调节/ 流动布局/ 缩进调节/ 隐藏气泡/ 屏蔽按钮/ 字体大小/ 鼠标悬浮/ 层级竖线/ 分割线/ 等等，完全自定义您的大纲"
         },
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
+        "disabledInPublish": false,
+        "displayName": {
+          "en_US": "outline modify",
+          "zh_CN": "大纲自定义"
         },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
         "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
           "custom": [
             "https://pipe.b3log.org/blogs/zxkmm/articles/2025/02/08/1738993480704"
-          ]
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
         },
         "keywords": [
           "大纲",
@@ -9644,21 +9651,14 @@
           "大纲自定义",
           "siyuan_outline_modification"
         ],
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "android",
-          "ios",
-          "docker",
-          "harmony"
-        ],
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window"
-        ],
-        "disabledInPublish": false
+        "minAppVersion": "2.12.1",
+        "name": "siyuan_outline_modification",
+        "readme": {
+          "en_US": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/zxkmm/siyuan_outline_modification",
+        "version": "0.4.9"
       }
     },
     {
