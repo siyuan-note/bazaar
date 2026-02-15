@@ -244,7 +244,7 @@
       "url": "QYLexpired/Asri-enhance@049e2dd9436861d5ce5e9bd526ebd79f6fde51de",
       "updated": "2026-02-13T15:27:27Z",
       "stars": 4,
-      "openIssues": 1,
+      "openIssues": 2,
       "size": 1031357,
       "installSize": 1647078,
       "package": {
@@ -4190,7 +4190,7 @@
       "url": "shijianjs/siyuan-plugin-markmap-view@843642623defacfa44df46b11f1534a4c4cf1648",
       "updated": "2025-12-25T05:46:34Z",
       "stars": 4,
-      "openIssues": 1,
+      "openIssues": 0,
       "size": 437825,
       "installSize": 969687,
       "package": {
@@ -8995,7 +8995,36 @@
       "size": 205944,
       "installSize": 691494,
       "package": {
+        "name": "siyuan-ext-importer",
         "author": "Akkuman",
+        "url": "https://github.com/Akkuman/siyuan-ext-importer",
+        "version": "1.1.2",
+        "minAppVersion": "3.0.12",
+        "displayName": {
+          "en_US": "Notion Importer",
+          "zh_CN": "Notion 数据导入"
+        },
+        "description": {
+          "en_US": "import notion data to siyuan",
+          "zh_CN": "将notion数据导入思源"
+        },
+        "readme": {
+          "en_US": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "plugin",
+          "import",
+          "notion"
+        ],
         "backends": [
           "windows",
           "linux",
@@ -9004,41 +9033,12 @@
           "ios",
           "android"
         ],
-        "description": {
-          "en_US": "import notion data to siyuan",
-          "zh_CN": "将notion数据导入思源"
-        },
-        "disabledInPublish": false,
-        "displayName": {
-          "en_US": "Notion Importer",
-          "zh_CN": "Notion 数据导入"
-        },
         "frontends": [
           "desktop",
           "browser-desktop",
           "desktop-window"
         ],
-        "funding": {
-          "custom": [
-            ""
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "plugin",
-          "import",
-          "notion"
-        ],
-        "minAppVersion": "3.0.12",
-        "name": "siyuan-ext-importer",
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/Akkuman/siyuan-ext-importer",
-        "version": "1.1.2"
+        "disabledInPublish": false
       }
     },
     {
@@ -9550,36 +9550,30 @@
       "size": 84483,
       "installSize": 121983,
       "package": {
+        "name": "siyuan-access-controller",
         "author": "kuangdongksk",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "docker"
-        ],
-        "description": {
-          "default": "This is a access-controller",
-          "zh_CN": "这是一个访问控制插件，纯前端实现"
-        },
-        "disabledInPublish": false,
+        "url": "https://github.com/kuangdongksk/siyuan-access-controller.git",
+        "version": "0.1.2",
+        "minAppVersion": "3.0.17",
         "displayName": {
           "default": "access-controller",
           "zh_CN": "访问控制"
         },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window"
-        ],
+        "description": {
+          "default": "This is a access-controller",
+          "zh_CN": "这是一个访问控制插件，纯前端实现"
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
         "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "https://github.com/kuangdongksk",
           "custom": [
             "https://ld246.com/sponsor"
-          ],
-          "github": "https://github.com/kuangdongksk",
-          "openCollective": "",
-          "patreon": ""
+          ]
         },
         "keywords": [
           "访问控制",
@@ -9589,14 +9583,20 @@
           "password",
           "encryption"
         ],
-        "minAppVersion": "3.0.17",
-        "name": "siyuan-access-controller",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/kuangdongksk/siyuan-access-controller.git",
-        "version": "0.1.2"
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "disabledInPublish": false
       }
     },
     {
