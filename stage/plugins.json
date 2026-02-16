@@ -2782,43 +2782,43 @@
       "size": 101403,
       "installSize": 185777,
       "package": {
-        "name": "siyuan-database-display",
         "author": "steve",
-        "url": "https://github.com/loonghfut/siyuan-database-display",
-        "version": "1.0.1",
-        "minAppVersion": "3.0.12",
-        "displayName": {
-          "default": "Database Display",
-          "zh_CN": "数据库数据展示"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "default": "Advanced database attribute display plugin with field hiding, date formatting, checkbox beautification, and customizable settings. Supports 99% of blocks!",
           "zh_CN": "数据库属性显示插件，支持字段隐藏、日期格式化、复选框美化和可自定义设置。支持99%的块！"
         },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Database Display",
+          "zh_CN": "数据库数据展示"
         },
+        "frontends": [
+          "all"
+        ],
         "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
           "custom": [
             ""
-          ]
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
         },
         "keywords": [
           "database",
           "display",
           "attribute"
         ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": true
+        "minAppVersion": "3.0.12",
+        "name": "siyuan-database-display",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/loonghfut/siyuan-database-display",
+        "version": "1.0.1"
       }
     },
     {
