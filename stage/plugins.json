@@ -1,6 +1,53 @@
 {
   "repos": [
     {
+      "url": "b8l8u8e8/siyuan-plugin-share@0183da5bc548ae4a99490ae2970cc50f65c15639",
+      "updated": "2026-02-16T14:16:15Z",
+      "stars": 31,
+      "openIssues": 0,
+      "size": 207869,
+      "installSize": 567240,
+      "package": {
+        "name": "siyuan-plugin-share",
+        "author": "取舍",
+        "url": "https://github.com/b8l8u8e8/siyuan-plugin-share",
+        "version": "0.4.2",
+        "minAppVersion": "2.9.0",
+        "displayName": {
+          "default": "SiYuan Share",
+          "zh_CN": "思源分享"
+        },
+        "description": {
+          "default": "A free SiYuan Notes sharing plugin that supports generating share links for notebooks, individual documents, and documents with their sub-documents. It allows you to set an access password, expiration time, visitor limit, and view an overview of access to the shared content.",
+          "zh_CN": "一款免费的思源笔记分享插件，支持将笔记本、单篇文档、文档及子文档生成分享链接，设置访问密码、到期时间、访客人数限制，并可以查看分享内容的访问概览。"
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://cos.jie86.cn/LightPicture/2025/03/518c36908c50c51d.jpg"
+          ]
+        },
+        "keywords": [
+          "share",
+          "markdown",
+          "分享"
+        ],
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": true
+      }
+    },
+    {
       "url": "DUZSSY/siyuan-ai-assistant@21cf7c9b6cab7b0c7cc0fdff76201412123fe455",
       "updated": "2026-02-16T10:03:08Z",
       "stars": 1,
@@ -374,53 +421,6 @@
           "all"
         ],
         "disabledInPublish": false
-      }
-    },
-    {
-      "url": "b8l8u8e8/siyuan-plugin-share@a449d70c97b551fe17c2bc8596ed23ab3f9026e8",
-      "updated": "2026-02-13T15:35:19Z",
-      "stars": 31,
-      "openIssues": 0,
-      "size": 207980,
-      "installSize": 567881,
-      "package": {
-        "name": "siyuan-plugin-share",
-        "author": "取舍",
-        "url": "https://github.com/b8l8u8e8/siyuan-plugin-share",
-        "version": "0.4.1",
-        "minAppVersion": "2.9.0",
-        "displayName": {
-          "default": "SiYuan Share",
-          "zh_CN": "思源分享"
-        },
-        "description": {
-          "default": "A free SiYuan Notes sharing plugin that supports generating share links for notebooks, individual documents, and documents with their sub-documents. It allows you to set an access password, expiration time, visitor limit, and view an overview of access to the shared content.",
-          "zh_CN": "一款免费的思源笔记分享插件，支持将笔记本、单篇文档、文档及子文档生成分享链接，设置访问密码、到期时间、访客人数限制，并可以查看分享内容的访问概览。"
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://cos.jie86.cn/LightPicture/2025/03/518c36908c50c51d.jpg"
-          ]
-        },
-        "keywords": [
-          "share",
-          "markdown",
-          "分享"
-        ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": true
       }
     },
     {
@@ -3033,28 +3033,27 @@
       "size": 39295281,
       "installSize": 39478093,
       "package": {
-        "name": "siyuan-ttf-maple-font",
         "author": "yongnianliu",
-        "url": "https://github.com/yongnianliu/siyuan-ttf-maple-font",
-        "version": "1.0.4",
-        "minAppVersion": "3.2.0",
-        "displayName": {
-          "default": "Maple Mono NF CN Font",
-          "zh_CN": "Maple Mono NF 中文等宽字体"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "default": "Use Maple Mono NF CN (with Nerd Font icons and Chinese support) as code and layout font",
           "zh_CN": "使用 Maple Mono NF CN（含 Nerd Font 图标和中文支持）作为代码和界面字体"
         },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "Maple Mono NF CN Font",
+          "zh_CN": "Maple Mono NF 中文等宽字体"
         },
+        "frontends": [
+          "all"
+        ],
         "funding": {
-          "openCollective": "",
-          "patreon": "",
+          "custom": [],
           "github": "",
-          "custom": []
+          "openCollective": "",
+          "patreon": ""
         },
         "keywords": [
           "Monospace Font",
@@ -3062,13 +3061,14 @@
           "等宽字体",
           "代码字体"
         ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": false
+        "minAppVersion": "3.2.0",
+        "name": "siyuan-ttf-maple-font",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/yongnianliu/siyuan-ttf-maple-font",
+        "version": "1.0.4"
       }
     },
     {
@@ -4905,39 +4905,39 @@
       "size": 1503046,
       "installSize": 4746515,
       "package": {
-        "name": "siyuan-plugin-drawnix",
         "author": "Achuan-2",
-        "url": "https://github.com/Achuan-2/siyuan-plugin-drawnix",
-        "version": "0.0.6",
-        "minAppVersion": "3.0.0",
-        "displayName": {
-          "default": "Drawnix",
-          "zh_CN": "Drawnix"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "default": "Create whiteboards with Drawnix, supporting mind maps, flowcharts, drawing tools, and saving as SVG/PNG",
           "zh_CN": "使用 Drawnix 创建白板，支持脑图、流程图、画笔等多种绘图功能，支持保存为 SVG/PNG"
         },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Drawnix",
+          "zh_CN": "Drawnix"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://www.yuque.com/achuan-2"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-plugin-drawnix",
         "readme": {
           "default": "README_EN.md",
           "zh_CN": "README.md"
         },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://www.yuque.com/achuan-2"
-          ]
-        },
-        "keywords": [],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": true
+        "url": "https://github.com/Achuan-2/siyuan-plugin-drawnix",
+        "version": "0.0.6"
       }
     },
     {
@@ -6093,42 +6093,42 @@
       "size": 147974,
       "installSize": 238669,
       "package": {
-        "name": "custom-sidebar-siyuan",
         "author": "DD3Boh",
-        "url": "https://github.com/DD3Boh/custom-sidebar-siyuan",
-        "version": "1.0.1",
-        "minAppVersion": "2.10.14",
-        "displayName": {
-          "en_US": "Custom Sidebar",
-          "zh_CN": "自定义侧边栏"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "en_US": "Create a personalized dock sidebar with documents of your choice.",
           "zh_CN": "创建一个包含您选择文档的个性化停靠侧边栏。"
         },
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
+        "disabledInPublish": false,
+        "displayName": {
+          "en_US": "Custom Sidebar",
+          "zh_CN": "自定义侧边栏"
         },
+        "frontends": [
+          "all"
+        ],
         "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
           "custom": [
             "https://paypal.me/DD3Boh"
-          ]
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
         },
         "keywords": [
           "custom",
           "sidebar"
         ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": false
+        "minAppVersion": "2.10.14",
+        "name": "custom-sidebar-siyuan",
+        "readme": {
+          "en_US": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/DD3Boh/custom-sidebar-siyuan",
+        "version": "1.0.1"
       }
     },
     {
@@ -8643,43 +8643,43 @@
       "size": 92702,
       "installSize": 151426,
       "package": {
-        "name": "siyuan-imageConverter",
         "author": "c0nt1",
-        "url": "https://github.com/silent1189/siyuan-imageConverter",
-        "version": "0.1.2",
-        "minAppVersion": "3.0.12",
-        "displayName": {
-          "en_US": "siyuan-imageConverter",
-          "zh_CN": "思源笔记-插入图片压缩转换"
-        },
+        "backends": [
+          "windows"
+        ],
         "description": {
           "en_US": "siyuan-imageToWebp",
           "zh_CN": "思源笔记-插入图片压缩转换"
         },
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README.md"
+        "disabledInPublish": false,
+        "displayName": {
+          "en_US": "siyuan-imageConverter",
+          "zh_CN": "思源笔记-插入图片压缩转换"
         },
+        "frontends": [
+          "desktop"
+        ],
         "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
           "custom": [
             ""
-          ]
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
         },
         "keywords": [
           "webp",
           "图片压缩",
           "图片格式转换"
         ],
-        "backends": [
-          "windows"
-        ],
-        "frontends": [
-          "desktop"
-        ],
-        "disabledInPublish": false
+        "minAppVersion": "3.0.12",
+        "name": "siyuan-imageConverter",
+        "readme": {
+          "en_US": "README.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/silent1189/siyuan-imageConverter",
+        "version": "0.1.2"
       }
     },
     {
@@ -10311,25 +10311,25 @@
       "size": 476941,
       "installSize": 546581,
       "package": {
-        "name": "siyuan-plugin-canvas",
         "author": "B3000Kcn",
-        "url": "https://github.com/B3000Kcn/siyuan-plugin-canvas",
-        "version": "0.2.0",
-        "minAppVersion": "",
-        "displayName": {
-          "en_US": "Smart Canvas",
-          "zh_CN": "智能画布"
-        },
+        "backends": null,
         "description": {
           "en_US": "Write your documents in SiYuan Notes like using GPT Canvas and Cursor",
           "zh_CN": "在思源笔记里像 GPT Canvas 和 Cursor 那样编写你的文档"
         },
-        "readme": null,
+        "disabledInPublish": false,
+        "displayName": {
+          "en_US": "Smart Canvas",
+          "zh_CN": "智能画布"
+        },
+        "frontends": null,
         "funding": null,
         "keywords": null,
-        "backends": null,
-        "frontends": null,
-        "disabledInPublish": false
+        "minAppVersion": "",
+        "name": "siyuan-plugin-canvas",
+        "readme": null,
+        "url": "https://github.com/B3000Kcn/siyuan-plugin-canvas",
+        "version": "0.2.0"
       }
     },
     {
@@ -10340,30 +10340,37 @@
       "size": 195953,
       "installSize": 397424,
       "package": {
-        "name": "siyuan_database_landscape_scrollbar",
         "author": "zxkmm",
-        "url": "https://github.com/zxkmm/siyuan_database_landscape_scrollbar",
-        "version": "1.1.0",
-        "minAppVersion": "3.0.12",
-        "displayName": {
-          "en_US": "Block Landscape Scrollbar",
-          "zh_CN": "块级横向滚动条"
-        },
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
         "description": {
           "en_US": "Add horizontal scrollbar to blocks that exceed the screen width, saving you the trouble of scrolling to the bottom and then scrolling back",
           "zh_CN": "给超过屏幕宽度和高度的块添加横向滚动条，免去你需要滚动到块的底部才能用滚动条的麻烦"
         },
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
+        "disabledInPublish": false,
+        "displayName": {
+          "en_US": "Block Landscape Scrollbar",
+          "zh_CN": "块级横向滚动条"
         },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
         "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
           "custom": [
             "https://pipe.b3log.org/blogs/zxkmm/articles/2025/02/08/1738993480704"
-          ]
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
         },
         "keywords": [
           "plugin",
@@ -10374,21 +10381,14 @@
           "代码块",
           "滚动条"
         ],
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window"
-        ],
-        "disabledInPublish": false
+        "minAppVersion": "3.0.12",
+        "name": "siyuan_database_landscape_scrollbar",
+        "readme": {
+          "en_US": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/zxkmm/siyuan_database_landscape_scrollbar",
+        "version": "1.1.0"
       }
     },
     {
@@ -11647,48 +11647,48 @@
       "size": 439492,
       "installSize": 680828,
       "package": {
-        "name": "quick-notes",
         "author": "wuchunlin",
-        "url": "https://github.com/wu1233456/quick-notes",
-        "version": "1.1.4",
-        "minAppVersion": "3.0.12",
-        "displayName": {
-          "en_US": "Quick Notes",
-          "zh_CN": "小记"
-        },
-        "description": {
-          "en_US": "Quick Recording function like that of Yuque.",
-          "zh_CN": "类似于语雀中的小记"
-        },
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            ""
-          ]
-        },
-        "keywords": [
-          "quick",
-          "note",
-          "小记"
-        ],
         "backends": [
           "windows",
           "linux",
           "darwin",
           "docker"
         ],
+        "description": {
+          "en_US": "Quick Recording function like that of Yuque.",
+          "zh_CN": "类似于语雀中的小记"
+        },
+        "disabledInPublish": false,
+        "displayName": {
+          "en_US": "Quick Notes",
+          "zh_CN": "小记"
+        },
         "frontends": [
           "desktop",
           "browser-desktop",
           "desktop-window"
         ],
-        "disabledInPublish": false
+        "funding": {
+          "custom": [
+            ""
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "quick",
+          "note",
+          "小记"
+        ],
+        "minAppVersion": "3.0.12",
+        "name": "quick-notes",
+        "readme": {
+          "en_US": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/wu1233456/quick-notes",
+        "version": "1.1.4"
       }
     },
     {
