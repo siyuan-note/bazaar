@@ -1,6 +1,42 @@
 {
   "repos": [
     {
+      "url": "lk251066/siyuan-copilot-codex@0cd011626c54069fafcaae63b82315bf631c634b",
+      "updated": "2026-02-16T07:33:54Z",
+      "stars": 1,
+      "openIssues": 0,
+      "size": 290222,
+      "installSize": 1106703,
+      "package": {
+        "name": "siyuan-copilot-codex",
+        "author": "lk251066",
+        "url": "https://github.com/lk251066/siyuan-copilot-codex",
+        "version": "1.6.37",
+        "minAppVersion": "3.0.12",
+        "displayName": {
+          "default": "Codex",
+          "zh_CN": "Codex"
+        },
+        "description": {
+          "default": "Personal-use Codex plugin. Updated when possible.",
+          "zh_CN": "个人自用 Codex 插件，随缘更新。"
+        },
+        "readme": {
+          "default": "README_en_US.md",
+          "zh_CN": "README.md"
+        },
+        "funding": null,
+        "keywords": [],
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": false
+      }
+    },
+    {
       "url": "5kyfkr/siyuan-plugin-task-horizon@fb8d9a8af9fb93732293aa43187504e96b38830c",
       "updated": "2026-02-15T22:48:04Z",
       "stars": 1,
@@ -288,42 +324,6 @@
           "browser-desktop",
           "browser-mobile",
           "desktop-window"
-        ],
-        "disabledInPublish": false
-      }
-    },
-    {
-      "url": "lk251066/siyuan-copilot-codex@8e1a02dcb1ff60ad95d9e330781af89c5d89fbd6",
-      "updated": "2026-02-14T12:53:16Z",
-      "stars": 1,
-      "openIssues": 0,
-      "size": 270016,
-      "installSize": 1018362,
-      "package": {
-        "name": "siyuan-copilot-codex",
-        "author": "lk251066",
-        "url": "https://github.com/lk251066/siyuan-copilot-codex",
-        "version": "1.6.30",
-        "minAppVersion": "3.0.12",
-        "displayName": {
-          "default": "Codex",
-          "zh_CN": "Codex"
-        },
-        "description": {
-          "default": "Personal-use Codex plugin. Updated when possible.",
-          "zh_CN": "个人自用 Codex 插件，随缘更新。"
-        },
-        "readme": {
-          "default": "README_en_US.md",
-          "zh_CN": "README.md"
-        },
-        "funding": null,
-        "keywords": [],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
         ],
         "disabledInPublish": false
       }
@@ -9326,36 +9326,7 @@
       "size": 297377,
       "installSize": 634728,
       "package": {
-        "name": "sy-query-view",
         "author": "frostime",
-        "url": "https://github.com/frostime/sy-query-view",
-        "version": "1.2.3",
-        "minAppVersion": "3.1.14",
-        "displayName": {
-          "en_US": "Query \u0026amp; View",
-          "zh_CN": "Query \u0026amp; View"
-        },
-        "description": {
-          "en_US": "Use Javascript to query and render as Dataview view",
-          "zh_CN": "使用 Javascript 查询, 并自定义渲染为 Dataview 视图"
-        },
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.com/a/frostime"
-          ]
-        },
-        "keywords": [
-          "javascript",
-          "query",
-          "dataview"
-        ],
         "backends": [
           "windows",
           "linux",
@@ -9365,6 +9336,15 @@
           "android",
           "harmony"
         ],
+        "description": {
+          "en_US": "Use Javascript to query and render as Dataview view",
+          "zh_CN": "使用 Javascript 查询, 并自定义渲染为 Dataview 视图"
+        },
+        "disabledInPublish": false,
+        "displayName": {
+          "en_US": "Query \u0026amp; View",
+          "zh_CN": "Query \u0026amp; View"
+        },
         "frontends": [
           "desktop",
           "mobile",
@@ -9372,7 +9352,27 @@
           "browser-mobile",
           "desktop-window"
         ],
-        "disabledInPublish": false
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/frostime"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "javascript",
+          "query",
+          "dataview"
+        ],
+        "minAppVersion": "3.1.14",
+        "name": "sy-query-view",
+        "readme": {
+          "en_US": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/frostime/sy-query-view",
+        "version": "1.2.3"
       }
     },
     {
@@ -14232,7 +14232,7 @@
       "url": "svchord/siyuan-arco-calendar@634099ba0b24174845fbcc2133e97dadbd816541",
       "updated": "2024-04-12T15:24:47Z",
       "stars": 16,
-      "openIssues": 16,
+      "openIssues": 17,
       "size": 268817,
       "installSize": 667729,
       "package": {
@@ -14381,30 +14381,37 @@
       "size": 107944,
       "installSize": 216140,
       "package": {
-        "name": "siyuan-plugin-data-query",
         "author": "zxhd863943427",
-        "url": "https://github.com/zxhd863943427/siyuan-plugin-data-query",
-        "version": "0.0.7",
-        "minAppVersion": "2.11.0",
-        "displayName": {
-          "en_US": "data query helper",
-          "zh_CN": "基础数据查询"
-        },
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android"
+        ],
         "description": {
           "en_US": "A basic data query plugin designed to enhance the user experience of running embedded JavaScript blocks.",
           "zh_CN": "很基础的数据查询插件，用于改善js运行嵌入块的体验"
         },
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
+        "disabledInPublish": false,
+        "displayName": {
+          "en_US": "data query helper",
+          "zh_CN": "基础数据查询"
         },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
         "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
           "custom": [
             "https://afdian.net/a/zxhd86"
-          ]
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
         },
         "keywords": [
           "plugin",
@@ -14418,21 +14425,14 @@
           "table",
           "calendar"
         ],
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "disabledInPublish": false
+        "minAppVersion": "2.11.0",
+        "name": "siyuan-plugin-data-query",
+        "readme": {
+          "en_US": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/zxhd863943427/siyuan-plugin-data-query",
+        "version": "0.0.7"
       }
     },
     {
