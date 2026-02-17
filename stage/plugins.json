@@ -1116,40 +1116,40 @@
       "size": 165889,
       "installSize": 282802,
       "package": {
-        "name": "siyuan-timetrail",
         "author": "LunaNorth",
-        "url": "https://github.com/LunaNorth/siyuan-timetrail",
-        "version": "1.0.0",
-        "minAppVersion": "3.0.0",
-        "displayName": {
-          "default": "TimeTrail",
-          "zh_CN": "时迹"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "default": "A SiYuan Note plugin for visualizing and managing LifeLog data",
           "zh_CN": "可视化时间记录的思原笔记插件"
         },
-        "readme": {
-          "default": "README_zh_CN.md",
-          "zh_CN": "README_zh_CN.md"
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "TimeTrail",
+          "zh_CN": "时迹"
         },
+        "frontends": [
+          "desktop"
+        ],
         "funding": {
-          "openCollective": "",
-          "patreon": "",
+          "custom": [],
           "github": "",
-          "custom": []
+          "openCollective": "",
+          "patreon": ""
         },
         "keywords": [
           "时间记录",
           "可视化"
         ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "desktop"
-        ],
-        "disabledInPublish": true
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-timetrail",
+        "readme": {
+          "default": "README_zh_CN.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/LunaNorth/siyuan-timetrail",
+        "version": "1.0.0"
       }
     },
     {
@@ -1705,30 +1705,30 @@
       "size": 168619,
       "installSize": 182267,
       "package": {
-        "name": "siyuan_ios_serving_helper",
         "author": "zxkmm",
-        "url": "https://github.com/zxkmm/siyuan_ios_serving_helper",
-        "version": "0.0.5",
-        "minAppVersion": "3.2.1",
-        "displayName": {
-          "default": "iOS Keep Background",
-          "zh_CN": "iOS保持后台"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "default": "iOS Keep Background plugin for SiYuan",
           "zh_CN": "思源的 iOS 保持后台插件"
         },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "iOS Keep Background",
+          "zh_CN": "iOS保持后台"
         },
+        "frontends": [
+          "desktop",
+          "mobile"
+        ],
         "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
           "custom": [
             "https://zxkmm.com/sponsor"
-          ]
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
         },
         "keywords": [
           "iOS",
@@ -1738,14 +1738,14 @@
           "zxkmm",
           "保活"
         ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile"
-        ],
-        "disabledInPublish": true
+        "minAppVersion": "3.2.1",
+        "name": "siyuan_ios_serving_helper",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/zxkmm/siyuan_ios_serving_helper",
+        "version": "0.0.5"
       }
     },
     {
@@ -1953,22 +1953,22 @@
       "size": 180692,
       "installSize": 267886,
       "package": {
-        "name": "siyuan-floating-toc-plugin",
         "author": "ShuoJie",
-        "url": "https://github.com/shuojie819/siyuan-floating-toc-plugin",
-        "version": "0.1.19",
-        "minAppVersion": "3.1.0",
-        "displayName": {
-          "default": "Floating TOC",
-          "zh_CN": "悬浮大纲"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "default": "Floating Table of Contents for SiYuan Note",
           "zh_CN": "思源笔记悬浮大纲插件"
         },
-        "readme": {
-          "default": "README.md"
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "Floating TOC",
+          "zh_CN": "悬浮大纲"
         },
+        "frontends": [
+          "all"
+        ],
         "funding": null,
         "keywords": [
           "toc",
@@ -1979,13 +1979,13 @@
           "目录",
           "悬浮"
         ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": false
+        "minAppVersion": "3.1.0",
+        "name": "siyuan-floating-toc-plugin",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/shuojie819/siyuan-floating-toc-plugin",
+        "version": "0.1.19"
       }
     },
     {
@@ -2053,7 +2053,7 @@
       "url": "OpaqueGlass/syplugin-anMCPServer@e8ddc7e8ea265ecbc3aed90a1a48b52bc1ffa1d5",
       "updated": "2026-01-28T11:34:41Z",
       "stars": 31,
-      "openIssues": 5,
+      "openIssues": 6,
       "size": 1180599,
       "installSize": 4050720,
       "package": {
@@ -8650,41 +8650,41 @@
       "size": 305280,
       "installSize": 343200,
       "package": {
-        "name": "more-cover",
         "author": "imcnchl",
-        "url": "https://github.com/imcnchl/siyuan-plugin-more-cover",
-        "version": "1.3.0",
-        "minAppVersion": "3.0.11",
-        "displayName": {
-          "default": "MoreCover",
-          "zh_CN": "随机题头图"
-        },
-        "description": {
-          "default": "MoreCover, support Unsplash",
-          "zh_CN": "随机题头图，支持 Unsplash、Pixabay"
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://wj.qq.com/s2/12975404/0413/"
-          ]
-        },
-        "keywords": null,
         "backends": [
           "windows",
           "linux",
           "darwin"
         ],
+        "description": {
+          "default": "MoreCover, support Unsplash",
+          "zh_CN": "随机题头图，支持 Unsplash、Pixabay"
+        },
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "MoreCover",
+          "zh_CN": "随机题头图"
+        },
         "frontends": [
           "desktop"
         ],
-        "disabledInPublish": false
+        "funding": {
+          "custom": [
+            "https://wj.qq.com/s2/12975404/0413/"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": null,
+        "minAppVersion": "3.0.11",
+        "name": "more-cover",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/imcnchl/siyuan-plugin-more-cover",
+        "version": "1.3.0"
       }
     },
     {
