@@ -1113,7 +1113,7 @@
     {
       "url": "Achuan-2/siyuan-plugin-copilot@78af7bd740ef1fdf912caca01bcd540b0f216a43",
       "updated": "2026-02-10T15:38:47Z",
-      "stars": 52,
+      "stars": 53,
       "openIssues": 7,
       "size": 449364,
       "installSize": 1095650,
@@ -3383,40 +3383,40 @@
       "size": 22279,
       "installSize": 51932,
       "package": {
-        "name": "next-page-button",
         "author": "rio-csharp",
-        "url": "https://github.com/rio-csharp/next-page-button",
-        "version": "1.2.0",
-        "minAppVersion": "3.0.0",
-        "displayName": {
-          "default": "Next Page Button",
-          "zh_CN": "文档导航按钮"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "default": "Add previous and next page buttons at the bottom of each document to browse all documents in tree order",
           "zh_CN": "在每个文档底部添加上一页和下一页按钮,按照文档树顺序浏览所有文档"
         },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "Next Page Button",
+          "zh_CN": "文档导航按钮"
         },
+        "frontends": [
+          "all"
+        ],
         "funding": {
-          "openCollective": "",
-          "patreon": "",
+          "custom": [],
           "github": "",
-          "custom": []
+          "openCollective": "",
+          "patreon": ""
         },
         "keywords": [
           "navigation",
           "翻页"
         ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": false
+        "minAppVersion": "3.0.0",
+        "name": "next-page-button",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/rio-csharp/next-page-button",
+        "version": "1.2.0"
       }
     },
     {
@@ -14062,34 +14062,32 @@
       "size": 202882,
       "installSize": 314894,
       "package": {
-        "name": "typewriter",
         "author": "Zuoqiu Yingyi",
-        "url": "https://github.com/Zuoqiu-Yingyi/siyuan-plugin-typewriter",
-        "version": "0.1.3",
-        "minAppVersion": "2.10.12",
-        "displayName": {
-          "default": "Typewriter Mode",
-          "zh_CHT": "打字機模式",
-          "zh_CN": "打字机模式"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "default": "Keeps the focused block in the middle of edit area.",
           "zh_CHT": "將焦點所在塊保持在編輯區中間。",
           "zh_CN": "将焦点所在块保持在编辑区中间。"
         },
-        "readme": {
-          "default": "README.md",
-          "zh_CHT": "README_zh_CN.md",
-          "zh_CN": "README_zh_CN.md"
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "Typewriter Mode",
+          "zh_CHT": "打字機模式",
+          "zh_CN": "打字机模式"
         },
+        "frontends": [
+          "all"
+        ],
         "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
           "custom": [
             "https://afdian.net/a/zuoqiu",
             "https://ko-fi.com/zuoqiu"
-          ]
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
         },
         "keywords": [
           "打字机",
@@ -14101,13 +14099,15 @@
           "聚焦",
           "focalize"
         ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": false
+        "minAppVersion": "2.10.12",
+        "name": "typewriter",
+        "readme": {
+          "default": "README.md",
+          "zh_CHT": "README_zh_CN.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/Zuoqiu-Yingyi/siyuan-plugin-typewriter",
+        "version": "0.1.3"
       }
     },
     {
@@ -15307,34 +15307,32 @@
       "size": 498327,
       "installSize": 1543199,
       "package": {
-        "name": "jupyter-client",
         "author": "Zuoqiu Yingyi",
-        "url": "https://github.com/Zuoqiu-Yingyi/siyuan-plugin-jupyter-client",
-        "version": "0.2.2",
-        "minAppVersion": "2.10.13",
-        "displayName": {
-          "default": "Jupyter Client",
-          "zh_CHT": "Jupyter 客戶端",
-          "zh_CN": "Jupyter 客户端"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "default": "The plugin can connect to the Jupyter service, run the code block, output and save the run result.",
           "zh_CHT": "該插件可以連接 Jupyter 服務，運行代碼塊，輸出並保存運行結果。",
           "zh_CN": "该插件可以连接 Jupyter 服务，运行代码块，输出并保存运行结果。"
         },
-        "readme": {
-          "default": "README.md",
-          "zh_CHT": "README_zh_CN.md",
-          "zh_CN": "README_zh_CN.md"
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "Jupyter Client",
+          "zh_CHT": "Jupyter 客戶端",
+          "zh_CN": "Jupyter 客户端"
         },
+        "frontends": [
+          "all"
+        ],
         "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
           "custom": [
             "https://afdian.net/a/zuoqiu",
             "https://ko-fi.com/zuoqiu"
-          ]
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
         },
         "keywords": [
           "代码",
@@ -15350,13 +15348,15 @@
           "lab",
           "hub"
         ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": false
+        "minAppVersion": "2.10.13",
+        "name": "jupyter-client",
+        "readme": {
+          "default": "README.md",
+          "zh_CHT": "README_zh_CN.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/Zuoqiu-Yingyi/siyuan-plugin-jupyter-client",
+        "version": "0.2.2"
       }
     },
     {
@@ -16358,43 +16358,43 @@
       "size": 609208,
       "installSize": 1364004,
       "package": {
-        "name": "opencc",
         "author": "Zuoqiu Yingyi",
-        "url": "https://github.com/Zuoqiu-Yingyi/siyuan-plugin-opencc",
-        "version": "0.1.0",
-        "minAppVersion": "2.9.5",
-        "displayName": {
-          "default": "Chinese Convert",
-          "zh_CHT": "中文轉換",
-          "zh_CN": "中文转换"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "default": "\u003ca href=\"https://github.com/BYVoid/OpenCC\" rel=\"nofollow\"\u003eOpen Chinese Convert (OpenCC)\u003c/a\u003e is an opensource project for conversions between Traditional Chinese, Simplified Chinese and Japanese Kanji (Shinjitai). It supports character-level and phrase-level conversion, character variant conversion and regional idioms among Mainland China, Taiwan and Hong Kong. This is not translation tool between Mandarin and Cantonese, etc.",
           "zh_CHT": "\u003ca href=\"https://github.com/BYVoid/OpenCC\" rel=\"nofollow\"\u003e開放中文轉換 (Open Chinese Convert, OpenCC)\u003c/a\u003e是一個中文簡繁轉換開源項目，支持詞彙級別的轉換、異體字轉換和地區習慣用詞轉換（中國大陸、臺灣、香港、日本新字體）。不提供普通話與粵語的轉換。",
           "zh_CN": "\u003ca href=\"https://github.com/BYVoid/OpenCC\" rel=\"nofollow\"\u003e开放中文转换 (Open Chinese Convert, OpenCC)\u003c/a\u003e是一个中文简繁转换开源项目，支持词汇级别的转换、异体字转换和地区习惯用词转换（中国大陆、台湾、香港、日本新字体）。不提供普通话与粤语的转换。"
         },
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "Chinese Convert",
+          "zh_CHT": "中文轉換",
+          "zh_CN": "中文转换"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.net/a/zuoqiu",
+            "https://ko-fi.com/zuoqiu"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": null,
+        "minAppVersion": "2.9.5",
+        "name": "opencc",
         "readme": {
           "default": "README.md",
           "zh_CHT": "README_zh_CHT.md",
           "zh_CN": "README_zh_CN.md"
         },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.net/a/zuoqiu",
-            "https://ko-fi.com/zuoqiu"
-          ]
-        },
-        "keywords": null,
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": false
+        "url": "https://github.com/Zuoqiu-Yingyi/siyuan-plugin-opencc",
+        "version": "0.1.0"
       }
     },
     {
