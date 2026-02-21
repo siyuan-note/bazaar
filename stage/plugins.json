@@ -269,7 +269,7 @@
       "url": "b8l8u8e8/siyuan-plugin-share@ee9b85a6c41ce87abd5b004d06181157158dfe97",
       "updated": "2026-02-21T05:53:24Z",
       "stars": 33,
-      "openIssues": 1,
+      "openIssues": 0,
       "size": 236239,
       "installSize": 730826,
       "package": {
@@ -1792,7 +1792,7 @@
       "url": "shenjinglei/siyuan-plugin-graph-enhance@5813df15fd2b44c863342374e692990768a1a8e2",
       "updated": "2026-02-01T09:16:10Z",
       "stars": 6,
-      "openIssues": 15,
+      "openIssues": 13,
       "size": 301220,
       "installSize": 667300,
       "package": {
@@ -6792,32 +6792,32 @@
       "size": 75403,
       "installSize": 91498,
       "package": {
-        "name": "siyuan-adaptive-expander",
         "author": "abc202306",
-        "url": "https://github.com/abc202306/siyuan-adaptive-expander",
-        "version": "1.0.6",
-        "minAppVersion": "3.3.0",
-        "displayName": {
-          "default": "Adaptive Expander",
-          "zh_CN": "自适应展开器"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "default": "Automatically expands collapsible blocks like list blocks or section blocks when those blocks are focused on or previewed via links",
           "zh_CN": "自适应展开列表块或章节块等可折叠块，当聚焦或链接预览时"
         },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Adaptive Expander",
+          "zh_CN": "自适应展开器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": null,
+        "keywords": [],
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-adaptive-expander",
         "readme": {
           "default": "README.md",
           "zh_CN": "README_zh_CN.md"
         },
-        "funding": null,
-        "keywords": [],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": true
+        "url": "https://github.com/abc202306/siyuan-adaptive-expander",
+        "version": "1.0.6"
       }
     },
     {
@@ -15396,34 +15396,32 @@
       "size": 498327,
       "installSize": 1543199,
       "package": {
-        "name": "jupyter-client",
         "author": "Zuoqiu Yingyi",
-        "url": "https://github.com/Zuoqiu-Yingyi/siyuan-plugin-jupyter-client",
-        "version": "0.2.2",
-        "minAppVersion": "2.10.13",
-        "displayName": {
-          "default": "Jupyter Client",
-          "zh_CHT": "Jupyter 客戶端",
-          "zh_CN": "Jupyter 客户端"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "default": "The plugin can connect to the Jupyter service, run the code block, output and save the run result.",
           "zh_CHT": "該插件可以連接 Jupyter 服務，運行代碼塊，輸出並保存運行結果。",
           "zh_CN": "该插件可以连接 Jupyter 服务，运行代码块，输出并保存运行结果。"
         },
-        "readme": {
-          "default": "README.md",
-          "zh_CHT": "README_zh_CN.md",
-          "zh_CN": "README_zh_CN.md"
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "Jupyter Client",
+          "zh_CHT": "Jupyter 客戶端",
+          "zh_CN": "Jupyter 客户端"
         },
+        "frontends": [
+          "all"
+        ],
         "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
           "custom": [
             "https://afdian.net/a/zuoqiu",
             "https://ko-fi.com/zuoqiu"
-          ]
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
         },
         "keywords": [
           "代码",
@@ -15439,13 +15437,15 @@
           "lab",
           "hub"
         ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": false
+        "minAppVersion": "2.10.13",
+        "name": "jupyter-client",
+        "readme": {
+          "default": "README.md",
+          "zh_CHT": "README_zh_CN.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/Zuoqiu-Yingyi/siyuan-plugin-jupyter-client",
+        "version": "0.2.2"
       }
     },
     {
