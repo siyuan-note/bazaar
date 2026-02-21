@@ -1,6 +1,52 @@
 {
   "repos": [
     {
+      "url": "c00llin/siyuan-todoist-sync@2cd4ca77fef1a7f3f8dabbff7b10bb9431e1911f",
+      "updated": "2026-02-21T14:08:52Z",
+      "stars": 0,
+      "openIssues": 0,
+      "size": 51375,
+      "installSize": 83268,
+      "package": {
+        "name": "siyuan-todoist-sync",
+        "author": "Collin Janssen",
+        "url": "https://github.com/c00llin/siyuan-todoist-sync",
+        "version": "1.0.3",
+        "minAppVersion": "2.9.0",
+        "displayName": {
+          "default": "Todoist Sync",
+          "zh_CN": "Todoist 同步"
+        },
+        "description": {
+          "default": "Sync tasks between SiYuan and Todoist",
+          "zh_CN": "在思源笔记和 Todoist 之间同步任务"
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": []
+        },
+        "keywords": [
+          "todoist",
+          "task",
+          "sync",
+          "productivity"
+        ],
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": true
+      }
+    },
+    {
       "url": "LunaNorth/siyuan-deco@bc6a048308edbc4a6dab5b68014fa3d11643e496",
       "updated": "2026-02-21T13:17:09Z",
       "stars": 0,
@@ -1098,52 +1144,6 @@
         "keywords": [
           "index",
           "目录"
-        ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": true
-      }
-    },
-    {
-      "url": "c00llin/siyuan-todoist-sync@a53908d5f5a50854f35d65c1c5f6fcebee43cbac",
-      "updated": "2026-02-11T10:00:11Z",
-      "stars": 0,
-      "openIssues": 1,
-      "size": 51141,
-      "installSize": 82637,
-      "package": {
-        "name": "siyuan-todoist-sync",
-        "author": "Collin Janssen",
-        "url": "https://github.com/c00llin/siyuan-todoist-sync",
-        "version": "1.0.2",
-        "minAppVersion": "2.9.0",
-        "displayName": {
-          "default": "Todoist Sync",
-          "zh_CN": "Todoist 同步"
-        },
-        "description": {
-          "default": "Sync tasks between SiYuan and Todoist",
-          "zh_CN": "在思源笔记和 Todoist 之间同步任务"
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": []
-        },
-        "keywords": [
-          "todoist",
-          "task",
-          "sync",
-          "productivity"
         ],
         "backends": [
           "all"
@@ -12435,42 +12435,36 @@
       "size": 248861,
       "installSize": 648114,
       "package": {
+        "name": "siyuan-oembed",
         "author": "anarion80",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android"
-        ],
-        "description": {
-          "default": "A plugin that extracts oembed data from links and creates a Ghost CMS-style cards as bookmarks",
-          "en_US": "A plugin that extracts oembed data from links and creates a Ghost CMS-style cards as bookmarks",
-          "pl_PL": "Wtyczka wyodrębniająca dane oembed z linków i tworząca karty w stylu Ghost CMS jako zakładki",
-          "zh_CN": "一个从链接中提取oembed数据并且创建一个Ghost CMS-style卡片作为书签的插件"
-        },
-        "disabledInPublish": false,
+        "url": "https://github.com/anarion80/siyuan-oembed",
+        "version": "0.1.2",
+        "minAppVersion": "3.1.12",
         "displayName": {
           "default": "Oembed and bookmark cards",
           "en_US": "Oembed and bookmark cards",
           "pl_PL": "Oembed i karty zakładek",
           "zh_CN": "Oembed和书签卡片"
         },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
+        "description": {
+          "default": "A plugin that extracts oembed data from links and creates a Ghost CMS-style cards as bookmarks",
+          "en_US": "A plugin that extracts oembed data from links and creates a Ghost CMS-style cards as bookmarks",
+          "pl_PL": "Wtyczka wyodrębniająca dane oembed z linków i tworząca karty w stylu Ghost CMS jako zakładki",
+          "zh_CN": "一个从链接中提取oembed数据并且创建一个Ghost CMS-style卡片作为书签的插件"
+        },
+        "readme": {
+          "default": "README.md",
+          "en_US": "README.md",
+          "pl_PL": "README_pl_PL.md",
+          "zh_CN": "README_zh_CN.md"
+        },
         "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
           "custom": [
             "https://buymeacoffee.com/anarion"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
+          ]
         },
         "keywords": [
           "plugin",
@@ -12482,16 +12476,22 @@
           "cards",
           "link"
         ],
-        "minAppVersion": "3.1.12",
-        "name": "siyuan-oembed",
-        "readme": {
-          "default": "README.md",
-          "en_US": "README.md",
-          "pl_PL": "README_pl_PL.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/anarion80/siyuan-oembed",
-        "version": "0.1.2"
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "disabledInPublish": false
       }
     },
     {
@@ -12790,36 +12790,28 @@
       "size": 165307,
       "installSize": 203778,
       "package": {
+        "name": "siyuan-graph",
         "author": "DrEgg",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "docker"
-        ],
-        "description": {
-          "default": "Vanilla math plotting plugin for SiYuan",
-          "zh_CN": "原生优先的思源数学绘图插件"
-        },
-        "disabledInPublish": false,
+        "url": "https://github.com/SteelDrEgg/siyuan-graph",
+        "version": "0.1.1",
+        "minAppVersion": "3.1.7",
         "displayName": {
           "default": "SiYuan Graphing",
           "zh_CN": "思源绘图"
         },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
+        "description": {
+          "default": "Vanilla math plotting plugin for SiYuan",
+          "zh_CN": "原生优先的思源数学绘图插件"
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
         "funding": {
-          "custom": [],
-          "github": "https://github.com/SteelDrEgg",
           "openCollective": "",
-          "patreon": ""
+          "patreon": "",
+          "github": "https://github.com/SteelDrEgg",
+          "custom": []
         },
         "keywords": [
           "Graphing",
@@ -12831,14 +12823,22 @@
           "公式",
           "函数"
         ],
-        "minAppVersion": "3.1.7",
-        "name": "siyuan-graph",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/SteelDrEgg/siyuan-graph",
-        "version": "0.1.1"
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "disabledInPublish": false
       }
     },
     {
