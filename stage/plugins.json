@@ -4894,30 +4894,29 @@
       "size": 1542717,
       "installSize": 3941346,
       "package": {
-        "name": "sy-tomato-plugin",
         "author": "IAliceBobI",
-        "url": "https://github.com/IAliceBobI/sy-tomato-plugin",
-        "version": "5.3.79",
-        "minAppVersion": "3.0.3",
-        "displayName": {
-          "default": "Tomato Toolbox",
-          "zh_CN": "番茄工具箱"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "default": "[🔓Open Source] [🛡️GitHub Online Compilation] Status Bar Pomodoro, Automatic Export to Markdown, Prefix Document Tree, Mobile Multi-Select, Enhanced Folding, Annotations, Bottom Backlinks, Synchronization Blocks, Mind Guides, Block Relationship Diagrams, Text to Citations, Photo Flash Notes, Reading Points, Bidirectional Links, AI Knowledge Base Q\u0026amp;A, Streaming AI, Database Backlinks, Flashcard Priority, Document Merging, Regular Reminders, Delete Cards During Review, Flashcard Image Blanking, Move to Today\u0026#39;s Notes, Clean Up Invalid Flashcards",
           "zh_CN": "【🔓已开源】【🛡️Github在线编译】状态栏番茄钟、自动导出markdown、前缀文档树、移动端多选、增强折叠、批注、底部反链、同步块、思维导线、块关系图、文本转引用、拍照闪念、阅读点、双向互链、AI知识库问答、流式AI、数据库反链、闪卡优先级、文档合并、定期提醒、复习时删卡、闪卡图片挖空、移到今日笔记、清理失效闪卡"
         },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "Tomato Toolbox",
+          "zh_CN": "番茄工具箱"
         },
+        "frontends": [
+          "all"
+        ],
         "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
           "custom": [
             "https://afdian.com/a/playerv5"
-          ]
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
         },
         "keywords": [
           "TomatoClock",
@@ -4941,13 +4940,14 @@
           "Progress tracking",
           "Goal setting"
         ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": false
+        "minAppVersion": "3.0.3",
+        "name": "sy-tomato-plugin",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/IAliceBobI/sy-tomato-plugin",
+        "version": "5.3.79"
       }
     },
     {
@@ -10042,36 +10042,7 @@
       "size": 222909,
       "installSize": 290588,
       "package": {
-        "name": "plugin-block-reminder",
         "author": "chenxuan520",
-        "url": "https://github.com/chenxuan520/plugin-block-reminder",
-        "version": "0.3.8",
-        "minAppVersion": "3.0.8",
-        "displayName": {
-          "en_US": "Reminder",
-          "zh_CN": "Reminder"
-        },
-        "description": {
-          "en_US": "reminder for feishu",
-          "zh_CN": "飞书定时提醒"
-        },
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            ""
-          ]
-        },
-        "keywords": [
-          "plugin",
-          "sample",
-          "插件"
-        ],
         "backends": [
           "windows",
           "linux",
@@ -10081,6 +10052,15 @@
           "harmony",
           "docker"
         ],
+        "description": {
+          "en_US": "reminder for feishu",
+          "zh_CN": "飞书定时提醒"
+        },
+        "disabledInPublish": false,
+        "displayName": {
+          "en_US": "Reminder",
+          "zh_CN": "Reminder"
+        },
         "frontends": [
           "desktop",
           "mobile",
@@ -10088,7 +10068,27 @@
           "browser-mobile",
           "desktop-window"
         ],
-        "disabledInPublish": false
+        "funding": {
+          "custom": [
+            ""
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "plugin",
+          "sample",
+          "插件"
+        ],
+        "minAppVersion": "3.0.8",
+        "name": "plugin-block-reminder",
+        "readme": {
+          "en_US": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/chenxuan520/plugin-block-reminder",
+        "version": "0.3.8"
       }
     },
     {
@@ -15002,28 +15002,27 @@
       "size": 173131,
       "installSize": 242357,
       "package": {
-        "name": "plugin-web-archive",
         "author": "pg999w",
-        "url": "https://github.com/peng1999/siyuan-web-archive-plugin",
-        "version": "0.1.2",
-        "minAppVersion": "2.11.4",
-        "displayName": {
-          "en_US": "Web Archive Plugin",
-          "zh_CN": "网页存档插件"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "en_US": "Save links in Wayback Machine",
           "zh_CN": "将网页链接存档到 Wayback Machine"
         },
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
+        "disabledInPublish": false,
+        "displayName": {
+          "en_US": "Web Archive Plugin",
+          "zh_CN": "网页存档插件"
         },
+        "frontends": [
+          "all"
+        ],
         "funding": {
-          "openCollective": "",
-          "patreon": "",
+          "custom": null,
           "github": "peng1999",
-          "custom": null
+          "openCollective": "",
+          "patreon": ""
         },
         "keywords": [
           "plugin",
@@ -15031,13 +15030,14 @@
           "web-archive",
           "wayback-machine"
         ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": false
+        "minAppVersion": "2.11.4",
+        "name": "plugin-web-archive",
+        "readme": {
+          "en_US": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/peng1999/siyuan-web-archive-plugin",
+        "version": "0.1.2"
       }
     },
     {
