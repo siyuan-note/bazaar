@@ -9855,34 +9855,7 @@
       "size": 1141341,
       "installSize": 1165871,
       "package": {
-        "name": "siyuan-plugin-emoji-enhance",
         "author": "zuoez02",
-        "url": "https://github.com/zuoez02/siyuan-plugin-emoji-enhance",
-        "version": "0.3.5",
-        "minAppVersion": "3.1.13",
-        "displayName": {
-          "en_US": "Emoji Enhance",
-          "zh_CN": "Emoji增强"
-        },
-        "description": {
-          "en_US": "SiYuan Emoji Enhance",
-          "zh_CN": "Emoji功能优化与增强"
-        },
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.net/a/zuoez02"
-          ]
-        },
-        "keywords": [
-          "emoji"
-        ],
         "backends": [
           "windows",
           "linux",
@@ -9891,6 +9864,15 @@
           "android",
           "docker"
         ],
+        "description": {
+          "en_US": "SiYuan Emoji Enhance",
+          "zh_CN": "Emoji功能优化与增强"
+        },
+        "disabledInPublish": false,
+        "displayName": {
+          "en_US": "Emoji Enhance",
+          "zh_CN": "Emoji增强"
+        },
         "frontends": [
           "desktop",
           "mobile",
@@ -9898,7 +9880,25 @@
           "browser-mobile",
           "desktop-window"
         ],
-        "disabledInPublish": false
+        "funding": {
+          "custom": [
+            "https://afdian.net/a/zuoez02"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "emoji"
+        ],
+        "minAppVersion": "3.1.13",
+        "name": "siyuan-plugin-emoji-enhance",
+        "readme": {
+          "en_US": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/zuoez02/siyuan-plugin-emoji-enhance",
+        "version": "0.3.5"
       }
     },
     {
@@ -15635,30 +15635,29 @@
       "size": 145015,
       "installSize": 219423,
       "package": {
-        "name": "plugin-flomo-sync",
         "author": "winter60",
-        "url": "https://github.com/winter60/plugin-flomo-sync",
-        "version": "0.1.0",
-        "minAppVersion": "2.11.1",
-        "displayName": {
-          "default": "flomo sync",
-          "zh_CN": "浮墨同步"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "default": "flomo sync",
           "zh_CN": "浮墨同步"
         },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README.md"
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "flomo sync",
+          "zh_CN": "浮墨同步"
         },
+        "frontends": [
+          "all"
+        ],
         "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
           "custom": [
             "https://afdian.net/a/firework"
-          ]
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
         },
         "keywords": [
           "浮墨",
@@ -15666,13 +15665,14 @@
           "同步",
           "sync"
         ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": false
+        "minAppVersion": "2.11.1",
+        "name": "plugin-flomo-sync",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/winter60/plugin-flomo-sync",
+        "version": "0.1.0"
       }
     },
     {
