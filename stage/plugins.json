@@ -517,39 +517,39 @@
       "size": 888230,
       "installSize": 3111402,
       "package": {
+        "name": "oceanpress-siyuan-plugin",
         "author": "崮生",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "en_US": "Supports OCR text copy, UMI OCR, and TIF/HEIC image display",
-          "zh_CN": "支持 OCR 文本复制、UMI OCR，支持 TIF/HEIC 图片显示"
-        },
-        "disabledInPublish": false,
+        "url": "https://github.com/2234839/OceanPress_siyuan_plugin",
+        "version": "1.0.119",
+        "minAppVersion": "2.10.3",
         "displayName": {
           "en_US": "OceanPress siyuan plugin",
           "zh_CN": "OceanPress 思源插件"
         },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/@llej0"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
+        "description": {
+          "en_US": "Supports OCR text copy, UMI OCR, and TIF/HEIC image display",
+          "zh_CN": "支持 OCR 文本复制、UMI OCR，支持 TIF/HEIC 图片显示"
         },
-        "keywords": null,
-        "minAppVersion": "2.10.3",
-        "name": "oceanpress-siyuan-plugin",
         "readme": {
           "en_US": "README.md",
           "zh_CN": "README.md"
         },
-        "url": "https://github.com/2234839/OceanPress_siyuan_plugin",
-        "version": "1.0.119"
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.com/@llej0"
+          ]
+        },
+        "keywords": null,
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": false
       }
     },
     {
@@ -9187,41 +9187,41 @@
       "size": 537364,
       "installSize": 708930,
       "package": {
+        "name": "plugin-memos-sync-helper",
         "author": "Yimien",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "en_US": "Sync Memos data to SiYuan",
-          "zh_CN": "将 Memos 的数据同步至思源笔记中"
-        },
-        "disabledInPublish": false,
+        "url": "https://github.com/Yimien/plugin-memos-sync-helper",
+        "version": "0.2.17",
+        "minAppVersion": "3.0.12",
         "displayName": {
           "en_US": "Memos Sync Assistant",
           "zh_CN": "Memos 同步助手"
         },
-        "frontends": [
-          "all"
-        ],
+        "description": {
+          "en_US": "Sync Memos data to SiYuan",
+          "zh_CN": "将 Memos 的数据同步至思源笔记中"
+        },
+        "readme": {
+          "en_US": "README.md",
+          "zh_CN": "README.md"
+        },
         "funding": {
-          "custom": [],
-          "github": "",
           "openCollective": "",
-          "patreon": ""
+          "patreon": "",
+          "github": "",
+          "custom": []
         },
         "keywords": [
           "Memos",
           "同步",
           "Sync"
         ],
-        "minAppVersion": "3.0.12",
-        "name": "plugin-memos-sync-helper",
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/Yimien/plugin-memos-sync-helper",
-        "version": "0.2.17"
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": false
       }
     },
     {
@@ -9678,34 +9678,30 @@
       "size": 119224,
       "installSize": 263917,
       "package": {
+        "name": "siyuan-plugin-bubble",
         "author": "niop",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Display note content in bubbles with customizable backgrounds, supporting dynamic backgrounds such as images, videos, and web pages.",
-          "zh_CN": "让笔记内容显示在气泡中，可自定义背景，支持图片，视频和网页类型的动态背景"
-        },
-        "disabledInPublish": false,
+        "url": "https://github.com/AirParty/siyuan-plugin-bubble",
+        "version": "1.0.4",
+        "minAppVersion": "3.0.1",
         "displayName": {
           "default": "Bubble",
           "zh_CN": "泡泡"
         },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop",
-          "browser-mobile"
-        ],
+        "description": {
+          "default": "Display note content in bubbles with customizable backgrounds, supporting dynamic backgrounds such as images, videos, and web pages.",
+          "zh_CN": "让笔记内容显示在气泡中，可自定义背景，支持图片，视频和网页类型的动态背景"
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
         "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
           "custom": [
             ""
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
+          ]
         },
         "keywords": [
           "niop",
@@ -9718,14 +9714,18 @@
           "动态背景",
           "壁纸"
         ],
-        "minAppVersion": "3.0.1",
-        "name": "siyuan-plugin-bubble",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/AirParty/siyuan-plugin-bubble",
-        "version": "1.0.4"
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "disabledInPublish": false
       }
     },
     {
@@ -13937,39 +13937,39 @@
       "size": 35043,
       "installSize": 46252,
       "package": {
+        "name": "siyuan_plugin_setting_sync",
         "author": "崮生",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "en_US": "",
-          "zh_CN": ""
-        },
-        "disabledInPublish": false,
+        "url": "https://github.com/2234839/siyuan_plugin_setting_sync",
+        "version": "0.0.3",
+        "minAppVersion": "2.10.3",
         "displayName": {
           "en_US": "setting sync",
           "zh_CN": "思源设置同步"
         },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.net/a/llej0"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
+        "description": {
+          "en_US": "",
+          "zh_CN": ""
         },
-        "keywords": null,
-        "minAppVersion": "2.10.3",
-        "name": "siyuan_plugin_setting_sync",
         "readme": {
           "en_US": "README_en.md",
           "zh_CN": "README.md"
         },
-        "url": "https://github.com/2234839/siyuan_plugin_setting_sync",
-        "version": "0.0.3"
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/llej0"
+          ]
+        },
+        "keywords": null,
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": false
       }
     },
     {
@@ -14191,7 +14191,32 @@
       "size": 7214500,
       "installSize": 21871927,
       "package": {
+        "name": "GeogebraE",
         "author": "Neurocylcq",
+        "url": "https://github.com/LinuaBio/GeogebraE",
+        "version": "0.0.9",
+        "minAppVersion": "3.0.0",
+        "displayName": {
+          "en_US": "Geogebra For SiYuan",
+          "zh_CN": "Geogebra嵌入程序"
+        },
+        "description": {
+          "en_US": "Use Geogebra in Si-yuan note",
+          "zh_CN": "让你在思源笔记中使用Geogebra"
+        },
+        "readme": {
+          "en_US": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": []
+        },
+        "keywords": [
+          "geogebra"
+        ],
         "backends": [
           "windows",
           "linux",
@@ -14199,15 +14224,6 @@
           "ios",
           "android"
         ],
-        "description": {
-          "en_US": "Use Geogebra in Si-yuan note",
-          "zh_CN": "让你在思源笔记中使用Geogebra"
-        },
-        "disabledInPublish": false,
-        "displayName": {
-          "en_US": "Geogebra For SiYuan",
-          "zh_CN": "Geogebra嵌入程序"
-        },
         "frontends": [
           "desktop",
           "mobile",
@@ -14215,23 +14231,7 @@
           "browser-mobile",
           "desktop-window"
         ],
-        "funding": {
-          "custom": [],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "geogebra"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "GeogebraE",
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/LinuaBio/GeogebraE",
-        "version": "0.0.9"
+        "disabledInPublish": false
       }
     },
     {
