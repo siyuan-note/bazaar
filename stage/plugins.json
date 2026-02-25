@@ -14243,39 +14243,39 @@
       "size": 299798,
       "installSize": 324344,
       "package": {
-        "name": "sy-export-tree",
         "author": "frostime",
-        "url": "https://github.com/frostime/sy-export-tree",
-        "version": "1.0.0",
-        "minAppVersion": "3.0.5",
-        "displayName": {
-          "en_US": "Export document tree",
-          "zh_CN": "导出文档树结构"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "en_US": "Export the tree structur of all documents",
           "zh_CN": "导出笔记库当中所有的文档树结构"
         },
+        "disabledInPublish": false,
+        "displayName": {
+          "en_US": "Export document tree",
+          "zh_CN": "导出文档树结构"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.net/a/frostime"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": null,
+        "minAppVersion": "3.0.5",
+        "name": "sy-export-tree",
         "readme": {
           "en_US": "README.md",
           "zh_CN": "README_zh_CN.md"
         },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.net/a/frostime"
-          ]
-        },
-        "keywords": null,
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": false
+        "url": "https://github.com/frostime/sy-export-tree",
+        "version": "1.0.0"
       }
     },
     {
