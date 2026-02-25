@@ -1,6 +1,91 @@
 {
   "repos": [
     {
+      "url": "5kyfkr/siyuan-plugin-task-horizon@4f9a970be007993d6a2957ef03725b8d2e2444a5",
+      "updated": "2026-02-25T18:40:43Z",
+      "stars": 3,
+      "openIssues": 0,
+      "size": 736599,
+      "installSize": 2969895,
+      "package": {
+        "name": "siyuan-plugin-task-horizon",
+        "author": "5kyfkr",
+        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
+        "version": "1.5.3",
+        "minAppVersion": "3.5.0",
+        "displayName": {
+          "default": "Task Horizon",
+          "zh_CN": "任务管理器"
+        },
+        "description": {
+          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
+          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持白板/时间轴/日历/看板/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动"
+        },
+        "readme": {
+          "default": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ]
+        },
+        "keywords": [
+          "task",
+          "manager",
+          "filter"
+        ],
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": true
+      }
+    },
+    {
+      "url": "b8l8u8e8/siyuan-plugin-emoji-market@080f5258a06cf1b024417803899030d8e26f2557",
+      "updated": "2026-02-25T18:03:05Z",
+      "stars": 3,
+      "openIssues": 0,
+      "size": 118660,
+      "installSize": 209649,
+      "package": {
+        "name": "siyuan-plugin-emoji-market",
+        "author": "取舍",
+        "url": "https://github.com/b8l8u8e8/siyuan-plugin-emoji-market",
+        "version": "0.1.3",
+        "minAppVersion": "2.9.0",
+        "displayName": {
+          "default": "Emoji Market",
+          "zh_CN": "表情市场"
+        },
+        "description": {
+          "default": "Emoji Market brings a massive icon library to SiYuan Notes, allowing you to search, replace document icons, or insert emojis directly from the emoji panel.",
+          "zh_CN": "表情市场为思源笔记提供海量图标，在表情面板中即可搜索替换文档图标或插入表情。"
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "funding": null,
+        "keywords": [
+          "图标",
+          "表情"
+        ],
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": true
+      }
+    },
+    {
       "url": "b8l8u8e8/siyuan-plugin-share@48c33c8ebf32664d23c2d511eeddb0c62f5a42ce",
       "updated": "2026-02-25T17:53:06Z",
       "stars": 33,
@@ -120,45 +205,6 @@
           "AI",
           "Agent",
           "MCP"
-        ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": true
-      }
-    },
-    {
-      "url": "b8l8u8e8/siyuan-plugin-emoji-market@733ec46c355a0fbda920d2fb4efe78ef3667f932",
-      "updated": "2026-02-25T14:41:16Z",
-      "stars": 3,
-      "openIssues": 0,
-      "size": 116214,
-      "installSize": 196587,
-      "package": {
-        "name": "siyuan-plugin-emoji-market",
-        "author": "取舍",
-        "url": "https://github.com/b8l8u8e8/siyuan-plugin-emoji-market",
-        "version": "0.1.2",
-        "minAppVersion": "2.9.0",
-        "displayName": {
-          "default": "Emoji Market",
-          "zh_CN": "表情市场"
-        },
-        "description": {
-          "default": "Emoji Market brings a massive icon library to SiYuan Notes, allowing you to search, replace document icons, or insert emojis directly from the emoji panel.",
-          "zh_CN": "表情市场为思源笔记提供海量图标，在表情面板中即可搜索替换文档图标或插入表情。"
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "funding": null,
-        "keywords": [
-          "图标",
-          "表情"
         ],
         "backends": [
           "all"
@@ -538,45 +584,6 @@
           "all"
         ],
         "disabledInPublish": false
-      }
-    },
-    {
-      "url": "5kyfkr/siyuan-plugin-task-horizon@0b048176bb586afa5cac95dd8105cac9ee9689f0",
-      "updated": "2026-02-24T16:09:39Z",
-      "stars": 3,
-      "openIssues": 0,
-      "size": 706383,
-      "installSize": 2803623,
-      "package": {
-        "name": "siyuan-plugin-task-horizon",
-        "author": "5kyfkr",
-        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "1.5.1",
-        "minAppVersion": "3.5.0",
-        "displayName": {
-          "default": "Task Horizon",
-          "zh_CN": "任务管理器"
-        },
-        "description": {
-          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
-          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持白板/时间轴/日历/看板/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动"
-        },
-        "readme": {
-          "default": "README.md"
-        },
-        "funding": null,
-        "keywords": [
-          "task",
-          "manager",
-          "filter"
-        ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": true
       }
     },
     {
