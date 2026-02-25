@@ -3,7 +3,7 @@
     {
       "url": "b8l8u8e8/siyuan-plugin-emoji-market@733ec46c355a0fbda920d2fb4efe78ef3667f932",
       "updated": "2026-02-25T14:41:16Z",
-      "stars": 2,
+      "stars": 3,
       "openIssues": 0,
       "size": 116214,
       "installSize": 196587,
@@ -539,7 +539,7 @@
       "url": "Achuan-2/siyuan-plugin-copilot@f2170c118e63e06c6d1459239543230f2acf0227",
       "updated": "2026-02-23T17:05:54Z",
       "stars": 56,
-      "openIssues": 8,
+      "openIssues": 7,
       "size": 449371,
       "installSize": 1095591,
       "package": {
@@ -2953,32 +2953,32 @@
       "size": 69964,
       "installSize": 115876,
       "package": {
+        "name": "siyuan-web-fetch",
         "author": "BryceWG",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Fetch web pages and create notes in SiYuan",
-          "zh_CN": "抓取网页并生成思源笔记"
-        },
-        "disabledInPublish": true,
+        "url": "https://github.com/BryceWG/siyuan-web-fetch",
+        "version": "0.0.6",
+        "minAppVersion": "3.3.0",
         "displayName": {
           "default": "SiYuan Web Fetch",
           "zh_CN": "网页抓取"
         },
-        "frontends": [
-          "all"
-        ],
-        "funding": null,
-        "keywords": null,
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-web-fetch",
+        "description": {
+          "default": "Fetch web pages and create notes in SiYuan",
+          "zh_CN": "抓取网页并生成思源笔记"
+        },
         "readme": {
           "default": "README.md",
           "zh_CN": "README_zh_CN.md"
         },
-        "url": "https://github.com/BryceWG/siyuan-web-fetch",
-        "version": "0.0.6"
+        "funding": null,
+        "keywords": null,
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": true
       }
     },
     {
@@ -3093,31 +3093,33 @@
       "size": 271505,
       "installSize": 450527,
       "package": {
+        "name": "siyuan-plugin-halo-publisher",
         "author": "Sundaydream",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Publish SiYuan notes to Halo blog platform",
-          "zh_CHT": "將思源筆記文章發佈到 Halo 部落格平台的插件",
-          "zh_CN": "将思源笔记文章发布到 Halo 博客平台的插件"
-        },
-        "disabledInPublish": true,
+        "url": "https://github.com/Sundaydream/siyuan-plugin-halo-publisher",
+        "version": "1.0.8",
+        "minAppVersion": "3.5.2",
         "displayName": {
           "default": "Halo Publisher",
           "zh_CHT": "Halo 發佈插件",
           "zh_CN": "Halo 发布插件"
         },
-        "frontends": [
-          "all"
-        ],
+        "description": {
+          "default": "Publish SiYuan notes to Halo blog platform",
+          "zh_CHT": "將思源筆記文章發佈到 Halo 部落格平台的插件",
+          "zh_CN": "将思源笔记文章发布到 Halo 博客平台的插件"
+        },
+        "readme": {
+          "default": "README_en_US.md",
+          "zh_CHT": "README_zh_CHT.md",
+          "zh_CN": "README.md"
+        },
         "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
           "custom": [
             "https://afdian.com/a/sundaydream"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
+          ]
         },
         "keywords": [
           "halo",
@@ -3126,15 +3128,13 @@
           "publish",
           "blog"
         ],
-        "minAppVersion": "3.5.2",
-        "name": "siyuan-plugin-halo-publisher",
-        "readme": {
-          "default": "README_en_US.md",
-          "zh_CHT": "README_zh_CHT.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/Sundaydream/siyuan-plugin-halo-publisher",
-        "version": "1.0.8"
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": true
       }
     },
     {
@@ -3368,43 +3368,43 @@
       "size": 101403,
       "installSize": 185777,
       "package": {
+        "name": "siyuan-database-display",
         "author": "steve",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Advanced database attribute display plugin with field hiding, date formatting, checkbox beautification, and customizable settings. Supports 99% of blocks!",
-          "zh_CN": "数据库属性显示插件，支持字段隐藏、日期格式化、复选框美化和可自定义设置。支持99%的块！"
-        },
-        "disabledInPublish": true,
+        "url": "https://github.com/loonghfut/siyuan-database-display",
+        "version": "1.0.1",
+        "minAppVersion": "3.0.12",
         "displayName": {
           "default": "Database Display",
           "zh_CN": "数据库数据展示"
         },
-        "frontends": [
-          "all"
-        ],
+        "description": {
+          "default": "Advanced database attribute display plugin with field hiding, date formatting, checkbox beautification, and customizable settings. Supports 99% of blocks!",
+          "zh_CN": "数据库属性显示插件，支持字段隐藏、日期格式化、复选框美化和可自定义设置。支持99%的块！"
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
         "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
           "custom": [
             ""
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
+          ]
         },
         "keywords": [
           "database",
           "display",
           "attribute"
         ],
-        "minAppVersion": "3.0.12",
-        "name": "siyuan-database-display",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/loonghfut/siyuan-database-display",
-        "version": "1.0.1"
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": true
       }
     },
     {
@@ -3620,27 +3620,28 @@
       "size": 39295281,
       "installSize": 39478093,
       "package": {
+        "name": "siyuan-ttf-maple-font",
         "author": "yongnianliu",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Use Maple Mono NF CN (with Nerd Font icons and Chinese support) as code and layout font",
-          "zh_CN": "使用 Maple Mono NF CN（含 Nerd Font 图标和中文支持）作为代码和界面字体"
-        },
-        "disabledInPublish": false,
+        "url": "https://github.com/yongnianliu/siyuan-ttf-maple-font",
+        "version": "1.0.4",
+        "minAppVersion": "3.2.0",
         "displayName": {
           "default": "Maple Mono NF CN Font",
           "zh_CN": "Maple Mono NF 中文等宽字体"
         },
-        "frontends": [
-          "all"
-        ],
+        "description": {
+          "default": "Use Maple Mono NF CN (with Nerd Font icons and Chinese support) as code and layout font",
+          "zh_CN": "使用 Maple Mono NF CN（含 Nerd Font 图标和中文支持）作为代码和界面字体"
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
         "funding": {
-          "custom": [],
-          "github": "",
           "openCollective": "",
-          "patreon": ""
+          "patreon": "",
+          "github": "",
+          "custom": []
         },
         "keywords": [
           "Monospace Font",
@@ -3648,14 +3649,13 @@
           "等宽字体",
           "代码字体"
         ],
-        "minAppVersion": "3.2.0",
-        "name": "siyuan-ttf-maple-font",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/yongnianliu/siyuan-ttf-maple-font",
-        "version": "1.0.4"
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": false
       }
     },
     {
@@ -3918,39 +3918,39 @@
       "size": 787308,
       "installSize": 1851846,
       "package": {
+        "name": "siyuan-hqweay-go",
         "author": "养恐龙",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "en_US": "这使你充满了决心。",
-          "zh_CN": "这使你充满了决心。"
-        },
-        "disabledInPublish": false,
+        "url": "https://github.com/hqweay/siyuan-hqweay-go",
+        "version": "0.21.3",
+        "minAppVersion": "3.0.0",
         "displayName": {
           "en_US": "恐龙工具箱",
           "zh_CN": "恐龙工具箱"
         },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
+        "description": {
+          "en_US": "这使你充满了决心。",
+          "zh_CN": "这使你充满了决心。"
         },
-        "keywords": [
-          "plugin"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-hqweay-go",
         "readme": {
           "en_US": "README.md",
           "zh_CN": "README.md"
         },
-        "url": "https://github.com/hqweay/siyuan-hqweay-go",
-        "version": "0.21.3"
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": []
+        },
+        "keywords": [
+          "plugin"
+        ],
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": false
       }
     },
     {
@@ -4844,33 +4844,33 @@
       "size": 81180,
       "installSize": 124977,
       "package": {
+        "name": "siyuan-unified-search",
         "author": "wyg",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Smart search plugin that works seamlessly with both Traditional and Simplified Chinese characters",
-          "zh_CN": "智能繁简体通用检索插件,支持关键词高亮和精确定位",
-          "zh_TW": "智能繁簡體通用檢索插件,支持關鍵詞高亮和精確定位"
-        },
-        "disabledInPublish": false,
+        "url": "https://github.com/youxia2025-wq/siyuan-unified-search",
+        "version": "1.0.0",
+        "minAppVersion": "3.0.0",
         "displayName": {
           "default": "Unified Traditional/Simplified Chinese Search",
           "zh_CN": "繁简体通用检索",
           "zh_TW": "繁簡體通用檢索"
         },
-        "frontends": [
-          "all"
-        ],
-        "funding": null,
-        "keywords": null,
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-unified-search",
+        "description": {
+          "default": "Smart search plugin that works seamlessly with both Traditional and Simplified Chinese characters",
+          "zh_CN": "智能繁简体通用检索插件,支持关键词高亮和精确定位",
+          "zh_TW": "智能繁簡體通用檢索插件,支持關鍵詞高亮和精確定位"
+        },
         "readme": {
           "default": "README.md"
         },
-        "url": "https://github.com/youxia2025-wq/siyuan-unified-search",
-        "version": "1.0.0"
+        "funding": null,
+        "keywords": null,
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": false
       }
     },
     {
@@ -6060,42 +6060,42 @@
       "size": 93288,
       "installSize": 216288,
       "package": {
+        "name": "siyuan-share",
         "author": "Zero",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Publish selected SiYuan documents or blocks to a public URL for quick viewing and collaboration.",
-          "zh_CN": "将选择的思源笔记文档或块发布为公网可访问链接，便于快速查看与协作。"
-        },
-        "disabledInPublish": false,
+        "url": "https://github.com/ZeroHawkeye/siyuan-share",
+        "version": "0.0.2",
+        "minAppVersion": "3.3.0",
         "displayName": {
           "default": "Siyuan Share",
           "zh_CN": "思源分享"
         },
-        "frontends": [
-          "all"
-        ],
+        "description": {
+          "default": "Publish selected SiYuan documents or blocks to a public URL for quick viewing and collaboration.",
+          "zh_CN": "将选择的思源笔记文档或块发布为公网可访问链接，便于快速查看与协作。"
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
         "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
           "custom": [
             "https://ld246.com/sponsor"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
+          ]
         },
         "keywords": [
           "online sharing",
           "在线分享"
         ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-share",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/ZeroHawkeye/siyuan-share",
-        "version": "0.0.2"
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": false
       }
     },
     {
@@ -9053,31 +9053,29 @@
       "size": 2701951,
       "installSize": 5796512,
       "package": {
+        "name": "siyuan-plugin-block-converter",
         "author": "dualwind",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Provide a series of block conversion tools, such as HTML table block to Siyuan table block...",
-          "zh_CN": "使用自定义代码进行复制、粘贴和更新操作，以块为单位进行操作"
-        },
-        "disabledInPublish": false,
+        "url": "https://github.com/etchnight/siyuan-plugin-block-converter",
+        "version": "2.0.0",
+        "minAppVersion": "3.0.0",
         "displayName": {
           "default": "Block Converter",
           "en_US": "Block Converter",
           "zh_CN": "块转换工具"
         },
-        "frontends": [
-          "desktop",
-          "desktop-window"
-        ],
+        "description": {
+          "default": "Provide a series of block conversion tools, such as HTML table block to Siyuan table block...",
+          "zh_CN": "使用自定义代码进行复制、粘贴和更新操作，以块为单位进行操作"
+        },
+        "readme": {
+          "default": "README_en_US.md",
+          "zh_CN": "README.md"
+        },
         "funding": {
-          "custom": [],
-          "github": "",
           "openCollective": "",
-          "patreon": ""
+          "patreon": "",
+          "github": "",
+          "custom": []
         },
         "keywords": [
           "plugin",
@@ -9089,14 +9087,16 @@
           "自定义粘贴",
           "运行js"
         ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-plugin-block-converter",
-        "readme": {
-          "default": "README_en_US.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/etchnight/siyuan-plugin-block-converter",
-        "version": "2.0.0"
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "disabledInPublish": false
       }
     },
     {
@@ -11969,39 +11969,39 @@
       "size": 201004,
       "installSize": 234592,
       "package": {
+        "name": "siyuan-plugin-sidebar-memo",
         "author": "WingDr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Show the memos on the side of editor.",
-          "zh_CN": "让备注在编辑器侧边展开显示"
-        },
-        "disabledInPublish": false,
+        "url": "https://github.com/WingDr/siyuan-plugin-sidebar-memo",
+        "version": "0.2.4",
+        "minAppVersion": "2.10.0",
         "displayName": {
           "default": "Sidebar Memo",
           "zh_CN": "侧边备注"
         },
+        "description": {
+          "default": "Show the memos on the side of editor.",
+          "zh_CN": "让备注在编辑器侧边展开显示"
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": null
+        },
+        "keywords": null,
+        "backends": [
+          "all"
+        ],
         "frontends": [
           "desktop",
           "desktop-window",
           "browser-desktop"
         ],
-        "funding": {
-          "custom": null,
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": null,
-        "minAppVersion": "2.10.0",
-        "name": "siyuan-plugin-sidebar-memo",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/WingDr/siyuan-plugin-sidebar-memo",
-        "version": "0.2.4"
+        "disabledInPublish": false
       }
     },
     {
@@ -12543,7 +12543,37 @@
       "size": 139315,
       "installSize": 207694,
       "package": {
+        "name": "siyuan-plugin-doctree-autosort",
         "author": "Achuan-2",
+        "url": "https://github.com/Achuan-2/siyuan-plugin-doctree-autosort",
+        "version": "0.0.5",
+        "minAppVersion": "3.0.12",
+        "displayName": {
+          "en_US": "DocTree Custom Sort Automation",
+          "zh_CN": "文档树自定义排序增强"
+        },
+        "description": {
+          "en_US": "Custom Sort + Automation Sort = Ideal DocTree Sort",
+          "zh_CN": "让自定义排序也能自动化排序，并支持对中文数字排序！"
+        },
+        "readme": {
+          "en_US": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://www.yuque.com/achuan-2"
+          ]
+        },
+        "keywords": [
+          "文档树排序",
+          "DocTree Sort",
+          "自定义排序",
+          "Custom Sort"
+        ],
         "backends": [
           "windows",
           "linux",
@@ -12552,15 +12582,6 @@
           "ios",
           "android"
         ],
-        "description": {
-          "en_US": "Custom Sort + Automation Sort = Ideal DocTree Sort",
-          "zh_CN": "让自定义排序也能自动化排序，并支持对中文数字排序！"
-        },
-        "disabledInPublish": false,
-        "displayName": {
-          "en_US": "DocTree Custom Sort Automation",
-          "zh_CN": "文档树自定义排序增强"
-        },
         "frontends": [
           "desktop",
           "mobile",
@@ -12568,28 +12589,7 @@
           "browser-mobile",
           "desktop-window"
         ],
-        "funding": {
-          "custom": [
-            "https://www.yuque.com/achuan-2"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "文档树排序",
-          "DocTree Sort",
-          "自定义排序",
-          "Custom Sort"
-        ],
-        "minAppVersion": "3.0.12",
-        "name": "siyuan-plugin-doctree-autosort",
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-doctree-autosort",
-        "version": "0.0.5"
+        "disabledInPublish": false
       }
     },
     {
@@ -14025,39 +14025,39 @@
       "size": 35043,
       "installSize": 46252,
       "package": {
+        "name": "siyuan_plugin_setting_sync",
         "author": "崮生",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "en_US": "",
-          "zh_CN": ""
-        },
-        "disabledInPublish": false,
+        "url": "https://github.com/2234839/siyuan_plugin_setting_sync",
+        "version": "0.0.3",
+        "minAppVersion": "2.10.3",
         "displayName": {
           "en_US": "setting sync",
           "zh_CN": "思源设置同步"
         },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.net/a/llej0"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
+        "description": {
+          "en_US": "",
+          "zh_CN": ""
         },
-        "keywords": null,
-        "minAppVersion": "2.10.3",
-        "name": "siyuan_plugin_setting_sync",
         "readme": {
           "en_US": "README_en.md",
           "zh_CN": "README.md"
         },
-        "url": "https://github.com/2234839/siyuan_plugin_setting_sync",
-        "version": "0.0.3"
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/llej0"
+          ]
+        },
+        "keywords": null,
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": false
       }
     },
     {
@@ -15316,32 +15316,34 @@
       "size": 895985,
       "installSize": 3025754,
       "package": {
+        "name": "inbox",
         "author": "Zuoqiu Yingyi",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Chatroom style inbox, support multiple different devices in the local area network to share information through the browser.",
-          "zh_CHT": "聊天室樣式的內容收集箱，支持局域網中多個不同的設備通過瀏覽器共享信息。",
-          "zh_CN": "聊天室样式的内容收集箱，支持局域网中多个不同的设备通过浏览器共享信息。"
-        },
-        "disabledInPublish": false,
+        "url": "https://github.com/Zuoqiu-Yingyi/siyuan-plugin-inbox",
+        "version": "0.1.1",
+        "minAppVersion": "2.12.4",
         "displayName": {
           "default": "Inbox",
           "zh_CHT": "收集箱",
           "zh_CN": "收集箱"
         },
-        "frontends": [
-          "all"
-        ],
+        "description": {
+          "default": "Chatroom style inbox, support multiple different devices in the local area network to share information through the browser.",
+          "zh_CHT": "聊天室樣式的內容收集箱，支持局域網中多個不同的設備通過瀏覽器共享信息。",
+          "zh_CN": "聊天室样式的内容收集箱，支持局域网中多个不同的设备通过浏览器共享信息。"
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CHT": "README_zh_CN.md",
+          "zh_CN": "README_zh_CN.md"
+        },
         "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
           "custom": [
             "https://afdian.net/a/zuoqiu",
             "https://ko-fi.com/zuoqiu"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
+          ]
         },
         "keywords": [
           "收集箱",
@@ -15358,15 +15360,13 @@
           "IM",
           "CRDT"
         ],
-        "minAppVersion": "2.12.4",
-        "name": "inbox",
-        "readme": {
-          "default": "README.md",
-          "zh_CHT": "README_zh_CN.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/Zuoqiu-Yingyi/siyuan-plugin-inbox",
-        "version": "0.1.1"
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": false
       }
     },
     {
@@ -15904,29 +15904,29 @@
       "size": 41604496,
       "installSize": 44234336,
       "package": {
+        "name": "siyuan-genshin-launcher",
         "author": "HowcanoeWang",
-        "backends": [
-          "windows",
-          "darwin",
-          "linux"
-        ],
-        "description": {
-          "default": "Why should your next Genshin be a Genshin?",
-          "zh_CN": "你的下一款原神，何必是原神"
-        },
-        "disabledInPublish": false,
+        "url": "https://github.com/HowcanoeWang/siyuan-genshin-launcher",
+        "version": "4.1.2",
+        "minAppVersion": "2.10.2",
         "displayName": {
           "default": "Genshin launcher",
           "zh_CN": "源神，启动！"
         },
-        "frontends": [
-          "desktop"
-        ],
+        "description": {
+          "default": "Why should your next Genshin be a Genshin?",
+          "zh_CN": "你的下一款原神，何必是原神"
+        },
+        "readme": {
+          "default": "README_en_US.md",
+          "en_US": "README_en_US.md",
+          "zh_CN": "README.md"
+        },
         "funding": {
-          "custom": [],
-          "github": "",
           "openCollective": "",
-          "patreon": ""
+          "patreon": "",
+          "github": "",
+          "custom": []
         },
         "keywords": [
           "美化",
@@ -15936,15 +15936,15 @@
           "看板娘",
           "Waifu"
         ],
-        "minAppVersion": "2.10.2",
-        "name": "siyuan-genshin-launcher",
-        "readme": {
-          "default": "README_en_US.md",
-          "en_US": "README_en_US.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/HowcanoeWang/siyuan-genshin-launcher",
-        "version": "4.1.2"
+        "backends": [
+          "windows",
+          "darwin",
+          "linux"
+        ],
+        "frontends": [
+          "desktop"
+        ],
+        "disabledInPublish": false
       }
     },
     {
@@ -16368,37 +16368,37 @@
       "size": 44751,
       "installSize": 63447,
       "package": {
+        "name": "siyuan-plugin-memo",
         "author": "zxhd863943427",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "zh_CN": "备注增强"
-        },
-        "disabledInPublish": false,
+        "url": "https://github.com/zxhd863943427/siyuan-plugin-memo",
+        "version": "0.0.6",
+        "minAppVersion": "2.9.5",
         "displayName": {
           "en_US": "siyuan memo",
           "zh_CN": "备注增强"
         },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.net/a/zxhd86"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
+        "description": {
+          "zh_CN": "备注增强"
         },
-        "keywords": null,
-        "minAppVersion": "2.9.5",
-        "name": "siyuan-plugin-memo",
         "readme": {
           "zh_CN": "README_zh_CN.md"
         },
-        "url": "https://github.com/zxhd863943427/siyuan-plugin-memo",
-        "version": "0.0.6"
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.net/a/zxhd86"
+          ]
+        },
+        "keywords": null,
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": false
       }
     },
     {
