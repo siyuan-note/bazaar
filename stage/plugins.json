@@ -50,7 +50,7 @@
     {
       "url": "Achuan-2/siyuan-plugin-task-note-management@3beb5064c3aed0df893c9a8628912661a49d5e72",
       "updated": "2026-02-25T02:04:53Z",
-      "stars": 156,
+      "stars": 157,
       "openIssues": 5,
       "size": 6910678,
       "installSize": 11018289,
@@ -7004,41 +7004,41 @@
       "size": 81173,
       "installSize": 108230,
       "package": {
-        "name": "siyuan-arxiv-paper-download",
         "author": "Jasaxion(BaiBo)",
-        "url": "https://github.com/Jasaxion/siyuan-arxiv-paper-download",
-        "version": "0.1.5",
-        "minAppVersion": "3.3.0",
-        "displayName": {
-          "default": "arXiv Paper Downloader",
-          "zh_CN": "arXiv 论文下载器"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "default": "Insert and download arXiv papers directly into SiYuan.",
           "zh_CN": "在思源笔记中直接插入并下载 arXiv 论文 PDF。"
         },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "arXiv Paper Downloader",
+          "zh_CN": "arXiv 论文下载器"
         },
+        "frontends": [
+          "all"
+        ],
         "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
           "custom": [
             "https://github.com/Jasaxion"
-          ]
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
         },
         "keywords": [
           "pdf"
         ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": true
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-arxiv-paper-download",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/Jasaxion/siyuan-arxiv-paper-download",
+        "version": "0.1.5"
       }
     },
     {
