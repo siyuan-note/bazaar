@@ -1,6 +1,99 @@
 {
   "repos": [
     {
+      "url": "5kyfkr/siyuan-plugin-task-horizon@bc7e16112b8d568de287844ec2725c439efb8836",
+      "updated": "2026-02-26T05:53:21Z",
+      "stars": 3,
+      "openIssues": 0,
+      "size": 736917,
+      "installSize": 2970632,
+      "package": {
+        "name": "siyuan-plugin-task-horizon",
+        "author": "5kyfkr",
+        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
+        "version": "1.5.4",
+        "minAppVersion": "3.5.0",
+        "displayName": {
+          "default": "Task Horizon",
+          "zh_CN": "任务管理器"
+        },
+        "description": {
+          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
+          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持白板/时间轴/日历/看板/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动"
+        },
+        "readme": {
+          "default": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ]
+        },
+        "keywords": [
+          "task",
+          "manager",
+          "filter"
+        ],
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": true
+      }
+    },
+    {
+      "url": "royc01/pinch@423b2b238f0495f33a4cb8e6d7049d72c9649af5",
+      "updated": "2026-02-26T04:57:44Z",
+      "stars": 2,
+      "openIssues": 1,
+      "size": 236850,
+      "installSize": 631921,
+      "package": {
+        "name": "pinch",
+        "author": "Roy",
+        "url": "https://github.com/royc01/pinch",
+        "version": "2.0.2",
+        "minAppVersion": "2.10.14",
+        "displayName": {
+          "default": "Pinch Habit",
+          "zh_CN": "片趣打卡"
+        },
+        "description": {
+          "default": "A habit tracking plugin for SiYuan",
+          "zh_CN": "每一次微小的坚持都值得记录"
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://afdian.com/a/Savor"
+          ]
+        },
+        "keywords": [
+          "habit",
+          "tracker",
+          "check-in"
+        ],
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": true
+      }
+    },
+    {
       "url": "b8l8u8e8/siyuan-plugin-emoji-market@ba9ef59007361edb4934e126806d80cb9ac8c666",
       "updated": "2026-02-26T04:34:29Z",
       "stars": 4,
@@ -29,52 +122,6 @@
         "keywords": [
           "图标",
           "表情"
-        ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": true
-      }
-    },
-    {
-      "url": "5kyfkr/siyuan-plugin-task-horizon@4f9a970be007993d6a2957ef03725b8d2e2444a5",
-      "updated": "2026-02-25T18:40:43Z",
-      "stars": 3,
-      "openIssues": 0,
-      "size": 736599,
-      "installSize": 2969895,
-      "package": {
-        "name": "siyuan-plugin-task-horizon",
-        "author": "5kyfkr",
-        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "1.5.3",
-        "minAppVersion": "3.5.0",
-        "displayName": {
-          "default": "Task Horizon",
-          "zh_CN": "任务管理器"
-        },
-        "description": {
-          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
-          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持白板/时间轴/日历/看板/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动"
-        },
-        "readme": {
-          "default": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ]
-        },
-        "keywords": [
-          "task",
-          "manager",
-          "filter"
         ],
         "backends": [
           "all"
@@ -381,53 +428,6 @@
           "all"
         ],
         "disabledInPublish": false
-      }
-    },
-    {
-      "url": "royc01/pinch@9f91371428f5153acb0c78e6c25d8d51d9977b8a",
-      "updated": "2026-02-25T04:33:50Z",
-      "stars": 2,
-      "openIssues": 1,
-      "size": 235577,
-      "installSize": 628450,
-      "package": {
-        "name": "pinch",
-        "author": "Roy",
-        "url": "https://github.com/royc01/pinch",
-        "version": "2.0.1",
-        "minAppVersion": "2.10.14",
-        "displayName": {
-          "default": "Pinch Habit",
-          "zh_CN": "片趣打卡"
-        },
-        "description": {
-          "default": "A habit tracking plugin for SiYuan",
-          "zh_CN": "每一次微小的坚持都值得记录"
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.com/a/Savor"
-          ]
-        },
-        "keywords": [
-          "habit",
-          "tracker",
-          "check-in"
-        ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": true
       }
     },
     {
@@ -4252,36 +4252,7 @@
       "size": 97614,
       "installSize": 193794,
       "package": {
-        "name": "syspell",
         "author": "massivebox",
-        "url": "https://git.boxo.cc/massivebox/syspell",
-        "version": "0.4.2",
-        "minAppVersion": "3.0.12",
-        "displayName": {
-          "en_US": "SySpell - Grammar and Spell Checker"
-        },
-        "description": {
-          "en_US": "A fully featured grammar checker for SiYuan, like Grammarly or LanguageTool. Supports multiple languages and custom dictionaries. Completely free and open source."
-        },
-        "readme": {
-          "en_US": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://s.boxo.cc/siyuan-plugin-donate"
-          ]
-        },
-        "keywords": [
-          "plugin",
-          "spelling",
-          "grammar",
-          "languagetool",
-          "grammarly",
-          "correction"
-        ],
         "backends": [
           "windows",
           "linux",
@@ -4291,6 +4262,13 @@
           "harmony",
           "docker"
         ],
+        "description": {
+          "en_US": "A fully featured grammar checker for SiYuan, like Grammarly or LanguageTool. Supports multiple languages and custom dictionaries. Completely free and open source."
+        },
+        "disabledInPublish": false,
+        "displayName": {
+          "en_US": "SySpell - Grammar and Spell Checker"
+        },
         "frontends": [
           "desktop",
           "mobile",
@@ -4298,7 +4276,29 @@
           "browser-mobile",
           "desktop-window"
         ],
-        "disabledInPublish": false
+        "funding": {
+          "custom": [
+            "https://s.boxo.cc/siyuan-plugin-donate"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "plugin",
+          "spelling",
+          "grammar",
+          "languagetool",
+          "grammarly",
+          "correction"
+        ],
+        "minAppVersion": "3.0.12",
+        "name": "syspell",
+        "readme": {
+          "en_US": "README.md"
+        },
+        "url": "https://git.boxo.cc/massivebox/syspell",
+        "version": "0.4.2"
       }
     },
     {
