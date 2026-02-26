@@ -1905,29 +1905,29 @@
       "size": 652685,
       "installSize": 2174803,
       "package": {
-        "name": "sy-f-misc",
         "author": "frostime",
-        "url": "https://github.com/frostime/sy-f-misc",
-        "version": "7.9.4",
-        "minAppVersion": "3.1.20",
-        "displayName": {
-          "en_US": "F\u0026#39;s Toolbox",
-          "zh_CN": "F\u0026#39;s 工具箱"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "en_US": "Personal tools. GPT Chat (API Key) | Toggl | Reference | Md Process | Zotero...",
           "zh_CN": "个人插件合集. GPT 对话 (API Key) | Toggl | 引用管理 | Md 处理 | Zotero..."
         },
-        "readme": {
-          "default": "README.md"
+        "disabledInPublish": false,
+        "displayName": {
+          "en_US": "F\u0026#39;s Toolbox",
+          "zh_CN": "F\u0026#39;s 工具箱"
         },
+        "frontends": [
+          "all"
+        ],
         "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
           "custom": [
             "https://afdian.com/a/frostime"
-          ]
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
         },
         "keywords": [
           "frostime",
@@ -1940,13 +1940,13 @@
           "fs",
           "fmisc"
         ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": false
+        "minAppVersion": "3.1.20",
+        "name": "sy-f-misc",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/frostime/sy-f-misc",
+        "version": "7.9.4"
       }
     },
     {
@@ -4563,36 +4563,7 @@
       "size": 23613,
       "installSize": 58294,
       "package": {
-        "name": "plugin-sample",
         "author": "Vanessa",
-        "url": "https://github.com/siyuan-note/plugin-sample",
-        "version": "0.4.5",
-        "minAppVersion": "3.5.3",
-        "displayName": {
-          "default": "Plugin Sample",
-          "zh_CN": "插件示例"
-        },
-        "description": {
-          "default": "This is a plugin development sample",
-          "zh_CN": "这是一个插件开发示例"
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://ld246.com/sponsor"
-          ]
-        },
-        "keywords": [
-          "开发者参考",
-          "developer reference",
-          "示例插件"
-        ],
         "backends": [
           "windows",
           "linux",
@@ -4603,6 +4574,15 @@
           "docker",
           "all"
         ],
+        "description": {
+          "default": "This is a plugin development sample",
+          "zh_CN": "这是一个插件开发示例"
+        },
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "Plugin Sample",
+          "zh_CN": "插件示例"
+        },
         "frontends": [
           "desktop",
           "mobile",
@@ -4611,7 +4591,27 @@
           "desktop-window",
           "all"
         ],
-        "disabledInPublish": false
+        "funding": {
+          "custom": [
+            "https://ld246.com/sponsor"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "开发者参考",
+          "developer reference",
+          "示例插件"
+        ],
+        "minAppVersion": "3.5.3",
+        "name": "plugin-sample",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/siyuan-note/plugin-sample",
+        "version": "0.4.5"
       }
     },
     {
@@ -6334,30 +6334,29 @@
       "size": 14551521,
       "installSize": 15189782,
       "package": {
-        "name": "siyuan-ttf-HarmonyOS_Sans_SC-and-Twemoji",
         "author": "TCOTC",
-        "url": "https://github.com/TCOTC/siyuan-ttf-HarmonyOS_Sans_SC-and-Twemoji",
-        "version": "1.2.4",
-        "minAppVersion": "3.2.0",
-        "displayName": {
-          "default": "HarmonyOS Sans and Twemoji",
-          "zh_CN": "鸿蒙黑体(简)和 Twemoji"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "default": "HarmonyOS Sans \u0026amp; Twemoji",
           "zh_CN": "HarmonyOS Sans SC \u0026amp; Twemoji"
         },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "HarmonyOS Sans and Twemoji",
+          "zh_CN": "鸿蒙黑体(简)和 Twemoji"
         },
+        "frontends": [
+          "all"
+        ],
         "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
           "custom": [
             "https://bento.me/jeffff"
-          ]
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
         },
         "keywords": [
           "font",
@@ -6368,13 +6367,14 @@
           "图标",
           "icon"
         ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": false
+        "minAppVersion": "3.2.0",
+        "name": "siyuan-ttf-HarmonyOS_Sans_SC-and-Twemoji",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/TCOTC/siyuan-ttf-HarmonyOS_Sans_SC-and-Twemoji",
+        "version": "1.2.4"
       }
     },
     {
@@ -7369,47 +7369,47 @@
       "size": 58634,
       "installSize": 73966,
       "package": {
-        "name": "sy-open-dir",
         "author": "frostime",
-        "url": "https://github.com/frostime/sy-open-dir",
-        "version": "0.4.0",
-        "minAppVersion": "3.0.12",
-        "displayName": {
-          "en_US": "Open Directory",
-          "zh_CN": "打开目录"
-        },
-        "description": {
-          "en_US": "Quickly open SiYuan directories in the local file system",
-          "zh_CN": "快速在本地文件系统中打开思源中的某些目录"
-        },
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            ""
-          ]
-        },
-        "keywords": [
-          "plugin",
-          "sample",
-          "插件样例"
-        ],
         "backends": [
           "windows",
           "linux",
           "darwin",
           "ios"
         ],
+        "description": {
+          "en_US": "Quickly open SiYuan directories in the local file system",
+          "zh_CN": "快速在本地文件系统中打开思源中的某些目录"
+        },
+        "disabledInPublish": false,
+        "displayName": {
+          "en_US": "Open Directory",
+          "zh_CN": "打开目录"
+        },
         "frontends": [
           "desktop",
           "desktop-window"
         ],
-        "disabledInPublish": false
+        "funding": {
+          "custom": [
+            ""
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "plugin",
+          "sample",
+          "插件样例"
+        ],
+        "minAppVersion": "3.0.12",
+        "name": "sy-open-dir",
+        "readme": {
+          "en_US": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/frostime/sy-open-dir",
+        "version": "0.4.0"
       }
     },
     {
@@ -7420,39 +7420,39 @@
       "size": 70331,
       "installSize": 88537,
       "package": {
-        "name": "sy-theme-change",
         "author": "frostime",
-        "url": "https://github.com/frostime/sy-theme-change",
-        "version": "0.4.0",
-        "minAppVersion": "3.2.0",
-        "displayName": {
-          "en_US": "Theme Change",
-          "zh_CN": "切换主题"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "en_US": "Quickly change the theme of SiYuan",
           "zh_CN": "一年逛两次海澜之家, 思源的衣柜 ～(￣▽￣～)(～￣▽￣)～"
         },
+        "disabledInPublish": false,
+        "displayName": {
+          "en_US": "Theme Change",
+          "zh_CN": "切换主题"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.net/a/frostime"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": null,
+        "minAppVersion": "3.2.0",
+        "name": "sy-theme-change",
         "readme": {
           "en_US": "README.md",
           "zh_CN": "README_zh_CN.md"
         },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.net/a/frostime"
-          ]
-        },
-        "keywords": null,
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": false
+        "url": "https://github.com/frostime/sy-theme-change",
+        "version": "0.4.0"
       }
     },
     {
@@ -10987,30 +10987,25 @@
       "size": 137652,
       "installSize": 269960,
       "package": {
-        "name": "siyuan-dailynote-today",
         "author": "frostime",
-        "url": "https://github.com/frostime/siyuan-dailynote-today",
-        "version": "1.8.3",
-        "minAppVersion": "3.1.7",
-        "displayName": {
-          "en_US": "Daily Note Today",
-          "zh_CN": "今日笔记"
-        },
+        "backends": null,
         "description": {
           "en_US": "Automatically open today\u0026#39;s notes + Quickly open today\u0026#39;s notes + TODO mangagement for today + Move blocks",
           "zh_CN": "自动创建日记 + 快速打开日记 + 日程 TODO 管理 + 移动块功能"
         },
-        "readme": {
-          "en_US": "README_en_US.md",
-          "zh_CN": "README.md"
+        "disabledInPublish": false,
+        "displayName": {
+          "en_US": "Daily Note Today",
+          "zh_CN": "今日笔记"
         },
+        "frontends": null,
         "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
           "custom": [
             "https://afdian.com/a/frostime"
-          ]
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
         },
         "keywords": [
           "dailynote",
@@ -11023,9 +11018,14 @@
           "预约",
           "reservation"
         ],
-        "backends": null,
-        "frontends": null,
-        "disabledInPublish": false
+        "minAppVersion": "3.1.7",
+        "name": "siyuan-dailynote-today",
+        "readme": {
+          "en_US": "README_en_US.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/frostime/siyuan-dailynote-today",
+        "version": "1.8.3"
       }
     },
     {
@@ -13746,42 +13746,42 @@
       "size": 85085,
       "installSize": 112424,
       "package": {
-        "name": "sy-eye-ease",
         "author": "frostime",
-        "url": "https://github.com/frostime/sy-eye-ease",
-        "version": "0.1.0",
-        "minAppVersion": "2.8.10",
-        "displayName": {
-          "en_US": "Ease You Eyes",
-          "zh_CN": "保护眼睛"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "en_US": "You need to protect your eyesight",
           "zh_CN": "保护眼睛, 从思源做起"
         },
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
+        "disabledInPublish": false,
+        "displayName": {
+          "en_US": "Ease You Eyes",
+          "zh_CN": "保护眼睛"
         },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.net/a/frostime"
-          ]
-        },
-        "keywords": null,
-        "backends": [
-          "all"
-        ],
         "frontends": [
           "desktop",
           "browser-desktop",
           "browser-mobile",
           "desktop-window"
         ],
-        "disabledInPublish": false
+        "funding": {
+          "custom": [
+            "https://afdian.net/a/frostime"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": null,
+        "minAppVersion": "2.8.10",
+        "name": "sy-eye-ease",
+        "readme": {
+          "en_US": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/frostime/sy-eye-ease",
+        "version": "0.1.0"
       }
     },
     {
@@ -14116,23 +14116,22 @@
       "size": 893819,
       "installSize": 929797,
       "package": {
-        "name": "siyuan-inbox-telegram-plugin",
         "author": "shady2k",
-        "url": "https://github.com/shady2k/siyuan-inbox-telegram-plugin",
-        "version": "0.2.0",
-        "minAppVersion": "3.0.0",
-        "displayName": {
-          "en_US": "Telegram Inbox",
-          "zh_CN": "电报收件箱"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "en_US": "SiYuan Telegram Inbox plugin",
           "zh_CN": "思源电报收件箱插件"
         },
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
+        "disabledInPublish": false,
+        "displayName": {
+          "en_US": "Telegram Inbox",
+          "zh_CN": "电报收件箱"
         },
+        "frontends": [
+          "all"
+        ],
         "funding": null,
         "keywords": [
           "inbox",
@@ -14142,13 +14141,14 @@
           "电报",
           "插件"
         ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": false
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-inbox-telegram-plugin",
+        "readme": {
+          "en_US": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/shady2k/siyuan-inbox-telegram-plugin",
+        "version": "0.2.0"
       }
     },
     {
@@ -14620,38 +14620,38 @@
       "size": 627975,
       "installSize": 1732511,
       "package": {
-        "name": "keep-incremental-learning-plugin",
         "author": "suka233",
-        "url": "https://github.com/suka233/siyuan-knote",
-        "version": "1.0.0",
-        "minAppVersion": "2.8.10",
-        "displayName": {
-          "en_US": "Keep Incremental Learning plugin",
-          "zh_CN": "KeepIncremental渐进式学习插件"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "en_US": "Virtual flashcard tree, automatic flashcard reading point, incremental learning",
           "zh_CN": "虚拟闪卡树，自动闪卡阅读点，渐进式学习"
         },
-        "readme": {
-          "zh_CN": "README.md"
+        "disabledInPublish": false,
+        "displayName": {
+          "en_US": "Keep Incremental Learning plugin",
+          "zh_CN": "KeepIncremental渐进式学习插件"
         },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://wj.qq.com/s2/12591272/adf1/"
-          ]
-        },
-        "keywords": null,
-        "backends": [
-          "all"
-        ],
         "frontends": [
           "all"
         ],
-        "disabledInPublish": false
+        "funding": {
+          "custom": [
+            "https://wj.qq.com/s2/12591272/adf1/"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": null,
+        "minAppVersion": "2.8.10",
+        "name": "keep-incremental-learning-plugin",
+        "readme": {
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/suka233/siyuan-knote",
+        "version": "1.0.0"
       }
     },
     {
@@ -15077,30 +15077,29 @@
       "size": 35062,
       "installSize": 43688,
       "package": {
-        "name": "siyuan-css-hide-bookmark-icon",
         "author": "TCOTC",
-        "url": "https://github.com/TCOTC/siyuan-css-hide-bookmark-icon",
-        "version": "0.1.0",
-        "minAppVersion": "",
-        "displayName": {
-          "default": "Bookmark hide icon",
-          "zh_CN": "书签隐藏图标"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "default": "Hide the icon in front of the bookmark in the bookmark",
           "zh_CN": "在书签中隐藏书签前的图标"
         },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "Bookmark hide icon",
+          "zh_CN": "书签隐藏图标"
         },
+        "frontends": [
+          "all"
+        ],
         "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
           "custom": [
             "https://afdian.net/a/JeffreyChen"
-          ]
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
         },
         "keywords": [
           "书签",
@@ -15113,13 +15112,14 @@
           "hide",
           "icon"
         ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": false
+        "minAppVersion": "",
+        "name": "siyuan-css-hide-bookmark-icon",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/TCOTC/siyuan-css-hide-bookmark-icon",
+        "version": "0.1.0"
       }
     },
     {
@@ -15533,45 +15533,45 @@
       "size": 121335,
       "installSize": 371083,
       "package": {
-        "name": "sy-insert-weather",
         "author": "owlright",
-        "url": "https://github.com/owlright/sy-insert-weather",
-        "version": "0.0.1",
-        "minAppVersion": "2.12.3",
-        "displayName": {
-          "default": "Insert current weather",
-          "zh_CN": "插入天气"
-        },
-        "description": {
-          "default": "Insert the weather based on current time and location",
-          "zh_CN": "插入当前时间当前位置的天气"
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://github.com/owlright"
-          ]
-        },
-        "keywords": [
-          "weather",
-          "天气"
-        ],
         "backends": [
           "windows",
           "linux",
           "darwin"
         ],
+        "description": {
+          "default": "Insert the weather based on current time and location",
+          "zh_CN": "插入当前时间当前位置的天气"
+        },
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "Insert current weather",
+          "zh_CN": "插入天气"
+        },
         "frontends": [
           "desktop",
           "desktop-window"
         ],
-        "disabledInPublish": false
+        "funding": {
+          "custom": [
+            "https://github.com/owlright"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "weather",
+          "天气"
+        ],
+        "minAppVersion": "2.12.3",
+        "name": "sy-insert-weather",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/owlright/sy-insert-weather",
+        "version": "0.0.1"
       }
     },
     {
