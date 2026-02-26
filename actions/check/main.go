@@ -448,6 +448,21 @@ func checkRepo(
 				if !attrsCheckResult.Name.Valid {
 					logger.Warnf("repo [%s] name [%s] is not equal to repo name [%s]", repoPath, attrsCheckResult.Name.Value, repoName)
 				}
+				if attrsCheckResult.Name.Valid {
+					switch resourceType {
+					case themes:
+						if isNameInBuiltinList(attrsCheckResult.Name.Value, BuiltinThemeNames) {
+							attrsCheckResult.Name.Valid = false
+							logger.Warnf("repo [%s] theme name [%s] conflicts with built-in theme %v", repoPath, attrsCheckResult.Name.Value, BuiltinThemeNames)
+						}
+					case icons:
+						if isNameInBuiltinList(attrsCheckResult.Name.Value, BuiltinIconNames) {
+							attrsCheckResult.Name.Valid = false
+							logger.Warnf("repo [%s] icon name [%s] conflicts with built-in icon %v", repoPath, attrsCheckResult.Name.Value, BuiltinIconNames)
+						}
+					default:
+					}
+				}
 			} else {
 				logger.Warnf("repo [%s] name [%s] is invalid", repoPath, attrsCheckResult.Name.Value)
 			}
