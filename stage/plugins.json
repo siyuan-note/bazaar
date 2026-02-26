@@ -547,7 +547,7 @@
       "url": "shuojie819/siyuan-floating-toc-plugin@e7ec9b66cccda8c985ef54cb26492dded5c54e6a",
       "updated": "2026-02-24T18:13:16Z",
       "stars": 8,
-      "openIssues": 4,
+      "openIssues": 5,
       "size": 180920,
       "installSize": 269001,
       "package": {
@@ -1374,7 +1374,7 @@
     {
       "url": "5kyfkr/siyuan-plugin-docktomato@5d1fdd619e1b661a24a8ff84fda4f02d96d99873",
       "updated": "2026-02-15T17:46:26Z",
-      "stars": 3,
+      "stars": 4,
       "openIssues": 0,
       "size": 415096,
       "installSize": 1567865,
@@ -4252,37 +4252,27 @@
       "size": 97614,
       "installSize": 193794,
       "package": {
+        "name": "syspell",
         "author": "massivebox",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "description": {
-          "en_US": "A fully featured grammar checker for SiYuan, like Grammarly or LanguageTool. Supports multiple languages and custom dictionaries. Completely free and open source."
-        },
-        "disabledInPublish": false,
+        "url": "https://git.boxo.cc/massivebox/syspell",
+        "version": "0.4.2",
+        "minAppVersion": "3.0.12",
         "displayName": {
           "en_US": "SySpell - Grammar and Spell Checker"
         },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
+        "description": {
+          "en_US": "A fully featured grammar checker for SiYuan, like Grammarly or LanguageTool. Supports multiple languages and custom dictionaries. Completely free and open source."
+        },
+        "readme": {
+          "en_US": "README.md"
+        },
         "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
           "custom": [
             "https://s.boxo.cc/siyuan-plugin-donate"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
+          ]
         },
         "keywords": [
           "plugin",
@@ -4292,13 +4282,23 @@
           "grammarly",
           "correction"
         ],
-        "minAppVersion": "3.0.12",
-        "name": "syspell",
-        "readme": {
-          "en_US": "README.md"
-        },
-        "url": "https://git.boxo.cc/massivebox/syspell",
-        "version": "0.4.2"
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "disabledInPublish": false
       }
     },
     {
