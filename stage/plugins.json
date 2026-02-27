@@ -1,6 +1,109 @@
 {
   "repos": [
     {
+      "url": "5kyfkr/siyuan-plugin-docktomato@7a42895dd6610e518c9024ddb1664bf387a5f1e8",
+      "updated": "2026-02-27T14:07:12Z",
+      "stars": 4,
+      "openIssues": 0,
+      "size": 415162,
+      "installSize": 1568177,
+      "package": {
+        "name": "siyuan-plugin-docktomato",
+        "author": "5kyfkr",
+        "url": "https://github.com/5kyfkr/siyuan-plugin-docktomato",
+        "version": "1.7.8",
+        "minAppVersion": "3.0.12",
+        "displayName": {
+          "default": "Dock Tomato",
+          "zh_CN": "底栏番茄钟"
+        },
+        "description": {
+          "default": "A dock Tomato Timer for SiYuan.",
+          "zh_CN": "思源底栏番茄钟：支持时间轴视图/任务提醒/日常事务记录/多端状态同步/移动端/数据库联动/块绑定/历史记录/任务管理器联动"
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "funding": null,
+        "keywords": [
+          "tomato",
+          "timer",
+          "pomodoro",
+          "dock"
+        ],
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": false
+      }
+    },
+    {
+      "url": "zxkmm/siyuan_doctree_fake_subfolder@fcc4a03b8daf33054355e7478c65bd21104eea4d",
+      "updated": "2026-02-27T13:49:25Z",
+      "stars": 60,
+      "openIssues": 11,
+      "size": 56215,
+      "installSize": 85325,
+      "package": {
+        "name": "siyuan_doctree_fake_subfolder",
+        "author": "zxkmm",
+        "url": "https://github.com/zxkmm/siyuan_doctree_fake_subfolder",
+        "version": "2.0.9",
+        "minAppVersion": "3.0.12",
+        "displayName": {
+          "en_US": "Doctree Fake Subfolder Natural Expand",
+          "zh_CN": "多层笔记本自然展开"
+        },
+        "description": {
+          "en_US": "Provide capabilities to create nested folders in doctree",
+          "zh_CN": "让文档树有自然展开的能力，类似于嵌套多层笔记本，就像文件资源管理器中的文件夹一样"
+        },
+        "readme": {
+          "en_US": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://zxkmm.com/donate"
+          ]
+        },
+        "keywords": [
+          "siyuan_doctree_fake_subfolder",
+          "zxkmm",
+          "文档树",
+          "笔记本",
+          "嵌套",
+          "子文档",
+          "展开",
+          "自然"
+        ],
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "disabledInPublish": false
+      }
+    },
+    {
       "url": "Achuan-2/siyuan-plugin-task-note-management@919cf5fd4fd06d5e96fae6d981b8ff31960e7615",
       "updated": "2026-02-27T11:56:46Z",
       "stars": 161,
@@ -1360,68 +1463,6 @@
       }
     },
     {
-      "url": "zxkmm/siyuan_doctree_fake_subfolder@9ef46d782b213caae5d2063e25490c980ba8dd2f",
-      "updated": "2026-02-18T02:47:38Z",
-      "stars": 60,
-      "openIssues": 12,
-      "size": 56197,
-      "installSize": 85179,
-      "package": {
-        "name": "siyuan_doctree_fake_subfolder",
-        "author": "zxkmm",
-        "url": "https://github.com/zxkmm/siyuan_doctree_fake_subfolder",
-        "version": "2.0.8",
-        "minAppVersion": "3.0.12",
-        "displayName": {
-          "en_US": "Doctree Fake Subfolder Natural Expand",
-          "zh_CN": "多层笔记本自然展开"
-        },
-        "description": {
-          "en_US": "Provide capabilities to create nested folders in doctree",
-          "zh_CN": "让文档树有自然展开的能力，类似于嵌套多层笔记本，就像文件资源管理器中的文件夹一样"
-        },
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://zxkmm.com/donate"
-          ]
-        },
-        "keywords": [
-          "siyuan_doctree_fake_subfolder",
-          "zxkmm",
-          "文档树",
-          "笔记本",
-          "嵌套",
-          "子文档",
-          "展开",
-          "自然"
-        ],
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "disabledInPublish": false
-      }
-    },
-    {
       "url": "lk251066/siyuan-copilot-codex@0cd011626c54069fafcaae63b82315bf631c634b",
       "updated": "2026-02-16T07:33:54Z",
       "stars": 2,
@@ -1448,47 +1489,6 @@
         },
         "funding": null,
         "keywords": [],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": false
-      }
-    },
-    {
-      "url": "5kyfkr/siyuan-plugin-docktomato@5d1fdd619e1b661a24a8ff84fda4f02d96d99873",
-      "updated": "2026-02-15T17:46:26Z",
-      "stars": 4,
-      "openIssues": 0,
-      "size": 415096,
-      "installSize": 1567865,
-      "package": {
-        "name": "siyuan-plugin-docktomato",
-        "author": "5kyfkr",
-        "url": "https://github.com/5kyfkr/siyuan-plugin-docktomato",
-        "version": "1.7.7",
-        "minAppVersion": "3.0.12",
-        "displayName": {
-          "default": "Dock Tomato",
-          "zh_CN": "底栏番茄钟"
-        },
-        "description": {
-          "default": "A dock Tomato Timer for SiYuan.",
-          "zh_CN": "思源底栏番茄钟：支持时间轴视图/任务提醒/日常事务记录/多端状态同步/移动端/数据库联动/块绑定/历史记录/任务管理器联动"
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "funding": null,
-        "keywords": [
-          "tomato",
-          "timer",
-          "pomodoro",
-          "dock"
-        ],
         "backends": [
           "all"
         ],
