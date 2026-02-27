@@ -417,7 +417,7 @@
     {
       "url": "5kyfkr/siyuan-plugin-task-horizon@bc7e16112b8d568de287844ec2725c439efb8836",
       "updated": "2026-02-26T05:53:21Z",
-      "stars": 5,
+      "stars": 6,
       "openIssues": 0,
       "size": 736917,
       "installSize": 2970632,
@@ -5750,7 +5750,7 @@
       "url": "ebAobS/roaming-mode-incremental-reading@a8759e2cb7c273929432423be27fa65bf7f01e53",
       "updated": "2025-11-26T08:31:26Z",
       "stars": 46,
-      "openIssues": 1,
+      "openIssues": 0,
       "size": 1499210,
       "installSize": 1506404,
       "package": {
@@ -6011,7 +6011,7 @@
     {
       "url": "WingDr/siyuan-plugin-citation@418452d2c48202b6803bc45aa422aa0fd515fdc9",
       "updated": "2025-11-12T10:23:43Z",
-      "stars": 70,
+      "stars": 71,
       "openIssues": 13,
       "size": 1733059,
       "installSize": 3330768,
@@ -7309,31 +7309,33 @@
       "size": 10617,
       "installSize": 26109,
       "package": {
+        "name": "top-bar-text",
         "author": "TCOTC",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Display text and countdown in the top bar",
-          "zh_CHT": "在頂欄顯示文本、倒計時",
-          "zh_CN": "在顶栏显示文本、倒计时"
-        },
-        "disabledInPublish": false,
+        "url": "https://github.com/TCOTC/top-bar-text",
+        "version": "0.1.1",
+        "minAppVersion": "3.1.10",
         "displayName": {
           "default": "Top Bar Text",
           "zh_CHT": "頂欄文本",
           "zh_CN": "顶栏文本"
         },
-        "frontends": [
-          "all"
-        ],
+        "description": {
+          "default": "Display text and countdown in the top bar",
+          "zh_CHT": "在頂欄顯示文本、倒計時",
+          "zh_CN": "在顶栏显示文本、倒计时"
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CHT": "README_zh_CHT.md",
+          "zh_CN": "README_zh_CN.md"
+        },
         "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
           "custom": [
             "https://bento.me/jeffff"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
+          ]
         },
         "keywords": [
           "topbar",
@@ -7343,15 +7345,13 @@
           "time",
           "时间"
         ],
-        "minAppVersion": "3.1.10",
-        "name": "top-bar-text",
-        "readme": {
-          "default": "README.md",
-          "zh_CHT": "README_zh_CHT.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/TCOTC/top-bar-text",
-        "version": "0.1.1"
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": false
       }
     },
     {
@@ -7580,31 +7580,33 @@
       "size": 9572,
       "installSize": 22925,
       "package": {
+        "name": "select-opened-doc",
         "author": "TCOTC",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Select the opened doc and collapse other opened docs",
-          "zh_CHT": "定位打開的文檔，同時摺疊其他展開的文檔",
-          "zh_CN": "定位打开的文档，同时折叠其他展开的文档"
-        },
-        "disabledInPublish": false,
+        "url": "https://github.com/TCOTC/select-opened-doc",
+        "version": "0.2.0",
+        "minAppVersion": "3.3.2",
         "displayName": {
           "default": "Select Opened Doc",
           "zh_CHT": "定位打開的文檔",
           "zh_CN": "定位打开的文档"
         },
-        "frontends": [
-          "all"
-        ],
+        "description": {
+          "default": "Select the opened doc and collapse other opened docs",
+          "zh_CHT": "定位打開的文檔，同時摺疊其他展開的文檔",
+          "zh_CN": "定位打开的文档，同时折叠其他展开的文档"
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CHT": "README_zh_CHT.md",
+          "zh_CN": "README_zh_CN.md"
+        },
         "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
           "custom": [
             "https://bento.me/jeffff"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
+          ]
         },
         "keywords": [
           "expand doc tree",
@@ -7614,15 +7616,13 @@
           "展开文档树",
           "折叠文档树"
         ],
-        "minAppVersion": "3.3.2",
-        "name": "select-opened-doc",
-        "readme": {
-          "default": "README.md",
-          "zh_CHT": "README_zh_CHT.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/TCOTC/select-opened-doc",
-        "version": "0.2.0"
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": false
       }
     },
     {
