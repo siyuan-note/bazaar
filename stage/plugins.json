@@ -12777,35 +12777,35 @@
       "size": 167563,
       "installSize": 477752,
       "package": {
-        "name": "siyuan-plugin-flash-enhance",
         "author": "zxhd863943427",
-        "url": "https://github.com/zxhd863943427/siyuan-plugin-flash-enhance",
-        "version": "0.1.4",
-        "minAppVersion": "2.9.3",
-        "displayName": {
-          "default": "flash-enhance",
-          "zh_CN": "闪卡增强"
-        },
+        "backends": null,
         "description": {
           "default": "This plugin can make the card-making experience in Siyuan as smooth as clouds and flowing water.Supports incremental reading flow.",
           "zh_CN": "使思源制卡的体验行云流水般流畅, 支持渐进式阅读流程、图片制卡"
         },
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "flash-enhance",
+          "zh_CN": "闪卡增强"
+        },
+        "frontends": null,
+        "funding": {
+          "custom": [
+            "https://afdian.net/a/zxhd86"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": null,
+        "minAppVersion": "2.9.3",
+        "name": "siyuan-plugin-flash-enhance",
         "readme": {
           "default": "README.md",
           "zh_CN": "README_zh_CN.md"
         },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.net/a/zxhd86"
-          ]
-        },
-        "keywords": null,
-        "backends": null,
-        "frontends": null,
-        "disabledInPublish": false
+        "url": "https://github.com/zxhd863943427/siyuan-plugin-flash-enhance",
+        "version": "0.1.4"
       }
     },
     {
@@ -14152,34 +14152,34 @@
       "size": 9214338,
       "installSize": 39714486,
       "package": {
-        "name": "monaco-editor",
         "author": "Zuoqiu Yingyi",
-        "url": "https://github.com/Zuoqiu-Yingyi/siyuan-plugin-monaco-editor",
-        "version": "0.2.5",
-        "minAppVersion": "3.0.12",
-        "displayName": {
-          "default": "Integrated Edit Environment",
-          "zh_CHT": "集成編輯環境",
-          "zh_CN": "集成编辑环境"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "default": "A file editing tool integrating \u003ca href=\"https://microsoft.github.io/monaco-editor/\" rel=\"nofollow\"\u003eMonaco Editor\u003c/a\u003e.",
           "zh_CHT": "一個集成了 \u003ca href=\"https://microsoft.github.io/monaco-editor/\" rel=\"nofollow\"\u003eMonaco Editor\u003c/a\u003e 的文件編輯工具。",
           "zh_CN": "一个集成了 \u003ca href=\"https://microsoft.github.io/monaco-editor/\" rel=\"nofollow\"\u003eMonaco Editor\u003c/a\u003e 的文件编辑工具。"
         },
-        "readme": {
-          "default": "README.md",
-          "zh_CHT": "README_zh_CN.md",
-          "zh_CN": "README_zh_CN.md"
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "Integrated Edit Environment",
+          "zh_CHT": "集成編輯環境",
+          "zh_CN": "集成编辑环境"
         },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop"
+        ],
         "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
           "custom": [
             "https://afdian.net/a/zuoqiu",
             "https://ko-fi.com/zuoqiu"
-          ]
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
         },
         "keywords": [
           "代码",
@@ -14217,15 +14217,15 @@
           "上傳",
           "upload"
         ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop"
-        ],
-        "disabledInPublish": false
+        "minAppVersion": "3.0.12",
+        "name": "monaco-editor",
+        "readme": {
+          "default": "README.md",
+          "zh_CHT": "README_zh_CN.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/Zuoqiu-Yingyi/siyuan-plugin-monaco-editor",
+        "version": "0.2.5"
       }
     },
     {
