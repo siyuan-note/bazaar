@@ -1,10 +1,51 @@
 {
   "repos": [
     {
+      "url": "famotime/siyuan-doc-assist@bfedac33d54957994f57dcc81c1ddfe45f699b8e",
+      "updated": "2026-02-28T12:31:36Z",
+      "stars": 0,
+      "openIssues": 0,
+      "size": 113847,
+      "installSize": 205600,
+      "package": {
+        "name": "siyuan-doc-assist",
+        "author": "Quincy Zou",
+        "url": "https://github.com/famotime/siyuan-doc-assist",
+        "version": "1.2.8",
+        "minAppVersion": "3.5.7",
+        "displayName": {
+          "default": "文档助手 / Doc Assist",
+          "en_US": "Doc Assist",
+          "zh_CN": "文档助手"
+        },
+        "description": {
+          "default": "SiYuan Notes plugin, which provides functions such as extracting key content of documents, quickly organizing backlinked documents, and quickly editing document content.",
+          "zh_CN": "思源笔记插件，提供文档关键内容提取、反链文档快捷整理、文档内容快捷编辑等功能。"
+        },
+        "readme": {
+          "default": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": []
+        },
+        "keywords": [],
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": true
+      }
+    },
+    {
       "url": "Achuan-2/siyuan-plugin-copilot@4dc8efb0321158579a687b0b08e361ede83a296d",
       "updated": "2026-02-28T10:00:10Z",
-      "stars": 58,
-      "openIssues": 8,
+      "stars": 59,
+      "openIssues": 7,
       "size": 449398,
       "installSize": 1095663,
       "package": {
@@ -5041,46 +5082,46 @@
       "size": 25871,
       "installSize": 55349,
       "package": {
+        "name": "install-package",
         "author": "TCOTC",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Install the specified GitHub repository marketplace package Release",
-          "zh_CN": "安装指定 GitHub 仓库的集市包 Release"
-        },
-        "disabledInPublish": true,
+        "url": "https://github.com/TCOTC/install-package",
+        "version": "0.3.0",
+        "minAppVersion": "3.5.0",
         "displayName": {
           "default": "Install Marketplace Package",
           "zh_CN": "安装集市包"
         },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "browser-mobile"
-        ],
+        "description": {
+          "default": "Install the specified GitHub repository marketplace package Release",
+          "zh_CN": "安装指定 GitHub 仓库的集市包 Release"
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
         "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
           "custom": [
             "https://bento.me/jeffff"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
+          ]
         },
         "keywords": [
           "开发者工具",
           "developer tool"
         ],
-        "minAppVersion": "3.5.0",
-        "name": "install-package",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/TCOTC/install-package",
-        "version": "0.3.0"
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "disabledInPublish": true
       }
     },
     {
@@ -15013,29 +15054,30 @@
       "size": 33307,
       "installSize": 41591,
       "package": {
+        "name": "siyuan-css-image-block-centered",
         "author": "TCOTC",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Center the blocks containing images in the document",
-          "zh_CN": "居中显示文档中包含图片的块"
-        },
-        "disabledInPublish": false,
+        "url": "https://github.com/TCOTC/siyuan-css-image-block-centered",
+        "version": "0.1.0",
+        "minAppVersion": "",
         "displayName": {
           "default": "Center image block",
           "zh_CN": "居中图片块"
         },
-        "frontends": [
-          "all"
-        ],
+        "description": {
+          "default": "Center the blocks containing images in the document",
+          "zh_CN": "居中显示文档中包含图片的块"
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
         "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
           "custom": [
             "https://afdian.net/a/JeffreyChen"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
+          ]
         },
         "keywords": [
           "居中",
@@ -15046,14 +15088,13 @@
           "block",
           "picture"
         ],
-        "minAppVersion": "",
-        "name": "siyuan-css-image-block-centered",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/TCOTC/siyuan-css-image-block-centered",
-        "version": "0.1.0"
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": false
       }
     },
     {
