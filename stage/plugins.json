@@ -1,6 +1,52 @@
 {
   "repos": [
     {
+      "url": "5kyfkr/siyuan-plugin-task-horizon@84464b56f0320e333d3499fad9e3cfadce13b853",
+      "updated": "2026-02-28T18:15:41Z",
+      "stars": 6,
+      "openIssues": 0,
+      "size": 748523,
+      "installSize": 3034203,
+      "package": {
+        "name": "siyuan-plugin-task-horizon",
+        "author": "5kyfkr",
+        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
+        "version": "1.5.5",
+        "minAppVersion": "3.5.0",
+        "displayName": {
+          "default": "Task Horizon",
+          "zh_CN": "任务管理器"
+        },
+        "description": {
+          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
+          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持白板/时间轴/日历/看板/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动"
+        },
+        "readme": {
+          "default": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ]
+        },
+        "keywords": [
+          "task",
+          "manager",
+          "filter"
+        ],
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": true
+      }
+    },
+    {
       "url": "QYLexpired/Asri-enhance@084c55cc9b8fbc619069c83bcf868e145b237682",
       "updated": "2026-02-28T16:00:45Z",
       "stars": 4,
@@ -776,52 +822,6 @@
           "all"
         ],
         "disabledInPublish": false
-      }
-    },
-    {
-      "url": "5kyfkr/siyuan-plugin-task-horizon@bc7e16112b8d568de287844ec2725c439efb8836",
-      "updated": "2026-02-26T05:53:21Z",
-      "stars": 6,
-      "openIssues": 0,
-      "size": 736917,
-      "installSize": 2970632,
-      "package": {
-        "name": "siyuan-plugin-task-horizon",
-        "author": "5kyfkr",
-        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "1.5.4",
-        "minAppVersion": "3.5.0",
-        "displayName": {
-          "default": "Task Horizon",
-          "zh_CN": "任务管理器"
-        },
-        "description": {
-          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
-          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持白板/时间轴/日历/看板/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动"
-        },
-        "readme": {
-          "default": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ]
-        },
-        "keywords": [
-          "task",
-          "manager",
-          "filter"
-        ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": true
       }
     },
     {
@@ -2443,7 +2443,7 @@
       "url": "shenjinglei/siyuan-plugin-graph-enhance@5813df15fd2b44c863342374e692990768a1a8e2",
       "updated": "2026-02-01T09:16:10Z",
       "stars": 6,
-      "openIssues": 18,
+      "openIssues": 17,
       "size": 301220,
       "installSize": 667300,
       "package": {
@@ -4830,41 +4830,41 @@
       "size": 43615,
       "installSize": 96724,
       "package": {
-        "name": "siyuan-plugin-hsr-mdzz2048-fork",
         "author": "TCOTC",
-        "url": "https://github.com/TCOTC/siyuan-plugin-hsr-mdzz2048-fork",
-        "version": "0.9.1",
-        "minAppVersion": "3.1.0",
-        "displayName": {
-          "default": "Document Highlight Search",
-          "zh_CN": "文档高亮搜索"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "default": "Search in the current document and highlight the search results",
           "zh_CN": "在当前文档搜索，并高亮搜索结果"
         },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "Document Highlight Search",
+          "zh_CN": "文档高亮搜索"
         },
+        "frontends": [
+          "all"
+        ],
         "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
           "custom": [
             "https://bento.me/jeffff"
-          ]
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
         },
         "keywords": [
           "Ctrl+F"
         ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": false
+        "minAppVersion": "3.1.0",
+        "name": "siyuan-plugin-hsr-mdzz2048-fork",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/TCOTC/siyuan-plugin-hsr-mdzz2048-fork",
+        "version": "0.9.1"
       }
     },
     {
