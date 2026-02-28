@@ -1591,7 +1591,7 @@
       "url": "Macavity/siyuan-database-properties-panel@f4be58846994cbaa72b2ff07e8c85437ee7af89f",
       "updated": "2026-02-15T11:32:57Z",
       "stars": 15,
-      "openIssues": 0,
+      "openIssues": 1,
       "size": 390589,
       "installSize": 1117211,
       "package": {
@@ -14513,37 +14513,30 @@
       "size": 208518,
       "installSize": 433055,
       "package": {
+        "name": "siyuan-plugin-diff",
         "author": "dualwind",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android"
-        ],
-        "description": {
-          "en_US": "SiYuan plugin, Compare document differences and merge documents",
-          "zh_CN": "思源笔记插件，比较文档差异和合并文档"
-        },
-        "disabledInPublish": false,
+        "url": "https://github.com/etchnight/siyuan-plugin-diff",
+        "version": "0.2.3",
+        "minAppVersion": "3.0.0",
         "displayName": {
           "en_US": "diff and merge doc",
           "zh_CN": "比较与合并文档"
         },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
+        "description": {
+          "en_US": "SiYuan plugin, Compare document differences and merge documents",
+          "zh_CN": "思源笔记插件，比较文档差异和合并文档"
+        },
+        "readme": {
+          "en_US": "README_en_US.md",
+          "zh_CN": "README.md"
+        },
         "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
           "custom": [
             "https://afdian.net/a/dualwind"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
+          ]
         },
         "keywords": [
           "diff",
@@ -14552,14 +14545,21 @@
           "差异",
           "合并"
         ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-plugin-diff",
-        "readme": {
-          "en_US": "README_en_US.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/etchnight/siyuan-plugin-diff",
-        "version": "0.2.3"
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "disabledInPublish": false
       }
     },
     {
