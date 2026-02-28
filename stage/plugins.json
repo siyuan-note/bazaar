@@ -1591,7 +1591,7 @@
       "url": "Macavity/siyuan-database-properties-panel@f4be58846994cbaa72b2ff07e8c85437ee7af89f",
       "updated": "2026-02-15T11:32:57Z",
       "stars": 15,
-      "openIssues": 1,
+      "openIssues": 0,
       "size": 390589,
       "installSize": 1117211,
       "package": {
@@ -8082,31 +8082,29 @@
       "size": 436146,
       "installSize": 1493937,
       "package": {
-        "name": "siyuan-plugin-taskmap",
         "author": "LeonZ1998",
-        "url": "https://github.com/LeonZ1998/siyuan-plugin-taskmap",
-        "version": "1.1.5",
-        "minAppVersion": "2.10.0",
-        "displayName": {
-          "default": "TaskMap",
-          "en_US": "TaskMap",
-          "zh_CN": "TaskMap"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "default": "A modern task management plugin with project tracking, task organization, and focus timer",
           "en_US": "A modern task management plugin with project tracking, task organization, and focus timer",
           "zh_CN": "现代化的任务管理插件，支持项目管理、任务分组和专注计时"
         },
-        "readme": {
-          "default": "README_zh_CN.md",
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "TaskMap",
+          "en_US": "TaskMap",
+          "zh_CN": "TaskMap"
         },
+        "frontends": [
+          "all"
+        ],
         "funding": {
-          "openCollective": "",
-          "patreon": "",
+          "custom": [],
           "github": "",
-          "custom": []
+          "openCollective": "",
+          "patreon": ""
         },
         "keywords": [
           "task",
@@ -8115,13 +8113,15 @@
           "management",
           "productivity"
         ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": false
+        "minAppVersion": "2.10.0",
+        "name": "siyuan-plugin-taskmap",
+        "readme": {
+          "default": "README_zh_CN.md",
+          "en_US": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/LeonZ1998/siyuan-plugin-taskmap",
+        "version": "1.1.5"
       }
     },
     {
