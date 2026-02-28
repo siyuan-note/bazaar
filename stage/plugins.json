@@ -480,7 +480,7 @@
     {
       "url": "notesynchelper/siyuan-notehelper@033e5a2da333734ab748925fa96289037f46bec9",
       "updated": "2026-02-27T06:55:20Z",
-      "stars": 0,
+      "stars": 1,
       "openIssues": 1,
       "size": 146029,
       "installSize": 306442,
@@ -7181,41 +7181,41 @@
       "size": 81173,
       "installSize": 108230,
       "package": {
-        "name": "siyuan-arxiv-paper-download",
         "author": "Jasaxion(BaiBo)",
-        "url": "https://github.com/Jasaxion/siyuan-arxiv-paper-download",
-        "version": "0.1.5",
-        "minAppVersion": "3.3.0",
-        "displayName": {
-          "default": "arXiv Paper Downloader",
-          "zh_CN": "arXiv 论文下载器"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "default": "Insert and download arXiv papers directly into SiYuan.",
           "zh_CN": "在思源笔记中直接插入并下载 arXiv 论文 PDF。"
         },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "arXiv Paper Downloader",
+          "zh_CN": "arXiv 论文下载器"
         },
+        "frontends": [
+          "all"
+        ],
         "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
           "custom": [
             "https://github.com/Jasaxion"
-          ]
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
         },
         "keywords": [
           "pdf"
         ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": true
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-arxiv-paper-download",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/Jasaxion/siyuan-arxiv-paper-download",
+        "version": "0.1.5"
       }
     },
     {
@@ -8082,29 +8082,31 @@
       "size": 436146,
       "installSize": 1493937,
       "package": {
+        "name": "siyuan-plugin-taskmap",
         "author": "LeonZ1998",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A modern task management plugin with project tracking, task organization, and focus timer",
-          "en_US": "A modern task management plugin with project tracking, task organization, and focus timer",
-          "zh_CN": "现代化的任务管理插件，支持项目管理、任务分组和专注计时"
-        },
-        "disabledInPublish": false,
+        "url": "https://github.com/LeonZ1998/siyuan-plugin-taskmap",
+        "version": "1.1.5",
+        "minAppVersion": "2.10.0",
         "displayName": {
           "default": "TaskMap",
           "en_US": "TaskMap",
           "zh_CN": "TaskMap"
         },
-        "frontends": [
-          "all"
-        ],
+        "description": {
+          "default": "A modern task management plugin with project tracking, task organization, and focus timer",
+          "en_US": "A modern task management plugin with project tracking, task organization, and focus timer",
+          "zh_CN": "现代化的任务管理插件，支持项目管理、任务分组和专注计时"
+        },
+        "readme": {
+          "default": "README_zh_CN.md",
+          "en_US": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
         "funding": {
-          "custom": [],
-          "github": "",
           "openCollective": "",
-          "patreon": ""
+          "patreon": "",
+          "github": "",
+          "custom": []
         },
         "keywords": [
           "task",
@@ -8113,15 +8115,13 @@
           "management",
           "productivity"
         ],
-        "minAppVersion": "2.10.0",
-        "name": "siyuan-plugin-taskmap",
-        "readme": {
-          "default": "README_zh_CN.md",
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/LeonZ1998/siyuan-plugin-taskmap",
-        "version": "1.1.5"
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": false
       }
     },
     {
@@ -8132,41 +8132,41 @@
       "size": 1123306,
       "installSize": 2641120,
       "package": {
-        "name": "syplugin-copyAsImage",
         "author": "OpaqueGlass",
-        "url": "https://github.com/OpaqueGlass/syplugin-copyAsImage",
-        "version": "1.1.0",
-        "minAppVersion": "2.9.0",
-        "displayName": {
-          "en_US": "Copy as Image",
-          "zh_CN": "复制为图片"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "en_US": "Copy Formula, mermaid etc. as png. Or download some blocks as SVG",
           "zh_CN": "将公式、Mermaid图形等复制为png图片、下载为SVG。比自带的导出图片清晰一些(大概)"
         },
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
+        "disabledInPublish": false,
+        "displayName": {
+          "en_US": "Copy as Image",
+          "zh_CN": "复制为图片"
         },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://wj.qq.com/s2/12395364/b69f/"
-          ]
-        },
-        "keywords": null,
-        "backends": [
-          "all"
-        ],
         "frontends": [
           "browser-desktop",
           "desktop-window",
           "desktop"
         ],
-        "disabledInPublish": false
+        "funding": {
+          "custom": [
+            "https://wj.qq.com/s2/12395364/b69f/"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": null,
+        "minAppVersion": "2.9.0",
+        "name": "syplugin-copyAsImage",
+        "readme": {
+          "en_US": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/OpaqueGlass/syplugin-copyAsImage",
+        "version": "1.1.0"
       }
     },
     {
@@ -8404,30 +8404,38 @@
       "size": 144368,
       "installSize": 190379,
       "package": {
-        "name": "siyuan_rmv_btn",
         "author": "zxkmm",
-        "url": "https://github.com/zxkmm/siyuan_rmv_btn",
-        "version": "2.0.2",
-        "minAppVersion": "2.10.14",
-        "displayName": {
-          "en_US": "SiYuan remove buttons",
-          "zh_CN": "移除按钮"
-        },
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "docker"
+        ],
         "description": {
           "en_US": "A plugin to remove menu items and buttons you don\u0026#39;t really need.",
           "zh_CN": "一个移除你不想要的按钮/菜单项的插件，覆盖电脑和手机"
         },
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
+        "disabledInPublish": false,
+        "displayName": {
+          "en_US": "SiYuan remove buttons",
+          "zh_CN": "移除按钮"
         },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile"
+        ],
         "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
           "custom": [
             "https://github.com/zxkmm/zxkmm"
-          ]
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
         },
         "keywords": [
           "按钮",
@@ -8441,22 +8449,14 @@
           "siyuan_rmv_btn",
           "zxkmm"
         ],
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "docker"
-        ],
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile"
-        ],
-        "disabledInPublish": false
+        "minAppVersion": "2.10.14",
+        "name": "siyuan_rmv_btn",
+        "readme": {
+          "en_US": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/zxkmm/siyuan_rmv_btn",
+        "version": "2.0.2"
       }
     },
     {
