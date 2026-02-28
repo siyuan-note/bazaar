@@ -1297,28 +1297,27 @@
       "size": 51375,
       "installSize": 83268,
       "package": {
-        "name": "siyuan-todoist-sync",
         "author": "Collin Janssen",
-        "url": "https://github.com/c00llin/siyuan-todoist-sync",
-        "version": "1.0.3",
-        "minAppVersion": "2.9.0",
-        "displayName": {
-          "default": "Todoist Sync",
-          "zh_CN": "Todoist 同步"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "default": "Sync tasks between SiYuan and Todoist",
           "zh_CN": "在思源笔记和 Todoist 之间同步任务"
         },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Todoist Sync",
+          "zh_CN": "Todoist 同步"
         },
+        "frontends": [
+          "all"
+        ],
         "funding": {
-          "openCollective": "",
-          "patreon": "",
+          "custom": [],
           "github": "",
-          "custom": []
+          "openCollective": "",
+          "patreon": ""
         },
         "keywords": [
           "todoist",
@@ -1326,13 +1325,14 @@
           "sync",
           "productivity"
         ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": true
+        "minAppVersion": "2.9.0",
+        "name": "siyuan-todoist-sync",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/c00llin/siyuan-todoist-sync",
+        "version": "1.0.3"
       }
     },
     {
@@ -5359,39 +5359,39 @@
       "size": 48189,
       "installSize": 63502,
       "package": {
-        "name": "siyuan-embed-interactiveSVG",
         "author": "Yuxin Zhao",
-        "url": "https://github.com/YuxinZhaozyx/siyuan-embed-interactiveSVG",
-        "version": "0.1.4",
-        "minAppVersion": "3.1.11",
-        "displayName": {
-          "default": "「Embed Series」Interactive SVG",
-          "zh_CN": "「嵌入式系列」可交互SVG"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "default": "「Embed Series」Make SVG Image Interactive",
           "zh_CN": "「嵌入式系列」让SVG图像可以交互"
         },
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "「Embed Series」Interactive SVG",
+          "zh_CN": "「嵌入式系列」可交互SVG"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://ld246.com/article/1764249348391"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [],
+        "minAppVersion": "3.1.11",
+        "name": "siyuan-embed-interactiveSVG",
         "readme": {
           "default": "README.md",
           "zh_CN": "README_zh_CN.md"
         },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://ld246.com/article/1764249348391"
-          ]
-        },
-        "keywords": [],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": false
+        "url": "https://github.com/YuxinZhaozyx/siyuan-embed-interactiveSVG",
+        "version": "0.1.4"
       }
     },
     {
