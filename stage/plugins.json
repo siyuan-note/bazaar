@@ -3415,41 +3415,41 @@
       "size": 403396,
       "installSize": 484912,
       "package": {
-        "name": "Simple Search",
         "author": "chooyy",
-        "url": "https://github.com/choyy/simple-search",
-        "version": "0.5.0",
-        "minAppVersion": "3.2.1",
-        "displayName": {
-          "default": "Simple Search",
-          "zh_CN": "简易搜索"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "default": "更高效的搜索方式",
           "zh_CN": "更高效的搜索方式"
         },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README.md"
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "Simple Search",
+          "zh_CN": "简易搜索"
         },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.com/a/chooyy"
-          ]
-        },
-        "keywords": null,
-        "backends": [
-          "all"
-        ],
         "frontends": [
           "desktop",
           "desktop-window",
           "browser-desktop"
         ],
-        "disabledInPublish": false
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/chooyy"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": null,
+        "minAppVersion": "3.2.1",
+        "name": "Simple Search",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/choyy/simple-search",
+        "version": "0.5.0"
       }
     },
     {
@@ -9607,40 +9607,40 @@
       "size": 159424,
       "installSize": 196550,
       "package": {
-        "name": "small-window",
         "author": "chooyy",
-        "url": "https://github.com/choyy/small-window",
-        "version": "0.0.4",
-        "minAppVersion": "2.10.3",
-        "displayName": {
-          "default": "Small Window",
-          "zh_CN": "小窗"
-        },
-        "description": {
-          "default": "用小窗口打开块",
-          "zh_CN": "用小窗口打开块"
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": []
-        },
-        "keywords": null,
         "backends": [
           "windows",
           "linux",
           "darwin"
         ],
+        "description": {
+          "default": "用小窗口打开块",
+          "zh_CN": "用小窗口打开块"
+        },
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "Small Window",
+          "zh_CN": "小窗"
+        },
         "frontends": [
           "desktop",
           "desktop-window"
         ],
-        "disabledInPublish": false
+        "funding": {
+          "custom": [],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": null,
+        "minAppVersion": "2.10.3",
+        "name": "small-window",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/choyy/small-window",
+        "version": "0.0.4"
       }
     },
     {
@@ -15426,37 +15426,7 @@
       "size": 438122,
       "installSize": 1147609,
       "package": {
-        "name": "siyuan-plugin-table-view",
         "author": "dualwind",
-        "url": "https://github.com/etchnight/siyuan-plugin-table-view",
-        "version": "0.2.3",
-        "minAppVersion": "2.11.4",
-        "displayName": {
-          "en_US": "Table View",
-          "zh_CN": "表格预览"
-        },
-        "description": {
-          "en_US": "Extract the content of the notes to generate a table that summarizes concepts and their attributes",
-          "zh_CN": "抽取笔记内容生成表格，汇总概念及其属性"
-        },
-        "readme": {
-          "en_US": "README_en_US.md",
-          "zh_CN": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://afdian.net/a/dualwind"
-          ]
-        },
-        "keywords": [
-          "plugin",
-          "table",
-          "表格",
-          "Query View"
-        ],
         "backends": [
           "windows",
           "linux",
@@ -15464,12 +15434,42 @@
           "ios",
           "android"
         ],
+        "description": {
+          "en_US": "Extract the content of the notes to generate a table that summarizes concepts and their attributes",
+          "zh_CN": "抽取笔记内容生成表格，汇总概念及其属性"
+        },
+        "disabledInPublish": false,
+        "displayName": {
+          "en_US": "Table View",
+          "zh_CN": "表格预览"
+        },
         "frontends": [
           "desktop",
           "browser-desktop",
           "desktop-window"
         ],
-        "disabledInPublish": false
+        "funding": {
+          "custom": [
+            "https://afdian.net/a/dualwind"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "plugin",
+          "table",
+          "表格",
+          "Query View"
+        ],
+        "minAppVersion": "2.11.4",
+        "name": "siyuan-plugin-table-view",
+        "readme": {
+          "en_US": "README_en_US.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/etchnight/siyuan-plugin-table-view",
+        "version": "0.2.3"
       }
     },
     {
