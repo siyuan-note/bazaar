@@ -1498,30 +1498,29 @@
       "size": 1581651,
       "installSize": 4254556,
       "package": {
-        "name": "sy-plugin-enhance",
         "author": "Wetoria",
-        "url": "https://github.com/Wetoria/sy-plugin-enhance",
-        "version": "1.7.1",
-        "minAppVersion": "3.2.1",
-        "displayName": {
-          "default": "Leaf Nest",
-          "zh_CN": "叶归"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "default": "Full-Process solution for SiYuan Note. Include Quick Note, LifeLog, Reference Relationship, Bottom Backlink, Whiteboard, Audio and Video Timestamp, Comment for Reading, Style Shortcut Key, Format Brush, Mobile Nav, etc.",
           "zh_CN": "思源笔记全流程解决方案。包含一键记事、LifeLog、引用关系、底部反链、白板、音视频时间戳、阅读批注、样式快捷键、格式刷、移动端底部导航栏等功能。"
         },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Leaf Nest",
+          "zh_CN": "叶归"
         },
+        "frontends": [
+          "all"
+        ],
         "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
           "custom": [
             "https://afdian.com/a/Wetoria"
-          ]
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
         },
         "keywords": [
           "叶归",
@@ -1542,13 +1541,14 @@
           "底部反链",
           "enhance"
         ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": true
+        "minAppVersion": "3.2.1",
+        "name": "sy-plugin-enhance",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/Wetoria/sy-plugin-enhance",
+        "version": "1.7.1"
       }
     },
     {
@@ -7181,41 +7181,41 @@
       "size": 81173,
       "installSize": 108230,
       "package": {
+        "name": "siyuan-arxiv-paper-download",
         "author": "Jasaxion(BaiBo)",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Insert and download arXiv papers directly into SiYuan.",
-          "zh_CN": "在思源笔记中直接插入并下载 arXiv 论文 PDF。"
-        },
-        "disabledInPublish": true,
+        "url": "https://github.com/Jasaxion/siyuan-arxiv-paper-download",
+        "version": "0.1.5",
+        "minAppVersion": "3.3.0",
         "displayName": {
           "default": "arXiv Paper Downloader",
           "zh_CN": "arXiv 论文下载器"
         },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://github.com/Jasaxion"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
+        "description": {
+          "default": "Insert and download arXiv papers directly into SiYuan.",
+          "zh_CN": "在思源笔记中直接插入并下载 arXiv 论文 PDF。"
         },
-        "keywords": [
-          "pdf"
-        ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-arxiv-paper-download",
         "readme": {
           "default": "README.md",
           "zh_CN": "README_zh_CN.md"
         },
-        "url": "https://github.com/Jasaxion/siyuan-arxiv-paper-download",
-        "version": "0.1.5"
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://github.com/Jasaxion"
+          ]
+        },
+        "keywords": [
+          "pdf"
+        ],
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": true
       }
     },
     {
@@ -8132,41 +8132,41 @@
       "size": 1123306,
       "installSize": 2641120,
       "package": {
+        "name": "syplugin-copyAsImage",
         "author": "OpaqueGlass",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "en_US": "Copy Formula, mermaid etc. as png. Or download some blocks as SVG",
-          "zh_CN": "将公式、Mermaid图形等复制为png图片、下载为SVG。比自带的导出图片清晰一些(大概)"
-        },
-        "disabledInPublish": false,
+        "url": "https://github.com/OpaqueGlass/syplugin-copyAsImage",
+        "version": "1.1.0",
+        "minAppVersion": "2.9.0",
         "displayName": {
           "en_US": "Copy as Image",
           "zh_CN": "复制为图片"
         },
+        "description": {
+          "en_US": "Copy Formula, mermaid etc. as png. Or download some blocks as SVG",
+          "zh_CN": "将公式、Mermaid图形等复制为png图片、下载为SVG。比自带的导出图片清晰一些(大概)"
+        },
+        "readme": {
+          "en_US": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://wj.qq.com/s2/12395364/b69f/"
+          ]
+        },
+        "keywords": null,
+        "backends": [
+          "all"
+        ],
         "frontends": [
           "browser-desktop",
           "desktop-window",
           "desktop"
         ],
-        "funding": {
-          "custom": [
-            "https://wj.qq.com/s2/12395364/b69f/"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": null,
-        "minAppVersion": "2.9.0",
-        "name": "syplugin-copyAsImage",
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/OpaqueGlass/syplugin-copyAsImage",
-        "version": "1.1.0"
+        "disabledInPublish": false
       }
     },
     {
@@ -8404,38 +8404,30 @@
       "size": 144368,
       "installSize": 190379,
       "package": {
+        "name": "siyuan_rmv_btn",
         "author": "zxkmm",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "docker"
-        ],
-        "description": {
-          "en_US": "A plugin to remove menu items and buttons you don\u0026#39;t really need.",
-          "zh_CN": "一个移除你不想要的按钮/菜单项的插件，覆盖电脑和手机"
-        },
-        "disabledInPublish": false,
+        "url": "https://github.com/zxkmm/siyuan_rmv_btn",
+        "version": "2.0.2",
+        "minAppVersion": "2.10.14",
         "displayName": {
           "en_US": "SiYuan remove buttons",
           "zh_CN": "移除按钮"
         },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile"
-        ],
+        "description": {
+          "en_US": "A plugin to remove menu items and buttons you don\u0026#39;t really need.",
+          "zh_CN": "一个移除你不想要的按钮/菜单项的插件，覆盖电脑和手机"
+        },
+        "readme": {
+          "en_US": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
         "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
           "custom": [
             "https://github.com/zxkmm/zxkmm"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
+          ]
         },
         "keywords": [
           "按钮",
@@ -8449,14 +8441,22 @@
           "siyuan_rmv_btn",
           "zxkmm"
         ],
-        "minAppVersion": "2.10.14",
-        "name": "siyuan_rmv_btn",
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/zxkmm/siyuan_rmv_btn",
-        "version": "2.0.2"
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "docker"
+        ],
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "disabledInPublish": false
       }
     },
     {
