@@ -4925,7 +4925,7 @@
       "url": "Achuan-2/siyuan-plugin-text-process@646919bc9247cf7de864c675662efd2b11cfebbd",
       "updated": "2025-12-21T02:03:35Z",
       "stars": 33,
-      "openIssues": 1,
+      "openIssues": 2,
       "size": 194464,
       "installSize": 262817,
       "package": {
@@ -5041,46 +5041,46 @@
       "size": 25871,
       "installSize": 55349,
       "package": {
-        "name": "install-package",
         "author": "TCOTC",
-        "url": "https://github.com/TCOTC/install-package",
-        "version": "0.3.0",
-        "minAppVersion": "3.5.0",
-        "displayName": {
-          "default": "Install Marketplace Package",
-          "zh_CN": "安装集市包"
-        },
-        "description": {
-          "default": "Install the specified GitHub repository marketplace package Release",
-          "zh_CN": "安装指定 GitHub 仓库的集市包 Release"
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://bento.me/jeffff"
-          ]
-        },
-        "keywords": [
-          "开发者工具",
-          "developer tool"
-        ],
         "backends": [
           "windows",
           "linux",
           "darwin"
         ],
+        "description": {
+          "default": "Install the specified GitHub repository marketplace package Release",
+          "zh_CN": "安装指定 GitHub 仓库的集市包 Release"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Install Marketplace Package",
+          "zh_CN": "安装集市包"
+        },
         "frontends": [
           "desktop",
           "browser-desktop",
           "browser-mobile"
         ],
-        "disabledInPublish": true
+        "funding": {
+          "custom": [
+            "https://bento.me/jeffff"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "开发者工具",
+          "developer tool"
+        ],
+        "minAppVersion": "3.5.0",
+        "name": "install-package",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/TCOTC/install-package",
+        "version": "0.3.0"
       }
     },
     {
@@ -8136,7 +8136,36 @@
       "size": 1827526,
       "installSize": 2036328,
       "package": {
+        "name": "document-styler",
         "author": "TransMux",
+        "url": "https://github.com/TransMux/document-styler",
+        "version": "1.8.0",
+        "minAppVersion": "3.0.12",
+        "displayName": {
+          "en_US": "M - Document Styler",
+          "zh_CN": "M - 文档样式拓展"
+        },
+        "description": {
+          "en_US": "Document Styler for Siyuan",
+          "zh_CN": "让思源胜任专业的报告写作（各种输出场景，例如日报，周报，月报）"
+        },
+        "readme": {
+          "en_US": "README_en_US.md",
+          "zh_CN": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "plugin",
+          "sample",
+          "插件样例"
+        ],
         "backends": [
           "windows",
           "linux",
@@ -8146,15 +8175,6 @@
           "harmony",
           "docker"
         ],
-        "description": {
-          "en_US": "Document Styler for Siyuan",
-          "zh_CN": "让思源胜任专业的报告写作（各种输出场景，例如日报，周报，月报）"
-        },
-        "disabledInPublish": false,
-        "displayName": {
-          "en_US": "M - Document Styler",
-          "zh_CN": "M - 文档样式拓展"
-        },
         "frontends": [
           "desktop",
           "mobile",
@@ -8162,27 +8182,7 @@
           "browser-mobile",
           "desktop-window"
         ],
-        "funding": {
-          "custom": [
-            ""
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "plugin",
-          "sample",
-          "插件样例"
-        ],
-        "minAppVersion": "3.0.12",
-        "name": "document-styler",
-        "readme": {
-          "en_US": "README_en_US.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/TransMux/document-styler",
-        "version": "1.8.0"
+        "disabledInPublish": false
       }
     },
     {
@@ -15013,30 +15013,29 @@
       "size": 33307,
       "installSize": 41591,
       "package": {
-        "name": "siyuan-css-image-block-centered",
         "author": "TCOTC",
-        "url": "https://github.com/TCOTC/siyuan-css-image-block-centered",
-        "version": "0.1.0",
-        "minAppVersion": "",
-        "displayName": {
-          "default": "Center image block",
-          "zh_CN": "居中图片块"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "default": "Center the blocks containing images in the document",
           "zh_CN": "居中显示文档中包含图片的块"
         },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "Center image block",
+          "zh_CN": "居中图片块"
         },
+        "frontends": [
+          "all"
+        ],
         "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
           "custom": [
             "https://afdian.net/a/JeffreyChen"
-          ]
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
         },
         "keywords": [
           "居中",
@@ -15047,13 +15046,14 @@
           "block",
           "picture"
         ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": false
+        "minAppVersion": "",
+        "name": "siyuan-css-image-block-centered",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/TCOTC/siyuan-css-image-block-centered",
+        "version": "0.1.0"
       }
     },
     {
