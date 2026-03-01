@@ -1,6 +1,73 @@
 {
   "repos": [
     {
+      "url": "Achuan-2/siyuan-plugin-task-note-management@7d983bee8540b20db3f767608ddaa515dbc45723",
+      "updated": "2026-03-01T03:15:01Z",
+      "stars": 162,
+      "openIssues": 4,
+      "size": 7171276,
+      "installSize": 11392836,
+      "package": {
+        "name": "siyuan-plugin-task-note-management",
+        "author": "Achuan-2",
+        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
+        "version": "6.1.7",
+        "minAppVersion": "3.5.1",
+        "displayName": {
+          "default": "Task Note Management",
+          "zh_CN": "任务笔记管理"
+        },
+        "description": {
+          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
+          "zh_CN": "一款在思源笔记里实现任务笔记管理功能的插件，为了践行防弹笔记法而开发。支持文档和块提醒、日历视图查看行事历、番茄钟专注和数据统计、项目看板、四象限面板、习惯打卡等功能"
+        },
+        "readme": {
+          "default": "README_en_US.md",
+          "zh_CN": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ]
+        },
+        "keywords": [
+          "reminder",
+          "time",
+          "calendar",
+          "notification",
+          "提醒",
+          "时间",
+          "日历",
+          "通知",
+          "番茄钟",
+          "四象限",
+          "任务管理",
+          "项目管理",
+          "习惯打卡"
+        ],
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android",
+          "harmony"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "disabledInPublish": true
+      }
+    },
+    {
       "url": "5kyfkr/siyuan-plugin-task-horizon@390cc3384bc9e0aa6ff14d3a5411d48840b85341",
       "updated": "2026-03-01T02:08:59Z",
       "stars": 6,
@@ -135,73 +202,6 @@
           "all"
         ],
         "disabledInPublish": false
-      }
-    },
-    {
-      "url": "Achuan-2/siyuan-plugin-task-note-management@2499557c78adcbd97517d39141c6173890636ce0",
-      "updated": "2026-02-28T15:43:09Z",
-      "stars": 162,
-      "openIssues": 4,
-      "size": 7168622,
-      "installSize": 11383669,
-      "package": {
-        "name": "siyuan-plugin-task-note-management",
-        "author": "Achuan-2",
-        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
-        "version": "6.1.6",
-        "minAppVersion": "3.5.1",
-        "displayName": {
-          "default": "Task Note Management",
-          "zh_CN": "任务笔记管理"
-        },
-        "description": {
-          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
-          "zh_CN": "一款在思源笔记里实现任务笔记管理功能的插件，为了践行防弹笔记法而开发。支持文档和块提醒、日历视图查看行事历、番茄钟专注和数据统计、项目看板、四象限面板、习惯打卡等功能"
-        },
-        "readme": {
-          "default": "README_en_US.md",
-          "zh_CN": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ]
-        },
-        "keywords": [
-          "reminder",
-          "time",
-          "calendar",
-          "notification",
-          "提醒",
-          "时间",
-          "日历",
-          "通知",
-          "番茄钟",
-          "四象限",
-          "任务管理",
-          "项目管理",
-          "习惯打卡"
-        ],
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "disabledInPublish": true
       }
     },
     {
@@ -575,7 +575,7 @@
       "url": "mm-o/siyuan-sireader@31c57884cbbb0e13af8942a3fd5144e3f9f7b20e",
       "updated": "2026-02-27T04:55:56Z",
       "stars": 19,
-      "openIssues": 3,
+      "openIssues": 4,
       "size": 932455,
       "installSize": 2692716,
       "package": {
@@ -9305,7 +9305,38 @@
       "size": 124735,
       "installSize": 148205,
       "package": {
+        "name": "siyuan-reference-code-block-plugin",
         "author": "luqin2007",
+        "url": "https://github.com/luqin2007/siyuan-reference-code-block-plugin",
+        "version": "1.0.2",
+        "minAppVersion": "3.0.12",
+        "displayName": {
+          "en_US": "Reference code block",
+          "zh_CN": "引用代码块"
+        },
+        "description": {
+          "en_US": "Allow code block reference code files",
+          "zh_CN": "允许代码块引用代码文件片段"
+        },
+        "readme": {
+          "en_US": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "code",
+          "code block",
+          "代码块",
+          "reference",
+          "引用"
+        ],
         "backends": [
           "windows",
           "linux",
@@ -9315,15 +9346,6 @@
           "harmony",
           "docker"
         ],
-        "description": {
-          "en_US": "Allow code block reference code files",
-          "zh_CN": "允许代码块引用代码文件片段"
-        },
-        "disabledInPublish": false,
-        "displayName": {
-          "en_US": "Reference code block",
-          "zh_CN": "引用代码块"
-        },
         "frontends": [
           "desktop",
           "mobile",
@@ -9331,29 +9353,7 @@
           "browser-mobile",
           "desktop-window"
         ],
-        "funding": {
-          "custom": [
-            ""
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "code",
-          "code block",
-          "代码块",
-          "reference",
-          "引用"
-        ],
-        "minAppVersion": "3.0.12",
-        "name": "siyuan-reference-code-block-plugin",
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/luqin2007/siyuan-reference-code-block-plugin",
-        "version": "1.0.2"
+        "disabledInPublish": false
       }
     },
     {
@@ -13160,32 +13160,32 @@
       "size": 755089,
       "installSize": 1590110,
       "package": {
+        "name": "link-icon",
         "author": "chenshinshi",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "en_US": "Provide link icons for themes that do not have built-in link icons and display icons when referencing documents.",
-          "zh_CN": "为不装配链接图标的主题提供链接图标，引用文档时显示图标。"
-        },
-        "disabledInPublish": false,
+        "url": "https://github.com/chenshinshi/link-icon",
+        "version": "3.2.0",
+        "minAppVersion": "3.1.6",
         "displayName": {
           "en_US": "link-icon",
           "zh_CN": "链接图标"
         },
-        "frontends": [
-          "all"
-        ],
-        "funding": null,
-        "keywords": null,
-        "minAppVersion": "3.1.6",
-        "name": "link-icon",
+        "description": {
+          "en_US": "Provide link icons for themes that do not have built-in link icons and display icons when referencing documents.",
+          "zh_CN": "为不装配链接图标的主题提供链接图标，引用文档时显示图标。"
+        },
         "readme": {
           "en_US": "README_en_US.md",
           "zh_CN": "README.md"
         },
-        "url": "https://github.com/chenshinshi/link-icon",
-        "version": "3.2.0"
+        "funding": null,
+        "keywords": null,
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": false
       }
     },
     {
