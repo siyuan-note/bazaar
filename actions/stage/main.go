@@ -17,6 +17,7 @@ import (
 	"os"
 	"path/filepath"
 	"sort"
+	"strconv"
 	"strings"
 	"sync"
 	"time"
@@ -32,7 +33,38 @@ import (
 var (
 	logger     = gulu.Log.NewLogger(os.Stdout)
 	sterilizer = bluemonday.UGCPolicy()
+	// heavyStageSem 限制同时进行「下载 + 上传 OSS」的仓库数，避免大量更新时打满 GitHub/OSS；仅 hash 检查不受限。
+	heavyStageSem  chan struct{}
+	heavyStageOnce sync.Once
 )
+
+// getStagePoolSize 从环境变量 STAGE_POOL_SIZE 读取并发池大小，默认 40，以在多数为 skip 时加快检查。
+func getStagePoolSize() int {
+	const defaultPool = 40
+	if s := os.Getenv("STAGE_POOL_SIZE"); s != "" {
+		if n, err := strconv.Atoi(s); err == nil && n > 0 {
+			return n
+		}
+	}
+	return defaultPool
+}
+
+// getStageHeavyConcurrency 从环境变量 STAGE_HEAVY_CONCURRENCY 读取重活（下载+上传）并发上限，默认 8。
+func getStageHeavyConcurrency() int {
+	const defaultHeavy = 8
+	if s := os.Getenv("STAGE_HEAVY_CONCURRENCY"); s != "" {
+		if n, err := strconv.Atoi(s); err == nil && n > 0 {
+			return n
+		}
+	}
+	return defaultHeavy
+}
+
+func initHeavyStageSem() {
+	heavyStageOnce.Do(func() {
+		heavyStageSem = make(chan struct{}, getStageHeavyConcurrency())
+	})
+}
 
 func main() {
 	logger.Infof("bazaar is staging...")
@@ -136,11 +168,13 @@ func performStage(typ string) {
 
 	oldStageData := loadOldStageData(typ)
 
+	initHeavyStageSem()
 	lock := sync.Mutex{}
 	var stageRepos []interface{}
 	waitGroup := &sync.WaitGroup{}
 
-	p, _ := ants.NewPoolWithFunc(8, func(arg interface{}) {
+	poolSize := getStagePoolSize()
+	p, _ := ants.NewPoolWithFunc(poolSize, func(arg interface{}) {
 		defer waitGroup.Done()
 		repo := arg.(string)
 		var oldStageURL string
@@ -253,6 +287,10 @@ func indexPackage(repoURL, typ, oldStageURL string) (ok, skipped bool, hash, pub
 			return
 		}
 	}
+
+	// 限制同时进行下载+上传的仓库数
+	heavyStageSem <- struct{}{}
+	defer func() { <-heavyStageSem }()
 
 	resp, data, errs := gorequest.New().Get(packageZip).
 		Set("User-Agent", util.UserAgent).

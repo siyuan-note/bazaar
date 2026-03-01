@@ -35,6 +35,9 @@ jobs:
         with:
           go-version-file: 'go.mod'
       - name: Go staging
+        # env:
+        #   STAGE_POOL_SIZE: 40          # 总并发数，多数 skip 时加快检查
+        #   STAGE_HEAVY_CONCURRENCY: 8   # 同时下载+上传的仓库数，避免打满 GitHub/OSS
         run: go run ./actions/stage
       - name: Commit and push
         id: commit_push
