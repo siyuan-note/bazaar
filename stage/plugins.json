@@ -2705,39 +2705,39 @@
       "size": 8817013,
       "installSize": 10135162,
       "package": {
-        "name": "siyuan-embed-tikz",
         "author": "Yuxin Zhao",
-        "url": "https://github.com/YuxinZhaozyx/siyuan-embed-tikz",
-        "version": "0.7.8",
-        "minAppVersion": "3.0.0",
-        "displayName": {
-          "default": "「Embed Series」TikZ",
-          "zh_CN": "「嵌入式系列」TikZ"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "default": "「Embed Series」Create editable SVG Image with LaTeX TikZ",
           "zh_CN": "「嵌入式系列」使用LaTeX TikZ创建可编辑的高质量矢量图"
         },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "「Embed Series」TikZ",
+          "zh_CN": "「嵌入式系列」TikZ"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://yuxinzhao.net/sponsor/"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-embed-tikz",
         "readme": {
           "default": "README.md",
           "zh_CN": "README_zh_CN.md"
         },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://yuxinzhao.net/sponsor/"
-          ]
-        },
-        "keywords": [],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": true
+        "url": "https://github.com/YuxinZhaozyx/siyuan-embed-tikz",
+        "version": "0.7.8"
       }
     },
     {
