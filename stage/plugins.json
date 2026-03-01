@@ -1,6 +1,73 @@
 {
   "repos": [
     {
+      "url": "Achuan-2/siyuan-plugin-task-note-management@922d5927b29d530ed625dedd678a7f793a15e45b",
+      "updated": "2026-03-01T09:56:25Z",
+      "stars": 162,
+      "openIssues": 5,
+      "size": 7172909,
+      "installSize": 11398855,
+      "package": {
+        "name": "siyuan-plugin-task-note-management",
+        "author": "Achuan-2",
+        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
+        "version": "6.2.0",
+        "minAppVersion": "3.5.1",
+        "displayName": {
+          "default": "Task Note Management",
+          "zh_CN": "任务笔记管理"
+        },
+        "description": {
+          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
+          "zh_CN": "一款在思源笔记里实现任务笔记管理功能的插件，为了践行防弹笔记法而开发。支持文档和块提醒、日历视图查看行事历、番茄钟专注和数据统计、项目看板、四象限面板、习惯打卡等功能"
+        },
+        "readme": {
+          "default": "README_en_US.md",
+          "zh_CN": "README.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": [
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ]
+        },
+        "keywords": [
+          "reminder",
+          "time",
+          "calendar",
+          "notification",
+          "提醒",
+          "时间",
+          "日历",
+          "通知",
+          "番茄钟",
+          "四象限",
+          "任务管理",
+          "项目管理",
+          "习惯打卡"
+        ],
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android",
+          "harmony"
+        ],
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "disabledInPublish": true
+      }
+    },
+    {
       "url": "5kyfkr/siyuan-plugin-task-horizon@0cde6710b8921155d463d6094a740a6b976ed812",
       "updated": "2026-03-01T06:24:24Z",
       "stars": 6,
@@ -81,73 +148,6 @@
         ],
         "frontends": [
           "all"
-        ],
-        "disabledInPublish": true
-      }
-    },
-    {
-      "url": "Achuan-2/siyuan-plugin-task-note-management@7d983bee8540b20db3f767608ddaa515dbc45723",
-      "updated": "2026-03-01T03:15:01Z",
-      "stars": 162,
-      "openIssues": 5,
-      "size": 7171276,
-      "installSize": 11392836,
-      "package": {
-        "name": "siyuan-plugin-task-note-management",
-        "author": "Achuan-2",
-        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
-        "version": "6.1.7",
-        "minAppVersion": "3.5.1",
-        "displayName": {
-          "default": "Task Note Management",
-          "zh_CN": "任务笔记管理"
-        },
-        "description": {
-          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
-          "zh_CN": "一款在思源笔记里实现任务笔记管理功能的插件，为了践行防弹笔记法而开发。支持文档和块提醒、日历视图查看行事历、番茄钟专注和数据统计、项目看板、四象限面板、习惯打卡等功能"
-        },
-        "readme": {
-          "default": "README_en_US.md",
-          "zh_CN": "README.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ]
-        },
-        "keywords": [
-          "reminder",
-          "time",
-          "calendar",
-          "notification",
-          "提醒",
-          "时间",
-          "日历",
-          "通知",
-          "番茄钟",
-          "四象限",
-          "任务管理",
-          "项目管理",
-          "习惯打卡"
-        ],
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
         ],
         "disabledInPublish": true
       }
@@ -6620,42 +6620,42 @@
       "size": 147974,
       "installSize": 238669,
       "package": {
+        "name": "custom-sidebar-siyuan",
         "author": "DD3Boh",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "en_US": "Create a personalized dock sidebar with documents of your choice.",
-          "zh_CN": "创建一个包含您选择文档的个性化停靠侧边栏。"
-        },
-        "disabledInPublish": false,
+        "url": "https://github.com/DD3Boh/custom-sidebar-siyuan",
+        "version": "1.0.1",
+        "minAppVersion": "2.10.14",
         "displayName": {
           "en_US": "Custom Sidebar",
           "zh_CN": "自定义侧边栏"
         },
-        "frontends": [
-          "all"
-        ],
+        "description": {
+          "en_US": "Create a personalized dock sidebar with documents of your choice.",
+          "zh_CN": "创建一个包含您选择文档的个性化停靠侧边栏。"
+        },
+        "readme": {
+          "en_US": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
         "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
           "custom": [
             "https://paypal.me/DD3Boh"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
+          ]
         },
         "keywords": [
           "custom",
           "sidebar"
         ],
-        "minAppVersion": "2.10.14",
-        "name": "custom-sidebar-siyuan",
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/DD3Boh/custom-sidebar-siyuan",
-        "version": "1.0.1"
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": false
       }
     },
     {
@@ -11709,28 +11709,28 @@
       "size": 1874040,
       "installSize": 2095385,
       "package": {
-        "name": "siyuan-plugin-toolbar-plus",
         "author": "zuoez02",
-        "url": "https://github.com/zuoez02/siyuan-plugin-toolbar-plus",
-        "version": "1.5.3",
-        "minAppVersion": "2.12.1",
-        "displayName": {
-          "default": "工具栏Plus",
-          "en_US": "Toolbar Plus"
-        },
+        "backends": null,
         "description": {
           "default": "可切换工具栏置顶，增加缩进、分栏等排版能力",
           "en_US": "Enhance editor toolbar, such as fixed toolbar at top, indent/outdent, columns, etc"
         },
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "工具栏Plus",
+          "en_US": "Toolbar Plus"
+        },
+        "frontends": null,
+        "funding": null,
+        "keywords": null,
+        "minAppVersion": "2.12.1",
+        "name": "siyuan-plugin-toolbar-plus",
         "readme": {
           "default": "README.md",
           "en_US": "README_en_US.md"
         },
-        "funding": null,
-        "keywords": null,
-        "backends": null,
-        "frontends": null,
-        "disabledInPublish": false
+        "url": "https://github.com/zuoez02/siyuan-plugin-toolbar-plus",
+        "version": "1.5.3"
       }
     },
     {
