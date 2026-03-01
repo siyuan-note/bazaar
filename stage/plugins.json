@@ -1,6 +1,45 @@
 {
   "repos": [
     {
+      "url": "b8l8u8e8/siyuan-plugin-font-manager@a9825c858a698121038c68eaeb68db13638cef0b",
+      "updated": "2026-03-01T05:35:49Z",
+      "stars": 2,
+      "openIssues": 0,
+      "size": 102761,
+      "installSize": 163016,
+      "package": {
+        "name": "siyuan-plugin-font-manager",
+        "author": "取舍",
+        "url": "https://github.com/b8l8u8e8/siyuan-plugin-font-manager",
+        "version": "0.1.3",
+        "minAppVersion": "2.9.0",
+        "displayName": {
+          "default": "Font Manager",
+          "zh_CN": "字体管理器"
+        },
+        "description": {
+          "default": "Import, manage, and apply custom fonts in SiYuan Notes.",
+          "zh_CN": "在思源笔记中导入、管理和应用自定义字体。"
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "funding": null,
+        "keywords": [
+          "font",
+          "字体"
+        ],
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": true
+      }
+    },
+    {
       "url": "Achuan-2/siyuan-plugin-task-note-management@7d983bee8540b20db3f767608ddaa515dbc45723",
       "updated": "2026-03-01T03:15:01Z",
       "stars": 162,
@@ -11891,30 +11930,39 @@
       "size": 2883797,
       "installSize": 3149027,
       "package": {
-        "name": "siyuan-plugin-sidebar-widget",
         "author": "wuchunlin",
-        "url": "https://github.com/wu1233456/siyuan-plugin-sidebar-widget",
-        "version": "1.0.0",
-        "minAppVersion": "3.0.12",
-        "displayName": {
-          "en_US": "siyuan-plugin-sidebar-widget",
-          "zh_CN": "侧边栏小组件"
-        },
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
         "description": {
           "en_US": "siyuan-plugin-sidebar-widget",
           "zh_CN": "思源笔记侧边栏小组件库，给你的侧边栏加点有趣的东西"
         },
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
+        "disabledInPublish": false,
+        "displayName": {
+          "en_US": "siyuan-plugin-sidebar-widget",
+          "zh_CN": "侧边栏小组件"
         },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
         "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
           "custom": [
             ""
-          ]
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
         },
         "keywords": [
           "sidebar-widget",
@@ -11929,23 +11977,14 @@
           "收藏夹",
           "侧边栏小组件"
         ],
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "disabledInPublish": false
+        "minAppVersion": "3.0.12",
+        "name": "siyuan-plugin-sidebar-widget",
+        "readme": {
+          "en_US": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/wu1233456/siyuan-plugin-sidebar-widget",
+        "version": "1.0.0"
       }
     },
     {
