@@ -1,14 +1,14 @@
 module github.com/siyuan-note/bazaar
 
-go 1.24.0
+go 1.25.4
 
 require (
 	github.com/88250/gulu v1.2.3-0.20241212012748-c4dc08fe45ec
 	github.com/google/go-github/v52 v52.0.0
 	github.com/microcosm-cc/bluemonday v1.0.27
-	github.com/panjf2000/ants/v2 v2.11.3
+	github.com/panjf2000/ants/v2 v2.11.5
 	github.com/parnurzeal/gorequest v0.3.0
-	github.com/qiniu/go-sdk/v7 v7.25.4
+	github.com/qiniu/go-sdk/v7 v7.25.6
 )
 
 require (

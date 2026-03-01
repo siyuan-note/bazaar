@@ -21,6 +21,9 @@ type CheckResult struct {
 	Themes    []Theme    `json:"themes"`
 	Widgets   []Widget   `json:"widgets"`
 
+	// ParseError 包列表 TXT 读取或格式校验错误，非空时在 PR 评论中优先展示
+	ParseError string `json:"parse_error"`
+
 	IconsDeleted     []string `json:"icons_deleted"`
 	PluginsDeleted   []string `json:"plugins_deleted"`
 	TemplatesDeleted []string `json:"templates_deleted"`

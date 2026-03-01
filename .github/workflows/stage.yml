@@ -6,7 +6,11 @@ on:
     branches:
       - main
     paths:
-      - '*.json'
+      - plugins.txt
+      - themes.txt
+      - icons.txt
+      - templates.txt
+      - widgets.txt
   schedule:
     - cron: '0 * * * *'
 

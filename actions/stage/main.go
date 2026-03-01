@@ -100,17 +100,15 @@ func loadOldStageData(typ string) map[string]*StageRepo {
 func performStage(typ string) {
 	logger.Infof("staging [%s]", typ)
 
-	data, err := os.ReadFile(typ + ".json") // 读取配置文件
+	reposSlice, err := util.ParseReposFromTxt(typ + ".txt")
 	if nil != err {
-		logger.Fatalf("read [%s.json] failed: %s", typ, err)
+		logger.Fatalf("read or parse [%s.txt] failed: %s", typ, err)
 	}
-
-	original := map[string]interface{}{} // 解析配置文件
-	if err = gulu.JSON.UnmarshalJSON(data, &original); nil != err {
-		logger.Fatalf("unmarshal [%s.json] failed: %s", typ, err)
+	// 与后续 Invoke(arg) 的 arg.(string) 兼容，转为 []interface{}
+	repos := make([]interface{}, len(reposSlice))
+	for i, s := range reposSlice {
+		repos[i] = s
 	}
-
-	repos := original["repos"].([]interface{})
 
 	oldStageData := loadOldStageData(typ)
 
@@ -182,7 +180,7 @@ func performStage(typ string) {
 		"repos": stageRepos,
 	}
 
-	data, err = gulu.JSON.MarshalIndentJSON(staged, "", "  ")
+	data, err := gulu.JSON.MarshalIndentJSON(staged, "", "  ")
 	if nil != err {
 		logger.Fatalf("marshal stage [%s.json] failed: %s", typ, err)
 	}

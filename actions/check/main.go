@@ -107,14 +107,15 @@ func main() {
 		panic(err)
 	}
 
+	var parseErrorMu sync.Mutex
 	wg := &sync.WaitGroup{}
 	wg.Add(5)
 
-	go checkRepos(icons, checkResult, allTypesNameSet, wg)
-	go checkRepos(plugins, checkResult, allTypesNameSet, wg)
-	go checkRepos(templates, checkResult, allTypesNameSet, wg)
-	go checkRepos(themes, checkResult, allTypesNameSet, wg)
-	go checkRepos(widgets, checkResult, allTypesNameSet, wg)
+	go checkRepos(icons, checkResult, allTypesNameSet, &parseErrorMu, wg)
+	go checkRepos(plugins, checkResult, allTypesNameSet, &parseErrorMu, wg)
+	go checkRepos(templates, checkResult, allTypesNameSet, &parseErrorMu, wg)
+	go checkRepos(themes, checkResult, allTypesNameSet, &parseErrorMu, wg)
+	go checkRepos(widgets, checkResult, allTypesNameSet, &parseErrorMu, wg)
 
 	wg.Wait() // 等待所有检查完成
 
@@ -124,39 +125,26 @@ func main() {
 	logger.Infof("PR Check finished")
 }
 
-// parseReposFromRootJSON 从集市包列表 JSON（repos 为字符串数组）解析出路径列表、路径集合和 name->owner 映射
-func parseReposFromRootJSON(filePath string) (paths []string, pathSet StringSet, nameToOwner map[string]string, err error) {
-	data, err := os.ReadFile(filePath)
+// parseReposFromRootTxt 从集市包列表 TXT（每行一个 owner/repo）解析出路径列表、路径集合和 name->owner 映射
+func parseReposFromRootTxt(filePath string) (paths []string, pathSet StringSet, nameToOwner map[string]string, err error) {
+	repos, err := util.ParseReposFromTxt(filePath)
 	if err != nil {
-		return
-	}
-	var m map[string]interface{}
-	if err = gulu.JSON.UnmarshalJSON(data, &m); err != nil {
-		return
-	}
-	repos, _ := m["repos"].([]interface{})
-	if repos == nil {
-		paths = []string{}
-		pathSet = make(StringSet)
-		nameToOwner = make(map[string]string)
 		return
 	}
 	paths = make([]string, 0, len(repos))
 	pathSet = make(StringSet, len(repos))
 	nameToOwner = make(map[string]string, len(repos))
-	for _, r := range repos {
-		if s, ok := r.(string); ok {
-			parts := strings.Split(s, "/")
-			if len(parts) != 2 {
-				err = fmt.Errorf("invalid repo path: %s", s)
-				return
-			}
-			owner := parts[0]
-			name := parts[1]
-			paths = append(paths, s)
-			pathSet[s] = nil
-			nameToOwner[name] = owner
+	for _, s := range repos {
+		parts := strings.Split(s, "/")
+		if len(parts) != 2 {
+			err = fmt.Errorf("invalid repo path: %s", s)
+			return
 		}
+		owner := parts[0]
+		name := parts[1]
+		paths = append(paths, s)
+		pathSet[s] = nil
+		nameToOwner[name] = owner
 	}
 	return
 }
@@ -229,45 +217,55 @@ func checkRepos(
 	resourceType ResourceType,
 	checkResult *CheckResult,
 	allTypesNameSet StringSet,
+	parseErrorMu *sync.Mutex,
 	waitGroup *sync.WaitGroup,
 ) {
 	defer waitGroup.Done()
 
-	var repoListJSONName string
+	var repoListTxtName string
 	switch resourceType {
 	case icons:
-		repoListJSONName = "icons.json"
+		repoListTxtName = "icons.txt"
 	case plugins:
-		repoListJSONName = "plugins.json"
+		repoListTxtName = "plugins.txt"
 	case templates:
-		repoListJSONName = "templates.json"
+		repoListTxtName = "templates.txt"
 	case themes:
-		repoListJSONName = "themes.json"
+		repoListTxtName = "themes.txt"
 	case widgets:
-		repoListJSONName = "widgets.json"
+		repoListTxtName = "widgets.txt"
 	default:
 		panic("checkRepos: invalid resource type")
 	}
-	bazaarHeadReposPath := filepath.Join(BAZAAR_HEAD_PATH, repoListJSONName)
-	prBaseReposPath := filepath.Join(PR_BASE_PATH, repoListJSONName)
-	prHeadReposPath := filepath.Join(PR_HEAD_PATH, repoListJSONName)
+	bazaarHeadReposPath := filepath.Join(BAZAAR_HEAD_PATH, repoListTxtName)
+	prBaseReposPath := filepath.Join(PR_BASE_PATH, repoListTxtName)
+	prHeadReposPath := filepath.Join(PR_HEAD_PATH, repoListTxtName)
 	logger.Infof("start repos check [%s]", prHeadReposPath)
 
 	// 加载三个版本的集市包列表：bazaar head（用于过滤）、PR base、PR head（用于 diff）
-	_, bazaarHeadRepoSet, _, err := parseReposFromRootJSON(bazaarHeadReposPath)
+	_, bazaarHeadRepoSet, _, err := parseReposFromRootTxt(bazaarHeadReposPath)
 	if err != nil {
-		logger.Fatalf("load bazaar head repos [%s] failed: %s", bazaarHeadReposPath, err)
-		panic(err)
+		parseErrorMu.Lock()
+		checkResult.ParseError += fmt.Sprintf("[%s] bazaar head: %s\n", repoListTxtName, err)
+		parseErrorMu.Unlock()
+		logger.Warnf("load bazaar head repos [%s] failed: %s, skip this type", bazaarHeadReposPath, err)
+		return
 	}
-	basePaths, baseSet, baseNameToOwner, err := parseReposFromRootJSON(prBaseReposPath)
+	basePaths, baseSet, baseNameToOwner, err := parseReposFromRootTxt(prBaseReposPath)
 	if err != nil {
-		logger.Fatalf("load PR base repos [%s] failed: %s", prBaseReposPath, err)
-		panic(err)
+		parseErrorMu.Lock()
+		checkResult.ParseError += fmt.Sprintf("[%s] PR base: %s\n", repoListTxtName, err)
+		parseErrorMu.Unlock()
+		logger.Warnf("load PR base repos [%s] failed: %s, skip this type", prBaseReposPath, err)
+		return
 	}
-	headPaths, headSet, _, err := parseReposFromRootJSON(prHeadReposPath)
+	headPaths, headSet, _, err := parseReposFromRootTxt(prHeadReposPath)
 	if err != nil {
-		logger.Fatalf("load PR head repos [%s] failed: %s", prHeadReposPath, err)
-		panic(err)
+		parseErrorMu.Lock()
+		checkResult.ParseError += fmt.Sprintf("[%s] PR head: %s\n", repoListTxtName, err)
+		parseErrorMu.Unlock()
+		logger.Warnf("load PR head repos [%s] failed: %s, skip this type", prHeadReposPath, err)
+		return
 	}
 
 	// 按 base/head diff 并过滤：新增 = head 有而 base 无且不在 bazaar head（多为解决冲突时从 bazaar head 合并来的）；删除 = base 有而 head 无且仍在 bazaar head（确属本 PR 删除）
