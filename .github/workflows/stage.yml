@@ -37,13 +37,18 @@ jobs:
       - name: Go staging
         run: go run ./actions/stage
       - name: Commit and push
+        id: commit_push
         run: |-
           git config --global user.email "bot@github.com" && git config --global user.name "Bot"
-          git diff
-          git add . && git commit -m ":bookmark: Staging" || exit 0
+          git add .
+          git diff --cached --quiet && echo "had_changes=false" >> $GITHUB_OUTPUT || echo "had_changes=true" >> $GITHUB_OUTPUT
+          git diff --cached --stat
+          git commit -m ":bookmark: Staging" || exit 0
           git pull --rebase
           git push
       - name: Index bazaar
+        if: steps.commit_push.outputs.had_changes == 'true'
         run: go run ./actions/index
       - name: Go hashing
+        if: steps.commit_push.outputs.had_changes == 'true'
         run: go run ./actions/hash
