@@ -5156,46 +5156,46 @@
       "size": 25871,
       "installSize": 55349,
       "package": {
+        "name": "install-package",
         "author": "TCOTC",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Install the specified GitHub repository marketplace package Release",
-          "zh_CN": "安装指定 GitHub 仓库的集市包 Release"
-        },
-        "disabledInPublish": true,
+        "url": "https://github.com/TCOTC/install-package",
+        "version": "0.3.0",
+        "minAppVersion": "3.5.0",
         "displayName": {
           "default": "Install Marketplace Package",
           "zh_CN": "安装集市包"
         },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "browser-mobile"
-        ],
+        "description": {
+          "default": "Install the specified GitHub repository marketplace package Release",
+          "zh_CN": "安装指定 GitHub 仓库的集市包 Release"
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
         "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
           "custom": [
             "https://bento.me/jeffff"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
+          ]
         },
         "keywords": [
           "开发者工具",
           "developer tool"
         ],
-        "minAppVersion": "3.5.0",
-        "name": "install-package",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/TCOTC/install-package",
-        "version": "0.3.0"
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "disabledInPublish": true
       }
     },
     {
