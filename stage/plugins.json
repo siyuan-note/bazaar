@@ -1,17 +1,17 @@
 {
   "repos": [
     {
-      "url": "5kyfkr/siyuan-plugin-task-horizon@84464b56f0320e333d3499fad9e3cfadce13b853",
-      "updated": "2026-02-28T18:15:41Z",
+      "url": "5kyfkr/siyuan-plugin-task-horizon@390cc3384bc9e0aa6ff14d3a5411d48840b85341",
+      "updated": "2026-03-01T02:08:59Z",
       "stars": 6,
       "openIssues": 0,
-      "size": 748523,
-      "installSize": 3034203,
+      "size": 747622,
+      "installSize": 3035607,
       "package": {
         "name": "siyuan-plugin-task-horizon",
         "author": "5kyfkr",
         "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "1.5.5",
+        "version": "1.5.6",
         "minAppVersion": "3.5.0",
         "displayName": {
           "default": "Task Horizon",
@@ -36,6 +36,54 @@
           "task",
           "manager",
           "filter"
+        ],
+        "backends": [
+          "all"
+        ],
+        "frontends": [
+          "all"
+        ],
+        "disabledInPublish": true
+      }
+    },
+    {
+      "url": "MoonBottle/siyuan-plugin-bullet-journal@820f0c5a0a5c38c482062350b62b470975df6e90",
+      "updated": "2026-03-01T01:42:15Z",
+      "stars": 0,
+      "openIssues": 0,
+      "size": 387329,
+      "installSize": 1238483,
+      "package": {
+        "name": "siyuan-plugin-bullet-journal",
+        "author": "MoonBottle",
+        "url": "https://github.com/MoonBottle/siyuan-plugin-bullet-journal",
+        "version": "0.4.1",
+        "minAppVersion": "2.10.14",
+        "displayName": {
+          "default": "Bullet Journal Assistant",
+          "zh_CN": "子弹笔记助手"
+        },
+        "description": {
+          "default": "A Bullet Journal style task management assistant plugin with calendar, gantt chart and project views",
+          "zh_CN": "子弹笔记风格的工作管理辅助插件，提供日历、甘特图和项目视图"
+        },
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "funding": {
+          "openCollective": "",
+          "patreon": "",
+          "github": "",
+          "custom": []
+        },
+        "keywords": [
+          "bullet journal",
+          "calendar",
+          "gantt",
+          "project",
+          "task",
+          "management"
         ],
         "backends": [
           "all"
@@ -288,54 +336,6 @@
       }
     },
     {
-      "url": "MoonBottle/siyuan-plugin-bullet-journal@bde4cbb7d96a675025ec39c88b990d02242b0880",
-      "updated": "2026-02-28T07:01:51Z",
-      "stars": 0,
-      "openIssues": 0,
-      "size": 387896,
-      "installSize": 1239700,
-      "package": {
-        "name": "siyuan-plugin-bullet-journal",
-        "author": "MoonBottle",
-        "url": "https://github.com/MoonBottle/siyuan-plugin-bullet-journal",
-        "version": "0.4.0",
-        "minAppVersion": "2.10.14",
-        "displayName": {
-          "default": "Bullet Journal",
-          "zh_CN": "子弹笔记"
-        },
-        "description": {
-          "default": "A Bullet Journal style task management plugin with calendar, gantt chart and project views",
-          "zh_CN": "子弹笔记风格的工作管理插件，提供日历、甘特图和项目视图"
-        },
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": []
-        },
-        "keywords": [
-          "bullet journal",
-          "calendar",
-          "gantt",
-          "project",
-          "task",
-          "management"
-        ],
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": true
-      }
-    },
-    {
       "url": "5kyfkr/siyuan-plugin-docktomato@7a42895dd6610e518c9024ddb1664bf387a5f1e8",
       "updated": "2026-02-27T14:07:12Z",
       "stars": 5,
@@ -534,7 +534,7 @@
     {
       "url": "b8l8u8e8/siyuan-plugin-share@7c6bb1a1c4539dceb81631a2ec5217e9e33ea67e",
       "updated": "2026-02-27T05:23:55Z",
-      "stars": 34,
+      "stars": 35,
       "openIssues": 0,
       "size": 245340,
       "installSize": 770410,
@@ -8691,7 +8691,7 @@
       "url": "zuoez02/siyuan-plugin-webview-flomo@4e76e1c21c5780448b098997c63096f63c391895",
       "updated": "2025-07-25T09:10:41Z",
       "stars": 18,
-      "openIssues": 22,
+      "openIssues": 23,
       "size": 663825,
       "installSize": 868190,
       "package": {
@@ -9305,38 +9305,7 @@
       "size": 124735,
       "installSize": 148205,
       "package": {
-        "name": "siyuan-reference-code-block-plugin",
         "author": "luqin2007",
-        "url": "https://github.com/luqin2007/siyuan-reference-code-block-plugin",
-        "version": "1.0.2",
-        "minAppVersion": "3.0.12",
-        "displayName": {
-          "en_US": "Reference code block",
-          "zh_CN": "引用代码块"
-        },
-        "description": {
-          "en_US": "Allow code block reference code files",
-          "zh_CN": "允许代码块引用代码文件片段"
-        },
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "funding": {
-          "openCollective": "",
-          "patreon": "",
-          "github": "",
-          "custom": [
-            ""
-          ]
-        },
-        "keywords": [
-          "code",
-          "code block",
-          "代码块",
-          "reference",
-          "引用"
-        ],
         "backends": [
           "windows",
           "linux",
@@ -9346,6 +9315,15 @@
           "harmony",
           "docker"
         ],
+        "description": {
+          "en_US": "Allow code block reference code files",
+          "zh_CN": "允许代码块引用代码文件片段"
+        },
+        "disabledInPublish": false,
+        "displayName": {
+          "en_US": "Reference code block",
+          "zh_CN": "引用代码块"
+        },
         "frontends": [
           "desktop",
           "mobile",
@@ -9353,7 +9331,29 @@
           "browser-mobile",
           "desktop-window"
         ],
-        "disabledInPublish": false
+        "funding": {
+          "custom": [
+            ""
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "code",
+          "code block",
+          "代码块",
+          "reference",
+          "引用"
+        ],
+        "minAppVersion": "3.0.12",
+        "name": "siyuan-reference-code-block-plugin",
+        "readme": {
+          "en_US": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/luqin2007/siyuan-reference-code-block-plugin",
+        "version": "1.0.2"
       }
     },
     {
@@ -13160,32 +13160,32 @@
       "size": 755089,
       "installSize": 1590110,
       "package": {
-        "name": "link-icon",
         "author": "chenshinshi",
-        "url": "https://github.com/chenshinshi/link-icon",
-        "version": "3.2.0",
-        "minAppVersion": "3.1.6",
-        "displayName": {
-          "en_US": "link-icon",
-          "zh_CN": "链接图标"
-        },
+        "backends": [
+          "all"
+        ],
         "description": {
           "en_US": "Provide link icons for themes that do not have built-in link icons and display icons when referencing documents.",
           "zh_CN": "为不装配链接图标的主题提供链接图标，引用文档时显示图标。"
         },
+        "disabledInPublish": false,
+        "displayName": {
+          "en_US": "link-icon",
+          "zh_CN": "链接图标"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": null,
+        "keywords": null,
+        "minAppVersion": "3.1.6",
+        "name": "link-icon",
         "readme": {
           "en_US": "README_en_US.md",
           "zh_CN": "README.md"
         },
-        "funding": null,
-        "keywords": null,
-        "backends": [
-          "all"
-        ],
-        "frontends": [
-          "all"
-        ],
-        "disabledInPublish": false
+        "url": "https://github.com/chenshinshi/link-icon",
+        "version": "3.2.0"
       }
     },
     {
@@ -17041,7 +17041,7 @@
       "url": "zxhd863943427/siyuan-plugin-pdf-annotate-enhance@c39a9cd0f7fac01feb55957e1902a85e65e377a1",
       "updated": "2023-06-12T14:21:08Z",
       "stars": 2,
-      "openIssues": 2,
+      "openIssues": 3,
       "size": 399102,
       "installSize": 410364,
       "package": {
