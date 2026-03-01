@@ -76,4 +76,5 @@ func stageIndex(hash string, index string) {
 	if nil != err {
 		logger.Fatalf("upload bazaar stage index [%s] failed: %s", key, err)
 	}
+	logger.Infof("uploaded index [%s]", key)
 }

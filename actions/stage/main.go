@@ -11,7 +11,9 @@
 package main
 
 import (
+	"bytes"
 	"crypto/tls"
+	"encoding/json"
 	"os"
 	"path/filepath"
 	"sort"
@@ -102,12 +104,21 @@ func loadOldStageData(typ string) map[string]*StageRepo {
 var jsoniterSortKeys = jsoniter.Config{SortMapKeys: true}.Froze()
 
 // sortJSONKeys 对 JSON 反序列化后按对象键排序再序列化（带缩进），保证输出键序稳定。
+// 使用 jsoniter 输出紧凑 JSON（键已排序），再用标准库 json.Indent 做缩进，避免 jsoniter.MarshalIndent 对嵌套 interface{} 的缩进错乱。
 func sortJSONKeys(data []byte) ([]byte, error) {
 	var v interface{}
 	if err := jsoniterSortKeys.Unmarshal(data, &v); nil != err {
 		return nil, err
 	}
-	return jsoniterSortKeys.MarshalIndent(v, "", "  ")
+	compact, err := jsoniterSortKeys.Marshal(v)
+	if nil != err {
+		return nil, err
+	}
+	var buf bytes.Buffer
+	if err := json.Indent(&buf, compact, "", "  "); nil != err {
+		return nil, err
+	}
+	return buf.Bytes(), nil
 }
 
 func performStage(typ string) {
