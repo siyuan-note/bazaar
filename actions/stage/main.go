@@ -119,12 +119,18 @@ func performStage(typ string) {
 	p, _ := ants.NewPoolWithFunc(8, func(arg interface{}) {
 		defer waitGroup.Done()
 		repo := arg.(string)
-		var hash, updated string
-		var size, installSize int64
-		var ok bool
-		var pkg interface{}
-
-		ok, hash, updated, size, installSize, pkg = indexPackage(repo, typ)
+		var oldStageURL string
+		if oldRepo, exists := oldStageData[repo]; exists {
+			oldStageURL = oldRepo.URL
+		}
+		ok, skipped, hash, updated, size, installSize, pkg := indexPackage(repo, typ, oldStageURL)
+		if skipped {
+			// hash 未变化，跳过下载，直接沿用旧 stage 条目
+			lock.Lock()
+			stageRepos = append(stageRepos, oldStageData[repo])
+			lock.Unlock()
+			return
+		}
 		if !ok || pkg == nil {
 			// 索引失败或 pkg 为空时使用旧数据，避免 "package": null 的坏数据覆盖
 			lock.Lock()
@@ -192,12 +198,32 @@ func performStage(typ string) {
 	logger.Infof("staged [%s]", typ)
 }
 
-// indexPackage 索引包，返回的 pkg 为 *Package / *PluginPackage / *ThemePackage 之一
-func indexPackage(repoURL, typ string) (ok bool, hash, published string, size, installSize int64, pkg interface{}) {
+// parseHashFromStageURL 从 stage 条目的 URL（格式 owner/repo@hash）中解析出 hash 部分，若无 @ 或 @ 后为空则返回空字符串
+func parseHashFromStageURL(stageURL string) string {
+	idx := strings.Index(stageURL, "@")
+	if idx < 0 || idx >= len(stageURL)-1 {
+		return ""
+	}
+	return stageURL[idx+1:]
+}
+
+// indexPackage 索引包，返回的 pkg 为 *Package / *PluginPackage / *ThemePackage 之一。
+// oldStageURL 为当前已 stage 的该仓库 URL（格式 owner/repo@hash），若与 Latest Release 的 hash 一致则跳过下载并返回 skipped=true。
+func indexPackage(repoURL, typ, oldStageURL string) (ok, skipped bool, hash, published string, size, installSize int64, pkg interface{}) {
 	hash, published, packageZip, releaseOk := getRepoLatestRelease(repoURL)
 	if !releaseOk {
 		logger.Warnf("get [%s] latest release failed", repoURL)
 		return
+	}
+
+	// Latest Release 的 hash 与已 stage 的 hash 一致则跳过，不下载、不更新，沿用旧条目
+	if oldStageURL != "" {
+		oldHash := parseHashFromStageURL(oldStageURL)
+		if oldHash != "" && hash == oldHash {
+			logger.Infof("skip repo [%s], hash unchanged [%s]", repoURL, hash)
+			skipped = true
+			return
+		}
 	}
 
 	resp, data, errs := gorequest.New().Get(packageZip).
@@ -217,6 +243,7 @@ func indexPackage(repoURL, typ string) (ok bool, hash, published string, size, i
 	err := util.UploadOSS(key, "application/zip", data)
 	if nil != err {
 		logger.Fatalf("upload package [%s] failed: %s", repoURL, err)
+		return
 	}
 
 	size = int64(len(data)) // 计算包大小
