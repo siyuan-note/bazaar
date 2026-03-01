@@ -5,6 +5,7 @@ go 1.25.4
 require (
 	github.com/88250/gulu v1.2.3-0.20241212012748-c4dc08fe45ec
 	github.com/google/go-github/v52 v52.0.0
+	github.com/json-iterator/go v1.1.12
 	github.com/microcosm-cc/bluemonday v1.0.27
 	github.com/panjf2000/ants/v2 v2.11.5
 	github.com/parnurzeal/gorequest v0.3.0
@@ -23,6 +24,8 @@ require (
 	github.com/google/go-cmp v0.6.0 // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
 	github.com/gorilla/css v1.0.1 // indirect
+	github.com/modern-go/concurrent v0.0.0-20180228061459-e0a39a4cb421 // indirect
+	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/moul/http2curl v1.0.0 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/smartystreets/goconvey v1.8.1 // indirect

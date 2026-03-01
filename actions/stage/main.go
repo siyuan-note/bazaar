@@ -20,6 +20,7 @@ import (
 	"time"
 
 	"github.com/88250/gulu"
+	jsoniter "github.com/json-iterator/go"
 	"github.com/microcosm-cc/bluemonday"
 	"github.com/panjf2000/ants/v2"
 	"github.com/parnurzeal/gorequest"
@@ -95,6 +96,18 @@ func loadOldStageData(typ string) map[string]*StageRepo {
 	}
 
 	return oldStageData
+}
+
+// jsoniterSortKeys 使用 json-iterator 的 SortMapKeys 配置，固定键的顺序。
+var jsoniterSortKeys = jsoniter.Config{SortMapKeys: true}.Froze()
+
+// sortJSONKeys 对 JSON 反序列化后按对象键排序再序列化（带缩进），保证输出键序稳定。
+func sortJSONKeys(data []byte) ([]byte, error) {
+	var v interface{}
+	if err := jsoniterSortKeys.Unmarshal(data, &v); nil != err {
+		return nil, err
+	}
+	return jsoniterSortKeys.MarshalIndent(v, "", "  ")
 }
 
 func performStage(typ string) {
@@ -189,6 +202,10 @@ func performStage(typ string) {
 	data, err := gulu.JSON.MarshalIndentJSON(staged, "", "  ")
 	if nil != err {
 		logger.Fatalf("marshal stage [%s.json] failed: %s", typ, err)
+	}
+	data, err = sortJSONKeys(data)
+	if nil != err {
+		logger.Fatalf("sort stage [%s.json] keys failed: %s", typ, err)
 	}
 
 	if err = os.WriteFile("stage/"+typ+".json", data, 0644); nil != err {
