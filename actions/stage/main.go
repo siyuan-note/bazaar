@@ -38,9 +38,9 @@ var (
 	heavyStageOnce sync.Once
 )
 
-// getStagePoolSize 从环境变量 STAGE_POOL_SIZE 读取并发池大小，默认 40，以在多数为 skip 时加快检查。
+// getStagePoolSize 从环境变量 STAGE_POOL_SIZE 读取并发池大小，默认 80，以在多数为 skip 时加快检查。
 func getStagePoolSize() int {
-	const defaultPool = 40
+	const defaultPool = 80
 	if s := os.Getenv("STAGE_POOL_SIZE"); s != "" {
 		if n, err := strconv.Atoi(s); err == nil && n > 0 {
 			return n
