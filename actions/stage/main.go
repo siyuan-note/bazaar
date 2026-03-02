@@ -14,6 +14,7 @@ import (
 	"bytes"
 	"crypto/tls"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"math"
 	"os"
@@ -22,6 +23,7 @@ import (
 	"strconv"
 	"strings"
 	"sync"
+	"sync/atomic"
 	"time"
 
 	"github.com/88250/gulu"
@@ -330,9 +332,81 @@ func parseHashFromStageURL(stageURL string) string {
 	return stageURL[idx+1:]
 }
 
+// requiredFilesByType 各类型集市包在包根目录下必须存在的文件（大小写敏感）
+var requiredFilesByType = map[string][]string{
+	"plugins":   {"plugin.json", "index.js"},
+	"themes":    {"theme.json", "theme.css"},
+	"icons":     {"icon.json", "icon.js"},
+	"templates": {"template.json"},
+	"widgets":   {"widget.json", "index.html"},
+}
+
+// validateUnzipRoot 检查解压根目录结构：正常情况下所有文件应在根目录；若根目录仅有一个子目录则视为打包错误。返回包根目录的绝对路径（即解压根目录）。
+func validateUnzipRoot(tmpUnzipPath string) (packageRoot string, err error) {
+	entries, err := os.ReadDir(tmpUnzipPath)
+	if err != nil {
+		return "", err
+	}
+	if len(entries) == 1 {
+		e := entries[0]
+		if e.IsDir() {
+			return "", errors.New("root must not contain only one directory; package files should be at zip root")
+		}
+	}
+	return tmpUnzipPath, nil
+}
+
+// fileExistsInDir 判断 dir 下是否存在名为 name 的文件或目录（大小写敏感，通过列目录比对）。
+func fileExistsInDir(dir, name string) bool {
+	entries, err := os.ReadDir(dir)
+	if err != nil {
+		return false
+	}
+	for _, e := range entries {
+		if e.Name() == name {
+			return true
+		}
+	}
+	return false
+}
+
+// validatePackageRoot 按类型检查包根目录下是否存在所有必要文件
+func validatePackageRoot(packageRoot, typ string) error {
+	required, ok := requiredFilesByType[typ]
+	if !ok {
+		return nil
+	}
+	for _, name := range required {
+		if !fileExistsInDir(packageRoot, name) {
+			return errors.New("missing required file: " + name)
+		}
+	}
+	// 特殊检查
+	if typ == "templates" {
+		// 模板：至少包含一个模板文件
+		var foundNonReadmeMd bool
+		filepath.Walk(packageRoot, func(path string, info os.FileInfo, err error) error {
+			if err != nil || info.IsDir() {
+				return nil
+			}
+			base := strings.ToLower(filepath.Base(path))
+			if strings.HasSuffix(base, ".md") && !strings.HasPrefix(base, "readme") { // 跟思源内核判断逻辑一致
+				foundNonReadmeMd = true
+				return filepath.SkipAll
+			}
+			return nil
+		})
+		if !foundNonReadmeMd {
+			return errors.New("template must contain at least one .md file not starting with readme (case-insensitive)")
+		}
+	}
+	return nil
+}
+
 // indexPackage 索引包，返回的 pkg 为 *Package / *PluginPackage / *ThemePackage 之一。
 // oldStageURL 为当前已 stage 的该仓库 URL（格式 owner/repo@hash），若与 Latest Release 的 hash 一致则跳过下载并返回 skipped=true。
 func indexPackage(repoURL, typ, oldStageURL string) (ok, skipped bool, hash, published string, size, installSize int64, pkg interface{}) {
+	// 获取该仓库 Latest Release 信息（hash、发布时间、package.zip 下载地址）
 	hash, published, packageZip, releaseOk := getRepoLatestRelease(repoURL)
 	if !releaseOk {
 		logger.Warnf("get [%s] latest release failed", repoURL)
@@ -349,10 +423,11 @@ func indexPackage(repoURL, typ, oldStageURL string) (ok, skipped bool, hash, pub
 		}
 	}
 
-	// 限制同时进行下载+上传的仓库数
+	// 限制同时进行「下载 + 上传」的仓库数
 	heavyStageSem <- struct{}{}
 	defer func() { <-heavyStageSem }()
 
+	// 下载 package.zip
 	resp, data, errs := gorequest.New().Get(packageZip).
 		Set("User-Agent", util.UserAgent).
 		Retry(1, 3*time.Second).Timeout(30 * time.Second).EndBytes()
@@ -365,45 +440,61 @@ func indexPackage(repoURL, typ, oldStageURL string) (ok, skipped bool, hash, pub
 		return
 	}
 
-	// 将 package.zip 上传到 OSS
-	key := "package/" + repoURL + "@" + hash
-	err := util.UploadOSS(key, "application/zip", data)
-	if nil != err {
-		logger.Fatalf("upload package [%s] failed: %s", repoURL, err)
-		return
-	}
+	// 记录 zip 体积，用于 stage 条目的 size 字段
+	size = int64(len(data))
 
-	size = int64(len(data)) // 计算包大小
-
-	// 解压 package.zip 以计算实际占用空间大小
+	// 将 zip 写入临时文件并解压到临时目录
 	installSize = size
+	var err error
 	osTmpDir := filepath.Join(os.TempDir(), "bazaar")
 	if err = os.MkdirAll(osTmpDir, 0755); nil != err {
 		logger.Errorf("mkdir [%s] failed: %s", osTmpDir, err)
-	} else {
-		tmpZipPath := filepath.Join(os.TempDir(), "bazaar", gulu.Rand.String(7)+".zip")
-		if err = os.WriteFile(tmpZipPath, data, 0644); nil != err {
-			logger.Errorf("write package.zip failed: %s", err)
-		} else {
-			tmpUnzipPath := filepath.Join(os.TempDir(), "bazaar", gulu.Rand.String(7))
-			if err = gulu.Zip.Unzip(tmpZipPath, tmpUnzipPath); nil != err {
-				logger.Errorf("unzip package.zip failed: %s", err)
-			} else {
-				installSize, err = util.SizeOfDirectory(tmpUnzipPath)
-				if nil != err {
-					logger.Errorf("stat package [%s] size failed: %s", repoURL, err)
-				}
-			}
-			os.RemoveAll(tmpUnzipPath)
-		}
-		os.RemoveAll(tmpZipPath)
+		return
+	}
+	tmpZipPath := filepath.Join(os.TempDir(), "bazaar", gulu.Rand.String(7)+".zip")
+	if err = os.WriteFile(tmpZipPath, data, 0644); nil != err {
+		logger.Errorf("write package.zip failed: %s", err)
+		return
+	}
+	defer os.RemoveAll(tmpZipPath)
+
+	tmpUnzipPath := filepath.Join(os.TempDir(), "bazaar", gulu.Rand.String(7))
+	if err = gulu.Zip.Unzip(tmpZipPath, tmpUnzipPath); nil != err {
+		logger.Errorf("unzip package.zip failed: %s", err)
+		return
+	}
+	defer os.RemoveAll(tmpUnzipPath)
+
+	// 校验解压根目录结构（仅有一个子目录视为打包错误），且包根下存在该类型必要文件
+	packageRoot, err := validateUnzipRoot(tmpUnzipPath)
+	if err != nil {
+		logger.Warnf("validate unzip root [%s] failed: %s", repoURL, err)
+		return
+	}
+	if err = validatePackageRoot(packageRoot, typ); err != nil {
+		logger.Warnf("validate package root [%s] failed: %s", repoURL, err)
+		return
 	}
 
-	// 先获取包配置，以便根据配置上传对应的 README 文件
+	// 计算解压后目录体积，用于 stage 条目的 installSize 字段
+	installSize, err = util.SizeOfDirectory(packageRoot)
+	if nil != err {
+		logger.Errorf("stat package [%s] size failed: %s", repoURL, err)
+		return
+	}
+
+	// 从解压目录读取元数据，以便根据 readme 字段收集要上传的文件
 	var basePkg *Package
-	pkg, basePkg = getPackage(repoURL, hash, typ)
+	pkg, basePkg = getPackage(packageRoot, typ)
 	if nil == pkg || nil == basePkg {
 		logger.Warnf("get package [%s] failed", repoURL)
+		return
+	}
+
+	// 校验通过后再上传 package.zip，避免无效包写入 OSS
+	key := "package/" + repoURL + "@" + hash
+	if err := util.UploadOSS(key, "application/zip", data); nil != err {
+		logger.Errorf("upload package [%s] failed: %s", repoURL, err)
 		return
 	}
 
@@ -416,42 +507,34 @@ func indexPackage(repoURL, typ, oldStageURL string) (ok, skipped bool, hash, pub
 			}
 		}
 	}
-	// 如果没有配置 readme 字段或所有字段都为空，则上传默认的 README 文件（向后兼容）
-	if 0 == len(readmeFiles) {
-		readmeFiles["/README_zh_CN.md"] = true
-		readmeFiles["/README_en_US.md"] = true
-	}
-	// 无论是否收集到 README.md 文件，都需要上传
+	// 仅 README.md 始终加入上传列表（若包内存在则上传）
 	readmeFiles["/README.md"] = true
 
-	// 并发上传文件
+	// 从解压目录读取 README、preview、icon、元数据 JSON 并并发上传到 OSS；任一份上传失败则整包视为失败
+	var anyUploadFailed int32
 	wg := &sync.WaitGroup{}
 	wg.Add(3 + len(readmeFiles))
-	// 上传 README 文件
 	for readmeFile := range readmeFiles {
-		go indexPackageFile(repoURL, hash, readmeFile, 0, 0, wg)
+		go indexPackageFile(repoURL, hash, packageRoot, readmeFile, 0, 0, wg, &anyUploadFailed)
 	}
-	// 上传其他固定文件
-	go indexPackageFile(repoURL, hash, "/preview.png", 0, 0, wg)
-	go indexPackageFile(repoURL, hash, "/icon.png", 0, 0, wg)
-	go indexPackageFile(repoURL, hash, "/"+strings.TrimSuffix(typ, "s")+".json", size, installSize, wg)
+	go indexPackageFile(repoURL, hash, packageRoot, "/preview.png", 0, 0, wg, &anyUploadFailed)
+	go indexPackageFile(repoURL, hash, packageRoot, "/icon.png", 0, 0, wg, &anyUploadFailed)
+	go indexPackageFile(repoURL, hash, packageRoot, "/"+strings.TrimSuffix(typ, "s")+".json", size, installSize, wg, &anyUploadFailed)
 	wg.Wait()
+	if atomic.LoadInt32(&anyUploadFailed) != 0 {
+		return
+	}
 	ok = true
 	return
 }
 
-// getPackage 获取 release 对应提交中的 *.json 配置文件，按 typ 解析为 Package / PluginPackage / ThemePackage，并返回用于 Readme 等的 *Package
-func getPackage(ownerRepo, hash, typ string) (pkgVal interface{}, basePkg *Package) {
+// getPackage 从解压后的包根目录 unzipRoot 读取该类型的元数据 JSON（如 plugin.json），按 typ 解析为 Package / PluginPackage / ThemePackage，并返回用于 Readme 等的 *Package。
+func getPackage(unzipRoot, typ string) (pkgVal interface{}, basePkg *Package) {
 	name := strings.TrimSuffix(typ, "s")
-	u := "https://raw.githubusercontent.com/" + ownerRepo + "/" + hash + "/" + name + ".json"
-	resp, data, errs := gorequest.New().Get(u).
-		Set("User-Agent", util.UserAgent).
-		Retry(1, 3*time.Second).Timeout(30 * time.Second).EndBytes()
-	if nil != errs {
-		logger.Errorf("get [%s] failed: %s", u, errs)
-		return nil, nil
-	}
-	if 200 != resp.StatusCode {
+	jsonPath := filepath.Join(unzipRoot, name+".json")
+	data, err := os.ReadFile(jsonPath)
+	if err != nil {
+		logger.Errorf("read [%s] failed: %s", jsonPath, err)
 		return nil, nil
 	}
 
@@ -459,7 +542,7 @@ func getPackage(ownerRepo, hash, typ string) (pkgVal interface{}, basePkg *Packa
 	case "plugins":
 		p := &PluginPackage{Package: &Package{}}
 		if err := gulu.JSON.UnmarshalJSON(data, p); nil != err {
-			logger.Errorf("unmarshal [%s] failed: %s", u, err)
+			logger.Errorf("unmarshal [%s] failed: %s", jsonPath, err)
 			return nil, nil
 		}
 		sanitizePackage(p.Package)
@@ -467,7 +550,7 @@ func getPackage(ownerRepo, hash, typ string) (pkgVal interface{}, basePkg *Packa
 	case "themes":
 		p := &ThemePackage{Package: &Package{}}
 		if err := gulu.JSON.UnmarshalJSON(data, p); nil != err {
-			logger.Errorf("unmarshal [%s] failed: %s", u, err)
+			logger.Errorf("unmarshal [%s] failed: %s", jsonPath, err)
 			return nil, nil
 		}
 		sanitizePackage(p.Package)
@@ -475,7 +558,7 @@ func getPackage(ownerRepo, hash, typ string) (pkgVal interface{}, basePkg *Packa
 	default:
 		ret := &Package{}
 		if err := gulu.JSON.UnmarshalJSON(data, ret); nil != err {
-			logger.Errorf("unmarshal [%s] failed: %s", u, err)
+			logger.Errorf("unmarshal [%s] failed: %s", jsonPath, err)
 			return nil, nil
 		}
 		sanitizePackage(ret)
@@ -501,50 +584,57 @@ func normalizeReadmePath(readmePath string) (string, bool) {
 	return normalized, true
 }
 
-// indexPackageFile 索引文件
-func indexPackageFile(ownerRepo, hash, filePath string, size, installSize int64, wg *sync.WaitGroup) bool {
+// indexPackageFile 从解压后的包根目录 unzipRoot 读取 filePath 对应文件（大小写敏感），上传到 OSS；可选文件不存在时仅记录并跳过，其它失败时设置 anyFail。filePath 为相对包根的路径，如 /README.md、/icon.png。
+func indexPackageFile(ownerRepo, hash, unzipRoot, filePath string, size, installSize int64, wg *sync.WaitGroup, anyFail *int32) {
 	defer wg.Done()
 
-	u := "https://raw.githubusercontent.com/" + ownerRepo + "/" + hash + filePath
-	resp, data, errs := gorequest.New().Get(u).
-		Set("User-Agent", util.UserAgent).
-		Retry(1, 3*time.Second).Timeout(30 * time.Second).EndBytes()
-	if nil != errs {
-		logger.Errorf("get [%s] failed: %s", u, errs)
-		return false
-	}
-	if 200 != resp.StatusCode {
-		return false
+	relPath := strings.TrimPrefix(filepath.ToSlash(filePath), "/")
+	localPath := filepath.Join(unzipRoot, filepath.FromSlash(relPath))
+	data, err := os.ReadFile(localPath)
+	if err != nil {
+		// 可选文件（如部分 README、preview.png）可能不存在，仅记录并跳过，不导致整包失败
+		if os.IsNotExist(err) {
+			logger.Warnf("file not found in package, skip upload [%s]", relPath)
+			return
+		}
+		logger.Errorf("read [%s] failed: %s", localPath, err)
+		atomic.StoreInt32(anyFail, 1)
+		return
 	}
 
+	// 规范化为 /path 形式用于 OSS key
+	normPath := "/" + filepath.ToSlash(relPath)
+
 	var contentType string
-	if strings.HasSuffix(filePath, ".md") {
+	if strings.HasSuffix(normPath, ".md") {
 		contentType = "text/markdown"
-	} else if strings.HasSuffix(filePath, ".json") {
+	} else if strings.HasSuffix(normPath, ".png") {
+		contentType = "image/png"
+	} else if strings.HasSuffix(normPath, ".json") {
 		contentType = "application/json"
-		// 统计包大小
+		// 注入 size/installSize 到清单 JSON
 		meta := map[string]interface{}{}
-		if err := gulu.JSON.UnmarshalJSON(data, &meta); nil != err {
-			logger.Errorf("stat package [%s] size failed: %s", u, err)
-			return false
+		if err := gulu.JSON.UnmarshalJSON(data, &meta); err != nil {
+			logger.Errorf("unmarshal package meta [%s] failed: %s", localPath, err)
+			atomic.StoreInt32(anyFail, 1)
+			return
 		}
 		meta["size"] = size
 		meta["installSize"] = installSize
-		var err error
 		data, err = gulu.JSON.MarshalIndentJSON(meta, "", "  ")
-		if nil != err {
-			logger.Errorf("marshal package [%s] meta json failed: %s", u, err)
-			return false
+		if err != nil {
+			logger.Errorf("marshal package [%s] meta json failed: %s", localPath, err)
+			atomic.StoreInt32(anyFail, 1)
+			return
 		}
 	}
 
-	key := "package/" + ownerRepo + "@" + hash + filePath
-	err := util.UploadOSS(key, contentType, data)
-	if nil != err {
+	key := "package/" + ownerRepo + "@" + hash + normPath
+	if err := util.UploadOSS(key, contentType, data); err != nil {
 		logger.Errorf("upload package file [%s] failed: %s", key, err)
-		return false
+		atomic.StoreInt32(anyFail, 1)
+		return
 	}
-	return true
 }
 
 func repoStats(repoURL string) (stars, openIssues int, ok bool) {
