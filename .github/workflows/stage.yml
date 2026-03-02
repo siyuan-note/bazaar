@@ -32,13 +32,20 @@ jobs:
       - name: Check out repo
         uses: actions/checkout@v6
 
-      - name: Check preinstalled Go
+      - name: Show preinstalled Go (no toolchain auto-download)
         shell: bash
         run: |
           set -e
+          echo "PATH go:"
           which go || true
-          go version || true
-          go env GOROOT GOPATH || true
+
+          echo ""
+          echo "Base Go version (GOTOOLCHAIN=local):"
+          GOTOOLCHAIN=local go version || true
+
+          echo ""
+          echo "Base Go env (GOTOOLCHAIN=local):"
+          GOTOOLCHAIN=local go env GOROOT GOVERSION GOTOOLCHAIN || true
 
       - name: Setup Golang
         uses: actions/setup-go@v6
