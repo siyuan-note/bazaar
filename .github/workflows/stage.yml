@@ -32,6 +32,14 @@ jobs:
       - name: Check out repo
         uses: actions/checkout@v6
 
+      - name: Check preinstalled Go
+        shell: bash
+        run: |
+          set -e
+          which go || true
+          go version || true
+          go env GOROOT GOPATH || true
+
       - name: Setup Golang
         uses: actions/setup-go@v6
         with:
