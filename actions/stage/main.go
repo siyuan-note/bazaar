@@ -15,6 +15,7 @@ import (
 	"crypto/tls"
 	"encoding/json"
 	"fmt"
+	"math"
 	"os"
 	"path/filepath"
 	"sort"
@@ -83,8 +84,8 @@ func main() {
 	logger.Infof("bazaar staged")
 }
 
-// apiCallsPerRepo 每个仓库 staging 时最多消耗的 GitHub REST API (core) 请求数：repoStats 1 次 + getRepoLatestRelease 最多 3 次（releases/latest、git/ref/tags、git/tags）
-const apiCallsPerRepo = 4
+// apiCallsPerRepo 每个仓库 staging 时消耗的 GitHub REST API (core) 请求数经验值（repoStats 1 次 + getRepoLatestRelease 等）
+const apiCallsPerRepo = 2.5
 
 // checkRateLimitBeforeStage 统计本次待检查仓库数、请求 GitHub rate_limit（该请求不计入 core），若 core 剩余请求数不足则返回错误。参考 https://docs.github.com/zh/rest/rate-limit/rate-limit
 func checkRateLimitBeforeStage() error {
@@ -97,7 +98,7 @@ func checkRateLimitBeforeStage() error {
 		}
 		repoCount += len(repos)
 	}
-	required := repoCount * apiCallsPerRepo
+	required := int(math.Ceil(float64(repoCount) * apiCallsPerRepo))
 	if required == 0 {
 		return nil
 	}
