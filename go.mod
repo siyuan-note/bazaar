@@ -1,6 +1,6 @@
 module github.com/siyuan-note/bazaar
 
-go 1.24.0
+go 1.25.4
 
 require (
 	github.com/88250/gulu v1.2.3-0.20241212012748-c4dc08fe45ec

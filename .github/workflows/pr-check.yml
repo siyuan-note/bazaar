@@ -72,15 +72,10 @@ jobs:
           path: ${{ env.PR_BASE_PATH }}
           ref: ${{ steps.merge-base.outputs.sha }}
 
-      # 20260302 发现 ubuntu-latest 自带的 Go 版本是 1.24.13，高于 go.mod 的 1.24.0，无需执行 Setup Golang
-      # - name: Setup Golang
-      #   uses: actions/setup-go@v6
-      #   with:
-      #     go-version-file: 'go.mod'
-      #     cache: true
-      #     cache-dependency-path: |
-      #       go.sum
-      #       go.mod
+      - name: Setup Golang
+        uses: actions/setup-go@v6
+        with:
+          go-version-file: 'go.mod'
 
       - name: Go Check
         run: go run ./actions/check
