@@ -54,10 +54,6 @@ jobs:
           git pull --rebase
           git push
 
-      - name: Index bazaar
+      - name: Index bazaar and report hash
         if: steps.commit_push.outputs.had_changes == 'true'
         run: go run ./actions/index
-
-      - name: Go hashing
-        if: steps.commit_push.outputs.had_changes == 'true'
-        run: go run ./actions/hash
