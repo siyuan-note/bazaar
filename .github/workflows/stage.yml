@@ -32,21 +32,6 @@ jobs:
       - name: Check out repo
         uses: actions/checkout@v6
 
-      - name: Show preinstalled Go (no toolchain auto-download)
-        shell: bash
-        run: |
-          set -e
-          echo "PATH go:"
-          which go || true
-
-          echo ""
-          echo "Base Go version (GOTOOLCHAIN=local):"
-          GOTOOLCHAIN=local go version || true
-
-          echo ""
-          echo "Base Go env (GOTOOLCHAIN=local):"
-          GOTOOLCHAIN=local go env GOROOT GOVERSION GOTOOLCHAIN || true
-
       # 20260302 发现 ubuntu-latest 自带的 Go 版本是 1.24.13，高于 go.mod 的 1.24.0，无需执行 Setup Golang
       # - name: Setup Golang
       #   uses: actions/setup-go@v6
