@@ -14,6 +14,7 @@ import (
 	"bytes"
 	"crypto/tls"
 	"encoding/json"
+	"fmt"
 	"os"
 	"path/filepath"
 	"sort"
@@ -38,7 +39,7 @@ var (
 	heavyStageOnce sync.Once
 )
 
-// getStagePoolSize 从环境变量 STAGE_POOL_SIZE 读取并发池大小，默认 80，以在多数为 skip 时加快检查。
+// getStagePoolSize 从环境变量 STAGE_POOL_SIZE 读取并发池大小，默认 80（接近 GitHub API 的并发限制），以在多数为 skip 时加快检查。
 func getStagePoolSize() int {
 	const defaultPool = 80
 	if s := os.Getenv("STAGE_POOL_SIZE"); s != "" {
@@ -69,6 +70,10 @@ func initHeavyStageSem() {
 func main() {
 	logger.Infof("bazaar is staging...")
 
+	if err := checkRateLimitBeforeStage(); err != nil {
+		logger.Fatalf("GitHub API rate limit check failed: %v", err)
+	}
+
 	performStage("themes")
 	performStage("templates")
 	performStage("icons")
@@ -76,6 +81,61 @@ func main() {
 	performStage("plugins")
 
 	logger.Infof("bazaar staged")
+}
+
+// apiCallsPerRepo 每个仓库 staging 时最多消耗的 GitHub REST API (core) 请求数：repoStats 1 次 + getRepoLatestRelease 最多 3 次（releases/latest、git/ref/tags、git/tags）
+const apiCallsPerRepo = 4
+
+// checkRateLimitBeforeStage 统计本次待检查仓库数、请求 GitHub rate_limit（该请求不计入 core），若 core 剩余请求数不足则返回错误。参考 https://docs.github.com/zh/rest/rate-limit/rate-limit
+func checkRateLimitBeforeStage() error {
+	types := []string{"themes", "templates", "icons", "widgets", "plugins"}
+	var repoCount int
+	for _, typ := range types {
+		repos, err := util.ParseReposFromTxt(typ + ".txt")
+		if err != nil {
+			return fmt.Errorf("count staging repos: %w", err)
+		}
+		repoCount += len(repos)
+	}
+	required := repoCount * apiCallsPerRepo
+	if required == 0 {
+		return nil
+	}
+	pat := os.Getenv("PAT")
+	if pat == "" {
+		return fmt.Errorf("env PAT is not set")
+	}
+	var out struct {
+		Resources struct {
+			Core struct {
+				Limit     int   `json:"limit"`
+				Remaining int   `json:"remaining"`
+				Reset     int64 `json:"reset"`
+			} `json:"core"`
+		} `json:"resources"`
+	}
+	request := gorequest.New().TLSClientConfig(&tls.Config{InsecureSkipVerify: true})
+	resp, _, errs := request.Get("https://api.github.com/rate_limit").
+		Set("Accept", "application/vnd.github+json").
+		Set("Authorization", "Token "+pat).
+		Set("User-Agent", util.UserAgent).
+		Set("X-GitHub-Api-Version", "2022-11-28").
+		Timeout(10 * time.Second).
+		EndStruct(&out)
+	if len(errs) > 0 {
+		return fmt.Errorf("get rate limit: %w", errs[0])
+	}
+	if resp != nil && resp.StatusCode != 200 {
+		return fmt.Errorf("rate_limit returned %d", resp.StatusCode)
+	}
+	remaining := out.Resources.Core.Remaining
+	limit := out.Resources.Core.Limit
+	reset := out.Resources.Core.Reset
+	if remaining < required {
+		return fmt.Errorf("GitHub REST API (core) remaining %d / %d is below required %d for %d repos (~%d requests); reset at %d", remaining, limit, required, repoCount, required, reset)
+	}
+	logger.Infof("GitHub API (core) remaining %d / %d, %d repos to check (~%d requests), OK", remaining, limit, repoCount, required)
+	return nil
 }
 
 // loadOldStageData 加载现有的 stage 文件数据，返回以 owner/repo 为 key 的映射
