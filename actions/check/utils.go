@@ -46,6 +46,17 @@ var (
 	}
 )
 
+// isNameInBuiltinList 判断 name 是否在内置包名列表中（不区分大小写）
+func isNameInBuiltinList(name string, list []string) bool {
+	nameLower := strings.ToLower(name)
+	for _, builtin := range list {
+		if nameLower == strings.ToLower(builtin) {
+			return true
+		}
+	}
+	return false
+}
+
 // isKeyInSet 判断字符串是否在集合中
 func isKeyInSet(
 	key string,

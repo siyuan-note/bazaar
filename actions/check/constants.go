@@ -34,3 +34,10 @@ const (
 	FILE_PATH_THEME_JSON    = "theme.json"
 	FILE_PATH_WIDGET_JSON   = "widget.json"
 )
+
+var (
+	// 内置主题
+	BuiltinThemeNames = []string{"daylight", "midnight"}
+	// 内置图标
+	BuiltinIconNames = []string{"ant", "material"}
+)

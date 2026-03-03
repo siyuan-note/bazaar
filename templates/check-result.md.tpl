@@ -1,5 +1,14 @@
 ## Pull Request Check Report
 
+{{ if .ParseError }}
+### Package list parse error
+
+{{ .ParseError }}
+
+Please fix the corresponding `.txt` file in the repo root: one `owner/repo` per line. Then push a new commit or re-run PR Check.
+
+---
+{{ end }}
 {{ if .Icons }}
 ### Add `{{ len .Icons }}` Icon Repo
 
