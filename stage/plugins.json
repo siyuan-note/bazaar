@@ -1,6 +1,157 @@
 {
   "repos": [
     {
+      "installSize": 3294636,
+      "openIssues": 0,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
+          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持白板/时间轴/日历/看板/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Horizon",
+          "zh_CN": "任务管理器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "task",
+          "manager",
+          "filter"
+        ],
+        "minAppVersion": "3.5.0",
+        "name": "siyuan-plugin-task-horizon",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
+        "version": "1.6.11"
+      },
+      "size": 794548,
+      "stars": 6,
+      "updated": "2026-03-09T05:49:07Z",
+      "url": "5kyfkr/siyuan-plugin-task-horizon@9b40737453a86934711f90c7bc83633569460a03"
+    },
+    {
+      "installSize": 300674,
+      "openIssues": 0,
+      "package": {
+        "author": "Run-os",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "思源笔记中管理闪卡的工具箱"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "闪卡工具箱"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [],
+        "minAppVersion": "2.10.14",
+        "name": "sy-flashcard-toolbox-plugin",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/Run-os/sy-flashcard-toolbox-plugin",
+        "version": "1.4.3"
+      },
+      "size": 236589,
+      "stars": 0,
+      "updated": "2026-03-09T05:34:51Z",
+      "url": "Run-os/sy-flashcard-toolbox-plugin@9d06d13f1d0d031c7a489d44be1a4ec4df6fe690"
+    },
+    {
+      "installSize": 11505358,
+      "openIssues": 5,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android",
+          "harmony"
+        ],
+        "description": {
+          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
+          "zh_CN": "一款在思源笔记里实现任务笔记管理功能的插件，为了践行防弹笔记法而开发。支持文档和块提醒、日历视图查看行事历、番茄钟专注和数据统计、项目看板、四象限面板、习惯打卡等功能"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Note Management",
+          "zh_CN": "任务笔记管理"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "reminder",
+          "time",
+          "calendar",
+          "notification",
+          "提醒",
+          "时间",
+          "日历",
+          "通知",
+          "番茄钟",
+          "四象限",
+          "任务管理",
+          "项目管理",
+          "习惯打卡"
+        ],
+        "minAppVersion": "3.5.1",
+        "name": "siyuan-plugin-task-note-management",
+        "readme": {
+          "default": "README_en_US.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
+        "version": "6.2.7"
+      },
+      "size": 7198357,
+      "stars": 164,
+      "updated": "2026-03-09T05:17:55Z",
+      "url": "Achuan-2/siyuan-plugin-task-note-management@08c770e16aefd1560e4c1ebdc9b46b4df813ab2f"
+    },
+    {
       "installSize": 362510,
       "openIssues": 2,
       "package": {
@@ -174,111 +325,6 @@
       "stars": 3,
       "updated": "2026-03-08T15:44:39Z",
       "url": "LunaNorth/siyuan-deco@9b56ab1e1d93ab9a5246b3a997eca6c7d7f62f1b"
-    },
-    {
-      "installSize": 11500319,
-      "openIssues": 5,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "description": {
-          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
-          "zh_CN": "一款在思源笔记里实现任务笔记管理功能的插件，为了践行防弹笔记法而开发。支持文档和块提醒、日历视图查看行事历、番茄钟专注和数据统计、项目看板、四象限面板、习惯打卡等功能"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Note Management",
-          "zh_CN": "任务笔记管理"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "reminder",
-          "time",
-          "calendar",
-          "notification",
-          "提醒",
-          "时间",
-          "日历",
-          "通知",
-          "番茄钟",
-          "四象限",
-          "任务管理",
-          "项目管理",
-          "习惯打卡"
-        ],
-        "minAppVersion": "3.5.1",
-        "name": "siyuan-plugin-task-note-management",
-        "readme": {
-          "default": "README_en_US.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
-        "version": "6.2.6"
-      },
-      "size": 7197047,
-      "stars": 164,
-      "updated": "2026-03-08T14:16:43Z",
-      "url": "Achuan-2/siyuan-plugin-task-note-management@eca03a0594256ccfe63ab24acd2c168cd8658020"
-    },
-    {
-      "installSize": 300668,
-      "openIssues": 0,
-      "package": {
-        "author": "Run-os",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "思源笔记中管理闪卡的工具箱"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "闪卡工具箱"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [],
-        "minAppVersion": "2.10.14",
-        "name": "sy-flashcard-toolbox-plugin",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/Run-os/sy-flashcard-toolbox-plugin",
-        "version": "1.4.2"
-      },
-      "size": 236571,
-      "stars": 0,
-      "updated": "2026-03-08T13:47:30Z",
-      "url": "Run-os/sy-flashcard-toolbox-plugin@0feb180b39cb0aba465e6c5d251e4244c4552638"
     },
     {
       "installSize": 2724000,
@@ -662,52 +708,6 @@
       "stars": 5,
       "updated": "2026-03-07T18:21:07Z",
       "url": "5kyfkr/siyuan-plugin-docktomato@9535458afe1056c1294527dd192a341cd8fa7c5c"
-    },
-    {
-      "installSize": 3261978,
-      "openIssues": 0,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
-          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持白板/时间轴/日历/看板/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Horizon",
-          "zh_CN": "任务管理器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "task",
-          "manager",
-          "filter"
-        ],
-        "minAppVersion": "3.5.0",
-        "name": "siyuan-plugin-task-horizon",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "1.6.10"
-      },
-      "size": 790093,
-      "stars": 6,
-      "updated": "2026-03-07T17:27:58Z",
-      "url": "5kyfkr/siyuan-plugin-task-horizon@5db0dec941737546ef6c861ede7c04b4e129b99d"
     },
     {
       "installSize": 2926422,
