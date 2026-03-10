@@ -1,6 +1,122 @@
 {
   "repos": [
     {
+      "installSize": 11511184,
+      "openIssues": 6,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android",
+          "harmony"
+        ],
+        "description": {
+          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
+          "zh_CN": "一款在思源笔记里实现任务笔记管理功能的插件，为了践行防弹笔记法而开发。支持文档和块提醒、日历视图查看行事历、番茄钟专注和数据统计、项目看板、四象限面板、习惯打卡等功能"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Note Management",
+          "zh_CN": "任务笔记管理"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "reminder",
+          "time",
+          "calendar",
+          "notification",
+          "提醒",
+          "时间",
+          "日历",
+          "通知",
+          "番茄钟",
+          "四象限",
+          "任务管理",
+          "项目管理",
+          "习惯打卡"
+        ],
+        "minAppVersion": "3.5.1",
+        "name": "siyuan-plugin-task-note-management",
+        "readme": {
+          "default": "README_en_US.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
+        "version": "6.2.8"
+      },
+      "size": 7200165,
+      "stars": 165,
+      "updated": "2026-03-10T04:40:47Z",
+      "url": "Achuan-2/siyuan-plugin-task-note-management@e32d2bed470633807931bde820f80dfe28f45114"
+    },
+    {
+      "installSize": 409731,
+      "openIssues": 1,
+      "package": {
+        "author": "YiFeng",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "一个思源笔记插件，可以在主文档底部自动拼接其子文档的内容，并保持完美的渲染效果。支持实时编辑同步、悬停预览、一键清除所有拼接状态等功能。",
+          "en_US": "A plugin for concat subdocs in the bottom of main doc. Support realtime sync, hover preview, clear all concat status and more."
+        },
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "子文档拼接",
+          "en_US": "Concat Subdocs"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            ""
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "子文档",
+          "编辑",
+          "拼接",
+          "concat",
+          "subdocs"
+        ],
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-plugin-concat-subdocs",
+        "readme": {
+          "default": "README.md",
+          "en_US": "README.en_US.md"
+        },
+        "url": "https://github.com/yifengjob/siyuan-plugin-concat-subdocs",
+        "version": "1.0.4"
+      },
+      "size": 325668,
+      "stars": 1,
+      "updated": "2026-03-10T04:35:00Z",
+      "url": "yifengjob/siyuan-plugin-concat-subdocs@f60526990512769d636ee0880b7efc4b40d5fa11"
+    },
+    {
       "installSize": 2448968,
       "openIssues": 4,
       "package": {
@@ -494,55 +610,6 @@
       "url": "LunaNorth/siyuan-deco@71b1b4a219d42c89b781066b35d7622dffb62fb6"
     },
     {
-      "installSize": 409193,
-      "openIssues": 1,
-      "package": {
-        "author": "YiFeng",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "一个思源笔记插件，可以在主文档底部自动拼接其子文档的内容，并保持完美的渲染效果。支持实时编辑同步、悬停预览、一键清除所有拼接状态等功能。",
-          "en_US": "A plugin for concat subdocs in the bottom of main doc. Support realtime sync, hover preview, clear all concat status and more."
-        },
-        "disabledInPublish": false,
-        "displayName": {
-          "default": "子文档拼接",
-          "en_US": "Concat Subdocs"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            ""
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "子文档",
-          "编辑",
-          "拼接",
-          "concat",
-          "subdocs"
-        ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-plugin-concat-subdocs",
-        "readme": {
-          "default": "README.md",
-          "en_US": "README.en_US.md"
-        },
-        "url": "https://github.com/yifengjob/siyuan-plugin-concat-subdocs",
-        "version": "1.0.3"
-      },
-      "size": 325589,
-      "stars": 1,
-      "updated": "2026-03-09T07:04:19Z",
-      "url": "yifengjob/siyuan-plugin-concat-subdocs@f4f5a3cc9ffb811a96a7a303764dcb9054d496b8"
-    },
-    {
       "installSize": 300674,
       "openIssues": 0,
       "package": {
@@ -579,73 +646,6 @@
       "stars": 0,
       "updated": "2026-03-09T05:34:51Z",
       "url": "Run-os/sy-flashcard-toolbox-plugin@9d06d13f1d0d031c7a489d44be1a4ec4df6fe690"
-    },
-    {
-      "installSize": 11505358,
-      "openIssues": 5,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "description": {
-          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
-          "zh_CN": "一款在思源笔记里实现任务笔记管理功能的插件，为了践行防弹笔记法而开发。支持文档和块提醒、日历视图查看行事历、番茄钟专注和数据统计、项目看板、四象限面板、习惯打卡等功能"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Note Management",
-          "zh_CN": "任务笔记管理"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "reminder",
-          "time",
-          "calendar",
-          "notification",
-          "提醒",
-          "时间",
-          "日历",
-          "通知",
-          "番茄钟",
-          "四象限",
-          "任务管理",
-          "项目管理",
-          "习惯打卡"
-        ],
-        "minAppVersion": "3.5.1",
-        "name": "siyuan-plugin-task-note-management",
-        "readme": {
-          "default": "README_en_US.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
-        "version": "6.2.7"
-      },
-      "size": 7198357,
-      "stars": 164,
-      "updated": "2026-03-09T05:17:55Z",
-      "url": "Achuan-2/siyuan-plugin-task-note-management@08c770e16aefd1560e4c1ebdc9b46b4df813ab2f"
     },
     {
       "installSize": 44676735,
