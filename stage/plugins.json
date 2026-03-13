@@ -1,6 +1,98 @@
 {
   "repos": [
     {
+      "installSize": 1171663,
+      "openIssues": 8,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "SiYuan AI Assistant, supports dragging blocks and tabs to get note context, enabling Q&amp;A and editing based on SiYuan note content",
+          "zh_CN": "思源笔记 AI 助手,支持拖动块、页签获取笔记上下文，实现基于思源笔记内容进行问答和编辑"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan Copilot",
+          "zh_CN": "SiYuan Copilot"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [],
+        "minAppVersion": "3.0.12",
+        "name": "siyuan-plugin-copilot",
+        "readme": {
+          "default": "README_en_US.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-copilot",
+        "version": "2.0.3"
+      },
+      "size": 469249,
+      "stars": 76,
+      "updated": "2026-03-13T17:06:26Z",
+      "url": "Achuan-2/siyuan-plugin-copilot@221e6a006a213b1b188571aec734d96c7889f9e9"
+    },
+    {
+      "installSize": 420552,
+      "openIssues": 1,
+      "package": {
+        "author": "YiFeng",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "一个思源笔记插件，可以在主文档底部自动拼接其子文档的内容，并保持完美的渲染效果。支持实时编辑同步、悬停预览、一键清除所有拼接状态等功能。",
+          "en_US": "A plugin for concat subdocs in the bottom of main doc. Support realtime sync, hover preview, clear all concat status and more."
+        },
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "子文档拼接",
+          "en_US": "Concat Subdocs"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            ""
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "子文档",
+          "编辑",
+          "拼接",
+          "concat",
+          "subdocs"
+        ],
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-plugin-concat-subdocs",
+        "readme": {
+          "default": "README.md",
+          "en_US": "README.en_US.md"
+        },
+        "url": "https://github.com/yifengjob/siyuan-plugin-concat-subdocs",
+        "version": "1.0.9"
+      },
+      "size": 327774,
+      "stars": 1,
+      "updated": "2026-03-13T16:51:42Z",
+      "url": "yifengjob/siyuan-plugin-concat-subdocs@1fa569637e38f7fbdcdc0e3586daa9616afde578"
+    },
+    {
       "installSize": 1714820,
       "openIssues": 0,
       "package": {
@@ -89,49 +181,6 @@
       "stars": 17,
       "updated": "2026-03-13T06:05:08Z",
       "url": "OpaqueGlass/syplugin-hierarchyNavigate@f8987011205e2ed7de38d0cba6b5f9531371298b"
-    },
-    {
-      "installSize": 1172054,
-      "openIssues": 8,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "SiYuan AI Assistant, supports dragging blocks and tabs to get note context, enabling Q&amp;A and editing based on SiYuan note content",
-          "zh_CN": "思源笔记 AI 助手,支持拖动块、页签获取笔记上下文，实现基于思源笔记内容进行问答和编辑"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiYuan Copilot",
-          "zh_CN": "SiYuan Copilot"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [],
-        "minAppVersion": "3.0.12",
-        "name": "siyuan-plugin-copilot",
-        "readme": {
-          "default": "README_en_US.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-copilot",
-        "version": "2.0.2"
-      },
-      "size": 469330,
-      "stars": 76,
-      "updated": "2026-03-13T02:46:27Z",
-      "url": "Achuan-2/siyuan-plugin-copilot@946377ebb34aaa5be8553f23b009a8e5a57ed0d6"
     },
     {
       "installSize": 3483620,
@@ -493,55 +542,6 @@
       "stars": 3,
       "updated": "2026-03-11T23:41:08Z",
       "url": "LunaNorth/siyuan-deco@e7321a71eac073ba74310271c018501a172988d8"
-    },
-    {
-      "installSize": 417257,
-      "openIssues": 1,
-      "package": {
-        "author": "YiFeng",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "一个思源笔记插件，可以在主文档底部自动拼接其子文档的内容，并保持完美的渲染效果。支持实时编辑同步、悬停预览、一键清除所有拼接状态等功能。",
-          "en_US": "A plugin for concat subdocs in the bottom of main doc. Support realtime sync, hover preview, clear all concat status and more."
-        },
-        "disabledInPublish": false,
-        "displayName": {
-          "default": "子文档拼接",
-          "en_US": "Concat Subdocs"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            ""
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "子文档",
-          "编辑",
-          "拼接",
-          "concat",
-          "subdocs"
-        ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-plugin-concat-subdocs",
-        "readme": {
-          "default": "README.md",
-          "en_US": "README.en_US.md"
-        },
-        "url": "https://github.com/yifengjob/siyuan-plugin-concat-subdocs",
-        "version": "1.0.8"
-      },
-      "size": 327280,
-      "stars": 1,
-      "updated": "2026-03-11T17:05:28Z",
-      "url": "yifengjob/siyuan-plugin-concat-subdocs@277fff8a5e3057dcfcc82cdbb8d1df7115207f54"
     },
     {
       "installSize": 2730923,
