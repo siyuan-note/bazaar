@@ -1,6 +1,104 @@
 {
   "repos": [
     {
+      "installSize": 84168,
+      "openIssues": 4,
+      "package": {
+        "author": "Hao Zhou",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A Memos-like quick note-taking plugin. Capture thoughts, tag them, search and filter — all within SiYuan.",
+          "zh_CN": "类似 Memos 的快速笔记插件。在思源中快速记录想法、添加标签、搜索和过滤。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "DayMemo",
+          "zh_CN": "日记便签"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "memo",
+          "memos",
+          "daylog",
+          "quick note",
+          "日记",
+          "便签",
+          "快速笔记"
+        ],
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-plugin-day-memo",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/zhouhao/siyuan-plugin-day-memo",
+        "version": "0.1.4"
+      },
+      "size": 32163,
+      "stars": 3,
+      "updated": "2026-03-14T06:40:04Z",
+      "url": "zhouhao/siyuan-plugin-day-memo@6fe877d7df50e77b2b99e03cce3bd2e1f11f0fdf"
+    },
+    {
+      "installSize": 419712,
+      "openIssues": 1,
+      "package": {
+        "author": "YiFeng",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "一个思源笔记插件，可以在主文档底部自动拼接其子文档的内容，并保持完美的渲染效果。支持实时编辑同步、悬停预览、一键清除所有拼接状态等功能。",
+          "en_US": "A plugin for concat subdocs in the bottom of main doc. Support realtime sync, hover preview, clear all concat status and more."
+        },
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "子文档拼接",
+          "en_US": "Concat Subdocs"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            ""
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "子文档",
+          "编辑",
+          "拼接",
+          "concat",
+          "subdocs"
+        ],
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-plugin-concat-subdocs",
+        "readme": {
+          "default": "README.md",
+          "en_US": "README.en_US.md"
+        },
+        "url": "https://github.com/yifengjob/siyuan-plugin-concat-subdocs",
+        "version": "1.0.10"
+      },
+      "size": 327451,
+      "stars": 1,
+      "updated": "2026-03-14T06:33:07Z",
+      "url": "yifengjob/siyuan-plugin-concat-subdocs@ff47fb65278587703bd225717089843a7903ec26"
+    },
+    {
       "installSize": 770804,
       "openIssues": 2,
       "package": {
@@ -82,55 +180,6 @@
       "stars": 76,
       "updated": "2026-03-13T17:06:26Z",
       "url": "Achuan-2/siyuan-plugin-copilot@221e6a006a213b1b188571aec734d96c7889f9e9"
-    },
-    {
-      "installSize": 420552,
-      "openIssues": 1,
-      "package": {
-        "author": "YiFeng",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "一个思源笔记插件，可以在主文档底部自动拼接其子文档的内容，并保持完美的渲染效果。支持实时编辑同步、悬停预览、一键清除所有拼接状态等功能。",
-          "en_US": "A plugin for concat subdocs in the bottom of main doc. Support realtime sync, hover preview, clear all concat status and more."
-        },
-        "disabledInPublish": false,
-        "displayName": {
-          "default": "子文档拼接",
-          "en_US": "Concat Subdocs"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            ""
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "子文档",
-          "编辑",
-          "拼接",
-          "concat",
-          "subdocs"
-        ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-plugin-concat-subdocs",
-        "readme": {
-          "default": "README.md",
-          "en_US": "README.en_US.md"
-        },
-        "url": "https://github.com/yifengjob/siyuan-plugin-concat-subdocs",
-        "version": "1.0.9"
-      },
-      "size": 327774,
-      "stars": 1,
-      "updated": "2026-03-13T16:51:42Z",
-      "url": "yifengjob/siyuan-plugin-concat-subdocs@1fa569637e38f7fbdcdc0e3586daa9616afde578"
     },
     {
       "installSize": 1714820,
@@ -1306,55 +1355,6 @@
       "stars": 0,
       "updated": "2026-03-08T08:59:55Z",
       "url": "FEUAZUR/notion-importer@a2490af9c164bc362ff3cc9c97bb95cbbc03c373"
-    },
-    {
-      "installSize": 80895,
-      "openIssues": 2,
-      "package": {
-        "author": "Hao Zhou",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A Memos-like quick note-taking plugin. Capture thoughts, tag them, search and filter — all within SiYuan.",
-          "zh_CN": "类似 Memos 的快速笔记插件。在思源中快速记录想法、添加标签、搜索和过滤。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "DayMemo",
-          "zh_CN": "日记便签"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "memo",
-          "memos",
-          "daylog",
-          "quick note",
-          "日记",
-          "便签",
-          "快速笔记"
-        ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-plugin-day-memo",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/zhouhao/siyuan-plugin-day-memo",
-        "version": "0.1.3"
-      },
-      "size": 31254,
-      "stars": 2,
-      "updated": "2026-03-08T08:49:06Z",
-      "url": "zhouhao/siyuan-plugin-day-memo@ed21c9ce9a2ccd17165fdf3171db247de20df570"
     },
     {
       "installSize": 279866,
