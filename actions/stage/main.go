@@ -343,19 +343,17 @@ var requiredFilesByType = map[string][]string{
 	"widgets":   {"widget.json", "index.html"},
 }
 
-// validateUnzipRoot 检查解压根目录结构：正常情况下所有文件应在根目录；若根目录仅有一个子目录则视为打包错误。返回包根目录的绝对路径（即解压根目录）。
-func validateUnzipRoot(tmpUnzipPath string) (packageRoot string, err error) {
-	entries, err := os.ReadDir(tmpUnzipPath)
+// validateUnzipRoot 检查解压根目录结构：正常情况下所有文件应在根目录；若根目录仅有一个子目录，则将该子目录视为包根目录。返回包根目录的绝对路径。
+func validateUnzipRoot(unzipPath string) (packageRoot string, err error) {
+	entries, err := os.ReadDir(unzipPath)
 	if err != nil {
 		return "", err
 	}
-	if len(entries) == 1 {
-		e := entries[0]
-		if e.IsDir() {
-			return "", errors.New("root must not contain only one directory; package files should be at zip root")
-		}
+	srcPath := unzipPath
+	if len(entries) == 1 && entries[0].IsDir() {
+		srcPath = filepath.Join(unzipPath, entries[0].Name())
 	}
-	return tmpUnzipPath, nil
+	return srcPath, nil
 }
 
 // fileExistsInDir 判断 dir 下是否存在名为 name 的文件或目录（大小写敏感，通过列目录比对）。
