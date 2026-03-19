@@ -1,6 +1,94 @@
 {
   "repos": [
     {
+      "installSize": 8152706,
+      "openIssues": 14,
+      "package": {
+        "author": "steve",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "schedule management, docker sync awareness, ai sidebar",
+          "zh_CN": "互联日程管理（基于数据库的看板视图和日历视图）支持ics，qq邮箱日历，滴答清单双向联动, docker同步感知, ai侧边栏, 资源压缩, 白板, WPS联动, （SQL，数据库）聚合可视化, 随机题头图背景图。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "STtools",
+          "zh_CN": "STtools"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://pic.imgdb.cn/item/6751b929d0e0a243d4de55a7.png"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "tools",
+          "schedule",
+          "calendar",
+          "st"
+        ],
+        "minAppVersion": "3.5.1",
+        "name": "siyuan-steve-tools",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/loonghfut/siyuan-steve-tools",
+        "version": "0.37.0"
+      },
+      "size": 3599372,
+      "stars": 80,
+      "updated": "2026-03-19T03:29:35Z",
+      "url": "loonghfut/siyuan-steve-tools@c41867d292e668173951f9e7ab81e16ee707d37d"
+    },
+    {
+      "installSize": 771016,
+      "openIssues": 1,
+      "package": {
+        "author": "取舍",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A free SiYuan Notes sharing plugin that supports generating share links for notebooks, individual documents, and documents with their sub-documents. It allows you to set an access password, expiration time, visitor limit, and view an overview of access to the shared content.",
+          "zh_CN": "一款免费的思源笔记分享插件，支持将笔记本、单篇文档、文档及子文档生成分享链接，设置访问密码、到期时间、访客人数限制，并可以查看分享内容的访问概览。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan Share",
+          "zh_CN": "思源分享"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": null,
+        "keywords": [
+          "share",
+          "markdown",
+          "分享"
+        ],
+        "minAppVersion": "2.9.0",
+        "name": "siyuan-plugin-share",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/b8l8u8e8/siyuan-plugin-share",
+        "version": "0.5.3"
+      },
+      "size": 245525,
+      "stars": 40,
+      "updated": "2026-03-19T03:27:55Z",
+      "url": "b8l8u8e8/siyuan-plugin-share@9b7007451351ccaa8edd282d8f4bff5085196ae8"
+    },
+    {
       "installSize": 3972443,
       "openIssues": 2,
       "package": {
@@ -1264,46 +1352,6 @@
       "url": "zhouhao/siyuan-plugin-day-memo@70c833c24ff94bbecacb251172ad5e35b323442c"
     },
     {
-      "installSize": 770804,
-      "openIssues": 2,
-      "package": {
-        "author": "取舍",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A free SiYuan Notes sharing plugin that supports generating share links for notebooks, individual documents, and documents with their sub-documents. It allows you to set an access password, expiration time, visitor limit, and view an overview of access to the shared content.",
-          "zh_CN": "一款免费的思源笔记分享插件，支持将笔记本、单篇文档、文档及子文档生成分享链接，设置访问密码、到期时间、访客人数限制，并可以查看分享内容的访问概览。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiYuan Share",
-          "zh_CN": "思源分享"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": null,
-        "keywords": [
-          "share",
-          "markdown",
-          "分享"
-        ],
-        "minAppVersion": "2.9.0",
-        "name": "siyuan-plugin-share",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/b8l8u8e8/siyuan-plugin-share",
-        "version": "0.5.2"
-      },
-      "size": 245453,
-      "stars": 38,
-      "updated": "2026-03-14T05:45:22Z",
-      "url": "b8l8u8e8/siyuan-plugin-share@869b63272692f8861093d8016e27c33fa83867b0"
-    },
-    {
       "installSize": 458984,
       "openIssues": 4,
       "package": {
@@ -1902,54 +1950,6 @@
       "stars": 25,
       "updated": "2026-03-06T15:51:25Z",
       "url": "IAliceBobI/sy-progressive-plugin@ff3c33143ede828471f3c99afd7eab9bd7175c9a"
-    },
-    {
-      "installSize": 8140653,
-      "openIssues": 14,
-      "package": {
-        "author": "steve",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "schedule management, docker sync awareness, ai sidebar",
-          "zh_CN": "互联日程管理（基于数据库的看板视图和日历视图）支持ics，qq邮箱日历，滴答清单双向联动, docker同步感知, ai侧边栏, 资源压缩, 白板, WPS联动, （SQL，数据库）聚合可视化, 随机题头图背景图。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "STtools",
-          "zh_CN": "STtools"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://pic.imgdb.cn/item/6751b929d0e0a243d4de55a7.png"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "tools",
-          "schedule",
-          "calendar",
-          "st"
-        ],
-        "minAppVersion": "3.5.1",
-        "name": "siyuan-steve-tools",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/loonghfut/siyuan-steve-tools",
-        "version": "0.36.0"
-      },
-      "size": 3596541,
-      "stars": 78,
-      "updated": "2026-03-06T13:50:15Z",
-      "url": "loonghfut/siyuan-steve-tools@b0f4da3e40f0dbd9d7f92ad4e70a54c5c48fc7dd"
     },
     {
       "installSize": 720527,
