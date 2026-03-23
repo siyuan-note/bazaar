@@ -1,48 +1,155 @@
-# SiYuan community bazaar <a title="Hits" target="_blank" href="https://github.com/siyuan-note/bazaar"><img src="https://hits.b3log.org/siyuan-note/bazaar.svg"></a>
+# Siyuan Custom Pic Server Plugin
 
-English | [简体中文](./README_zh_CN.md)
+## Introduction
 
-## Bazaar package development samples
+[中文](/README_zh_CN.md)
 
-- [SiYuan plugin sample](https://github.com/siyuan-note/plugin-sample), please refer to the README in the repository for plugin-related specifications.
-- [SiYuan plugin sample (Vite & Svelte)](https://github.com/siyuan-note/plugin-sample-vite-svelte)
-- [SiYuan plugin sample (Vite & Vue3)](https://github.com/siyuan-note/plugin-sample-vite-vue)
-- [SiYuan theme sample](https://github.com/siyuan-note/theme-sample)
-- [SiYuan icon sample](https://github.com/siyuan-note/icon-sample)
-- [SiYuan template sample](https://github.com/siyuan-note/template-sample)
-- [SiYuan widget sample](https://github.com/siyuan-note/widget-sample)
+This is an image hosting plugin for SiYuan Note:
 
-## Submitting a bazaar package
+- Upload image/video assets in your notes to your configured server (self-hosted image hosting).
+- Export `.md` files compatible with `vuepress-theme-vdoing`.
+- This repository also includes a **Flask backend adapter** (`backend/`) as a simple image hosting service.
 
-If you have developed a plugin, theme, icon, template or widget and want to list it in the SiYuan community bazaar, follow these steps:
+## Usage
 
-1. **Fork this repository**
-   Fork [siyuan-note/bazaar](https://github.com/siyuan-note/bazaar) on GitHub. If you have already forked, sync with the latest main branch first.
+1. Install and enable the plugin.
+2. Open plugin settings.
+3. Fill in server address (`baseURL`) and Token (optional, depending on backend config).
+4. Click "Test Connection" to verify reachability.
+5. In the editor, right-click an asset and run "Upload to CustomPic".
 
-2. **Edit the bazaar package list TXT file**
-   In the repo root there are five list files: `plugins.txt`, `themes.txt`, `icons.txt`, `templates.txt`, `widgets.txt`.
-   Add one line to the file that matches your package type. Format: `owner/repo` (owner is your GitHub username or org name, repo is the bazaar package repository name).
+![Plugin Settings Screenshot](./img/image.png)
 
-   - One `owner/repo` per line; no extra commas or empty lines.
-   - Example: `siyuan-note/plugin-sample`.
+By default, upload scope includes common image and video formats (`jpg/png/webp/gif/mp4/mov/mkv`, etc.).
 
-3. **Open a PR**
-   Commit your changes and open a Pull Request to the `main` branch of this repo.
+## Features
 
-4. **Wait for review and merge**
-   CI will run to check that the new package meets bazaar rules (e.g. release, required files, manifest fields). Maintainers will also review; please make changes as requested.
-   After the review passes and the PR is merged, the bazaar index will update within minutes and the package will appear in the SiYuan bazaar (you may need to restart SiYuan once to refresh the bazaar index cache).
+1. Manual upload via right-click context menu.
+2. Uploaded-file existence check by resource path (`documentExists`).
+3. Optionally replace asset paths in current block with server direct URLs after successful upload.
+4. Complete Flask backend API docs for custom backend integration.
 
-## Updating a bazaar package
+## API Documentation
 
-No need to open another PR. Release a new version in your package repository; the bazaar index will pull updates automatically.
+The **server address (`baseURL`)** configured in plugin settings determines where requests go:
 
-Under normal circumstances, the community bazaar repo updates the index and deploys every hour. You can check the deployment status at [https://github.com/siyuan-note/bazaar/actions](https://github.com/siyuan-note/bazaar/actions).
+- If it points to the built-in **Flask backend** (`backend/`, see [backend/README.md](./backend/README.md)), the API contract below applies.
+- All paths below are relative to `baseURL`. For example, if `baseURL` is `http://192.168.1.2:5000`, full URLs are `http://192.168.1.2:5000/api/...`.
 
-## Why is the repo named bazaar?
+### Authentication
 
-The name is inspired by the book _[The Cathedral and the Bazaar](https://en.wikipedia.org/wiki/The_Cathedral_and_the_Bazaar)_. The goal is not to be unconventional, but to continue the tradition of open source software.
+If server env var **`PAPERLESS_TOKEN`** is configured, protected endpoints require this header:
 
-## Other questions
+```http
+Authorization: Token <same value as in .env>
+```
 
-Please open an [issue](https://github.com/siyuan-note/bazaar/issues).
+If no token is configured, headers are optional unless explicitly stated otherwise.  
+**Exception**: `GET /api/files/...` **never validates Token** (to allow direct image loading in notes). Do not expose this service to untrusted networks.
+
+### `GET` / `POST` `/api/testConnection`
+
+- **Purpose**: used by plugin "Test Connection" (direct `fetch`, not SiYuan forwardProxy).
+- **Auth**: not required.
+- **Response example**:
+
+```json
+{ "success": true }
+```
+
+### `GET /api/documentExists/` or `GET /api/documentExists/<path:path>`
+
+- **Purpose**: check whether resource file exists (path is mapped into relative path under `files/`).
+- **Auth**: required if `PAPERLESS_TOKEN` is configured.
+- **Arguments** (choose one):
+  - Query param: `/api/documentExists/?path=/data/assets/xxx.png` (currently used by plugin)
+  - Path param: `/api/documentExists/data/assets/xxx.png`
+- **Success response example (exists)**:
+
+```json
+{
+  "success": true,
+  "path": "/data/assets/xxx.png",
+  "exists": true,
+  "count": 1,
+  "results": [
+    {
+      "path": "/data/assets/xxx.png",
+      "file_url": "/api/files/assets/xxx.png"
+    }
+  ]
+}
+```
+
+- **Success response example (not exists)**:
+
+```json
+{
+  "success": true,
+  "path": "/data/assets/not-found.png",
+  "exists": false,
+  "count": 0,
+  "results": []
+}
+```
+
+### `POST /api/documents/post_document/`
+
+- **Purpose**: upload file to local `DOCUMENT_DATA_DIR/files/`.
+- **Auth**: required if `PAPERLESS_TOKEN` is configured.
+- **Content-Type**: `multipart/form-data`
+- **Form fields**:
+
+| Field | Required | Description |
+| --- | --- | --- |
+| `document` | Yes | file binary content |
+| `title` | Recommended | display title, usually same as file name from plugin |
+| `path` | No | SiYuan workspace path, e.g. `/data/assets/xxx.png`; if provided, mapped into relative path under `files/` with security normalization |
+
+- **Success response** `200`, `Content-Type: application/json`:
+
+```json
+{
+  "success": true,
+  "id": "<uuid generated per request>",
+  "file_url": "/api/files/assets/xxx.png"
+}
+```
+
+`file_url` is a **relative path**. Plugin will join it with `baseURL` for final URL.  
+If `path` is omitted, disk file name is `{uuid}_{safe_basename}{ext}`. In this case `file_url` is still `/api/files/...`. If URL is a **single UUID segment**, server will resolve via `files/{uuid}_*`.
+
+- **Failure response**: `4xx` JSON with fields like `success: false`, `detail`, `message` (depends on actual return).
+
+### `GET /api/files/<path>`
+
+- **Purpose**: read uploaded file for browser/embedded image rendering.
+- **Auth**: **not required** (see security note above).
+- **Path rules**:
+  - **Multi-segment path** (e.g. `assets/xxx.png`): matches relative path written under `files/` (with same safety normalization as upload).
+  - **Single UUID segment** (e.g. `550e8400-e29b-41d4-a716-446655440000`): returns unique file in `files/` prefixed by `{uuid}_` (for uploads without `path`).
+- **Success**: file stream (`send_file`).
+- **Failure**: `404` / `400` JSON, e.g. `{"detail":"not found"}`.
+
+### `GET /health`
+
+- **Purpose**: health check.
+- **Auth**: not required.
+- **Response example**:
+
+```json
+{ "ok": true, "data_dir": "C:\\...\\backend\\data" }
+```
+
+### CORS
+
+Flask app already allows CORS on `/api/*` for browser-side access from SiYuan; desktop usage also works.
+
+### More Deployment Details
+
+For env vars, bind address, firewall, and directory layout, see **[backend/README.md](./backend/README.md)**.
+
+This project is adapted from [Jasaxion/siyuan-paperless](https://github.com/Jasaxion/siyuan-paperless/).
+
+If this plugin helps you, please give it a ⭐ Star. Thanks!
+

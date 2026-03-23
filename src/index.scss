@@ -1,0 +1,29 @@
+/* 插件设置里地址、Token 等输入框：占满行宽并保证最小可视宽度 */
+.custompic-setting-input {
+  min-width: min(100%, 32rem);
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.plugin-sample {
+  &__custom-tab {
+    background-color: var(--b3-theme-background);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__custom-dock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__time {
+    background: var(--b3-card-info-background);
+    border-radius: 4px;
+    padding: 2px 8px;
+  }
+}
