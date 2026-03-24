@@ -37,7 +37,7 @@ Diff 流程（以 plugins.json 为例）：
 4. 比较 base 与 head：候选新增 = head 有 base 无，候选删除 = base 有 head 无
 5. 过滤候选新增：排除已在 bazaar head 中的仓库（可能是解决冲突时从 bazaar head 合并来的）
 6. 过滤候选删除：排除在 bazaar head 中已不存在的仓库（可能是其他 PR 删除的）
-7. name 唯一性检查使用 bazaar head 的 stage/*.json 中所有类型的 package.name 集合（跨类型检查）
+7. name 唯一性检查使用 bazaar head 的 stage/*.json 中所有类型的 package.name 集合（跨类型检查，比较前统一转小写）
 8. 对最终新增列表做 release/文件/属性检查，并在 Bot 回复中列出删除列表、更换维护者列表
 
 Check 流程：
@@ -47,7 +47,7 @@ Check 流程：
 4. 检查必要的文件是否存在
 5. 获取清单文件 *.json
 		检查清单文件是否存在必要的字段
-			检查清单中 name 字段值是否与 stage/*.json 中的重复
+			检查清单中 name 字段值是否与 stage/*.json 中的重复（小写归一后比较）
 6. 生成检查结果并输出文件 (使用 go 模板)
 7. 使用 thollander/actions-comment-pull-request 将检查结果输出到到 PR 中
 */
@@ -100,7 +100,7 @@ func main() {
 
 	githubClient.Client().Timeout = REQUEST_TIMEOUT // 设置请求超时时间
 
-	// 加载所有类型的 stage nameSet（使用 package.name），用于跨类型 name 唯一性检查
+	// 加载所有类型的 stage nameSet（使用 package.name 的小写形式为键），用于跨类型 name 唯一性检查
 	allTypesNameSet, err := loadAllTypesNameSet()
 	if err != nil {
 		logger.Fatalf("load all types name set failed: %s", err)
@@ -149,7 +149,7 @@ func parseReposFromRootTxt(filePath string) (paths []string, pathSet StringSet, 
 	return
 }
 
-// loadAllTypesNameSet 加载所有类型的 stage nameSet（使用 package.name），用于跨类型 name 唯一性检查
+// loadAllTypesNameSet 加载所有类型的 stage nameSet（使用 strings.ToLower(package.name) 为键），用于跨类型 name 唯一性检查
 func loadAllTypesNameSet() (StringSet, error) {
 	allTypesNameSet := make(StringSet)
 	jsonFiles := []string{"icons.json", "plugins.json", "templates.json", "themes.json", "widgets.json"}
@@ -170,7 +170,7 @@ func loadAllTypesNameSet() (StringSet, error) {
 	return allTypesNameSet, nil
 }
 
-// parseNamesFromStageJSON 从 stage JSON 文件中解析出所有 package.name
+// parseNamesFromStageJSON 从 stage JSON 文件中解析出所有 package.name，键为转小写后的形式供唯一性比较使用
 func parseNamesFromStageJSON(filePath string) (StringSet, error) {
 	data, err := os.ReadFile(filePath)
 	if err != nil {
@@ -206,7 +206,7 @@ func parseNamesFromStageJSON(filePath string) (StringSet, error) {
 			continue
 		}
 
-		nameSet[name] = nil
+		nameSet[strings.ToLower(name)] = nil
 	}
 
 	return nameSet, nil
@@ -465,14 +465,15 @@ func checkRepo(
 				logger.Warnf("repo [%s] name [%s] is invalid", repoPath, attrsCheckResult.Name.Value)
 			}
 
-			// 唯一性检查：检查 name 是否在所有类型的包中已存在
+			// 唯一性检查：检查 name 是否在所有类型的包中已存在（小写归一后比较）
 			if attrsCheckResult.Name.Valid {
 				name := attrsCheckResult.Name.Value
+				nameKey := strings.ToLower(name)
 				nameSetMutex.Lock() // 保护 allTypesNameSet 的并发访问
-				if isKeyInSet(name, allTypesNameSet) {
+				if isKeyInSet(nameKey, allTypesNameSet) {
 					logger.Warnf("repo [%s] name [%s] already exists in all types", repoPath, name)
 				} else {
-					allTypesNameSet[name] = nil // 新的 name 添加到检查集合中
+					allTypesNameSet[nameKey] = nil // 新的 name 添加到检查集合中
 
 					attrsCheckResult.Name.Unique = true // name 通过唯一性检查
 				}
