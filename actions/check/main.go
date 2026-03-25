@@ -439,14 +439,18 @@ func checkRepo(
 		}
 		if attrsCheckResult != nil {
 			// 有效性检查
-			attrsCheckResult.Name.Valid = isValidName(attrsCheckResult.Name.Value)
+			attrsCheckResult.Name.Valid = true
+			// 判断资源名称是否有效
+			if err := util.ValidateName(attrsCheckResult.Name.Value); err != nil {
+				logger.Warnf("repo [%s] name [%s] invalid: %v", repoPath, attrsCheckResult.Name.Value, err)
+				attrsCheckResult.Name.Valid = false
+			}
 			if attrsCheckResult.Name.Valid {
 				// name 必须和 repo name 一致
 				attrsCheckResult.Name.Valid = attrsCheckResult.Name.Value == repoName
 				if !attrsCheckResult.Name.Valid {
 					logger.Warnf("repo [%s] name [%s] is not equal to repo name [%s]", repoPath, attrsCheckResult.Name.Value, repoName)
-				}
-				if attrsCheckResult.Name.Valid {
+				} else {
 					switch resourceType {
 					case themes:
 						if isNameInBuiltinList(attrsCheckResult.Name.Value, BuiltinThemeNames) {
@@ -461,8 +465,6 @@ func checkRepo(
 					default:
 					}
 				}
-			} else {
-				logger.Warnf("repo [%s] name [%s] is invalid", repoPath, attrsCheckResult.Name.Value)
 			}
 
 			// 唯一性检查：检查 name 是否在所有类型的包中已存在（小写归一后比较）

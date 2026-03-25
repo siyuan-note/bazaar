@@ -442,11 +442,14 @@ func validatePackageMetadata(meta *packageValidationMeta) error {
 	// 不存在 oldRepo 时（新上架集市包），oldName 和 oldVersion 都为空
 	oldName, oldVersion := getOldPackageFields(meta.oldRepo)
 
-	if oldName != "" && meta.basePkg.Name != oldName {
+	if oldName == "" {
+		// 新集市包，完整校验 name
+		if err := util.ValidateName(meta.basePkg.Name); err != nil {
+			return fmt.Errorf("package name invalid: %w", err)
+		}
+	} else if meta.basePkg.Name != oldName {
+		// 旧集市包，name 必须与旧信息完全一致
 		return fmt.Errorf("name must be identical to current stage: got %q, expected %q", meta.basePkg.Name, oldName)
-	}
-	if meta.basePkg.Name == "" {
-		return fmt.Errorf("name is required")
 	}
 
 	newVer := meta.basePkg.Version
