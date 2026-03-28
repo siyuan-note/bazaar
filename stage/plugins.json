@@ -1,6 +1,100 @@
 {
   "repos": [
     {
+      "installSize": 1202309,
+      "openIssues": 1,
+      "package": {
+        "author": "Roy",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A habit tracking plugin for SiYuan",
+          "zh_CN": "每一次微小的坚持都值得记录"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Pinch Habit",
+          "zh_CN": "片趣-习惯打卡&amp;任务管理"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/Savor"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "habit",
+          "tracker",
+          "check-in"
+        ],
+        "minAppVersion": "2.10.14",
+        "name": "pinch",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/royc01/pinch",
+        "version": "2.1.1"
+      },
+      "size": 598368,
+      "stars": 4,
+      "updated": "2026-03-28T04:25:32Z",
+      "url": "royc01/pinch@796d10992e844a70410c9dc23e0f07206909d441"
+    },
+    {
+      "installSize": 484804,
+      "openIssues": 0,
+      "package": {
+        "author": "YiFeng",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "一个思源笔记插件，可以在主文档底部自动拼接其子文档的内容，以文档流的方式展示，并保持完美的渲染效果。支持实时编辑同步、悬停预览、一键清除所有拼接状态等功能。",
+          "en_US": "A siyuan plugin that automatically concatenates the contents of subdocuments into the main document, displaying them in a document flow, and maintaining a perfect rendering effect. Supports real-time editing synchronization, hover preview, and one-click clearing of all concatenation states."
+        },
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "子文档拼接-文档流",
+          "en_US": "Concat Subdocs"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": null,
+          "github": "yifengjob",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "子文档",
+          "编辑",
+          "拼接",
+          "concat",
+          "subdocs"
+        ],
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-plugin-concat-subdocs",
+        "readme": {
+          "default": "README.md",
+          "en_US": "README.en_US.md"
+        },
+        "url": "https://github.com/yifengjob/siyuan-plugin-concat-subdocs",
+        "version": "1.0.14"
+      },
+      "size": 342688,
+      "stars": 2,
+      "updated": "2026-03-28T04:04:28Z",
+      "url": "yifengjob/siyuan-plugin-concat-subdocs@f74c6c76205d54c7d6f7288927f338c43d3a5dda"
+    },
+    {
       "installSize": 8115248,
       "openIssues": 8,
       "package": {
@@ -326,53 +420,6 @@
       "stars": 61,
       "updated": "2026-03-26T09:26:13Z",
       "url": "zxkmm/siyuan_doctree_fake_subfolder@8d54e1931cf80de5ea9aeaad36ffba181d110a5a"
-    },
-    {
-      "installSize": 1166849,
-      "openIssues": 2,
-      "package": {
-        "author": "Roy",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A habit tracking plugin for SiYuan",
-          "zh_CN": "每一次微小的坚持都值得记录"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Pinch Habit",
-          "zh_CN": "片趣-习惯打卡&amp;任务管理"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/Savor"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "habit",
-          "tracker",
-          "check-in"
-        ],
-        "minAppVersion": "2.10.14",
-        "name": "pinch",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/royc01/pinch",
-        "version": "2.1.0"
-      },
-      "size": 590075,
-      "stars": 4,
-      "updated": "2026-03-26T01:55:01Z",
-      "url": "royc01/pinch@4232823f0d1c74a5831ff169d2af5316858acf83"
     },
     {
       "installSize": 679553,
@@ -1284,55 +1331,6 @@
       "stars": 4,
       "updated": "2026-03-20T03:23:27Z",
       "url": "b8l8u8e8/siyuan-plugin-onlyoffice-bridge@b0880e952c053c299302c83d17d52b82540998aa"
-    },
-    {
-      "installSize": 484799,
-      "openIssues": 0,
-      "package": {
-        "author": "YiFeng",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "一个思源笔记插件，可以在主文档底部自动拼接其子文档的内容，以文档流的方式展示，并保持完美的渲染效果。支持实时编辑同步、悬停预览、一键清除所有拼接状态等功能。",
-          "en_US": "A siyuan plugin that automatically concatenates the contents of subdocuments into the main document, displaying them in a document flow, and maintaining a perfect rendering effect. Supports real-time editing synchronization, hover preview, and one-click clearing of all concatenation states."
-        },
-        "disabledInPublish": false,
-        "displayName": {
-          "default": "子文档拼接-文档流",
-          "en_US": "Concat Subdocs"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            ""
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "子文档",
-          "编辑",
-          "拼接",
-          "concat",
-          "subdocs"
-        ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-plugin-concat-subdocs",
-        "readme": {
-          "default": "README.md",
-          "en_US": "README.en_US.md"
-        },
-        "url": "https://github.com/yifengjob/siyuan-plugin-concat-subdocs",
-        "version": "1.0.13"
-      },
-      "size": 342643,
-      "stars": 2,
-      "updated": "2026-03-19T05:23:33Z",
-      "url": "yifengjob/siyuan-plugin-concat-subdocs@73b49c5d334fbfd38c62cbf4219a43285137b039"
     },
     {
       "installSize": 771016,
