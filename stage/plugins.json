@@ -1,6 +1,113 @@
 {
   "repos": [
     {
+      "installSize": 582901,
+      "openIssues": 2,
+      "package": {
+        "author": "Taihong Yang",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Let AI control your notes with a SiYuan MCP server that exposes 4 aggregated tools with action-level routing for deep AI integration.",
+          "zh_CN": "让 AI 通过思源 MCP 服务控制你的笔记。当前对外暴露 4 个聚合工具，并通过 action 路由实现深度集成。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan MCP sisyphus",
+          "zh_CN": "思源 MCP sisyphus"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": null,
+        "keywords": [
+          "AI",
+          "Agent",
+          "MCP"
+        ],
+        "minAppVersion": "2.9.0",
+        "name": "siyuan-plugins-mcp-sisyphus",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/yangtaihong59/siyuan-plugins-mcp-sisyphus",
+        "version": "0.1.5"
+      },
+      "size": 313245,
+      "stars": 5,
+      "updated": "2026-04-01T16:56:48Z",
+      "url": "yangtaihong59/siyuan-plugins-mcp-sisyphus@962b62b02df623fb27c20f3b22846c3a8addfb29"
+    },
+    {
+      "installSize": 12691064,
+      "openIssues": 10,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android",
+          "harmony"
+        ],
+        "description": {
+          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
+          "zh_CN": "一款在思源笔记里实现任务笔记管理功能的插件，为了践行防弹笔记法而开发。支持文档和块提醒、日历视图查看行事历、番茄钟专注和数据统计、项目看板、四象限面板、习惯打卡等功能"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Note Management",
+          "zh_CN": "任务笔记管理"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "reminder",
+          "time",
+          "calendar",
+          "notification",
+          "提醒",
+          "时间",
+          "日历",
+          "通知",
+          "番茄钟",
+          "四象限",
+          "任务管理",
+          "项目管理",
+          "习惯打卡"
+        ],
+        "minAppVersion": "3.6.0",
+        "name": "siyuan-plugin-task-note-management",
+        "readme": {
+          "default": "README_en_US.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
+        "version": "6.6.5"
+      },
+      "size": 8895490,
+      "stars": 171,
+      "updated": "2026-04-01T16:22:45Z",
+      "url": "Achuan-2/siyuan-plugin-task-note-management@4c0d849ff21daaadf7467ed2ffc1eeab3b1f284f"
+    },
+    {
       "installSize": 680877,
       "openIssues": 3,
       "package": {
@@ -212,73 +319,6 @@
       "stars": 28,
       "updated": "2026-04-01T05:56:21Z",
       "url": "Glaube-TY/siyuan-homepage@c2d62fe5e762ba512f9b164bd167af71b8fb1997"
-    },
-    {
-      "installSize": 12685235,
-      "openIssues": 10,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "description": {
-          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
-          "zh_CN": "一款在思源笔记里实现任务笔记管理功能的插件，为了践行防弹笔记法而开发。支持文档和块提醒、日历视图查看行事历、番茄钟专注和数据统计、项目看板、四象限面板、习惯打卡等功能"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Note Management",
-          "zh_CN": "任务笔记管理"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "reminder",
-          "time",
-          "calendar",
-          "notification",
-          "提醒",
-          "时间",
-          "日历",
-          "通知",
-          "番茄钟",
-          "四象限",
-          "任务管理",
-          "项目管理",
-          "习惯打卡"
-        ],
-        "minAppVersion": "3.6.0",
-        "name": "siyuan-plugin-task-note-management",
-        "readme": {
-          "default": "README_en_US.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
-        "version": "6.6.4"
-      },
-      "size": 8893818,
-      "stars": 170,
-      "updated": "2026-03-31T16:19:54Z",
-      "url": "Achuan-2/siyuan-plugin-task-note-management@ed60ded3863973804204a5b4836465132c91bb7d"
     },
     {
       "installSize": 1281470,
@@ -3043,46 +3083,6 @@
       "stars": 1,
       "updated": "2026-02-25T16:46:32Z",
       "url": "yangtaihong59/siyuan-plugins-ai-cli-bridge@385bdd19d678aa853b4cb7b87df90e0c54044760"
-    },
-    {
-      "installSize": 547200,
-      "openIssues": 2,
-      "package": {
-        "author": "Taihong Yang",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Let AI control your notes, provide MCP server for SiYuan, support 41 tools for AI integration with SiYuan through the Model Context Protocol.",
-          "zh_CN": "让AI控制你的笔记, 为思源笔记提供 MCP 服务, 支持 41 个工具, 支持 AI 与思源笔记的深度集成。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiYuan MCP sisyphus",
-          "zh_CN": "思源 MCP sisyphus"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": null,
-        "keywords": [
-          "AI",
-          "Agent",
-          "MCP"
-        ],
-        "minAppVersion": "2.9.0",
-        "name": "siyuan-plugins-mcp-sisyphus",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/yangtaihong59/siyuan-plugins-mcp-sisyphus",
-        "version": "0.1.4"
-      },
-      "size": 301965,
-      "stars": 0,
-      "updated": "2026-02-25T16:35:02Z",
-      "url": "yangtaihong59/siyuan-plugins-mcp-sisyphus@c406bce6a8f10f63c32a647adb973c1a6bd4acd8"
     },
     {
       "installSize": 2506804,
