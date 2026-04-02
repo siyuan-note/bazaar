@@ -1,6 +1,107 @@
 {
   "repos": [
     {
+      "installSize": 309896,
+      "openIssues": 2,
+      "package": {
+        "author": "notesynchelper",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "从微信同步到思源笔记，支持文字、图片、聊天记录、文章"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "笔记同步助手"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "wechat",
+          "template",
+          "企微",
+          "模板",
+          "微信",
+          "速记",
+          "剪藏",
+          "搜集",
+          "日记",
+          "闪念",
+          "memo",
+          "备忘",
+          "公众号",
+          "小红书",
+          "得到"
+        ],
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-notehelper",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/notesynchelper/siyuan-notehelper",
+        "version": "1.7.14"
+      },
+      "size": 147009,
+      "stars": 1,
+      "updated": "2026-04-02T10:04:38Z",
+      "url": "notesynchelper/siyuan-notehelper@f2f27426b23c41d43ab80cdde369026a1b0454b9"
+    },
+    {
+      "installSize": 484721,
+      "openIssues": 0,
+      "package": {
+        "author": "YiFeng",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "一个思源笔记插件，可以在主文档底部自动拼接其子文档的内容，以文档流的方式展示，并保持完美的渲染效果。支持实时编辑同步、悬停预览、一键清除所有拼接状态等功能。",
+          "en_US": "A siyuan plugin that automatically concatenates the contents of subdocuments into the main document, displaying them in a document flow, and maintaining a perfect rendering effect. Supports real-time editing synchronization, hover preview, and one-click clearing of all concatenation states."
+        },
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "子文档拼接-文档流",
+          "en_US": "Concat Subdocs"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": null,
+          "github": "yifengjob",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "子文档",
+          "编辑",
+          "拼接",
+          "concat",
+          "subdocs"
+        ],
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-plugin-concat-subdocs",
+        "readme": {
+          "default": "README.md",
+          "en_US": "README.en_US.md"
+        },
+        "url": "https://github.com/yifengjob/siyuan-plugin-concat-subdocs",
+        "version": "1.0.15"
+      },
+      "size": 342653,
+      "stars": 2,
+      "updated": "2026-04-02T09:11:45Z",
+      "url": "yifengjob/siyuan-plugin-concat-subdocs@947036016d485236cb8e867b7b1e5f1a9b94db4f"
+    },
+    {
       "installSize": 5940506,
       "openIssues": 0,
       "package": {
@@ -498,60 +599,6 @@
       "url": "hqweay/siyuan-hqweay-go@190adb71d9e9366d63543a9d3c9db0c33bb2a47a"
     },
     {
-      "installSize": 309896,
-      "openIssues": 2,
-      "package": {
-        "author": "notesynchelper",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "从微信同步到思源笔记，支持文字、图片、聊天记录、文章"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "笔记同步助手"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "wechat",
-          "template",
-          "企微",
-          "模板",
-          "微信",
-          "速记",
-          "剪藏",
-          "搜集",
-          "日记",
-          "闪念",
-          "memo",
-          "备忘",
-          "公众号",
-          "小红书",
-          "得到"
-        ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-notehelper",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/notesynchelper/siyuan-notehelper",
-        "version": "1.7.13"
-      },
-      "size": 147009,
-      "stars": 1,
-      "updated": "2026-03-30T10:20:53Z",
-      "url": "notesynchelper/siyuan-notehelper@70df9adb3c9cdf7d285ebcf00a7bf6498e5954fe"
-    },
-    {
       "installSize": 522128,
       "openIssues": 1,
       "package": {
@@ -822,53 +869,6 @@
       "stars": 91,
       "updated": "2026-03-28T05:05:15Z",
       "url": "Achuan-2/siyuan-plugin-copilot@352d032f5aacef0faab94b7665dca0189260b437"
-    },
-    {
-      "installSize": 484804,
-      "openIssues": 0,
-      "package": {
-        "author": "YiFeng",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "一个思源笔记插件，可以在主文档底部自动拼接其子文档的内容，以文档流的方式展示，并保持完美的渲染效果。支持实时编辑同步、悬停预览、一键清除所有拼接状态等功能。",
-          "en_US": "A siyuan plugin that automatically concatenates the contents of subdocuments into the main document, displaying them in a document flow, and maintaining a perfect rendering effect. Supports real-time editing synchronization, hover preview, and one-click clearing of all concatenation states."
-        },
-        "disabledInPublish": false,
-        "displayName": {
-          "default": "子文档拼接-文档流",
-          "en_US": "Concat Subdocs"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": null,
-          "github": "yifengjob",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "子文档",
-          "编辑",
-          "拼接",
-          "concat",
-          "subdocs"
-        ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-plugin-concat-subdocs",
-        "readme": {
-          "default": "README.md",
-          "en_US": "README.en_US.md"
-        },
-        "url": "https://github.com/yifengjob/siyuan-plugin-concat-subdocs",
-        "version": "1.0.14"
-      },
-      "size": 342688,
-      "stars": 2,
-      "updated": "2026-03-28T04:04:28Z",
-      "url": "yifengjob/siyuan-plugin-concat-subdocs@f74c6c76205d54c7d6f7288927f338c43d3a5dda"
     },
     {
       "installSize": 117968,
