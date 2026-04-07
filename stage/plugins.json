@@ -1,6 +1,93 @@
 {
   "repos": [
     {
+      "installSize": 872552,
+      "openIssues": 3,
+      "package": {
+        "author": "Taihong Yang",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "SiYuan MCP server with notebook-level permissions, 8 aggregated tools, mascot interactions, and emoji icon support for notebooks and documents.",
+          "zh_CN": "思源 MCP 服务器，支持笔记本级权限管控、8 个聚合工具、猫猫交互能力，以及笔记本和文档 emoji 图标设置。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan MCP sisyphus",
+          "zh_CN": "思源 MCP sisyphus"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": null,
+        "keywords": [
+          "AI",
+          "Agent",
+          "MCP"
+        ],
+        "minAppVersion": "2.9.0",
+        "name": "siyuan-plugins-mcp-sisyphus",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/yangtaihong59/siyuan-plugins-mcp-sisyphus",
+        "version": "0.1.16"
+      },
+      "size": 389560,
+      "stars": 10,
+      "updated": "2026-04-07T15:01:07Z",
+      "url": "yangtaihong59/siyuan-plugins-mcp-sisyphus@9d736758f6f3df6818f24c695f93f3d5bd1fdf01"
+    },
+    {
+      "installSize": 4093671,
+      "openIssues": 6,
+      "package": {
+        "author": "OpaqueGlass",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "Start a MCP server in siyuan",
+          "zh_CN": "在思源中启动MCP服务"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "A MCP server for Siyuan",
+          "zh_CN": "这是一个MCP服务端插件"
+        },
+        "frontends": [
+          "desktop"
+        ],
+        "funding": {
+          "custom": [
+            "https://wj.qq.com/s2/12395364/b69f/"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "model context protocol"
+        ],
+        "minAppVersion": "2.9.0",
+        "name": "syplugin-anMCPServer",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/OpaqueGlass/syplugin-anMCPServer",
+        "version": "1.0.1"
+      },
+      "size": 1180284,
+      "stars": 41,
+      "updated": "2026-04-07T14:32:46Z",
+      "url": "OpaqueGlass/syplugin-anMCPServer@62189b260180906e41c8841f7e0469bdd0dfff63"
+    },
+    {
       "installSize": 1540250,
       "openIssues": 1,
       "package": {
@@ -522,46 +609,6 @@
       "stars": 15,
       "updated": "2026-04-06T17:59:36Z",
       "url": "Macavity/siyuan-database-properties-panel@e88ca1b843eac572bd2ed7ac8737661adeafde5e"
-    },
-    {
-      "installSize": 864738,
-      "openIssues": 3,
-      "package": {
-        "author": "Taihong Yang",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "SiYuan MCP server with notebook-level permissions, 8 aggregated tools, mascot interactions, and emoji icon support for notebooks and documents.",
-          "zh_CN": "思源 MCP 服务器，支持笔记本级权限管控、8 个聚合工具、猫猫交互能力，以及笔记本和文档 emoji 图标设置。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiYuan MCP sisyphus",
-          "zh_CN": "思源 MCP sisyphus"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": null,
-        "keywords": [
-          "AI",
-          "Agent",
-          "MCP"
-        ],
-        "minAppVersion": "2.9.0",
-        "name": "siyuan-plugins-mcp-sisyphus",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/yangtaihong59/siyuan-plugins-mcp-sisyphus",
-        "version": "0.1.15"
-      },
-      "size": 387320,
-      "stars": 9,
-      "updated": "2026-04-06T17:09:59Z",
-      "url": "yangtaihong59/siyuan-plugins-mcp-sisyphus@991ad044d98379863692697e0255d50a9af41728"
     },
     {
       "installSize": 12727667,
@@ -2233,53 +2280,6 @@
       "stars": 203,
       "updated": "2026-03-17T10:02:53Z",
       "url": "terwer/siyuan-plugin-publisher@89d8a6f3ee50d590b14d0b1cf1d1585bae23d607"
-    },
-    {
-      "installSize": 4089767,
-      "openIssues": 3,
-      "package": {
-        "author": "OpaqueGlass",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Start a MCP server in siyuan",
-          "zh_CN": "在思源中启动MCP服务"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "A MCP server for Siyuan",
-          "zh_CN": "这是一个MCP服务端插件"
-        },
-        "frontends": [
-          "desktop"
-        ],
-        "funding": {
-          "custom": [
-            "https://wj.qq.com/s2/12395364/b69f/"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "model context protocol"
-        ],
-        "minAppVersion": "2.9.0",
-        "name": "syplugin-anMCPServer",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/OpaqueGlass/syplugin-anMCPServer",
-        "version": "1.0.0"
-      },
-      "size": 1178828,
-      "stars": 36,
-      "updated": "2026-03-17T08:18:28Z",
-      "url": "OpaqueGlass/syplugin-anMCPServer@3d101081cda0fa71abfa5c6937e86967cacf294b"
     },
     {
       "installSize": 1305111,
