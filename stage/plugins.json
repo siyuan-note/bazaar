@@ -1,6 +1,95 @@
 {
   "repos": [
     {
+      "installSize": 6533166,
+      "openIssues": 0,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
+          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Horizon",
+          "zh_CN": "任务管理器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "task",
+          "manager",
+          "filter"
+        ],
+        "minAppVersion": "3.5.10",
+        "name": "siyuan-plugin-task-horizon",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
+        "version": "2.1.1"
+      },
+      "size": 1507701,
+      "stars": 12,
+      "updated": "2026-04-08T05:03:26Z",
+      "url": "5kyfkr/siyuan-plugin-task-horizon@f4dd73fba2f353711f1d7fb56600113f38219cea"
+    },
+    {
+      "installSize": 231359,
+      "openIssues": 0,
+      "package": {
+        "author": "Taihong Yang",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Embed any AI Agent web page or other web tool into SiYuan as a sidebar panel. MCP pairing is optional.",
+          "zh_CN": "将任意 AI Agent 网页或其他网页工具嵌入思源侧边栏中使用；是否搭配 MCP 可按需选择。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "AI CLI Bridge",
+          "zh_CN": "AI Cli Bridge"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": null,
+        "keywords": [
+          "AI",
+          "Agent",
+          "CLI",
+          "sidebar",
+          "dock",
+          "integration"
+        ],
+        "minAppVersion": "2.9.0",
+        "name": "siyuan-plugins-ai-cli-bridge",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/yangtaihong59/siyuan-plugins-ai-cli-bridge",
+        "version": "0.1.8"
+      },
+      "size": 210557,
+      "stars": 1,
+      "updated": "2026-04-08T04:15:46Z",
+      "url": "yangtaihong59/siyuan-plugins-ai-cli-bridge@207f5ac3d2de13f3ff629386402a4493953dcddc"
+    },
+    {
       "installSize": 249335,
       "openIssues": 0,
       "package": {
@@ -452,52 +541,6 @@
       "stars": 18,
       "updated": "2026-04-07T06:15:05Z",
       "url": "YuxinZhaozyx/siyuan-embed-drawio@07d4ee985e883185fc719f5c9b152e650f37105e"
-    },
-    {
-      "installSize": 6401848,
-      "openIssues": 0,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
-          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Horizon",
-          "zh_CN": "任务管理器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "task",
-          "manager",
-          "filter"
-        ],
-        "minAppVersion": "3.5.10",
-        "name": "siyuan-plugin-task-horizon",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "2.1.0"
-      },
-      "size": 1484771,
-      "stars": 12,
-      "updated": "2026-04-07T06:07:52Z",
-      "url": "5kyfkr/siyuan-plugin-task-horizon@2cb6f6cdca8b69d1e8ec35ff839375663968a6bc"
     },
     {
       "installSize": 259879,
@@ -3296,49 +3339,6 @@
       "stars": 8,
       "updated": "2026-02-26T07:30:14Z",
       "url": "shuojie819/siyuan-floating-toc-plugin@6de2d86492d41e9f4a5a7437ea085d03961fcf12"
-    },
-    {
-      "installSize": 230445,
-      "openIssues": 0,
-      "package": {
-        "author": "Taihong Yang",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Embed AI Agent Web (OpenCode、Openclaw、Claude Code) or other AI tools into SiYuan as a sidebar panel, working with MCP to help you automatically operate notes.",
-          "zh_CN": "将 AI Agent Web (OpenCode、Openclaw、Claude Code) 等 AI 工具作为侧边栏面板使用，配合 MCP 帮你自动操作笔记。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "AI CLI Bridge",
-          "zh_CN": "AI Cli Bridge"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": null,
-        "keywords": [
-          "AI",
-          "Agent",
-          "CLI",
-          "sidebar",
-          "dock",
-          "integration"
-        ],
-        "minAppVersion": "2.9.0",
-        "name": "siyuan-plugins-ai-cli-bridge",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/yangtaihong59/siyuan-plugins-ai-cli-bridge",
-        "version": "0.1.7"
-      },
-      "size": 210059,
-      "stars": 1,
-      "updated": "2026-02-25T16:46:32Z",
-      "url": "yangtaihong59/siyuan-plugins-ai-cli-bridge@385bdd19d678aa853b4cb7b87df90e0c54044760"
     },
     {
       "installSize": 2506804,
