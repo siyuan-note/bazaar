@@ -1,6 +1,122 @@
 {
   "repos": [
     {
+      "installSize": 12766302,
+      "openIssues": 10,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android",
+          "harmony"
+        ],
+        "description": {
+          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
+          "zh_CN": "一款在思源笔记里实现任务笔记管理功能的插件，为了践行防弹笔记法而开发。支持文档和块提醒、日历视图查看行事历、番茄钟专注和数据统计、项目看板、四象限面板、习惯打卡等功能"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Note Management",
+          "zh_CN": "任务笔记管理"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "reminder",
+          "time",
+          "calendar",
+          "notification",
+          "提醒",
+          "时间",
+          "日历",
+          "通知",
+          "番茄钟",
+          "四象限",
+          "任务管理",
+          "项目管理",
+          "习惯打卡"
+        ],
+        "minAppVersion": "3.6.0",
+        "name": "siyuan-plugin-task-note-management",
+        "readme": {
+          "default": "README_en_US.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
+        "version": "6.6.10"
+      },
+      "size": 8912960,
+      "stars": 177,
+      "updated": "2026-04-13T03:41:03Z",
+      "url": "Achuan-2/siyuan-plugin-task-note-management@8ba29cd47f114f9b58b3df50cc9daa7a5ca62dd0"
+    },
+    {
+      "installSize": 130721,
+      "openIssues": 2,
+      "package": {
+        "author": "Hao Zhou",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A Memos-like quick note-taking plugin. Capture thoughts, tag them, search and filter — all within SiYuan.",
+          "zh_CN": "类似 Memos 的快速笔记插件。在思源中快速记录想法、添加标签、搜索和过滤。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "DayMemo",
+          "zh_CN": "日记便签"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "memo",
+          "memos",
+          "daylog",
+          "quick note",
+          "日记",
+          "便签",
+          "快速笔记"
+        ],
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-plugin-day-memo",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/zhouhao/siyuan-plugin-day-memo",
+        "version": "0.4.3"
+      },
+      "size": 39204,
+      "stars": 3,
+      "updated": "2026-04-13T03:22:03Z",
+      "url": "zhouhao/siyuan-plugin-day-memo@548dcc6507a4e73530f1a2da2ea1e37dc417f34c"
+    },
+    {
       "installSize": 1735892,
       "openIssues": 0,
       "package": {
@@ -47,55 +163,6 @@
       "stars": 6,
       "updated": "2026-04-13T02:45:25Z",
       "url": "5kyfkr/siyuan-plugin-docktomato@573275985904a61d89572e91e32456d2861c2bc7"
-    },
-    {
-      "installSize": 126763,
-      "openIssues": 5,
-      "package": {
-        "author": "Hao Zhou",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A Memos-like quick note-taking plugin. Capture thoughts, tag them, search and filter — all within SiYuan.",
-          "zh_CN": "类似 Memos 的快速笔记插件。在思源中快速记录想法、添加标签、搜索和过滤。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "DayMemo",
-          "zh_CN": "日记便签"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "memo",
-          "memos",
-          "daylog",
-          "quick note",
-          "日记",
-          "便签",
-          "快速笔记"
-        ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-plugin-day-memo",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/zhouhao/siyuan-plugin-day-memo",
-        "version": "0.4.2"
-      },
-      "size": 37972,
-      "stars": 3,
-      "updated": "2026-04-12T23:14:45Z",
-      "url": "zhouhao/siyuan-plugin-day-memo@302db1821cb7086abcd0e34e32d860b7bf9f1869"
     },
     {
       "installSize": 7087717,
@@ -230,73 +297,6 @@
       "stars": 4,
       "updated": "2026-04-12T15:56:19Z",
       "url": "QYLexpired/Asri-enhance@2bf24d1da85b44aa016e2d31b8b1b50c26b06e84"
-    },
-    {
-      "installSize": 12765391,
-      "openIssues": 10,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "description": {
-          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
-          "zh_CN": "一款在思源笔记里实现任务笔记管理功能的插件，为了践行防弹笔记法而开发。支持文档和块提醒、日历视图查看行事历、番茄钟专注和数据统计、项目看板、四象限面板、习惯打卡等功能"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Note Management",
-          "zh_CN": "任务笔记管理"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "reminder",
-          "time",
-          "calendar",
-          "notification",
-          "提醒",
-          "时间",
-          "日历",
-          "通知",
-          "番茄钟",
-          "四象限",
-          "任务管理",
-          "项目管理",
-          "习惯打卡"
-        ],
-        "minAppVersion": "3.6.0",
-        "name": "siyuan-plugin-task-note-management",
-        "readme": {
-          "default": "README_en_US.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
-        "version": "6.6.9"
-      },
-      "size": 8912736,
-      "stars": 177,
-      "updated": "2026-04-12T13:39:55Z",
-      "url": "Achuan-2/siyuan-plugin-task-note-management@adb31ae0f2f9d5674ad3db190c8e088041db3179"
     },
     {
       "installSize": 5629577,
