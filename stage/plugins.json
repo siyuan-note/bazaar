@@ -1,6 +1,140 @@
 {
   "repos": [
     {
+      "installSize": 389207,
+      "openIssues": 4,
+      "package": {
+        "author": "QuincyZou",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "VS Code style find-and-replace for the current SiYuan document.",
+          "zh_CN": "为思源笔记提供接近 VS Code 的搜索体验，所见即所得，逐个搜索，逐个替换，so easy！"
+        },
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "Search like VScode",
+          "zh_CN": "搜 easy"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop"
+        ],
+        "funding": {
+          "custom": [],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "search",
+          "replace",
+          "VS Code"
+        ],
+        "minAppVersion": "3.5.7",
+        "name": "siyuan-sou-easy",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/famotime/siyuan-sou-easy",
+        "version": "1.2.2"
+      },
+      "size": 242108,
+      "stars": 5,
+      "updated": "2026-04-14T13:19:28Z",
+      "url": "famotime/siyuan-sou-easy@de6f6e75fbcfa06cd8744060f6eadfdc315284c9"
+    },
+    {
+      "installSize": 262862,
+      "openIssues": 0,
+      "package": {
+        "author": "bytemain",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Sync SiYuan settings across devices via cloud storage",
+          "zh_CN": "通过云端同步，在不同设备间同步思源笔记配置"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Settings Sync",
+          "zh_CN": "配置同步"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": null,
+        "keywords": [
+          "settings",
+          "sync",
+          "configuration",
+          "配置同步",
+          "多设备"
+        ],
+        "minAppVersion": "3.5.10",
+        "name": "siyuan-plugin-settings-sync",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/bytemain/siyuan-plugin-settings-sync",
+        "version": "0.3.1"
+      },
+      "size": 204296,
+      "stars": 0,
+      "updated": "2026-04-14T13:02:17Z",
+      "url": "bytemain/siyuan-plugin-settings-sync@4f239dfbf090f19fba2291d41107e1b2bbc46db0"
+    },
+    {
+      "installSize": 1008138,
+      "openIssues": 4,
+      "package": {
+        "author": "Taihong Yang",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "description": {
+          "default": "Siyuan MCP Server enables AI Agents to operate your Siyuan with notebook-level permission control, 10 aggregated tools and 114 actions, covering most of Siyuan&#39;s functionality.",
+          "zh_CN": "思源 MCP 服务器，让 AI Agent 操作你的思源，支持笔记本级权限管控、包含10个聚合工具114个action，覆盖SIYUAN绝大部分功能。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan MCP sisyphus",
+          "zh_CN": "思源 MCP sisyphus"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "funding": null,
+        "keywords": [
+          "AI",
+          "Agent",
+          "MCP"
+        ],
+        "minAppVersion": "2.9.0",
+        "name": "siyuan-plugins-mcp-sisyphus",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/yangtaihong59/siyuan-plugins-mcp-sisyphus",
+        "version": "0.2.9"
+      },
+      "size": 434629,
+      "stars": 19,
+      "updated": "2026-04-14T12:14:50Z",
+      "url": "yangtaihong59/siyuan-plugins-mcp-sisyphus@5c6e78a19f2046d7dd55b732dacbddb31a4c5536"
+    },
+    {
       "installSize": 58600,
       "openIssues": 1,
       "package": {
@@ -196,51 +330,6 @@
       "url": "QYLexpired/Asri-enhance@d122a1295ca6e85783d4b5cb1384069b91ebd262"
     },
     {
-      "installSize": 1006477,
-      "openIssues": 4,
-      "package": {
-        "author": "Taihong Yang",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker"
-        ],
-        "description": {
-          "default": "Siyuan MCP Server enables AI Agents to operate your Siyuan with notebook-level permission control, 10 aggregated tools and 90 actions, covering most of Siyuan&#39;s functionality.",
-          "zh_CN": "思源 MCP 服务器，让 AI Agent 操作你的思源，支持笔记本级权限管控、包含10个聚合工具90个action，覆盖SIYUAN绝大部分功能。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiYuan MCP sisyphus",
-          "zh_CN": "思源 MCP sisyphus"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window"
-        ],
-        "funding": null,
-        "keywords": [
-          "AI",
-          "Agent",
-          "MCP"
-        ],
-        "minAppVersion": "2.9.0",
-        "name": "siyuan-plugins-mcp-sisyphus",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/yangtaihong59/siyuan-plugins-mcp-sisyphus",
-        "version": "0.2.8"
-      },
-      "size": 433531,
-      "stars": 19,
-      "updated": "2026-04-13T17:16:45Z",
-      "url": "yangtaihong59/siyuan-plugins-mcp-sisyphus@69f9199c14430b055631bb68181e60fbc1a9484d"
-    },
-    {
       "installSize": 12776497,
       "openIssues": 9,
       "package": {
@@ -306,48 +395,6 @@
       "stars": 177,
       "updated": "2026-04-13T14:35:11Z",
       "url": "Achuan-2/siyuan-plugin-task-note-management@965a835ea6008436a8c028b91c3fa98a9b4e726e"
-    },
-    {
-      "installSize": 263225,
-      "openIssues": 0,
-      "package": {
-        "author": "bytemain",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Sync SiYuan settings across devices via cloud storage",
-          "zh_CN": "通过云端同步，在不同设备间同步思源笔记配置"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Settings Sync",
-          "zh_CN": "配置同步"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": null,
-        "keywords": [
-          "settings",
-          "sync",
-          "configuration",
-          "配置同步",
-          "多设备"
-        ],
-        "minAppVersion": "3.5.10",
-        "name": "siyuan-plugin-settings-sync",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/bytemain/siyuan-plugin-settings-sync",
-        "version": "0.3.0"
-      },
-      "size": 204353,
-      "stars": 0,
-      "updated": "2026-04-13T11:44:14Z",
-      "url": "bytemain/siyuan-plugin-settings-sync@77f01080467f429dbc2404755df2386f1854da82"
     },
     {
       "installSize": 309896,
@@ -703,53 +750,6 @@
       "stars": 0,
       "updated": "2026-04-11T11:41:54Z",
       "url": "famotime/siyuan-network-lens@bf86bf2d0a866bbaef633d09cf95a2af677d1891"
-    },
-    {
-      "installSize": 388120,
-      "openIssues": 5,
-      "package": {
-        "author": "QuincyZou",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "VS Code style find-and-replace for the current SiYuan document.",
-          "zh_CN": "为思源当前文档提供更接近 VS Code 的逐条查找与替换体验。"
-        },
-        "disabledInPublish": false,
-        "displayName": {
-          "default": "Friendly Search Replace",
-          "zh_CN": "搜 easy"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop"
-        ],
-        "funding": {
-          "custom": [],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "search",
-          "replace",
-          "editor"
-        ],
-        "minAppVersion": "3.5.7",
-        "name": "siyuan-sou-easy",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/famotime/siyuan-sou-easy",
-        "version": "1.2.0"
-      },
-      "size": 241834,
-      "stars": 5,
-      "updated": "2026-04-11T07:46:41Z",
-      "url": "famotime/siyuan-sou-easy@d4ef18262077d3a411c18af1d3daff6bc72bbd56"
     },
     {
       "installSize": 568492,
