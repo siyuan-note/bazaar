@@ -1,46 +1,103 @@
 {
   "repos": [
     {
-      "installSize": 248705,
-      "openIssues": 0,
+      "installSize": 4726359,
+      "openIssues": 2,
       "package": {
-        "author": "取舍",
+        "author": "MoonBottle",
         "backends": [
           "all"
         ],
         "description": {
-          "default": "Emoji Market brings a massive icon library to SiYuan Notes, allowing you to search, replace document icons, or insert emojis directly from the emoji panel.",
-          "zh_CN": "表情市场为思源笔记提供海量图标，在表情面板中即可搜索替换文档图标或插入表情。"
+          "default": "Task assistant for managing your todos and projects — calendar, gantt chart and project views, all in one",
+          "zh_CN": "任务管理助手，日历、甘特图、项目视图一应俱全"
         },
         "disabledInPublish": true,
         "displayName": {
-          "default": "Emoji Market",
-          "zh_CN": "表情市场"
+          "default": "Task Assistant",
+          "zh_CN": "任务助手"
         },
         "frontends": [
           "all"
         ],
-        "funding": null,
+        "funding": {
+          "custom": [
+            "https://cdn.jsdelivr.net/gh/MoonBottle/siyuan-plugin-bullet-journal@main/asset/donate.png"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
         "keywords": [
-          "图标",
-          "表情"
+          "bullet journal",
+          "calendar",
+          "gantt",
+          "project",
+          "task",
+          "management"
         ],
-        "minAppVersion": "2.9.0",
-        "name": "siyuan-plugin-emoji-market",
+        "minAppVersion": "2.10.14",
+        "name": "siyuan-plugin-bullet-journal",
         "readme": {
           "default": "README.md",
           "zh_CN": "README_zh_CN.md"
         },
-        "url": "https://github.com/b8l8u8e8/siyuan-plugin-emoji-market",
-        "version": "0.2.1"
+        "url": "https://github.com/MoonBottle/siyuan-plugin-bullet-journal",
+        "version": "0.12.3"
       },
-      "size": 116766,
-      "stars": 9,
-      "updated": "2026-04-18T08:33:09Z",
-      "url": "b8l8u8e8/siyuan-plugin-emoji-market@d361186fa2c5ecf8b498d64107d2462e337330c4"
+      "size": 1119065,
+      "stars": 7,
+      "updated": "2026-04-18T09:38:24Z",
+      "url": "MoonBottle/siyuan-plugin-bullet-journal@744be2403c2b63ef52fca962dd76efdf48603c01"
     },
     {
-      "installSize": 5675380,
+      "installSize": 7803543,
+      "openIssues": 0,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
+          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Horizon",
+          "zh_CN": "任务管理器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "task",
+          "manager",
+          "filter"
+        ],
+        "minAppVersion": "3.6.4",
+        "name": "siyuan-plugin-task-horizon",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
+        "version": "2.2.9"
+      },
+      "size": 1721956,
+      "stars": 14,
+      "updated": "2026-04-18T09:36:01Z",
+      "url": "5kyfkr/siyuan-plugin-task-horizon@feb89f63ea0936279da91f2f2a8e1c324f47b775"
+    },
+    {
+      "installSize": 5677283,
       "openIssues": 2,
       "package": {
         "author": "mm-o",
@@ -101,12 +158,51 @@
           "zh_CN": "README_zh_CN.md"
         },
         "url": "https://github.com/mm-o/siyuan-media-player",
-        "version": "1.1.6"
+        "version": "1.1.7"
       },
-      "size": 2921486,
+      "size": 2921941,
       "stars": 52,
-      "updated": "2026-04-18T07:50:46Z",
-      "url": "mm-o/siyuan-media-player@88440511e08d8a0405991bed80e85aa87d7e4e88"
+      "updated": "2026-04-18T09:12:29Z",
+      "url": "mm-o/siyuan-media-player@db9ddd2bd094b92874f39f6abde24b2c1d40ba3b"
+    },
+    {
+      "installSize": 248705,
+      "openIssues": 0,
+      "package": {
+        "author": "取舍",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Emoji Market brings a massive icon library to SiYuan Notes, allowing you to search, replace document icons, or insert emojis directly from the emoji panel.",
+          "zh_CN": "表情市场为思源笔记提供海量图标，在表情面板中即可搜索替换文档图标或插入表情。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Emoji Market",
+          "zh_CN": "表情市场"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": null,
+        "keywords": [
+          "图标",
+          "表情"
+        ],
+        "minAppVersion": "2.9.0",
+        "name": "siyuan-plugin-emoji-market",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/b8l8u8e8/siyuan-plugin-emoji-market",
+        "version": "0.2.1"
+      },
+      "size": 116766,
+      "stars": 9,
+      "updated": "2026-04-18T08:33:09Z",
+      "url": "b8l8u8e8/siyuan-plugin-emoji-market@d361186fa2c5ecf8b498d64107d2462e337330c4"
     },
     {
       "installSize": 1458622,
@@ -273,52 +369,6 @@
       "stars": 178,
       "updated": "2026-04-18T03:19:55Z",
       "url": "Achuan-2/siyuan-plugin-task-note-management@b4161e7d4dae1bdbcf0a6974e3559c9d9e5d03b1"
-    },
-    {
-      "installSize": 7765400,
-      "openIssues": 0,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
-          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Horizon",
-          "zh_CN": "任务管理器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "task",
-          "manager",
-          "filter"
-        ],
-        "minAppVersion": "3.6.4",
-        "name": "siyuan-plugin-task-horizon",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "2.2.8"
-      },
-      "size": 1714837,
-      "stars": 14,
-      "updated": "2026-04-18T02:39:17Z",
-      "url": "5kyfkr/siyuan-plugin-task-horizon@5b9b0f1decda17f62948f8aad7807ef114d611b5"
     },
     {
       "installSize": 4153610,
@@ -847,56 +897,6 @@
       "stars": 0,
       "updated": "2026-04-11T20:16:41Z",
       "url": "Asianfleet/siyuan-plugin-texit@1257e8ba547bc3042790316442746ef47c4fd077"
-    },
-    {
-      "installSize": 4725985,
-      "openIssues": 2,
-      "package": {
-        "author": "MoonBottle",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Task assistant for managing your todos and projects — calendar, gantt chart and project views, all in one",
-          "zh_CN": "任务管理助手，日历、甘特图、项目视图一应俱全"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Assistant",
-          "zh_CN": "任务助手"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://cdn.jsdelivr.net/gh/MoonBottle/siyuan-plugin-bullet-journal@main/asset/donate.png"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "bullet journal",
-          "calendar",
-          "gantt",
-          "project",
-          "task",
-          "management"
-        ],
-        "minAppVersion": "2.10.14",
-        "name": "siyuan-plugin-bullet-journal",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/MoonBottle/siyuan-plugin-bullet-journal",
-        "version": "0.12.2"
-      },
-      "size": 1118940,
-      "stars": 7,
-      "updated": "2026-04-11T14:58:10Z",
-      "url": "MoonBottle/siyuan-plugin-bullet-journal@a2f77591288f24c8c5ea448ada05e31147ec9a90"
     },
     {
       "installSize": 574147,
