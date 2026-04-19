@@ -1,7 +1,53 @@
 {
   "repos": [
     {
-      "installSize": 12862571,
+      "installSize": 7988847,
+      "openIssues": 1,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
+          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Horizon",
+          "zh_CN": "任务管理器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "task",
+          "manager",
+          "filter"
+        ],
+        "minAppVersion": "3.6.4",
+        "name": "siyuan-plugin-task-horizon",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
+        "version": "2.3.1"
+      },
+      "size": 1750808,
+      "stars": 15,
+      "updated": "2026-04-19T17:18:10Z",
+      "url": "5kyfkr/siyuan-plugin-task-horizon@131021f5880787fb81f8a51a381fad766b4d6fec"
+    },
+    {
+      "installSize": 12849060,
       "openIssues": 9,
       "package": {
         "author": "Achuan-2",
@@ -60,12 +106,55 @@
           "zh_CN": "README.md"
         },
         "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
-        "version": "6.7.7"
+        "version": "6.7.8"
       },
-      "size": 8932471,
+      "size": 8928491,
       "stars": 179,
-      "updated": "2026-04-19T15:49:01Z",
-      "url": "Achuan-2/siyuan-plugin-task-note-management@9da56f30f153b8e64bde1053dd814846ab66315d"
+      "updated": "2026-04-19T17:12:53Z",
+      "url": "Achuan-2/siyuan-plugin-task-note-management@8764358acdf39ee78a2809c9812e5a2fc1080d7f"
+    },
+    {
+      "installSize": 1294076,
+      "openIssues": 10,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "SiYuan AI Assistant, supports dragging blocks and tabs to get note context, enabling Q&amp;A and editing based on SiYuan note content",
+          "zh_CN": "思源笔记 AI 助手,支持拖动块、页签获取笔记上下文，实现基于思源笔记内容进行问答和编辑"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan Copilot",
+          "zh_CN": "SiYuan Copilot"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [],
+        "minAppVersion": "3.6.0",
+        "name": "siyuan-plugin-copilot",
+        "readme": {
+          "default": "README_en_US.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-copilot",
+        "version": "2.3.7"
+      },
+      "size": 499556,
+      "stars": 102,
+      "updated": "2026-04-19T16:56:51Z",
+      "url": "Achuan-2/siyuan-plugin-copilot@192ac28261e9fcf0571bc6a17a2b1e08752fa914"
     },
     {
       "installSize": 1534454,
@@ -220,52 +309,6 @@
       "stars": 52,
       "updated": "2026-04-19T11:34:37Z",
       "url": "mm-o/siyuan-media-player@49347a232f0b54c4490eef759fbcfeee6adec869"
-    },
-    {
-      "installSize": 7840018,
-      "openIssues": 0,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
-          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Horizon",
-          "zh_CN": "任务管理器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "task",
-          "manager",
-          "filter"
-        ],
-        "minAppVersion": "3.6.4",
-        "name": "siyuan-plugin-task-horizon",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "2.3.0"
-      },
-      "size": 1725843,
-      "stars": 14,
-      "updated": "2026-04-18T16:39:41Z",
-      "url": "5kyfkr/siyuan-plugin-task-horizon@65fee47b67809361b4d896f0c327b46a5d90c51e"
     },
     {
       "installSize": 494926,
@@ -1996,49 +2039,6 @@
       "stars": 1,
       "updated": "2026-03-28T13:59:01Z",
       "url": "mingming-cn/siyuan-note-partition@807c2d9496831f707a975aaf9b340e0e8c79a8c6"
-    },
-    {
-      "installSize": 1288342,
-      "openIssues": 8,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "SiYuan AI Assistant, supports dragging blocks and tabs to get note context, enabling Q&amp;A and editing based on SiYuan note content",
-          "zh_CN": "思源笔记 AI 助手,支持拖动块、页签获取笔记上下文，实现基于思源笔记内容进行问答和编辑"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiYuan Copilot",
-          "zh_CN": "SiYuan Copilot"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [],
-        "minAppVersion": "3.6.0",
-        "name": "siyuan-plugin-copilot",
-        "readme": {
-          "default": "README_en_US.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-copilot",
-        "version": "2.3.6"
-      },
-      "size": 497748,
-      "stars": 91,
-      "updated": "2026-03-28T05:05:15Z",
-      "url": "Achuan-2/siyuan-plugin-copilot@352d032f5aacef0faab94b7665dca0189260b437"
     },
     {
       "installSize": 117968,
