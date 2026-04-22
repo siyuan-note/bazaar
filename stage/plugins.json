@@ -1,6 +1,91 @@
 {
   "repos": [
     {
+      "installSize": 1294140,
+      "openIssues": 10,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "SiYuan AI Assistant, supports dragging blocks and tabs to get note context, enabling Q&amp;A and editing based on SiYuan note content",
+          "zh_CN": "思源笔记 AI 助手,支持拖动块、页签获取笔记上下文，实现基于思源笔记内容进行问答和编辑"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan Copilot",
+          "zh_CN": "SiYuan Copilot"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [],
+        "minAppVersion": "3.6.0",
+        "name": "siyuan-plugin-copilot",
+        "readme": {
+          "default": "README_en_US.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-copilot",
+        "version": "2.3.8"
+      },
+      "size": 499583,
+      "stars": 104,
+      "updated": "2026-04-22T02:35:01Z",
+      "url": "Achuan-2/siyuan-plugin-copilot@4107bfe4e145a7c756ee0c535430af80a590364b"
+    },
+    {
+      "installSize": 463365,
+      "openIssues": 4,
+      "package": {
+        "author": "OpaqueGlass",
+        "backends": null,
+        "description": {
+          "default": "Insert doc-links under current doc title",
+          "en_US": "Insert doc-links under current doc title",
+          "zh_CN": "在标题下方显示上下层级文档链接"
+        },
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "HierarchyNavigate",
+          "en_US": "HierarchyNavigate",
+          "zh_CN": "文档层级导航"
+        },
+        "frontends": null,
+        "funding": {
+          "custom": [
+            "https://wj.qq.com/s2/12395364/b69f/"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": null,
+        "minAppVersion": "",
+        "name": "syplugin-hierarchyNavigate",
+        "readme": {
+          "default": "README.md",
+          "en_US": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/OpaqueGlass/syplugin-hierarchyNavigate",
+        "version": "1.10.1"
+      },
+      "size": 200412,
+      "stars": 18,
+      "updated": "2026-04-22T01:31:08Z",
+      "url": "OpaqueGlass/syplugin-hierarchyNavigate@87ea2912099ea6dc7fdc1500c28d768b11460a1f"
+    },
+    {
       "installSize": 5428496,
       "openIssues": 0,
       "package": {
@@ -218,48 +303,6 @@
       "stars": 15,
       "updated": "2026-04-21T10:02:22Z",
       "url": "5kyfkr/siyuan-plugin-task-horizon@387d65cd4983cee563af57ee43ba4be19d8e50b9"
-    },
-    {
-      "installSize": 463433,
-      "openIssues": 4,
-      "package": {
-        "author": "OpaqueGlass",
-        "backends": null,
-        "description": {
-          "default": "Insert doc-links under current doc title",
-          "en_US": "Insert doc-links under current doc title",
-          "zh_CN": "在标题下方显示上下层级文档链接"
-        },
-        "disabledInPublish": false,
-        "displayName": {
-          "default": "HierarchyNavigate",
-          "en_US": "HierarchyNavigate",
-          "zh_CN": "文档层级导航"
-        },
-        "frontends": null,
-        "funding": {
-          "custom": [
-            "https://wj.qq.com/s2/12395364/b69f/"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": null,
-        "minAppVersion": "",
-        "name": "syplugin-hierarchyNavigate",
-        "readme": {
-          "default": "README.md",
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/OpaqueGlass/syplugin-hierarchyNavigate",
-        "version": "1.10.0"
-      },
-      "size": 200405,
-      "stars": 18,
-      "updated": "2026-04-21T07:15:50Z",
-      "url": "OpaqueGlass/syplugin-hierarchyNavigate@83787df81edf4d70df4e8384fbf5075469555cda"
     },
     {
       "installSize": 5753984,
@@ -650,49 +693,6 @@
       "stars": 179,
       "updated": "2026-04-19T17:12:53Z",
       "url": "Achuan-2/siyuan-plugin-task-note-management@8764358acdf39ee78a2809c9812e5a2fc1080d7f"
-    },
-    {
-      "installSize": 1294076,
-      "openIssues": 10,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "SiYuan AI Assistant, supports dragging blocks and tabs to get note context, enabling Q&amp;A and editing based on SiYuan note content",
-          "zh_CN": "思源笔记 AI 助手,支持拖动块、页签获取笔记上下文，实现基于思源笔记内容进行问答和编辑"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiYuan Copilot",
-          "zh_CN": "SiYuan Copilot"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [],
-        "minAppVersion": "3.6.0",
-        "name": "siyuan-plugin-copilot",
-        "readme": {
-          "default": "README_en_US.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-copilot",
-        "version": "2.3.7"
-      },
-      "size": 499556,
-      "stars": 102,
-      "updated": "2026-04-19T16:56:51Z",
-      "url": "Achuan-2/siyuan-plugin-copilot@192ac28261e9fcf0571bc6a17a2b1e08752fa914"
     },
     {
       "installSize": 673382,
