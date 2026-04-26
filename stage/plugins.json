@@ -1,57 +1,53 @@
 {
   "repos": [
     {
-      "installSize": 628819,
-      "openIssues": 0,
+      "installSize": 8550776,
+      "openIssues": 2,
       "package": {
-        "author": "whale🐋",
+        "author": "5kyfkr",
         "backends": [
           "all"
         ],
         "description": {
-          "default": "A points reward management plugin for habit tracking. Add points, create wishes, track progress with calendar and charts.",
-          "zh_CN": "凡人修仙传主题打卡插件。每日添加灵石记录修行，创建心愿单激励自己，通过日历和图表追踪修仙进度，助你养成良好习惯，证得大道。"
+          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
+          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
         },
         "disabledInPublish": true,
         "displayName": {
-          "default": "凡人修仙传：打卡",
-          "en_US": "Cultivation Tracker"
+          "default": "Task Horizon",
+          "zh_CN": "任务管理器"
         },
         "frontends": [
           "all"
         ],
-        "funding": null,
-        "keywords": [
-          "points",
-          "reward",
-          "habit",
-          "tracker",
-          "wishlist",
-          "gamification",
-          "灵石",
-          "奖励",
-          "习惯",
-          "心愿单",
-          "游戏化",
-          "打卡",
-          "养成"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-points-reward",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
         },
-        "url": "https://github.com/HaoCeans/siyuan-points-reward",
-        "version": "0.8.4"
+        "keywords": [
+          "task",
+          "manager",
+          "filter"
+        ],
+        "minAppVersion": "3.6.4",
+        "name": "siyuan-plugin-task-horizon",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
+        "version": "2.3.7"
       },
-      "size": 284078,
-      "stars": 1,
-      "updated": "2026-04-26T15:29:08Z",
-      "url": "HaoCeans/siyuan-points-reward@e476faff5f4e85ad2bbed9db64a82cf2022afb6f"
+      "size": 1862190,
+      "stars": 15,
+      "updated": "2026-04-26T16:26:48Z",
+      "url": "5kyfkr/siyuan-plugin-task-horizon@fceb6481390d4d135cf130bdeaca63f0d1ade74e"
     },
     {
-      "installSize": 8427560,
+      "installSize": 8427620,
       "openIssues": 7,
       "package": {
         "author": "Achuan-2",
@@ -110,12 +106,62 @@
           "zh_CN": "README.md"
         },
         "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
-        "version": "6.8.0"
+        "version": "6.8.1"
       },
-      "size": 4499252,
+      "size": 4499298,
       "stars": 179,
-      "updated": "2026-04-26T13:44:46Z",
-      "url": "Achuan-2/siyuan-plugin-task-note-management@8367a1fcc95b5e939ff40b1d0fcba708ee2fe664"
+      "updated": "2026-04-26T15:53:23Z",
+      "url": "Achuan-2/siyuan-plugin-task-note-management@54361660f9c80e209d641e55461b1ebabd0e7fd0"
+    },
+    {
+      "installSize": 628819,
+      "openIssues": 0,
+      "package": {
+        "author": "whale🐋",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A points reward management plugin for habit tracking. Add points, create wishes, track progress with calendar and charts.",
+          "zh_CN": "凡人修仙传主题打卡插件。每日添加灵石记录修行，创建心愿单激励自己，通过日历和图表追踪修仙进度，助你养成良好习惯，证得大道。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "凡人修仙传：打卡",
+          "en_US": "Cultivation Tracker"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": null,
+        "keywords": [
+          "points",
+          "reward",
+          "habit",
+          "tracker",
+          "wishlist",
+          "gamification",
+          "灵石",
+          "奖励",
+          "习惯",
+          "心愿单",
+          "游戏化",
+          "打卡",
+          "养成"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-points-reward",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/HaoCeans/siyuan-points-reward",
+        "version": "0.8.4"
+      },
+      "size": 284078,
+      "stars": 1,
+      "updated": "2026-04-26T15:29:08Z",
+      "url": "HaoCeans/siyuan-points-reward@e476faff5f4e85ad2bbed9db64a82cf2022afb6f"
     },
     {
       "installSize": 1552001,
@@ -467,52 +513,6 @@
       "stars": 108,
       "updated": "2026-04-25T09:44:21Z",
       "url": "Achuan-2/siyuan-plugin-copilot@2c2f151be4834f433fe5eda9f1e6ace8be420ba6"
-    },
-    {
-      "installSize": 8519772,
-      "openIssues": 1,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
-          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Horizon",
-          "zh_CN": "任务管理器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "task",
-          "manager",
-          "filter"
-        ],
-        "minAppVersion": "3.6.4",
-        "name": "siyuan-plugin-task-horizon",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "2.3.6"
-      },
-      "size": 1856802,
-      "stars": 15,
-      "updated": "2026-04-25T06:52:54Z",
-      "url": "5kyfkr/siyuan-plugin-task-horizon@d31aea336d1b2d7061615161d334a5785a89b98c"
     },
     {
       "installSize": 5400390,
