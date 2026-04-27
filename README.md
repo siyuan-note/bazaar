@@ -17,27 +17,38 @@ English | [简体中文](./README_zh_CN.md)
 If you have developed a plugin, theme, icon, template or widget and want to list it in the SiYuan community bazaar, follow these steps:
 
 1. **Fork this repository**
+
    Fork [siyuan-note/bazaar](https://github.com/siyuan-note/bazaar) on GitHub. If you have already forked, sync with the latest main branch first.
 
 2. **Edit the bazaar package list TXT file**
+
    In the repo root there are five list files: `plugins.txt`, `themes.txt`, `icons.txt`, `templates.txt`, `widgets.txt`.
    Add one line to the file that matches your package type. Format: `owner/repo` (owner is your GitHub username or org name, repo is the bazaar package repository name).
 
-   - One `owner/repo` per line; no extra commas or empty lines.
+   - One `owner/repo` per line, with no extra commas or empty lines.
    - Example: `siyuan-note/plugin-sample`.
 
 3. **Open a PR**
+
    Commit your changes and open a Pull Request to the `main` branch of this repo.
 
 4. **Wait for review and merge**
-   CI will run to check that the new package meets bazaar rules (e.g. release, required files, manifest fields). Maintainers will also review; please make changes as requested.
+
+   The PR Check workflow runs automatically to verify that the new package meets bazaar rules (e.g. release, required files, metadata fields). Maintainers will also review. Please make changes as requested.
+
+   If the PR Check workflow fails, update your changes using the check output. Do not open a new pull request. Maintainers will manually re-run the PR Check workflow.
+
+5. **Successfully listed**
+
    After the review passes and the PR is merged, the bazaar index will update within minutes and the package will appear in the SiYuan bazaar (you may need to restart SiYuan once to refresh the bazaar index cache).
 
 ## Updating a bazaar package
 
-No need to open another PR. Release a new version in your package repository; the bazaar index will pull updates automatically.
+No need to open another PR. Release a new version in your package repository. The bazaar index will pull updates automatically.
 
-Under normal circumstances, the community bazaar repo updates the index and deploys every hour. You can check the deployment status at [https://github.com/siyuan-note/bazaar/actions](https://github.com/siyuan-note/bazaar/actions).
+Under normal circumstances, the community bazaar repo updates the index and deploys every one to three hours. You can check the deployment status on the [Stage workflow page](https://github.com/siyuan-note/bazaar/actions/workflows/stage.yml).
+
+If it has not been updated for a long time, there may be an issue with the update (for example, the metadata version was not bumped). Check the latest Stage workflow logs.
 
 ## Why is the repo named bazaar?
 
