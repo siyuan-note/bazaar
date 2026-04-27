@@ -1,6 +1,95 @@
 {
   "repos": [
     {
+      "installSize": 10525383,
+      "openIssues": 0,
+      "package": {
+        "author": "suka233",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A fully redesigned KMind mind mapping plugin for SiYuan. Drag SiYuan documents and blocks directly into your mind maps, with unlimited summary levels, cloze nodes, bidirectional links, and more. Currently in public beta.",
+          "zh_CN": "全新设计的 KMind 思维导图插件，可直接将思源文档和思源块拖入导图，支持无限层级概要、节点挖空、节点双链等能力；当前为公测版。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "KMind Zen Mind Map Plugin",
+          "zh_CN": "KMind Zen 思维导图插件"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": null,
+        "keywords": [
+          "思维导图",
+          "mindmap",
+          "KMind",
+          "KMindZen",
+          "KMind Zen"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-kmind-zen",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/suka233/siyuan-kmind-zen",
+        "version": "0.1.0"
+      },
+      "size": 7938943,
+      "stars": 1,
+      "updated": "2026-04-27T08:35:22Z",
+      "url": "suka233/siyuan-kmind-zen@4f441ee119b59a2ae3c225e69f6bb99fbc76e84b"
+    },
+    {
+      "installSize": 1216618,
+      "openIssues": 5,
+      "package": {
+        "author": "Taihong Yang",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Siyuan sisyphus enables AI Agents to operate your Siyuan with notebook-level permission control, covering most of Siyuan&#39;s functionality. Supports desktop、 docker、 mobile.",
+          "zh_CN": "思源 西西弗斯，让 AI Agent 操作你的思源，提供 MCP CLI 两种方式，支持笔记本级权限管控、覆盖SIYUAN绝大部分功能，支持思源的桌面、docker端、移动端。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan sisyphus MCP &amp; CLI",
+          "zh_CN": "思源 sisyphus MCP &amp; CLI"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://test.fukit.cn/autoupload/fr/ZlJTJY_vV5qbwjLHMIPMkMeFqX06-F03aQf380QiM0iyl5f0KlZfm6UsKj-HyTuv/20260416/jcDl/886X886/AE0A11A2-9BE1-4CC6-A70D-9DB54D17F854_1_105_c.jpeg/webp"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "AI",
+          "Agent",
+          "MCP"
+        ],
+        "minAppVersion": "2.9.0",
+        "name": "siyuan-plugins-mcp-sisyphus",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/yangtaihong59/siyuan-plugins-mcp-sisyphus",
+        "version": "0.3.5"
+      },
+      "size": 498222,
+      "stars": 30,
+      "updated": "2026-04-27T07:24:35Z",
+      "url": "yangtaihong59/siyuan-plugins-mcp-sisyphus@aa0aab5571710251559e7cbc41ac9c1aced176de"
+    },
+    {
       "installSize": 8443245,
       "openIssues": 7,
       "package": {
@@ -382,53 +471,6 @@
       "stars": 0,
       "updated": "2026-04-26T01:05:27Z",
       "url": "famotime/siyuan-power-buttons@1e87ca153565f0cdceac7ab28cc92c1410b7a217"
-    },
-    {
-      "installSize": 1261580,
-      "openIssues": 4,
-      "package": {
-        "author": "Taihong Yang",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Siyuan sisyphus enables AI Agents to operate your Siyuan with notebook-level permission control, covering most of Siyuan&#39;s functionality. Supports desktop、 docker、 mobile.",
-          "zh_CN": "思源 西西弗斯，让 AI Agent 操作你的思源，提供 MCP CLI 两种方式，支持笔记本级权限管控、覆盖SIYUAN绝大部分功能，支持思源的桌面、docker端、移动端。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiYuan sisyphus MCP &amp; CLI",
-          "zh_CN": "思源 sisyphus MCP &amp; CLI"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://test.fukit.cn/autoupload/fr/ZlJTJY_vV5qbwjLHMIPMkMeFqX06-F03aQf380QiM0iyl5f0KlZfm6UsKj-HyTuv/20260416/jcDl/886X886/AE0A11A2-9BE1-4CC6-A70D-9DB54D17F854_1_105_c.jpeg/webp"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "AI",
-          "Agent",
-          "MCP"
-        ],
-        "minAppVersion": "2.9.0",
-        "name": "siyuan-plugins-mcp-sisyphus",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/yangtaihong59/siyuan-plugins-mcp-sisyphus",
-        "version": "0.3.4"
-      },
-      "size": 503493,
-      "stars": 28,
-      "updated": "2026-04-25T17:25:41Z",
-      "url": "yangtaihong59/siyuan-plugins-mcp-sisyphus@051d8af9d5ed9d88887df510d6d4f9c225e72d5f"
     },
     {
       "installSize": 363578,
