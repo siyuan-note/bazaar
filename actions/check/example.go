@@ -367,6 +367,9 @@ var CheckResultTestExample = CheckResult{
 					Pass: true,
 					URL:  "https://github.com/siyuan-note/theme-sample/blob/14665b04a381b8265ed27e5a4ad0156e7c0c05cc/theme.json",
 				},
+				NoThemeJs: File{
+					Pass: true,
+				},
 			},
 			Attrs: Attrs{
 				Pass: true,
@@ -417,6 +420,9 @@ var CheckResultTestExample = CheckResult{
 					Pass: false,
 				},
 				ThemeJson: File{
+					Pass: false,
+				},
+				NoThemeJs: File{
 					Pass: false,
 				},
 			},

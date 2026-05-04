@@ -231,6 +231,18 @@ func performStage(typ string) {
 
 	oldStageData := loadOldStageData(typ)
 
+	var themeJsAllowSet map[string]struct{}
+	if typ == "themes" {
+		paths, err := util.ParseReposFromTxt(util.ThemeJsAllowlistRelPath)
+		if err != nil {
+			logger.Fatalf("read or parse [%s] failed: %s", util.ThemeJsAllowlistRelPath, err)
+		}
+		themeJsAllowSet = make(map[string]struct{}, len(paths))
+		for _, p := range paths {
+			themeJsAllowSet[p] = struct{}{}
+		}
+	}
+
 	initHeavyStageSem()
 	lock := sync.Mutex{}
 	var stageRepos []any
@@ -246,7 +258,7 @@ func performStage(typ string) {
 			oldStageURL = o.URL
 			oldRepo = o
 		}
-		ok, skipped, hash, updated, size, installSize, pkg := indexPackage(repo, typ, oldStageURL, oldRepo)
+		ok, skipped, hash, updated, size, installSize, pkg := indexPackage(repo, typ, oldStageURL, oldRepo, themeJsAllowSet)
 		if skipped {
 			// hash 未变化，跳过下载，直接沿用旧 stage 条目
 			lock.Lock()
@@ -423,11 +435,12 @@ func getOldPackageFields(oldRepo *StageRepo) (name, version string) {
 
 // packageValidationMeta 聚合元数据与校验所需上下文
 type packageValidationMeta struct {
-	repoURL     string
-	packageRoot string
-	typ         string
-	basePkg     *Package
-	oldRepo     *StageRepo
+	repoURL         string
+	packageRoot     string
+	typ             string
+	basePkg         *Package
+	oldRepo         *StageRepo
+	themeJsAllowSet map[string]struct{} // 非 nil 时：仅在此集合内的主题允许包含 theme.js
 }
 
 // validatePackageMetadata 校验元数据
@@ -468,6 +481,11 @@ func validatePackageMetadata(meta *packageValidationMeta) error {
 		if semver.Compare(newVer, oldVer) <= 0 {
 			return fmt.Errorf("version must be higher than current stage: %s <= %s", meta.basePkg.Version, oldVersion)
 		}
+	}
+
+	// author
+	if err := util.ValidatePlainStringForHTML(meta.basePkg.Author); err != nil {
+		return fmt.Errorf("author invalid: %w", err)
 	}
 
 	// readme：声明的 README 文件在解压后的包内存在（路径大小写敏感）
@@ -516,13 +534,22 @@ func validatePackageMetadata(meta *packageValidationMeta) error {
 		}
 	}
 
+	// 主题
+	if meta.typ == "themes" && meta.themeJsAllowSet != nil {
+		// theme.js：仅 config/themes-theme-js-allowlist.txt 中的旧仓库允许在包根目录包含 theme.js（存量豁免），其余新上架的主题必须移除。
+		if _, allowed := meta.themeJsAllowSet[meta.repoURL]; !allowed && fileExistsInDir(meta.packageRoot, "theme.js") {
+			return fmt.Errorf("The use of [theme.js] is not allowed and must be removed. https://github.com/siyuan-note/bazaar/issues/1821")
+		}
+	}
+
 	return nil
 }
 
 // indexPackage 索引包，返回的 pkg 为 *Package / *PluginPackage / *ThemePackage 之一。
 // oldStageURL 为当前已 stage 的该仓库 URL（格式 owner/repo@hash），若与 Latest Release 的 hash 一致则跳过下载并返回 skipped=true。
 // oldStageRepo 用于元数据校验时与旧 name/url/version 对比，可为 nil（如新仓库）。
-func indexPackage(repoURL, typ, oldStageURL string, oldStageRepo *StageRepo) (ok, skipped bool, hash, published string, size, installSize int64, pkg any) {
+// themeJsAllowSet 仅 typ 为 themes 时使用；为 nil 时不做 theme.js 策略校验。
+func indexPackage(repoURL, typ, oldStageURL string, oldStageRepo *StageRepo, themeJsAllowSet map[string]struct{}) (ok, skipped bool, hash, published string, size, installSize int64, pkg any) {
 	// 获取该仓库 Latest Release 信息（hash、发布时间、package.zip 下载地址）
 	hash, published, packageZip, releaseOk := getRepoLatestRelease(repoURL)
 	if !releaseOk {
@@ -610,11 +637,12 @@ func indexPackage(repoURL, typ, oldStageURL string, oldStageRepo *StageRepo) (ok
 
 	// 元数据校验：name/url/version/readme 及类型相关字段；失败则本轮索引失败，沿用旧数据
 	if err := validatePackageMetadata(&packageValidationMeta{
-		repoURL:     repoURL,
-		packageRoot: packageRoot,
-		typ:         typ,
-		basePkg:     basePkg,
-		oldRepo:     oldStageRepo,
+		repoURL:         repoURL,
+		packageRoot:     packageRoot,
+		typ:             typ,
+		basePkg:         basePkg,
+		oldRepo:         oldStageRepo,
+		themeJsAllowSet: themeJsAllowSet,
 	}); err != nil {
 		logger.Warnf("validate package metadata [%s] failed: %v", repoURL, err)
 		return
@@ -866,11 +894,12 @@ func getRepoLatestRelease(repoURL string) (hash, published, packageZip string, o
 	return
 }
 
-// sanitizePackageDisplayStrings 对集市包直接显示的信息做 HTML 转义，避免 XSS。（跟思源内核代码保持一致）
+// sanitizePackageDisplayStrings 对集市包直接显示的信息做 HTML 转义，避免 XSS。（跟思源内核 kernel/bazaar/package.go 保持一致）
 func sanitizePackageDisplayStrings(pkg *Package) {
 	if pkg == nil {
 		return
 	}
+	pkg.Author = html.EscapeString(pkg.Author)
 	for k, v := range pkg.DisplayName {
 		pkg.DisplayName[k] = html.EscapeString(v)
 	}
