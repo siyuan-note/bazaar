@@ -123,6 +123,7 @@ Please fix the corresponding `.txt` file in the repo root: one `owner/repo` per 
   - {{ if $repo.Release.LatestRelease.PackageZip.Pass }}[x] [package.zip]({{ $repo.Release.LatestRelease.PackageZip.URL }}){{ else }}[ ] `package.zip`{{ end }}
 - {{ if $repo.Files.Pass }}[x]{{ else }}[ ]{{ end }} Files that must exist
   - {{ if $repo.Files.ThemeJson.Pass }}[x] [theme.json]({{ $repo.Files.ThemeJson.URL }}){{ else }}[ ] `theme.json`{{ end }}
+  - {{ if $repo.Files.NoThemeJs.Pass }}[x] theme.js rule satisfied{{ else }}[ ] Must not include {{ if $repo.Files.NoThemeJs.URL }}[theme.js]({{ $repo.Files.NoThemeJs.URL }}){{ else }}`theme.js`{{ end }}{{ end }}
   - {{ if $repo.Files.IconPng.Pass }}[x] [icon.png]({{ $repo.Files.IconPng.URL }}){{ else }}[ ] `icon.png`{{ end }}
   - {{ if $repo.Files.PreviewPng.Pass }}[x] [preview.png]({{ $repo.Files.PreviewPng.URL }}){{ else }}[ ] `preview.png`{{ end }}
   - {{ if $repo.Files.ReadmeMd.Pass }}[x] [README.md]({{ $repo.Files.ReadmeMd.URL }}){{ else }}[ ] `README.md`{{ end }}

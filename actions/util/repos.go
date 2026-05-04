@@ -17,6 +17,9 @@ import (
 	"strings"
 )
 
+// ThemeJsAllowlistRelPath 为仓库根目录下「允许包含 theme.js」的主题列表相对路径。
+const ThemeJsAllowlistRelPath = "config/themes-theme-js-allowlist.txt"
+
 // ParseReposFromTxt 从 TXT 文件解析包列表：按行分割、过滤空行，校验每行为合法 owner/repo，返回 []string。
 // 不做 TrimSpace，行首尾或 owner/repo 首尾含空格均视为解析错误。兼容多种换行符（\n、\r\n、\r）。
 func ParseReposFromTxt(filePath string) (repos []string, err error) {

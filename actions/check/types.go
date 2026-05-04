@@ -98,6 +98,7 @@ type ThemeFiles struct {
 	Pass bool `json:"pass"`
 
 	ThemeJson  File `json:"theme.json"`
+	NoThemeJs  File `json:"no_theme_js"` // 新上架的主题不得包含 theme.js；Pass 表示合规 https://github.com/siyuan-note/bazaar/issues/1821
 	IconPng    File `json:"icon.png"`
 	PreviewPng File `json:"preview.png"`
 	ReadmeMd   File `json:"README.md"`

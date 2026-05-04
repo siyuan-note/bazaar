@@ -32,6 +32,7 @@ const (
 	FILE_PATH_PLUGIN_JSON   = "plugin.json"
 	FILE_PATH_TEMPLATE_JSON = "template.json"
 	FILE_PATH_THEME_JSON    = "theme.json"
+	FILE_PATH_THEME_JS      = "theme.js"
 	FILE_PATH_WIDGET_JSON   = "widget.json"
 )
 
