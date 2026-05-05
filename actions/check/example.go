@@ -353,23 +353,22 @@ var CheckResultTestExample = CheckResult{
 				Pass: true,
 				IconPng: File{
 					Pass: true,
-					URL:  "https://github.com/siyuan-note/theme-sample/blob/399faa145e7bb223cc53e4bbf6a996d46f798aff/icon.png",
+					URL:  "https://github.com/siyuan-note/theme-sample/blob/14665b04a381b8265ed27e5a4ad0156e7c0c05cc/icon.png",
 				},
 				PreviewPng: File{
 					Pass: true,
-					URL:  "https://github.com/siyuan-note/theme-sample/blob/399faa145e7bb223cc53e4bbf6a996d46f798aff/preview.png",
+					URL:  "https://github.com/siyuan-note/theme-sample/blob/14665b04a381b8265ed27e5a4ad0156e7c0c05cc/preview.png",
 				},
 				ReadmeMd: File{
 					Pass: true,
-					URL:  "https://github.com/siyuan-note/theme-sample/blob/399faa145e7bb223cc53e4bbf6a996d46f798aff/README.md",
+					URL:  "https://github.com/siyuan-note/theme-sample/blob/14665b04a381b8265ed27e5a4ad0156e7c0c05cc/README.md",
 				},
 				ThemeJson: File{
 					Pass: true,
-					URL:  "https://github.com/siyuan-note/theme-sample/blob/399faa145e7bb223cc53e4bbf6a996d46f798aff/theme.json",
+					URL:  "https://github.com/siyuan-note/theme-sample/blob/14665b04a381b8265ed27e5a4ad0156e7c0c05cc/theme.json",
 				},
 				NoThemeJs: File{
 					Pass: true,
-					URL:  "https://github.com/siyuan-note/theme-sample/blob/399faa145e7bb223cc53e4bbf6a996d46f798aff/theme.js",
 				},
 			},
 			Attrs: Attrs{
