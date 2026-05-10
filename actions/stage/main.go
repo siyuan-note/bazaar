@@ -515,6 +515,15 @@ func validatePackageMetadata(meta *packageValidationMeta) error {
 		}
 	}
 
+	// funding：Custom 链接仅允许 http(s) / mailto，禁止 javascript: / data: / file: 等
+	if meta.basePkg.Funding != nil {
+		for i, v := range meta.basePkg.Funding.Custom {
+			if v != "" && !strings.HasPrefix(v, "https://") && !strings.HasPrefix(v, "http://") && !strings.HasPrefix(v, "mailto:") {
+				return fmt.Errorf("funding.custom[%d] invalid protocol: must start with https:// http:// or mailto: ", i)
+			}
+		}
+	}
+
 	// 插件：若存在 disabledInPublish 则校验为 bool（JSON 中该键存在时值必须为 bool，通过 raw 校验）
 	if meta.typ == "plugins" {
 		name := strings.TrimSuffix(meta.typ, "s")
@@ -538,7 +547,7 @@ func validatePackageMetadata(meta *packageValidationMeta) error {
 	if meta.typ == "themes" && meta.themeJsAllowSet != nil {
 		// theme.js：仅 config/themes-theme-js-allowlist.txt 中的旧仓库允许在包根目录包含 theme.js（存量豁免），其余新上架的主题必须移除。
 		if _, allowed := meta.themeJsAllowSet[meta.repoURL]; !allowed && fileExistsInDir(meta.packageRoot, "theme.js") {
-			return fmt.Errorf("The use of [theme.js] is not allowed and must be removed. https://github.com/siyuan-note/bazaar/issues/1821")
+			return fmt.Errorf("the use of [theme.js] is not allowed and must be removed. https://github.com/siyuan-note/bazaar/issues/1821")
 		}
 	}
 
@@ -894,17 +903,30 @@ func getRepoLatestRelease(repoURL string) (hash, published, packageZip string, o
 	return
 }
 
-// sanitizePackageDisplayStrings 对集市包直接显示的信息做 HTML 转义，避免 XSS。（跟思源内核 kernel/bazaar/package.go 保持一致）
+// sanitizePackageDisplayStrings 对集市包直接可能显示的信息做 HTML 转义，避免 XSS。（跟思源内核 kernel/bazaar/package.go 保持一致）
 func sanitizePackageDisplayStrings(pkg *Package) {
 	if pkg == nil {
 		return
 	}
+	pkg.Name = html.EscapeString(pkg.Name)
 	pkg.Author = html.EscapeString(pkg.Author)
+	pkg.Version = html.EscapeString(pkg.Version)
 	for k, v := range pkg.DisplayName {
 		pkg.DisplayName[k] = html.EscapeString(v)
 	}
 	for k, v := range pkg.Description {
 		pkg.Description[k] = html.EscapeString(v)
+	}
+	if pkg.Funding != nil {
+		pkg.Funding.OpenCollective = html.EscapeString(pkg.Funding.OpenCollective)
+		pkg.Funding.Patreon = html.EscapeString(pkg.Funding.Patreon)
+		pkg.Funding.GitHub = html.EscapeString(pkg.Funding.GitHub)
+		for i, v := range pkg.Funding.Custom {
+			pkg.Funding.Custom[i] = html.EscapeString(v)
+		}
+	}
+	for i, kw := range pkg.Keywords {
+		pkg.Keywords[i] = html.EscapeString(kw)
 	}
 }
 
