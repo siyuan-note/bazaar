@@ -1,6 +1,198 @@
 {
   "repos": [
     {
+      "installSize": 138523,
+      "openIssues": 2,
+      "package": {
+        "author": "lmedpaul",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A RSS reader plugin for SiYuan Note, allowing you to save articles to notes with one click.",
+          "zh_CN": "思源笔记 RSS 订阅插件，支持一键将文章保存为笔记。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "RSS Reader",
+          "zh_CN": "RSS 订阅"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://github.com/lnedpaul"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "RSS",
+          "Reader",
+          "Subscription",
+          "Feed",
+          "Note",
+          "Save to Note",
+          "阅读器",
+          "订阅",
+          "保存笔记"
+        ],
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-rss-reader",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/lnedpaul/siyuan-rss-reader",
+        "version": "0.1.19"
+      },
+      "size": 53525,
+      "stars": 2,
+      "updated": "2026-05-15T09:58:11Z",
+      "url": "lnedpaul/siyuan-rss-reader@42a34a04fadabbf9dcaca2b38d2957934a9573e4"
+    },
+    {
+      "installSize": 9608733,
+      "openIssues": 1,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
+          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Horizon",
+          "zh_CN": "任务管理器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "task",
+          "manager",
+          "filter"
+        ],
+        "minAppVersion": "3.6.4",
+        "name": "siyuan-plugin-task-horizon",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
+        "version": "2.4.8"
+      },
+      "size": 2072176,
+      "stars": 21,
+      "updated": "2026-05-15T09:49:58Z",
+      "url": "5kyfkr/siyuan-plugin-task-horizon@f641fc50dcdc232f0516b71b5fea3dc1b9b0d7d9"
+    },
+    {
+      "installSize": 241738,
+      "openIssues": 0,
+      "package": {
+        "author": "Jul1en-Lin",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "Export the current SiYuan document into a local Hugo repository and optionally push it with git.",
+          "zh_CN": "将当前思源文档一键导出到本地 Hugo 仓库，并可按需执行 Git 推送。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Hugo Sync",
+          "zh_CN": "Hugo 同步"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "funding": null,
+        "keywords": [
+          "hugo",
+          "static-site",
+          "git",
+          "静态网站",
+          "发布"
+        ],
+        "minAppVersion": "3.2.1",
+        "name": "siyuan-plugin-hugo",
+        "readme": {
+          "default": "README_en.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/Jul1en-Lin/siyuan-plugin-hugo",
+        "version": "1.1.6"
+      },
+      "size": 207088,
+      "stars": 1,
+      "updated": "2026-05-15T08:28:35Z",
+      "url": "Jul1en-Lin/siyuan-plugin-hugo@31c4835548e765f284c26732e658a2eb4b757934"
+    },
+    {
+      "installSize": 1808483,
+      "openIssues": 0,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A dock Tomato Timer for SiYuan.",
+          "zh_CN": "思源底栏番茄钟：支持时间轴视图/任务提醒/日常事务记录/多端状态同步/移动端/数据库联动/块绑定/历史记录/任务管理器联动/移动端原生通知提醒"
+        },
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "Dock Tomato",
+          "zh_CN": "底栏番茄钟"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "tomato",
+          "timer",
+          "pomodoro",
+          "dock"
+        ],
+        "minAppVersion": "3.5.10",
+        "name": "siyuan-plugin-docktomato",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-docktomato",
+        "version": "1.9.6"
+      },
+      "size": 453365,
+      "stars": 7,
+      "updated": "2026-05-15T08:15:59Z",
+      "url": "5kyfkr/siyuan-plugin-docktomato@c7f934a5794ac5ea2e0111538c47fcc98aff1e07"
+    },
+    {
       "installSize": 1420394,
       "openIssues": 7,
       "package": {
@@ -359,52 +551,6 @@
       "url": "MoonBottle/siyuan-plugin-bullet-journal@7c63320d0dc046b38c8f979ad1630ef2c4582ae2"
     },
     {
-      "installSize": 9392660,
-      "openIssues": 1,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
-          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Horizon",
-          "zh_CN": "任务管理器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "task",
-          "manager",
-          "filter"
-        ],
-        "minAppVersion": "3.6.4",
-        "name": "siyuan-plugin-task-horizon",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "2.4.7"
-      },
-      "size": 2035140,
-      "stars": 21,
-      "updated": "2026-05-13T02:58:24Z",
-      "url": "5kyfkr/siyuan-plugin-task-horizon@4dd8bf11f9cde9be8790fe39db7c074f6ee94026"
-    },
-    {
       "installSize": 5048737,
       "openIssues": 1,
       "package": {
@@ -590,59 +736,6 @@
       "stars": 2,
       "updated": "2026-05-12T11:26:29Z",
       "url": "HaoCeans/siyuan-points-reward@f20039f22d86e491572e5b378d760bdd5ab41dd3"
-    },
-    {
-      "installSize": 135761,
-      "openIssues": 2,
-      "package": {
-        "author": "lmedpaul",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A RSS reader plugin for SiYuan Note, allowing you to save articles to notes with one click.",
-          "zh_CN": "思源笔记 RSS 订阅插件，支持一键将文章保存为笔记。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "RSS Reader",
-          "zh_CN": "RSS 订阅"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://github.com/lnedpaul"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "RSS",
-          "Reader",
-          "Subscription",
-          "Feed",
-          "Note",
-          "Save to Note",
-          "阅读器",
-          "订阅",
-          "保存笔记"
-        ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-rss-reader",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/lnedpaul/siyuan-rss-reader",
-        "version": "0.1.18"
-      },
-      "size": 52903,
-      "stars": 2,
-      "updated": "2026-05-12T06:27:46Z",
-      "url": "lnedpaul/siyuan-rss-reader@7dab1d3e0f4f902e07f1c07246fdaf99abae9bf4"
     },
     {
       "installSize": 543285,
@@ -1290,51 +1383,6 @@
       "url": "aluluvip/siyuan-alioss-image-uploader@cfb9b83df60fa1c255245dd960530ef66779de36"
     },
     {
-      "installSize": 240944,
-      "openIssues": 0,
-      "package": {
-        "author": "Jul1en-Lin",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Export the current SiYuan document into a local Hugo repository and optionally push it with git.",
-          "zh_CN": "将当前思源文档一键导出到本地 Hugo 仓库，并可按需执行 Git 推送。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Hugo Sync",
-          "zh_CN": "Hugo 同步"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window"
-        ],
-        "funding": null,
-        "keywords": [
-          "hugo",
-          "static-site",
-          "git",
-          "静态网站",
-          "发布"
-        ],
-        "minAppVersion": "3.2.1",
-        "name": "siyuan-plugin-hugo",
-        "readme": {
-          "default": "README_en.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/Jul1en-Lin/siyuan-plugin-hugo",
-        "version": "1.1.5"
-      },
-      "size": 206893,
-      "stars": 1,
-      "updated": "2026-05-03T17:22:41Z",
-      "url": "Jul1en-Lin/siyuan-plugin-hugo@b01245b03831537dc2559398d3e9f82c7a11e12f"
-    },
-    {
       "installSize": 3949466,
       "openIssues": 3,
       "package": {
@@ -1798,54 +1846,6 @@
       "stars": 36,
       "updated": "2026-04-29T07:40:37Z",
       "url": "zt8989/siyuan-drawio-plugin@d80a1eea737b490c951cc08c0697ee35fc504f63"
-    },
-    {
-      "installSize": 1787445,
-      "openIssues": 0,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A dock Tomato Timer for SiYuan.",
-          "zh_CN": "思源底栏番茄钟：支持时间轴视图/任务提醒/日常事务记录/多端状态同步/移动端/数据库联动/块绑定/历史记录/任务管理器联动/移动端原生通知提醒"
-        },
-        "disabledInPublish": false,
-        "displayName": {
-          "default": "Dock Tomato",
-          "zh_CN": "底栏番茄钟"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "tomato",
-          "timer",
-          "pomodoro",
-          "dock"
-        ],
-        "minAppVersion": "3.5.10",
-        "name": "siyuan-plugin-docktomato",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-docktomato",
-        "version": "1.9.5"
-      },
-      "size": 450111,
-      "stars": 7,
-      "updated": "2026-04-28T16:06:39Z",
-      "url": "5kyfkr/siyuan-plugin-docktomato@416e32f1b1b979cdd088696dc3ef46e1e5504733"
     },
     {
       "installSize": 133745,
