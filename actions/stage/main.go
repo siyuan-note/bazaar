@@ -904,6 +904,7 @@ func getRepoLatestRelease(repoURL string) (hash, published, packageZip string, o
 }
 
 // sanitizePackageDisplayStrings 对集市包直接可能显示的信息做 HTML 转义，避免 XSS。（跟思源内核 kernel/bazaar/package.go 保持一致）
+// 思源旧版本没有转义，为了避免旧版本受到攻击，必须在线上进行转义。
 func sanitizePackageDisplayStrings(pkg *Package) {
 	if pkg == nil {
 		return
