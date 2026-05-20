@@ -1,6 +1,131 @@
 {
   "repos": [
     {
+      "installSize": 8515834,
+      "openIssues": 6,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android",
+          "harmony"
+        ],
+        "description": {
+          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
+          "zh_CN": "一款在思源笔记里实现任务管理功能的插件，为了践行「防弹笔记法」而开发。支持电脑端和移动端系统通知提醒任务执行、日历视图查看行事历、项目管理、四象限面板、番茄钟专注、习惯打卡等功能"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Note Management",
+          "zh_CN": "任务笔记管理"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "reminder",
+          "time",
+          "calendar",
+          "notification",
+          "提醒",
+          "时间",
+          "日历",
+          "通知",
+          "番茄钟",
+          "四象限",
+          "任务管理",
+          "项目管理",
+          "习惯打卡"
+        ],
+        "minAppVersion": "3.6.4",
+        "name": "siyuan-plugin-task-note-management",
+        "readme": {
+          "default": "README_en_US.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
+        "version": "6.8.9"
+      },
+      "size": 4520497,
+      "stars": 184,
+      "updated": "2026-05-20T13:11:18Z",
+      "url": "Achuan-2/siyuan-plugin-task-note-management@a305d2e2b905d562e35667e1d8c7dc1d9ea5608e"
+    },
+    {
+      "installSize": 94028,
+      "openIssues": 7,
+      "package": {
+        "author": "zxkmm",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android"
+        ],
+        "description": {
+          "en_US": "Auto detect the programming language of the code block",
+          "zh_CN": "自动检测代码块的编程语言"
+        },
+        "disabledInPublish": false,
+        "displayName": {
+          "en_US": "Codeblock Auto Language",
+          "zh_CN": "代码块自动检测语言"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            ""
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "codeblock",
+          "language",
+          "代码块",
+          "语言",
+          "自动检测"
+        ],
+        "minAppVersion": "3.0.12",
+        "name": "siyuan_auto_codeblock",
+        "readme": {
+          "en_US": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/zxkmm/siyuan_auto_codeblock",
+        "version": "1.0.1"
+      },
+      "size": 49439,
+      "stars": 87,
+      "updated": "2026-05-20T12:07:48Z",
+      "url": "zxkmm/siyuan_auto_codeblock@77d758f42ad213041f1196072025322a27ed005b"
+    },
+    {
       "installSize": 1285175,
       "openIssues": 2,
       "package": {
@@ -104,64 +229,6 @@
       "stars": 23,
       "updated": "2026-05-20T10:45:26Z",
       "url": "Glaube-TY/siyuan-douban@fdd394f97d537c731e5a02590ffda936ac36ddba"
-    },
-    {
-      "installSize": 93921,
-      "openIssues": 7,
-      "package": {
-        "author": "zxkmm",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android"
-        ],
-        "description": {
-          "en_US": "Auto detect the programming language of the code block",
-          "zh_CN": "自动检测代码块的编程语言"
-        },
-        "disabledInPublish": false,
-        "displayName": {
-          "en_US": "Codeblock Auto Language",
-          "zh_CN": "代码块自动检测语言"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            ""
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "codeblock",
-          "language",
-          "代码块",
-          "语言",
-          "自动检测"
-        ],
-        "minAppVersion": "3.0.12",
-        "name": "siyuan_auto_codeblock",
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/zxkmm/siyuan_auto_codeblock",
-        "version": "1.0.0"
-      },
-      "size": 49425,
-      "stars": 87,
-      "updated": "2026-05-20T08:41:33Z",
-      "url": "zxkmm/siyuan_auto_codeblock@df4c0d537e81643dc5bbe2c4574c210dc7de596a"
     },
     {
       "installSize": 206542,
@@ -585,73 +652,6 @@
       "stars": 21,
       "updated": "2026-05-18T06:48:34Z",
       "url": "5kyfkr/siyuan-plugin-task-horizon@62937952d01626f95329d33da8715c0ac78b3778"
-    },
-    {
-      "installSize": 8478944,
-      "openIssues": 7,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "description": {
-          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
-          "zh_CN": "一款在思源笔记里实现任务管理功能的插件，为了践行「防弹笔记法」而开发。支持电脑端和移动端系统通知提醒任务执行、日历视图查看行事历、项目管理、四象限面板、番茄钟专注、习惯打卡等功能"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Note Management",
-          "zh_CN": "任务笔记管理"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "reminder",
-          "time",
-          "calendar",
-          "notification",
-          "提醒",
-          "时间",
-          "日历",
-          "通知",
-          "番茄钟",
-          "四象限",
-          "任务管理",
-          "项目管理",
-          "习惯打卡"
-        ],
-        "minAppVersion": "3.6.4",
-        "name": "siyuan-plugin-task-note-management",
-        "readme": {
-          "default": "README_en_US.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
-        "version": "6.8.7"
-      },
-      "size": 4511755,
-      "stars": 184,
-      "updated": "2026-05-18T04:17:12Z",
-      "url": "Achuan-2/siyuan-plugin-task-note-management@b996ada7949992b21249d4fbab9cc8e4cb5686ed"
     },
     {
       "installSize": 679526,
