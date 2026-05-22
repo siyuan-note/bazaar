@@ -12,8 +12,21 @@ package util
 
 import (
 	"errors"
+	"fmt"
+	"html"
 	"strings"
 )
+
+// ValidatePlainStringForHTML 校验用于 HTML 展示的清单字面量：去掉首尾空白后须非空，且整段字符串与 html.EscapeString(s) 相同，避免 XSS。
+func ValidatePlainStringForHTML(s string) error {
+	if strings.TrimSpace(s) == "" {
+		return errors.New("value is empty or whitespace only")
+	}
+	if html.EscapeString(s) != s {
+		return errors.New(`contains HTML-special character: <, >, &, ' and "`)
+	}
+	return nil
+}
 
 // maxNameBytesPOSIX 为单路径组件名称的字节长度上限（NAME_MAX），Linux ext4、macOS APFS 等常见文件系统均为 255。
 const maxNameBytesPOSIX = 255
@@ -42,6 +55,9 @@ func ValidateName(name string) error {
 	}
 	if err := checkReservedWindowsDeviceName(name); err != nil {
 		return err
+	}
+	if err := ValidatePlainStringForHTML(name); err != nil {
+		return fmt.Errorf("[name] %w", err)
 	}
 	return nil
 }
