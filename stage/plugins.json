@@ -1,6 +1,117 @@
 {
   "repos": [
     {
+      "installSize": 613200,
+      "openIssues": 2,
+      "package": {
+        "author": "lmedpaul",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A RSS reader plugin for SiYuan Note, allowing you to save articles to notes with one click.",
+          "zh_CN": "思源笔记 RSS 订阅插件，支持一键将文章保存为笔记。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "RSS Reader",
+          "zh_CN": "RSS 订阅"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://github.com/lnedpaul"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "RSS",
+          "Reader",
+          "Subscription",
+          "Feed",
+          "Note",
+          "Save to Note",
+          "阅读器",
+          "订阅",
+          "保存笔记"
+        ],
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-rss-reader",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/lnedpaul/siyuan-rss-reader",
+        "version": "0.1.20"
+      },
+      "size": 524549,
+      "stars": 3,
+      "updated": "2026-05-23T10:27:47Z",
+      "url": "lnedpaul/siyuan-rss-reader@b86b17bac82d3fedbc88df4b3bb3b8977c0b6475"
+    },
+    {
+      "installSize": 94457,
+      "openIssues": 7,
+      "package": {
+        "author": "zxkmm",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android"
+        ],
+        "description": {
+          "en_US": "Auto detect the programming language of the code block",
+          "zh_CN": "自动检测代码块的编程语言"
+        },
+        "disabledInPublish": false,
+        "displayName": {
+          "en_US": "Codeblock Auto Language",
+          "zh_CN": "代码块自动检测语言"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            ""
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "codeblock",
+          "language",
+          "代码块",
+          "语言",
+          "自动检测"
+        ],
+        "minAppVersion": "3.0.12",
+        "name": "siyuan_auto_codeblock",
+        "readme": {
+          "en_US": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/zxkmm/siyuan_auto_codeblock",
+        "version": "1.1.0"
+      },
+      "size": 49519,
+      "stars": 88,
+      "updated": "2026-05-23T09:42:32Z",
+      "url": "zxkmm/siyuan_auto_codeblock@26510c31408ec9dca0f1d7b0d2c4520ebbc7c56c"
+    },
+    {
       "installSize": 949318,
       "openIssues": 0,
       "package": {
@@ -549,64 +660,6 @@
       "stars": 53,
       "updated": "2026-05-20T14:51:23Z",
       "url": "yangtaihong59/siyuan-plugins-mcp-sisyphus@922d9c4296d6d866084cf409bad06952de97f4eb"
-    },
-    {
-      "installSize": 94028,
-      "openIssues": 7,
-      "package": {
-        "author": "zxkmm",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android"
-        ],
-        "description": {
-          "en_US": "Auto detect the programming language of the code block",
-          "zh_CN": "自动检测代码块的编程语言"
-        },
-        "disabledInPublish": false,
-        "displayName": {
-          "en_US": "Codeblock Auto Language",
-          "zh_CN": "代码块自动检测语言"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            ""
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "codeblock",
-          "language",
-          "代码块",
-          "语言",
-          "自动检测"
-        ],
-        "minAppVersion": "3.0.12",
-        "name": "siyuan_auto_codeblock",
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/zxkmm/siyuan_auto_codeblock",
-        "version": "1.0.1"
-      },
-      "size": 49439,
-      "stars": 87,
-      "updated": "2026-05-20T12:07:48Z",
-      "url": "zxkmm/siyuan_auto_codeblock@77d758f42ad213041f1196072025322a27ed005b"
     },
     {
       "installSize": 633455,
@@ -1297,59 +1350,6 @@
       "stars": 1,
       "updated": "2026-05-16T01:01:49Z",
       "url": "famotime/siyuan-canvas@5e9d52f9db36047b96666c2cf77836a2ac35fcc9"
-    },
-    {
-      "installSize": 138523,
-      "openIssues": 2,
-      "package": {
-        "author": "lmedpaul",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A RSS reader plugin for SiYuan Note, allowing you to save articles to notes with one click.",
-          "zh_CN": "思源笔记 RSS 订阅插件，支持一键将文章保存为笔记。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "RSS Reader",
-          "zh_CN": "RSS 订阅"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://github.com/lnedpaul"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "RSS",
-          "Reader",
-          "Subscription",
-          "Feed",
-          "Note",
-          "Save to Note",
-          "阅读器",
-          "订阅",
-          "保存笔记"
-        ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-rss-reader",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/lnedpaul/siyuan-rss-reader",
-        "version": "0.1.19"
-      },
-      "size": 53525,
-      "stars": 2,
-      "updated": "2026-05-15T09:58:11Z",
-      "url": "lnedpaul/siyuan-rss-reader@42a34a04fadabbf9dcaca2b38d2957934a9573e4"
     },
     {
       "installSize": 241738,
