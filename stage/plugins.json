@@ -1,7 +1,92 @@
 {
   "repos": [
     {
-      "installSize": 387767,
+      "installSize": 907943,
+      "openIssues": 6,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Edit images in SiYuan with crop, shapes, arrows, text, markers and more. Supports re-editing.",
+          "zh_CN": "一款思源笔记图片编辑/标注插件，支持裁剪、旋转图片，支持添加形状、文字、支持添加图片边框、设置图片圆角等功能，最大亮点是已编辑的图片支持再编辑！"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "ImgReEditor",
+          "zh_CN": "ImgReEditor"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [],
+        "minAppVersion": "3.0.12",
+        "name": "siyuan-plugin-imgReEditor",
+        "readme": {
+          "default": "README_en_US.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-imgReEditor",
+        "version": "0.9.0"
+      },
+      "size": 322600,
+      "stars": 15,
+      "updated": "2026-05-24T13:11:52Z",
+      "url": "Achuan-2/siyuan-plugin-imgReEditor@86416041d8fb1e53571d2c4bb59d4c0aa68af408"
+    },
+    {
+      "installSize": 278768,
+      "openIssues": 1,
+      "package": {
+        "author": "sqalei",
+        "backends": [
+          "windows"
+        ],
+        "description": {
+          "default": "Browse local files in Dock panel, search, bookmark folders, and double-click to insert file links or copy to assets as SiYuan attachments",
+          "zh_CN": "在Dock面板浏览本地文件，支持搜索、收藏、排序、图标/列表视图，双击插入文件链接或复制到assets作为思源附件"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "LocalBrowse",
+          "zh_CN": "本地文件浏览器"
+        },
+        "frontends": [
+          "desktop"
+        ],
+        "funding": null,
+        "keywords": [
+          "local",
+          "file browser",
+          "mount",
+          "attachment",
+          "本地文件"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-plugin-localbrowse",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/sqalei/siyuan-plugin-localbrowse",
+        "version": "0.5.5"
+      },
+      "size": 78178,
+      "stars": 0,
+      "updated": "2026-05-24T12:54:49Z",
+      "url": "sqalei/siyuan-plugin-localbrowse@dcb62fbc187efabac34835e9fd455cc41d4e2250"
+    },
+    {
+      "installSize": 755872,
       "openIssues": 0,
       "package": {
         "author": "khnsojina-arch",
@@ -9,13 +94,13 @@
           "all"
         ],
         "description": {
-          "default": "A Notion Calendar style time-block calendar for SiYuan, with reminders, desktop notifications, JSON backup import/export, a compact Pomodoro timer, and iHour .ihbak export.",
-          "zh_CN": "Notion Calendar 风格的时间块日历，支持周、三天、月、年视图，提醒、电脑系统通知、JSON 备份导入导出、侧栏番茄钟，以及 iHour .ihbak 解析导出 JSON。"
+          "default": "A Notion Calendar style time-block calendar for SiYuan, supporting week, three-day, month and year views, reminders, Pomodoro, task planning, JSON import/export, study plans and review schedules.",
+          "zh_CN": "一个面向思源笔记的时间块日历插件，支持周视图、三天视图、月视图、年视图、提醒、番茄钟、JSON 导入导出，帮助你完成日程规划、时间管理、学习计划、复习计划和任务安排。"
         },
         "disabledInPublish": true,
         "displayName": {
           "default": "Time Block Calendar",
-          "zh_CN": "时间块日历"
+          "zh_CN": "时间块日历｜日程规划、时间管理、番茄钟与提醒"
         },
         "frontends": [
           "all"
@@ -25,12 +110,25 @@
           "calendar",
           "planner",
           "time-block",
+          "task-planning",
           "daily-note",
           "pomodoro",
-          "日历",
+          "reminder",
+          "notion-calendar",
+          "study-plan",
+          "日程规划",
+          "时间管理",
           "时间块",
-          "计划",
-          "待办"
+          "日历",
+          "任务计划",
+          "待办",
+          "提醒",
+          "番茄钟",
+          "周视图",
+          "月视图",
+          "年视图",
+          "学习计划",
+          "复习计划"
         ],
         "minAppVersion": "3.1.0",
         "name": "siyuan-time-block-calendar",
@@ -38,15 +136,15 @@
           "default": "README.md"
         },
         "url": "https://github.com/khnsojina-arch/siyuan-time-block-calendar",
-        "version": "0.5.11"
+        "version": "0.5.13"
       },
-      "size": 167345,
+      "size": 526334,
       "stars": 0,
-      "updated": "2026-05-24T11:49:00Z",
-      "url": "khnsojina-arch/siyuan-time-block-calendar@2803817d8b7c1fc17cbaada9423195dc1de71216"
+      "updated": "2026-05-24T12:27:50Z",
+      "url": "khnsojina-arch/siyuan-time-block-calendar@71f9420c7cf03627eb2623b0e4820c2175bfe96f"
     },
     {
-      "installSize": 1442173,
+      "installSize": 1441933,
       "openIssues": 12,
       "package": {
         "author": "Achuan-2",
@@ -81,12 +179,12 @@
           "zh_CN": "README.md"
         },
         "url": "https://github.com/Achuan-2/siyuan-plugin-copilot",
-        "version": "2.4.0"
+        "version": "2.4.1"
       },
-      "size": 557093,
+      "size": 557057,
       "stars": 128,
-      "updated": "2026-05-24T11:31:07Z",
-      "url": "Achuan-2/siyuan-plugin-copilot@5712489d09662ca3d9542b27e445a8ccd737b3aa"
+      "updated": "2026-05-24T12:20:49Z",
+      "url": "Achuan-2/siyuan-plugin-copilot@216f0a9935c6e045c8008b6c3a35541cdacdca9c"
     },
     {
       "installSize": 1499969,
@@ -291,48 +389,6 @@
       "stars": 12,
       "updated": "2026-05-24T06:56:02Z",
       "url": "royc01/pinch@d0b447165926494b1ee0bbc63220355ec5a4b53e"
-    },
-    {
-      "installSize": 175038,
-      "openIssues": 0,
-      "package": {
-        "author": "sqalei",
-        "backends": [
-          "windows"
-        ],
-        "description": {
-          "default": "Browse local files in Dock panel, search, bookmark folders, and double-click to insert file links or copy to assets as SiYuan attachments",
-          "zh_CN": "在Dock面板浏览本地文件，支持搜索、收藏、排序、图标/列表视图，双击插入文件链接或复制到assets作为思源附件"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "LocalBrowse",
-          "zh_CN": "本地文件浏览器"
-        },
-        "frontends": [
-          "desktop"
-        ],
-        "funding": null,
-        "keywords": [
-          "local",
-          "file browser",
-          "mount",
-          "attachment",
-          "本地文件"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-plugin-localbrowse",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/sqalei/siyuan-plugin-localbrowse",
-        "version": "0.5.4"
-      },
-      "size": 55910,
-      "stars": 0,
-      "updated": "2026-05-23T13:09:48Z",
-      "url": "sqalei/siyuan-plugin-localbrowse@ba525782ea6e0abdd81fcea13bd00c3d480f2016"
     },
     {
       "installSize": 613200,
@@ -4600,49 +4656,6 @@
       "stars": 0,
       "updated": "2026-03-12T14:40:01Z",
       "url": "ranhengzhang/siyuan-plugin-chatpair@e5ec6ba0c4ab86d1d5a14b99e9b723f317167be7"
-    },
-    {
-      "installSize": 825310,
-      "openIssues": 6,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Edit images in SiYuan with crop, shapes, arrows, text, markers and more. Supports re-editing.",
-          "zh_CN": "一款思源笔记图片编辑/标注插件，支持裁剪、旋转图片，支持添加形状、文字、支持添加图片边框、设置图片圆角等功能，最大亮点是已编辑的图片支持再编辑！"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "ImgReEditor",
-          "zh_CN": "ImgReEditor"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [],
-        "minAppVersion": "3.0.12",
-        "name": "siyuan-plugin-imgReEditor",
-        "readme": {
-          "default": "README_en_US.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-imgReEditor",
-        "version": "0.8.0"
-      },
-      "size": 295666,
-      "stars": 9,
-      "updated": "2026-03-11T14:57:12Z",
-      "url": "Achuan-2/siyuan-plugin-imgReEditor@47eaed3ec40a92fc950f7c6989e364d0cee243f2"
     },
     {
       "installSize": 299885,
