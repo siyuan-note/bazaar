@@ -1,6 +1,139 @@
 {
   "repos": [
     {
+      "installSize": 605054,
+      "openIssues": 2,
+      "package": {
+        "author": "Quincy Zou",
+        "backends": [
+          "windows"
+        ],
+        "description": {
+          "default": "Import, edit, and export Obsidian Canvas files inside SiYuan",
+          "zh_CN": "在思源笔记中导入、编辑 Obsidian 画布，支持 canvas 开放文件格式，与 Obsidian 兼容互通。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Canvas",
+          "zh_CN": "无界"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "funding": null,
+        "keywords": null,
+        "minAppVersion": "2.10.14",
+        "name": "siyuan-canvas",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/famotime/siyuan-canvas",
+        "version": "1.2.0"
+      },
+      "size": 287421,
+      "stars": 3,
+      "updated": "2026-05-25T12:53:19Z",
+      "url": "famotime/siyuan-canvas@6ae1c1d159be5c90dc85fde6952a622e7b2e9e5d"
+    },
+    {
+      "installSize": 309896,
+      "openIssues": 1,
+      "package": {
+        "author": "notesynchelper",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "从微信同步到思源笔记，支持文字、图片、聊天记录、文章"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "笔记同步助手"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "wechat",
+          "template",
+          "企微",
+          "模板",
+          "微信",
+          "速记",
+          "剪藏",
+          "搜集",
+          "日记",
+          "闪念",
+          "memo",
+          "备忘",
+          "公众号",
+          "小红书",
+          "得到"
+        ],
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-notehelper",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/notesynchelper/siyuan-notehelper",
+        "version": "1.7.29"
+      },
+      "size": 147009,
+      "stars": 1,
+      "updated": "2026-05-25T12:35:03Z",
+      "url": "notesynchelper/siyuan-notehelper@5a7ae66f97ad247709379d8c0e67d8d30c645a0f"
+    },
+    {
+      "installSize": 380806,
+      "openIssues": 1,
+      "package": {
+        "author": "sqalei",
+        "backends": [
+          "windows"
+        ],
+        "description": {
+          "default": "Browse local files in Dock panel, search, bookmark folders, and double-click to insert file links or copy to assets as SiYuan attachments",
+          "zh_CN": "在Dock面板浏览本地文件，支持搜索、收藏、排序、图标/列表视图，双击插入文件链接或复制到assets作为思源附件"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "LocalBrowse",
+          "zh_CN": "本地文件浏览器"
+        },
+        "frontends": [
+          "desktop"
+        ],
+        "funding": null,
+        "keywords": [
+          "local",
+          "file browser",
+          "mount",
+          "attachment",
+          "本地文件"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-plugin-localbrowse",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/sqalei/siyuan-plugin-localbrowse",
+        "version": "0.5.6"
+      },
+      "size": 98918,
+      "stars": 0,
+      "updated": "2026-05-25T11:02:21Z",
+      "url": "sqalei/siyuan-plugin-localbrowse@9fa05bf30e13a9fcc4aefdbb6e676017f56d2014"
+    },
+    {
       "installSize": 1337135,
       "openIssues": 2,
       "package": {
@@ -269,48 +402,6 @@
       "stars": 0,
       "updated": "2026-05-24T13:55:55Z",
       "url": "Mangteng1994/siyuan-xunzhang@00d780e07b0ddfc1449d158dc64fd0826fd6bfe6"
-    },
-    {
-      "installSize": 278768,
-      "openIssues": 1,
-      "package": {
-        "author": "sqalei",
-        "backends": [
-          "windows"
-        ],
-        "description": {
-          "default": "Browse local files in Dock panel, search, bookmark folders, and double-click to insert file links or copy to assets as SiYuan attachments",
-          "zh_CN": "在Dock面板浏览本地文件，支持搜索、收藏、排序、图标/列表视图，双击插入文件链接或复制到assets作为思源附件"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "LocalBrowse",
-          "zh_CN": "本地文件浏览器"
-        },
-        "frontends": [
-          "desktop"
-        ],
-        "funding": null,
-        "keywords": [
-          "local",
-          "file browser",
-          "mount",
-          "attachment",
-          "本地文件"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-plugin-localbrowse",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/sqalei/siyuan-plugin-localbrowse",
-        "version": "0.5.5"
-      },
-      "size": 78178,
-      "stars": 0,
-      "updated": "2026-05-24T12:54:49Z",
-      "url": "sqalei/siyuan-plugin-localbrowse@dcb62fbc187efabac34835e9fd455cc41d4e2250"
     },
     {
       "installSize": 755872,
@@ -932,60 +1023,6 @@
       "stars": 5,
       "updated": "2026-05-21T23:29:20Z",
       "url": "LunaNorth/siyuan-deco@9d91b4a43f9951ba95ccf8882e27ee72e499906d"
-    },
-    {
-      "installSize": 309896,
-      "openIssues": 1,
-      "package": {
-        "author": "notesynchelper",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "从微信同步到思源笔记，支持文字、图片、聊天记录、文章"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "笔记同步助手"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "wechat",
-          "template",
-          "企微",
-          "模板",
-          "微信",
-          "速记",
-          "剪藏",
-          "搜集",
-          "日记",
-          "闪念",
-          "memo",
-          "备忘",
-          "公众号",
-          "小红书",
-          "得到"
-        ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-notehelper",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/notesynchelper/siyuan-notehelper",
-        "version": "1.7.28"
-      },
-      "size": 147009,
-      "stars": 1,
-      "updated": "2026-05-21T12:18:19Z",
-      "url": "notesynchelper/siyuan-notehelper@709ce08eca40e66a4b45e6894fe99c117c9320f8"
     },
     {
       "installSize": 11912269,
@@ -1638,43 +1675,6 @@
       "stars": 28,
       "updated": "2026-05-16T14:45:56Z",
       "url": "frostime/sy-f-misc@339c9058603c9fc86c343bb691be475c3126f2b1"
-    },
-    {
-      "installSize": 535189,
-      "openIssues": 2,
-      "package": {
-        "author": "Quincy Zou",
-        "backends": [
-          "windows"
-        ],
-        "description": {
-          "default": "Import, edit, and export Obsidian Canvas files inside SiYuan",
-          "zh_CN": "在思源中导入、编辑并导出 Obsidian Canvas 文件"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Canvas",
-          "zh_CN": "无界"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window"
-        ],
-        "funding": null,
-        "keywords": null,
-        "minAppVersion": "2.10.14",
-        "name": "siyuan-canvas",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/famotime/siyuan-canvas",
-        "version": "1.1.0"
-      },
-      "size": 266967,
-      "stars": 1,
-      "updated": "2026-05-16T01:01:49Z",
-      "url": "famotime/siyuan-canvas@5e9d52f9db36047b96666c2cf77836a2ac35fcc9"
     },
     {
       "installSize": 241738,
