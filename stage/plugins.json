@@ -1,6 +1,158 @@
 {
   "repos": [
     {
+      "installSize": 535286,
+      "openIssues": 0,
+      "package": {
+        "author": "xuhua-zheng",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Sync document images to their bound database asset field.",
+          "zh_CN": "将文档中的图片同步到其所属数据库的资源字段。"
+        },
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "DB Content Images",
+          "zh_CN": "数据库内容图"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": null,
+        "keywords": [
+          "database",
+          "asset",
+          "image",
+          "数据库",
+          "资源",
+          "图片"
+        ],
+        "minAppVersion": "3.6.4",
+        "name": "siyuan-db-content-images",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/xuhua-zheng/siyuan-db-content-images",
+        "version": "0.1.8"
+      },
+      "size": 447324,
+      "stars": 0,
+      "updated": "2026-05-26T14:29:31Z",
+      "url": "xuhua-zheng/siyuan-db-content-images@b16543556c9a5cd252e99702a3b3803648c0bbd6"
+    },
+    {
+      "installSize": 211481,
+      "openIssues": 3,
+      "package": {
+        "author": "OpaqueGlass",
+        "backends": null,
+        "description": {
+          "default": "Add a doc-breadcrumb",
+          "en_US": "Add a document breadcrumb. Add document path information that can be jumped to at the top of the editing area.",
+          "zh_CN": "再添加一个文档面包屑：在编辑区域顶部添加可跳转的文档路径信息导航条"
+        },
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "fakeDocBreadcrumb",
+          "en_US": "Fake Doc Breadcrumb",
+          "zh_CN": "(伪)文档面包屑"
+        },
+        "frontends": null,
+        "funding": {
+          "custom": [
+            "https://wj.qq.com/s2/12395364/b69f/"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": null,
+        "minAppVersion": "",
+        "name": "syplugin-fakeDocBreadcrumb",
+        "readme": {
+          "default": "README.md",
+          "en_US": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/OpaqueGlass/syplugin-fakeDocBreadcrumb",
+        "version": "1.4.1"
+      },
+      "size": 85879,
+      "stars": 9,
+      "updated": "2026-05-26T12:47:16Z",
+      "url": "OpaqueGlass/syplugin-fakeDocBreadcrumb@d524b69a5fc6cde7a2e23ede7bdda409ded24bcc"
+    },
+    {
+      "installSize": 8697313,
+      "openIssues": 5,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android",
+          "harmony"
+        ],
+        "description": {
+          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
+          "zh_CN": "一款在思源笔记里实现任务管理功能的插件，为了践行「防弹笔记法」而开发。支持电脑端和移动端系统通知提醒任务执行、日历视图查看行事历、项目管理、四象限面板、番茄钟专注、习惯打卡等功能"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Note Management",
+          "zh_CN": "任务笔记管理"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "reminder",
+          "time",
+          "calendar",
+          "notification",
+          "提醒",
+          "时间",
+          "日历",
+          "通知",
+          "番茄钟",
+          "四象限",
+          "任务管理",
+          "项目管理",
+          "习惯打卡"
+        ],
+        "minAppVersion": "3.6.4",
+        "name": "siyuan-plugin-task-note-management",
+        "readme": {
+          "default": "README_en_US.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
+        "version": "6.9.4"
+      },
+      "size": 4565297,
+      "stars": 186,
+      "updated": "2026-05-26T10:33:57Z",
+      "url": "Achuan-2/siyuan-plugin-task-note-management@b241271692dd0a3255ff9a7dcc044303fa064998"
+    },
+    {
       "installSize": 1824133,
       "openIssues": 0,
       "package": {
@@ -746,116 +898,6 @@
       "url": "yangtaihong59/siyuan-plugins-mcp-sisyphus@0e0914e32a5195812b27a4a0a16362cea0d41149"
     },
     {
-      "installSize": 540995,
-      "openIssues": 0,
-      "package": {
-        "author": "xuhua-zheng",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Sync document images to their bound database asset field.",
-          "zh_CN": "将文档中的图片同步到其所属数据库的资源字段。"
-        },
-        "disabledInPublish": false,
-        "displayName": {
-          "default": "DB Content Images",
-          "zh_CN": "数据库内容图"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": null,
-        "keywords": [
-          "database",
-          "asset",
-          "image",
-          "数据库",
-          "资源",
-          "图片"
-        ],
-        "minAppVersion": "3.6.4",
-        "name": "siyuan-db-content-images",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/xuhua-zheng/siyuan-db-content-images",
-        "version": "0.1.7"
-      },
-      "size": 448494,
-      "stars": 0,
-      "updated": "2026-05-24T09:12:07Z",
-      "url": "xuhua-zheng/siyuan-db-content-images@7eda79beb832c6f99792ddbbace3d667c7439d58"
-    },
-    {
-      "installSize": 8678338,
-      "openIssues": 5,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "description": {
-          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
-          "zh_CN": "一款在思源笔记里实现任务管理功能的插件，为了践行「防弹笔记法」而开发。支持电脑端和移动端系统通知提醒任务执行、日历视图查看行事历、项目管理、四象限面板、番茄钟专注、习惯打卡等功能"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Note Management",
-          "zh_CN": "任务笔记管理"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "reminder",
-          "time",
-          "calendar",
-          "notification",
-          "提醒",
-          "时间",
-          "日历",
-          "通知",
-          "番茄钟",
-          "四象限",
-          "任务管理",
-          "项目管理",
-          "习惯打卡"
-        ],
-        "minAppVersion": "3.6.4",
-        "name": "siyuan-plugin-task-note-management",
-        "readme": {
-          "default": "README_en_US.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
-        "version": "6.9.3"
-      },
-      "size": 4560799,
-      "stars": 186,
-      "updated": "2026-05-24T07:14:52Z",
-      "url": "Achuan-2/siyuan-plugin-task-note-management@06824404cd90e7efcdb7e50ce78061b8b4e44ce1"
-    },
-    {
       "installSize": 4033577,
       "openIssues": 2,
       "package": {
@@ -1302,48 +1344,6 @@
       "stars": 2,
       "updated": "2026-05-21T05:04:21Z",
       "url": "suka233/siyuan-kmind-zen@992775452e22e834b49ac82fdbb1f7b528a1eb75"
-    },
-    {
-      "installSize": 206542,
-      "openIssues": 2,
-      "package": {
-        "author": "OpaqueGlass",
-        "backends": null,
-        "description": {
-          "default": "Add a doc-breadcrumb",
-          "en_US": "Add a document breadcrumb. Add document path information that can be jumped to at the top of the editing area.",
-          "zh_CN": "再添加一个文档面包屑：在编辑区域顶部添加可跳转的文档路径信息导航条"
-        },
-        "disabledInPublish": false,
-        "displayName": {
-          "default": "fakeDocBreadcrumb",
-          "en_US": "Fake Doc Breadcrumb",
-          "zh_CN": "(伪)文档面包屑"
-        },
-        "frontends": null,
-        "funding": {
-          "custom": [
-            "https://wj.qq.com/s2/12395364/b69f/"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": null,
-        "minAppVersion": "",
-        "name": "syplugin-fakeDocBreadcrumb",
-        "readme": {
-          "default": "README.md",
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/OpaqueGlass/syplugin-fakeDocBreadcrumb",
-        "version": "1.4.0"
-      },
-      "size": 84934,
-      "stars": 9,
-      "updated": "2026-05-20T07:25:52Z",
-      "url": "OpaqueGlass/syplugin-fakeDocBreadcrumb@24c15505480c7fad98256514759069f0b9b90d7d"
     },
     {
       "installSize": 5915657,
