@@ -446,9 +446,9 @@ type packageValidationMeta struct {
 // validatePackageMetadata 校验元数据
 //   - 如果涉及文件，文件名大小写敏感
 func validatePackageMetadata(meta *packageValidationMeta) error {
-	// 必须为 https://github.com/owner/repo ，禁止末尾斜杠或 .git 结尾
+	// 必须为 https://github.com/owner/repo ，owner/repo 大小写不敏感，禁止末尾斜杠或 .git 结尾
 	expectedURL := "https://github.com/" + meta.ownerRepo
-	if meta.basePkg.URL != expectedURL {
+	if !strings.EqualFold(meta.basePkg.URL, expectedURL) {
 		return fmt.Errorf("url must be exactly %s (no trailing slash, no .git)", expectedURL)
 	}
 
