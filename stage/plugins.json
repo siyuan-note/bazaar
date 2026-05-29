@@ -1,6 +1,49 @@
 {
   "repos": [
     {
+      "installSize": 235631,
+      "openIssues": 0,
+      "package": {
+        "author": "游夏",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "Bring local Claude Code&#39;s autonomous agent capabilities directly into SiYuan Note with multi-session, deep context association, and local workspace co-piloting.",
+          "zh_CN": "将本地 Claude Code 的全自主 Agent 能力深度融入思源，支持多会话、多维上下文关联与本地工作区协同的下一代 AI 知识引擎。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Claude Note"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "funding": null,
+        "keywords": [
+          "claude",
+          "claude-code",
+          "ai"
+        ],
+        "minAppVersion": "3.2.1",
+        "name": "claude-note",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/fujingzhai/claude-note",
+        "version": "0.1.16"
+      },
+      "size": 110838,
+      "stars": 5,
+      "updated": "2026-05-29T04:00:01Z",
+      "url": "fujingzhai/claude-note@7d97a22b51cbee0ea8d7226385743ecff3e966c5"
+    },
+    {
       "installSize": 10241402,
       "openIssues": 0,
       "package": {
@@ -154,49 +197,6 @@
       "url": "notesynchelper/siyuan-notehelper@3655cf52c738311980d5ddd682deeef8256e51de"
     },
     {
-      "installSize": 235310,
-      "openIssues": 0,
-      "package": {
-        "author": "游夏",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Bring local Claude Code&#39;s autonomous agent capabilities directly into SiYuan Note with multi-session, deep context association, and local workspace co-piloting.",
-          "zh_CN": "将本地 Claude Code 的全自主 Agent 能力深度融入思源，支持多会话、多维上下文关联与本地工作区协同的下一代 AI 知识引擎。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Claude Note"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window"
-        ],
-        "funding": null,
-        "keywords": [
-          "claude",
-          "claude-code",
-          "ai"
-        ],
-        "minAppVersion": "3.2.1",
-        "name": "claude-note",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/fujingzhai/claude-note",
-        "version": "0.1.15"
-      },
-      "size": 110761,
-      "stars": 5,
-      "updated": "2026-05-28T08:58:51Z",
-      "url": "fujingzhai/claude-note@78209a561442686f44b601f5596237f88897cd27"
-    },
-    {
       "installSize": 8698509,
       "openIssues": 6,
       "package": {
@@ -262,6 +262,49 @@
       "stars": 186,
       "updated": "2026-05-28T06:28:48Z",
       "url": "Achuan-2/siyuan-plugin-task-note-management@526a86fd89a683c842e535ffd5bf2ca0336debbb"
+    },
+    {
+      "installSize": 606289,
+      "openIssues": 1,
+      "package": {
+        "author": "sqalei",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "After inserting local file links, this plugin supports: auto-fix broken links when files move, cross-platform and cross-device sync, all data stored locally - no cloud, no upload",
+          "zh_CN": "插入本地链接后，本插件支持：本地文件挪动位置后，支持失效链接自动修复，并且支持跨平台，跨设备同步，所有数据均保存在本地，无离线，不笔记。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "LocalBrowse",
+          "zh_CN": "本地文件浏览器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": null,
+        "keywords": [
+          "local",
+          "file browser",
+          "mount",
+          "attachment",
+          "cross-platform",
+          "本地文件"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-plugin-localbrowse",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/sqalei/siyuan-plugin-localbrowse",
+        "version": "0.6.1"
+      },
+      "size": 211270,
+      "stars": 2,
+      "updated": "2026-05-28T03:10:59Z",
+      "url": "sqalei/siyuan-plugin-localbrowse@7252f238b849a302ac2a993af7d733167bd23c86"
     },
     {
       "installSize": 187609,
@@ -707,48 +750,6 @@
       "stars": 3,
       "updated": "2026-05-25T12:53:19Z",
       "url": "famotime/siyuan-canvas@6ae1c1d159be5c90dc85fde6952a622e7b2e9e5d"
-    },
-    {
-      "installSize": 380806,
-      "openIssues": 1,
-      "package": {
-        "author": "sqalei",
-        "backends": [
-          "windows"
-        ],
-        "description": {
-          "default": "Browse local files in Dock panel, search, bookmark folders, and double-click to insert file links or copy to assets as SiYuan attachments",
-          "zh_CN": "在Dock面板浏览本地文件，支持搜索、收藏、排序、图标/列表视图，双击插入文件链接或复制到assets作为思源附件"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "LocalBrowse",
-          "zh_CN": "本地文件浏览器"
-        },
-        "frontends": [
-          "desktop"
-        ],
-        "funding": null,
-        "keywords": [
-          "local",
-          "file browser",
-          "mount",
-          "attachment",
-          "本地文件"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-plugin-localbrowse",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/sqalei/siyuan-plugin-localbrowse",
-        "version": "0.5.6"
-      },
-      "size": 98918,
-      "stars": 0,
-      "updated": "2026-05-25T11:02:21Z",
-      "url": "sqalei/siyuan-plugin-localbrowse@9fa05bf30e13a9fcc4aefdbb6e676017f56d2014"
     },
     {
       "installSize": 1337135,
