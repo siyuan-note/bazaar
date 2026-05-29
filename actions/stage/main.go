@@ -251,43 +251,43 @@ func performStage(typ string) {
 	poolSize := getStagePoolSize()
 	p, _ := ants.NewPoolWithFunc(poolSize, func(arg any) {
 		defer waitGroup.Done()
-		repo := arg.(string)
+		ownerRepo := arg.(string)
 		var oldStageURL string
 		var oldRepo *StageRepo
-		if o, exists := oldStageData[repo]; exists {
+		if o, exists := oldStageData[ownerRepo]; exists {
 			oldStageURL = o.URL
 			oldRepo = o
 		}
-		ok, skipped, hash, updated, size, installSize, pkg := indexPackage(repo, typ, oldStageURL, oldRepo, themeJsAllowSet)
+		ok, skipped, hash, updated, size, installSize, pkg := indexPackage(ownerRepo, typ, oldStageURL, oldRepo, themeJsAllowSet)
 		if skipped {
 			// hash 未变化，跳过下载，直接沿用旧 stage 条目
 			lock.Lock()
-			stageRepos = append(stageRepos, oldStageData[repo])
+			stageRepos = append(stageRepos, oldStageData[ownerRepo])
 			lock.Unlock()
 			return
 		}
 		if !ok || pkg == nil {
 			// 索引失败或 pkg 为空时使用旧数据，避免 "package": null 的坏数据覆盖
 			lock.Lock()
-			if oldRepo, exists := oldStageData[repo]; exists {
+			if oldRepo, exists := oldStageData[ownerRepo]; exists {
 				stageRepos = append(stageRepos, oldRepo)
-				logger.Warnf("index failed for [%s], keeping old data", repo)
+				logger.Warnf("index failed for [%s], keeping old data", ownerRepo)
 			} else {
-				logger.Warnf("index failed for [%s] and no old data found", repo)
+				logger.Warnf("index failed for [%s] and no old data found", ownerRepo)
 			}
 			lock.Unlock()
 			return
 		}
 
-		stars, openIssues, ok := repoStats(repo)
+		stars, openIssues, ok := repoStats(ownerRepo)
 		// 如果获取统计数据失败，尝试使用旧数据
 		if !ok {
 			lock.Lock()
-			if oldRepo, exists := oldStageData[repo]; exists {
+			if oldRepo, exists := oldStageData[ownerRepo]; exists {
 				stageRepos = append(stageRepos, oldRepo)
-				logger.Warnf("repoStats failed for [%s], keeping old data", repo)
+				logger.Warnf("repoStats failed for [%s], keeping old data", ownerRepo)
 			} else {
-				logger.Warnf("repoStats failed for [%s] and no old data found", repo)
+				logger.Warnf("repoStats failed for [%s] and no old data found", ownerRepo)
 			}
 			lock.Unlock()
 			return
@@ -296,7 +296,7 @@ func performStage(typ string) {
 		lock.Lock()
 		defer lock.Unlock()
 		stageRepos = append(stageRepos, &StageRepo{
-			URL:         repo + "@" + hash,
+			URL:         ownerRepo + "@" + hash,
 			Stars:       stars,
 			OpenIssues:  openIssues,
 			Updated:     updated,
@@ -304,11 +304,11 @@ func performStage(typ string) {
 			InstallSize: installSize,
 			Package:     pkg,
 		})
-		logger.Infof("updated repo [%s]", repo)
+		logger.Infof("updated repo [%s]", ownerRepo)
 	})
-	for _, repo := range repos {
+	for _, ownerRepo := range repos {
 		waitGroup.Add(1)
-		p.Invoke(repo)
+		p.Invoke(ownerRepo)
 	}
 	waitGroup.Wait()
 	p.Release()
@@ -435,7 +435,7 @@ func getOldPackageFields(oldRepo *StageRepo) (name, version string) {
 
 // packageValidationMeta 聚合元数据与校验所需上下文
 type packageValidationMeta struct {
-	repoURL         string
+	ownerRepo       string
 	packageRoot     string
 	typ             string
 	basePkg         *Package
@@ -447,7 +447,7 @@ type packageValidationMeta struct {
 //   - 如果涉及文件，文件名大小写敏感
 func validatePackageMetadata(meta *packageValidationMeta) error {
 	// 必须为 https://github.com/owner/repo ，禁止末尾斜杠或 .git 结尾
-	expectedURL := "https://github.com/" + meta.repoURL
+	expectedURL := "https://github.com/" + meta.ownerRepo
 	if meta.basePkg.URL != expectedURL {
 		return fmt.Errorf("url must be exactly %s (no trailing slash, no .git)", expectedURL)
 	}
@@ -546,7 +546,7 @@ func validatePackageMetadata(meta *packageValidationMeta) error {
 	// 主题
 	if meta.typ == "themes" && meta.themeJsAllowSet != nil {
 		// theme.js：仅 config/themes-theme-js-allowlist.txt 中的旧仓库允许在包根目录包含 theme.js（存量豁免），其余新上架的主题必须移除。
-		if _, allowed := meta.themeJsAllowSet[meta.repoURL]; !allowed && fileExistsInDir(meta.packageRoot, "theme.js") {
+		if _, allowed := meta.themeJsAllowSet[meta.ownerRepo]; !allowed && fileExistsInDir(meta.packageRoot, "theme.js") {
 			return fmt.Errorf("the use of [theme.js] is not allowed and must be removed. https://github.com/siyuan-note/bazaar/issues/1821")
 		}
 	}
@@ -558,11 +558,11 @@ func validatePackageMetadata(meta *packageValidationMeta) error {
 // oldStageURL 为当前已 stage 的该仓库 URL（格式 owner/repo@hash），若与 Latest Release 的 hash 一致则跳过下载并返回 skipped=true。
 // oldStageRepo 用于元数据校验时与旧 name/url/version 对比，可为 nil（如新仓库）。
 // themeJsAllowSet 仅 typ 为 themes 时使用；为 nil 时不做 theme.js 策略校验。
-func indexPackage(repoURL, typ, oldStageURL string, oldStageRepo *StageRepo, themeJsAllowSet map[string]struct{}) (ok, skipped bool, hash, published string, size, installSize int64, pkg any) {
+func indexPackage(ownerRepo, typ, oldStageURL string, oldStageRepo *StageRepo, themeJsAllowSet map[string]struct{}) (ok, skipped bool, hash, published string, size, installSize int64, pkg any) {
 	// 获取该仓库 Latest Release 信息（hash、发布时间、package.zip 下载地址）
-	hash, published, packageZip, releaseOk := getRepoLatestRelease(repoURL)
+	hash, published, packageZip, releaseOk := getRepoLatestRelease(ownerRepo)
 	if !releaseOk {
-		logger.Warnf("get [%s] latest release failed", repoURL)
+		logger.Warnf("get [%s] latest release failed", ownerRepo)
 		return
 	}
 
@@ -570,7 +570,7 @@ func indexPackage(repoURL, typ, oldStageURL string, oldStageRepo *StageRepo, the
 	if oldStageURL != "" {
 		oldHash := parseHashFromStageURL(oldStageURL)
 		if oldHash != "" && hash == oldHash {
-			logger.Infof("skip repo [%s], hash unchanged [%s]", repoURL, hash)
+			logger.Infof("skip repo [%s], hash unchanged [%s]", ownerRepo, hash)
 			skipped = true
 			return
 		}
@@ -621,18 +621,18 @@ func indexPackage(repoURL, typ, oldStageURL string, oldStageRepo *StageRepo, the
 	// 校验解压根目录结构（仅有一个子目录视为打包错误），且包根下存在该类型必要文件
 	packageRoot, err := validateUnzipRoot(tmpUnzipPath)
 	if err != nil {
-		logger.Warnf("validate unzip root [%s] failed: %s", repoURL, err)
+		logger.Warnf("validate unzip root [%s] failed: %s", ownerRepo, err)
 		return
 	}
 	if err = validatePackageRoot(packageRoot, typ); err != nil {
-		logger.Warnf("validate package root [%s] failed: %s", repoURL, err)
+		logger.Warnf("validate package root [%s] failed: %s", ownerRepo, err)
 		return
 	}
 
 	// 计算解压后目录体积，用于 stage 条目的 installSize 字段
 	installSize, err = util.SizeOfDirectory(packageRoot)
 	if nil != err {
-		logger.Errorf("stat package [%s] size failed: %s", repoURL, err)
+		logger.Errorf("stat package [%s] size failed: %s", ownerRepo, err)
 		return
 	}
 
@@ -640,27 +640,27 @@ func indexPackage(repoURL, typ, oldStageURL string, oldStageRepo *StageRepo, the
 	var basePkg *Package
 	pkg, basePkg = getPackage(packageRoot, typ)
 	if nil == pkg || nil == basePkg {
-		logger.Warnf("get package [%s] failed", repoURL)
+		logger.Warnf("get package [%s] failed", ownerRepo)
 		return
 	}
 
 	// 元数据校验：name/url/version/readme 及类型相关字段；失败则本轮索引失败，沿用旧数据
 	if err := validatePackageMetadata(&packageValidationMeta{
-		repoURL:         repoURL,
+		ownerRepo:       ownerRepo,
 		packageRoot:     packageRoot,
 		typ:             typ,
 		basePkg:         basePkg,
 		oldRepo:         oldStageRepo,
 		themeJsAllowSet: themeJsAllowSet,
 	}); err != nil {
-		logger.Warnf("validate package metadata [%s] failed: %v", repoURL, err)
+		logger.Warnf("validate package metadata [%s] failed: %v", ownerRepo, err)
 		return
 	}
 
 	// 校验通过后再上传 package.zip，避免无效包写入 OSS
-	key := "package/" + repoURL + "@" + hash
+	key := "package/" + ownerRepo + "@" + hash
 	if err := util.UploadOSS(key, "application/zip", data); nil != err {
-		logger.Errorf("upload package [%s] failed: %s", repoURL, err)
+		logger.Errorf("upload package [%s] failed: %s", ownerRepo, err)
 		return
 	}
 
@@ -683,11 +683,11 @@ func indexPackage(repoURL, typ, oldStageURL string, oldStageRepo *StageRepo, the
 	wg := &sync.WaitGroup{}
 	wg.Add(3 + len(readmeFiles))
 	for readmeFile := range readmeFiles {
-		go indexPackageFile(repoURL, hash, packageRoot, readmeFile, 0, 0, wg, &anyUploadFailed)
+		go indexPackageFile(ownerRepo, hash, packageRoot, readmeFile, 0, 0, wg, &anyUploadFailed)
 	}
-	go indexPackageFile(repoURL, hash, packageRoot, "/preview.png", 0, 0, wg, &anyUploadFailed)
-	go indexPackageFile(repoURL, hash, packageRoot, "/icon.png", 0, 0, wg, &anyUploadFailed)
-	go indexPackageFile(repoURL, hash, packageRoot, "/"+strings.TrimSuffix(typ, "s")+".json", size, installSize, wg, &anyUploadFailed)
+	go indexPackageFile(ownerRepo, hash, packageRoot, "/preview.png", 0, 0, wg, &anyUploadFailed)
+	go indexPackageFile(ownerRepo, hash, packageRoot, "/icon.png", 0, 0, wg, &anyUploadFailed)
+	go indexPackageFile(ownerRepo, hash, packageRoot, "/"+strings.TrimSuffix(typ, "s")+".json", size, installSize, wg, &anyUploadFailed)
 	wg.Wait()
 	if atomic.LoadInt32(&anyUploadFailed) != 0 {
 		return
@@ -787,11 +787,11 @@ func indexPackageFile(ownerRepo, hash, unzipRoot, filePath string, size, install
 	}
 }
 
-func repoStats(repoURL string) (stars, openIssues int, ok bool) {
+func repoStats(ownerRepo string) (stars, openIssues int, ok bool) {
 	result := map[string]any{}
 	request := gorequest.New().TLSClientConfig(&tls.Config{InsecureSkipVerify: true})
 	pat := os.Getenv("PAT")
-	u := "https://api.github.com/repos/" + repoURL
+	u := "https://api.github.com/repos/" + ownerRepo
 	resp, _, errs := request.Get(u).
 		Set("Authorization", "Token "+pat).
 		Set("User-Agent", util.UserAgent).Timeout(30*time.Second).
@@ -813,12 +813,12 @@ func repoStats(repoURL string) (stars, openIssues int, ok bool) {
 }
 
 // getRepoLatestRelease 获取仓库最新发布的版本
-func getRepoLatestRelease(repoURL string) (hash, published, packageZip string, ok bool) {
+func getRepoLatestRelease(ownerRepo string) (hash, published, packageZip string, ok bool) {
 	result := map[string]any{}
 	request := gorequest.New().TLSClientConfig(&tls.Config{InsecureSkipVerify: true})
 	pat := os.Getenv("PAT")
 	// REF https://docs.github.com/en/rest/releases/releases#get-the-latest-release
-	u := "https://api.github.com/repos/" + repoURL + "/releases/latest"
+	u := "https://api.github.com/repos/" + ownerRepo + "/releases/latest"
 	resp, _, errs := request.Get(u).
 		Set("Authorization", "Token "+pat).
 		Set("User-Agent", util.UserAgent).Timeout(30*time.Second).
@@ -844,7 +844,7 @@ func getRepoLatestRelease(repoURL string) (hash, published, packageZip string, o
 	}
 
 	if "" == packageZip {
-		logger.Warnf("get [%s] package.zip failed: package.zip not found in release assets", repoURL)
+		logger.Warnf("get [%s] package.zip failed: package.zip not found in release assets", ownerRepo)
 		return
 	}
 
@@ -852,11 +852,11 @@ func getRepoLatestRelease(repoURL string) (hash, published, packageZip string, o
 	published = result["published_at"].(string)
 	tagName := result["tag_name"].(string)
 	if "" == tagName {
-		logger.Warnf("get [%s] tag_name failed: tag_name is empty", repoURL)
+		logger.Warnf("get [%s] tag_name failed: tag_name is empty", ownerRepo)
 		return
 	}
 	// REF https://docs.github.com/en/rest/git/refs#get-a-reference
-	u = "https://api.github.com/repos/" + repoURL + "/git/ref/tags/" + tagName
+	u = "https://api.github.com/repos/" + ownerRepo + "/git/ref/tags/" + tagName
 	resp, _, errs = request.Get(u).
 		Set("Authorization", "Token "+pat).
 		Set("User-Agent", util.UserAgent).Timeout(30*time.Second).
@@ -873,13 +873,13 @@ func getRepoLatestRelease(repoURL string) (hash, published, packageZip string, o
 	// 获取 release 对应的提交的 hash
 	hash = result["object"].(map[string]any)["sha"].(string)
 	if "" == hash {
-		logger.Warnf("get [%s] release hash failed: hash is empty", repoURL)
+		logger.Warnf("get [%s] release hash failed: hash is empty", ownerRepo)
 		return
 	}
 	typ := result["object"].(map[string]any)["type"].(string)
 	if "tag" == typ {
 		// REF https://docs.github.com/en/rest/git/tags#get-a-tag
-		u = "https://api.github.com/repos/" + repoURL + "/git/tags/" + hash
+		u = "https://api.github.com/repos/" + ownerRepo + "/git/tags/" + hash
 		resp, _, errs = request.Get(u).
 			Set("Authorization", "Token "+pat).
 			Set("User-Agent", util.UserAgent).Timeout(30*time.Second).
@@ -895,7 +895,7 @@ func getRepoLatestRelease(repoURL string) (hash, published, packageZip string, o
 
 		hash = result["object"].(map[string]any)["sha"].(string)
 		if "" == hash {
-			logger.Warnf("get [%s] tag hash failed: hash is empty", repoURL)
+			logger.Warnf("get [%s] tag hash failed: hash is empty", ownerRepo)
 			return
 		}
 	}

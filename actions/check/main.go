@@ -385,14 +385,14 @@ func checkRepos(
 	// 检查新增的集市包（包含更换维护者的集市包），限制并发数为 8
 	p, _ := ants.NewPoolWithFunc(8, func(arg interface{}) {
 		defer waitGroupCheck.Done()
-		repo := arg.(string)
-		checkRepo(repo, allTypesNameSet, resourceType, resultChannel, nameSetMutex, themeJsAllowSet)
+		ownerRepo := arg.(string)
+		checkRepo(ownerRepo, allTypesNameSet, resourceType, resultChannel, nameSetMutex, themeJsAllowSet)
 	})
 	defer p.Release()
 
-	for _, repo := range newRepos {
+	for _, ownerRepo := range newRepos {
 		waitGroupCheck.Add(1)
-		p.Invoke(repo)
+		p.Invoke(ownerRepo)
 	}
 	waitGroupCheck.Wait()  // 等待检查完成
 	close(resultChannel)   // 关闭检查结果输出通道
@@ -402,7 +402,7 @@ func checkRepos(
 
 // checkRepo 检查集市资源仓库
 func checkRepo(
-	repoPath string,
+	ownerRepo string,
 	allTypesNameSet StringSet,
 	resourceType ResourceType,
 	resultChannel chan interface{},
@@ -410,17 +410,17 @@ func checkRepo(
 	themeJsAllowSet map[string]struct{},
 ) {
 
-	logger.Infof("start repo check [%s]", repoPath)
+	logger.Infof("start repo check [%s]", ownerRepo)
 	var err error
 
 	// 检查 latest release
-	repoMeta := strings.Split(repoPath, "/")
+	repoMeta := strings.Split(ownerRepo, "/")
 	repoOwner := repoMeta[0]
 	repoName := repoMeta[1]
 	repoInfo := &RepoInfo{
 		Owner: repoOwner,
 		Name:  repoName,
-		Path:  repoPath,
+		Path:  ownerRepo,
 		Home:  buildRepoHomeURL(repoOwner, repoName),
 	}
 	releaseCheckResult := checkRepoLatestRelease(repoOwner, repoName)
@@ -452,7 +452,7 @@ func checkRepo(
 		) // 清单文件下载地址
 
 		if attrsCheckResult, err = checkManifestAttrs(manifestFileUrl); err != nil {
-			logger.Warnf("check repo [%s] manifest file [%s] failed: %s", repoPath, manifestFileUrl, err)
+			logger.Warnf("check repo [%s] manifest file [%s] failed: %s", ownerRepo, manifestFileUrl, err)
 			attrsCheckResult = &Attrs{} // 避免后续访问 nil 导致模板渲染失败
 		}
 		if attrsCheckResult != nil {
@@ -460,25 +460,25 @@ func checkRepo(
 			attrsCheckResult.Name.Valid = true
 			// 判断资源名称是否有效
 			if err := util.ValidateName(attrsCheckResult.Name.Value); err != nil {
-				logger.Warnf("repo [%s] name [%s] invalid: %v", repoPath, attrsCheckResult.Name.Value, err)
+				logger.Warnf("repo [%s] name [%s] invalid: %v", ownerRepo, attrsCheckResult.Name.Value, err)
 				attrsCheckResult.Name.Valid = false
 			}
 			if attrsCheckResult.Name.Valid {
 				// name 必须和 repo name 一致
 				attrsCheckResult.Name.Valid = attrsCheckResult.Name.Value == repoName
 				if !attrsCheckResult.Name.Valid {
-					logger.Warnf("repo [%s] name [%s] is not equal to repo name [%s]", repoPath, attrsCheckResult.Name.Value, repoName)
+					logger.Warnf("repo [%s] name [%s] is not equal to repo name [%s]", ownerRepo, attrsCheckResult.Name.Value, repoName)
 				} else {
 					switch resourceType {
 					case themes:
 						if isNameInBuiltinList(attrsCheckResult.Name.Value, BuiltinThemeNames) {
 							attrsCheckResult.Name.Valid = false
-							logger.Warnf("repo [%s] theme name [%s] conflicts with built-in theme %v", repoPath, attrsCheckResult.Name.Value, BuiltinThemeNames)
+							logger.Warnf("repo [%s] theme name [%s] conflicts with built-in theme %v", ownerRepo, attrsCheckResult.Name.Value, BuiltinThemeNames)
 						}
 					case icons:
 						if isNameInBuiltinList(attrsCheckResult.Name.Value, BuiltinIconNames) {
 							attrsCheckResult.Name.Valid = false
-							logger.Warnf("repo [%s] icon name [%s] conflicts with built-in icon %v", repoPath, attrsCheckResult.Name.Value, BuiltinIconNames)
+							logger.Warnf("repo [%s] icon name [%s] conflicts with built-in icon %v", ownerRepo, attrsCheckResult.Name.Value, BuiltinIconNames)
 						}
 					default:
 					}
@@ -491,7 +491,7 @@ func checkRepo(
 				nameKey := strings.ToLower(name)
 				nameSetMutex.Lock() // 保护 allTypesNameSet 的并发访问
 				if isKeyInSet(nameKey, allTypesNameSet) {
-					logger.Warnf("repo [%s] name [%s] already exists in all types", repoPath, name)
+					logger.Warnf("repo [%s] name [%s] already exists in all types", ownerRepo, name)
 				} else {
 					allTypesNameSet[nameKey] = nil // 新的 name 添加到检查集合中
 
@@ -502,7 +502,7 @@ func checkRepo(
 
 			if attrsCheckResult.Author.Pass {
 				if err := util.ValidatePlainStringForHTML(attrsCheckResult.Author.Value); err != nil {
-					logger.Warnf("repo [%s] author [%s] invalid: %v", repoPath, attrsCheckResult.Author.Value, err)
+					logger.Warnf("repo [%s] author [%s] invalid: %v", ownerRepo, attrsCheckResult.Author.Value, err)
 					attrsCheckResult.Author.Pass = false
 				}
 			}
@@ -641,7 +641,7 @@ func checkRepo(
 				}
 
 				var noThemeJsCheckResult *File
-				if _, allowed := themeJsAllowSet[repoPath]; allowed {
+				if _, allowed := themeJsAllowSet[ownerRepo]; allowed {
 					noThemeJsCheckResult = &File{
 						Pass: true,
 						URL:  buildFilePreviewURL(repoOwner, repoName, releaseCheckResult.LatestRelease.Hash, FILE_PATH_THEME_JS),
@@ -699,7 +699,7 @@ func checkRepo(
 				}
 			}
 		default:
-			logger.Errorf("repo [%s] invalid resourceType: %d", repoPath, resourceType)
+			logger.Errorf("repo [%s] invalid resourceType: %d", ownerRepo, resourceType)
 			return
 		}
 
@@ -783,7 +783,7 @@ func checkRepo(
 		}
 	}
 
-	logger.Infof("finish repo check [%s]", repoPath)
+	logger.Infof("finish repo check [%s]", ownerRepo)
 }
 
 // checkRepoLatestRelease 检查最新发行信息
