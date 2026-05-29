@@ -1,6 +1,52 @@
 {
   "repos": [
     {
+      "installSize": 132269,
+      "openIssues": 0,
+      "package": {
+        "author": "Mangteng1994",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A lightweight SiYuan plugin for document locating and marker-based batch organization.",
+          "zh_CN": "轻量定位与批量整理插件"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Xunzhang",
+          "zh_CN": "寻章"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": null,
+        "keywords": [
+          "xunzhang",
+          "seek",
+          "chapter",
+          "locate",
+          "batch",
+          "marker",
+          "寻章",
+          "定位",
+          "批量整理"
+        ],
+        "minAppVersion": "3.0.3",
+        "name": "siyuan-xunzhang",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/Mangteng1994/siyuan-xunzhang",
+        "version": "0.3.3"
+      },
+      "size": 97129,
+      "stars": 0,
+      "updated": "2026-05-29T05:03:16Z",
+      "url": "Mangteng1994/siyuan-xunzhang@876d0fe0a9c6bfe1cf49b9d0ed3ee6236583998b"
+    },
+    {
       "installSize": 235631,
       "openIssues": 0,
       "package": {
@@ -928,52 +974,6 @@
       "stars": 15,
       "updated": "2026-05-24T16:48:14Z",
       "url": "Achuan-2/siyuan-plugin-imgReEditor@dc6cd9632d9c3bd319899ed28b3be24ab4fabf3d"
-    },
-    {
-      "installSize": 126798,
-      "openIssues": 0,
-      "package": {
-        "author": "Mangteng1994",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A lightweight SiYuan plugin for document locating and marker-based batch organization.",
-          "zh_CN": "轻量定位与批量整理插件"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Xunzhang",
-          "zh_CN": "寻章"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": null,
-        "keywords": [
-          "xunzhang",
-          "seek",
-          "chapter",
-          "locate",
-          "batch",
-          "marker",
-          "寻章",
-          "定位",
-          "批量整理"
-        ],
-        "minAppVersion": "3.0.3",
-        "name": "siyuan-xunzhang",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/Mangteng1994/siyuan-xunzhang",
-        "version": "0.3.2"
-      },
-      "size": 95332,
-      "stars": 0,
-      "updated": "2026-05-24T13:55:55Z",
-      "url": "Mangteng1994/siyuan-xunzhang@00d780e07b0ddfc1449d158dc64fd0826fd6bfe6"
     },
     {
       "installSize": 755872,
@@ -1905,6 +1905,49 @@
       "stars": 28,
       "updated": "2026-05-16T14:45:56Z",
       "url": "frostime/sy-f-misc@339c9058603c9fc86c343bb691be475c3126f2b1"
+    },
+    {
+      "installSize": 730156,
+      "openIssues": 1,
+      "package": {
+        "author": "崮生",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "en_US": "AI chat assistant that automatically searches your notes and provides answers with source references",
+          "zh_CN": "通过多轮对话自动搜索相关笔记并附带来源引用的 AI 对话助手"
+        },
+        "disabledInPublish": false,
+        "displayName": {
+          "en_US": "AI Chat",
+          "zh_CN": "AI 对话助手"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/@llej0"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": null,
+        "minAppVersion": "2.10.3",
+        "name": "aichat-plugin-siyuan",
+        "readme": {
+          "en_US": "README.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/2234839/aichat-plugin-siyuan",
+        "version": "0.0.82"
+      },
+      "size": 307075,
+      "stars": 4,
+      "updated": "2026-05-16T12:19:56Z",
+      "url": "2234839/aiChat-plugin-siyuan@12096aa16b7dde9147510e4c88496f3c92da671a"
     },
     {
       "installSize": 241738,
@@ -9838,49 +9881,6 @@
       "stars": 1,
       "updated": "2025-09-09T16:09:02Z",
       "url": "TCOTC/select-opened-doc@c9a14d85f12327b0a67ee6a09749a405dd8e8001"
-    },
-    {
-      "installSize": 489839,
-      "openIssues": 0,
-      "package": {
-        "author": "崮生",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "en_US": "",
-          "zh_CN": "通过多轮对话且自动搜索相关笔记提交给ai的形式得到回答"
-        },
-        "disabledInPublish": false,
-        "displayName": {
-          "en_US": "思源ai助手",
-          "zh_CN": "aichat-plugin-siyuan"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/@llej0"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": null,
-        "minAppVersion": "2.10.3",
-        "name": "aichat-plugin-siyuan",
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/2234839/aichat-plugin-siyuan",
-        "version": "0.0.60"
-      },
-      "size": 226909,
-      "stars": 3,
-      "updated": "2025-09-04T09:20:05Z",
-      "url": "2234839/aiChat-plugin-siyuan@7e799b41c749d0cabd2715ec65a2b21eb94ffe3d"
     },
     {
       "installSize": 14437935,
