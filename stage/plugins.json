@@ -1,6 +1,121 @@
 {
   "repos": [
     {
+      "installSize": 8729420,
+      "openIssues": 4,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android",
+          "harmony"
+        ],
+        "description": {
+          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
+          "zh_CN": "一款在思源笔记里实现任务管理功能的插件，为了践行「防弹笔记法」而开发。支持电脑端和移动端系统通知提醒任务执行、日历视图查看行事历、项目管理、四象限面板、番茄钟专注、习惯打卡等功能"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Note Management",
+          "zh_CN": "任务笔记管理"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "reminder",
+          "time",
+          "calendar",
+          "notification",
+          "提醒",
+          "时间",
+          "日历",
+          "通知",
+          "番茄钟",
+          "四象限",
+          "任务管理",
+          "项目管理",
+          "习惯打卡"
+        ],
+        "minAppVersion": "3.6.4",
+        "name": "siyuan-plugin-task-note-management",
+        "readme": {
+          "default": "README_en_US.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
+        "version": "6.9.6"
+      },
+      "size": 4573893,
+      "stars": 188,
+      "updated": "2026-05-31T16:53:10Z",
+      "url": "Achuan-2/siyuan-plugin-task-note-management@a12a5cd38f0220df991b717edb68a01d87de262b"
+    },
+    {
+      "installSize": 684061,
+      "openIssues": 0,
+      "package": {
+        "author": "mm-o",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Cloud-drive aggregation manager for SiYuan: file viewing, media playback, reading annotations, image-hosting links, and more.",
+          "en_US": "Cloud-drive aggregation manager for SiYuan: file viewing, media playback, reading annotations, image-hosting links, and more.",
+          "zh_CN": "思源网盘聚合管理器，支持网盘文件查看、媒体播放、阅读批注、图床直链等能力，更多玩法期待你的探索。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Cloud Drive Manager",
+          "en_US": "Cloud Drive Manager",
+          "zh_CN": "思盘"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": null,
+        "keywords": [
+          "思盘",
+          "cloud drive",
+          "file manager",
+          "openlist",
+          "media",
+          "s3",
+          "kernel plugin",
+          "webdav"
+        ],
+        "minAppVersion": "3.6.5",
+        "name": "siyuan-cloud",
+        "readme": {
+          "default": "README.md",
+          "en_US": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/mm-o/siyuan-cloud",
+        "version": "0.3.3"
+      },
+      "size": 254836,
+      "stars": 0,
+      "updated": "2026-05-31T16:15:43Z",
+      "url": "mm-o/siyuan-cloud@83c2a4e022d5839cc87c974a79f6b947b25fa5cd"
+    },
+    {
       "installSize": 1072752,
       "openIssues": 0,
       "package": {
@@ -132,54 +247,6 @@
       "stars": 1,
       "updated": "2026-05-31T10:11:50Z",
       "url": "wj1002/plugin-ChronicleX-vite-svelte@f0f807cc1f6aef457f22b2eebd6f253c8becdcc9"
-    },
-    {
-      "installSize": 682601,
-      "openIssues": 0,
-      "package": {
-        "author": "mm-o",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Cloud-drive aggregation manager for SiYuan: file viewing, media playback, reading annotations, image-hosting links, and more.",
-          "en_US": "Cloud-drive aggregation manager for SiYuan: file viewing, media playback, reading annotations, image-hosting links, and more.",
-          "zh_CN": "思源网盘聚合管理器，支持网盘文件查看、媒体播放、阅读批注、图床直链等能力，更多玩法期待你的探索。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Cloud Drive Manager",
-          "en_US": "Cloud Drive Manager",
-          "zh_CN": "思盘"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": null,
-        "keywords": [
-          "思盘",
-          "cloud drive",
-          "file manager",
-          "openlist",
-          "media",
-          "s3",
-          "kernel plugin",
-          "webdav"
-        ],
-        "minAppVersion": "3.6.5",
-        "name": "siyuan-cloud",
-        "readme": {
-          "default": "README.md",
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/mm-o/siyuan-cloud",
-        "version": "0.3.1"
-      },
-      "size": 253520,
-      "stars": 0,
-      "updated": "2026-05-31T01:12:00Z",
-      "url": "mm-o/siyuan-cloud@bd8282f794f8f9cb28510f464c36a09c57a9636b"
     },
     {
       "installSize": 10317018,
@@ -621,73 +688,6 @@
       "stars": 1,
       "updated": "2026-05-28T12:31:23Z",
       "url": "notesynchelper/siyuan-notehelper@3655cf52c738311980d5ddd682deeef8256e51de"
-    },
-    {
-      "installSize": 8698509,
-      "openIssues": 6,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "description": {
-          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
-          "zh_CN": "一款在思源笔记里实现任务管理功能的插件，为了践行「防弹笔记法」而开发。支持电脑端和移动端系统通知提醒任务执行、日历视图查看行事历、项目管理、四象限面板、番茄钟专注、习惯打卡等功能"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Note Management",
-          "zh_CN": "任务笔记管理"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "reminder",
-          "time",
-          "calendar",
-          "notification",
-          "提醒",
-          "时间",
-          "日历",
-          "通知",
-          "番茄钟",
-          "四象限",
-          "任务管理",
-          "项目管理",
-          "习惯打卡"
-        ],
-        "minAppVersion": "3.6.4",
-        "name": "siyuan-plugin-task-note-management",
-        "readme": {
-          "default": "README_en_US.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
-        "version": "6.9.5"
-      },
-      "size": 4565496,
-      "stars": 186,
-      "updated": "2026-05-28T06:28:48Z",
-      "url": "Achuan-2/siyuan-plugin-task-note-management@526a86fd89a683c842e535ffd5bf2ca0336debbb"
     },
     {
       "installSize": 187609,
