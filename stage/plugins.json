@@ -1,53 +1,100 @@
 {
   "repos": [
     {
-      "installSize": 1358882,
-      "openIssues": 2,
+      "installSize": 253336,
+      "openIssues": 0,
       "package": {
-        "author": "LunaNorth",
+        "author": "Mangteng1994",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "One-click publish SiYuan notes as static HTML to Gitee Pages / GitHub Pages.",
+          "zh_CN": "一键将思源笔记发布为静态 HTML，支持 Gitee Pages 和 GitHub Pages。"
+        },
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "Pages Publisher",
+          "zh_CN": "Pages 发布"
+        },
+        "frontends": [
+          "desktop"
+        ],
+        "funding": null,
+        "keywords": [
+          "publish",
+          "gitee",
+          "github",
+          "pages",
+          "html",
+          "发布"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-plugin-gitee-pages",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/Mangteng1994/siyuan-plugin-gitee-pages",
+        "version": "1.0.6"
+      },
+      "size": 61092,
+      "stars": 1,
+      "updated": "2026-06-01T05:52:52Z",
+      "url": "Mangteng1994/siyuan-plugin-gitee-pages@29c992d3e3857193e6e8f948fdeddc065be9b9d4"
+    },
+    {
+      "installSize": 1900182,
+      "openIssues": 0,
+      "package": {
+        "author": "5kyfkr",
         "backends": [
           "all"
         ],
         "description": {
-          "default": "A lightweight note-taking plugin for SiYuan, inspired by Flomo",
-          "zh_CN": "记录每一个轻闪而过的念头"
+          "default": "A dock Tomato Timer for SiYuan.",
+          "zh_CN": "思源底栏番茄钟：支持时间轴视图/任务提醒/日常事务记录/多端状态同步/移动端/数据库联动/块绑定/历史记录/任务管理器联动/移动端原生通知提醒"
         },
-        "disabledInPublish": true,
+        "disabledInPublish": false,
         "displayName": {
-          "default": "Lumina",
-          "zh_CN": "轻语"
+          "default": "Dock Tomato",
+          "zh_CN": "底栏番茄钟"
         },
         "frontends": [
           "all"
         ],
         "funding": {
           "custom": [
-            "https://testingcf.jsdelivr.net/gh/LunaNorth/north-img/images/20260519195219305.png"
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
           ],
           "github": "",
           "openCollective": "",
           "patreon": ""
         },
         "keywords": [
-          "碎碎念",
-          "记录",
-          "回顾"
+          "tomato",
+          "timer",
+          "pomodoro",
+          "dock"
         ],
-        "minAppVersion": "3.3.3",
-        "name": "siyuan-lumina",
+        "minAppVersion": "3.5.10",
+        "name": "siyuan-plugin-docktomato",
         "readme": {
-          "default": "README.md"
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
         },
-        "url": "https://github.com/LunaNorth/siyuan-lumina",
-        "version": "1.4.6"
+        "url": "https://github.com/5kyfkr/siyuan-plugin-docktomato",
+        "version": "1.9.8"
       },
-      "size": 319277,
-      "stars": 6,
-      "updated": "2026-05-31T22:52:01Z",
-      "url": "LunaNorth/siyuan-lumina@a3bbea2c88dcb9d916530cf62c37c8a124d34303"
+      "size": 471455,
+      "stars": 7,
+      "updated": "2026-06-01T05:41:30Z",
+      "url": "5kyfkr/siyuan-plugin-docktomato@f6abe59f3cbbe209c51d0264d8005d13c3fbef40"
     },
     {
-      "installSize": 8729420,
+      "installSize": 8729964,
       "openIssues": 4,
       "package": {
         "author": "Achuan-2",
@@ -106,12 +153,104 @@
           "zh_CN": "README.md"
         },
         "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
-        "version": "6.9.6"
+        "version": "6.9.7"
       },
-      "size": 4573893,
+      "size": 4574017,
       "stars": 188,
-      "updated": "2026-05-31T16:53:10Z",
-      "url": "Achuan-2/siyuan-plugin-task-note-management@a12a5cd38f0220df991b717edb68a01d87de262b"
+      "updated": "2026-06-01T03:35:28Z",
+      "url": "Achuan-2/siyuan-plugin-task-note-management@24fe68a99df3e9fb4ff3f5ff22e48e273dd9d014"
+    },
+    {
+      "installSize": 10368169,
+      "openIssues": 0,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
+          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Horizon",
+          "zh_CN": "任务管理器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "task",
+          "manager",
+          "filter"
+        ],
+        "minAppVersion": "3.6.4",
+        "name": "siyuan-plugin-task-horizon",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
+        "version": "2.5.6"
+      },
+      "size": 2198844,
+      "stars": 23,
+      "updated": "2026-06-01T00:55:27Z",
+      "url": "5kyfkr/siyuan-plugin-task-horizon@7e7ff8d3ecd238a19222e62ef58ec59f372f3228"
+    },
+    {
+      "installSize": 1358882,
+      "openIssues": 2,
+      "package": {
+        "author": "LunaNorth",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A lightweight note-taking plugin for SiYuan, inspired by Flomo",
+          "zh_CN": "记录每一个轻闪而过的念头"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Lumina",
+          "zh_CN": "轻语"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://testingcf.jsdelivr.net/gh/LunaNorth/north-img/images/20260519195219305.png"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "碎碎念",
+          "记录",
+          "回顾"
+        ],
+        "minAppVersion": "3.3.3",
+        "name": "siyuan-lumina",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/LunaNorth/siyuan-lumina",
+        "version": "1.4.6"
+      },
+      "size": 319277,
+      "stars": 6,
+      "updated": "2026-05-31T22:52:01Z",
+      "url": "LunaNorth/siyuan-lumina@a3bbea2c88dcb9d916530cf62c37c8a124d34303"
     },
     {
       "installSize": 684061,
@@ -293,52 +432,6 @@
       "stars": 1,
       "updated": "2026-05-31T10:11:50Z",
       "url": "wj1002/plugin-ChronicleX-vite-svelte@f0f807cc1f6aef457f22b2eebd6f253c8becdcc9"
-    },
-    {
-      "installSize": 10317018,
-      "openIssues": 0,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
-          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Horizon",
-          "zh_CN": "任务管理器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "task",
-          "manager",
-          "filter"
-        ],
-        "minAppVersion": "3.6.4",
-        "name": "siyuan-plugin-task-horizon",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "2.5.5"
-      },
-      "size": 2190192,
-      "stars": 23,
-      "updated": "2026-05-30T16:50:22Z",
-      "url": "5kyfkr/siyuan-plugin-task-horizon@3b5c633cb24728e77c0d3f4d1c027622c97053a0"
     },
     {
       "installSize": 429089,
@@ -690,51 +783,6 @@
       "url": "notesynchelper/siyuan-notehelper@3655cf52c738311980d5ddd682deeef8256e51de"
     },
     {
-      "installSize": 187609,
-      "openIssues": 0,
-      "package": {
-        "author": "Mangteng1994",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "One-click publish SiYuan notes as static HTML to Gitee Pages / GitHub Pages.",
-          "zh_CN": "一键将思源笔记发布为静态 HTML，支持 Gitee Pages 和 GitHub Pages。"
-        },
-        "disabledInPublish": false,
-        "displayName": {
-          "default": "Pages Publisher",
-          "zh_CN": "Pages 发布"
-        },
-        "frontends": [
-          "desktop"
-        ],
-        "funding": null,
-        "keywords": [
-          "publish",
-          "gitee",
-          "github",
-          "pages",
-          "html",
-          "发布"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-plugin-gitee-pages",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/Mangteng1994/siyuan-plugin-gitee-pages",
-        "version": "1.0.4"
-      },
-      "size": 48155,
-      "stars": 0,
-      "updated": "2026-05-28T02:11:04Z",
-      "url": "Mangteng1994/siyuan-plugin-gitee-pages@b7260acf770d24403af16a64d2de61ba4bfa49f6"
-    },
-    {
       "installSize": 535286,
       "openIssues": 0,
       "package": {
@@ -818,54 +866,6 @@
       "stars": 9,
       "updated": "2026-05-26T12:47:16Z",
       "url": "OpaqueGlass/syplugin-fakeDocBreadcrumb@d524b69a5fc6cde7a2e23ede7bdda409ded24bcc"
-    },
-    {
-      "installSize": 1824133,
-      "openIssues": 0,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A dock Tomato Timer for SiYuan.",
-          "zh_CN": "思源底栏番茄钟：支持时间轴视图/任务提醒/日常事务记录/多端状态同步/移动端/数据库联动/块绑定/历史记录/任务管理器联动/移动端原生通知提醒"
-        },
-        "disabledInPublish": false,
-        "displayName": {
-          "default": "Dock Tomato",
-          "zh_CN": "底栏番茄钟"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "tomato",
-          "timer",
-          "pomodoro",
-          "dock"
-        ],
-        "minAppVersion": "3.5.10",
-        "name": "siyuan-plugin-docktomato",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-docktomato",
-        "version": "1.9.7"
-      },
-      "size": 456354,
-      "stars": 7,
-      "updated": "2026-05-26T07:51:43Z",
-      "url": "5kyfkr/siyuan-plugin-docktomato@aee53bfe32bac9d357c2ea26f175204961ed9d2e"
     },
     {
       "installSize": 6618953,
