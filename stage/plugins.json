@@ -1,6 +1,171 @@
 {
   "repos": [
     {
+      "installSize": 309896,
+      "openIssues": 2,
+      "package": {
+        "author": "notesynchelper",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "从微信同步到思源笔记，支持文字、图片、聊天记录、文章"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "笔记同步助手"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "wechat",
+          "template",
+          "企微",
+          "模板",
+          "微信",
+          "速记",
+          "剪藏",
+          "搜集",
+          "日记",
+          "闪念",
+          "memo",
+          "备忘",
+          "公众号",
+          "小红书",
+          "得到"
+        ],
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-notehelper",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/notesynchelper/siyuan-notehelper",
+        "version": "1.7.31"
+      },
+      "size": 147009,
+      "stars": 1,
+      "updated": "2026-06-01T15:24:58Z",
+      "url": "notesynchelper/siyuan-notehelper@a38caa7b4340c1dcaebea75d140d2d2f636283a6"
+    },
+    {
+      "installSize": 777572,
+      "openIssues": 1,
+      "package": {
+        "author": "khnsojina-arch",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A Notion Calendar style time-block calendar for SiYuan, supporting week, three-day, month and year views, reminders, Pomodoro, task planning, JSON import/export, study plans and review schedules.",
+          "zh_CN": "一个面向思源笔记的时间块日历插件，支持周视图、三天视图、月视图、年视图、提醒、番茄钟、JSON 导入导出，帮助你完成日程规划、时间管理、学习计划、复习计划和任务安排。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Time Block Calendar",
+          "zh_CN": "时间块日历｜日程规划、时间管理、番茄钟与提醒"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": null,
+        "keywords": [
+          "calendar",
+          "planner",
+          "time-block",
+          "task-planning",
+          "daily-note",
+          "pomodoro",
+          "reminder",
+          "notion-calendar",
+          "study-plan",
+          "日程规划",
+          "时间管理",
+          "时间块",
+          "日历",
+          "任务计划",
+          "待办",
+          "提醒",
+          "番茄钟",
+          "周视图",
+          "月视图",
+          "年视图",
+          "学习计划",
+          "复习计划"
+        ],
+        "minAppVersion": "3.1.0",
+        "name": "siyuan-time-block-calendar",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/khnsojina-arch/siyuan-time-block-calendar",
+        "version": "0.5.14"
+      },
+      "size": 530698,
+      "stars": 2,
+      "updated": "2026-06-01T14:53:58Z",
+      "url": "khnsojina-arch/siyuan-time-block-calendar@71b2a7ac883d4389c9e9941f8bb72547018b0353"
+    },
+    {
+      "installSize": 677946,
+      "openIssues": 2,
+      "package": {
+        "author": "lmedpaul",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A RSS reader plugin for SiYuan Note, allowing you to save articles to notes with one click.",
+          "zh_CN": "思源笔记 RSS 订阅插件，支持一键将文章保存为笔记。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "RSS Reader",
+          "zh_CN": "RSS 订阅"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://github.com/lnedpaul"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "RSS",
+          "Reader",
+          "Subscription",
+          "Feed",
+          "Note",
+          "Save to Note",
+          "阅读器",
+          "订阅",
+          "保存笔记"
+        ],
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-rss-reader",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/lnedpaul/siyuan-rss-reader",
+        "version": "0.1.24"
+      },
+      "size": 578620,
+      "stars": 3,
+      "updated": "2026-06-01T14:14:19Z",
+      "url": "lnedpaul/siyuan-rss-reader@fe610a3688b48d9fe5f1fb485eef06e4de6b9f3d"
+    },
+    {
       "installSize": 1365693,
       "openIssues": 2,
       "package": {
@@ -633,59 +798,6 @@
       "url": "sqalei/siyuan-plugin-localbrowse@6a27fde982780ab55ec21feebf38298863546c15"
     },
     {
-      "installSize": 677629,
-      "openIssues": 2,
-      "package": {
-        "author": "lmedpaul",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A RSS reader plugin for SiYuan Note, allowing you to save articles to notes with one click.",
-          "zh_CN": "思源笔记 RSS 订阅插件，支持一键将文章保存为笔记。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "RSS Reader",
-          "zh_CN": "RSS 订阅"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://github.com/lnedpaul"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "RSS",
-          "Reader",
-          "Subscription",
-          "Feed",
-          "Note",
-          "Save to Note",
-          "阅读器",
-          "订阅",
-          "保存笔记"
-        ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-rss-reader",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/lnedpaul/siyuan-rss-reader",
-        "version": "0.1.23"
-      },
-      "size": 578507,
-      "stars": 3,
-      "updated": "2026-05-29T15:54:15Z",
-      "url": "lnedpaul/siyuan-rss-reader@af23af9a049e8891e0ac743a90a9af1a1a27b36e"
-    },
-    {
       "installSize": 235028,
       "openIssues": 0,
       "package": {
@@ -727,60 +839,6 @@
       "stars": 5,
       "updated": "2026-05-29T07:22:11Z",
       "url": "fujingzhai/claude-note@4e73d45b39784ab326ad75eadc9e320654d66cf0"
-    },
-    {
-      "installSize": 309896,
-      "openIssues": 2,
-      "package": {
-        "author": "notesynchelper",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "从微信同步到思源笔记，支持文字、图片、聊天记录、文章"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "笔记同步助手"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "wechat",
-          "template",
-          "企微",
-          "模板",
-          "微信",
-          "速记",
-          "剪藏",
-          "搜集",
-          "日记",
-          "闪念",
-          "memo",
-          "备忘",
-          "公众号",
-          "小红书",
-          "得到"
-        ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-notehelper",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/notesynchelper/siyuan-notehelper",
-        "version": "1.7.30"
-      },
-      "size": 147007,
-      "stars": 1,
-      "updated": "2026-05-28T12:31:23Z",
-      "url": "notesynchelper/siyuan-notehelper@3655cf52c738311980d5ddd682deeef8256e51de"
     },
     {
       "installSize": 535286,
@@ -1224,64 +1282,6 @@
       "stars": 15,
       "updated": "2026-05-24T16:48:14Z",
       "url": "Achuan-2/siyuan-plugin-imgReEditor@dc6cd9632d9c3bd319899ed28b3be24ab4fabf3d"
-    },
-    {
-      "installSize": 755872,
-      "openIssues": 0,
-      "package": {
-        "author": "khnsojina-arch",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A Notion Calendar style time-block calendar for SiYuan, supporting week, three-day, month and year views, reminders, Pomodoro, task planning, JSON import/export, study plans and review schedules.",
-          "zh_CN": "一个面向思源笔记的时间块日历插件，支持周视图、三天视图、月视图、年视图、提醒、番茄钟、JSON 导入导出，帮助你完成日程规划、时间管理、学习计划、复习计划和任务安排。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Time Block Calendar",
-          "zh_CN": "时间块日历｜日程规划、时间管理、番茄钟与提醒"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": null,
-        "keywords": [
-          "calendar",
-          "planner",
-          "time-block",
-          "task-planning",
-          "daily-note",
-          "pomodoro",
-          "reminder",
-          "notion-calendar",
-          "study-plan",
-          "日程规划",
-          "时间管理",
-          "时间块",
-          "日历",
-          "任务计划",
-          "待办",
-          "提醒",
-          "番茄钟",
-          "周视图",
-          "月视图",
-          "年视图",
-          "学习计划",
-          "复习计划"
-        ],
-        "minAppVersion": "3.1.0",
-        "name": "siyuan-time-block-calendar",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/khnsojina-arch/siyuan-time-block-calendar",
-        "version": "0.5.13"
-      },
-      "size": 526334,
-      "stars": 0,
-      "updated": "2026-05-24T12:27:50Z",
-      "url": "khnsojina-arch/siyuan-time-block-calendar@71f9420c7cf03627eb2623b0e4820c2175bfe96f"
     },
     {
       "installSize": 1499969,
