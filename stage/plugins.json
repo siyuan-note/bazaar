@@ -1,6 +1,132 @@
 {
   "repos": [
     {
+      "installSize": 91706,
+      "openIssues": 2,
+      "package": {
+        "author": "zxkmm",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "description": {
+          "en_US": "Add horizontal scrollbar to blocks that exceed the screen width, saving you the trouble of scrolling to the bottom and then scrolling back",
+          "zh_CN": "给超过屏幕宽度和高度的块添加横向滚动条，免去你需要滚动到块的底部才能用滚动条的麻烦"
+        },
+        "disabledInPublish": false,
+        "displayName": {
+          "en_US": "Block Landscape Scrollbar",
+          "zh_CN": "块级横向滚动条"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://pipe.b3log.org/blogs/zxkmm/articles/2025/02/08/1738993480704"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "plugin",
+          "database",
+          "code block",
+          "scrollbar",
+          "数据库",
+          "代码块",
+          "滚动条"
+        ],
+        "minAppVersion": "3.0.12",
+        "name": "siyuan_database_landscape_scrollbar",
+        "readme": {
+          "en_US": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/zxkmm/siyuan_database_landscape_scrollbar",
+        "version": "1.2.1"
+      },
+      "size": 45024,
+      "stars": 18,
+      "updated": "2026-06-04T02:55:19Z",
+      "url": "zxkmm/siyuan_database_landscape_scrollbar@5486921cbc70c334e691a9e97ea87b6ba1bb1a83"
+    },
+    {
+      "installSize": 8778238,
+      "openIssues": 4,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android",
+          "harmony"
+        ],
+        "description": {
+          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
+          "zh_CN": "一款在思源笔记里实现任务管理功能的插件，为了践行「防弹笔记法」而开发。支持电脑端和移动端系统通知提醒任务执行、日历视图查看行事历、项目管理、四象限面板、番茄钟专注、习惯打卡等功能"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Note Management",
+          "zh_CN": "任务笔记管理"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "reminder",
+          "time",
+          "calendar",
+          "notification",
+          "提醒",
+          "时间",
+          "日历",
+          "通知",
+          "番茄钟",
+          "四象限",
+          "任务管理",
+          "项目管理",
+          "习惯打卡"
+        ],
+        "minAppVersion": "3.6.4",
+        "name": "siyuan-plugin-task-note-management",
+        "readme": {
+          "default": "README_en_US.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
+        "version": "6.9.10"
+      },
+      "size": 4586231,
+      "stars": 193,
+      "updated": "2026-06-04T02:41:51Z",
+      "url": "Achuan-2/siyuan-plugin-task-note-management@23b6198ace77c8fdb52356ed8c56c789f713a86d"
+    },
+    {
       "installSize": 1458784,
       "openIssues": 2,
       "package": {
@@ -242,73 +368,6 @@
       "stars": 64,
       "updated": "2026-06-03T15:07:50Z",
       "url": "yangtaihong59/siyuan-plugins-mcp-sisyphus@f7576697a60c357c4b4707169a3c8afddedd36df"
-    },
-    {
-      "installSize": 8777795,
-      "openIssues": 4,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "description": {
-          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
-          "zh_CN": "一款在思源笔记里实现任务管理功能的插件，为了践行「防弹笔记法」而开发。支持电脑端和移动端系统通知提醒任务执行、日历视图查看行事历、项目管理、四象限面板、番茄钟专注、习惯打卡等功能"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Note Management",
-          "zh_CN": "任务笔记管理"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "reminder",
-          "time",
-          "calendar",
-          "notification",
-          "提醒",
-          "时间",
-          "日历",
-          "通知",
-          "番茄钟",
-          "四象限",
-          "任务管理",
-          "项目管理",
-          "习惯打卡"
-        ],
-        "minAppVersion": "3.6.4",
-        "name": "siyuan-plugin-task-note-management",
-        "readme": {
-          "default": "README_en_US.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
-        "version": "6.9.9"
-      },
-      "size": 4586103,
-      "stars": 193,
-      "updated": "2026-06-03T14:45:39Z",
-      "url": "Achuan-2/siyuan-plugin-task-note-management@fe8c3c525878336ec07e3481324cdb17bf3808fd"
     },
     {
       "installSize": 742247,
@@ -12935,65 +12994,6 @@
       "stars": 3,
       "updated": "2025-04-05T12:32:46Z",
       "url": "B3000Kcn/siyuan-plugin-canvas@3ab4b06b48fde2aad144d2048a39b2e8c2b8e250"
-    },
-    {
-      "installSize": 397424,
-      "openIssues": 2,
-      "package": {
-        "author": "zxkmm",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "description": {
-          "en_US": "Add horizontal scrollbar to blocks that exceed the screen width, saving you the trouble of scrolling to the bottom and then scrolling back",
-          "zh_CN": "给超过屏幕宽度和高度的块添加横向滚动条，免去你需要滚动到块的底部才能用滚动条的麻烦"
-        },
-        "disabledInPublish": false,
-        "displayName": {
-          "en_US": "Block Landscape Scrollbar",
-          "zh_CN": "块级横向滚动条"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://pipe.b3log.org/blogs/zxkmm/articles/2025/02/08/1738993480704"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "plugin",
-          "database",
-          "code block",
-          "scrollbar",
-          "数据库",
-          "代码块",
-          "滚动条"
-        ],
-        "minAppVersion": "3.0.12",
-        "name": "siyuan_database_landscape_scrollbar",
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/zxkmm/siyuan_database_landscape_scrollbar",
-        "version": "1.1.0"
-      },
-      "size": 195953,
-      "stars": 18,
-      "updated": "2025-04-01T09:00:25Z",
-      "url": "zxkmm/siyuan_database_landscape_scrollbar@5dd550a414be59ffd17b2256204a0cca63a08c31"
     },
     {
       "installSize": 380459,
