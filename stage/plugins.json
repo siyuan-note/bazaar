@@ -1,6 +1,96 @@
 {
   "repos": [
     {
+      "installSize": 8224371,
+      "openIssues": 14,
+      "package": {
+        "author": "steve",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "schedule management, docker sync awareness, ai sidebar",
+          "zh_CN": "互联日程管理（基于数据库的看板视图和日历视图）支持ics，qq邮箱日历，滴答清单双向联动, docker同步感知, ai侧边栏, 资源压缩, 白板, WPS联动, （SQL，数据库）聚合可视化, 随机题头图背景图。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "STtools",
+          "zh_CN": "STtools"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://pic.imgdb.cn/item/6751b929d0e0a243d4de55a7.png"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "tools",
+          "schedule",
+          "calendar",
+          "st"
+        ],
+        "minAppVersion": "3.5.1",
+        "name": "siyuan-steve-tools",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/loonghfut/siyuan-steve-tools",
+        "version": "0.40.2"
+      },
+      "size": 3615395,
+      "stars": 80,
+      "updated": "2026-06-12T03:43:56Z",
+      "url": "loonghfut/siyuan-steve-tools@9a660363c5ec98b309e871eb3499c2a3b924a44b"
+    },
+    {
+      "installSize": 12055205,
+      "openIssues": 6,
+      "package": {
+        "author": "suka233",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A fully redesigned KMind mind mapping plugin for SiYuan. Drag SiYuan documents and blocks directly into your mind maps, with unlimited summary levels, cloze nodes, bidirectional links, and more. Currently in public beta.",
+          "zh_CN": "全新设计的 KMind 思维导图插件，可直接将思源文档和思源块拖入导图，支持无限层级概要、节点挖空、节点双链等能力；当前为公测版。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "KMind Zen Mind Map Plugin",
+          "zh_CN": "KMind Zen 思维导图插件"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": null,
+        "keywords": [
+          "思维导图",
+          "mindmap",
+          "KMind",
+          "KMindZen",
+          "KMind Zen"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-kmind-zen",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/suka233/siyuan-kmind-zen",
+        "version": "0.19.0"
+      },
+      "size": 8699308,
+      "stars": 2,
+      "updated": "2026-06-12T03:32:07Z",
+      "url": "suka233/siyuan-kmind-zen@1d02a04034c535d8d570c103bb3ab90809f8e87f"
+    },
+    {
       "installSize": 1673276,
       "openIssues": 1,
       "package": {
@@ -141,48 +231,6 @@
       "stars": 2,
       "updated": "2026-06-11T14:59:55Z",
       "url": "RiviaAzusa/siyuan-agent@4c65824f52b5aa57e81e92719548a58947fcc066"
-    },
-    {
-      "installSize": 12049105,
-      "openIssues": 6,
-      "package": {
-        "author": "suka233",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A fully redesigned KMind mind mapping plugin for SiYuan. Drag SiYuan documents and blocks directly into your mind maps, with unlimited summary levels, cloze nodes, bidirectional links, and more. Currently in public beta.",
-          "zh_CN": "全新设计的 KMind 思维导图插件，可直接将思源文档和思源块拖入导图，支持无限层级概要、节点挖空、节点双链等能力；当前为公测版。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "KMind Zen Mind Map Plugin",
-          "zh_CN": "KMind Zen 思维导图插件"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": null,
-        "keywords": [
-          "思维导图",
-          "mindmap",
-          "KMind",
-          "KMindZen",
-          "KMind Zen"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-kmind-zen",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/suka233/siyuan-kmind-zen",
-        "version": "0.18.0"
-      },
-      "size": 8697982,
-      "stars": 2,
-      "updated": "2026-06-11T14:33:48Z",
-      "url": "suka233/siyuan-kmind-zen@0933f1b79494387abe9e603e684e36dac723a5bc"
     },
     {
       "installSize": 309896,
@@ -854,54 +902,6 @@
       "stars": 29,
       "updated": "2026-06-09T11:55:31Z",
       "url": "zxkmm/siyuan_marketplace_blacklist@d820676e722fcd5391a42018d84d8ca11f7ae2ae"
-    },
-    {
-      "installSize": 8219614,
-      "openIssues": 14,
-      "package": {
-        "author": "steve",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "schedule management, docker sync awareness, ai sidebar",
-          "zh_CN": "互联日程管理（基于数据库的看板视图和日历视图）支持ics，qq邮箱日历，滴答清单双向联动, docker同步感知, ai侧边栏, 资源压缩, 白板, WPS联动, （SQL，数据库）聚合可视化, 随机题头图背景图。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "STtools",
-          "zh_CN": "STtools"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://pic.imgdb.cn/item/6751b929d0e0a243d4de55a7.png"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "tools",
-          "schedule",
-          "calendar",
-          "st"
-        ],
-        "minAppVersion": "3.5.1",
-        "name": "siyuan-steve-tools",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/loonghfut/siyuan-steve-tools",
-        "version": "0.40.1"
-      },
-      "size": 3614214,
-      "stars": 80,
-      "updated": "2026-06-08T13:53:01Z",
-      "url": "loonghfut/siyuan-steve-tools@e1998e48b304ea5ee19c6612e27e2132b458c1f6"
     },
     {
       "installSize": 1450172,
