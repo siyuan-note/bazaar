@@ -1,6 +1,103 @@
 {
   "repos": [
     {
+      "installSize": 323235,
+      "openIssues": 2,
+      "package": {
+        "author": "notesynchelper",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "从微信同步到思源笔记，支持文字、图片、聊天记录、文章"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "笔记同步助手"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "wechat",
+          "template",
+          "企微",
+          "模板",
+          "微信",
+          "速记",
+          "剪藏",
+          "搜集",
+          "日记",
+          "闪念",
+          "memo",
+          "备忘",
+          "公众号",
+          "小红书",
+          "得到"
+        ],
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-notehelper",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/notesynchelper/siyuan-notehelper",
+        "version": "1.8.3"
+      },
+      "size": 150870,
+      "stars": 1,
+      "updated": "2026-06-18T12:28:35Z",
+      "url": "notesynchelper/siyuan-notehelper@ecefccd0fb207d79fbb8fd09f4b167ca42991099"
+    },
+    {
+      "installSize": 1449024,
+      "openIssues": 3,
+      "package": {
+        "author": "sqalei",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Seamlessly integrate local files into SiYuan. Browse/search/manage disk files, insert links with one click, support audio/video timestamps &amp; subtitle-to-timestamp, auto-sync links when files move, relative paths for cross-device sync. Pure local, zero cloud dependency.",
+          "zh_CN": "把本地文件系统无缝融入思源笔记。浏览/搜索/管理磁盘文件、一键插入笔记、支持音视频时间戳、字幕转换时间戳，文件移动后自动同步替换新链接，相对路径支持跨设备同步。纯本地运行，跨设备零依赖。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "LocalBrowse",
+          "zh_CN": "本地文件浏览器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": null,
+        "keywords": [
+          "local",
+          "file browser",
+          "mount",
+          "attachment",
+          "cross-platform",
+          "本地文件"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-plugin-localbrowse",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/sqalei/siyuan-plugin-localbrowse",
+        "version": "1.1.0"
+      },
+      "size": 394651,
+      "stars": 6,
+      "updated": "2026-06-18T11:56:38Z",
+      "url": "sqalei/siyuan-plugin-localbrowse@0b4d741a08de3fa2aad7bfd9dc88dfc309d2f92c"
+    },
+    {
       "installSize": 7276147,
       "openIssues": 0,
       "package": {
@@ -364,60 +461,6 @@
       "stars": 36,
       "updated": "2026-06-17T10:32:09Z",
       "url": "terwer/siyuan-plugin-picgo@aac9dce06aa87b4ce33c245b006b9edd47f0ef25"
-    },
-    {
-      "installSize": 323235,
-      "openIssues": 2,
-      "package": {
-        "author": "notesynchelper",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "从微信同步到思源笔记，支持文字、图片、聊天记录、文章"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "笔记同步助手"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "wechat",
-          "template",
-          "企微",
-          "模板",
-          "微信",
-          "速记",
-          "剪藏",
-          "搜集",
-          "日记",
-          "闪念",
-          "memo",
-          "备忘",
-          "公众号",
-          "小红书",
-          "得到"
-        ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-notehelper",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/notesynchelper/siyuan-notehelper",
-        "version": "1.8.2"
-      },
-      "size": 150870,
-      "stars": 1,
-      "updated": "2026-06-17T07:58:29Z",
-      "url": "notesynchelper/siyuan-notehelper@02e5ed221e9d5e6ab23db4b06428be367d66abeb"
     },
     {
       "installSize": 684661,
@@ -1178,49 +1221,6 @@
       "stars": 2,
       "updated": "2026-06-11T14:59:55Z",
       "url": "RiviaAzusa/siyuan-agent@4c65824f52b5aa57e81e92719548a58947fcc066"
-    },
-    {
-      "installSize": 1199216,
-      "openIssues": 3,
-      "package": {
-        "author": "sqalei",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Seamlessly integrate local files into SiYuan. Browse/search/manage disk files, insert links with one click, support audio/video timestamps &amp; subtitle-to-timestamp, auto-sync links when files move, relative paths for cross-device sync. Pure local, zero cloud dependency.",
-          "zh_CN": "把本地文件系统无缝融入思源笔记。浏览/搜索/管理磁盘文件、一键插入笔记、支持音视频时间戳、字幕转换时间戳，文件移动后自动同步替换新链接，相对路径支持跨设备同步。纯本地运行，跨设备零依赖。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "LocalBrowse",
-          "zh_CN": "本地文件浏览器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": null,
-        "keywords": [
-          "local",
-          "file browser",
-          "mount",
-          "attachment",
-          "cross-platform",
-          "本地文件"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-plugin-localbrowse",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/sqalei/siyuan-plugin-localbrowse",
-        "version": "1.0.0"
-      },
-      "size": 369207,
-      "stars": 5,
-      "updated": "2026-06-11T10:55:02Z",
-      "url": "sqalei/siyuan-plugin-localbrowse@16aa7175cdba5a0683fddb72b3f0f5911c33ad03"
     },
     {
       "installSize": 1162101,
