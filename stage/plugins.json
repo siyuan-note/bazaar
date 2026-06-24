@@ -1,6 +1,169 @@
 {
   "repos": [
     {
+      "installSize": 171045,
+      "openIssues": 10,
+      "package": {
+        "author": "OpaqueGlass",
+        "backends": null,
+        "description": {
+          "default": "Double-click to expand the next level or double-click to open the document.",
+          "en_US": "Double-click to expand the next level or double-click to open the document.",
+          "zh-CN": "双击展开下一层级，或双击打开文档（测试中功能：对大纲、标签、移动端的单双击处理）",
+          "zh_CN": "双击展开下一层级，或双击打开文档（测试中功能：对大纲、标签、移动端的单双击处理）"
+        },
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "double click file tree",
+          "en_US": "double click file tree",
+          "zh-CN": "双击文档树",
+          "zh_CN": "双击文档树"
+        },
+        "frontends": null,
+        "funding": {
+          "custom": [
+            "https://wj.qq.com/s2/12395364/b69f/"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": null,
+        "minAppVersion": "",
+        "name": "syplugin-doubleClickFileTree",
+        "readme": {
+          "default": "README.md",
+          "en_US": "README.md",
+          "zh-CN": "README_zh_CN.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/OpaqueGlass/syplugin-doubleClickFileTree",
+        "version": "1.0.0"
+      },
+      "size": 71578,
+      "stars": 6,
+      "updated": "2026-06-24T15:06:35Z",
+      "url": "OpaqueGlass/syplugin-doubleClickFileTree@5f7f9b2620a805fb1b8e1d544b0f1acb57e4fcae"
+    },
+    {
+      "installSize": 7943157,
+      "openIssues": 0,
+      "package": {
+        "author": "Glaube-TY",
+        "backends": [
+          "windows",
+          "linux",
+          "ios",
+          "android",
+          "harmony",
+          "docker",
+          "darwin"
+        ],
+        "description": {
+          "en_US": "Provides personalized homepage layout and rich functional modules.",
+          "zh_CN": "提供个性化首页布局和丰富的功能模块。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "en_US": "HOME",
+          "zh_CN": "主页"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://blog.glaube-ty.top/da-shang"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "homepage",
+          "home",
+          "主页",
+          "首页",
+          "task",
+          "task manager",
+          "任务",
+          "任务管理",
+          "SQL",
+          "sql",
+          "查询",
+          "widget",
+          "widget manager",
+          "挂件",
+          "挂件管理",
+          "组件",
+          "组件管理",
+          "Pomodoro",
+          "Pomodoro timer",
+          "番茄钟",
+          "番茄",
+          "heat map",
+          "热力图",
+          "热搜",
+          "搜索",
+          "AI",
+          "智能助手",
+          "agent",
+          "智能体"
+        ],
+        "minAppVersion": "3.6.5",
+        "name": "siyuan-homepage",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/Glaube-TY/siyuan-homepage",
+        "version": "4.3.0"
+      },
+      "size": 3898579,
+      "stars": 31,
+      "updated": "2026-06-24T14:48:32Z",
+      "url": "Glaube-TY/siyuan-homepage@b482722d4106ecbb0dd3e1fcd2051545d0f26b2a"
+    },
+    {
+      "installSize": 732846,
+      "openIssues": 3,
+      "package": {
+        "author": "Quincy Zou",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Import, edit, and export Obsidian Canvas files inside SiYuan",
+          "zh_CN": "在思源笔记中导入、编辑 Obsidian 画布，支持 canvas 开放文件格式，与 Obsidian 兼容互通。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Canvas",
+          "zh_CN": "无界"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": null,
+        "keywords": null,
+        "minAppVersion": "2.10.14",
+        "name": "siyuan-canvas",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/famotime/siyuan-canvas",
+        "version": "1.4.1"
+      },
+      "size": 321887,
+      "stars": 5,
+      "updated": "2026-06-24T13:32:46Z",
+      "url": "famotime/siyuan-canvas@16341b49b7228691da6240c5b39971403c44a14e"
+    },
+    {
       "installSize": 6695289,
       "openIssues": 58,
       "package": {
@@ -133,88 +296,6 @@
       "stars": 13,
       "updated": "2026-06-23T12:25:54Z",
       "url": "b8l8u8e8/siyuan-plugin-lock@479fae9c6aac265619e1c0556c00bb9b6a734c72"
-    },
-    {
-      "installSize": 7449324,
-      "openIssues": 0,
-      "package": {
-        "author": "Glaube-TY",
-        "backends": [
-          "windows",
-          "linux",
-          "ios",
-          "android",
-          "harmony",
-          "docker",
-          "darwin"
-        ],
-        "description": {
-          "en_US": "Provides personalized homepage layout and rich functional modules.",
-          "zh_CN": "提供个性化首页布局和丰富的功能模块。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "en_US": "HOME",
-          "zh_CN": "主页"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://blog.glaube-ty.top/da-shang"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "homepage",
-          "home",
-          "主页",
-          "首页",
-          "task",
-          "task manager",
-          "任务",
-          "任务管理",
-          "SQL",
-          "sql",
-          "查询",
-          "widget",
-          "widget manager",
-          "挂件",
-          "挂件管理",
-          "组件",
-          "组件管理",
-          "Pomodoro",
-          "Pomodoro timer",
-          "番茄钟",
-          "番茄",
-          "heat map",
-          "热力图",
-          "热搜",
-          "搜索",
-          "AI",
-          "智能助手",
-          "agent",
-          "智能体"
-        ],
-        "minAppVersion": "3.6.5",
-        "name": "siyuan-homepage",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/Glaube-TY/siyuan-homepage",
-        "version": "4.2.1"
-      },
-      "size": 3757773,
-      "stars": 31,
-      "updated": "2026-06-23T03:45:01Z",
-      "url": "Glaube-TY/siyuan-homepage@eff2e9ea475da56ee8c75d94ef35c028c3d82d3d"
     },
     {
       "installSize": 323235,
@@ -1061,42 +1142,6 @@
       "stars": 28,
       "updated": "2026-06-17T15:47:27Z",
       "url": "mm-o/siyuan-sireader@bec713b271f48fd9a8bee6970b8e54b172df7019"
-    },
-    {
-      "installSize": 684661,
-      "openIssues": 1,
-      "package": {
-        "author": "Quincy Zou",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Import, edit, and export Obsidian Canvas files inside SiYuan",
-          "zh_CN": "在思源笔记中导入、编辑 Obsidian 画布，支持 canvas 开放文件格式，与 Obsidian 兼容互通。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Canvas",
-          "zh_CN": "无界"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": null,
-        "keywords": null,
-        "minAppVersion": "2.10.14",
-        "name": "siyuan-canvas",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/famotime/siyuan-canvas",
-        "version": "1.3.5"
-      },
-      "size": 308884,
-      "stars": 4,
-      "updated": "2026-06-16T12:55:41Z",
-      "url": "famotime/siyuan-canvas@b19db1436592395a890e46a22dde14e12bc8e236"
     },
     {
       "installSize": 1026161,
@@ -11704,48 +11749,6 @@
       "stars": 8,
       "updated": "2025-07-10T12:05:48Z",
       "url": "silent1189/siyuan-imageConverter@9f1acc00f2f54e0cbf5f7d07254ade8ad6ae7c14"
-    },
-    {
-      "installSize": 139166,
-      "openIssues": 11,
-      "package": {
-        "author": "OpaqueGlass",
-        "backends": null,
-        "description": {
-          "default": "Double-click to expand the next level or double-click to open the document.",
-          "en_US": "Double-click to expand the next level or double-click to open the document.",
-          "zh_CN": "双击展开下一层级，或双击打开文档；（测试中功能：对大纲、标签、移动端的单双击处理）"
-        },
-        "disabledInPublish": false,
-        "displayName": {
-          "default": "double click file tree",
-          "en_US": "double click file tree",
-          "zh_CN": "双击文档树"
-        },
-        "frontends": null,
-        "funding": {
-          "custom": [
-            "https://wj.qq.com/s2/12395364/b69f/"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": null,
-        "minAppVersion": "",
-        "name": "syplugin-doubleClickFileTree",
-        "readme": {
-          "default": "README.md",
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/OpaqueGlass/syplugin-doubleClickFileTree",
-        "version": "0.3.7"
-      },
-      "size": 53521,
-      "stars": 6,
-      "updated": "2025-07-09T09:52:14Z",
-      "url": "OpaqueGlass/syplugin-doubleClickFileTree@610387fd90dce7191a255c90126db47832874966"
     },
     {
       "installSize": 5796512,
