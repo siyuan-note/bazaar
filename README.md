@@ -1,6 +1,6 @@
 # SiYuan community bazaar <a title="Hits" target="_blank" href="https://github.com/siyuan-note/bazaar"><img src="https://hits.b3log.org/siyuan-note/bazaar.svg"></a>
 
-English | [简体中文](./README_zh_CN.md)
+English | [简体中文](./README.zh-CN.md)
 
 ## Bazaar package development samples
 
