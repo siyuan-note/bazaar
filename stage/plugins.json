@@ -1,60 +1,96 @@
 {
   "repos": [
     {
-      "installSize": 19665743,
+      "installSize": 428633,
+      "openIssues": 1,
+      "package": {
+        "author": "Quincy Zou",
+        "backends": [
+          "windows"
+        ],
+        "description": {
+          "default": "文档关键内容展示和提取，反链文档快捷整理、文档内容快捷编辑等20+辅助功能。让关键信息一目了然，让笔记整理一键完成。",
+          "en_US": "SiYuan Notes plugin, which provides functions such as extracting key content of documents, quickly organizing backlinked documents, and quickly editing document content."
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "文档助手 / Doc Assist",
+          "en_US": "Doc Assist",
+          "zh_CN": "文档助手"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [],
+        "minAppVersion": "3.5.7",
+        "name": "siyuan-doc-assist",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/famotime/siyuan-doc-assist",
+        "version": "1.6.1"
+      },
+      "size": 173680,
+      "stars": 4,
+      "updated": "2026-07-02T11:31:38Z",
+      "url": "famotime/siyuan-doc-assist@8539004c7884c4bf9bf05a5924abd77349226944"
+    },
+    {
+      "installSize": 1750454,
       "openIssues": 0,
       "package": {
-        "author": "suka233",
+        "author": "li.mian",
         "backends": [
           "all"
         ],
         "description": {
-          "default": "This plugin has entered maintenance mode. We strongly recommend using the newer and more powerful KMind Zen. You can search and install it directly from the SiYuan marketplace. KMind mind map plugin, one-click convert SiYuan documents to mind maps, mirror blocks, document tree mind maps, PDF annotation jump, etc.",
-          "en": "This plugin has entered maintenance mode. We strongly recommend using the newer and more powerful KMind Zen. You can search and install it directly from the SiYuan marketplace. KMind mind map plugin, one-click convert SiYuan documents to mind maps, mirror blocks, document tree mind maps, PDF annotation jump, etc.",
-          "en_US": "This plugin has entered maintenance mode. We strongly recommend using the newer and more powerful KMind Zen. You can search and install it directly from the SiYuan marketplace. KMind mind map plugin, one-click convert SiYuan documents to mind maps, mirror blocks, document tree mind maps, PDF annotation jump, etc.",
-          "zh-CN": "本插件已经进入维护阶段，强烈推荐使用更新更强的 KMind Zen，思源集市中可以直接搜索下载！KMind思维导图插件,多根节点，MOC模式，思源文档一键转导图，导图镜像块，文档树导图，PDF标注跳转等功能，交流QQ群号：130584086",
-          "zh_CN": "本插件已经进入维护阶段，强烈推荐使用更新更强的 KMind Zen，思源集市中可以直接搜索下载！KMind思维导图插件,多根节点，MOC模式，思源文档一键转导图，导图镜像块，文档树导图，PDF标注跳转等功能，交流QQ群号：130584086"
+          "default": "A personal ledger plugin for SiYuan.",
+          "zh_CN": "一个基于思源笔记的账本插件"
         },
         "disabledInPublish": false,
         "displayName": {
-          "default": "KMind plugin",
-          "en": "KMind plugin",
-          "en_US": "KMind plugin",
-          "zh-CN": "KMind思维导图插件",
-          "zh_CN": "KMind思维导图插件"
+          "default": "pledger",
+          "zh_CN": "账本"
         },
         "frontends": [
           "all"
         ],
         "funding": {
           "custom": [
-            "https://txc.qq.com/products/662653"
+            "https://afdian.com/a/limian"
           ],
           "github": "",
           "openCollective": "",
           "patreon": ""
         },
-        "keywords": null,
-        "minAppVersion": "2.10.9",
-        "name": "kmind-plugin",
+        "keywords": [
+          "ledger",
+          "账本"
+        ],
+        "minAppVersion": "3.2.1",
+        "name": "siyuan-pledger",
         "readme": {
-          "default": "README.md",
-          "en": "README.en.md",
-          "en_US": "README_en_US.md",
-          "zh-CN": "README.zh-CN.md",
-          "zh_CN": "README.md"
+          "default": "README.md"
         },
-        "url": "https://github.com/suka233/siyuan-kmind-plugin",
-        "version": "2.14.1"
+        "url": "https://github.com/double3-org/siyuan-pledger",
+        "version": "0.1.1"
       },
-      "size": 8032604,
-      "stars": 91,
-      "updated": "2026-07-02T03:58:57Z",
-      "url": "suka233/siyuan-kmind-plugin@7fcdadd0bf157e81294cfe8a14b9d6917c0cb860"
+      "size": 1234544,
+      "stars": 5,
+      "updated": "2026-07-02T10:17:42Z",
+      "url": "double3-org/siyuan-pledger@30f9faee6cd9624c417eb5f7d6ca95fcfe683435"
     },
     {
-      "installSize": 13988454,
-      "openIssues": 1,
+      "installSize": 13988690,
+      "openIssues": 2,
       "package": {
         "author": "Glaube-TY",
         "backends": [
@@ -127,12 +163,64 @@
           "default": "README.md"
         },
         "url": "https://github.com/Glaube-TY/siyuan-homepage",
-        "version": "4.5.4"
+        "version": "4.5.5"
       },
-      "size": 4510164,
+      "size": 4510560,
       "stars": 32,
-      "updated": "2026-07-02T03:51:02Z",
-      "url": "Glaube-TY/siyuan-homepage@7b7d23abd44d56750fc09575e13938290b29ed21"
+      "updated": "2026-07-02T08:32:10Z",
+      "url": "Glaube-TY/siyuan-homepage@468615d61d998e58bd5ab0552d1b1c0df2eb6e98"
+    },
+    {
+      "installSize": 19665743,
+      "openIssues": 0,
+      "package": {
+        "author": "suka233",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "This plugin has entered maintenance mode. We strongly recommend using the newer and more powerful KMind Zen. You can search and install it directly from the SiYuan marketplace. KMind mind map plugin, one-click convert SiYuan documents to mind maps, mirror blocks, document tree mind maps, PDF annotation jump, etc.",
+          "en": "This plugin has entered maintenance mode. We strongly recommend using the newer and more powerful KMind Zen. You can search and install it directly from the SiYuan marketplace. KMind mind map plugin, one-click convert SiYuan documents to mind maps, mirror blocks, document tree mind maps, PDF annotation jump, etc.",
+          "en_US": "This plugin has entered maintenance mode. We strongly recommend using the newer and more powerful KMind Zen. You can search and install it directly from the SiYuan marketplace. KMind mind map plugin, one-click convert SiYuan documents to mind maps, mirror blocks, document tree mind maps, PDF annotation jump, etc.",
+          "zh-CN": "本插件已经进入维护阶段，强烈推荐使用更新更强的 KMind Zen，思源集市中可以直接搜索下载！KMind思维导图插件,多根节点，MOC模式，思源文档一键转导图，导图镜像块，文档树导图，PDF标注跳转等功能，交流QQ群号：130584086",
+          "zh_CN": "本插件已经进入维护阶段，强烈推荐使用更新更强的 KMind Zen，思源集市中可以直接搜索下载！KMind思维导图插件,多根节点，MOC模式，思源文档一键转导图，导图镜像块，文档树导图，PDF标注跳转等功能，交流QQ群号：130584086"
+        },
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "KMind plugin",
+          "en": "KMind plugin",
+          "en_US": "KMind plugin",
+          "zh-CN": "KMind思维导图插件",
+          "zh_CN": "KMind思维导图插件"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://txc.qq.com/products/662653"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": null,
+        "minAppVersion": "2.10.9",
+        "name": "kmind-plugin",
+        "readme": {
+          "default": "README.md",
+          "en": "README.en.md",
+          "en_US": "README_en_US.md",
+          "zh-CN": "README.zh-CN.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/suka233/siyuan-kmind-plugin",
+        "version": "2.14.1"
+      },
+      "size": 8032604,
+      "stars": 91,
+      "updated": "2026-07-02T03:58:57Z",
+      "url": "suka233/siyuan-kmind-plugin@7fcdadd0bf157e81294cfe8a14b9d6917c0cb860"
     },
     {
       "installSize": 1445627,
@@ -1551,51 +1639,6 @@
       "stars": 1,
       "updated": "2026-06-29T13:09:57Z",
       "url": "notesynchelper/siyuan-notehelper@9b35797fe9b39b4a01607240e7fd1de7e5357e8f"
-    },
-    {
-      "installSize": 1741540,
-      "openIssues": 0,
-      "package": {
-        "author": "li.mian",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A personal ledger plugin for SiYuan.",
-          "zh_CN": "一个基于思源笔记的账本插件"
-        },
-        "disabledInPublish": false,
-        "displayName": {
-          "default": "pledger",
-          "zh_CN": "账本"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/limian"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "ledger",
-          "账本"
-        ],
-        "minAppVersion": "3.2.1",
-        "name": "siyuan-pledger",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/double3-org/siyuan-pledger",
-        "version": "0.1.0"
-      },
-      "size": 1229984,
-      "stars": 5,
-      "updated": "2026-06-29T11:18:50Z",
-      "url": "double3-org/siyuan-pledger@2249dc0fe404bcc2ef6d173cccc3c6eb76d8bda6"
     },
     {
       "installSize": 6239101,
@@ -4178,47 +4221,6 @@
       "stars": 10,
       "updated": "2026-05-06T14:25:12Z",
       "url": "YuxinZhaozyx/siyuan-embed-tikz@92e2aa48d80bb4452cc132b5b5eb8486dd72f456"
-    },
-    {
-      "installSize": 398561,
-      "openIssues": 2,
-      "package": {
-        "author": "Quincy Zou",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "SiYuan Notes plugin, which provides functions such as extracting key content of documents, quickly organizing backlinked documents, and quickly editing document content.",
-          "zh_CN": "思源笔记插件，提供文档关键内容提取、反链文档快捷整理、文档内容快捷编辑等功能。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "文档助手 / Doc Assist",
-          "en_US": "Doc Assist",
-          "zh_CN": "文档助手"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [],
-        "minAppVersion": "3.5.7",
-        "name": "siyuan-doc-assist",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/famotime/siyuan-doc-assist",
-        "version": "1.5.5"
-      },
-      "size": 165915,
-      "stars": 3,
-      "updated": "2026-05-06T12:18:13Z",
-      "url": "famotime/siyuan-doc-assist@be6e0fb25c37ba8309c3289d6cdaea1395cba0b0"
     },
     {
       "installSize": 849290,
