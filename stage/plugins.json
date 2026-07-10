@@ -1,6 +1,96 @@
 {
   "repos": [
     {
+      "installSize": 544738,
+      "openIssues": 5,
+      "package": {
+        "author": "OpaqueGlass",
+        "backends": null,
+        "description": {
+          "default": "Insert doc-links under current doc title",
+          "zh-CN": "在标题下方显示上下层级文档链接",
+          "zh_CN": "在标题下方显示上下层级文档链接"
+        },
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "HierarchyNavigate",
+          "zh-CN": "文档层级导航",
+          "zh_CN": "文档层级导航"
+        },
+        "frontends": null,
+        "funding": {
+          "custom": [
+            "https://wj.qq.com/s2/12395364/b69f/"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": null,
+        "minAppVersion": "",
+        "name": "syplugin-hierarchyNavigate",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/OpaqueGlass/syplugin-hierarchyNavigate",
+        "version": "1.10.5"
+      },
+      "size": 220892,
+      "stars": 20,
+      "updated": "2026-07-10T13:57:08Z",
+      "url": "OpaqueGlass/syplugin-hierarchyNavigate@151d0e5caa05af9789d5871fbce5818db39c9fc2"
+    },
+    {
+      "installSize": 1603955,
+      "openIssues": 0,
+      "package": {
+        "author": "mm-o",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Cloud-drive aggregation manager for SiYuan: file viewing, media playback, reading annotations, image-hosting links, and more.",
+          "en_US": "Cloud-drive aggregation manager for SiYuan: file viewing, media playback, reading annotations, image-hosting links, and more.",
+          "zh_CN": "思源网盘聚合管理器，支持网盘文件查看、媒体播放、阅读批注、图床直链等能力，更多玩法期待你的探索。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Cloud Drive Manager",
+          "en_US": "Cloud Drive Manager",
+          "zh_CN": "思盘"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": null,
+        "keywords": [
+          "思盘",
+          "cloud drive",
+          "file manager",
+          "openlist",
+          "media",
+          "s3",
+          "kernel plugin",
+          "webdav"
+        ],
+        "minAppVersion": "3.6.5",
+        "name": "siyuan-cloud",
+        "readme": {
+          "default": "README.md",
+          "en_US": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/mm-o/siyuan-cloud",
+        "version": "0.5.4"
+      },
+      "size": 593054,
+      "stars": 4,
+      "updated": "2026-07-10T13:49:21Z",
+      "url": "mm-o/siyuan-cloud@71a44fcaf955391b2f4695f11566b555a42efc23"
+    },
+    {
       "installSize": 53071,
       "openIssues": 2,
       "package": {
@@ -57,54 +147,6 @@
       "stars": 26,
       "updated": "2026-07-10T04:57:41Z",
       "url": "zxkmm/siyuan_mobile_marketplace@99486a967d1bd071755e58529f2788b9e8d8de50"
-    },
-    {
-      "installSize": 1602919,
-      "openIssues": 0,
-      "package": {
-        "author": "mm-o",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Cloud-drive aggregation manager for SiYuan: file viewing, media playback, reading annotations, image-hosting links, and more.",
-          "en_US": "Cloud-drive aggregation manager for SiYuan: file viewing, media playback, reading annotations, image-hosting links, and more.",
-          "zh_CN": "思源网盘聚合管理器，支持网盘文件查看、媒体播放、阅读批注、图床直链等能力，更多玩法期待你的探索。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Cloud Drive Manager",
-          "en_US": "Cloud Drive Manager",
-          "zh_CN": "思盘"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": null,
-        "keywords": [
-          "思盘",
-          "cloud drive",
-          "file manager",
-          "openlist",
-          "media",
-          "s3",
-          "kernel plugin",
-          "webdav"
-        ],
-        "minAppVersion": "3.6.5",
-        "name": "siyuan-cloud",
-        "readme": {
-          "default": "README.md",
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/mm-o/siyuan-cloud",
-        "version": "0.5.3"
-      },
-      "size": 592625,
-      "stars": 4,
-      "updated": "2026-07-10T02:21:55Z",
-      "url": "mm-o/siyuan-cloud@3c47171ccac312a241b4a01f01c5f45e978d416f"
     },
     {
       "installSize": 797581,
@@ -879,48 +921,6 @@
       "stars": 202,
       "updated": "2026-07-05T12:54:05Z",
       "url": "Achuan-2/siyuan-plugin-task-note-management@eb55f48fa7b3d331927159baa57b5931bdebb729"
-    },
-    {
-      "installSize": 543080,
-      "openIssues": 6,
-      "package": {
-        "author": "OpaqueGlass",
-        "backends": null,
-        "description": {
-          "default": "Insert doc-links under current doc title",
-          "zh-CN": "在标题下方显示上下层级文档链接",
-          "zh_CN": "在标题下方显示上下层级文档链接"
-        },
-        "disabledInPublish": false,
-        "displayName": {
-          "default": "HierarchyNavigate",
-          "zh-CN": "文档层级导航",
-          "zh_CN": "文档层级导航"
-        },
-        "frontends": null,
-        "funding": {
-          "custom": [
-            "https://wj.qq.com/s2/12395364/b69f/"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": null,
-        "minAppVersion": "",
-        "name": "syplugin-hierarchyNavigate",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/OpaqueGlass/syplugin-hierarchyNavigate",
-        "version": "1.10.4"
-      },
-      "size": 220338,
-      "stars": 20,
-      "updated": "2026-07-05T12:00:43Z",
-      "url": "OpaqueGlass/syplugin-hierarchyNavigate@5af4f951068ed9695a06b35786cf1eef886fa3bc"
     },
     {
       "installSize": 395870,
