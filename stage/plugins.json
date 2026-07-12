@@ -1,6 +1,129 @@
 {
   "repos": [
     {
+      "installSize": 344541,
+      "openIssues": 0,
+      "package": {
+        "author": "取舍",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Lock notebooks and docs with password or gesture, plus idle auto-lock.",
+          "zh_CN": "支持文档/笔记本加锁（密码/手势）与无操作自动锁屏。"
+        },
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "SiYuan Lock",
+          "zh_CN": "隐私保护"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": null,
+        "keywords": [
+          "加锁",
+          "手势",
+          "锁屏"
+        ],
+        "minAppVersion": "2.9.0",
+        "name": "siyuan-plugin-lock",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/b8l8u8e8/siyuan-plugin-lock",
+        "version": "0.3.8"
+      },
+      "size": 172214,
+      "stars": 15,
+      "updated": "2026-07-12T09:44:13Z",
+      "url": "b8l8u8e8/siyuan-plugin-lock@1c7418bc9755e88fdb83cb138e31e3ede9f7519a"
+    },
+    {
+      "installSize": 2152635,
+      "openIssues": 12,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "SiYuan AI Assistant, supports dragging blocks and tabs to get note context, enabling Q&amp;A and editing based on SiYuan note content",
+          "zh_CN": "思源笔记 AI 助手,支持拖动块、页签获取笔记上下文，实现基于思源笔记内容进行问答和编辑"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan Copilot",
+          "zh_CN": "SiYuan Copilot"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-copilot",
+        "readme": {
+          "default": "README_en_US.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-copilot",
+        "version": "2.7.0"
+      },
+      "size": 744878,
+      "stars": 147,
+      "updated": "2026-07-12T09:30:32Z",
+      "url": "Achuan-2/siyuan-plugin-copilot@f78226b4f6929916aa739199305f3ecfcf18aa20"
+    },
+    {
+      "installSize": 771583,
+      "openIssues": 3,
+      "package": {
+        "author": "取舍",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A free SiYuan Notes sharing plugin that supports generating share links for notebooks, individual documents, and documents with their sub-documents. It allows you to set an access password, expiration time, visitor limit, and view an overview of access to the shared content.",
+          "zh_CN": "一款免费的思源笔记分享插件，支持将笔记本、单篇文档、文档及子文档生成分享链接，设置访问密码、到期时间、访客人数限制，并可以查看分享内容的访问概览。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan Share",
+          "zh_CN": "思源分享"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": null,
+        "keywords": [
+          "share",
+          "markdown",
+          "分享"
+        ],
+        "minAppVersion": "2.9.0",
+        "name": "siyuan-plugin-share",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/b8l8u8e8/siyuan-plugin-share",
+        "version": "0.5.5"
+      },
+      "size": 245708,
+      "stars": 51,
+      "updated": "2026-07-12T09:07:38Z",
+      "url": "b8l8u8e8/siyuan-plugin-share@263921d55fc096edd3669d22874ee185b96fea58"
+    },
+    {
       "installSize": 2850903,
       "openIssues": 0,
       "package": {
@@ -232,49 +355,6 @@
       "stars": 35,
       "updated": "2026-07-11T19:35:29Z",
       "url": "Glaube-TY/siyuan-homepage@4737867d09c95a49e401d3f096c6e011b5ef4e3e"
-    },
-    {
-      "installSize": 2131703,
-      "openIssues": 12,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "SiYuan AI Assistant, supports dragging blocks and tabs to get note context, enabling Q&amp;A and editing based on SiYuan note content",
-          "zh_CN": "思源笔记 AI 助手,支持拖动块、页签获取笔记上下文，实现基于思源笔记内容进行问答和编辑"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiYuan Copilot",
-          "zh_CN": "SiYuan Copilot"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-copilot",
-        "readme": {
-          "default": "README_en_US.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-copilot",
-        "version": "2.6.1"
-      },
-      "size": 738915,
-      "stars": 146,
-      "updated": "2026-07-11T16:53:52Z",
-      "url": "Achuan-2/siyuan-plugin-copilot@74a6c09c51063de50d74d4e18e998a565e7e3575"
     },
     {
       "installSize": 1769455,
@@ -2621,46 +2701,6 @@
       "stars": 6,
       "updated": "2026-06-24T15:06:35Z",
       "url": "OpaqueGlass/syplugin-doubleClickFileTree@5f7f9b2620a805fb1b8e1d544b0f1acb57e4fcae"
-    },
-    {
-      "installSize": 342027,
-      "openIssues": 1,
-      "package": {
-        "author": "取舍",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Lock notebooks and docs with password or gesture, plus idle auto-lock.",
-          "zh_CN": "支持文档/笔记本加锁（密码/手势）与无操作自动锁屏。"
-        },
-        "disabledInPublish": false,
-        "displayName": {
-          "default": "SiYuan Lock",
-          "zh_CN": "隐私保护"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": null,
-        "keywords": [
-          "加锁",
-          "手势",
-          "锁屏"
-        ],
-        "minAppVersion": "2.9.0",
-        "name": "siyuan-plugin-lock",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/b8l8u8e8/siyuan-plugin-lock",
-        "version": "0.3.7"
-      },
-      "size": 171741,
-      "stars": 13,
-      "updated": "2026-06-23T12:25:54Z",
-      "url": "b8l8u8e8/siyuan-plugin-lock@479fae9c6aac265619e1c0556c00bb9b6a734c72"
     },
     {
       "installSize": 1163217,
@@ -5389,46 +5429,6 @@
       "stars": 15,
       "updated": "2026-04-06T17:59:36Z",
       "url": "Macavity/siyuan-database-properties-panel@e88ca1b843eac572bd2ed7ac8737661adeafde5e"
-    },
-    {
-      "installSize": 771379,
-      "openIssues": 3,
-      "package": {
-        "author": "取舍",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A free SiYuan Notes sharing plugin that supports generating share links for notebooks, individual documents, and documents with their sub-documents. It allows you to set an access password, expiration time, visitor limit, and view an overview of access to the shared content.",
-          "zh_CN": "一款免费的思源笔记分享插件，支持将笔记本、单篇文档、文档及子文档生成分享链接，设置访问密码、到期时间、访客人数限制，并可以查看分享内容的访问概览。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiYuan Share",
-          "zh_CN": "思源分享"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": null,
-        "keywords": [
-          "share",
-          "markdown",
-          "分享"
-        ],
-        "minAppVersion": "2.9.0",
-        "name": "siyuan-plugin-share",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/b8l8u8e8/siyuan-plugin-share",
-        "version": "0.5.4"
-      },
-      "size": 245649,
-      "stars": 42,
-      "updated": "2026-04-06T14:29:29Z",
-      "url": "b8l8u8e8/siyuan-plugin-share@e7ac58387f2bdb58a8f5cde5701f11de94c38a66"
     },
     {
       "installSize": 484721,
