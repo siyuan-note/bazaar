@@ -1,6 +1,160 @@
 {
   "repos": [
     {
+      "installSize": 9714130,
+      "openIssues": 3,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android",
+          "harmony"
+        ],
+        "description": {
+          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
+          "zh_CN": "一款在思源笔记里实现任务管理功能的插件，为了践行「防弹笔记法」而开发。支持电脑端和移动端系统通知提醒任务执行、日历视图查看行事历、项目管理、四象限面板、番茄钟专注、习惯打卡等功能"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Note Management",
+          "zh_CN": "任务笔记管理"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "reminder",
+          "time",
+          "calendar",
+          "notification",
+          "提醒",
+          "时间",
+          "日历",
+          "通知",
+          "番茄钟",
+          "四象限",
+          "任务管理",
+          "项目管理",
+          "习惯打卡"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-task-note-management",
+        "readme": {
+          "default": "README_en.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
+        "version": "7.0.2"
+      },
+      "size": 4831436,
+      "stars": 205,
+      "updated": "2026-07-12T13:18:21Z",
+      "url": "Achuan-2/siyuan-plugin-task-note-management@e2a42d8542872f43149e40524eea864efa8d4959"
+    },
+    {
+      "installSize": 2157172,
+      "openIssues": 12,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "SiYuan AI Assistant, supports dragging blocks and tabs to get note context, enabling Q&amp;A and editing based on SiYuan note content",
+          "zh_CN": "思源笔记 AI 助手,支持拖动块、页签获取笔记上下文，实现基于思源笔记内容进行问答和编辑"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan Copilot",
+          "zh_CN": "SiYuan Copilot"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-copilot",
+        "readme": {
+          "default": "README_en_US.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-copilot",
+        "version": "2.7.1"
+      },
+      "size": 745914,
+      "stars": 147,
+      "updated": "2026-07-12T13:06:34Z",
+      "url": "Achuan-2/siyuan-plugin-copilot@7ab75475cec94e578be13d739c67feb921044195"
+    },
+    {
+      "installSize": 1842055,
+      "openIssues": 0,
+      "package": {
+        "author": "QYL",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A companion plugin for the Neo theme",
+          "zh-CN": "Neo主题的配套插件",
+          "zh-TW": "Neo主題的配套插件"
+        },
+        "disabledInPublish": false,
+        "displayName": {
+          "default": "Neo+"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/QYLexpired"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": null,
+        "minAppVersion": "3.7.0",
+        "name": "Neo-Plus",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md",
+          "zh-TW": "README.zh-TW.md"
+        },
+        "url": "https://github.com/QYLexpired/Neo-Plus",
+        "version": "1.3.1"
+      },
+      "size": 1123707,
+      "stars": 8,
+      "updated": "2026-07-12T11:42:15Z",
+      "url": "QYLexpired/Neo-Plus@352ef5791fa5dc27fe19d14dcc33409a1976b98e"
+    },
+    {
       "installSize": 344541,
       "openIssues": 0,
       "package": {
@@ -39,49 +193,6 @@
       "stars": 15,
       "updated": "2026-07-12T09:44:13Z",
       "url": "b8l8u8e8/siyuan-plugin-lock@1c7418bc9755e88fdb83cb138e31e3ede9f7519a"
-    },
-    {
-      "installSize": 2152635,
-      "openIssues": 12,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "SiYuan AI Assistant, supports dragging blocks and tabs to get note context, enabling Q&amp;A and editing based on SiYuan note content",
-          "zh_CN": "思源笔记 AI 助手,支持拖动块、页签获取笔记上下文，实现基于思源笔记内容进行问答和编辑"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiYuan Copilot",
-          "zh_CN": "SiYuan Copilot"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-copilot",
-        "readme": {
-          "default": "README_en_US.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-copilot",
-        "version": "2.7.0"
-      },
-      "size": 744878,
-      "stars": 147,
-      "updated": "2026-07-12T09:30:32Z",
-      "url": "Achuan-2/siyuan-plugin-copilot@f78226b4f6929916aa739199305f3ecfcf18aa20"
     },
     {
       "installSize": 771583,
@@ -162,117 +273,6 @@
       "stars": 2,
       "updated": "2026-07-12T08:09:05Z",
       "url": "famotime/siyuan-power-buttons@a6f9110ed1d1484c233a10f1e1dd8c0e863ad029"
-    },
-    {
-      "installSize": 1820976,
-      "openIssues": 0,
-      "package": {
-        "author": "QYL",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A companion plugin for the Neo theme",
-          "zh-CN": "Neo主题的配套插件",
-          "zh-TW": "Neo主題的配套插件"
-        },
-        "disabledInPublish": false,
-        "displayName": {
-          "default": "Neo+"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/QYLexpired"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": null,
-        "minAppVersion": "3.7.0",
-        "name": "Neo-Plus",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md",
-          "zh-TW": "README.zh-TW.md"
-        },
-        "url": "https://github.com/QYLexpired/Neo-Plus",
-        "version": "1.3.0"
-      },
-      "size": 1118918,
-      "stars": 8,
-      "updated": "2026-07-12T06:04:22Z",
-      "url": "QYLexpired/Neo-Plus@7c47c8d59a51e909227dbf91e1a19f611e511454"
-    },
-    {
-      "installSize": 9753088,
-      "openIssues": 3,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "description": {
-          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
-          "zh_CN": "一款在思源笔记里实现任务管理功能的插件，为了践行「防弹笔记法」而开发。支持电脑端和移动端系统通知提醒任务执行、日历视图查看行事历、项目管理、四象限面板、番茄钟专注、习惯打卡等功能"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Note Management",
-          "zh_CN": "任务笔记管理"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "reminder",
-          "time",
-          "calendar",
-          "notification",
-          "提醒",
-          "时间",
-          "日历",
-          "通知",
-          "番茄钟",
-          "四象限",
-          "任务管理",
-          "项目管理",
-          "习惯打卡"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-task-note-management",
-        "readme": {
-          "default": "README_en.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
-        "version": "7.0.1"
-      },
-      "size": 4844701,
-      "stars": 205,
-      "updated": "2026-07-12T05:03:48Z",
-      "url": "Achuan-2/siyuan-plugin-task-note-management@fb87fcfb1ab15e129dfa9eee7d87f3100eb6c796"
     },
     {
       "installSize": 14425746,
