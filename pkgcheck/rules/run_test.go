@@ -1,0 +1,66 @@
+// SiYuan community bazaar.
+// Copyright (c) 2021-present, b3log.org
+//
+// Bazaar is licensed under Mulan PSL v2.
+// You can use this software according to the terms and conditions of the Mulan PSL v2.
+// You may obtain a copy of Mulan PSL v2 at:
+//         http://license.coscl.org.cn/MulanPSL2
+// THIS SOFTWARE IS PROVIDED ON AN "AS IS" BASIS, WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO NON-INFRINGEMENT, MERCHANTABILITY OR FIT FOR A PARTICULAR PURPOSE.
+// See the Mulan PSL v2 for more details.
+
+package rules
+
+import (
+	"path/filepath"
+	"testing"
+)
+
+func TestHaltKeepsOnlyLeadingIssue(t *testing.T) {
+	c := &Context{
+		PackageRoot: filepath.Join("..", "testdata", "plugin_ok"),
+		OwnerRepo:   "not-a-repo",
+		Type:        TypePlugin,
+		Mode:        ModePR,
+	}
+	Run(c)
+	if len(c.Issues) != 1 {
+		t.Fatalf("expected exactly 1 issue after early halt, got %d: %v", len(c.Issues), c.Issues)
+	}
+	if c.Issues[0].Rule != "input/owner_repo" {
+		t.Fatalf("expected input/owner_repo, got %s", c.Issues[0].Rule)
+	}
+	if !c.Halted() {
+		t.Fatal("expected Halted")
+	}
+	if c.Root != "" || c.Manifest != nil {
+		t.Fatal("later steps should not have filled Root/Manifest")
+	}
+}
+
+func TestAccumulateAfterRootOK(t *testing.T) {
+	c := &Context{
+		PackageRoot: filepath.Join("..", "testdata", "plugin_ok"),
+		OwnerRepo:   "demo/sample-plugin",
+		Type:        TypePlugin,
+		Mode:        ModePR,
+		OccupiedNames: map[string]struct{}{
+			"sample-plugin": {},
+		},
+	}
+	Run(c)
+	if c.Halted() {
+		t.Fatal("should not halt when inputs are valid")
+	}
+	if c.OK() || !hasRule(c, "manifest/name_unique") {
+		t.Fatalf("expected uniqueness issue among accumulated results, issues=%v", c.Issues)
+	}
+}
+
+func hasRule(c *Context, rule string) bool {
+	for _, i := range c.Issues {
+		if i.Rule == rule {
+			return true
+		}
+	}
+	return false
+}
