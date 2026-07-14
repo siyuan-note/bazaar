@@ -22,7 +22,7 @@ Please fix the corresponding `.txt` file in the repo root: one `owner/repo` per 
 ---
 {{ end }}
 {{ if not .Issues }}
-Check passed.{{ if .Release.LatestRelease.URL }} Latest Release: [{{ .Release.LatestRelease.Tag }}]({{ .Release.LatestRelease.URL }}){{ end }}
+Check passed.{{ if .Release.URL }} Latest Release: [{{ .Release.Tag }}]({{ .Release.URL }}){{ end }}
 
 ---
 {{ end }}

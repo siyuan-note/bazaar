@@ -331,12 +331,12 @@ func checkRepo(
 		Path: ownerRepo,
 		Home: buildRepoHomeURL(repoOwner, repoName),
 	}
-	releaseCheckResult := checkRepoLatestRelease(repoOwner, repoName)
+	releaseInfo, releaseIssues := checkRepoLatestRelease(repoOwner, repoName)
 
 	out := PackageCheck{
 		RepoInfo: repoInfo,
-		Release:  *releaseCheckResult,
-		Issues:   releaseIssues(releaseCheckResult),
+		Release:  releaseInfo,
+		Issues:   releaseIssues,
 	}
 
 	// Release / package.zip 未通过时只报告流程层 Issue，不调用 Pkg Check
@@ -346,7 +346,7 @@ func checkRepo(
 		return
 	}
 
-	tmpUnzipPath, _, cleanup, err := util.DownloadAndUnzipPackageZip(releaseCheckResult.LatestRelease.PackageZip.URL)
+	tmpUnzipPath, _, cleanup, err := util.DownloadAndUnzipPackageZip(releaseInfo.PackageZipURL)
 	if err != nil {
 		logger.Warnf("download/unzip [%s] failed: %s", ownerRepo, err)
 		out.Issues = append(out.Issues, check.Issue{
@@ -393,72 +393,57 @@ func checkRepo(
 	logger.Infof("finish repo check [%s]", ownerRepo)
 }
 
-// checkRepoLatestRelease 检查最新发行信息
-func checkRepoLatestRelease(
-	repoOwner string,
-	repoName string,
-) (releaseCheckResult *Release) {
-	releaseCheckResult = &Release{}
-
-	// 获取 latest release
+// checkRepoLatestRelease 检查 Latest Release / package.zip / tag，失败直接返回 Issue，不再使用 Pass 标志。
+func checkRepoLatestRelease(repoOwner, repoName string) (info ReleaseInfo, issues []check.Issue) {
 	githubRelease, _, err := githubClient.Repositories.GetLatestRelease(githubContext, repoOwner, repoName)
 	if nil != err {
 		logger.Warnf("get repo [%s/%s] latest release failed: %s", repoOwner, repoName, err)
-		return
+		return info, []check.Issue{issueReleaseLatest()}
 	}
 
-	releaseCheckResult.LatestRelease.Pass = true // 最新发行版存在
+	info.Tag = githubRelease.GetTagName()
+	info.URL = githubRelease.GetHTMLURL()
 
-	// 获取 tag 名称
-	releaseCheckResult.LatestRelease.Tag = githubRelease.GetTagName()
-	releaseCheckResult.LatestRelease.URL = githubRelease.GetHTMLURL()
-
-	// 获取 package.zip 下载地址
 	for _, asset := range githubRelease.Assets {
 		if asset.GetName() == "package.zip" {
-			releaseCheckResult.LatestRelease.PackageZip.Pass = true
-			releaseCheckResult.LatestRelease.PackageZip.URL = asset.GetBrowserDownloadURL()
+			info.PackageZipURL = asset.GetBrowserDownloadURL()
 			break
 		}
 	}
+	if info.PackageZipURL == "" {
+		return info, []check.Issue{issueReleasePackageZip()}
+	}
 
-	// 获取 tag
 	// REF https://pkg.go.dev/github.com/google/go-github/v52/github#GitService.GetRef
-	githubReference, _, err := githubClient.Git.GetRef(githubContext, repoOwner, repoName, "tags/"+releaseCheckResult.LatestRelease.Tag)
+	githubReference, _, err := githubClient.Git.GetRef(githubContext, repoOwner, repoName, "tags/"+info.Tag)
 	if nil != err {
-		logger.Warnf("get repo [%s/%s] reference tag [%s] failed: %s", repoOwner, repoName, releaseCheckResult.LatestRelease.Tag, err)
-		return
+		logger.Warnf("get repo [%s/%s] reference tag [%s] failed: %s", repoOwner, repoName, info.Tag, err)
+		return info, []check.Issue{issueReleaseTag()}
 	}
 
 	referenceType := githubReference.GetObject().GetType()
-
 	switch referenceType {
 	case "commit":
 		if githubReference.GetObject().GetSHA() == "" {
-			logger.Warnf("parse repo [%s/%s] reference tag [%s] failed: empty commit sha", repoOwner, repoName, releaseCheckResult.LatestRelease.Tag)
-			return
+			logger.Warnf("parse repo [%s/%s] reference tag [%s] failed: empty commit sha", repoOwner, repoName, info.Tag)
+			return info, []check.Issue{issueReleaseTag()}
 		}
 	case "tag":
 		tagSha := githubReference.GetObject().GetSHA()
-
-		// 获取 commit hash
 		// REF https://pkg.go.dev/github.com/google/go-github/v52/github#GitService.GetTag
 		githubTag, _, err := githubClient.Git.GetTag(githubContext, repoOwner, repoName, tagSha)
 		if nil != err {
-			logger.Warnf("get repo [%s/%s] tag [%s:%s] failed: %s", repoOwner, repoName, releaseCheckResult.LatestRelease.Tag, tagSha, err)
-			return
+			logger.Warnf("get repo [%s/%s] tag [%s:%s] failed: %s", repoOwner, repoName, info.Tag, tagSha, err)
+			return info, []check.Issue{issueReleaseTag()}
 		}
 		if githubTag.GetObject().GetSHA() == "" {
-			logger.Warnf("parse repo [%s/%s] tag [%s:%s] failed: empty commit sha", repoOwner, repoName, releaseCheckResult.LatestRelease.Tag, tagSha)
-			return
+			logger.Warnf("parse repo [%s/%s] tag [%s:%s] failed: empty commit sha", repoOwner, repoName, info.Tag, tagSha)
+			return info, []check.Issue{issueReleaseTag()}
 		}
 	default:
-		logger.Warnf("parse repo [%s/%s] reference tag [%s] failed: unknown type [%s]", repoOwner, repoName, releaseCheckResult.LatestRelease.Tag, referenceType)
-		return
+		logger.Warnf("parse repo [%s/%s] reference tag [%s] failed: unknown type [%s]", repoOwner, repoName, info.Tag, referenceType)
+		return info, []check.Issue{issueReleaseTag()}
 	}
 
-	releaseCheckResult.Pass = releaseCheckResult.LatestRelease.Pass &&
-		releaseCheckResult.LatestRelease.PackageZip.Pass // 通过发行版检查
-
-	return
+	return info, nil
 }

@@ -36,10 +36,10 @@ func TestCheckResultTemplate(t *testing.T) {
 		Plugins: []PackageCheck{
 			{
 				RepoInfo: RepoInfo{Path: "siyuan-note/plugin-sample", Home: "https://github.com/siyuan-note/plugin-sample"},
-				Release: Release{Pass: true, LatestRelease: LatestRelease{
-					Pass: true, Tag: "v0.0.1", URL: "https://github.com/siyuan-note/plugin-sample/releases/tag/v0.0.1",
-					PackageZip: PackageZip{Pass: true, URL: "https://example.com/package.zip"},
-				}},
+				Release: ReleaseInfo{
+					Tag: "v0.0.1", URL: "https://github.com/siyuan-note/plugin-sample/releases/tag/v0.0.1",
+					PackageZipURL: "https://example.com/package.zip",
+				},
 			},
 			{
 				RepoInfo: RepoInfo{Path: "example/broken-plugin", Home: "https://github.com/example/broken-plugin"},

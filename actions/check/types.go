@@ -33,10 +33,11 @@ type CheckResult struct {
 	WidgetsDeleted   []string `json:"widgets_deleted"`
 }
 
-// PackageCheck 单个仓库的流程层检查结果（Release + Pkg Check Issues）
+// PackageCheck 单个仓库的流程层检查结果。
+// 失败一律写入 Issues（含 release/* 与 Pkg Check）；Release 仅保留通过后展示/下载所需信息。
 type PackageCheck struct {
 	RepoInfo          RepoInfo      `json:"repo"`
-	Release           Release       `json:"release"`
+	Release           ReleaseInfo   `json:"release"`
 	Issues            []check.Issue `json:"issues"`
 	MaintainerChanged bool          `json:"maintainer_changed"`
 }
@@ -47,24 +48,11 @@ type RepoInfo struct {
 	Home string `json:"home"` // 仓库主页
 }
 
-// Release 发行版
-type Release struct {
-	Pass          bool          `json:"pass"`           // 必要的发行版是否检查通过
-	LatestRelease LatestRelease `json:"latest_release"` // 最新发行版
-}
-
-// LatestRelease 最新发行版
-type LatestRelease struct {
-	Pass       bool       `json:"pass"`        // 最新发行版是否存在
-	URL        string     `json:"url"`         // 最新发行版 URL
-	Tag        string     `json:"tag"`         // 标签名
-	PackageZip PackageZip `json:"package_zip"` // package.zip 包
-}
-
-// PackageZip 最新发行版的 package.zip 包
-type PackageZip struct {
-	Pass bool   `json:"pass"` // package.zip 包是否存在
-	URL  string `json:"url"`  // package.zip 包 URL
+// ReleaseInfo Latest Release 摘要（无 Pass 标志；失败用 Issues）。
+type ReleaseInfo struct {
+	Tag           string `json:"tag,omitempty"`           // 标签名
+	URL           string `json:"url,omitempty"`           // Latest Release 页面
+	PackageZipURL string `json:"packageZipUrl,omitempty"` // package.zip 下载地址
 }
 
 // checkOutput 并发检查结果通道载荷
