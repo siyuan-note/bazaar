@@ -3,13 +3,13 @@ module github.com/siyuan-note/bazaar
 go 1.26.5
 
 require (
-	github.com/88250/gulu v1.2.3-0.20241212012748-c4dc08fe45ec
+	github.com/88250/gulu v1.2.3-0.20260609090754-168309361d92
 	github.com/google/go-github/v89 v89.0.0
 	github.com/json-iterator/go v1.1.12
-	github.com/panjf2000/ants/v2 v2.11.5
+	github.com/panjf2000/ants/v2 v2.12.1
 	github.com/parnurzeal/gorequest v0.3.0
-	github.com/qiniu/go-sdk/v7 v7.25.6
-	golang.org/x/mod v0.33.0
+	github.com/qiniu/go-sdk/v7 v7.26.15
+	golang.org/x/mod v0.38.0
 )
 
 require (
@@ -24,9 +24,9 @@ require (
 	github.com/moul/http2curl v1.0.0 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/smartystreets/goconvey v1.8.1 // indirect
-	golang.org/x/net v0.48.0 // indirect
-	golang.org/x/sync v0.19.0 // indirect
-	golang.org/x/sys v0.39.0 // indirect
-	golang.org/x/text v0.32.0 // indirect
+	golang.org/x/net v0.57.0 // indirect
+	golang.org/x/sync v0.22.0 // indirect
+	golang.org/x/sys v0.47.0 // indirect
+	golang.org/x/text v0.40.0 // indirect
 	modernc.org/fileutil v1.3.4 // indirect
 )
