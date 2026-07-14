@@ -12,17 +12,13 @@ package check
 
 import "github.com/siyuan-note/bazaar/check/rules"
 
-// 对外仍使用 check.Mode / PackageType / Issue，实现位于 rules 子包。
+// 对外仍使用 check.PackageType / Issue，实现位于 rules 子包。
 type (
-	Mode        = rules.Mode
 	PackageType = rules.PackageType
 	Issue       = rules.Issue
 )
 
 const (
-	ModeStage = rules.ModeStage
-	ModePR    = rules.ModePR
-
 	TypePlugin   = rules.TypePlugin
 	TypeTheme    = rules.TypeTheme
 	TypeIcon     = rules.TypeIcon
@@ -36,7 +32,6 @@ type Input struct {
 	PackageRoot string
 	OwnerRepo   string // owner/repo
 	Type        PackageType
-	Mode        Mode
 
 	// OldName 已上架时的 package.name；空表示首发（或 Stage 无旧数据）。
 	OldName string
@@ -69,7 +64,6 @@ func Check(in Input) *Result {
 		PackageRoot:   in.PackageRoot,
 		OwnerRepo:     in.OwnerRepo,
 		Type:          in.Type,
-		Mode:          in.Mode,
 		OldName:       in.OldName,
 		OldVersion:    in.OldVersion,
 		OccupiedNames: in.OccupiedNames,

@@ -27,7 +27,6 @@ type ManifestInput struct {
 	Owner         string
 	Repo          string
 	Type          PackageType
-	Mode          Mode
 	OldName       string
 	OldVersion    string
 	OccupiedNames map[string]struct{} // 键建议小写；nil 表示不查唯一性
@@ -107,14 +106,12 @@ func ReadManifest(path string) (map[string]any, error) {
 // Manifest 校验清单字段。
 func Manifest(m map[string]any, in ManifestInput) []Issue {
 	var issues []Issue
-	if in.Mode == ModePR {
-		issues = append(issues, checkUnknownKeys(m, in.Type)...)
-	}
+	issues = append(issues, checkUnknownKeys(m, in.Type)...)
 	issues = append(issues, checkName(m, in)...)
 	issues = append(issues, checkURL(m, in.Owner, in.Repo)...)
 	issues = append(issues, checkVersion(m, in.OldVersion)...)
 	issues = append(issues, checkAuthor(m)...)
-	issues = append(issues, checkReadme(m, in.PackageRoot, in.Mode)...)
+	issues = append(issues, checkReadme(m, in.PackageRoot)...)
 	issues = append(issues, checkFunding(m)...)
 	issues = append(issues, checkOptionalTypedFields(m)...)
 	return issues
@@ -315,16 +312,13 @@ func checkAuthor(m map[string]any) []Issue {
 
 // checkReadme 校验清单 readme 字段：值为相对包根的说明文件路径，且文件须存在（路径大小写敏感）。
 // 路径须为相对路径（不能以 / 开头）、用 / 分隔、不得包含 ..（防路径穿越）、不得使用反斜杠 \。
-func checkReadme(m map[string]any, packageRoot string, mode Mode) []Issue {
+func checkReadme(m map[string]any, packageRoot string) []Issue {
 	raw, ok := m["readme"]
 	if !ok {
-		if mode == ModePR {
-			return []Issue{issue("manifest/readme",
-				"清单缺少必填字段 readme。请用对象声明各语言说明文件，例如 \"readme\": { \"zh_CN\": \"README_zh_CN.md\", \"default\": \"README.md\" }，并确保这些文件都在 package.zip 包根（或相对包根的路径）中。",
-				"Manifest is missing required field readme. Declare locale files as an object, e.g. \"readme\": { \"zh_CN\": \"README_zh_CN.md\", \"default\": \"README.md\" }, and include those files in package.zip.",
-			)}
-		}
-		return nil
+		return []Issue{issue("manifest/readme",
+			"清单缺少必填字段 readme。请用对象声明各语言说明文件，例如 \"readme\": { \"zh_CN\": \"README_zh_CN.md\", \"default\": \"README.md\" }，并确保这些文件都在 package.zip 包根（或相对包根的路径）中。",
+			"Manifest is missing required field readme. Declare locale files as an object, e.g. \"readme\": { \"zh_CN\": \"README_zh_CN.md\", \"default\": \"README.md\" }, and include those files in package.zip.",
+		)}
 	}
 	obj, ok := raw.(map[string]any)
 	if !ok {
@@ -351,12 +345,10 @@ func checkReadme(m map[string]any, packageRoot string, mode Mode) []Issue {
 		}
 		pathVal = strings.TrimSpace(pathVal) // 跟思源内核逻辑一致，TrimSpace
 		if pathVal == "" {
-			if mode == ModePR {
-				issues = append(issues, issue("manifest/readme",
-					fmt.Sprintf("readme.%s 是空字符串。请填写相对包根的 README 路径，或删除该语言键。", locale),
-					fmt.Sprintf("readme.%s is an empty string. Set a path relative to the package root, or remove this locale key.", locale),
-				))
-			}
+			issues = append(issues, issue("manifest/readme",
+				fmt.Sprintf("readme.%s 是空字符串。请填写相对包根的 README 路径，或删除该语言键。", locale),
+				fmt.Sprintf("readme.%s is an empty string. Set a path relative to the package root, or remove this locale key.", locale),
+			))
 			continue
 		}
 		if strings.HasPrefix(pathVal, "/") || strings.Contains(pathVal, `\`) || strings.Contains(pathVal, "..") {

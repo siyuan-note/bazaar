@@ -22,14 +22,6 @@ func issue(rule, zh, en string) Issue {
 	return Issue{Rule: rule, MessageZh: zh, MessageEn: en}
 }
 
-// Mode 控制检查宽严：PR 更严，Stage 保底。
-type Mode int
-
-const (
-	ModeStage Mode = iota
-	ModePR
-)
-
 // PackageType 集市包类型。
 type PackageType int
 

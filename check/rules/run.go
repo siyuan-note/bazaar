@@ -114,7 +114,7 @@ func stepRequiredFiles(c *Context) {
 	if c.Halted() {
 		return
 	}
-	c.Add(RequiredFiles(c.Root, c.Type, c.Mode)...)
+	c.Add(RequiredFiles(c.Root, c.Type)...)
 }
 
 // stepPathNames 递归检查包内路径命名（首尾空格、Windows 保留名等）。
@@ -161,7 +161,6 @@ func stepManifest(c *Context) {
 		Owner:         c.Owner,
 		Repo:          c.Repo,
 		Type:          c.Type,
-		Mode:          c.Mode,
 		OldName:       c.OldName,
 		OldVersion:    c.OldVersion,
 		OccupiedNames: c.OccupiedNames,

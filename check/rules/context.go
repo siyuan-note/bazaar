@@ -16,7 +16,6 @@ type Context struct {
 	PackageRoot   string
 	OwnerRepo     string
 	Type          PackageType
-	Mode          Mode
 	OldName       string
 	OldVersion    string
 	OccupiedNames map[string]struct{}

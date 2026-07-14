@@ -416,7 +416,6 @@ func indexPackage(ownerRepo, typ, oldStageURL string, oldStageRepo *StageRepo, t
 		PackageRoot:   tmpUnzipPath,
 		OwnerRepo:     ownerRepo,
 		Type:          pkgType,
-		Mode:          check.ModeStage,
 		OldName:       oldName,
 		OldVersion:    oldVersion,
 		OccupiedNames: occupiedNames,

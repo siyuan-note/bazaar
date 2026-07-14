@@ -20,7 +20,6 @@ func TestHaltKeepsOnlyLeadingIssue(t *testing.T) {
 		PackageRoot: filepath.Join("..", "testdata", "plugin_ok"),
 		OwnerRepo:   "not-a-repo",
 		Type:        TypePlugin,
-		Mode:        ModePR,
 	}
 	Run(c)
 	if len(c.Issues) != 1 {
@@ -42,7 +41,6 @@ func TestAccumulateAfterRootOK(t *testing.T) {
 		PackageRoot: filepath.Join("..", "testdata", "plugin_ok"),
 		OwnerRepo:   "demo/sample-plugin",
 		Type:        TypePlugin,
-		Mode:        ModePR,
 		OccupiedNames: map[string]struct{}{
 			"sample-plugin": {},
 		},

@@ -17,7 +17,7 @@ import (
 	"strings"
 )
 
-// 所有类型 Stage / PR 都需要的基础文件（大小写敏感）。
+// 所有类型都需要的基础文件（大小写敏感）。
 var commonRequiredFiles = []string{
 	"icon.png",
 	"preview.png",
@@ -34,13 +34,10 @@ var typeRuntimeFiles = map[PackageType][]string{
 }
 
 // RequiredFiles 检查必要文件是否存在（文件名大小写敏感）。
-func RequiredFiles(root string, typ PackageType, mode Mode) []Issue {
+func RequiredFiles(root string, typ PackageType) []Issue {
 	required := append([]string{}, commonRequiredFiles...)
 	required = append(required, typ.ManifestFile())
 	required = append(required, typeRuntimeFiles[typ]...)
-
-	// PR 模式可在此追加更严的文件要求；当前与 Stage 共用集合。
-	_ = mode
 
 	var issues []Issue
 	for _, name := range required {

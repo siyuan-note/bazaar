@@ -36,12 +36,12 @@ Diff 流程（以 plugins.txt 为例）：
 5. 过滤候选新增：排除已在 bazaar head 中的仓库（可能是解决冲突时从 bazaar head 合并来的）
 6. 过滤候选删除：排除在 bazaar head 中已不存在的仓库（可能是其他 PR 删除的）
 7. OccupiedNames 使用 bazaar head 的 stage/*.json 中所有类型的 package.name 集合（跨类型；比较前统一转小写）
-8. 对最终新增列表：Latest Release / package.zip → 下载解压 → check.Check(ModePR)，并在 Bot 回复中列出删除列表、更换维护者列表
+8. 对最终新增列表：Latest Release / package.zip → 下载解压 → check.Check，并在 Bot 回复中列出删除列表、更换维护者列表
 
 Check 流程：
 1. 获取仓库最新 release 与 package.zip
 2. 下载并解压 package.zip
-3. 调用 check.Check（ModePR；OccupiedNames / AllowThemeJS；PR 新仓 OldName/OldVersion 为空）
+3. 调用 check.Check（OccupiedNames / AllowThemeJS；PR 新仓 OldName/OldVersion 为空）
 4. 通过后将 name 写入 OccupiedNames（同 PR 内唯一性）
 5. 生成检查结果并输出文件（使用 go 模板）
 6. 使用 thollander/actions-comment-pull-request 将检查结果输出到 PR 中
@@ -317,7 +317,7 @@ func checkRepos(
 	logger.Infof("finish repos check [%s]", prHeadReposPath)
 }
 
-// checkRepo 检查集市资源仓库：Latest Release / package.zip → 下载解压 → check.Check(ModePR)
+// checkRepo 检查集市资源仓库：Latest Release / package.zip → 下载解压 → check.Check
 func checkRepo(
 	ownerRepo string,
 	occupiedNames map[string]struct{},
@@ -380,7 +380,6 @@ func checkRepo(
 		PackageRoot:   tmpUnzipPath,
 		OwnerRepo:     ownerRepo,
 		Type:          pkgType,
-		Mode:          check.ModePR,
 		OldName:       "", // PR 新仓按首发处理
 		OldVersion:    "",
 		OccupiedNames: occupiedNames,

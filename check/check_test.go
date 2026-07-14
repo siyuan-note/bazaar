@@ -22,7 +22,6 @@ func TestCheckPluginOK_PR(t *testing.T) {
 		PackageRoot: root,
 		OwnerRepo:   "demo/sample-plugin",
 		Type:        TypePlugin,
-		Mode:        ModePR,
 	})
 	if !r.OK {
 		t.Fatalf("expected OK, issues=%v", r.Issues)
@@ -38,7 +37,6 @@ func TestCheckPluginMissingIcon(t *testing.T) {
 		PackageRoot: root,
 		OwnerRepo:   "demo/sample-plugin",
 		Type:        TypePlugin,
-		Mode:        ModeStage,
 	})
 	if r.OK {
 		t.Fatal("expected failure")
@@ -54,7 +52,6 @@ func TestCheckNestedRoot(t *testing.T) {
 		PackageRoot: root,
 		OwnerRepo:   "demo/sample-plugin",
 		Type:        TypePlugin,
-		Mode:        ModePR,
 	})
 	if !r.OK {
 		t.Fatalf("expected OK for nested root, issues=%v", r.Issues)
@@ -74,7 +71,6 @@ func TestCheckSpaceName(t *testing.T) {
 		PackageRoot: root,
 		OwnerRepo:   "demo/sample-plugin",
 		Type:        TypePlugin,
-		Mode:        ModeStage,
 	})
 	if r.OK {
 		t.Fatal("expected failure for leading-space filename")
@@ -90,7 +86,6 @@ func TestCheckNameImmutable(t *testing.T) {
 		PackageRoot: root,
 		OwnerRepo:   "demo/sample-plugin",
 		Type:        TypePlugin,
-		Mode:        ModeStage,
 		OldName:     "other-name",
 	})
 	if r.OK {
@@ -107,7 +102,6 @@ func TestCheckVersionMustIncrease(t *testing.T) {
 		PackageRoot: root,
 		OwnerRepo:   "demo/sample-plugin",
 		Type:        TypePlugin,
-		Mode:        ModeStage,
 		OldVersion:  "1.0.0",
 	})
 	if r.OK {
@@ -121,7 +115,6 @@ func TestCheckVersionMustIncrease(t *testing.T) {
 		PackageRoot: root,
 		OwnerRepo:   "demo/sample-plugin",
 		Type:        TypePlugin,
-		Mode:        ModeStage,
 		OldVersion:  "0.9.0",
 	})
 	if !r2.OK {
@@ -129,7 +122,7 @@ func TestCheckVersionMustIncrease(t *testing.T) {
 	}
 }
 
-func TestCheckUnknownField_PR(t *testing.T) {
+func TestCheckUnknownField(t *testing.T) {
 	dir := t.TempDir()
 	copyTree(t, filepath.Join("testdata", "plugin_ok"), dir)
 	manifest := filepath.Join(dir, "plugin.json")
@@ -156,20 +149,9 @@ func TestCheckUnknownField_PR(t *testing.T) {
 		PackageRoot: dir,
 		OwnerRepo:   "demo/sample-plugin",
 		Type:        TypePlugin,
-		Mode:        ModePR,
 	})
 	if r.OK || !hasRule(r, "manifest/unknown_field") {
-		t.Fatalf("expected manifest/unknown_field in PR mode, issues=%v", r.Issues)
-	}
-
-	r2 := Check(Input{
-		PackageRoot: dir,
-		OwnerRepo:   "demo/sample-plugin",
-		Type:        TypePlugin,
-		Mode:        ModeStage,
-	})
-	if !r2.OK {
-		t.Fatalf("Stage mode should ignore unknown fields, issues=%v", r2.Issues)
+		t.Fatalf("expected manifest/unknown_field, issues=%v", r.Issues)
 	}
 }
 
@@ -190,7 +172,6 @@ func TestCheckURL(t *testing.T) {
 		PackageRoot: dir,
 		OwnerRepo:   "demo/sample-plugin",
 		Type:        TypePlugin,
-		Mode:        ModePR,
 	})
 	if r.OK || !hasRule(r, "manifest/url") {
 		t.Fatalf("expected manifest/url, issues=%v", r.Issues)
@@ -207,7 +188,6 @@ func TestCheckMissingIndexJS(t *testing.T) {
 		PackageRoot: dir,
 		OwnerRepo:   "demo/sample-plugin",
 		Type:        TypePlugin,
-		Mode:        ModeStage,
 	})
 	if r.OK || !hasRule(r, "files/required") {
 		t.Fatalf("expected files/required for missing index.js, issues=%v", r.Issues)
@@ -231,7 +211,6 @@ func TestCheckAuthorHTML(t *testing.T) {
 		PackageRoot: dir,
 		OwnerRepo:   "demo/sample-plugin",
 		Type:        TypePlugin,
-		Mode:        ModePR,
 	})
 	if r.OK || !hasRule(r, "manifest/author") {
 		t.Fatalf("expected manifest/author, issues=%v", r.Issues)
@@ -255,7 +234,6 @@ func TestCheckNameStrict(t *testing.T) {
 		PackageRoot: dir,
 		OwnerRepo:   "demo/.hidden",
 		Type:        TypePlugin,
-		Mode:        ModePR,
 	})
 	if r.OK || !hasRule(r, "manifest/name") {
 		t.Fatalf("expected manifest/name for leading dot, issues=%v", r.Issues)
@@ -283,7 +261,6 @@ func TestCheckTemplateNeedsContentMD(t *testing.T) {
 		PackageRoot: dir,
 		OwnerRepo:   "demo/sample-template",
 		Type:        TypeTemplate,
-		Mode:        ModePR,
 	})
 	if r.OK || !hasRule(r, "files/template_md") {
 		t.Fatalf("expected files/template_md, issues=%v", r.Issues)
@@ -296,7 +273,6 @@ func TestCheckTemplateNeedsContentMD(t *testing.T) {
 		PackageRoot: dir,
 		OwnerRepo:   "demo/sample-template",
 		Type:        TypeTemplate,
-		Mode:        ModePR,
 	})
 	if !r2.OK {
 		t.Fatalf("expected OK after adding doc.md, issues=%v", r2.Issues)
@@ -321,7 +297,6 @@ func TestCheckFundingProtocol(t *testing.T) {
 		PackageRoot: dir,
 		OwnerRepo:   "demo/sample-plugin",
 		Type:        TypePlugin,
-		Mode:        ModeStage,
 	})
 	if r.OK || !hasRule(r, "manifest/funding") {
 		t.Fatalf("expected manifest/funding, issues=%v", r.Issues)
@@ -337,7 +312,6 @@ func TestCheckNameUnique(t *testing.T) {
 		PackageRoot:   root,
 		OwnerRepo:     "demo/sample-plugin",
 		Type:          TypePlugin,
-		Mode:          ModePR,
 		OccupiedNames: occupied,
 	})
 	if r.OK || !hasRule(r, "manifest/name_unique") {
@@ -349,7 +323,6 @@ func TestCheckNameUnique(t *testing.T) {
 		PackageRoot:   root,
 		OwnerRepo:     "demo/sample-plugin",
 		Type:          TypePlugin,
-		Mode:          ModeStage,
 		OldName:       "sample-plugin",
 		OldVersion:    "0.9.0",
 		OccupiedNames: occupied,
@@ -363,7 +336,6 @@ func TestCheckNameUnique(t *testing.T) {
 		PackageRoot: root,
 		OwnerRepo:   "demo/sample-plugin",
 		Type:        TypePlugin,
-		Mode:        ModePR,
 		OccupiedNames: map[string]struct{}{
 			"Sample-Plugin": {},
 		},
