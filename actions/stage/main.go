@@ -12,7 +12,7 @@ package main
 
 import (
 	"bytes"
-	"crypto/tls"
+	"context"
 	"encoding/json"
 	"fmt"
 	"html"
@@ -27,9 +27,9 @@ import (
 	"time"
 
 	"github.com/88250/gulu"
+	"github.com/google/go-github/v89/github"
 	jsoniter "github.com/json-iterator/go"
 	"github.com/panjf2000/ants/v2"
-	"github.com/parnurzeal/gorequest"
 	"github.com/siyuan-note/bazaar/actions/util"
 	"github.com/siyuan-note/bazaar/check"
 )
@@ -39,6 +39,9 @@ var (
 	// heavyStageSem 限制同时进行「下载 + 上传 OSS」的仓库数，避免大量更新时打满 GitHub/OSS；仅 hash 检查不受限。
 	heavyStageSem  chan struct{}
 	heavyStageOnce sync.Once
+
+	githubContext = context.Background()
+	githubClient  *github.Client
 )
 
 // getStagePoolSize 从环境变量 STAGE_POOL_SIZE 读取并发池大小，默认 80（接近 GitHub API 的并发限制），以在多数为 skip 时加快检查。
@@ -71,6 +74,12 @@ func initHeavyStageSem() {
 
 func main() {
 	logger.Infof("bazaar is staging...")
+
+	var err error
+	githubClient, err = util.NewGitHubClient(os.Getenv("PAT"), 30*time.Second)
+	if err != nil {
+		logger.Fatalf("create github client failed: %v", err)
+	}
 
 	if err := checkRateLimitBeforeStage(); err != nil {
 		logger.Fatalf("GitHub API rate limit check failed: %v", err)
@@ -106,36 +115,22 @@ func checkRateLimitBeforeStage() error {
 	if required == 0 {
 		return nil
 	}
-	pat := os.Getenv("PAT")
-	if pat == "" {
+	if os.Getenv("PAT") == "" {
 		return fmt.Errorf("env PAT is not set")
 	}
-	var out struct {
-		Resources struct {
-			Core struct {
-				Limit     int   `json:"limit"`
-				Remaining int   `json:"remaining"`
-				Reset     int64 `json:"reset"`
-			} `json:"core"`
-		} `json:"resources"`
+	ctx, cancel := context.WithTimeout(githubContext, 10*time.Second)
+	defer cancel()
+	limits, _, err := githubClient.RateLimit.Get(ctx)
+	if err != nil {
+		return fmt.Errorf("get rate limit: %w", err)
 	}
-	request := gorequest.New().TLSClientConfig(&tls.Config{InsecureSkipVerify: true})
-	resp, _, errs := request.Get("https://api.github.com/rate_limit").
-		Set("Accept", "application/vnd.github+json").
-		Set("Authorization", "Token "+pat).
-		Set("User-Agent", util.UserAgent).
-		Set("X-GitHub-Api-Version", "2022-11-28").
-		Timeout(10 * time.Second).
-		EndStruct(&out)
-	if len(errs) > 0 {
-		return fmt.Errorf("get rate limit: %w", errs[0])
+	core := limits.GetCore()
+	if core == nil {
+		return fmt.Errorf("rate_limit response missing core")
 	}
-	if resp != nil && resp.StatusCode != 200 {
-		return fmt.Errorf("rate_limit returned %d", resp.StatusCode)
-	}
-	remaining := out.Resources.Core.Remaining
-	limit := out.Resources.Core.Limit
-	reset := out.Resources.Core.Reset
+	remaining := core.Remaining
+	limit := core.Limit
+	reset := core.Reset.Unix()
 	if remaining < required {
 		return fmt.Errorf("GitHub REST API (core) remaining %d / %d is below required %d for %d repos (~%d requests); reset at %d", remaining, limit, required, repoCount, required, reset)
 	}
@@ -372,8 +367,8 @@ func getOldPackageFields(oldRepo *StageRepo) (name, version string) {
 // themeJsAllowSet 仅 typ 为 themes 时使用；为 nil 或未包含本仓库时 AllowThemeJS 为 false（禁止 theme.js），仅白名单内为 true。
 // occupiedNames 为已占用 package.name 集合，供 check.Check 做跨类型唯一性检查。
 func indexPackage(ownerRepo, typ, oldStageURL string, oldStageRepo *StageRepo, themeJsAllowSet map[string]struct{}, occupiedNames map[string]struct{}) (ok, skipped bool, hash, published string, size, installSize int64, pkg any) {
-	// 获取该仓库 Latest Release 信息（hash、发布时间、package.zip 下载地址）
-	hash, published, packageZip, releaseOk := getRepoLatestRelease(ownerRepo)
+	// 获取该仓库 Latest Release 信息（hash、发布时间、package.zip asset id）
+	hash, published, packageZipAssetID, releaseOk := getRepoLatestRelease(ownerRepo)
 	if !releaseOk {
 		logger.Warnf("get [%s] latest release failed", ownerRepo)
 		return
@@ -389,13 +384,19 @@ func indexPackage(ownerRepo, typ, oldStageURL string, oldStageRepo *StageRepo, t
 		}
 	}
 
+	owner, name, parseOk := splitOwnerRepo(ownerRepo)
+	if !parseOk {
+		logger.Warnf("download/unzip [%s] failed: invalid owner/repo", ownerRepo)
+		return
+	}
+
 	// 限制同时进行「下载 + 上传」的仓库数
 	heavyStageSem <- struct{}{}
 	defer func() { <-heavyStageSem }()
 
-	tmpUnzipPath, data, cleanup, err := util.DownloadAndUnzipPackageZip(packageZip)
+	tmpUnzipPath, data, cleanup, err := util.DownloadAndUnzipPackageZip(githubContext, githubClient, owner, name, packageZipAssetID)
 	if err != nil {
-		logger.Errorf("download/unzip [%s] failed: %s", packageZip, err)
+		logger.Errorf("download/unzip [%s] asset %d failed: %s", ownerRepo, packageZipAssetID, err)
 		return
 	}
 	defer cleanup()
@@ -579,119 +580,101 @@ func indexPackageFile(ownerRepo, hash, unzipRoot, filePath string, size, install
 }
 
 func repoStats(ownerRepo string) (stars, openIssues int, ok bool) {
-	result := map[string]any{}
-	request := gorequest.New().TLSClientConfig(&tls.Config{InsecureSkipVerify: true})
-	pat := os.Getenv("PAT")
-	u := "https://api.github.com/repos/" + ownerRepo
-	resp, _, errs := request.Get(u).
-		Set("Authorization", "Token "+pat).
-		Set("User-Agent", util.UserAgent).Timeout(30*time.Second).
-		Retry(1, 3*time.Second).EndStruct(&result)
-	if nil != errs {
-		logger.Warnf("get [%s] failed: %s", u, errs)
+	owner, name, parseOk := splitOwnerRepo(ownerRepo)
+	if !parseOk {
+		logger.Warnf("get [%s] failed: invalid owner/repo", ownerRepo)
 		return
 	}
-	if 200 != resp.StatusCode {
-		logger.Warnf("get [%s] failed: %d", u, resp.StatusCode)
+	ctx, cancel := context.WithTimeout(githubContext, 30*time.Second)
+	defer cancel()
+	repo, _, err := githubClient.Repositories.Get(ctx, owner, name)
+	if err != nil {
+		logger.Warnf("get [%s] failed: %s", ownerRepo, err)
 		return
 	}
-
-	//logger.Infof("X-Ratelimit-Remaining=%s]", resp.Header.Get("X-Ratelimit-Remaining"))
-	stars = int(result["stargazers_count"].(float64))
-	openIssues = int(result["open_issues_count"].(float64))
+	stars = repo.GetStargazersCount()
+	openIssues = repo.GetOpenIssuesCount()
 	ok = true
 	return
 }
 
 // getRepoLatestRelease 获取仓库最新发布的版本
-func getRepoLatestRelease(ownerRepo string) (hash, published, packageZip string, ok bool) {
-	result := map[string]any{}
-	request := gorequest.New().TLSClientConfig(&tls.Config{InsecureSkipVerify: true})
-	pat := os.Getenv("PAT")
-	// REF https://docs.github.com/en/rest/releases/releases#get-the-latest-release
-	u := "https://api.github.com/repos/" + ownerRepo + "/releases/latest"
-	resp, _, errs := request.Get(u).
-		Set("Authorization", "Token "+pat).
-		Set("User-Agent", util.UserAgent).Timeout(30*time.Second).
-		Retry(3, 3*time.Second).EndStruct(&result)
-	if nil != errs {
-		logger.Warnf("get release hash [%s] failed: %s", u, errs)
+func getRepoLatestRelease(ownerRepo string) (hash, published string, packageZipAssetID int64, ok bool) {
+	owner, name, parseOk := splitOwnerRepo(ownerRepo)
+	if !parseOk {
+		logger.Warnf("get [%s] latest release failed: invalid owner/repo", ownerRepo)
 		return
 	}
-	if 200 != resp.StatusCode {
-		logger.Warnf("get release hash [%s] failed: %d", u, resp.StatusCode)
+	ctx, cancel := context.WithTimeout(githubContext, 30*time.Second)
+	defer cancel()
+
+	// REF https://docs.github.com/en/rest/releases/releases#get-the-latest-release
+	release, _, err := githubClient.Repositories.GetLatestRelease(ctx, owner, name)
+	if err != nil {
+		logger.Warnf("get release [%s] failed: %s", ownerRepo, err)
 		return
 	}
 
-	// 获取 package.zip 下载 url packageZip
-	assets := result["assets"].([]any)
-	if 0 < len(assets) {
-		for _, asset := range assets {
-			asset := asset.(map[string]any)
-			if name := asset["name"].(string); "package.zip" == name {
-				packageZip = asset["browser_download_url"].(string)
-			}
+	for _, asset := range release.Assets {
+		if asset.GetName() == "package.zip" {
+			packageZipAssetID = asset.GetID()
+			break
 		}
 	}
-
-	if "" == packageZip {
+	if packageZipAssetID == 0 {
 		logger.Warnf("get [%s] package.zip failed: package.zip not found in release assets", ownerRepo)
 		return
 	}
 
-	// 获取 release 对应的 tag
-	published = result["published_at"].(string)
-	tagName := result["tag_name"].(string)
-	if "" == tagName {
+	published = release.GetPublishedAt().Format(time.RFC3339)
+	tagName := release.GetTagName()
+	if tagName == "" {
 		logger.Warnf("get [%s] tag_name failed: tag_name is empty", ownerRepo)
 		return
 	}
-	// REF https://docs.github.com/en/rest/git/refs#get-a-reference
-	u = "https://api.github.com/repos/" + ownerRepo + "/git/ref/tags/" + tagName
-	resp, _, errs = request.Get(u).
-		Set("Authorization", "Token "+pat).
-		Set("User-Agent", util.UserAgent).Timeout(30*time.Second).
-		Retry(1, 3*time.Second).EndStruct(&result)
-	if nil != errs {
-		logger.Warnf("get release hash [%s] failed: %s", u, errs)
-		return
-	}
-	if 200 != resp.StatusCode {
-		logger.Warnf("get release hash [%s] failed: %d", u, resp.StatusCode)
+
+	// REF https://pkg.go.dev/github.com/google/go-github/v89/github#GitService.GetRef
+	ref, _, err := githubClient.Git.GetRef(ctx, owner, name, "tags/"+tagName)
+	if err != nil {
+		logger.Warnf("get release hash [%s] tag [%s] failed: %s", ownerRepo, tagName, err)
 		return
 	}
 
-	// 获取 release 对应的提交的 hash
-	hash = result["object"].(map[string]any)["sha"].(string)
-	if "" == hash {
+	hash = ref.GetObject().GetSHA()
+	if hash == "" {
 		logger.Warnf("get [%s] release hash failed: hash is empty", ownerRepo)
 		return
 	}
-	typ := result["object"].(map[string]any)["type"].(string)
-	if "tag" == typ {
-		// REF https://docs.github.com/en/rest/git/tags#get-a-tag
-		u = "https://api.github.com/repos/" + ownerRepo + "/git/tags/" + hash
-		resp, _, errs = request.Get(u).
-			Set("Authorization", "Token "+pat).
-			Set("User-Agent", util.UserAgent).Timeout(30*time.Second).
-			Retry(1, 3*time.Second).EndStruct(&result)
-		if nil != errs {
-			logger.Warnf("get release hash [%s] failed: %s", u, errs)
+	switch ref.GetObject().GetType() {
+	case "commit":
+		// 轻量 tag，object.sha 即为 commit
+	case "tag":
+		// REF https://pkg.go.dev/github.com/google/go-github/v89/github#GitService.GetTag
+		tag, _, err := githubClient.Git.GetTag(ctx, owner, name, hash)
+		if err != nil {
+			logger.Warnf("get release hash [%s] tag [%s:%s] failed: %s", ownerRepo, tagName, hash, err)
 			return
 		}
-		if 200 != resp.StatusCode {
-			logger.Warnf("get release hash [%s] failed: %d", u, resp.StatusCode)
-			return
-		}
-
-		hash = result["object"].(map[string]any)["sha"].(string)
-		if "" == hash {
+		hash = tag.GetObject().GetSHA()
+		if hash == "" {
 			logger.Warnf("get [%s] tag hash failed: hash is empty", ownerRepo)
 			return
 		}
+	default:
+		logger.Warnf("get [%s] release hash failed: unknown ref type [%s]", ownerRepo, ref.GetObject().GetType())
+		return
 	}
 	ok = true
 	return
+}
+
+// splitOwnerRepo 将 "owner/repo" 拆成 owner 与 repo。
+func splitOwnerRepo(ownerRepo string) (owner, repo string, ok bool) {
+	parts := strings.Split(ownerRepo, "/")
+	if len(parts) != 2 || parts[0] == "" || parts[1] == "" {
+		return "", "", false
+	}
+	return parts[0], parts[1], true
 }
 
 // sanitizePackageDisplayStrings 对集市包直接可能显示的信息做 HTML 转义，避免 XSS。（跟思源内核 kernel/bazaar/package.go 保持一致）

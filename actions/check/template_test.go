@@ -38,7 +38,7 @@ func TestCheckResultTemplate(t *testing.T) {
 				RepoInfo: RepoInfo{Path: "siyuan-note/plugin-sample", Home: "https://github.com/siyuan-note/plugin-sample"},
 				Release: ReleaseInfo{
 					Tag: "v0.0.1", URL: "https://github.com/siyuan-note/plugin-sample/releases/tag/v0.0.1",
-					PackageZipURL: "https://example.com/package.zip",
+					PackageZipAssetID: 1,
 				},
 			},
 			{

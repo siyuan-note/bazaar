@@ -50,9 +50,9 @@ type RepoInfo struct {
 
 // ReleaseInfo Latest Release 摘要（无 Pass 标志；失败用 Issues）。
 type ReleaseInfo struct {
-	Tag           string `json:"tag,omitempty"`           // 标签名
-	URL           string `json:"url,omitempty"`           // Latest Release 页面
-	PackageZipURL string `json:"packageZipUrl,omitempty"` // package.zip 下载地址
+	Tag               string `json:"tag,omitempty"`               // 标签名
+	URL               string `json:"url,omitempty"`               // Latest Release 页面
+	PackageZipAssetID int64  `json:"packageZipAssetId,omitempty"` // package.zip 的 Release Asset ID（下载用）
 }
 
 // checkOutput 并发检查结果通道载荷

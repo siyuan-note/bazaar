@@ -21,7 +21,7 @@ import (
 	"time"
 
 	"github.com/88250/gulu"
-	"github.com/google/go-github/v52/github"
+	"github.com/google/go-github/v89/github"
 	"github.com/panjf2000/ants/v2"
 	"github.com/siyuan-note/bazaar/actions/util"
 	"github.com/siyuan-note/bazaar/check"
@@ -58,11 +58,18 @@ var (
 
 	logger        = gulu.Log.NewLogger(os.Stdout)
 	githubContext = context.Background()
-	githubClient  = github.NewTokenClient(githubContext, GITHUB_TOKEN)
+	githubClient  *github.Client
 )
 
 func main() {
 	logger.Infof("PR Check running...")
+
+	var err error
+	githubClient, err = util.NewGitHubClient(GITHUB_TOKEN, REQUEST_TIMEOUT)
+	if err != nil {
+		logger.Fatalf("create github client failed: %s", err)
+		panic(err)
+	}
 
 	// 获取检查结果模板文件（含 issueIndex：Issues 序号 %02d）
 	checkResultTemplate, err := template.New("check-result.md.tpl").Funcs(template.FuncMap{
@@ -84,8 +91,6 @@ func main() {
 	defer checkResultOutputFile.Close()
 
 	checkResult := &CheckResult{} // 检查结果
-
-	githubClient.Client().Timeout = REQUEST_TIMEOUT // 设置请求超时时间
 
 	// 加载 stage 全量已占用 name，供 check.Check 做跨类型唯一性检查
 	occupiedNames, err := util.LoadOccupiedNames(BAZAAR_HEAD_PATH)
@@ -346,7 +351,7 @@ func checkRepo(
 		return
 	}
 
-	tmpUnzipPath, _, cleanup, err := util.DownloadAndUnzipPackageZip(releaseInfo.PackageZipURL)
+	tmpUnzipPath, _, cleanup, err := util.DownloadAndUnzipPackageZip(githubContext, githubClient, repoOwner, repoName, releaseInfo.PackageZipAssetID)
 	if err != nil {
 		logger.Warnf("download/unzip [%s] failed: %s", ownerRepo, err)
 		out.Issues = append(out.Issues, check.Issue{
@@ -406,15 +411,15 @@ func checkRepoLatestRelease(repoOwner, repoName string) (info ReleaseInfo, issue
 
 	for _, asset := range githubRelease.Assets {
 		if asset.GetName() == "package.zip" {
-			info.PackageZipURL = asset.GetBrowserDownloadURL()
+			info.PackageZipAssetID = asset.GetID()
 			break
 		}
 	}
-	if info.PackageZipURL == "" {
+	if info.PackageZipAssetID == 0 {
 		return info, []check.Issue{issueReleasePackageZip()}
 	}
 
-	// REF https://pkg.go.dev/github.com/google/go-github/v52/github#GitService.GetRef
+	// REF https://pkg.go.dev/github.com/google/go-github/v89/github#GitService.GetRef
 	githubReference, _, err := githubClient.Git.GetRef(githubContext, repoOwner, repoName, "tags/"+info.Tag)
 	if nil != err {
 		logger.Warnf("get repo [%s/%s] reference tag [%s] failed: %s", repoOwner, repoName, info.Tag, err)
@@ -430,7 +435,7 @@ func checkRepoLatestRelease(repoOwner, repoName string) (info ReleaseInfo, issue
 		}
 	case "tag":
 		tagSha := githubReference.GetObject().GetSHA()
-		// REF https://pkg.go.dev/github.com/google/go-github/v52/github#GitService.GetTag
+		// REF https://pkg.go.dev/github.com/google/go-github/v89/github#GitService.GetTag
 		githubTag, _, err := githubClient.Git.GetTag(githubContext, repoOwner, repoName, tagSha)
 		if nil != err {
 			logger.Warnf("get repo [%s/%s] tag [%s:%s] failed: %s", repoOwner, repoName, info.Tag, tagSha, err)
