@@ -130,7 +130,7 @@ func stepThemeJS(c *Context) {
 	if c.Halted() || c.Type != TypeTheme {
 		return
 	}
-	c.Add(ThemeJS(c.Root, c.AllowThemeJS, c.Mode)...)
+	c.Add(ThemeJS(c.Root, c.AllowThemeJS)...)
 }
 
 // stepLoadManifest 读取类型对应的清单 JSON。

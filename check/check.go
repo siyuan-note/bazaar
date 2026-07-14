@@ -47,7 +47,9 @@ type Input struct {
 	// 仅首发（OldName 为空）时用于跨类型唯一性检查；nil 或空则跳过。
 	OccupiedNames map[string]struct{}
 
-	// AllowThemeJS 为 true 时，主题允许存在 theme.js（白名单由调用方决定）。
+	// AllowThemeJS 为 true 时，主题允许存在 theme.js。
+	// 白名单由调用方读取 config/themes-theme-js-allowlist.txt 决定（存量豁免）；
+	// false 表示禁止（含未在白名单中的新主题）。REF https://github.com/siyuan-note/bazaar/issues/1821
 	AllowThemeJS bool
 }
 

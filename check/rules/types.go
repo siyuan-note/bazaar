@@ -30,15 +30,6 @@ const (
 	ModePR
 )
 
-func (m Mode) String() string {
-	switch m {
-	case ModePR:
-		return "pr"
-	default:
-		return "stage"
-	}
-}
-
 // PackageType 集市包类型。
 type PackageType int
 

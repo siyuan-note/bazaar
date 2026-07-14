@@ -14,7 +14,6 @@ import (
 	"bytes"
 	"crypto/tls"
 	"encoding/json"
-	"errors"
 	"fmt"
 	"html"
 	"math"
@@ -32,7 +31,7 @@ import (
 	"github.com/panjf2000/ants/v2"
 	"github.com/parnurzeal/gorequest"
 	"github.com/siyuan-note/bazaar/actions/util"
-	"golang.org/x/mod/semver"
+	"github.com/siyuan-note/bazaar/check"
 )
 
 var (
@@ -77,11 +76,14 @@ func main() {
 		logger.Fatalf("GitHub API rate limit check failed: %v", err)
 	}
 
-	performStage("themes")
-	performStage("templates")
-	performStage("icons")
-	performStage("widgets")
-	performStage("plugins")
+	// 每类 stage 前重新加载 OccupiedNames，以便上一类本轮新写入的 name 参与后续类型的唯一性检查。
+	for _, typ := range []string{"themes", "templates", "icons", "widgets", "plugins"} {
+		occupiedNames, err := util.LoadOccupiedNames(".")
+		if err != nil {
+			logger.Fatalf("load occupied names failed: %v", err)
+		}
+		performStage(typ, occupiedNames)
+	}
 
 	logger.Infof("bazaar staged")
 }
@@ -216,7 +218,7 @@ func sortJSONKeys(data []byte) ([]byte, error) {
 	return buf.Bytes(), nil
 }
 
-func performStage(typ string) {
+func performStage(typ string, occupiedNames map[string]struct{}) {
 	logger.Infof("staging [%s]", typ)
 
 	reposSlice, err := util.ParseReposFromTxt(typ + ".txt")
@@ -258,7 +260,7 @@ func performStage(typ string) {
 			oldStageURL = o.URL
 			oldRepo = o
 		}
-		ok, skipped, hash, updated, size, installSize, pkg := indexPackage(ownerRepo, typ, oldStageURL, oldRepo, themeJsAllowSet)
+		ok, skipped, hash, updated, size, installSize, pkg := indexPackage(ownerRepo, typ, oldStageURL, oldRepo, themeJsAllowSet, occupiedNames)
 		if skipped {
 			// hash 未变化，跳过下载，直接沿用旧 stage 条目
 			lock.Lock()
@@ -346,75 +348,6 @@ func parseHashFromStageURL(stageURL string) string {
 	return stageURL[idx+1:]
 }
 
-// requiredFilesByType 各类型集市包在包根目录下必须存在的文件（大小写敏感）
-var requiredFilesByType = map[string][]string{
-	"plugins":   {"plugin.json", "index.js"},
-	"themes":    {"theme.json", "theme.css"},
-	"icons":     {"icon.json", "icon.js"},
-	"templates": {"template.json"},
-	"widgets":   {"widget.json", "index.html"},
-}
-
-// validateUnzipRoot 检查解压根目录结构：正常情况下所有文件应在根目录；若根目录仅有一个子目录，则将该子目录视为包根目录。返回包根目录的绝对路径。
-func validateUnzipRoot(unzipPath string) (packageRoot string, err error) {
-	entries, err := os.ReadDir(unzipPath)
-	if err != nil {
-		return "", err
-	}
-	srcPath := unzipPath
-	if len(entries) == 1 && entries[0].IsDir() {
-		srcPath = filepath.Join(unzipPath, entries[0].Name())
-	}
-	return srcPath, nil
-}
-
-// fileExistsInDir 判断 dir 下是否存在名为 name 的文件或目录（大小写敏感，通过列目录比对）。
-func fileExistsInDir(dir, name string) bool {
-	entries, err := os.ReadDir(dir)
-	if err != nil {
-		return false
-	}
-	for _, e := range entries {
-		if e.Name() == name {
-			return true
-		}
-	}
-	return false
-}
-
-// validatePackageRoot 按类型检查包根目录下是否存在所有必要文件
-func validatePackageRoot(packageRoot, typ string) error {
-	required, ok := requiredFilesByType[typ]
-	if !ok {
-		return nil
-	}
-	for _, name := range required {
-		if !fileExistsInDir(packageRoot, name) {
-			return errors.New("missing required file: " + name)
-		}
-	}
-	// 特殊检查
-	if typ == "templates" {
-		// 模板：至少包含一个模板文件
-		var foundNonReadmeMd bool
-		filepath.Walk(packageRoot, func(path string, info os.FileInfo, err error) error {
-			if err != nil || info.IsDir() {
-				return nil
-			}
-			base := strings.ToLower(filepath.Base(path))
-			if strings.HasSuffix(base, ".md") && !strings.HasPrefix(base, "readme") { // 跟思源内核判断逻辑一致
-				foundNonReadmeMd = true
-				return filepath.SkipAll
-			}
-			return nil
-		})
-		if !foundNonReadmeMd {
-			return errors.New("template must contain at least one .md file not starting with readme (case-insensitive)")
-		}
-	}
-	return nil
-}
-
 // getOldPackageFields 从已 stage 的条目中解析出 package 的 name、version
 func getOldPackageFields(oldRepo *StageRepo) (name, version string) {
 	if oldRepo == nil || oldRepo.Package == nil {
@@ -433,133 +366,12 @@ func getOldPackageFields(oldRepo *StageRepo) (name, version string) {
 	return name, version
 }
 
-// packageValidationMeta 聚合元数据与校验所需上下文
-type packageValidationMeta struct {
-	ownerRepo       string
-	packageRoot     string
-	typ             string
-	basePkg         *Package
-	oldRepo         *StageRepo
-	themeJsAllowSet map[string]struct{} // 非 nil 时：仅在此集合内的主题允许包含 theme.js
-}
-
-// validatePackageMetadata 校验元数据
-//   - 如果涉及文件，文件名大小写敏感
-func validatePackageMetadata(meta *packageValidationMeta) error {
-	// 必须为 https://github.com/owner/repo ，owner/repo 大小写不敏感，禁止末尾斜杠或 .git 结尾
-	// https://github.com/siyuan-note/siyuan/issues/7775 兼容了末尾斜杠，但我认为思源内核未必完全兼容，所以后续统一禁止末尾斜杠以避免产生问题
-	expectedURL := "https://github.com/" + meta.ownerRepo
-	if !strings.EqualFold(meta.basePkg.URL, expectedURL) {
-		return fmt.Errorf("url must be exactly %s (no trailing slash, no .git)", expectedURL)
-	}
-
-	// 不存在 oldRepo 时（新上架集市包），oldName 和 oldVersion 都为空
-	oldName, oldVersion := getOldPackageFields(meta.oldRepo)
-
-	if oldName == "" {
-		// 新集市包，完整校验 name
-		if err := util.ValidateName(meta.basePkg.Name); err != nil {
-			return fmt.Errorf("package name invalid: %w", err)
-		}
-	} else if meta.basePkg.Name != oldName {
-		// 旧集市包，name 必须与旧信息完全一致
-		return fmt.Errorf("name must be identical to current stage: got %q, expected %q", meta.basePkg.Name, oldName)
-	}
-
-	newVer := meta.basePkg.Version
-	if !strings.HasPrefix(newVer, "v") {
-		newVer = "v" + newVer
-	}
-	// version 需为合法语义化版本，且若存在旧 version 则必须高于旧 version
-	if !semver.IsValid(newVer) {
-		return fmt.Errorf("version must be valid semver: %q", meta.basePkg.Version)
-	}
-	if oldVersion != "" {
-		oldVer := oldVersion
-		if !strings.HasPrefix(oldVer, "v") {
-			oldVer = "v" + oldVer
-		}
-		if semver.Compare(newVer, oldVer) <= 0 {
-			return fmt.Errorf("version must be higher than current stage: %s <= %s", meta.basePkg.Version, oldVersion)
-		}
-	}
-
-	// author
-	if err := util.ValidatePlainStringForHTML(meta.basePkg.Author); err != nil {
-		return fmt.Errorf("author invalid: %w", err)
-	}
-
-	// readme：声明的 README 文件在解压后的包内存在（路径大小写敏感）
-	if meta.basePkg.Readme != nil {
-		for _, readmePath := range meta.basePkg.Readme {
-			if readmePath == "" {
-				continue
-			}
-			readmePath = strings.TrimSpace(readmePath) // 跟思源内核逻辑一致，TrimSpace
-			// 必须是相对路径，不能以 / 开头
-			if strings.HasPrefix(readmePath, "/") {
-				return fmt.Errorf("readme path invalid: %q", readmePath)
-			}
-			// 禁止包含 ..，防止路径穿越
-			if strings.Contains(readmePath, "..") {
-				return fmt.Errorf("readme path invalid: %q", readmePath)
-			}
-			// 要求使用 / 作为分隔符，拒绝 \
-			if strings.Contains(readmePath, "\\") {
-				return fmt.Errorf("readme path invalid: %q", readmePath)
-			}
-			absPath := filepath.Join(meta.packageRoot, filepath.FromSlash(readmePath))
-			info, err := os.Stat(absPath)
-			if err != nil || info.IsDir() {
-				return fmt.Errorf("readme file declared but not found in package: %s", readmePath)
-			}
-		}
-	}
-
-	// funding：Custom 链接仅允许 http(s) / mailto，禁止 javascript: / data: / file: 等
-	if meta.basePkg.Funding != nil {
-		for i, v := range meta.basePkg.Funding.Custom {
-			if v != "" && !strings.HasPrefix(v, "https://") && !strings.HasPrefix(v, "http://") && !strings.HasPrefix(v, "mailto:") {
-				return fmt.Errorf("funding.custom[%d] invalid protocol: must start with https:// http:// or mailto: ", i)
-			}
-		}
-	}
-
-	// 插件：若存在 disabledInPublish 则校验为 bool（JSON 中该键存在时值必须为 bool，通过 raw 校验）
-	if meta.typ == "plugins" {
-		name := strings.TrimSuffix(meta.typ, "s")
-		jsonPath := filepath.Join(meta.packageRoot, name+".json")
-		data, err := os.ReadFile(jsonPath)
-		if err != nil {
-			return fmt.Errorf("read plugin.json for disabledInPublish check: %w", err)
-		}
-		var raw map[string]any
-		if err := gulu.JSON.UnmarshalJSON(data, &raw); err != nil {
-			return fmt.Errorf("unmarshal plugin.json: %w", err)
-		}
-		if v, has := raw["disabledInPublish"]; has && v != nil {
-			if _, ok := v.(bool); !ok {
-				return fmt.Errorf("disabledInPublish must be bool when present, got %T", v)
-			}
-		}
-	}
-
-	// 主题
-	if meta.typ == "themes" && meta.themeJsAllowSet != nil {
-		// theme.js：仅 config/themes-theme-js-allowlist.txt 中的旧仓库允许在包根目录包含 theme.js（存量豁免），其余新上架的主题必须移除。
-		if _, allowed := meta.themeJsAllowSet[meta.ownerRepo]; !allowed && fileExistsInDir(meta.packageRoot, "theme.js") {
-			return fmt.Errorf("the use of [theme.js] is not allowed and must be removed. https://github.com/siyuan-note/bazaar/issues/1821")
-		}
-	}
-
-	return nil
-}
-
 // indexPackage 索引包，返回的 pkg 为 *Package / *PluginPackage / *ThemePackage 之一。
 // oldStageURL 为当前已 stage 的该仓库 URL（格式 owner/repo@hash），若与 Latest Release 的 hash 一致则跳过下载并返回 skipped=true。
-// oldStageRepo 用于元数据校验时与旧 name/url/version 对比，可为 nil（如新仓库）。
-// themeJsAllowSet 仅 typ 为 themes 时使用；为 nil 时不做 theme.js 策略校验。
-func indexPackage(ownerRepo, typ, oldStageURL string, oldStageRepo *StageRepo, themeJsAllowSet map[string]struct{}) (ok, skipped bool, hash, published string, size, installSize int64, pkg any) {
+// oldStageRepo 用于元数据校验时与旧 name/version 对比，可为 nil（如新仓库）。
+// themeJsAllowSet 仅 typ 为 themes 时使用；为 nil 或未包含本仓库时 AllowThemeJS 为 false（禁止 theme.js），仅白名单内为 true。
+// occupiedNames 为已占用 package.name 集合，供 check.Check 做跨类型唯一性检查。
+func indexPackage(ownerRepo, typ, oldStageURL string, oldStageRepo *StageRepo, themeJsAllowSet map[string]struct{}, occupiedNames map[string]struct{}) (ok, skipped bool, hash, published string, size, installSize int64, pkg any) {
 	// 获取该仓库 Latest Release 信息（hash、发布时间、package.zip 下载地址）
 	hash, published, packageZip, releaseOk := getRepoLatestRelease(ownerRepo)
 	if !releaseOk {
@@ -581,53 +393,44 @@ func indexPackage(ownerRepo, typ, oldStageURL string, oldStageRepo *StageRepo, t
 	heavyStageSem <- struct{}{}
 	defer func() { <-heavyStageSem }()
 
-	// 下载 package.zip
-	resp, data, errs := gorequest.New().Get(packageZip).
-		Set("User-Agent", util.UserAgent).
-		Retry(1, 3*time.Second).Timeout(30 * time.Second).EndBytes()
-	if nil != errs {
-		logger.Errorf("get [%s] failed: %s", packageZip, errs)
+	tmpUnzipPath, data, cleanup, err := util.DownloadAndUnzipPackageZip(packageZip)
+	if err != nil {
+		logger.Errorf("download/unzip [%s] failed: %s", packageZip, err)
 		return
 	}
-	if 200 != resp.StatusCode {
-		logger.Errorf("get [%s] failed: %d", packageZip, resp.StatusCode)
-		return
-	}
+	defer cleanup()
 
 	// 记录 zip 体积，用于 stage 条目的 size 字段
 	size = int64(len(data))
-
-	// 将 zip 写入临时文件并解压到临时目录
 	installSize = size
-	var err error
-	osTmpDir := filepath.Join(os.TempDir(), "bazaar")
-	if err = os.MkdirAll(osTmpDir, 0755); nil != err {
-		logger.Errorf("mkdir [%s] failed: %s", osTmpDir, err)
-		return
-	}
-	tmpZipPath := filepath.Join(os.TempDir(), "bazaar", gulu.Rand.String(7)+".zip")
-	if err = os.WriteFile(tmpZipPath, data, 0644); nil != err {
-		logger.Errorf("write package.zip failed: %s", err)
-		return
-	}
-	defer os.RemoveAll(tmpZipPath)
 
-	tmpUnzipPath := filepath.Join(os.TempDir(), "bazaar", gulu.Rand.String(7))
-	if err = gulu.Zip.Unzip(tmpZipPath, tmpUnzipPath); nil != err {
-		logger.Errorf("unzip package.zip failed: %s", err)
+	pkgType, typeOk := check.ParsePackageType(typ)
+	if !typeOk {
+		logger.Warnf("unknown package type [%s] for [%s]", typ, ownerRepo)
 		return
 	}
-	defer os.RemoveAll(tmpUnzipPath)
+	oldName, oldVersion := getOldPackageFields(oldStageRepo)
+	_, allowThemeJS := themeJsAllowSet[ownerRepo]
+	result := check.Check(check.Input{
+		PackageRoot:   tmpUnzipPath,
+		OwnerRepo:     ownerRepo,
+		Type:          pkgType,
+		Mode:          check.ModeStage,
+		OldName:       oldName,
+		OldVersion:    oldVersion,
+		OccupiedNames: occupiedNames,
+		AllowThemeJS:  allowThemeJS,
+	})
+	if !result.OK {
+		for _, issue := range result.Issues {
+			logger.Warnf("check [%s] failed: [%s] %s", ownerRepo, issue.Rule, issue.MessageZh)
+		}
+		return
+	}
 
-	// 校验解压根目录结构（仅有一个子目录视为打包错误），且包根下存在该类型必要文件
-	packageRoot, err := validateUnzipRoot(tmpUnzipPath)
-	if err != nil {
-		logger.Warnf("validate unzip root [%s] failed: %s", ownerRepo, err)
-		return
-	}
-	if err = validatePackageRoot(packageRoot, typ); err != nil {
-		logger.Warnf("validate package root [%s] failed: %s", ownerRepo, err)
-		return
+	packageRoot := result.PackageRoot
+	if packageRoot == "" {
+		packageRoot = tmpUnzipPath
 	}
 
 	// 计算解压后目录体积，用于 stage 条目的 installSize 字段
@@ -642,19 +445,6 @@ func indexPackage(ownerRepo, typ, oldStageURL string, oldStageRepo *StageRepo, t
 	pkg, basePkg = getPackage(packageRoot, typ)
 	if nil == pkg || nil == basePkg {
 		logger.Warnf("get package [%s] failed", ownerRepo)
-		return
-	}
-
-	// 元数据校验：name/url/version/readme 及类型相关字段；失败则本轮索引失败，沿用旧数据
-	if err := validatePackageMetadata(&packageValidationMeta{
-		ownerRepo:       ownerRepo,
-		packageRoot:     packageRoot,
-		typ:             typ,
-		basePkg:         basePkg,
-		oldRepo:         oldStageRepo,
-		themeJsAllowSet: themeJsAllowSet,
-	}); err != nil {
-		logger.Warnf("validate package metadata [%s] failed: %v", ownerRepo, err)
 		return
 	}
 

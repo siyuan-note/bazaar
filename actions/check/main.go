@@ -13,8 +13,6 @@ package main
 import (
 	"context"
 	"fmt"
-	"image"
-	"net/http"
 	"os"
 	"path/filepath"
 	"strings"
@@ -25,43 +23,38 @@ import (
 	"github.com/88250/gulu"
 	"github.com/google/go-github/v52/github"
 	"github.com/panjf2000/ants/v2"
-	"github.com/parnurzeal/gorequest"
 	"github.com/siyuan-note/bazaar/actions/util"
+	"github.com/siyuan-note/bazaar/check"
 )
 
 /*
-Diff 流程（以 plugins.json 为例）：
-1. 签出 bazaar head（主分支最新）：读 plugins.json，得到 bazaar head 的 owner/repo 集合与 name 集合，用于过滤和 name 唯一性检查
-2. 签出 PR head：读 plugins.json（PR 当前状态）
-3. 签出 PR base（merge base）：读 plugins.json（与 GitHub "Files changed" 的基准一致）
+Diff 流程（以 plugins.txt 为例）：
+1. 签出 bazaar head（主分支最新）：读 plugins.txt，得到 bazaar head 的 owner/repo 集合，用于过滤
+2. 签出 PR head：读 plugins.txt（PR 当前状态）
+3. 签出 PR base（merge base）：读 plugins.txt（与 GitHub "Files changed" 的基准一致）
 4. 比较 base 与 head：候选新增 = head 有 base 无，候选删除 = base 有 head 无
 5. 过滤候选新增：排除已在 bazaar head 中的仓库（可能是解决冲突时从 bazaar head 合并来的）
 6. 过滤候选删除：排除在 bazaar head 中已不存在的仓库（可能是其他 PR 删除的）
-7. name 唯一性检查使用 bazaar head 的 stage/*.json 中所有类型的 package.name 集合（跨类型检查，比较前统一转小写）
-8. 对最终新增列表做 release/文件/属性检查，并在 Bot 回复中列出删除列表、更换维护者列表
+7. OccupiedNames 使用 bazaar head 的 stage/*.json 中所有类型的 package.name 集合（跨类型；比较前统一转小写）
+8. 对最终新增列表：Latest Release / package.zip → 下载解压 → check.Check(ModePR)，并在 Bot 回复中列出删除列表、更换维护者列表
 
 Check 流程：
-1. 获取仓库最新 release
-2. 获取仓库最新 release 的 tag
-3. 获取仓库最新 release 的 hash
-4. 检查必要的文件是否存在
-5. 获取清单文件 *.json
-		检查清单文件是否存在必要的字段
-			检查清单中 name 字段值是否与 stage/*.json 中的重复（小写归一后比较）
-6. 生成检查结果并输出文件 (使用 go 模板)
-7. 使用 thollander/actions-comment-pull-request 将检查结果输出到到 PR 中
+1. 获取仓库最新 release 与 package.zip
+2. 下载并解压 package.zip
+3. 调用 check.Check（ModePR；OccupiedNames / AllowThemeJS；PR 新仓 OldName/OldVersion 为空）
+4. 通过后将 name 写入 OccupiedNames（同 PR 内唯一性）
+5. 生成检查结果并输出文件（使用 go 模板）
+6. 使用 thollander/actions-comment-pull-request 将检查结果输出到 PR 中
 */
 
 var (
-	BAZAAR_HEAD_PATH    = os.Getenv("BAZAAR_HEAD_PATH")    // bazaar 主分支最新代码目录（用于过滤与 name 唯一性）
+	BAZAAR_HEAD_PATH    = os.Getenv("BAZAAR_HEAD_PATH")    // bazaar 主分支最新代码目录（用于过滤与 OccupiedNames）
 	PR_HEAD_PATH        = os.Getenv("PR_HEAD_PATH")        // 本 PR 当前提交的代码目录（PR head）
 	PR_BASE_PATH        = os.Getenv("PR_BASE_PATH")        // 本 PR 的 merge base 代码目录（做 diff 的旧侧，与 GitHub "Files changed" 一致）
 	GITHUB_TOKEN        = os.Getenv("PAT")                 // GitHub Token
 	CHECK_RESULT_OUTPUT = os.Getenv("CHECK_RESULT_OUTPUT") // 检查结果输出文件路径
 
-	REQUEST_TIMEOUT        = 30 * time.Second // 请求超时时间
-	REQUEST_RETRY_COUNT    = 3                // 请求重试次数
-	REQUEST_RETRY_DURATION = 10 * time.Second // 请求重试间隔时间
+	REQUEST_TIMEOUT = 30 * time.Second // 请求超时时间
 
 	logger        = gulu.Log.NewLogger(os.Stdout)
 	githubContext = context.Background()
@@ -71,8 +64,12 @@ var (
 func main() {
 	logger.Infof("PR Check running...")
 
-	// 获取检查结果模板文件
-	checkResultTemplate, err := template.ParseFiles(FILE_PATH_CHECK_RESULT_TEMPLATE)
+	// 获取检查结果模板文件（含 issueIndex：Issues 序号 %02d）
+	checkResultTemplate, err := template.New("check-result.md.tpl").Funcs(template.FuncMap{
+		"issueIndex": func(i int) string {
+			return fmt.Sprintf("%02d", i+1)
+		},
+	}).ParseFiles(FILE_PATH_CHECK_RESULT_TEMPLATE)
 	if nil != err {
 		logger.Fatalf("load check result template file [%s] failed: %s", FILE_PATH_CHECK_RESULT_TEMPLATE, err)
 		panic(err)
@@ -86,36 +83,27 @@ func main() {
 	}
 	defer checkResultOutputFile.Close()
 
-	// 取消注释以下代码，使用测试数据渲染检查结果模板
-	// check_result_template.Execute(check_result_output_file, CheckResultTestExample)
-	// return
-
-	checkResult := &CheckResult{
-		Icons:     []Icon{},
-		Plugins:   []Plugin{},
-		Templates: []Template{},
-		Themes:    []Theme{},
-		Widgets:   []Widget{},
-	} // 检查结果
+	checkResult := &CheckResult{} // 检查结果
 
 	githubClient.Client().Timeout = REQUEST_TIMEOUT // 设置请求超时时间
 
-	// 加载所有类型的 stage nameSet（使用 package.name 的小写形式为键），用于跨类型 name 唯一性检查
-	allTypesNameSet, err := loadAllTypesNameSet()
+	// 加载 stage 全量已占用 name，供 check.Check 做跨类型唯一性检查
+	occupiedNames, err := util.LoadOccupiedNames(BAZAAR_HEAD_PATH)
 	if err != nil {
-		logger.Fatalf("load all types name set failed: %s", err)
+		logger.Fatalf("load occupied names failed: %s", err)
 		panic(err)
 	}
 
 	var parseErrorMu sync.Mutex
+	var occupiedNamesMu sync.Mutex // 跨类型共享，保证同 PR 内 OccupiedNames 唯一性
 	wg := &sync.WaitGroup{}
 	wg.Add(5)
 
-	go checkRepos(icons, checkResult, allTypesNameSet, &parseErrorMu, wg)
-	go checkRepos(plugins, checkResult, allTypesNameSet, &parseErrorMu, wg)
-	go checkRepos(templates, checkResult, allTypesNameSet, &parseErrorMu, wg)
-	go checkRepos(themes, checkResult, allTypesNameSet, &parseErrorMu, wg)
-	go checkRepos(widgets, checkResult, allTypesNameSet, &parseErrorMu, wg)
+	go checkRepos(icons, checkResult, occupiedNames, &occupiedNamesMu, &parseErrorMu, wg)
+	go checkRepos(plugins, checkResult, occupiedNames, &occupiedNamesMu, &parseErrorMu, wg)
+	go checkRepos(templates, checkResult, occupiedNames, &occupiedNamesMu, &parseErrorMu, wg)
+	go checkRepos(themes, checkResult, occupiedNames, &occupiedNamesMu, &parseErrorMu, wg)
+	go checkRepos(widgets, checkResult, occupiedNames, &occupiedNamesMu, &parseErrorMu, wg)
 
 	wg.Wait() // 等待所有检查完成
 
@@ -149,74 +137,12 @@ func parseReposFromRootTxt(filePath string) (paths []string, pathSet StringSet, 
 	return
 }
 
-// loadAllTypesNameSet 加载所有类型的 stage nameSet（使用 strings.ToLower(package.name) 为键），用于跨类型 name 唯一性检查
-func loadAllTypesNameSet() (StringSet, error) {
-	allTypesNameSet := make(StringSet)
-	jsonFiles := []string{"icons.json", "plugins.json", "templates.json", "themes.json", "widgets.json"}
-
-	for _, jsonFile := range jsonFiles {
-		// 从 stage 文件夹读取 JSON 文件
-		filePath := filepath.Join(BAZAAR_HEAD_PATH, "stage", jsonFile)
-		nameSet, err := parseNamesFromStageJSON(filePath)
-		if err != nil {
-			return nil, fmt.Errorf("load stage repos [%s] failed: %s", filePath, err)
-		}
-		// 合并所有类型的 nameSet
-		for name := range nameSet {
-			allTypesNameSet[name] = nil
-		}
-	}
-
-	return allTypesNameSet, nil
-}
-
-// parseNamesFromStageJSON 从 stage JSON 文件中解析出所有 package.name，键为转小写后的形式供唯一性比较使用
-func parseNamesFromStageJSON(filePath string) (StringSet, error) {
-	data, err := os.ReadFile(filePath)
-	if err != nil {
-		return nil, err
-	}
-
-	var m map[string]interface{}
-	if err = gulu.JSON.UnmarshalJSON(data, &m); err != nil {
-		return nil, err
-	}
-
-	repos, _ := m["repos"].([]interface{})
-	if repos == nil {
-		return make(StringSet), nil
-	}
-
-	nameSet := make(StringSet)
-	for _, r := range repos {
-		repoMap, ok := r.(map[string]interface{})
-		if !ok {
-			continue
-		}
-
-		// 获取 package 对象
-		pkg, ok := repoMap["package"].(map[string]interface{})
-		if !ok {
-			continue
-		}
-
-		// 获取 package.name
-		name, ok := pkg["name"].(string)
-		if !ok || name == "" {
-			continue
-		}
-
-		nameSet[strings.ToLower(name)] = nil
-	}
-
-	return nameSet, nil
-}
-
 // checkRepos 检查集市资源仓库列表
 func checkRepos(
 	resourceType ResourceType,
 	checkResult *CheckResult,
-	allTypesNameSet StringSet,
+	occupiedNames map[string]struct{},
+	occupiedNamesMu *sync.Mutex,
 	parseErrorMu *sync.Mutex,
 	waitGroup *sync.WaitGroup,
 ) {
@@ -334,48 +260,34 @@ func checkRepos(
 		}
 	}
 
-	// 新增与更换维护者合并为待检查列表，统一做 release/文件/属性/name 唯一性检查（更换维护者按新集市包处理）
+	// 新增与更换维护者合并为待检查列表，统一做 Release + Pkg Check（更换维护者按新集市包处理）
 	maintainerChangedSet := make(StringSet, len(maintainerChanged))
 	for _, path := range maintainerChanged {
 		maintainerChangedSet[path] = nil
 	}
-	resultChannel := make(chan interface{}, 4)
+	resultChannel := make(chan checkOutput, 4)
 	waitGroupCheck := &sync.WaitGroup{}
 	waitGroupResult := &sync.WaitGroup{}
-	nameSetMutex := &sync.Mutex{}
-
-	// setMaintainerChangedIfNeeded 如果 path 在 maintainerChangedSet 中，则设置 maintainerChanged 为 true
-	setMaintainerChangedIfNeeded := func(path *string, maintainerChanged *bool, maintainerChangedSet StringSet) {
-		if isKeyInSet(*path, maintainerChangedSet) {
-			*maintainerChanged = true
-		}
-	}
 
 	waitGroupResult.Add(1)
 	// 收集检查结果时，根据是否在 maintainerChangedSet 中打上 MaintainerChanged 标记，供模板区分展示
 	go func() {
 		for result := range resultChannel {
-			switch v := result.(type) {
-			case *Icon:
-				icon := *v
-				setMaintainerChangedIfNeeded(&icon.RepoInfo.Path, &icon.MaintainerChanged, maintainerChangedSet)
-				checkResult.Icons = append(checkResult.Icons, icon)
-			case *Plugin:
-				plugin := *v
-				setMaintainerChangedIfNeeded(&plugin.RepoInfo.Path, &plugin.MaintainerChanged, maintainerChangedSet)
-				checkResult.Plugins = append(checkResult.Plugins, plugin)
-			case *Template:
-				templateItem := *v
-				setMaintainerChangedIfNeeded(&templateItem.RepoInfo.Path, &templateItem.MaintainerChanged, maintainerChangedSet)
-				checkResult.Templates = append(checkResult.Templates, templateItem)
-			case *Theme:
-				theme := *v
-				setMaintainerChangedIfNeeded(&theme.RepoInfo.Path, &theme.MaintainerChanged, maintainerChangedSet)
-				checkResult.Themes = append(checkResult.Themes, theme)
-			case *Widget:
-				widget := *v
-				setMaintainerChangedIfNeeded(&widget.RepoInfo.Path, &widget.MaintainerChanged, maintainerChangedSet)
-				checkResult.Widgets = append(checkResult.Widgets, widget)
+			pkg := result.pkg
+			if isKeyInSet(pkg.RepoInfo.Path, maintainerChangedSet) {
+				pkg.MaintainerChanged = true
+			}
+			switch result.resourceType {
+			case icons:
+				checkResult.Icons = append(checkResult.Icons, pkg)
+			case plugins:
+				checkResult.Plugins = append(checkResult.Plugins, pkg)
+			case templates:
+				checkResult.Templates = append(checkResult.Templates, pkg)
+			case themes:
+				checkResult.Themes = append(checkResult.Themes, pkg)
+			case widgets:
+				checkResult.Widgets = append(checkResult.Widgets, pkg)
 			default:
 			}
 		}
@@ -386,7 +298,7 @@ func checkRepos(
 	p, _ := ants.NewPoolWithFunc(8, func(arg interface{}) {
 		defer waitGroupCheck.Done()
 		ownerRepo := arg.(string)
-		checkRepo(ownerRepo, allTypesNameSet, resourceType, resultChannel, nameSetMutex, themeJsAllowSet)
+		checkRepo(ownerRepo, occupiedNames, resourceType, resultChannel, occupiedNamesMu, themeJsAllowSet)
 	})
 	defer p.Release()
 
@@ -400,389 +312,84 @@ func checkRepos(
 	logger.Infof("finish repos check [%s]", prHeadReposPath)
 }
 
-// checkRepo 检查集市资源仓库
+// checkRepo 检查集市资源仓库：Latest Release / package.zip → 下载解压 → check.Check(ModePR)
 func checkRepo(
 	ownerRepo string,
-	allTypesNameSet StringSet,
+	occupiedNames map[string]struct{},
 	resourceType ResourceType,
-	resultChannel chan interface{},
+	resultChannel chan checkOutput,
 	nameSetMutex *sync.Mutex,
 	themeJsAllowSet map[string]struct{},
 ) {
 
 	logger.Infof("start repo check [%s]", ownerRepo)
-	var err error
 
-	// 检查 latest release
 	repoMeta := strings.Split(ownerRepo, "/")
 	repoOwner := repoMeta[0]
 	repoName := repoMeta[1]
-	repoInfo := &RepoInfo{
-		Owner: repoOwner,
-		Name:  repoName,
-		Path:  ownerRepo,
-		Home:  buildRepoHomeURL(repoOwner, repoName),
+	repoInfo := RepoInfo{
+		Path: ownerRepo,
+		Home: buildRepoHomeURL(repoOwner, repoName),
 	}
 	releaseCheckResult := checkRepoLatestRelease(repoOwner, repoName)
 
-	if releaseCheckResult.LatestRelease.Hash != "" {
-		// 获得 latest release 成功, 可以进一步检查文件与属性
-
-		// 检查清单文件中的属性
-		var attrsCheckResult *Attrs
-		var manifestFilePath string // 清单文件路径
-		switch resourceType {
-		case icons:
-			manifestFilePath = "icon.json"
-		case plugins:
-			manifestFilePath = "plugin.json"
-		case templates:
-			manifestFilePath = "template.json"
-		case themes:
-			manifestFilePath = "theme.json"
-		case widgets:
-			manifestFilePath = "widget.json"
-		default:
-		}
-		manifestFileUrl := buildFileRawURL(
-			repoOwner,
-			repoName,
-			releaseCheckResult.LatestRelease.Hash,
-			manifestFilePath,
-		) // 清单文件下载地址
-
-		if attrsCheckResult, err = checkManifestAttrs(manifestFileUrl); err != nil {
-			logger.Warnf("check repo [%s] manifest file [%s] failed: %s", ownerRepo, manifestFileUrl, err)
-			attrsCheckResult = &Attrs{} // 避免后续访问 nil 导致模板渲染失败
-		}
-		if attrsCheckResult != nil {
-			// 有效性检查
-			attrsCheckResult.Name.Valid = true
-			// 判断资源名称是否有效
-			if err := util.ValidateName(attrsCheckResult.Name.Value); err != nil {
-				logger.Warnf("repo [%s] name [%s] invalid: %v", ownerRepo, attrsCheckResult.Name.Value, err)
-				attrsCheckResult.Name.Valid = false
-			}
-			if attrsCheckResult.Name.Valid {
-				// name 必须和 repo name 一致
-				attrsCheckResult.Name.Valid = attrsCheckResult.Name.Value == repoName
-				if !attrsCheckResult.Name.Valid {
-					logger.Warnf("repo [%s] name [%s] is not equal to repo name [%s]", ownerRepo, attrsCheckResult.Name.Value, repoName)
-				} else {
-					switch resourceType {
-					case themes:
-						if isNameInBuiltinList(attrsCheckResult.Name.Value, BuiltinThemeNames) {
-							attrsCheckResult.Name.Valid = false
-							logger.Warnf("repo [%s] theme name [%s] conflicts with built-in theme %v", ownerRepo, attrsCheckResult.Name.Value, BuiltinThemeNames)
-						}
-					case icons:
-						if isNameInBuiltinList(attrsCheckResult.Name.Value, BuiltinIconNames) {
-							attrsCheckResult.Name.Valid = false
-							logger.Warnf("repo [%s] icon name [%s] conflicts with built-in icon %v", ownerRepo, attrsCheckResult.Name.Value, BuiltinIconNames)
-						}
-					default:
-					}
-				}
-			}
-
-			// 唯一性检查：检查 name 是否在所有类型的包中已存在（小写归一后比较）
-			if attrsCheckResult.Name.Valid {
-				name := attrsCheckResult.Name.Value
-				nameKey := strings.ToLower(name)
-				nameSetMutex.Lock() // 保护 allTypesNameSet 的并发访问
-				if isKeyInSet(nameKey, allTypesNameSet) {
-					logger.Warnf("repo [%s] name [%s] already exists in all types", ownerRepo, name)
-				} else {
-					allTypesNameSet[nameKey] = nil // 新的 name 添加到检查集合中
-
-					attrsCheckResult.Name.Unique = true // name 通过唯一性检查
-				}
-				nameSetMutex.Unlock()
-			}
-
-			if attrsCheckResult.Author.Pass {
-				if err := util.ValidatePlainStringForHTML(attrsCheckResult.Author.Value); err != nil {
-					logger.Warnf("repo [%s] author [%s] invalid: %v", ownerRepo, attrsCheckResult.Author.Value, err)
-					attrsCheckResult.Author.Pass = false
-				}
-			}
-		}
-
-		attrsCheckResult.Name.Pass = attrsCheckResult.Name.Exist &&
-			attrsCheckResult.Name.Valid &&
-			attrsCheckResult.Name.Unique
-
-		attrsCheckResult.Pass = attrsCheckResult.Name.Pass &&
-			attrsCheckResult.Version.Pass &&
-			attrsCheckResult.Author.Pass &&
-			attrsCheckResult.URL.Pass
-
-		// 检查文件
-		var filesCheckResult interface{} // 文件检查结果
-
-		// 检查所有类型集市资源必要的文件
-		iconPngCheckResult, err := checkFileExist(
-			repoOwner,
-			repoName,
-			releaseCheckResult.LatestRelease.Hash,
-			FILE_PATH_ICON_PNG,
-		)
-		if err != nil {
-			logger.Warn(err.Error())
-		}
-
-		previewPngCheckResult, err := checkFileExist(
-			repoOwner,
-			repoName,
-			releaseCheckResult.LatestRelease.Hash,
-			FILE_PATH_PREVIEW_PNG,
-		)
-		if err != nil {
-			logger.Warn(err.Error())
-		}
-
-		readmeMdCheckResult, err := checkFileExist(
-			repoOwner,
-			repoName,
-			releaseCheckResult.LatestRelease.Hash,
-			FILE_PATH_README_MD,
-		)
-		if err != nil {
-			logger.Warn(err.Error())
-		}
-
-		// 检查各类型集市资源其他必要的文件
-		switch resourceType {
-		case icons:
-			{
-				iconJsonCheckResult, err := checkFileExist(
-					repoOwner,
-					repoName,
-					releaseCheckResult.LatestRelease.Hash,
-					FILE_PATH_ICON_JSON,
-				)
-				if err != nil {
-					logger.Warn(err.Error())
-				}
-
-				filesCheckResult = &IconFiles{
-					Pass: iconJsonCheckResult.Pass &&
-						iconPngCheckResult.Pass &&
-						previewPngCheckResult.Pass &&
-						readmeMdCheckResult.Pass,
-
-					IconJson: *iconJsonCheckResult,
-
-					IconPng:    *iconPngCheckResult,
-					PreviewPng: *previewPngCheckResult,
-					ReadmeMd:   *readmeMdCheckResult,
-				}
-			}
-		case plugins:
-			{
-				pluginJsonCheckResult, err := checkFileExist(
-					repoOwner,
-					repoName,
-					releaseCheckResult.LatestRelease.Hash,
-					FILE_PATH_PLUGIN_JSON,
-				)
-				if err != nil {
-					logger.Warn(err.Error())
-				}
-
-				filesCheckResult = &PluginFiles{
-					Pass: pluginJsonCheckResult.Pass &&
-						iconPngCheckResult.Pass &&
-						previewPngCheckResult.Pass &&
-						readmeMdCheckResult.Pass,
-
-					PluginJson: *pluginJsonCheckResult,
-
-					IconPng:    *iconPngCheckResult,
-					PreviewPng: *previewPngCheckResult,
-					ReadmeMd:   *readmeMdCheckResult,
-				}
-			}
-		case templates:
-			{
-				templateJsonCheckResult, err := checkFileExist(
-					repoOwner,
-					repoName,
-					releaseCheckResult.LatestRelease.Hash,
-					FILE_PATH_TEMPLATE_JSON,
-				)
-				if err != nil {
-					logger.Warn(err.Error())
-				}
-
-				filesCheckResult = &TemplateFiles{
-					Pass: templateJsonCheckResult.Pass &&
-						iconPngCheckResult.Pass &&
-						previewPngCheckResult.Pass &&
-						readmeMdCheckResult.Pass,
-
-					TemplateJson: *templateJsonCheckResult,
-
-					IconPng:    *iconPngCheckResult,
-					PreviewPng: *previewPngCheckResult,
-					ReadmeMd:   *readmeMdCheckResult,
-				}
-			}
-		case themes:
-			{
-				themeJsonCheckResult, err := checkFileExist(
-					repoOwner,
-					repoName,
-					releaseCheckResult.LatestRelease.Hash,
-					FILE_PATH_THEME_JSON,
-				)
-				if err != nil {
-					logger.Warn(err.Error())
-				}
-
-				var noThemeJsCheckResult *File
-				if _, allowed := themeJsAllowSet[ownerRepo]; allowed {
-					noThemeJsCheckResult = &File{
-						Pass: true,
-						URL:  buildFilePreviewURL(repoOwner, repoName, releaseCheckResult.LatestRelease.Hash, FILE_PATH_THEME_JS),
-					}
-				} else {
-					noThemeJsCheckResult, err = checkFileAbsent(
-						repoOwner,
-						repoName,
-						releaseCheckResult.LatestRelease.Hash,
-						FILE_PATH_THEME_JS,
-					)
-					if err != nil {
-						logger.Warn(err.Error())
-					}
-				}
-
-				filesCheckResult = &ThemeFiles{
-					Pass: themeJsonCheckResult.Pass &&
-						noThemeJsCheckResult.Pass &&
-						iconPngCheckResult.Pass &&
-						previewPngCheckResult.Pass &&
-						readmeMdCheckResult.Pass,
-
-					ThemeJson: *themeJsonCheckResult,
-					NoThemeJs: *noThemeJsCheckResult,
-
-					IconPng:    *iconPngCheckResult,
-					PreviewPng: *previewPngCheckResult,
-					ReadmeMd:   *readmeMdCheckResult,
-				}
-			}
-		case widgets:
-			{
-				widgetJsonCheckResult, err := checkFileExist(
-					repoOwner,
-					repoName,
-					releaseCheckResult.LatestRelease.Hash,
-					FILE_PATH_WIDGET_JSON,
-				)
-				if err != nil {
-					logger.Warn(err.Error())
-				}
-
-				filesCheckResult = &WidgetFiles{
-					Pass: widgetJsonCheckResult.Pass &&
-						iconPngCheckResult.Pass &&
-						previewPngCheckResult.Pass &&
-						readmeMdCheckResult.Pass,
-
-					WidgetJson: *widgetJsonCheckResult,
-
-					IconPng:    *iconPngCheckResult,
-					PreviewPng: *previewPngCheckResult,
-					ReadmeMd:   *readmeMdCheckResult,
-				}
-			}
-		default:
-			logger.Errorf("repo [%s] invalid resourceType: %d", ownerRepo, resourceType)
-			return
-		}
-
-		// 返回检查结果
-		switch resourceType {
-		case icons:
-			resultChannel <- &Icon{
-				RepoInfo: *repoInfo,
-				Release:  *releaseCheckResult,
-				Files:    *filesCheckResult.(*IconFiles),
-				Attrs:    *attrsCheckResult,
-			}
-		case plugins:
-			resultChannel <- &Plugin{
-				RepoInfo: *repoInfo,
-				Release:  *releaseCheckResult,
-				Files:    *filesCheckResult.(*PluginFiles),
-				Attrs:    *attrsCheckResult,
-			}
-		case templates:
-			resultChannel <- &Template{
-				RepoInfo: *repoInfo,
-				Release:  *releaseCheckResult,
-				Files:    *filesCheckResult.(*TemplateFiles),
-				Attrs:    *attrsCheckResult,
-			}
-		case themes:
-			resultChannel <- &Theme{
-				RepoInfo: *repoInfo,
-				Release:  *releaseCheckResult,
-				Files:    *filesCheckResult.(*ThemeFiles),
-				Attrs:    *attrsCheckResult,
-			}
-		case widgets:
-			resultChannel <- &Widget{
-				RepoInfo: *repoInfo,
-				Release:  *releaseCheckResult,
-				Files:    *filesCheckResult.(*WidgetFiles),
-				Attrs:    *attrsCheckResult,
-			}
-		}
-	} else {
-		// 无法检查文件与属性，直接返回结果；填充空 Files/Attrs 避免模板访问 nil 导致渲染中断
-		switch resourceType {
-		case icons:
-			resultChannel <- &Icon{
-				RepoInfo: *repoInfo,
-				Release:  *releaseCheckResult,
-				Files:    IconFiles{},
-				Attrs:    Attrs{},
-			}
-		case plugins:
-			resultChannel <- &Plugin{
-				RepoInfo: *repoInfo,
-				Release:  *releaseCheckResult,
-				Files:    PluginFiles{},
-				Attrs:    Attrs{},
-			}
-		case templates:
-			resultChannel <- &Template{
-				RepoInfo: *repoInfo,
-				Release:  *releaseCheckResult,
-				Files:    TemplateFiles{},
-				Attrs:    Attrs{},
-			}
-		case themes:
-			resultChannel <- &Theme{
-				RepoInfo: *repoInfo,
-				Release:  *releaseCheckResult,
-				Files:    ThemeFiles{},
-				Attrs:    Attrs{},
-			}
-		case widgets:
-			resultChannel <- &Widget{
-				RepoInfo: *repoInfo,
-				Release:  *releaseCheckResult,
-				Files:    WidgetFiles{},
-				Attrs:    Attrs{},
-			}
-		default:
-		}
+	out := PackageCheck{
+		RepoInfo: repoInfo,
+		Release:  *releaseCheckResult,
+		Issues:   releaseIssues(releaseCheckResult),
 	}
 
+	// Release / package.zip 未通过时只报告流程层 Issue，不调用 Pkg Check
+	if len(out.Issues) > 0 {
+		resultChannel <- checkOutput{resourceType: resourceType, pkg: out}
+		logger.Infof("finish repo check [%s] (release issues)", ownerRepo)
+		return
+	}
+
+	tmpUnzipPath, _, cleanup, err := util.DownloadAndUnzipPackageZip(releaseCheckResult.LatestRelease.PackageZip.URL)
+	if err != nil {
+		logger.Warnf("download/unzip [%s] failed: %s", ownerRepo, err)
+		out.Issues = append(out.Issues, check.Issue{
+			Rule:      "release/package_zip",
+			MessageZh: fmt.Sprintf("下载或解压 package.zip 失败：%s。请确认 Latest Release 中的 package.zip 可访问且为合法 zip，然后重新发布或重跑 PR Check。", err),
+			MessageEn: fmt.Sprintf("Failed to download or unzip package.zip: %s. Ensure package.zip in the Latest Release is reachable and a valid zip, then republish or re-run PR Check.", err),
+		})
+		resultChannel <- checkOutput{resourceType: resourceType, pkg: out}
+		logger.Infof("finish repo check [%s] (download failed)", ownerRepo)
+		return
+	}
+	defer cleanup()
+
+	pkgType, typeOk := resourceTypeToPackageType(resourceType)
+	if !typeOk {
+		logger.Errorf("repo [%s] invalid resourceType: %d", ownerRepo, resourceType)
+		resultChannel <- checkOutput{resourceType: resourceType, pkg: out}
+		return
+	}
+
+	_, allowThemeJS := themeJsAllowSet[ownerRepo]
+
+	// 持锁调用 Check 并在通过后登记 name，保证同 PR 内 OccupiedNames 唯一性
+	nameSetMutex.Lock()
+	result := check.Check(check.Input{
+		PackageRoot:   tmpUnzipPath,
+		OwnerRepo:     ownerRepo,
+		Type:          pkgType,
+		Mode:          check.ModePR,
+		OldName:       "", // PR 新仓按首发处理
+		OldVersion:    "",
+		OccupiedNames: occupiedNames,
+		AllowThemeJS:  allowThemeJS,
+	})
+	if result.OK {
+		if name, ok := result.Manifest["name"].(string); ok && name != "" {
+			occupiedNames[strings.ToLower(name)] = struct{}{}
+		}
+	}
+	nameSetMutex.Unlock()
+
+	out.Issues = append(out.Issues, result.Issues...)
+	resultChannel <- checkOutput{resourceType: resourceType, pkg: out}
 	logger.Infof("finish repo check [%s]", ownerRepo)
 }
 
@@ -827,7 +434,10 @@ func checkRepoLatestRelease(
 
 	switch referenceType {
 	case "commit":
-		releaseCheckResult.LatestRelease.Hash = githubReference.GetObject().GetSHA()
+		if githubReference.GetObject().GetSHA() == "" {
+			logger.Warnf("parse repo [%s/%s] reference tag [%s] failed: empty commit sha", repoOwner, repoName, releaseCheckResult.LatestRelease.Tag)
+			return
+		}
 	case "tag":
 		tagSha := githubReference.GetObject().GetSHA()
 
@@ -838,8 +448,10 @@ func checkRepoLatestRelease(
 			logger.Warnf("get repo [%s/%s] tag [%s:%s] failed: %s", repoOwner, repoName, releaseCheckResult.LatestRelease.Tag, tagSha, err)
 			return
 		}
-
-		releaseCheckResult.LatestRelease.Hash = githubTag.GetObject().GetSHA()
+		if githubTag.GetObject().GetSHA() == "" {
+			logger.Warnf("parse repo [%s/%s] tag [%s:%s] failed: empty commit sha", repoOwner, repoName, releaseCheckResult.LatestRelease.Tag, tagSha)
+			return
+		}
 	default:
 		logger.Warnf("parse repo [%s/%s] reference tag [%s] failed: unknown type [%s]", repoOwner, repoName, releaseCheckResult.LatestRelease.Tag, referenceType)
 		return
@@ -848,179 +460,5 @@ func checkRepoLatestRelease(
 	releaseCheckResult.Pass = releaseCheckResult.LatestRelease.Pass &&
 		releaseCheckResult.LatestRelease.PackageZip.Pass // 通过发行版检查
 
-	return
-}
-
-// checkFileExist 检查文件是否存在
-func checkFileExist(
-	repoOwner string,
-	repoName string,
-	hash string,
-	filePath string,
-) (
-	fileCheckResult *File,
-	err error,
-) {
-	fileCheckResult = &File{}
-	rawUrl := buildFileRawURL(
-		repoOwner,
-		repoName,
-		hash,
-		filePath,
-	) // 文件访问地址
-	fileCheckResult.URL = buildFilePreviewURL(
-		repoOwner,
-		repoName,
-		hash,
-		filePath,
-	) // 文件预览地址
-
-	response, data, errs := gorequest.
-		New().
-		Head(rawUrl).
-		Set("User-Agent", util.UserAgent).
-		Retry(REQUEST_RETRY_COUNT, REQUEST_RETRY_DURATION).
-		Timeout(REQUEST_TIMEOUT).
-		End()
-	if nil != errs {
-		logger.Fatalf("HTTP HEAD request [%s] failed: %s", rawUrl, errs)
-		panic(errs)
-	}
-	if response.StatusCode == http.StatusOK {
-		if strings.HasSuffix(filePath, ".png") && 0 < len(data) {
-			if strings.HasSuffix(filePath, "icon.png") {
-				// 图标大小 160*160
-				img, _, decodeErr := image.DecodeConfig(strings.NewReader(data))
-				if decodeErr != nil {
-					logger.Warnf("check icon.png file [%s] size failed: %s", rawUrl, decodeErr)
-				} else {
-					if img.Width != 160 || img.Height != 160 {
-						logger.Warnf("icon.png file [%s] size is not 160x160", rawUrl)
-						fileCheckResult.Pass = false
-						return
-					}
-				}
-			} else if strings.HasSuffix(filePath, "preview.png") {
-				// 预览图大小 1024*768
-				img, _, decodeErr := image.DecodeConfig(strings.NewReader(data))
-				if decodeErr != nil {
-					logger.Warnf("check preview.png file [%s] size failed: %s", rawUrl, decodeErr)
-				} else {
-					if img.Width != 1024 || img.Height != 768 {
-						logger.Warnf("preview.png file [%s] size is not 1024x768", rawUrl)
-						fileCheckResult.Pass = false
-						return
-					}
-				}
-			}
-		}
-
-		fileCheckResult.Pass = true
-		return
-	} else if response.StatusCode == http.StatusNotFound {
-		fileCheckResult.Pass = false
-		return
-	}
-
-	err = fmt.Errorf("HTTP HEAD request [%s] failed: %s", rawUrl, response.Status)
-	return
-}
-
-// checkFileAbsent 检查文件是否不存在（新上架主题不得包含 theme.js）。404 为通过，200 为不通过。
-func checkFileAbsent(
-	repoOwner string,
-	repoName string,
-	hash string,
-	filePath string,
-) (
-	fileCheckResult *File,
-	err error,
-) {
-	fileCheckResult = &File{}
-	rawURL := buildFileRawURL(
-		repoOwner,
-		repoName,
-		hash,
-		filePath,
-	)
-	fileCheckResult.URL = buildFilePreviewURL(
-		repoOwner,
-		repoName,
-		hash,
-		filePath,
-	)
-
-	response, _, errs := gorequest.
-		New().
-		Head(rawURL).
-		Set("User-Agent", util.UserAgent).
-		Retry(REQUEST_RETRY_COUNT, REQUEST_RETRY_DURATION).
-		Timeout(REQUEST_TIMEOUT).
-		End()
-	if nil != errs {
-		logger.Fatalf("HTTP HEAD request [%s] failed: %s", rawURL, errs)
-		panic(errs)
-	}
-	switch response.StatusCode {
-	case http.StatusNotFound:
-		fileCheckResult.Pass = true
-	case http.StatusOK:
-		fileCheckResult.Pass = false
-	default:
-		err = fmt.Errorf("HTTP HEAD request [%s] failed: %s", rawURL, response.Status)
-	}
-	return
-}
-
-// checkManifestAttrs 检查清单属性
-func checkManifestAttrs(fileURL string) (attrsCheckResult *Attrs, err error) {
-	attrsCheckResult = &Attrs{}
-	response, data, errs := gorequest.
-		New().
-		Get(fileURL).
-		Set("User-Agent", util.UserAgent).
-		Retry(REQUEST_RETRY_COUNT, REQUEST_RETRY_DURATION).
-		Timeout(REQUEST_TIMEOUT).
-		EndBytes()
-	if nil != errs {
-		logger.Fatalf("HTTP Get request [%s] failed: %s", fileURL, errs)
-		panic(errs)
-	}
-	if response.StatusCode != http.StatusOK {
-		err = fmt.Errorf("HTTP HEAD request [%s] failed: %s", fileURL, response.Status)
-		return
-	}
-
-	// 解析清单
-	manifest := map[string]interface{}{}
-	if err = gulu.JSON.UnmarshalJSON(data, &manifest); nil != err {
-		return
-	}
-
-	// 检查清单文件
-	if name := manifest["name"]; name != nil {
-		if value := name.(string); value != "" {
-			attrsCheckResult.Name.Value = value
-			attrsCheckResult.Name.Exist = true
-		}
-	}
-	if version := manifest["version"]; version != nil {
-		if value := version.(string); value != "" {
-			attrsCheckResult.Version.Value = value
-			attrsCheckResult.Version.Pass = true
-		}
-	}
-	if author, ok := manifest["author"]; ok && author != nil {
-		if value, strOK := author.(string); strOK && value != "" {
-			attrsCheckResult.Author.Value = value
-			attrsCheckResult.Author.Pass = true
-		}
-	}
-	if url := manifest["url"]; url != nil {
-		if value := url.(string); value != "" {
-			attrsCheckResult.URL.Value = value
-			attrsCheckResult.URL.Pass = true
-		}
-	}
 	return
 }

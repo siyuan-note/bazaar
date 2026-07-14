@@ -64,14 +64,17 @@ var widgetExtraKeys = []string{
 	"backends", "frontends",
 }
 
+// 内置主题名（不得被集市主题占用）。
 var builtinThemeNames = map[string]struct{}{
 	"daylight": {},
 	"midnight": {},
 }
 
+// 内置图标包名（不得被集市图标占用）。
 var builtinIconNames = map[string]struct{}{
-	"ant":      {},
-	"material": {},
+	"ant":       {}, // 已废弃，内核自动清理图标包
+	"material":  {}, // 已废弃，内核自动清理图标包
+	"litheness": {},
 }
 
 func toKeySet(base []string, extra ...string) map[string]struct{} {
@@ -200,6 +203,9 @@ func checkName(m map[string]any, in ManifestInput) []Issue {
 	return issues
 }
 
+// checkURL 要求 url 必须为 https://github.com/owner/repo（owner/repo 大小写不敏感）。
+// 禁止末尾斜杠或 .git 结尾。
+// https://github.com/siyuan-note/siyuan/issues/7775 兼容了末尾斜杠，但思源内核未必完全兼容，故统一禁止末尾斜杠以避免产生问题。
 func checkURL(m map[string]any, owner, repo string) []Issue {
 	raw, ok := m["url"]
 	if !ok {
@@ -307,6 +313,8 @@ func checkAuthor(m map[string]any) []Issue {
 	return nil
 }
 
+// checkReadme 校验清单 readme 字段：值为相对包根的说明文件路径，且文件须存在（路径大小写敏感）。
+// 路径须为相对路径（不能以 / 开头）、用 / 分隔、不得包含 ..（防路径穿越）、不得使用反斜杠 \。
 func checkReadme(m map[string]any, packageRoot string, mode Mode) []Issue {
 	raw, ok := m["readme"]
 	if !ok {
@@ -341,7 +349,7 @@ func checkReadme(m map[string]any, packageRoot string, mode Mode) []Issue {
 			))
 			continue
 		}
-		pathVal = strings.TrimSpace(pathVal)
+		pathVal = strings.TrimSpace(pathVal) // 跟思源内核逻辑一致，TrimSpace
 		if pathVal == "" {
 			if mode == ModePR {
 				issues = append(issues, issue("manifest/readme",
@@ -368,6 +376,7 @@ func checkReadme(m map[string]any, packageRoot string, mode Mode) []Issue {
 	return issues
 }
 
+// checkFunding 校验 funding 字段。Custom 链接仅允许 http(s) / mailto，禁止 javascript: / data: / file: 等。
 func checkFunding(m map[string]any) []Issue {
 	raw, ok := m["funding"]
 	if !ok || raw == nil {
@@ -414,6 +423,8 @@ func checkFunding(m map[string]any) []Issue {
 	return issues
 }
 
+// checkOptionalTypedFields 校验可选字段类型。
+// 若存在 disabledInPublish，则值必须为 bool（JSON 中该键存在时不得为字符串等其它类型）。
 func checkOptionalTypedFields(m map[string]any) []Issue {
 	var issues []Issue
 	if raw, ok := m["disabledInPublish"]; ok {
@@ -470,6 +481,8 @@ func relFileExistsCaseSensitive(root, rel string) bool {
 }
 
 // SanitizeDisplayStrings 对清单中 displayName / description 的字符串值做 HTML 转义。
+// 与思源内核 kernel/bazaar/package.go 的展示字段转义对齐；思源旧版本未转义，为避免旧客户端 XSS，须在线上转义后再写入索引。
+// 注：Stage 写入 stage 条目时仍会对 name/author 等做更广的转义（见 actions/stage sanitizePackageDisplayStrings）。
 func SanitizeDisplayStrings(m map[string]any) {
 	if m == nil {
 		return

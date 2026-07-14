@@ -33,7 +33,7 @@ var typeRuntimeFiles = map[PackageType][]string{
 	TypeTemplate: {}, // 模板另有「至少一个非 readme 的 .md」规则
 }
 
-// RequiredFiles 检查必要文件是否存在。
+// RequiredFiles 检查必要文件是否存在（文件名大小写敏感）。
 func RequiredFiles(root string, typ PackageType, mode Mode) []Issue {
 	required := append([]string{}, commonRequiredFiles...)
 	required = append(required, typ.ManifestFile())
@@ -150,22 +150,24 @@ func checkTemplateHasContentMD(root string) []Issue {
 }
 
 // ThemeJS 检查主题是否允许包含 theme.js。
-func ThemeJS(root string, allow bool, mode Mode) []Issue {
+// 仅 config/themes-theme-js-allowlist.txt 中的旧仓库允许在包根目录包含 theme.js（存量豁免），
+// 其余新上架主题必须移除。REF https://github.com/siyuan-note/bazaar/issues/1821
+// allow 由调用方根据白名单决定（对应 Input.AllowThemeJS）。
+func ThemeJS(root string, allow bool) []Issue {
 	if !fileExistsCaseSensitive(root, "theme.js") {
 		return nil
 	}
 	if allow {
 		return nil
 	}
-	msgZh := "包根目录含有 theme.js。新上架主题默认不允许使用 theme.js（历史白名单仓库除外）。请从 package.zip 中删除 theme.js，改用 CSS 等方式实现，然后重新发布 Release。"
-	msgEn := "package.zip contains theme.js at the package root. New themes must not ship theme.js (except legacy allowlisted repos). Remove theme.js from the package, use CSS or other approaches instead, then republish the Release."
-	if mode == ModePR {
-		return []Issue{issue("files/theme_js", msgZh, msgEn)}
-	}
-	return []Issue{issue("files/theme_js", msgZh, msgEn)}
+	return []Issue{issue("files/theme_js",
+		"包根目录含有 theme.js。新上架主题默认不允许使用 theme.js（历史白名单仓库除外）。请从 package.zip 中删除 theme.js，改用 CSS 等方式实现，然后重新发布 Release。",
+		"package.zip contains theme.js at the package root. New themes must not ship theme.js (except legacy allowlisted repos). Remove theme.js from the package, use CSS or other approaches instead, then republish the Release.",
+	)}
 }
 
-// fileExistsCaseSensitive 在 dir 下查找名为 name 的文件（对 name 大小写敏感）。
+// fileExistsCaseSensitive 在 dir 下查找名为 name 的文件或目录（对 name 大小写敏感，通过列目录比对）。
+// 集市包文件名校验均按大小写敏感处理（对齐思源内核在 Mac / Linux 上的行为）。
 func fileExistsCaseSensitive(dir, name string) bool {
 	entries, err := os.ReadDir(dir)
 	if err != nil {

@@ -17,8 +17,9 @@ import (
 )
 
 // ResolvePackageRoot 确定包根目录。
-// 若 path 下恰好有一个子目录且根下没有文件，则将该子目录视为包根
+// 正常情况下文件应直接在解压根目录；若 path 下恰好有一个子目录且根下没有文件，则将该子目录视为包根
 // （兼容「zip 内多包一层文件夹」的常见打包方式）。
+// 根下多个子目录且无文件时返回错误（无法唯一确定包根）。
 func ResolvePackageRoot(path string) (string, error) {
 	if path == "" {
 		return "", fmt.Errorf("PackageRoot 不能为空")
