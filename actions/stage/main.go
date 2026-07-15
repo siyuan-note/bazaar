@@ -27,7 +27,6 @@ import (
 
 	"github.com/88250/gulu"
 	"github.com/google/go-github/v89/github"
-	jsoniter "github.com/json-iterator/go"
 	"github.com/siyuan-note/bazaar/actions/util"
 	"github.com/siyuan-note/bazaar/check"
 )
@@ -153,17 +152,15 @@ func loadOldStageData(packageType check.PackageType) (map[string]*util.StageRepo
 	return oldStageData, nil
 }
 
-// jsoniterSortKeys 使用 json-iterator 的 SortMapKeys 配置，固定键的顺序。
-var jsoniterSortKeys = jsoniter.Config{SortMapKeys: true}.Froze()
-
 // sortJSONKeys 对 JSON 反序列化后按对象键排序再序列化（带缩进），保证输出键序稳定。
-// 使用 jsoniter 输出紧凑 JSON（键已排序），再用标准库 json.Indent 做缩进，避免 jsoniter.MarshalIndent 对嵌套 any 的缩进错乱。
+// 经 Unmarshal 到 any 后，对象均为 map[string]any；json.Marshal 会按字典序输出键。
+// 先输出紧凑 JSON，再用 json.Indent 做缩进，避免 json.MarshalIndent 对嵌套 any 的缩进错乱。
 func sortJSONKeys(data []byte) ([]byte, error) {
 	var v any
-	if err := jsoniterSortKeys.Unmarshal(data, &v); nil != err {
+	if err := json.Unmarshal(data, &v); nil != err {
 		return nil, err
 	}
-	compact, err := jsoniterSortKeys.Marshal(v)
+	compact, err := marshalSortedCompact(v)
 	if nil != err {
 		return nil, err
 	}
@@ -172,6 +169,18 @@ func sortJSONKeys(data []byte) ([]byte, error) {
 		return nil, err
 	}
 	return buf.Bytes(), nil
+}
+
+// marshalSortedCompact 序列化为紧凑 JSON；map 键由 json.Marshal 按字典序输出。
+// SetEscapeHTML(false) 避免将 & 等字符转为 \uXXXX，与既有 stage 文件字符串格式一致。
+func marshalSortedCompact(v any) ([]byte, error) {
+	var buf bytes.Buffer
+	enc := json.NewEncoder(&buf)
+	enc.SetEscapeHTML(false)
+	if err := enc.Encode(v); nil != err {
+		return nil, err
+	}
+	return bytes.TrimSpace(buf.Bytes()), nil
 }
 
 func performStage(packageType check.PackageType, occupiedNames map[string]struct{}) {
