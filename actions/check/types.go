@@ -12,12 +12,12 @@ package main
 
 import "github.com/siyuan-note/bazaar/check"
 
-type ResourceType int                 // 资源类型
+type PackageType int                  // 包类型
 type StringSet map[string]interface{} // 字符串集合
 
-// 资源类型枚举常量
+// 包类型枚举常量
 const (
-	icons ResourceType = iota
+	icons PackageType = iota
 	plugins
 	templates
 	themes
@@ -66,6 +66,6 @@ type ReleaseInfo struct {
 
 // checkOutput 并发检查结果通道载荷
 type checkOutput struct {
-	resourceType ResourceType
-	pkg          PackageCheck
+	packageType  PackageType
+	packageCheck PackageCheck
 }

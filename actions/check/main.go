@@ -85,27 +85,24 @@ func parseCheckResultTemplate() (*template.Template, error) {
 }
 
 func main() {
-	logger.Infof("PR Check running...")
+	logger.Infof("PR Check started")
 
 	var err error
 	githubClient, err = util.NewGitHubClient(GITHUB_TOKEN, REQUEST_TIMEOUT)
 	if err != nil {
 		logger.Fatalf("create github client failed: %s", err)
-		panic(err)
 	}
 
 	// 获取检查结果模板文件
 	checkResultTemplate, err := parseCheckResultTemplate()
 	if nil != err {
 		logger.Fatalf("load check result template failed: %s", err)
-		panic(err)
 	}
 
 	// 打开检查结果输出文件
 	checkResultOutputFile, err := os.OpenFile(CHECK_RESULT_OUTPUT, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0666)
 	if nil != err {
 		logger.Fatalf("open check result output file [%s] failed: %s", CHECK_RESULT_OUTPUT, err)
-		panic(err)
 	}
 	defer checkResultOutputFile.Close()
 
@@ -115,7 +112,6 @@ func main() {
 	occupiedNames, err := util.LoadOccupiedNames(BAZAAR_HEAD_PATH)
 	if err != nil {
 		logger.Fatalf("load occupied names failed: %s", err)
-		panic(err)
 	}
 
 	var parseErrorMu sync.Mutex
@@ -123,10 +119,10 @@ func main() {
 	wg := &sync.WaitGroup{}
 	wg.Add(5)
 
-	go checkRepos(icons, checkResult, occupiedNames, &occupiedNamesMu, &parseErrorMu, wg)
 	go checkRepos(plugins, checkResult, occupiedNames, &occupiedNamesMu, &parseErrorMu, wg)
-	go checkRepos(templates, checkResult, occupiedNames, &occupiedNamesMu, &parseErrorMu, wg)
 	go checkRepos(themes, checkResult, occupiedNames, &occupiedNamesMu, &parseErrorMu, wg)
+	go checkRepos(icons, checkResult, occupiedNames, &occupiedNamesMu, &parseErrorMu, wg)
+	go checkRepos(templates, checkResult, occupiedNames, &occupiedNamesMu, &parseErrorMu, wg)
 	go checkRepos(widgets, checkResult, occupiedNames, &occupiedNamesMu, &parseErrorMu, wg)
 
 	wg.Wait() // 等待所有检查完成
@@ -163,7 +159,7 @@ func parseReposFromRootTxt(filePath string) (paths []string, pathSet StringSet, 
 
 // checkRepos 检查集市资源仓库列表
 func checkRepos(
-	resourceType ResourceType,
+	packageType PackageType,
 	checkResult *CheckResult,
 	occupiedNames map[string]struct{},
 	occupiedNamesMu *sync.Mutex,
@@ -173,7 +169,7 @@ func checkRepos(
 	defer waitGroup.Done()
 
 	var repoListTxtName string
-	switch resourceType {
+	switch packageType {
 	case icons:
 		repoListTxtName = "icons.txt"
 	case plugins:
@@ -185,7 +181,7 @@ func checkRepos(
 	case widgets:
 		repoListTxtName = "widgets.txt"
 	default:
-		panic("checkRepos: invalid resource type")
+		panic("checkRepos: invalid package type")
 	}
 	bazaarHeadReposPath := filepath.Join(BAZAAR_HEAD_PATH, repoListTxtName)
 	prBaseReposPath := filepath.Join(PR_BASE_PATH, repoListTxtName)
@@ -219,7 +215,7 @@ func checkRepos(
 	}
 
 	var themeJsAllowSet map[string]struct{}
-	if resourceType == themes {
+	if packageType == themes {
 		ap := filepath.Join(PR_HEAD_PATH, util.ThemeJsAllowlistRelPath)
 		paths, errAllow := util.ParseReposFromTxt(ap)
 		if errAllow != nil {
@@ -250,7 +246,7 @@ func checkRepos(
 	}
 
 	// 将本 PR 的删除列表写入检查结果，供模板输出
-	switch resourceType {
+	switch packageType {
 	case icons:
 		checkResult.IconsDeleted = deletedRepos
 	case plugins:
@@ -262,7 +258,7 @@ func checkRepos(
 	case widgets:
 		checkResult.WidgetsDeleted = deletedRepos
 	default:
-		panic("checkRepos: invalid resource type")
+		panic("checkRepos: invalid package type")
 	}
 
 	// 更换维护者：在 PR base 与 PR head 中，repo name 相同但 owner 不同，则视为更换维护者
@@ -297,21 +293,21 @@ func checkRepos(
 	// 收集检查结果时，根据是否在 maintainerChangedSet 中打上 MaintainerChanged 标记，供模板区分展示
 	go func() {
 		for result := range resultChannel {
-			pkg := result.pkg
-			if isKeyInSet(pkg.RepoInfo.Path, maintainerChangedSet) {
-				pkg.MaintainerChanged = true
+			packageCheck := result.packageCheck
+			if isKeyInSet(packageCheck.RepoInfo.Path, maintainerChangedSet) {
+				packageCheck.MaintainerChanged = true
 			}
-			switch result.resourceType {
+			switch result.packageType {
 			case icons:
-				checkResult.Icons = append(checkResult.Icons, pkg)
+				checkResult.Icons = append(checkResult.Icons, packageCheck)
 			case plugins:
-				checkResult.Plugins = append(checkResult.Plugins, pkg)
+				checkResult.Plugins = append(checkResult.Plugins, packageCheck)
 			case templates:
-				checkResult.Templates = append(checkResult.Templates, pkg)
+				checkResult.Templates = append(checkResult.Templates, packageCheck)
 			case themes:
-				checkResult.Themes = append(checkResult.Themes, pkg)
+				checkResult.Themes = append(checkResult.Themes, packageCheck)
 			case widgets:
-				checkResult.Widgets = append(checkResult.Widgets, pkg)
+				checkResult.Widgets = append(checkResult.Widgets, packageCheck)
 			default:
 			}
 		}
@@ -322,7 +318,7 @@ func checkRepos(
 	p, _ := ants.NewPoolWithFunc(8, func(arg interface{}) {
 		defer waitGroupCheck.Done()
 		ownerRepo := arg.(string)
-		checkRepo(ownerRepo, occupiedNames, resourceType, resultChannel, occupiedNamesMu, themeJsAllowSet)
+		checkRepo(ownerRepo, occupiedNames, packageType, resultChannel, occupiedNamesMu, themeJsAllowSet)
 	})
 	defer p.Release()
 
@@ -340,7 +336,7 @@ func checkRepos(
 func checkRepo(
 	ownerRepo string,
 	occupiedNames map[string]struct{},
-	resourceType ResourceType,
+	packageType PackageType,
 	resultChannel chan checkOutput,
 	nameSetMutex *sync.Mutex,
 	themeJsAllowSet map[string]struct{},
@@ -365,7 +361,7 @@ func checkRepo(
 
 	// Release / package.zip 未通过时只报告流程层 Issue，不调用 Pkg Check
 	if len(out.Issues) > 0 {
-		resultChannel <- checkOutput{resourceType: resourceType, pkg: out}
+		resultChannel <- checkOutput{packageType: packageType, packageCheck: out}
 		logger.Infof("finish repo check [%s] (release issues)", ownerRepo)
 		return
 	}
@@ -378,16 +374,16 @@ func checkRepo(
 			MessageZh: fmt.Sprintf("下载或解压 package.zip 失败：%s。请确认 Latest Release 中的 package.zip 可访问且为合法 zip，然后重新发布或重跑 PR Check。", err),
 			MessageEn: fmt.Sprintf("Failed to download or unzip package.zip: %s. Ensure package.zip in the Latest Release is reachable and a valid zip, then republish or re-run PR Check.", err),
 		})
-		resultChannel <- checkOutput{resourceType: resourceType, pkg: out}
+		resultChannel <- checkOutput{packageType: packageType, packageCheck: out}
 		logger.Infof("finish repo check [%s] (download failed)", ownerRepo)
 		return
 	}
 	defer cleanup()
 
-	pkgType, typeOk := resourceTypeToPackageType(resourceType)
+	pkgType, typeOk := toCheckPackageType(packageType)
 	if !typeOk {
-		logger.Errorf("repo [%s] invalid resourceType: %d", ownerRepo, resourceType)
-		resultChannel <- checkOutput{resourceType: resourceType, pkg: out}
+		logger.Errorf("repo [%s] invalid packageType: %d", ownerRepo, packageType)
+		resultChannel <- checkOutput{packageType: packageType, packageCheck: out}
 		return
 	}
 
@@ -412,7 +408,7 @@ func checkRepo(
 	nameSetMutex.Unlock()
 
 	out.Issues = append(out.Issues, result.Issues...)
-	resultChannel <- checkOutput{resourceType: resourceType, pkg: out}
+	resultChannel <- checkOutput{packageType: packageType, packageCheck: out}
 	logger.Infof("finish repo check [%s]", ownerRepo)
 }
 

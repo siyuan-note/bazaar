@@ -34,9 +34,9 @@ func buildRepoHomeURL(
 	return fmt.Sprintf("https://github.com/%s/%s", repoOwner, repoName)
 }
 
-// resourceTypeToPackageType 将流程层 ResourceType 映射为 check.PackageType
-func resourceTypeToPackageType(resourceType ResourceType) (check.PackageType, bool) {
-	switch resourceType {
+// toCheckPackageType 将流程层 PackageType 映射为 check.PackageType
+func toCheckPackageType(packageType PackageType) (check.PackageType, bool) {
+	switch packageType {
 	case icons:
 		return check.ParsePackageType("icons")
 	case plugins:
