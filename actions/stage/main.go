@@ -537,64 +537,12 @@ func getRepoLatestRelease(ownerRepo string) (hash, published string, packageZipA
 	ctx, cancel := context.WithTimeout(githubContext, 30*time.Second)
 	defer cancel()
 
-	// REF https://docs.github.com/en/rest/releases/releases#get-the-latest-release
-	release, _, err := githubClient.Repositories.GetLatestRelease(ctx, owner, name)
+	release, err := util.FetchLatestRelease(ctx, githubClient, owner, name)
 	if err != nil {
 		logger.Warnf("get release [%s] failed: %s", ownerRepo, err)
 		return
 	}
-
-	for _, asset := range release.Assets {
-		if asset.GetName() == "package.zip" {
-			packageZipAssetID = asset.GetID()
-			break
-		}
-	}
-	if packageZipAssetID == 0 {
-		logger.Warnf("get [%s] package.zip failed: package.zip not found in release assets", ownerRepo)
-		return
-	}
-
-	published = release.GetPublishedAt().Format(time.RFC3339)
-	tagName := release.GetTagName()
-	if tagName == "" {
-		logger.Warnf("get [%s] tag_name failed: tag_name is empty", ownerRepo)
-		return
-	}
-
-	// REF https://pkg.go.dev/github.com/google/go-github/v89/github#GitService.GetRef
-	ref, _, err := githubClient.Git.GetRef(ctx, owner, name, "tags/"+tagName)
-	if err != nil {
-		logger.Warnf("get release hash [%s] tag [%s] failed: %s", ownerRepo, tagName, err)
-		return
-	}
-
-	hash = ref.GetObject().GetSHA()
-	if hash == "" {
-		logger.Warnf("get [%s] release hash failed: hash is empty", ownerRepo)
-		return
-	}
-	switch ref.GetObject().GetType() {
-	case "commit":
-		// 轻量 tag，object.sha 即为 commit
-	case "tag":
-		// REF https://pkg.go.dev/github.com/google/go-github/v89/github#GitService.GetTag
-		tag, _, err := githubClient.Git.GetTag(ctx, owner, name, hash)
-		if err != nil {
-			logger.Warnf("get release hash [%s] tag [%s:%s] failed: %s", ownerRepo, tagName, hash, err)
-			return
-		}
-		hash = tag.GetObject().GetSHA()
-		if hash == "" {
-			logger.Warnf("get [%s] tag hash failed: hash is empty", ownerRepo)
-			return
-		}
-	default:
-		logger.Warnf("get [%s] release hash failed: unknown ref type [%s]", ownerRepo, ref.GetObject().GetType())
-		return
-	}
-	ok = true
-	return
+	return release.CommitSHA, release.Published, release.PackageZipAssetID, true
 }
 
 // splitOwnerRepo 将 "owner/repo" 拆成 owner 与 repo。

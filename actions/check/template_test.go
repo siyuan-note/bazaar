@@ -15,6 +15,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/siyuan-note/bazaar/actions/util"
 	"github.com/siyuan-note/bazaar/check"
 )
 
@@ -28,7 +29,7 @@ func TestCheckResultTemplate(t *testing.T) {
 		Plugins: []PackageCheck{
 			{
 				RepoInfo: RepoInfo{Path: "siyuan-note/plugin-sample", Home: "https://github.com/siyuan-note/plugin-sample"},
-				Release: ReleaseInfo{
+				Release: util.LatestRelease{
 					Tag: "v0.0.1", URL: "https://github.com/siyuan-note/plugin-sample/releases/tag/v0.0.1",
 					PackageZipAssetID: 1,
 				},

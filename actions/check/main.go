@@ -13,6 +13,7 @@ package main
 import (
 	"context"
 	_ "embed"
+	"errors"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -297,12 +298,10 @@ func checkRepo(
 ) {
 	logger.Infof("start repo check [%s]", ownerRepo)
 
-	repoMeta := strings.Split(ownerRepo, "/")
-	repoOwner := repoMeta[0]
-	repoName := repoMeta[1]
+	repoOwner, repoName, _ := strings.Cut(ownerRepo, "/")
 	repoInfo := RepoInfo{
 		Path: ownerRepo,
-		Home: buildRepoHomeURL(repoOwner, repoName),
+		Home: fmt.Sprintf("https://github.com/%s/%s", repoOwner, repoName),
 	}
 	releaseInfo, releaseIssues := checkRepoLatestRelease(repoOwner, repoName)
 
@@ -359,80 +358,37 @@ func checkRepo(
 }
 
 // checkRepoLatestRelease 检查 Latest Release / package.zip / tag，失败直接返回 Issue，不再使用 Pass 标志。
-func checkRepoLatestRelease(repoOwner, repoName string) (info ReleaseInfo, issues []check.Issue) {
-	githubRelease, _, err := githubClient.Repositories.GetLatestRelease(githubContext, repoOwner, repoName)
-	if nil != err {
-		logger.Warnf("get repo [%s/%s] latest release failed: %s", repoOwner, repoName, err)
-		return info, []check.Issue{{
+func checkRepoLatestRelease(repoOwner, repoName string) (release util.LatestRelease, issues []check.Issue) {
+	release, err := util.FetchLatestRelease(githubContext, githubClient, repoOwner, repoName)
+	if err == nil {
+		return release, nil
+	}
+
+	logger.Warnf("fetch repo [%s/%s] latest release failed: %s", repoOwner, repoName, err)
+	switch {
+	case errors.Is(err, util.ErrNoLatestRelease):
+		return release, []check.Issue{{
 			Rule:      "release/latest",
 			MessageZh: "仓库没有可用的 Latest Release（或 API 读取失败）。请在 GitHub 上创建一个 Release，并确保该仓库对集市检查所用令牌可见，然后重跑 PR Check。",
 			MessageEn: "No usable Latest Release was found (or the GitHub API call failed). Create a GitHub Release, ensure the repo is visible to the bazaar checker token, then re-run PR Check.",
 		}}
-	}
-
-	info.Tag = githubRelease.GetTagName()
-	info.URL = githubRelease.GetHTMLURL()
-
-	for _, asset := range githubRelease.Assets {
-		if asset.GetName() == "package.zip" {
-			info.PackageZipAssetID = asset.GetID()
-			break
-		}
-	}
-	if info.PackageZipAssetID == 0 {
-		return info, []check.Issue{{
+	case errors.Is(err, util.ErrNoPackageZip):
+		return release, []check.Issue{{
 			Rule:      "release/package_zip",
 			MessageZh: "Latest Release 中缺少名为 package.zip 的资源文件。请把打包好的 package.zip 作为 Release Asset 上传（文件名必须完全是 package.zip），然后重跑 PR Check。",
 			MessageEn: "The Latest Release has no asset named package.zip. Upload package.zip as a Release asset (exact filename package.zip), then re-run PR Check.",
 		}}
-	}
-
-	// REF https://pkg.go.dev/github.com/google/go-github/v89/github#GitService.GetRef
-	githubReference, _, err := githubClient.Git.GetRef(githubContext, repoOwner, repoName, "tags/"+info.Tag)
-	if nil != err {
-		logger.Warnf("get repo [%s/%s] reference tag [%s] failed: %s", repoOwner, repoName, info.Tag, err)
-		return info, []check.Issue{issueReleaseTag()}
-	}
-
-	referenceType := githubReference.GetObject().GetType()
-	switch referenceType {
-	case "commit":
-		if githubReference.GetObject().GetSHA() == "" {
-			logger.Warnf("parse repo [%s/%s] reference tag [%s] failed: empty commit sha", repoOwner, repoName, info.Tag)
-			return info, []check.Issue{issueReleaseTag()}
-		}
-	case "tag":
-		tagSha := githubReference.GetObject().GetSHA()
-		// REF https://pkg.go.dev/github.com/google/go-github/v89/github#GitService.GetTag
-		githubTag, _, err := githubClient.Git.GetTag(githubContext, repoOwner, repoName, tagSha)
-		if nil != err {
-			logger.Warnf("get repo [%s/%s] tag [%s:%s] failed: %s", repoOwner, repoName, info.Tag, tagSha, err)
-			return info, []check.Issue{issueReleaseTag()}
-		}
-		if githubTag.GetObject().GetSHA() == "" {
-			logger.Warnf("parse repo [%s/%s] tag [%s:%s] failed: empty commit sha", repoOwner, repoName, info.Tag, tagSha)
-			return info, []check.Issue{issueReleaseTag()}
-		}
+	case errors.Is(err, util.ErrReleaseTag):
+		return release, []check.Issue{{
+			Rule:      "release/tag",
+			MessageZh: "已找到 Latest Release 与 package.zip，但无法解析 Release 对应的 Git 标签/提交。请确认 tag 指向有效 commit 后重跑 PR Check。",
+			MessageEn: "Latest Release and package.zip were found, but the release tag/commit could not be resolved. Ensure the tag points to a valid commit, then re-run PR Check.",
+		}}
 	default:
-		logger.Warnf("parse repo [%s/%s] reference tag [%s] failed: unknown type [%s]", repoOwner, repoName, info.Tag, referenceType)
-		return info, []check.Issue{issueReleaseTag()}
-	}
-
-	return info, nil
-}
-
-// buildRepoHomeURL 构造仓库主页地址
-func buildRepoHomeURL(
-	repoOwner string,
-	repoName string,
-) string {
-	return fmt.Sprintf("https://github.com/%s/%s", repoOwner, repoName)
-}
-
-func issueReleaseTag() check.Issue {
-	return check.Issue{
-		Rule:      "release/tag",
-		MessageZh: "已找到 Latest Release 与 package.zip，但无法解析 Release 对应的 Git 标签/提交。请确认 tag 指向有效 commit 后重跑 PR Check。",
-		MessageEn: "Latest Release and package.zip were found, but the release tag/commit could not be resolved. Ensure the tag points to a valid commit, then re-run PR Check.",
+		return release, []check.Issue{{
+			Rule:      "release/latest",
+			MessageZh: "仓库没有可用的 Latest Release（或 API 读取失败）。请在 GitHub 上创建一个 Release，并确保该仓库对集市检查所用令牌可见，然后重跑 PR Check。",
+			MessageEn: "No usable Latest Release was found (or the GitHub API call failed). Create a GitHub Release, ensure the repo is visible to the bazaar checker token, then re-run PR Check.",
+		}}
 	}
 }

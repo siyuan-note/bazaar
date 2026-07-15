@@ -10,7 +10,10 @@
 
 package main
 
-import "github.com/siyuan-note/bazaar/check"
+import (
+	"github.com/siyuan-note/bazaar/actions/util"
+	"github.com/siyuan-note/bazaar/check"
+)
 
 type Set map[string]struct{} // 字符串集合
 
@@ -71,25 +74,18 @@ func (r *CheckResult) setDeleted(typ check.PackageType, paths []string) bool {
 }
 
 // PackageCheck 单个仓库的流程层检查结果。
-// 失败一律写入 Issues（含 release/* 与 Pkg Check）；Release 仅保留通过后展示/下载所需信息。
+// 失败一律写入 Issues（含 release/* 与 Pkg Check）；Release 仅保留展示/下载所需的 Latest Release 字段。
 type PackageCheck struct {
-	RepoInfo          RepoInfo      `json:"repo"`
-	Release           ReleaseInfo   `json:"release"`
-	Issues            []check.Issue `json:"issues"`
-	MaintainerChanged bool          `json:"maintainer_changed"`
+	RepoInfo          RepoInfo           `json:"repo"`
+	Release           util.LatestRelease `json:"release"`
+	Issues            []check.Issue      `json:"issues"`
+	MaintainerChanged bool               `json:"maintainer_changed"`
 }
 
 // RepoInfo 仓库信息
 type RepoInfo struct {
 	Path string `json:"path"` // 仓库路径 owner/repo
 	Home string `json:"home"` // 仓库主页
-}
-
-// ReleaseInfo Latest Release 摘要（无 Pass 标志；失败用 Issues）。
-type ReleaseInfo struct {
-	Tag               string `json:"tag,omitempty"`               // 标签名
-	URL               string `json:"url,omitempty"`               // Latest Release 页面
-	PackageZipAssetID int64  `json:"packageZipAssetId,omitempty"` // package.zip 的 Release Asset ID（下载用）
 }
 
 // checkOutput 并发检查结果通道载荷
