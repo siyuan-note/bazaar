@@ -127,13 +127,13 @@ func main() {
 }
 
 // parseReposFromRootTxt 从集市包列表 TXT（每行一个 owner/repo）解析出路径列表、路径集合和 name->owner 映射
-func parseReposFromRootTxt(filePath string) (paths []string, pathSet StringSet, nameToOwner map[string]string, err error) {
+func parseReposFromRootTxt(filePath string) (paths []string, pathSet Set, nameToOwner map[string]string, err error) {
 	repos, err := util.ParseReposFromTxt(filePath)
 	if err != nil {
 		return
 	}
 	paths = make([]string, 0, len(repos))
-	pathSet = make(StringSet, len(repos))
+	pathSet = make(Set, len(repos))
 	nameToOwner = make(map[string]string, len(repos))
 	for _, s := range repos {
 		parts := strings.Split(s, "/")
@@ -144,7 +144,7 @@ func parseReposFromRootTxt(filePath string) (paths []string, pathSet StringSet, 
 		owner := parts[0]
 		name := parts[1]
 		paths = append(paths, s)
-		pathSet[s] = nil
+		pathSet[s] = struct{}{}
 		nameToOwner[name] = owner
 	}
 	return
@@ -193,7 +193,7 @@ func checkRepos(
 		return
 	}
 
-	var themeJsAllowSet map[string]struct{}
+	var themeJsAllowSet Set
 	if packageType == check.TypeTheme {
 		ap := filepath.Join(PR_HEAD_PATH, util.ThemeJsAllowlistRelPath)
 		paths, errAllow := util.ParseReposFromTxt(ap)
@@ -204,7 +204,7 @@ func checkRepos(
 			logger.Warnf("load theme.js allowlist [%s] failed: %v, skip this type", ap, errAllow)
 			return
 		}
-		themeJsAllowSet = make(map[string]struct{}, len(paths))
+		themeJsAllowSet = make(Set, len(paths))
 		for _, p := range paths {
 			themeJsAllowSet[p] = struct{}{}
 		}
@@ -228,14 +228,15 @@ func checkRepos(
 		}
 	}
 
-	// 将本 PR 的删除列表写入检查结果，供模板输出
+	// 将本 PR 的删除列表写入检查结果
 	if !checkResult.setDeleted(packageType, deletedRepos) {
 		panic("checkRepos: invalid package type")
 	}
 
 	// 更换维护者：在 PR base 与 PR head 中，repo name 相同但 owner 不同，则视为更换维护者
 	maintainerChanged := make([]string, 0)
-	for _, path := range newRepos { // newRepos 包含了更换维护者的仓库
+	for _, path := range newRepos {
+		// newRepos 包含了更换维护者的仓库
 		parts := strings.Split(path, "/")
 		if len(parts) != 2 {
 			continue
@@ -244,7 +245,8 @@ func checkRepos(
 		name := parts[1]
 		oldOwner, oldExists := baseNameToOwner[name]
 		if !oldExists {
-			continue // base 中不存在该 name，是新增，不是更换维护者
+			// base 中不存在该 name，是新增，不是更换维护者
+			continue
 		}
 		if oldOwner != newOwner {
 			// base 中有 oldOwner/name，head 中有 newOwner/name，是更换维护者
@@ -253,9 +255,9 @@ func checkRepos(
 	}
 
 	// 新增与更换维护者合并为待检查列表，统一做 Release + Pkg Check（更换维护者按新集市包处理）
-	maintainerChangedSet := make(StringSet, len(maintainerChanged))
+	maintainerChangedSet := make(Set, len(maintainerChanged))
 	for _, path := range maintainerChanged {
-		maintainerChangedSet[path] = nil
+		maintainerChangedSet[path] = struct{}{}
 	}
 	resultChannel := make(chan checkOutput, 4)
 	waitGroupCheck := &sync.WaitGroup{}
@@ -297,7 +299,7 @@ func checkRepo(
 	packageType check.PackageType,
 	resultChannel chan checkOutput,
 	nameSetMutex *sync.Mutex,
-	themeJsAllowSet map[string]struct{},
+	themeJsAllowSet Set,
 ) {
 
 	logger.Infof("start repo check [%s]", ownerRepo)

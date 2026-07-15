@@ -12,7 +12,7 @@ package main
 
 import "github.com/siyuan-note/bazaar/check"
 
-type StringSet map[string]any // 字符串集合
+type Set map[string]struct{} // 字符串集合
 
 // CheckResult 检查结果（字段顺序：插件、主题、图标、模板、挂件）。
 type CheckResult struct {
