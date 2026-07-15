@@ -12,7 +12,7 @@ package main
 
 import "github.com/siyuan-note/bazaar/check"
 
-type StringSet map[string]interface{} // 字符串集合
+type StringSet map[string]any // 字符串集合
 
 // CheckResult 检查结果
 type CheckResult struct {

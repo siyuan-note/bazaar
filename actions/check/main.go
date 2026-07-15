@@ -70,10 +70,7 @@ func formatIssueIndex(i, total int) string {
 	if total < 1 {
 		total = 1
 	}
-	width := len(strconv.Itoa(total))
-	if width < 2 {
-		width = 2
-	}
+	width := max(len(strconv.Itoa(total)), 2)
 	return fmt.Sprintf("%0*d", width, i+1)
 }
 
@@ -263,9 +260,8 @@ func checkRepos(
 	waitGroupCheck := &sync.WaitGroup{}
 	waitGroupResult := &sync.WaitGroup{}
 
-	waitGroupResult.Add(1)
 	// 收集检查结果时，根据是否在 maintainerChangedSet 中打上 MaintainerChanged 标记，供模板区分展示
-	go func() {
+	waitGroupResult.Go(func() {
 		for result := range resultChannel {
 			packageCheck := result.packageCheck
 			if isKeyInSet(packageCheck.RepoInfo.Path, maintainerChangedSet) {
@@ -273,11 +269,10 @@ func checkRepos(
 			}
 			checkResult.appendCheck(result.packageType, packageCheck)
 		}
-		waitGroupResult.Done()
-	}()
+	})
 
 	// 检查新增的集市包（包含更换维护者的集市包），限制并发数为 8
-	p, _ := ants.NewPoolWithFunc(8, func(arg interface{}) {
+	p, _ := ants.NewPoolWithFunc(8, func(arg any) {
 		defer waitGroupCheck.Done()
 		ownerRepo := arg.(string)
 		checkRepo(ownerRepo, occupiedNames, packageType, resultChannel, occupiedNamesMu, themeJsAllowSet)

@@ -71,7 +71,7 @@ func stageIndex(hash string, packageType check.PackageType) {
 	}
 
 	// 压缩 JSON：解析后重新序列化为压缩格式（移除空格和换行）
-	var jsonData interface{}
+	var jsonData any
 	err := json.Unmarshal(data, &jsonData)
 	if nil != err {
 		logger.Fatalf("unmarshal [%s] failed: %s", u, err)
@@ -95,7 +95,7 @@ func stageIndex(hash string, packageType check.PackageType) {
 func reportHash(hash string) {
 	u := "https://rhythm.b3log.org/api/siyuan/bazaar/hash"
 	resp, _, errs := gorequest.New().Post(u).
-		SendMap(map[string]interface{}{
+		SendMap(map[string]any{
 			"token": os.Getenv("RHYTHEM_TOKEN"),
 			"hash":  hash,
 		}).
