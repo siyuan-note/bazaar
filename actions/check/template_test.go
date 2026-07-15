@@ -72,10 +72,16 @@ func TestCheckResultTemplate(t *testing.T) {
 		"01 [release/package_zip]",
 		"01 [files/required]",
 		"Check passed.",
+		"Latest Release: [v0.0.1](https://github.com/siyuan-note/plugin-sample/releases/tag/v0.0.1)",
 	} {
 		if !strings.Contains(out, want) {
 			t.Fatalf("output missing %q\n%s", want, out)
 		}
+	}
+	passIdx := strings.Index(out, "Check passed.")
+	releaseIdx := strings.Index(out, "Latest Release: [v0.0.1]")
+	if passIdx < 0 || releaseIdx < 0 || releaseIdx > passIdx {
+		t.Fatalf("Latest Release should appear before Check passed.\n%s", out)
 	}
 	if strings.Contains(out, "Release that must exist") {
 		t.Fatal("old checkbox wording should be gone")

@@ -1,18 +1,28 @@
-## Pull Request Check Report
+## 拉取请求检查报告 / Pull Request Check Report
 
-{{ if .ParseError }}
-### Package list parse error
+{{- if .ParseError }}
+
+### 包列表解析错误 / Package list parse error
 
 {{ .ParseError }}
 
-Please fix the corresponding `.txt` file in the repo root: one `owner/repo` per line. Then push a new commit or re-run PR Check.
+请修复仓库根目录下对应的 `.txt` 文件，确保每行包含一个 `owner/repo`，然后推送新提交。
+
+Please fix the corresponding `.txt` file in the repo root, ensuring each line contains one `owner/repo`, then push a new commit.
 
 ---
-{{ end }}
-{{ define "repoCheck" }}
-#### [{{ .RepoInfo.Path }}]({{ .RepoInfo.Home }}){{ if .MaintainerChanged }} (Change Maintainer){{ end }}
+{{- end }}
 
-{{ range $j, $issue := .Issues }}
+{{- define "repoCheck" }}
+#### [{{ .RepoInfo.Path }}]({{ .RepoInfo.Home }}){{ if .MaintainerChanged }} (更换维护者 / Change Maintainer){{ end }}
+
+  {{- if .Release.URL }}
+
+最新 Release / Latest Release: [{{ .Release.Tag }}]({{ .Release.URL }})
+  {{- end }}
+
+  {{- range $j, $issue := .Issues }}
+
 {{ issueIndex $j }} [{{ $issue.Rule }}]
 
 {{ $issue.MessageZh }}
@@ -20,83 +30,106 @@ Please fix the corresponding `.txt` file in the repo root: one `owner/repo` per 
 {{ $issue.MessageEn }}
 
 ---
-{{ end }}
-{{ if not .Issues }}
-Check passed.{{ if .Release.URL }} Latest Release: [{{ .Release.Tag }}]({{ .Release.URL }}){{ end }}
+  {{- end }}
+
+  {{- if not .Issues }}
+
+检查通过。
+
+Check passed.
 
 ---
-{{ end }}
-{{ end }}
-{{ if .Icons }}
-### Add `{{ len .Icons }}` Icon Repo
+  {{- end }}
+{{- end }}
 
-{{ range .Icons }}{{ template "repoCheck" . }}{{ end }}
-{{ end }}
-{{ if .IconsDeleted }}
+{{- if .Plugins }}
 
-### Remove `{{ len .IconsDeleted }}` Icon Repo
+### 新增 `{{ len .Plugins }}` 个插件仓库 / Add `{{ len .Plugins }}` Plugin Repo
 
-{{ range .IconsDeleted }}
+  {{- range .Plugins }}
+{{ template "repoCheck" . }}
+  {{- end }}
+{{- end }}
+
+{{- if .PluginsDeleted }}
+
+### 移除 `{{ len .PluginsDeleted }}` 个插件仓库 / Remove `{{ len .PluginsDeleted }}` Plugin Repo
+  {{- range .PluginsDeleted }}
 - [{{ . }}](https://github.com/{{ . }})
-{{ end }}
-{{ end }}
+  {{- end }}
+{{- end }}
 
-{{ if .Plugins }}
-### Add `{{ len .Plugins }}` Plugin Repo
+{{- if .Themes }}
 
-{{ range .Plugins }}{{ template "repoCheck" . }}{{ end }}
-{{ end }}
-{{ if .PluginsDeleted }}
+### 新增 `{{ len .Themes }}` 个主题仓库 / Add `{{ len .Themes }}` Theme Repo
 
-### Remove `{{ len .PluginsDeleted }}` Plugin Repo
+  {{- range .Themes }}
+{{ template "repoCheck" . }}
+  {{- end }}
+{{- end }}
 
-{{ range .PluginsDeleted }}
+{{- if .ThemesDeleted }}
+
+### 移除 `{{ len .ThemesDeleted }}` 个主题仓库 / Remove `{{ len .ThemesDeleted }}` Theme Repo
+  {{- range .ThemesDeleted }}
 - [{{ . }}](https://github.com/{{ . }})
-{{ end }}
-{{ end }}
+  {{- end }}
+{{- end }}
 
-{{ if .Templates }}
-### Add `{{ len .Templates }}` Template Repo
+{{- if .Icons }}
 
-{{ range .Templates }}{{ template "repoCheck" . }}{{ end }}
-{{ end }}
-{{ if .TemplatesDeleted }}
+### 新增 `{{ len .Icons }}` 个图标仓库 / Add `{{ len .Icons }}` Icon Repo
 
-### Remove `{{ len .TemplatesDeleted }}` Template Repo
+  {{- range .Icons }}
+{{ template "repoCheck" . }}
+  {{- end }}
+{{- end }}
 
-{{ range .TemplatesDeleted }}
+{{- if .IconsDeleted }}
+
+### 移除 `{{ len .IconsDeleted }}` 个图标仓库 / Remove `{{ len .IconsDeleted }}` Icon Repo
+  {{- range .IconsDeleted }}
 - [{{ . }}](https://github.com/{{ . }})
-{{ end }}
-{{ end }}
+  {{- end }}
+{{- end }}
 
-{{ if .Themes }}
-### Add `{{ len .Themes }}` Theme Repo
+{{- if .Templates }}
 
-{{ range .Themes }}{{ template "repoCheck" . }}{{ end }}
-{{ end }}
-{{ if .ThemesDeleted }}
+### 新增 `{{ len .Templates }}` 个模板仓库 / Add `{{ len .Templates }}` Template Repo
 
-### Remove `{{ len .ThemesDeleted }}` Theme Repo
+  {{- range .Templates }}
+{{ template "repoCheck" . }}
+  {{- end }}
+{{- end }}
 
-{{ range .ThemesDeleted }}
+{{- if .TemplatesDeleted }}
+
+### 移除 `{{ len .TemplatesDeleted }}` 个模板仓库 / Remove `{{ len .TemplatesDeleted }}` Template Repo
+  {{- range .TemplatesDeleted }}
 - [{{ . }}](https://github.com/{{ . }})
-{{ end }}
-{{ end }}
+  {{- end }}
+{{- end }}
 
-{{ if .Widgets }}
-### Add `{{ len .Widgets }}` Widget Repo
+{{- if .Widgets }}
 
-{{ range .Widgets }}{{ template "repoCheck" . }}{{ end }}
-{{ end }}
-{{ if .WidgetsDeleted }}
+### 新增 `{{ len .Widgets }}` 个挂件仓库 / Add `{{ len .Widgets }}` Widget Repo
 
-### Remove `{{ len .WidgetsDeleted }}` Widget Repo
+  {{- range .Widgets }}
+{{ template "repoCheck" . }}
+  {{- end }}
+{{- end }}
 
-{{ range .WidgetsDeleted }}
+{{- if .WidgetsDeleted }}
+
+### 移除 `{{ len .WidgetsDeleted }}` 个挂件仓库 / Remove `{{ len .WidgetsDeleted }}` Widget Repo
+  {{- range .WidgetsDeleted }}
 - [{{ . }}](https://github.com/{{ . }})
-{{ end }}
-{{ end }}
+  {{- end }}
+{{- end }}
 
-{{ if and (not .Icons) (not .Plugins) (not .Templates) (not .Themes) (not .Widgets) (not .IconsDeleted) (not .PluginsDeleted) (not .TemplatesDeleted) (not .ThemesDeleted) (not .WidgetsDeleted) }}
-No actual changes to the bazaar package list (or changes are already in main). Please check your commit.
-{{ end }}
+{{- if and (not .Plugins) (not .Themes) (not .Icons) (not .Templates) (not .Widgets) (not .PluginsDeleted) (not .ThemesDeleted) (not .IconsDeleted) (not .TemplatesDeleted) (not .WidgetsDeleted) }}
+
+集市包列表无实际变更（或变更已在 main 中），请检查你的提交。
+
+No actual changes to the bazaar package list (or changes are already in main), please check your commit.
+{{- end }}
