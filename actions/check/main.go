@@ -116,14 +116,13 @@ func main() {
 
 	var parseErrorMu sync.Mutex
 	var occupiedNamesMu sync.Mutex // 跨类型共享，保证同 PR 内 OccupiedNames 唯一性
+	checkTypes := check.CheckOrderPackageTypes()
 	wg := &sync.WaitGroup{}
-	wg.Add(5)
+	wg.Add(len(checkTypes))
 
-	go checkRepos(plugins, checkResult, occupiedNames, &occupiedNamesMu, &parseErrorMu, wg)
-	go checkRepos(themes, checkResult, occupiedNames, &occupiedNamesMu, &parseErrorMu, wg)
-	go checkRepos(icons, checkResult, occupiedNames, &occupiedNamesMu, &parseErrorMu, wg)
-	go checkRepos(templates, checkResult, occupiedNames, &occupiedNamesMu, &parseErrorMu, wg)
-	go checkRepos(widgets, checkResult, occupiedNames, &occupiedNamesMu, &parseErrorMu, wg)
+	for _, packageType := range checkTypes {
+		go checkRepos(packageType, checkResult, occupiedNames, &occupiedNamesMu, &parseErrorMu, wg)
+	}
 
 	wg.Wait() // 等待所有检查完成
 
@@ -159,7 +158,7 @@ func parseReposFromRootTxt(filePath string) (paths []string, pathSet StringSet, 
 
 // checkRepos 检查集市资源仓库列表
 func checkRepos(
-	packageType PackageType,
+	packageType check.PackageType,
 	checkResult *CheckResult,
 	occupiedNames map[string]struct{},
 	occupiedNamesMu *sync.Mutex,
@@ -168,21 +167,7 @@ func checkRepos(
 ) {
 	defer waitGroup.Done()
 
-	var repoListTxtName string
-	switch packageType {
-	case icons:
-		repoListTxtName = "icons.txt"
-	case plugins:
-		repoListTxtName = "plugins.txt"
-	case templates:
-		repoListTxtName = "templates.txt"
-	case themes:
-		repoListTxtName = "themes.txt"
-	case widgets:
-		repoListTxtName = "widgets.txt"
-	default:
-		panic("checkRepos: invalid package type")
-	}
+	repoListTxtName := packageType.ReposListFile()
 	bazaarHeadReposPath := filepath.Join(BAZAAR_HEAD_PATH, repoListTxtName)
 	prBaseReposPath := filepath.Join(PR_BASE_PATH, repoListTxtName)
 	prHeadReposPath := filepath.Join(PR_HEAD_PATH, repoListTxtName)
@@ -215,7 +200,7 @@ func checkRepos(
 	}
 
 	var themeJsAllowSet map[string]struct{}
-	if packageType == themes {
+	if packageType == check.TypeTheme {
 		ap := filepath.Join(PR_HEAD_PATH, util.ThemeJsAllowlistRelPath)
 		paths, errAllow := util.ParseReposFromTxt(ap)
 		if errAllow != nil {
@@ -246,18 +231,7 @@ func checkRepos(
 	}
 
 	// 将本 PR 的删除列表写入检查结果，供模板输出
-	switch packageType {
-	case icons:
-		checkResult.IconsDeleted = deletedRepos
-	case plugins:
-		checkResult.PluginsDeleted = deletedRepos
-	case templates:
-		checkResult.TemplatesDeleted = deletedRepos
-	case themes:
-		checkResult.ThemesDeleted = deletedRepos
-	case widgets:
-		checkResult.WidgetsDeleted = deletedRepos
-	default:
+	if !checkResult.setDeleted(packageType, deletedRepos) {
 		panic("checkRepos: invalid package type")
 	}
 
@@ -297,19 +271,7 @@ func checkRepos(
 			if isKeyInSet(packageCheck.RepoInfo.Path, maintainerChangedSet) {
 				packageCheck.MaintainerChanged = true
 			}
-			switch result.packageType {
-			case icons:
-				checkResult.Icons = append(checkResult.Icons, packageCheck)
-			case plugins:
-				checkResult.Plugins = append(checkResult.Plugins, packageCheck)
-			case templates:
-				checkResult.Templates = append(checkResult.Templates, packageCheck)
-			case themes:
-				checkResult.Themes = append(checkResult.Themes, packageCheck)
-			case widgets:
-				checkResult.Widgets = append(checkResult.Widgets, packageCheck)
-			default:
-			}
+			checkResult.appendCheck(result.packageType, packageCheck)
 		}
 		waitGroupResult.Done()
 	}()
@@ -336,7 +298,7 @@ func checkRepos(
 func checkRepo(
 	ownerRepo string,
 	occupiedNames map[string]struct{},
-	packageType PackageType,
+	packageType check.PackageType,
 	resultChannel chan checkOutput,
 	nameSetMutex *sync.Mutex,
 	themeJsAllowSet map[string]struct{},
@@ -380,13 +342,6 @@ func checkRepo(
 	}
 	defer cleanup()
 
-	pkgType, typeOk := toCheckPackageType(packageType)
-	if !typeOk {
-		logger.Errorf("repo [%s] invalid packageType: %d", ownerRepo, packageType)
-		resultChannel <- checkOutput{packageType: packageType, packageCheck: out}
-		return
-	}
-
 	_, allowThemeJS := themeJsAllowSet[ownerRepo]
 
 	// 持锁调用 Check 并在通过后登记 name，保证同 PR 内 OccupiedNames 唯一性
@@ -394,7 +349,7 @@ func checkRepo(
 	result := check.Check(check.Input{
 		PackageRoot:   tmpUnzipPath,
 		OwnerRepo:     ownerRepo,
-		Type:          pkgType,
+		Type:          packageType,
 		OldName:       "", // PR 新仓按首发处理
 		OldVersion:    "",
 		OccupiedNames: occupiedNames,

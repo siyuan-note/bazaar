@@ -34,24 +34,6 @@ func buildRepoHomeURL(
 	return fmt.Sprintf("https://github.com/%s/%s", repoOwner, repoName)
 }
 
-// toCheckPackageType 将流程层 PackageType 映射为 check.PackageType
-func toCheckPackageType(packageType PackageType) (check.PackageType, bool) {
-	switch packageType {
-	case icons:
-		return check.ParsePackageType("icons")
-	case plugins:
-		return check.ParsePackageType("plugins")
-	case templates:
-		return check.ParsePackageType("templates")
-	case themes:
-		return check.ParsePackageType("themes")
-	case widgets:
-		return check.ParsePackageType("widgets")
-	default:
-		return 0, false
-	}
-}
-
 func issueReleaseLatest() check.Issue {
 	return check.Issue{
 		Rule:      "release/latest",

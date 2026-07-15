@@ -80,6 +80,21 @@ func Check(in Input) *Result {
 	}
 }
 
+// AllPackageTypes 返回所有集市包类型（声明顺序）。
+func AllPackageTypes() []PackageType {
+	return rules.AllPackageTypes()
+}
+
+// CheckOrderPackageTypes 返回 PR Check 并发顺序（与 CheckResult JSON 分组一致）。
+func CheckOrderPackageTypes() []PackageType {
+	return rules.CheckOrderPackageTypes()
+}
+
+// StageOrderPackageTypes 返回 Stage 流水线顺序（themes 优先，与历史行为一致）。
+func StageOrderPackageTypes() []PackageType {
+	return rules.StageOrderPackageTypes()
+}
+
 // ParsePackageType 解析类型字符串（plugins/plugin 等均可）。
 func ParsePackageType(s string) (PackageType, bool) {
 	return rules.ParsePackageType(s)

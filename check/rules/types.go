@@ -33,19 +33,75 @@ const (
 	TypeWidget
 )
 
-func (t PackageType) String() string {
-	switch t {
-	case TypeTheme:
-		return "theme"
-	case TypeIcon:
-		return "icon"
-	case TypeTemplate:
-		return "template"
-	case TypeWidget:
-		return "widget"
-	default:
-		return "plugin"
+type packageTypeMeta struct {
+	singular string // 清单文件名前缀，如 plugin.json
+	plural   string // 仓库列表 / stage 目录名，如 plugins.txt
+}
+
+// packageTypeMetas 为集市包类型的唯一元数据表；新增类型时只改此处。
+var packageTypeMetas = [...]packageTypeMeta{
+	TypePlugin:   {singular: "plugin", plural: "plugins"},
+	TypeTheme:    {singular: "theme", plural: "themes"},
+	TypeIcon:     {singular: "icon", plural: "icons"},
+	TypeTemplate: {singular: "template", plural: "templates"},
+	TypeWidget:   {singular: "widget", plural: "widgets"},
+}
+
+var packageTypeByName map[string]PackageType
+
+func init() {
+	packageTypeByName = make(map[string]PackageType, len(packageTypeMetas)*2)
+	for i := range packageTypeMetas {
+		typ := PackageType(i)
+		m := packageTypeMetas[i]
+		packageTypeByName[m.singular] = typ
+		packageTypeByName[m.plural] = typ
 	}
+}
+
+// AllPackageTypes 返回所有集市包类型（声明顺序）。
+func AllPackageTypes() []PackageType {
+	out := make([]PackageType, len(packageTypeMetas))
+	for i := range packageTypeMetas {
+		out[i] = PackageType(i)
+	}
+	return out
+}
+
+// StageOrderPackageTypes 返回 Stage 流水线顺序（themes 优先，与历史行为一致）。
+func StageOrderPackageTypes() []PackageType {
+	return []PackageType{TypeTheme, TypeTemplate, TypeIcon, TypeWidget, TypePlugin}
+}
+
+// CheckOrderPackageTypes 返回 PR Check 并发顺序（与 CheckResult JSON 分组一致）。
+func CheckOrderPackageTypes() []PackageType {
+	return []PackageType{TypeIcon, TypePlugin, TypeTemplate, TypeTheme, TypeWidget}
+}
+
+func (t PackageType) valid() bool {
+	return t >= TypePlugin && int(t) < len(packageTypeMetas)
+}
+
+func (t PackageType) meta() (packageTypeMeta, bool) {
+	if !t.valid() {
+		return packageTypeMeta{}, false
+	}
+	return packageTypeMetas[t], true
+}
+
+func (t PackageType) String() string {
+	if m, ok := t.meta(); ok {
+		return m.singular
+	}
+	return packageTypeMetas[TypePlugin].singular
+}
+
+// Plural 返回复数形式（plugins、themes 等），用于仓库列表与 stage 路径。
+func (t PackageType) Plural() string {
+	if m, ok := t.meta(); ok {
+		return m.plural
+	}
+	return packageTypeMetas[TypePlugin].plural
 }
 
 // ManifestFile 返回该类型清单文件名（大小写敏感）。
@@ -53,20 +109,18 @@ func (t PackageType) ManifestFile() string {
 	return t.String() + ".json"
 }
 
+// ReposListFile 返回仓库列表文件名（如 plugins.txt）。
+func (t PackageType) ReposListFile() string {
+	return t.Plural() + ".txt"
+}
+
+// StageJSONFile 返回 stage 索引文件名（如 plugins.json）。
+func (t PackageType) StageJSONFile() string {
+	return t.Plural() + ".json"
+}
+
 // ParsePackageType 解析类型字符串（plugins/plugin 等均可）。
 func ParsePackageType(s string) (PackageType, bool) {
-	switch s {
-	case "plugin", "plugins":
-		return TypePlugin, true
-	case "theme", "themes":
-		return TypeTheme, true
-	case "icon", "icons":
-		return TypeIcon, true
-	case "template", "templates":
-		return TypeTemplate, true
-	case "widget", "widgets":
-		return TypeWidget, true
-	default:
-		return 0, false
-	}
+	t, ok := packageTypeByName[s]
+	return t, ok
 }

@@ -21,6 +21,7 @@ import (
 	"github.com/88250/gulu"
 	"github.com/parnurzeal/gorequest"
 	"github.com/siyuan-note/bazaar/actions/util"
+	"github.com/siyuan-note/bazaar/check"
 )
 
 var logger = gulu.Log.NewLogger(os.Stdout)
@@ -37,14 +38,14 @@ func main() {
 	hash := strings.TrimSpace(string(data))
 	logger.Infof("bazaar [%s]", hash)
 
-	indexes := []string{"themes", "templates", "icons", "widgets", "plugins"}
+	indexTypes := check.StageOrderPackageTypes()
 	var wg sync.WaitGroup
-	wg.Add(len(indexes))
-	for _, idx := range indexes {
-		go func(i string) {
+	wg.Add(len(indexTypes))
+	for _, packageType := range indexTypes {
+		go func(pt check.PackageType) {
 			defer wg.Done()
-			stageIndex(hash, i)
-		}(idx)
+			stageIndex(hash, pt)
+		}(packageType)
 	}
 	wg.Wait()
 
@@ -54,8 +55,9 @@ func main() {
 }
 
 // stageIndex 将指定类型的集市索引上传到 OSS
-func stageIndex(hash string, index string) {
-	u := "https://raw.githubusercontent.com/siyuan-note/bazaar/" + hash + "/stage/" + index + ".json"
+func stageIndex(hash string, packageType check.PackageType) {
+	stageFile := packageType.StageJSONFile()
+	u := "https://raw.githubusercontent.com/siyuan-note/bazaar/" + hash + "/stage/" + stageFile
 	resp, data, errs := gorequest.New().Get(u).
 		Set("User-Agent", util.UserAgent).
 		Retry(1, 3*time.Second).Timeout(30 * time.Second).EndBytes()
@@ -81,7 +83,7 @@ func stageIndex(hash string, index string) {
 		return
 	}
 
-	key := "bazaar@" + hash + "/stage/" + index + ".json"
+	key := "bazaar@" + hash + "/stage/" + stageFile
 	err = util.UploadOSS(key, "application/json", data)
 	if nil != err {
 		logger.Fatalf("upload bazaar stage index [%s] failed: %s", key, err)

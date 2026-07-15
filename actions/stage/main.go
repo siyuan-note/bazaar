@@ -86,12 +86,12 @@ func main() {
 	}
 
 	// 每类 stage 前重新加载 OccupiedNames，以便上一类本轮新写入的 name 参与后续类型的唯一性检查。
-	for _, typ := range []string{"themes", "templates", "icons", "widgets", "plugins"} {
+	for _, packageType := range check.StageOrderPackageTypes() {
 		occupiedNames, err := util.LoadOccupiedNames(".")
 		if err != nil {
 			logger.Fatalf("load occupied names failed: %v", err)
 		}
-		performStage(typ, occupiedNames)
+		performStage(packageType, occupiedNames)
 	}
 
 	logger.Infof("bazaar staged")
@@ -102,10 +102,9 @@ const apiCallsPerRepo = 2.5
 
 // checkRateLimitBeforeStage 统计本次待检查仓库数、请求 GitHub rate_limit（该请求不计入 core），若 core 剩余请求数不足则返回错误。参考 https://docs.github.com/zh/rest/rate-limit/rate-limit
 func checkRateLimitBeforeStage() error {
-	types := []string{"themes", "templates", "icons", "widgets", "plugins"}
 	var repoCount int
-	for _, typ := range types {
-		repos, err := util.ParseReposFromTxt(typ + ".txt")
+	for _, packageType := range check.StageOrderPackageTypes() {
+		repos, err := util.ParseReposFromTxt(packageType.ReposListFile())
 		if err != nil {
 			return fmt.Errorf("count staging repos: %w", err)
 		}
@@ -140,9 +139,9 @@ func checkRateLimitBeforeStage() error {
 
 // loadOldStageData 加载现有的 stage 文件数据，返回以 owner/repo 为 key 的映射。
 // 文件不存在时返回空映射（不报错）；读取或解析失败时返回错误，避免误把已有 stage 当作无旧数据。
-func loadOldStageData(typ string) (map[string]*util.StageRepo, error) {
+func loadOldStageData(packageType check.PackageType) (map[string]*util.StageRepo, error) {
 	oldStageData := make(map[string]*util.StageRepo)
-	stageFilePath := "stage/" + typ + ".json"
+	stageFilePath := "stage/" + packageType.StageJSONFile()
 
 	stageFile, err := util.ReadStageFile(stageFilePath)
 	if nil != err {
@@ -182,12 +181,12 @@ func sortJSONKeys(data []byte) ([]byte, error) {
 	return buf.Bytes(), nil
 }
 
-func performStage(typ string, occupiedNames map[string]struct{}) {
-	logger.Infof("staging [%s]", typ)
+func performStage(packageType check.PackageType, occupiedNames map[string]struct{}) {
+	logger.Infof("staging [%s]", packageType.Plural())
 
-	reposSlice, err := util.ParseReposFromTxt(typ + ".txt")
+	reposSlice, err := util.ParseReposFromTxt(packageType.ReposListFile())
 	if nil != err {
-		logger.Fatalf("read or parse [%s.txt] failed: %s", typ, err)
+		logger.Fatalf("read or parse [%s] failed: %s", packageType.ReposListFile(), err)
 	}
 	// 与后续 Invoke(arg) 的 arg.(string) 兼容，转为 []any
 	repos := make([]any, len(reposSlice))
@@ -195,13 +194,13 @@ func performStage(typ string, occupiedNames map[string]struct{}) {
 		repos[i] = s
 	}
 
-	oldStageData, err := loadOldStageData(typ)
+	oldStageData, err := loadOldStageData(packageType)
 	if nil != err {
-		logger.Fatalf("load old stage [%s] failed: %s", typ, err)
+		logger.Fatalf("load old stage [%s] failed: %s", packageType.Plural(), err)
 	}
 
 	var themeJsAllowSet map[string]struct{}
-	if typ == "themes" {
+	if packageType == check.TypeTheme {
 		paths, err := util.ParseReposFromTxt(util.ThemeJsAllowlistRelPath)
 		if err != nil {
 			logger.Fatalf("read or parse [%s] failed: %s", util.ThemeJsAllowlistRelPath, err)
@@ -227,7 +226,7 @@ func performStage(typ string, occupiedNames map[string]struct{}) {
 			oldStageURL = o.URL
 			oldRepo = o
 		}
-		ok, skipped, hash, updated, size, installSize, pkg := indexPackage(ownerRepo, typ, oldStageURL, oldRepo, themeJsAllowSet, occupiedNames)
+		ok, skipped, hash, updated, size, installSize, pkg := indexPackage(ownerRepo, packageType, oldStageURL, oldRepo, themeJsAllowSet, occupiedNames)
 		if skipped {
 			// hash 未变化，跳过下载，直接沿用旧 stage 条目
 			lock.Lock()
@@ -293,18 +292,18 @@ func performStage(typ string, occupiedNames map[string]struct{}) {
 
 	data, err := gulu.JSON.MarshalIndentJSON(staged, "", "  ")
 	if nil != err {
-		logger.Fatalf("marshal stage [%s.json] failed: %s", typ, err)
+		logger.Fatalf("marshal stage [%s] failed: %s", packageType.StageJSONFile(), err)
 	}
 	data, err = sortJSONKeys(data)
 	if nil != err {
-		logger.Fatalf("sort stage [%s.json] keys failed: %s", typ, err)
+		logger.Fatalf("sort stage [%s] keys failed: %s", packageType.StageJSONFile(), err)
 	}
 
-	if err = os.WriteFile("stage/"+typ+".json", data, 0644); nil != err {
-		logger.Fatalf("write stage [%s.json] failed: %s", typ, err)
+	if err = os.WriteFile("stage/"+packageType.StageJSONFile(), data, 0644); nil != err {
+		logger.Fatalf("write stage [%s] failed: %s", packageType.StageJSONFile(), err)
 	}
 
-	logger.Infof("staged [%s]", typ)
+	logger.Infof("staged [%s]", packageType.Plural())
 }
 
 // parseHashFromStageURL 从 stage 条目的 URL（格式 owner/repo@hash）中解析出 hash 部分，若无 @ 或 @ 后为空则返回空字符串
@@ -327,9 +326,9 @@ func getOldPackageFields(oldRepo *util.StageRepo) (name, version string) {
 // indexPackage 索引包，返回的 pkg 为解析后的 StagePackage。
 // oldStageURL 为当前已 stage 的该仓库 URL（格式 owner/repo@hash），若与 Latest Release 的 hash 一致则跳过下载并返回 skipped=true。
 // oldStageRepo 用于元数据校验时与旧 name/version 对比，可为 nil（如新仓库）。
-// themeJsAllowSet 仅 typ 为 themes 时使用；为 nil 或未包含本仓库时 AllowThemeJS 为 false（禁止 theme.js），仅白名单内为 true。
+// themeJsAllowSet 仅主题为 themes 时使用；为 nil 或未包含本仓库时 AllowThemeJS 为 false（禁止 theme.js），仅白名单内为 true。
 // occupiedNames 为已占用 package.name 集合，供 check.Check 做跨类型唯一性检查。
-func indexPackage(ownerRepo, typ, oldStageURL string, oldStageRepo *util.StageRepo, themeJsAllowSet map[string]struct{}, occupiedNames map[string]struct{}) (ok, skipped bool, hash, published string, size, installSize int64, pkg *util.StagePackage) {
+func indexPackage(ownerRepo string, packageType check.PackageType, oldStageURL string, oldStageRepo *util.StageRepo, themeJsAllowSet map[string]struct{}, occupiedNames map[string]struct{}) (ok, skipped bool, hash, published string, size, installSize int64, pkg *util.StagePackage) {
 	// 获取该仓库 Latest Release 信息（hash、发布时间、package.zip asset id）
 	hash, published, packageZipAssetID, releaseOk := getRepoLatestRelease(ownerRepo)
 	if !releaseOk {
@@ -368,17 +367,12 @@ func indexPackage(ownerRepo, typ, oldStageURL string, oldStageRepo *util.StageRe
 	size = int64(len(data))
 	installSize = size
 
-	pkgType, typeOk := check.ParsePackageType(typ)
-	if !typeOk {
-		logger.Warnf("unknown package type [%s] for [%s]", typ, ownerRepo)
-		return
-	}
 	oldName, oldVersion := getOldPackageFields(oldStageRepo)
 	_, allowThemeJS := themeJsAllowSet[ownerRepo]
 	result := check.Check(check.Input{
 		PackageRoot:   tmpUnzipPath,
 		OwnerRepo:     ownerRepo,
-		Type:          pkgType,
+		Type:          packageType,
 		OldName:       oldName,
 		OldVersion:    oldVersion,
 		OccupiedNames: occupiedNames,
@@ -404,7 +398,7 @@ func indexPackage(ownerRepo, typ, oldStageURL string, oldStageRepo *util.StageRe
 	}
 
 	// 从解压目录读取元数据，以便根据 readme 字段收集要上传的文件
-	pkg = getPackage(packageRoot, typ)
+	pkg = getPackage(packageRoot, packageType)
 	if nil == pkg {
 		logger.Warnf("get package [%s] failed", ownerRepo)
 		return
@@ -440,7 +434,7 @@ func indexPackage(ownerRepo, typ, oldStageURL string, oldStageRepo *util.StageRe
 	}
 	go indexPackageFile(ownerRepo, hash, packageRoot, "/preview.png", 0, 0, wg, &anyUploadFailed)
 	go indexPackageFile(ownerRepo, hash, packageRoot, "/icon.png", 0, 0, wg, &anyUploadFailed)
-	go indexPackageFile(ownerRepo, hash, packageRoot, "/"+strings.TrimSuffix(typ, "s")+".json", size, installSize, wg, &anyUploadFailed)
+	go indexPackageFile(ownerRepo, hash, packageRoot, "/"+packageType.ManifestFile(), size, installSize, wg, &anyUploadFailed)
 	wg.Wait()
 	if atomic.LoadInt32(&anyUploadFailed) != 0 {
 		return
@@ -450,9 +444,8 @@ func indexPackage(ownerRepo, typ, oldStageURL string, oldStageRepo *util.StageRe
 }
 
 // getPackage 从解压后的包根目录 unzipRoot 读取该类型的元数据 JSON（如 plugin.json），解析为 StagePackage。
-func getPackage(unzipRoot, typ string) *util.StagePackage {
-	name := strings.TrimSuffix(typ, "s")
-	jsonPath := filepath.Join(unzipRoot, name+".json")
+func getPackage(unzipRoot string, packageType check.PackageType) *util.StagePackage {
+	jsonPath := filepath.Join(unzipRoot, packageType.ManifestFile())
 	data, err := os.ReadFile(jsonPath)
 	if err != nil {
 		logger.Errorf("read [%s] failed: %s", jsonPath, err)

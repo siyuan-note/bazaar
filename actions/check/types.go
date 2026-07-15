@@ -12,17 +12,7 @@ package main
 
 import "github.com/siyuan-note/bazaar/check"
 
-type PackageType int                  // 包类型
 type StringSet map[string]interface{} // 字符串集合
-
-// 包类型枚举常量
-const (
-	icons PackageType = iota
-	plugins
-	templates
-	themes
-	widgets
-)
 
 // CheckResult 检查结果
 type CheckResult struct {
@@ -40,6 +30,44 @@ type CheckResult struct {
 	TemplatesDeleted []string `json:"templates_deleted"`
 	ThemesDeleted    []string `json:"themes_deleted"`
 	WidgetsDeleted   []string `json:"widgets_deleted"`
+}
+
+// appendCheck 将单仓检查结果写入对应类型分组。
+func (r *CheckResult) appendCheck(typ check.PackageType, pc PackageCheck) bool {
+	switch typ {
+	case check.TypeIcon:
+		r.Icons = append(r.Icons, pc)
+	case check.TypePlugin:
+		r.Plugins = append(r.Plugins, pc)
+	case check.TypeTemplate:
+		r.Templates = append(r.Templates, pc)
+	case check.TypeTheme:
+		r.Themes = append(r.Themes, pc)
+	case check.TypeWidget:
+		r.Widgets = append(r.Widgets, pc)
+	default:
+		return false
+	}
+	return true
+}
+
+// setDeleted 将本 PR 删除列表写入对应类型分组。
+func (r *CheckResult) setDeleted(typ check.PackageType, paths []string) bool {
+	switch typ {
+	case check.TypeIcon:
+		r.IconsDeleted = paths
+	case check.TypePlugin:
+		r.PluginsDeleted = paths
+	case check.TypeTemplate:
+		r.TemplatesDeleted = paths
+	case check.TypeTheme:
+		r.ThemesDeleted = paths
+	case check.TypeWidget:
+		r.WidgetsDeleted = paths
+	default:
+		return false
+	}
+	return true
 }
 
 // PackageCheck 单个仓库的流程层检查结果。
@@ -66,6 +94,6 @@ type ReleaseInfo struct {
 
 // checkOutput 并发检查结果通道载荷
 type checkOutput struct {
-	packageType  PackageType
+	packageType  check.PackageType
 	packageCheck PackageCheck
 }
