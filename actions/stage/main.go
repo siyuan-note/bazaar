@@ -319,7 +319,7 @@ func getOldPackageFields(oldRepo *util.StageRepo) (name, version string) {
 
 // indexPackage 索引包，返回的 pkg 为解析后的 StagePackage。
 // oldStageURL 为当前已 stage 的该仓库 URL（格式 owner/repo@hash），若与 Latest Release 的 hash 一致则跳过下载并返回 skipped=true。
-// oldStageRepo 用于元数据校验时与旧 name/version 对比，可为 nil（如新仓库）。
+// oldStageRepo 用于清单校验时与旧 name/version 对比，可为 nil（如新仓库）。
 // themeJsAllowSet 仅主题为 themes 时使用；为 nil 或未包含本仓库时 AllowThemeJS 为 false（禁止 theme.js），仅白名单内为 true。
 // occupiedNames 为已占用 package.name 集合，供 check.Check 做跨类型唯一性检查。
 func indexPackage(ownerRepo string, packageType check.PackageType, oldStageURL string, oldStageRepo *util.StageRepo, themeJsAllowSet map[string]struct{}, occupiedNames map[string]struct{}) (ok, skipped bool, hash, published string, size, installSize int64, pkg *util.StagePackage) {
@@ -391,7 +391,7 @@ func indexPackage(ownerRepo string, packageType check.PackageType, oldStageURL s
 		return
 	}
 
-	// 从解压目录读取元数据，以便根据 readme 字段收集要上传的文件
+	// 从解压目录读取清单，以便根据 readme 字段收集要上传的文件
 	pkg = getPackage(packageRoot, packageType)
 	if nil == pkg {
 		logger.Warnf("get package [%s] failed", ownerRepo)
@@ -419,7 +419,7 @@ func indexPackage(ownerRepo string, packageType check.PackageType, oldStageURL s
 	// 仅 README.md 始终加入上传列表（若包内存在则上传）
 	readmeFiles["/README.md"] = true
 
-	// 从解压目录读取 README、preview、icon、元数据 JSON 并并发上传到 OSS；任一份上传失败则整包视为失败
+	// 从解压目录读取 README、preview、icon、清单 JSON 并并发上传到 OSS；任一份上传失败则整包视为失败
 	var anyUploadFailed int32
 	wg := &sync.WaitGroup{}
 	wg.Add(3 + len(readmeFiles))
@@ -437,7 +437,7 @@ func indexPackage(ownerRepo string, packageType check.PackageType, oldStageURL s
 	return
 }
 
-// getPackage 从解压后的包根目录 unzipRoot 读取该类型的元数据 JSON（如 plugin.json），解析为 StagePackage。
+// getPackage 从解压后的包根目录 unzipRoot 读取该类型的清单 JSON（如 plugin.json），解析为 StagePackage。
 func getPackage(unzipRoot string, packageType check.PackageType) *util.StagePackage {
 	jsonPath := filepath.Join(unzipRoot, packageType.ManifestFile())
 	data, err := os.ReadFile(jsonPath)
@@ -486,7 +486,7 @@ func indexPackageFile(ownerRepo, hash, unzipRoot, filePath string, size, install
 		// 注入 size/installSize 到清单 JSON
 		meta := map[string]any{}
 		if err := gulu.JSON.UnmarshalJSON(data, &meta); err != nil {
-			logger.Errorf("unmarshal package meta [%s] failed: %s", localPath, err)
+			logger.Errorf("unmarshal manifest [%s] failed: %s", localPath, err)
 			atomic.StoreInt32(anyFail, 1)
 			return
 		}

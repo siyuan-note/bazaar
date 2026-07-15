@@ -33,7 +33,7 @@ type StageRepo struct {
 	Package     StagePackage `json:"package"`
 }
 
-// StagePackage 对应 stage 条目中的 package 字段，合并各资源类型 manifest 的公共与专有字段。
+// StagePackage 对应 stage 条目中的 package 字段，即各类型清单 JSON 解析后的 Package 元数据（含公共与专有字段）。
 type StagePackage struct {
 	Name              string        `json:"name"`
 	Author            string        `json:"author"`
@@ -54,7 +54,7 @@ type StagePackage struct {
 // LocaleStrings 表示按 locale 键（如 default、zh_CN、en_US）组织的多语言字符串。
 type LocaleStrings map[string]string
 
-// Funding 表示 package manifest 中的资助信息。
+// Funding 表示清单 JSON 中 funding 字段的资助信息。
 type Funding struct {
 	OpenCollective string   `json:"openCollective"`
 	Patreon        string   `json:"patreon"`
