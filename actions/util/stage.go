@@ -15,7 +15,7 @@ import (
 	"strings"
 
 	"github.com/88250/gulu"
-	"github.com/siyuan-note/bazaar/check"
+	"github.com/siyuan-note/bazaar/rules"
 )
 
 // StageFile 对应 stage/*.json 顶层结构。
@@ -31,7 +31,7 @@ type StageRepo struct {
 	OpenIssues  int           `json:"openIssues"`
 	Size        int64         `json:"size"`
 	InstallSize int64         `json:"installSize"`
-	Package     check.Package `json:"package"`
+	Package     rules.Package `json:"package"`
 }
 
 // ReadStageFile 读取并解析 stage JSON 文件。文件不存在时返回空 StageFile（不报错）。

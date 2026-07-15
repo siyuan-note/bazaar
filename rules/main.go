@@ -8,7 +8,7 @@
 // THIS SOFTWARE IS PROVIDED ON AN "AS IS" BASIS, WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO NON-INFRINGEMENT, MERCHANTABILITY OR FIT FOR A PARTICULAR PURPOSE.
 // See the Mulan PSL v2 for more details.
 
-package check
+package rules
 
 // Input 对单个已解压集市包的检查输入。
 // PackageRoot 可以是包根目录，也可以是解压后的临时目录（若其下仅有一个子目录，将自动视为包根）。

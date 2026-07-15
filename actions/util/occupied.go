@@ -15,13 +15,13 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/siyuan-note/bazaar/check"
+	"github.com/siyuan-note/bazaar/rules"
 )
 
 // LoadOccupiedNames 从 bazaarHead 下的 stage/*.json 收集已占用 package.name（键为小写）。
 func LoadOccupiedNames(bazaarHead string) (map[string]struct{}, error) {
 	occupied := make(map[string]struct{})
-	for _, typ := range check.AllPackageTypes() {
+	for _, typ := range rules.AllPackageTypes() {
 		filePath := filepath.Join(bazaarHead, "stage", typ.StageJSONFile())
 		names, err := parseNamesFromStageJSON(filePath)
 		if err != nil {

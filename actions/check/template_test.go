@@ -16,7 +16,7 @@ import (
 	"testing"
 
 	"github.com/siyuan-note/bazaar/actions/util"
-	"github.com/siyuan-note/bazaar/check"
+	"github.com/siyuan-note/bazaar/rules"
 )
 
 func TestCheckResultTemplate(t *testing.T) {
@@ -36,19 +36,19 @@ func TestCheckResultTemplate(t *testing.T) {
 			},
 			{
 				RepoInfo: RepoInfo{Path: "example/broken-plugin", Home: "https://github.com/example/broken-plugin"},
-				Issues: []check.Issue{{
+				Issues: []rules.Issue{{
 					MessageZh: "缺少 icon.png", MessageEn: "missing icon.png",
 				}},
 			},
 			{
 				RepoInfo: RepoInfo{Path: "example/no-release", Home: "https://github.com/example/no-release"},
-				Issues: []check.Issue{{
+				Issues: []rules.Issue{{
 					MessageZh: "无 Latest Release", MessageEn: "no Latest Release",
 				}},
 			},
 			{
 				RepoInfo: RepoInfo{Path: "example/no-package-zip", Home: "https://github.com/example/no-package-zip"},
-				Issues: []check.Issue{{
+				Issues: []rules.Issue{{
 					MessageZh: "无 package.zip", MessageEn: "no package.zip",
 				}},
 			},

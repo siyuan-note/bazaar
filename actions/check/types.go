@@ -12,7 +12,7 @@ package main
 
 import (
 	"github.com/siyuan-note/bazaar/actions/util"
-	"github.com/siyuan-note/bazaar/check"
+	"github.com/siyuan-note/bazaar/rules"
 )
 
 type Set map[string]struct{} // 字符串集合
@@ -36,17 +36,17 @@ type CheckResult struct {
 }
 
 // appendCheck 将单仓检查结果写入对应类型分组。
-func (r *CheckResult) appendCheck(typ check.PackageType, pc PackageCheck) bool {
+func (r *CheckResult) appendCheck(typ rules.PackageType, pc PackageCheck) bool {
 	switch typ {
-	case check.TypePlugin:
+	case rules.TypePlugin:
 		r.Plugins = append(r.Plugins, pc)
-	case check.TypeTheme:
+	case rules.TypeTheme:
 		r.Themes = append(r.Themes, pc)
-	case check.TypeIcon:
+	case rules.TypeIcon:
 		r.Icons = append(r.Icons, pc)
-	case check.TypeTemplate:
+	case rules.TypeTemplate:
 		r.Templates = append(r.Templates, pc)
-	case check.TypeWidget:
+	case rules.TypeWidget:
 		r.Widgets = append(r.Widgets, pc)
 	default:
 		return false
@@ -55,17 +55,17 @@ func (r *CheckResult) appendCheck(typ check.PackageType, pc PackageCheck) bool {
 }
 
 // setDeleted 将本 PR 删除列表写入对应类型分组。
-func (r *CheckResult) setDeleted(typ check.PackageType, paths []string) bool {
+func (r *CheckResult) setDeleted(typ rules.PackageType, paths []string) bool {
 	switch typ {
-	case check.TypePlugin:
+	case rules.TypePlugin:
 		r.PluginsDeleted = paths
-	case check.TypeTheme:
+	case rules.TypeTheme:
 		r.ThemesDeleted = paths
-	case check.TypeIcon:
+	case rules.TypeIcon:
 		r.IconsDeleted = paths
-	case check.TypeTemplate:
+	case rules.TypeTemplate:
 		r.TemplatesDeleted = paths
-	case check.TypeWidget:
+	case rules.TypeWidget:
 		r.WidgetsDeleted = paths
 	default:
 		return false
@@ -78,7 +78,7 @@ func (r *CheckResult) setDeleted(typ check.PackageType, paths []string) bool {
 type PackageCheck struct {
 	RepoInfo          RepoInfo           `json:"repo"`
 	Release           util.LatestRelease `json:"release"`
-	Issues            []check.Issue      `json:"issues"`
+	Issues            []rules.Issue      `json:"issues"`
 	MaintainerChanged bool               `json:"maintainer_changed"`
 }
 
@@ -90,6 +90,6 @@ type RepoInfo struct {
 
 // checkOutput 并发检查结果通道载荷
 type checkOutput struct {
-	packageType  check.PackageType
+	packageType  rules.PackageType
 	packageCheck PackageCheck
 }

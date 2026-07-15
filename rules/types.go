@@ -8,7 +8,7 @@
 // THIS SOFTWARE IS PROVIDED ON AN "AS IS" BASIS, WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO NON-INFRINGEMENT, MERCHANTABILITY OR FIT FOR A PARTICULAR PURPOSE.
 // See the Mulan PSL v2 for more details.
 
-package check
+package rules
 
 // Issue 单条检查问题。
 // MessageZh / MessageEn 自含路径与改法，可直接用于评论。
@@ -58,7 +58,7 @@ func (t PackageType) valid() bool {
 
 func (t PackageType) String() string {
 	if !t.valid() {
-		panic("check: invalid PackageType")
+		panic("rules: invalid PackageType")
 	}
 	return packageTypeMetas[t].singular
 }
@@ -66,7 +66,7 @@ func (t PackageType) String() string {
 // Plural 返回复数形式（plugins、themes 等），用于仓库列表与 stage 路径。
 func (t PackageType) Plural() string {
 	if !t.valid() {
-		panic("check: invalid PackageType")
+		panic("rules: invalid PackageType")
 	}
 	return packageTypeMetas[t].plural
 }

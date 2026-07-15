@@ -28,7 +28,7 @@ import (
 	"github.com/88250/gulu"
 	"github.com/google/go-github/v89/github"
 	"github.com/siyuan-note/bazaar/actions/util"
-	"github.com/siyuan-note/bazaar/check"
+	"github.com/siyuan-note/bazaar/rules"
 )
 
 /*
@@ -36,7 +36,7 @@ Stage 流程：
 1. 检查 GitHub API rate limit 是否足够覆盖本轮待索引仓库数
 2. 按类型依次执行 performStage；每类开始前重新加载 OccupiedNames，以便上一类本轮新写入的 name 参与后续类型的唯一性检查
 3. 读取 *s.txt 与既有 stage/*.json，并发索引各 owner/repo
-4. hash 未变则跳过下载；否则下载 package.zip → check.Check → 上传 OSS（package.zip、README、preview、icon、清单 JSON）
+4. hash 未变则跳过下载；否则下载 package.zip → rules.Check → 上传 OSS（package.zip、README、preview、icon、清单 JSON）
 5. 按 updated 降序排序后写出 stage/*.json（键序经 sortJSONKeys 稳定）
 */
 
@@ -78,7 +78,7 @@ func main() {
 	}
 
 	// 每类 stage 前重新加载 OccupiedNames，以便上一类本轮新写入的 name 参与后续类型的唯一性检查。
-	for _, packageType := range check.AllPackageTypes() {
+	for _, packageType := range rules.AllPackageTypes() {
 		occupiedNames, err := util.LoadOccupiedNames(BAZAAR_ROOT_PATH)
 		if err != nil {
 			logger.Fatalf("load occupied names failed: %s", err)
@@ -95,7 +95,7 @@ const apiCallsPerRepo = 2.5
 // checkRateLimitBeforeStage 统计本次待检查仓库数、请求 GitHub rate_limit（该请求不计入 core），若 core 剩余请求数不足则返回错误。参考 https://docs.github.com/zh/rest/rate-limit/rate-limit
 func checkRateLimitBeforeStage() error {
 	var repoCount int
-	for _, packageType := range check.AllPackageTypes() {
+	for _, packageType := range rules.AllPackageTypes() {
 		repos, err := util.ParseReposFromTxt(packageType.ReposListFile())
 		if err != nil {
 			return fmt.Errorf("count staging repos: %w", err)
@@ -131,7 +131,7 @@ func checkRateLimitBeforeStage() error {
 
 // loadOldStageData 加载现有的 stage 文件数据，返回以 owner/repo 为 key 的映射。
 // 文件不存在时返回空映射（不报错）；读取或解析失败时返回错误，避免误把已有 stage 当作无旧数据。
-func loadOldStageData(packageType check.PackageType) (map[string]*util.StageRepo, error) {
+func loadOldStageData(packageType rules.PackageType) (map[string]*util.StageRepo, error) {
 	oldStageData := make(map[string]*util.StageRepo)
 	stageFilePath := filepath.Join(BAZAAR_ROOT_PATH, "stage", packageType.StageJSONFile())
 
@@ -183,7 +183,7 @@ func marshalSortedCompact(v any) ([]byte, error) {
 	return bytes.TrimSpace(buf.Bytes()), nil
 }
 
-func performStage(packageType check.PackageType, occupiedNames map[string]struct{}) {
+func performStage(packageType rules.PackageType, occupiedNames map[string]struct{}) {
 	logger.Infof("start stage [%s]", packageType.Plural())
 
 	reposSlice, err := util.ParseReposFromTxt(packageType.ReposListFile())
@@ -197,7 +197,7 @@ func performStage(packageType check.PackageType, occupiedNames map[string]struct
 	}
 
 	var themeJsAllowSet Set
-	if packageType == check.TypeTheme {
+	if packageType == rules.TypeTheme {
 		paths, err := util.ParseReposFromTxt(util.ThemeJsAllowlistRelPath)
 		if err != nil {
 			logger.Fatalf("read or parse [%s] failed: %s", util.ThemeJsAllowlistRelPath, err)
@@ -228,7 +228,7 @@ func performStage(packageType check.PackageType, occupiedNames map[string]struct
 				oldRepo = o
 			}
 			var allowThemeJS bool
-			if packageType == check.TypeTheme {
+			if packageType == rules.TypeTheme {
 				_, allowThemeJS = themeJsAllowSet[ownerRepo]
 			}
 			ok, skipped, hash, updated, size, installSize, pkg := indexPackage(ownerRepo, packageType, oldStageURL, oldRepo, allowThemeJS, occupiedNames, heavySem)
@@ -329,17 +329,17 @@ func getOldPackageFields(oldRepo *util.StageRepo) (name, version string) {
 // oldStageURL 为当前已 stage 的该仓库 URL（格式 owner/repo@hash），若与 Latest Release 的 hash 一致则跳过下载并返回 skipped=true。
 // oldStageRepo 用于清单校验时与旧 name/version 对比，可为 nil（如新仓库）。
 // allowThemeJS 仅主题为 themes 时可能为 true（theme.js 白名单内仓库）；其他类型恒为 false。
-// occupiedNames 为已占用 package.name 集合，供 check.Check 做跨类型唯一性检查。
+// occupiedNames 为已占用 package.name 集合，供 rules.Check 做跨类型唯一性检查。
 // heavySem 限制同时进行「下载 + 上传 OSS」的仓库数。
 func indexPackage(
 	ownerRepo string,
-	packageType check.PackageType,
+	packageType rules.PackageType,
 	oldStageURL string,
 	oldStageRepo *util.StageRepo,
 	allowThemeJS bool,
 	occupiedNames map[string]struct{},
 	heavySem chan struct{},
-) (ok, skipped bool, hash, published string, size, installSize int64, pkg *check.Package) {
+) (ok, skipped bool, hash, published string, size, installSize int64, pkg *rules.Package) {
 	releaseInfo, releaseOk := getRepoLatestRelease(ownerRepo)
 	if !releaseOk {
 		logger.Errorf("get [%s] latest release failed", ownerRepo)
@@ -380,7 +380,7 @@ func indexPackage(
 	installSize = size
 
 	oldName, oldVersion := getOldPackageFields(oldStageRepo)
-	result := check.Check(check.Input{
+	result := rules.Check(rules.Input{
 		PackageRoot:   tmpUnzipPath,
 		OwnerRepo:     ownerRepo,
 		Type:          packageType,
@@ -455,14 +455,14 @@ func indexPackage(
 }
 
 // getPackage 从解压后的包根目录 unzipRoot 读取该类型的清单 JSON（如 plugin.json），解析为 Package。
-func getPackage(unzipRoot string, packageType check.PackageType) *check.Package {
+func getPackage(unzipRoot string, packageType rules.PackageType) *rules.Package {
 	jsonPath := filepath.Join(unzipRoot, packageType.ManifestFile())
-	pkg, err := check.ReadPackage(jsonPath)
+	pkg, err := rules.ReadPackage(jsonPath)
 	if err != nil {
 		logger.Errorf("read package [%s] failed: %s", jsonPath, err)
 		return nil
 	}
-	check.SanitizePackage(pkg)
+	rules.SanitizePackage(pkg)
 	return pkg
 }
 

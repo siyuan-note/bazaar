@@ -25,7 +25,7 @@ import (
 	"github.com/88250/gulu"
 	"github.com/google/go-github/v89/github"
 	"github.com/siyuan-note/bazaar/actions/util"
-	"github.com/siyuan-note/bazaar/check"
+	"github.com/siyuan-note/bazaar/rules"
 )
 
 /*
@@ -37,12 +37,12 @@ Diff 流程（以 plugins.txt 为例）：
 5. 过滤候选新增：排除已在 bazaar head 中的仓库（可能是解决冲突时从 bazaar head 合并来的）
 6. 过滤候选删除：排除在 bazaar head 中已不存在的仓库（可能是其他 PR 删除的）
 7. OccupiedNames 使用 bazaar head 的 stage/*.json 中所有类型的 package.name 集合（跨类型；比较前统一转小写）
-8. 对最终新增列表：Latest Release / package.zip → 下载解压 → check.Check，并在 Bot 回复中列出删除列表、更换维护者列表
+8. 对最终新增列表：Latest Release / package.zip → 下载解压 → rules.Check，并在 Bot 回复中列出删除列表、更换维护者列表
 
 Check 流程：
 1. 获取仓库最新 release 与 package.zip
 2. 下载并解压 package.zip
-3. 调用 check.Check（OccupiedNames / AllowThemeJS；PR 新仓 OldName/OldVersion 为空）
+3. 调用 rules.Check（OccupiedNames / AllowThemeJS；PR 新仓 OldName/OldVersion 为空）
 4. 通过后将 name 写入 OccupiedNames（同 PR 内唯一性）
 5. 生成检查结果并输出文件（使用 go 模板）
 6. 使用 thollander/actions-comment-pull-request 将检查结果输出到 PR 中
@@ -109,7 +109,7 @@ func main() {
 
 	var occupiedNamesMu sync.Mutex // 跨类型共享，保证同 PR 内 OccupiedNames 唯一性
 	var parseErrorMu sync.Mutex
-	checkTypes := check.AllPackageTypes()
+	checkTypes := rules.AllPackageTypes()
 	wg := &sync.WaitGroup{}
 	wg.Add(len(checkTypes))
 
@@ -147,13 +147,13 @@ func parseReposFromRootTxt(filePath string) (paths []string, pathSet Set, nameTo
 }
 
 func appendParseError(dst *string, label string, err error) {
-	zh, en := check.LocalizedMessages(err)
+	zh, en := rules.LocalizedMessages(err)
 	*dst += fmt.Sprintf("[%s]\n\n%s\n\n%s\n\n", label, zh, en)
 }
 
 // checkRepos 检查集市资源仓库列表
 func checkRepos(
-	packageType check.PackageType,
+	packageType rules.PackageType,
 	checkResult *CheckResult,
 	occupiedNames map[string]struct{},
 	occupiedNamesMu *sync.Mutex,
@@ -196,7 +196,7 @@ func checkRepos(
 	}
 
 	var themeJsAllowSet Set
-	if packageType == check.TypeTheme {
+	if packageType == rules.TypeTheme {
 		ap := filepath.Join(PR_HEAD_PATH, util.ThemeJsAllowlistRelPath)
 		paths, errAllow := util.ParseReposFromTxt(ap)
 		if errAllow != nil {
@@ -280,7 +280,7 @@ func checkRepos(
 			sem <- struct{}{}
 			defer func() { <-sem }()
 			var allowThemeJS bool
-			if packageType == check.TypeTheme {
+			if packageType == rules.TypeTheme {
 				_, allowThemeJS = themeJsAllowSet[repo]
 			}
 			checkNewRepo(repo, occupiedNames, packageType, resultChannel, occupiedNamesMu, allowThemeJS)
@@ -292,11 +292,11 @@ func checkRepos(
 	logger.Infof("finish repos check [%s]", prHeadReposPath)
 }
 
-// checkNewRepo 检查 PR 新增的集市包仓库：Latest Release / package.zip → 下载解压 → check.Check
+// checkNewRepo 检查 PR 新增的集市包仓库：Latest Release / package.zip → 下载解压 → rules.Check
 func checkNewRepo(
 	ownerRepo string,
 	occupiedNames map[string]struct{},
-	packageType check.PackageType,
+	packageType rules.PackageType,
 	resultChannel chan checkOutput,
 	nameSetMutex *sync.Mutex,
 	allowThemeJS bool,
@@ -316,10 +316,10 @@ func checkNewRepo(
 	}
 	if err != nil {
 		logger.Errorf("fetch repo [%s/%s] latest release failed: %s", repoOwner, repoName, err)
-		out.Issues = []check.Issue{check.IssueFromErr(err)}
+		out.Issues = []rules.Issue{rules.IssueFromErr(err)}
 	}
 
-	// Release / package.zip 未通过时只报告流程层 Issue，不调用 check.Check
+	// Release / package.zip 未通过时只报告流程层 Issue，不调用 rules.Check
 	if len(out.Issues) > 0 {
 		resultChannel <- checkOutput{packageType: packageType, packageCheck: out}
 		logger.Infof("finish repo check [%s] (release issues)", ownerRepo)
@@ -329,16 +329,16 @@ func checkNewRepo(
 	tmpUnzipPath, _, cleanup, err := util.DownloadAndUnzipPackageZip(githubContext, githubClient, repoOwner, repoName, releaseInfo.PackageZipAssetID)
 	if err != nil {
 		logger.Errorf("download/unzip [%s] failed: %s", ownerRepo, err)
-		out.Issues = append(out.Issues, check.IssueFromErr(err))
+		out.Issues = append(out.Issues, rules.IssueFromErr(err))
 		resultChannel <- checkOutput{packageType: packageType, packageCheck: out}
 		logger.Infof("finish repo check [%s] (download failed)", ownerRepo)
 		return
 	}
 	defer cleanup()
 
-	// 持锁执行 check.Check 并登记 name：读写的 OccupiedNames 与实时一致，且同 PR 内唯一
+	// 持锁执行 rules.Check 并登记 name：读写的 OccupiedNames 与实时一致，且同 PR 内唯一
 	nameSetMutex.Lock()
-	result := check.Check(check.Input{
+	result := rules.Check(rules.Input{
 		PackageRoot:   tmpUnzipPath,
 		OwnerRepo:     ownerRepo,
 		Type:          packageType,

@@ -21,7 +21,7 @@ import (
 	"github.com/88250/gulu"
 	"github.com/parnurzeal/gorequest"
 	"github.com/siyuan-note/bazaar/actions/util"
-	"github.com/siyuan-note/bazaar/check"
+	"github.com/siyuan-note/bazaar/rules"
 )
 
 var logger = gulu.Log.NewLogger(os.Stdout)
@@ -38,11 +38,11 @@ func main() {
 	hash := strings.TrimSpace(string(data))
 	logger.Infof("bazaar [%s]", hash)
 
-	indexTypes := check.AllPackageTypes()
+	indexTypes := rules.AllPackageTypes()
 	var wg sync.WaitGroup
 	wg.Add(len(indexTypes))
 	for _, packageType := range indexTypes {
-		go func(pt check.PackageType) {
+		go func(pt rules.PackageType) {
 			defer wg.Done()
 			stageIndex(hash, pt)
 		}(packageType)
@@ -55,7 +55,7 @@ func main() {
 }
 
 // stageIndex 将指定类型的集市索引上传到 OSS
-func stageIndex(hash string, packageType check.PackageType) {
+func stageIndex(hash string, packageType rules.PackageType) {
 	stageFile := packageType.StageJSONFile()
 	u := "https://raw.githubusercontent.com/siyuan-note/bazaar/" + hash + "/stage/" + stageFile
 	resp, data, errs := gorequest.New().Get(u).
