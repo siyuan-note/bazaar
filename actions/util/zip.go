@@ -62,17 +62,18 @@ func DownloadAndUnzipPackageZip(ctx context.Context, client *github.Client, owne
 		return "", nil, cleanup, fmt.Errorf("download package.zip: read body: %w", err)
 	}
 
-	osTmpDir := filepath.Join(os.TempDir(), "bazaar")
-	if err = os.MkdirAll(osTmpDir, 0755); nil != err {
+	tmpDir := filepath.Join(os.TempDir(), "bazaar")
+	if err = os.MkdirAll(tmpDir, 0755); nil != err {
 		return "", nil, cleanup, fmt.Errorf("mkdir temp: %w", err)
 	}
 
-	tmpZipPath := filepath.Join(osTmpDir, gulu.Rand.String(7)+".zip")
+	tmpBase := gulu.Rand.String(16)
+	tmpZipPath := filepath.Join(tmpDir, tmpBase+".zip")
 	if err = os.WriteFile(tmpZipPath, data, 0644); nil != err {
 		return "", nil, cleanup, fmt.Errorf("write package.zip: %w", err)
 	}
 
-	tmpUnzipPath := filepath.Join(osTmpDir, gulu.Rand.String(7))
+	tmpUnzipPath := filepath.Join(tmpDir, tmpBase)
 	if err = gulu.Zip.Unzip(tmpZipPath, tmpUnzipPath); nil != err {
 		os.RemoveAll(tmpZipPath)
 		return "", nil, cleanup, fmt.Errorf("unzip package.zip: %w", err)

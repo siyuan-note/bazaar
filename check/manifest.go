@@ -21,6 +21,77 @@ import (
 	"golang.org/x/mod/semver"
 )
 
+// LocaleStrings 表示按 locale 键（如 default、zh_CN、en_US）组织的多语言字符串。
+type LocaleStrings map[string]string
+
+// Funding 表示清单 JSON 中 funding 字段的资助信息。
+type Funding struct {
+	OpenCollective string   `json:"openCollective"`
+	Patreon        string   `json:"patreon"`
+	GitHub         string   `json:"github"`
+	Custom         []string `json:"custom"`
+}
+
+// Package 集市包清单 JSON 解析后的元数据（plugin.json / theme.json 等）。
+type Package struct {
+	Name              string        `json:"name"`
+	Author            string        `json:"author"`
+	URL               string        `json:"url"`
+	Version           string        `json:"version"`
+	MinAppVersion     string        `json:"minAppVersion"`
+	DisplayName       LocaleStrings `json:"displayName"`
+	Description       LocaleStrings `json:"description"`
+	Readme            LocaleStrings `json:"readme"`
+	Funding           *Funding      `json:"funding"`
+	Keywords          []string      `json:"keywords"`
+	Backends          []string      `json:"backends,omitempty"`
+	Frontends         []string      `json:"frontends,omitempty"`
+	DisabledInPublish bool          `json:"disabledInPublish,omitempty"`
+	Modes             []string      `json:"modes,omitempty"`
+}
+
+// packageFromMap 将已解析的清单 map 转为 Package；解析失败时返回零值。
+func packageFromMap(m map[string]any) Package {
+	var pkg Package
+	if m == nil {
+		return pkg
+	}
+	data, err := json.Marshal(m)
+	if err != nil {
+		return pkg
+	}
+	_ = json.Unmarshal(data, &pkg)
+	return pkg
+}
+
+// SanitizePackage 对集市包直接可能显示的信息做 HTML 转义，避免 XSS。
+// 与思源内核 kernel/bazaar/package.go 保持一致；旧版本客户端未转义，线上写入索引前须转义。
+func SanitizePackage(pkg *Package) {
+	if pkg == nil {
+		return
+	}
+	pkg.Name = html.EscapeString(pkg.Name)
+	pkg.Author = html.EscapeString(pkg.Author)
+	pkg.Version = html.EscapeString(pkg.Version)
+	for k, v := range pkg.DisplayName {
+		pkg.DisplayName[k] = html.EscapeString(v)
+	}
+	for k, v := range pkg.Description {
+		pkg.Description[k] = html.EscapeString(v)
+	}
+	if pkg.Funding != nil {
+		pkg.Funding.OpenCollective = html.EscapeString(pkg.Funding.OpenCollective)
+		pkg.Funding.Patreon = html.EscapeString(pkg.Funding.Patreon)
+		pkg.Funding.GitHub = html.EscapeString(pkg.Funding.GitHub)
+		for i, v := range pkg.Funding.Custom {
+			pkg.Funding.Custom[i] = html.EscapeString(v)
+		}
+	}
+	for i, kw := range pkg.Keywords {
+		pkg.Keywords[i] = html.EscapeString(kw)
+	}
+}
+
 // ManifestInput 清单规则所需的上下文。
 type ManifestInput struct {
 	PackageRoot   string
@@ -29,7 +100,7 @@ type ManifestInput struct {
 	Type          PackageType
 	OldName       string
 	OldVersion    string
-	OccupiedNames map[string]struct{} // 键建议小写；nil 表示不查唯一性
+	OccupiedNames map[string]struct{} // 键小写；nil 表示不查唯一性
 }
 
 var allowedManifestKeys = map[PackageType]map[string]struct{}{
@@ -474,7 +545,7 @@ func relFileExistsCaseSensitive(root, rel string) bool {
 
 // SanitizeDisplayStrings 对清单中 displayName / description 的字符串值做 HTML 转义。
 // 与思源内核 kernel/bazaar/package.go 的展示字段转义对齐；思源旧版本未转义，为避免旧客户端 XSS，须在线上转义后再写入索引。
-// 注：Stage 写入 stage 条目时仍会对 name/author 等做更广的转义（见 actions/stage sanitizePackageDisplayStrings）。
+// 注：Stage 写入 stage 条目时仍会对 name/author 等做更广的转义（见 SanitizePackage）。
 func SanitizeDisplayStrings(m map[string]any) {
 	if m == nil {
 		return

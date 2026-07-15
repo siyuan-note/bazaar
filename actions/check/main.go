@@ -278,7 +278,11 @@ func checkRepos(
 			defer waitGroupCheck.Done()
 			sem <- struct{}{}
 			defer func() { <-sem }()
-			checkRepo(repo, occupiedNames, packageType, resultChannel, occupiedNamesMu, themeJsAllowSet)
+			var allowThemeJS bool
+			if packageType == check.TypeTheme {
+				_, allowThemeJS = themeJsAllowSet[repo]
+			}
+			checkRepo(repo, occupiedNames, packageType, resultChannel, occupiedNamesMu, allowThemeJS)
 		}(ownerRepo)
 	}
 	waitGroupCheck.Wait()  // 等待检查完成
@@ -294,7 +298,7 @@ func checkRepo(
 	packageType check.PackageType,
 	resultChannel chan checkOutput,
 	nameSetMutex *sync.Mutex,
-	themeJsAllowSet Set,
+	allowThemeJS bool,
 ) {
 	logger.Infof("start repo check [%s]", ownerRepo)
 
@@ -311,7 +315,7 @@ func checkRepo(
 		Issues:   releaseIssues,
 	}
 
-	// Release / package.zip 未通过时只报告流程层 Issue，不调用 Pkg Check
+	// Release / package.zip 未通过时只报告流程层 Issue，不调用 check.Check
 	if len(out.Issues) > 0 {
 		resultChannel <- checkOutput{packageType: packageType, packageCheck: out}
 		logger.Infof("finish repo check [%s] (release issues)", ownerRepo)
@@ -332,9 +336,7 @@ func checkRepo(
 	}
 	defer cleanup()
 
-	_, allowThemeJS := themeJsAllowSet[ownerRepo]
-
-	// 持锁调用 Check 并在通过后登记 name，保证同 PR 内 OccupiedNames 唯一性
+	// 持锁执行 check.Check 并登记 name：读写的 OccupiedNames 与实时一致，且同 PR 内唯一
 	nameSetMutex.Lock()
 	result := check.Check(check.Input{
 		PackageRoot:   tmpUnzipPath,
@@ -345,10 +347,8 @@ func checkRepo(
 		OccupiedNames: occupiedNames,
 		AllowThemeJS:  allowThemeJS,
 	})
-	if result.OK {
-		if name, ok := result.Manifest["name"].(string); ok && name != "" {
-			occupiedNames[strings.ToLower(name)] = struct{}{}
-		}
+	if result.OK && result.Package.Name != "" {
+		occupiedNames[strings.ToLower(result.Package.Name)] = struct{}{}
 	}
 	nameSetMutex.Unlock()
 
@@ -357,7 +357,7 @@ func checkRepo(
 	logger.Infof("finish repo check [%s]", ownerRepo)
 }
 
-// checkRepoLatestRelease 检查 Latest Release / package.zip / tag，失败直接返回 Issue，不再使用 Pass 标志。
+// checkRepoLatestRelease 检查 Latest Release / package.zip / tag，失败直接返回 Issue。
 func checkRepoLatestRelease(repoOwner, repoName string) (release util.LatestRelease, issues []check.Issue) {
 	release, err := util.FetchLatestRelease(githubContext, githubClient, repoOwner, repoName)
 	if err == nil {

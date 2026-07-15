@@ -149,6 +149,7 @@ func stepLoadManifest(c *Context) {
 		return
 	}
 	c.Manifest = manifest
+	c.Package = packageFromMap(manifest)
 }
 
 // stepManifest 校验清单字段（name/url/version/readme 等，含 OccupiedNames 唯一性）。

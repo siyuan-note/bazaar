@@ -26,6 +26,7 @@ type Context struct {
 	Repo         string
 	Root         string
 	Manifest     map[string]any
+	Package      Package
 	ManifestPath string
 	Issues       []Issue
 

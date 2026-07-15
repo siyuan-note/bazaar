@@ -15,6 +15,7 @@ import (
 	"strings"
 
 	"github.com/88250/gulu"
+	"github.com/siyuan-note/bazaar/check"
 )
 
 // StageFile 对应 stage/*.json 顶层结构。
@@ -24,42 +25,13 @@ type StageFile struct {
 
 // StageRepo 对应 stage/*.json 中 repos 数组的单项。
 type StageRepo struct {
-	URL         string       `json:"url"`
-	Updated     string       `json:"updated"`
-	Stars       int          `json:"stars"`
-	OpenIssues  int          `json:"openIssues"`
-	Size        int64        `json:"size"`
-	InstallSize int64        `json:"installSize"`
-	Package     StagePackage `json:"package"`
-}
-
-// StagePackage 对应 stage 条目中的 package 字段，即各类型清单 JSON 解析后的 Package 元数据（含公共与专有字段）。
-type StagePackage struct {
-	Name              string        `json:"name"`
-	Author            string        `json:"author"`
-	URL               string        `json:"url"`
-	Version           string        `json:"version"`
-	MinAppVersion     string        `json:"minAppVersion"`
-	DisplayName       LocaleStrings `json:"displayName"`
-	Description       LocaleStrings `json:"description"`
-	Readme            LocaleStrings `json:"readme"`
-	Funding           *Funding      `json:"funding"`
-	Keywords          []string      `json:"keywords"`
-	Backends          []string      `json:"backends,omitempty"`
-	Frontends         []string      `json:"frontends,omitempty"`
-	DisabledInPublish bool          `json:"disabledInPublish,omitempty"`
-	Modes             []string      `json:"modes,omitempty"`
-}
-
-// LocaleStrings 表示按 locale 键（如 default、zh_CN、en_US）组织的多语言字符串。
-type LocaleStrings map[string]string
-
-// Funding 表示清单 JSON 中 funding 字段的资助信息。
-type Funding struct {
-	OpenCollective string   `json:"openCollective"`
-	Patreon        string   `json:"patreon"`
-	GitHub         string   `json:"github"`
-	Custom         []string `json:"custom"`
+	URL         string        `json:"url"`
+	Updated     string        `json:"updated"`
+	Stars       int           `json:"stars"`
+	OpenIssues  int           `json:"openIssues"`
+	Size        int64         `json:"size"`
+	InstallSize int64         `json:"installSize"`
+	Package     check.Package `json:"package"`
 }
 
 // ReadStageFile 读取并解析 stage JSON 文件。文件不存在时返回空 StageFile（不报错）。

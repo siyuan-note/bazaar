@@ -36,8 +36,8 @@ func TestCheckPluginOK_PR(t *testing.T) {
 	if !r.OK {
 		t.Fatalf("expected OK, issues=%v", r.Issues)
 	}
-	if r.Manifest == nil {
-		t.Fatal("expected manifest")
+	if r.Package.Name == "" {
+		t.Fatal("expected package name")
 	}
 }
 

@@ -15,7 +15,6 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"html"
 	"math"
 	"os"
 	"path/filepath"
@@ -224,7 +223,11 @@ func performStage(packageType check.PackageType, occupiedNames map[string]struct
 				oldStageURL = o.URL
 				oldRepo = o
 			}
-			ok, skipped, hash, updated, size, installSize, pkg := indexPackage(ownerRepo, packageType, oldStageURL, oldRepo, themeJsAllowSet, occupiedNames)
+			var allowThemeJS bool
+			if packageType == check.TypeTheme {
+				_, allowThemeJS = themeJsAllowSet[ownerRepo]
+			}
+			ok, skipped, hash, updated, size, installSize, pkg := indexPackage(ownerRepo, packageType, oldStageURL, oldRepo, allowThemeJS, occupiedNames)
 			if skipped {
 				// hash 未变化，跳过下载，直接沿用旧 stage 条目
 				lock.Lock()
@@ -317,12 +320,12 @@ func getOldPackageFields(oldRepo *util.StageRepo) (name, version string) {
 	return oldRepo.Package.Name, oldRepo.Package.Version
 }
 
-// indexPackage 索引包，返回的 pkg 为解析后的 StagePackage。
+// indexPackage 索引包，返回的 pkg 为解析后的清单元数据。
 // oldStageURL 为当前已 stage 的该仓库 URL（格式 owner/repo@hash），若与 Latest Release 的 hash 一致则跳过下载并返回 skipped=true。
 // oldStageRepo 用于清单校验时与旧 name/version 对比，可为 nil（如新仓库）。
-// themeJsAllowSet 仅主题为 themes 时使用；为 nil 或未包含本仓库时 AllowThemeJS 为 false（禁止 theme.js），仅白名单内为 true。
+// allowThemeJS 仅主题为 themes 时可能为 true（theme.js 白名单内仓库）；其他类型恒为 false。
 // occupiedNames 为已占用 package.name 集合，供 check.Check 做跨类型唯一性检查。
-func indexPackage(ownerRepo string, packageType check.PackageType, oldStageURL string, oldStageRepo *util.StageRepo, themeJsAllowSet map[string]struct{}, occupiedNames map[string]struct{}) (ok, skipped bool, hash, published string, size, installSize int64, pkg *util.StagePackage) {
+func indexPackage(ownerRepo string, packageType check.PackageType, oldStageURL string, oldStageRepo *util.StageRepo, allowThemeJS bool, occupiedNames map[string]struct{}) (ok, skipped bool, hash, published string, size, installSize int64, pkg *check.Package) {
 	// 获取该仓库 Latest Release 信息（hash、发布时间、package.zip asset id）
 	hash, published, packageZipAssetID, releaseOk := getRepoLatestRelease(ownerRepo)
 	if !releaseOk {
@@ -362,7 +365,6 @@ func indexPackage(ownerRepo string, packageType check.PackageType, oldStageURL s
 	installSize = size
 
 	oldName, oldVersion := getOldPackageFields(oldStageRepo)
-	_, allowThemeJS := themeJsAllowSet[ownerRepo]
 	result := check.Check(check.Input{
 		PackageRoot:   tmpUnzipPath,
 		OwnerRepo:     ownerRepo,
@@ -437,8 +439,8 @@ func indexPackage(ownerRepo string, packageType check.PackageType, oldStageURL s
 	return
 }
 
-// getPackage 从解压后的包根目录 unzipRoot 读取该类型的清单 JSON（如 plugin.json），解析为 StagePackage。
-func getPackage(unzipRoot string, packageType check.PackageType) *util.StagePackage {
+// getPackage 从解压后的包根目录 unzipRoot 读取该类型的清单 JSON（如 plugin.json），解析为 Package。
+func getPackage(unzipRoot string, packageType check.PackageType) *check.Package {
 	jsonPath := filepath.Join(unzipRoot, packageType.ManifestFile())
 	data, err := os.ReadFile(jsonPath)
 	if err != nil {
@@ -446,12 +448,12 @@ func getPackage(unzipRoot string, packageType check.PackageType) *util.StagePack
 		return nil
 	}
 
-	pkg := &util.StagePackage{}
+	pkg := &check.Package{}
 	if err := gulu.JSON.UnmarshalJSON(data, pkg); nil != err {
 		logger.Errorf("unmarshal [%s] failed: %s", jsonPath, err)
 		return nil
 	}
-	sanitizePackageDisplayStrings(pkg)
+	check.SanitizePackage(pkg)
 	return pkg
 }
 
@@ -552,32 +554,4 @@ func splitOwnerRepo(ownerRepo string) (owner, repo string, ok bool) {
 		return "", "", false
 	}
 	return parts[0], parts[1], true
-}
-
-// sanitizePackageDisplayStrings 对集市包直接可能显示的信息做 HTML 转义，避免 XSS。（跟思源内核 kernel/bazaar/package.go 保持一致）
-// 思源旧版本没有转义，为了避免旧版本受到攻击，必须在线上进行转义。
-func sanitizePackageDisplayStrings(pkg *util.StagePackage) {
-	if pkg == nil {
-		return
-	}
-	pkg.Name = html.EscapeString(pkg.Name)
-	pkg.Author = html.EscapeString(pkg.Author)
-	pkg.Version = html.EscapeString(pkg.Version)
-	for k, v := range pkg.DisplayName {
-		pkg.DisplayName[k] = html.EscapeString(v)
-	}
-	for k, v := range pkg.Description {
-		pkg.Description[k] = html.EscapeString(v)
-	}
-	if pkg.Funding != nil {
-		pkg.Funding.OpenCollective = html.EscapeString(pkg.Funding.OpenCollective)
-		pkg.Funding.Patreon = html.EscapeString(pkg.Funding.Patreon)
-		pkg.Funding.GitHub = html.EscapeString(pkg.Funding.GitHub)
-		for i, v := range pkg.Funding.Custom {
-			pkg.Funding.Custom[i] = html.EscapeString(v)
-		}
-	}
-	for i, kw := range pkg.Keywords {
-		pkg.Keywords[i] = html.EscapeString(kw)
-	}
 }
