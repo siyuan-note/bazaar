@@ -55,7 +55,7 @@ func stepOwnerRepo(c *Context) {
 		return
 	}
 	if strings.TrimSpace(c.OwnerRepo) == "" {
-		c.Add(issue("input/owner_repo",
+		c.Add(issue(
 			"内部错误：未提供待检查的 GitHub 仓库（owner/repo）。这通常是集市检查流程配置问题，请联系维护者重试。",
 			"Internal error: OwnerRepo (owner/repo) was not provided. This is usually a bazaar checker configuration issue; contact a maintainer.",
 		))
@@ -64,9 +64,9 @@ func stepOwnerRepo(c *Context) {
 	}
 	owner, repo, ok := splitOwnerRepo(c.OwnerRepo)
 	if !ok {
-		c.Add(issue("input/owner_repo",
-			fmt.Sprintf("仓库标识 %q 格式不正确，应为 owner/repo（中间一个斜杠，两侧无空格），例如 siyuan-note/plugin-sample。", c.OwnerRepo),
-			fmt.Sprintf("Repository id %q is invalid; expected owner/repo with no spaces (e.g. siyuan-note/plugin-sample).", c.OwnerRepo),
+		c.Add(issue(
+			fmt.Sprintf("仓库标识 %q 格式不正确，应为 owner/repo（中间一个斜杠，两侧无空格），例如 siyuan-note/plugin-sample。请修正集市列表文件（如 plugins.txt）中对应行后重新提交。", c.OwnerRepo),
+			fmt.Sprintf("Repository id %q is invalid; expected owner/repo with no spaces (e.g. siyuan-note/plugin-sample). Fix the corresponding line in the bazaar list file (e.g. plugins.txt) and push again.", c.OwnerRepo),
 		))
 		c.Halt()
 		return
@@ -99,10 +99,7 @@ func stepPackageRoot(c *Context) {
 	}
 	root, err := ResolvePackageRoot(c.PackageRoot)
 	if err != nil {
-		c.Add(issue("root/invalid",
-			fmt.Sprintf("无法从解压结果确定 package.zip 的包根目录（%v）。请确认 zip 内文件直接在根目录，或仅多一层包装文件夹；不要在根下并排放多个无关目录。重新打包后再更新 Release。", err),
-			fmt.Sprintf("Cannot determine the package root from the extracted package.zip (%v). Put files at the zip root, or use a single wrapping folder—not multiple top-level directories. Rebuild and update the Release.", err),
-		))
+		c.Add(IssueFromErr(err))
 		c.Halt()
 		return
 	}
@@ -142,10 +139,7 @@ func stepLoadManifest(c *Context) {
 	c.ManifestPath = filepath.Join(c.Root, c.Type.ManifestFile())
 	manifest, err := ReadManifest(c.ManifestPath)
 	if err != nil {
-		c.Add(issue("manifest/read",
-			fmt.Sprintf("无法读取或解析清单文件 %s：%v。请确认 package.zip 包根下存在该文件、JSON 语法正确，且文件名大小写完全一致。", c.Type.ManifestFile(), err),
-			fmt.Sprintf("Cannot read or parse manifest %s: %v. Ensure the file exists at the package root with valid JSON and an exact case-sensitive filename.", c.Type.ManifestFile(), err),
-		))
+		c.Add(IssueFromErr(err))
 		return
 	}
 	c.Manifest = manifest

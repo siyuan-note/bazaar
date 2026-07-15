@@ -54,21 +54,18 @@ func checkRequiredFile(root, name string, typ PackageType) []Issue {
 	hintZh := requiredFileHintZh(name, typ)
 	hintEn := requiredFileHintEn(name, typ)
 	if !fileExistsCaseSensitive(root, name) {
-		return []Issue{issue("files/required",
-			fmt.Sprintf("package.zip 包根目录缺少必要文件 %q。%s文件名大小写必须完全一致（例如不能写成 Icon.png）。请重新打包并更新 GitHub Release 中的 package.zip。", name, hintZh),
+		return []Issue{issue(fmt.Sprintf("package.zip 包根目录缺少必要文件 %q。%s文件名大小写必须完全一致（例如不能写成 Icon.png）。请重新打包并更新 GitHub Release 中的 package.zip。", name, hintZh),
 			fmt.Sprintf("Required file %q is missing from the package.zip root. %sThe filename is case-sensitive (e.g. Icon.png is not accepted). Rebuild the package and update package.zip on the GitHub Release.", name, hintEn),
 		)}
 	}
 	info, err := os.Stat(p)
 	if err != nil {
-		return []Issue{issue("files/required",
-			fmt.Sprintf("无法读取必要文件 %q：%v。请确认该文件已打进 package.zip，且 Release 资源可正常下载。", name, err),
-			fmt.Sprintf("Cannot read required file %q: %v. Make sure it is included in package.zip and the Release asset downloads correctly.", name, err),
+		return []Issue{issue(fmt.Sprintf("无法读取必要文件 %q：%v。请确认该文件已打进 package.zip，然后重新打包并更新 GitHub Release。", name, err),
+			fmt.Sprintf("Cannot read required file %q: %v. Make sure it is included in package.zip, then rebuild and update the GitHub Release.", name, err),
 		)}
 	}
 	if info.IsDir() {
-		return []Issue{issue("files/required",
-			fmt.Sprintf("%q 目前是一个目录，但集市要求它是普通文件。请放到包根下的同名文件，而不是文件夹。", name),
+		return []Issue{issue(fmt.Sprintf("%q 目前是一个目录，但集市要求它是普通文件。请放到包根下的同名文件，而不是文件夹。", name),
 			fmt.Sprintf("%q is a directory, but the bazaar expects a regular file at the package root. Put a file with this exact name there, not a folder.", name),
 		)}
 	}
@@ -140,8 +137,7 @@ func checkTemplateHasContentMD(root string) []Issue {
 	if found {
 		return nil
 	}
-	return []Issue{issue("files/template_md",
-		"模板包里除了 README 类说明外，还至少需要一个可作为模板内容的 .md 文件（文件名不要以 readme 开头，大小写不限）。请把模板正文 md 打进 package.zip 后重新发布。",
+	return []Issue{issue("模板包里除了 README 类说明外，还至少需要一个可作为模板内容的 .md 文件（文件名不要以 readme 开头，大小写不限）。请把模板正文 md 打进 package.zip 后重新发布。",
 		"Besides README docs, a template package must include at least one content .md file whose filename does not start with \"readme\" (case-insensitive). Add that file to package.zip and republish the Release.",
 	)}
 }
@@ -157,8 +153,7 @@ func ThemeJS(root string, allow bool) []Issue {
 	if allow {
 		return nil
 	}
-	return []Issue{issue("files/theme_js",
-		"包根目录含有 theme.js。新上架主题默认不允许使用 theme.js（历史白名单仓库除外）。请从 package.zip 中删除 theme.js，改用 CSS 等方式实现，然后重新发布 Release。",
+	return []Issue{issue("包根目录含有 theme.js。新上架主题默认不允许使用 theme.js（历史白名单仓库除外）。请从 package.zip 中删除 theme.js，改用 CSS 等方式实现，然后重新发布 Release。",
 		"package.zip contains theme.js at the package root. New themes must not ship theme.js (except legacy allowlisted repos). Remove theme.js from the package, use CSS or other approaches instead, then republish the Release.",
 	)}
 }

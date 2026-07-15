@@ -13,22 +13,32 @@ package check
 import "testing"
 
 func TestValidatePackageName(t *testing.T) {
-	if err := validatePackageName("sample-plugin"); err != nil {
-		t.Fatalf("valid name rejected: %v", err)
+	if errs := validatePackageName("sample-plugin"); len(errs) != 0 {
+		t.Fatalf("valid name rejected: %v", errs)
 	}
 	cases := []string{".hidden", " leading", "trailing.", "中文", "a<b", "CON"}
 	for _, name := range cases {
-		if err := validatePackageName(name); err == nil {
+		if errs := validatePackageName(name); len(errs) == 0 {
 			t.Fatalf("expected reject for %q", name)
 		}
 	}
 }
 
-func TestValidatePlainStringForHTML(t *testing.T) {
-	if err := validatePlainStringForHTML("demo"); err != nil {
-		t.Fatal(err)
+func TestValidatePackageNameCollectsMultiple(t *testing.T) {
+	errs := validatePackageName(".a<b")
+	if len(errs) < 2 {
+		t.Fatalf("expected multiple issues for %q, got %d: %v", ".a<b", len(errs), errs)
 	}
-	if err := validatePlainStringForHTML("a<script>"); err == nil {
+}
+
+func TestValidateManifestAuthor(t *testing.T) {
+	if errs := validateManifestAuthor("demo"); len(errs) != 0 {
+		t.Fatal(errs)
+	}
+	if errs := validateManifestAuthor("a<script>"); len(errs) == 0 {
 		t.Fatal("expected reject HTML specials")
+	}
+	if errs := validateManifestAuthor("   "); len(errs) == 0 {
+		t.Fatal("expected reject whitespace only")
 	}
 }

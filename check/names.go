@@ -22,9 +22,8 @@ func PathNames(root string) []Issue {
 	var issues []Issue
 	_ = filepath.WalkDir(root, func(path string, d os.DirEntry, err error) error {
 		if err != nil {
-			issues = append(issues, issue("names/walk",
-				fmt.Sprintf("检查包内文件时无法访问路径 %s：%v。请确认 package.zip 完整、未损坏，且其中没有异常的权限或损坏条目。", path, err),
-				fmt.Sprintf("Could not access path %s while inspecting the package: %v. Ensure package.zip is complete and not corrupted.", path, err),
+			issues = append(issues, issue(fmt.Sprintf("检查包内文件时无法访问路径 %s：%v。请确认 package.zip 完整、未损坏，重新打包后更新 GitHub Release。", path, err),
+				fmt.Sprintf("Could not access path %s while inspecting the package: %v. Ensure package.zip is complete and not corrupted, then rebuild and update the GitHub Release.", path, err),
 			))
 			return nil
 		}
@@ -39,14 +38,12 @@ func PathNames(root string) []Issue {
 		name := d.Name()
 
 		if strings.HasPrefix(name, " ") || strings.HasSuffix(name, " ") {
-			issues = append(issues, issue("names/whitespace",
-				fmt.Sprintf("包内路径 %s 的文件/目录名 %q 以空格开头或结尾。请去掉首尾空格后重新打包 package.zip（部分系统上此类名称会导致安装失败）。", relSlash, name),
+			issues = append(issues, issue(fmt.Sprintf("包内路径 %s 的文件/目录名 %q 以空格开头或结尾。请去掉首尾空格后重新打包 package.zip（部分系统上此类名称会导致安装失败）。", relSlash, name),
 				fmt.Sprintf("Entry %s uses name %q with leading or trailing spaces. Remove those spaces and rebuild package.zip (such names can break installs on some systems).", relSlash, name),
 			))
 		}
 		if IsReservedWindowsDeviceName(name) {
-			issues = append(issues, issue("names/reserved",
-				fmt.Sprintf("包内路径 %s 的名称 %q 是 Windows 保留设备名（如 CON、PRN、AUX、NUL、COM1、LPT1 等）。请改成普通名称后重新打包，否则在 Windows 上可能无法解压或安装。", relSlash, name),
+			issues = append(issues, issue(fmt.Sprintf("包内路径 %s 的名称 %q 是 Windows 保留设备名（如 CON、PRN、AUX、NUL、COM1、LPT1 等）。请改成普通名称后重新打包，否则在 Windows 上可能无法解压或安装。", relSlash, name),
 				fmt.Sprintf("Entry %s uses name %q, which is a Windows reserved device name (CON, PRN, AUX, NUL, COM1, LPT1, etc.). Rename it and rebuild package.zip, or Windows installs may fail.", relSlash, name),
 			))
 		}

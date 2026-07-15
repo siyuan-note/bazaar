@@ -12,6 +12,7 @@ package check
 
 import (
 	"path/filepath"
+	"strings"
 	"testing"
 )
 
@@ -25,8 +26,8 @@ func TestHaltKeepsOnlyLeadingIssue(t *testing.T) {
 	if len(c.Issues) != 1 {
 		t.Fatalf("expected exactly 1 issue after early halt, got %d: %v", len(c.Issues), c.Issues)
 	}
-	if c.Issues[0].Rule != "input/owner_repo" {
-		t.Fatalf("expected input/owner_repo, got %s", c.Issues[0].Rule)
+	if !strings.Contains(c.Issues[0].MessageZh, "格式不正确") {
+		t.Fatalf("expected owner_repo issue, got %s", c.Issues[0].MessageZh)
 	}
 	if !c.Halted() {
 		t.Fatal("expected Halted")
@@ -49,16 +50,7 @@ func TestAccumulateAfterRootOK(t *testing.T) {
 	if c.Halted() {
 		t.Fatal("should not halt when inputs are valid")
 	}
-	if c.OK() || !contextHasRule(c, "manifest/name_unique") {
+	if c.OK() || !issuesContain(c.Issues, "已被其他集市包占用") {
 		t.Fatalf("expected uniqueness issue among accumulated results, issues=%v", c.Issues)
 	}
-}
-
-func contextHasRule(c *Context, rule string) bool {
-	for _, i := range c.Issues {
-		if i.Rule == rule {
-			return true
-		}
-	}
-	return false
 }

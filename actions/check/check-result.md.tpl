@@ -24,7 +24,7 @@ Please fix the corresponding `.txt` file in the repo root, ensuring each line co
   {{- $issues := .Issues }}
   {{- range $j, $issue := $issues }}
 
-{{ issueIndex $j (len $issues) }} [{{ $issue.Rule }}]
+[{{ issueIndex $j (len $issues) }}]
 
 {{ $issue.MessageZh }}
 

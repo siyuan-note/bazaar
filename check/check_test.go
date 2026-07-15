@@ -13,6 +13,7 @@ package check
 import (
 	"os"
 	"path/filepath"
+	"strings"
 	"testing"
 )
 
@@ -21,8 +22,8 @@ func TestCheckRejectsInvalidPackageType(t *testing.T) {
 		PackageRoot: filepath.Join("testdata", "plugin_ok"),
 		OwnerRepo:   "demo/sample-plugin",
 	})
-	if r.OK || len(r.Issues) != 1 || r.Issues[0].Rule != "input/type" {
-		t.Fatalf("expected input/type issue, got OK=%v issues=%v", r.OK, r.Issues)
+	if r.OK || len(r.Issues) != 1 || !hasIssueMsg(r, "集市包类型") {
+		t.Fatalf("expected invalid package type issue, got OK=%v issues=%v", r.OK, r.Issues)
 	}
 }
 
@@ -51,8 +52,8 @@ func TestCheckPluginMissingIcon(t *testing.T) {
 	if r.OK {
 		t.Fatal("expected failure")
 	}
-	if !hasRule(r, "files/required") {
-		t.Fatalf("expected files/required, issues=%v", r.Issues)
+	if !hasIssueMsg(r, "缺少必要文件") {
+		t.Fatalf("expected missing required file issue, issues=%v", r.Issues)
 	}
 }
 
@@ -85,8 +86,8 @@ func TestCheckSpaceName(t *testing.T) {
 	if r.OK {
 		t.Fatal("expected failure for leading-space filename")
 	}
-	if !hasRule(r, "names/whitespace") {
-		t.Fatalf("expected names/whitespace, issues=%v", r.Issues)
+	if !hasIssueMsg(r, "以空格开头或结尾") {
+		t.Fatalf("expected whitespace name issue, issues=%v", r.Issues)
 	}
 }
 
@@ -101,8 +102,8 @@ func TestCheckNameImmutable(t *testing.T) {
 	if r.OK {
 		t.Fatal("expected name_immutable")
 	}
-	if !hasRule(r, "manifest/name") {
-		t.Fatalf("expected manifest/name, issues=%v", r.Issues)
+	if !hasIssueMsg(r, "不可更改") {
+		t.Fatalf("expected name immutable issue, issues=%v", r.Issues)
 	}
 }
 
@@ -117,8 +118,8 @@ func TestCheckVersionMustIncrease(t *testing.T) {
 	if r.OK {
 		t.Fatal("expected version_not_greater when equal")
 	}
-	if !hasRule(r, "manifest/version") {
-		t.Fatalf("expected manifest/version, issues=%v", r.Issues)
+	if !hasIssueMsg(r, "version") {
+		t.Fatalf("expected version issue, issues=%v", r.Issues)
 	}
 
 	r2 := Check(Input{
@@ -160,7 +161,7 @@ func TestCheckUnknownField(t *testing.T) {
 		OwnerRepo:   "demo/sample-plugin",
 		Type:        TypePlugin,
 	})
-	if r.OK || !hasRule(r, "manifest/unknown_field") {
+	if r.OK || !hasIssueMsg(r, "未收录的字段") {
 		t.Fatalf("expected manifest/unknown_field, issues=%v", r.Issues)
 	}
 }
@@ -183,7 +184,7 @@ func TestCheckURL(t *testing.T) {
 		OwnerRepo:   "demo/sample-plugin",
 		Type:        TypePlugin,
 	})
-	if r.OK || !hasRule(r, "manifest/url") {
+	if r.OK || !hasIssueMsg(r, "url") {
 		t.Fatalf("expected manifest/url, issues=%v", r.Issues)
 	}
 }
@@ -199,7 +200,7 @@ func TestCheckMissingIndexJS(t *testing.T) {
 		OwnerRepo:   "demo/sample-plugin",
 		Type:        TypePlugin,
 	})
-	if r.OK || !hasRule(r, "files/required") {
+	if r.OK || !hasIssueMsg(r, "缺少必要文件") {
 		t.Fatalf("expected files/required for missing index.js, issues=%v", r.Issues)
 	}
 }
@@ -222,7 +223,7 @@ func TestCheckAuthorHTML(t *testing.T) {
 		OwnerRepo:   "demo/sample-plugin",
 		Type:        TypePlugin,
 	})
-	if r.OK || !hasRule(r, "manifest/author") {
+	if r.OK || !hasIssueMsg(r, "author") {
 		t.Fatalf("expected manifest/author, issues=%v", r.Issues)
 	}
 }
@@ -245,7 +246,7 @@ func TestCheckNameStrict(t *testing.T) {
 		OwnerRepo:   "demo/.hidden",
 		Type:        TypePlugin,
 	})
-	if r.OK || !hasRule(r, "manifest/name") {
+	if r.OK || !hasIssueMsg(r, "以句点开头") {
 		t.Fatalf("expected manifest/name for leading dot, issues=%v", r.Issues)
 	}
 }
@@ -272,7 +273,7 @@ func TestCheckTemplateNeedsContentMD(t *testing.T) {
 		OwnerRepo:   "demo/sample-template",
 		Type:        TypeTemplate,
 	})
-	if r.OK || !hasRule(r, "files/template_md") {
+	if r.OK || !hasIssueMsg(r, "模板内容") {
 		t.Fatalf("expected files/template_md, issues=%v", r.Issues)
 	}
 
@@ -308,7 +309,7 @@ func TestCheckFundingProtocol(t *testing.T) {
 		OwnerRepo:   "demo/sample-plugin",
 		Type:        TypePlugin,
 	})
-	if r.OK || !hasRule(r, "manifest/funding") {
+	if r.OK || !hasIssueMsg(r, "funding") {
 		t.Fatalf("expected manifest/funding, issues=%v", r.Issues)
 	}
 }
@@ -324,7 +325,7 @@ func TestCheckNameUnique(t *testing.T) {
 		Type:          TypePlugin,
 		OccupiedNames: occupied,
 	})
-	if r.OK || !hasRule(r, "manifest/name_unique") {
+	if r.OK || !hasIssueMsg(r, "已被其他集市包占用") {
 		t.Fatalf("expected manifest/name_unique, issues=%v", r.Issues)
 	}
 
@@ -350,7 +351,7 @@ func TestCheckNameUnique(t *testing.T) {
 			"Sample-Plugin": {},
 		},
 	})
-	if r3.OK || !hasRule(r3, "manifest/name_unique") {
+	if r3.OK || !hasIssueMsg(r3, "已被其他集市包占用") {
 		t.Fatalf("expected case-insensitive unique clash, issues=%v", r3.Issues)
 	}
 }
@@ -371,9 +372,13 @@ func TestSanitizeDisplayStrings(t *testing.T) {
 	}
 }
 
-func hasRule(r *Result, rule string) bool {
-	for _, i := range r.Issues {
-		if i.Rule == rule {
+func hasIssueMsg(r *Result, substr string) bool {
+	return issuesContain(r.Issues, substr)
+}
+
+func issuesContain(issues []Issue, substr string) bool {
+	for _, i := range issues {
+		if strings.Contains(i.MessageZh, substr) || strings.Contains(i.MessageEn, substr) {
 			return true
 		}
 	}

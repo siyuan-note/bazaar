@@ -376,7 +376,7 @@ func indexPackage(ownerRepo string, packageType check.PackageType, oldStageURL s
 	})
 	if !result.OK {
 		for _, issue := range result.Issues {
-			logger.Warnf("check [%s] failed: [%s] %s", ownerRepo, issue.Rule, issue.MessageZh)
+			logger.Warnf("check [%s] failed: %s", ownerRepo, issue.MessageEn)
 		}
 		return
 	}
@@ -442,15 +442,9 @@ func indexPackage(ownerRepo string, packageType check.PackageType, oldStageURL s
 // getPackage 从解压后的包根目录 unzipRoot 读取该类型的清单 JSON（如 plugin.json），解析为 Package。
 func getPackage(unzipRoot string, packageType check.PackageType) *check.Package {
 	jsonPath := filepath.Join(unzipRoot, packageType.ManifestFile())
-	data, err := os.ReadFile(jsonPath)
+	pkg, err := check.ReadPackage(jsonPath)
 	if err != nil {
-		logger.Errorf("read [%s] failed: %s", jsonPath, err)
-		return nil
-	}
-
-	pkg := &check.Package{}
-	if err := gulu.JSON.UnmarshalJSON(data, pkg); nil != err {
-		logger.Errorf("unmarshal [%s] failed: %s", jsonPath, err)
+		logger.Errorf("read package [%s] failed: %s", jsonPath, err)
 		return nil
 	}
 	check.SanitizePackage(pkg)

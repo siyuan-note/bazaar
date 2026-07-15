@@ -22,19 +22,35 @@ import (
 // 根下多个子目录且无文件时返回错误（无法唯一确定包根）。
 func ResolvePackageRoot(path string) (string, error) {
 	if path == "" {
-		return "", fmt.Errorf("PackageRoot 不能为空")
+		return "", LocalizedErr(
+			"内部错误：未能定位 package.zip 的解压目录。这通常是集市检查流程配置问题，请联系维护者重试。",
+			"Internal error: could not locate the extracted package.zip directory. This is usually a bazaar checker configuration issue; contact a maintainer.",
+			nil,
+		)
 	}
 	info, err := os.Stat(path)
 	if err != nil {
-		return "", fmt.Errorf("无法访问目录: %w", err)
+		return "", LocalizedErr(
+			fmt.Sprintf("无法读取 package.zip 解压后的内容：%v。请确认 Latest Release 中的 package.zip 可正常下载且为合法 zip，然后重新打包并更新 Release。", err),
+			fmt.Sprintf("Cannot read the extracted package.zip contents: %v. Ensure package.zip in the Latest Release downloads correctly and is a valid zip, then rebuild and update the Release.", err),
+			err,
+		)
 	}
 	if !info.IsDir() {
-		return "", fmt.Errorf("PackageRoot 不是目录: %s", path)
+		return "", LocalizedErr(
+			"无法从 package.zip 确定包根目录：解压结果不是有效目录。请确认 package.zip 为合法 zip 并重新上传；若仍失败请联系集市维护者。",
+			"Cannot determine the package root from package.zip: the extraction result is not a valid directory. Ensure package.zip is a valid archive and re-upload it; contact a bazaar maintainer if this persists.",
+			nil,
+		)
 	}
 
 	entries, err := os.ReadDir(path)
 	if err != nil {
-		return "", fmt.Errorf("读取目录失败: %w", err)
+		return "", LocalizedErr(
+			fmt.Sprintf("无法列出 package.zip 解压后的文件：%v。请确认 zip 未损坏，重新打包后更新 GitHub Release 中的 package.zip。", err),
+			fmt.Sprintf("Cannot list files inside the extracted package.zip: %v. Ensure the zip is not corrupted, rebuild the package, and update package.zip on the GitHub Release.", err),
+			err,
+		)
 	}
 
 	var dirs []string
@@ -55,7 +71,11 @@ func ResolvePackageRoot(path string) (string, error) {
 		return filepath.Join(path, dirs[0]), nil
 	}
 	if len(dirs) > 1 && !hasFile {
-		return "", fmt.Errorf("解压根目录下存在多个子目录且无文件，无法确定包根: %s", path)
+		return "", LocalizedErr(
+			fmt.Sprintf("无法从 package.zip 确定包根目录：解压根下有 %d 个并列文件夹，且没有任何文件。请把 icon.png、清单文件等必要文件直接放在 zip 根目录，或只保留一层包装文件夹（不要并排放多个无关目录）。重新打包后更新 Release。", len(dirs)),
+			fmt.Sprintf("Cannot determine the package root from package.zip: found %d sibling folders under the extraction root and no files. Put required files such as icon.png and the manifest (e.g. plugin.json) at the zip root, or use exactly one wrapping folder—not multiple top-level directories. Rebuild and update the Release.", len(dirs)),
+			nil,
+		)
 	}
 	return path, nil
 }

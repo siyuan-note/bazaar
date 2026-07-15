@@ -13,7 +13,6 @@ package main
 import (
 	"context"
 	_ "embed"
-	"errors"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -136,18 +135,20 @@ func parseReposFromRootTxt(filePath string) (paths []string, pathSet Set, nameTo
 	pathSet = make(Set, len(repos))
 	nameToOwner = make(map[string]string, len(repos))
 	for _, s := range repos {
-		parts := strings.Split(s, "/")
-		if len(parts) != 2 {
-			err = fmt.Errorf("invalid repo path: %s", s)
-			return
+		owner, name, ok := strings.Cut(s, "/")
+		if !ok {
+			logger.Fatalf("internal error: repo path %q has no owner/repo separator", s)
 		}
-		owner := parts[0]
-		name := parts[1]
 		paths = append(paths, s)
 		pathSet[s] = struct{}{}
 		nameToOwner[name] = owner
 	}
 	return
+}
+
+func appendParseError(dst *string, label string, err error) {
+	zh, en := check.LocalizedMessages(err)
+	*dst += fmt.Sprintf("[%s]\n\n%s\n\n%s\n\n", label, zh, en)
 }
 
 // checkRepos 检查集市资源仓库列表
@@ -172,7 +173,7 @@ func checkRepos(
 	_, bazaarHeadRepoSet, _, err := parseReposFromRootTxt(bazaarHeadReposPath)
 	if err != nil {
 		parseErrorMu.Lock()
-		checkResult.ParseError += fmt.Sprintf("[%s] bazaar head: %s\n", repoListTxtName, err)
+		appendParseError(&checkResult.ParseError, fmt.Sprintf("%s bazaar head", repoListTxtName), err)
 		parseErrorMu.Unlock()
 		logger.Warnf("load bazaar head repos [%s] failed: %s, skip this type", bazaarHeadReposPath, err)
 		return
@@ -180,7 +181,7 @@ func checkRepos(
 	basePaths, baseSet, baseNameToOwner, err := parseReposFromRootTxt(prBaseReposPath)
 	if err != nil {
 		parseErrorMu.Lock()
-		checkResult.ParseError += fmt.Sprintf("[%s] PR base: %s\n", repoListTxtName, err)
+		appendParseError(&checkResult.ParseError, fmt.Sprintf("%s PR base", repoListTxtName), err)
 		parseErrorMu.Unlock()
 		logger.Warnf("load PR base repos [%s] failed: %s, skip this type", prBaseReposPath, err)
 		return
@@ -188,7 +189,7 @@ func checkRepos(
 	headPaths, headSet, _, err := parseReposFromRootTxt(prHeadReposPath)
 	if err != nil {
 		parseErrorMu.Lock()
-		checkResult.ParseError += fmt.Sprintf("[%s] PR head: %s\n", repoListTxtName, err)
+		appendParseError(&checkResult.ParseError, fmt.Sprintf("%s PR head", repoListTxtName), err)
 		parseErrorMu.Unlock()
 		logger.Warnf("load PR head repos [%s] failed: %s, skip this type", prHeadReposPath, err)
 		return
@@ -200,7 +201,7 @@ func checkRepos(
 		paths, errAllow := util.ParseReposFromTxt(ap)
 		if errAllow != nil {
 			parseErrorMu.Lock()
-			checkResult.ParseError += fmt.Sprintf("[%s] PR head: %v\n", util.ThemeJsAllowlistRelPath, errAllow)
+			appendParseError(&checkResult.ParseError, fmt.Sprintf("%s PR head", util.ThemeJsAllowlistRelPath), errAllow)
 			parseErrorMu.Unlock()
 			logger.Warnf("load theme.js allowlist [%s] failed: %v, skip this type", ap, errAllow)
 			return
@@ -282,7 +283,7 @@ func checkRepos(
 			if packageType == check.TypeTheme {
 				_, allowThemeJS = themeJsAllowSet[repo]
 			}
-			checkRepo(repo, occupiedNames, packageType, resultChannel, occupiedNamesMu, allowThemeJS)
+			checkNewRepo(repo, occupiedNames, packageType, resultChannel, occupiedNamesMu, allowThemeJS)
 		}(ownerRepo)
 	}
 	waitGroupCheck.Wait()  // 等待检查完成
@@ -291,8 +292,8 @@ func checkRepos(
 	logger.Infof("finish repos check [%s]", prHeadReposPath)
 }
 
-// checkRepo 检查集市资源仓库：Latest Release / package.zip → 下载解压 → check.Check
-func checkRepo(
+// checkNewRepo 检查 PR 新增的集市包仓库：Latest Release / package.zip → 下载解压 → check.Check
+func checkNewRepo(
 	ownerRepo string,
 	occupiedNames map[string]struct{},
 	packageType check.PackageType,
@@ -307,12 +308,15 @@ func checkRepo(
 		Path: ownerRepo,
 		Home: fmt.Sprintf("https://github.com/%s/%s", repoOwner, repoName),
 	}
-	releaseInfo, releaseIssues := checkRepoLatestRelease(repoOwner, repoName)
-
+	// 检查 Latest Release / package.zip / tag
+	releaseInfo, err := util.FetchLatestRelease(githubContext, githubClient, repoOwner, repoName)
 	out := PackageCheck{
 		RepoInfo: repoInfo,
 		Release:  releaseInfo,
-		Issues:   releaseIssues,
+	}
+	if err != nil {
+		logger.Warnf("fetch repo [%s/%s] latest release failed: %s", repoOwner, repoName, err)
+		out.Issues = []check.Issue{check.IssueFromErr(err)}
 	}
 
 	// Release / package.zip 未通过时只报告流程层 Issue，不调用 check.Check
@@ -325,11 +329,7 @@ func checkRepo(
 	tmpUnzipPath, _, cleanup, err := util.DownloadAndUnzipPackageZip(githubContext, githubClient, repoOwner, repoName, releaseInfo.PackageZipAssetID)
 	if err != nil {
 		logger.Warnf("download/unzip [%s] failed: %s", ownerRepo, err)
-		out.Issues = append(out.Issues, check.Issue{
-			Rule:      "release/package_zip",
-			MessageZh: fmt.Sprintf("下载或解压 package.zip 失败：%s。请确认 Latest Release 中的 package.zip 可访问且为合法 zip。", err),
-			MessageEn: fmt.Sprintf("Failed to download or unzip package.zip: %s. Ensure package.zip in the Latest Release is reachable and a valid zip.", err),
-		})
+		out.Issues = append(out.Issues, check.IssueFromErr(err))
 		resultChannel <- checkOutput{packageType: packageType, packageCheck: out}
 		logger.Infof("finish repo check [%s] (download failed)", ownerRepo)
 		return
@@ -355,40 +355,4 @@ func checkRepo(
 	out.Issues = append(out.Issues, result.Issues...)
 	resultChannel <- checkOutput{packageType: packageType, packageCheck: out}
 	logger.Infof("finish repo check [%s]", ownerRepo)
-}
-
-// checkRepoLatestRelease 检查 Latest Release / package.zip / tag，失败直接返回 Issue。
-func checkRepoLatestRelease(repoOwner, repoName string) (release util.LatestRelease, issues []check.Issue) {
-	release, err := util.FetchLatestRelease(githubContext, githubClient, repoOwner, repoName)
-	if err == nil {
-		return release, nil
-	}
-
-	logger.Warnf("fetch repo [%s/%s] latest release failed: %s", repoOwner, repoName, err)
-	switch {
-	case errors.Is(err, util.ErrNoLatestRelease):
-		return release, []check.Issue{{
-			Rule:      "release/latest",
-			MessageZh: "仓库没有可用的 Latest Release（或 API 读取失败）。请在 GitHub 上创建一个 Release，并确保该仓库对集市检查所用令牌可见。",
-			MessageEn: "No usable Latest Release was found (or the GitHub API call failed). Create a GitHub Release and ensure the repo is visible to the bazaar checker token.",
-		}}
-	case errors.Is(err, util.ErrNoPackageZip):
-		return release, []check.Issue{{
-			Rule:      "release/package_zip",
-			MessageZh: "Latest Release 中缺少名为 package.zip 的资源文件。请把打包好的 package.zip 作为 Release Asset 上传（文件名必须完全是 package.zip）。",
-			MessageEn: "The Latest Release has no asset named package.zip. Upload package.zip as a Release asset (exact filename package.zip).",
-		}}
-	case errors.Is(err, util.ErrReleaseTag):
-		return release, []check.Issue{{
-			Rule:      "release/tag",
-			MessageZh: "已找到 Latest Release 与 package.zip，但无法解析 Release 对应的 Git 标签/提交。请确认 tag 指向有效 commit。",
-			MessageEn: "Latest Release and package.zip were found, but the release tag/commit could not be resolved. Ensure the tag points to a valid commit.",
-		}}
-	default:
-		return release, []check.Issue{{
-			Rule:      "release/latest",
-			MessageZh: "仓库没有可用的 Latest Release（或 API 读取失败）。请在 GitHub 上创建一个 Release，并确保该仓库对集市检查所用令牌可见。",
-			MessageEn: "No usable Latest Release was found (or the GitHub API call failed). Create a GitHub Release and ensure the repo is visible to the bazaar checker token.",
-		}}
-	}
 }

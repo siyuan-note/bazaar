@@ -11,25 +11,10 @@
 package check
 
 import (
-	"errors"
 	"fmt"
 	"html"
 	"strings"
 )
-
-// maxNameBytesPOSIX 为单路径组件名称的字节长度上限（NAME_MAX），Linux ext4、macOS APFS 等常见文件系统均为 255。
-const maxNameBytesPOSIX = 255
-
-// validatePlainStringForHTML 校验用于 HTML 展示的清单字面量：去掉首尾空白后须非空，且整段字符串与 html.EscapeString(s) 相同，避免 XSS。
-func validatePlainStringForHTML(s string) error {
-	if strings.TrimSpace(s) == "" {
-		return errors.New("value is empty or whitespace only")
-	}
-	if html.EscapeString(s) != s {
-		return errors.New(`contains HTML-special character: <, >, &, ' and "`)
-	}
-	return nil
-}
 
 // validatePackageName 在 Windows 与类 Unix（Linux、macOS）常见规则下校验集市包 name。
 // Windows：保留字符、C0 控制字符（1–31）、NUL、保留设备名（整段 name 与保留名完全一致时拒绝，不区分大小写）、不得以空格或句点结尾（见 Microsoft 文档）、不得以空格开头（无法手动创建此类文件夹）。
@@ -37,62 +22,122 @@ func validatePlainStringForHTML(s string) error {
 // Linux / macOS：路径分隔符 / 与 NUL 与上述保留字符一并禁止；名称 UTF-8 编码长度不超过 NAME_MAX（255 字节）。
 // 仅允许可打印 ASCII（U+0020–U+007E），降低编码、终端与跨平台工具链上的兼容风险。
 // 集市约定：不得以句点（.）开头，避免隐藏文件夹。
-func validatePackageName(name string) error {
+// 返回可直接用于 PR 评论的双语错误（尽量列全所有问题）。
+func validatePackageName(name string) []error {
+	var errs []error
 	if name == "" {
-		return errors.New("[name] is empty")
+		errs = append(errs, LocalizedErr(
+			"清单字段 name 不能为空。请在 JSON 根级填写与 GitHub 仓库名一致的字符串。",
+			"Manifest field name must not be empty. Set a string at the JSON root that matches the GitHub repository name.",
+			nil,
+		))
+		return errs
 	}
-	if len(name) > maxNameBytesPOSIX {
-		return errors.New("[name] exceeds maximum length in bytes (Linux/macOS NAME_MAX)")
+	// 单路径组件名称的字节长度上限（NAME_MAX），Linux ext4、macOS APFS 等常见文件系统均为 255。
+	if len(name) > 255 {
+		errs = append(errs, LocalizedErr(
+			fmt.Sprintf("清单字段 name 的值 %q 超过长度上限（255 字节）。请缩短名称，使其与 GitHub 仓库名一致后重新打包。", name),
+			fmt.Sprintf("Manifest field name %q exceeds the maximum length (255 bytes). Shorten it to match the GitHub repository name, then rebuild the package.", name),
+			nil,
+		))
 	}
-	if strings.HasPrefix(name, ".") || strings.HasPrefix(name, " ") {
-		return errors.New("[name] must not start with period or space")
+	if strings.HasPrefix(name, ".") {
+		errs = append(errs, LocalizedErr(
+			fmt.Sprintf("清单字段 name 的值 %q 以句点开头。目录名不得以 . 开头（会变成隐藏文件夹）。请改成不以 . 开头的名称后重新打包。", name),
+			fmt.Sprintf("Manifest field name %q starts with a period. Names must not start with '.' (hidden folder). Choose a name without a leading period and rebuild the package.", name),
+			nil,
+		))
 	}
-	if err := validateNameDisallowedRunes(name); err != nil {
-		return err
+	if strings.HasPrefix(name, " ") {
+		errs = append(errs, LocalizedErr(
+			fmt.Sprintf("清单字段 name 的值 %q 以空格开头。请去掉开头空格，使名称与 GitHub 仓库名一致后重新打包。", name),
+			fmt.Sprintf("Manifest field name %q starts with a space. Remove the leading space so it matches the GitHub repository name, then rebuild the package.", name),
+			nil,
+		))
 	}
-	if err := validateNameNoTrailingSpaceOrPeriod(name); err != nil {
-		return err
+	appendNameDisallowedRunesIssues(name, &errs)
+	// validateNameNoTrailingSpaceOrPeriod：不得以空格或句点结束名称（见 Microsoft 文档：Shell 与用户界面不支持此类名称）。
+	if strings.HasSuffix(name, " ") {
+		errs = append(errs, LocalizedErr(
+			fmt.Sprintf("清单字段 name 的值 %q 以空格结尾。请去掉末尾空格后重新打包。", name),
+			fmt.Sprintf("Manifest field name %q ends with a space. Remove the trailing space and rebuild the package.", name),
+			nil,
+		))
 	}
-	if err := validateNameNotReservedDevice(name); err != nil {
-		return err
+	if strings.HasSuffix(name, ".") {
+		errs = append(errs, LocalizedErr(
+			fmt.Sprintf("清单字段 name 的值 %q 以句点结尾。请去掉末尾句点后重新打包。", name),
+			fmt.Sprintf("Manifest field name %q ends with a period. Remove the trailing period and rebuild the package.", name),
+			nil,
+		))
 	}
-	if err := validatePlainStringForHTML(name); err != nil {
-		return fmt.Errorf("[name] %w", err)
+	// validateNameNotReservedDevice：若整段 name 与 Windows 保留设备名相同则拒绝（不区分大小写）。
+	// 带后缀的形式（如 CON.123）在资源管理器中可作为普通文件夹名，故不按「点号前 stem」截取比对。
+	if _, ok := reservedWindowsDeviceNames[strings.ToUpper(name)]; ok {
+		errs = append(errs, LocalizedErr(
+			fmt.Sprintf("清单字段 name 的值 %q 是 Windows 保留设备名（如 CON、PRN、AUX）。请改用其他名称后重新打包。", name),
+			fmt.Sprintf("Manifest field name %q is a Windows reserved device name (e.g. CON, PRN, AUX). Choose a different name and rebuild the package.", name),
+			nil,
+		))
 	}
-	return nil
+	// validatePlainStringForHTML：用于 HTML 展示的清单字面量须与 html.EscapeString(s) 相同，避免 XSS。
+	if html.EscapeString(name) != name {
+		errs = append(errs, LocalizedErr(
+			fmt.Sprintf("清单字段 name 的值 %q 包含 HTML 特殊字符（<、>、&、'、\"）。请从名称中移除这些字符后重新打包。", name),
+			fmt.Sprintf(`Manifest field name %q contains HTML-special characters (<, >, &, ', "). Remove them and rebuild the package.`, name),
+			nil,
+		))
+	}
+	return errs
 }
 
-// validateNameDisallowedRunes：仅允许可打印 ASCII（含空格，即 U+0020–U+007E）；并禁止其中 Windows / POSIX 路径保留字符。
-func validateNameDisallowedRunes(name string) error {
+// validateManifestAuthor 校验用于 HTML 展示的清单字段 author：去掉首尾空白后须非空，且整段字符串与 html.EscapeString(s) 相同，避免 XSS。
+// 返回可直接用于 PR 评论的双语错误。
+func validateManifestAuthor(author string) []error {
+	var errs []error
+	if strings.TrimSpace(author) == "" {
+		errs = append(errs, LocalizedErr(
+			"清单字段 author 不能为空或仅含空白字符。请填写普通文本作者名，例如 \"author\": \"your-name\"。",
+			`Manifest field author must not be empty or whitespace only. Set plain text such as "author": "your-name".`,
+			nil,
+		))
+	}
+	if html.EscapeString(author) != author {
+		errs = append(errs, LocalizedErr(
+			fmt.Sprintf("清单字段 author 的值 %q 包含 HTML 特殊字符（<、>、&、'、\"）。请改成普通文本后重新打包。", author),
+			fmt.Sprintf(`Manifest field author value %q contains HTML-special characters (<, >, &, ', "). Use plain text and rebuild the package.`, author),
+			nil,
+		))
+	}
+	return errs
+}
+
+// appendNameDisallowedRunesIssues：仅允许可打印 ASCII（含空格，即 U+0020–U+007E）；并禁止其中 Windows / POSIX 路径保留字符。
+func appendNameDisallowedRunesIssues(name string, errs *[]error) {
+	var hasNonPrintable, hasReserved bool
 	for _, r := range name {
 		if r < 0x20 || r > 0x7E {
-			return errors.New("[name] contains characters other than printable ASCII characters")
+			hasNonPrintable = true
 		}
 		switch r {
 		case '<', '>', ':', '"', '/', '\\', '|', '?', '*':
-			return errors.New("[name] contains reserved character")
+			hasReserved = true
 		}
 	}
-	return nil
-}
-
-// validateNameNoTrailingSpaceOrPeriod：不得以空格或句点结束名称（见 Microsoft 文档：Shell 与用户界面不支持此类名称）。
-func validateNameNoTrailingSpaceOrPeriod(name string) error {
-	runes := []rune(name)
-	last := runes[len(runes)-1]
-	if last == ' ' || last == '.' {
-		return errors.New("[name] must not end with space or period")
+	if hasNonPrintable {
+		*errs = append(*errs, LocalizedErr(
+			fmt.Sprintf("清单字段 name 的值 %q 包含不可打印 ASCII 字符（如中文、表情符号）。请改用仅含可打印 ASCII 的名称，与 GitHub 仓库名保持一致后重新打包。", name),
+			fmt.Sprintf("Manifest field name %q contains non-printable ASCII characters (e.g. CJK or emoji). Use printable ASCII only, matching the GitHub repository name, then rebuild the package.", name),
+			nil,
+		))
 	}
-	return nil
-}
-
-// validateNameNotReservedDevice：若整段 name 与 Windows 保留设备名相同则拒绝（不区分大小写）。
-// 带后缀的形式（如 CON.123）在资源管理器中可作为普通文件夹名，故不按「点号前 stem」截取比对。
-func validateNameNotReservedDevice(name string) error {
-	if _, ok := reservedWindowsDeviceNames[strings.ToUpper(name)]; ok {
-		return errors.New("[name] is a reserved word")
+	if hasReserved {
+		*errs = append(*errs, LocalizedErr(
+			fmt.Sprintf("清单字段 name 的值 %q 包含路径保留字符（如 < > : \" / \\ | ? *）。请从名称中移除这些字符后重新打包。", name),
+			fmt.Sprintf(`Manifest field name %q contains reserved path characters (e.g. < > : " / \ | ? *). Remove them and rebuild the package.`, name),
+			nil,
+		))
 	}
-	return nil
 }
 
 // reservedWindowsDeviceNames 为 Windows 保留设备名（整名精确匹配，不区分大小写）。名称已限制为 ASCII，故不含上标数字变体。

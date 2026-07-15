@@ -37,19 +37,19 @@ func TestCheckResultTemplate(t *testing.T) {
 			{
 				RepoInfo: RepoInfo{Path: "example/broken-plugin", Home: "https://github.com/example/broken-plugin"},
 				Issues: []check.Issue{{
-					Rule: "files/required", MessageZh: "缺少 icon.png", MessageEn: "missing icon.png",
+					MessageZh: "缺少 icon.png", MessageEn: "missing icon.png",
 				}},
 			},
 			{
 				RepoInfo: RepoInfo{Path: "example/no-release", Home: "https://github.com/example/no-release"},
 				Issues: []check.Issue{{
-					Rule: "release/latest", MessageZh: "无 Latest Release", MessageEn: "no Latest Release",
+					MessageZh: "无 Latest Release", MessageEn: "no Latest Release",
 				}},
 			},
 			{
 				RepoInfo: RepoInfo{Path: "example/no-package-zip", Home: "https://github.com/example/no-package-zip"},
 				Issues: []check.Issue{{
-					Rule: "release/package_zip", MessageZh: "无 package.zip", MessageEn: "no package.zip",
+					MessageZh: "无 package.zip", MessageEn: "no package.zip",
 				}},
 			},
 		},
@@ -61,9 +61,9 @@ func TestCheckResultTemplate(t *testing.T) {
 	}
 	out := buf.String()
 	for _, want := range []string{
-		"01 [release/latest]",
-		"01 [release/package_zip]",
-		"01 [files/required]",
+		"无 Latest Release",
+		"无 package.zip",
+		"缺少 icon.png",
 		"Check passed.",
 		"Latest Release: [v0.0.1](https://github.com/siyuan-note/plugin-sample/releases/tag/v0.0.1)",
 	} {

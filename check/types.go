@@ -11,15 +11,14 @@
 package check
 
 // Issue 单条检查问题。
-// Rule 为稳定内部标识；MessageZh / MessageEn 自含路径与改法，可直接用于评论。
+// MessageZh / MessageEn 自含路径与改法，可直接用于评论。
 type Issue struct {
-	Rule      string `json:"rule"`
 	MessageZh string `json:"messageZh"`
 	MessageEn string `json:"messageEn"`
 }
 
-func issue(rule, zh, en string) Issue {
-	return Issue{Rule: rule, MessageZh: zh, MessageEn: en}
+func issue(zh, en string) Issue {
+	return Issue{MessageZh: zh, MessageEn: en}
 }
 
 // PackageType 集市包类型。
