@@ -323,8 +323,8 @@ func checkRepo(
 		logger.Warnf("download/unzip [%s] failed: %s", ownerRepo, err)
 		out.Issues = append(out.Issues, check.Issue{
 			Rule:      "release/package_zip",
-			MessageZh: fmt.Sprintf("下载或解压 package.zip 失败：%s。请确认 Latest Release 中的 package.zip 可访问且为合法 zip，然后重新发布或重跑 PR Check。", err),
-			MessageEn: fmt.Sprintf("Failed to download or unzip package.zip: %s. Ensure package.zip in the Latest Release is reachable and a valid zip, then republish or re-run PR Check.", err),
+			MessageZh: fmt.Sprintf("下载或解压 package.zip 失败：%s。请确认 Latest Release 中的 package.zip 可访问且为合法 zip。", err),
+			MessageEn: fmt.Sprintf("Failed to download or unzip package.zip: %s. Ensure package.zip in the Latest Release is reachable and a valid zip.", err),
 		})
 		resultChannel <- checkOutput{packageType: packageType, packageCheck: out}
 		logger.Infof("finish repo check [%s] (download failed)", ownerRepo)
@@ -369,26 +369,26 @@ func checkRepoLatestRelease(repoOwner, repoName string) (release util.LatestRele
 	case errors.Is(err, util.ErrNoLatestRelease):
 		return release, []check.Issue{{
 			Rule:      "release/latest",
-			MessageZh: "仓库没有可用的 Latest Release（或 API 读取失败）。请在 GitHub 上创建一个 Release，并确保该仓库对集市检查所用令牌可见，然后重跑 PR Check。",
-			MessageEn: "No usable Latest Release was found (or the GitHub API call failed). Create a GitHub Release, ensure the repo is visible to the bazaar checker token, then re-run PR Check.",
+			MessageZh: "仓库没有可用的 Latest Release（或 API 读取失败）。请在 GitHub 上创建一个 Release，并确保该仓库对集市检查所用令牌可见。",
+			MessageEn: "No usable Latest Release was found (or the GitHub API call failed). Create a GitHub Release and ensure the repo is visible to the bazaar checker token.",
 		}}
 	case errors.Is(err, util.ErrNoPackageZip):
 		return release, []check.Issue{{
 			Rule:      "release/package_zip",
-			MessageZh: "Latest Release 中缺少名为 package.zip 的资源文件。请把打包好的 package.zip 作为 Release Asset 上传（文件名必须完全是 package.zip），然后重跑 PR Check。",
-			MessageEn: "The Latest Release has no asset named package.zip. Upload package.zip as a Release asset (exact filename package.zip), then re-run PR Check.",
+			MessageZh: "Latest Release 中缺少名为 package.zip 的资源文件。请把打包好的 package.zip 作为 Release Asset 上传（文件名必须完全是 package.zip）。",
+			MessageEn: "The Latest Release has no asset named package.zip. Upload package.zip as a Release asset (exact filename package.zip).",
 		}}
 	case errors.Is(err, util.ErrReleaseTag):
 		return release, []check.Issue{{
 			Rule:      "release/tag",
-			MessageZh: "已找到 Latest Release 与 package.zip，但无法解析 Release 对应的 Git 标签/提交。请确认 tag 指向有效 commit 后重跑 PR Check。",
-			MessageEn: "Latest Release and package.zip were found, but the release tag/commit could not be resolved. Ensure the tag points to a valid commit, then re-run PR Check.",
+			MessageZh: "已找到 Latest Release 与 package.zip，但无法解析 Release 对应的 Git 标签/提交。请确认 tag 指向有效 commit。",
+			MessageEn: "Latest Release and package.zip were found, but the release tag/commit could not be resolved. Ensure the tag points to a valid commit.",
 		}}
 	default:
 		return release, []check.Issue{{
 			Rule:      "release/latest",
-			MessageZh: "仓库没有可用的 Latest Release（或 API 读取失败）。请在 GitHub 上创建一个 Release，并确保该仓库对集市检查所用令牌可见，然后重跑 PR Check。",
-			MessageEn: "No usable Latest Release was found (or the GitHub API call failed). Create a GitHub Release, ensure the repo is visible to the bazaar checker token, then re-run PR Check.",
+			MessageZh: "仓库没有可用的 Latest Release（或 API 读取失败）。请在 GitHub 上创建一个 Release，并确保该仓库对集市检查所用令牌可见。",
+			MessageEn: "No usable Latest Release was found (or the GitHub API call failed). Create a GitHub Release and ensure the repo is visible to the bazaar checker token.",
 		}}
 	}
 }
