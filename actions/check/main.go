@@ -24,7 +24,6 @@ import (
 
 	"github.com/88250/gulu"
 	"github.com/google/go-github/v89/github"
-	"github.com/panjf2000/ants/v2"
 	"github.com/siyuan-note/bazaar/actions/util"
 	"github.com/siyuan-note/bazaar/check"
 )
@@ -165,6 +164,7 @@ func checkRepos(
 	bazaarHeadReposPath := filepath.Join(BAZAAR_HEAD_PATH, repoListTxtName)
 	prBaseReposPath := filepath.Join(PR_BASE_PATH, repoListTxtName)
 	prHeadReposPath := filepath.Join(PR_HEAD_PATH, repoListTxtName)
+
 	logger.Infof("start repos check [%s]", prHeadReposPath)
 
 	// 加载三个版本的集市包列表：bazaar head（用于过滤）、PR base、PR head（用于 diff）
@@ -234,7 +234,7 @@ func checkRepos(
 	}
 
 	// 更换维护者：在 PR base 与 PR head 中，repo name 相同但 owner 不同，则视为更换维护者
-	maintainerChanged := make([]string, 0)
+	maintainerChangedSet := make(Set)
 	for _, path := range newRepos {
 		// newRepos 包含了更换维护者的仓库
 		parts := strings.Split(path, "/")
@@ -250,15 +250,10 @@ func checkRepos(
 		}
 		if oldOwner != newOwner {
 			// base 中有 oldOwner/name，head 中有 newOwner/name，是更换维护者
-			maintainerChanged = append(maintainerChanged, path)
+			maintainerChangedSet[path] = struct{}{}
 		}
 	}
 
-	// 新增与更换维护者合并为待检查列表，统一做 Release + Pkg Check（更换维护者按新集市包处理）
-	maintainerChangedSet := make(Set, len(maintainerChanged))
-	for _, path := range maintainerChanged {
-		maintainerChangedSet[path] = struct{}{}
-	}
 	resultChannel := make(chan checkOutput, 4)
 	waitGroupCheck := &sync.WaitGroup{}
 	waitGroupResult := &sync.WaitGroup{}
@@ -274,17 +269,16 @@ func checkRepos(
 		}
 	})
 
-	// 检查新增的集市包（包含更换维护者的集市包），限制并发数为 8
-	p, _ := ants.NewPoolWithFunc(8, func(arg any) {
-		defer waitGroupCheck.Done()
-		ownerRepo := arg.(string)
-		checkRepo(ownerRepo, occupiedNames, packageType, resultChannel, occupiedNamesMu, themeJsAllowSet)
-	})
-	defer p.Release()
-
+	// 检查新增的集市包（更换维护者的集市包也按新集市包处理），限制并发数为 8
+	sem := make(chan struct{}, 8)
 	for _, ownerRepo := range newRepos {
 		waitGroupCheck.Add(1)
-		p.Invoke(ownerRepo)
+		go func(repo string) {
+			defer waitGroupCheck.Done()
+			sem <- struct{}{}
+			defer func() { <-sem }()
+			checkRepo(repo, occupiedNames, packageType, resultChannel, occupiedNamesMu, themeJsAllowSet)
+		}(ownerRepo)
 	}
 	waitGroupCheck.Wait()  // 等待检查完成
 	close(resultChannel)   // 关闭检查结果输出通道
@@ -301,7 +295,6 @@ func checkRepo(
 	nameSetMutex *sync.Mutex,
 	themeJsAllowSet Set,
 ) {
-
 	logger.Infof("start repo check [%s]", ownerRepo)
 
 	repoMeta := strings.Split(ownerRepo, "/")

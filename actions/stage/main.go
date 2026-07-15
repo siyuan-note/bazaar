@@ -29,7 +29,6 @@ import (
 	"github.com/88250/gulu"
 	"github.com/google/go-github/v89/github"
 	jsoniter "github.com/json-iterator/go"
-	"github.com/panjf2000/ants/v2"
 	"github.com/siyuan-note/bazaar/actions/util"
 	"github.com/siyuan-note/bazaar/check"
 )
@@ -188,11 +187,6 @@ func performStage(packageType check.PackageType, occupiedNames map[string]struct
 	if nil != err {
 		logger.Fatalf("read or parse [%s] failed: %s", packageType.ReposListFile(), err)
 	}
-	// 与后续 Invoke(arg) 的 arg.(string) 兼容，转为 []any
-	repos := make([]any, len(reposSlice))
-	for i, s := range reposSlice {
-		repos[i] = s
-	}
 
 	oldStageData, err := loadOldStageData(packageType)
 	if nil != err {
@@ -217,69 +211,69 @@ func performStage(packageType check.PackageType, occupiedNames map[string]struct
 	waitGroup := &sync.WaitGroup{}
 
 	poolSize := getStagePoolSize()
-	p, _ := ants.NewPoolWithFunc(poolSize, func(arg any) {
-		defer waitGroup.Done()
-		ownerRepo := arg.(string)
-		var oldStageURL string
-		var oldRepo *util.StageRepo
-		if o, exists := oldStageData[ownerRepo]; exists {
-			oldStageURL = o.URL
-			oldRepo = o
-		}
-		ok, skipped, hash, updated, size, installSize, pkg := indexPackage(ownerRepo, packageType, oldStageURL, oldRepo, themeJsAllowSet, occupiedNames)
-		if skipped {
-			// hash 未变化，跳过下载，直接沿用旧 stage 条目
-			lock.Lock()
-			stageRepos = append(stageRepos, oldStageData[ownerRepo])
-			lock.Unlock()
-			return
-		}
-		if !ok || pkg == nil {
-			// 索引失败或 pkg 为空时使用旧数据，避免 "package": null 的坏数据覆盖
-			lock.Lock()
-			if oldRepo, exists := oldStageData[ownerRepo]; exists {
-				stageRepos = append(stageRepos, oldRepo)
-				logger.Warnf("index failed for [%s], keeping old data", ownerRepo)
-			} else {
-				logger.Warnf("index failed for [%s] and no old data found", ownerRepo)
-			}
-			lock.Unlock()
-			return
-		}
-
-		stars, openIssues, ok := repoStats(ownerRepo)
-		// 如果获取统计数据失败，尝试使用旧数据
-		if !ok {
-			lock.Lock()
-			if oldRepo, exists := oldStageData[ownerRepo]; exists {
-				stageRepos = append(stageRepos, oldRepo)
-				logger.Warnf("repoStats failed for [%s], keeping old data", ownerRepo)
-			} else {
-				logger.Warnf("repoStats failed for [%s] and no old data found", ownerRepo)
-			}
-			lock.Unlock()
-			return
-		}
-
-		lock.Lock()
-		defer lock.Unlock()
-		stageRepos = append(stageRepos, &util.StageRepo{
-			URL:         ownerRepo + "@" + hash,
-			Stars:       stars,
-			OpenIssues:  openIssues,
-			Updated:     updated,
-			Size:        size,
-			InstallSize: installSize,
-			Package:     *pkg,
-		})
-		logger.Infof("updated repo [%s]", ownerRepo)
-	})
-	for _, ownerRepo := range repos {
+	sem := make(chan struct{}, poolSize)
+	for _, ownerRepo := range reposSlice {
 		waitGroup.Add(1)
-		p.Invoke(ownerRepo)
+		go func(ownerRepo string) {
+			defer waitGroup.Done()
+			sem <- struct{}{}
+			defer func() { <-sem }()
+			var oldStageURL string
+			var oldRepo *util.StageRepo
+			if o, exists := oldStageData[ownerRepo]; exists {
+				oldStageURL = o.URL
+				oldRepo = o
+			}
+			ok, skipped, hash, updated, size, installSize, pkg := indexPackage(ownerRepo, packageType, oldStageURL, oldRepo, themeJsAllowSet, occupiedNames)
+			if skipped {
+				// hash 未变化，跳过下载，直接沿用旧 stage 条目
+				lock.Lock()
+				stageRepos = append(stageRepos, oldStageData[ownerRepo])
+				lock.Unlock()
+				return
+			}
+			if !ok || pkg == nil {
+				// 索引失败或 pkg 为空时使用旧数据，避免 "package": null 的坏数据覆盖
+				lock.Lock()
+				if oldRepo, exists := oldStageData[ownerRepo]; exists {
+					stageRepos = append(stageRepos, oldRepo)
+					logger.Warnf("index failed for [%s], keeping old data", ownerRepo)
+				} else {
+					logger.Warnf("index failed for [%s] and no old data found", ownerRepo)
+				}
+				lock.Unlock()
+				return
+			}
+
+			stars, openIssues, ok := repoStats(ownerRepo)
+			// 如果获取统计数据失败，尝试使用旧数据
+			if !ok {
+				lock.Lock()
+				if oldRepo, exists := oldStageData[ownerRepo]; exists {
+					stageRepos = append(stageRepos, oldRepo)
+					logger.Warnf("repoStats failed for [%s], keeping old data", ownerRepo)
+				} else {
+					logger.Warnf("repoStats failed for [%s] and no old data found", ownerRepo)
+				}
+				lock.Unlock()
+				return
+			}
+
+			lock.Lock()
+			defer lock.Unlock()
+			stageRepos = append(stageRepos, &util.StageRepo{
+				URL:         ownerRepo + "@" + hash,
+				Stars:       stars,
+				OpenIssues:  openIssues,
+				Updated:     updated,
+				Size:        size,
+				InstallSize: installSize,
+				Package:     *pkg,
+			})
+			logger.Infof("updated repo [%s]", ownerRepo)
+		}(ownerRepo)
 	}
 	waitGroup.Wait()
-	p.Release()
 
 	sort.SliceStable(stageRepos, func(i, j int) bool {
 		return stageRepos[i].Updated > stageRepos[j].Updated
