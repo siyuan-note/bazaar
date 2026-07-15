@@ -8,7 +8,7 @@
 // THIS SOFTWARE IS PROVIDED ON AN "AS IS" BASIS, WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO NON-INFRINGEMENT, MERCHANTABILITY OR FIT FOR A PARTICULAR PURPOSE.
 // See the Mulan PSL v2 for more details.
 
-package rules
+package check
 
 import (
 	"path/filepath"
@@ -17,7 +17,7 @@ import (
 
 func TestHaltKeepsOnlyLeadingIssue(t *testing.T) {
 	c := &Context{
-		PackageRoot: filepath.Join("..", "testdata", "plugin_ok"),
+		PackageRoot: filepath.Join("testdata", "plugin_ok"),
 		OwnerRepo:   "not-a-repo",
 		Type:        TypePlugin,
 	}
@@ -38,7 +38,7 @@ func TestHaltKeepsOnlyLeadingIssue(t *testing.T) {
 
 func TestAccumulateAfterRootOK(t *testing.T) {
 	c := &Context{
-		PackageRoot: filepath.Join("..", "testdata", "plugin_ok"),
+		PackageRoot: filepath.Join("testdata", "plugin_ok"),
 		OwnerRepo:   "demo/sample-plugin",
 		Type:        TypePlugin,
 		OccupiedNames: map[string]struct{}{
@@ -49,12 +49,12 @@ func TestAccumulateAfterRootOK(t *testing.T) {
 	if c.Halted() {
 		t.Fatal("should not halt when inputs are valid")
 	}
-	if c.OK() || !hasRule(c, "manifest/name_unique") {
+	if c.OK() || !contextHasRule(c, "manifest/name_unique") {
 		t.Fatalf("expected uniqueness issue among accumulated results, issues=%v", c.Issues)
 	}
 }
 
-func hasRule(c *Context, rule string) bool {
+func contextHasRule(c *Context, rule string) bool {
 	for _, i := range c.Issues {
 		if i.Rule == rule {
 			return true

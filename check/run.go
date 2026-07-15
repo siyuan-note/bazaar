@@ -8,7 +8,7 @@
 // THIS SOFTWARE IS PROVIDED ON AN "AS IS" BASIS, WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO NON-INFRINGEMENT, MERCHANTABILITY OR FIT FOR A PARTICULAR PURPOSE.
 // See the Mulan PSL v2 for more details.
 
-package rules
+package check
 
 import (
 	"fmt"
@@ -37,7 +37,7 @@ func Run(c *Context) {
 	}
 }
 
-// pipeline 为检查步骤的固定顺序。新增规则时：先在 rules 里实现，再按依赖插入本切片。
+// pipeline 为检查步骤的固定顺序。新增规则时：先在本包实现，再按依赖插入本切片。
 var pipeline = []step{
 	stepOwnerRepo,     // 解析 OwnerRepo 得到 Owner/Repo，失败则 Halt
 	stepPackageRoot,   // 解析解压目录得到包根 Root，失败则 Halt

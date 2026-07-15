@@ -10,22 +10,6 @@
 
 package check
 
-import "github.com/siyuan-note/bazaar/check/rules"
-
-// 对外仍使用 check.PackageType / Issue，实现位于 rules 子包。
-type (
-	PackageType = rules.PackageType
-	Issue       = rules.Issue
-)
-
-const (
-	TypePlugin   = rules.TypePlugin
-	TypeTheme    = rules.TypeTheme
-	TypeIcon     = rules.TypeIcon
-	TypeTemplate = rules.TypeTemplate
-	TypeWidget   = rules.TypeWidget
-)
-
 // Input 对单个已解压集市包的检查输入。
 // PackageRoot 可以是包根目录，也可以是解压后的临时目录（若其下仅有一个子目录，将自动视为包根）。
 type Input struct {
@@ -58,9 +42,9 @@ type Result struct {
 }
 
 // Check 对单个集市包（已解压目录）执行检查。不下载、不上传、不访问网络。
-// 具体规则与短路逻辑均在 rules 包的 Context 流水线中。
+// 具体规则与短路逻辑在 Context 流水线中（见 run.go）。
 func Check(in Input) *Result {
-	c := &rules.Context{
+	c := &Context{
 		PackageRoot:   in.PackageRoot,
 		OwnerRepo:     in.OwnerRepo,
 		Type:          in.Type,
@@ -69,7 +53,7 @@ func Check(in Input) *Result {
 		OccupiedNames: in.OccupiedNames,
 		AllowThemeJS:  in.AllowThemeJS,
 	}
-	rules.Run(c)
+	Run(c)
 
 	return &Result{
 		OK:           c.OK(),
@@ -78,29 +62,4 @@ func Check(in Input) *Result {
 		Manifest:     c.Manifest,
 		ManifestPath: c.ManifestPath,
 	}
-}
-
-// AllPackageTypes 返回所有集市包类型（声明顺序）。
-func AllPackageTypes() []PackageType {
-	return rules.AllPackageTypes()
-}
-
-// CheckOrderPackageTypes 返回 PR Check 并发顺序（与 CheckResult JSON 分组一致）。
-func CheckOrderPackageTypes() []PackageType {
-	return rules.CheckOrderPackageTypes()
-}
-
-// StageOrderPackageTypes 返回 Stage 流水线顺序（themes 优先，与历史行为一致）。
-func StageOrderPackageTypes() []PackageType {
-	return rules.StageOrderPackageTypes()
-}
-
-// ParsePackageType 解析类型字符串（plugins/plugin 等均可）。
-func ParsePackageType(s string) (PackageType, bool) {
-	return rules.ParsePackageType(s)
-}
-
-// SanitizeDisplayStrings 对清单中 displayName / description 做 HTML 转义（供 Stage 写索引前调用）。
-func SanitizeDisplayStrings(m map[string]any) {
-	rules.SanitizeDisplayStrings(m)
 }
