@@ -90,29 +90,26 @@ func main() {
 		logger.Fatalf("create github client failed: %s", err)
 	}
 
-	// 获取检查结果模板文件
 	checkResultTemplate, err := parseCheckResultTemplate()
 	if nil != err {
 		logger.Fatalf("load check result template failed: %s", err)
 	}
 
-	// 打开检查结果输出文件
 	checkResultOutputFile, err := os.OpenFile(CHECK_RESULT_OUTPUT, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0666)
 	if nil != err {
 		logger.Fatalf("open check result output file [%s] failed: %s", CHECK_RESULT_OUTPUT, err)
 	}
 	defer checkResultOutputFile.Close()
 
-	checkResult := &CheckResult{} // 检查结果
+	checkResult := &CheckResult{}
 
-	// 加载 stage 全量已占用 name，供 check.Check 做跨类型唯一性检查
 	occupiedNames, err := util.LoadOccupiedNames(BAZAAR_HEAD_PATH)
 	if err != nil {
 		logger.Fatalf("load occupied names failed: %s", err)
 	}
 
-	var parseErrorMu sync.Mutex
 	var occupiedNamesMu sync.Mutex // 跨类型共享，保证同 PR 内 OccupiedNames 唯一性
+	var parseErrorMu sync.Mutex
 	checkTypes := check.AllPackageTypes()
 	wg := &sync.WaitGroup{}
 	wg.Add(len(checkTypes))
@@ -121,7 +118,7 @@ func main() {
 		go checkRepos(packageType, checkResult, occupiedNames, &occupiedNamesMu, &parseErrorMu, wg)
 	}
 
-	wg.Wait() // 等待所有检查完成
+	wg.Wait()
 
 	// 将检查结果写入文件
 	checkResultTemplate.Execute(checkResultOutputFile, checkResult)
@@ -216,13 +213,17 @@ func checkRepos(
 	// 按 base/head diff 并过滤：新增 = head 有而 base 无且不在 bazaar head（多为解决冲突时从 bazaar head 合并来的）；删除 = base 有而 head 无且仍在 bazaar head（确属本 PR 删除）
 	newRepos := make([]string, 0)
 	for _, path := range headPaths {
-		if !isKeyInSet(path, baseSet) && !isKeyInSet(path, bazaarHeadRepoSet) {
+		_, inBase := baseSet[path]
+		_, inBazaarHead := bazaarHeadRepoSet[path]
+		if !inBase && !inBazaarHead {
 			newRepos = append(newRepos, path)
 		}
 	}
 	deletedRepos := make([]string, 0)
 	for _, path := range basePaths {
-		if !isKeyInSet(path, headSet) && isKeyInSet(path, bazaarHeadRepoSet) {
+		_, inHead := headSet[path]
+		_, inBazaarHead := bazaarHeadRepoSet[path]
+		if !inHead && inBazaarHead {
 			deletedRepos = append(deletedRepos, path)
 		}
 	}
@@ -264,7 +265,7 @@ func checkRepos(
 	waitGroupResult.Go(func() {
 		for result := range resultChannel {
 			packageCheck := result.packageCheck
-			if isKeyInSet(packageCheck.RepoInfo.Path, maintainerChangedSet) {
+			if _, ok := maintainerChangedSet[packageCheck.RepoInfo.Path]; ok {
 				packageCheck.MaintainerChanged = true
 			}
 			checkResult.appendCheck(result.packageType, packageCheck)
@@ -367,7 +368,11 @@ func checkRepoLatestRelease(repoOwner, repoName string) (info ReleaseInfo, issue
 	githubRelease, _, err := githubClient.Repositories.GetLatestRelease(githubContext, repoOwner, repoName)
 	if nil != err {
 		logger.Warnf("get repo [%s/%s] latest release failed: %s", repoOwner, repoName, err)
-		return info, []check.Issue{issueReleaseLatest()}
+		return info, []check.Issue{{
+			Rule:      "release/latest",
+			MessageZh: "仓库没有可用的 Latest Release（或 API 读取失败）。请在 GitHub 上创建一个 Release，并确保该仓库对集市检查所用令牌可见，然后重跑 PR Check。",
+			MessageEn: "No usable Latest Release was found (or the GitHub API call failed). Create a GitHub Release, ensure the repo is visible to the bazaar checker token, then re-run PR Check.",
+		}}
 	}
 
 	info.Tag = githubRelease.GetTagName()
@@ -380,7 +385,11 @@ func checkRepoLatestRelease(repoOwner, repoName string) (info ReleaseInfo, issue
 		}
 	}
 	if info.PackageZipAssetID == 0 {
-		return info, []check.Issue{issueReleasePackageZip()}
+		return info, []check.Issue{{
+			Rule:      "release/package_zip",
+			MessageZh: "Latest Release 中缺少名为 package.zip 的资源文件。请把打包好的 package.zip 作为 Release Asset 上传（文件名必须完全是 package.zip），然后重跑 PR Check。",
+			MessageEn: "The Latest Release has no asset named package.zip. Upload package.zip as a Release asset (exact filename package.zip), then re-run PR Check.",
+		}}
 	}
 
 	// REF https://pkg.go.dev/github.com/google/go-github/v89/github#GitService.GetRef
@@ -415,4 +424,20 @@ func checkRepoLatestRelease(repoOwner, repoName string) (info ReleaseInfo, issue
 	}
 
 	return info, nil
+}
+
+// buildRepoHomeURL 构造仓库主页地址
+func buildRepoHomeURL(
+	repoOwner string,
+	repoName string,
+) string {
+	return fmt.Sprintf("https://github.com/%s/%s", repoOwner, repoName)
+}
+
+func issueReleaseTag() check.Issue {
+	return check.Issue{
+		Rule:      "release/tag",
+		MessageZh: "已找到 Latest Release 与 package.zip，但无法解析 Release 对应的 Git 标签/提交。请确认 tag 指向有效 commit 后重跑 PR Check。",
+		MessageEn: "Latest Release and package.zip were found, but the release tag/commit could not be resolved. Ensure the tag points to a valid commit, then re-run PR Check.",
+	}
 }
