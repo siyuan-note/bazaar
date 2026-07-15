@@ -32,67 +32,62 @@ import (
 	"github.com/siyuan-note/bazaar/check"
 )
 
-var (
-	logger = gulu.Log.NewLogger(os.Stdout)
-	// heavyStageSem 限制同时进行「下载 + 上传 OSS」的仓库数，避免大量更新时打满 GitHub/OSS；仅 hash 检查不受限。
-	heavyStageSem  chan struct{}
-	heavyStageOnce sync.Once
+/*
+Stage 流程：
+1. 检查 GitHub API rate limit 是否足够覆盖本轮待索引仓库数
+2. 按类型依次执行 performStage；每类开始前重新加载 OccupiedNames，以便上一类本轮新写入的 name 参与后续类型的唯一性检查
+3. 读取 *s.txt 与既有 stage/*.json，并发索引各 owner/repo
+4. hash 未变则跳过下载；否则下载 package.zip → check.Check → 上传 OSS（package.zip、README、preview、icon、清单 JSON）
+5. 按 updated 降序排序后写出 stage/*.json（键序经 sortJSONKeys 稳定）
+*/
 
+type Set map[string]struct{} // 字符串集合
+
+var (
+	BAZAAR_ROOT_PATH        = "."              // bazaar 仓库根目录（stage 工作区）
+	GITHUB_TOKEN            = os.Getenv("PAT") // GitHub Token
+	STAGE_POOL_SIZE         = envIntDefault("STAGE_POOL_SIZE", 80)
+	STAGE_HEAVY_CONCURRENCY = envIntDefault("STAGE_HEAVY_CONCURRENCY", 8) // 限制同时进行「下载 + 上传 OSS」的仓库数，避免大量更新时打满 GitHub/OSS；仅 hash 检查不受限。
+
+	REQUEST_TIMEOUT = 30 * time.Second // 请求超时时间
+
+	logger        = gulu.Log.NewLogger(os.Stdout)
 	githubContext = context.Background()
 	githubClient  *github.Client
 )
 
-// getStagePoolSize 从环境变量 STAGE_POOL_SIZE 读取并发池大小，默认 80（接近 GitHub API 的并发限制），以在多数为 skip 时加快检查。
-func getStagePoolSize() int {
-	const defaultPool = 80
-	if s := os.Getenv("STAGE_POOL_SIZE"); s != "" {
+func envIntDefault(key string, defaultVal int) int {
+	if s := os.Getenv(key); s != "" {
 		if n, err := strconv.Atoi(s); err == nil && n > 0 {
 			return n
 		}
 	}
-	return defaultPool
-}
-
-// getStageHeavyConcurrency 从环境变量 STAGE_HEAVY_CONCURRENCY 读取重活（下载+上传）并发上限，默认 8。
-func getStageHeavyConcurrency() int {
-	const defaultHeavy = 8
-	if s := os.Getenv("STAGE_HEAVY_CONCURRENCY"); s != "" {
-		if n, err := strconv.Atoi(s); err == nil && n > 0 {
-			return n
-		}
-	}
-	return defaultHeavy
-}
-
-func initHeavyStageSem() {
-	heavyStageOnce.Do(func() {
-		heavyStageSem = make(chan struct{}, getStageHeavyConcurrency())
-	})
+	return defaultVal
 }
 
 func main() {
-	logger.Infof("bazaar is staging...")
+	logger.Infof("Stage started")
 
 	var err error
-	githubClient, err = util.NewGitHubClient(os.Getenv("PAT"), 30*time.Second)
+	githubClient, err = util.NewGitHubClient(GITHUB_TOKEN, REQUEST_TIMEOUT)
 	if err != nil {
-		logger.Fatalf("create github client failed: %v", err)
+		logger.Fatalf("create github client failed: %s", err)
 	}
 
 	if err := checkRateLimitBeforeStage(); err != nil {
-		logger.Fatalf("GitHub API rate limit check failed: %v", err)
+		logger.Fatalf("GitHub API rate limit check failed: %s", err)
 	}
 
 	// 每类 stage 前重新加载 OccupiedNames，以便上一类本轮新写入的 name 参与后续类型的唯一性检查。
 	for _, packageType := range check.AllPackageTypes() {
-		occupiedNames, err := util.LoadOccupiedNames(".")
+		occupiedNames, err := util.LoadOccupiedNames(BAZAAR_ROOT_PATH)
 		if err != nil {
-			logger.Fatalf("load occupied names failed: %v", err)
+			logger.Fatalf("load occupied names failed: %s", err)
 		}
 		performStage(packageType, occupiedNames)
 	}
 
-	logger.Infof("bazaar staged")
+	logger.Infof("Stage completed")
 }
 
 // apiCallsPerRepo 每个仓库 staging 时消耗的 GitHub REST API (core) 请求数经验值（repoStats 1 次 + getRepoLatestRelease 等）
@@ -112,7 +107,7 @@ func checkRateLimitBeforeStage() error {
 	if required == 0 {
 		return nil
 	}
-	if os.Getenv("PAT") == "" {
+	if GITHUB_TOKEN == "" {
 		return fmt.Errorf("env PAT is not set")
 	}
 	ctx, cancel := context.WithTimeout(githubContext, 10*time.Second)
@@ -139,7 +134,7 @@ func checkRateLimitBeforeStage() error {
 // 文件不存在时返回空映射（不报错）；读取或解析失败时返回错误，避免误把已有 stage 当作无旧数据。
 func loadOldStageData(packageType check.PackageType) (map[string]*util.StageRepo, error) {
 	oldStageData := make(map[string]*util.StageRepo)
-	stageFilePath := "stage/" + packageType.StageJSONFile()
+	stageFilePath := filepath.Join(BAZAAR_ROOT_PATH, "stage", packageType.StageJSONFile())
 
 	stageFile, err := util.ReadStageFile(stageFilePath)
 	if nil != err {
@@ -180,7 +175,7 @@ func sortJSONKeys(data []byte) ([]byte, error) {
 }
 
 func performStage(packageType check.PackageType, occupiedNames map[string]struct{}) {
-	logger.Infof("staging [%s]", packageType.Plural())
+	logger.Infof("start stage [%s]", packageType.Plural())
 
 	reposSlice, err := util.ParseReposFromTxt(packageType.ReposListFile())
 	if nil != err {
@@ -192,31 +187,31 @@ func performStage(packageType check.PackageType, occupiedNames map[string]struct
 		logger.Fatalf("load old stage [%s] failed: %s", packageType.Plural(), err)
 	}
 
-	var themeJsAllowSet map[string]struct{}
+	var themeJsAllowSet Set
 	if packageType == check.TypeTheme {
 		paths, err := util.ParseReposFromTxt(util.ThemeJsAllowlistRelPath)
 		if err != nil {
 			logger.Fatalf("read or parse [%s] failed: %s", util.ThemeJsAllowlistRelPath, err)
 		}
-		themeJsAllowSet = make(map[string]struct{}, len(paths))
+		themeJsAllowSet = make(Set, len(paths))
 		for _, p := range paths {
 			themeJsAllowSet[p] = struct{}{}
 		}
 	}
 
-	initHeavyStageSem()
-	lock := sync.Mutex{}
+	var stageReposMu sync.Mutex
 	var stageRepos []*util.StageRepo
 	waitGroup := &sync.WaitGroup{}
+	heavySem := make(chan struct{}, STAGE_HEAVY_CONCURRENCY)
+	sem := make(chan struct{}, STAGE_POOL_SIZE)
 
-	poolSize := getStagePoolSize()
-	sem := make(chan struct{}, poolSize)
 	for _, ownerRepo := range reposSlice {
 		waitGroup.Add(1)
 		go func(ownerRepo string) {
 			defer waitGroup.Done()
 			sem <- struct{}{}
 			defer func() { <-sem }()
+
 			var oldStageURL string
 			var oldRepo *util.StageRepo
 			if o, exists := oldStageData[ownerRepo]; exists {
@@ -227,43 +222,42 @@ func performStage(packageType check.PackageType, occupiedNames map[string]struct
 			if packageType == check.TypeTheme {
 				_, allowThemeJS = themeJsAllowSet[ownerRepo]
 			}
-			ok, skipped, hash, updated, size, installSize, pkg := indexPackage(ownerRepo, packageType, oldStageURL, oldRepo, allowThemeJS, occupiedNames)
+			ok, skipped, hash, updated, size, installSize, pkg := indexPackage(ownerRepo, packageType, oldStageURL, oldRepo, allowThemeJS, occupiedNames, heavySem)
 			if skipped {
 				// hash 未变化，跳过下载，直接沿用旧 stage 条目
-				lock.Lock()
+				stageReposMu.Lock()
 				stageRepos = append(stageRepos, oldStageData[ownerRepo])
-				lock.Unlock()
+				stageReposMu.Unlock()
 				return
 			}
 			if !ok || pkg == nil {
 				// 索引失败或 pkg 为空时使用旧数据，避免 "package": null 的坏数据覆盖
-				lock.Lock()
+				stageReposMu.Lock()
 				if oldRepo, exists := oldStageData[ownerRepo]; exists {
 					stageRepos = append(stageRepos, oldRepo)
-					logger.Warnf("index failed for [%s], keeping old data", ownerRepo)
+					logger.Errorf("index failed for [%s], keeping old data", ownerRepo)
 				} else {
-					logger.Warnf("index failed for [%s] and no old data found", ownerRepo)
+					logger.Errorf("index failed for [%s] and no old data found", ownerRepo)
 				}
-				lock.Unlock()
+				stageReposMu.Unlock()
 				return
 			}
 
 			stars, openIssues, ok := repoStats(ownerRepo)
 			// 如果获取统计数据失败，尝试使用旧数据
 			if !ok {
-				lock.Lock()
+				stageReposMu.Lock()
 				if oldRepo, exists := oldStageData[ownerRepo]; exists {
 					stageRepos = append(stageRepos, oldRepo)
-					logger.Warnf("repoStats failed for [%s], keeping old data", ownerRepo)
+					logger.Errorf("repoStats failed for [%s], keeping old data", ownerRepo)
 				} else {
-					logger.Warnf("repoStats failed for [%s] and no old data found", ownerRepo)
+					logger.Errorf("repoStats failed for [%s] and no old data found", ownerRepo)
 				}
-				lock.Unlock()
+				stageReposMu.Unlock()
 				return
 			}
 
-			lock.Lock()
-			defer lock.Unlock()
+			stageReposMu.Lock()
 			stageRepos = append(stageRepos, &util.StageRepo{
 				URL:         ownerRepo + "@" + hash,
 				Stars:       stars,
@@ -273,6 +267,7 @@ func performStage(packageType check.PackageType, occupiedNames map[string]struct
 				InstallSize: installSize,
 				Package:     *pkg,
 			})
+			stageReposMu.Unlock()
 			logger.Infof("updated repo [%s]", ownerRepo)
 		}(ownerRepo)
 	}
@@ -296,11 +291,12 @@ func performStage(packageType check.PackageType, occupiedNames map[string]struct
 		logger.Fatalf("sort stage [%s] keys failed: %s", packageType.StageJSONFile(), err)
 	}
 
-	if err = os.WriteFile("stage/"+packageType.StageJSONFile(), data, 0644); nil != err {
+	stageFilePath := filepath.Join(BAZAAR_ROOT_PATH, "stage", packageType.StageJSONFile())
+	if err = os.WriteFile(stageFilePath, data, 0644); nil != err {
 		logger.Fatalf("write stage [%s] failed: %s", packageType.StageJSONFile(), err)
 	}
 
-	logger.Infof("staged [%s]", packageType.Plural())
+	logger.Infof("finish stage [%s]", packageType.Plural())
 }
 
 // parseHashFromStageURL 从 stage 条目的 URL（格式 owner/repo@hash）中解析出 hash 部分，若无 @ 或 @ 后为空则返回空字符串
@@ -325,13 +321,24 @@ func getOldPackageFields(oldRepo *util.StageRepo) (name, version string) {
 // oldStageRepo 用于清单校验时与旧 name/version 对比，可为 nil（如新仓库）。
 // allowThemeJS 仅主题为 themes 时可能为 true（theme.js 白名单内仓库）；其他类型恒为 false。
 // occupiedNames 为已占用 package.name 集合，供 check.Check 做跨类型唯一性检查。
-func indexPackage(ownerRepo string, packageType check.PackageType, oldStageURL string, oldStageRepo *util.StageRepo, allowThemeJS bool, occupiedNames map[string]struct{}) (ok, skipped bool, hash, published string, size, installSize int64, pkg *check.Package) {
-	// 获取该仓库 Latest Release 信息（hash、发布时间、package.zip asset id）
-	hash, published, packageZipAssetID, releaseOk := getRepoLatestRelease(ownerRepo)
+// heavySem 限制同时进行「下载 + 上传 OSS」的仓库数。
+func indexPackage(
+	ownerRepo string,
+	packageType check.PackageType,
+	oldStageURL string,
+	oldStageRepo *util.StageRepo,
+	allowThemeJS bool,
+	occupiedNames map[string]struct{},
+	heavySem chan struct{},
+) (ok, skipped bool, hash, published string, size, installSize int64, pkg *check.Package) {
+	releaseInfo, releaseOk := getRepoLatestRelease(ownerRepo)
 	if !releaseOk {
-		logger.Warnf("get [%s] latest release failed", ownerRepo)
+		logger.Errorf("get [%s] latest release failed", ownerRepo)
 		return
 	}
+	hash = releaseInfo.CommitSHA
+	published = releaseInfo.Published
+	packageZipAssetID := releaseInfo.PackageZipAssetID
 
 	// Latest Release 的 hash 与已 stage 的 hash 一致则跳过，不下载、不更新，沿用旧条目
 	if oldStageURL != "" {
@@ -343,15 +350,14 @@ func indexPackage(ownerRepo string, packageType check.PackageType, oldStageURL s
 		}
 	}
 
-	owner, name, parseOk := splitOwnerRepo(ownerRepo)
-	if !parseOk {
-		logger.Warnf("download/unzip [%s] failed: invalid owner/repo", ownerRepo)
+	owner, name, cutOk := strings.Cut(ownerRepo, "/")
+	if !cutOk {
+		logger.Errorf("download/unzip [%s] failed: invalid owner/repo", ownerRepo)
 		return
 	}
 
-	// 限制同时进行「下载 + 上传」的仓库数
-	heavyStageSem <- struct{}{}
-	defer func() { <-heavyStageSem }()
+	heavySem <- struct{}{}
+	defer func() { <-heavySem }()
 
 	tmpUnzipPath, data, cleanup, err := util.DownloadAndUnzipPackageZip(githubContext, githubClient, owner, name, packageZipAssetID)
 	if err != nil {
@@ -376,7 +382,7 @@ func indexPackage(ownerRepo string, packageType check.PackageType, oldStageURL s
 	})
 	if !result.OK {
 		for _, issue := range result.Issues {
-			logger.Warnf("check [%s] failed: %s", ownerRepo, issue.MessageEn)
+			logger.Errorf("check [%s] failed: %s", ownerRepo, issue.MessageEn)
 		}
 		return
 	}
@@ -396,7 +402,7 @@ func indexPackage(ownerRepo string, packageType check.PackageType, oldStageURL s
 	// 从解压目录读取清单，以便根据 readme 字段收集要上传的文件
 	pkg = getPackage(packageRoot, packageType)
 	if nil == pkg {
-		logger.Warnf("get package [%s] failed", ownerRepo)
+		logger.Errorf("get package [%s] failed", ownerRepo)
 		return
 	}
 
@@ -454,14 +460,13 @@ func getPackage(unzipRoot string, packageType check.PackageType) *check.Package 
 // indexPackageFile 从解压后的包根目录 unzipRoot 读取 filePath 对应文件（大小写敏感），上传到 OSS；可选文件不存在时仅记录并跳过，其它失败时设置 anyFail。filePath 为相对包根的路径，如 /README.md、/icon.png。
 func indexPackageFile(ownerRepo, hash, unzipRoot, filePath string, size, installSize int64, wg *sync.WaitGroup, anyFail *int32) {
 	defer wg.Done()
-
 	relPath := strings.TrimPrefix(filepath.ToSlash(filePath), "/")
 	localPath := filepath.Join(unzipRoot, filepath.FromSlash(relPath))
 	data, err := os.ReadFile(localPath)
 	if err != nil {
 		// 可选文件（如部分 README、preview.png）可能不存在，仅记录并跳过，不导致整包失败
 		if os.IsNotExist(err) {
-			logger.Warnf("file not found in package, skip upload [%s]", relPath)
+			logger.Errorf("file not found in package, skip upload [%s]", relPath)
 			return
 		}
 		logger.Errorf("read [%s] failed: %s", localPath, err)
@@ -505,16 +510,16 @@ func indexPackageFile(ownerRepo, hash, unzipRoot, filePath string, size, install
 }
 
 func repoStats(ownerRepo string) (stars, openIssues int, ok bool) {
-	owner, name, parseOk := splitOwnerRepo(ownerRepo)
-	if !parseOk {
-		logger.Warnf("get [%s] failed: invalid owner/repo", ownerRepo)
+	owner, name, cutOk := strings.Cut(ownerRepo, "/")
+	if !cutOk {
+		logger.Errorf("get [%s] failed: invalid owner/repo", ownerRepo)
 		return
 	}
-	ctx, cancel := context.WithTimeout(githubContext, 30*time.Second)
+	ctx, cancel := context.WithTimeout(githubContext, REQUEST_TIMEOUT)
 	defer cancel()
 	repo, _, err := githubClient.Repositories.Get(ctx, owner, name)
 	if err != nil {
-		logger.Warnf("get [%s] failed: %s", ownerRepo, err)
+		logger.Errorf("get [%s] failed: %s", ownerRepo, err)
 		return
 	}
 	stars = repo.GetStargazersCount()
@@ -524,28 +529,19 @@ func repoStats(ownerRepo string) (stars, openIssues int, ok bool) {
 }
 
 // getRepoLatestRelease 获取仓库最新发布的版本
-func getRepoLatestRelease(ownerRepo string) (hash, published string, packageZipAssetID int64, ok bool) {
-	owner, name, parseOk := splitOwnerRepo(ownerRepo)
-	if !parseOk {
-		logger.Warnf("get [%s] latest release failed: invalid owner/repo", ownerRepo)
-		return
+func getRepoLatestRelease(ownerRepo string) (util.LatestRelease, bool) {
+	owner, name, cutOk := strings.Cut(ownerRepo, "/")
+	if !cutOk {
+		logger.Errorf("get [%s] latest release failed: invalid owner/repo", ownerRepo)
+		return util.LatestRelease{}, false
 	}
-	ctx, cancel := context.WithTimeout(githubContext, 30*time.Second)
+	ctx, cancel := context.WithTimeout(githubContext, REQUEST_TIMEOUT)
 	defer cancel()
 
-	release, err := util.FetchLatestRelease(ctx, githubClient, owner, name)
+	releaseInfo, err := util.FetchLatestRelease(ctx, githubClient, owner, name)
 	if err != nil {
-		logger.Warnf("get release [%s] failed: %s", ownerRepo, err)
-		return
+		logger.Errorf("get release [%s] failed: %s", ownerRepo, err)
+		return util.LatestRelease{}, false
 	}
-	return release.CommitSHA, release.Published, release.PackageZipAssetID, true
-}
-
-// splitOwnerRepo 将 "owner/repo" 拆成 owner 与 repo。
-func splitOwnerRepo(ownerRepo string) (owner, repo string, ok bool) {
-	parts := strings.Split(ownerRepo, "/")
-	if len(parts) != 2 || parts[0] == "" || parts[1] == "" {
-		return "", "", false
-	}
-	return parts[0], parts[1], true
+	return releaseInfo, true
 }

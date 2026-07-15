@@ -122,7 +122,7 @@ func main() {
 	// 将检查结果写入文件
 	checkResultTemplate.Execute(checkResultOutputFile, checkResult)
 
-	logger.Infof("PR Check finished")
+	logger.Infof("PR Check completed")
 }
 
 // parseReposFromRootTxt 从集市包列表 TXT（每行一个 owner/repo）解析出路径列表、路径集合和 name->owner 映射
@@ -175,7 +175,7 @@ func checkRepos(
 		parseErrorMu.Lock()
 		appendParseError(&checkResult.ParseError, fmt.Sprintf("%s bazaar head", repoListTxtName), err)
 		parseErrorMu.Unlock()
-		logger.Warnf("load bazaar head repos [%s] failed: %s, skip this type", bazaarHeadReposPath, err)
+		logger.Errorf("load bazaar head repos [%s] failed: %s, skip this type", bazaarHeadReposPath, err)
 		return
 	}
 	basePaths, baseSet, baseNameToOwner, err := parseReposFromRootTxt(prBaseReposPath)
@@ -183,7 +183,7 @@ func checkRepos(
 		parseErrorMu.Lock()
 		appendParseError(&checkResult.ParseError, fmt.Sprintf("%s PR base", repoListTxtName), err)
 		parseErrorMu.Unlock()
-		logger.Warnf("load PR base repos [%s] failed: %s, skip this type", prBaseReposPath, err)
+		logger.Errorf("load PR base repos [%s] failed: %s, skip this type", prBaseReposPath, err)
 		return
 	}
 	headPaths, headSet, _, err := parseReposFromRootTxt(prHeadReposPath)
@@ -191,7 +191,7 @@ func checkRepos(
 		parseErrorMu.Lock()
 		appendParseError(&checkResult.ParseError, fmt.Sprintf("%s PR head", repoListTxtName), err)
 		parseErrorMu.Unlock()
-		logger.Warnf("load PR head repos [%s] failed: %s, skip this type", prHeadReposPath, err)
+		logger.Errorf("load PR head repos [%s] failed: %s, skip this type", prHeadReposPath, err)
 		return
 	}
 
@@ -203,7 +203,7 @@ func checkRepos(
 			parseErrorMu.Lock()
 			appendParseError(&checkResult.ParseError, fmt.Sprintf("%s PR head", util.ThemeJsAllowlistRelPath), errAllow)
 			parseErrorMu.Unlock()
-			logger.Warnf("load theme.js allowlist [%s] failed: %v, skip this type", ap, errAllow)
+			logger.Errorf("load theme.js allowlist [%s] failed: %s, skip this type", ap, errAllow)
 			return
 		}
 		themeJsAllowSet = make(Set, len(paths))
@@ -315,7 +315,7 @@ func checkNewRepo(
 		Release:  releaseInfo,
 	}
 	if err != nil {
-		logger.Warnf("fetch repo [%s/%s] latest release failed: %s", repoOwner, repoName, err)
+		logger.Errorf("fetch repo [%s/%s] latest release failed: %s", repoOwner, repoName, err)
 		out.Issues = []check.Issue{check.IssueFromErr(err)}
 	}
 
@@ -328,7 +328,7 @@ func checkNewRepo(
 
 	tmpUnzipPath, _, cleanup, err := util.DownloadAndUnzipPackageZip(githubContext, githubClient, repoOwner, repoName, releaseInfo.PackageZipAssetID)
 	if err != nil {
-		logger.Warnf("download/unzip [%s] failed: %s", ownerRepo, err)
+		logger.Errorf("download/unzip [%s] failed: %s", ownerRepo, err)
 		out.Issues = append(out.Issues, check.IssueFromErr(err))
 		resultChannel <- checkOutput{packageType: packageType, packageCheck: out}
 		logger.Infof("finish repo check [%s] (download failed)", ownerRepo)
@@ -342,7 +342,7 @@ func checkNewRepo(
 		PackageRoot:   tmpUnzipPath,
 		OwnerRepo:     ownerRepo,
 		Type:          packageType,
-		OldName:       "", // PR 新仓按首发处理
+		OldName:       "",
 		OldVersion:    "",
 		OccupiedNames: occupiedNames,
 		AllowThemeJS:  allowThemeJS,
