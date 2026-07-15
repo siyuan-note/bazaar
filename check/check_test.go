@@ -16,6 +16,16 @@ import (
 	"testing"
 )
 
+func TestCheckRejectsInvalidPackageType(t *testing.T) {
+	r := Check(Input{
+		PackageRoot: filepath.Join("testdata", "plugin_ok"),
+		OwnerRepo:   "demo/sample-plugin",
+	})
+	if r.OK || len(r.Issues) != 1 || r.Issues[0].Rule != "input/type" {
+		t.Fatalf("expected input/type issue, got OK=%v issues=%v", r.OK, r.Issues)
+	}
+}
+
 func TestCheckPluginOK_PR(t *testing.T) {
 	root := filepath.Join("testdata", "plugin_ok")
 	r := Check(Input{

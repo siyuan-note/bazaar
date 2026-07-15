@@ -86,7 +86,7 @@ func main() {
 	}
 
 	// 每类 stage 前重新加载 OccupiedNames，以便上一类本轮新写入的 name 参与后续类型的唯一性检查。
-	for _, packageType := range check.StageOrderPackageTypes() {
+	for _, packageType := range check.AllPackageTypes() {
 		occupiedNames, err := util.LoadOccupiedNames(".")
 		if err != nil {
 			logger.Fatalf("load occupied names failed: %v", err)
@@ -103,7 +103,7 @@ const apiCallsPerRepo = 2.5
 // checkRateLimitBeforeStage 统计本次待检查仓库数、请求 GitHub rate_limit（该请求不计入 core），若 core 剩余请求数不足则返回错误。参考 https://docs.github.com/zh/rest/rate-limit/rate-limit
 func checkRateLimitBeforeStage() error {
 	var repoCount int
-	for _, packageType := range check.StageOrderPackageTypes() {
+	for _, packageType := range check.AllPackageTypes() {
 		repos, err := util.ParseReposFromTxt(packageType.ReposListFile())
 		if err != nil {
 			return fmt.Errorf("count staging repos: %w", err)

@@ -38,7 +38,7 @@ func main() {
 	hash := strings.TrimSpace(string(data))
 	logger.Infof("bazaar [%s]", hash)
 
-	indexTypes := check.StageOrderPackageTypes()
+	indexTypes := check.AllPackageTypes()
 	var wg sync.WaitGroup
 	wg.Add(len(indexTypes))
 	for _, packageType := range indexTypes {

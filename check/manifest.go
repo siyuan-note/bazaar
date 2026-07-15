@@ -190,8 +190,8 @@ func checkName(m map[string]any, in ManifestInput) []Issue {
 		for occupied := range in.OccupiedNames {
 			if strings.EqualFold(occupied, name) {
 				issues = append(issues, issue("manifest/name_unique",
-					fmt.Sprintf("name %q 已被其他集市包占用（插件/主题/挂件/模板/图标之间也不能重名，且不区分大小写）。请更换一个未被占用的仓库名，并把清单 name、url 一并改成新名后重新提交。", name),
-					fmt.Sprintf("name %q is already used by another bazaar package (must be unique across plugins/themes/widgets/templates/icons, case-insensitive). Choose an unused repository name and update manifest name and url accordingly before resubmitting.", name),
+					fmt.Sprintf("name %q 已被其他集市包占用（插件/主题/图标/模板/挂件之间也不能重名，且不区分大小写）。请更换一个未被占用的仓库名，并把清单 name、url 一并改成新名后重新提交。", name),
+					fmt.Sprintf("name %q is already used by another bazaar package (must be unique across plugins/themes/icons/templates/widgets, case-insensitive). Choose an unused repository name and update manifest name and url accordingly before resubmitting.", name),
 				))
 				break
 			}

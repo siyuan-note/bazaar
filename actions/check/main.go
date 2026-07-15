@@ -70,13 +70,13 @@ func formatIssueIndex(i, total int) string {
 	if total < 1 {
 		total = 1
 	}
+	// 前导零，按 issue 总数决定序号位数，至少两位
 	width := max(len(strconv.Itoa(total)), 2)
 	return fmt.Sprintf("%0*d", width, i+1)
 }
 
 func parseCheckResultTemplate() (*template.Template, error) {
 	return template.New("check-result.md.tpl").Funcs(template.FuncMap{
-		// 按 issue 总数决定序号位数，至少两位
 		"issueIndex": formatIssueIndex,
 	}).Parse(checkResultTemplateText)
 }
@@ -113,7 +113,7 @@ func main() {
 
 	var parseErrorMu sync.Mutex
 	var occupiedNamesMu sync.Mutex // 跨类型共享，保证同 PR 内 OccupiedNames 唯一性
-	checkTypes := check.CheckOrderPackageTypes()
+	checkTypes := check.AllPackageTypes()
 	wg := &sync.WaitGroup{}
 	wg.Add(len(checkTypes))
 

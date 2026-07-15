@@ -12,41 +12,8 @@ package check
 
 import "testing"
 
-func TestParsePackageType(t *testing.T) {
-	cases := []struct {
-		in   string
-		want PackageType
-		ok   bool
-	}{
-		{"plugin", TypePlugin, true},
-		{"plugins", TypePlugin, true},
-		{"theme", TypeTheme, true},
-		{"themes", TypeTheme, true},
-		{"icon", TypeIcon, true},
-		{"icons", TypeIcon, true},
-		{"template", TypeTemplate, true},
-		{"templates", TypeTemplate, true},
-		{"widget", TypeWidget, true},
-		{"widgets", TypeWidget, true},
-		{"unknown", 0, false},
-	}
-
-	for _, tc := range cases {
-		got, ok := ParsePackageType(tc.in)
-		if ok != tc.ok || got != tc.want {
-			t.Errorf("ParsePackageType(%q) = (%v, %v), want (%v, %v)", tc.in, got, ok, tc.want, tc.ok)
-		}
-	}
-}
-
 func TestPackageTypeNames(t *testing.T) {
 	for _, typ := range AllPackageTypes() {
-		if _, ok := ParsePackageType(typ.String()); !ok {
-			t.Errorf("ParsePackageType(String()) failed for %v", typ)
-		}
-		if _, ok := ParsePackageType(typ.Plural()); !ok {
-			t.Errorf("ParsePackageType(Plural()) failed for %v", typ)
-		}
 		if typ.ManifestFile() != typ.String()+".json" {
 			t.Errorf("ManifestFile() mismatch for %v", typ)
 		}
@@ -59,36 +26,22 @@ func TestPackageTypeNames(t *testing.T) {
 	}
 }
 
-func TestStageOrderPackageTypes(t *testing.T) {
-	order := StageOrderPackageTypes()
-	if len(order) != len(packageTypeMetas) {
-		t.Fatalf("StageOrderPackageTypes len = %d, want %d", len(order), len(packageTypeMetas))
+func TestAllPackageTypesOrder(t *testing.T) {
+	want := []PackageType{TypePlugin, TypeTheme, TypeIcon, TypeTemplate, TypeWidget}
+	got := AllPackageTypes()
+	if len(got) != len(want) {
+		t.Fatalf("AllPackageTypes len = %d, want %d", len(got), len(want))
 	}
-	seen := make(map[PackageType]struct{}, len(order))
-	for _, typ := range order {
-		if !typ.valid() {
-			t.Errorf("invalid type in StageOrderPackageTypes: %v", typ)
+	for i := range want {
+		if got[i] != want[i] {
+			t.Fatalf("AllPackageTypes()[%d] = %v, want %v", i, got[i], want[i])
 		}
-		if _, dup := seen[typ]; dup {
-			t.Errorf("duplicate type in StageOrderPackageTypes: %v", typ)
-		}
-		seen[typ] = struct{}{}
 	}
 }
 
-func TestCheckOrderPackageTypes(t *testing.T) {
-	order := CheckOrderPackageTypes()
-	if len(order) != len(packageTypeMetas) {
-		t.Fatalf("CheckOrderPackageTypes len = %d, want %d", len(order), len(packageTypeMetas))
-	}
-	seen := make(map[PackageType]struct{}, len(order))
-	for _, typ := range order {
-		if !typ.valid() {
-			t.Errorf("invalid type in CheckOrderPackageTypes: %v", typ)
-		}
-		if _, dup := seen[typ]; dup {
-			t.Errorf("duplicate type in CheckOrderPackageTypes: %v", typ)
-		}
-		seen[typ] = struct{}{}
+func TestPackageTypeZeroIsInvalid(t *testing.T) {
+	var zero PackageType
+	if zero.valid() {
+		t.Fatal("zero PackageType should be invalid")
 	}
 }

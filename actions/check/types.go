@@ -14,35 +14,35 @@ import "github.com/siyuan-note/bazaar/check"
 
 type StringSet map[string]any // 字符串集合
 
-// CheckResult 检查结果
+// CheckResult 检查结果（字段顺序：插件、主题、图标、模板、挂件）。
 type CheckResult struct {
-	Icons     []PackageCheck `json:"icons"`
 	Plugins   []PackageCheck `json:"plugins"`
-	Templates []PackageCheck `json:"templates"`
 	Themes    []PackageCheck `json:"themes"`
+	Icons     []PackageCheck `json:"icons"`
+	Templates []PackageCheck `json:"templates"`
 	Widgets   []PackageCheck `json:"widgets"`
 
 	// ParseError 包列表 TXT 读取或格式校验错误，非空时在 PR 评论中优先展示
 	ParseError string `json:"parse_error"`
 
-	IconsDeleted     []string `json:"icons_deleted"`
 	PluginsDeleted   []string `json:"plugins_deleted"`
-	TemplatesDeleted []string `json:"templates_deleted"`
 	ThemesDeleted    []string `json:"themes_deleted"`
+	IconsDeleted     []string `json:"icons_deleted"`
+	TemplatesDeleted []string `json:"templates_deleted"`
 	WidgetsDeleted   []string `json:"widgets_deleted"`
 }
 
 // appendCheck 将单仓检查结果写入对应类型分组。
 func (r *CheckResult) appendCheck(typ check.PackageType, pc PackageCheck) bool {
 	switch typ {
-	case check.TypeIcon:
-		r.Icons = append(r.Icons, pc)
 	case check.TypePlugin:
 		r.Plugins = append(r.Plugins, pc)
-	case check.TypeTemplate:
-		r.Templates = append(r.Templates, pc)
 	case check.TypeTheme:
 		r.Themes = append(r.Themes, pc)
+	case check.TypeIcon:
+		r.Icons = append(r.Icons, pc)
+	case check.TypeTemplate:
+		r.Templates = append(r.Templates, pc)
 	case check.TypeWidget:
 		r.Widgets = append(r.Widgets, pc)
 	default:
@@ -54,14 +54,14 @@ func (r *CheckResult) appendCheck(typ check.PackageType, pc PackageCheck) bool {
 // setDeleted 将本 PR 删除列表写入对应类型分组。
 func (r *CheckResult) setDeleted(typ check.PackageType, paths []string) bool {
 	switch typ {
-	case check.TypeIcon:
-		r.IconsDeleted = paths
 	case check.TypePlugin:
 		r.PluginsDeleted = paths
-	case check.TypeTemplate:
-		r.TemplatesDeleted = paths
 	case check.TypeTheme:
 		r.ThemesDeleted = paths
+	case check.TypeIcon:
+		r.IconsDeleted = paths
+	case check.TypeTemplate:
+		r.TemplatesDeleted = paths
 	case check.TypeWidget:
 		r.WidgetsDeleted = paths
 	default:
