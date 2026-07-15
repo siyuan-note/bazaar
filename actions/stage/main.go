@@ -138,58 +138,27 @@ func checkRateLimitBeforeStage() error {
 	return nil
 }
 
-// loadOldStageData 加载现有的 stage 文件数据，返回以 owner/repo 为 key 的映射
-func loadOldStageData(typ string) map[string]*StageRepo {
-	oldStageData := make(map[string]*StageRepo)
+// loadOldStageData 加载现有的 stage 文件数据，返回以 owner/repo 为 key 的映射。
+// 文件不存在时返回空映射（不报错）；读取或解析失败时返回错误，避免误把已有 stage 当作无旧数据。
+func loadOldStageData(typ string) (map[string]*util.StageRepo, error) {
+	oldStageData := make(map[string]*util.StageRepo)
 	stageFilePath := "stage/" + typ + ".json"
 
-	stageData, err := os.ReadFile(stageFilePath)
+	stageFile, err := util.ReadStageFile(stageFilePath)
 	if nil != err {
-		return oldStageData
+		return nil, fmt.Errorf("read stage [%s]: %w", stageFilePath, err)
 	}
 
-	oldStaged := map[string]any{}
-	if err = gulu.JSON.UnmarshalJSON(stageData, &oldStaged); nil != err {
-		return oldStageData
-	}
-
-	oldRepos, ok := oldStaged["repos"].([]any)
-	if !ok {
-		return oldStageData
-	}
-
-	for _, repo := range oldRepos {
-		repoMap, ok := repo.(map[string]any)
+	for i := range stageFile.Repos {
+		repo := &stageFile.Repos[i]
+		repoKey, ok := util.OwnerRepoFromStageURL(repo.URL)
 		if !ok {
 			continue
 		}
-
-		url, ok := repoMap["url"].(string)
-		if !ok {
-			continue
-		}
-
-		// 从 URL 中提取 owner/repo（去掉 @hash 部分）
-		idx := strings.Index(url, "@")
-		if idx <= 0 {
-			continue
-		}
-
-		repoKey := url[:idx]
-		stageRepo := &StageRepo{}
-		repoJSON, marshalErr := gulu.JSON.MarshalJSON(repoMap)
-		if nil != marshalErr {
-			continue
-		}
-
-		if err = gulu.JSON.UnmarshalJSON(repoJSON, stageRepo); nil != err {
-			continue
-		}
-
-		oldStageData[repoKey] = stageRepo
+		oldStageData[repoKey] = repo
 	}
 
-	return oldStageData
+	return oldStageData, nil
 }
 
 // jsoniterSortKeys 使用 json-iterator 的 SortMapKeys 配置，固定键的顺序。
@@ -226,7 +195,10 @@ func performStage(typ string, occupiedNames map[string]struct{}) {
 		repos[i] = s
 	}
 
-	oldStageData := loadOldStageData(typ)
+	oldStageData, err := loadOldStageData(typ)
+	if nil != err {
+		logger.Fatalf("load old stage [%s] failed: %s", typ, err)
+	}
 
 	var themeJsAllowSet map[string]struct{}
 	if typ == "themes" {
@@ -242,7 +214,7 @@ func performStage(typ string, occupiedNames map[string]struct{}) {
 
 	initHeavyStageSem()
 	lock := sync.Mutex{}
-	var stageRepos []any
+	var stageRepos []*util.StageRepo
 	waitGroup := &sync.WaitGroup{}
 
 	poolSize := getStagePoolSize()
@@ -250,7 +222,7 @@ func performStage(typ string, occupiedNames map[string]struct{}) {
 		defer waitGroup.Done()
 		ownerRepo := arg.(string)
 		var oldStageURL string
-		var oldRepo *StageRepo
+		var oldRepo *util.StageRepo
 		if o, exists := oldStageData[ownerRepo]; exists {
 			oldStageURL = o.URL
 			oldRepo = o
@@ -292,14 +264,14 @@ func performStage(typ string, occupiedNames map[string]struct{}) {
 
 		lock.Lock()
 		defer lock.Unlock()
-		stageRepos = append(stageRepos, &StageRepo{
+		stageRepos = append(stageRepos, &util.StageRepo{
 			URL:         ownerRepo + "@" + hash,
 			Stars:       stars,
 			OpenIssues:  openIssues,
 			Updated:     updated,
 			Size:        size,
 			InstallSize: installSize,
-			Package:     pkg,
+			Package:     *pkg,
 		})
 		logger.Infof("updated repo [%s]", ownerRepo)
 	})
@@ -311,11 +283,12 @@ func performStage(typ string, occupiedNames map[string]struct{}) {
 	p.Release()
 
 	sort.SliceStable(stageRepos, func(i, j int) bool {
-		return stageRepos[i].(*StageRepo).Updated > stageRepos[j].(*StageRepo).Updated
+		return stageRepos[i].Updated > stageRepos[j].Updated
 	})
 
-	staged := map[string]any{
-		"repos": stageRepos,
+	staged := util.StageFile{Repos: make([]util.StageRepo, len(stageRepos))}
+	for i, repo := range stageRepos {
+		staged.Repos[i] = *repo
 	}
 
 	data, err := gulu.JSON.MarshalIndentJSON(staged, "", "  ")
@@ -344,29 +317,19 @@ func parseHashFromStageURL(stageURL string) string {
 }
 
 // getOldPackageFields 从已 stage 的条目中解析出 package 的 name、version
-func getOldPackageFields(oldRepo *StageRepo) (name, version string) {
-	if oldRepo == nil || oldRepo.Package == nil {
+func getOldPackageFields(oldRepo *util.StageRepo) (name, version string) {
+	if oldRepo == nil {
 		return "", ""
 	}
-	m, ok := oldRepo.Package.(map[string]any)
-	if !ok {
-		return "", ""
-	}
-	if v, _ := m["name"].(string); v != "" {
-		name = v
-	}
-	if v, _ := m["version"].(string); v != "" {
-		version = v
-	}
-	return name, version
+	return oldRepo.Package.Name, oldRepo.Package.Version
 }
 
-// indexPackage 索引包，返回的 pkg 为 *Package / *PluginPackage / *ThemePackage 之一。
+// indexPackage 索引包，返回的 pkg 为解析后的 StagePackage。
 // oldStageURL 为当前已 stage 的该仓库 URL（格式 owner/repo@hash），若与 Latest Release 的 hash 一致则跳过下载并返回 skipped=true。
 // oldStageRepo 用于元数据校验时与旧 name/version 对比，可为 nil（如新仓库）。
 // themeJsAllowSet 仅 typ 为 themes 时使用；为 nil 或未包含本仓库时 AllowThemeJS 为 false（禁止 theme.js），仅白名单内为 true。
 // occupiedNames 为已占用 package.name 集合，供 check.Check 做跨类型唯一性检查。
-func indexPackage(ownerRepo, typ, oldStageURL string, oldStageRepo *StageRepo, themeJsAllowSet map[string]struct{}, occupiedNames map[string]struct{}) (ok, skipped bool, hash, published string, size, installSize int64, pkg any) {
+func indexPackage(ownerRepo, typ, oldStageURL string, oldStageRepo *util.StageRepo, themeJsAllowSet map[string]struct{}, occupiedNames map[string]struct{}) (ok, skipped bool, hash, published string, size, installSize int64, pkg *util.StagePackage) {
 	// 获取该仓库 Latest Release 信息（hash、发布时间、package.zip asset id）
 	hash, published, packageZipAssetID, releaseOk := getRepoLatestRelease(ownerRepo)
 	if !releaseOk {
@@ -441,9 +404,8 @@ func indexPackage(ownerRepo, typ, oldStageURL string, oldStageRepo *StageRepo, t
 	}
 
 	// 从解压目录读取元数据，以便根据 readme 字段收集要上传的文件
-	var basePkg *Package
-	pkg, basePkg = getPackage(packageRoot, typ)
-	if nil == pkg || nil == basePkg {
+	pkg = getPackage(packageRoot, typ)
+	if nil == pkg {
 		logger.Warnf("get package [%s] failed", ownerRepo)
 		return
 	}
@@ -457,8 +419,8 @@ func indexPackage(ownerRepo, typ, oldStageURL string, oldStageRepo *StageRepo, t
 
 	// 收集需要上传的 README 文件列表（根据包配置中的 readme 字段）
 	readmeFiles := make(map[string]bool)
-	if nil != basePkg.Readme {
-		for _, readmePath := range basePkg.Readme {
+	if nil != pkg.Readme {
+		for _, readmePath := range pkg.Readme {
 			readmePath = strings.TrimSpace(readmePath) // 跟思源内核逻辑一致，TrimSpace
 			if readmePath == "" {
 				continue
@@ -487,42 +449,23 @@ func indexPackage(ownerRepo, typ, oldStageURL string, oldStageRepo *StageRepo, t
 	return
 }
 
-// getPackage 从解压后的包根目录 unzipRoot 读取该类型的元数据 JSON（如 plugin.json），按 typ 解析为 Package / PluginPackage / ThemePackage，并返回用于 Readme 等的 *Package。
-func getPackage(unzipRoot, typ string) (pkgVal any, basePkg *Package) {
+// getPackage 从解压后的包根目录 unzipRoot 读取该类型的元数据 JSON（如 plugin.json），解析为 StagePackage。
+func getPackage(unzipRoot, typ string) *util.StagePackage {
 	name := strings.TrimSuffix(typ, "s")
 	jsonPath := filepath.Join(unzipRoot, name+".json")
 	data, err := os.ReadFile(jsonPath)
 	if err != nil {
 		logger.Errorf("read [%s] failed: %s", jsonPath, err)
-		return nil, nil
+		return nil
 	}
 
-	switch typ {
-	case "plugins":
-		p := &PluginPackage{Package: &Package{}}
-		if err := gulu.JSON.UnmarshalJSON(data, p); nil != err {
-			logger.Errorf("unmarshal [%s] failed: %s", jsonPath, err)
-			return nil, nil
-		}
-		sanitizePackageDisplayStrings(p.Package)
-		return p, p.Package
-	case "themes":
-		p := &ThemePackage{Package: &Package{}}
-		if err := gulu.JSON.UnmarshalJSON(data, p); nil != err {
-			logger.Errorf("unmarshal [%s] failed: %s", jsonPath, err)
-			return nil, nil
-		}
-		sanitizePackageDisplayStrings(p.Package)
-		return p, p.Package
-	default:
-		ret := &Package{}
-		if err := gulu.JSON.UnmarshalJSON(data, ret); nil != err {
-			logger.Errorf("unmarshal [%s] failed: %s", jsonPath, err)
-			return nil, nil
-		}
-		sanitizePackageDisplayStrings(ret)
-		return ret, ret
+	pkg := &util.StagePackage{}
+	if err := gulu.JSON.UnmarshalJSON(data, pkg); nil != err {
+		logger.Errorf("unmarshal [%s] failed: %s", jsonPath, err)
+		return nil
 	}
+	sanitizePackageDisplayStrings(pkg)
+	return pkg
 }
 
 // indexPackageFile 从解压后的包根目录 unzipRoot 读取 filePath 对应文件（大小写敏感），上传到 OSS；可选文件不存在时仅记录并跳过，其它失败时设置 anyFail。filePath 为相对包根的路径，如 /README.md、/icon.png。
@@ -678,7 +621,7 @@ func splitOwnerRepo(ownerRepo string) (owner, repo string, ok bool) {
 
 // sanitizePackageDisplayStrings 对集市包直接可能显示的信息做 HTML 转义，避免 XSS。（跟思源内核 kernel/bazaar/package.go 保持一致）
 // 思源旧版本没有转义，为了避免旧版本受到攻击，必须在线上进行转义。
-func sanitizePackageDisplayStrings(pkg *Package) {
+func sanitizePackageDisplayStrings(pkg *util.StagePackage) {
 	if pkg == nil {
 		return
 	}
@@ -702,53 +645,4 @@ func sanitizePackageDisplayStrings(pkg *Package) {
 	for i, kw := range pkg.Keywords {
 		pkg.Keywords[i] = html.EscapeString(kw)
 	}
-}
-
-// LocaleStrings 表示按 locale 键（如 default、zh_CN、en_US）组织的多语言字符串
-type LocaleStrings map[string]string
-
-type Funding struct {
-	OpenCollective string   `json:"openCollective"`
-	Patreon        string   `json:"patreon"`
-	GitHub         string   `json:"github"`
-	Custom         []string `json:"custom"`
-}
-
-type Package struct {
-	Name          string        `json:"name"`
-	Author        string        `json:"author"`
-	URL           string        `json:"url"`
-	Version       string        `json:"version"`
-	MinAppVersion string        `json:"minAppVersion"`
-	DisplayName   LocaleStrings `json:"displayName"`
-	Description   LocaleStrings `json:"description"`
-	Readme        LocaleStrings `json:"readme"`
-	Funding       *Funding      `json:"funding"`
-	Keywords      []string      `json:"keywords"`
-}
-
-// PluginPackage 插件的 package
-type PluginPackage struct {
-	*Package
-	Backends          []string `json:"backends"`
-	Frontends         []string `json:"frontends"`
-	DisabledInPublish bool     `json:"disabledInPublish"`
-}
-
-// ThemePackage 主题的 package
-type ThemePackage struct {
-	*Package
-	Modes []string `json:"modes"`
-}
-
-type StageRepo struct {
-	URL         string `json:"url"`
-	Updated     string `json:"updated"`
-	Stars       int    `json:"stars"`
-	OpenIssues  int    `json:"openIssues"`
-	Size        int64  `json:"size"`
-	InstallSize int64  `json:"installSize"`
-
-	// Package 为 *Package（模板/图标/挂件）、*PluginPackage（插件）或 *ThemePackage（主题）
-	Package any `json:"package"`
 }
