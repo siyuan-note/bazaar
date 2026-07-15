@@ -12,9 +12,11 @@ package main
 
 import (
 	"context"
+	_ "embed"
 	"fmt"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"sync"
 	"text/template"
@@ -61,6 +63,27 @@ var (
 	githubClient  *github.Client
 )
 
+//go:embed check-result.md.tpl
+var checkResultTemplateText string
+
+func formatIssueIndex(i, total int) string {
+	if total < 1 {
+		total = 1
+	}
+	width := len(strconv.Itoa(total))
+	if width < 2 {
+		width = 2
+	}
+	return fmt.Sprintf("%0*d", width, i+1)
+}
+
+func parseCheckResultTemplate() (*template.Template, error) {
+	return template.New("check-result.md.tpl").Funcs(template.FuncMap{
+		// 按 issue 总数决定序号位数，至少两位
+		"issueIndex": formatIssueIndex,
+	}).Parse(checkResultTemplateText)
+}
+
 func main() {
 	logger.Infof("PR Check running...")
 
@@ -71,14 +94,10 @@ func main() {
 		panic(err)
 	}
 
-	// 获取检查结果模板文件（含 issueIndex：Issues 序号 %02d）
-	checkResultTemplate, err := template.New("check-result.md.tpl").Funcs(template.FuncMap{
-		"issueIndex": func(i int) string {
-			return fmt.Sprintf("%02d", i+1)
-		},
-	}).ParseFiles(FILE_PATH_CHECK_RESULT_TEMPLATE)
+	// 获取检查结果模板文件
+	checkResultTemplate, err := parseCheckResultTemplate()
 	if nil != err {
-		logger.Fatalf("load check result template file [%s] failed: %s", FILE_PATH_CHECK_RESULT_TEMPLATE, err)
+		logger.Fatalf("load check result template failed: %s", err)
 		panic(err)
 	}
 

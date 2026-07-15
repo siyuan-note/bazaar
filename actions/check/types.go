@@ -15,6 +15,15 @@ import "github.com/siyuan-note/bazaar/check"
 type ResourceType int                 // 资源类型
 type StringSet map[string]interface{} // 字符串集合
 
+// 资源类型枚举常量
+const (
+	icons ResourceType = iota
+	plugins
+	templates
+	themes
+	widgets
+)
+
 // CheckResult 检查结果
 type CheckResult struct {
 	Icons     []PackageCheck `json:"icons"`

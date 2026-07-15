@@ -12,22 +12,14 @@ package main
 
 import (
 	"bytes"
-	"fmt"
-	"path/filepath"
 	"strings"
 	"testing"
-	"text/template"
 
 	"github.com/siyuan-note/bazaar/check"
 )
 
 func TestCheckResultTemplate(t *testing.T) {
-	tplPath := filepath.Join("..", "..", "templates", "check-result.md.tpl")
-	tmpl, err := template.New("check-result.md.tpl").Funcs(template.FuncMap{
-		"issueIndex": func(i int) string {
-			return fmt.Sprintf("%02d", i+1)
-		},
-	}).ParseFiles(tplPath)
+	tmpl, err := parseCheckResultTemplate()
 	if err != nil {
 		t.Fatal(err)
 	}

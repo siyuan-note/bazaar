@@ -21,9 +21,10 @@ Please fix the corresponding `.txt` file in the repo root, ensuring each line co
 最新 Release / Latest Release: [{{ .Release.Tag }}]({{ .Release.URL }})
   {{- end }}
 
-  {{- range $j, $issue := .Issues }}
+  {{- $issues := .Issues }}
+  {{- range $j, $issue := $issues }}
 
-{{ issueIndex $j }} [{{ $issue.Rule }}]
+{{ issueIndex $j (len $issues) }} [{{ $issue.Rule }}]
 
 {{ $issue.MessageZh }}
 
