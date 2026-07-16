@@ -197,18 +197,42 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 				oldStageURL = o.URL
 				oldRepo = o
 			}
+			releaseInfo, releaseOk := getRepoLatestRelease(ownerRepo)
+			if !releaseOk {
+				stageReposMu.Lock()
+				if oldRepo, exists := oldStageData[ownerRepo]; exists {
+					stageRepos = append(stageRepos, oldRepo)
+					logger.Errorf("get [%s] latest release failed, keeping old data", ownerRepo)
+				} else {
+					logger.Errorf("get [%s] latest release failed and no old data found", ownerRepo)
+				}
+				stageReposMu.Unlock()
+				return
+			}
+			hash := releaseInfo.CommitSHA
+			updated := releaseInfo.Published
+			packageZipAssetID := releaseInfo.PackageZipAssetID
+
+			// Latest Release 的 hash 与已 stage 的 hash 一致则跳过，不下载、不更新，沿用旧条目
+			if oldStageURL != "" {
+				oldHash := parseHashFromStageURL(oldStageURL)
+				if oldHash != "" && hash == oldHash {
+					if changed, detail := sameCommitPackageZipChanged(oldRepo, packageZipAssetID); changed {
+						logger.Errorf("repo [%s] hash unchanged [%s] but %s; a new release tag is required to update the staged package", ownerRepo, hash, detail)
+					}
+					logger.Infof("skip repo [%s], hash unchanged [%s]", ownerRepo, hash)
+					stageReposMu.Lock()
+					stageRepos = append(stageRepos, oldStageData[ownerRepo])
+					stageReposMu.Unlock()
+					return
+				}
+			}
+
 			var allowThemeJS bool
 			if packageType == rules.TypeTheme {
 				_, allowThemeJS = themeJsAllowSet[ownerRepo]
 			}
-			ok, skipped, hash, updated, size, installSize, packageZipAssetID, pkg := indexPackage(ownerRepo, packageType, oldStageURL, oldRepo, allowThemeJS, occupiedNames)
-			if skipped {
-				// hash 未变化，跳过下载，直接沿用旧 stage 条目
-				stageReposMu.Lock()
-				stageRepos = append(stageRepos, oldStageData[ownerRepo])
-				stageReposMu.Unlock()
-				return
-			}
+			ok, size, installSize, pkg := indexPackage(ownerRepo, packageType, hash, packageZipAssetID, oldRepo, allowThemeJS, occupiedNames)
 			if !ok || pkg == nil {
 				// 索引失败或 pkg 为空时使用旧数据，避免 "package": null 的坏数据覆盖
 				stageReposMu.Lock()

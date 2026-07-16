@@ -23,41 +23,20 @@ import (
 	"golang.org/x/sync/errgroup"
 )
 
-// indexPackage 索引包，返回的 pkg 为解析后的清单元数据。
-// oldStageURL 为当前已 stage 的该仓库 URL（格式 owner/repo@hash），若与 Latest Release 的 hash 一致则跳过下载并返回 skipped=true。
+// indexPackage 下载、校验并上传包，返回的 pkg 为解析后的清单元数据。
+// hash、packageZipAssetID 来自 Latest Release，由调用方在跳过判断后传入。
 // oldStageRepo 用于清单校验时与旧 name/version 对比，可为 nil（如新仓库）。
 // allowThemeJS 仅主题为 themes 时可能为 true（theme.js 白名单内仓库）；其他类型恒为 false。
 // occupiedNames 为已占用 package.name 集合，供 rules.Check 做跨类型唯一性检查。
 func indexPackage(
 	ownerRepo string,
 	packageType rules.PackageType,
-	oldStageURL string,
+	hash string,
+	packageZipAssetID int64,
 	oldStageRepo *util.StageRepo,
 	allowThemeJS bool,
 	occupiedNames map[string]struct{},
-) (ok, skipped bool, hash, published string, size, installSize, packageZipAssetID int64, pkg *rules.Package) {
-	releaseInfo, releaseOk := getRepoLatestRelease(ownerRepo)
-	if !releaseOk {
-		logger.Errorf("get [%s] latest release failed", ownerRepo)
-		return
-	}
-	hash = releaseInfo.CommitSHA
-	published = releaseInfo.Published
-	packageZipAssetID = releaseInfo.PackageZipAssetID
-
-	// Latest Release 的 hash 与已 stage 的 hash 一致则跳过，不下载、不更新，沿用旧条目
-	if oldStageURL != "" {
-		oldHash := parseHashFromStageURL(oldStageURL)
-		if oldHash != "" && hash == oldHash {
-			if changed, detail := sameCommitPackageZipChanged(oldStageRepo, packageZipAssetID); changed {
-				logger.Errorf("repo [%s] hash unchanged [%s] but %s; a new release tag is required to update the staged package", ownerRepo, hash, detail)
-			}
-			logger.Infof("skip repo [%s], hash unchanged [%s]", ownerRepo, hash)
-			skipped = true
-			return
-		}
-	}
-
+) (ok bool, size, installSize int64, pkg *rules.Package) {
 	owner, name, cutOk := strings.Cut(ownerRepo, "/")
 	if !cutOk {
 		logger.Errorf("download/unzip [%s] failed: invalid owner/repo", ownerRepo)
