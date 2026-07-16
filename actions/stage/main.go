@@ -191,6 +191,7 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 			sem <- struct{}{}
 			defer func() { <-sem }()
 
+			repoURL := util.GitHubRepoURL(ownerRepo)
 			var oldStageURL string
 			var oldRepo *util.StageRepo
 			if o, exists := oldStageData[ownerRepo]; exists {
@@ -200,11 +201,11 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 			releaseInfo, releaseOk := getRepoLatestRelease(ownerRepo)
 			if !releaseOk {
 				stageReposMu.Lock()
-				if oldRepo, exists := oldStageData[ownerRepo]; exists {
+				if oldRepo != nil {
 					stageRepos = append(stageRepos, oldRepo)
-					logger.Errorf("get [%s] latest release failed, keeping old data", ownerRepo)
+					logger.Errorf("get [%s] latest release failed, keeping old data", repoURL)
 				} else {
-					logger.Errorf("get [%s] latest release failed and no old data found", ownerRepo)
+					logger.Errorf("get [%s] latest release failed and no old data found", repoURL)
 				}
 				stageReposMu.Unlock()
 				return
@@ -217,12 +218,13 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 			if oldStageURL != "" {
 				oldHash := parseHashFromStageURL(oldStageURL)
 				if oldHash != "" && hash == oldHash {
-					if changed, detail := sameCommitPackageZipChanged(oldRepo, packageZipAssetID); changed {
-						logger.Errorf("repo [%s] hash unchanged [%s] but %s; a new release tag is required to update the staged package", ownerRepo, hash, detail)
+					if sameCommitPackageZipChanged(oldRepo, packageZipAssetID) {
+						logger.Errorf("repo [%s] hash unchanged [%s] but package.zip asset id changed (%d -> %d); a new release tag is required to update the staged package",
+							repoURL, hash, oldRepo.PackageZipAssetID, packageZipAssetID)
 					}
 					logger.Infof("skip repo [%s], hash unchanged [%s]", ownerRepo, hash)
 					stageReposMu.Lock()
-					stageRepos = append(stageRepos, oldStageData[ownerRepo])
+					stageRepos = append(stageRepos, oldRepo)
 					stageReposMu.Unlock()
 					return
 				}
@@ -236,11 +238,11 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 			if !ok || pkg == nil {
 				// 索引失败或 pkg 为空时使用旧数据，避免 "package": null 的坏数据覆盖
 				stageReposMu.Lock()
-				if oldRepo, exists := oldStageData[ownerRepo]; exists {
+				if oldRepo != nil {
 					stageRepos = append(stageRepos, oldRepo)
-					logger.Errorf("index failed for [%s], keeping old data", ownerRepo)
+					logger.Errorf("index failed for [%s], keeping old data", repoURL)
 				} else {
-					logger.Errorf("index failed for [%s] and no old data found", ownerRepo)
+					logger.Errorf("index failed for [%s] and no old data found", repoURL)
 				}
 				stageReposMu.Unlock()
 				return
@@ -250,11 +252,11 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 			// 如果获取统计数据失败，尝试使用旧数据
 			if !ok {
 				stageReposMu.Lock()
-				if oldRepo, exists := oldStageData[ownerRepo]; exists {
+				if oldRepo != nil {
 					stageRepos = append(stageRepos, oldRepo)
-					logger.Errorf("repoStats failed for [%s], keeping old data", ownerRepo)
+					logger.Errorf("repoStats failed for [%s], keeping old data", repoURL)
 				} else {
-					logger.Errorf("repoStats failed for [%s] and no old data found", ownerRepo)
+					logger.Errorf("repoStats failed for [%s] and no old data found", repoURL)
 				}
 				stageReposMu.Unlock()
 				return
@@ -300,16 +302,17 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 }
 
 func repoStats(ownerRepo string) (stars, openIssues int, ok bool) {
+	repoURL := util.GitHubRepoURL(ownerRepo)
 	owner, name, cutOk := strings.Cut(ownerRepo, "/")
 	if !cutOk {
-		logger.Errorf("get [%s] failed: invalid owner/repo", ownerRepo)
+		logger.Errorf("get repo stats [%s] failed: invalid owner/repo", ownerRepo)
 		return
 	}
 	ctx, cancel := context.WithTimeout(githubContext, REQUEST_TIMEOUT)
 	defer cancel()
 	repo, _, err := githubClient.Repositories.Get(ctx, owner, name)
 	if err != nil {
-		logger.Errorf("get [%s] failed: %s", ownerRepo, err)
+		logger.Errorf("get repo stats [%s] failed: %s", repoURL, err)
 		return
 	}
 	stars = repo.GetStargazersCount()

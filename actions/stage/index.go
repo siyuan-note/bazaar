@@ -12,7 +12,6 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"io/fs"
 	"os"
 	"path/filepath"
@@ -37,6 +36,7 @@ func indexPackage(
 	allowThemeJS bool,
 	occupiedNames map[string]struct{},
 ) (ok bool, size, installSize int64, pkg *rules.Package) {
+	repoURL := util.GitHubRepoURL(ownerRepo)
 	owner, name, cutOk := strings.Cut(ownerRepo, "/")
 	if !cutOk {
 		logger.Errorf("download/unzip [%s] failed: invalid owner/repo", ownerRepo)
@@ -45,7 +45,7 @@ func indexPackage(
 
 	tmpUnzipPath, data, cleanup, err := util.DownloadAndUnzipPackageZip(githubContext, githubClient, owner, name, packageZipAssetID)
 	if err != nil {
-		logger.Errorf("download/unzip [%s] asset %d failed: %s", ownerRepo, packageZipAssetID, err)
+		logger.Errorf("download/unzip [%s] asset %d failed: %s", repoURL, packageZipAssetID, err)
 		return
 	}
 	defer cleanup()
@@ -68,7 +68,7 @@ func indexPackage(
 	})
 	if !result.OK {
 		for _, issue := range result.Issues {
-			logger.Errorf("check [%s] failed: %s", ownerRepo, issue.MessageEn)
+			logger.Errorf("check [%s] failed: %s", repoURL, issue.MessageEn)
 		}
 		return
 	}
@@ -78,21 +78,21 @@ func indexPackage(
 	// 计算解压后目录体积，用于 stage 条目的 installSize 字段
 	installSize, err = sizeOfDirectory(packageRoot)
 	if nil != err {
-		logger.Errorf("stat package [%s] size failed: %s", ownerRepo, err)
+		logger.Errorf("stat package [%s] size failed: %s", repoURL, err)
 		return
 	}
 
 	// 从解压目录读取清单，以便根据 readme 字段收集要上传的文件
 	pkg = getPackage(packageRoot, packageType)
 	if nil == pkg {
-		logger.Errorf("get package [%s] failed", ownerRepo)
+		logger.Errorf("get package [%s] failed", repoURL)
 		return
 	}
 
 	// 校验通过后再上传 package.zip，避免无效包写入 OSS
 	key := "package/" + ownerRepo + "@" + hash
 	if err := util.UploadOSS(context.Background(), key, data); nil != err {
-		logger.Errorf("upload package [%s] failed: %s", ownerRepo, err)
+		logger.Errorf("upload package [%s] failed: %s", repoURL, err)
 		return
 	}
 
@@ -128,6 +128,7 @@ func indexPackage(
 
 // getRepoLatestRelease 获取仓库最新发布的版本
 func getRepoLatestRelease(ownerRepo string) (util.LatestRelease, bool) {
+	repoURL := util.GitHubRepoURL(ownerRepo)
 	owner, name, cutOk := strings.Cut(ownerRepo, "/")
 	if !cutOk {
 		logger.Errorf("get [%s] latest release failed: invalid owner/repo", ownerRepo)
@@ -138,21 +139,18 @@ func getRepoLatestRelease(ownerRepo string) (util.LatestRelease, bool) {
 
 	releaseInfo, err := util.FetchLatestRelease(ctx, githubClient, owner, name)
 	if err != nil {
-		logger.Errorf("get release [%s] failed: %s", ownerRepo, err)
+		logger.Errorf("get release [%s] failed: %s", repoURL, err)
 		return util.LatestRelease{}, false
 	}
 	return releaseInfo, true
 }
 
 // sameCommitPackageZipChanged 判断 Latest Release 仍指向同一 commit，但 package.zip 是否已被替换。
-func sameCommitPackageZipChanged(old *util.StageRepo, assetID int64) (changed bool, detail string) {
+func sameCommitPackageZipChanged(old *util.StageRepo, assetID int64) bool {
 	if old == nil || old.PackageZipAssetID == 0 || assetID == 0 {
-		return false, ""
+		return false
 	}
-	if old.PackageZipAssetID == assetID {
-		return false, ""
-	}
-	return true, fmt.Sprintf("package.zip asset id changed (%d -> %d)", old.PackageZipAssetID, assetID)
+	return old.PackageZipAssetID != assetID
 }
 
 // parseHashFromStageURL 从 stage 条目的 URL（格式 owner/repo@hash）中解析出 hash 部分，若无 @ 或 @ 后为空则返回空字符串
@@ -205,15 +203,16 @@ func getPackage(unzipRoot string, packageType rules.PackageType) *rules.Package 
 
 // uploadPackageRootFile 从包根目录 unzipRoot 读取 fileName 对应文件（大小写敏感）并上传到 OSS；文件不存在时仅记录并跳过。
 func uploadPackageRootFile(ctx context.Context, ownerRepo, hash, unzipRoot, fileName string) error {
+	repoURL := util.GitHubRepoURL(ownerRepo)
 	localPath := filepath.Join(unzipRoot, fileName)
 	data, err := os.ReadFile(localPath)
 	if err != nil {
 		// 可选文件（如部分 README、preview.png）可能不存在，仅记录并跳过，不导致整包失败
 		if os.IsNotExist(err) {
-			logger.Errorf("file not found in package [%s], skip upload [%s]", ownerRepo, fileName)
+			logger.Errorf("file not found in package [%s], skip upload [%s]", repoURL, fileName)
 			return nil
 		}
-		logger.Errorf("read package [%s] file [%s] failed: %s", ownerRepo, fileName, err)
+		logger.Errorf("read package [%s] file [%s] failed: %s", repoURL, fileName, err)
 		return err
 	}
 
@@ -224,7 +223,7 @@ func uploadPackageRootFile(ctx context.Context, ownerRepo, hash, unzipRoot, file
 
 	key := "package/" + ownerRepo + "@" + hash + "/" + fileName
 	if err := util.UploadOSS(ctx, key, data); err != nil {
-		logger.Errorf("upload package [%s] file [%s] failed: %s", ownerRepo, fileName, err)
+		logger.Errorf("upload package [%s] file [%s] failed: %s", repoURL, fileName, err)
 		return err
 	}
 	return nil

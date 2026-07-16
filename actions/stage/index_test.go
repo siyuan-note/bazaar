@@ -11,7 +11,6 @@
 package main
 
 import (
-	"strings"
 	"testing"
 
 	"github.com/siyuan-note/bazaar/actions/util"
@@ -21,11 +20,10 @@ func TestSameCommitPackageZipChanged(t *testing.T) {
 	old := &util.StageRepo{PackageZipAssetID: 42}
 
 	tests := []struct {
-		name     string
-		old      *util.StageRepo
-		assetID  int64
-		want     bool
-		wantPart string
+		name    string
+		old     *util.StageRepo
+		assetID int64
+		want    bool
 	}{
 		{
 			name:    "无旧条目",
@@ -43,22 +41,17 @@ func TestSameCommitPackageZipChanged(t *testing.T) {
 			assetID: 42,
 		},
 		{
-			name:     "asset id 变化",
-			old:      old,
-			assetID:  99,
-			want:     true,
-			wantPart: "asset id changed (42 -> 99)",
+			name:    "asset id 变化",
+			old:     old,
+			assetID: 99,
+			want:    true,
 		},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, detail := sameCommitPackageZipChanged(tt.old, tt.assetID)
-			if got != tt.want {
-				t.Fatalf("sameCommitPackageZipChanged() = %v, want %v (detail=%q)", got, tt.want, detail)
-			}
-			if tt.want && !strings.Contains(detail, tt.wantPart) {
-				t.Fatalf("detail = %q, want substring %q", detail, tt.wantPart)
+			if got := sameCommitPackageZipChanged(tt.old, tt.assetID); got != tt.want {
+				t.Fatalf("sameCommitPackageZipChanged() = %v, want %v", got, tt.want)
 			}
 		})
 	}

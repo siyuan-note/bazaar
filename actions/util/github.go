@@ -24,3 +24,8 @@ func NewGitHubClient(token string, timeout time.Duration) (*github.Client, error
 		github.WithUserAgent(UserAgent),
 	)
 }
+
+// GitHubRepoURL 由 owner/repo 拼出仓库主页地址
+func GitHubRepoURL(ownerRepo string) string {
+	return "https://github.com/" + ownerRepo
+}

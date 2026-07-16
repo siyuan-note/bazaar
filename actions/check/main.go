@@ -306,7 +306,7 @@ func checkNewRepo(
 	repoOwner, repoName, _ := strings.Cut(ownerRepo, "/")
 	repoInfo := RepoInfo{
 		Path: ownerRepo,
-		Home: fmt.Sprintf("https://github.com/%s/%s", repoOwner, repoName),
+		Home: util.GitHubRepoURL(ownerRepo),
 	}
 	// 检查 Latest Release / package.zip / tag
 	releaseInfo, err := util.FetchLatestRelease(githubContext, githubClient, repoOwner, repoName)
