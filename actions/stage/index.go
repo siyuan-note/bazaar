@@ -20,7 +20,6 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"github.com/88250/gulu"
 	"github.com/siyuan-note/bazaar/actions/util"
 	"github.com/siyuan-note/bazaar/rules"
 )
@@ -120,29 +119,29 @@ func indexPackage(
 	}
 
 	// 收集需要上传的 README 文件列表（根据包配置中的 readme 字段）
-	readmeFiles := make(map[string]bool)
+	readmeFiles := make(Set)
 	if nil != pkg.Readme {
 		for _, readmePath := range pkg.Readme {
 			readmePath = strings.TrimSpace(readmePath) // 跟思源内核逻辑一致，TrimSpace
 			if readmePath == "" {
 				continue
 			}
-			readmeFiles["/"+readmePath] = true
+			readmeFiles["/"+readmePath] = struct{}{}
 		}
 	}
-	// 仅 README.md 始终加入上传列表（若包内存在则上传）
-	readmeFiles["/README.md"] = true
+	// 仅 README.md 始终加入上传列表（若包内存在则上传），思源将其作为最后回退
+	readmeFiles["/README.md"] = struct{}{}
 
 	// 从解压目录读取 README、preview、icon、清单 JSON 并并发上传到 OSS；任一份上传失败则整包视为失败
 	var anyUploadFailed int32
 	wg := &sync.WaitGroup{}
 	wg.Add(3 + len(readmeFiles))
 	for readmeFile := range readmeFiles {
-		go indexPackageFile(ownerRepo, hash, packageRoot, readmeFile, 0, 0, wg, &anyUploadFailed)
+		go indexPackageFile(ownerRepo, hash, packageRoot, readmeFile, wg, &anyUploadFailed)
 	}
-	go indexPackageFile(ownerRepo, hash, packageRoot, "/preview.png", 0, 0, wg, &anyUploadFailed)
-	go indexPackageFile(ownerRepo, hash, packageRoot, "/icon.png", 0, 0, wg, &anyUploadFailed)
-	go indexPackageFile(ownerRepo, hash, packageRoot, "/"+packageType.ManifestFile(), size, installSize, wg, &anyUploadFailed)
+	go indexPackageFile(ownerRepo, hash, packageRoot, "/preview.png", wg, &anyUploadFailed)
+	go indexPackageFile(ownerRepo, hash, packageRoot, "/icon.png", wg, &anyUploadFailed)
+	go indexPackageFile(ownerRepo, hash, packageRoot, "/"+packageType.ManifestFile(), wg, &anyUploadFailed)
 	wg.Wait()
 	if atomic.LoadInt32(&anyUploadFailed) != 0 {
 		return
@@ -229,7 +228,7 @@ func getPackage(unzipRoot string, packageType rules.PackageType) *rules.Package 
 }
 
 // indexPackageFile 从解压后的包根目录 unzipRoot 读取 filePath 对应文件（大小写敏感），上传到 OSS；可选文件不存在时仅记录并跳过，其它失败时设置 anyFail。filePath 为相对包根的路径，如 /README.md、/icon.png。
-func indexPackageFile(ownerRepo, hash, unzipRoot, filePath string, size, installSize int64, wg *sync.WaitGroup, anyFail *int32) {
+func indexPackageFile(ownerRepo, hash, unzipRoot, filePath string, wg *sync.WaitGroup, anyFail *int32) {
 	defer wg.Done()
 	relPath := strings.TrimPrefix(filepath.ToSlash(filePath), "/")
 	localPath := filepath.Join(unzipRoot, filepath.FromSlash(relPath))
@@ -255,21 +254,6 @@ func indexPackageFile(ownerRepo, hash, unzipRoot, filePath string, size, install
 		contentType = "image/png"
 	} else if strings.HasSuffix(normPath, ".json") {
 		contentType = "application/json"
-		// 注入 size/installSize 到清单 JSON
-		meta := map[string]any{}
-		if err := gulu.JSON.UnmarshalJSON(data, &meta); err != nil {
-			logger.Errorf("unmarshal manifest [%s] failed: %s", localPath, err)
-			atomic.StoreInt32(anyFail, 1)
-			return
-		}
-		meta["size"] = size
-		meta["installSize"] = installSize
-		data, err = gulu.JSON.MarshalIndentJSON(meta, "", "  ")
-		if err != nil {
-			logger.Errorf("marshal package [%s] meta json failed: %s", localPath, err)
-			atomic.StoreInt32(anyFail, 1)
-			return
-		}
 	}
 
 	key := "package/" + ownerRepo + "@" + hash + normPath
