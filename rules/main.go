@@ -17,10 +17,8 @@ type Input struct {
 	OwnerRepo   string // owner/repo
 	Type        PackageType
 
-	// OldName 已上架时的 package.name；空表示首发（或 Stage 无旧数据）。
-	OldName string
-	// OldVersion 已上架时的 version；非空时要求新 version 更高。
-	OldVersion string
+	OldName    string // 已上架时的 package.name；空表示首发（或 Stage 无旧数据）
+	OldVersion string // 已上架时的 version；非空时要求新 version 更高
 
 	// OccupiedNames 已上架集市包的 name 集合（键建议为小写；查询时会再 ToLower）。
 	// 仅首发（OldName 为空）时用于跨类型唯一性检查；nil 或空则跳过。

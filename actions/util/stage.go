@@ -87,9 +87,9 @@ func ReadStageFile(filePath string) (*StageFile, error) {
 
 // OwnerRepoFromStageURL 从 stage 条目的 URL（格式 owner/repo@hash）中解析 owner/repo。
 func OwnerRepoFromStageURL(stageURL string) (ownerRepo string, ok bool) {
-	idx := strings.Index(stageURL, "@")
-	if idx <= 0 {
+	ownerRepo, _, ok = strings.Cut(stageURL, "@")
+	if !ok || ownerRepo == "" {
 		return "", false
 	}
-	return stageURL[:idx], true
+	return ownerRepo, true
 }

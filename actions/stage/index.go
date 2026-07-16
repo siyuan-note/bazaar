@@ -77,21 +77,21 @@ func indexPackage(
 
 	// 计算解压后目录体积，用于 stage 条目的 installSize 字段
 	installSize, err = sizeOfDirectory(packageRoot)
-	if nil != err {
+	if err != nil {
 		logger.Errorf("stat package [%s] size failed: %s", repoURL, err)
 		return
 	}
 
 	// 从解压目录读取清单，以便根据 readme 字段收集要上传的文件
 	pkg = getPackage(packageRoot, packageType)
-	if nil == pkg {
+	if pkg == nil {
 		logger.Errorf("get package [%s] failed", repoURL)
 		return
 	}
 
 	// 校验通过后再上传 package.zip，避免无效包写入 OSS
 	key := "package/" + ownerRepo + "@" + hash
-	if err := util.UploadOSS(context.Background(), key, data); nil != err {
+	if err := util.UploadOSS(githubContext, key, data); err != nil {
 		logger.Errorf("upload package [%s] failed: %s", repoURL, err)
 		return
 	}
@@ -103,7 +103,7 @@ func indexPackage(
 		"icon.png":                 struct{}{},
 		packageType.ManifestFile(): struct{}{},
 	}
-	if nil != pkg.Readme {
+	if pkg.Readme != nil {
 		for _, readmePath := range pkg.Readme {
 			readmePath = strings.TrimSpace(readmePath) // 跟思源内核逻辑一致，TrimSpace
 			if readmePath == "" {
@@ -113,7 +113,7 @@ func indexPackage(
 		}
 	}
 
-	g, ctx := errgroup.WithContext(context.Background())
+	g, ctx := errgroup.WithContext(githubContext)
 	for fileName := range uploadFiles {
 		g.Go(func() error {
 			return uploadPackageRootFile(ctx, ownerRepo, hash, packageRoot, fileName)
@@ -155,11 +155,11 @@ func sameCommitPackageZipChanged(old *util.StageRepo, assetID int64) bool {
 
 // parseHashFromStageURL 从 stage 条目的 URL（格式 owner/repo@hash）中解析出 hash 部分，若无 @ 或 @ 后为空则返回空字符串
 func parseHashFromStageURL(stageURL string) string {
-	idx := strings.Index(stageURL, "@")
-	if idx < 0 || idx >= len(stageURL)-1 {
+	_, hash, ok := strings.Cut(stageURL, "@")
+	if !ok || hash == "" {
 		return ""
 	}
-	return stageURL[idx+1:]
+	return hash
 }
 
 // sizeOfDirectory 计算目录大小。

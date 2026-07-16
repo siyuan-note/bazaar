@@ -60,7 +60,7 @@ func UploadOSS(ctx context.Context, key string, data []byte) (err error) {
 	mac := qbox.NewMac(QINIU_AK, QINIU_SK)
 	bucketManager := storage.NewBucketManager(mac, &cfg)
 	stat, err := bucketManager.Stat(QINIU_BUCKET, key)
-	if nil != err {
+	if err != nil {
 		if !strings.Contains(err.Error(), "no such file or directory") {
 			logger.Warnf("stat [%s] failed: %s", key, err)
 		}
@@ -80,13 +80,13 @@ func UploadOSS(ctx context.Context, key string, data []byte) (err error) {
 	formUploader := storage.NewFormUploader(&cfg)
 	uploadToken := putPolicy.UploadToken(mac)
 	if err = formUploader.Put(ctx, nil, uploadToken,
-		key, bytes.NewReader(data), int64(len(data)), &storage.PutExtra{}); nil != err {
+		key, bytes.NewReader(data), int64(len(data)), &storage.PutExtra{}); err != nil {
 		if ctx.Err() != nil {
 			return ctx.Err()
 		}
 		logger.Warnf("upload [%s] failed: %s, retry it", key, err)
 		if err = formUploader.Put(ctx, nil, uploadToken,
-			key, bytes.NewReader(data), int64(len(data)), &storage.PutExtra{}); nil != err {
+			key, bytes.NewReader(data), int64(len(data)), &storage.PutExtra{}); err != nil {
 			logger.Errorf("retry upload [%s] failed: %s", key, err)
 			return err
 		}

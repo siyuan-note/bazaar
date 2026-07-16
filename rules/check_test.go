@@ -342,13 +342,25 @@ func TestCheckNameUnique(t *testing.T) {
 		t.Fatalf("update with OldName should skip uniqueness, issues=%v", r2.Issues)
 	}
 
-	// 大小写不敏感
+	// OccupiedNames 键约定为小写（与 LoadOccupiedNames 一致）；查找时对候选 name 做 ToLower
+	dir := t.TempDir()
+	copyTree(t, root, dir)
+	content := `{
+  "name": "Sample-Plugin",
+  "author": "demo",
+  "url": "https://github.com/demo/Sample-Plugin",
+  "version": "1.0.0",
+  "readme": { "default": "README.md" }
+}`
+	if err := os.WriteFile(filepath.Join(dir, "plugin.json"), []byte(content), 0644); err != nil {
+		t.Fatal(err)
+	}
 	r3 := Check(Input{
-		PackageRoot: root,
-		OwnerRepo:   "demo/sample-plugin",
+		PackageRoot: dir,
+		OwnerRepo:   "demo/Sample-Plugin",
 		Type:        TypePlugin,
 		OccupiedNames: map[string]struct{}{
-			"Sample-Plugin": {},
+			"sample-plugin": {},
 		},
 	})
 	if r3.OK || !hasIssueMsg(r3, "已被其他集市包占用") {

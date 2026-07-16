@@ -25,7 +25,7 @@ import (
 )
 
 // DownloadAndUnzipPackageZip 通过 GitHub Release Asset API 下载 package.zip 并解压到临时目录。
-// zipData 供 Stage 上传 OSS；cleanup 删除临时 zip 与解压目录，调用方应 defer cleanup()。
+// zipData 供 Stage 上传 OSS；cleanup 删除临时工作目录，调用方应 defer cleanup()。
 func DownloadAndUnzipPackageZip(ctx context.Context, client *github.Client, owner, repo string, assetID int64) (unzipDir string, zipData []byte, cleanup func(), err error) {
 	cleanup = func() {}
 	if client == nil {
@@ -83,18 +83,22 @@ func DownloadAndUnzipPackageZip(ctx context.Context, client *github.Client, owne
 		)
 	}
 
-	tmpDir := filepath.Join(os.TempDir(), "bazaar")
-	if err = os.MkdirAll(tmpDir, 0755); nil != err {
+	workDir, err := os.MkdirTemp("", "bazaar-*")
+	if err != nil {
 		return "", nil, cleanup, rules.LocalizedErr(
 			fmt.Sprintf("内部错误：解压 package.zip 时无法创建临时目录：%v。请联系集市维护者。", err),
 			fmt.Sprintf("Internal error: cannot create temp directory while extracting package.zip: %v. Contact a bazaar maintainer.", err),
 			err,
 		)
 	}
+	cleanup = func() {
+		os.RemoveAll(workDir)
+	}
 
-	tmpBase := gulu.Rand.String(16)
-	tmpZipPath := filepath.Join(tmpDir, tmpBase+".zip")
-	if err = os.WriteFile(tmpZipPath, data, 0644); nil != err {
+	tmpZipPath := filepath.Join(workDir, "package.zip")
+	if err = os.WriteFile(tmpZipPath, data, 0644); err != nil {
+		cleanup()
+		cleanup = func() {}
 		return "", nil, cleanup, rules.LocalizedErr(
 			fmt.Sprintf("内部错误：保存 package.zip 时写入失败：%v。请联系集市维护者。", err),
 			fmt.Sprintf("Internal error: failed to save package.zip: %v. Contact a bazaar maintainer.", err),
@@ -102,9 +106,10 @@ func DownloadAndUnzipPackageZip(ctx context.Context, client *github.Client, owne
 		)
 	}
 
-	tmpUnzipPath := filepath.Join(tmpDir, tmpBase)
-	if err = gulu.Zip.Unzip(tmpZipPath, tmpUnzipPath); nil != err {
-		os.RemoveAll(tmpZipPath)
+	tmpUnzipPath := filepath.Join(workDir, "unzip")
+	if err = gulu.Zip.Unzip(tmpZipPath, tmpUnzipPath); err != nil {
+		cleanup()
+		cleanup = func() {}
 		return "", nil, cleanup, rules.LocalizedErr(
 			fmt.Sprintf("解压 package.zip 失败：%v。请确认 zip 内结构正确且未损坏，重新打包后更新 GitHub Release 中的 package.zip。", err),
 			fmt.Sprintf("Failed to unzip package.zip: %v. Ensure the archive structure is valid and not corrupted, then rebuild and update package.zip on the GitHub Release.", err),
@@ -112,9 +117,5 @@ func DownloadAndUnzipPackageZip(ctx context.Context, client *github.Client, owne
 		)
 	}
 
-	cleanup = func() {
-		os.RemoveAll(tmpZipPath)
-		os.RemoveAll(tmpUnzipPath)
-	}
 	return tmpUnzipPath, data, cleanup, nil
 }

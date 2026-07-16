@@ -12,22 +12,26 @@ package main
 
 import (
 	"bytes"
+	"cmp"
 	"context"
 	"encoding/json"
 	"fmt"
 	"math"
 	"os"
+	"os/signal"
 	"path/filepath"
-	"sort"
+	"slices"
 	"strconv"
 	"strings"
 	"sync"
+	"syscall"
 	"time"
 
 	"github.com/88250/gulu"
 	"github.com/google/go-github/v89/github"
 	"github.com/siyuan-note/bazaar/actions/util"
 	"github.com/siyuan-note/bazaar/rules"
+	"golang.org/x/sync/errgroup"
 )
 
 /*
@@ -49,7 +53,7 @@ var (
 	REQUEST_TIMEOUT = 30 * time.Second // 请求超时时间
 
 	logger        = gulu.Log.NewLogger(os.Stdout)
-	githubContext = context.Background()
+	githubContext context.Context
 	githubClient  *github.Client
 )
 
@@ -64,6 +68,10 @@ func envIntDefault(key string, defaultVal int) int {
 
 func main() {
 	logger.Infof("Stage started")
+
+	var stop context.CancelFunc
+	githubContext, stop = signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
+	defer stop()
 
 	var err error
 	githubClient, err = util.NewGitHubClient(GITHUB_TOKEN, REQUEST_TIMEOUT)
@@ -143,7 +151,7 @@ func loadOldStageData(packageType rules.PackageType) (map[string]*util.StageRepo
 	stageFilePath := filepath.Join(BAZAAR_ROOT_PATH, "stage", packageType.StageJSONFile())
 
 	stageFile, err := util.ReadStageFile(stageFilePath)
-	if nil != err {
+	if err != nil {
 		return nil, fmt.Errorf("read stage [%s]: %w", stageFilePath, err)
 	}
 
@@ -163,7 +171,7 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 	logger.Infof("start stage [%s]", packageType.Plural())
 
 	oldStageData, err := loadOldStageData(packageType)
-	if nil != err {
+	if err != nil {
 		logger.Fatalf("load old stage [%s] failed: %s", packageType.Plural(), err)
 	}
 
@@ -181,16 +189,11 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 
 	var stageReposMu sync.Mutex
 	var stageRepos []*util.StageRepo
-	waitGroup := &sync.WaitGroup{}
-	sem := make(chan struct{}, STAGE_POOL_SIZE)
+	var g errgroup.Group
+	g.SetLimit(STAGE_POOL_SIZE)
 
 	for _, ownerRepo := range reposSlice {
-		waitGroup.Add(1)
-		go func(ownerRepo string) {
-			defer waitGroup.Done()
-			sem <- struct{}{}
-			defer func() { <-sem }()
-
+		g.Go(func() error {
 			repoURL := util.GitHubRepoURL(ownerRepo)
 			var oldStageURL string
 			var oldRepo *util.StageRepo
@@ -208,7 +211,7 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 					logger.Errorf("get [%s] latest release failed and no old data found", repoURL)
 				}
 				stageReposMu.Unlock()
-				return
+				return nil
 			}
 			hash := releaseInfo.CommitSHA
 			updated := releaseInfo.Published
@@ -226,7 +229,7 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 					stageReposMu.Lock()
 					stageRepos = append(stageRepos, oldRepo)
 					stageReposMu.Unlock()
-					return
+					return nil
 				}
 			}
 
@@ -245,7 +248,7 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 					logger.Errorf("index failed for [%s] and no old data found", repoURL)
 				}
 				stageReposMu.Unlock()
-				return
+				return nil
 			}
 
 			stars, openIssues, ok := repoStats(ownerRepo)
@@ -259,7 +262,7 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 					logger.Errorf("repoStats failed for [%s] and no old data found", repoURL)
 				}
 				stageReposMu.Unlock()
-				return
+				return nil
 			}
 
 			stageReposMu.Lock()
@@ -275,12 +278,13 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 			})
 			stageReposMu.Unlock()
 			logger.Infof("updated repo [%s]", ownerRepo)
-		}(ownerRepo)
+			return nil
+		})
 	}
-	waitGroup.Wait()
+	_ = g.Wait()
 
-	sort.SliceStable(stageRepos, func(i, j int) bool {
-		return stageRepos[i].Updated > stageRepos[j].Updated
+	slices.SortStableFunc(stageRepos, func(a, b *util.StageRepo) int {
+		return cmp.Compare(b.Updated, a.Updated)
 	})
 
 	staged := util.StageFile{Repos: make([]util.StageRepo, len(stageRepos))}
@@ -289,12 +293,12 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 	}
 
 	data, err := marshalSortedIndentedJSON(staged)
-	if nil != err {
+	if err != nil {
 		logger.Fatalf("marshal stage [%s] failed: %s", packageType.StageJSONFile(), err)
 	}
 
 	stageFilePath := filepath.Join(BAZAAR_ROOT_PATH, "stage", packageType.StageJSONFile())
-	if err = os.WriteFile(stageFilePath, data, 0644); nil != err {
+	if err = os.WriteFile(stageFilePath, data, 0644); err != nil {
 		logger.Fatalf("write stage [%s] failed: %s", packageType.StageJSONFile(), err)
 	}
 
@@ -330,22 +334,22 @@ func marshalSortedIndentedJSON(v any) ([]byte, error) {
 	if !ok {
 		var err error
 		data, err = json.Marshal(v)
-		if nil != err {
+		if err != nil {
 			return nil, err
 		}
 	}
 	var tree any
-	if err := json.Unmarshal(data, &tree); nil != err {
+	if err := json.Unmarshal(data, &tree); err != nil {
 		return nil, err
 	}
 	var compact bytes.Buffer
 	enc := json.NewEncoder(&compact)
 	enc.SetEscapeHTML(false)
-	if err := enc.Encode(tree); nil != err {
+	if err := enc.Encode(tree); err != nil {
 		return nil, err
 	}
 	var buf bytes.Buffer
-	if err := json.Indent(&buf, bytes.TrimSpace(compact.Bytes()), "", "  "); nil != err {
+	if err := json.Indent(&buf, bytes.TrimSpace(compact.Bytes()), "", "  "); err != nil {
 		return nil, err
 	}
 	return buf.Bytes(), nil

@@ -15,10 +15,12 @@ import (
 	_ "embed"
 	"fmt"
 	"os"
+	"os/signal"
 	"path/filepath"
 	"strconv"
 	"strings"
 	"sync"
+	"syscall"
 	"text/template"
 	"time"
 
@@ -26,6 +28,7 @@ import (
 	"github.com/google/go-github/v89/github"
 	"github.com/siyuan-note/bazaar/actions/util"
 	"github.com/siyuan-note/bazaar/rules"
+	"golang.org/x/sync/errgroup"
 )
 
 /*
@@ -58,7 +61,7 @@ var (
 	REQUEST_TIMEOUT = 30 * time.Second // 请求超时时间
 
 	logger        = gulu.Log.NewLogger(os.Stdout)
-	githubContext = context.Background()
+	githubContext context.Context
 	githubClient  *github.Client
 )
 
@@ -83,6 +86,10 @@ func parseCheckResultTemplate() (*template.Template, error) {
 func main() {
 	logger.Infof("PR Check started")
 
+	var stop context.CancelFunc
+	githubContext, stop = signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
+	defer stop()
+
 	var err error
 	githubClient, err = util.NewGitHubClient(GITHUB_TOKEN, REQUEST_TIMEOUT)
 	if err != nil {
@@ -90,17 +97,18 @@ func main() {
 	}
 
 	checkResultTemplate, err := parseCheckResultTemplate()
-	if nil != err {
+	if err != nil {
 		logger.Fatalf("load check result template failed: %s", err)
 	}
 
 	checkResultOutputFile, err := os.OpenFile(CHECK_RESULT_OUTPUT, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0666)
-	if nil != err {
+	if err != nil {
 		logger.Fatalf("open check result output file [%s] failed: %s", CHECK_RESULT_OUTPUT, err)
 	}
 	defer checkResultOutputFile.Close()
 
 	checkResult := &CheckResult{}
+	var parseErrorBuilder strings.Builder
 
 	occupiedNames, err := util.LoadOccupiedNames(BAZAAR_HEAD_PATH)
 	if err != nil {
@@ -109,18 +117,20 @@ func main() {
 
 	var occupiedNamesMu sync.Mutex // 跨类型共享，保证同 PR 内 OccupiedNames 唯一性
 	var parseErrorMu sync.Mutex
-	checkTypes := rules.AllPackageTypes()
-	wg := &sync.WaitGroup{}
-	wg.Add(len(checkTypes))
-
-	for _, packageType := range checkTypes {
-		go checkRepos(packageType, checkResult, occupiedNames, &occupiedNamesMu, &parseErrorMu, wg)
+	var wg sync.WaitGroup
+	for _, packageType := range rules.AllPackageTypes() {
+		wg.Go(func() {
+			checkRepos(packageType, checkResult, occupiedNames, &occupiedNamesMu, &parseErrorMu, &parseErrorBuilder)
+		})
 	}
-
 	wg.Wait()
 
+	checkResult.ParseError = parseErrorBuilder.String()
+
 	// 将检查结果写入文件
-	checkResultTemplate.Execute(checkResultOutputFile, checkResult)
+	if err := checkResultTemplate.Execute(checkResultOutputFile, checkResult); err != nil {
+		logger.Fatalf("write check result failed: %s", err)
+	}
 
 	logger.Infof("PR Check completed")
 }
@@ -146,9 +156,9 @@ func parseReposFromRootTxt(filePath string) (paths []string, pathSet Set, nameTo
 	return
 }
 
-func appendParseError(dst *string, label string, err error) {
+func appendParseError(dst *strings.Builder, label string, err error) {
 	zh, en := rules.LocalizedMessages(err)
-	*dst += fmt.Sprintf("[%s]\n\n%s\n\n%s\n\n", label, zh, en)
+	fmt.Fprintf(dst, "[%s]\n\n%s\n\n%s\n\n", label, zh, en)
 }
 
 // checkRepos 检查集市资源仓库列表
@@ -158,10 +168,8 @@ func checkRepos(
 	occupiedNames map[string]struct{},
 	occupiedNamesMu *sync.Mutex,
 	parseErrorMu *sync.Mutex,
-	waitGroup *sync.WaitGroup,
+	parseErrorBuilder *strings.Builder,
 ) {
-	defer waitGroup.Done()
-
 	repoListTxtName := packageType.ReposListFile()
 	bazaarHeadReposPath := filepath.Join(BAZAAR_HEAD_PATH, repoListTxtName)
 	prBaseReposPath := filepath.Join(PR_BASE_PATH, repoListTxtName)
@@ -173,7 +181,7 @@ func checkRepos(
 	_, bazaarHeadRepoSet, _, err := parseReposFromRootTxt(bazaarHeadReposPath)
 	if err != nil {
 		parseErrorMu.Lock()
-		appendParseError(&checkResult.ParseError, fmt.Sprintf("%s bazaar head", repoListTxtName), err)
+		appendParseError(parseErrorBuilder, fmt.Sprintf("%s bazaar head", repoListTxtName), err)
 		parseErrorMu.Unlock()
 		logger.Errorf("load bazaar head repos [%s] failed: %s, skip this type", bazaarHeadReposPath, err)
 		return
@@ -181,7 +189,7 @@ func checkRepos(
 	basePaths, baseSet, baseNameToOwner, err := parseReposFromRootTxt(prBaseReposPath)
 	if err != nil {
 		parseErrorMu.Lock()
-		appendParseError(&checkResult.ParseError, fmt.Sprintf("%s PR base", repoListTxtName), err)
+		appendParseError(parseErrorBuilder, fmt.Sprintf("%s PR base", repoListTxtName), err)
 		parseErrorMu.Unlock()
 		logger.Errorf("load PR base repos [%s] failed: %s, skip this type", prBaseReposPath, err)
 		return
@@ -189,7 +197,7 @@ func checkRepos(
 	headPaths, headSet, _, err := parseReposFromRootTxt(prHeadReposPath)
 	if err != nil {
 		parseErrorMu.Lock()
-		appendParseError(&checkResult.ParseError, fmt.Sprintf("%s PR head", repoListTxtName), err)
+		appendParseError(parseErrorBuilder, fmt.Sprintf("%s PR head", repoListTxtName), err)
 		parseErrorMu.Unlock()
 		logger.Errorf("load PR head repos [%s] failed: %s, skip this type", prHeadReposPath, err)
 		return
@@ -201,7 +209,7 @@ func checkRepos(
 		paths, errAllow := util.ParseReposFromTxt(ap)
 		if errAllow != nil {
 			parseErrorMu.Lock()
-			appendParseError(&checkResult.ParseError, fmt.Sprintf("%s PR head", util.ThemeJsAllowlistRelPath), errAllow)
+			appendParseError(parseErrorBuilder, fmt.Sprintf("%s PR head", util.ThemeJsAllowlistRelPath), errAllow)
 			parseErrorMu.Unlock()
 			logger.Errorf("load theme.js allowlist [%s] failed: %s, skip this type", ap, errAllow)
 			return
@@ -239,12 +247,10 @@ func checkRepos(
 	maintainerChangedSet := make(Set)
 	for _, path := range newRepos {
 		// newRepos 包含了更换维护者的仓库
-		parts := strings.Split(path, "/")
-		if len(parts) != 2 {
+		newOwner, name, ok := strings.Cut(path, "/")
+		if !ok {
 			continue
 		}
-		newOwner := parts[0]
-		name := parts[1]
 		oldOwner, oldExists := baseNameToOwner[name]
 		if !oldExists {
 			// base 中不存在该 name，是新增，不是更换维护者
@@ -257,8 +263,7 @@ func checkRepos(
 	}
 
 	resultChannel := make(chan checkOutput, 4)
-	waitGroupCheck := &sync.WaitGroup{}
-	waitGroupResult := &sync.WaitGroup{}
+	var waitGroupResult sync.WaitGroup
 
 	// 收集检查结果时，根据是否在 maintainerChangedSet 中打上 MaintainerChanged 标记，供模板区分展示
 	waitGroupResult.Go(func() {
@@ -272,21 +277,19 @@ func checkRepos(
 	})
 
 	// 检查新增的集市包（更换维护者的集市包也按新集市包处理），限制并发数为 8
-	sem := make(chan struct{}, 8)
+	var g errgroup.Group
+	g.SetLimit(8)
 	for _, ownerRepo := range newRepos {
-		waitGroupCheck.Add(1)
-		go func(repo string) {
-			defer waitGroupCheck.Done()
-			sem <- struct{}{}
-			defer func() { <-sem }()
+		g.Go(func() error {
 			var allowThemeJS bool
 			if packageType == rules.TypeTheme {
-				_, allowThemeJS = themeJsAllowSet[repo]
+				_, allowThemeJS = themeJsAllowSet[ownerRepo]
 			}
-			checkNewRepo(repo, occupiedNames, packageType, resultChannel, occupiedNamesMu, allowThemeJS)
-		}(ownerRepo)
+			checkNewRepo(ownerRepo, occupiedNames, packageType, resultChannel, occupiedNamesMu, allowThemeJS)
+			return nil
+		})
 	}
-	waitGroupCheck.Wait()  // 等待检查完成
+	_ = g.Wait()           // 等待检查完成
 	close(resultChannel)   // 关闭检查结果输出通道
 	waitGroupResult.Wait() // 等待检查结果处理完成
 	logger.Infof("finish repos check [%s]", prHeadReposPath)

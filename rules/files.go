@@ -12,6 +12,7 @@ package rules
 
 import (
 	"fmt"
+	"io/fs"
 	"os"
 	"path/filepath"
 	"strings"
@@ -123,19 +124,28 @@ func requiredFileHintEn(name string, typ PackageType) string {
 // checkTemplateHasContentMD：模板包至少包含一个不以 readme 开头的 .md 文件（大小写不敏感前缀，对齐思源内核）。
 func checkTemplateHasContentMD(root string) []Issue {
 	found := false
-	_ = filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
-		if err != nil || info.IsDir() {
+	err := filepath.WalkDir(root, func(path string, d fs.DirEntry, err error) error {
+		if err != nil {
+			return err
+		}
+		if d.IsDir() {
 			return nil
 		}
-		base := strings.ToLower(filepath.Base(path))
+		base := strings.ToLower(d.Name())
 		if strings.HasSuffix(base, ".md") && !strings.HasPrefix(base, "readme") {
 			found = true
-			return filepath.SkipAll
+			return fs.SkipAll
 		}
 		return nil
 	})
 	if found {
 		return nil
+	}
+	if err != nil {
+		return []Issue{issue(
+			fmt.Sprintf("检查模板内容文件时遍历目录失败：%v。请确认 package.zip 解压后的目录结构完整后重新发布。", err),
+			fmt.Sprintf("Failed to walk the template package while looking for content files: %v. Ensure the extracted package.zip layout is intact, then republish.", err),
+		)}
 	}
 	return []Issue{issue("模板包里除了 README 类说明外，还至少需要一个可作为模板内容的 .md 文件（文件名不要以 readme 开头，大小写不限）。请把模板正文 md 打进 package.zip 后重新发布。",
 		"Besides README docs, a template package must include at least one content .md file whose filename does not start with \"readme\" (case-insensitive). Add that file to package.zip and republish the Release.",

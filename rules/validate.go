@@ -141,10 +141,10 @@ func appendNameDisallowedRunesIssues(name string, errs *[]error) {
 }
 
 // reservedWindowsDeviceNames 为 Windows 保留设备名（整名精确匹配，不区分大小写）。名称已限制为 ASCII，故不含上标数字变体。
-var reservedWindowsDeviceNames = map[string]any{
-	"CON": nil, "PRN": nil, "AUX": nil, "NUL": nil,
-	"COM1": nil, "COM2": nil, "COM3": nil, "COM4": nil, "COM5": nil,
-	"COM6": nil, "COM7": nil, "COM8": nil, "COM9": nil,
-	"LPT1": nil, "LPT2": nil, "LPT3": nil, "LPT4": nil, "LPT5": nil,
-	"LPT6": nil, "LPT7": nil, "LPT8": nil, "LPT9": nil,
+var reservedWindowsDeviceNames = map[string]struct{}{
+	"CON": {}, "PRN": {}, "AUX": {}, "NUL": {},
+	"COM1": {}, "COM2": {}, "COM3": {}, "COM4": {}, "COM5": {},
+	"COM6": {}, "COM7": {}, "COM8": {}, "COM9": {},
+	"LPT1": {}, "LPT2": {}, "LPT3": {}, "LPT4": {}, "LPT5": {},
+	"LPT6": {}, "LPT7": {}, "LPT8": {}, "LPT9": {},
 }
