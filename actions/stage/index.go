@@ -13,6 +13,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"io/fs"
 	"os"
 	"path/filepath"
 	"strings"
@@ -29,7 +30,6 @@ import (
 // oldStageRepo 用于清单校验时与旧 name/version 对比，可为 nil（如新仓库）。
 // allowThemeJS 仅主题为 themes 时可能为 true（theme.js 白名单内仓库）；其他类型恒为 false。
 // occupiedNames 为已占用 package.name 集合，供 rules.Check 做跨类型唯一性检查。
-// heavySem 限制同时进行「下载 + 上传 OSS」的仓库数。
 func indexPackage(
 	ownerRepo string,
 	packageType rules.PackageType,
@@ -37,7 +37,6 @@ func indexPackage(
 	oldStageRepo *util.StageRepo,
 	allowThemeJS bool,
 	occupiedNames map[string]struct{},
-	heavySem chan struct{},
 ) (ok, skipped bool, hash, published string, size, installSize, packageZipAssetID int64, pkg *rules.Package) {
 	releaseInfo, releaseOk := getRepoLatestRelease(ownerRepo)
 	if !releaseOk {
@@ -67,9 +66,6 @@ func indexPackage(
 		return
 	}
 
-	heavySem <- struct{}{}
-	defer func() { <-heavySem }()
-
 	tmpUnzipPath, data, cleanup, err := util.DownloadAndUnzipPackageZip(githubContext, githubClient, owner, name, packageZipAssetID)
 	if err != nil {
 		logger.Errorf("download/unzip [%s] asset %d failed: %s", ownerRepo, packageZipAssetID, err)
@@ -77,9 +73,8 @@ func indexPackage(
 	}
 	defer cleanup()
 
-	// 记录 zip 体积，用于 stage 条目的 size 字段
+	// 记录 zip 体积
 	size = int64(len(data))
-	installSize = size
 
 	var oldName, oldVersion string
 	if oldStageRepo != nil {
@@ -102,12 +97,9 @@ func indexPackage(
 	}
 
 	packageRoot := result.PackageRoot
-	if packageRoot == "" {
-		packageRoot = tmpUnzipPath
-	}
 
 	// 计算解压后目录体积，用于 stage 条目的 installSize 字段
-	installSize, err = util.SizeOfDirectory(packageRoot)
+	installSize, err = sizeOfDirectory(packageRoot)
 	if nil != err {
 		logger.Errorf("stat package [%s] size failed: %s", ownerRepo, err)
 		return
@@ -195,6 +187,33 @@ func parseHashFromStageURL(stageURL string) string {
 		return ""
 	}
 	return stageURL[idx+1:]
+}
+
+// sizeOfDirectory 计算目录大小。
+// 跟思源内核实现一致，参考 kernel\util\file.go
+func sizeOfDirectory(path string) (size int64, err error) {
+	err = filepath.WalkDir(path, func(path string, d fs.DirEntry, err error) error {
+		if err != nil {
+			return err
+		}
+
+		info, err := d.Info()
+		if err != nil {
+			logger.Errorf("size of dir [%s] failed: %s", path, err)
+			return err
+		}
+
+		if !info.IsDir() {
+			size += info.Size()
+		} else {
+			size += 4096
+		}
+		return nil
+	})
+	if err != nil {
+		logger.Errorf("size of dir [%s] failed: %s", path, err)
+	}
+	return
 }
 
 // getPackage 从解压后的包根目录 unzipRoot 读取该类型的清单 JSON（如 plugin.json），解析为 Package。

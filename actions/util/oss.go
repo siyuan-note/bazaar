@@ -15,8 +15,9 @@ import (
 	"context"
 	"fmt"
 	"os"
-	"path/filepath"
+	"strconv"
 	"strings"
+	"sync"
 
 	"github.com/88250/gulu"
 	"github.com/qiniu/go-sdk/v7/auth/qbox"
@@ -28,9 +29,29 @@ var (
 	QINIU_BUCKET = os.Getenv("QINIU_BUCKET")
 	QINIU_AK     = os.Getenv("QINIU_AK")
 	QINIU_SK     = os.Getenv("QINIU_SK")
+
+	ossUploadSem     chan struct{}
+	ossUploadSemOnce sync.Once
 )
 
+func getOSSUploadSem() chan struct{} {
+	ossUploadSemOnce.Do(func() {
+		n := 16
+		if s := os.Getenv("OSS_UPLOAD_CONCURRENCY"); s != "" {
+			if parsed, err := strconv.Atoi(s); err == nil && parsed > 0 {
+				n = parsed
+			}
+		}
+		ossUploadSem = make(chan struct{}, n)
+	})
+	return ossUploadSem
+}
+
 func UploadOSS(key, contentType string, data []byte) (err error) {
+	sem := getOSSUploadSem()
+	sem <- struct{}{}
+	defer func() { <-sem }()
+
 	cfg := storage.Config{UseCdnDomains: true, UseHTTPS: true}
 	mac := qbox.NewMac(QINIU_AK, QINIU_SK)
 	bucketManager := storage.NewBucketManager(mac, &cfg)
@@ -64,22 +85,3 @@ func UploadOSS(key, contentType string, data []byte) (err error) {
 }
 
 const UserAgent = "bazaar/1.0.0 https://github.com/siyuan-note/bazaar"
-
-func SizeOfDirectory(path string) (size int64, err error) {
-	err = filepath.Walk(path, func(_ string, info os.FileInfo, err error) error {
-		if nil != err {
-			return err
-		}
-		if !info.IsDir() {
-			s := info.Size()
-			size += s
-		} else {
-			size += 4096
-		}
-		return nil
-	})
-	if nil != err {
-		logger.Errorf("size of dir [%s] failed: %s", path, err)
-	}
-	return
-}

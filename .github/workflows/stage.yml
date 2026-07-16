@@ -39,8 +39,8 @@ jobs:
 
       - name: Go staging
         # env:
-        #   STAGE_POOL_SIZE: 80          # 总并发数，多数 skip 时加快检查
-        #   STAGE_HEAVY_CONCURRENCY: 8   # 同时下载+上传的仓库数，避免打满 GitHub/OSS
+        #   STAGE_POOL_SIZE: 80         # 总并发数，多数 skip 时加快检查
+        #   OSS_UPLOAD_CONCURRENCY: 16  # 七牛 OSS 上传并发数
         run: go run ./actions/stage
 
       - name: Commit and push

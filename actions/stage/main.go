@@ -41,10 +41,9 @@ Stage 流程：
 type Set map[string]struct{} // 字符串集合
 
 var (
-	BAZAAR_ROOT_PATH        = "."              // bazaar 仓库根目录（stage 工作区）
-	GITHUB_TOKEN            = os.Getenv("PAT") // GitHub Token
-	STAGE_POOL_SIZE         = envIntDefault("STAGE_POOL_SIZE", 80)
-	STAGE_HEAVY_CONCURRENCY = envIntDefault("STAGE_HEAVY_CONCURRENCY", 8) // 限制同时进行「下载 + 上传 OSS」的仓库数，避免大量更新时打满 GitHub/OSS；仅 hash 检查不受限。
+	BAZAAR_ROOT_PATH = "."              // bazaar 仓库根目录（stage 工作区）
+	GITHUB_TOKEN     = os.Getenv("PAT") // GitHub Token
+	STAGE_POOL_SIZE  = envIntDefault("STAGE_POOL_SIZE", 80)
 
 	REQUEST_TIMEOUT = 30 * time.Second // 请求超时时间
 
@@ -182,7 +181,6 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 	var stageReposMu sync.Mutex
 	var stageRepos []*util.StageRepo
 	waitGroup := &sync.WaitGroup{}
-	heavySem := make(chan struct{}, STAGE_HEAVY_CONCURRENCY)
 	sem := make(chan struct{}, STAGE_POOL_SIZE)
 
 	for _, ownerRepo := range reposSlice {
@@ -202,7 +200,7 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 			if packageType == rules.TypeTheme {
 				_, allowThemeJS = themeJsAllowSet[ownerRepo]
 			}
-			ok, skipped, hash, updated, size, installSize, packageZipAssetID, pkg := indexPackage(ownerRepo, packageType, oldStageURL, oldRepo, allowThemeJS, occupiedNames, heavySem)
+			ok, skipped, hash, updated, size, installSize, packageZipAssetID, pkg := indexPackage(ownerRepo, packageType, oldStageURL, oldRepo, allowThemeJS, occupiedNames)
 			if skipped {
 				// hash 未变化，跳过下载，直接沿用旧 stage 条目
 				stageReposMu.Lock()
