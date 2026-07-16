@@ -23,7 +23,7 @@ import (
 var (
 	// ErrNoLatestRelease 仓库没有 Latest Release，或 GitHub API 读取失败。
 	ErrNoLatestRelease = errors.New("no latest release")
-	// ErrNoPackageZip Latest Release 中缺少名为 package.zip 的资源。
+	// ErrNoPackageZip Latest Release 中缺少名为 `package.zip` 的资源。
 	ErrNoPackageZip = errors.New("package.zip not found in latest release")
 	// ErrReleaseTag 无法将 Release tag 解析为有效 commit。
 	ErrReleaseTag = errors.New("release tag could not be resolved")
@@ -38,11 +38,11 @@ type LatestRelease struct {
 	CommitSHA         string
 }
 
-// FetchLatestRelease 获取 Latest Release，并校验 package.zip 与 tag → commit。
+// FetchLatestRelease 获取 Latest Release，并校验 `package.zip` 与 tag → commit。
 //
 // 返回的 error 用 sentinel（ErrNoLatestRelease / ErrNoPackageZip / ErrReleaseTag）标识失败阶段。
 //
-// 若在 GetLatestRelease 之后失败（缺 package.zip 或 tag 无效），仍返回已取到的 Tag、URL 等字段：
+// 若在 GetLatestRelease 之后失败（缺 `package.zip` 或 tag 无效），仍返回已取到的 Tag、URL 等字段：
 // PR Check 的评论模板 check-result.md.tpl 在报错时也会渲染 Release 链接，便于作者点开对应 Release 补传 zip 或修 tag。
 // Stage 在 err != nil 时不使用这些字段，可忽略。
 func FetchLatestRelease(ctx context.Context, client *github.Client, owner, repo string) (LatestRelease, error) {
@@ -81,19 +81,19 @@ func FetchLatestRelease(ctx context.Context, client *github.Client, owner, repo 
 	if info.PackageZipAssetID == 0 {
 		// Release 已存在；保留 Tag / URL 供 PR 评论展示链接。
 		return info, rules.LocalizedErr(
-			"Latest Release 中缺少名为 package.zip 的资源文件。请把打包好的 package.zip 作为 Release Asset 上传（文件名必须是 package.zip）。",
-			"The Latest Release has no asset named package.zip. Upload package.zip as a Release asset (the filename must be package.zip).",
+			"Latest Release 中缺少名为 `package.zip` 的资源文件。请把打包好的 `package.zip` 作为 Release Asset 上传（文件名必须是 `package.zip`）。",
+			"The Latest Release has no asset named `package.zip`. Upload `package.zip` as a Release asset (the filename must be `package.zip`).",
 			ErrNoPackageZip,
 		)
 	}
 
 	info.CommitSHA, err = resolveReleaseTagCommit(ctx, client, owner, repo, info.Tag)
 	if err != nil {
-		// package.zip 已找到；保留 Tag / URL / PackageZipAssetID 供 PR 评论展示链接。
+		// `package.zip` 已找到；保留 Tag / URL / PackageZipAssetID 供 PR 评论展示链接。
 		zh, en := rules.LocalizedMessages(err)
 		return info, rules.LocalizedErr(
-			fmt.Sprintf("已找到 Latest Release 与 package.zip，但无法解析 Release 标签 %q 对应的提交：%s。请在 GitHub 上确认该 tag 指向有效 commit（可尝试删除并重新创建 tag）。", info.Tag, zh),
-			fmt.Sprintf("Latest Release and package.zip were found, but release tag %q could not be resolved to a commit: %s. Ensure the tag points to a valid commit on GitHub (try recreating the tag).", info.Tag, en),
+			fmt.Sprintf("已找到 Latest Release 与 `package.zip`，但无法解析 Release 标签 `%s` 对应的提交：%s。请在 GitHub 上确认该 tag 指向有效 commit（可尝试删除并重新创建 tag）。", info.Tag, zh),
+			fmt.Sprintf("Latest Release and `package.zip` were found, but release tag `%s` could not be resolved to a commit: %s. Ensure the tag points to a valid commit on GitHub (try recreating the tag).", info.Tag, en),
 			fmt.Errorf("%w: %w", ErrReleaseTag, err),
 		)
 	}
@@ -113,8 +113,8 @@ func resolveReleaseTagCommit(ctx context.Context, client *github.Client, owner, 
 	ref, _, err := client.Git.GetRef(ctx, owner, repo, "tags/"+tagName)
 	if err != nil {
 		return "", rules.LocalizedErr(
-			fmt.Sprintf("无法在仓库中找到 Release 标签 %q：%v。请确认 tag 已推送到 GitHub 且拼写正确。", tagName, err),
-			fmt.Sprintf("Could not find release tag %q in the repository: %v. Ensure the tag is pushed to GitHub and spelled correctly.", tagName, err),
+			fmt.Sprintf("无法在仓库中找到 Release 标签 `%s`：%v。请确认 tag 已推送到 GitHub 且拼写正确。", tagName, err),
+			fmt.Sprintf("Could not find release tag `%s` in the repository: %v. Ensure the tag is pushed to GitHub and spelled correctly.", tagName, err),
 			err,
 		)
 	}
@@ -122,8 +122,8 @@ func resolveReleaseTagCommit(ctx context.Context, client *github.Client, owner, 
 	sha := ref.GetObject().GetSHA()
 	if sha == "" {
 		return "", rules.LocalizedErr(
-			fmt.Sprintf("Release 标签 %q 没有关联有效的 Git 对象。请删除并重新创建该 tag，使其指向有效 commit。", tagName),
-			fmt.Sprintf("Release tag %q has no associated Git object. Delete and recreate the tag so it points to a valid commit.", tagName),
+			fmt.Sprintf("Release 标签 `%s` 没有关联有效的 Git 对象。请删除并重新创建该 tag，使其指向有效 commit。", tagName),
+			fmt.Sprintf("Release tag `%s` has no associated Git object. Delete and recreate the tag so it points to a valid commit.", tagName),
 			nil,
 		)
 	}
@@ -137,24 +137,24 @@ func resolveReleaseTagCommit(ctx context.Context, client *github.Client, owner, 
 		tag, _, err := client.Git.GetTag(ctx, owner, repo, sha)
 		if err != nil {
 			return "", rules.LocalizedErr(
-				fmt.Sprintf("无法读取 Release 附注标签 %q：%v。请确认 tag 未损坏，必要时在 GitHub 上重新创建。", tagName, err),
-				fmt.Sprintf("Could not read annotated release tag %q: %v. Ensure the tag is valid or recreate it on GitHub.", tagName, err),
+				fmt.Sprintf("无法读取 Release 附注标签 `%s`：%v。请确认 tag 未损坏，必要时在 GitHub 上重新创建。", tagName, err),
+				fmt.Sprintf("Could not read annotated release tag `%s`: %v. Ensure the tag is valid or recreate it on GitHub.", tagName, err),
 				err,
 			)
 		}
 		commitSHA := tag.GetObject().GetSHA()
 		if commitSHA == "" {
 			return "", rules.LocalizedErr(
-				fmt.Sprintf("Release 附注标签 %q 未指向有效 commit。请重新创建 tag 并关联到正确的提交。", tagName),
-				fmt.Sprintf("Annotated release tag %q does not point to a valid commit. Recreate the tag and link it to the correct commit.", tagName),
+				fmt.Sprintf("Release 附注标签 `%s` 未指向有效 commit。请重新创建 tag 并关联到正确的提交。", tagName),
+				fmt.Sprintf("Annotated release tag `%s` does not point to a valid commit. Recreate the tag and link it to the correct commit.", tagName),
 				nil,
 			)
 		}
 		return commitSHA, nil
 	default:
 		return "", rules.LocalizedErr(
-			fmt.Sprintf("Release 标签 %q 的类型不受支持（%q）。请改用指向 commit 的轻量 tag 或标准附注 tag。", tagName, ref.GetObject().GetType()),
-			fmt.Sprintf("Release tag %q has unsupported type %q. Use a lightweight tag or a standard annotated tag that points to a commit.", tagName, ref.GetObject().GetType()),
+			fmt.Sprintf("Release 标签 `%s` 的类型不受支持（`%s`）。请改用指向 commit 的轻量 tag 或标准附注 tag。", tagName, ref.GetObject().GetType()),
+			fmt.Sprintf("Release tag `%s` has unsupported type `%s`. Use a lightweight tag or a standard annotated tag that points to a commit.", tagName, ref.GetObject().GetType()),
 			nil,
 		)
 	}

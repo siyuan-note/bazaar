@@ -28,10 +28,10 @@ func TestReadManifestLocalizedErrors(t *testing.T) {
 		if !ok {
 			t.Fatalf("expected localized error, got %v", err)
 		}
-		if !strings.Contains(zh, "无法读取清单文件 plugin.json") {
+		if !strings.Contains(zh, "无法读取清单文件 `plugin.json`") {
 			t.Fatalf("unexpected zh: %s", zh)
 		}
-		if !strings.Contains(en, "Cannot read manifest plugin.json") {
+		if !strings.Contains(en, "Cannot read manifest `plugin.json`") {
 			t.Fatalf("unexpected en: %s", en)
 		}
 	})

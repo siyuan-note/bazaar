@@ -46,6 +46,7 @@ type Package struct {
 	Keywords          []string      `json:"keywords"`
 	Backends          []string      `json:"backends,omitempty"`
 	Frontends         []string      `json:"frontends,omitempty"`
+	Kernels           []string      `json:"kernels,omitempty"`
 	DisabledInPublish bool          `json:"disabledInPublish,omitempty"`
 	Modes             []string      `json:"modes,omitempty"`
 }
@@ -119,7 +120,7 @@ var commonManifestKeys = []string{
 }
 
 var pluginExtraKeys = []string{
-	"backends", "frontends", "disabledInPublish",
+	"backends", "frontends", "kernels", "disabledInPublish",
 }
 
 var themeExtraKeys = []string{
@@ -164,23 +165,23 @@ func ReadManifest(path string) (map[string]any, error) {
 	data, err := os.ReadFile(path)
 	if err != nil {
 		return nil, LocalizedErr(
-			fmt.Sprintf("无法读取清单文件 %s：%v。请确认该文件已打进 package.zip 包根、路径大小写完全一致，然后重新打包并更新 Release。", base, err),
-			fmt.Sprintf("Cannot read manifest %s: %v. Ensure the file is at the package root with an exact case-sensitive path, then rebuild and update the Release.", base, err),
+			fmt.Sprintf("无法读取清单文件 `%s`：%v。请确认该文件已打进 `package.zip` 包根、路径大小写完全一致。", base, err),
+			fmt.Sprintf("Cannot read manifest `%s`: %v. Ensure the file is at the package root with an exact case-sensitive path.", base, err),
 			err,
 		)
 	}
 	var m map[string]any
 	if err := json.Unmarshal(data, &m); err != nil {
 		return nil, LocalizedErr(
-			fmt.Sprintf("清单 %s 的 JSON 解析失败：%v。请检查 JSON 语法，修正后重新打包并更新 GitHub Release 中的 package.zip。", base, err),
-			fmt.Sprintf("Failed to parse manifest %s as JSON: %v. Fix JSON syntax errors, rebuild the package, and update package.zip on the GitHub Release.", base, err),
+			fmt.Sprintf("清单 `%s` 的 JSON 解析失败：%v。请检查 JSON 语法并修正。", base, err),
+			fmt.Sprintf("Failed to parse manifest `%s` as JSON: %v. Fix JSON syntax errors.", base, err),
 			err,
 		)
 	}
 	if m == nil {
 		return nil, LocalizedErr(
-			fmt.Sprintf("清单 %s 的 JSON 内容为 null，必须是一个对象（例如以 { 开头的键值对）。请修正清单后重新打包并更新 Release。", base),
-			fmt.Sprintf("Manifest %s JSON is null; it must be a JSON object (e.g. key-value pairs starting with {). Fix the manifest, rebuild the package, and update the Release.", base),
+			fmt.Sprintf("清单 `%s` 的 JSON 内容为 `null`，必须是一个对象（例如以 `{` 开头的键值对）。请修正清单。", base),
+			fmt.Sprintf("Manifest `%s` JSON is `null`; it must be a JSON object (e.g. key-value pairs starting with `{`). Fix the manifest.", base),
 			nil,
 		)
 	}
@@ -217,8 +218,8 @@ func checkUnknownKeys(m map[string]any, typ PackageType) []Issue {
 	for k := range m {
 		if _, ok := allowed[k]; !ok {
 			issues = append(issues, issue(
-				fmt.Sprintf("%s 中出现了集市规范未收录的字段 %q。请删除该字段后重新打包（保留未知字段会妨碍官方日后扩展同名字段）。若确有自定义需求，请先在集市仓库提 issue 讨论。", typ.ManifestFile(), k),
-				fmt.Sprintf("%s contains unsupported field %q. Remove it and rebuild the package (unknown fields block future official schema additions). If you need a new official field, open an issue in the bazaar repository first.", typ.ManifestFile(), k),
+				fmt.Sprintf("`%s` 中出现了集市规范未收录的字段 `%s`。请删除该字段（保留未知字段会妨碍官方日后扩展同名字段）。若确有自定义需求，请先在集市仓库提 issue 讨论。", typ.ManifestFile(), k),
+				fmt.Sprintf("`%s` contains unsupported field `%s`. Remove it (unknown fields block future official schema additions). If you need a new official field, open an issue in the bazaar repository first.", typ.ManifestFile(), k),
 			))
 		}
 	}
@@ -229,23 +230,23 @@ func checkName(m map[string]any, in ManifestInput) []Issue {
 	raw, ok := m["name"]
 	if !ok {
 		return []Issue{issue(
-			fmt.Sprintf("清单 %s 缺少必填字段 name。请在 JSON 根级添加字符串字段 name，且其值必须与 GitHub 仓库名完全一致。", in.Type.ManifestFile()),
-			fmt.Sprintf("Manifest %s is missing required field name. Add a string field name at the JSON root; it must exactly match the GitHub repository name.", in.Type.ManifestFile()),
+			fmt.Sprintf("清单 `%s` 缺少必填字段 `name`。请在 JSON 根级添加字符串字段 `name`，且其值必须与 GitHub 仓库名完全一致。", in.Type.ManifestFile()),
+			fmt.Sprintf("Manifest `%s` is missing required field `name`. Add a string field `name` at the JSON root; it must exactly match the GitHub repository name.", in.Type.ManifestFile()),
 		)}
 	}
 	name, ok := raw.(string)
 	if !ok {
 		return []Issue{issue(
-			fmt.Sprintf("清单字段 name 的类型必须是字符串，当前不是。请改成例如 \"name\": %q 这种写法。", in.Repo),
-			fmt.Sprintf("Manifest field name must be a string. Use a value like \"name\": %q.", in.Repo),
+			fmt.Sprintf("清单字段 `name` 的类型必须是字符串，当前不是。请改成例如 `\"name\": \"%s\"` 这种写法。", in.Repo),
+			fmt.Sprintf("Manifest field `name` must be a string. Use a value like `\"name\": \"%s\"`.", in.Repo),
 		)}
 	}
 
 	if in.OldName != "" {
 		if name != in.OldName {
 			return []Issue{issue(
-				fmt.Sprintf("已上架集市包的 name 不可更改。清单里当前是 %q，集市已记录为 %q。请改回 %q 后重新发布；若要换名，需按「更换维护者 / 新包」流程另提 PR。", name, in.OldName, in.OldName),
-				fmt.Sprintf("The listed package name must not change. Manifest has %q but the bazaar already lists %q. Set name back to %q and republish; to rename, follow the maintainer-transfer / new-package PR process.", name, in.OldName, in.OldName),
+				fmt.Sprintf("已上架集市包的 `name` 不可更改。清单里当前是 `%s`，集市已记录为 `%s`。请改回 `%s`；若要换名，需按「更换维护者 / 新包」流程另提 PR。", name, in.OldName, in.OldName),
+				fmt.Sprintf("The listed package `name` must not change. Manifest has `%s` but the bazaar already lists `%s`. Set `name` back to `%s`; to rename, follow the maintainer-transfer / new-package PR process.", name, in.OldName, in.OldName),
 			)}
 		}
 		return nil
@@ -257,30 +258,30 @@ func checkName(m map[string]any, in ManifestInput) []Issue {
 	}
 	if name != in.Repo {
 		issues = append(issues, issue(
-			fmt.Sprintf("清单字段 name 为 %q，但 GitHub 仓库名是 %q。二者必须完全一致。请把 name 改成 %q（或把仓库改名为当前 name），然后重新打包并更新 Release。", name, in.Repo, in.Repo),
-			fmt.Sprintf("Manifest name is %q but the GitHub repository name is %q. They must match exactly. Set name to %q (or rename the repository), then rebuild and update the Release.", name, in.Repo, in.Repo),
+			fmt.Sprintf("清单字段 `name` 为 `%s`，但 GitHub 仓库名是 `%s`。二者必须完全一致。请把 `name` 改成 `%s`（或把仓库改名为当前 `name`）。", name, in.Repo, in.Repo),
+			fmt.Sprintf("Manifest `name` is `%s` but the GitHub repository name is `%s`. They must match exactly. Set `name` to `%s` (or rename the repository).", name, in.Repo, in.Repo),
 		))
 	}
 	if in.Type == TypeTheme {
 		if _, hit := builtinThemeNames[name]; hit {
 			issues = append(issues, issue(
-				fmt.Sprintf("name %q 与思源内置主题重名，不能上架。请更换仓库名与清单 name（例如加上作者前缀），并同步修改 package.zip。", name),
-				fmt.Sprintf("name %q conflicts with a built-in SiYuan theme and cannot be listed. Rename the repository and manifest name (e.g. add an author prefix), then update package.zip.", name),
+				fmt.Sprintf("`name` 的值 `%s` 与思源内置主题重名，不能上架。请更换仓库名与清单 `name`（例如加上作者前缀）。", name),
+				fmt.Sprintf("`name` value `%s` conflicts with a built-in SiYuan theme and cannot be listed. Rename the repository and manifest `name` (e.g. add an author prefix).", name),
 			))
 		}
 	}
 	if in.Type == TypeIcon {
 		if _, hit := builtinIconNames[name]; hit {
 			issues = append(issues, issue(
-				fmt.Sprintf("name %q 与思源内置图标包重名，不能上架。请更换仓库名与清单 name，并同步修改 package.zip。", name),
-				fmt.Sprintf("name %q conflicts with a built-in SiYuan icon pack and cannot be listed. Rename the repository and manifest name, then update package.zip.", name),
+				fmt.Sprintf("`name` 的值 `%s` 与思源内置图标包重名，不能上架。请更换仓库名与清单 `name`。", name),
+				fmt.Sprintf("`name` value `%s` conflicts with a built-in SiYuan icon pack and cannot be listed. Rename the repository and manifest `name`.", name),
 			))
 		}
 	}
 	if _, exists := in.OccupiedNames[strings.ToLower(name)]; exists {
 		issues = append(issues, issue(
-			fmt.Sprintf("name %q 已被其他集市包占用（插件/主题/图标/模板/挂件之间也不能重名，且不区分大小写）。请更换一个未被占用的仓库名，并把清单 name、url 一并改成新名后重新提交。", name),
-			fmt.Sprintf("name %q is already used by another bazaar package (must be unique across plugins/themes/icons/templates/widgets, case-insensitive). Choose an unused repository name and update manifest name and url accordingly before resubmitting.", name),
+			fmt.Sprintf("`name` 的值 `%s` 已被其他集市包占用（插件/主题/图标/模板/挂件之间也不能重名，且不区分大小写）。请更换一个未被占用的仓库名，并把清单 `name`、`url` 一并改成新名后重新提交。", name),
+			fmt.Sprintf("`name` value `%s` is already used by another bazaar package (must be unique across plugins/themes/icons/templates/widgets, case-insensitive). Choose an unused repository name and update manifest `name` and `url` accordingly before resubmitting.", name),
 		))
 	}
 	return issues
@@ -293,22 +294,22 @@ func checkURL(m map[string]any, owner, repo string) []Issue {
 	raw, ok := m["url"]
 	if !ok {
 		return []Issue{issue(
-			"清单缺少必填字段 url。请添加指向本仓库的地址，格式必须是 https://github.com/<owner>/<repo>（不要末尾斜杠，不要 .git）。",
-			"Manifest is missing required field url. Set it to https://github.com/<owner>/<repo> for this repository (no trailing slash, no .git).",
+			"清单缺少必填字段 `url`。请添加指向本仓库的地址，格式必须是 `https://github.com/<owner>/<repo>`（不要末尾斜杠，不要 `.git`）。",
+			"Manifest is missing required field `url`. Set it to `https://github.com/<owner>/<repo>` for this repository (no trailing slash, no `.git`).",
 		)}
 	}
 	u, ok := raw.(string)
 	if !ok {
 		return []Issue{issue(
-			"清单字段 url 必须是字符串。请写成 \"url\": \"https://github.com/owner/repo\"。",
-			"Manifest field url must be a string, e.g. \"url\": \"https://github.com/owner/repo\".",
+			"清单字段 `url` 必须是字符串。请写成 `\"url\": \"https://github.com/owner/repo\"`。",
+			"Manifest field `url` must be a string, e.g. `\"url\": \"https://github.com/owner/repo\"`.",
 		)}
 	}
 	want := "https://github.com/" + owner + "/" + repo
 	if !strings.EqualFold(u, want) {
 		return []Issue{issue(
-			fmt.Sprintf("清单字段 url 当前为 %q，正确值应为 %s。请改成该地址（不要加 .git，不要末尾 /；owner/repo 大小写可与 GitHub 显示略有不同）。改完后重新打包 package.zip。", u, want),
-			fmt.Sprintf("Manifest url is %q but must be exactly %s (no .git, no trailing slash; owner/repo matching is case-insensitive). Fix it and rebuild package.zip.", u, want),
+			fmt.Sprintf("清单字段 `url` 当前为 `%s`，正确值应为 `%s`。请改成该地址（不要加 `.git`，不要末尾 `/`；`owner/repo` 大小写可与 GitHub 显示略有不同）。", u, want),
+			fmt.Sprintf("Manifest `url` is `%s` but must be exactly `%s` (no `.git`, no trailing slash; `owner/repo` matching is case-insensitive). Fix it.", u, want),
 		)}
 	}
 	return nil
@@ -318,28 +319,28 @@ func checkVersion(m map[string]any, oldVersion string) []Issue {
 	raw, ok := m["version"]
 	if !ok {
 		return []Issue{issue(
-			"清单缺少必填字段 version。请填写语义化版本字符串，例如 \"1.0.0\"，并在每次更新 package.zip 时提高版本号。",
-			"Manifest is missing required field version. Set a semantic version string such as \"1.0.0\", and bump it whenever you publish a new package.zip.",
+			"清单缺少必填字段 `version`。请填写语义化版本字符串，例如 `1.0.0`。",
+			"Manifest is missing required field `version`. Set a semantic version string such as `1.0.0`.",
 		)}
 	}
 	ver, ok := raw.(string)
 	if !ok {
 		return []Issue{issue(
-			"清单字段 version 必须是字符串，例如 \"1.2.3\"。",
-			"Manifest field version must be a string, e.g. \"1.2.3\".",
+			"清单字段 `version` 必须是字符串，例如 `1.2.3`。",
+			"Manifest field `version` must be a string, e.g. `1.2.3`.",
 		)}
 	}
 	if strings.TrimSpace(ver) != ver || ver == "" {
 		return []Issue{issue(
-			fmt.Sprintf("清单字段 version 的值 %q 无效：不能为空，也不能有前后空格。请改成干净的语义化版本，如 1.0.0。", ver),
-			fmt.Sprintf("Manifest version %q is invalid: it must be non-empty and must not have leading/trailing spaces. Use a clean semver like 1.0.0.", ver),
+			fmt.Sprintf("清单字段 `version` 的值 `%s` 无效：不能为空，也不能有前后空格。请改成干净的语义化版本，如 `1.0.0`。", ver),
+			fmt.Sprintf("Manifest `version` `%s` is invalid: it must be non-empty and must not have leading/trailing spaces. Use a clean semver like `1.0.0`.", ver),
 		)}
 	}
 	canon := canonicalSemver(ver)
 	if !semver.IsValid(canon) {
 		return []Issue{issue(
-			fmt.Sprintf("清单字段 version 的值 %q 不是有效的语义化版本。请使用如 1.0.0、1.2.3-beta.1 等形式（不要带 v 前缀），参见 https://semver.org/lang/zh-CN/", ver),
-			fmt.Sprintf("Manifest version %q is not valid semantic versioning. Use forms like 1.0.0 or 1.2.3-beta.1 without a v prefix. See https://semver.org/", ver),
+			fmt.Sprintf("清单字段 `version` 的值 `%s` 不是有效的语义化版本。请使用如 `1.0.0`、`1.2.3-beta.1` 等形式（不要带 `v` 前缀），参见 `https://semver.org/lang/zh-CN/`", ver),
+			fmt.Sprintf("Manifest `version` `%s` is not valid semantic versioning. Use forms like `1.0.0` or `1.2.3-beta.1` without a `v` prefix. See `https://semver.org/`", ver),
 		)}
 	}
 	if oldVersion == "" {
@@ -348,14 +349,14 @@ func checkVersion(m map[string]any, oldVersion string) []Issue {
 	oldCanon := canonicalSemver(oldVersion)
 	if !semver.IsValid(oldCanon) {
 		return []Issue{issue(
-			fmt.Sprintf("集市已记录的旧 version %q 无法解析，自动化无法比较升降。请联系集市维护者处理后再发版。", oldVersion),
-			fmt.Sprintf("The previously listed version %q cannot be parsed, so the checker cannot compare versions. Contact a bazaar maintainer before publishing.", oldVersion),
+			fmt.Sprintf("集市已记录的旧 `version` `%s` 无法解析，自动化无法比较升降。请联系集市维护者处理后再发版。", oldVersion),
+			fmt.Sprintf("The previously listed `version` `%s` cannot be parsed, so the checker cannot compare versions. Contact a bazaar maintainer before publishing.", oldVersion),
 		)}
 	}
 	if semver.Compare(canon, oldCanon) <= 0 {
 		return []Issue{issue(
-			fmt.Sprintf("本次清单 version 为 %q，但不高于集市已上架版本 %q。更新包时必须提高语义化版本（例如 %s → 更高版本），然后重新打包并发布 Release。", ver, oldVersion, oldVersion),
-			fmt.Sprintf("Manifest version is %q, which is not greater than the listed version %q. Bump the semver above %s, rebuild package.zip, and publish a new Release.", ver, oldVersion, oldVersion),
+			fmt.Sprintf("本次清单 `version` 为 `%s`，但不高于集市已上架版本 `%s`。更新包时必须提高语义化版本（例如 `%s` → 更高版本）。", ver, oldVersion, oldVersion),
+			fmt.Sprintf("Manifest `version` is `%s`, which is not greater than the listed version `%s`. Bump the semver above `%s`.", ver, oldVersion, oldVersion),
 		)}
 	}
 	return nil
@@ -376,15 +377,15 @@ func checkAuthor(m map[string]any) []Issue {
 	raw, ok := m["author"]
 	if !ok {
 		return []Issue{issue(
-			"清单缺少必填字段 author。请填写作者名称字符串，例如 \"author\": \"your-name\"。",
-			"Manifest is missing required field author. Set a string such as \"author\": \"your-name\".",
+			"清单缺少必填字段 `author`。请填写作者名称字符串，例如 `\"author\": \"your-name\"`。",
+			"Manifest is missing required field `author`. Set a string such as `\"author\": \"your-name\"`.",
 		)}
 	}
 	s, ok := raw.(string)
 	if !ok {
 		return []Issue{issue(
-			"清单字段 author 必须是字符串。",
-			"Manifest field author must be a string.",
+			"清单字段 `author` 必须是字符串。",
+			"Manifest field `author` must be a string.",
 		)}
 	}
 	var issues []Issue
@@ -400,21 +401,21 @@ func checkReadme(m map[string]any, packageRoot string) []Issue {
 	raw, ok := m["readme"]
 	if !ok {
 		return []Issue{issue(
-			"清单缺少必填字段 readme。请用对象声明各语言说明文件，例如 \"readme\": { \"zh_CN\": \"README_zh_CN.md\", \"default\": \"README.md\" }，并确保这些文件都在 package.zip 包根（或相对包根的路径）中。",
-			"Manifest is missing required field readme. Declare locale files as an object, e.g. \"readme\": { \"zh_CN\": \"README_zh_CN.md\", \"default\": \"README.md\" }, and include those files in package.zip.",
+			"清单缺少必填字段 `readme`。请用对象声明各语言说明文件，例如 `\"readme\": { \"zh_CN\": \"README_zh_CN.md\", \"default\": \"README.md\" }`，并确保这些文件都在 `package.zip` 包根（或相对包根的路径）中。",
+			"Manifest is missing required field `readme`. Declare locale files as an object, e.g. `\"readme\": { \"zh_CN\": \"README_zh_CN.md\", \"default\": \"README.md\" }`, and include those files in `package.zip`.",
 		)}
 	}
 	obj, ok := raw.(map[string]any)
 	if !ok {
 		return []Issue{issue(
-			"清单字段 readme 必须是对象（键为语言，值为文件名），不能是字符串或数组。",
-			"Manifest field readme must be an object (locale → filename), not a string or array.",
+			"清单字段 `readme` 必须是对象（键为语言，值为文件名），不能是字符串或数组。",
+			"Manifest field `readme` must be an object (locale → filename), not a string or array.",
 		)}
 	}
 	if len(obj) == 0 {
 		return []Issue{issue(
-			"清单字段 readme 是空对象。请至少声明一个语言对应的 README 文件名，并确保文件存在于 package.zip。",
-			"Manifest field readme is an empty object. Declare at least one locale → README filename and include that file in package.zip.",
+			"清单字段 `readme` 是空对象。请至少声明一个语言对应的 README 文件名，并确保文件存在于 `package.zip`。",
+			"Manifest field `readme` is an empty object. Declare at least one locale → README filename and include that file in `package.zip`.",
 		)}
 	}
 	var issues []Issue
@@ -422,30 +423,30 @@ func checkReadme(m map[string]any, packageRoot string) []Issue {
 		pathVal, ok := v.(string)
 		if !ok {
 			issues = append(issues, issue(
-				fmt.Sprintf("readme.%s 的值必须是字符串文件名，例如 \"README.md\"。", locale),
-				fmt.Sprintf("readme.%s must be a string filename, e.g. \"README.md\".", locale),
+				fmt.Sprintf("`readme.%s` 的值必须是字符串文件名，例如 `README.md`。", locale),
+				fmt.Sprintf("`readme.%s` must be a string filename, e.g. `README.md`.", locale),
 			))
 			continue
 		}
 		pathVal = strings.TrimSpace(pathVal) // 跟思源内核逻辑一致，TrimSpace
 		if pathVal == "" {
 			issues = append(issues, issue(
-				fmt.Sprintf("readme.%s 是空字符串。请填写相对包根的 README 路径，或删除该语言键。", locale),
-				fmt.Sprintf("readme.%s is an empty string. Set a path relative to the package root, or remove this locale key.", locale),
+				fmt.Sprintf("`readme.%s` 是空字符串。请填写相对包根的 README 路径，或删除该语言键。", locale),
+				fmt.Sprintf("`readme.%s` is an empty string. Set a path relative to the package root, or remove this locale key.", locale),
 			))
 			continue
 		}
 		if strings.HasPrefix(pathVal, "/") || strings.Contains(pathVal, `\`) || strings.Contains(pathVal, "..") {
 			issues = append(issues, issue(
-				fmt.Sprintf("readme.%s 的路径 %q 不合法：请使用相对包根的路径，用 / 分隔，不要以 / 开头，不要包含 ..，不要使用反斜杠 \\。", locale, pathVal),
-				fmt.Sprintf("readme.%s path %q is invalid: use a path relative to the package root with /, no leading /, no .., and no backslashes.", locale, pathVal),
+				fmt.Sprintf("`readme.%s` 的路径 `%s` 不合法：请使用相对包根的路径，用 `/` 分隔，不要以 `/` 开头，不要包含 `..`，不要使用反斜杠 `\\`。", locale, pathVal),
+				fmt.Sprintf("`readme.%s` path `%s` is invalid: use a path relative to the package root with `/`, no leading `/`, no `..`, and no backslashes.", locale, pathVal),
 			))
 			continue
 		}
 		if !relFileExistsCaseSensitive(packageRoot, pathVal) {
 			issues = append(issues, issue(
-				fmt.Sprintf("readme.%s 声明了文件 %q，但 package.zip 中找不到该文件（路径大小写必须一致）。请把文件打进包内，或修正 readme 中的文件名后重新发布。", locale, pathVal),
-				fmt.Sprintf("readme.%s declares %q, but that file is not in package.zip (paths are case-sensitive). Add the file or fix the filename, then republish.", locale, pathVal),
+				fmt.Sprintf("`readme.%s` 声明了文件 `%s`，但 `package.zip` 中找不到该文件（路径大小写必须一致）。请把文件打进包内，或修正 `readme` 中的文件名。", locale, pathVal),
+				fmt.Sprintf("`readme.%s` declares `%s`, but that file is not in `package.zip` (paths are case-sensitive). Add the file or fix the filename.", locale, pathVal),
 			))
 		}
 	}
@@ -461,8 +462,8 @@ func checkFunding(m map[string]any) []Issue {
 	obj, ok := raw.(map[string]any)
 	if !ok {
 		return []Issue{issue(
-			"清单字段 funding 必须是对象。若不需要赞助信息，请删除整个 funding 字段。",
-			"Manifest field funding must be an object. If you do not need funding info, remove the funding field entirely.",
+			"清单字段 `funding` 必须是对象。若不需要赞助信息，请删除整个 `funding` 字段。",
+			"Manifest field `funding` must be an object. If you do not need funding info, remove the `funding` field entirely.",
 		)}
 	}
 	customRaw, ok := obj["custom"]
@@ -472,8 +473,8 @@ func checkFunding(m map[string]any) []Issue {
 	arr, ok := customRaw.([]any)
 	if !ok {
 		return []Issue{issue(
-			"funding.custom 必须是字符串数组，例如 \"custom\": [\"https://example.com/sponsor\"]。",
-			"funding.custom must be an array of strings, e.g. \"custom\": [\"https://example.com/sponsor\"].",
+			"`funding.custom` 必须是字符串数组，例如 `\"custom\": [\"https://example.com/sponsor\"]`。",
+			"`funding.custom` must be an array of strings, e.g. `\"custom\": [\"https://example.com/sponsor\"]`.",
 		)}
 	}
 	var issues []Issue
@@ -481,8 +482,8 @@ func checkFunding(m map[string]any) []Issue {
 		s, ok := item.(string)
 		if !ok {
 			issues = append(issues, issue(
-				fmt.Sprintf("funding.custom[%d] 必须是字符串链接。", i),
-				fmt.Sprintf("funding.custom[%d] must be a string URL.", i),
+				fmt.Sprintf("`funding.custom[%d]` 必须是字符串链接。", i),
+				fmt.Sprintf("`funding.custom[%d]` must be a string URL.", i),
 			))
 			continue
 		}
@@ -491,8 +492,8 @@ func checkFunding(m map[string]any) []Issue {
 		}
 		if !strings.HasPrefix(s, "https://") && !strings.HasPrefix(s, "http://") && !strings.HasPrefix(s, "mailto:") {
 			issues = append(issues, issue(
-				fmt.Sprintf("funding.custom[%d] 的值 %q 不安全或不受支持。请改成以 https://、http:// 或 mailto: 开头的链接（禁止 javascript:、data: 等）。", i, s),
-				fmt.Sprintf("funding.custom[%d] value %q is unsupported. Use a link starting with https://, http://, or mailto: (javascript:/data: etc. are not allowed).", i, s),
+				fmt.Sprintf("`funding.custom[%d]` 的值 `%s` 不安全或不受支持。请改成以 `https://`、`http://` 或 `mailto:` 开头的链接（禁止 `javascript:`、`data:` 等）。", i, s),
+				fmt.Sprintf("`funding.custom[%d]` value `%s` is unsupported. Use a link starting with `https://`, `http://`, or `mailto:` (`javascript:`/`data:` etc. are not allowed).", i, s),
 			))
 		}
 	}
@@ -506,12 +507,12 @@ func checkOptionalTypedFields(m map[string]any) []Issue {
 	if raw, ok := m["disabledInPublish"]; ok {
 		if _, isBool := raw.(bool); !isBool {
 			issues = append(issues, issue(
-				"若填写 disabledInPublish，值必须是布尔值 true 或 false（不要用字符串 \"true\"）。不需要时请删除该字段。",
-				"If present, disabledInPublish must be a boolean true or false (not the string \"true\"). Remove the field if you do not need it.",
+				"若填写 `disabledInPublish`，值必须是布尔值 `true` 或 `false`（不要用字符串 `\"true\"`）。不需要时请删除该字段。",
+				"If present, `disabledInPublish` must be a boolean `true` or `false` (not the string `\"true\"`). Remove the field if you do not need it.",
 			))
 		}
 	}
-	for _, key := range []string{"backends", "frontends", "keywords", "modes"} {
+	for _, key := range []string{"backends", "frontends", "kernels", "keywords", "modes"} {
 		raw, ok := m[key]
 		if !ok {
 			continue
@@ -519,16 +520,16 @@ func checkOptionalTypedFields(m map[string]any) []Issue {
 		arr, ok := raw.([]any)
 		if !ok {
 			issues = append(issues, issue(
-				fmt.Sprintf("清单字段 %s 若存在则必须是字符串数组，例如 \"%s\": [\"all\"]。", key, key),
-				fmt.Sprintf("Manifest field %s, if present, must be an array of strings, e.g. \"%s\": [\"all\"].", key, key),
+				fmt.Sprintf("清单字段 `%s` 若存在则必须是字符串数组，例如 `\"%s\": [\"all\"]`。", key, key),
+				fmt.Sprintf("Manifest field `%s`, if present, must be an array of strings, e.g. `\"%s\": [\"all\"]`.", key, key),
 			))
 			continue
 		}
 		for i, item := range arr {
 			if _, ok := item.(string); !ok {
 				issues = append(issues, issue(
-					fmt.Sprintf("%s[%d] 必须是字符串。请检查数组元素类型。", key, i),
-					fmt.Sprintf("%s[%d] must be a string. Check the array element types.", key, i),
+					fmt.Sprintf("`%s[%d]` 必须是字符串。请检查数组元素类型。", key, i),
+					fmt.Sprintf("`%s[%d]` must be a string. Check the array element types.", key, i),
 				))
 			}
 		}

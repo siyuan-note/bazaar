@@ -21,6 +21,13 @@ Please fix the corresponding `.txt` file in the repo root, ensuring each line co
 最新 Release / Latest Release: [{{ .Release.Tag }}]({{ .Release.URL }})
   {{- end }}
 
+  {{- if .Issues }}
+
+检测到以下问题，请在修复之后重新打包 `package.zip` 发布新的 Release，并将 Release 标记为 Latest。
+
+The following issues were found. After fixing them, rebuild `package.zip`, publish a new Release, and mark that Release as Latest.
+  {{- end }}
+
   {{- $issues := .Issues }}
   {{- range $j, $issue := $issues }}
 
