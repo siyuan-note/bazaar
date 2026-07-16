@@ -47,7 +47,7 @@ func getOSSUploadSem() chan struct{} {
 	return ossUploadSem
 }
 
-func UploadOSS(key, contentType string, data []byte) (err error) {
+func UploadOSS(key string, data []byte) (err error) {
 	sem := getOSSUploadSem()
 	sem <- struct{}{}
 	defer func() { <-sem }()
@@ -72,10 +72,10 @@ func UploadOSS(key, contentType string, data []byte) (err error) {
 
 	formUploader := storage.NewFormUploader(&cfg)
 	if err = formUploader.Put(context.Background(), nil, putPolicy.UploadToken(qbox.NewMac(QINIU_AK, QINIU_SK)),
-		key, bytes.NewReader(data), int64(len(data)), &storage.PutExtra{MimeType: contentType}); nil != err {
+		key, bytes.NewReader(data), int64(len(data)), &storage.PutExtra{}); nil != err {
 		logger.Warnf("upload [%s] failed: %s, retry it", key, err)
 		if err = formUploader.Put(context.Background(), nil, putPolicy.UploadToken(qbox.NewMac(QINIU_AK, QINIU_SK)),
-			key, bytes.NewReader(data), int64(len(data)), &storage.PutExtra{MimeType: contentType}); nil != err {
+			key, bytes.NewReader(data), int64(len(data)), &storage.PutExtra{}); nil != err {
 			logger.Errorf("retry upload [%s] failed: %s", key, err)
 			return
 		}

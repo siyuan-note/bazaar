@@ -113,7 +113,7 @@ func indexPackage(
 
 	// 校验通过后再上传 package.zip，避免无效包写入 OSS
 	key := "package/" + ownerRepo + "@" + hash
-	if err := util.UploadOSS(key, "application/zip", data); nil != err {
+	if err := util.UploadOSS(key, data); nil != err {
 		logger.Errorf("upload package [%s] failed: %s", ownerRepo, err)
 		return
 	}
@@ -247,17 +247,8 @@ func indexPackageFile(ownerRepo, hash, unzipRoot, filePath string, wg *sync.Wait
 	// 规范化为 /path 形式用于 OSS key
 	normPath := "/" + filepath.ToSlash(relPath)
 
-	var contentType string
-	if strings.HasSuffix(normPath, ".md") {
-		contentType = "text/markdown"
-	} else if strings.HasSuffix(normPath, ".png") {
-		contentType = "image/png"
-	} else if strings.HasSuffix(normPath, ".json") {
-		contentType = "application/json"
-	}
-
 	key := "package/" + ownerRepo + "@" + hash + normPath
-	if err := util.UploadOSS(key, contentType, data); err != nil {
+	if err := util.UploadOSS(key, data); err != nil {
 		logger.Errorf("upload package file [%s] failed: %s", key, err)
 		atomic.StoreInt32(anyFail, 1)
 		return
