@@ -10,9 +10,10 @@
 
 package rules
 
-// Context 单次检查的共享状态：输入字段 + 运行中填充的根目录/清单 + 累计 Issues。
+// Context 单次检查的共享状态：输入字段 + 运行中填充的根目录/包信息 + 累计 Issues。
 type Context struct {
 	// 输入（由调用方填入）
+
 	PackageRoot   string
 	OwnerRepo     string
 	Type          PackageType
@@ -22,13 +23,10 @@ type Context struct {
 	AllowThemeJS  bool
 
 	// 运行中填充
-	Owner        string
-	Repo         string
-	Root         string
-	Manifest     map[string]any
-	Package      Package
-	ManifestPath string
-	Issues       []Issue
+
+	Root    string
+	Package Package
+	Issues  []Issue
 
 	// halt 为 true 时，后续步骤应自跳过且不再追加问题（例如输入/包根无效）。
 	halt bool

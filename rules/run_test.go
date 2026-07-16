@@ -32,8 +32,8 @@ func TestHaltKeepsOnlyLeadingIssue(t *testing.T) {
 	if !c.Halted() {
 		t.Fatal("expected Halted")
 	}
-	if c.Root != "" || c.Manifest != nil {
-		t.Fatal("later steps should not have filled Root/Manifest")
+	if c.Root != "" || c.Package.Name != "" {
+		t.Fatal("later steps should not have filled Root/Package")
 	}
 }
 

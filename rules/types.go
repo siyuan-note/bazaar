@@ -13,8 +13,8 @@ package rules
 // Issue 单条检查问题。
 // MessageZh / MessageEn 自含路径与改法，可直接用于评论。
 type Issue struct {
-	MessageZh string `json:"messageZh"`
-	MessageEn string `json:"messageEn"`
+	MessageZh string
+	MessageEn string
 }
 
 func issue(zh, en string) Issue {

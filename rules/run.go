@@ -18,7 +18,7 @@ import (
 
 // step 为流水线中的一步。步骤内部自行判断是否可执行：
 //   - 已 Halt：直接 return，不再追加 Issue（保证「开头走不通时只留下开头的错误」）
-//   - 缺少本步依赖的数据（如 Manifest == nil）：跳过本步
+//   - 缺少本步依赖的数据：跳过本步
 type step func(*Context)
 
 // Run 按 pipeline 固定顺序调用所有步骤。
@@ -27,7 +27,7 @@ type step func(*Context)
 //   - 流水线本身不 break；始终依次调用每个 step。
 //   - OwnerRepo / PackageRoot 失败时调用 Halt()，后续 step 自跳过。
 //   - 包根有效之后，文件类与清单字段类问题尽量累计，方便一次评论里列全。
-//   - 清单读失败只记 Issue、不 Halt，以便此前已发现的缺文件等问题仍保留；字段检查因 Manifest == nil 而跳过。
+//   - 清单读失败只记 Issue、不 Halt，以便此前已发现的缺文件等问题仍保留；字段检查随读失败一并跳过。
 func Run(c *Context) {
 	if c == nil {
 		return
@@ -39,17 +39,16 @@ func Run(c *Context) {
 
 // pipeline 为检查步骤的固定顺序。新增规则时：先在本包实现，再按依赖插入本切片。
 var pipeline = []step{
-	stepOwnerRepo,     // 解析 OwnerRepo 得到 Owner/Repo，失败则 Halt
+	stepOwnerRepo,     // 校验 OwnerRepo 格式，失败则 Halt
 	stepPackageRoot,   // 解析解压目录得到包根 Root，失败则 Halt
 	stepRequiredFiles, // 检查展示文件、清单文件及类型运行时必要文件，可累计报错
 	stepPathNames,     // 递归检查路径与文件名规范
 	stepThemeJS,       // 仅主题：非白名单不得包含 theme.js
-	stepLoadManifest,  // 读取清单 JSON，失败只记 Issue、不 Halt
-	stepManifest,      // 校验清单字段，依赖上一步的 Manifest
+	stepManifest,      // 读取并校验清单字段；读失败只记 Issue、不 Halt
 }
 
-// stepOwnerRepo 校验并拆分 OwnerRepo，写入 c.Owner / c.Repo。
-// 无效时 Halt，避免后续用空的 owner/repo 去做 url、name 比对。
+// stepOwnerRepo 校验 OwnerRepo 格式（owner/repo）。
+// 无效时 Halt，避免后续用无效标识去做 url、name 比对。
 func stepOwnerRepo(c *Context) {
 	if c.Halted() {
 		return
@@ -62,8 +61,7 @@ func stepOwnerRepo(c *Context) {
 		c.Halt()
 		return
 	}
-	owner, repo, ok := splitOwnerRepo(c.OwnerRepo)
-	if !ok {
+	if _, _, ok := splitOwnerRepo(c.OwnerRepo); !ok {
 		c.Add(issue(
 			fmt.Sprintf("仓库标识 %q 格式不正确，应为 owner/repo（中间一个斜杠，两侧无空格），例如 siyuan-note/plugin-sample。请修正集市列表文件（如 plugins.txt）中对应行后重新提交。", c.OwnerRepo),
 			fmt.Sprintf("Repository id %q is invalid; expected owner/repo with no spaces (e.g. siyuan-note/plugin-sample). Fix the corresponding line in the bazaar list file (e.g. plugins.txt) and push again.", c.OwnerRepo),
@@ -71,8 +69,6 @@ func stepOwnerRepo(c *Context) {
 		c.Halt()
 		return
 	}
-	c.Owner = owner
-	c.Repo = repo
 }
 
 // splitOwnerRepo 要求恰好一段 "/"，且两侧无首尾空白（空白视为格式错误，不自动 Trim 后接受）。
@@ -130,31 +126,33 @@ func stepThemeJS(c *Context) {
 	c.Add(ThemeJS(c.Root, c.AllowThemeJS)...)
 }
 
-// stepLoadManifest 读取类型对应的清单 JSON。
-// 失败时不 Halt：前面的缺文件等问题应保留；字段步靠 Manifest == nil 跳过。
-func stepLoadManifest(c *Context) {
+// stepManifest 读取类型对应的清单 JSON，并校验字段（name/url/version/readme 等，含 OccupiedNames 唯一性）。
+// 读失败时不 Halt：前面的缺文件等问题应保留；此时也不做字段检查。
+func stepManifest(c *Context) {
 	if c.Halted() {
 		return
 	}
-	c.ManifestPath = filepath.Join(c.Root, c.Type.ManifestFile())
-	manifest, err := ReadManifest(c.ManifestPath)
+	manifestPath := filepath.Join(c.Root, c.Type.ManifestFile())
+	manifest, err := ReadManifest(manifestPath)
 	if err != nil {
 		c.Add(IssueFromErr(err))
 		return
 	}
-	c.Manifest = manifest
 	c.Package = packageFromMap(manifest)
-}
 
-// stepManifest 校验清单字段（name/url/version/readme 等，含 OccupiedNames 唯一性）。
-func stepManifest(c *Context) {
-	if c.Halted() || c.Manifest == nil {
+	owner, repo, ok := splitOwnerRepo(c.OwnerRepo)
+	if !ok {
+		// stepOwnerRepo 已通过时不应发生；仍记一条内部错误，避免静默跳过字段校验。
+		c.Add(issue(
+			fmt.Sprintf("内部错误：仓库标识 %q 无法解析为 owner/repo。这通常是集市检查流程内部状态不一致，请联系维护者重试。", c.OwnerRepo),
+			fmt.Sprintf("Internal error: repository id %q could not be parsed as owner/repo. This usually indicates inconsistent checker state; contact a maintainer.", c.OwnerRepo),
+		))
 		return
 	}
-	c.Add(Manifest(c.Manifest, ManifestInput{
+	c.Add(Manifest(manifest, ManifestInput{
 		PackageRoot:   c.Root,
-		Owner:         c.Owner,
-		Repo:          c.Repo,
+		Owner:         owner,
+		Repo:          repo,
 		Type:          c.Type,
 		OldName:       c.OldName,
 		OldVersion:    c.OldVersion,

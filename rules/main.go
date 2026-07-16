@@ -32,11 +32,10 @@ type Input struct {
 
 // Result 检查结果。
 type Result struct {
-	OK           bool    `json:"ok"`
-	PackageRoot  string  `json:"packageRoot,omitempty"`
-	Issues       []Issue `json:"issues"`
-	Package      Package `json:"package"`
-	ManifestPath string  `json:"manifestPath,omitempty"`
+	OK          bool
+	PackageRoot string
+	Issues      []Issue
+	Package     Package
 }
 
 // Check 对单个集市包（已解压目录）执行检查。不下载、不上传、不访问网络。
@@ -63,10 +62,9 @@ func Check(in Input) *Result {
 	Run(c)
 
 	return &Result{
-		OK:           c.OK(),
-		PackageRoot:  c.Root,
-		Issues:       c.Issues,
-		Package:      c.Package,
-		ManifestPath: c.ManifestPath,
+		OK:          c.OK(),
+		PackageRoot: c.Root,
+		Issues:      c.Issues,
+		Package:     c.Package,
 	}
 }
