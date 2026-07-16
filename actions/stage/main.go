@@ -35,7 +35,7 @@ Stage 流程：
 2. 按类型依次执行 performStage；每类开始前重新加载 OccupiedNames，以便上一类本轮新写入的 name 参与后续类型的唯一性检查
 3. 读取 *s.txt 与既有 stage/*.json，并发索引各 owner/repo
 4. hash 未变则跳过下载；否则下载 package.zip → rules.Check → 上传 OSS（package.zip、README、preview、icon、清单 JSON）
-5. 按 updated 降序排序后写出 stage/*.json（键序经 sortJSONKeys 稳定）
+5. 按 updated 降序排序后写出 stage/*.json（键序经 marshalSortedIndentedJSON 稳定）
 */
 
 type Set map[string]struct{} // 字符串集合
@@ -71,41 +71,50 @@ func main() {
 		logger.Fatalf("create github client failed: %s", err)
 	}
 
-	if err := checkRateLimitBeforeStage(); err != nil {
+	reposByType, err := loadReposByPackageType()
+	if err != nil {
+		logger.Fatalf("parse repos list failed: %s", err)
+	}
+
+	if err := checkRateLimitBeforeStage(reposByType); err != nil {
 		logger.Fatalf("GitHub API rate limit check failed: %s", err)
 	}
 
-	// 每类 stage 前重新加载 OccupiedNames，以便上一类本轮新写入的 name 参与后续类型的唯一性检查。
+	// 每类 stage 前重新加载 OccupiedNames，以便上一类本轮 performStage 新写入的 name 参与后续类型的唯一性检查。
+	// 仅对新上架的包进行检查
 	for _, packageType := range rules.AllPackageTypes() {
 		occupiedNames, err := util.LoadOccupiedNames(BAZAAR_ROOT_PATH)
 		if err != nil {
 			logger.Fatalf("load occupied names failed: %s", err)
 		}
-		performStage(packageType, occupiedNames)
+		performStage(packageType, occupiedNames, reposByType[packageType])
 	}
 
 	logger.Infof("Stage completed")
 }
 
-// apiCallsPerRepo 每个仓库 staging 时消耗的 GitHub REST API (core) 请求数经验值（repoStats 1 次 + getRepoLatestRelease 等）
-const apiCallsPerRepo = 2.5
-
-// checkRateLimitBeforeStage 统计本次待检查仓库数、请求 GitHub rate_limit（该请求不计入 core），若 core 剩余请求数不足则返回错误。参考 https://docs.github.com/zh/rest/rate-limit/rate-limit
-func checkRateLimitBeforeStage() error {
-	var repoCount int
+func loadReposByPackageType() (map[rules.PackageType][]string, error) {
+	reposByType := make(map[rules.PackageType][]string, len(rules.AllPackageTypes()))
 	for _, packageType := range rules.AllPackageTypes() {
 		repos, err := util.ParseReposFromTxt(packageType.ReposListFile())
 		if err != nil {
-			return fmt.Errorf("count staging repos: %w", err)
+			return nil, fmt.Errorf("parse %s: %w", packageType.ReposListFile(), err)
 		}
+		reposByType[packageType] = repos
+	}
+	return reposByType, nil
+}
+
+// checkRateLimitBeforeStage 统计本次待检查仓库数、请求 GitHub rate_limit（该请求不计入 core），若 core 剩余请求数不足则返回错误。参考 https://docs.github.com/zh/rest/rate-limit/rate-limit
+func checkRateLimitBeforeStage(reposByType map[rules.PackageType][]string) error {
+	var repoCount int
+	for _, repos := range reposByType {
 		repoCount += len(repos)
 	}
-	required := int(math.Ceil(float64(repoCount) * apiCallsPerRepo))
+	// 2.5 为每个仓库 staging 时消耗的 GitHub REST API (core) 请求数经验值（repoStats 1 次 + getRepoLatestRelease 等）
+	required := int(math.Ceil(float64(repoCount) * 2.5))
 	if required == 0 {
 		return nil
-	}
-	if GITHUB_TOKEN == "" {
-		return fmt.Errorf("env PAT is not set")
 	}
 	ctx, cancel := context.WithTimeout(githubContext, 10*time.Second)
 	defer cancel()
@@ -150,44 +159,8 @@ func loadOldStageData(packageType rules.PackageType) (map[string]*util.StageRepo
 	return oldStageData, nil
 }
 
-// sortJSONKeys 对 JSON 反序列化后按对象键排序再序列化（带缩进），保证输出键序稳定。
-// 经 Unmarshal 到 any 后，对象均为 map[string]any；json.Marshal 会按字典序输出键。
-// 先输出紧凑 JSON，再用 json.Indent 做缩进，避免 json.MarshalIndent 对嵌套 any 的缩进错乱。
-func sortJSONKeys(data []byte) ([]byte, error) {
-	var v any
-	if err := json.Unmarshal(data, &v); nil != err {
-		return nil, err
-	}
-	compact, err := marshalSortedCompact(v)
-	if nil != err {
-		return nil, err
-	}
-	var buf bytes.Buffer
-	if err := json.Indent(&buf, compact, "", "  "); nil != err {
-		return nil, err
-	}
-	return buf.Bytes(), nil
-}
-
-// marshalSortedCompact 序列化为紧凑 JSON；map 键由 json.Marshal 按字典序输出。
-// SetEscapeHTML(false) 避免将 & 等字符转为 \uXXXX，与既有 stage 文件字符串格式一致。
-func marshalSortedCompact(v any) ([]byte, error) {
-	var buf bytes.Buffer
-	enc := json.NewEncoder(&buf)
-	enc.SetEscapeHTML(false)
-	if err := enc.Encode(v); nil != err {
-		return nil, err
-	}
-	return bytes.TrimSpace(buf.Bytes()), nil
-}
-
-func performStage(packageType rules.PackageType, occupiedNames map[string]struct{}) {
+func performStage(packageType rules.PackageType, occupiedNames map[string]struct{}, reposSlice []string) {
 	logger.Infof("start stage [%s]", packageType.Plural())
-
-	reposSlice, err := util.ParseReposFromTxt(packageType.ReposListFile())
-	if nil != err {
-		logger.Fatalf("read or parse [%s] failed: %s", packageType.ReposListFile(), err)
-	}
 
 	oldStageData, err := loadOldStageData(packageType)
 	if nil != err {
@@ -289,13 +262,9 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 		staged.Repos[i] = *repo
 	}
 
-	data, err := gulu.JSON.MarshalIndentJSON(staged, "", "  ")
+	data, err := marshalSortedIndentedJSON(staged)
 	if nil != err {
 		logger.Fatalf("marshal stage [%s] failed: %s", packageType.StageJSONFile(), err)
-	}
-	data, err = sortJSONKeys(data)
-	if nil != err {
-		logger.Fatalf("sort stage [%s] keys failed: %s", packageType.StageJSONFile(), err)
 	}
 
 	stageFilePath := filepath.Join(BAZAAR_ROOT_PATH, "stage", packageType.StageJSONFile())
@@ -304,4 +273,34 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 	}
 
 	logger.Infof("finish stage [%s]", packageType.Plural())
+}
+
+// marshalSortedIndentedJSON 序列化为键序稳定、带缩进的 JSON。
+// v 可为 struct，或原始 JSON 字节（[]byte）；struct 会先经 json.Marshal / Unmarshal 转为 JSON 树（map[string]any），
+// 再按字典序输出键。先输出紧凑 JSON，再用 json.Indent 缩进，避免 json.MarshalIndent 对嵌套 any 的缩进错乱。
+// SetEscapeHTML(false) 避免将 & 等字符转为 \uXXXX。
+func marshalSortedIndentedJSON(v any) ([]byte, error) {
+	data, ok := v.([]byte)
+	if !ok {
+		var err error
+		data, err = json.Marshal(v)
+		if nil != err {
+			return nil, err
+		}
+	}
+	var tree any
+	if err := json.Unmarshal(data, &tree); nil != err {
+		return nil, err
+	}
+	var compact bytes.Buffer
+	enc := json.NewEncoder(&compact)
+	enc.SetEscapeHTML(false)
+	if err := enc.Encode(tree); nil != err {
+		return nil, err
+	}
+	var buf bytes.Buffer
+	if err := json.Indent(&buf, bytes.TrimSpace(compact.Bytes()), "", "  "); nil != err {
+		return nil, err
+	}
+	return buf.Bytes(), nil
 }

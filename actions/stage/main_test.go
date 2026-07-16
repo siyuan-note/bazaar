@@ -45,13 +45,13 @@ func bazaarRoot(t *testing.T) string {
 	}
 }
 
-// normalizeJSONText 统一换行符，便于与 sortJSONKeys 输出（LF）对比。
+// normalizeJSONText 统一换行符，便于与 marshalSortedIndentedJSON 输出（LF）对比。
 // 仓库中的 stage 文件在 Windows 检出后可能带 CRLF。
 func normalizeJSONText(s string) string {
 	return strings.ReplaceAll(s, "\r\n", "\n")
 }
 
-func TestSortJSONKeys_stageFiles(t *testing.T) {
+func TestMarshalSortedIndentedJSON_stageFiles(t *testing.T) {
 	root := bazaarRoot(t)
 	for _, name := range stageJSONFiles {
 		t.Run(name, func(t *testing.T) {
@@ -61,7 +61,7 @@ func TestSortJSONKeys_stageFiles(t *testing.T) {
 				t.Fatal(err)
 			}
 
-			got, err := sortJSONKeys(original)
+			got, err := marshalSortedIndentedJSON(original)
 			if err != nil {
 				t.Fatal(err)
 			}
@@ -69,13 +69,13 @@ func TestSortJSONKeys_stageFiles(t *testing.T) {
 			want := normalizeJSONText(string(original))
 			gotStr := string(got)
 			if gotStr != want {
-				t.Fatalf("sortJSONKeys output differs from stage file\nlength: got %d, want %d", len(gotStr), len(want))
+				t.Fatalf("marshalSortedIndentedJSON output differs from stage file\nlength: got %d, want %d", len(gotStr), len(want))
 			}
 		})
 	}
 }
 
-func TestSortJSONKeys_idempotent(t *testing.T) {
+func TestMarshalSortedIndentedJSON_idempotent(t *testing.T) {
 	root := bazaarRoot(t)
 	path := filepath.Join(root, "stage", "icons.json")
 	original, err := os.ReadFile(path)
@@ -83,15 +83,15 @@ func TestSortJSONKeys_idempotent(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	first, err := sortJSONKeys(original)
+	first, err := marshalSortedIndentedJSON(original)
 	if err != nil {
 		t.Fatal(err)
 	}
-	second, err := sortJSONKeys(first)
+	second, err := marshalSortedIndentedJSON(first)
 	if err != nil {
 		t.Fatal(err)
 	}
 	if string(first) != string(second) {
-		t.Fatal("sortJSONKeys is not idempotent")
+		t.Fatal("marshalSortedIndentedJSON is not idempotent")
 	}
 }
