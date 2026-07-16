@@ -23,17 +23,18 @@ import (
 	"github.com/qiniu/go-sdk/v7/storage"
 )
 
-var logger = gulu.Log.NewLogger(os.Stdout)
+var (
+	logger       = gulu.Log.NewLogger(os.Stdout)
+	QINIU_BUCKET = os.Getenv("QINIU_BUCKET")
+	QINIU_AK     = os.Getenv("QINIU_AK")
+	QINIU_SK     = os.Getenv("QINIU_SK")
+)
 
 func UploadOSS(key, contentType string, data []byte) (err error) {
-	bucket := os.Getenv("QINIU_BUCKET")
-	ak := os.Getenv("QINIU_AK")
-	sk := os.Getenv("QINIU_SK")
-
 	cfg := storage.Config{UseCdnDomains: true, UseHTTPS: true}
-	mac := qbox.NewMac(ak, sk)
+	mac := qbox.NewMac(QINIU_AK, QINIU_SK)
 	bucketManager := storage.NewBucketManager(mac, &cfg)
-	stat, err := bucketManager.Stat(bucket, key)
+	stat, err := bucketManager.Stat(QINIU_BUCKET, key)
 	if nil != err {
 		if !strings.Contains(err.Error(), "no such file or directory") {
 			logger.Warnf("stat [%s] failed: %s", key, err)
@@ -45,14 +46,14 @@ func UploadOSS(key, contentType string, data []byte) (err error) {
 	}
 
 	putPolicy := storage.PutPolicy{
-		Scope: fmt.Sprintf("%s:%s", bucket, key), // overwrite if exists
+		Scope: fmt.Sprintf("%s:%s", QINIU_BUCKET, key), // overwrite if exists
 	}
 
 	formUploader := storage.NewFormUploader(&cfg)
-	if err = formUploader.Put(context.Background(), nil, putPolicy.UploadToken(qbox.NewMac(ak, sk)),
+	if err = formUploader.Put(context.Background(), nil, putPolicy.UploadToken(qbox.NewMac(QINIU_AK, QINIU_SK)),
 		key, bytes.NewReader(data), int64(len(data)), &storage.PutExtra{MimeType: contentType}); nil != err {
 		logger.Warnf("upload [%s] failed: %s, retry it", key, err)
-		if err = formUploader.Put(context.Background(), nil, putPolicy.UploadToken(qbox.NewMac(ak, sk)),
+		if err = formUploader.Put(context.Background(), nil, putPolicy.UploadToken(qbox.NewMac(QINIU_AK, QINIU_SK)),
 			key, bytes.NewReader(data), int64(len(data)), &storage.PutExtra{MimeType: contentType}); nil != err {
 			logger.Errorf("retry upload [%s] failed: %s", key, err)
 			return

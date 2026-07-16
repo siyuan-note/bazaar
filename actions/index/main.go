@@ -14,6 +14,7 @@ import (
 	"encoding/json"
 	"os"
 	"os/exec"
+	"path/filepath"
 	"strings"
 	"sync"
 	"time"
@@ -24,7 +25,10 @@ import (
 	"github.com/siyuan-note/bazaar/rules"
 )
 
-var logger = gulu.Log.NewLogger(os.Stdout)
+var (
+	logger           = gulu.Log.NewLogger(os.Stdout)
+	BAZAAR_ROOT_PATH = "." // bazaar 仓库根目录（与 stage 一致，CI 中在 checkout 根目录执行）
+)
 
 // 出现任何错误都立即退出中断工作流，确保一切正常才上报 hash
 func main() {
@@ -56,34 +60,26 @@ func main() {
 
 // stageIndex 将指定类型的集市索引上传到 OSS
 func stageIndex(hash string, packageType rules.PackageType) {
-	stageFile := packageType.StageJSONFile()
-	u := "https://raw.githubusercontent.com/siyuan-note/bazaar/" + hash + "/stage/" + stageFile
-	resp, data, errs := gorequest.New().Get(u).
-		Set("User-Agent", util.UserAgent).
-		Retry(1, 3*time.Second).Timeout(30 * time.Second).EndBytes()
-	if nil != errs {
-		logger.Fatalf("get [%s] failed: %s", u, errs)
+	stageFileName := packageType.StageJSONFile()
+	stageFilePath := filepath.Join(BAZAAR_ROOT_PATH, "stage", stageFileName)
+	if _, err := os.Stat(stageFilePath); nil != err {
+		logger.Fatalf("read [%s] failed: %s", stageFilePath, err)
 		return
 	}
-	if 200 != resp.StatusCode {
-		logger.Fatalf("get [%s] failed: %d", u, resp.StatusCode)
+	stageFile, err := util.ReadStageFile(stageFilePath)
+	if nil != err {
+		logger.Fatalf("read [%s] failed: %s", stageFilePath, err)
 		return
 	}
 
-	// 压缩 JSON：解析后重新序列化为压缩格式（移除空格和换行）
-	var jsonData any
-	err := json.Unmarshal(data, &jsonData)
+	// 去掉 stage 流程内部字段后重新序列化为压缩 JSON（移除空格和换行）
+	data, err := json.Marshal(stageFile.ForPublicIndex())
 	if nil != err {
-		logger.Fatalf("unmarshal [%s] failed: %s", u, err)
-		return
-	}
-	data, err = json.Marshal(jsonData)
-	if nil != err {
-		logger.Fatalf("marshal [%s] failed: %s", u, err)
+		logger.Fatalf("marshal [%s] failed: %s", stageFilePath, err)
 		return
 	}
 
-	key := "bazaar@" + hash + "/stage/" + stageFile
+	key := "bazaar@" + hash + "/stage/" + stageFileName
 	err = util.UploadOSS(key, "application/json", data)
 	if nil != err {
 		logger.Fatalf("upload bazaar stage index [%s] failed: %s", key, err)

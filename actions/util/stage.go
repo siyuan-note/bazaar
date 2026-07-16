@@ -25,6 +25,23 @@ type StageFile struct {
 
 // StageRepo 对应 stage/*.json 中 repos 数组的单项。
 type StageRepo struct {
+	URL               string        `json:"url"`
+	Updated           string        `json:"updated"`
+	Stars             int           `json:"stars"`
+	OpenIssues        int           `json:"openIssues"`
+	Size              int64         `json:"size"`
+	InstallSize       int64         `json:"installSize"`
+	PackageZipAssetID int64         `json:"packageZipAssetId,omitempty"`
+	Package           rules.Package `json:"package"`
+}
+
+// StageIndexFile 供 OSS 集市索引发布的 stage JSON，不含 stage 流程内部字段。
+type StageIndexFile struct {
+	Repos []StageIndexRepo `json:"repos"`
+}
+
+// StageIndexRepo 对应发布后集市索引 repos 数组的单项。
+type StageIndexRepo struct {
 	URL         string        `json:"url"`
 	Updated     string        `json:"updated"`
 	Stars       int           `json:"stars"`
@@ -32,6 +49,23 @@ type StageRepo struct {
 	Size        int64         `json:"size"`
 	InstallSize int64         `json:"installSize"`
 	Package     rules.Package `json:"package"`
+}
+
+// ForPublicIndex 转为供客户端使用的集市索引，去掉 stage 流程内部字段。
+func (f StageFile) ForPublicIndex() StageIndexFile {
+	out := StageIndexFile{Repos: make([]StageIndexRepo, len(f.Repos))}
+	for i, repo := range f.Repos {
+		out.Repos[i] = StageIndexRepo{
+			URL:         repo.URL,
+			Updated:     repo.Updated,
+			Stars:       repo.Stars,
+			OpenIssues:  repo.OpenIssues,
+			Size:        repo.Size,
+			InstallSize: repo.InstallSize,
+			Package:     repo.Package,
+		}
+	}
+	return out
 }
 
 // ReadStageFile 读取并解析 stage JSON 文件。文件不存在时返回空 StageFile（不报错）。

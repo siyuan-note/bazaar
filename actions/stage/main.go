@@ -202,7 +202,7 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 			if packageType == rules.TypeTheme {
 				_, allowThemeJS = themeJsAllowSet[ownerRepo]
 			}
-			ok, skipped, hash, updated, size, installSize, pkg := indexPackage(ownerRepo, packageType, oldStageURL, oldRepo, allowThemeJS, occupiedNames, heavySem)
+			ok, skipped, hash, updated, size, installSize, packageZipAssetID, pkg := indexPackage(ownerRepo, packageType, oldStageURL, oldRepo, allowThemeJS, occupiedNames, heavySem)
 			if skipped {
 				// hash 未变化，跳过下载，直接沿用旧 stage 条目
 				stageReposMu.Lock()
@@ -239,13 +239,14 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 
 			stageReposMu.Lock()
 			stageRepos = append(stageRepos, &util.StageRepo{
-				URL:         ownerRepo + "@" + hash,
-				Stars:       stars,
-				OpenIssues:  openIssues,
-				Updated:     updated,
-				Size:        size,
-				InstallSize: installSize,
-				Package:     *pkg,
+				URL:               ownerRepo + "@" + hash,
+				Stars:             stars,
+				OpenIssues:        openIssues,
+				Updated:           updated,
+				Size:              size,
+				InstallSize:       installSize,
+				PackageZipAssetID: packageZipAssetID,
+				Package:           *pkg,
 			})
 			stageReposMu.Unlock()
 			logger.Infof("updated repo [%s]", ownerRepo)

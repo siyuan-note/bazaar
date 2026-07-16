@@ -12,6 +12,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
@@ -22,23 +23,6 @@ import (
 	"github.com/siyuan-note/bazaar/actions/util"
 	"github.com/siyuan-note/bazaar/rules"
 )
-
-// parseHashFromStageURL 从 stage 条目的 URL（格式 owner/repo@hash）中解析出 hash 部分，若无 @ 或 @ 后为空则返回空字符串
-func parseHashFromStageURL(stageURL string) string {
-	idx := strings.Index(stageURL, "@")
-	if idx < 0 || idx >= len(stageURL)-1 {
-		return ""
-	}
-	return stageURL[idx+1:]
-}
-
-// getOldPackageFields 从已 stage 的条目中解析出 package 的 name、version
-func getOldPackageFields(oldRepo *util.StageRepo) (name, version string) {
-	if oldRepo == nil {
-		return "", ""
-	}
-	return oldRepo.Package.Name, oldRepo.Package.Version
-}
 
 // indexPackage 索引包，返回的 pkg 为解析后的清单元数据。
 // oldStageURL 为当前已 stage 的该仓库 URL（格式 owner/repo@hash），若与 Latest Release 的 hash 一致则跳过下载并返回 skipped=true。
@@ -54,7 +38,7 @@ func indexPackage(
 	allowThemeJS bool,
 	occupiedNames map[string]struct{},
 	heavySem chan struct{},
-) (ok, skipped bool, hash, published string, size, installSize int64, pkg *rules.Package) {
+) (ok, skipped bool, hash, published string, size, installSize, packageZipAssetID int64, pkg *rules.Package) {
 	releaseInfo, releaseOk := getRepoLatestRelease(ownerRepo)
 	if !releaseOk {
 		logger.Errorf("get [%s] latest release failed", ownerRepo)
@@ -62,12 +46,15 @@ func indexPackage(
 	}
 	hash = releaseInfo.CommitSHA
 	published = releaseInfo.Published
-	packageZipAssetID := releaseInfo.PackageZipAssetID
+	packageZipAssetID = releaseInfo.PackageZipAssetID
 
 	// Latest Release 的 hash 与已 stage 的 hash 一致则跳过，不下载、不更新，沿用旧条目
 	if oldStageURL != "" {
 		oldHash := parseHashFromStageURL(oldStageURL)
 		if oldHash != "" && hash == oldHash {
+			if changed, detail := sameCommitPackageZipChanged(oldStageRepo, packageZipAssetID); changed {
+				logger.Errorf("repo [%s] hash unchanged [%s] but %s; a new release tag is required to update the staged package", ownerRepo, hash, detail)
+			}
 			logger.Infof("skip repo [%s], hash unchanged [%s]", ownerRepo, hash)
 			skipped = true
 			return
@@ -94,7 +81,10 @@ func indexPackage(
 	size = int64(len(data))
 	installSize = size
 
-	oldName, oldVersion := getOldPackageFields(oldStageRepo)
+	var oldName, oldVersion string
+	if oldStageRepo != nil {
+		oldName, oldVersion = oldStageRepo.Package.Name, oldStageRepo.Package.Version
+	}
 	result := rules.Check(rules.Input{
 		PackageRoot:   tmpUnzipPath,
 		OwnerRepo:     ownerRepo,
@@ -167,6 +157,44 @@ func indexPackage(
 	}
 	ok = true
 	return
+}
+
+// getRepoLatestRelease 获取仓库最新发布的版本
+func getRepoLatestRelease(ownerRepo string) (util.LatestRelease, bool) {
+	owner, name, cutOk := strings.Cut(ownerRepo, "/")
+	if !cutOk {
+		logger.Errorf("get [%s] latest release failed: invalid owner/repo", ownerRepo)
+		return util.LatestRelease{}, false
+	}
+	ctx, cancel := context.WithTimeout(githubContext, REQUEST_TIMEOUT)
+	defer cancel()
+
+	releaseInfo, err := util.FetchLatestRelease(ctx, githubClient, owner, name)
+	if err != nil {
+		logger.Errorf("get release [%s] failed: %s", ownerRepo, err)
+		return util.LatestRelease{}, false
+	}
+	return releaseInfo, true
+}
+
+// sameCommitPackageZipChanged 判断 Latest Release 仍指向同一 commit，但 package.zip 是否已被替换。
+func sameCommitPackageZipChanged(old *util.StageRepo, assetID int64) (changed bool, detail string) {
+	if old == nil || old.PackageZipAssetID == 0 || assetID == 0 {
+		return false, ""
+	}
+	if old.PackageZipAssetID == assetID {
+		return false, ""
+	}
+	return true, fmt.Sprintf("package.zip asset id changed (%d -> %d)", old.PackageZipAssetID, assetID)
+}
+
+// parseHashFromStageURL 从 stage 条目的 URL（格式 owner/repo@hash）中解析出 hash 部分，若无 @ 或 @ 后为空则返回空字符串
+func parseHashFromStageURL(stageURL string) string {
+	idx := strings.Index(stageURL, "@")
+	if idx < 0 || idx >= len(stageURL)-1 {
+		return ""
+	}
+	return stageURL[idx+1:]
 }
 
 // getPackage 从解压后的包根目录 unzipRoot 读取该类型的清单 JSON（如 plugin.json），解析为 Package。
@@ -250,22 +278,4 @@ func repoStats(ownerRepo string) (stars, openIssues int, ok bool) {
 	openIssues = repo.GetOpenIssuesCount()
 	ok = true
 	return
-}
-
-// getRepoLatestRelease 获取仓库最新发布的版本
-func getRepoLatestRelease(ownerRepo string) (util.LatestRelease, bool) {
-	owner, name, cutOk := strings.Cut(ownerRepo, "/")
-	if !cutOk {
-		logger.Errorf("get [%s] latest release failed: invalid owner/repo", ownerRepo)
-		return util.LatestRelease{}, false
-	}
-	ctx, cancel := context.WithTimeout(githubContext, REQUEST_TIMEOUT)
-	defer cancel()
-
-	releaseInfo, err := util.FetchLatestRelease(ctx, githubClient, owner, name)
-	if err != nil {
-		logger.Errorf("get release [%s] failed: %s", ownerRepo, err)
-		return util.LatestRelease{}, false
-	}
-	return releaseInfo, true
 }
