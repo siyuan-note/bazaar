@@ -47,9 +47,13 @@ func getOSSUploadSem() chan struct{} {
 	return ossUploadSem
 }
 
-func UploadOSS(key string, data []byte) (err error) {
+func UploadOSS(ctx context.Context, key string, data []byte) (err error) {
 	sem := getOSSUploadSem()
-	sem <- struct{}{}
+	select {
+	case <-ctx.Done():
+		return ctx.Err()
+	case sem <- struct{}{}:
+	}
 	defer func() { <-sem }()
 
 	cfg := storage.Config{UseCdnDomains: true, UseHTTPS: true}
@@ -60,10 +64,13 @@ func UploadOSS(key string, data []byte) (err error) {
 		if !strings.Contains(err.Error(), "no such file or directory") {
 			logger.Warnf("stat [%s] failed: %s", key, err)
 		}
-	} else {
-		if "" != stat.Hash {
-			return
-		}
+	} else if stat.Hash != "" {
+		return nil
+	}
+
+	// 阻塞结束后检查是否已取消
+	if err = ctx.Err(); err != nil {
+		return err
 	}
 
 	putPolicy := storage.PutPolicy{
@@ -71,17 +78,21 @@ func UploadOSS(key string, data []byte) (err error) {
 	}
 
 	formUploader := storage.NewFormUploader(&cfg)
-	if err = formUploader.Put(context.Background(), nil, putPolicy.UploadToken(qbox.NewMac(QINIU_AK, QINIU_SK)),
+	uploadToken := putPolicy.UploadToken(mac)
+	if err = formUploader.Put(ctx, nil, uploadToken,
 		key, bytes.NewReader(data), int64(len(data)), &storage.PutExtra{}); nil != err {
+		if ctx.Err() != nil {
+			return ctx.Err()
+		}
 		logger.Warnf("upload [%s] failed: %s, retry it", key, err)
-		if err = formUploader.Put(context.Background(), nil, putPolicy.UploadToken(qbox.NewMac(QINIU_AK, QINIU_SK)),
+		if err = formUploader.Put(ctx, nil, uploadToken,
 			key, bytes.NewReader(data), int64(len(data)), &storage.PutExtra{}); nil != err {
 			logger.Errorf("retry upload [%s] failed: %s", key, err)
-			return
+			return err
 		}
 		logger.Infof("retry upload [%s] success", key)
 	}
-	return
+	return nil
 }
 
 const UserAgent = "bazaar/1.0.0 https://github.com/siyuan-note/bazaar"

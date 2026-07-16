@@ -17,11 +17,10 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
-	"sync"
-	"sync/atomic"
 
 	"github.com/siyuan-note/bazaar/actions/util"
 	"github.com/siyuan-note/bazaar/rules"
+	"golang.org/x/sync/errgroup"
 )
 
 // indexPackage 索引包，返回的 pkg 为解析后的清单元数据。
@@ -113,37 +112,35 @@ func indexPackage(
 
 	// 校验通过后再上传 package.zip，避免无效包写入 OSS
 	key := "package/" + ownerRepo + "@" + hash
-	if err := util.UploadOSS(key, data); nil != err {
+	if err := util.UploadOSS(context.Background(), key, data); nil != err {
 		logger.Errorf("upload package [%s] failed: %s", ownerRepo, err)
 		return
 	}
 
-	// 收集需要上传的 README 文件列表（根据包配置中的 readme 字段）
-	readmeFiles := make(Set)
+	// 收集需要上传到 OSS 的包根目录文件
+	uploadFiles := Set{
+		"README.md":                struct{}{}, // 始终加入，思源将其作为最后回退
+		"preview.png":              struct{}{},
+		"icon.png":                 struct{}{},
+		packageType.ManifestFile(): struct{}{},
+	}
 	if nil != pkg.Readme {
 		for _, readmePath := range pkg.Readme {
 			readmePath = strings.TrimSpace(readmePath) // 跟思源内核逻辑一致，TrimSpace
 			if readmePath == "" {
 				continue
 			}
-			readmeFiles["/"+readmePath] = struct{}{}
+			uploadFiles[readmePath] = struct{}{}
 		}
 	}
-	// 仅 README.md 始终加入上传列表（若包内存在则上传），思源将其作为最后回退
-	readmeFiles["/README.md"] = struct{}{}
 
-	// 从解压目录读取 README、preview、icon、清单 JSON 并并发上传到 OSS；任一份上传失败则整包视为失败
-	var anyUploadFailed int32
-	wg := &sync.WaitGroup{}
-	wg.Add(3 + len(readmeFiles))
-	for readmeFile := range readmeFiles {
-		go indexPackageFile(ownerRepo, hash, packageRoot, readmeFile, wg, &anyUploadFailed)
+	g, ctx := errgroup.WithContext(context.Background())
+	for fileName := range uploadFiles {
+		g.Go(func() error {
+			return uploadPackageRootFile(ctx, ownerRepo, hash, packageRoot, fileName)
+		})
 	}
-	go indexPackageFile(ownerRepo, hash, packageRoot, "/preview.png", wg, &anyUploadFailed)
-	go indexPackageFile(ownerRepo, hash, packageRoot, "/icon.png", wg, &anyUploadFailed)
-	go indexPackageFile(ownerRepo, hash, packageRoot, "/"+packageType.ManifestFile(), wg, &anyUploadFailed)
-	wg.Wait()
-	if atomic.LoadInt32(&anyUploadFailed) != 0 {
+	if err := g.Wait(); err != nil {
 		return
 	}
 	ok = true
@@ -227,49 +224,29 @@ func getPackage(unzipRoot string, packageType rules.PackageType) *rules.Package 
 	return pkg
 }
 
-// indexPackageFile 从解压后的包根目录 unzipRoot 读取 filePath 对应文件（大小写敏感），上传到 OSS；可选文件不存在时仅记录并跳过，其它失败时设置 anyFail。filePath 为相对包根的路径，如 /README.md、/icon.png。
-func indexPackageFile(ownerRepo, hash, unzipRoot, filePath string, wg *sync.WaitGroup, anyFail *int32) {
-	defer wg.Done()
-	relPath := strings.TrimPrefix(filepath.ToSlash(filePath), "/")
-	localPath := filepath.Join(unzipRoot, filepath.FromSlash(relPath))
+// uploadPackageRootFile 从包根目录 unzipRoot 读取 fileName 对应文件（大小写敏感）并上传到 OSS；文件不存在时仅记录并跳过。
+func uploadPackageRootFile(ctx context.Context, ownerRepo, hash, unzipRoot, fileName string) error {
+	localPath := filepath.Join(unzipRoot, fileName)
 	data, err := os.ReadFile(localPath)
 	if err != nil {
 		// 可选文件（如部分 README、preview.png）可能不存在，仅记录并跳过，不导致整包失败
 		if os.IsNotExist(err) {
-			logger.Errorf("file not found in package, skip upload [%s]", relPath)
-			return
+			logger.Errorf("file not found in package [%s], skip upload [%s]", ownerRepo, fileName)
+			return nil
 		}
-		logger.Errorf("read [%s] failed: %s", localPath, err)
-		atomic.StoreInt32(anyFail, 1)
-		return
+		logger.Errorf("read package [%s] file [%s] failed: %s", ownerRepo, fileName, err)
+		return err
 	}
 
-	// 规范化为 /path 形式用于 OSS key
-	normPath := "/" + filepath.ToSlash(relPath)
+	// 阻塞结束后检查是否已取消
+	if err := ctx.Err(); err != nil {
+		return err
+	}
 
-	key := "package/" + ownerRepo + "@" + hash + normPath
-	if err := util.UploadOSS(key, data); err != nil {
-		logger.Errorf("upload package file [%s] failed: %s", key, err)
-		atomic.StoreInt32(anyFail, 1)
-		return
+	key := "package/" + ownerRepo + "@" + hash + "/" + fileName
+	if err := util.UploadOSS(ctx, key, data); err != nil {
+		logger.Errorf("upload package [%s] file [%s] failed: %s", ownerRepo, fileName, err)
+		return err
 	}
-}
-
-func repoStats(ownerRepo string) (stars, openIssues int, ok bool) {
-	owner, name, cutOk := strings.Cut(ownerRepo, "/")
-	if !cutOk {
-		logger.Errorf("get [%s] failed: invalid owner/repo", ownerRepo)
-		return
-	}
-	ctx, cancel := context.WithTimeout(githubContext, REQUEST_TIMEOUT)
-	defer cancel()
-	repo, _, err := githubClient.Repositories.Get(ctx, owner, name)
-	if err != nil {
-		logger.Errorf("get [%s] failed: %s", ownerRepo, err)
-		return
-	}
-	stars = repo.GetStargazersCount()
-	openIssues = repo.GetOpenIssuesCount()
-	ok = true
-	return
+	return nil
 }

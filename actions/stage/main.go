@@ -20,6 +20,7 @@ import (
 	"path/filepath"
 	"sort"
 	"strconv"
+	"strings"
 	"sync"
 	"time"
 
@@ -272,6 +273,25 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 	}
 
 	logger.Infof("finish stage [%s]", packageType.Plural())
+}
+
+func repoStats(ownerRepo string) (stars, openIssues int, ok bool) {
+	owner, name, cutOk := strings.Cut(ownerRepo, "/")
+	if !cutOk {
+		logger.Errorf("get [%s] failed: invalid owner/repo", ownerRepo)
+		return
+	}
+	ctx, cancel := context.WithTimeout(githubContext, REQUEST_TIMEOUT)
+	defer cancel()
+	repo, _, err := githubClient.Repositories.Get(ctx, owner, name)
+	if err != nil {
+		logger.Errorf("get [%s] failed: %s", ownerRepo, err)
+		return
+	}
+	stars = repo.GetStargazersCount()
+	openIssues = repo.GetOpenIssuesCount()
+	ok = true
+	return
 }
 
 // marshalSortedIndentedJSON 序列化为键序稳定、带缩进的 JSON。
