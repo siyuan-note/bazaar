@@ -33,36 +33,108 @@ type Funding struct {
 }
 
 // Package 集市包清单 JSON 解析后的元数据（plugin.json / theme.json 等）。
+// 字段划分与思源内核 kernel/bazaar/package.go 及 plugin.go 的实际消费一致。
+//
+// omitempty 说明：本结构体会写入 stage 索引供客户端反序列化。
+// name/author/url/version 为身份字段，始终序列化；其余可选字段在零值时省略，
+// 与 v3.5.5 以前的旧版客户端（缺失键 → 零值 / nil）及现版逻辑兼容。
 type Package struct {
-	Name              string        `json:"name"`
-	Author            string        `json:"author"`
-	URL               string        `json:"url"`
-	Version           string        `json:"version"`
-	MinAppVersion     string        `json:"minAppVersion"`
-	DisplayName       LocaleStrings `json:"displayName"`
-	Description       LocaleStrings `json:"description"`
-	Readme            LocaleStrings `json:"readme"`
-	Funding           *Funding      `json:"funding"`
-	Keywords          []string      `json:"keywords"`
-	Backends          []string      `json:"backends,omitempty"`
-	Frontends         []string      `json:"frontends,omitempty"`
-	Kernels           []string      `json:"kernels,omitempty"`
-	DisabledInPublish bool          `json:"disabledInPublish,omitempty"`
-	Modes             []string      `json:"modes,omitempty"`
+	Name    string `json:"name"`
+	Author  string `json:"author"`
+	URL     string `json:"url"`
+	Version string `json:"version"`
+
+	MinAppVersion string        `json:"minAppVersion,omitempty"`
+	DisplayName   LocaleStrings `json:"displayName,omitempty"`
+	Description   LocaleStrings `json:"description,omitempty"`
+	Readme        LocaleStrings `json:"readme,omitempty"`
+	Funding       *Funding      `json:"funding,omitempty"`
+	Keywords      []string      `json:"keywords,omitempty"`
+
+	// 插件专用（仅 plugin.json；见 kernel/bazaar/plugin.go）
+
+	Backends          []string `json:"backends,omitempty"`
+	Frontends         []string `json:"frontends,omitempty"`
+	Kernels           []string `json:"kernels,omitempty"`
+	DisabledInPublish bool     `json:"disabledInPublish,omitempty"`
+
+	// 主题专用（仅 theme.json；见 kernel/bazaar/package.go Modes）
+
+	Modes []string `json:"modes,omitempty"`
 }
 
-// packageFromMap 将已解析的清单 map 转为 Package；解析失败时返回零值。
-func packageFromMap(m map[string]any) Package {
-	var pkg Package
-	if m == nil {
-		return pkg
+var commonManifestKeys = []string{
+	"name", "author", "url", "version",
+	"displayName", "description", "readme",
+	"funding", "keywords",
+	"minAppVersion",
+}
+
+var allowedManifestKeys = map[PackageType]Set{
+	TypePlugin:   toKeySet(commonManifestKeys, "backends", "frontends", "kernels", "disabledInPublish"), // 插件专用字段见 kernel/bazaar/plugin.go（兼容性与发布禁用判断）。
+	TypeTheme:    toKeySet(commonManifestKeys, "modes"),                                                 // 主题专用字段：亮色 / 暗色模式列表。
+	TypeIcon:     toKeySet(commonManifestKeys),
+	TypeTemplate: toKeySet(commonManifestKeys),
+	TypeWidget:   toKeySet(commonManifestKeys),
+}
+
+func toKeySet(base []string, extra ...string) Set {
+	m := make(Set, len(base)+len(extra))
+	for _, k := range base {
+		m[k] = struct{}{}
 	}
-	data, err := json.Marshal(m)
+	for _, k := range extra {
+		m[k] = struct{}{}
+	}
+	return m
+}
+
+// 内置主题名（不得被集市主题占用）。
+var builtinThemeNames = Set{
+	"daylight": {},
+	"midnight": {},
+}
+
+// 内置图标包名（不得被集市图标占用）。
+var builtinIconNames = Set{
+	"ant":       {}, // 已废弃，内核自动清理图标包
+	"material":  {}, // 已废弃，内核自动清理图标包
+	"litheness": {},
+}
+
+// ReadPackage 读取清单 JSON，返回原始 map 与解析后的 Package。
+// 校验路径需要 map（未知字段 / 类型断言）；索引写入等只需 Package 时可忽略 map。
+// map→Package 转换失败时返回零值 Package（不报错），由后续 Manifest 校验报告字段问题。
+func ReadPackage(path string) (map[string]any, *Package, error) {
+	base := filepath.Base(path)
+	data, err := os.ReadFile(path)
 	if err != nil {
-		return pkg
+		return nil, nil, LocalizedErr(
+			fmt.Sprintf("无法读取清单文件 `%s`：%v。请确认该文件已打进 `package.zip` 包根、路径大小写完全一致。", base, err),
+			fmt.Sprintf("Cannot read manifest `%s`: %v. Ensure the file is at the package root with an exact case-sensitive path.", base, err),
+			err,
+		)
 	}
-	_ = json.Unmarshal(data, &pkg)
-	return pkg
+	var m map[string]any
+	if err := json.Unmarshal(data, &m); err != nil {
+		return nil, nil, LocalizedErr(
+			fmt.Sprintf("清单 `%s` 的 JSON 解析失败：%v。请检查 JSON 语法并修正。", base, err),
+			fmt.Sprintf("Failed to parse manifest `%s` as JSON: %v. Fix JSON syntax errors.", base, err),
+			err,
+		)
+	}
+	if m == nil {
+		return nil, nil, LocalizedErr(
+			fmt.Sprintf("清单 `%s` 的 JSON 内容为 `null`，请修正清单。", base),
+			fmt.Sprintf("Manifest `%s` JSON is `null`; Fix the manifest.", base),
+			nil,
+		)
+	}
+	var pkg Package
+	if encoded, err := json.Marshal(m); err == nil {
+		_ = json.Unmarshal(encoded, &pkg)
+	}
+	return m, &pkg, nil
 }
 
 // SanitizePackage 对集市包直接可能显示的信息做 HTML 转义，避免 XSS。
@@ -101,101 +173,7 @@ type ManifestInput struct {
 	Type          PackageType
 	OldName       string
 	OldVersion    string
-	OccupiedNames map[string]struct{} // 键小写；nil 表示不查唯一性
-}
-
-var allowedManifestKeys = map[PackageType]map[string]struct{}{
-	TypePlugin:   toKeySet(commonManifestKeys, pluginExtraKeys...),
-	TypeTheme:    toKeySet(commonManifestKeys, themeExtraKeys...),
-	TypeIcon:     toKeySet(commonManifestKeys, iconExtraKeys...),
-	TypeTemplate: toKeySet(commonManifestKeys, templateExtraKeys...),
-	TypeWidget:   toKeySet(commonManifestKeys, widgetExtraKeys...),
-}
-
-var commonManifestKeys = []string{
-	"name", "author", "url", "version",
-	"displayName", "description", "readme",
-	"funding", "keywords",
-	"minAppVersion",
-}
-
-var pluginExtraKeys = []string{
-	"backends", "frontends", "kernels", "disabledInPublish",
-}
-
-var themeExtraKeys = []string{
-	"modes",
-}
-
-var iconExtraKeys = []string{}
-
-var templateExtraKeys = []string{}
-
-var widgetExtraKeys = []string{
-	"backends", "frontends",
-}
-
-// 内置主题名（不得被集市主题占用）。
-var builtinThemeNames = map[string]struct{}{
-	"daylight": {},
-	"midnight": {},
-}
-
-// 内置图标包名（不得被集市图标占用）。
-var builtinIconNames = map[string]struct{}{
-	"ant":       {}, // 已废弃，内核自动清理图标包
-	"material":  {}, // 已废弃，内核自动清理图标包
-	"litheness": {},
-}
-
-func toKeySet(base []string, extra ...string) map[string]struct{} {
-	m := make(map[string]struct{}, len(base)+len(extra))
-	for _, k := range base {
-		m[k] = struct{}{}
-	}
-	for _, k := range extra {
-		m[k] = struct{}{}
-	}
-	return m
-}
-
-// ReadManifest 读取并解析清单 JSON。
-func ReadManifest(path string) (map[string]any, error) {
-	base := filepath.Base(path)
-	data, err := os.ReadFile(path)
-	if err != nil {
-		return nil, LocalizedErr(
-			fmt.Sprintf("无法读取清单文件 `%s`：%v。请确认该文件已打进 `package.zip` 包根、路径大小写完全一致。", base, err),
-			fmt.Sprintf("Cannot read manifest `%s`: %v. Ensure the file is at the package root with an exact case-sensitive path.", base, err),
-			err,
-		)
-	}
-	var m map[string]any
-	if err := json.Unmarshal(data, &m); err != nil {
-		return nil, LocalizedErr(
-			fmt.Sprintf("清单 `%s` 的 JSON 解析失败：%v。请检查 JSON 语法并修正。", base, err),
-			fmt.Sprintf("Failed to parse manifest `%s` as JSON: %v. Fix JSON syntax errors.", base, err),
-			err,
-		)
-	}
-	if m == nil {
-		return nil, LocalizedErr(
-			fmt.Sprintf("清单 `%s` 的 JSON 内容为 `null`，必须是一个对象（例如以 `{` 开头的键值对）。请修正清单。", base),
-			fmt.Sprintf("Manifest `%s` JSON is `null`; it must be a JSON object (e.g. key-value pairs starting with `{`). Fix the manifest.", base),
-			nil,
-		)
-	}
-	return m, nil
-}
-
-// ReadPackage 读取清单 JSON 并解析为 Package。
-func ReadPackage(path string) (*Package, error) {
-	m, err := ReadManifest(path)
-	if err != nil {
-		return nil, err
-	}
-	pkg := packageFromMap(m)
-	return &pkg, nil
+	OccupiedNames Set // 键小写；nil 表示不查唯一性
 }
 
 // Manifest 校验清单字段。
@@ -453,6 +431,26 @@ func checkReadme(m map[string]any, packageRoot string) []Issue {
 	return issues
 }
 
+func relFileExistsCaseSensitive(root, rel string) bool {
+	rel = filepath.FromSlash(rel)
+	parts := strings.Split(rel, string(filepath.Separator))
+	cur := root
+	for _, part := range parts {
+		if part == "" || part == "." {
+			continue
+		}
+		if !fileExistsCaseSensitive(cur, part) {
+			return false
+		}
+		cur = filepath.Join(cur, part)
+	}
+	info, err := os.Stat(cur)
+	if err != nil || info.IsDir() {
+		return false
+	}
+	return true
+}
+
 // checkFunding 校验 funding 字段。Custom 链接仅允许 http(s) / mailto，禁止 javascript: / data: / file: 等。
 func checkFunding(m map[string]any) []Issue {
 	raw, ok := m["funding"]
@@ -535,48 +533,4 @@ func checkOptionalTypedFields(m map[string]any) []Issue {
 		}
 	}
 	return issues
-}
-
-func relFileExistsCaseSensitive(root, rel string) bool {
-	rel = filepath.FromSlash(rel)
-	parts := strings.Split(rel, string(filepath.Separator))
-	cur := root
-	for _, part := range parts {
-		if part == "" || part == "." {
-			continue
-		}
-		if !fileExistsCaseSensitive(cur, part) {
-			return false
-		}
-		cur = filepath.Join(cur, part)
-	}
-	info, err := os.Stat(cur)
-	if err != nil || info.IsDir() {
-		return false
-	}
-	return true
-}
-
-// SanitizeDisplayStrings 对清单中 displayName / description 的字符串值做 HTML 转义。
-// 与思源内核 kernel/bazaar/package.go 的展示字段转义对齐；思源旧版本未转义，为避免旧客户端 XSS，须在线上转义后再写入索引。
-// 注：Stage 写入 stage 条目时仍会对 name/author 等做更广的转义（见 SanitizePackage）。
-func SanitizeDisplayStrings(m map[string]any) {
-	if m == nil {
-		return
-	}
-	for _, key := range []string{"displayName", "description"} {
-		raw, ok := m[key]
-		if !ok {
-			continue
-		}
-		obj, ok := raw.(map[string]any)
-		if !ok {
-			continue
-		}
-		for k, v := range obj {
-			if s, ok := v.(string); ok {
-				obj[k] = html.EscapeString(s)
-			}
-		}
-	}
 }

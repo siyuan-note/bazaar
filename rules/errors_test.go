@@ -18,9 +18,9 @@ import (
 	"testing"
 )
 
-func TestReadManifestLocalizedErrors(t *testing.T) {
+func TestReadPackageLocalizedErrors(t *testing.T) {
 	t.Run("missing file", func(t *testing.T) {
-		_, err := ReadManifest(filepath.Join(t.TempDir(), "plugin.json"))
+		_, _, err := ReadPackage(filepath.Join(t.TempDir(), "plugin.json"))
 		if err == nil {
 			t.Fatal("expected error")
 		}
@@ -41,7 +41,7 @@ func TestReadManifestLocalizedErrors(t *testing.T) {
 		if err := os.WriteFile(path, []byte("{"), 0o644); err != nil {
 			t.Fatal(err)
 		}
-		_, err := ReadManifest(path)
+		_, _, err := ReadPackage(path)
 		if err == nil {
 			t.Fatal("expected error")
 		}
@@ -62,7 +62,7 @@ func TestReadManifestLocalizedErrors(t *testing.T) {
 		if err := os.WriteFile(path, []byte("null"), 0o644); err != nil {
 			t.Fatal(err)
 		}
-		_, err := ReadManifest(path)
+		_, _, err := ReadPackage(path)
 		if err == nil {
 			t.Fatal("expected error")
 		}
@@ -73,7 +73,7 @@ func TestReadManifestLocalizedErrors(t *testing.T) {
 		if !strings.Contains(zh, "null") {
 			t.Fatalf("unexpected zh: %s", zh)
 		}
-		if !strings.Contains(en, "must be a JSON object") {
+		if !strings.Contains(en, "null") {
 			t.Fatalf("unexpected en: %s", en)
 		}
 	})

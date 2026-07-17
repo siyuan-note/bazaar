@@ -127,12 +127,12 @@ func stepManifest(c *Context) {
 		return
 	}
 	manifestPath := filepath.Join(c.Root, c.Type.ManifestFile())
-	manifest, err := ReadManifest(manifestPath)
+	manifest, pkg, err := ReadPackage(manifestPath)
 	if err != nil {
 		c.Add(IssueFromErr(err))
 		return
 	}
-	c.Package = packageFromMap(manifest)
+	c.Package = *pkg
 
 	owner, repo, ok := splitOwnerRepo(c.OwnerRepo)
 	if !ok {

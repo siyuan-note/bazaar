@@ -381,22 +381,6 @@ func TestCheckNameUnique(t *testing.T) {
 	}
 }
 
-func TestSanitizeDisplayStrings(t *testing.T) {
-	m := map[string]any{
-		"displayName": map[string]any{"default": "<b>x</b>"},
-		"description": map[string]any{"zh_CN": "a&b"},
-	}
-	SanitizeDisplayStrings(m)
-	dn := m["displayName"].(map[string]any)["default"]
-	if dn != "&lt;b&gt;x&lt;/b&gt;" {
-		t.Fatalf("displayName not escaped: %v", dn)
-	}
-	desc := m["description"].(map[string]any)["zh_CN"]
-	if desc != "a&amp;b" {
-		t.Fatalf("description not escaped: %v", desc)
-	}
-}
-
 func hasIssueMsg(r *Result, substr string) bool {
 	return issuesContain(r.Issues, substr)
 }

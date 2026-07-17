@@ -192,7 +192,7 @@ func sizeOfDirectory(path string) (size int64, err error) {
 // getPackage 从解压后的包根目录 unzipRoot 读取该类型的清单 JSON（如 plugin.json），解析为 Package。
 func getPackage(unzipRoot string, packageType rules.PackageType) *rules.Package {
 	jsonPath := filepath.Join(unzipRoot, packageType.ManifestFile())
-	pkg, err := rules.ReadPackage(jsonPath)
+	_, pkg, err := rules.ReadPackage(jsonPath)
 	if err != nil {
 		logger.Errorf("read package [%s] failed: %s", jsonPath, err)
 		return nil

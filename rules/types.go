@@ -10,6 +10,8 @@
 
 package rules
 
+type Set map[string]struct{} // 字符串集合
+
 // Issue 单条检查问题。
 // MessageZh / MessageEn 自含路径与改法，可直接用于评论。
 type Issue struct {
