@@ -1,6 +1,107 @@
 {
   "repos": [
     {
+      "installSize": 13231551,
+      "openIssues": 14,
+      "package": {
+        "author": "steve",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "schedule management, docker sync awareness, ai sidebar",
+          "zh-CN": "[白板已接入思源智能体]互联日程管理（基于数据库的看板视图和日历视图）支持ics，滴答清单双向联动, docker同步感知, ai侧边栏, 资源压缩, 白板, WPS联动, （SQL，数据库）聚合可视化, 随机题头图背景图。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "STtools",
+          "zh-CN": "STtools"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://pic.imgdb.cn/item/6751b929d0e0a243d4de55a7.png"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "tools",
+          "schedule",
+          "calendar",
+          "st"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-steve-tools",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/loonghfut/siyuan-steve-tools",
+        "version": "0.49.0"
+      },
+      "size": 5807552,
+      "stars": 81,
+      "updated": "2026-07-17T08:45:27Z",
+      "url": "loonghfut/siyuan-steve-tools@2489b347545832cddc9c889cd7fdaa5c3df2305d"
+    },
+    {
+      "installSize": 9933546,
+      "openIssues": 2,
+      "package": {
+        "author": "steve",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "(Split from STtools plugin) Integrate tldraw whiteboard tool, deeply linked with SiYuan Note, with interaction part borrowed from affine",
+          "zh-CN": "(拆分自STtools插件)集成 tldraw 白板工具，深度联动思源笔记，交互部分借鉴affine",
+          "zh_CN": "(拆分自STtools插件)集成 tldraw 白板工具，深度联动思源笔记，交互部分借鉴affine"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "STtldraw",
+          "zh-CN": "ST白板",
+          "zh_CN": "ST白板"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://pic.imgdb.cn/item/6751b929d0e0a243d4de55a7.png"
+          ],
+          "github": "",
+          "openCollective": "",
+          "patreon": ""
+        },
+        "keywords": [
+          "白板",
+          "whiteboard",
+          "handwriting",
+          "drawing",
+          "sketch",
+          "mindmap"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-steve-tldraw",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/loonghfut/siyuan-steve-tldraw",
+        "version": "3.0.0"
+      },
+      "size": 3916315,
+      "stars": 1,
+      "updated": "2026-07-17T08:35:27Z",
+      "url": "loonghfut/siyuan-steve-tldraw@b3bb076a2c31f1a3ef06a7316f8c79bf107e3fa1"
+    },
+    {
       "installSize": 2237323,
       "openIssues": 4,
       "package": {
@@ -1873,54 +1974,6 @@
       "stars": 37,
       "updated": "2026-07-05T11:35:36Z",
       "url": "Achuan-2/siyuan-plugin-blockref-footnote@0aa98e8e3f0c63b103182e39873e2b931f63c3cb"
-    },
-    {
-      "installSize": 9704035,
-      "openIssues": 14,
-      "package": {
-        "author": "steve",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "schedule management, docker sync awareness, ai sidebar",
-          "zh-CN": "[白板已接入思源智能体]互联日程管理（基于数据库的看板视图和日历视图）支持ics，滴答清单双向联动, docker同步感知, ai侧边栏, 资源压缩, 白板, WPS联动, （SQL，数据库）聚合可视化, 随机题头图背景图。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "STtools",
-          "zh-CN": "STtools"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://pic.imgdb.cn/item/6751b929d0e0a243d4de55a7.png"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "tools",
-          "schedule",
-          "calendar",
-          "st"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-steve-tools",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/loonghfut/siyuan-steve-tools",
-        "version": "0.48.0"
-      },
-      "size": 4915116,
-      "stars": 80,
-      "updated": "2026-07-04T08:56:05Z",
-      "url": "loonghfut/siyuan-steve-tools@bacd5d6e69b505ce229ea3c5799298b090dec144"
     },
     {
       "installSize": 144017,
@@ -8219,56 +8272,6 @@
       "stars": 1,
       "updated": "2026-01-04T09:51:12Z",
       "url": "massivebox/syspell@8d83cbe6eb8ad8e3a1c22f621ace0700e52ecbd7"
-    },
-    {
-      "installSize": 6067542,
-      "openIssues": 0,
-      "package": {
-        "author": "steve",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "(Split from STtools plugin) Integrate tldraw whiteboard tool, deeply linked with SiYuan Note, with interaction part borrowed from affine",
-          "zh_CN": "(拆分自STtools插件)集成 tldraw 白板工具，深度联动思源笔记，交互部分借鉴affine"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "STtldraw",
-          "zh_CN": "ST白板"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://pic.imgdb.cn/item/6751b929d0e0a243d4de55a7.png"
-          ],
-          "github": "",
-          "openCollective": "",
-          "patreon": ""
-        },
-        "keywords": [
-          "白板",
-          "whiteboard",
-          "handwriting",
-          "drawing",
-          "sketch",
-          "mindmap"
-        ],
-        "minAppVersion": "3.5.1",
-        "name": "siyuan-steve-tldraw",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/loonghfut/siyuan-steve-tldraw",
-        "version": "2.1.0"
-      },
-      "size": 2883645,
-      "stars": 1,
-      "updated": "2026-01-03T05:33:05Z",
-      "url": "loonghfut/siyuan-steve-tldraw@a3b3327f359ee58b295c29c0df8f54df860f9a43"
     },
     {
       "installSize": 107771,
