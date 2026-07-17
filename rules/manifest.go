@@ -196,7 +196,7 @@ func checkUnknownKeys(m map[string]any, typ PackageType) []Issue {
 	for k := range m {
 		if _, ok := allowed[k]; !ok {
 			issues = append(issues, issue(
-				fmt.Sprintf("`%s` 中出现了集市规范未收录的字段 `%s`。请删除该字段（保留未知字段会妨碍官方日后扩展同名字段）。若确有自定义需求，请先在集市仓库提 issue 讨论。", typ.ManifestFile(), k),
+				fmt.Sprintf("`%s` 中出现了预期外的字段 `%s`。请删除该字段（保留未知字段会妨碍思源日后扩展同名字段）。若确有自定义需求，请先在[思源仓库](https://github.com/siyuan-note/siyuan)提 issue 讨论。", typ.ManifestFile(), k),
 				fmt.Sprintf("`%s` contains unsupported field `%s`. Remove it (unknown fields block future official schema additions). If you need a new official field, open an issue in the bazaar repository first.", typ.ManifestFile(), k),
 			))
 		}
@@ -208,8 +208,8 @@ func checkName(m map[string]any, in ManifestInput) []Issue {
 	raw, ok := m["name"]
 	if !ok {
 		return []Issue{issue(
-			fmt.Sprintf("清单 `%s` 缺少必填字段 `name`。请在 JSON 根级添加字符串字段 `name`，且其值必须与 GitHub 仓库名完全一致。", in.Type.ManifestFile()),
-			fmt.Sprintf("Manifest `%s` is missing required field `name`. Add a string field `name` at the JSON root; it must exactly match the GitHub repository name.", in.Type.ManifestFile()),
+			fmt.Sprintf("清单 `%s` 缺少必填字段 `name`（集市包的包名，通常建议与 GitHub 仓库名保持一致）。请在 JSON 根级添加字符串字段 `name`。", in.Type.ManifestFile()),
+			fmt.Sprintf("Manifest `%s` is missing required field `name` (the bazaar package name; usually recommended to match the GitHub repository name). Add a string field `name` at the JSON root.", in.Type.ManifestFile()),
 		)}
 	}
 	name, ok := raw.(string)
@@ -234,32 +234,26 @@ func checkName(m map[string]any, in ManifestInput) []Issue {
 	for _, err := range validatePackageName(name) {
 		issues = append(issues, IssueFromErr(err))
 	}
-	if name != in.Repo {
-		issues = append(issues, issue(
-			fmt.Sprintf("清单字段 `name` 为 `%s`，但 GitHub 仓库名是 `%s`。二者必须完全一致。请把 `name` 改成 `%s`（或把仓库改名为当前 `name`）。", name, in.Repo, in.Repo),
-			fmt.Sprintf("Manifest `name` is `%s` but the GitHub repository name is `%s`. They must match exactly. Set `name` to `%s` (or rename the repository).", name, in.Repo, in.Repo),
-		))
-	}
 	if in.Type == TypeTheme {
 		if _, hit := builtinThemeNames[name]; hit {
 			issues = append(issues, issue(
-				fmt.Sprintf("`name` 的值 `%s` 与思源内置主题重名，不能上架。请更换仓库名与清单 `name`（例如加上作者前缀）。", name),
-				fmt.Sprintf("`name` value `%s` conflicts with a built-in SiYuan theme and cannot be listed. Rename the repository and manifest `name` (e.g. add an author prefix).", name),
+				fmt.Sprintf("`name` 的值 `%s` 与思源内置主题重名，不能上架。请更换清单 `name`。", name),
+				fmt.Sprintf("`name` value `%s` conflicts with a built-in SiYuan theme and cannot be listed. Change the manifest `name`.", name),
 			))
 		}
 	}
 	if in.Type == TypeIcon {
 		if _, hit := builtinIconNames[name]; hit {
 			issues = append(issues, issue(
-				fmt.Sprintf("`name` 的值 `%s` 与思源内置图标包重名，不能上架。请更换仓库名与清单 `name`。", name),
-				fmt.Sprintf("`name` value `%s` conflicts with a built-in SiYuan icon pack and cannot be listed. Rename the repository and manifest `name`.", name),
+				fmt.Sprintf("`name` 的值 `%s` 与思源内置图标包重名，不能上架。请更换清单 `name`。", name),
+				fmt.Sprintf("`name` value `%s` conflicts with a built-in SiYuan icon pack and cannot be listed. Change the manifest `name`.", name),
 			))
 		}
 	}
 	if _, exists := in.OccupiedNames[strings.ToLower(name)]; exists {
 		issues = append(issues, issue(
-			fmt.Sprintf("`name` 的值 `%s` 已被其他集市包占用（插件/主题/图标/模板/挂件之间也不能重名，且不区分大小写）。请更换一个未被占用的仓库名，并把清单 `name`、`url` 一并改成新名后重新提交。", name),
-			fmt.Sprintf("`name` value `%s` is already used by another bazaar package (must be unique across plugins/themes/icons/templates/widgets, case-insensitive). Choose an unused repository name and update manifest `name` and `url` accordingly before resubmitting.", name),
+			fmt.Sprintf("`name` 的值 `%s` 已被其他集市包占用（插件/主题/图标/模板/挂件之间也不能重名，且不区分大小写）。请更换一个未被占用的 `name` 后重新提交。", name),
+			fmt.Sprintf("`name` value `%s` is already used by another bazaar package (must be unique across plugins/themes/icons/templates/widgets, case-insensitive). Choose an unused `name` before resubmitting.", name),
 		))
 	}
 	return issues

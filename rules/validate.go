@@ -27,8 +27,8 @@ func validatePackageName(name string) []error {
 	var errs []error
 	if name == "" {
 		errs = append(errs, LocalizedErr(
-			"清单字段 `name` 不能为空。请在 JSON 根级填写与 GitHub 仓库名一致的字符串。",
-			"Manifest field `name` must not be empty. Set a string at the JSON root that matches the GitHub repository name.",
+			"清单字段 `name` 不能为空。请在 JSON 根级填写非空字符串。",
+			"Manifest field `name` must not be empty. Set a non-empty string at the JSON root.",
 			nil,
 		))
 		return errs
@@ -36,8 +36,8 @@ func validatePackageName(name string) []error {
 	// 单路径组件名称的字节长度上限（NAME_MAX），Linux ext4、macOS APFS 等常见文件系统均为 255。
 	if len(name) > 255 {
 		errs = append(errs, LocalizedErr(
-			fmt.Sprintf("清单字段 `name` 的值 `%s` 超过长度上限（255 字节）。请缩短名称，使其与 GitHub 仓库名一致。", name),
-			fmt.Sprintf("Manifest field `name` value `%s` exceeds the maximum length (255 bytes). Shorten it to match the GitHub repository name.", name),
+			fmt.Sprintf("清单字段 `name` 的值 `%s` 超过长度上限（255 字节）。请缩短名称。", name),
+			fmt.Sprintf("Manifest field `name` value `%s` exceeds the maximum length (255 bytes). Shorten it.", name),
 			nil,
 		))
 	}
@@ -50,8 +50,8 @@ func validatePackageName(name string) []error {
 	}
 	if strings.HasPrefix(name, " ") {
 		errs = append(errs, LocalizedErr(
-			fmt.Sprintf("清单字段 `name` 的值 `%s` 以空格开头。请去掉开头空格，使名称与 GitHub 仓库名一致。", name),
-			fmt.Sprintf("Manifest field `name` value `%s` starts with a space. Remove the leading space so it matches the GitHub repository name.", name),
+			fmt.Sprintf("清单字段 `name` 的值 `%s` 以空格开头。请去掉开头空格。", name),
+			fmt.Sprintf("Manifest field `name` value `%s` starts with a space. Remove the leading space.", name),
 			nil,
 		))
 	}
@@ -126,8 +126,8 @@ func appendNameDisallowedRunesIssues(name string, errs *[]error) {
 	}
 	if hasNonPrintable {
 		*errs = append(*errs, LocalizedErr(
-			fmt.Sprintf("清单字段 `name` 的值 `%s` 包含不可打印 ASCII 字符（如中文、表情符号）。请改用仅含可打印 ASCII 的名称，与 GitHub 仓库名保持一致。", name),
-			fmt.Sprintf("Manifest field `name` value `%s` contains non-printable ASCII characters (e.g. CJK or emoji). Use printable ASCII only, matching the GitHub repository name.", name),
+			fmt.Sprintf("清单字段 `name` 的值 `%s` 包含不可打印 ASCII 字符（如中文、表情符号）。请改用仅含可打印 ASCII 的名称。", name),
+			fmt.Sprintf("Manifest field `name` value `%s` contains non-printable ASCII characters (e.g. CJK or emoji). Use printable ASCII only.", name),
 			nil,
 		))
 	}
