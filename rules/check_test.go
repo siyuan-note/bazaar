@@ -263,7 +263,7 @@ func TestCheckTemplateNeedsContentMD(t *testing.T) {
   "author": "demo",
   "url": "https://github.com/demo/sample-template",
   "version": "1.0.0",
-  "readme": { "default": "README.md" }
+  "readme": { "default": "README.md", "zh_CN": "README_zh_CN.md" }
 }`
 	if err := os.WriteFile(filepath.Join(dir, "template.json"), []byte(manifest), 0644); err != nil {
 		t.Fatal(err)
@@ -277,7 +277,20 @@ func TestCheckTemplateNeedsContentMD(t *testing.T) {
 		t.Fatalf("expected files/template_md, issues=%v", r.Issues)
 	}
 
-	if err := os.WriteFile(filepath.Join(dir, "doc.md"), []byte("x"), 0644); err != nil {
+	// 清单 readme 声明的说明文件不算模板正文；以 readme 开头的文件名可以算正文
+	if err := os.WriteFile(filepath.Join(dir, "README_zh_CN.md"), []byte("readme locale"), 0644); err != nil {
+		t.Fatal(err)
+	}
+	rLocale := Check(Input{
+		PackageRoot: dir,
+		OwnerRepo:   "demo/sample-template",
+		Type:        TypeTemplate,
+	})
+	if rLocale.OK || !hasIssueMsg(rLocale, "模板内容") {
+		t.Fatalf("expected still missing content md when only declared readme files exist, issues=%v", rLocale.Issues)
+	}
+
+	if err := os.WriteFile(filepath.Join(dir, "readme-note.md"), []byte("x"), 0644); err != nil {
 		t.Fatal(err)
 	}
 	r2 := Check(Input{
@@ -286,7 +299,7 @@ func TestCheckTemplateNeedsContentMD(t *testing.T) {
 		Type:        TypeTemplate,
 	})
 	if !r2.OK {
-		t.Fatalf("expected OK after adding doc.md, issues=%v", r2.Issues)
+		t.Fatalf("expected OK after adding readme-note.md, issues=%v", r2.Issues)
 	}
 }
 

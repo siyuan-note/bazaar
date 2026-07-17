@@ -11,6 +11,7 @@
 package rules
 
 import (
+	"encoding/json"
 	"fmt"
 	"io/fs"
 	"os"
@@ -26,7 +27,7 @@ type requiredFile struct {
 }
 
 // requiredFilesFor 返回指定类型在包根下必须存在的文件（文件名大小写敏感）。
-// 模板另有「至少一个非 readme 的 .md」规则，不在此列表中。
+// 模板另有「至少一个非说明文档的 .md」规则，不在此列表中。
 func requiredFilesFor(typ PackageType) []requiredFile {
 	files := []requiredFile{
 		{"icon.png", "这是集市列表里显示的图标。", "This is the icon shown in the bazaar list. "},
@@ -66,14 +67,14 @@ func RequiredFiles(root string, typ PackageType) []Issue {
 func checkRequiredFile(root string, f requiredFile) []Issue {
 	p := filepath.Join(root, f.name)
 	if !fileExistsCaseSensitive(root, f.name) {
-		return []Issue{issue(fmt.Sprintf("`package.zip` 包根目录缺少必要文件 `%s`。%s文件名大小写必须完全一致（例如不能写成 `Icon.png`）。", f.name, f.hintZh),
-			fmt.Sprintf("Required file `%s` is missing from the `package.zip` root. %sThe filename is case-sensitive (e.g. `Icon.png` is not accepted).", f.name, f.hintEn),
+		return []Issue{issue(fmt.Sprintf("`package.zip` 包根目录缺少必要文件 `%s`。%s文件名大小写必须完全一致。", f.name, f.hintZh),
+			fmt.Sprintf("Required file `%s` is missing from the `package.zip` root. %sThe filename is case-sensitive.", f.name, f.hintEn),
 		)}
 	}
 	info, err := os.Stat(p)
 	if err != nil {
-		return []Issue{issue(fmt.Sprintf("无法读取必要文件 `%s`：%v。请确认该文件已打进 `package.zip`。", f.name, err),
-			fmt.Sprintf("Cannot read required file `%s`: %v. Make sure it is included in `package.zip`.", f.name, err),
+		return []Issue{issue(fmt.Sprintf("包根下存在 `%s`，但无法读取其信息：%v。请检查 `package.zip` 解压后的文件是否完整、权限是否正常。", f.name, err),
+			fmt.Sprintf("`%s` is present at the package root, but its metadata could not be read: %v. Check that the extracted `package.zip` is intact and file permissions are correct.", f.name, err),
 		)}
 	}
 	if info.IsDir() {
@@ -84,8 +85,10 @@ func checkRequiredFile(root string, f requiredFile) []Issue {
 	return nil
 }
 
-// checkTemplateHasContentMD：模板包至少包含一个不以 readme 开头的 .md 文件（大小写不敏感前缀，对齐思源内核）。
+// checkTemplateHasContentMD：模板包至少包含一个可作为模板正文的 .md 文件。
+// 排除 `README.md` 以及清单 `readme` 字段声明的说明文件（相对包根路径，大小写敏感；对齐思源内核）。
 func checkTemplateHasContentMD(root string) []Issue {
+	excluded := getTemplateReadmePaths(root)
 	found := false
 	err := filepath.WalkDir(root, func(path string, d fs.DirEntry, err error) error {
 		if err != nil {
@@ -94,12 +97,19 @@ func checkTemplateHasContentMD(root string) []Issue {
 		if d.IsDir() {
 			return nil
 		}
-		base := strings.ToLower(d.Name())
-		if strings.HasSuffix(base, ".md") && !strings.HasPrefix(base, "readme") {
-			found = true
-			return fs.SkipAll
+		if !strings.HasSuffix(strings.ToLower(d.Name()), ".md") {
+			return nil
 		}
-		return nil
+		rel, relErr := filepath.Rel(root, path)
+		if relErr != nil {
+			return nil
+		}
+		rel = filepath.ToSlash(rel)
+		if _, skip := excluded[rel]; skip {
+			return nil
+		}
+		found = true
+		return fs.SkipAll
 	})
 	if found {
 		return nil
@@ -110,9 +120,29 @@ func checkTemplateHasContentMD(root string) []Issue {
 			fmt.Sprintf("Failed to walk the template package while looking for content files: %v. Ensure the extracted `package.zip` layout is intact.", err),
 		)}
 	}
-	return []Issue{issue("模板包里除了 README 类说明外，还至少需要一个可作为模板内容的 `.md` 文件（文件名不要以 `readme` 开头，大小写不限）。请把模板正文 md 打进 `package.zip`。",
-		"Besides README docs, a template package must include at least one content `.md` file whose filename does not start with `readme` (case-insensitive). Add that file to `package.zip`.",
+	return []Issue{issue("模板包里除了 `README.md` 和清单 `readme` 字段声明的说明文件外，还至少需要一个可作为模板内容的 `.md` 文件。请把模板正文 md 打进 `package.zip`。",
+		"Besides `README.md` and files declared in the manifest `readme` field, a template package must include at least one content `.md` file. Add that file to `package.zip`.",
 	)}
+}
+
+// getTemplateReadmePaths 返回不应计为模板正文的相对包根路径集合：恒含 `README.md`，并合并清单 `readme` 各语言值。
+func getTemplateReadmePaths(root string) map[string]struct{} {
+	excluded := map[string]struct{}{"README.md": {}}
+	data, err := os.ReadFile(filepath.Join(root, "template.json"))
+	if err != nil {
+		return excluded
+	}
+	var pkg Package
+	if err = json.Unmarshal(data, &pkg); err != nil {
+		return excluded
+	}
+	for _, v := range pkg.Readme {
+		v = strings.TrimSpace(v)
+		if v != "" {
+			excluded[v] = struct{}{}
+		}
+	}
+	return excluded
 }
 
 // ThemeJS 检查主题是否允许包含 theme.js。
