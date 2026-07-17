@@ -17,7 +17,9 @@ import (
 	"strings"
 )
 
-// PathNames 递归检查路径/文件名是否规范。
+// PathNames 在 Windows 与类 Unix（Linux、macOS）常见规则下递归检查包内路径/文件名是否规范。
+// Windows：保留设备名（基名与保留名一致时拒绝，不区分大小写）、不得以空格开头或结尾（见 Microsoft 文档）、不得以空格开头（无法手动创建此类文件夹）。
+// REF https://learn.microsoft.com/zh-cn/windows/win32/fileio/naming-a-file#naming-conventions
 func PathNames(root string) []Issue {
 	var issues []Issue
 	_ = filepath.WalkDir(root, func(path string, d os.DirEntry, err error) error {
@@ -38,13 +40,13 @@ func PathNames(root string) []Issue {
 		name := d.Name()
 
 		if strings.HasPrefix(name, " ") || strings.HasSuffix(name, " ") {
-			issues = append(issues, issue(fmt.Sprintf("包内路径 `%s` 的文件/目录名 `%s` 以空格开头或结尾。请去掉首尾空格（部分系统上此类名称会导致安装失败）。", relSlash, name),
-				fmt.Sprintf("Entry `%s` uses name `%s` with leading or trailing spaces. Remove those spaces (such names can break installs on some systems).", relSlash, name),
+			issues = append(issues, issue(fmt.Sprintf("包内路径 `%s` 的文件/目录名 `%s` 以空格开头或结尾，不受 Windows 系统支持，请去掉首尾空格。", relSlash, name),
+				fmt.Sprintf("Entry `%s` uses name `%s` with leading or trailing spaces, which Windows systems do not support. Remove those spaces.", relSlash, name),
 			))
 		}
 		if IsReservedWindowsDeviceName(name) {
-			issues = append(issues, issue(fmt.Sprintf("包内路径 `%s` 的名称 `%s` 是 Windows 保留设备名（如 `CON`、`PRN`、`AUX`、`NUL`、`COM1`、`LPT1` 等）。请改成普通名称，否则在 Windows 上可能无法解压或安装。", relSlash, name),
-				fmt.Sprintf("Entry `%s` uses name `%s`, which is a Windows reserved device name (`CON`, `PRN`, `AUX`, `NUL`, `COM1`, `LPT1`, etc.). Rename it, or Windows installs may fail.", relSlash, name),
+			issues = append(issues, issue(fmt.Sprintf("包内路径 `%s` 的名称 `%s` 是 Windows 系统保留设备名（如 `CON`、`PRN`、`AUX`、`NUL`、`COM1`、`LPT1` 等），请改成其他名称。", relSlash, name),
+				fmt.Sprintf("Entry `%s` uses name `%s`, which is a Windows system reserved device name (`CON`, `PRN`, `AUX`, `NUL`, `COM1`, `LPT1`, etc.). Choose a different name.", relSlash, name),
 			))
 		}
 		return nil
@@ -52,7 +54,9 @@ func PathNames(root string) []Issue {
 	return issues
 }
 
-// IsReservedWindowsDeviceName 检查基名（去掉扩展名之前）是否为保留设备名。
+// IsReservedWindowsDeviceName 检查名称是否为 Windows 保留设备名（不区分大小写）。
+// 按 Microsoft 文档：保留名后紧跟扩展名也等价于保留名（如 NUL.txt、NUL.tar.gz 均等同于 NUL），故取第一个句点前的基名比对。
+// REF https://learn.microsoft.com/zh-cn/windows/win32/fileio/naming-a-file#naming-conventions
 func IsReservedWindowsDeviceName(name string) bool {
 	base := name
 	if before, _, ok := strings.Cut(name, "."); ok {

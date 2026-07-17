@@ -156,8 +156,8 @@ func ThemeJS(root string, allow bool) []Issue {
 	if allow {
 		return nil
 	}
-	return []Issue{issue("包根目录含有 `theme.js`。新上架主题默认不允许使用 `theme.js`（历史白名单仓库除外）。请从 `package.zip` 中删除 `theme.js`，改用 CSS 等方式实现。",
-		"`package.zip` contains `theme.js` at the package root. New themes must not ship `theme.js` (except legacy allowlisted repos). Remove `theme.js` from the package and use CSS or other approaches instead.",
+	return []Issue{issue("包根目录含有 `theme.js`。新上架主题默认不允许使用 `theme.js`（历史白名单仓库除外）。请从 `package.zip` 中删除 `theme.js`，改用纯 CSS 方式或者单独制作插件实现。",
+		"`package.zip` contains `theme.js` at the package root. New themes must not ship `theme.js` (except legacy allowlisted repos). Remove `theme.js` from the package and use pure CSS, or implement the behavior as a separate plugin.",
 	)}
 }
 
