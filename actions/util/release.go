@@ -49,7 +49,7 @@ func FetchLatestRelease(ctx context.Context, client *github.Client, owner, repo 
 	var info LatestRelease
 	if client == nil {
 		return info, rules.LocalizedErr(
-			"内部错误：无法获取 Latest Release，GitHub 客户端未初始化。这通常是集市检查流程配置问题，请联系维护者重试。",
+			"内部错误：无法获取 Latest Release，GitHub 客户端未初始化。这通常是集市检查流程配置问题，请联系维护者。",
 			"Internal error: could not fetch Latest Release because the GitHub client is not initialized. This is usually a bazaar checker configuration issue; contact a maintainer.",
 			ErrNoLatestRelease,
 		)

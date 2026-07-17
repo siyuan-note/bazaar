@@ -349,8 +349,8 @@ func checkVersion(m map[string]any, oldVersion string) []Issue {
 	oldCanon := canonicalSemver(oldVersion)
 	if !semver.IsValid(oldCanon) {
 		return []Issue{issue(
-			fmt.Sprintf("集市已记录的旧 `version` `%s` 无法解析，自动化无法比较升降。请联系集市维护者处理后再发版。", oldVersion),
-			fmt.Sprintf("The previously listed `version` `%s` cannot be parsed, so the checker cannot compare versions. Contact a bazaar maintainer before publishing.", oldVersion),
+			fmt.Sprintf("内部错误：集市已记录的旧 `version` `%s` 无法解析，自动化无法比较升降。请联系维护者处理后再发版。", oldVersion),
+			fmt.Sprintf("Internal error: the previously listed `version` `%s` cannot be parsed, so the checker cannot compare versions. Contact a maintainer before publishing.", oldVersion),
 		)}
 	}
 	if semver.Compare(canon, oldCanon) <= 0 {

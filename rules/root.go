@@ -23,7 +23,7 @@ import (
 func ResolvePackageRoot(path string) (string, error) {
 	if path == "" {
 		return "", LocalizedErr(
-			"内部错误：未能定位 `package.zip` 的解压目录。这通常是集市检查流程配置问题，请联系维护者重试。",
+			"内部错误：未能定位 `package.zip` 的解压目录。这通常是集市检查流程配置问题，请联系维护者。",
 			"Internal error: could not locate the extracted `package.zip` directory. This is usually a bazaar checker configuration issue; contact a maintainer.",
 			nil,
 		)
@@ -38,8 +38,8 @@ func ResolvePackageRoot(path string) (string, error) {
 	}
 	if !info.IsDir() {
 		return "", LocalizedErr(
-			"无法从 `package.zip` 确定包根目录：解压结果不是有效目录。请确认 `package.zip` 为合法 zip；若仍失败请联系集市维护者。",
-			"Cannot determine the package root from `package.zip`: the extraction result is not a valid directory. Ensure `package.zip` is a valid archive; contact a bazaar maintainer if this persists.",
+			"无法从 `package.zip` 确定包根目录：解压结果不是有效目录。请确认 `package.zip` 为合法 zip。",
+			"Cannot determine the package root from `package.zip`: the extraction result is not a valid directory. Ensure `package.zip` is a valid archive.",
 			nil,
 		)
 	}
