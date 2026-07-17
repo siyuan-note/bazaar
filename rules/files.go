@@ -145,15 +145,11 @@ func getTemplateReadmePaths(root string) map[string]struct{} {
 	return excluded
 }
 
-// ThemeJS 检查主题是否允许包含 theme.js。
-// 仅 config/themes-theme-js-allowlist.txt 中的旧仓库允许在包根目录包含 theme.js（存量豁免），
+// ThemeJS 检查主题包根是否包含 theme.js。
+// 仅 config/themes-theme-js-allowlist.txt 中的旧仓库允许（由 stepThemeJS 按 AllowThemeJS 跳过），
 // 其余新上架主题必须移除。REF https://github.com/siyuan-note/bazaar/issues/1821
-// allow 由调用方根据白名单决定（对应 Input.AllowThemeJS）。
-func ThemeJS(root string, allow bool) []Issue {
+func ThemeJS(root string) []Issue {
 	if !fileExistsCaseSensitive(root, "theme.js") {
-		return nil
-	}
-	if allow {
 		return nil
 	}
 	return []Issue{issue("包根目录含有 `theme.js`。新上架主题默认不允许使用 `theme.js`（历史白名单仓库除外）。请从 `package.zip` 中删除 `theme.js`，改用纯 CSS 方式或者单独制作插件实现。",

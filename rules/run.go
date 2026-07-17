@@ -112,12 +112,12 @@ func stepPathNames(c *Context) {
 	c.Add(PathNames(c.Root)...)
 }
 
-// stepThemeJS 仅对主题检查 theme.js 是否允许出现。
+// stepThemeJS 仅对非白名单主题检查 theme.js 是否出现。
 func stepThemeJS(c *Context) {
-	if c.Halted() || c.Type != TypeTheme {
+	if c.Halted() || c.Type != TypeTheme || c.AllowThemeJS {
 		return
 	}
-	c.Add(ThemeJS(c.Root, c.AllowThemeJS)...)
+	c.Add(ThemeJS(c.Root)...)
 }
 
 // stepManifest 读取类型对应的清单 JSON，并校验字段（name/url/version/readme 等，含 OccupiedNames 唯一性）。
