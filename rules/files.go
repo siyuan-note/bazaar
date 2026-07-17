@@ -30,23 +30,23 @@ type requiredFile struct {
 func requiredFilesFor(typ PackageType) []requiredFile {
 	files := []requiredFile{
 		{"icon.png", "这是集市列表里显示的图标。", "This is the icon shown in the bazaar list. "},
-		{"preview.png", "这是集市详情里显示的预览图。", "This is the preview image shown on the package detail page. "},
-		{"README.md", "这是默认说明文档。", "This is the default documentation file. "},
+		{"preview.png", "这是集市包详情页里显示的预览图。", "This is the preview image shown on the bazaar package detail page. "},
+		{"README.md", "这是集市包的默认说明文档。", "This is the default documentation file for the bazaar package. "},
 		{
 			typ.ManifestFile(),
-			fmt.Sprintf("这是%s的清单文件，需包含 `name`、`version`、`url` 等字段。", typ.String()),
-			fmt.Sprintf("This is the %s manifest and must include fields such as `name`, `version`, and `url`. ", typ.String()),
+			fmt.Sprintf("这是 %s 的清单文件。", typ.String()),
+			fmt.Sprintf("This is the %s manifest file. ", typ.String()),
 		},
 	}
 	switch typ {
 	case TypePlugin:
-		files = append(files, requiredFile{"index.js", "插件的前端入口脚本。", "This is the plugin frontend entry script. "})
+		files = append(files, requiredFile{"index.js", "这是插件的前端入口脚本文件。", "This is the plugin frontend entry script file. "})
 	case TypeTheme:
-		files = append(files, requiredFile{"theme.css", "主题的样式入口。", "This is the theme stylesheet entry. "})
+		files = append(files, requiredFile{"theme.css", "这是主题的样式入口文件。", "This is the theme stylesheet entry file. "})
 	case TypeIcon:
-		files = append(files, requiredFile{"icon.js", "图标包的脚本入口。", "This is the icon pack script entry. "})
+		files = append(files, requiredFile{"icon.js", "这是图标包的脚本入口文件。", "This is the icon pack script entry file. "})
 	case TypeWidget:
-		files = append(files, requiredFile{"index.html", "挂件的页面入口。", "This is the widget page entry. "})
+		files = append(files, requiredFile{"index.html", "这是挂件的页面入口文件。", "This is the widget page entry file. "})
 	}
 	return files
 }
