@@ -18,31 +18,44 @@ import (
 	"strings"
 )
 
-// 所有类型都需要的基础文件（大小写敏感）。
-var commonRequiredFiles = []string{
-	"icon.png",
-	"preview.png",
-	"README.md",
+// requiredFile 描述包根下的一个必要文件及其缺失时的补充说明。
+type requiredFile struct {
+	name   string
+	hintZh string
+	hintEn string
 }
 
-// 各类型运行时必要文件（对齐旧 Stage requiredFilesByType；清单文件已在 common + ManifestFile 覆盖）。
-var typeRuntimeFiles = map[PackageType][]string{
-	TypePlugin:   {"index.js"},
-	TypeTheme:    {"theme.css"},
-	TypeIcon:     {"icon.js"},
-	TypeWidget:   {"index.html"},
-	TypeTemplate: {}, // 模板另有「至少一个非 readme 的 .md」规则
+// requiredFilesFor 返回指定类型在包根下必须存在的文件（文件名大小写敏感）。
+// 模板另有「至少一个非 readme 的 .md」规则，不在此列表中。
+func requiredFilesFor(typ PackageType) []requiredFile {
+	files := []requiredFile{
+		{"icon.png", "这是集市列表里显示的图标。", "This is the icon shown in the bazaar list. "},
+		{"preview.png", "这是集市详情里显示的预览图。", "This is the preview image shown on the package detail page. "},
+		{"README.md", "这是默认说明文档。", "This is the default documentation file. "},
+		{
+			typ.ManifestFile(),
+			fmt.Sprintf("这是%s的清单文件，需包含 `name`、`version`、`url` 等字段。", typ.String()),
+			fmt.Sprintf("This is the %s manifest and must include fields such as `name`, `version`, and `url`. ", typ.String()),
+		},
+	}
+	switch typ {
+	case TypePlugin:
+		files = append(files, requiredFile{"index.js", "插件的前端入口脚本。", "This is the plugin frontend entry script. "})
+	case TypeTheme:
+		files = append(files, requiredFile{"theme.css", "主题的样式入口。", "This is the theme stylesheet entry. "})
+	case TypeIcon:
+		files = append(files, requiredFile{"icon.js", "图标包的脚本入口。", "This is the icon pack script entry. "})
+	case TypeWidget:
+		files = append(files, requiredFile{"index.html", "挂件的页面入口。", "This is the widget page entry. "})
+	}
+	return files
 }
 
 // RequiredFiles 检查必要文件是否存在（文件名大小写敏感）。
 func RequiredFiles(root string, typ PackageType) []Issue {
-	required := append([]string{}, commonRequiredFiles...)
-	required = append(required, typ.ManifestFile())
-	required = append(required, typeRuntimeFiles[typ]...)
-
 	var issues []Issue
-	for _, name := range required {
-		issues = append(issues, checkRequiredFile(root, name, typ)...)
+	for _, f := range requiredFilesFor(typ) {
+		issues = append(issues, checkRequiredFile(root, f)...)
 	}
 	if typ == TypeTemplate {
 		issues = append(issues, checkTemplateHasContentMD(root)...)
@@ -50,75 +63,25 @@ func RequiredFiles(root string, typ PackageType) []Issue {
 	return issues
 }
 
-func checkRequiredFile(root, name string, typ PackageType) []Issue {
-	p := filepath.Join(root, name)
-	hintZh := requiredFileHintZh(name, typ)
-	hintEn := requiredFileHintEn(name, typ)
-	if !fileExistsCaseSensitive(root, name) {
-		return []Issue{issue(fmt.Sprintf("`package.zip` 包根目录缺少必要文件 `%s`。%s文件名大小写必须完全一致（例如不能写成 `Icon.png`）。", name, hintZh),
-			fmt.Sprintf("Required file `%s` is missing from the `package.zip` root. %sThe filename is case-sensitive (e.g. `Icon.png` is not accepted).", name, hintEn),
+func checkRequiredFile(root string, f requiredFile) []Issue {
+	p := filepath.Join(root, f.name)
+	if !fileExistsCaseSensitive(root, f.name) {
+		return []Issue{issue(fmt.Sprintf("`package.zip` 包根目录缺少必要文件 `%s`。%s文件名大小写必须完全一致（例如不能写成 `Icon.png`）。", f.name, f.hintZh),
+			fmt.Sprintf("Required file `%s` is missing from the `package.zip` root. %sThe filename is case-sensitive (e.g. `Icon.png` is not accepted).", f.name, f.hintEn),
 		)}
 	}
 	info, err := os.Stat(p)
 	if err != nil {
-		return []Issue{issue(fmt.Sprintf("无法读取必要文件 `%s`：%v。请确认该文件已打进 `package.zip`。", name, err),
-			fmt.Sprintf("Cannot read required file `%s`: %v. Make sure it is included in `package.zip`.", name, err),
+		return []Issue{issue(fmt.Sprintf("无法读取必要文件 `%s`：%v。请确认该文件已打进 `package.zip`。", f.name, err),
+			fmt.Sprintf("Cannot read required file `%s`: %v. Make sure it is included in `package.zip`.", f.name, err),
 		)}
 	}
 	if info.IsDir() {
-		return []Issue{issue(fmt.Sprintf("`%s` 目前是一个目录，但集市要求它是普通文件。请放到包根下的同名文件，而不是文件夹。", name),
-			fmt.Sprintf("`%s` is a directory, but the bazaar expects a regular file at the package root. Put a file with this exact name there, not a folder.", name),
+		return []Issue{issue(fmt.Sprintf("`%s` 目前是一个目录，但集市要求它是普通文件。请放到包根下的同名文件，而不是文件夹。", f.name),
+			fmt.Sprintf("`%s` is a directory, but the bazaar expects a regular file at the package root. Put a file with this exact name there, not a folder.", f.name),
 		)}
 	}
 	return nil
-}
-
-func requiredFileHintZh(name string, typ PackageType) string {
-	switch name {
-	case "icon.png":
-		return "这是集市列表里显示的图标。"
-	case "preview.png":
-		return "这是集市详情里显示的预览图。"
-	case "README.md":
-		return "这是默认说明文档。"
-	case "index.js":
-		return "插件的前端入口脚本。"
-	case "theme.css":
-		return "主题的样式入口。"
-	case "icon.js":
-		return "图标包的脚本入口。"
-	case "index.html":
-		return "挂件的页面入口。"
-	default:
-		if name == typ.ManifestFile() {
-			return fmt.Sprintf("这是%s的清单文件，需包含 `name`、`version`、`url` 等字段。", typ.String())
-		}
-		return ""
-	}
-}
-
-func requiredFileHintEn(name string, typ PackageType) string {
-	switch name {
-	case "icon.png":
-		return "This is the icon shown in the bazaar list. "
-	case "preview.png":
-		return "This is the preview image shown on the package detail page. "
-	case "README.md":
-		return "This is the default documentation file. "
-	case "index.js":
-		return "This is the plugin frontend entry script. "
-	case "theme.css":
-		return "This is the theme stylesheet entry. "
-	case "icon.js":
-		return "This is the icon pack script entry. "
-	case "index.html":
-		return "This is the widget page entry. "
-	default:
-		if name == typ.ManifestFile() {
-			return fmt.Sprintf("This is the %s manifest and must include fields such as `name`, `version`, and `url`. ", typ.String())
-		}
-		return ""
-	}
 }
 
 // checkTemplateHasContentMD：模板包至少包含一个不以 readme 开头的 .md 文件（大小写不敏感前缀，对齐思源内核）。
