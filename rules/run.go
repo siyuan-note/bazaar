@@ -73,16 +73,10 @@ func stepOwnerRepo(c *Context) {
 
 // splitOwnerRepo 要求恰好一段 "/"，且两侧无首尾空白（空白视为格式错误，不自动 Trim 后接受）。
 func splitOwnerRepo(ownerRepo string) (owner, repo string, ok bool) {
-	parts := strings.Split(ownerRepo, "/")
-	if len(parts) != 2 {
-		return "", "", false
-	}
-	owner = strings.TrimSpace(parts[0])
-	repo = strings.TrimSpace(parts[1])
-	if owner == "" || repo == "" {
-		return "", "", false
-	}
-	if owner != parts[0] || repo != parts[1] {
+	owner, repo, ok = strings.Cut(ownerRepo, "/")
+	if !ok || owner == "" || repo == "" || strings.Contains(repo, "/") ||
+		strings.TrimSpace(owner) != owner ||
+		strings.TrimSpace(repo) != repo {
 		return "", "", false
 	}
 	return owner, repo, true
