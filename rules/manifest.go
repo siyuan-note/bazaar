@@ -197,7 +197,7 @@ func checkUnknownKeys(m map[string]any, typ PackageType) []Issue {
 		if _, ok := allowed[k]; !ok {
 			issues = append(issues, issue(
 				fmt.Sprintf("`%s` 中出现了预期外的字段 `%s`。请删除该字段（保留未知字段会妨碍思源日后扩展同名字段）。若确有自定义需求，请先在[思源仓库](https://github.com/siyuan-note/siyuan)提 issue 讨论。", typ.ManifestFile(), k),
-				fmt.Sprintf("`%s` contains unsupported field `%s`. Remove it (unknown fields block future official schema additions). If you need a new official field, open an issue in the bazaar repository first.", typ.ManifestFile(), k),
+				fmt.Sprintf("`%s` contains unexpected field `%s`. Please remove it (keeping unknown fields will hinder SiYuan from later extending fields with the same name). If you have a custom need, please open an issue in the [SiYuan repository](https://github.com/siyuan-note/siyuan) for discussion first.", typ.ManifestFile(), k),
 			))
 		}
 	}
@@ -231,18 +231,15 @@ func checkName(m map[string]any, in ManifestInput) []Issue {
 	}
 
 	var issues []Issue
-	for _, err := range validatePackageName(name) {
-		issues = append(issues, IssueFromErr(err))
-	}
-	if in.Type == TypeTheme {
+	switch in.Type {
+	case TypeTheme:
 		if _, hit := builtinThemeNames[name]; hit {
 			issues = append(issues, issue(
 				fmt.Sprintf("`name` 的值 `%s` 与思源内置主题重名，不能上架。请更换清单 `name`。", name),
 				fmt.Sprintf("`name` value `%s` conflicts with a built-in SiYuan theme and cannot be listed. Change the manifest `name`.", name),
 			))
 		}
-	}
-	if in.Type == TypeIcon {
+	case TypeIcon:
 		if _, hit := builtinIconNames[name]; hit {
 			issues = append(issues, issue(
 				fmt.Sprintf("`name` 的值 `%s` 与思源内置图标包重名，不能上架。请更换清单 `name`。", name),
@@ -256,32 +253,35 @@ func checkName(m map[string]any, in ManifestInput) []Issue {
 			fmt.Sprintf("`name` value `%s` is already used by another bazaar package (must be unique across plugins/themes/icons/templates/widgets, case-insensitive). Choose an unused `name` before resubmitting.", name),
 		))
 	}
+	for _, err := range validatePackageName(name) {
+		issues = append(issues, IssueFromErr(err))
+	}
 	return issues
 }
 
 // checkURL 要求 url 必须为 https://github.com/owner/repo（owner/repo 大小写不敏感）。
 // 禁止末尾斜杠或 .git 结尾。
-// https://github.com/siyuan-note/siyuan/issues/7775 兼容了末尾斜杠，但思源内核未必完全兼容，故统一禁止末尾斜杠以避免产生问题。
+// 思源从 https://github.com/siyuan-note/siyuan/issues/7775 兼容了末尾斜杠，但为了保持一致性，统一禁止末尾斜杠。
 func checkURL(m map[string]any, owner, repo string) []Issue {
+	want := "https://github.com/" + owner + "/" + repo
 	raw, ok := m["url"]
 	if !ok {
 		return []Issue{issue(
-			"清单缺少必填字段 `url`。请添加指向本仓库的地址，格式必须是 `https://github.com/<owner>/<repo>`（不要末尾斜杠，不要 `.git`）。",
-			"Manifest is missing required field `url`. Set it to `https://github.com/<owner>/<repo>` for this repository (no trailing slash, no `.git`).",
+			fmt.Sprintf("清单缺少必填字段 `url`。请添加 `\"url\": \"%s\"`。", want),
+			fmt.Sprintf("Manifest is missing required field `url`. Set it to `\"url\": \"%s\"`.", want),
 		)}
 	}
 	u, ok := raw.(string)
 	if !ok {
 		return []Issue{issue(
-			"清单字段 `url` 必须是字符串。请写成 `\"url\": \"https://github.com/owner/repo\"`。",
-			"Manifest field `url` must be a string, e.g. `\"url\": \"https://github.com/owner/repo\"`.",
+			fmt.Sprintf("清单字段 `url` 必须是字符串。请写成 `\"url\": \"%s\"`。", want),
+			fmt.Sprintf("Manifest field `url` must be a string, e.g. `\"url\": \"%s\"`.", want),
 		)}
 	}
-	want := "https://github.com/" + owner + "/" + repo
 	if !strings.EqualFold(u, want) {
 		return []Issue{issue(
-			fmt.Sprintf("清单字段 `url` 当前为 `%s`，正确值应为 `%s`。请改成该地址（不要加 `.git`，不要末尾 `/`；`owner/repo` 大小写可与 GitHub 显示略有不同）。", u, want),
-			fmt.Sprintf("Manifest `url` is `%s` but must be exactly `%s` (no `.git`, no trailing slash; `owner/repo` matching is case-insensitive). Fix it.", u, want),
+			fmt.Sprintf("清单字段 `url` 当前为 `%s`，请改成 `%s`。", u, want),
+			fmt.Sprintf("Manifest `url` is `%s` but must be `%s`. Fix it.", u, want),
 		)}
 	}
 	return nil
