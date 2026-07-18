@@ -72,6 +72,28 @@ func TestComputeRepoDiff_FilterAlreadyOnBazaarHead(t *testing.T) {
 	}
 }
 
+func TestComputeRepoDiff_SameRepoNameWithoutDeletingOldIsNotMaintainerChange(t *testing.T) {
+	// 只加 bob/transfer、未删 alice/transfer：同 GitHub 仓库名但不算换维护者
+	basePaths := []string{"alice/transfer"}
+	headPaths := []string{"alice/transfer", "bob/transfer"}
+	baseSet := Set{"alice/transfer": {}}
+	headSet := Set{"alice/transfer": {}, "bob/transfer": {}}
+	bazaarHead := Set{"alice/transfer": {}}
+	baseNameToOwner := map[string]string{"transfer": "alice"}
+
+	d := computeRepoDiff(headPaths, basePaths, baseSet, headSet, bazaarHead, baseNameToOwner)
+
+	if len(d.New) != 1 || d.New[0] != "bob/transfer" {
+		t.Fatalf("New = %v, want [bob/transfer]", d.New)
+	}
+	if len(d.Deleted) != 0 {
+		t.Fatalf("Deleted = %v, want empty", d.Deleted)
+	}
+	if len(d.PreviousRepos) != 0 {
+		t.Fatalf("PreviousRepos = %v, want empty (not a maintainer change)", d.PreviousRepos)
+	}
+}
+
 func TestFormatOnePackageLimitError(t *testing.T) {
 	plans := []typeCheckPlan{
 		{packageType: rules.TypePlugin, diff: repoDiff{New: []string{"a/p1", "b/p2"}}},

@@ -323,7 +323,7 @@ func runTypePackageChecks(
 
 // resolveMaintainerChangeLegacy 从 bazaar head stage 读取换维护者前旧仓库的 name/version。
 //
-// 调用前提：TXT diff 已判定为更换维护者（同一 GitHub 仓库名、不同 owner），oldOwnerRepo 为被替换的旧路径。
+// 调用前提：TXT diff 已判定为更换维护者（同 GitHub 仓库名、不同 owner，且旧路径已删除），oldOwnerRepo 为被替换的旧路径。
 // 此处只负责取出旧清单字段，供 rules.Check 校验「name 不变、version 升高」。
 func resolveMaintainerChangeLegacy(packageType rules.PackageType, newOwnerRepo, oldOwnerRepo string) (oldName, oldVersion string, issues []rules.Issue) {
 	if oldOwnerRepo == "" {

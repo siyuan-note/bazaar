@@ -19,7 +19,7 @@ import (
 type repoDiff struct {
 	New           []string          // 本 PR 新增或更换维护者后的 owner/repo
 	Deleted       []string          // 本 PR 移除的 owner/repo
-	PreviousRepos map[string]string // 换维护者：新 owner/repo → 原先的 owner/repo（键为 New 的子集）
+	PreviousRepos map[string]string // 换维护者：新 owner/repo → 已删除的旧 owner/repo（键为 New 的子集）
 }
 
 // computeRepoDiff 按 base/head diff 并过滤：
@@ -50,7 +50,12 @@ func computeRepoDiff(
 		}
 	}
 
-	// 更换维护者：在 PR base 与 PR head 中，repo name 相同但 owner 不同
+	// 更换维护者：同 GitHub 仓库名、不同 owner，且旧 owner/repo 已从列表删除。
+	// 若旧路径仍在列表，不算换维护者（按纯新包处理，包名唯一性会拦住重名）。
+	deletedSet := make(Set, len(deletedRepos))
+	for _, path := range deletedRepos {
+		deletedSet[path] = struct{}{}
+	}
 	previousRepos := make(map[string]string)
 	for _, path := range newRepos {
 		// newRepos 中既有纯新增，也可能含更换维护者后的新 owner/repo
@@ -63,10 +68,15 @@ func computeRepoDiff(
 			// base 中不存在该 name，是新增，不是更换维护者
 			continue
 		}
-		if oldOwner != newOwner {
-			// base 中有 oldOwner/name，head 中有 newOwner/name，是更换维护者
-			previousRepos[path] = oldOwner + "/" + name
+		if oldOwner == newOwner {
+			continue
 		}
+		oldPath := oldOwner + "/" + name
+		if _, removed := deletedSet[oldPath]; !removed {
+			// 旧路径未删除：与已有仓库 GitHub 名冲突，不当作换维护者
+			continue
+		}
+		previousRepos[path] = oldPath
 	}
 
 	return repoDiff{
