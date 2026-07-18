@@ -1,5 +1,9 @@
 {{ .Marker }}
 ### [{{ .OwnerRepo }}]({{ repoURL .OwnerRepo }}) (`{{ .PackageType }}`)
+{{- if .Author }}
+
+@{{ .Author }}
+{{- end }}
 {{- if .Release.URL }}
 
 最新 Release / Latest Release: [{{ .Release.Tag }}]({{ .Release.URL }}){{- if .Hash }} · hash `{{ .Hash }}`{{- end }}

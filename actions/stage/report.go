@@ -156,6 +156,7 @@ func parseStageFailTemplate() (*template.Template, error) {
 type stageFailCommentView struct {
 	Marker         string
 	OwnerRepo      string
+	Author         string // GitHub login（owner/repo 的 owner），用于 @ 提醒
 	PackageType    string
 	Release        util.LatestRelease
 	Hash           string
@@ -164,12 +165,21 @@ type stageFailCommentView struct {
 	WorkflowRunURL string
 }
 
+func stageFailAuthor(ownerRepo string) string {
+	author, _, ok := strings.Cut(ownerRepo, "/")
+	if !ok || author == "" {
+		return ""
+	}
+	return author
+}
+
 // formatStageFailComment 生成固定 Issue 下单仓失败评论正文（含 marker，便于 upsert/delete）。
 func formatStageFailComment(r stageReport) (string, error) {
 	var buf bytes.Buffer
 	err := stageFailTemplate.Execute(&buf, stageFailCommentView{
 		Marker:         stageFailCommentMarker(r.OwnerRepo),
 		OwnerRepo:      r.OwnerRepo,
+		Author:         stageFailAuthor(r.OwnerRepo),
 		PackageType:    r.PackageType.String(),
 		Release:        r.Release,
 		Hash:           r.Hash,
