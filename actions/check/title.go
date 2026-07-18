@@ -117,7 +117,7 @@ func maybeUpdatePRTitle(title string) {
 		return
 	}
 
-	current, _, err := githubClient.PullRequests.Get(githubContext, owner, repo, prNumber)
+	current, _, err := githubRepoClient.PullRequests.Get(githubContext, owner, repo, prNumber)
 	if err != nil {
 		logger.Errorf("get PR #%d title failed: %s", prNumber, err)
 		return
@@ -127,7 +127,7 @@ func maybeUpdatePRTitle(title string) {
 		return
 	}
 
-	_, _, err = githubClient.PullRequests.Edit(githubContext, owner, repo, prNumber, &github.PullRequest{
+	_, _, err = githubRepoClient.PullRequests.Edit(githubContext, owner, repo, prNumber, &github.PullRequest{
 		Title: new(title),
 	})
 	if err != nil {

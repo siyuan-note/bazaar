@@ -33,6 +33,11 @@ jobs:
       !contains(toJSON(github.event.pull_request.labels.*.name), '"ci-skip"') &&
       (github.event.action != 'labeled' || github.event.label.name == 'Check')
     runs-on: ubuntu-latest
+    # 改 PR 标题 / 同步标签 / 发评论 / 去掉 Check 标签；Release 与签出 fork 仍用 PAT
+    permissions:
+      contents: read
+      issues: write
+      pull-requests: write
     env:
       PAT: ${{ secrets.PAT }}
       BAZAAR_HEAD_PATH: .

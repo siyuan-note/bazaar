@@ -59,14 +59,16 @@ var (
 	BAZAAR_HEAD_PATH    = os.Getenv("BAZAAR_HEAD_PATH")    // bazaar 主分支最新代码目录（用于过滤与 OccupiedNames）
 	PR_HEAD_PATH        = os.Getenv("PR_HEAD_PATH")        // 本 PR 当前提交的代码目录（PR head）
 	PR_BASE_PATH        = os.Getenv("PR_BASE_PATH")        // 本 PR 的 merge base 代码目录（做 diff 的旧侧，与 GitHub "Files changed" 一致）
-	GITHUB_TOKEN        = os.Getenv("PAT")                 // GitHub Token（用于 Release API 与改 PR 标题）
+	PAT                 = os.Getenv("PAT")                 // 个人访问令牌（Release API）
+	GITHUB_TOKEN        = os.Getenv("GITHUB_TOKEN")        // Actions 令牌（改本仓 PR 标题与标签）
 	CHECK_RESULT_OUTPUT = os.Getenv("CHECK_RESULT_OUTPUT") // 检查结果输出文件路径
 
 	REQUEST_TIMEOUT = 30 * time.Second // 请求超时时间
 
-	logger        = gulu.Log.NewLogger(os.Stdout)
-	githubContext context.Context
-	githubClient  *github.Client
+	logger           = gulu.Log.NewLogger(os.Stdout)
+	githubContext    context.Context
+	githubClient     *github.Client // PAT：跨仓 Release
+	githubRepoClient *github.Client // GITHUB_TOKEN：本仓 PR 标题 / 标签
 )
 
 //go:embed check-result.md.tpl
@@ -138,9 +140,18 @@ func main() {
 	defer stop()
 
 	var err error
-	githubClient, err = util.NewGitHubClient(GITHUB_TOKEN, REQUEST_TIMEOUT)
+	githubClient, err = util.NewGitHubClient(PAT, REQUEST_TIMEOUT)
 	if err != nil {
 		logger.Fatalf("create github client failed: %s", err)
+	}
+	repoToken := GITHUB_TOKEN
+	if repoToken == "" {
+		repoToken = PAT
+		logger.Infof("GITHUB_TOKEN empty, fall back to PAT for PR title/labels")
+	}
+	githubRepoClient, err = util.NewGitHubClient(repoToken, REQUEST_TIMEOUT)
+	if err != nil {
+		logger.Fatalf("create github repo client failed: %s", err)
 	}
 
 	checkResultTemplate, err := parseCheckResultTemplate(githubContext)

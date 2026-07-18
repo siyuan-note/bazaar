@@ -46,6 +46,8 @@ This PR changes the package maintainer. Please read the process guide and `@` th
 检测到以下问题，请在修复之后重新打包 `package.zip` 发布新的 Release，并将 Release 标记为 Latest。
 
 We found the following issues. Please fix them, rebuild `package.zip`, publish a new Release, and mark that Release as Latest.
+
+---
   {{- end }}
 
   {{- $issues := .Issues }}

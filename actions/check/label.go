@@ -162,7 +162,7 @@ func syncPRLabels(plans []typeCheckPlan, checkResult *CheckResult) {
 }
 
 func replacePRLabels(owner, repo string, prNumber int, names []string) error {
-	_, _, err := githubClient.Issues.ReplaceLabelsForIssue(githubContext, owner, repo, prNumber, names)
+	_, _, err := githubRepoClient.Issues.ReplaceLabelsForIssue(githubContext, owner, repo, prNumber, names)
 	return err
 }
 
@@ -170,7 +170,7 @@ func listPRLabelNames(owner, repo string, prNumber int) ([]string, error) {
 	opts := &github.ListOptions{PerPage: 100}
 	var names []string
 	for {
-		labels, resp, err := githubClient.Issues.ListLabelsByIssue(githubContext, owner, repo, prNumber, opts)
+		labels, resp, err := githubRepoClient.Issues.ListLabelsByIssue(githubContext, owner, repo, prNumber, opts)
 		if err != nil {
 			return nil, err
 		}
@@ -217,7 +217,7 @@ func labelDescription(name string) string {
 
 // ensureRepoLabel 确保仓库存在该标签；不存在则按默认颜色与说明创建。
 func ensureRepoLabel(owner, repo, name string) error {
-	_, resp, err := githubClient.Issues.GetLabel(githubContext, owner, repo, name)
+	_, resp, err := githubRepoClient.Issues.GetLabel(githubContext, owner, repo, name)
 	if err == nil {
 		return nil
 	}
@@ -226,14 +226,14 @@ func ensureRepoLabel(owner, repo, name string) error {
 	}
 	color := labelColor(name)
 	desc := labelDescription(name)
-	_, _, err = githubClient.Issues.CreateLabel(githubContext, owner, repo, &github.Label{
+	_, _, err = githubRepoClient.Issues.CreateLabel(githubContext, owner, repo, &github.Label{
 		Name:        new(name),
 		Color:       new(color),
 		Description: new(desc),
 	})
 	if err != nil {
 		// 并发创建时可能已存在
-		if _, _, getErr := githubClient.Issues.GetLabel(githubContext, owner, repo, name); getErr == nil {
+		if _, _, getErr := githubRepoClient.Issues.GetLabel(githubContext, owner, repo, name); getErr == nil {
 			return nil
 		}
 		return err
