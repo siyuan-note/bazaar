@@ -183,7 +183,7 @@ func Manifest(m map[string]any, in ManifestInput) []Issue {
 	issues = append(issues, checkName(m, in)...)
 	issues = append(issues, checkURL(m, in.Owner, in.Repo)...)
 	issues = append(issues, checkVersion(m, in.OldVersion)...)
-	issues = append(issues, checkAuthor(m)...)
+	issues = append(issues, checkAuthor(m, in.Owner)...)
 	issues = append(issues, checkReadme(m, in.PackageRoot)...)
 	issues = append(issues, checkFunding(m)...)
 	issues = append(issues, checkOptionalTypedFields(m)...)
@@ -338,12 +338,12 @@ func checkVersion(m map[string]any, oldVersion string) []Issue {
 	return nil
 }
 
-func checkAuthor(m map[string]any) []Issue {
+func checkAuthor(m map[string]any, githubOwner string) []Issue {
 	raw, ok := m["author"]
 	if !ok {
 		return []Issue{issue(
-			"清单缺少必填字段 `author`。请填写作者名称字符串，例如 `\"author\": \"your-name\"`。",
-			"Manifest is missing required field `author`. Set a string such as `\"author\": \"your-name\"`.",
+			fmt.Sprintf("清单缺少必填字段 `author`。请填写作者名称字符串，例如 `\"author\": \"%s\"`。", githubOwner),
+			fmt.Sprintf("Manifest is missing required field `author`. Set a string such as `\"author\": \"%s\"`.", githubOwner),
 		)}
 	}
 	s, ok := raw.(string)
@@ -354,7 +354,7 @@ func checkAuthor(m map[string]any) []Issue {
 		)}
 	}
 	var issues []Issue
-	for _, err := range validateManifestAuthor(s) {
+	for _, err := range validateManifestAuthor(s, githubOwner) {
 		issues = append(issues, IssueFromErr(err))
 	}
 	return issues

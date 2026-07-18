@@ -115,20 +115,20 @@ func validatePackageName(name string) []error {
 }
 
 // validateManifestAuthor 校验用于 HTML 展示的清单字段 author：去掉首尾空白后须非空，且整段字符串与 html.EscapeString(s) 相同，避免 XSS。
-// 返回可直接用于 PR 评论的双语错误。
-func validateManifestAuthor(author string) []error {
+// githubOwner 为仓库所有者登录名，用于空值错误示例；返回可直接用于 PR 评论的双语错误。
+func validateManifestAuthor(author, githubOwner string) []error {
 	var errs []error
 	if strings.TrimSpace(author) == "" {
 		errs = append(errs, LocalizedErr(
-			"清单字段 `author` 不能为空或仅含空白字符。请填写普通文本作者名，例如 `\"author\": \"your-name\"`。",
-			"Manifest field `author` must not be empty or whitespace only. Set plain text such as `\"author\": \"your-name\"`.",
+			fmt.Sprintf("清单字段 `author` 不能为空或仅含空白字符。请填写普通文本作者名，例如 `\"author\": \"%s\"`。", githubOwner),
+			fmt.Sprintf("Manifest field `author` must not be empty or whitespace only. Set plain text such as `\"author\": \"%s\"`.", githubOwner),
 			nil,
 		))
 	}
 	if html.EscapeString(author) != author {
 		errs = append(errs, LocalizedErr(
-			fmt.Sprintf("清单字段 `author` 的值 `%s` 包含 HTML 特殊字符（`<`、`>`、`&`、`'`、`\"`）。请改成普通文本。", author),
-			fmt.Sprintf("Manifest field `author` value `%s` contains HTML-special characters (`<`, `>`, `&`, `'`, `\"`). Use plain text.", author),
+			fmt.Sprintf("清单字段 `author` 的值 `%s` 包含 HTML 特殊字符（`<`、`>`、`&`、`'`、`\"`）。请从作者名中移除这些字符。", author),
+			fmt.Sprintf("Manifest field `author` value `%s` contains HTML-special characters (`<`, `>`, `&`, `'`, `\"`). Remove them.", author),
 			nil,
 		))
 	}

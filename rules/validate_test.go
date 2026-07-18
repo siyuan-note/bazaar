@@ -32,13 +32,13 @@ func TestValidatePackageNameCollectsMultiple(t *testing.T) {
 }
 
 func TestValidateManifestAuthor(t *testing.T) {
-	if errs := validateManifestAuthor("demo"); len(errs) != 0 {
+	if errs := validateManifestAuthor("demo", "demo"); len(errs) != 0 {
 		t.Fatal(errs)
 	}
-	if errs := validateManifestAuthor("a<script>"); len(errs) == 0 {
+	if errs := validateManifestAuthor("a<script>", "demo"); len(errs) == 0 {
 		t.Fatal("expected reject HTML specials")
 	}
-	if errs := validateManifestAuthor("   "); len(errs) == 0 {
+	if errs := validateManifestAuthor("   ", "demo"); len(errs) == 0 {
 		t.Fatal("expected reject whitespace only")
 	}
 }
