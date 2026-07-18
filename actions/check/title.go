@@ -93,23 +93,32 @@ func isMaintainerChangeOldSide(d repoDiff, deleted string) bool {
 	return false
 }
 
+// prIdentity 解析当前 PR 的仓库与编号；缺环境变量或非法时 ok=false。
+func prIdentity() (owner, repo string, prNumber int, ok bool) {
+	if PR_NUMBER == "" || GITHUB_REPOSITORY == "" {
+		return "", "", 0, false
+	}
+	n, err := strconv.Atoi(PR_NUMBER)
+	if err != nil || n < 1 {
+		logger.Errorf("invalid PR_NUMBER %q", PR_NUMBER)
+		return "", "", 0, false
+	}
+	owner, repo, cutOK := strings.Cut(GITHUB_REPOSITORY, "/")
+	if !cutOK || owner == "" || repo == "" {
+		logger.Errorf("invalid GITHUB_REPOSITORY %q", GITHUB_REPOSITORY)
+		return "", "", 0, false
+	}
+	return owner, repo, n, true
+}
+
 // maybeUpdatePRTitle 将 PR 标题改为约定格式；缺环境变量或已是目标标题时跳过，失败只记日志不中断检查。
 func maybeUpdatePRTitle(title string) {
 	if title == "" {
 		return
 	}
-	if PR_NUMBER == "" || GITHUB_REPOSITORY == "" {
-		logger.Infof("skip PR title update: PR_NUMBER or GITHUB_REPOSITORY not set")
-		return
-	}
-	prNumber, err := strconv.Atoi(PR_NUMBER)
-	if err != nil || prNumber < 1 {
-		logger.Errorf("skip PR title update: invalid PR_NUMBER %q", PR_NUMBER)
-		return
-	}
-	owner, repo, ok := strings.Cut(GITHUB_REPOSITORY, "/")
-	if !ok || owner == "" || repo == "" {
-		logger.Errorf("skip PR title update: invalid GITHUB_REPOSITORY %q", GITHUB_REPOSITORY)
+	owner, repo, prNumber, ok := prIdentity()
+	if !ok {
+		logger.Infof("skip PR title update: PR_NUMBER or GITHUB_REPOSITORY not set / invalid")
 		return
 	}
 

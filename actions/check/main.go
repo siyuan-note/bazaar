@@ -39,9 +39,10 @@ Diff 流程（以 plugins.txt 为例）：
 5. 过滤候选新增：排除已在 bazaar head 中的仓库（可能是解决冲突时从 bazaar head 合并来的）
 6. 过滤候选删除：排除在 bazaar head 中已不存在的仓库（可能是其他 PR 删除的）
 7. 流程规则：添加或更换维护者合计只能为 1（移除不限）；违反则写 FlowError 评论并跳过包检查（亦不展示移除列表）
-8. 一次一包通过后：自动改 PR 标题（Add/Remove [type] owner/repo，插件省略类型；换维护者附 (maintainer change)；多仓纯移除为 Remove N packages）
-9. OccupiedNames 使用 bazaar head 的 stage/*.json 中所有类型的 package.name 集合（跨类型；比较前统一转小写）
-10. 一次一包通过后：对新增列表做 Latest Release / package.zip → 下载解压 → rules.Check；Bot 回复中列出移除列表、检查结果与更换维护者标记
+8. 按本 PR 实际涉及的 *.txt 同步类型标签（plugin/theme/icon/template/widget）：每次运行对账，缺则补、多则删；解析失败的类型也打标以便发现
+9. 一次一包通过后：自动改 PR 标题（Add/Remove [type] owner/repo，插件省略类型；换维护者附 (maintainer change)；多仓纯移除为 Remove N packages）
+10. OccupiedNames 使用 bazaar head 的 stage/*.json 中所有类型的 package.name 集合（跨类型；比较前统一转小写）
+11. 一次一包通过后：对新增列表做 Latest Release / package.zip → 下载解压 → rules.Check；Bot 回复中列出移除列表、检查结果与更换维护者标记
 
 Check 流程：
 1. 获取仓库最新 release 与 package.zip
@@ -143,6 +144,9 @@ func main() {
 		addedOrChanged += len(plan.diff.New)
 	}
 	checkResult.ParseError = parseErrorBuilder.String()
+
+	// 类型标签与 diff 对账（与一次一包是否通过无关；解析失败的类型也打标）
+	syncPRTypeLabels(plans)
 
 	// 流程规则：添加或更换维护者合计只能为 1（移除不限）
 	if addedOrChanged > 1 {
