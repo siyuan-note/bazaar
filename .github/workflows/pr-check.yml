@@ -17,6 +17,11 @@ on:
       - templates.txt
       - widgets.txt
 
+# 同一 PR 只保留最新一次检查，避免 synchronize / 打标重跑重叠写评论
+concurrency:
+  group: pr-check-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 jobs:
   check:
     if: |
