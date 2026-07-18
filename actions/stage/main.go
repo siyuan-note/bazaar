@@ -43,6 +43,7 @@ Stage 流程：
 4. hash 未变则跳过下载；否则下载 package.zip → rules.Check → 上传 OSS（package.zip、README、preview、icon、清单 JSON）
 5. 按 updated 降序排序后写出 stage/*.json（键序经 marshalSortedIndentedJSON 稳定）
 6. 将本轮失败/成功同步到固定 Issue（#1921）：失败 upsert 一仓一条评论，成功则删除；hash 跳过不改动评论
+   （本仓 Issue 评论用 GITHUB_TOKEN；跨仓 Release / repoStats 用 PAT）
 
 换维护者（列表中 alice/foo → bob/foo，stage 仍有 alice/foo）：
 - 同路径旧条目用于 hash 跳过 / 失败保留；换路径时不沿用旧 URL 条目
@@ -52,15 +53,17 @@ Stage 流程：
 type Set map[string]struct{} // 字符串集合
 
 var (
-	BAZAAR_ROOT_PATH = "."              // bazaar 仓库根目录（stage 工作区）
-	GITHUB_TOKEN     = os.Getenv("PAT") // GitHub Token
+	BAZAAR_ROOT_PATH = "."                       // bazaar 仓库根目录（stage 工作区）
+	PAT              = os.Getenv("PAT")          // 个人访问令牌（跨仓 Release / repoStats）
+	GITHUB_TOKEN     = os.Getenv("GITHUB_TOKEN") // Actions 令牌（本仓 Issue 评论）
 	STAGE_POOL_SIZE  = envIntDefault("STAGE_POOL_SIZE", 80)
 
 	REQUEST_TIMEOUT = 30 * time.Second // 请求超时时间
 
-	logger        = gulu.Log.NewLogger(os.Stdout)
-	githubContext context.Context
-	githubClient  *github.Client
+	logger           = gulu.Log.NewLogger(os.Stdout)
+	githubContext    context.Context
+	githubClient     *github.Client // PAT：跨仓 Release / repoStats
+	githubRepoClient *github.Client // GITHUB_TOKEN：本仓 Stage 失败汇总评论
 )
 
 func envIntDefault(key string, defaultVal int) int {
@@ -80,9 +83,18 @@ func main() {
 	defer stop()
 
 	var err error
-	githubClient, err = util.NewGitHubClient(GITHUB_TOKEN, REQUEST_TIMEOUT)
+	githubClient, err = util.NewGitHubClient(PAT, REQUEST_TIMEOUT)
 	if err != nil {
 		logger.Fatalf("create github client failed: %s", err)
+	}
+	repoToken := GITHUB_TOKEN
+	if repoToken == "" {
+		repoToken = PAT
+		logger.Infof("GITHUB_TOKEN empty, fall back to PAT for stage-fail comments")
+	}
+	githubRepoClient, err = util.NewGitHubClient(repoToken, REQUEST_TIMEOUT)
+	if err != nil {
+		logger.Fatalf("create github repo client failed: %s", err)
 	}
 
 	reposByType, err := loadReposByPackageType()
@@ -106,7 +118,7 @@ func main() {
 	}
 
 	// 失败汇总到固定 Issue；同步失败不阻断已写出的 stage JSON（仅记日志）。
-	if err := syncStageFailReports(githubContext, githubClient, reports.snapshot()); err != nil {
+	if err := syncStageFailReports(githubContext, githubRepoClient, reports.snapshot()); err != nil {
 		logger.Errorf("sync stage-fail comments failed: %s", err)
 	}
 

@@ -22,8 +22,14 @@ jobs:
   build:
     if: ${{ github.repository_owner == 'siyuan-note' }}
     runs-on: ubuntu-latest
+    # 写 stage JSON / push；固定 Issue #1921 失败汇总评论用 GITHUB_TOKEN。跨仓 Release 仍用 PAT。
+    permissions:
+      contents: write
+      issues: write
     env:
       PAT: ${{ secrets.PAT }}
+      # 须显式传入；仅写 permissions 不会自动注入到进程环境，否则 Go 会回退 PAT
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       QINIU_BUCKET: ${{ secrets.QINIU_BUCKET }}
       QINIU_AK: ${{ secrets.QINIU_AK }}
       QINIU_SK: ${{ secrets.QINIU_SK }}
