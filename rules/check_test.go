@@ -131,6 +131,40 @@ func TestCheckVersionMustIncrease(t *testing.T) {
 	if !r2.OK {
 		t.Fatalf("expected OK when version greater, issues=%v", r2.Issues)
 	}
+
+	// 旧版本号无法解析、新版本号合法时，视为修复版本号，放行
+	r3 := Check(Input{
+		PackageRoot: root,
+		OwnerRepo:   "demo/sample-plugin",
+		Type:        TypePlugin,
+		OldVersion:  "0.9.6.2",
+	})
+	if !r3.OK {
+		t.Fatalf("expected OK when fixing unparsable old version, issues=%v", r3.Issues)
+	}
+}
+
+func TestCheckVersionRejectsVPrefix(t *testing.T) {
+	dir := t.TempDir()
+	copyTree(t, filepath.Join("testdata", "plugin_ok"), dir)
+	content := `{
+  "name": "sample-plugin",
+  "author": "demo",
+  "url": "https://github.com/demo/sample-plugin",
+  "version": "v1.0.0",
+  "readme": { "default": "README.md" }
+}`
+	if err := os.WriteFile(filepath.Join(dir, "plugin.json"), []byte(content), 0644); err != nil {
+		t.Fatal(err)
+	}
+	r := Check(Input{
+		PackageRoot: dir,
+		OwnerRepo:   "demo/sample-plugin",
+		Type:        TypePlugin,
+	})
+	if r.OK || !hasIssueMsg(r, "v`/`V` 前缀") {
+		t.Fatalf("expected version v-prefix issue, issues=%v", r.Issues)
+	}
 }
 
 func TestCheckUnknownField(t *testing.T) {

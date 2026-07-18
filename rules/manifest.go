@@ -298,8 +298,8 @@ func checkVersion(m map[string]any, oldVersion string) []Issue {
 	ver, ok := raw.(string)
 	if !ok {
 		return []Issue{issue(
-			"清单字段 `version` 必须是字符串，例如 `1.2.3`。",
-			"Manifest field `version` must be a string, e.g. `1.2.3`.",
+			"清单字段 `version` 必须是字符串，例如 `1.0.0`。",
+			"Manifest field `version` must be a string, e.g. `1.0.0`.",
 		)}
 	}
 	if strings.TrimSpace(ver) != ver || ver == "" {
@@ -308,41 +308,34 @@ func checkVersion(m map[string]any, oldVersion string) []Issue {
 			fmt.Sprintf("Manifest `version` `%s` is invalid: it must be non-empty and must not have leading/trailing spaces. Use a clean semver like `1.0.0`.", ver),
 		)}
 	}
-	canon := canonicalSemver(ver)
+	if ver[0] == 'v' || ver[0] == 'V' {
+		return []Issue{issue(
+			fmt.Sprintf("清单字段 `version` 的值 `%s` 不应带 `v`/`V` 前缀。请使用如 `1.0.0`、`1.0.0-beta.1` 等形式。", ver),
+			fmt.Sprintf("Manifest `version` `%s` must not start with a `v`/`V` prefix. Use forms like `1.0.0` or `1.0.0-beta.1`.", ver),
+		)}
+	}
+	canon := "v" + ver
 	if !semver.IsValid(canon) {
 		return []Issue{issue(
-			fmt.Sprintf("清单字段 `version` 的值 `%s` 不是有效的语义化版本。请使用如 `1.0.0`、`1.2.3-beta.1` 等形式（不要带 `v` 前缀），参见 `https://semver.org/lang/zh-CN/`", ver),
-			fmt.Sprintf("Manifest `version` `%s` is not valid semantic versioning. Use forms like `1.0.0` or `1.2.3-beta.1` without a `v` prefix. See `https://semver.org/`", ver),
+			fmt.Sprintf("清单字段 `version` 的值 `%s` 不是有效的语义化版本。请使用如 `1.0.0`、`1.0.0-beta.1` 等形式（不要带 `v` 前缀），参见 `https://semver.org/lang/zh-CN/`", ver),
+			fmt.Sprintf("Manifest `version` `%s` is not valid semantic versioning. Use forms like `1.0.0` or `1.0.0-beta.1` without a `v` prefix. See `https://semver.org/`", ver),
 		)}
 	}
 	if oldVersion == "" {
 		return nil
 	}
-	oldCanon := canonicalSemver(oldVersion)
+	oldCanon := "v" + oldVersion
 	if !semver.IsValid(oldCanon) {
-		return []Issue{issue(
-			fmt.Sprintf("内部错误：集市已记录的旧 `version` `%s` 无法解析，自动化无法比较升降。请联系维护者处理后再发版。", oldVersion),
-			fmt.Sprintf("Internal error: the previously listed `version` `%s` cannot be parsed, so the checker cannot compare versions. Contact a maintainer before publishing.", oldVersion),
-		)}
+		// 旧版本号无法解析、新版本号合法：视为修复版本号的更新，放行
+		return nil
 	}
 	if semver.Compare(canon, oldCanon) <= 0 {
 		return []Issue{issue(
-			fmt.Sprintf("本次清单 `version` 为 `%s`，但不高于集市已上架版本 `%s`。更新包时必须提高语义化版本（例如 `%s` → 更高版本）。", ver, oldVersion, oldVersion),
-			fmt.Sprintf("Manifest `version` is `%s`, which is not greater than the listed version `%s`. Bump the semver above `%s`.", ver, oldVersion, oldVersion),
+			fmt.Sprintf("本次清单 `version` 为 `%s`，但不高于集市已上架版本 `%s`。更新包时必须提高语义化版本。", ver, oldVersion),
+			fmt.Sprintf("Manifest `version` is `%s`, which is not greater than the listed version `%s`. Bump the semver.", ver, oldVersion),
 		)}
 	}
 	return nil
-}
-
-func canonicalSemver(v string) string {
-	v = strings.TrimSpace(v)
-	if v == "" {
-		return "v"
-	}
-	if v[0] == 'v' || v[0] == 'V' {
-		return "v" + v[1:]
-	}
-	return "v" + v
 }
 
 func checkAuthor(m map[string]any) []Issue {
