@@ -32,8 +32,8 @@ var stageFailTemplateText string
 
 var stageFailTemplate = template.Must(parseStageFailTemplate())
 
-// 固定汇总 Issue：https://github.com/siyuan-note/bazaar/issues/1921
-const stageFailIssue = 1921
+// 固定汇总 Issue：https://github.com/siyuan-note/bazaar/issues/1923
+const stageFailIssue = 1923
 
 // 评论身份标记：<!-- bazaar-stage-fail {"repo":"owner/repo"} -->
 const stageFailCommentMarkerPrefix = "<!-- bazaar-stage-fail "
