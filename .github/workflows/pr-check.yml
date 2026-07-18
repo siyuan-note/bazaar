@@ -40,6 +40,8 @@ jobs:
       pull-requests: write
     env:
       PAT: ${{ secrets.PAT }}
+      # 须显式传入；仅写 permissions 不会自动注入到进程环境，否则 Go 会回退 PAT
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       BAZAAR_HEAD_PATH: .
       PR_HEAD_PATH: ./pr-head
       PR_BASE_PATH: ./pr-base
