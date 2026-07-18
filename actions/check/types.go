@@ -10,174 +10,83 @@
 
 package main
 
-type ResourceType int                 // 资源类型
-type StringSet map[string]interface{} // 字符串集合
+import (
+	"github.com/siyuan-note/bazaar/actions/util"
+	"github.com/siyuan-note/bazaar/rules"
+)
 
-// CheckResult 检查结果
+type Set map[string]struct{} // 字符串集合
+
+// CheckResult 检查结果（字段顺序：插件、主题、图标、模板、挂件）。
 type CheckResult struct {
-	Icons     []Icon     `json:"icons"`
-	Plugins   []Plugin   `json:"plugins"`
-	Templates []Template `json:"templates"`
-	Themes    []Theme    `json:"themes"`
-	Widgets   []Widget   `json:"widgets"`
+	Plugins   []PackageCheck
+	Themes    []PackageCheck
+	Icons     []PackageCheck
+	Templates []PackageCheck
+	Widgets   []PackageCheck
 
 	// ParseError 包列表 TXT 读取或格式校验错误，非空时在 PR 评论中优先展示
-	ParseError string `json:"parse_error"`
+	ParseError string
 
-	IconsDeleted     []string `json:"icons_deleted"`
-	PluginsDeleted   []string `json:"plugins_deleted"`
-	TemplatesDeleted []string `json:"templates_deleted"`
-	ThemesDeleted    []string `json:"themes_deleted"`
-	WidgetsDeleted   []string `json:"widgets_deleted"`
+	// FlowError 流程层规则失败说明（如一次只能添加/更改一个包）；非空时在评论中展示，跳过包检查且不展示移除列表
+	FlowError string
+
+	PluginsDeleted   []string
+	ThemesDeleted    []string
+	IconsDeleted     []string
+	TemplatesDeleted []string
+	WidgetsDeleted   []string
 }
 
-// Icon 图标
-type Icon struct {
-	RepoInfo          RepoInfo  `json:"repo"`               // 仓库
-	Release           Release   `json:"release"`            // 发行版
-	Files             IconFiles `json:"files"`              // 文件
-	Attrs             Attrs     `json:"attrs"`              // 属性
-	MaintainerChanged bool      `json:"maintainer_changed"` // 更换了维护者
+// appendCheck 将单仓检查结果写入对应类型分组。
+func (r *CheckResult) appendCheck(typ rules.PackageType, pc PackageCheck) bool {
+	switch typ {
+	case rules.TypePlugin:
+		r.Plugins = append(r.Plugins, pc)
+	case rules.TypeTheme:
+		r.Themes = append(r.Themes, pc)
+	case rules.TypeIcon:
+		r.Icons = append(r.Icons, pc)
+	case rules.TypeTemplate:
+		r.Templates = append(r.Templates, pc)
+	case rules.TypeWidget:
+		r.Widgets = append(r.Widgets, pc)
+	default:
+		return false
+	}
+	return true
 }
 
-type IconFiles struct {
-	Pass bool `json:"pass"`
-
-	IconJson   File `json:"icon.json"`
-	IconPng    File `json:"icon.png"`
-	PreviewPng File `json:"preview.png"`
-	ReadmeMd   File `json:"README.md"`
+// setDeleted 将本 PR 删除列表写入对应类型分组。
+func (r *CheckResult) setDeleted(typ rules.PackageType, paths []string) bool {
+	switch typ {
+	case rules.TypePlugin:
+		r.PluginsDeleted = paths
+	case rules.TypeTheme:
+		r.ThemesDeleted = paths
+	case rules.TypeIcon:
+		r.IconsDeleted = paths
+	case rules.TypeTemplate:
+		r.TemplatesDeleted = paths
+	case rules.TypeWidget:
+		r.WidgetsDeleted = paths
+	default:
+		return false
+	}
+	return true
 }
 
-// Plugin 插件
-type Plugin struct {
-	RepoInfo          RepoInfo    `json:"repo"`               // 仓库
-	Release           Release     `json:"release"`            // 发行版
-	Files             PluginFiles `json:"files"`              // 文件
-	Attrs             Attrs       `json:"attrs"`              // 属性
-	MaintainerChanged bool        `json:"maintainer_changed"` // 更换了维护者
-}
-
-type PluginFiles struct {
-	Pass bool `json:"pass"`
-
-	PluginJson File `json:"plugin.json"`
-	IconPng    File `json:"icon.png"`
-	PreviewPng File `json:"preview.png"`
-	ReadmeMd   File `json:"README.md"`
-}
-
-// Template 模板
-type Template struct {
-	RepoInfo          RepoInfo      `json:"repo"`               // 仓库
-	Release           Release       `json:"release"`            // 发行版
-	Files             TemplateFiles `json:"files"`              // 文件
-	Attrs             Attrs         `json:"attrs"`              // 属性
-	MaintainerChanged bool          `json:"maintainer_changed"` // 更换了维护者
-}
-
-type TemplateFiles struct {
-	Pass bool `json:"pass"`
-
-	TemplateJson File `json:"template.json"`
-	IconPng      File `json:"icon.png"`
-	PreviewPng   File `json:"preview.png"`
-	ReadmeMd     File `json:"README.md"`
-}
-
-// Theme 主题
-type Theme struct {
-	RepoInfo          RepoInfo   `json:"repo"`               // 仓库
-	Release           Release    `json:"release"`            // 发行版
-	Files             ThemeFiles `json:"files"`              // 文件
-	Attrs             Attrs      `json:"attrs"`              // 属性
-	MaintainerChanged bool       `json:"maintainer_changed"` // 更换了维护者
-}
-
-type ThemeFiles struct {
-	Pass bool `json:"pass"`
-
-	ThemeJson  File `json:"theme.json"`
-	NoThemeJs  File `json:"no_theme_js"` // 新上架的主题不得包含 theme.js；Pass 表示合规 https://github.com/siyuan-note/bazaar/issues/1821
-	IconPng    File `json:"icon.png"`
-	PreviewPng File `json:"preview.png"`
-	ReadmeMd   File `json:"README.md"`
-}
-
-// Widget 挂件
-type Widget struct {
-	RepoInfo          RepoInfo    `json:"repo"`               // 仓库
-	Release           Release     `json:"release"`            // 发行版
-	Files             WidgetFiles `json:"files"`              // 文件
-	Attrs             Attrs       `json:"attrs"`              // 属性
-	MaintainerChanged bool        `json:"maintainer_changed"` // 更换了维护者
-}
-
-type WidgetFiles struct {
-	Pass bool `json:"pass"`
-
-	WidgetJson File `json:"widget.json"`
-	IconPng    File `json:"icon.png"`
-	PreviewPng File `json:"preview.png"`
-	ReadmeMd   File `json:"README.md"`
+// PackageCheck 单个仓库的流程层检查结果。
+// 失败一律写入 Issues（含 release/* 与 Pkg Check）；Release 仅保留展示/下载所需的 Latest Release 字段。
+type PackageCheck struct {
+	RepoInfo          RepoInfo
+	Release           util.LatestRelease
+	Issues            []rules.Issue
+	MaintainerChanged bool
 }
 
 // RepoInfo 仓库信息
 type RepoInfo struct {
-	Owner string `json:"owner"` // 仓库拥有者
-	Name  string `json:"name"`  // 仓库名
-	Path  string `json:"path"`  // 仓库路径
-	Home  string `json:"home"`  // 仓库主页
-}
-
-// Release 发行版
-type Release struct {
-	Pass          bool          `json:"pass"`           // 必要的发行版是否检查通过
-	LatestRelease LatestRelease `json:"latest_release"` // 最新发行版
-}
-
-// LatestRelease 最新发行版
-type LatestRelease struct {
-	Pass       bool       `json:"pass"`        // 最新发行版是否存在
-	URL        string     `json:"url"`         // 最新发行版 URL
-	Tag        string     `json:"tag"`         // 标签名
-	Hash       string     `json:"hash"`        // SHA1
-	PackageZip PackageZip `json:"package_zip"` // package.zip 包
-}
-
-// PackageZip 最新发行版的 package.zip 包
-type PackageZip struct {
-	Pass bool   `json:"pass"` // package.zip 包是否存在
-	URL  string `json:"url"`  // package.zip 包 URL
-}
-
-// File 文件
-type File struct {
-	Pass bool `json:"pass"` // 文件是否存在
-
-	URL string `json:"url"` // 文件 URL
-}
-
-// Attrs 清单文件属性
-type Attrs struct {
-	Pass bool `json:"pass"` // 配置文件属性检查是否通过
-
-	Name    Name `json:"name"`
-	Version Attr `json:"version"`
-	Author  Attr `json:"author"`
-	URL     Attr `json:"url"`
-}
-
-type Name struct {
-	Pass  bool   `json:"pass"`  // name 字段检查是否通过
-	Value string `json:"value"` // name 字段值
-
-	Exist  bool `json:"exist"`  // name 字段是否存在
-	Valid  bool `json:"valid"`  // name 字段值是否有效 (在不同平台均为合法的目录名)
-	Unique bool `json:"unique"` // name 字段值在所有类型的包中是否唯一 (大小写不敏感)
-}
-
-type Attr struct {
-	Pass  bool   `json:"pass"`  // 配置文件属性检查是否通过
-	Value string `json:"value"` // 配置文件属性值
+	Path string // 仓库路径 owner/repo
+	Home string // 仓库主页
 }
