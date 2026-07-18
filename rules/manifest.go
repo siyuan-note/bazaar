@@ -25,11 +25,12 @@ import (
 type LocaleStrings map[string]string
 
 // Funding 表示清单 JSON 中 funding 字段的资助信息。
+// 各子字段均为可选；零值时 omitempty，避免 stage 索引写出空字符串 / 空数组。
 type Funding struct {
-	OpenCollective string   `json:"openCollective"`
-	Patreon        string   `json:"patreon"`
-	GitHub         string   `json:"github"`
-	Custom         []string `json:"custom"`
+	OpenCollective string   `json:"openCollective,omitempty"`
+	Patreon        string   `json:"patreon,omitempty"`
+	GitHub         string   `json:"github,omitempty"`
+	Custom         []string `json:"custom,omitempty"`
 }
 
 // Package 集市包清单 JSON 解析后的元数据（plugin.json / theme.json 等）。
