@@ -77,8 +77,7 @@ func TestFormatStageFailComment(t *testing.T) {
 			Tag: "v1.2.3",
 			URL: "https://github.com/owner/repo/releases/tag/v1.2.3",
 		},
-		Hash:    "abc123",
-		KeptOld: true,
+		Hash: "abc123",
 		Issues: []rules.Issue{{
 			MessageZh: "缺少 icon.png",
 			MessageEn: "missing icon.png",
@@ -94,7 +93,6 @@ func TestFormatStageFailComment(t *testing.T) {
 		"(`plugin`)",
 		"[v1.2.3](https://github.com/owner/repo/releases/tag/v1.2.3)",
 		"hash `abc123`",
-		"沿用旧 stage",
 		"[01]",
 		"缺少 icon.png",
 		"missing icon.png",

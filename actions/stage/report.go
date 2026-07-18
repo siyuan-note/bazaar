@@ -65,7 +65,6 @@ type stageReport struct {
 	Release     util.LatestRelease
 	Hash        string
 	Issues      []rules.Issue
-	KeptOld     bool
 }
 
 type stageReportCollector struct {
@@ -159,7 +158,6 @@ type stageFailCommentView struct {
 	PackageType    string
 	Release        util.LatestRelease
 	Hash           string
-	KeptOld        bool
 	Issues         []rules.Issue
 	WorkflowRunURL string
 }
@@ -173,7 +171,6 @@ func formatStageFailComment(r stageReport) (string, error) {
 		PackageType:    r.PackageType.String(),
 		Release:        r.Release,
 		Hash:           r.Hash,
-		KeptOld:        r.KeptOld,
 		Issues:         r.Issues,
 		WorkflowRunURL: workflowRunURL(),
 	})

@@ -7,12 +7,6 @@
 
 hash `{{ .Hash }}`
 {{- end }}
-{{- if .KeptOld }}
-
-本轮未更新入库，已沿用旧 stage 条目。
-
-This run did not update the staged package; the previous stage entry was kept.
-{{- end }}
 {{- if .Issues }}
 
 检测到以下问题，请在修复之后提升清单字段 `version`，重新打包 `package.zip` 并发布新的 GitHub Release（标记为 Latest）。

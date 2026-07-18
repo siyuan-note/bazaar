@@ -307,7 +307,6 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 						Kind:        stageReportFail,
 						Release:     releaseInfo,
 						Issues:      stageIssueFromErr(releaseErr),
-						KeptOld:     exactOld != nil,
 					})
 				}
 				return nil
@@ -333,7 +332,6 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 							Kind:        stageReportFail,
 							Release:     releaseInfo,
 							Hash:        hash,
-							KeptOld:     true,
 							Issues: stageInternalIssue(
 								fmt.Sprintf("Latest Release 仍指向同一 commit（`%s`），但 `package.zip` 资源已被替换（asset id %d → %d）。集市 Stage 需要新的 Release 标签才会更新入库。请提升清单 `version`，重新打包 `package.zip`，并发布带新 tag 的 GitHub Release（标记为 Latest）。",
 									hash, exactOld.PackageZipAssetID, packageZipAssetID),
@@ -353,7 +351,6 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 						Kind:        stageReportSkip,
 						Release:     releaseInfo,
 						Hash:        hash,
-						KeptOld:     true,
 					})
 					return nil
 				}
@@ -385,7 +382,6 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 						Release:     releaseInfo,
 						Hash:        hash,
 						Issues:      indexIssues,
-						KeptOld:     exactOld != nil,
 					})
 				}
 				return nil
@@ -405,7 +401,6 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 					Kind:        stageReportFail,
 					Release:     releaseInfo,
 					Hash:        hash,
-					KeptOld:     exactOld != nil,
 					Issues: stageInternalIssue(
 						"获取仓库 Star / Open Issues 统计失败，本轮未更新入库。请稍后重试；若持续失败请联系维护者。",
 						"Failed to fetch repository star / open-issue stats, so this run did not update the staged package. Please retry later; if it keeps failing, contact a maintainer.",
