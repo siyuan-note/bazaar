@@ -72,39 +72,39 @@ Check passed.
   {{- end }}
 {{- end }}
 
-{{- /* 一次一包失败时不展示移除列表；通过时移除放在新增前面便于审阅 */ -}}
+{{- /* 一次一包失败时不展示下架列表；通过时下架放在新增前面便于审阅 */ -}}
 {{- if not .FlowError }}
 {{- if .PluginsDeleted }}
 
-### 移除插件仓库 / Remove Plugin Repo
+### 下架插件仓库 / Delist Plugin Repo
   {{- range .PluginsDeleted }}
 - [{{ . }}](https://github.com/{{ . }})
   {{- end }}
 {{- end }}
 {{- if .ThemesDeleted }}
 
-### 移除主题仓库 / Remove Theme Repo
+### 下架主题仓库 / Delist Theme Repo
   {{- range .ThemesDeleted }}
 - [{{ . }}](https://github.com/{{ . }})
   {{- end }}
 {{- end }}
 {{- if .IconsDeleted }}
 
-### 移除图标仓库 / Remove Icon Repo
+### 下架图标仓库 / Delist Icon Repo
   {{- range .IconsDeleted }}
 - [{{ . }}](https://github.com/{{ . }})
   {{- end }}
 {{- end }}
 {{- if .TemplatesDeleted }}
 
-### 移除模板仓库 / Remove Template Repo
+### 下架模板仓库 / Delist Template Repo
   {{- range .TemplatesDeleted }}
 - [{{ . }}](https://github.com/{{ . }})
   {{- end }}
 {{- end }}
 {{- if .WidgetsDeleted }}
 
-### 移除挂件仓库 / Remove Widget Repo
+### 下架挂件仓库 / Delist Widget Repo
   {{- range .WidgetsDeleted }}
 - [{{ . }}](https://github.com/{{ . }})
   {{- end }}

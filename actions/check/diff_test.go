@@ -40,7 +40,7 @@ func TestComputeRepoDiff_AddRemoveAndMaintainerChange(t *testing.T) {
 			t.Fatalf("unexpected New entry %q in %v", p, d.New)
 		}
 	}
-	// 换维护者时旧 owner/repo 会计入 Deleted；纯移除亦然
+	// 换维护者时旧 owner/repo 会计入 Deleted；纯下架亦然
 	wantDeleted := map[string]bool{"alice/old": true, "alice/transfer": true}
 	if len(d.Deleted) != 2 {
 		t.Fatalf("Deleted = %v, want 2 entries", d.Deleted)

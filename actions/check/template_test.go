@@ -123,8 +123,8 @@ func TestCheckResultTemplate_FlowError(t *testing.T) {
 	if strings.Contains(out, "Check passed.") {
 		t.Fatalf("package checks should be skipped when FlowError is set\n%s", out)
 	}
-	// 一次一包失败时不展示移除列表（FlowError 文案里的「移除不限」除外）
-	if strings.Contains(out, "### 移除") || strings.Contains(out, "x/old") {
+	// 一次一包失败时不展示下架列表（FlowError 文案里的「下架不限」除外）
+	if strings.Contains(out, "### 下架") || strings.Contains(out, "x/old") {
 		t.Fatalf("deleted repos should be hidden when FlowError is set\n%s", out)
 	}
 }
@@ -135,7 +135,7 @@ func TestCheckResultTemplate_BlacklistFlowError(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	// 与 main 一致：黑名单命中时不填充包检查 / 仅可能残留删除列表（模板在 FlowError 下隐藏移除）
+	// 与 main 一致：黑名单命中时不填充包检查 / 仅可能残留删除列表（模板在 FlowError 下隐藏下架）
 	sample := CheckResult{
 		FlowError:      formatBlacklistFlowError(),
 		PluginsDeleted: []string{"x/old"},
@@ -161,7 +161,7 @@ func TestCheckResultTemplate_BlacklistFlowError(t *testing.T) {
 	if strings.Contains(out, "Check passed.") || strings.Contains(out, "### 新增") {
 		t.Fatalf("package checks should be skipped when blacklist FlowError is set\n%s", out)
 	}
-	if strings.Contains(out, "### 移除") || strings.Contains(out, "x/old") {
+	if strings.Contains(out, "### 下架") || strings.Contains(out, "x/old") {
 		t.Fatalf("deleted repos should be hidden when FlowError is set\n%s", out)
 	}
 }
@@ -224,7 +224,7 @@ func TestBazaarDocURL(t *testing.T) {
 	}
 }
 
-func TestCheckResultTemplate_RemoveBeforeAdd(t *testing.T) {
+func TestCheckResultTemplate_DelistBeforeAdd(t *testing.T) {
 	tmpl, err := parseCheckResultTemplate(context.Background())
 	if err != nil {
 		t.Fatal(err)
@@ -248,9 +248,9 @@ func TestCheckResultTemplate_RemoveBeforeAdd(t *testing.T) {
 	if strings.Contains(out, "新增 `") || strings.Contains(out, "个插件仓库") {
 		t.Fatalf("add heading should not include count\n%s", out)
 	}
-	rmIdx := strings.Index(out, "### 移除插件仓库")
+	rmIdx := strings.Index(out, "### 下架插件仓库")
 	addIdx := strings.Index(out, "### 新增插件仓库")
 	if rmIdx < 0 || addIdx < 0 || rmIdx > addIdx {
-		t.Fatalf("remove section should appear before add section\n%s", out)
+		t.Fatalf("delist section should appear before add section\n%s", out)
 	}
 }

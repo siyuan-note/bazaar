@@ -61,7 +61,7 @@ func typeLabelSyncPlan(plans []typeCheckPlan) Set {
 }
 
 // checkResultCIPassed 判断本轮 PR Check 是否通过硬门槛。
-// ParseError / FlowError / 任一包 Issues 均视为失败；无列表增删（无实际变更）视为失败；纯移除且无错误视为通过。
+// ParseError / FlowError / 任一包 Issues 均视为失败；无列表增删（无实际变更）视为失败；纯下架且无错误视为通过。
 func checkResultCIPassed(r *CheckResult) bool {
 	if r == nil {
 		return false

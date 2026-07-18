@@ -37,24 +37,24 @@ func TestConventionalPRTitle_AddTheme(t *testing.T) {
 	}
 }
 
-func TestConventionalPRTitle_Remove(t *testing.T) {
+func TestConventionalPRTitle_Delist(t *testing.T) {
 	plans := []typeCheckPlan{
 		{packageType: rules.TypeWidget, diff: repoDiff{Deleted: []string{"bob/bar"}}},
 	}
 	title, ok := conventionalPRTitle(plans)
-	if !ok || title != "Remove widget bob/bar" {
-		t.Fatalf("got (%q, %v), want (Remove widget bob/bar, true)", title, ok)
+	if !ok || title != "Delist widget bob/bar" {
+		t.Fatalf("got (%q, %v), want (Delist widget bob/bar, true)", title, ok)
 	}
 }
 
-func TestConventionalPRTitle_RemoveMultiple(t *testing.T) {
+func TestConventionalPRTitle_DelistMultiple(t *testing.T) {
 	plans := []typeCheckPlan{
 		{packageType: rules.TypePlugin, diff: repoDiff{Deleted: []string{"a/p1", "b/p2"}}},
 		{packageType: rules.TypeIcon, diff: repoDiff{Deleted: []string{"c/i1"}}},
 	}
 	title, ok := conventionalPRTitle(plans)
-	if !ok || title != "Remove 3 packages" {
-		t.Fatalf("got (%q, %v), want (Remove 3 packages, true)", title, ok)
+	if !ok || title != "Delist 3 packages" {
+		t.Fatalf("got (%q, %v), want (Delist 3 packages, true)", title, ok)
 	}
 }
 
@@ -96,8 +96,8 @@ func TestConventionalPRTitle_ParseError(t *testing.T) {
 	}
 }
 
-func TestConventionalPRTitle_AddPlusUnrelatedRemove(t *testing.T) {
-	// 一次一包允许「1 个新增 + 任意移除」，但标题要求仅涉及一个仓库
+func TestConventionalPRTitle_AddPlusUnrelatedDelist(t *testing.T) {
+	// 一次一包允许「1 个新增 + 任意下架」，但标题要求仅涉及一个仓库
 	plans := []typeCheckPlan{
 		{packageType: rules.TypePlugin, diff: repoDiff{New: []string{"a/p1"}, Deleted: []string{"b/old"}}},
 	}

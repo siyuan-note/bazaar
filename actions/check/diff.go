@@ -18,7 +18,7 @@ import (
 // repoDiff 单类型列表相对 PR base / bazaar head 过滤后的增删结果。
 type repoDiff struct {
 	New           []string          // 本 PR 新增或更换维护者后的 owner/repo
-	Deleted       []string          // 本 PR 移除的 owner/repo
+	Deleted       []string          // 本 PR 下架的 owner/repo
 	PreviousRepos map[string]string // 换维护者：新 owner/repo → 已删除的旧 owner/repo（键为 New 的子集）
 }
 
@@ -90,8 +90,8 @@ func computeRepoDiff(
 // total 为添加或更换维护者的合计数量（须 > 1）。
 func formatOnePackageLimitError(total int, plans []typeCheckPlan) string {
 	var b strings.Builder
-	fmt.Fprintf(&b, "本 PR 添加或更换了 %d 个集市包，但一次只能添加或更换 1 个（移除不限数量）。请将每个包拆成独立的 Pull Request 后再提交。\n\n", total)
-	fmt.Fprintf(&b, "This PR adds or changes %d bazaar packages, but only 1 package may be added or have its maintainer changed per PR (removals are unlimited). Please split each package into its own Pull Request.\n\n", total)
+	fmt.Fprintf(&b, "本 PR 添加或更换了 %d 个集市包，但一次只能添加或更换 1 个（下架不限数量）。请将每个包拆成独立的 Pull Request 后再提交。\n\n", total)
+	fmt.Fprintf(&b, "This PR adds or changes %d bazaar packages, but only 1 package may be added or have its maintainer changed per PR (delistings are unlimited). Please split each package into its own Pull Request.\n\n", total)
 
 	b.WriteString("涉及的仓库 / Involved repos:\n")
 	for _, plan := range plans {

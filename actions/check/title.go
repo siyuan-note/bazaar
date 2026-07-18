@@ -27,8 +27,8 @@ var (
 
 // conventionalPRTitle 生成约定 PR 标题。
 // 新增/换维护者：Add [type] owner/repo（插件省略类型；换维护者附 (maintainer change)）。
-// 纯移除：仅 1 个用 Remove [type] owner/repo；多个用 Remove N packages。
-// 调用方须已通过一次一包（addedOrChanged ≤ 1）。有 parseError，或新增同时带有纯移除时返回 ok=false。
+// 纯下架：仅 1 个用 Delist [type] owner/repo；多个用 Delist N packages。
+// 调用方须已通过一次一包（addedOrChanged ≤ 1）。有 parseError，或新增同时带有纯下架时返回 ok=false。
 func conventionalPRTitle(plans []typeCheckPlan) (title string, ok bool) {
 	var added string
 	var addedType rules.PackageType
@@ -62,15 +62,15 @@ func conventionalPRTitle(plans []typeCheckPlan) (title string, ok bool) {
 		}
 		return title, true
 	case added == "" && removedCount == 1:
-		return formatActionTitle("Remove", removedType, removed), true
+		return formatActionTitle("Delist", removedType, removed), true
 	case added == "" && removedCount > 1:
-		return fmt.Sprintf("Remove %d packages", removedCount), true
+		return fmt.Sprintf("Delist %d packages", removedCount), true
 	default:
 		return "", false
 	}
 }
 
-// formatActionTitle 生成 Add/Remove 标题；非插件类型在动作词后插入类型名。
+// formatActionTitle 生成 Add/Delist 标题；非插件类型在动作词后插入类型名。
 func formatActionTitle(action string, typ rules.PackageType, ownerRepo string) string {
 	if typ != rules.TypePlugin {
 		return action + " " + typ.String() + " " + ownerRepo
@@ -78,7 +78,7 @@ func formatActionTitle(action string, typ rules.PackageType, ownerRepo string) s
 	return action + " " + ownerRepo
 }
 
-// isPreviousRepo 判断 deleted 是否为换维护者时被替换的旧 owner/repo（不单独计入移除）。
+// isPreviousRepo 判断 deleted 是否为换维护者时被替换的旧 owner/repo（不单独计入下架）。
 func isPreviousRepo(d repoDiff, deleted string) bool {
 	for _, previous := range d.PreviousRepos {
 		if previous == deleted {

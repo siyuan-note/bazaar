@@ -44,8 +44,8 @@ Diff 流程（以 plugins.txt 为例）：
 4. 比较 base 与 head：候选新增 = head 有 base 无，候选删除 = base 有 head 无
 5. 过滤候选新增：排除已在 bazaar head 中的仓库（可能是解决冲突时从 bazaar head 合并来的）
 6. 过滤候选删除：排除在 bazaar head 中已不存在的仓库（可能是其他 PR 删除的）
-7. 流程规则：添加或更换维护者合计只能为 1（移除不限）；违反则写 FlowError，跳过后续 Check（评论亦不展示移除列表）
-8. 一次一包通过后：自动改 PR 标题（Add/Remove [type] owner/repo，插件省略类型；换维护者附 (maintainer change)；多仓纯移除为 Remove N packages）
+7. 流程规则：添加或更换维护者合计只能为 1（下架不限）；违反则写 FlowError，跳过后续 Check（评论亦不展示下架列表）
+8. 一次一包通过后：自动改 PR 标题（Add/Delist [type] owner/repo，插件省略类型；换维护者附 (maintainer change)；多仓纯下架为 Delist N packages）
 
 Check 流程（一次一包通过后，对 plan.diff.New 中的仓库）：
 1. 从 bazaar head 的 stage/*.json 加载 OccupiedNames（跨类型；比较前统一转小写）
@@ -55,7 +55,7 @@ Check 流程（一次一包通过后，对 plan.diff.New 中的仓库）：
 5. 通过后将 name 写入 OccupiedNames（同 PR 内唯一性）
 
 收尾（无论是否跑过包检查）：
-1. 用模板写出检查结果文件（含移除列表、检查 Issues；换维护者时附流程说明链接）
+1. 用模板写出检查结果文件（含下架列表、检查 Issues；换维护者时附流程说明链接）
 2. 同步标签：类型标签按涉及的 *.txt 对账；CI 状态打 ci-failed 或 ci-passed（互斥，同一次 Replace）
 3. 工作流用 thollander/actions-comment-pull-request 将结果文件发到 PR
 */
@@ -195,12 +195,12 @@ func main() {
 		}
 		checkResult.ParseError = parseErrorBuilder.String()
 
-		// 流程规则：添加或更换维护者合计只能为 1（移除不限）
+		// 流程规则：添加或更换维护者合计只能为 1（下架不限）
 		if addedOrChanged > 1 {
 			checkResult.FlowError = formatOnePackageLimitError(addedOrChanged, plans)
 			logger.Errorf("one-package limit violated: %d packages added or changed", addedOrChanged)
 		} else {
-			// 一次一包通过后：自动改 PR 标题（含纯移除；多仓移除为 Remove N packages）
+			// 一次一包通过后：自动改 PR 标题（含纯下架；多仓下架为 Delist N packages）
 			if title, ok := conventionalPRTitle(plans); ok {
 				maybeUpdatePRTitle(title)
 			}
