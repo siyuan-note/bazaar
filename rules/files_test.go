@@ -22,13 +22,15 @@ func TestFormatByteSize(t *testing.T) {
 		n    int64
 		want string
 	}{
-		{0, "0 B"},
-		{512, "512 B"},
-		{1024, "1 KB"},
-		{20 * 1024, "20 KB"},
-		{200 * 1024, "200 KB"},
-		{20*1024 + 1, "20481 B (20.00 KB)"},
-		{25000, "25000 B (24.41 KB)"},
+		{0, "0B"},
+		{512, "512B"},
+		{1024, "1.0KB"},
+		{20 * 1024, "20.0KB"},
+		{200 * 1024, "200.0KB"},
+		{20*1024 + 1, "20.0KB"},
+		{25000, "24.4KB"},
+		{31232, "30.5KB"},  // 30.5 * 1024
+		{2202009, "2.1MB"}, // ≈ 2.1 * 1024 * 1024
 	}
 	for _, tc := range cases {
 		if got := formatByteSize(tc.n); got != tc.want {
@@ -56,7 +58,7 @@ func TestRequiredFilesIconSizeLimit(t *testing.T) {
 	if !issuesContain(issues, "`icon.png`") || !issuesContain(issues, "超过上限") {
 		t.Fatalf("expected icon size issue, issues=%v", issues)
 	}
-	if !issuesContain(issues, "20 KB") {
+	if !issuesContain(issues, "20.0KB") {
 		t.Fatalf("expected limit wording, issues=%v", issues)
 	}
 }
@@ -78,7 +80,7 @@ func TestRequiredFilesPreviewSizeLimit(t *testing.T) {
 	if !issuesContain(issues, "`preview.png`") || !issuesContain(issues, "超过上限") {
 		t.Fatalf("expected preview size issue, issues=%v", issues)
 	}
-	if !issuesContain(issues, "200 KB") {
+	if !issuesContain(issues, "200.0KB") {
 		t.Fatalf("expected limit wording, issues=%v", issues)
 	}
 }

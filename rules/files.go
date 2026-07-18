@@ -103,17 +103,23 @@ func checkRequiredFile(root string, f requiredFile) []Issue {
 	return nil
 }
 
-// formatByteSize 将字节数格式化为可读体积。
-// 整 KB 显示为 "N KB"；非整 KB 显示为 "N B (x.xx KB)"，避免临界值被四舍五入后看起来像未超限。
+// formatByteSize 将字节数按量级格式化为可读体积，例如 "512B"、"30.5KB"、"2.1MB"。
 func formatByteSize(n int64) string {
-	const kb = 1024
-	if n < kb {
-		return fmt.Sprintf("%d B", n)
+	const (
+		kb = 1024
+		mb = 1024 * 1024
+		gb = 1024 * 1024 * 1024
+	)
+	switch {
+	case n < kb:
+		return fmt.Sprintf("%dB", n)
+	case n < mb:
+		return fmt.Sprintf("%.1fKB", float64(n)/float64(kb))
+	case n < gb:
+		return fmt.Sprintf("%.1fMB", float64(n)/float64(mb))
+	default:
+		return fmt.Sprintf("%.1fGB", float64(n)/float64(gb))
 	}
-	if n%kb == 0 {
-		return fmt.Sprintf("%d KB", n/kb)
-	}
-	return fmt.Sprintf("%d B (%.2f KB)", n, float64(n)/float64(kb))
 }
 
 // checkTemplateHasContentMD：模板包至少包含一个可作为模板正文的 .md 文件。
