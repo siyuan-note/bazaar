@@ -39,8 +39,9 @@ Diff 流程（以 plugins.txt 为例）：
 5. 过滤候选新增：排除已在 bazaar head 中的仓库（可能是解决冲突时从 bazaar head 合并来的）
 6. 过滤候选删除：排除在 bazaar head 中已不存在的仓库（可能是其他 PR 删除的）
 7. 流程规则：添加或更换维护者合计只能为 1（移除不限）；违反则写 FlowError 评论并跳过包检查（亦不展示移除列表）
-8. OccupiedNames 使用 bazaar head 的 stage/*.json 中所有类型的 package.name 集合（跨类型；比较前统一转小写）
-9. 一次一包通过后：对新增列表做 Latest Release / package.zip → 下载解压 → rules.Check；Bot 回复中列出移除列表、检查结果与更换维护者标记
+8. 一次一包通过后：自动改 PR 标题（Add/Remove [type] owner/repo，插件省略类型；换维护者附 (maintainer change)；多仓纯移除为 Remove N packages）
+9. OccupiedNames 使用 bazaar head 的 stage/*.json 中所有类型的 package.name 集合（跨类型；比较前统一转小写）
+10. 一次一包通过后：对新增列表做 Latest Release / package.zip → 下载解压 → rules.Check；Bot 回复中列出移除列表、检查结果与更换维护者标记
 
 Check 流程：
 1. 获取仓库最新 release 与 package.zip
@@ -55,7 +56,7 @@ var (
 	BAZAAR_HEAD_PATH    = os.Getenv("BAZAAR_HEAD_PATH")    // bazaar 主分支最新代码目录（用于过滤与 OccupiedNames）
 	PR_HEAD_PATH        = os.Getenv("PR_HEAD_PATH")        // 本 PR 当前提交的代码目录（PR head）
 	PR_BASE_PATH        = os.Getenv("PR_BASE_PATH")        // 本 PR 的 merge base 代码目录（做 diff 的旧侧，与 GitHub "Files changed" 一致）
-	GITHUB_TOKEN        = os.Getenv("PAT")                 // GitHub Token
+	GITHUB_TOKEN        = os.Getenv("PAT")                 // GitHub Token（用于 Release API 与改 PR 标题）
 	CHECK_RESULT_OUTPUT = os.Getenv("CHECK_RESULT_OUTPUT") // 检查结果输出文件路径
 
 	REQUEST_TIMEOUT = 30 * time.Second // 请求超时时间
@@ -148,6 +149,11 @@ func main() {
 		checkResult.FlowError = formatOnePackageLimitError(addedOrChanged, plans)
 		logger.Errorf("one-package limit violated: %d packages added or changed", addedOrChanged)
 	} else {
+		// 一次一包通过后：自动改 PR 标题（含纯移除；多仓移除为 Remove N packages）
+		if title, ok := conventionalPRTitle(plans); ok {
+			maybeUpdatePRTitle(title)
+		}
+
 		occupiedNames, err := util.LoadOccupiedNames(BAZAAR_HEAD_PATH)
 		if err != nil {
 			logger.Fatalf("load occupied names failed: %s", err)

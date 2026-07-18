@@ -34,6 +34,7 @@ jobs:
       PR_HEAD_PATH: ./pr-head
       PR_BASE_PATH: ./pr-base
       CHECK_RESULT_OUTPUT: ./check-result.md
+      PR_NUMBER: ${{ github.event.pull_request.number }}
     steps:
       # 签出 bazaar main 分支最新提交，用于过滤与 name 唯一性检查；fetch-depth: 0 以便后续计算 merge base
       - name: Check out bazaar head
