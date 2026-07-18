@@ -181,9 +181,9 @@ func Manifest(m map[string]any, in ManifestInput) []Issue {
 	var issues []Issue
 	issues = append(issues, checkUnknownKeys(m, in.Type)...)
 	issues = append(issues, checkName(m, in)...)
+	issues = append(issues, checkAuthor(m, in.Owner)...)
 	issues = append(issues, checkURL(m, in.Owner, in.Repo)...)
 	issues = append(issues, checkVersion(m, in.OldVersion)...)
-	issues = append(issues, checkAuthor(m, in.Owner)...)
 	issues = append(issues, checkReadme(m, in.PackageRoot)...)
 	issues = append(issues, checkFunding(m)...)
 	issues = append(issues, checkOptionalTypedFields(m)...)
@@ -219,6 +219,12 @@ func checkName(m map[string]any, in ManifestInput) []Issue {
 			fmt.Sprintf("Manifest field `name` must be a string. Use a value like `\"name\": \"%s\"`.", in.Repo),
 		)}
 	}
+	if name == "" {
+		return []Issue{issue(
+			"清单字段 `name` 不能为空。请填写非空字符串。",
+			"Manifest field `name` must not be empty. Set a non-empty string.",
+		)}
+	}
 
 	if in.OldName != "" {
 		if name != in.OldName {
@@ -230,33 +236,130 @@ func checkName(m map[string]any, in ManifestInput) []Issue {
 		return nil
 	}
 
-	var issues []Issue
 	switch in.Type {
 	case TypeTheme:
 		if _, hit := builtinThemeNames[name]; hit {
-			issues = append(issues, issue(
+			return []Issue{issue(
 				fmt.Sprintf("`name` 的值 `%s` 与思源内置主题重名，不能上架。请更换清单 `name`。", name),
 				fmt.Sprintf("`name` value `%s` conflicts with a built-in SiYuan theme and cannot be listed. Change the manifest `name`.", name),
-			))
+			)}
 		}
 	case TypeIcon:
 		if _, hit := builtinIconNames[name]; hit {
-			issues = append(issues, issue(
+			return []Issue{issue(
 				fmt.Sprintf("`name` 的值 `%s` 与思源内置图标包重名，不能上架。请更换清单 `name`。", name),
 				fmt.Sprintf("`name` value `%s` conflicts with a built-in SiYuan icon pack and cannot be listed. Change the manifest `name`.", name),
-			))
+			)}
 		}
 	}
 	if _, exists := in.OccupiedNames[strings.ToLower(name)]; exists {
-		issues = append(issues, issue(
+		return []Issue{issue(
 			fmt.Sprintf("`name` 的值 `%s` 已被其他集市包占用（插件/主题/图标/模板/挂件之间也不能重名，且不区分大小写）。请更换一个未被占用的 `name` 后重新提交。", name),
 			fmt.Sprintf("`name` value `%s` is already used by another bazaar package (must be unique across plugins/themes/icons/templates/widgets, case-insensitive). Choose an unused `name` before resubmitting.", name),
+		)}
+	}
+
+	var issues []Issue
+	// 单路径组件名称的字节长度上限，Linux ext4、macOS APFS 等常见文件系统均为 255，但为了保留冗余，这里取经验值 64
+	if len(name) > 64 {
+		issues = append(issues, issue(
+			fmt.Sprintf("清单字段 `name` 的值 `%s` 超过长度上限（64 字节）。请缩短名称。", name),
+			fmt.Sprintf("Manifest field `name` value `%s` exceeds the maximum length (64 bytes). Shorten it.", name),
 		))
 	}
-	for _, err := range validatePackageName(name) {
-		issues = append(issues, IssueFromErr(err))
+	// 集市约定：不得以句点（.）开头，避免隐藏文件夹。
+	if strings.HasPrefix(name, ".") {
+		issues = append(issues, issue(
+			fmt.Sprintf("清单字段 `name` 的值 `%s` 以句点开头。目录名不得以 `.` 开头（会变成隐藏文件夹）。请改成不以 `.` 开头的名称。", name),
+			fmt.Sprintf("Manifest field `name` value `%s` starts with a period. Names must not start with `.` (hidden folder). Choose a name without a leading period.", name),
+		))
+	}
+	// Windows：不得以空格开头（无法手动创建此类文件夹）或结尾（见 Microsoft 文档）。
+	// REF https://learn.microsoft.com/zh-cn/windows/win32/fileio/naming-a-file#naming-conventions
+	if strings.HasPrefix(name, " ") || strings.HasSuffix(name, " ") {
+		issues = append(issues, issue(
+			fmt.Sprintf("清单字段 `name` 的值 `%s` 以空格开头或结尾，不受 Windows 系统支持，请去掉首尾空格。", name),
+			fmt.Sprintf("Manifest field `name` value `%s` has leading or trailing spaces, which Windows systems do not support. Remove those spaces.", name),
+		))
+	}
+	// 仅允许可打印 ASCII（U+0020–U+007E），降低编码、终端与跨平台工具链上的兼容风险。
+	// Windows：禁止保留字符、C0 控制字符（1–31）、NUL。
+	// Linux / macOS：路径分隔符 / 与 NUL 与上述保留字符一并禁止。
+	var hasNonPrintable, hasReserved bool
+	for _, r := range name {
+		if r < 0x20 || r > 0x7E {
+			hasNonPrintable = true
+		}
+		switch r {
+		case '<', '>', ':', '"', '/', '\\', '|', '?', '*':
+			hasReserved = true
+		}
+	}
+	if hasNonPrintable {
+		issues = append(issues, issue(
+			fmt.Sprintf("清单字段 `name` 的值 `%s` 包含不可打印 ASCII 字符（如中文、表情符号）。请改用仅含可打印 ASCII 的名称。", name),
+			fmt.Sprintf("Manifest field `name` value `%s` contains non-printable ASCII characters (e.g. CJK or emoji). Use printable ASCII only.", name),
+		))
+	}
+	if hasReserved {
+		issues = append(issues, issue(
+			fmt.Sprintf("清单字段 `name` 的值 `%s` 包含路径保留字符（如 `<` `>` `:` `\"` `/` `\\` `|` `?` `*`）。请从名称中移除这些字符。", name),
+			fmt.Sprintf("Manifest field `name` value `%s` contains reserved path characters (e.g. `<` `>` `:` `\"` `/` `\\` `|` `?` `*`). Remove them.", name),
+		))
+	}
+	// Windows：不得以句点结尾（见 Microsoft 文档：Shell 与用户界面不支持此类名称）。
+	if strings.HasSuffix(name, ".") {
+		issues = append(issues, issue(
+			fmt.Sprintf("清单字段 `name` 的值 `%s` 以句点结尾，不受 Windows 系统支持，请去掉末尾句点。", name),
+			fmt.Sprintf("Manifest field `name` value `%s` ends with a period, which Windows systems do not support. Remove the trailing period.", name),
+		))
+	}
+	// Windows：保留设备名（整段 name 与保留名完全一致时拒绝，不区分大小写）。
+	// 带后缀的形式（如 CON.123）在资源管理器中可作为普通文件夹名，故不按「点号前 stem」截取比对。
+	// 名称已限制为 ASCII，故不含上标数字变体。
+	reservedWindowsDeviceNames := map[string]struct{}{
+		"CON": {}, "PRN": {}, "AUX": {}, "NUL": {},
+		"COM1": {}, "COM2": {}, "COM3": {}, "COM4": {}, "COM5": {}, "COM6": {}, "COM7": {}, "COM8": {}, "COM9": {},
+		"LPT1": {}, "LPT2": {}, "LPT3": {}, "LPT4": {}, "LPT5": {}, "LPT6": {}, "LPT7": {}, "LPT8": {}, "LPT9": {},
+	}
+	if _, ok := reservedWindowsDeviceNames[strings.ToUpper(name)]; ok {
+		issues = append(issues, issue(
+			fmt.Sprintf("清单字段 `name` 的值 `%s` 是 Windows 保留设备名（如 `CON`、`PRN`、`AUX`）。请改用其他名称。", name),
+			fmt.Sprintf("Manifest field `name` value `%s` is a Windows reserved device name (e.g. `CON`, `PRN`, `AUX`). Choose a different name.", name),
+		))
+	}
+	// 用于 HTML 展示的清单字面量须与 html.EscapeString(s) 相同，避免 XSS。
+	if html.EscapeString(name) != name {
+		issues = append(issues, issue(
+			fmt.Sprintf("清单字段 `name` 的值 `%s` 包含 HTML 特殊字符（`<`、`>`、`&`、`'`、`\"`）。请从名称中移除这些字符。", name),
+			fmt.Sprintf("Manifest field `name` value `%s` contains HTML-special characters (`<`, `>`, `&`, `'`, `\"`). Remove them.", name),
+		))
 	}
 	return issues
+}
+
+func checkAuthor(m map[string]any, githubOwner string) []Issue {
+	raw, ok := m["author"]
+	if !ok {
+		return []Issue{issue(
+			fmt.Sprintf("清单缺少必填字段 `author`。请填写作者名称字符串，例如 `\"author\": \"%s\"`。", githubOwner),
+			fmt.Sprintf("Manifest is missing required field `author`. Set a string such as `\"author\": \"%s\"`.", githubOwner),
+		)}
+	}
+	s, ok := raw.(string)
+	if !ok {
+		return []Issue{issue(
+			"清单字段 `author` 必须是字符串。",
+			"Manifest field `author` must be a string.",
+		)}
+	}
+	if strings.TrimSpace(s) == "" {
+		return []Issue{issue(
+			fmt.Sprintf("清单字段 `author` 不能为空或仅含空白字符。请填写普通文本作者名，例如 `\"author\": \"%s\"`。", githubOwner),
+			fmt.Sprintf("Manifest field `author` must not be empty or whitespace only. Set plain text such as `\"author\": \"%s\"`.", githubOwner),
+		)}
+	}
+	return nil
 }
 
 // checkURL 要求 url 必须为 https://github.com/owner/repo（owner/repo 大小写不敏感）。
@@ -336,28 +439,6 @@ func checkVersion(m map[string]any, oldVersion string) []Issue {
 		)}
 	}
 	return nil
-}
-
-func checkAuthor(m map[string]any, githubOwner string) []Issue {
-	raw, ok := m["author"]
-	if !ok {
-		return []Issue{issue(
-			fmt.Sprintf("清单缺少必填字段 `author`。请填写作者名称字符串，例如 `\"author\": \"%s\"`。", githubOwner),
-			fmt.Sprintf("Manifest is missing required field `author`. Set a string such as `\"author\": \"%s\"`.", githubOwner),
-		)}
-	}
-	s, ok := raw.(string)
-	if !ok {
-		return []Issue{issue(
-			"清单字段 `author` 必须是字符串。",
-			"Manifest field `author` must be a string.",
-		)}
-	}
-	var issues []Issue
-	for _, err := range validateManifestAuthor(s, githubOwner) {
-		issues = append(issues, IssueFromErr(err))
-	}
-	return issues
 }
 
 // checkReadme 校验清单 readme 字段：值为相对包根的说明文件路径，且文件须存在（路径大小写敏感）。

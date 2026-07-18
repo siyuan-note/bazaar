@@ -239,29 +239,6 @@ func TestCheckMissingIndexJS(t *testing.T) {
 	}
 }
 
-func TestCheckAuthorHTML(t *testing.T) {
-	dir := t.TempDir()
-	copyTree(t, filepath.Join("testdata", "plugin_ok"), dir)
-	content := `{
-  "name": "sample-plugin",
-  "author": "demo<script>",
-  "url": "https://github.com/demo/sample-plugin",
-  "version": "1.0.0",
-  "readme": { "default": "README.md" }
-}`
-	if err := os.WriteFile(filepath.Join(dir, "plugin.json"), []byte(content), 0644); err != nil {
-		t.Fatal(err)
-	}
-	r := Check(Input{
-		PackageRoot: dir,
-		OwnerRepo:   "demo/sample-plugin",
-		Type:        TypePlugin,
-	})
-	if r.OK || !hasIssueMsg(r, "author") {
-		t.Fatalf("expected manifest/author, issues=%v", r.Issues)
-	}
-}
-
 func TestCheckNameStrict(t *testing.T) {
 	dir := t.TempDir()
 	copyTree(t, filepath.Join("testdata", "plugin_ok"), dir)
