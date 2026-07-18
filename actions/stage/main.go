@@ -38,7 +38,7 @@ import (
 
 /*
 Stage 流程：
-1. 检查 PAT 的 GitHub API rate limit 是否足够覆盖本轮待索引仓库数；顺带观测 GITHUB_TOKEN 配额（仅日志）
+1. 检查 PAT 的 GitHub API rate limit 是否足够覆盖本轮待索引仓库数（门槛仍用 GET /rate_limit）
 2. 按类型依次执行 performStage；每类开始前重新加载 OccupiedNames，以便上一类本轮新写入的 name 参与后续类型的唯一性检查
 3. 读取 *s.txt 与既有 stage/*.json，并发索引各 owner/repo
 4. hash 未变则跳过下载；否则下载 package.zip → rules.Check → 上传 OSS（package.zip、README、preview、icon、清单 JSON）
@@ -46,6 +46,7 @@ Stage 流程：
 6. 将本轮失败/成功同步到固定 Issue（#1923）：失败 upsert 一仓一条评论（正文未变则跳过 Edit），成功则删除；hash 跳过不改动评论
    （本仓 Issue 评论用 GITHUB_TOKEN；跨仓 Release / repoStats 用 PAT）
 7. 运行中若遇 GitHub API 主限流 / 次级限流：保留旧数据、不写 stage-fail，写完当前类型后中止后续类型（退出码 0，便于提交已完成进度）
+8. 结束后根据实际 API 响应头 X-RateLimit-* 观测 PAT / GITHUB_TOKEN 消耗（对照经验值）
 
 换维护者（列表中 alice/foo → bob/foo，stage 仍有 alice/foo）：
 - 同路径旧条目用于 hash 跳过 / 失败保留；换路径时不沿用旧 URL 条目
@@ -66,6 +67,8 @@ var (
 	githubContext    context.Context
 	githubClient     *github.Client // PAT：跨仓 Release / repoStats
 	githubRepoClient *github.Client // GITHUB_TOKEN：本仓 Stage 失败汇总评论
+	patRateObs       *util.RateHeaderObserver
+	repoRateObs      *util.RateHeaderObserver
 )
 
 func envIntDefault(key string, defaultVal int) int {
@@ -85,7 +88,7 @@ func main() {
 	defer stop()
 
 	var err error
-	githubClient, err = util.NewGitHubClient(PAT, REQUEST_TIMEOUT)
+	githubClient, patRateObs, err = util.NewGitHubClientWithRateObserver(PAT, REQUEST_TIMEOUT)
 	if err != nil {
 		logger.Fatalf("create github client failed: %s", err)
 	}
@@ -94,7 +97,7 @@ func main() {
 		repoToken = PAT
 		logger.Infof("GITHUB_TOKEN empty, fall back to PAT for stage-fail comments")
 	}
-	githubRepoClient, err = util.NewGitHubClient(repoToken, REQUEST_TIMEOUT)
+	githubRepoClient, repoRateObs, err = util.NewGitHubClientWithRateObserver(repoToken, REQUEST_TIMEOUT)
 	if err != nil {
 		logger.Fatalf("create github repo client failed: %s", err)
 	}
@@ -104,11 +107,9 @@ func main() {
 		logger.Fatalf("parse repos list failed: %s", err)
 	}
 
-	remainingBefore, err := checkRateLimitBeforeStage(reposByType)
-	if err != nil {
+	if err := checkRateLimitBeforeStage(reposByType); err != nil {
 		logger.Fatalf("GitHub API rate limit check failed: %s", err)
 	}
-	repoRemainingBefore := observeRepoClientRateLimit("before stage", -1)
 
 	// 每类 stage 前重新加载 OccupiedNames，以便上一类本轮 performStage 新写入的 name 参与后续类型的唯一性检查。
 	// 仅对新上架的包进行检查
@@ -132,8 +133,8 @@ func main() {
 		logger.Errorf("sync stage-fail comments failed: %s", err)
 	}
 
-	logRateLimitAfterStage(remainingBefore)
-	observeRepoClientRateLimit("after stage", repoRemainingBefore)
+	logRateHeaderObservation("PAT", patRateObs)
+	logRateHeaderObservation("GITHUB_TOKEN", repoRateObs)
 	if abortedByRateLimit {
 		logger.Errorf("Stage completed with GitHub API rate limit abort; retry after the quota resets")
 		return
@@ -159,87 +160,51 @@ func loadReposByPackageType() (map[rules.PackageType][]string, error) {
 const stageAPIRequestsPerRepo = 2.1
 
 // checkRateLimitBeforeStage 统计本次待检查仓库数、请求 GitHub rate_limit（该请求不计入 core），若 core 剩余请求数不足则返回错误。
-// 成功时返回检查时的 core remaining，供结束后估算本轮实际消耗。参考 https://docs.github.com/zh/rest/rate-limit/rate-limit
-func checkRateLimitBeforeStage(reposByType map[rules.PackageType][]string) (remaining int, err error) {
+// 参考 https://docs.github.com/zh/rest/rate-limit/rate-limit
+func checkRateLimitBeforeStage(reposByType map[rules.PackageType][]string) error {
 	var repoCount int
 	for _, repos := range reposByType {
 		repoCount += len(repos)
 	}
 	required := int(math.Ceil(float64(repoCount) * stageAPIRequestsPerRepo))
 	if required == 0 {
-		return 0, nil
+		return nil
 	}
 	ctx, cancel := context.WithTimeout(githubContext, 10*time.Second)
 	defer cancel()
 	limits, _, err := githubClient.RateLimit.Get(ctx)
 	if err != nil {
-		return 0, fmt.Errorf("get rate limit: %w", err)
+		return fmt.Errorf("get rate limit: %w", err)
 	}
 	core := limits.GetCore()
 	if core == nil {
-		return 0, fmt.Errorf("rate_limit response missing core")
+		return fmt.Errorf("rate_limit response missing core")
 	}
-	remaining = core.Remaining
+	remaining := core.Remaining
 	limit := core.Limit
 	reset := core.Reset.Unix()
 	if remaining < required {
-		return remaining, fmt.Errorf("GitHub REST API (core) remaining %d / %d is below required %d for %d repos (~%d requests); reset at %d", remaining, limit, required, repoCount, required, reset)
+		return fmt.Errorf("GitHub REST API (core) remaining %d / %d is below required %d for %d repos (~%d requests); reset at %d", remaining, limit, required, repoCount, required, reset)
 	}
 	logger.Infof("GitHub API (core) remaining %d / %d, %d repos to check (~%d requests), OK", remaining, limit, repoCount, required)
-	return remaining, nil
+	return nil
 }
 
-// logRateLimitAfterStage 在 Stage 结束后再查一次 PAT core remaining，便于对照经验值。
-func logRateLimitAfterStage(remainingBefore int) {
-	ctx, cancel := context.WithTimeout(githubContext, 10*time.Second)
-	defer cancel()
-	limits, _, err := githubClient.RateLimit.Get(ctx)
-	if err != nil {
-		logger.Errorf("get rate limit after stage failed: %s", err)
+// logRateHeaderObservation 根据实际 API 响应头 X-RateLimit-* 打消耗日志，便于对照经验值。
+func logRateHeaderObservation(label string, obs *util.RateHeaderObserver) {
+	snap := obs.Snapshot()
+	if !snap.HasData {
+		logger.Infof("GitHub API (%s core via headers) no rate-limit headers observed", label)
 		return
 	}
-	core := limits.GetCore()
-	if core == nil {
-		logger.Errorf("rate_limit response missing core after stage")
+	usedDelta := snap.UsedDelta()
+	if usedDelta < 0 {
+		logger.Infof("GitHub API (%s core via headers) samples=%d remaining %d→%d (min %d) / %d, used %d→%d (quota likely reset)",
+			label, snap.Samples, snap.FirstRemaining, snap.LastRemaining, snap.MinRemaining, snap.Limit, snap.FirstUsed, snap.MaxUsed)
 		return
 	}
-	remaining := core.Remaining
-	used := remainingBefore - remaining
-	if used < 0 {
-		// 窗口重置会导致 remaining 回升
-		logger.Infof("GitHub API (core) remaining after stage %d / %d (before %d; quota likely reset)", remaining, core.Limit, remainingBefore)
-		return
-	}
-	logger.Infof("GitHub API (core) remaining after stage %d / %d (used ~%d)", remaining, core.Limit, used)
-}
-
-// observeRepoClientRateLimit 观测 GITHUB_TOKEN（本仓 Issue 评论）的 core remaining，仅打日志、不做门槛拦截。
-// remainingBefore < 0 表示仅记录当前值；否则对照 before 估算本段消耗。返回本次查到的 remaining，失败时返回 remainingBefore。
-func observeRepoClientRateLimit(phase string, remainingBefore int) int {
-	ctx, cancel := context.WithTimeout(githubContext, 10*time.Second)
-	defer cancel()
-	limits, _, err := githubRepoClient.RateLimit.Get(ctx)
-	if err != nil {
-		logger.Errorf("get GITHUB_TOKEN rate limit %s failed: %s", phase, err)
-		return remainingBefore
-	}
-	core := limits.GetCore()
-	if core == nil {
-		logger.Errorf("GITHUB_TOKEN rate_limit response missing core %s", phase)
-		return remainingBefore
-	}
-	remaining := core.Remaining
-	if remainingBefore < 0 {
-		logger.Infof("GitHub API (GITHUB_TOKEN core) %s remaining %d / %d", phase, remaining, core.Limit)
-		return remaining
-	}
-	used := remainingBefore - remaining
-	if used < 0 {
-		logger.Infof("GitHub API (GITHUB_TOKEN core) %s remaining %d / %d (before %d; quota likely reset)", phase, remaining, core.Limit, remainingBefore)
-		return remaining
-	}
-	logger.Infof("GitHub API (GITHUB_TOKEN core) %s remaining %d / %d (used ~%d)", phase, remaining, core.Limit, used)
-	return remaining
+	logger.Infof("GitHub API (%s core via headers) samples=%d remaining %d→%d (min %d) / %d, used %d→%d (Δ %d)",
+		label, snap.Samples, snap.FirstRemaining, snap.LastRemaining, snap.MinRemaining, snap.Limit, snap.FirstUsed, snap.MaxUsed, usedDelta)
 }
 
 // loadOldStageData 加载现有的 stage 文件数据，返回以 owner/repo 为 key 的映射。
