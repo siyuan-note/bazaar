@@ -195,8 +195,50 @@ func TestCheckUnknownField(t *testing.T) {
 		OwnerRepo:   "demo/sample-plugin",
 		Type:        TypePlugin,
 	})
-	if r.OK || !hasIssueMsg(r, "未收录的字段") {
+	if r.OK || !hasIssueMsg(r, "预期外的字段") {
 		t.Fatalf("expected manifest/unknown_field, issues=%v", r.Issues)
+	}
+}
+
+func TestManifestKeysByPackageType(t *testing.T) {
+	// 插件不得带 modes；主题不得带 backends；图标等仅通用字段
+	cases := []struct {
+		typ     PackageType
+		extra   string
+		wantSub string
+	}{
+		{TypePlugin, "modes", "modes"},
+		{TypeTheme, "backends", "backends"},
+		{TypeTheme, "disabledInPublish", "disabledInPublish"},
+		{TypeIcon, "frontends", "frontends"},
+		{TypeTemplate, "kernels", "kernels"},
+		{TypeWidget, "modes", "modes"},
+	}
+	for _, tc := range cases {
+		m := map[string]any{tc.extra: true}
+		issues := checkUnknownKeys(m, tc.typ)
+		if !issuesContain(issues, "预期外的字段") || !issuesContain(issues, tc.wantSub) {
+			t.Fatalf("%v with %s: want unexpected-field issue, got %v", tc.typ, tc.extra, issues)
+		}
+	}
+
+	// 各类型允许的字段不应被拒
+	okCases := []struct {
+		typ PackageType
+		key string
+	}{
+		{TypePlugin, "backends"},
+		{TypePlugin, "disabledInPublish"},
+		{TypeTheme, "modes"},
+		{TypeIcon, "keywords"},
+		{TypeTemplate, "minAppVersion"},
+		{TypeWidget, "displayName"},
+	}
+	for _, tc := range okCases {
+		issues := checkUnknownKeys(map[string]any{tc.key: true}, tc.typ)
+		if len(issues) != 0 {
+			t.Fatalf("%v with allowed key %s: unexpected issues %v", tc.typ, tc.key, issues)
+		}
 	}
 }
 
@@ -314,6 +356,92 @@ func TestCheckTemplateNeedsContentMD(t *testing.T) {
 	}
 }
 
+func TestCheckOptionalTypedFields(t *testing.T) {
+	dir := t.TempDir()
+	copyTree(t, filepath.Join("testdata", "plugin_ok"), dir)
+	writePlugin := func(extra string) {
+		t.Helper()
+		content := `{
+  "name": "sample-plugin",
+  "author": "demo",
+  "url": "https://github.com/demo/sample-plugin",
+  "version": "1.0.0",
+  "readme": { "default": "README.md" }` + extra + `
+}`
+		if err := os.WriteFile(filepath.Join(dir, "plugin.json"), []byte(content), 0644); err != nil {
+			t.Fatal(err)
+		}
+	}
+	check := func() *Result {
+		t.Helper()
+		return Check(Input{
+			PackageRoot: dir,
+			OwnerRepo:   "demo/sample-plugin",
+			Type:        TypePlugin,
+		})
+	}
+
+	writePlugin(`,
+  "minAppVersion": "3.7.0",
+  "displayName": { "default": "Sample" },
+  "description": { "default": "Demo plugin" },
+  "keywords": ["sample"],
+  "backends": ["all"],
+  "frontends": ["all"],
+  "disabledInPublish": false`)
+	if r := check(); !r.OK {
+		t.Fatalf("expected OK for valid optional fields, issues=%v", r.Issues)
+	}
+
+	writePlugin(`,
+  "minAppVersion": 3`)
+	if r := check(); r.OK || !hasIssueMsg(r, "minAppVersion") {
+		t.Fatalf("expected non-string minAppVersion to fail, issues=%v", r.Issues)
+	}
+
+	writePlugin(`,
+  "displayName": "Sample"`)
+	if r := check(); r.OK || !hasIssueMsg(r, "displayName") {
+		t.Fatalf("expected non-object displayName to fail, issues=%v", r.Issues)
+	}
+
+	writePlugin(`,
+  "description": { "default": 1 }`)
+	if r := check(); r.OK || !hasIssueMsg(r, "description.default") {
+		t.Fatalf("expected non-string description value to fail, issues=%v", r.Issues)
+	}
+
+	writePlugin(`,
+  "keywords": "sample"`)
+	if r := check(); r.OK || !hasIssueMsg(r, "keywords") {
+		t.Fatalf("expected non-array keywords to fail, issues=%v", r.Issues)
+	}
+
+	writePlugin(`,
+  "disabledInPublish": "true"`)
+	if r := check(); r.OK || !hasIssueMsg(r, "disabledInPublish") {
+		t.Fatalf("expected non-bool disabledInPublish to fail, issues=%v", r.Issues)
+	}
+
+	writePlugin(`,
+  "backends": ["all", "windows"]`)
+	if r := check(); r.OK || !hasIssueMsg(r, "backends") || !hasIssueMsg(r, "all") {
+		t.Fatalf("expected backends mixing all with others to fail, issues=%v", r.Issues)
+	}
+
+	writePlugin(`,
+  "frontends": ["desktop", "all"]`)
+	if r := check(); r.OK || !hasIssueMsg(r, "frontends") || !hasIssueMsg(r, "all") {
+		t.Fatalf("expected frontends mixing all with others to fail, issues=%v", r.Issues)
+	}
+
+	writePlugin(`,
+  "kernels": ["all", "linux"]`)
+	if r := check(); r.OK || !hasIssueMsg(r, "kernels") || !hasIssueMsg(r, "all") {
+		t.Fatalf("expected kernels mixing all with others to fail, issues=%v", r.Issues)
+	}
+}
+
 func TestCheckFunding(t *testing.T) {
 	dir := t.TempDir()
 	copyTree(t, filepath.Join("testdata", "plugin_ok"), dir)
@@ -378,6 +506,11 @@ func TestCheckFunding(t *testing.T) {
 	writePlugin(`{ "buyMeACoffee": "demo" }`)
 	if r := check(); r.OK || !hasIssueMsg(r, "funding") {
 		t.Fatalf("expected unknown funding key to fail, issues=%v", r.Issues)
+	}
+
+	writePlugin(`{ "custom": ["https://ld246.com/sponsor"] }`)
+	if r := check(); r.OK || !hasIssueMsg(r, "ld246.com/sponsor") {
+		t.Fatalf("expected placeholder funding.custom ld246.com/sponsor to fail, issues=%v", r.Issues)
 	}
 }
 

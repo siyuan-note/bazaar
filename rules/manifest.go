@@ -186,7 +186,7 @@ func Manifest(m map[string]any, in ManifestInput) []Issue {
 	issues = append(issues, checkVersion(m, in.OldVersion)...)
 	issues = append(issues, checkReadme(m, in.PackageRoot)...)
 	issues = append(issues, checkFunding(m)...)
-	issues = append(issues, checkOptionalTypedFields(m)...)
+	issues = append(issues, checkOptionalTypedFields(m, in.Type)...)
 	return issues
 }
 
@@ -541,7 +541,8 @@ var allowedFundingKeys = map[string]struct{}{
 
 // checkFunding 校验 funding 字段。
 // openCollective / patreon / github：字符串，可为平台短名或 http(s) 完整链接（与 normalizeFundingURL 一致）。
-// custom：字符串数组，允许纯文本或 http(s) / mailto 链接；禁止 javascript: / data: / file: 等。
+// custom：字符串数组，允许纯文本或 http(s) / mailto 链接；禁止 javascript: / data: / file: 等；
+// 禁止包含模板占位链接 https://ld246.com/sponsor。
 func checkFunding(m map[string]any) []Issue {
 	raw, ok := m["funding"]
 	if !ok || raw == nil {
@@ -618,6 +619,13 @@ func checkFunding(m map[string]any) []Issue {
 				fmt.Sprintf("`funding.custom[%d]` 的值 `%s` 不安全或不受支持。允许纯文本，或以 `https://`、`http://`、`mailto:` 开头的链接（禁止 `javascript:`、`data:`、`file:` 等）。", i, s),
 				fmt.Sprintf("`funding.custom[%d]` value `%s` is unsafe or unsupported. Plain text is allowed, or a link starting with `https://`, `http://`, or `mailto:` (`javascript:`/`data:`/`file:` etc. are not allowed).", i, s),
 			))
+			continue
+		}
+		if strings.Contains(s, "https://ld246.com/sponsor") {
+			issues = append(issues, issue(
+				fmt.Sprintf("`funding.custom[%d]` 不能包含模板占位链接 `https://ld246.com/sponsor`。请填写真实的赞助地址，或删除该条目。", i),
+				fmt.Sprintf("`funding.custom[%d]` must not contain the template placeholder link `https://ld246.com/sponsor`. Provide a real funding URL, or remove this entry.", i),
+			))
 		}
 	}
 	return issues
@@ -668,10 +676,63 @@ func unsafeFundingURI(s string) bool {
 	return strings.HasPrefix(lower[i:], "://")
 }
 
-// checkOptionalTypedFields 校验可选字段类型。
-// 若存在 disabledInPublish，则值必须为 bool（JSON 中该键存在时不得为字符串等其它类型）。
-func checkOptionalTypedFields(m map[string]any) []Issue {
+// checkOptionalTypedFields 按包类型校验可选字段（若存在）的 JSON 类型。
+// 未知字段由 checkUnknownKeys 按 allowedManifestKeys 拒绝；此处只校验当前类型允许的字段。
+// readme / funding 由专用校验函数处理，此处不重复。
+func checkOptionalTypedFields(m map[string]any, typ PackageType) []Issue {
 	var issues []Issue
+	issues = append(issues, checkCommonOptionalTypedFields(m)...)
+	switch typ {
+	case TypePlugin:
+		issues = append(issues, checkPluginOptionalTypedFields(m)...)
+	case TypeTheme:
+		issues = append(issues, checkThemeOptionalTypedFields(m)...)
+	}
+	return issues
+}
+
+// checkCommonOptionalTypedFields 校验各包类型共用的可选字段。
+// minAppVersion（string）、displayName / description（LocaleStrings）、keywords（[]string）
+func checkCommonOptionalTypedFields(m map[string]any) []Issue {
+	var issues []Issue
+	if raw, ok := m["minAppVersion"]; ok {
+		s, isStr := raw.(string)
+		if !isStr {
+			issues = append(issues, issue(
+				"若填写 `minAppVersion`，值必须是字符串，例如 `\"minAppVersion\": \"3.7.0\"`。不需要时请删除该字段。",
+				"If present, `minAppVersion` must be a string, e.g. `\"minAppVersion\": \"3.7.0\"`. Remove the field if you do not need it.",
+			))
+		} else if strings.TrimSpace(s) != s || s == "" {
+			issues = append(issues, issue(
+				fmt.Sprintf("清单字段 `minAppVersion` 的值 `%s` 无效：不能为空，也不能有前后空格。请改成干净的语义化版本，如 `3.7.0`；不需要时请删除该字段。", s),
+				fmt.Sprintf("Manifest `minAppVersion` `%s` is invalid: it must be non-empty and must not have leading/trailing spaces. Use a clean semver like `3.7.0`, or remove the field.", s),
+			))
+		} else if s[0] == 'v' || s[0] == 'V' {
+			issues = append(issues, issue(
+				fmt.Sprintf("清单字段 `minAppVersion` 的值 `%s` 不应带 `v`/`V` 前缀。请使用如 `3.7.0`、`3.7.0-beta.1` 等形式。", s),
+				fmt.Sprintf("Manifest `minAppVersion` `%s` must not start with a `v`/`V` prefix. Use forms like `3.7.0` or `3.7.0-beta.1`.", s),
+			))
+		} else if !semver.IsValid("v" + s) {
+			issues = append(issues, issue(
+				fmt.Sprintf("清单字段 `minAppVersion` 的值 `%s` 不是有效的语义化版本。请使用如 `3.7.0`、`3.7.0-beta.1` 等形式（不要带 `v` 前缀），参见 `https://semver.org/lang/zh-CN/`", s),
+				fmt.Sprintf("Manifest `minAppVersion` `%s` is not valid semantic versioning. Use forms like `3.7.0` or `3.7.0-beta.1` without a `v` prefix. See `https://semver.org/`", s),
+			))
+		}
+	}
+	for _, key := range []string{"displayName", "description"} {
+		issues = append(issues, checkOptionalLocaleStrings(m, key)...)
+	}
+	issues = append(issues, checkOptionalStringArray(m, "keywords")...)
+	return issues
+}
+
+// checkPluginOptionalTypedFields 校验插件专用可选字段。
+// backends / frontends / kernels（[]string，含 all 互斥）、disabledInPublish（bool）
+func checkPluginOptionalTypedFields(m map[string]any) []Issue {
+	var issues []Issue
+	for _, key := range []string{"backends", "frontends", "kernels"} {
+		issues = append(issues, checkOptionalStringArray(m, key)...)
+	}
 	if raw, ok := m["disabledInPublish"]; ok {
 		if _, isBool := raw.(bool); !isBool {
 			issues = append(issues, issue(
@@ -680,27 +741,92 @@ func checkOptionalTypedFields(m map[string]any) []Issue {
 			))
 		}
 	}
-	for _, key := range []string{"backends", "frontends", "kernels", "keywords", "modes"} {
-		raw, ok := m[key]
-		if !ok {
-			continue
+	return issues
+}
+
+// checkThemeOptionalTypedFields 校验主题专用可选字段。
+// modes（[]string）
+func checkThemeOptionalTypedFields(m map[string]any) []Issue {
+	return checkOptionalStringArray(m, "modes")
+}
+
+// checkOptionalLocaleStrings 校验可选的 LocaleStrings 字段（displayName / description）。
+func checkOptionalLocaleStrings(m map[string]any, key string) []Issue {
+	raw, ok := m[key]
+	if !ok {
+		return nil
+	}
+	obj, ok := raw.(map[string]any)
+	if !ok {
+		return []Issue{issue(
+			fmt.Sprintf("清单字段 `%s` 若存在则必须是对象（键为语言，值为字符串），例如 `\"%s\": { \"default\": \"...\" }`。", key, key),
+			fmt.Sprintf("Manifest field `%s`, if present, must be an object (locale → string), e.g. `\"%s\": { \"default\": \"...\" }`.", key, key),
+		)}
+	}
+	var issues []Issue
+	for locale, v := range obj {
+		if _, ok := v.(string); !ok {
+			issues = append(issues, issue(
+				fmt.Sprintf("`%s.%s` 必须是字符串。", key, locale),
+				fmt.Sprintf("`%s.%s` must be a string.", key, locale),
+			))
 		}
-		arr, ok := raw.([]any)
+	}
+	return issues
+}
+
+// allExclusiveArrayKeys 支持用 "all" 表示不限制的字段；若含 "all" 则不得再混入其它值。
+var allExclusiveArrayKeys = map[string]struct{}{
+	"backends":  {},
+	"frontends": {},
+	"kernels":   {},
+}
+
+func stringArrayExample(key string) string {
+	switch key {
+	case "modes":
+		return `["light", "dark"]`
+	case "keywords":
+		return `["sample"]`
+	default:
+		return `["all"]`
+	}
+}
+
+// checkOptionalStringArray 校验可选的字符串数组字段。
+func checkOptionalStringArray(m map[string]any, key string) []Issue {
+	raw, ok := m[key]
+	if !ok {
+		return nil
+	}
+	arr, ok := raw.([]any)
+	if !ok {
+		ex := stringArrayExample(key)
+		return []Issue{issue(
+			fmt.Sprintf("清单字段 `%s` 若存在则必须是字符串数组，例如 `\"%s\": %s`。", key, key, ex),
+			fmt.Sprintf("Manifest field `%s`, if present, must be an array of strings, e.g. `\"%s\": %s`.", key, key, ex),
+		)}
+	}
+	var issues []Issue
+	hasAll := false
+	for i, item := range arr {
+		s, ok := item.(string)
 		if !ok {
 			issues = append(issues, issue(
-				fmt.Sprintf("清单字段 `%s` 若存在则必须是字符串数组，例如 `\"%s\": [\"all\"]`。", key, key),
-				fmt.Sprintf("Manifest field `%s`, if present, must be an array of strings, e.g. `\"%s\": [\"all\"]`.", key, key),
+				fmt.Sprintf("`%s[%d]` 必须是字符串。请检查数组元素类型。", key, i),
+				fmt.Sprintf("`%s[%d]` must be a string. Check the array element types.", key, i),
 			))
 			continue
 		}
-		for i, item := range arr {
-			if _, ok := item.(string); !ok {
-				issues = append(issues, issue(
-					fmt.Sprintf("`%s[%d]` 必须是字符串。请检查数组元素类型。", key, i),
-					fmt.Sprintf("`%s[%d]` must be a string. Check the array element types.", key, i),
-				))
-			}
+		if s == "all" {
+			hasAll = true
 		}
+	}
+	if _, exclusive := allExclusiveArrayKeys[key]; exclusive && hasAll && len(arr) > 1 {
+		issues = append(issues, issue(
+			fmt.Sprintf("清单字段 `%s` 若包含 `\"all\"`，则不应再包含其他值；请只写 `[\"all\"]`，或改成具体平台列表（不要与 `all` 混用）。", key),
+			fmt.Sprintf("Manifest field `%s` must not mix `\"all\"` with other values; use only `[\"all\"]`, or list concrete platforms without `all`.", key),
+		))
 	}
 	return issues
 }
