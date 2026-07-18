@@ -38,7 +38,7 @@ import (
 
 /*
 Stage 流程：
-1. 检查 GitHub API rate limit 是否足够覆盖本轮待索引仓库数
+1. 检查 PAT 的 GitHub API rate limit 是否足够覆盖本轮待索引仓库数；顺带观测 GITHUB_TOKEN 配额（仅日志）
 2. 按类型依次执行 performStage；每类开始前重新加载 OccupiedNames，以便上一类本轮新写入的 name 参与后续类型的唯一性检查
 3. 读取 *s.txt 与既有 stage/*.json，并发索引各 owner/repo
 4. hash 未变则跳过下载；否则下载 package.zip → rules.Check → 上传 OSS（package.zip、README、preview、icon、清单 JSON）
@@ -108,6 +108,7 @@ func main() {
 	if err != nil {
 		logger.Fatalf("GitHub API rate limit check failed: %s", err)
 	}
+	repoRemainingBefore := observeRepoClientRateLimit("before stage", -1)
 
 	// 每类 stage 前重新加载 OccupiedNames，以便上一类本轮 performStage 新写入的 name 参与后续类型的唯一性检查。
 	// 仅对新上架的包进行检查
@@ -132,6 +133,7 @@ func main() {
 	}
 
 	logRateLimitAfterStage(remainingBefore)
+	observeRepoClientRateLimit("after stage", repoRemainingBefore)
 	if abortedByRateLimit {
 		logger.Errorf("Stage completed with GitHub API rate limit abort; retry after the quota resets")
 		return
@@ -187,7 +189,7 @@ func checkRateLimitBeforeStage(reposByType map[rules.PackageType][]string) (rema
 	return remaining, nil
 }
 
-// logRateLimitAfterStage 在 Stage 结束后再查一次 core remaining，便于对照经验值。
+// logRateLimitAfterStage 在 Stage 结束后再查一次 PAT core remaining，便于对照经验值。
 func logRateLimitAfterStage(remainingBefore int) {
 	ctx, cancel := context.WithTimeout(githubContext, 10*time.Second)
 	defer cancel()
@@ -209,6 +211,35 @@ func logRateLimitAfterStage(remainingBefore int) {
 		return
 	}
 	logger.Infof("GitHub API (core) remaining after stage %d / %d (used ~%d)", remaining, core.Limit, used)
+}
+
+// observeRepoClientRateLimit 观测 GITHUB_TOKEN（本仓 Issue 评论）的 core remaining，仅打日志、不做门槛拦截。
+// remainingBefore < 0 表示仅记录当前值；否则对照 before 估算本段消耗。返回本次查到的 remaining，失败时返回 remainingBefore。
+func observeRepoClientRateLimit(phase string, remainingBefore int) int {
+	ctx, cancel := context.WithTimeout(githubContext, 10*time.Second)
+	defer cancel()
+	limits, _, err := githubRepoClient.RateLimit.Get(ctx)
+	if err != nil {
+		logger.Errorf("get GITHUB_TOKEN rate limit %s failed: %s", phase, err)
+		return remainingBefore
+	}
+	core := limits.GetCore()
+	if core == nil {
+		logger.Errorf("GITHUB_TOKEN rate_limit response missing core %s", phase)
+		return remainingBefore
+	}
+	remaining := core.Remaining
+	if remainingBefore < 0 {
+		logger.Infof("GitHub API (GITHUB_TOKEN core) %s remaining %d / %d", phase, remaining, core.Limit)
+		return remaining
+	}
+	used := remainingBefore - remaining
+	if used < 0 {
+		logger.Infof("GitHub API (GITHUB_TOKEN core) %s remaining %d / %d (before %d; quota likely reset)", phase, remaining, core.Limit, remainingBefore)
+		return remaining
+	}
+	logger.Infof("GitHub API (GITHUB_TOKEN core) %s remaining %d / %d (used ~%d)", phase, remaining, core.Limit, used)
+	return remaining
 }
 
 // loadOldStageData 加载现有的 stage 文件数据，返回以 owner/repo 为 key 的映射。
