@@ -61,6 +61,7 @@ func indexPackage(
 		PackageRoot:   tmpUnzipPath,
 		OwnerRepo:     ownerRepo,
 		Type:          packageType,
+		ZipData:       data,
 		OldName:       oldName,
 		OldVersion:    oldVersion,
 		OccupiedNames: occupiedNames,

@@ -17,6 +17,7 @@ type Context struct {
 	PackageRoot   string
 	OwnerRepo     string
 	Type          PackageType
+	ZipData       []byte // 原始 package.zip；空则跳过依赖 zip 条目名的步骤
 	OldName       string
 	OldVersion    string
 	OccupiedNames map[string]struct{}

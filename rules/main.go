@@ -17,6 +17,10 @@ type Input struct {
 	OwnerRepo   string // owner/repo
 	Type        PackageType
 
+	// ZipData 为原始 package.zip 字节；非空时校验 zip 内路径分隔符等依赖原始条目名的规则。
+	// 为空则跳过这类步骤（例如仅用解压目录做单测）。
+	ZipData []byte
+
 	OldName    string // 已上架时的 package.name；空表示首发（或 Stage 无旧数据）
 	OldVersion string // 已上架时的 version；非空时要求新 version 更高
 
@@ -54,6 +58,7 @@ func Check(in Input) *Result {
 		PackageRoot:   in.PackageRoot,
 		OwnerRepo:     in.OwnerRepo,
 		Type:          in.Type,
+		ZipData:       in.ZipData,
 		OldName:       in.OldName,
 		OldVersion:    in.OldVersion,
 		OccupiedNames: in.OccupiedNames,

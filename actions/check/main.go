@@ -329,7 +329,7 @@ func checkNewRepo(
 		return
 	}
 
-	tmpUnzipPath, _, cleanup, err := util.DownloadAndUnzipPackageZip(githubContext, githubClient, repoOwner, repoName, releaseInfo.PackageZipAssetID)
+	tmpUnzipPath, zipData, cleanup, err := util.DownloadAndUnzipPackageZip(githubContext, githubClient, repoOwner, repoName, releaseInfo.PackageZipAssetID)
 	if err != nil {
 		logger.Errorf("download/unzip [%s] failed: %s", ownerRepo, err)
 		out.Issues = append(out.Issues, rules.IssueFromErr(err))
@@ -345,6 +345,7 @@ func checkNewRepo(
 		PackageRoot:   tmpUnzipPath,
 		OwnerRepo:     ownerRepo,
 		Type:          packageType,
+		ZipData:       zipData,
 		OldName:       "",
 		OldVersion:    "",
 		OccupiedNames: occupiedNames,

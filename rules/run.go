@@ -40,6 +40,7 @@ func Run(c *Context) {
 // pipeline 为检查步骤的固定顺序。新增规则时：先在本包实现，再按依赖插入本切片。
 var pipeline = []step{
 	stepOwnerRepo,     // 校验 OwnerRepo 格式，失败则 Halt
+	stepZipPaths,      // 有 ZipData 时检查 zip 内路径分隔符必须为 /；无数据则跳过
 	stepPackageRoot,   // 解析解压目录得到包根 Root，失败则 Halt
 	stepRequiredFiles, // 检查展示文件、清单文件及类型运行时必要文件，可累计报错
 	stepPathNames,     // 递归检查路径与文件名规范
@@ -80,6 +81,15 @@ func splitOwnerRepo(ownerRepo string) (owner, repo string, ok bool) {
 		return "", "", false
 	}
 	return owner, repo, true
+}
+
+// stepZipPaths 检查原始 package.zip 内条目路径分隔符（必须为 /）。
+// 不依赖解压根；缺少 ZipData 时跳过（例如单测只传目录）。
+func stepZipPaths(c *Context) {
+	if c.Halted() || len(c.ZipData) == 0 {
+		return
+	}
+	c.Add(ZipPaths(c.ZipData)...)
 }
 
 // stepPackageRoot 解析解压目录得到真实包根（可能剥掉单独一层包装目录），写入 c.Root。
