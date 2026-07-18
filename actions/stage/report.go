@@ -258,6 +258,9 @@ func syncStageFailReports(ctx context.Context, client *github.Client, reports []
 			passCount++
 			for _, c := range commentsByRepo[r.OwnerRepo] {
 				if _, err := client.Issues.DeleteComment(ctx, owner, repo, c.ID); err != nil {
+					if util.IsGitHubRateLimit(err) {
+						return fmt.Errorf("delete comment %d for [%s]: GitHub API rate limited, stop syncing remaining comments: %w", c.ID, r.OwnerRepo, err)
+					}
 					return fmt.Errorf("delete comment %d for [%s]: %w", c.ID, r.OwnerRepo, err)
 				}
 				logger.Infof("deleted stage-fail comment for [%s]", r.OwnerRepo)
@@ -279,6 +282,9 @@ func syncStageFailReports(ctx context.Context, client *github.Client, reports []
 			if len(comments) == 0 {
 				_, _, err := client.Issues.CreateComment(ctx, owner, repo, stageFailIssue, &github.IssueComment{Body: new(body)})
 				if err != nil {
+					if util.IsGitHubRateLimit(err) {
+						return fmt.Errorf("create comment for [%s]: GitHub API rate limited, stop syncing remaining comments: %w", r.OwnerRepo, err)
+					}
 					return fmt.Errorf("create comment for [%s]: %w", r.OwnerRepo, err)
 				}
 				logger.Infof("created stage-fail comment for [%s]", r.OwnerRepo)
@@ -290,12 +296,18 @@ func syncStageFailReports(ctx context.Context, client *github.Client, reports []
 			} else {
 				_, _, err = client.Issues.EditComment(ctx, owner, repo, comments[0].ID, &github.IssueComment{Body: new(body)})
 				if err != nil {
+					if util.IsGitHubRateLimit(err) {
+						return fmt.Errorf("edit comment %d for [%s]: GitHub API rate limited, stop syncing remaining comments: %w", comments[0].ID, r.OwnerRepo, err)
+					}
 					return fmt.Errorf("edit comment %d for [%s]: %w", comments[0].ID, r.OwnerRepo, err)
 				}
 				logger.Infof("updated stage-fail comment for [%s]", r.OwnerRepo)
 			}
 			for _, c := range comments[1:] {
 				if _, err := client.Issues.DeleteComment(ctx, owner, repo, c.ID); err != nil {
+					if util.IsGitHubRateLimit(err) {
+						return fmt.Errorf("delete duplicate comment %d for [%s]: GitHub API rate limited, stop syncing remaining comments: %w", c.ID, r.OwnerRepo, err)
+					}
 					return fmt.Errorf("delete duplicate comment %d for [%s]: %w", c.ID, r.OwnerRepo, err)
 				}
 			}

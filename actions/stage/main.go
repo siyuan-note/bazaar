@@ -25,6 +25,7 @@ import (
 	"strconv"
 	"strings"
 	"sync"
+	"sync/atomic"
 	"syscall"
 	"time"
 
@@ -44,6 +45,7 @@ Stage 流程：
 5. 按 updated 降序排序后写出 stage/*.json（键序经 marshalSortedIndentedJSON 稳定）
 6. 将本轮失败/成功同步到固定 Issue（#1921）：失败 upsert 一仓一条评论（正文未变则跳过 Edit），成功则删除；hash 跳过不改动评论
    （本仓 Issue 评论用 GITHUB_TOKEN；跨仓 Release / repoStats 用 PAT）
+7. 运行中若遇 GitHub API 主限流 / 次级限流：保留旧数据、不写 stage-fail，写完当前类型后中止后续类型（退出码 0，便于提交已完成进度）
 
 换维护者（列表中 alice/foo → bob/foo，stage 仍有 alice/foo）：
 - 同路径旧条目用于 hash 跳过 / 失败保留；换路径时不沿用旧 URL 条目
@@ -110,20 +112,30 @@ func main() {
 	// 每类 stage 前重新加载 OccupiedNames，以便上一类本轮 performStage 新写入的 name 参与后续类型的唯一性检查。
 	// 仅对新上架的包进行检查
 	reports := &stageReportCollector{}
+	var abortedByRateLimit bool
 	for _, packageType := range rules.AllPackageTypes() {
 		occupiedNames, err := util.LoadOccupiedNames(BAZAAR_ROOT_PATH)
 		if err != nil {
 			logger.Fatalf("load occupied names failed: %s", err)
 		}
-		performStage(packageType, occupiedNames, reposByType[packageType], reports)
+		if performStage(packageType, occupiedNames, reposByType[packageType], reports) {
+			abortedByRateLimit = true
+			logger.Errorf("abort remaining package types due to GitHub API rate limit")
+			break
+		}
 	}
 
 	// 失败汇总到固定 Issue；同步失败不阻断已写出的 stage JSON（仅记日志）。
+	// 限流导致的失败不会进入 reports，故不会误刷 stage-fail 评论。
 	if err := syncStageFailReports(githubContext, githubRepoClient, reports.snapshot()); err != nil {
 		logger.Errorf("sync stage-fail comments failed: %s", err)
 	}
 
 	logRateLimitAfterStage(remainingBefore)
+	if abortedByRateLimit {
+		logger.Errorf("Stage completed with GitHub API rate limit abort; retry after the quota resets")
+		return
+	}
 	logger.Infof("Stage completed")
 }
 
@@ -222,7 +234,8 @@ func loadOldStageData(packageType rules.PackageType) (map[string]*util.StageRepo
 	return oldStageData, nil
 }
 
-func performStage(packageType rules.PackageType, occupiedNames map[string]struct{}, reposSlice []string, reports *stageReportCollector) {
+// performStage 执行单一类型的 staging。若遇 GitHub API 限流返回 true（调用方应中止后续类型）。
+func performStage(packageType rules.PackageType, occupiedNames map[string]struct{}, reposSlice []string, reports *stageReportCollector) (abortedByRateLimit bool) {
 	logger.Infof("start stage [%s]", packageType.Plural())
 
 	oldStageData, err := loadOldStageData(packageType)
@@ -249,23 +262,44 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 
 	var stageReposMu sync.Mutex
 	var stageRepos []*util.StageRepo
+	var rateLimited atomic.Bool
 	var g errgroup.Group
 	g.SetLimit(STAGE_POOL_SIZE)
+
+	appendKeptOld := func(repoURL, reason string, exactOld *util.StageRepo) {
+		stageReposMu.Lock()
+		defer stageReposMu.Unlock()
+		if exactOld != nil {
+			stageRepos = append(stageRepos, exactOld)
+			logger.Errorf("%s for [%s], keeping old data", reason, repoURL)
+			return
+		}
+		logger.Errorf("%s for [%s] and no old data found", reason, repoURL)
+	}
+
+	markRateLimited := func(ownerRepo string, err error) {
+		if rateLimited.CompareAndSwap(false, true) {
+			logger.Errorf("GitHub API rate limited while staging [%s]: %s; aborting remaining work this run (not reporting as stage-fail)", ownerRepo, err)
+		}
+	}
 
 	for _, ownerRepo := range reposSlice {
 		g.Go(func() error {
 			repoURL := util.GitHubRepoURL(ownerRepo)
 			exactOld, checkOldName, checkOldVersion := resolveStageCheckLegacy(ownerRepo, oldStageData, oldStageByRepoName, listedRepos)
+
+			if rateLimited.Load() {
+				appendKeptOld(repoURL, "skipped after rate limit", exactOld)
+				return nil
+			}
+
 			releaseInfo, releaseErr := getRepoLatestRelease(ownerRepo)
 			if releaseErr != nil {
-				stageReposMu.Lock()
-				if exactOld != nil {
-					stageRepos = append(stageRepos, exactOld)
-					logger.Errorf("get [%s] latest release failed, keeping old data", repoURL)
-				} else {
-					logger.Errorf("get [%s] latest release failed and no old data found", repoURL)
+				appendKeptOld(repoURL, "get latest release failed", exactOld)
+				if util.IsGitHubRateLimit(releaseErr) {
+					markRateLimited(ownerRepo, releaseErr)
+					return nil
 				}
-				stageReposMu.Unlock()
 				if !errors.Is(releaseErr, errInvalidOwnerRepo) {
 					reports.add(stageReport{
 						OwnerRepo:   ownerRepo,
@@ -332,18 +366,16 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 			if checkOldName != "" && exactOld == nil {
 				logger.Infof("maintainer change staging [%s], inherit old name [%s] version [%s]", ownerRepo, checkOldName, checkOldVersion)
 			}
-			ok, size, installSize, pkg, indexIssues := indexPackage(ownerRepo, packageType, hash, packageZipAssetID, checkOldName, checkOldVersion, allowThemeJS, occupiedNames)
+			ok, size, installSize, pkg, indexIssues, indexErr := indexPackage(ownerRepo, packageType, hash, packageZipAssetID, checkOldName, checkOldVersion, allowThemeJS, occupiedNames)
+			if indexErr != nil && util.IsGitHubRateLimit(indexErr) {
+				appendKeptOld(repoURL, "index failed due to rate limit", exactOld)
+				markRateLimited(ownerRepo, indexErr)
+				return nil
+			}
 			if !ok || pkg == nil {
 				// 索引失败或 pkg 为空时使用旧数据，避免 "package": null 的坏数据覆盖
 				// 换维护者无 exactOld：不得把旧 owner/repo 条目写回
-				stageReposMu.Lock()
-				if exactOld != nil {
-					stageRepos = append(stageRepos, exactOld)
-					logger.Errorf("index failed for [%s], keeping old data", repoURL)
-				} else {
-					logger.Errorf("index failed for [%s] and no old data found", repoURL)
-				}
-				stageReposMu.Unlock()
+				appendKeptOld(repoURL, "index failed", exactOld)
 				// 无 Issues 时多为防御性路径（如非法 owner/repo），仅日志、不写汇总 Issue
 				if len(indexIssues) > 0 {
 					reports.add(stageReport{
@@ -359,17 +391,14 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 				return nil
 			}
 
-			stars, openIssues, ok := repoStats(ownerRepo)
+			stars, openIssues, ok, statsErr := repoStats(ownerRepo)
 			// 如果获取统计数据失败，尝试使用旧数据
 			if !ok {
-				stageReposMu.Lock()
-				if exactOld != nil {
-					stageRepos = append(stageRepos, exactOld)
-					logger.Errorf("repoStats failed for [%s], keeping old data", repoURL)
-				} else {
-					logger.Errorf("repoStats failed for [%s] and no old data found", repoURL)
+				appendKeptOld(repoURL, "repoStats failed", exactOld)
+				if util.IsGitHubRateLimit(statsErr) {
+					markRateLimited(ownerRepo, statsErr)
+					return nil
 				}
-				stageReposMu.Unlock()
 				reports.add(stageReport{
 					OwnerRepo:   ownerRepo,
 					PackageType: packageType,
@@ -410,6 +439,12 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 	}
 	_ = g.Wait()
 
+	abortedByRateLimit = rateLimited.Load()
+	if abortedByRateLimit {
+		stageRepos = backfillUnprocessedStageRepos(reposSlice, stageRepos, oldStageData)
+		logger.Errorf("stage [%s] aborted due to GitHub API rate limit; kept old data for unchecked repos", packageType.Plural())
+	}
+
 	slices.SortStableFunc(stageRepos, func(a, b *util.StageRepo) int {
 		return cmp.Compare(b.Updated, a.Updated)
 	})
@@ -432,9 +467,30 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 	}
 
 	logger.Infof("finish stage [%s]", packageType.Plural())
+	return abortedByRateLimit
 }
 
-func repoStats(ownerRepo string) (stars, openIssues int, ok bool) {
+// backfillUnprocessedStageRepos 在限流中止后，为尚未写入结果的列表仓库补回同路径旧条目，避免 stage JSON 丢仓。
+func backfillUnprocessedStageRepos(reposSlice []string, stageRepos []*util.StageRepo, oldStageData map[string]*util.StageRepo) []*util.StageRepo {
+	processed := make(Set, len(stageRepos))
+	for _, repo := range stageRepos {
+		if key, ok := util.OwnerRepoFromStageURL(repo.URL); ok {
+			processed[key] = struct{}{}
+		}
+	}
+	for _, ownerRepo := range reposSlice {
+		if _, ok := processed[ownerRepo]; ok {
+			continue
+		}
+		if old := oldStageData[ownerRepo]; old != nil {
+			stageRepos = append(stageRepos, old)
+			logger.Errorf("backfill old stage data for [%s] after rate limit abort", ownerRepo)
+		}
+	}
+	return stageRepos
+}
+
+func repoStats(ownerRepo string) (stars, openIssues int, ok bool, err error) {
 	repoURL := util.GitHubRepoURL(ownerRepo)
 	owner, name, cutOk := strings.Cut(ownerRepo, "/")
 	if !cutOk {

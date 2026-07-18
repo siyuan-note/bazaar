@@ -11,6 +11,7 @@
 package util
 
 import (
+	"errors"
 	"time"
 
 	"github.com/google/go-github/v89/github"
@@ -23,6 +24,19 @@ func NewGitHubClient(token string, timeout time.Duration) (*github.Client, error
 		github.WithTimeout(timeout),
 		github.WithUserAgent(UserAgent),
 	)
+}
+
+// IsGitHubRateLimit 判断 err 是否为 GitHub REST API 主限流或次级（滥用）限流。
+// 可穿透 LocalizedError / fmt %w 等包装链。
+func IsGitHubRateLimit(err error) bool {
+	if err == nil {
+		return false
+	}
+	if _, ok := errors.AsType[*github.RateLimitError](err); ok {
+		return true
+	}
+	_, ok := errors.AsType[*github.AbuseRateLimitError](err)
+	return ok
 }
 
 // GitHubRepoURL 由 owner/repo 拼出仓库主页地址

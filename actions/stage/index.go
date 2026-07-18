@@ -78,6 +78,7 @@ func resolveStageCheckLegacy(
 // allowThemeJS 仅主题为 themes 时可能为 true（theme.js 白名单内仓库）；其他类型恒为 false。
 // occupiedNames 为已占用 package.name 集合，供 rules.Check 做跨类型唯一性检查。
 // 失败时 issues 供固定 Issue 评论汇总（与 PR Check 同一套 MessageZh/MessageEn）。
+// 若遇 GitHub API 限流，返回 err（issues 为空），由调用方中止本轮并保留旧数据，不写 stage-fail。
 func indexPackage(
 	ownerRepo string,
 	packageType rules.PackageType,
@@ -86,7 +87,7 @@ func indexPackage(
 	oldName, oldVersion string,
 	allowThemeJS bool,
 	occupiedNames map[string]struct{},
-) (ok bool, size, installSize int64, pkg *rules.Package, issues []rules.Issue) {
+) (ok bool, size, installSize int64, pkg *rules.Package, issues []rules.Issue, err error) {
 	repoURL := util.GitHubRepoURL(ownerRepo)
 	owner, name, cutOk := strings.Cut(ownerRepo, "/")
 	if !cutOk {
@@ -95,10 +96,14 @@ func indexPackage(
 		return
 	}
 
-	tmpUnzipPath, data, cleanup, err := util.DownloadAndUnzipPackageZip(githubContext, githubClient, owner, name, packageZipAssetID)
-	if err != nil {
-		logger.Errorf("download/unzip [%s] asset %d failed: %s", repoURL, packageZipAssetID, err)
-		issues = stageIssueFromErr(err)
+	tmpUnzipPath, data, cleanup, downloadErr := util.DownloadAndUnzipPackageZip(githubContext, githubClient, owner, name, packageZipAssetID)
+	if downloadErr != nil {
+		logger.Errorf("download/unzip [%s] asset %d failed: %s", repoURL, packageZipAssetID, downloadErr)
+		if util.IsGitHubRateLimit(downloadErr) {
+			err = downloadErr
+			return
+		}
+		issues = stageIssueFromErr(downloadErr)
 		return
 	}
 	defer cleanup()
@@ -127,9 +132,9 @@ func indexPackage(
 	packageRoot := result.PackageRoot
 
 	// 计算解压后目录体积，用于 stage 条目的 installSize 字段
-	installSize, err = sizeOfDirectory(packageRoot)
-	if err != nil {
-		logger.Errorf("stat package [%s] size failed: %s", repoURL, err)
+	installSize, sizeErr := sizeOfDirectory(packageRoot)
+	if sizeErr != nil {
+		logger.Errorf("stat package [%s] size failed: %s", repoURL, sizeErr)
 		issues = stageInternalIssue(
 			"校验通过后统计解压目录体积失败。这通常是集市 Stage 流程内部问题，请联系维护者。",
 			"Failed to measure the unzipped package size after checks passed. This is usually an internal Stage issue — please contact a maintainer.",
@@ -150,8 +155,8 @@ func indexPackage(
 
 	// 校验通过后再上传 package.zip，避免无效包写入 OSS
 	key := "package/" + ownerRepo + "@" + hash
-	if err := util.UploadOSS(githubContext, key, data); err != nil {
-		logger.Errorf("upload package [%s] failed: %s", repoURL, err)
+	if uploadErr := util.UploadOSS(githubContext, key, data); uploadErr != nil {
+		logger.Errorf("upload package [%s] failed: %s", repoURL, uploadErr)
 		issues = stageInternalIssue(
 			"上传 `package.zip` 到对象存储失败。这通常是集市 Stage 流程或存储配置问题，请联系维护者。",
 			"Failed to upload `package.zip` to object storage. This is usually a Stage pipeline or storage config issue — please contact a maintainer.",
@@ -182,8 +187,8 @@ func indexPackage(
 			return uploadPackageRootFile(ctx, ownerRepo, hash, packageRoot, fileName)
 		})
 	}
-	if err := g.Wait(); err != nil {
-		logger.Errorf("upload package [%s] root files failed: %s", repoURL, err)
+	if waitErr := g.Wait(); waitErr != nil {
+		logger.Errorf("upload package [%s] root files failed: %s", repoURL, waitErr)
 		issues = stageInternalIssue(
 			"上传包根目录文件到对象存储失败。这通常是集市 Stage 流程或存储配置问题，请联系维护者。",
 			"Failed to upload package root files to object storage. This is usually a Stage pipeline or storage config issue — please contact a maintainer.",

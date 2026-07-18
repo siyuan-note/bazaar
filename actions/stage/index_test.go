@@ -172,3 +172,23 @@ func TestParseHashFromStageURL(t *testing.T) {
 		})
 	}
 }
+
+func TestBackfillUnprocessedStageRepos(t *testing.T) {
+	processed := &util.StageRepo{URL: "a/one@hash1", Updated: "2026-01-01T00:00:00Z"}
+	oldTwo := &util.StageRepo{URL: "b/two@hash2", Updated: "2026-01-02T00:00:00Z"}
+	oldStageData := map[string]*util.StageRepo{
+		"b/two":   oldTwo,
+		"c/three": {URL: "c/three@hash3"},
+	}
+	repos := []string{"a/one", "b/two", "c/three", "d/four"}
+	got := backfillUnprocessedStageRepos(repos, []*util.StageRepo{processed}, oldStageData)
+	if len(got) != 3 {
+		t.Fatalf("len = %d, want 3 (processed + b/two + c/three)", len(got))
+	}
+	if got[0] != processed || got[1] != oldTwo {
+		t.Fatalf("unexpected order/content: %#v", got)
+	}
+	if got[2].URL != "c/three@hash3" {
+		t.Fatalf("third = %q, want c/three@hash3", got[2].URL)
+	}
+}
