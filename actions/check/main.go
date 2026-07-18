@@ -60,7 +60,7 @@ var (
 	PR_HEAD_PATH        = os.Getenv("PR_HEAD_PATH")        // 本 PR 当前提交的代码目录（PR head）
 	PR_BASE_PATH        = os.Getenv("PR_BASE_PATH")        // 本 PR 的 merge base 代码目录（做 diff 的旧侧，与 GitHub "Files changed" 一致）
 	PAT                 = os.Getenv("PAT")                 // 个人访问令牌（Release API）
-	GITHUB_TOKEN        = os.Getenv("GITHUB_TOKEN")        // Actions 令牌（改本仓 PR 标题与标签）
+	GITHUB_TOKEN        = os.Getenv("GITHUB_TOKEN")        // Actions 令牌（改本仓 PR 标题 / 标签 / 请求审查）
 	CHECK_RESULT_OUTPUT = os.Getenv("CHECK_RESULT_OUTPUT") // 检查结果输出文件路径
 
 	REQUEST_TIMEOUT = 30 * time.Second // 请求超时时间
@@ -68,7 +68,7 @@ var (
 	logger           = gulu.Log.NewLogger(os.Stdout)
 	githubContext    context.Context
 	githubClient     *github.Client // PAT：跨仓 Release
-	githubRepoClient *github.Client // GITHUB_TOKEN：本仓 PR 标题 / 标签
+	githubRepoClient *github.Client // GITHUB_TOKEN：本仓 PR 标题 / 标签 / 请求审查
 )
 
 //go:embed check-result.md.tpl
@@ -147,7 +147,7 @@ func main() {
 	repoToken := GITHUB_TOKEN
 	if repoToken == "" {
 		repoToken = PAT
-		logger.Infof("GITHUB_TOKEN empty, fall back to PAT for PR title/labels")
+		logger.Infof("GITHUB_TOKEN empty, fall back to PAT for PR title/labels/reviewers")
 	}
 	githubRepoClient, err = util.NewGitHubClient(repoToken, REQUEST_TIMEOUT)
 	if err != nil {
@@ -224,6 +224,9 @@ func main() {
 
 	// 类型标签 + CI 状态标签对账（失败只记日志）
 	syncPRLabels(plans, checkResult)
+
+	// 检查通过后请求审查者（名单来自仓库 Variables，失败只记日志）
+	maybeRequestReviewers(checkResult)
 
 	logger.Infof("PR Check completed")
 }
