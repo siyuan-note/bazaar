@@ -1,6 +1,10 @@
 name: PR Check
 
 # REF https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request_target
+#
+# 标签：
+# - Check：维护者打标以重跑本检查（打标后会自动去掉）
+# - ci-skip：维护者打标则跳过整个 job（与 Check 同时存在时以 ci-skip 为准）
 on:
   pull_request_target:
     types:
@@ -26,6 +30,7 @@ jobs:
   check:
     if: |
       github.repository_owner == 'siyuan-note' &&
+      !contains(toJSON(github.event.pull_request.labels.*.name), '"ci-skip"') &&
       (github.event.action != 'labeled' || github.event.label.name == 'Check')
     runs-on: ubuntu-latest
     env:

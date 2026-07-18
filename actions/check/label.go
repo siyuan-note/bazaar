@@ -88,7 +88,7 @@ func ciStatusLabel(passed bool) string {
 }
 
 // buildPRLabelsAfterSync 保留非托管标签，再接上 expected 类型标签与唯一 CI 状态标签。
-// 托管范围：类型标签 + ci-failed / ci-passed；其它标签（如 Check）原样保留。
+// 托管范围：类型标签 + ci-failed / ci-passed；其它标签（如 Check、ci-skip）原样保留。
 func buildPRLabelsAfterSync(current []string, expectedTypes Set, ciPassed bool) []string {
 	managed := managedLabelSet()
 	next := make([]string, 0, len(current)+len(expectedTypes)+1)

@@ -46,7 +46,7 @@ Check 流程（一次一包通过后，对 plan.diff.New 中的仓库）：
 1. 从 bazaar head 的 stage/*.json 加载 OccupiedNames（跨类型；比较前统一转小写）
 2. 获取仓库 Latest Release 与 package.zip
 3. 下载并解压 package.zip
-4. 调用 rules.Check（OccupiedNames / AllowThemeJS；PR 新仓 OldName/OldVersion 为空）
+4. 调用 rules.Check（OccupiedNames / AllowThemeJS；纯新仓 OldName/OldVersion 为空；换维护者从旧 stage 取 OldName+OldVersion，视同更新须升版）
 5. 通过后将 name 写入 OccupiedNames（同 PR 内唯一性）
 
 收尾（无论是否跑过包检查）：
@@ -294,7 +294,7 @@ func formatParseErrorLabel(label string, err error) string {
 }
 
 // runTypePackageChecks 对本类型新增/换维护者仓库执行 Latest Release → package.zip → rules.Check。
-// 一次一包规则下通常只有一个仓库；更换维护者的仓库也在 plan.diff.New 中，按新集市包处理。
+// 一次一包规则下通常只有一个仓库；更换维护者时从 bazaar head stage 取旧 name/version（视同更新）。
 func runTypePackageChecks(
 	plan typeCheckPlan,
 	checkResult *CheckResult,
@@ -308,21 +308,62 @@ func runTypePackageChecks(
 		if plan.packageType == rules.TypeTheme {
 			_, allowThemeJS = plan.themeJsAllowSet[ownerRepo]
 		}
-		packageCheck := checkNewRepo(ownerRepo, occupiedNames, plan.packageType, allowThemeJS)
-		if _, ok := plan.diff.MaintainerChanged[ownerRepo]; ok {
-			packageCheck.MaintainerChanged = true
+		var oldName, oldVersion string
+		var legacyIssues []rules.Issue
+		previousOwnerRepo, maintainerChanged := plan.diff.PreviousRepos[ownerRepo]
+		if maintainerChanged {
+			oldName, oldVersion, legacyIssues = resolveMaintainerChangeLegacy(plan.packageType, ownerRepo, previousOwnerRepo)
 		}
+		packageCheck := checkNewRepo(ownerRepo, occupiedNames, plan.packageType, allowThemeJS, oldName, oldVersion, legacyIssues)
+		packageCheck.MaintainerChanged = maintainerChanged
 		checkResult.appendCheck(plan.packageType, packageCheck)
 	}
 	logger.Infof("finish repos check [%s]", prHeadReposPath)
 }
 
+// resolveMaintainerChangeLegacy 从 bazaar head stage 读取换维护者前旧仓库的 name/version。
+//
+// 调用前提：TXT diff 已判定为更换维护者（同一 GitHub 仓库名、不同 owner），oldOwnerRepo 为被替换的旧路径。
+// 此处只负责取出旧清单字段，供 rules.Check 校验「name 不变、version 升高」。
+func resolveMaintainerChangeLegacy(packageType rules.PackageType, newOwnerRepo, oldOwnerRepo string) (oldName, oldVersion string, issues []rules.Issue) {
+	if oldOwnerRepo == "" {
+		// PreviousRepos 有键时值不应为空；落到这里是内部状态异常，不是作者列表写法问题。
+		return "", "", []rules.Issue{rules.IssueFromErr(rules.LocalizedErr(
+			fmt.Sprintf("内部错误：已将 `%s` 识别为更换维护者，但缺少对应的原 `owner/repo`。请联系集市维护者。", newOwnerRepo),
+			fmt.Sprintf("Internal error: `%s` was detected as a maintainer change, but the previous `owner/repo` is missing. Please contact a bazaar maintainer.", newOwnerRepo),
+			nil,
+		))}
+	}
+	oldStage, err := util.FindStageRepo(BAZAAR_HEAD_PATH, packageType, oldOwnerRepo)
+	if err != nil {
+		logger.Errorf("load stage repo [%s] for maintainer change failed: %s", oldOwnerRepo, err)
+		return "", "", []rules.Issue{rules.IssueFromErr(rules.LocalizedErr(
+			fmt.Sprintf("更换维护者检查失败：读取原仓库 `%s` 的 stage 条目出错：%v。请联系集市维护者。", oldOwnerRepo, err),
+			fmt.Sprintf("Maintainer-change check failed: error reading the stage entry for previous repo `%s`: %v. Please contact a bazaar maintainer.", oldOwnerRepo, err),
+			err,
+		))}
+	}
+	if oldStage == nil || oldStage.Package.Name == "" {
+		// TXT 侧已是「旧路径 → 新路径」，但 stage 没有旧包元数据，无法做 name/version 连续性校验。
+		return "", "", []rules.Issue{rules.IssueFromErr(rules.LocalizedErr(
+			fmt.Sprintf("内部错误：已将 `%s` → `%s` 识别为更换维护者，但集市 stage 中没有原仓库 `%s` 的记录。请联系集市维护者。", oldOwnerRepo, newOwnerRepo, oldOwnerRepo),
+			fmt.Sprintf("Internal error: `%s` → `%s` was detected as a maintainer change, but the bazaar stage has no entry for previous repo `%s`. Please contact a bazaar maintainer.", oldOwnerRepo, newOwnerRepo, oldOwnerRepo),
+			nil,
+		))}
+	}
+	logger.Infof("maintainer change [%s] <- [%s], old name [%s] version [%s]", newOwnerRepo, oldOwnerRepo, oldStage.Package.Name, oldStage.Package.Version)
+	return oldStage.Package.Name, oldStage.Package.Version, nil
+}
+
 // checkNewRepo 检查 PR 新增的集市包仓库：Latest Release / package.zip → 下载解压 → rules.Check
+// oldName/oldVersion 在换维护者时来自旧 stage（视同更新）；legacyIssues 为解析旧条目时的前置错误。
 func checkNewRepo(
 	ownerRepo string,
 	occupiedNames map[string]struct{},
 	packageType rules.PackageType,
 	allowThemeJS bool,
+	oldName, oldVersion string,
+	legacyIssues []rules.Issue,
 ) PackageCheck {
 	logger.Infof("start repo check [%s]", ownerRepo)
 
@@ -331,12 +372,18 @@ func checkNewRepo(
 		Path: ownerRepo,
 		Home: util.GitHubRepoURL(ownerRepo),
 	}
-	// 检查 Latest Release / package.zip / tag
-	releaseInfo, err := util.FetchLatestRelease(githubContext, githubClient, repoOwner, repoName)
 	out := PackageCheck{
 		RepoInfo: repoInfo,
-		Release:  releaseInfo,
 	}
+	if len(legacyIssues) > 0 {
+		out.Issues = append(out.Issues, legacyIssues...)
+		logger.Infof("finish repo check [%s] (legacy issues)", ownerRepo)
+		return out
+	}
+
+	// 检查 Latest Release / package.zip / tag
+	releaseInfo, err := util.FetchLatestRelease(githubContext, githubClient, repoOwner, repoName)
+	out.Release = releaseInfo
 	if err != nil {
 		logger.Errorf("fetch repo [%s/%s] latest release failed: %s", repoOwner, repoName, err)
 		out.Issues = []rules.Issue{rules.IssueFromErr(err)}
@@ -362,8 +409,8 @@ func checkNewRepo(
 		OwnerRepo:     ownerRepo,
 		Type:          packageType,
 		ZipData:       zipData,
-		OldName:       "",
-		OldVersion:    "",
+		OldName:       oldName,
+		OldVersion:    oldVersion,
 		OccupiedNames: occupiedNames,
 		AllowThemeJS:  allowThemeJS,
 	})

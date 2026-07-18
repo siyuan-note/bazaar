@@ -79,9 +79,9 @@ func TestTypeLabelSyncPlan_MaintainerChange(t *testing.T) {
 		{
 			packageType: rules.TypeWidget,
 			diff: repoDiff{
-				New:               []string{"carol/w"},
-				Deleted:           []string{"dave/w"},
-				MaintainerChanged: Set{"carol/w": {}},
+				New:           []string{"carol/w"},
+				Deleted:       []string{"dave/w"},
+				PreviousRepos: map[string]string{"carol/w": "dave/w"},
 			},
 		},
 	}

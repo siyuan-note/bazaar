@@ -12,11 +12,56 @@ package util
 
 import (
 	"encoding/json"
+	"os"
+	"path/filepath"
 	"strings"
 	"testing"
 
 	"github.com/siyuan-note/bazaar/rules"
 )
+
+func TestFindStageRepo(t *testing.T) {
+	dir := t.TempDir()
+	stageDir := filepath.Join(dir, "stage")
+	if err := os.MkdirAll(stageDir, 0o755); err != nil {
+		t.Fatal(err)
+	}
+	payload := `{
+  "repos": [
+    {
+      "url": "alice/transfer@abc123",
+      "updated": "2025-01-01T00:00:00Z",
+      "stars": 1,
+      "openIssues": 0,
+      "size": 10,
+      "installSize": 20,
+      "package": {
+        "name": "transfer-pkg",
+        "version": "1.0.0"
+      }
+    }
+  ]
+}`
+	if err := os.WriteFile(filepath.Join(stageDir, "plugins.json"), []byte(payload), 0o644); err != nil {
+		t.Fatal(err)
+	}
+
+	got, err := FindStageRepo(dir, rules.TypePlugin, "alice/transfer")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if got == nil || got.Package.Name != "transfer-pkg" {
+		t.Fatalf("FindStageRepo = %+v, want name transfer-pkg", got)
+	}
+
+	missing, err := FindStageRepo(dir, rules.TypePlugin, "bob/transfer")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if missing != nil {
+		t.Fatalf("FindStageRepo missing = %+v, want nil", missing)
+	}
+}
 
 func TestStageFileForPublicIndex_stripsInternalFields(t *testing.T) {
 	stageFile := StageFile{

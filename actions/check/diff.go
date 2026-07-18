@@ -17,9 +17,9 @@ import (
 
 // repoDiff 单类型列表相对 PR base / bazaar head 过滤后的增删结果。
 type repoDiff struct {
-	New               []string // 本 PR 新增或更换维护者后的 owner/repo
-	Deleted           []string // 本 PR 移除的 owner/repo
-	MaintainerChanged Set      // New 的子集：同 repo name、不同 owner
+	New           []string          // 本 PR 新增或更换维护者后的 owner/repo
+	Deleted       []string          // 本 PR 移除的 owner/repo
+	PreviousRepos map[string]string // 换维护者：新 owner/repo → 原先的 owner/repo（键为 New 的子集）
 }
 
 // computeRepoDiff 按 base/head diff 并过滤：
@@ -50,8 +50,8 @@ func computeRepoDiff(
 		}
 	}
 
-	// 更换维护者：在 PR base 与 PR head 中，repo name 相同但 owner 不同，则视为更换维护者
-	maintainerChanged := make(Set)
+	// 更换维护者：在 PR base 与 PR head 中，repo name 相同但 owner 不同
+	previousRepos := make(map[string]string)
 	for _, path := range newRepos {
 		// newRepos 中既有纯新增，也可能含更换维护者后的新 owner/repo
 		newOwner, name, ok := strings.Cut(path, "/")
@@ -65,14 +65,14 @@ func computeRepoDiff(
 		}
 		if oldOwner != newOwner {
 			// base 中有 oldOwner/name，head 中有 newOwner/name，是更换维护者
-			maintainerChanged[path] = struct{}{}
+			previousRepos[path] = oldOwner + "/" + name
 		}
 	}
 
 	return repoDiff{
-		New:               newRepos,
-		Deleted:           deletedRepos,
-		MaintainerChanged: maintainerChanged,
+		New:           newRepos,
+		Deleted:       deletedRepos,
+		PreviousRepos: previousRepos,
 	}
 }
 

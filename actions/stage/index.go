@@ -27,9 +27,54 @@ import (
 // 仅打日志，不写入 Stage 失败汇总 Issue。
 var errInvalidOwnerRepo = errors.New("invalid owner/repo")
 
+// indexOldStageByRepoName 按 GitHub 仓库名（owner/repo 的 repo 段）索引旧 stage 条目，供换维护者交接。
+// 若同名出现多次，后者覆盖前者（正常 stage 中同类型不应并存同名仓库）。
+func indexOldStageByRepoName(oldStageData map[string]*util.StageRepo) map[string]*util.StageRepo {
+	byName := make(map[string]*util.StageRepo, len(oldStageData))
+	for ownerRepo, repo := range oldStageData {
+		_, repoName, ok := strings.Cut(ownerRepo, "/")
+		if !ok || repoName == "" {
+			continue
+		}
+		byName[repoName] = repo
+	}
+	return byName
+}
+
+// resolveStageCheckLegacy 决定 rules.Check 使用的旧 name/version，以及失败时可否保留的同路径旧条目。
+// - 同路径命中：返回 exactOld，并带 OldName+OldVersion（常规更新）
+// - 换维护者（同 GitHub 仓库名，且旧 owner/repo 已不在列表）：同样带 OldName+OldVersion（视同更新须升版），exactOld 为 nil（不得写回旧 URL）
+func resolveStageCheckLegacy(
+	ownerRepo string,
+	oldStageData map[string]*util.StageRepo,
+	oldByRepoName map[string]*util.StageRepo,
+	listed Set,
+) (exactOld *util.StageRepo, oldName, oldVersion string) {
+	if o, ok := oldStageData[ownerRepo]; ok {
+		return o, o.Package.Name, o.Package.Version
+	}
+	_, repoName, ok := strings.Cut(ownerRepo, "/")
+	if !ok || repoName == "" {
+		return nil, "", ""
+	}
+	legacy := oldByRepoName[repoName]
+	if legacy == nil {
+		return nil, "", ""
+	}
+	legacyKey, ok := util.OwnerRepoFromStageURL(legacy.URL)
+	if !ok || legacyKey == "" {
+		return nil, "", ""
+	}
+	if _, stillListed := listed[legacyKey]; stillListed {
+		// 旧路径仍在列表：不是换维护者，按纯新包处理（唯一性校验会拦住重名）
+		return nil, "", ""
+	}
+	return nil, legacy.Package.Name, legacy.Package.Version
+}
+
 // indexPackage 下载、校验并上传包，返回的 pkg 为解析后的清单元数据。
 // hash、packageZipAssetID 来自 Latest Release，由调用方在跳过判断后传入。
-// oldStageRepo 用于清单校验时与旧 name/version 对比，可为 nil（如新仓库）。
+// oldName/oldVersion 供清单校验（含换维护者：视同更新，须 version 更高）。
 // allowThemeJS 仅主题为 themes 时可能为 true（theme.js 白名单内仓库）；其他类型恒为 false。
 // occupiedNames 为已占用 package.name 集合，供 rules.Check 做跨类型唯一性检查。
 // 失败时 issues 供固定 Issue 评论汇总（与 PR Check 同一套 MessageZh/MessageEn）。
@@ -38,7 +83,7 @@ func indexPackage(
 	packageType rules.PackageType,
 	hash string,
 	packageZipAssetID int64,
-	oldStageRepo *util.StageRepo,
+	oldName, oldVersion string,
 	allowThemeJS bool,
 	occupiedNames map[string]struct{},
 ) (ok bool, size, installSize int64, pkg *rules.Package, issues []rules.Issue) {
@@ -61,10 +106,6 @@ func indexPackage(
 	// 记录 zip 体积
 	size = int64(len(data))
 
-	var oldName, oldVersion string
-	if oldStageRepo != nil {
-		oldName, oldVersion = oldStageRepo.Package.Name, oldStageRepo.Package.Version
-	}
 	result := rules.Check(rules.Input{
 		PackageRoot:   tmpUnzipPath,
 		OwnerRepo:     ownerRepo,

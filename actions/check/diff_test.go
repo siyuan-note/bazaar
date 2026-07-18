@@ -50,11 +50,11 @@ func TestComputeRepoDiff_AddRemoveAndMaintainerChange(t *testing.T) {
 			t.Fatalf("unexpected Deleted entry %q in %v", p, d.Deleted)
 		}
 	}
-	if _, ok := d.MaintainerChanged["bob/transfer"]; !ok {
-		t.Fatalf("MaintainerChanged missing bob/transfer: %v", d.MaintainerChanged)
+	if got := d.PreviousRepos["bob/transfer"]; got != "alice/transfer" {
+		t.Fatalf("PreviousRepos[bob/transfer] = %q, want alice/transfer", got)
 	}
-	if _, ok := d.MaintainerChanged["carol/new"]; ok {
-		t.Fatalf("carol/new should not be maintainer change: %v", d.MaintainerChanged)
+	if _, ok := d.PreviousRepos["carol/new"]; ok {
+		t.Fatalf("carol/new should not be in PreviousRepos: %v", d.PreviousRepos)
 	}
 }
 

@@ -63,9 +63,9 @@ func TestConventionalPRTitle_MaintainerChange(t *testing.T) {
 		{
 			packageType: rules.TypeTheme,
 			diff: repoDiff{
-				New:               []string{"carol/theme"},
-				Deleted:           []string{"dave/theme"},
-				MaintainerChanged: Set{"carol/theme": {}},
+				New:           []string{"carol/theme"},
+				Deleted:       []string{"dave/theme"},
+				PreviousRepos: map[string]string{"carol/theme": "dave/theme"},
 			},
 		},
 	}

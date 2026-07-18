@@ -14,7 +14,71 @@ import (
 	"testing"
 
 	"github.com/siyuan-note/bazaar/actions/util"
+	"github.com/siyuan-note/bazaar/rules"
 )
+
+func TestResolveStageCheckLegacy(t *testing.T) {
+	alice := &util.StageRepo{
+		URL: "alice/transfer@abc",
+		Package: rules.Package{
+			Name:    "transfer-pkg",
+			Version: "1.2.3",
+		},
+	}
+	samePath := &util.StageRepo{
+		URL: "bob/keep@def",
+		Package: rules.Package{
+			Name:    "keep-pkg",
+			Version: "0.1.0",
+		},
+	}
+	oldStageData := map[string]*util.StageRepo{
+		"alice/transfer": alice,
+		"bob/keep":       samePath,
+	}
+	oldByRepoName := indexOldStageByRepoName(oldStageData)
+
+	t.Run("同路径更新", func(t *testing.T) {
+		listed := Set{"bob/keep": {}}
+		exact, name, ver := resolveStageCheckLegacy("bob/keep", oldStageData, oldByRepoName, listed)
+		if exact != samePath {
+			t.Fatalf("exactOld = %v, want samePath", exact)
+		}
+		if name != "keep-pkg" || ver != "0.1.0" {
+			t.Fatalf("oldName/version = %q/%q, want keep-pkg/0.1.0", name, ver)
+		}
+	})
+
+	t.Run("换维护者继承 OldName 与 OldVersion", func(t *testing.T) {
+		listed := Set{"bob/transfer": {}}
+		exact, name, ver := resolveStageCheckLegacy("bob/transfer", oldStageData, oldByRepoName, listed)
+		if exact != nil {
+			t.Fatalf("exactOld = %v, want nil for maintainer change", exact)
+		}
+		if name != "transfer-pkg" {
+			t.Fatalf("oldName = %q, want transfer-pkg", name)
+		}
+		if ver != "1.2.3" {
+			t.Fatalf("oldVersion = %q, want 1.2.3", ver)
+		}
+	})
+
+	t.Run("旧路径仍在列表则不按换维护者处理", func(t *testing.T) {
+		listed := Set{"alice/transfer": {}, "bob/transfer": {}}
+		exact, name, ver := resolveStageCheckLegacy("bob/transfer", oldStageData, oldByRepoName, listed)
+		if exact != nil || name != "" || ver != "" {
+			t.Fatalf("got exact=%v name=%q ver=%q, want all empty", exact, name, ver)
+		}
+	})
+
+	t.Run("纯新包", func(t *testing.T) {
+		listed := Set{"carol/new": {}}
+		exact, name, ver := resolveStageCheckLegacy("carol/new", oldStageData, oldByRepoName, listed)
+		if exact != nil || name != "" || ver != "" {
+			t.Fatalf("got exact=%v name=%q ver=%q, want all empty", exact, name, ver)
+		}
+	})
+}
 
 func TestSameCommitPackageZipChanged(t *testing.T) {
 	old := &util.StageRepo{PackageZipAssetID: 42}

@@ -67,6 +67,7 @@
 
    - 示例：将 `alice/foo-plugin` 改为 `bob/foo-plugin`。
    - 清单中的 `name` 应与原先已上架的包名保持一致，以便用户侧仍识别为同一集市包；`url` 须改为新仓库地址。
+   - 更换维护者视同包更新：清单 `version` 必须高于原先已上架版本，并发布带新 `package.zip` 的 Latest Release。
 
 3. **提交 PR 并请求原维护者确认**
 

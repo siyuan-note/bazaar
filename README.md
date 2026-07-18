@@ -67,6 +67,7 @@ If the original author can no longer maintain a listed bazaar package, a new mai
 
    - Example: change `alice/foo-plugin` to `bob/foo-plugin`.
    - The `name` in the package metadata should stay the same as the previously listed package so users still recognize it as the same bazaar package; the `url` must be updated to the new repository address.
+   - A maintainer change counts as a package update: the manifest `version` must be higher than the previously listed version, and you must publish a Latest Release with a new `package.zip`.
 
 3. **Open a PR and ask the original maintainer to confirm**
 

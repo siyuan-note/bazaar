@@ -43,10 +43,10 @@ func conventionalPRTitle(plans []typeCheckPlan) (title string, ok bool) {
 		if len(plan.diff.New) > 0 {
 			added = plan.diff.New[0] // 一次一包后全局最多一个
 			addedType = plan.packageType
-			_, maintainerChanged = plan.diff.MaintainerChanged[added]
+			_, maintainerChanged = plan.diff.PreviousRepos[added]
 		}
 		for _, path := range plan.diff.Deleted {
-			if isMaintainerChangeOldSide(plan.diff, path) {
+			if isPreviousRepo(plan.diff, path) {
 				continue
 			}
 			removedCount++
@@ -78,15 +78,10 @@ func formatActionTitle(action string, typ rules.PackageType, ownerRepo string) s
 	return action + " " + ownerRepo
 }
 
-// isMaintainerChangeOldSide 判断 deleted 是否为换维护者时的旧 owner/repo（同 name，不单独计入移除）。
-func isMaintainerChangeOldSide(d repoDiff, deleted string) bool {
-	_, name, ok := strings.Cut(deleted, "/")
-	if !ok {
-		return false
-	}
-	for newPath := range d.MaintainerChanged {
-		_, newName, ok := strings.Cut(newPath, "/")
-		if ok && newName == name {
+// isPreviousRepo 判断 deleted 是否为换维护者时被替换的旧 owner/repo（不单独计入移除）。
+func isPreviousRepo(d repoDiff, deleted string) bool {
+	for _, previous := range d.PreviousRepos {
+		if previous == deleted {
 			return true
 		}
 	}

@@ -12,6 +12,7 @@ package util
 
 import (
 	"os"
+	"path/filepath"
 	"strings"
 
 	"github.com/88250/gulu"
@@ -92,4 +93,24 @@ func OwnerRepoFromStageURL(stageURL string) (ownerRepo string, ok bool) {
 		return "", false
 	}
 	return ownerRepo, true
+}
+
+// FindStageRepo 从 bazaarHead/stage/<type>.json 中按 owner/repo 查找条目。
+// 文件不存在或未找到时返回 (nil, nil)；读取/解析失败时返回错误。
+func FindStageRepo(bazaarHead string, packageType rules.PackageType, ownerRepo string) (*StageRepo, error) {
+	if ownerRepo == "" {
+		return nil, nil
+	}
+	filePath := filepath.Join(bazaarHead, "stage", packageType.StageJSONFile())
+	stageFile, err := ReadStageFile(filePath)
+	if err != nil {
+		return nil, err
+	}
+	for i := range stageFile.Repos {
+		key, ok := OwnerRepoFromStageURL(stageFile.Repos[i].URL)
+		if ok && key == ownerRepo {
+			return &stageFile.Repos[i], nil
+		}
+	}
+	return nil, nil
 }
