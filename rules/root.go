@@ -24,7 +24,7 @@ func ResolvePackageRoot(path string) (string, error) {
 	if path == "" {
 		return "", LocalizedErr(
 			"内部错误：未能定位 `package.zip` 的解压目录。这通常是集市检查流程配置问题，请联系维护者。",
-			"Internal error: could not locate the extracted `package.zip` directory. This is usually a bazaar checker configuration issue; contact a maintainer.",
+			"Internal error: couldn't locate the extracted `package.zip` directory. This usually means a bazaar checker config problem — please contact a maintainer.",
 			nil,
 		)
 	}
@@ -32,14 +32,14 @@ func ResolvePackageRoot(path string) (string, error) {
 	if err != nil {
 		return "", LocalizedErr(
 			fmt.Sprintf("无法读取 `package.zip` 解压后的内容：%v。请确认 Latest Release 中的 `package.zip` 可正常下载且为合法 zip。", err),
-			fmt.Sprintf("Cannot read the extracted `package.zip` contents: %v. Ensure `package.zip` in the Latest Release downloads correctly and is a valid zip.", err),
+			fmt.Sprintf("Couldn't read the extracted `package.zip` contents: %v. Please make sure `package.zip` in the Latest Release downloads fine and is a valid zip.", err),
 			err,
 		)
 	}
 	if !info.IsDir() {
 		return "", LocalizedErr(
 			"无法从 `package.zip` 确定包根目录：解压结果不是有效目录。请确认 `package.zip` 为合法 zip。",
-			"Cannot determine the package root from `package.zip`: the extraction result is not a valid directory. Ensure `package.zip` is a valid archive.",
+			"Couldn't determine the package root from `package.zip`: the extraction result isn't a valid directory. Please make sure `package.zip` is a valid zip.",
 			nil,
 		)
 	}
@@ -48,7 +48,7 @@ func ResolvePackageRoot(path string) (string, error) {
 	if err != nil {
 		return "", LocalizedErr(
 			fmt.Sprintf("无法列出 `package.zip` 解压后的文件：%v。请确认 zip 未损坏。", err),
-			fmt.Sprintf("Cannot list files inside the extracted `package.zip`: %v. Ensure the zip is not corrupted.", err),
+			fmt.Sprintf("Couldn't list files inside the extracted `package.zip`: %v. Please make sure the zip isn't corrupted.", err),
 			err,
 		)
 	}
@@ -73,7 +73,7 @@ func ResolvePackageRoot(path string) (string, error) {
 	if len(dirs) > 1 && !hasFile {
 		return "", LocalizedErr(
 			fmt.Sprintf("无法从 `package.zip` 确定包根目录：解压根下有 %d 个并列文件夹，且没有任何文件。请把 `icon.png`、清单文件等必要文件直接放在 zip 根目录，或只保留一层包装文件夹（不要并排放多个无关目录）。", len(dirs)),
-			fmt.Sprintf("Cannot determine the package root from `package.zip`: found %d sibling folders under the extraction root and no files. Put required files such as `icon.png` and the manifest (e.g. `plugin.json`) at the zip root, or use exactly one wrapping folder—not multiple top-level directories.", len(dirs)),
+			fmt.Sprintf("Couldn't determine the package root from `package.zip`: there are %d sibling folders under the extraction root and no files. Please put required files like `icon.png` and the manifest directly at the zip root, or keep exactly one wrapping folder — not several top-level directories side by side.", len(dirs)),
 			nil,
 		)
 	}

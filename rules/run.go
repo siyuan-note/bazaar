@@ -57,7 +57,7 @@ func stepOwnerRepo(c *Context) {
 	if strings.TrimSpace(c.OwnerRepo) == "" {
 		c.Add(issue(
 			"内部错误：未提供待检查的 GitHub 仓库（`owner/repo`）。这通常是集市检查流程配置问题，请联系维护者。",
-			"Internal error: OwnerRepo (`owner/repo`) was not provided. This is usually a bazaar checker configuration issue; contact a maintainer.",
+			"Internal error: no GitHub repo (`owner/repo`) was provided for checking. This usually means a bazaar checker config problem — please contact a maintainer.",
 		))
 		c.Halt()
 		return
@@ -65,7 +65,7 @@ func stepOwnerRepo(c *Context) {
 	if _, _, ok := splitOwnerRepo(c.OwnerRepo); !ok {
 		c.Add(issue(
 			fmt.Sprintf("仓库标识 `%s` 格式不正确，应为 `owner/repo`（中间一个斜杠，整行无空格），例如 `siyuan-note/plugin-sample`。请修正集市列表文件 `%s` 中对应行后重新提交。", c.OwnerRepo, c.Type.ReposListFile()),
-			fmt.Sprintf("Repository id `%s` is invalid; expected `owner/repo` with a single slash and no spaces on the whole line (e.g. `siyuan-note/plugin-sample`). Fix the corresponding line in bazaar list file `%s` and push again.", c.OwnerRepo, c.Type.ReposListFile()),
+			fmt.Sprintf("Repo id `%s` isn't valid — it should be `owner/repo` (one slash, no spaces on the line), e.g. `siyuan-note/plugin-sample`. Please fix the matching line in bazaar list file `%s`, then submit again.", c.OwnerRepo, c.Type.ReposListFile()),
 		))
 		c.Halt()
 		return
@@ -149,7 +149,7 @@ func stepManifest(c *Context) {
 		// stepOwnerRepo 已通过时不应发生；仍记一条内部错误，避免静默跳过字段校验。
 		c.Add(issue(
 			fmt.Sprintf("内部错误：仓库标识 `%s` 无法解析为 `owner/repo`。这通常是集市检查流程内部状态不一致，请联系维护者。", c.OwnerRepo),
-			fmt.Sprintf("Internal error: repository id `%s` could not be parsed as `owner/repo`. This usually indicates inconsistent checker state; contact a maintainer.", c.OwnerRepo),
+			fmt.Sprintf("Internal error: repo id `%s` couldn't be parsed as `owner/repo`. This usually means inconsistent checker state — please contact a maintainer.", c.OwnerRepo),
 		))
 		return
 	}

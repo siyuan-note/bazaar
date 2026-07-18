@@ -32,7 +32,7 @@ func ParseReposFromTxt(filePath string) (repos []string, err error) {
 	if err != nil {
 		return nil, rules.LocalizedErr(
 			fmt.Sprintf("无法读取 `%s`：%v。请确认该文件存在于 PR 变更中且路径正确。", fileLabel, err),
-			fmt.Sprintf("Cannot read `%s`: %v. Ensure the file exists in the PR changes with the correct path.", fileLabel, err),
+			fmt.Sprintf("Couldn't read `%s`: %v. Please make sure the file exists in the PR changes and the path is correct.", fileLabel, err),
 			err,
 		)
 	}
@@ -48,7 +48,7 @@ func ParseReposFromTxt(filePath string) (repos []string, err error) {
 		if line != strings.TrimSpace(line) {
 			return nil, rules.LocalizedErr(
 				fmt.Sprintf("`%s` 第 %d 行首尾不能含空格：`%s`。请删除首尾空格后重新提交。", fileLabel, lineNum, line),
-				fmt.Sprintf("`%s` line %d must not have leading or trailing spaces: `%s`. Remove the spaces and push again.", fileLabel, lineNum, line),
+				fmt.Sprintf("`%s` line %d can't have leading or trailing spaces: `%s`. Please remove the spaces and submit again.", fileLabel, lineNum, line),
 				nil,
 			)
 		}
@@ -56,7 +56,7 @@ func ParseReposFromTxt(filePath string) (repos []string, err error) {
 		if len(parts) != 2 {
 			return nil, rules.LocalizedErr(
 				fmt.Sprintf("`%s` 第 %d 行格式无效（应为 `owner/repo`）：`%s`。请改成例如 `siyuan-note/plugin-sample` 后重新提交。", fileLabel, lineNum, line),
-				fmt.Sprintf("`%s` line %d has invalid format (expected `owner/repo`): `%s`. Use a form like `siyuan-note/plugin-sample` and push again.", fileLabel, lineNum, line),
+				fmt.Sprintf("`%s` line %d has an invalid format (expected `owner/repo`): `%s`. Please change it to something like `siyuan-note/plugin-sample`, then submit again.", fileLabel, lineNum, line),
 				nil,
 			)
 		}
@@ -64,14 +64,14 @@ func ParseReposFromTxt(filePath string) (repos []string, err error) {
 		if owner == "" || repo == "" {
 			return nil, rules.LocalizedErr(
 				fmt.Sprintf("`%s` 第 %d 行格式无效（owner 与 repo 均不能为空）：`%s`。请改成 `owner/repo` 格式后重新提交。", fileLabel, lineNum, line),
-				fmt.Sprintf("`%s` line %d is invalid (owner and repo must be non-empty): `%s`. Use `owner/repo` format and push again.", fileLabel, lineNum, line),
+				fmt.Sprintf("`%s` line %d is invalid (owner and repo both need to be non-empty): `%s`. Please use the `owner/repo` format, then submit again.", fileLabel, lineNum, line),
 				nil,
 			)
 		}
 		if strings.IndexFunc(owner, unicode.IsSpace) >= 0 || strings.IndexFunc(repo, unicode.IsSpace) >= 0 {
 			return nil, rules.LocalizedErr(
 				fmt.Sprintf("`%s` 第 %d 行 `owner/repo` 不能含空格：`%s`。请去掉空格后重新提交。", fileLabel, lineNum, line),
-				fmt.Sprintf("`%s` line %d `owner/repo` must not contain spaces: `%s`. Remove the spaces and push again.", fileLabel, lineNum, line),
+				fmt.Sprintf("`%s` line %d `owner/repo` can't contain spaces: `%s`. Please remove the spaces and submit again.", fileLabel, lineNum, line),
 				nil,
 			)
 		}
@@ -80,7 +80,7 @@ func ParseReposFromTxt(filePath string) (repos []string, err error) {
 	if err = scanner.Err(); err != nil {
 		return nil, rules.LocalizedErr(
 			fmt.Sprintf("读取 `%s` 失败：%v。请确认文件编码与换行正常后重新提交。", fileLabel, err),
-			fmt.Sprintf("Failed to read `%s`: %v. Ensure the file encoding and line endings are valid, then push again.", fileLabel, err),
+			fmt.Sprintf("Failed to read `%s`: %v. Please make sure the file encoding and line endings are fine, then submit again.", fileLabel, err),
 			err,
 		)
 	}

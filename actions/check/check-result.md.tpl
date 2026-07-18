@@ -1,4 +1,4 @@
-## 拉取请求检查报告 / Pull Request Check Report
+## 拉取请求自动化检查 / Pull Request Automated Check
 
 {{- if .ParseError }}
 
@@ -8,7 +8,7 @@
 
 请修复仓库根目录下对应的 `.txt` 文件，确保每行包含一个 `owner/repo`，然后推送新提交。
 
-Please fix the corresponding `.txt` file in the repo root, ensuring each line contains one `owner/repo`, then push a new commit.
+Please fix the matching `.txt` file at the repo root so each line is one `owner/repo`, then push a new commit.
 
 ---
 {{- end }}
@@ -25,7 +25,7 @@ Please fix the corresponding `.txt` file in the repo root, ensuring each line co
 
 检测到以下问题，请在修复之后重新打包 `package.zip` 发布新的 Release，并将 Release 标记为 Latest。
 
-The following issues were found. After fixing them, rebuild `package.zip`, publish a new Release, and mark that Release as Latest.
+We found the following issues. Please fix them, rebuild `package.zip`, publish a new Release, and mark that Release as Latest.
   {{- end }}
 
   {{- $issues := .Issues }}
@@ -139,5 +139,5 @@ Check passed.
 
 集市包列表无实际变更（或变更已在 main 中），请检查你的提交。
 
-No actual changes to the bazaar package list (or changes are already in main), please check your commit.
+There's no actual change to the bazaar package list (or the change is already on main). Please double-check your commit.
 {{- end }}

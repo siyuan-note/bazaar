@@ -31,14 +31,14 @@ func DownloadAndUnzipPackageZip(ctx context.Context, client *github.Client, owne
 	if client == nil {
 		return "", nil, cleanup, rules.LocalizedErr(
 			"内部错误：下载 `package.zip` 时 GitHub 客户端未初始化。这通常是集市检查流程配置问题，请联系维护者。",
-			"Internal error: GitHub client is not initialized while downloading `package.zip`. This is usually a bazaar checker configuration issue; contact a maintainer.",
+			"Internal error: the GitHub client isn't initialized while downloading `package.zip`. This usually means a bazaar checker config problem — please contact a maintainer.",
 			nil,
 		)
 	}
 	if assetID == 0 {
 		return "", nil, cleanup, rules.LocalizedErr(
 			"无法下载 `package.zip`：Latest Release 中未找到有效的 `package.zip` 资源。请把打包好的 `package.zip` 作为 Release Asset 上传（文件名必须是 `package.zip`）。",
-			"Cannot download `package.zip`: no valid `package.zip` asset was found in the Latest Release. Upload `package.zip` as a Release asset (the filename must be `package.zip`).",
+			"Couldn't download `package.zip`: no valid `package.zip` asset was found in the Latest Release. Please upload your built `package.zip` as a Release asset (the filename must be exactly `package.zip`).",
 			nil,
 		)
 	}
@@ -61,14 +61,14 @@ func DownloadAndUnzipPackageZip(ctx context.Context, client *github.Client, owne
 	if err != nil {
 		return "", nil, cleanup, rules.LocalizedErr(
 			fmt.Sprintf("下载 `package.zip` 失败：%v。请确认仓库已公开，且 Latest Release 中的 `package.zip` 可正常下载。", err),
-			fmt.Sprintf("Failed to download `package.zip`: %v. Ensure the repository is public and `package.zip` in the Latest Release can be downloaded.", err),
+			fmt.Sprintf("Failed to download `package.zip`: %v. Please make sure the repository is public and `package.zip` in the Latest Release can be downloaded.", err),
 			err,
 		)
 	}
 	if rc == nil {
 		return "", nil, cleanup, rules.LocalizedErr(
 			"下载 `package.zip` 失败：GitHub 返回了空响应。请确认 Latest Release 中的 `package.zip` 可正常下载。",
-			"Failed to download `package.zip`: GitHub returned an empty response. Ensure `package.zip` in the Latest Release can be downloaded.",
+			"Failed to download `package.zip`: GitHub returned an empty response. Please make sure `package.zip` in the Latest Release can be downloaded.",
 			nil,
 		)
 	}
@@ -78,7 +78,7 @@ func DownloadAndUnzipPackageZip(ctx context.Context, client *github.Client, owne
 	if err != nil {
 		return "", nil, cleanup, rules.LocalizedErr(
 			fmt.Sprintf("读取 `package.zip` 失败：%v。请确认 Release 中的 zip 未损坏。", err),
-			fmt.Sprintf("Failed to read `package.zip`: %v. Ensure the Release zip is not corrupted.", err),
+			fmt.Sprintf("Failed to read `package.zip`: %v. Please make sure the Release zip isn't corrupted.", err),
 			err,
 		)
 	}
@@ -87,7 +87,7 @@ func DownloadAndUnzipPackageZip(ctx context.Context, client *github.Client, owne
 	if err != nil {
 		return "", nil, cleanup, rules.LocalizedErr(
 			fmt.Sprintf("内部错误：解压 `package.zip` 时无法创建临时目录：%v。请联系维护者。", err),
-			fmt.Sprintf("Internal error: cannot create temp directory while extracting `package.zip`: %v. Contact a maintainer.", err),
+			fmt.Sprintf("Internal error: couldn't create a temp directory while extracting `package.zip`: %v. Please contact a maintainer.", err),
 			err,
 		)
 	}
@@ -101,7 +101,7 @@ func DownloadAndUnzipPackageZip(ctx context.Context, client *github.Client, owne
 		cleanup = func() {}
 		return "", nil, cleanup, rules.LocalizedErr(
 			fmt.Sprintf("内部错误：保存 `package.zip` 时写入失败：%v。请联系维护者。", err),
-			fmt.Sprintf("Internal error: failed to save `package.zip`: %v. Contact a maintainer.", err),
+			fmt.Sprintf("Internal error: failed to save `package.zip`: %v. Please contact a maintainer.", err),
 			err,
 		)
 	}
@@ -112,7 +112,7 @@ func DownloadAndUnzipPackageZip(ctx context.Context, client *github.Client, owne
 		cleanup = func() {}
 		return "", nil, cleanup, rules.LocalizedErr(
 			fmt.Sprintf("解压 `package.zip` 失败：%v。请确认 zip 内结构正确且未损坏。", err),
-			fmt.Sprintf("Failed to unzip `package.zip`: %v. Ensure the archive structure is valid and not corrupted.", err),
+			fmt.Sprintf("Failed to unzip `package.zip`: %v. Please make sure the archive structure is valid and isn't corrupted.", err),
 			err,
 		)
 	}

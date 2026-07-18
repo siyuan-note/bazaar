@@ -30,7 +30,7 @@ func ZipPaths(zipData []byte) []Issue {
 	if err != nil {
 		return []Issue{issue(
 			fmt.Sprintf("无法解析 `package.zip`：%v。请确认 Release 中的 zip 未损坏，并用标准 zip 工具重新打包。", err),
-			fmt.Sprintf("Cannot parse `package.zip`: %v. Ensure the Release zip is not corrupted and rebuild it with a standard zip tool.", err),
+			fmt.Sprintf("Couldn't parse `package.zip`: %v. Please make sure the Release zip isn't corrupted, and rebuild it with a standard zip tool.", err),
 		)}
 	}
 
@@ -58,6 +58,6 @@ func ZipPaths(zipData []byte) []Issue {
 
 	return []Issue{issue(
 		fmt.Sprintf("`package.zip` 内有 %d 个条目路径使用了反斜杠 `\\`，例如 %s%s。ZIP 规范要求路径分隔符必须是正斜杠 `/`。请改用会写入 `/` 的打包方式重新生成 `package.zip`（不要用会写入 `\\` 的 Windows 压缩方式），并更新 GitHub Release。", len(bad), listed, moreZh),
-		fmt.Sprintf("`package.zip` has %d entries whose paths use backslash `\\`, e.g. %s%s. The ZIP format requires forward slash `/` as the path separator. Rebuild `package.zip` with a tool that writes `/` (avoid Windows zip methods that emit `\\`), and update the GitHub Release.", len(bad), listedEn, moreEn),
+		fmt.Sprintf("`package.zip` has %d entries whose paths use backslash `\\`, e.g. %s%s. The ZIP format requires forward slash `/` as the path separator. Please rebuild `package.zip` with a tool that writes `/` (avoid Windows zip methods that emit `\\`), then update the GitHub Release.", len(bad), listedEn, moreEn),
 	)}
 }

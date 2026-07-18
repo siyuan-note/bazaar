@@ -25,7 +25,7 @@ func PathNames(root string) []Issue {
 	_ = filepath.WalkDir(root, func(path string, d os.DirEntry, err error) error {
 		if err != nil {
 			issues = append(issues, issue(fmt.Sprintf("检查包内文件时无法访问路径 `%s`：%v。请确认 `package.zip` 完整、未损坏。", path, err),
-				fmt.Sprintf("Could not access path `%s` while inspecting the package: %v. Ensure `package.zip` is complete and not corrupted.", path, err),
+				fmt.Sprintf("Couldn't access path `%s` while inspecting the package: %v. Please make sure `package.zip` is complete and not corrupted.", path, err),
 			))
 			return nil
 		}
@@ -41,12 +41,12 @@ func PathNames(root string) []Issue {
 
 		if strings.HasPrefix(name, " ") || strings.HasSuffix(name, " ") {
 			issues = append(issues, issue(fmt.Sprintf("包内路径 `%s` 的文件/目录名 `%s` 以空格开头或结尾，不受 Windows 系统支持，请去掉首尾空格。", relSlash, name),
-				fmt.Sprintf("Entry `%s` uses name `%s` with leading or trailing spaces, which Windows systems do not support. Remove those spaces.", relSlash, name),
+				fmt.Sprintf("In package path `%s`, the file/folder name `%s` has leading or trailing spaces, which Windows doesn't support. Please trim them.", relSlash, name),
 			))
 		}
 		if IsReservedWindowsDeviceName(name) {
 			issues = append(issues, issue(fmt.Sprintf("包内路径 `%s` 的名称 `%s` 是 Windows 系统保留设备名（如 `CON`、`PRN`、`AUX`、`NUL`、`COM1`、`LPT1` 等），请改成其他名称。", relSlash, name),
-				fmt.Sprintf("Entry `%s` uses name `%s`, which is a Windows system reserved device name (`CON`, `PRN`, `AUX`, `NUL`, `COM1`, `LPT1`, etc.). Choose a different name.", relSlash, name),
+				fmt.Sprintf("In package path `%s`, the name `%s` is a Windows reserved device name (e.g. `CON`, `PRN`, `AUX`, `NUL`, `COM1`, `LPT1`). Please rename it.", relSlash, name),
 			))
 		}
 		return nil

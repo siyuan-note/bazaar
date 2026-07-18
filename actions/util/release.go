@@ -50,7 +50,7 @@ func FetchLatestRelease(ctx context.Context, client *github.Client, owner, repo 
 	if client == nil {
 		return info, rules.LocalizedErr(
 			"内部错误：无法获取 Latest Release，GitHub 客户端未初始化。这通常是集市检查流程配置问题，请联系维护者。",
-			"Internal error: could not fetch Latest Release because the GitHub client is not initialized. This is usually a bazaar checker configuration issue; contact a maintainer.",
+			"Internal error: couldn't fetch the Latest Release because the GitHub client isn't initialized. This usually means a bazaar checker config problem — please contact a maintainer.",
 			ErrNoLatestRelease,
 		)
 	}
@@ -63,7 +63,7 @@ func FetchLatestRelease(ctx context.Context, client *github.Client, owner, repo 
 	if err != nil {
 		return info, rules.LocalizedErr(
 			fmt.Sprintf("无法获取 Latest Release：%v。请在 GitHub 上创建 Release，并确保仓库已设为公开。", err),
-			fmt.Sprintf("Could not fetch Latest Release: %v. Create a GitHub Release and ensure the repository is public.", err),
+			fmt.Sprintf("Couldn't fetch the Latest Release: %v. Please create a GitHub Release, and make sure the repository is public.", err),
 			fmt.Errorf("%w: %w", ErrNoLatestRelease, err),
 		)
 	}
@@ -82,7 +82,7 @@ func FetchLatestRelease(ctx context.Context, client *github.Client, owner, repo 
 		// Release 已存在；保留 Tag / URL 供 PR 评论展示链接。
 		return info, rules.LocalizedErr(
 			"Latest Release 中缺少名为 `package.zip` 的资源文件。请把打包好的 `package.zip` 作为 Release Asset 上传（文件名必须是 `package.zip`）。",
-			"The Latest Release has no asset named `package.zip`. Upload `package.zip` as a Release asset (the filename must be `package.zip`).",
+			"The Latest Release is missing an asset named `package.zip`. Please upload your built `package.zip` as a Release asset (the filename must be exactly `package.zip`).",
 			ErrNoPackageZip,
 		)
 	}
@@ -93,7 +93,7 @@ func FetchLatestRelease(ctx context.Context, client *github.Client, owner, repo 
 		zh, en := rules.LocalizedMessages(err)
 		return info, rules.LocalizedErr(
 			fmt.Sprintf("已找到 Latest Release 与 `package.zip`，但无法解析 Release 标签 `%s` 对应的提交：%s。请在 GitHub 上确认该 tag 指向有效 commit（可尝试删除并重新创建 tag）。", info.Tag, zh),
-			fmt.Sprintf("Latest Release and `package.zip` were found, but release tag `%s` could not be resolved to a commit: %s. Ensure the tag points to a valid commit on GitHub (try recreating the tag).", info.Tag, en),
+			fmt.Sprintf("We found the Latest Release and `package.zip`, but couldn't resolve release tag `%s` to a commit: %s. Please make sure that tag points to a valid commit on GitHub (you can try deleting and recreating the tag).", info.Tag, en),
 			fmt.Errorf("%w: %w", ErrReleaseTag, err),
 		)
 	}
@@ -104,7 +104,7 @@ func resolveReleaseTagCommit(ctx context.Context, client *github.Client, owner, 
 	if tagName == "" {
 		return "", rules.LocalizedErr(
 			"Latest Release 未关联有效的标签名。请在 GitHub Release 上填写 tag 并指向有效 commit。",
-			"The Latest Release has no valid tag name. Set a tag on the GitHub Release that points to a valid commit.",
+			"The Latest Release has no valid tag name. Please set a tag on the GitHub Release that points to a valid commit.",
 			nil,
 		)
 	}
@@ -114,7 +114,7 @@ func resolveReleaseTagCommit(ctx context.Context, client *github.Client, owner, 
 	if err != nil {
 		return "", rules.LocalizedErr(
 			fmt.Sprintf("无法在仓库中找到 Release 标签 `%s`：%v。请确认 tag 已推送到 GitHub 且拼写正确。", tagName, err),
-			fmt.Sprintf("Could not find release tag `%s` in the repository: %v. Ensure the tag is pushed to GitHub and spelled correctly.", tagName, err),
+			fmt.Sprintf("Couldn't find release tag `%s` in the repository: %v. Please make sure the tag is pushed to GitHub and spelled correctly.", tagName, err),
 			err,
 		)
 	}
@@ -123,7 +123,7 @@ func resolveReleaseTagCommit(ctx context.Context, client *github.Client, owner, 
 	if sha == "" {
 		return "", rules.LocalizedErr(
 			fmt.Sprintf("Release 标签 `%s` 没有关联有效的 Git 对象。请删除并重新创建该 tag，使其指向有效 commit。", tagName),
-			fmt.Sprintf("Release tag `%s` has no associated Git object. Delete and recreate the tag so it points to a valid commit.", tagName),
+			fmt.Sprintf("Release tag `%s` has no associated Git object. Please delete and recreate the tag so it points to a valid commit.", tagName),
 			nil,
 		)
 	}
@@ -138,7 +138,7 @@ func resolveReleaseTagCommit(ctx context.Context, client *github.Client, owner, 
 		if err != nil {
 			return "", rules.LocalizedErr(
 				fmt.Sprintf("无法读取 Release 附注标签 `%s`：%v。请确认 tag 未损坏，必要时在 GitHub 上重新创建。", tagName, err),
-				fmt.Sprintf("Could not read annotated release tag `%s`: %v. Ensure the tag is valid or recreate it on GitHub.", tagName, err),
+				fmt.Sprintf("Couldn't read annotated release tag `%s`: %v. Please make sure the tag is valid, or recreate it on GitHub.", tagName, err),
 				err,
 			)
 		}
@@ -146,7 +146,7 @@ func resolveReleaseTagCommit(ctx context.Context, client *github.Client, owner, 
 		if commitSHA == "" {
 			return "", rules.LocalizedErr(
 				fmt.Sprintf("Release 附注标签 `%s` 未指向有效 commit。请重新创建 tag 并关联到正确的提交。", tagName),
-				fmt.Sprintf("Annotated release tag `%s` does not point to a valid commit. Recreate the tag and link it to the correct commit.", tagName),
+				fmt.Sprintf("Annotated release tag `%s` doesn't point to a valid commit. Please recreate the tag and link it to the correct commit.", tagName),
 				nil,
 			)
 		}
@@ -154,7 +154,7 @@ func resolveReleaseTagCommit(ctx context.Context, client *github.Client, owner, 
 	default:
 		return "", rules.LocalizedErr(
 			fmt.Sprintf("Release 标签 `%s` 的类型不受支持（`%s`）。请改用指向 commit 的轻量 tag 或标准附注 tag。", tagName, ref.GetObject().GetType()),
-			fmt.Sprintf("Release tag `%s` has unsupported type `%s`. Use a lightweight tag or a standard annotated tag that points to a commit.", tagName, ref.GetObject().GetType()),
+			fmt.Sprintf("Release tag `%s` has unsupported type `%s`. Please use a lightweight tag or a standard annotated tag that points to a commit.", tagName, ref.GetObject().GetType()),
 			nil,
 		)
 	}

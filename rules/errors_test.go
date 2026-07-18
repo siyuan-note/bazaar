@@ -31,7 +31,7 @@ func TestReadPackageLocalizedErrors(t *testing.T) {
 		if !strings.Contains(zh, "无法读取清单文件 `plugin.json`") {
 			t.Fatalf("unexpected zh: %s", zh)
 		}
-		if !strings.Contains(en, "Cannot read manifest `plugin.json`") {
+		if !strings.Contains(en, "Couldn't read the manifest `plugin.json`") {
 			t.Fatalf("unexpected en: %s", en)
 		}
 	})
@@ -52,7 +52,7 @@ func TestReadPackageLocalizedErrors(t *testing.T) {
 		if !strings.Contains(zh, "JSON 解析失败") {
 			t.Fatalf("unexpected zh: %s", zh)
 		}
-		if !strings.Contains(en, "Failed to parse manifest") {
+		if !strings.Contains(en, "Couldn't parse `plugin.json` as JSON") {
 			t.Fatalf("unexpected en: %s", en)
 		}
 	})

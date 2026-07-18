@@ -49,7 +49,7 @@ func Check(in Input) *Result {
 		return &Result{
 			Issues: []Issue{issue(
 				"内部错误：未提供有效的集市包类型。这通常是集市检查流程配置问题，请联系维护者。",
-				"Internal error: invalid package type. This is usually a bazaar checker configuration issue; contact a maintainer.",
+				"Internal error: no valid package type was provided. This usually means a bazaar checker config problem — please contact a maintainer.",
 			)},
 		}
 	}

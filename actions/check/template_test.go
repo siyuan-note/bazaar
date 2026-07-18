@@ -67,7 +67,7 @@ func TestCheckResultTemplate(t *testing.T) {
 		"Check passed.",
 		"Latest Release: [v0.0.1](https://github.com/siyuan-note/plugin-sample/releases/tag/v0.0.1)",
 		"检测到以下问题，请在修复之后重新打包 `package.zip` 发布新的 Release，并将 Release 标记为 Latest。",
-		"The following issues were found. After fixing them, rebuild `package.zip`, publish a new Release, and mark that Release as Latest.",
+		"We found the following issues. Please fix them, rebuild `package.zip`, publish a new Release, and mark that Release as Latest.",
 	} {
 		if !strings.Contains(out, want) {
 			t.Fatalf("output missing %q\n%s", want, out)
