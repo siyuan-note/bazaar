@@ -12,6 +12,7 @@ package main
 
 import (
 	"context"
+	"errors"
 	"io/fs"
 	"os"
 	"path/filepath"
@@ -22,11 +23,16 @@ import (
 	"golang.org/x/sync/errgroup"
 )
 
+// errInvalidOwnerRepo 防御性错误：列表解析已保证 owner/repo，正常流程不应出现。
+// 仅打日志，不写入 Stage 失败汇总 Issue。
+var errInvalidOwnerRepo = errors.New("invalid owner/repo")
+
 // indexPackage 下载、校验并上传包，返回的 pkg 为解析后的清单元数据。
 // hash、packageZipAssetID 来自 Latest Release，由调用方在跳过判断后传入。
 // oldStageRepo 用于清单校验时与旧 name/version 对比，可为 nil（如新仓库）。
 // allowThemeJS 仅主题为 themes 时可能为 true（theme.js 白名单内仓库）；其他类型恒为 false。
 // occupiedNames 为已占用 package.name 集合，供 rules.Check 做跨类型唯一性检查。
+// 失败时 issues 供固定 Issue 评论汇总（与 PR Check 同一套 MessageZh/MessageEn）。
 func indexPackage(
 	ownerRepo string,
 	packageType rules.PackageType,
@@ -35,10 +41,11 @@ func indexPackage(
 	oldStageRepo *util.StageRepo,
 	allowThemeJS bool,
 	occupiedNames map[string]struct{},
-) (ok bool, size, installSize int64, pkg *rules.Package) {
+) (ok bool, size, installSize int64, pkg *rules.Package, issues []rules.Issue) {
 	repoURL := util.GitHubRepoURL(ownerRepo)
 	owner, name, cutOk := strings.Cut(ownerRepo, "/")
 	if !cutOk {
+		// 列表入口已校验；此处仅兜底打日志，不汇总到 Issue。
 		logger.Errorf("download/unzip [%s] failed: invalid owner/repo", ownerRepo)
 		return
 	}
@@ -46,6 +53,7 @@ func indexPackage(
 	tmpUnzipPath, data, cleanup, err := util.DownloadAndUnzipPackageZip(githubContext, githubClient, owner, name, packageZipAssetID)
 	if err != nil {
 		logger.Errorf("download/unzip [%s] asset %d failed: %s", repoURL, packageZipAssetID, err)
+		issues = stageIssueFromErr(err)
 		return
 	}
 	defer cleanup()
@@ -71,6 +79,7 @@ func indexPackage(
 		for _, issue := range result.Issues {
 			logger.Errorf("check [%s] failed: %s", repoURL, issue.MessageEn)
 		}
+		issues = result.Issues
 		return
 	}
 
@@ -80,6 +89,10 @@ func indexPackage(
 	installSize, err = sizeOfDirectory(packageRoot)
 	if err != nil {
 		logger.Errorf("stat package [%s] size failed: %s", repoURL, err)
+		issues = stageInternalIssue(
+			"校验通过后统计解压目录体积失败。这通常是集市 Stage 流程内部问题，请联系维护者。",
+			"Failed to measure the unzipped package size after checks passed. This is usually an internal Stage issue — please contact a maintainer.",
+		)
 		return
 	}
 
@@ -87,6 +100,10 @@ func indexPackage(
 	pkg = getPackage(packageRoot, packageType)
 	if pkg == nil {
 		logger.Errorf("get package [%s] failed", repoURL)
+		issues = stageInternalIssue(
+			"校验通过后重新读取清单失败。这通常是集市 Stage 流程内部问题，请联系维护者。",
+			"Failed to re-read the package manifest after checks passed. This is usually an internal Stage issue — please contact a maintainer.",
+		)
 		return
 	}
 
@@ -94,6 +111,10 @@ func indexPackage(
 	key := "package/" + ownerRepo + "@" + hash
 	if err := util.UploadOSS(githubContext, key, data); err != nil {
 		logger.Errorf("upload package [%s] failed: %s", repoURL, err)
+		issues = stageInternalIssue(
+			"上传 `package.zip` 到对象存储失败。这通常是集市 Stage 流程或存储配置问题，请联系维护者。",
+			"Failed to upload `package.zip` to object storage. This is usually a Stage pipeline or storage config issue — please contact a maintainer.",
+		)
 		return
 	}
 
@@ -121,19 +142,25 @@ func indexPackage(
 		})
 	}
 	if err := g.Wait(); err != nil {
+		logger.Errorf("upload package [%s] root files failed: %s", repoURL, err)
+		issues = stageInternalIssue(
+			"上传包根目录文件到对象存储失败。这通常是集市 Stage 流程或存储配置问题，请联系维护者。",
+			"Failed to upload package root files to object storage. This is usually a Stage pipeline or storage config issue — please contact a maintainer.",
+		)
 		return
 	}
 	ok = true
 	return
 }
 
-// getRepoLatestRelease 获取仓库最新发布的版本
-func getRepoLatestRelease(ownerRepo string) (util.LatestRelease, bool) {
+// getRepoLatestRelease 获取仓库最新发布的版本；失败时 error 为双语 LocalizedError（可转 Issue）。
+func getRepoLatestRelease(ownerRepo string) (util.LatestRelease, error) {
 	repoURL := util.GitHubRepoURL(ownerRepo)
 	owner, name, cutOk := strings.Cut(ownerRepo, "/")
 	if !cutOk {
+		// 列表入口已校验；此处仅兜底打日志，不汇总到 Issue。
 		logger.Errorf("get [%s] latest release failed: invalid owner/repo", ownerRepo)
-		return util.LatestRelease{}, false
+		return util.LatestRelease{}, errInvalidOwnerRepo
 	}
 	ctx, cancel := context.WithTimeout(githubContext, REQUEST_TIMEOUT)
 	defer cancel()
@@ -141,9 +168,9 @@ func getRepoLatestRelease(ownerRepo string) (util.LatestRelease, bool) {
 	releaseInfo, err := util.FetchLatestRelease(ctx, githubClient, owner, name)
 	if err != nil {
 		logger.Errorf("get release [%s] failed: %s", repoURL, err)
-		return util.LatestRelease{}, false
+		return releaseInfo, err
 	}
-	return releaseInfo, true
+	return releaseInfo, nil
 }
 
 // sameCommitPackageZipChanged 判断 Latest Release 仍指向同一 commit，但 package.zip 是否已被替换。

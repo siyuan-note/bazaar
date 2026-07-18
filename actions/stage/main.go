@@ -15,6 +15,7 @@ import (
 	"cmp"
 	"context"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"math"
 	"os"
@@ -41,6 +42,7 @@ Stage 流程：
 3. 读取 *s.txt 与既有 stage/*.json，并发索引各 owner/repo
 4. hash 未变则跳过下载；否则下载 package.zip → rules.Check → 上传 OSS（package.zip、README、preview、icon、清单 JSON）
 5. 按 updated 降序排序后写出 stage/*.json（键序经 marshalSortedIndentedJSON 稳定）
+6. 将本轮失败/成功同步到固定 Issue（#1921）：失败 upsert 一仓一条评论，成功则删除；hash 跳过不改动评论
 */
 
 type Set map[string]struct{} // 字符串集合
@@ -90,12 +92,18 @@ func main() {
 
 	// 每类 stage 前重新加载 OccupiedNames，以便上一类本轮 performStage 新写入的 name 参与后续类型的唯一性检查。
 	// 仅对新上架的包进行检查
+	reports := &stageReportCollector{}
 	for _, packageType := range rules.AllPackageTypes() {
 		occupiedNames, err := util.LoadOccupiedNames(BAZAAR_ROOT_PATH)
 		if err != nil {
 			logger.Fatalf("load occupied names failed: %s", err)
 		}
-		performStage(packageType, occupiedNames, reposByType[packageType])
+		performStage(packageType, occupiedNames, reposByType[packageType], reports)
+	}
+
+	// 失败汇总到固定 Issue；同步失败不阻断已写出的 stage JSON（仅记日志）。
+	if err := syncStageFailReports(githubContext, githubClient, reports.snapshot()); err != nil {
+		logger.Errorf("sync stage-fail comments failed: %s", err)
 	}
 
 	logger.Infof("Stage completed")
@@ -167,7 +175,7 @@ func loadOldStageData(packageType rules.PackageType) (map[string]*util.StageRepo
 	return oldStageData, nil
 }
 
-func performStage(packageType rules.PackageType, occupiedNames map[string]struct{}, reposSlice []string) {
+func performStage(packageType rules.PackageType, occupiedNames map[string]struct{}, reposSlice []string, reports *stageReportCollector) {
 	logger.Infof("start stage [%s]", packageType.Plural())
 
 	oldStageData, err := loadOldStageData(packageType)
@@ -201,8 +209,8 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 				oldStageURL = o.URL
 				oldRepo = o
 			}
-			releaseInfo, releaseOk := getRepoLatestRelease(ownerRepo)
-			if !releaseOk {
+			releaseInfo, releaseErr := getRepoLatestRelease(ownerRepo)
+			if releaseErr != nil {
 				stageReposMu.Lock()
 				if oldRepo != nil {
 					stageRepos = append(stageRepos, oldRepo)
@@ -211,6 +219,16 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 					logger.Errorf("get [%s] latest release failed and no old data found", repoURL)
 				}
 				stageReposMu.Unlock()
+				if !errors.Is(releaseErr, errInvalidOwnerRepo) {
+					reports.add(stageReport{
+						OwnerRepo:   ownerRepo,
+						PackageType: packageType,
+						Kind:        stageReportFail,
+						Release:     releaseInfo,
+						Issues:      stageIssueFromErr(releaseErr),
+						KeptOld:     oldRepo != nil,
+					})
+				}
 				return nil
 			}
 			hash := releaseInfo.CommitSHA
@@ -224,11 +242,37 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 					if sameCommitPackageZipChanged(oldRepo, packageZipAssetID) {
 						logger.Errorf("repo [%s] hash unchanged [%s] but package.zip asset id changed (%d -> %d); a new release tag is required to update the staged package",
 							repoURL, hash, oldRepo.PackageZipAssetID, packageZipAssetID)
+						stageReposMu.Lock()
+						stageRepos = append(stageRepos, oldRepo)
+						stageReposMu.Unlock()
+						reports.add(stageReport{
+							OwnerRepo:   ownerRepo,
+							PackageType: packageType,
+							Kind:        stageReportFail,
+							Release:     releaseInfo,
+							Hash:        hash,
+							KeptOld:     true,
+							Issues: stageInternalIssue(
+								fmt.Sprintf("Latest Release 仍指向同一 commit（`%s`），但 `package.zip` 资源已被替换（asset id %d → %d）。集市 Stage 需要新的 Release 标签才会更新入库。请提升清单 `version`，重新打包 `package.zip`，并发布带新 tag 的 GitHub Release（标记为 Latest）。",
+									hash, oldRepo.PackageZipAssetID, packageZipAssetID),
+								fmt.Sprintf("The Latest Release still points to the same commit (`%s`), but the `package.zip` asset was replaced (asset id %d → %d). Stage only updates when there is a new release tag. Please bump the manifest `version`, rebuild `package.zip`, and publish a new GitHub Release with a new tag (marked as Latest).",
+									hash, oldRepo.PackageZipAssetID, packageZipAssetID),
+							),
+						})
+						return nil
 					}
 					logger.Infof("skip repo [%s], hash unchanged [%s]", ownerRepo, hash)
 					stageReposMu.Lock()
 					stageRepos = append(stageRepos, oldRepo)
 					stageReposMu.Unlock()
+					reports.add(stageReport{
+						OwnerRepo:   ownerRepo,
+						PackageType: packageType,
+						Kind:        stageReportSkip,
+						Release:     releaseInfo,
+						Hash:        hash,
+						KeptOld:     true,
+					})
 					return nil
 				}
 			}
@@ -237,7 +281,7 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 			if packageType == rules.TypeTheme {
 				_, allowThemeJS = themeJsAllowSet[ownerRepo]
 			}
-			ok, size, installSize, pkg := indexPackage(ownerRepo, packageType, hash, packageZipAssetID, oldRepo, allowThemeJS, occupiedNames)
+			ok, size, installSize, pkg, indexIssues := indexPackage(ownerRepo, packageType, hash, packageZipAssetID, oldRepo, allowThemeJS, occupiedNames)
 			if !ok || pkg == nil {
 				// 索引失败或 pkg 为空时使用旧数据，避免 "package": null 的坏数据覆盖
 				stageReposMu.Lock()
@@ -248,6 +292,18 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 					logger.Errorf("index failed for [%s] and no old data found", repoURL)
 				}
 				stageReposMu.Unlock()
+				// 无 Issues 时多为防御性路径（如非法 owner/repo），仅日志、不写汇总 Issue
+				if len(indexIssues) > 0 {
+					reports.add(stageReport{
+						OwnerRepo:   ownerRepo,
+						PackageType: packageType,
+						Kind:        stageReportFail,
+						Release:     releaseInfo,
+						Hash:        hash,
+						Issues:      indexIssues,
+						KeptOld:     oldRepo != nil,
+					})
+				}
 				return nil
 			}
 
@@ -262,6 +318,18 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 					logger.Errorf("repoStats failed for [%s] and no old data found", repoURL)
 				}
 				stageReposMu.Unlock()
+				reports.add(stageReport{
+					OwnerRepo:   ownerRepo,
+					PackageType: packageType,
+					Kind:        stageReportFail,
+					Release:     releaseInfo,
+					Hash:        hash,
+					KeptOld:     oldRepo != nil,
+					Issues: stageInternalIssue(
+						"获取仓库 Star / Open Issues 统计失败，本轮未更新入库。请稍后重试；若持续失败请联系维护者。",
+						"Failed to fetch repository star / open-issue stats, so this run did not update the staged package. Please retry later; if it keeps failing, contact a maintainer.",
+					),
+				})
 				return nil
 			}
 
@@ -277,6 +345,13 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 				Package:           *pkg,
 			})
 			stageReposMu.Unlock()
+			reports.add(stageReport{
+				OwnerRepo:   ownerRepo,
+				PackageType: packageType,
+				Kind:        stageReportPass,
+				Release:     releaseInfo,
+				Hash:        hash,
+			})
 			logger.Infof("updated repo [%s]", ownerRepo)
 			return nil
 		})
