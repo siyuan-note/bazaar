@@ -11,18 +11,26 @@
 package main
 
 import (
+	"bytes"
 	"context"
+	_ "embed"
 	"encoding/json"
 	"fmt"
 	"os"
 	"strconv"
 	"strings"
 	"sync"
+	"text/template"
 
 	"github.com/google/go-github/v89/github"
 	"github.com/siyuan-note/bazaar/actions/util"
 	"github.com/siyuan-note/bazaar/rules"
 )
+
+//go:embed stage-fail.md.tpl
+var stageFailTemplateText string
+
+var stageFailTemplate = template.Must(parseStageFailTemplate())
 
 // 固定汇总 Issue：https://github.com/siyuan-note/bazaar/issues/1921
 const stageFailIssue = 1921
@@ -137,64 +145,42 @@ func workflowRunURL() string {
 	return server + "/" + GITHUB_REPOSITORY + "/actions/runs/" + GITHUB_RUN_ID
 }
 
+func parseStageFailTemplate() (*template.Template, error) {
+	return template.New("stage-fail.md.tpl").Funcs(template.FuncMap{
+		"issueIndex": formatStageIssueIndex,
+		"repoURL":    util.GitHubRepoURL,
+	}).Parse(stageFailTemplateText)
+}
+
+// stageFailCommentView 为 stage-fail.md.tpl 的渲染数据。
+type stageFailCommentView struct {
+	Marker         string
+	OwnerRepo      string
+	PackageType    string
+	Release        util.LatestRelease
+	Hash           string
+	KeptOld        bool
+	Issues         []rules.Issue
+	WorkflowRunURL string
+}
+
 // formatStageFailComment 生成固定 Issue 下单仓失败评论正文（含 marker，便于 upsert/delete）。
-func formatStageFailComment(r stageReport) string {
-	var b strings.Builder
-	b.WriteString(stageFailCommentMarker(r.OwnerRepo))
-	b.WriteByte('\n')
-	b.WriteString("### [")
-	b.WriteString(r.OwnerRepo)
-	b.WriteString("](")
-	b.WriteString(util.GitHubRepoURL(r.OwnerRepo))
-	b.WriteString(") (`")
-	b.WriteString(r.PackageType.String())
-	b.WriteString("`)\n")
-
-	if r.Release.URL != "" {
-		b.WriteString("\n最新 Release / Latest Release: [")
-		b.WriteString(r.Release.Tag)
-		b.WriteString("](")
-		b.WriteString(r.Release.URL)
-		b.WriteString(")")
-		if r.Hash != "" {
-			b.WriteString(" · hash `")
-			b.WriteString(r.Hash)
-			b.WriteString("`")
-		}
-		b.WriteByte('\n')
-	} else if r.Hash != "" {
-		b.WriteString("\nhash `")
-		b.WriteString(r.Hash)
-		b.WriteString("`\n")
+func formatStageFailComment(r stageReport) (string, error) {
+	var buf bytes.Buffer
+	err := stageFailTemplate.Execute(&buf, stageFailCommentView{
+		Marker:         stageFailCommentMarker(r.OwnerRepo),
+		OwnerRepo:      r.OwnerRepo,
+		PackageType:    r.PackageType.String(),
+		Release:        r.Release,
+		Hash:           r.Hash,
+		KeptOld:        r.KeptOld,
+		Issues:         r.Issues,
+		WorkflowRunURL: workflowRunURL(),
+	})
+	if err != nil {
+		return "", err
 	}
-
-	if r.KeptOld {
-		b.WriteString("\n本轮未更新入库，已沿用旧 stage 条目。\n")
-		b.WriteString("This run did not update the staged package; the previous stage entry was kept.\n")
-	}
-
-	if len(r.Issues) > 0 {
-		b.WriteString("\n检测到以下问题，请在修复之后提升清单字段 `version`，重新打包 `package.zip` 并发布新的 GitHub Release（标记为 Latest）。\n\n")
-		b.WriteString("We found the following issues. Please fix them, bump the manifest `version`, rebuild `package.zip`, and publish a new GitHub Release marked as Latest.\n")
-	}
-
-	for i, issue := range r.Issues {
-		b.WriteByte('\n')
-		b.WriteString("[")
-		b.WriteString(formatStageIssueIndex(i, len(r.Issues)))
-		b.WriteString("]\n\n")
-		b.WriteString(issue.MessageZh)
-		b.WriteString("\n\n")
-		b.WriteString(issue.MessageEn)
-		b.WriteString("\n\n---\n")
-	}
-
-	if runURL := workflowRunURL(); runURL != "" {
-		b.WriteString("\n工作流 / Workflow: ")
-		b.WriteString(runURL)
-		b.WriteByte('\n')
-	}
-	return b.String()
+	return buf.String(), nil
 }
 
 type stageFailComment struct {
@@ -267,7 +253,10 @@ func syncStageFailReports(ctx context.Context, client *github.Client, reports []
 					MessageEn: "Stage failed, but no detailed issue was collected. Please check the workflow logs or contact a maintainer.",
 				}}
 			}
-			body := formatStageFailComment(r)
+			body, err := formatStageFailComment(r)
+			if err != nil {
+				return fmt.Errorf("format comment for [%s]: %w", r.OwnerRepo, err)
+			}
 			comments := commentsByRepo[r.OwnerRepo]
 			if len(comments) == 0 {
 				_, _, err := client.Issues.CreateComment(ctx, owner, repo, stageFailIssue, &github.IssueComment{Body: new(body)})
@@ -277,7 +266,7 @@ func syncStageFailReports(ctx context.Context, client *github.Client, reports []
 				logger.Infof("created stage-fail comment for [%s]", r.OwnerRepo)
 				continue
 			}
-			_, _, err := client.Issues.EditComment(ctx, owner, repo, comments[0].ID, &github.IssueComment{Body: new(body)})
+			_, _, err = client.Issues.EditComment(ctx, owner, repo, comments[0].ID, &github.IssueComment{Body: new(body)})
 			if err != nil {
 				return fmt.Errorf("edit comment %d for [%s]: %w", comments[0].ID, r.OwnerRepo, err)
 			}

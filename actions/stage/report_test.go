@@ -69,7 +69,7 @@ func TestParseStageFailCommentMarker(t *testing.T) {
 }
 
 func TestFormatStageFailComment(t *testing.T) {
-	body := formatStageFailComment(stageReport{
+	body, err := formatStageFailComment(stageReport{
 		OwnerRepo:   "owner/repo",
 		PackageType: rules.TypePlugin,
 		Kind:        stageReportFail,
@@ -84,6 +84,9 @@ func TestFormatStageFailComment(t *testing.T) {
 			MessageEn: "missing icon.png",
 		}},
 	})
+	if err != nil {
+		t.Fatal(err)
+	}
 
 	checks := []string{
 		`<!-- bazaar-stage-fail {"repo":"owner/repo"} -->`,
@@ -101,6 +104,15 @@ func TestFormatStageFailComment(t *testing.T) {
 		if !strings.Contains(body, want) {
 			t.Fatalf("formatStageFailComment missing %q\nbody:\n%s", want, body)
 		}
+	}
+	introIdx := strings.Index(body, "检测到以下问题")
+	issueIdx := strings.Index(body, "[01]")
+	if introIdx < 0 || issueIdx < 0 || introIdx > issueIdx {
+		t.Fatalf("issue intro should appear before [01]\n%s", body)
+	}
+	sepIdx := strings.Index(body[introIdx:issueIdx], "---")
+	if sepIdx < 0 {
+		t.Fatalf("want --- between intro and [01]\n%s", body)
 	}
 }
 
