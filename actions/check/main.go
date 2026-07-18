@@ -39,19 +39,20 @@ Diff 流程（以 plugins.txt 为例）：
 4. 比较 base 与 head：候选新增 = head 有 base 无，候选删除 = base 有 head 无
 5. 过滤候选新增：排除已在 bazaar head 中的仓库（可能是解决冲突时从 bazaar head 合并来的）
 6. 过滤候选删除：排除在 bazaar head 中已不存在的仓库（可能是其他 PR 删除的）
-7. 流程规则：添加或更换维护者合计只能为 1（移除不限）；违反则写 FlowError 评论并跳过包检查（亦不展示移除列表）
-8. 按本 PR 实际涉及的 *.txt 同步类型标签（plugin/theme/icon/template/widget）：每次运行对账，缺则补、多则删；解析失败的类型也打标以便发现
-9. 一次一包通过后：自动改 PR 标题（Add/Remove [type] owner/repo，插件省略类型；换维护者附 (maintainer change)；多仓纯移除为 Remove N packages）
-10. OccupiedNames 使用 bazaar head 的 stage/*.json 中所有类型的 package.name 集合（跨类型；比较前统一转小写）
-11. 一次一包通过后：对新增列表做 Latest Release / package.zip → 下载解压 → rules.Check；Bot 回复中列出移除列表、检查结果；若为更换维护者则附流程说明文档链接
+7. 流程规则：添加或更换维护者合计只能为 1（移除不限）；违反则写 FlowError，跳过后续 Check（评论亦不展示移除列表）
+8. 一次一包通过后：自动改 PR 标题（Add/Remove [type] owner/repo，插件省略类型；换维护者附 (maintainer change)；多仓纯移除为 Remove N packages）
 
-Check 流程：
-1. 获取仓库最新 release 与 package.zip
-2. 下载并解压 package.zip
-3. 调用 rules.Check（OccupiedNames / AllowThemeJS；PR 新仓 OldName/OldVersion 为空）
-4. 通过后将 name 写入 OccupiedNames（同 PR 内唯一性）
-5. 生成检查结果并输出文件（使用 go 模板）
-6. 使用 thollander/actions-comment-pull-request 将检查结果输出到 PR 中
+Check 流程（一次一包通过后，对 plan.diff.New 中的仓库）：
+1. 从 bazaar head 的 stage/*.json 加载 OccupiedNames（跨类型；比较前统一转小写）
+2. 获取仓库 Latest Release 与 package.zip
+3. 下载并解压 package.zip
+4. 调用 rules.Check（OccupiedNames / AllowThemeJS；PR 新仓 OldName/OldVersion 为空）
+5. 通过后将 name 写入 OccupiedNames（同 PR 内唯一性）
+
+收尾（无论是否跑过包检查）：
+1. 用模板写出检查结果文件（含移除列表、检查 Issues；换维护者时附流程说明链接）
+2. 同步标签：类型标签按涉及的 *.txt 对账；CI 状态打 ci-failed 或 ci-passed（互斥，同一次 Replace）
+3. 工作流用 thollander/actions-comment-pull-request 将结果文件发到 PR
 */
 
 var (
@@ -181,9 +182,6 @@ func main() {
 	}
 	checkResult.ParseError = parseErrorBuilder.String()
 
-	// 类型标签与 diff 对账（与一次一包是否通过无关；解析失败的类型也打标）
-	syncPRTypeLabels(plans)
-
 	// 流程规则：添加或更换维护者合计只能为 1（移除不限）
 	if addedOrChanged > 1 {
 		checkResult.FlowError = formatOnePackageLimitError(addedOrChanged, plans)
@@ -212,6 +210,9 @@ func main() {
 	if err := checkResultTemplate.Execute(checkResultOutputFile, checkResult); err != nil {
 		logger.Fatalf("write check result failed: %s", err)
 	}
+
+	// 类型标签 + CI 状态标签对账（失败只记日志）
+	syncPRLabels(plans, checkResult)
 
 	logger.Infof("PR Check completed")
 }

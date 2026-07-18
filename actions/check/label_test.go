@@ -91,25 +91,70 @@ func TestTypeLabelSyncPlan_MaintainerChange(t *testing.T) {
 	}
 }
 
-func TestPackageTypeLabelSet(t *testing.T) {
-	set := packageTypeLabelSet()
-	for _, name := range []string{"plugin", "theme", "icon", "template", "widget"} {
+func TestManagedLabelSet(t *testing.T) {
+	set := managedLabelSet()
+	for _, name := range []string{"plugin", "theme", "icon", "template", "widget", labelCIFailed, labelCIPassed} {
 		if _, ok := set[name]; !ok {
 			t.Fatalf("missing %q in %v", name, set)
 		}
 	}
-	if len(set) != 5 {
-		t.Fatalf("len=%d, want 5", len(set))
+	if len(set) != 7 {
+		t.Fatalf("len=%d, want 7", len(set))
 	}
 }
 
-func TestBuildPRLabelsAfterTypeSync(t *testing.T) {
-	current := []string{"Check", "plugin", "bug", "theme"}
+func TestBuildPRLabelsAfterSync_Passed(t *testing.T) {
+	current := []string{"Check", "plugin", "bug", "theme", "ci-failed"}
 	expected := Set{"icon": {}, "plugin": {}}
-	got := buildPRLabelsAfterTypeSync(current, expected)
-	want := []string{"Check", "bug", "plugin", "icon"}
+	got := buildPRLabelsAfterSync(current, expected, true)
+	want := []string{"Check", "bug", "plugin", "icon", "ci-passed"}
 	if !slices.Equal(got, want) {
 		t.Fatalf("got %v, want %v", got, want)
+	}
+}
+
+func TestBuildPRLabelsAfterSync_Failed(t *testing.T) {
+	current := []string{"ci-passed", "plugin", "waiting-author"}
+	expected := Set{"plugin": {}}
+	got := buildPRLabelsAfterSync(current, expected, false)
+	want := []string{"waiting-author", "plugin", "ci-failed"}
+	if !slices.Equal(got, want) {
+		t.Fatalf("got %v, want %v", got, want)
+	}
+}
+
+func TestCheckResultCIPassed(t *testing.T) {
+	if !checkResultCIPassed(&CheckResult{}) {
+		t.Fatal("empty result should pass")
+	}
+	if checkResultCIPassed(&CheckResult{ParseError: "bad"}) {
+		t.Fatal("ParseError should fail")
+	}
+	if checkResultCIPassed(&CheckResult{FlowError: "limit"}) {
+		t.Fatal("FlowError should fail")
+	}
+	if checkResultCIPassed(&CheckResult{
+		Plugins: []PackageCheck{{Issues: []rules.Issue{{MessageZh: "x"}}}},
+	}) {
+		t.Fatal("package Issues should fail")
+	}
+	if !checkResultCIPassed(&CheckResult{
+		Plugins:        []PackageCheck{{RepoInfo: RepoInfo{Path: "a/b"}}},
+		PluginsDeleted: []string{"c/d"},
+	}) {
+		t.Fatal("clean checks and deletions should pass")
+	}
+	if checkResultCIPassed(nil) {
+		t.Fatal("nil should fail")
+	}
+}
+
+func TestCIStatusLabel(t *testing.T) {
+	if got := ciStatusLabel(true); got != labelCIPassed {
+		t.Fatalf("got %q, want %q", got, labelCIPassed)
+	}
+	if got := ciStatusLabel(false); got != labelCIFailed {
+		t.Fatalf("got %q, want %q", got, labelCIFailed)
 	}
 }
 

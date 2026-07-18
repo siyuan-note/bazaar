@@ -12,28 +12,38 @@ package main
 
 import (
 	"fmt"
+	"maps"
 	"net/http"
-	"slices"
 
 	"github.com/google/go-github/v89/github"
 	"github.com/siyuan-note/bazaar/rules"
 )
 
-// packageTypeLabelColors 类型标签默认颜色（仓库尚无该标签时创建用）。
-var packageTypeLabelColors = map[string]string{
-	"plugin":   "0E8A16",
-	"theme":    "1D76DB",
-	"icon":     "FBCA04",
-	"template": "D93F0B",
-	"widget":   "B60205",
+const (
+	labelCIFailed = "ci-failed"
+	labelCIPassed = "ci-passed"
+)
+
+// labelColors 仓库尚无该标签时创建用的默认颜色。
+// 类型色避开 ci-failed 红、ci-passed 蓝；passed 用蓝而非绿，便于红绿色弱与 ci-failed 区分。
+var labelColors = map[string]string{
+	"plugin":      "6F42C1", // 紫
+	"theme":       "1B7C83", // 青
+	"icon":        "8B6914", // 深金（浅黄会触发黑字）
+	"template":    "8B5A1F", // 棕
+	"widget":      "B83280", // 深粉（浅粉会触发黑字）
+	labelCIFailed: "B60205",
+	labelCIPassed: "0969DA",
 }
 
-// packageTypeLabelSet 全部集市包类型标签名。
-func packageTypeLabelSet() Set {
-	set := make(Set, len(rules.AllPackageTypes()))
+// managedLabelSet 本流程托管的标签：类型 + CI 状态（互斥）。
+func managedLabelSet() Set {
+	set := make(Set, len(rules.AllPackageTypes())+2)
 	for _, t := range rules.AllPackageTypes() {
 		set[t.String()] = struct{}{}
 	}
+	set[labelCIFailed] = struct{}{}
+	set[labelCIPassed] = struct{}{}
 	return set
 }
 
@@ -50,55 +60,97 @@ func typeLabelSyncPlan(plans []typeCheckPlan) Set {
 	return expected
 }
 
-// buildPRLabelsAfterTypeSync 保留非类型标签，再按固定顺序接上 expected 类型标签。
-func buildPRLabelsAfterTypeSync(current []string, expected Set) []string {
-	typeLabels := packageTypeLabelSet()
-	next := make([]string, 0, len(current)+len(expected))
-	for _, name := range current {
-		if _, isType := typeLabels[name]; !isType {
-			next = append(next, name)
+// checkResultCIPassed 判断本轮 PR Check 是否通过硬门槛。
+// ParseError / FlowError / 任一包 Issues 均视为失败；纯移除或无变更且无错误视为通过。
+func checkResultCIPassed(r *CheckResult) bool {
+	if r == nil {
+		return false
+	}
+	if r.ParseError != "" || r.FlowError != "" {
+		return false
+	}
+	for _, list := range [][]PackageCheck{r.Plugins, r.Themes, r.Icons, r.Templates, r.Widgets} {
+		for _, pc := range list {
+			if len(pc.Issues) > 0 {
+				return false
+			}
 		}
 	}
-	return append(next, setKeysInTypeOrder(expected)...)
+	return true
+}
+
+// ciStatusLabel 根据检查结果返回应挂的 CI 标签（ci-failed / ci-passed 互斥）。
+func ciStatusLabel(passed bool) string {
+	if passed {
+		return labelCIPassed
+	}
+	return labelCIFailed
+}
+
+// buildPRLabelsAfterSync 保留非托管标签，再接上 expected 类型标签与唯一 CI 状态标签。
+// 托管范围：类型标签 + ci-failed / ci-passed；其它标签（如 Check）原样保留。
+func buildPRLabelsAfterSync(current []string, expectedTypes Set, ciPassed bool) []string {
+	managed := managedLabelSet()
+	next := make([]string, 0, len(current)+len(expectedTypes)+1)
+	for _, name := range current {
+		if _, ok := managed[name]; ok {
+			continue
+		}
+		next = append(next, name)
+	}
+	next = append(next, setKeysInTypeOrder(expectedTypes)...)
+	next = append(next, ciStatusLabel(ciPassed))
+	return next
 }
 
 func sameLabelNames(a, b []string) bool {
-	if len(a) != len(b) {
-		return false
+	as := make(Set, len(a))
+	for _, n := range a {
+		as[n] = struct{}{}
 	}
-	as := slices.Clone(a)
-	bs := slices.Clone(b)
-	slices.Sort(as)
-	slices.Sort(bs)
-	return slices.Equal(as, bs)
+	bs := make(Set, len(b))
+	for _, n := range b {
+		bs[n] = struct{}{}
+	}
+	return maps.Equal(as, bs)
 }
 
-// syncPRTypeLabels 按本 PR 实际涉及的 *.txt 同步类型标签：缺则补、多则删；不改动非类型标签。
+// syncPRLabels 同步类型标签与 CI 状态标签：缺则补、多则删；不改动其它标签。
+// 须在检查结果产出后调用，以便按 ParseError / FlowError / Issues 打 ci-failed 或 ci-passed。
 // 用 Replace 一次写回，尽量减少 API 调用；失败只记日志，不中断检查。
-func syncPRTypeLabels(plans []typeCheckPlan) {
+func syncPRLabels(plans []typeCheckPlan, checkResult *CheckResult) {
 	owner, repo, prNumber, ok := prIdentity()
 	if !ok {
-		logger.Infof("skip PR type labels sync: PR_NUMBER or GITHUB_REPOSITORY not set / invalid")
+		logger.Infof("skip PR labels sync: PR_NUMBER or GITHUB_REPOSITORY not set / invalid")
 		return
 	}
 
-	expected := typeLabelSyncPlan(plans)
+	expectedTypes := typeLabelSyncPlan(plans)
+	ciPassed := checkResultCIPassed(checkResult)
 	current, err := listPRLabelNames(owner, repo, prNumber)
 	if err != nil {
 		logger.Errorf("list PR #%d labels failed: %s", prNumber, err)
 		return
 	}
 
-	next := buildPRLabelsAfterTypeSync(current, expected)
+	next := buildPRLabelsAfterSync(current, expectedTypes, ciPassed)
 	if sameLabelNames(current, next) {
-		logger.Infof("PR #%d type labels already match expected %v", prNumber, setKeysInTypeOrder(expected))
+		logger.Infof("PR #%d labels already match: types=%v ci=%s", prNumber, setKeysInTypeOrder(expectedTypes), ciStatusLabel(ciPassed))
 		return
 	}
 
+	managed := managedLabelSet()
+	toEnsure := make(Set)
+	for _, name := range next {
+		if _, ok := managed[name]; ok {
+			toEnsure[name] = struct{}{}
+		}
+	}
+
 	if err := replacePRLabels(owner, repo, prNumber, next); err != nil {
-		// 多半是仓库尚无某类型标签：补齐 expected 后重试一次
-		if ensureErr := ensureRepoLabels(owner, repo, expected); ensureErr != nil {
-			logger.Errorf("ensure type labels failed: %s (replace err: %s)", ensureErr, err)
+		// 多半是仓库尚无某标签：补齐后重试一次
+		if ensureErr := ensureRepoLabels(owner, repo, toEnsure); ensureErr != nil {
+			logger.Errorf("ensure labels failed: %s (replace err: %s)", ensureErr, err)
 			return
 		}
 		if err := replacePRLabels(owner, repo, prNumber, next); err != nil {
@@ -133,9 +185,9 @@ func listPRLabelNames(owner, repo string, prNumber int) ([]string, error) {
 	return names, nil
 }
 
-// ensureRepoLabels 确保仓库存在 names 中的类型标签；已存在则跳过。
+// ensureRepoLabels 确保仓库存在 names 中的标签；已存在则跳过。
 func ensureRepoLabels(owner, repo string, names Set) error {
-	for _, name := range setKeysInTypeOrder(names) {
+	for name := range names {
 		if err := ensureRepoLabel(owner, repo, name); err != nil {
 			return err
 		}
@@ -143,7 +195,27 @@ func ensureRepoLabels(owner, repo string, names Set) error {
 	return nil
 }
 
-// ensureRepoLabel 确保仓库存在该类型标签；不存在则按默认颜色创建。
+// labelColor 返回创建仓库标签时使用的默认颜色。
+func labelColor(name string) string {
+	if c, ok := labelColors[name]; ok {
+		return c
+	}
+	return "CCCCCC"
+}
+
+// labelDescription 返回创建仓库标签时使用的说明。
+func labelDescription(name string) string {
+	switch name {
+	case labelCIFailed:
+		return "PR Check / Pkg Check failed"
+	case labelCIPassed:
+		return "PR Check / Pkg Check passed"
+	default:
+		return fmt.Sprintf("Bazaar package type: %s", name)
+	}
+}
+
+// ensureRepoLabel 确保仓库存在该标签；不存在则按默认颜色与说明创建。
 func ensureRepoLabel(owner, repo, name string) error {
 	_, resp, err := githubClient.Issues.GetLabel(githubContext, owner, repo, name)
 	if err == nil {
@@ -152,10 +224,12 @@ func ensureRepoLabel(owner, repo, name string) error {
 	if resp == nil || resp.StatusCode != http.StatusNotFound {
 		return err
 	}
+	color := labelColor(name)
+	desc := labelDescription(name)
 	_, _, err = githubClient.Issues.CreateLabel(githubContext, owner, repo, &github.Label{
 		Name:        new(name),
-		Color:       new(packageTypeLabelColors[name]),
-		Description: new(fmt.Sprintf("Bazaar package type: %s", name)),
+		Color:       new(color),
+		Description: new(desc),
 	})
 	if err != nil {
 		// 并发创建时可能已存在
