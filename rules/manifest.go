@@ -26,6 +26,7 @@ type LocaleStrings map[string]string
 
 // Funding 表示清单 JSON 中 funding 字段的资助信息。
 // 各子字段均为可选；零值时 omitempty，避免 stage 索引写出空字符串 / 空数组。
+// 若整体无有效内容，写入索引前应调用 ClearEmptyFunding 将指针置 nil，避免写出 "funding": {}。
 type Funding struct {
 	OpenCollective string   `json:"openCollective,omitempty"`
 	Patreon        string   `json:"patreon,omitempty"`
@@ -163,6 +164,19 @@ func SanitizePackage(pkg *Package) {
 	}
 	for i, kw := range pkg.Keywords {
 		pkg.Keywords[i] = html.EscapeString(kw)
+	}
+}
+
+// ClearEmptyFunding 将无有效内容的 funding 置为 nil。
+// 清单里常见的 "funding": {} 反序列化后是非 nil 指针，omitempty 不会省略；
+// 归一后 stage 索引才不会写出空对象。
+func ClearEmptyFunding(pkg *Package) {
+	if pkg == nil || pkg.Funding == nil {
+		return
+	}
+	f := pkg.Funding
+	if f.OpenCollective == "" && f.Patreon == "" && f.GitHub == "" && len(f.Custom) == 0 {
+		pkg.Funding = nil
 	}
 }
 

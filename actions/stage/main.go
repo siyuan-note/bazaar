@@ -374,6 +374,8 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 	staged := util.StageFile{Repos: make([]util.StageRepo, len(stageRepos))}
 	for i, repo := range stageRepos {
 		staged.Repos[i] = *repo
+		// hash 跳过 / 失败保留的旧条目也可能带有 "funding": {}，写回前一并清理。
+		rules.ClearEmptyFunding(&staged.Repos[i].Package)
 	}
 
 	data, err := marshalSortedIndentedJSON(staged)
