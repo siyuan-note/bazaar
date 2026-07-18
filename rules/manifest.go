@@ -21,7 +21,7 @@ import (
 	"golang.org/x/mod/semver"
 )
 
-// LocaleStrings 表示按 locale 键（如 default、zh_CN、en_US）组织的多语言字符串。
+// LocaleStrings 表示按 locale 键（如 default、zh-CN、en）组织的多语言字符串。
 type LocaleStrings map[string]string
 
 // Funding 表示清单 JSON 中 funding 字段的资助信息。
@@ -441,14 +441,14 @@ func checkVersion(m map[string]any, oldVersion string) []Issue {
 	return nil
 }
 
-// checkReadme 校验清单 readme 字段：值为相对包根的说明文件路径，且文件须存在（路径大小写敏感）。
+// checkReadme 校验清单 readme 字段：必须包含 default 键；值为相对包根的说明文件路径，且文件须存在（路径大小写敏感）。
 // 路径须为相对路径（不能以 / 开头）、用 / 分隔、不得包含 ..（防路径穿越）、不得使用反斜杠 \。
 func checkReadme(m map[string]any, packageRoot string) []Issue {
 	raw, ok := m["readme"]
 	if !ok {
 		return []Issue{issue(
-			"清单缺少必填字段 `readme`。请用对象声明各语言说明文件，例如 `\"readme\": { \"zh_CN\": \"README_zh_CN.md\", \"default\": \"README.md\" }`，并确保这些文件都在 `package.zip` 包根（或相对包根的路径）中。",
-			"Manifest is missing required field `readme`. Declare locale files as an object, e.g. `\"readme\": { \"zh_CN\": \"README_zh_CN.md\", \"default\": \"README.md\" }`, and include those files in `package.zip`.",
+			"清单缺少必填字段 `readme`。请用对象声明各语言说明文件，例如 `\"readme\": { \"default\": \"README.md\", \"zh-CN\": \"README.zh-CN.md\" }`，并确保这些文件存在于 `package.zip` 中。",
+			"Manifest is missing required field `readme`. Declare locale files as an object, e.g. `\"readme\": { \"default\": \"README.md\", \"zh-CN\": \"README.zh-CN.md\" }`, and ensure these files exist in `package.zip`.",
 		)}
 	}
 	obj, ok := raw.(map[string]any)
@@ -460,11 +460,17 @@ func checkReadme(m map[string]any, packageRoot string) []Issue {
 	}
 	if len(obj) == 0 {
 		return []Issue{issue(
-			"清单字段 `readme` 是空对象。请至少声明一个语言对应的 README 文件名，并确保文件存在于 `package.zip`。",
-			"Manifest field `readme` is an empty object. Declare at least one locale → README filename and include that file in `package.zip`.",
+			"清单字段 `readme` 是空对象。请至少声明 `\"readme\": { \"default\": \"README.md\" }`，并确保文件存在于 `package.zip`。",
+			"Manifest field `readme` is an empty object. Declare at least `\"readme\": { \"default\": \"README.md\" }`, and ensure that file exists in `package.zip`.",
 		)}
 	}
 	var issues []Issue
+	if _, ok := obj["default"]; !ok {
+		issues = append(issues, issue(
+			"清单字段 `readme` 缺少必填键 `default`。请至少声明 `\"readme\": { \"default\": \"README.md\" }`，并确保文件存在于 `package.zip`。",
+			"Manifest field `readme` is missing required key `default`. Declare at least `\"readme\": { \"default\": \"README.md\" }`, and ensure that file exists in `package.zip`.",
+		))
+	}
 	for locale, v := range obj {
 		pathVal, ok := v.(string)
 		if !ok {
@@ -474,12 +480,18 @@ func checkReadme(m map[string]any, packageRoot string) []Issue {
 			))
 			continue
 		}
-		pathVal = strings.TrimSpace(pathVal) // 跟思源内核逻辑一致，TrimSpace
-		if pathVal == "" {
-			issues = append(issues, issue(
-				fmt.Sprintf("`readme.%s` 是空字符串。请填写相对包根的 README 路径，或删除该语言键。", locale),
-				fmt.Sprintf("`readme.%s` is an empty string. Set a path relative to the package root, or remove this locale key.", locale),
-			))
+		if strings.TrimSpace(pathVal) == "" {
+			if locale == "default" {
+				issues = append(issues, issue(
+					"`readme.default` 为空或仅含空白字符。请填写相对包根的 README 路径，例如 `README.md`。",
+					"`readme.default` is empty or whitespace-only. Set a path relative to the package root, e.g. `README.md`.",
+				))
+			} else {
+				issues = append(issues, issue(
+					fmt.Sprintf("`readme.%s` 为空或仅含空白字符。请填写相对包根的 README 路径，或删除该语言键。", locale),
+					fmt.Sprintf("`readme.%s` is empty or whitespace-only. Set a path relative to the package root, or remove this locale key.", locale),
+				))
+			}
 			continue
 		}
 		if strings.HasPrefix(pathVal, "/") || strings.Contains(pathVal, `\`) || strings.Contains(pathVal, "..") {
@@ -519,7 +531,17 @@ func relFileExistsCaseSensitive(root, rel string) bool {
 	return true
 }
 
-// checkFunding 校验 funding 字段。Custom 链接仅允许 http(s) / mailto，禁止 javascript: / data: / file: 等。
+// allowedFundingKeys 与思源 kernel/bazaar/package.go 的 Funding 结构体一致。
+var allowedFundingKeys = map[string]struct{}{
+	"openCollective": {},
+	"patreon":        {},
+	"github":         {},
+	"custom":         {},
+}
+
+// checkFunding 校验 funding 字段。
+// openCollective / patreon / github：字符串，可为平台短名或 http(s) 完整链接（与 normalizeFundingURL 一致）。
+// custom：字符串数组，允许纯文本或 http(s) / mailto 链接；禁止 javascript: / data: / file: 等。
 func checkFunding(m map[string]any) []Issue {
 	raw, ok := m["funding"]
 	if !ok || raw == nil {
@@ -532,38 +554,118 @@ func checkFunding(m map[string]any) []Issue {
 			"Manifest field `funding` must be an object. If you do not need funding info, remove the `funding` field entirely.",
 		)}
 	}
-	customRaw, ok := obj["custom"]
-	if !ok || customRaw == nil {
-		return nil
-	}
-	arr, ok := customRaw.([]any)
-	if !ok {
-		return []Issue{issue(
-			"`funding.custom` 必须是字符串数组，例如 `\"custom\": [\"https://example.com/sponsor\"]`。",
-			"`funding.custom` must be an array of strings, e.g. `\"custom\": [\"https://example.com/sponsor\"]`.",
-		)}
-	}
 	var issues []Issue
-	for i, item := range arr {
-		s, ok := item.(string)
+	for k := range obj {
+		if _, ok := allowedFundingKeys[k]; !ok {
+			issues = append(issues, issue(
+				fmt.Sprintf("`funding` 中出现了预期外的字段 `%s`。仅允许 `openCollective`、`patreon`、`github`、`custom`。", k),
+				fmt.Sprintf("`funding` contains unexpected field `%s`. Only `openCollective`, `patreon`, `github`, and `custom` are allowed.", k),
+			))
+		}
+	}
+	// 与思源 getPreferredFunding / normalizeFundingURL 一致：短名会拼到平台前缀，完整链接仅接受 http(s)。
+	for _, key := range []string{"openCollective", "patreon", "github"} {
+		v, ok := obj[key]
+		if !ok || v == nil {
+			continue
+		}
+		s, ok := v.(string)
 		if !ok {
 			issues = append(issues, issue(
-				fmt.Sprintf("`funding.custom[%d]` 必须是字符串链接。", i),
-				fmt.Sprintf("`funding.custom[%d]` must be a string URL.", i),
+				fmt.Sprintf("`funding.%s` 必须是字符串（平台短名或 `https://` / `http://` 链接）。", key),
+				fmt.Sprintf("`funding.%s` must be a string (platform short name or an `https://` / `http://` URL).", key),
 			))
 			continue
 		}
 		if s == "" {
 			continue
 		}
-		if !strings.HasPrefix(s, "https://") && !strings.HasPrefix(s, "http://") && !strings.HasPrefix(s, "mailto:") {
+		if strings.HasPrefix(s, "https://") || strings.HasPrefix(s, "http://") {
+			continue
+		}
+		if strings.Contains(s, "://") || strings.Contains(s, ":") {
 			issues = append(issues, issue(
-				fmt.Sprintf("`funding.custom[%d]` 的值 `%s` 不安全或不受支持。请改成以 `https://`、`http://` 或 `mailto:` 开头的链接（禁止 `javascript:`、`data:` 等）。", i, s),
-				fmt.Sprintf("`funding.custom[%d]` value `%s` is unsupported. Use a link starting with `https://`, `http://`, or `mailto:` (`javascript:`/`data:` etc. are not allowed).", i, s),
+				fmt.Sprintf("`funding.%s` 的值 `%s` 不受支持。请填写平台短名（例如 `b3log`），或改成以 `https://` / `http://` 开头的完整链接（禁止 `javascript:`、`data:`、`file:` 等）。", key, s),
+				fmt.Sprintf("`funding.%s` value `%s` is unsupported. Use a platform short name (e.g. `b3log`), or a full URL starting with `https://` / `http://` (`javascript:`/`data:`/`file:` etc. are not allowed).", key, s),
+			))
+		}
+	}
+	customRaw, ok := obj["custom"]
+	if !ok || customRaw == nil {
+		return issues
+	}
+	arr, ok := customRaw.([]any)
+	if !ok {
+		return append(issues, issue(
+			"`funding.custom` 必须是字符串数组，例如 `\"custom\": [\"https://example.com/sponsor\"]`。",
+			"`funding.custom` must be an array of strings, e.g. `\"custom\": [\"https://example.com/sponsor\"]`.",
+		))
+	}
+	for i, item := range arr {
+		s, ok := item.(string)
+		if !ok {
+			issues = append(issues, issue(
+				fmt.Sprintf("`funding.custom[%d]` 必须是字符串。", i),
+				fmt.Sprintf("`funding.custom[%d]` must be a string.", i),
+			))
+			continue
+		}
+		if s == "" {
+			continue
+		}
+		if unsafeFundingURI(s) {
+			issues = append(issues, issue(
+				fmt.Sprintf("`funding.custom[%d]` 的值 `%s` 不安全或不受支持。允许纯文本，或以 `https://`、`http://`、`mailto:` 开头的链接（禁止 `javascript:`、`data:`、`file:` 等）。", i, s),
+				fmt.Sprintf("`funding.custom[%d]` value `%s` is unsafe or unsupported. Plain text is allowed, or a link starting with `https://`, `http://`, or `mailto:` (`javascript:`/`data:`/`file:` etc. are not allowed).", i, s),
 			))
 		}
 	}
 	return issues
+}
+
+// unsafeFundingURI 判断 funding.custom 值是否含有危险或不被思源接受为链接的 URI 协议。
+//
+// 允许：
+//   - 纯文本（如「微信打赏」），不要求一定是链接
+//   - http(s) / mailto 链接（与思源 getPreferredFunding / 前端展示逻辑一致）
+//
+// 禁止：
+//   - javascript: / data: / file: / vbscript: / blob: 等可被当作可执行或本地资源的协议
+//   - 其它带 :// 的非 http(s) 协议（如 ftp://）
+func unsafeFundingURI(s string) bool {
+	s = strings.TrimSpace(s)
+	if s == "" {
+		return false
+	}
+	lower := strings.ToLower(s)
+	// 思源会把这三类当作可点击的赞助链接
+	if strings.HasPrefix(lower, "https://") || strings.HasPrefix(lower, "http://") || strings.HasPrefix(lower, "mailto:") {
+		return false
+	}
+	// 无冒号：必然是纯文本
+	i := strings.IndexByte(lower, ':')
+	if i <= 0 {
+		return false
+	}
+	// 冒号前片段按 URI scheme 字符集校验（RFC 3986：ALPHA *( ALPHA / DIGIT / "+" / "-" / "." )）
+	// 不符合则视为普通文本里的冒号（例如「备注：请扫码」），放行
+	scheme := lower[:i]
+	for _, r := range scheme {
+		if (r < 'a' || r > 'z') && (r < '0' || r > '9') && r != '+' && r != '-' && r != '.' {
+			return false
+		}
+	}
+	// scheme 必须以字母开头；排除「12:30」这类数字开头片段
+	if scheme[0] < 'a' || scheme[0] > 'z' {
+		return false
+	}
+	// 明确危险的协议：即便没有 ://（如 javascript:alert(1)）也拦截
+	switch scheme {
+	case "javascript", "data", "file", "vbscript", "blob":
+		return true
+	}
+	// 其余仅拦截「scheme://...」形态；「Note: foo」这类无 // 的说明文字放行
+	return strings.HasPrefix(lower[i:], "://")
 }
 
 // checkOptionalTypedFields 校验可选字段类型。

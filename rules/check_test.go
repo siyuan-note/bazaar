@@ -314,27 +314,70 @@ func TestCheckTemplateNeedsContentMD(t *testing.T) {
 	}
 }
 
-func TestCheckFundingProtocol(t *testing.T) {
+func TestCheckFunding(t *testing.T) {
 	dir := t.TempDir()
 	copyTree(t, filepath.Join("testdata", "plugin_ok"), dir)
-	content := `{
+	writePlugin := func(funding string) {
+		t.Helper()
+		content := `{
   "name": "sample-plugin",
   "author": "demo",
   "url": "https://github.com/demo/sample-plugin",
   "version": "1.0.0",
   "readme": { "default": "README.md" },
-  "funding": { "custom": ["javascript:alert(1)"] }
+  "funding": ` + funding + `
 }`
-	if err := os.WriteFile(filepath.Join(dir, "plugin.json"), []byte(content), 0644); err != nil {
-		t.Fatal(err)
+		if err := os.WriteFile(filepath.Join(dir, "plugin.json"), []byte(content), 0644); err != nil {
+			t.Fatal(err)
+		}
 	}
-	r := Check(Input{
-		PackageRoot: dir,
-		OwnerRepo:   "demo/sample-plugin",
-		Type:        TypePlugin,
-	})
-	if r.OK || !hasIssueMsg(r, "funding") {
-		t.Fatalf("expected manifest/funding, issues=%v", r.Issues)
+	check := func() *Result {
+		t.Helper()
+		return Check(Input{
+			PackageRoot: dir,
+			OwnerRepo:   "demo/sample-plugin",
+			Type:        TypePlugin,
+		})
+	}
+
+	writePlugin(`{ "openCollective": "b3log", "patreon": "hongster85", "github": "https://github.com/demo", "custom": ["微信打赏", "https://example.com/sponsor"] }`)
+	if r := check(); !r.OK {
+		t.Fatalf("expected OK for valid funding fields, issues=%v", r.Issues)
+	}
+
+	writePlugin(`{ "custom": [123] }`)
+	if r := check(); r.OK || !hasIssueMsg(r, "funding") {
+		t.Fatalf("expected non-string funding.custom to fail, issues=%v", r.Issues)
+	}
+
+	writePlugin(`{ "github": 123 }`)
+	if r := check(); r.OK || !hasIssueMsg(r, "funding.github") {
+		t.Fatalf("expected non-string funding.github to fail, issues=%v", r.Issues)
+	}
+
+	writePlugin(`{ "openCollective": "javascript:alert(1)" }`)
+	if r := check(); r.OK || !hasIssueMsg(r, "funding.openCollective") {
+		t.Fatalf("expected unsupported funding.openCollective scheme to fail, issues=%v", r.Issues)
+	}
+
+	writePlugin(`{ "custom": ["javascript:alert(1)"] }`)
+	if r := check(); r.OK || !hasIssueMsg(r, "funding.custom") {
+		t.Fatalf("expected unsafe funding.custom scheme to fail, issues=%v", r.Issues)
+	}
+
+	writePlugin(`{ "custom": ["data:text/html,hi", "file:///tmp/x"] }`)
+	if r := check(); r.OK || !hasIssueMsg(r, "funding.custom") {
+		t.Fatalf("expected data:/file: funding.custom to fail, issues=%v", r.Issues)
+	}
+
+	writePlugin(`{ "custom": ["mailto:dev@example.com"] }`)
+	if r := check(); !r.OK {
+		t.Fatalf("expected mailto funding.custom to pass, issues=%v", r.Issues)
+	}
+
+	writePlugin(`{ "buyMeACoffee": "demo" }`)
+	if r := check(); r.OK || !hasIssueMsg(r, "funding") {
+		t.Fatalf("expected unknown funding key to fail, issues=%v", r.Issues)
 	}
 }
 
