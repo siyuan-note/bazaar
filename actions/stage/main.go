@@ -102,7 +102,8 @@ func main() {
 		logger.Fatalf("parse repos list failed: %s", err)
 	}
 
-	if err := checkRateLimitBeforeStage(reposByType); err != nil {
+	remainingBefore, err := checkRateLimitBeforeStage(reposByType)
+	if err != nil {
 		logger.Fatalf("GitHub API rate limit check failed: %s", err)
 	}
 
@@ -122,6 +123,7 @@ func main() {
 		logger.Errorf("sync stage-fail comments failed: %s", err)
 	}
 
+	logRateLimitAfterStage(remainingBefore)
 	logger.Infof("Stage completed")
 }
 
@@ -137,35 +139,64 @@ func loadReposByPackageType() (map[rules.PackageType][]string, error) {
 	return reposByType, nil
 }
 
-// checkRateLimitBeforeStage 统计本次待检查仓库数、请求 GitHub rate_limit（该请求不计入 core），若 core 剩余请求数不足则返回错误。参考 https://docs.github.com/zh/rest/rate-limit/rate-limit
-func checkRateLimitBeforeStage(reposByType map[rules.PackageType][]string) error {
+// stageAPIRequestsPerRepo 为每个仓库 staging 时消耗的 GitHub REST API (core) 请求数经验值。
+// 近几轮以 hash skip 为主：GetLatestRelease + GetRef ≈ 2；附注 tag 多 1 次 GetTag，
+// 全量索引另加 DownloadReleaseAsset + repoStats。按 skip 主导工况取 2.1 并留少量余量。
+const stageAPIRequestsPerRepo = 2.1
+
+// checkRateLimitBeforeStage 统计本次待检查仓库数、请求 GitHub rate_limit（该请求不计入 core），若 core 剩余请求数不足则返回错误。
+// 成功时返回检查时的 core remaining，供结束后估算本轮实际消耗。参考 https://docs.github.com/zh/rest/rate-limit/rate-limit
+func checkRateLimitBeforeStage(reposByType map[rules.PackageType][]string) (remaining int, err error) {
 	var repoCount int
 	for _, repos := range reposByType {
 		repoCount += len(repos)
 	}
-	// 2.5 为每个仓库 staging 时消耗的 GitHub REST API (core) 请求数经验值（repoStats 1 次 + getRepoLatestRelease 等）
-	required := int(math.Ceil(float64(repoCount) * 2.5))
+	required := int(math.Ceil(float64(repoCount) * stageAPIRequestsPerRepo))
 	if required == 0 {
-		return nil
+		return 0, nil
 	}
 	ctx, cancel := context.WithTimeout(githubContext, 10*time.Second)
 	defer cancel()
 	limits, _, err := githubClient.RateLimit.Get(ctx)
 	if err != nil {
-		return fmt.Errorf("get rate limit: %w", err)
+		return 0, fmt.Errorf("get rate limit: %w", err)
 	}
 	core := limits.GetCore()
 	if core == nil {
-		return fmt.Errorf("rate_limit response missing core")
+		return 0, fmt.Errorf("rate_limit response missing core")
 	}
-	remaining := core.Remaining
+	remaining = core.Remaining
 	limit := core.Limit
 	reset := core.Reset.Unix()
 	if remaining < required {
-		return fmt.Errorf("GitHub REST API (core) remaining %d / %d is below required %d for %d repos (~%d requests); reset at %d", remaining, limit, required, repoCount, required, reset)
+		return remaining, fmt.Errorf("GitHub REST API (core) remaining %d / %d is below required %d for %d repos (~%d requests); reset at %d", remaining, limit, required, repoCount, required, reset)
 	}
 	logger.Infof("GitHub API (core) remaining %d / %d, %d repos to check (~%d requests), OK", remaining, limit, repoCount, required)
-	return nil
+	return remaining, nil
+}
+
+// logRateLimitAfterStage 在 Stage 结束后再查一次 core remaining，便于对照经验值。
+func logRateLimitAfterStage(remainingBefore int) {
+	ctx, cancel := context.WithTimeout(githubContext, 10*time.Second)
+	defer cancel()
+	limits, _, err := githubClient.RateLimit.Get(ctx)
+	if err != nil {
+		logger.Errorf("get rate limit after stage failed: %s", err)
+		return
+	}
+	core := limits.GetCore()
+	if core == nil {
+		logger.Errorf("rate_limit response missing core after stage")
+		return
+	}
+	remaining := core.Remaining
+	used := remainingBefore - remaining
+	if used < 0 {
+		// 窗口重置会导致 remaining 回升
+		logger.Infof("GitHub API (core) remaining after stage %d / %d (before %d; quota likely reset)", remaining, core.Limit, remainingBefore)
+		return
+	}
+	logger.Infof("GitHub API (core) remaining after stage %d / %d (used ~%d)", remaining, core.Limit, used)
 }
 
 // loadOldStageData 加载现有的 stage 文件数据，返回以 owner/repo 为 key 的映射。
