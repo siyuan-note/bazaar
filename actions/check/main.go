@@ -15,7 +15,6 @@ import (
 	_ "embed"
 	"fmt"
 	"os"
-	"os/exec"
 	"os/signal"
 	"path/filepath"
 	"strconv"
@@ -32,6 +31,12 @@ import (
 )
 
 /*
+路径黑白名单（最先执行）：
+1. git diff（PR merge base → head）得到变更文件
+2. 黑名单（stage/**、config/themes-theme-js-allowlist.txt）：写 FlowError，跳过包检查
+3. 白名单（五个 *.txt）：进入下方 Diff / Check；灰区文件忽略
+4. 同改黑+白：优先黑名单；无白名单改动：不跑包检查（模板「无实际变更」，ci-failed）
+
 Diff 流程（以 plugins.txt 为例）：
 1. 签出 bazaar head（主分支最新）：读 plugins.txt，得到 bazaar head 的 owner/repo 集合，用于过滤
 2. 签出 PR head：读 plugins.txt（PR 当前状态）
@@ -83,24 +88,6 @@ func formatIssueIndex(i, total int) string {
 	return fmt.Sprintf("%0*d", width, i+1)
 }
 
-// resolveBazaarHeadSHA 返回本次工作流签出的 bazaar head 提交 hash（用于文档链接落盘到具体 commit）。
-func resolveBazaarHeadSHA(ctx context.Context) (string, error) {
-	dir := BAZAAR_HEAD_PATH
-	if dir == "" {
-		dir = "."
-	}
-	cmd := exec.CommandContext(ctx, "git", "-C", dir, "rev-parse", "HEAD")
-	out, err := cmd.Output()
-	if err != nil {
-		return "", fmt.Errorf("git rev-parse HEAD in %s: %w", dir, err)
-	}
-	sha := strings.TrimSpace(string(out))
-	if sha == "" {
-		return "", fmt.Errorf("git rev-parse HEAD in %s returned empty", dir)
-	}
-	return sha, nil
-}
-
 // bazaarDocURL 生成指向本次 bazaar head 提交的 README 锚点链接。
 func bazaarDocURL(bazaarHeadSHA, file, anchor string) string {
 	repo := GITHUB_REPOSITORY
@@ -111,7 +98,7 @@ func bazaarDocURL(bazaarHeadSHA, file, anchor string) string {
 }
 
 func parseCheckResultTemplate(ctx context.Context) (*template.Template, error) {
-	bazaarHeadSHA, err := resolveBazaarHeadSHA(ctx)
+	bazaarHeadSHA, err := gitRevParseHEAD(ctx, BAZAAR_HEAD_PATH)
 	if err != nil {
 		return nil, err
 	}
@@ -166,55 +153,74 @@ func main() {
 	defer checkResultOutputFile.Close()
 
 	checkResult := &CheckResult{}
-	var parseErrorBuilder strings.Builder
+	var plans []typeCheckPlan
 
-	// 第一阶段：各类型并行算 diff（不下载、不跑 Pkg Check）
-	packageTypes := rules.AllPackageTypes()
-	plans := make([]typeCheckPlan, len(packageTypes))
-	var planWg sync.WaitGroup
-	for i, packageType := range packageTypes {
-		planWg.Go(func() {
-			plans[i] = prepareTypeCheckPlan(packageType)
-		})
+	changedFiles, err := listPRChangedFiles(githubContext)
+	if err != nil {
+		logger.Fatalf("list PR changed files failed: %s", err)
 	}
-	planWg.Wait()
+	blackFiles, whiteFiles := classifyPRFiles(changedFiles)
+	logger.Infof("PR path scope: changed=%d black=%d white=%d", len(changedFiles), len(blackFiles), len(whiteFiles))
 
-	addedOrChanged := 0
-	for _, plan := range plans {
-		if plan.parseError != "" {
-			parseErrorBuilder.WriteString(plan.parseError)
-			continue
-		}
-		// 将本 PR 的删除列表写入检查结果（一次一包失败时模板不展示）
-		if !checkResult.setDeleted(plan.packageType, plan.diff.Deleted) {
-			panic("main: invalid package type")
-		}
-		addedOrChanged += len(plan.diff.New)
-	}
-	checkResult.ParseError = parseErrorBuilder.String()
+	switch {
+	case len(blackFiles) > 0:
+		// 黑名单优先：固定 FlowError，跳过包列表 diff 与包检查
+		checkResult.FlowError = formatBlacklistFlowError()
+		logger.Errorf("blacklisted path changes: %s", strings.Join(blackFiles, ", "))
+	case len(whiteFiles) > 0:
+		var parseErrorBuilder strings.Builder
 
-	// 流程规则：添加或更换维护者合计只能为 1（移除不限）
-	if addedOrChanged > 1 {
-		checkResult.FlowError = formatOnePackageLimitError(addedOrChanged, plans)
-		logger.Errorf("one-package limit violated: %d packages added or changed", addedOrChanged)
-	} else {
-		// 一次一包通过后：自动改 PR 标题（含纯移除；多仓移除为 Remove N packages）
-		if title, ok := conventionalPRTitle(plans); ok {
-			maybeUpdatePRTitle(title)
+		// 第一阶段：各类型并行算 diff（不下载、不跑 Pkg Check）
+		packageTypes := rules.AllPackageTypes()
+		plans = make([]typeCheckPlan, len(packageTypes))
+		var planWg sync.WaitGroup
+		for i, packageType := range packageTypes {
+			planWg.Go(func() {
+				plans[i] = prepareTypeCheckPlan(packageType)
+			})
 		}
+		planWg.Wait()
 
-		occupiedNames, err := util.LoadOccupiedNames(BAZAAR_HEAD_PATH)
-		if err != nil {
-			logger.Fatalf("load occupied names failed: %s", err)
-		}
-
-		// 一次一包通过后最多只有一个类型含新增，顺序检查即可
+		addedOrChanged := 0
 		for _, plan := range plans {
-			if plan.parseError != "" || len(plan.diff.New) == 0 {
+			if plan.parseError != "" {
+				parseErrorBuilder.WriteString(plan.parseError)
 				continue
 			}
-			runTypePackageChecks(plan, checkResult, occupiedNames)
+			// 将本 PR 的删除列表写入检查结果（一次一包失败时模板不展示）
+			if !checkResult.setDeleted(plan.packageType, plan.diff.Deleted) {
+				panic("main: invalid package type")
+			}
+			addedOrChanged += len(plan.diff.New)
 		}
+		checkResult.ParseError = parseErrorBuilder.String()
+
+		// 流程规则：添加或更换维护者合计只能为 1（移除不限）
+		if addedOrChanged > 1 {
+			checkResult.FlowError = formatOnePackageLimitError(addedOrChanged, plans)
+			logger.Errorf("one-package limit violated: %d packages added or changed", addedOrChanged)
+		} else {
+			// 一次一包通过后：自动改 PR 标题（含纯移除；多仓移除为 Remove N packages）
+			if title, ok := conventionalPRTitle(plans); ok {
+				maybeUpdatePRTitle(title)
+			}
+
+			occupiedNames, err := util.LoadOccupiedNames(BAZAAR_HEAD_PATH)
+			if err != nil {
+				logger.Fatalf("load occupied names failed: %s", err)
+			}
+
+			// 一次一包通过后最多只有一个类型含新增，顺序检查即可
+			for _, plan := range plans {
+				if plan.parseError != "" || len(plan.diff.New) == 0 {
+					continue
+				}
+				runTypePackageChecks(plan, checkResult, occupiedNames)
+			}
+		}
+	default:
+		// 无白名单改动（且未命中黑名单）：不跑包检查，模板展示「无实际变更」，ci-failed
+		logger.Infof("no whitelisted list file changes; skip package checks")
 	}
 
 	// 将检查结果写入文件

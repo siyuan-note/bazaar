@@ -124,8 +124,8 @@ func TestBuildPRLabelsAfterSync_Failed(t *testing.T) {
 }
 
 func TestCheckResultCIPassed(t *testing.T) {
-	if !checkResultCIPassed(&CheckResult{}) {
-		t.Fatal("empty result should pass")
+	if checkResultCIPassed(&CheckResult{}) {
+		t.Fatal("empty result (no list activity) should fail")
 	}
 	if checkResultCIPassed(&CheckResult{ParseError: "bad"}) {
 		t.Fatal("ParseError should fail")
@@ -143,6 +143,11 @@ func TestCheckResultCIPassed(t *testing.T) {
 		PluginsDeleted: []string{"c/d"},
 	}) {
 		t.Fatal("clean checks and deletions should pass")
+	}
+	if !checkResultCIPassed(&CheckResult{
+		PluginsDeleted: []string{"c/d"},
+	}) {
+		t.Fatal("pure deletion should pass")
 	}
 	if checkResultCIPassed(nil) {
 		t.Fatal("nil should fail")

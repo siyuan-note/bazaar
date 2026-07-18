@@ -129,8 +129,45 @@ func TestCheckResultTemplate_FlowError(t *testing.T) {
 	}
 }
 
+func TestCheckResultTemplate_BlacklistFlowError(t *testing.T) {
+	tmpl, err := parseCheckResultTemplate(context.Background())
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	// 与 main 一致：黑名单命中时不填充包检查 / 仅可能残留删除列表（模板在 FlowError 下隐藏移除）
+	sample := CheckResult{
+		FlowError:      formatBlacklistFlowError(),
+		PluginsDeleted: []string{"x/old"},
+	}
+
+	var buf bytes.Buffer
+	if err := tmpl.Execute(&buf, sample); err != nil {
+		t.Fatal(err)
+	}
+	out := buf.String()
+	for _, want := range []string{
+		"流程规则未通过",
+		"本 PR 修改了不允许直接改动的文件",
+		"This PR modifies files that must not be changed directly",
+	} {
+		if !strings.Contains(out, want) {
+			t.Fatalf("output missing %q\n%s", want, out)
+		}
+	}
+	if strings.Contains(out, "集市包列表无实际变更") {
+		t.Fatalf("empty-change message should not appear when FlowError is set\n%s", out)
+	}
+	if strings.Contains(out, "Check passed.") || strings.Contains(out, "### 新增") {
+		t.Fatalf("package checks should be skipped when blacklist FlowError is set\n%s", out)
+	}
+	if strings.Contains(out, "### 移除") || strings.Contains(out, "x/old") {
+		t.Fatalf("deleted repos should be hidden when FlowError is set\n%s", out)
+	}
+}
+
 func TestCheckResultTemplate_MaintainerChangeNotice(t *testing.T) {
-	sha, err := resolveBazaarHeadSHA(context.Background())
+	sha, err := gitRevParseHEAD(context.Background(), BAZAAR_HEAD_PATH)
 	if err != nil {
 		t.Fatal(err)
 	}

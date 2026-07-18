@@ -61,7 +61,7 @@ func typeLabelSyncPlan(plans []typeCheckPlan) Set {
 }
 
 // checkResultCIPassed 判断本轮 PR Check 是否通过硬门槛。
-// ParseError / FlowError / 任一包 Issues 均视为失败；纯移除或无变更且无错误视为通过。
+// ParseError / FlowError / 任一包 Issues 均视为失败；无列表增删（无实际变更）视为失败；纯移除且无错误视为通过。
 func checkResultCIPassed(r *CheckResult) bool {
 	if r == nil {
 		return false
@@ -69,14 +69,23 @@ func checkResultCIPassed(r *CheckResult) bool {
 	if r.ParseError != "" || r.FlowError != "" {
 		return false
 	}
+	hasActivity := false
 	for _, list := range [][]PackageCheck{r.Plugins, r.Themes, r.Icons, r.Templates, r.Widgets} {
+		if len(list) > 0 {
+			hasActivity = true
+		}
 		for _, pc := range list {
 			if len(pc.Issues) > 0 {
 				return false
 			}
 		}
 	}
-	return true
+	for _, deleted := range [][]string{r.PluginsDeleted, r.ThemesDeleted, r.IconsDeleted, r.TemplatesDeleted, r.WidgetsDeleted} {
+		if len(deleted) > 0 {
+			return true
+		}
+	}
+	return hasActivity
 }
 
 // ciStatusLabel 根据检查结果返回应挂的 CI 标签（ci-failed / ci-passed 互斥）。

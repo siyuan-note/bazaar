@@ -20,6 +20,9 @@ on:
       - icons.txt
       - templates.txt
       - widgets.txt
+      # 黑名单路径：用于触发检查（命中后由 Go 以 FlowError 失败，不跑包检查）
+      - config/themes-theme-js-allowlist.txt
+      - stage/**
 
 # 同一 PR 只保留最新一次检查，避免 synchronize / 打标重跑重叠写评论
 concurrency:
