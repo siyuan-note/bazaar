@@ -28,7 +28,6 @@ import (
 	"github.com/google/go-github/v89/github"
 	"github.com/siyuan-note/bazaar/actions/util"
 	"github.com/siyuan-note/bazaar/rules"
-	"golang.org/x/sync/errgroup"
 )
 
 /*
@@ -39,8 +38,9 @@ Diff 流程（以 plugins.txt 为例）：
 4. 比较 base 与 head：候选新增 = head 有 base 无，候选删除 = base 有 head 无
 5. 过滤候选新增：排除已在 bazaar head 中的仓库（可能是解决冲突时从 bazaar head 合并来的）
 6. 过滤候选删除：排除在 bazaar head 中已不存在的仓库（可能是其他 PR 删除的）
-7. OccupiedNames 使用 bazaar head 的 stage/*.json 中所有类型的 package.name 集合（跨类型；比较前统一转小写）
-8. 对最终新增列表：Latest Release / package.zip → 下载解压 → rules.Check，并在 Bot 回复中列出删除列表、更换维护者列表
+7. 流程规则：添加或更换维护者合计只能为 1（移除不限）；违反则写 FlowError 评论并跳过包检查（亦不展示移除列表）
+8. OccupiedNames 使用 bazaar head 的 stage/*.json 中所有类型的 package.name 集合（跨类型；比较前统一转小写）
+9. 一次一包通过后：对新增列表做 Latest Release / package.zip → 下载解压 → rules.Check；Bot 回复中列出移除列表、检查结果与更换维护者标记
 
 Check 流程：
 1. 获取仓库最新 release 与 package.zip
@@ -83,6 +83,14 @@ func parseCheckResultTemplate() (*template.Template, error) {
 	}).Parse(checkResultTemplateText)
 }
 
+// typeCheckPlan 单类型 diff 与后续包检查所需上下文。
+type typeCheckPlan struct {
+	packageType     rules.PackageType
+	diff            repoDiff
+	themeJsAllowSet Set
+	parseError      string
+}
+
 func main() {
 	logger.Infof("PR Check started")
 
@@ -110,22 +118,49 @@ func main() {
 	checkResult := &CheckResult{}
 	var parseErrorBuilder strings.Builder
 
-	occupiedNames, err := util.LoadOccupiedNames(BAZAAR_HEAD_PATH)
-	if err != nil {
-		logger.Fatalf("load occupied names failed: %s", err)
-	}
-
-	var occupiedNamesMu sync.Mutex // 跨类型共享，保证同 PR 内 OccupiedNames 唯一性
-	var parseErrorMu sync.Mutex
-	var wg sync.WaitGroup
-	for _, packageType := range rules.AllPackageTypes() {
-		wg.Go(func() {
-			checkRepos(packageType, checkResult, occupiedNames, &occupiedNamesMu, &parseErrorMu, &parseErrorBuilder)
+	// 第一阶段：各类型并行算 diff（不下载、不跑 Pkg Check）
+	packageTypes := rules.AllPackageTypes()
+	plans := make([]typeCheckPlan, len(packageTypes))
+	var planWg sync.WaitGroup
+	for i, packageType := range packageTypes {
+		planWg.Go(func() {
+			plans[i] = prepareTypeCheckPlan(packageType)
 		})
 	}
-	wg.Wait()
+	planWg.Wait()
 
+	addedOrChanged := 0
+	for _, plan := range plans {
+		if plan.parseError != "" {
+			parseErrorBuilder.WriteString(plan.parseError)
+			continue
+		}
+		// 将本 PR 的删除列表写入检查结果（一次一包失败时模板不展示）
+		if !checkResult.setDeleted(plan.packageType, plan.diff.Deleted) {
+			panic("main: invalid package type")
+		}
+		addedOrChanged += len(plan.diff.New)
+	}
 	checkResult.ParseError = parseErrorBuilder.String()
+
+	// 流程规则：添加或更换维护者合计只能为 1（移除不限）
+	if addedOrChanged > 1 {
+		checkResult.FlowError = formatOnePackageLimitError(addedOrChanged, plans)
+		logger.Errorf("one-package limit violated: %d packages added or changed", addedOrChanged)
+	} else {
+		occupiedNames, err := util.LoadOccupiedNames(BAZAAR_HEAD_PATH)
+		if err != nil {
+			logger.Fatalf("load occupied names failed: %s", err)
+		}
+
+		// 一次一包通过后最多只有一个类型含新增，顺序检查即可
+		for _, plan := range plans {
+			if plan.parseError != "" || len(plan.diff.New) == 0 {
+				continue
+			}
+			runTypePackageChecks(plan, checkResult, occupiedNames)
+		}
+	}
 
 	// 将检查结果写入文件
 	if err := checkResultTemplate.Execute(checkResultOutputFile, checkResult); err != nil {
@@ -156,142 +191,82 @@ func parseReposFromRootTxt(filePath string) (paths []string, pathSet Set, nameTo
 	return
 }
 
-func appendParseError(dst *strings.Builder, label string, err error) {
-	zh, en := rules.LocalizedMessages(err)
-	fmt.Fprintf(dst, "[%s]\n\n%s\n\n%s\n\n", label, zh, en)
-}
-
-// checkRepos 检查集市资源仓库列表
-func checkRepos(
-	packageType rules.PackageType,
-	checkResult *CheckResult,
-	occupiedNames map[string]struct{},
-	occupiedNamesMu *sync.Mutex,
-	parseErrorMu *sync.Mutex,
-	parseErrorBuilder *strings.Builder,
-) {
+// prepareTypeCheckPlan 解析三侧 TXT 并计算本类型 diff；失败时只填 parseError。
+func prepareTypeCheckPlan(packageType rules.PackageType) typeCheckPlan {
 	repoListTxtName := packageType.ReposListFile()
 	bazaarHeadReposPath := filepath.Join(BAZAAR_HEAD_PATH, repoListTxtName)
 	prBaseReposPath := filepath.Join(PR_BASE_PATH, repoListTxtName)
 	prHeadReposPath := filepath.Join(PR_HEAD_PATH, repoListTxtName)
 
-	logger.Infof("start repos check [%s]", prHeadReposPath)
+	logger.Infof("start repos diff [%s]", prHeadReposPath)
+
+	plan := typeCheckPlan{packageType: packageType}
 
 	// 加载三个版本的集市包列表：bazaar head（用于过滤）、PR base、PR head（用于 diff）
 	_, bazaarHeadRepoSet, _, err := parseReposFromRootTxt(bazaarHeadReposPath)
 	if err != nil {
-		parseErrorMu.Lock()
-		appendParseError(parseErrorBuilder, fmt.Sprintf("%s bazaar head", repoListTxtName), err)
-		parseErrorMu.Unlock()
+		plan.parseError = formatParseErrorLabel(fmt.Sprintf("%s bazaar head", repoListTxtName), err)
 		logger.Errorf("load bazaar head repos [%s] failed: %s, skip this type", bazaarHeadReposPath, err)
-		return
+		return plan
 	}
 	basePaths, baseSet, baseNameToOwner, err := parseReposFromRootTxt(prBaseReposPath)
 	if err != nil {
-		parseErrorMu.Lock()
-		appendParseError(parseErrorBuilder, fmt.Sprintf("%s PR base", repoListTxtName), err)
-		parseErrorMu.Unlock()
+		plan.parseError = formatParseErrorLabel(fmt.Sprintf("%s PR base", repoListTxtName), err)
 		logger.Errorf("load PR base repos [%s] failed: %s, skip this type", prBaseReposPath, err)
-		return
+		return plan
 	}
 	headPaths, headSet, _, err := parseReposFromRootTxt(prHeadReposPath)
 	if err != nil {
-		parseErrorMu.Lock()
-		appendParseError(parseErrorBuilder, fmt.Sprintf("%s PR head", repoListTxtName), err)
-		parseErrorMu.Unlock()
+		plan.parseError = formatParseErrorLabel(fmt.Sprintf("%s PR head", repoListTxtName), err)
 		logger.Errorf("load PR head repos [%s] failed: %s, skip this type", prHeadReposPath, err)
-		return
+		return plan
 	}
 
-	var themeJsAllowSet Set
 	if packageType == rules.TypeTheme {
 		ap := filepath.Join(PR_HEAD_PATH, util.ThemeJsAllowlistRelPath)
 		paths, errAllow := util.ParseReposFromTxt(ap)
 		if errAllow != nil {
-			parseErrorMu.Lock()
-			appendParseError(parseErrorBuilder, fmt.Sprintf("%s PR head", util.ThemeJsAllowlistRelPath), errAllow)
-			parseErrorMu.Unlock()
+			plan.parseError = formatParseErrorLabel(fmt.Sprintf("%s PR head", util.ThemeJsAllowlistRelPath), errAllow)
 			logger.Errorf("load theme.js allowlist [%s] failed: %s, skip this type", ap, errAllow)
-			return
+			return plan
 		}
-		themeJsAllowSet = make(Set, len(paths))
+		plan.themeJsAllowSet = make(Set, len(paths))
 		for _, p := range paths {
-			themeJsAllowSet[p] = struct{}{}
+			plan.themeJsAllowSet[p] = struct{}{}
 		}
 	}
 
-	// 按 base/head diff 并过滤：新增 = head 有而 base 无且不在 bazaar head（多为解决冲突时从 bazaar head 合并来的）；删除 = base 有而 head 无且仍在 bazaar head（确属本 PR 删除）
-	newRepos := make([]string, 0)
-	for _, path := range headPaths {
-		_, inBase := baseSet[path]
-		_, inBazaarHead := bazaarHeadRepoSet[path]
-		if !inBase && !inBazaarHead {
-			newRepos = append(newRepos, path)
-		}
-	}
-	deletedRepos := make([]string, 0)
-	for _, path := range basePaths {
-		_, inHead := headSet[path]
-		_, inBazaarHead := bazaarHeadRepoSet[path]
-		if !inHead && inBazaarHead {
-			deletedRepos = append(deletedRepos, path)
-		}
-	}
+	plan.diff = computeRepoDiff(headPaths, basePaths, baseSet, headSet, bazaarHeadRepoSet, baseNameToOwner)
+	logger.Infof("finish repos diff [%s]: new=%d deleted=%d", prHeadReposPath, len(plan.diff.New), len(plan.diff.Deleted))
+	return plan
+}
 
-	// 将本 PR 的删除列表写入检查结果
-	if !checkResult.setDeleted(packageType, deletedRepos) {
-		panic("checkRepos: invalid package type")
+func formatParseErrorLabel(label string, err error) string {
+	zh, en := rules.LocalizedMessages(err)
+	return fmt.Sprintf("[%s]\n\n%s\n\n%s\n\n", label, zh, en)
+}
+
+// runTypePackageChecks 对本类型新增/换维护者仓库执行 Latest Release → package.zip → rules.Check。
+// 一次一包规则下通常只有一个仓库；更换维护者的仓库也在 plan.diff.New 中，按新集市包处理。
+func runTypePackageChecks(
+	plan typeCheckPlan,
+	checkResult *CheckResult,
+	occupiedNames map[string]struct{},
+) {
+	prHeadReposPath := filepath.Join(PR_HEAD_PATH, plan.packageType.ReposListFile())
+	logger.Infof("start repos check [%s]", prHeadReposPath)
+
+	for _, ownerRepo := range plan.diff.New {
+		var allowThemeJS bool
+		if plan.packageType == rules.TypeTheme {
+			_, allowThemeJS = plan.themeJsAllowSet[ownerRepo]
+		}
+		packageCheck := checkNewRepo(ownerRepo, occupiedNames, plan.packageType, allowThemeJS)
+		if _, ok := plan.diff.MaintainerChanged[ownerRepo]; ok {
+			packageCheck.MaintainerChanged = true
+		}
+		checkResult.appendCheck(plan.packageType, packageCheck)
 	}
-
-	// 更换维护者：在 PR base 与 PR head 中，repo name 相同但 owner 不同，则视为更换维护者
-	maintainerChangedSet := make(Set)
-	for _, path := range newRepos {
-		// newRepos 包含了更换维护者的仓库
-		newOwner, name, ok := strings.Cut(path, "/")
-		if !ok {
-			continue
-		}
-		oldOwner, oldExists := baseNameToOwner[name]
-		if !oldExists {
-			// base 中不存在该 name，是新增，不是更换维护者
-			continue
-		}
-		if oldOwner != newOwner {
-			// base 中有 oldOwner/name，head 中有 newOwner/name，是更换维护者
-			maintainerChangedSet[path] = struct{}{}
-		}
-	}
-
-	resultChannel := make(chan checkOutput, 4)
-	var waitGroupResult sync.WaitGroup
-
-	// 收集检查结果时，根据是否在 maintainerChangedSet 中打上 MaintainerChanged 标记，供模板区分展示
-	waitGroupResult.Go(func() {
-		for result := range resultChannel {
-			packageCheck := result.packageCheck
-			if _, ok := maintainerChangedSet[packageCheck.RepoInfo.Path]; ok {
-				packageCheck.MaintainerChanged = true
-			}
-			checkResult.appendCheck(result.packageType, packageCheck)
-		}
-	})
-
-	// 检查新增的集市包（更换维护者的集市包也按新集市包处理），限制并发数为 8
-	var g errgroup.Group
-	g.SetLimit(8)
-	for _, ownerRepo := range newRepos {
-		g.Go(func() error {
-			var allowThemeJS bool
-			if packageType == rules.TypeTheme {
-				_, allowThemeJS = themeJsAllowSet[ownerRepo]
-			}
-			checkNewRepo(ownerRepo, occupiedNames, packageType, resultChannel, occupiedNamesMu, allowThemeJS)
-			return nil
-		})
-	}
-	_ = g.Wait()           // 等待检查完成
-	close(resultChannel)   // 关闭检查结果输出通道
-	waitGroupResult.Wait() // 等待检查结果处理完成
 	logger.Infof("finish repos check [%s]", prHeadReposPath)
 }
 
@@ -300,10 +275,8 @@ func checkNewRepo(
 	ownerRepo string,
 	occupiedNames map[string]struct{},
 	packageType rules.PackageType,
-	resultChannel chan checkOutput,
-	nameSetMutex *sync.Mutex,
 	allowThemeJS bool,
-) {
+) PackageCheck {
 	logger.Infof("start repo check [%s]", ownerRepo)
 
 	repoOwner, repoName, _ := strings.Cut(ownerRepo, "/")
@@ -324,23 +297,19 @@ func checkNewRepo(
 
 	// Release / package.zip 未通过时只报告流程层 Issue，不调用 rules.Check
 	if len(out.Issues) > 0 {
-		resultChannel <- checkOutput{packageType: packageType, packageCheck: out}
 		logger.Infof("finish repo check [%s] (release issues)", ownerRepo)
-		return
+		return out
 	}
 
 	tmpUnzipPath, zipData, cleanup, err := util.DownloadAndUnzipPackageZip(githubContext, githubClient, repoOwner, repoName, releaseInfo.PackageZipAssetID)
 	if err != nil {
 		logger.Errorf("download/unzip [%s] failed: %s", ownerRepo, err)
 		out.Issues = append(out.Issues, rules.IssueFromErr(err))
-		resultChannel <- checkOutput{packageType: packageType, packageCheck: out}
 		logger.Infof("finish repo check [%s] (download failed)", ownerRepo)
-		return
+		return out
 	}
 	defer cleanup()
 
-	// 持锁执行 rules.Check 并登记 name：读写的 OccupiedNames 与实时一致，且同 PR 内唯一
-	nameSetMutex.Lock()
 	result := rules.Check(rules.Input{
 		PackageRoot:   tmpUnzipPath,
 		OwnerRepo:     ownerRepo,
@@ -354,9 +323,8 @@ func checkNewRepo(
 	if result.OK && result.Package.Name != "" {
 		occupiedNames[strings.ToLower(result.Package.Name)] = struct{}{}
 	}
-	nameSetMutex.Unlock()
 
 	out.Issues = append(out.Issues, result.Issues...)
-	resultChannel <- checkOutput{packageType: packageType, packageCheck: out}
 	logger.Infof("finish repo check [%s]", ownerRepo)
+	return out
 }

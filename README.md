@@ -27,6 +27,7 @@ If you have developed a plugin, theme, icon, template or widget and want to list
 
    - One `owner/repo` per line, with no extra commas or empty lines.
    - Example: `siyuan-note/plugin-sample`.
+   - Add only one package per PR (across all types combined). Open separate PRs if you need to list multiple packages.
 
 3. **Open a PR**
 
