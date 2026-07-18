@@ -24,6 +24,18 @@ Please fix the matching `.txt` file at the repo root so each line is one `owner/
 {{- define "repoCheck" }}
 #### [{{ .RepoInfo.Path }}]({{ .RepoInfo.Home }}){{ if .MaintainerChanged }} (更换维护者 / Change Maintainer){{ end }}
 
+  {{- if .MaintainerChanged }}
+
+检测到更换维护者。请阅读流程说明，并在本 PR 中 `@` 原维护者请求确认后才会合并：
+
+[更换维护者]({{ bazaarDocURL "README.zh-CN.md" "更换维护者" }})
+
+This PR changes the package maintainer. Please read the process guide and `@` the original maintainer in this PR for confirmation before merge:
+
+[Changing maintainers]({{ bazaarDocURL "README.md" "changing-maintainers" }})
+
+  {{- end }}
+
   {{- if .Release.URL }}
 
 最新 Release / Latest Release: [{{ .Release.Tag }}]({{ .Release.URL }})

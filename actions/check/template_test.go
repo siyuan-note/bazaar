@@ -12,6 +12,7 @@ package main
 
 import (
 	"bytes"
+	"context"
 	"strings"
 	"testing"
 
@@ -20,7 +21,7 @@ import (
 )
 
 func TestCheckResultTemplate(t *testing.T) {
-	tmpl, err := parseCheckResultTemplate()
+	tmpl, err := parseCheckResultTemplate(context.Background())
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -89,7 +90,7 @@ func TestCheckResultTemplate(t *testing.T) {
 }
 
 func TestCheckResultTemplate_FlowError(t *testing.T) {
-	tmpl, err := parseCheckResultTemplate()
+	tmpl, err := parseCheckResultTemplate(context.Background())
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -128,8 +129,66 @@ func TestCheckResultTemplate_FlowError(t *testing.T) {
 	}
 }
 
+func TestCheckResultTemplate_MaintainerChangeNotice(t *testing.T) {
+	sha, err := resolveBazaarHeadSHA(context.Background())
+	if err != nil {
+		t.Fatal(err)
+	}
+	tmpl, err := parseCheckResultTemplate(context.Background())
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	sample := CheckResult{
+		Themes: []PackageCheck{{
+			RepoInfo:          RepoInfo{Path: "bob/theme", Home: "https://github.com/bob/theme"},
+			MaintainerChanged: true,
+			Release: util.LatestRelease{
+				Tag: "v1.0.0", URL: "https://github.com/bob/theme/releases/tag/v1.0.0",
+				PackageZipAssetID: 1,
+			},
+		}},
+	}
+
+	var buf bytes.Buffer
+	if err := tmpl.Execute(&buf, sample); err != nil {
+		t.Fatal(err)
+	}
+	out := buf.String()
+	for _, want := range []string{
+		"(更换维护者 / Change Maintainer)",
+		"检测到更换维护者",
+		"blob/" + sha + "/README.zh-CN.md#更换维护者",
+		"This PR changes the package maintainer",
+		"blob/" + sha + "/README.md#changing-maintainers",
+		"Latest Release: [v1.0.0]",
+		"Check passed.",
+	} {
+		if !strings.Contains(out, want) {
+			t.Fatalf("output missing %q\n%s", want, out)
+		}
+	}
+	if strings.Contains(out, "blob/main/") {
+		t.Fatalf("doc links should use commit hash, not main\n%s", out)
+	}
+	noticeIdx := strings.Index(out, "检测到更换维护者")
+	releaseIdx := strings.Index(out, "Latest Release: [v1.0.0]")
+	if noticeIdx < 0 || releaseIdx < 0 || noticeIdx > releaseIdx {
+		t.Fatalf("maintainer-change notice should appear before Latest Release\n%s", out)
+	}
+}
+
+func TestBazaarDocURL(t *testing.T) {
+	const sha = "0123456789abcdef0123456789abcdef01234567"
+	got := bazaarDocURL(sha, "README.md", "changing-maintainers")
+	want := "https://github.com/siyuan-note/bazaar/blob/" + sha + "/README.md#changing-maintainers"
+	if got != want {
+		t.Fatalf("got %q, want %q", got, want)
+	}
+}
+
 func TestCheckResultTemplate_RemoveBeforeAdd(t *testing.T) {
-	tmpl, err := parseCheckResultTemplate()
+	tmpl, err := parseCheckResultTemplate(context.Background())
 	if err != nil {
 		t.Fatal(err)
 	}

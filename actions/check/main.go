@@ -15,6 +15,7 @@ import (
 	_ "embed"
 	"fmt"
 	"os"
+	"os/exec"
 	"os/signal"
 	"path/filepath"
 	"strconv"
@@ -42,7 +43,7 @@ Diff 流程（以 plugins.txt 为例）：
 8. 按本 PR 实际涉及的 *.txt 同步类型标签（plugin/theme/icon/template/widget）：每次运行对账，缺则补、多则删；解析失败的类型也打标以便发现
 9. 一次一包通过后：自动改 PR 标题（Add/Remove [type] owner/repo，插件省略类型；换维护者附 (maintainer change)；多仓纯移除为 Remove N packages）
 10. OccupiedNames 使用 bazaar head 的 stage/*.json 中所有类型的 package.name 集合（跨类型；比较前统一转小写）
-11. 一次一包通过后：对新增列表做 Latest Release / package.zip → 下载解压 → rules.Check；Bot 回复中列出移除列表、检查结果与更换维护者标记
+11. 一次一包通过后：对新增列表做 Latest Release / package.zip → 下载解压 → rules.Check；Bot 回复中列出移除列表、检查结果；若为更换维护者则附流程说明文档链接
 
 Check 流程：
 1. 获取仓库最新 release 与 package.zip
@@ -79,9 +80,44 @@ func formatIssueIndex(i, total int) string {
 	return fmt.Sprintf("%0*d", width, i+1)
 }
 
-func parseCheckResultTemplate() (*template.Template, error) {
+// resolveBazaarHeadSHA 返回本次工作流签出的 bazaar head 提交 hash（用于文档链接落盘到具体 commit）。
+func resolveBazaarHeadSHA(ctx context.Context) (string, error) {
+	dir := BAZAAR_HEAD_PATH
+	if dir == "" {
+		dir = "."
+	}
+	cmd := exec.CommandContext(ctx, "git", "-C", dir, "rev-parse", "HEAD")
+	out, err := cmd.Output()
+	if err != nil {
+		return "", fmt.Errorf("git rev-parse HEAD in %s: %w", dir, err)
+	}
+	sha := strings.TrimSpace(string(out))
+	if sha == "" {
+		return "", fmt.Errorf("git rev-parse HEAD in %s returned empty", dir)
+	}
+	return sha, nil
+}
+
+// bazaarDocURL 生成指向本次 bazaar head 提交的 README 锚点链接。
+func bazaarDocURL(bazaarHeadSHA, file, anchor string) string {
+	repo := GITHUB_REPOSITORY
+	if repo == "" {
+		repo = "siyuan-note/bazaar"
+	}
+	return fmt.Sprintf("https://github.com/%s/blob/%s/%s#%s", repo, bazaarHeadSHA, file, anchor)
+}
+
+func parseCheckResultTemplate(ctx context.Context) (*template.Template, error) {
+	bazaarHeadSHA, err := resolveBazaarHeadSHA(ctx)
+	if err != nil {
+		return nil, err
+	}
+	logger.Infof("bazaar head SHA [%s]", bazaarHeadSHA)
 	return template.New("check-result.md.tpl").Funcs(template.FuncMap{
 		"issueIndex": formatIssueIndex,
+		"bazaarDocURL": func(file, anchor string) string {
+			return bazaarDocURL(bazaarHeadSHA, file, anchor)
+		},
 	}).Parse(checkResultTemplateText)
 }
 
@@ -106,7 +142,7 @@ func main() {
 		logger.Fatalf("create github client failed: %s", err)
 	}
 
-	checkResultTemplate, err := parseCheckResultTemplate()
+	checkResultTemplate, err := parseCheckResultTemplate(githubContext)
 	if err != nil {
 		logger.Fatalf("load check result template failed: %s", err)
 	}
