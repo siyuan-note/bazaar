@@ -186,6 +186,23 @@ func formatStageFailComment(r stageReport) (string, error) {
 type stageFailComment struct {
 	ID        int64
 	OwnerRepo string
+	Body      string
+}
+
+// 评论末尾工作流链接每次 run 都会变，比对正文时忽略，避免无意义 Edit。
+const stageFailWorkflowFooterPrefix = "\n\n工作流 / Workflow: "
+
+func stageFailCommentComparableBody(body string) string {
+	body = strings.TrimRight(body, "\n")
+	before, _, found := strings.Cut(body, stageFailWorkflowFooterPrefix)
+	if found {
+		return before
+	}
+	return body
+}
+
+func stageFailCommentContentEqual(a, b string) bool {
+	return stageFailCommentComparableBody(a) == stageFailCommentComparableBody(b)
 }
 
 func listStageFailComments(ctx context.Context, client *github.Client, owner, repo string, issueNumber int) ([]stageFailComment, error) {
@@ -199,11 +216,12 @@ func listStageFailComments(ctx context.Context, client *github.Client, owner, re
 			return nil, err
 		}
 		for _, c := range comments {
-			ownerRepo, ok := parseStageFailCommentMarker(c.GetBody())
+			body := c.GetBody()
+			ownerRepo, ok := parseStageFailCommentMarker(body)
 			if !ok {
 				continue
 			}
-			out = append(out, stageFailComment{ID: c.GetID(), OwnerRepo: ownerRepo})
+			out = append(out, stageFailComment{ID: c.GetID(), OwnerRepo: ownerRepo, Body: body})
 		}
 		if resp.NextPage == 0 {
 			break
@@ -214,7 +232,7 @@ func listStageFailComments(ctx context.Context, client *github.Client, owner, re
 }
 
 // syncStageFailReports 将本轮 pass/fail 同步到固定 Issue：失败 upsert 一仓一条评论，成功则删除。
-// skip 不改动已有评论（例如 hash 未变未复检）。
+// skip 不改动已有评论（例如 hash 未变未复检）；失败且正文（忽略工作流链接）未变则跳过 Edit。
 func syncStageFailReports(ctx context.Context, client *github.Client, reports []stageReport) error {
 	owner, repo, ok := bazaarOwnerRepo()
 	if !ok {
@@ -230,7 +248,7 @@ func syncStageFailReports(ctx context.Context, client *github.Client, reports []
 		commentsByRepo[c.OwnerRepo] = append(commentsByRepo[c.OwnerRepo], c)
 	}
 
-	var passCount, failCount, skipped int
+	var passCount, failCount, skipped, unchanged int
 	for _, r := range reports {
 		switch r.Kind {
 		case stageReportSkip:
@@ -266,11 +284,16 @@ func syncStageFailReports(ctx context.Context, client *github.Client, reports []
 				logger.Infof("created stage-fail comment for [%s]", r.OwnerRepo)
 				continue
 			}
-			_, _, err = client.Issues.EditComment(ctx, owner, repo, comments[0].ID, &github.IssueComment{Body: new(body)})
-			if err != nil {
-				return fmt.Errorf("edit comment %d for [%s]: %w", comments[0].ID, r.OwnerRepo, err)
+			if stageFailCommentContentEqual(comments[0].Body, body) {
+				unchanged++
+				logger.Infof("stage-fail comment unchanged for [%s], skip edit", r.OwnerRepo)
+			} else {
+				_, _, err = client.Issues.EditComment(ctx, owner, repo, comments[0].ID, &github.IssueComment{Body: new(body)})
+				if err != nil {
+					return fmt.Errorf("edit comment %d for [%s]: %w", comments[0].ID, r.OwnerRepo, err)
+				}
+				logger.Infof("updated stage-fail comment for [%s]", r.OwnerRepo)
 			}
-			logger.Infof("updated stage-fail comment for [%s]", r.OwnerRepo)
 			for _, c := range comments[1:] {
 				if _, err := client.Issues.DeleteComment(ctx, owner, repo, c.ID); err != nil {
 					return fmt.Errorf("delete duplicate comment %d for [%s]: %w", c.ID, r.OwnerRepo, err)
@@ -279,7 +302,7 @@ func syncStageFailReports(ctx context.Context, client *github.Client, reports []
 			delete(commentsByRepo, r.OwnerRepo)
 		}
 	}
-	logger.Infof("stage-fail comment sync done: fail=%d pass=%d skip=%d issue=#%d", failCount, passCount, skipped, stageFailIssue)
+	logger.Infof("stage-fail comment sync done: fail=%d pass=%d skip=%d unchanged=%d issue=#%d", failCount, passCount, skipped, unchanged, stageFailIssue)
 	return nil
 }
 

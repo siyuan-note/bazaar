@@ -132,3 +132,23 @@ func TestStageFailCommentMarkerRoundTrip(t *testing.T) {
 		t.Fatalf("round-trip failed: got (%q, %v), marker=%q", got, ok, marker)
 	}
 }
+
+func TestStageFailCommentContentEqual(t *testing.T) {
+	base := "<!-- bazaar-stage-fail {\"repo\":\"a/b\"} -->\n### [a/b](https://github.com/a/b) (`plugin`)\n\n[01]\n\n缺 icon\n\nmissing icon\n\n---"
+	withRunA := base + "\n\n工作流 / Workflow: https://github.com/siyuan-note/bazaar/actions/runs/1"
+	withRunB := base + "\n\n工作流 / Workflow: https://github.com/siyuan-note/bazaar/actions/runs/2"
+	changed := base + "\n\nextra"
+
+	if !stageFailCommentContentEqual(withRunA, withRunB) {
+		t.Fatal("want equal when only workflow URL differs")
+	}
+	if !stageFailCommentContentEqual(withRunA, base) {
+		t.Fatal("want equal when one side has no workflow footer")
+	}
+	if !stageFailCommentContentEqual(base+"\n\n", base) {
+		t.Fatal("want equal after trimming trailing newlines")
+	}
+	if stageFailCommentContentEqual(base, changed) {
+		t.Fatal("want unequal when issue body differs")
+	}
+}

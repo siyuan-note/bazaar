@@ -42,7 +42,7 @@ Stage 流程：
 3. 读取 *s.txt 与既有 stage/*.json，并发索引各 owner/repo
 4. hash 未变则跳过下载；否则下载 package.zip → rules.Check → 上传 OSS（package.zip、README、preview、icon、清单 JSON）
 5. 按 updated 降序排序后写出 stage/*.json（键序经 marshalSortedIndentedJSON 稳定）
-6. 将本轮失败/成功同步到固定 Issue（#1921）：失败 upsert 一仓一条评论，成功则删除；hash 跳过不改动评论
+6. 将本轮失败/成功同步到固定 Issue（#1921）：失败 upsert 一仓一条评论（正文未变则跳过 Edit），成功则删除；hash 跳过不改动评论
    （本仓 Issue 评论用 GITHUB_TOKEN；跨仓 Release / repoStats 用 PAT）
 
 换维护者（列表中 alice/foo → bob/foo，stage 仍有 alice/foo）：
