@@ -30,10 +30,10 @@ jobs:
       RHYTHEM_TOKEN: ${{ secrets.RHYTHEM_TOKEN }}
     steps:
       - name: Check out repo
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Setup Golang
-        uses: actions/setup-go@v6
+        uses: actions/setup-go@v7
         with:
           go-version-file: 'go.mod'
 
