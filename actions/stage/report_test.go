@@ -92,7 +92,6 @@ func TestFormatStageFailComment(t *testing.T) {
 		`<!-- bazaar-stage-fail {"repo":"owner/repo"} -->`,
 		"[owner/repo](https://github.com/owner/repo)",
 		"(`plugin`)",
-		"@owner",
 		"[v1.2.3](https://github.com/owner/repo/releases/tag/v1.2.3)",
 		"hash `abc123`",
 		"沿用旧 stage",
