@@ -89,28 +89,33 @@ func TestFormatStageFailIssueBody(t *testing.T) {
 
 	checks := []string{
 		`<!-- bazaar-stage-fail {"repo":"owner/repo"} -->`,
+		"@owner",
 		"[owner/repo](https://github.com/owner/repo)",
+		"（`plugin`）",
 		"(`plugin`)",
-		"[v1.2.3](https://github.com/owner/repo/releases/tag/v1.2.3)",
+		"因此未能更新",
+		"and therefore was not updated",
+		"提升清单字段 `version`",
+		"bump the manifest `version`",
+		"无需另行提交 Pull Request",
+		"A separate pull request is not required",
+		"可直接在本 Issue 中回复",
+		"please reply in this issue",
+		"检查的 Release / Checked release: [v1.2.3](https://github.com/owner/repo/releases/tag/v1.2.3)",
 		"hash `abc123`",
 		"[01]",
 		"缺少 icon.png",
 		"missing icon.png",
-		"提升清单字段 `version`",
 	}
 	for _, want := range checks {
 		if !strings.Contains(body, want) {
 			t.Fatalf("formatStageFailIssueBody missing %q\nbody:\n%s", want, body)
 		}
 	}
-	introIdx := strings.Index(body, "检测到以下问题")
+	introIdx := strings.Index(body, "请先修复下列问题")
 	issueIdx := strings.Index(body, "[01]")
 	if introIdx < 0 || issueIdx < 0 || introIdx > issueIdx {
-		t.Fatalf("issue intro should appear before [01]\n%s", body)
-	}
-	sepIdx := strings.Index(body[introIdx:issueIdx], "---")
-	if sepIdx < 0 {
-		t.Fatalf("want --- between intro and [01]\n%s", body)
+		t.Fatalf("action intro should appear before [01]\n%s", body)
 	}
 }
 
@@ -132,6 +137,18 @@ func TestStageFailIssueTitle(t *testing.T) {
 	}
 }
 
+func TestStageFailRepoOwner(t *testing.T) {
+	if got := stageFailRepoOwner("alice/plugin"); got != "alice" {
+		t.Fatalf("got %q, want alice", got)
+	}
+	if got := stageFailRepoOwner("siyuan-note/theme"); got != "siyuan-note" {
+		t.Fatalf("got %q, want siyuan-note", got)
+	}
+	if got := stageFailRepoOwner("noslash"); got != "" {
+		t.Fatalf("got %q, want empty", got)
+	}
+}
+
 func TestStageFailBodyMarkerRoundTrip(t *testing.T) {
 	marker := stageFailBodyMarker("a/b")
 	got, ok := parseStageFailBodyMarker(marker + "\nrest")
@@ -142,8 +159,8 @@ func TestStageFailBodyMarkerRoundTrip(t *testing.T) {
 
 func TestStageFailIssueContentEqual(t *testing.T) {
 	base := "<!-- bazaar-stage-fail {\"repo\":\"a/b\"} -->\n### [a/b](https://github.com/a/b) (`plugin`)\n\n[01]\n\n缺 icon\n\nmissing icon\n\n---"
-	withRunA := base + "\n\n工作流 / Workflow: https://github.com/siyuan-note/bazaar/actions/runs/1"
-	withRunB := base + "\n\n工作流 / Workflow: https://github.com/siyuan-note/bazaar/actions/runs/2"
+	withRunA := base + "\n\n工作流日志 / Workflow log: https://github.com/siyuan-note/bazaar/actions/runs/1"
+	withRunB := base + "\n\n工作流日志 / Workflow log: https://github.com/siyuan-note/bazaar/actions/runs/2"
 	changed := base + "\n\nextra"
 
 	if !stageFailIssueContentEqual(withRunA, withRunB) {

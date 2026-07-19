@@ -153,10 +153,20 @@ func workflowRunURL() string {
 	return server + "/" + GITHUB_REPOSITORY + "/actions/runs/" + GITHUB_RUN_ID
 }
 
+// stageFailRepoOwner 取 owner/repo 左侧段；个人账号与组织账号同为 GitHub owner，可直接 @。
+func stageFailRepoOwner(ownerRepo string) string {
+	owner, _, ok := strings.Cut(ownerRepo, "/")
+	if !ok {
+		return ""
+	}
+	return owner
+}
+
 func parseStageFailTemplate() (*template.Template, error) {
 	return template.New("stage-fail.md.tpl").Funcs(template.FuncMap{
 		"issueIndex": formatStageIssueIndex,
 		"repoURL":    util.GitHubRepoURL,
+		"repoOwner":  stageFailRepoOwner,
 	}).Parse(stageFailTemplateText)
 }
 
@@ -197,7 +207,7 @@ type stageFailIssue struct {
 }
 
 // 正文末尾工作流链接每次 run 都会变，比对正文时忽略，避免无意义 Edit。
-const stageFailWorkflowFooterPrefix = "\n\n工作流 / Workflow: "
+const stageFailWorkflowFooterPrefix = "\n\n工作流日志 / Workflow log: "
 
 func stageFailIssueComparableBody(body string) string {
 	body = strings.TrimRight(body, "\n")
@@ -242,8 +252,8 @@ func ensureStageFailLabel(ctx context.Context, client *github.Client, owner, rep
 func listOpenStageFailIssues(ctx context.Context, client *github.Client, owner, repo string) ([]stageFailIssue, error) {
 	var out []stageFailIssue
 	opts := &github.IssueListByRepoOptions{
-		State:  "open",
-		Labels: []string{stageFailLabel},
+		State:       "open",
+		Labels:      []string{stageFailLabel},
 		ListOptions: github.ListOptions{PerPage: 100},
 	}
 	for {
