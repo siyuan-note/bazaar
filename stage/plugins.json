@@ -1,8 +1,8 @@
 {
   "repos": [
     {
-      "installSize": 2136270,
-      "openIssues": 13,
+      "installSize": 1757585,
+      "openIssues": 14,
       "package": {
         "author": "Achuan-2",
         "backends": [
@@ -25,20 +25,181 @@
             "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
           ]
         },
-        "minAppVersion": "3.7.0",
+        "minAppVersion": "3.7.2",
         "name": "siyuan-plugin-copilot",
         "readme": {
           "default": "README_en_US.md",
           "zh_CN": "README.md"
         },
         "url": "https://github.com/Achuan-2/siyuan-plugin-copilot",
-        "version": "2.7.2"
+        "version": "2.7.3"
       },
-      "packageZipAssetId": 481623500,
-      "size": 740012,
+      "packageZipAssetId": 482007562,
+      "size": 614376,
       "stars": 148,
-      "updated": "2026-07-18T16:33:32Z",
-      "url": "Achuan-2/siyuan-plugin-copilot@487e635b0a678d069e7a680986d170b5d9ee5a4f"
+      "updated": "2026-07-19T02:42:05Z",
+      "url": "Achuan-2/siyuan-plugin-copilot@9fd36962e73441ff2103c6e44cbb1ba3fbb3f4f3"
+    },
+    {
+      "installSize": 655922,
+      "openIssues": 2,
+      "package": {
+        "author": "gradypark86",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Quickly create a new or go to diary or weekly notes on the calendar panel, with support for periodic note templates",
+          "zh_CN": "在日历面板上快速新建或转到日记与周记，支持周期笔记模板"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Siyuan Calendar Panel",
+          "zh_CN": "思源日历面板"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "calendar",
+          "日历",
+          "日记",
+          "daily",
+          "weekly",
+          "周记"
+        ],
+        "minAppVersion": "2.13.0",
+        "name": "siyuan-plugin-calendar",
+        "readme": {
+          "default": "README_en_US.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/gradypark86/siyuan-plugin-calendar",
+        "version": "0.3.0"
+      },
+      "packageZipAssetId": 482002231,
+      "size": 284849,
+      "stars": 1,
+      "updated": "2026-07-19T02:34:32Z",
+      "url": "gradypark86/siyuan-plugin-calendar@30e817c4fc8dd1cf69b137eb458003581a064d4d"
+    },
+    {
+      "installSize": 2059411,
+      "openIssues": 5,
+      "package": {
+        "author": "LunaNorth",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A lightweight note-taking plugin for SiYuan, inspired by Flomo",
+          "zh_CN": "记录每一个轻闪而过的念头"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Lumina",
+          "zh_CN": "轻语"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://testingcf.jsdelivr.net/gh/LunaNorth/north-img/images/20260519195219305.png"
+          ]
+        },
+        "keywords": [
+          "碎碎念",
+          "记录",
+          "回顾"
+        ],
+        "minAppVersion": "3.3.3",
+        "name": "siyuan-lumina",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/LunaNorth/siyuan-lumina",
+        "version": "1.9.2"
+      },
+      "packageZipAssetId": 481994507,
+      "size": 431190,
+      "stars": 12,
+      "updated": "2026-07-19T02:22:47Z",
+      "url": "LunaNorth/siyuan-lumina@cb04d9a950d3ac5d46a367167f41307abc0e5a79"
+    },
+    {
+      "installSize": 9168023,
+      "openIssues": 5,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android",
+          "harmony"
+        ],
+        "description": {
+          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
+          "zh_CN": "一款在思源笔记里实现任务管理功能的插件，为了践行「防弹笔记法」而开发。支持电脑端和移动端系统通知提醒任务执行、日历视图查看行事历、项目管理、四象限面板、番茄钟专注、习惯打卡等功能"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Note Management",
+          "zh_CN": "任务笔记管理"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ]
+        },
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android",
+          "harmony"
+        ],
+        "keywords": [
+          "reminder",
+          "time",
+          "calendar",
+          "notification",
+          "提醒",
+          "时间",
+          "日历",
+          "通知",
+          "番茄钟",
+          "四象限",
+          "任务管理",
+          "项目管理",
+          "习惯打卡"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-task-note-management",
+        "readme": {
+          "default": "README_en.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
+        "version": "7.0.4"
+      },
+      "packageZipAssetId": 481935547,
+      "size": 4278308,
+      "stars": 206,
+      "updated": "2026-07-19T00:53:21Z",
+      "url": "Achuan-2/siyuan-plugin-task-note-management@a69a85df0b9d4cc43de2c3c0461dcf470973d80c"
     },
     {
       "installSize": 15066163,
@@ -318,49 +479,6 @@
       "stars": 36,
       "updated": "2026-07-18T03:04:32Z",
       "url": "Glaube-TY/siyuan-homepage@2790b86f465ac70132f4dea1c3dfe9021fa9ca02"
-    },
-    {
-      "installSize": 2283854,
-      "openIssues": 4,
-      "package": {
-        "author": "LunaNorth",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A lightweight note-taking plugin for SiYuan, inspired by Flomo",
-          "zh_CN": "记录每一个轻闪而过的念头"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Lumina",
-          "zh_CN": "轻语"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://testingcf.jsdelivr.net/gh/LunaNorth/north-img/images/20260519195219305.png"
-          ]
-        },
-        "keywords": [
-          "碎碎念",
-          "记录",
-          "回顾"
-        ],
-        "minAppVersion": "3.3.3",
-        "name": "siyuan-lumina",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/LunaNorth/siyuan-lumina",
-        "version": "1.9.0"
-      },
-      "size": 673529,
-      "stars": 12,
-      "updated": "2026-07-17T23:23:38Z",
-      "url": "LunaNorth/siyuan-lumina@47b8fcb72afda99367af66b94224822817f6fe1c"
     },
     {
       "installSize": 9936101,
@@ -1111,48 +1229,6 @@
       "url": "5kyfkr/siyuan-plugin-task-horizon@6f786cc87a403f5a31cdbf85a7fd76884659c750"
     },
     {
-      "installSize": 618164,
-      "openIssues": 2,
-      "package": {
-        "author": "gradypark86",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Quickly create a new or go to diary or weekly notes on the calendar panel, with support for periodic note templates",
-          "zh_CN": "在日历面板上快速新建或转到日记与周记，支持周期笔记模板"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Siyuan Calendar Panel",
-          "zh_CN": "思源日历面板"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "calendar",
-          "日历",
-          "日记",
-          "daily",
-          "weekly",
-          "周记"
-        ],
-        "minAppVersion": "2.13.0",
-        "name": "siyuan-plugin-calendar",
-        "readme": {
-          "default": "README_en_US.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/gradypark86/siyuan-plugin-calendar",
-        "version": "0.2.4"
-      },
-      "size": 272036,
-      "stars": 1,
-      "updated": "2026-07-13T06:19:02Z",
-      "url": "gradypark86/siyuan-plugin-calendar@3fb24b4c3866f88e864a5fa21b1ce68bdc353592"
-    },
-    {
       "installSize": 2067590,
       "openIssues": 0,
       "package": {
@@ -1195,70 +1271,6 @@
       "stars": 8,
       "updated": "2026-07-12T17:36:21Z",
       "url": "5kyfkr/siyuan-plugin-docktomato@1cbd17f5fed634feb65deaf56b4d29c0ad6bd64d"
-    },
-    {
-      "installSize": 9714130,
-      "openIssues": 3,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "description": {
-          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
-          "zh_CN": "一款在思源笔记里实现任务管理功能的插件，为了践行「防弹笔记法」而开发。支持电脑端和移动端系统通知提醒任务执行、日历视图查看行事历、项目管理、四象限面板、番茄钟专注、习惯打卡等功能"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Note Management",
-          "zh_CN": "任务笔记管理"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ]
-        },
-        "keywords": [
-          "reminder",
-          "time",
-          "calendar",
-          "notification",
-          "提醒",
-          "时间",
-          "日历",
-          "通知",
-          "番茄钟",
-          "四象限",
-          "任务管理",
-          "项目管理",
-          "习惯打卡"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-task-note-management",
-        "readme": {
-          "default": "README_en.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
-        "version": "7.0.2"
-      },
-      "size": 4831436,
-      "stars": 205,
-      "updated": "2026-07-12T13:18:21Z",
-      "url": "Achuan-2/siyuan-plugin-task-note-management@e2a42d8542872f43149e40524eea864efa8d4959"
     },
     {
       "installSize": 344541,
