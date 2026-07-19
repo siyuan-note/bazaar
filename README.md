@@ -49,7 +49,7 @@ No need to open another PR. Release a new version in your package repository. Th
 
 Under normal circumstances, the community bazaar repo updates the index and deploys every one to three hours. You can check the deployment status on the [Stage workflow page](https://github.com/siyuan-note/bazaar/actions/workflows/stage.yml).
 
-If it has not been updated for a long time, there may be an issue with the update (for example, the metadata version was not bumped). First check whether your repository appears in [Stage check failures](https://github.com/siyuan-note/bazaar/issues/1923); you can also inspect the latest Stage workflow logs.
+If it has not been updated for a long time, there may be an issue with the update (for example, the metadata version was not bumped). First check whether your repository has an open [Stage check failure issue](https://github.com/siyuan-note/bazaar/issues?q=is%3Aissue+is%3Aopen+label%3Astage-fail) (label `stage-fail`); you can also inspect the latest Stage workflow logs.
 
 ## Changing maintainers
 

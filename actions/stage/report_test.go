@@ -18,7 +18,7 @@ import (
 	"github.com/siyuan-note/bazaar/rules"
 )
 
-func TestParseStageFailCommentMarker(t *testing.T) {
+func TestParseStageFailBodyMarker(t *testing.T) {
 	tests := []struct {
 		name string
 		body string
@@ -60,16 +60,16 @@ func TestParseStageFailCommentMarker(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, ok := parseStageFailCommentMarker(tt.body)
+			got, ok := parseStageFailBodyMarker(tt.body)
 			if ok != tt.ok || got != tt.want {
-				t.Fatalf("parseStageFailCommentMarker() = (%q, %v), want (%q, %v)", got, ok, tt.want, tt.ok)
+				t.Fatalf("parseStageFailBodyMarker() = (%q, %v), want (%q, %v)", got, ok, tt.want, tt.ok)
 			}
 		})
 	}
 }
 
-func TestFormatStageFailComment(t *testing.T) {
-	body, err := formatStageFailComment(stageReport{
+func TestFormatStageFailIssueBody(t *testing.T) {
+	body, err := formatStageFailIssueBody(stageReport{
 		OwnerRepo:   "owner/repo",
 		PackageType: rules.TypePlugin,
 		Kind:        stageReportFail,
@@ -100,7 +100,7 @@ func TestFormatStageFailComment(t *testing.T) {
 	}
 	for _, want := range checks {
 		if !strings.Contains(body, want) {
-			t.Fatalf("formatStageFailComment missing %q\nbody:\n%s", want, body)
+			t.Fatalf("formatStageFailIssueBody missing %q\nbody:\n%s", want, body)
 		}
 	}
 	introIdx := strings.Index(body, "检测到以下问题")
@@ -123,30 +123,39 @@ func TestFormatStageIssueIndex(t *testing.T) {
 	}
 }
 
-func TestStageFailCommentMarkerRoundTrip(t *testing.T) {
-	marker := stageFailCommentMarker("a/b")
-	got, ok := parseStageFailCommentMarker(marker + "\nrest")
+func TestStageFailIssueTitle(t *testing.T) {
+	if got := stageFailIssueTitle(rules.TypePlugin, "owner/repo"); got != "Plugin update failed: owner/repo" {
+		t.Fatalf("got %q", got)
+	}
+	if got := stageFailIssueTitle(rules.TypeWidget, "a/b"); got != "Widget update failed: a/b" {
+		t.Fatalf("got %q", got)
+	}
+}
+
+func TestStageFailBodyMarkerRoundTrip(t *testing.T) {
+	marker := stageFailBodyMarker("a/b")
+	got, ok := parseStageFailBodyMarker(marker + "\nrest")
 	if !ok || got != "a/b" {
 		t.Fatalf("round-trip failed: got (%q, %v), marker=%q", got, ok, marker)
 	}
 }
 
-func TestStageFailCommentContentEqual(t *testing.T) {
+func TestStageFailIssueContentEqual(t *testing.T) {
 	base := "<!-- bazaar-stage-fail {\"repo\":\"a/b\"} -->\n### [a/b](https://github.com/a/b) (`plugin`)\n\n[01]\n\n缺 icon\n\nmissing icon\n\n---"
 	withRunA := base + "\n\n工作流 / Workflow: https://github.com/siyuan-note/bazaar/actions/runs/1"
 	withRunB := base + "\n\n工作流 / Workflow: https://github.com/siyuan-note/bazaar/actions/runs/2"
 	changed := base + "\n\nextra"
 
-	if !stageFailCommentContentEqual(withRunA, withRunB) {
+	if !stageFailIssueContentEqual(withRunA, withRunB) {
 		t.Fatal("want equal when only workflow URL differs")
 	}
-	if !stageFailCommentContentEqual(withRunA, base) {
+	if !stageFailIssueContentEqual(withRunA, base) {
 		t.Fatal("want equal when one side has no workflow footer")
 	}
-	if !stageFailCommentContentEqual(base+"\n\n", base) {
+	if !stageFailIssueContentEqual(base+"\n\n", base) {
 		t.Fatal("want equal after trimming trailing newlines")
 	}
-	if stageFailCommentContentEqual(base, changed) {
+	if stageFailIssueContentEqual(base, changed) {
 		t.Fatal("want unequal when issue body differs")
 	}
 }

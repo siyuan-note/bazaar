@@ -16,6 +16,7 @@ import (
 	_ "embed"
 	"encoding/json"
 	"fmt"
+	"net/http"
 	"os"
 	"strconv"
 	"strings"
@@ -32,13 +33,13 @@ var stageFailTemplateText string
 
 var stageFailTemplate = template.Must(parseStageFailTemplate())
 
-// 固定汇总 Issue：https://github.com/siyuan-note/bazaar/issues/1923
-const stageFailIssue = 1923
+// Stage 失败 Issue 标签，便于按仓检索与同步。
+const stageFailLabel = "stage-fail"
 
-// 评论身份标记：<!-- bazaar-stage-fail {"repo":"owner/repo"} -->
-const stageFailCommentMarkerPrefix = "<!-- bazaar-stage-fail "
+// Issue 正文身份标记：<!-- bazaar-stage-fail {"repo":"owner/repo"} -->
+const stageFailMarkerPrefix = "<!-- bazaar-stage-fail "
 
-// stageFailMarker 为 HTML 注释中的单行 JSON，便于 upsert/delete 时稳定解析。
+// stageFailMarker 为 HTML 注释中的单行 JSON，便于 upsert/close 时稳定解析。
 type stageFailMarker struct {
 	Repo string `json:"repo"`
 }
@@ -52,12 +53,12 @@ var (
 type stageReportKind int
 
 const (
-	stageReportSkip stageReportKind = iota // hash 未变等，不改动 Issue 评论
-	stageReportPass                        // 本轮成功入库，删除对应评论
-	stageReportFail                        // 本轮失败，upsert 评论
+	stageReportSkip stageReportKind = iota // hash 未变等，不改动 Issue
+	stageReportPass                        // 本轮成功入库，关闭对应 Issue
+	stageReportFail                        // 本轮失败，upsert Issue
 )
 
-// stageReport 单仓本轮 Stage 结果，供失败汇总同步到固定 Issue。
+// stageReport 单仓本轮 Stage 结果，供失败同步到按仓独立 Issue。
 type stageReport struct {
 	OwnerRepo   string
 	PackageType rules.PackageType
@@ -100,17 +101,25 @@ func bazaarOwnerRepo() (owner, repo string, ok bool) {
 	return owner, repo, true
 }
 
-func stageFailCommentMarker(ownerRepo string) string {
+func stageFailIssueTitle(packageType rules.PackageType, ownerRepo string) string {
+	typ := packageType.String()
+	if typ != "" {
+		typ = strings.ToUpper(typ[:1]) + typ[1:]
+	}
+	return typ + " update failed: " + ownerRepo
+}
+
+func stageFailBodyMarker(ownerRepo string) string {
 	payload, err := json.Marshal(stageFailMarker{Repo: ownerRepo})
 	if err != nil {
 		// Marshal 基本类型失败不应发生；退回空 repo 便于调用方察觉
 		payload = []byte(`{"repo":""}`)
 	}
-	return stageFailCommentMarkerPrefix + string(payload) + " -->"
+	return stageFailMarkerPrefix + string(payload) + " -->"
 }
 
-func parseStageFailCommentMarker(body string) (ownerRepo string, ok bool) {
-	_, after, cutOK := strings.Cut(body, stageFailCommentMarkerPrefix)
+func parseStageFailBodyMarker(body string) (ownerRepo string, ok bool) {
+	_, after, cutOK := strings.Cut(body, stageFailMarkerPrefix)
 	if !cutOK {
 		return "", false
 	}
@@ -151,8 +160,8 @@ func parseStageFailTemplate() (*template.Template, error) {
 	}).Parse(stageFailTemplateText)
 }
 
-// stageFailCommentView 为 stage-fail.md.tpl 的渲染数据。
-type stageFailCommentView struct {
+// stageFailIssueView 为 stage-fail.md.tpl 的渲染数据。
+type stageFailIssueView struct {
 	Marker         string
 	OwnerRepo      string
 	PackageType    string
@@ -162,11 +171,11 @@ type stageFailCommentView struct {
 	WorkflowRunURL string
 }
 
-// formatStageFailComment 生成固定 Issue 下单仓失败评论正文（含 marker，便于 upsert/delete）。
-func formatStageFailComment(r stageReport) (string, error) {
+// formatStageFailIssueBody 生成单仓失败 Issue 正文（含 marker，便于 upsert/close）。
+func formatStageFailIssueBody(r stageReport) (string, error) {
 	var buf bytes.Buffer
-	err := stageFailTemplate.Execute(&buf, stageFailCommentView{
-		Marker:         stageFailCommentMarker(r.OwnerRepo),
+	err := stageFailTemplate.Execute(&buf, stageFailIssueView{
+		Marker:         stageFailBodyMarker(r.OwnerRepo),
 		OwnerRepo:      r.OwnerRepo,
 		PackageType:    r.PackageType.String(),
 		Release:        r.Release,
@@ -180,16 +189,17 @@ func formatStageFailComment(r stageReport) (string, error) {
 	return buf.String(), nil
 }
 
-type stageFailComment struct {
-	ID        int64
+type stageFailIssue struct {
+	Number    int
 	OwnerRepo string
+	Title     string
 	Body      string
 }
 
-// 评论末尾工作流链接每次 run 都会变，比对正文时忽略，避免无意义 Edit。
+// 正文末尾工作流链接每次 run 都会变，比对正文时忽略，避免无意义 Edit。
 const stageFailWorkflowFooterPrefix = "\n\n工作流 / Workflow: "
 
-func stageFailCommentComparableBody(body string) string {
+func stageFailIssueComparableBody(body string) string {
 	body = strings.TrimRight(body, "\n")
 	before, _, found := strings.Cut(body, stageFailWorkflowFooterPrefix)
 	if found {
@@ -198,51 +208,96 @@ func stageFailCommentComparableBody(body string) string {
 	return body
 }
 
-func stageFailCommentContentEqual(a, b string) bool {
-	return stageFailCommentComparableBody(a) == stageFailCommentComparableBody(b)
+func stageFailIssueContentEqual(a, b string) bool {
+	return stageFailIssueComparableBody(a) == stageFailIssueComparableBody(b)
 }
 
-func listStageFailComments(ctx context.Context, client *github.Client, owner, repo string, issueNumber int) ([]stageFailComment, error) {
-	var out []stageFailComment
-	opts := &github.IssueListCommentsOptions{
+func ensureStageFailLabel(ctx context.Context, client *github.Client, owner, repo string) error {
+	_, resp, err := client.Issues.GetLabel(ctx, owner, repo, stageFailLabel)
+	if err == nil {
+		return nil
+	}
+	if resp == nil || resp.StatusCode != http.StatusNotFound {
+		return err
+	}
+	name := stageFailLabel
+	color := "D73A4A"
+	desc := "Stage indexing failed for a bazaar package repo"
+	_, _, err = client.Issues.CreateLabel(ctx, owner, repo, &github.Label{
+		Name:        &name,
+		Color:       &color,
+		Description: &desc,
+	})
+	if err != nil {
+		// 并发创建时可能已存在
+		if _, _, getErr := client.Issues.GetLabel(ctx, owner, repo, stageFailLabel); getErr == nil {
+			return nil
+		}
+		return err
+	}
+	logger.Infof("created repo label %q", stageFailLabel)
+	return nil
+}
+
+func listOpenStageFailIssues(ctx context.Context, client *github.Client, owner, repo string) ([]stageFailIssue, error) {
+	var out []stageFailIssue
+	opts := &github.IssueListByRepoOptions{
+		State:  "open",
+		Labels: []string{stageFailLabel},
 		ListOptions: github.ListOptions{PerPage: 100},
 	}
 	for {
-		comments, resp, err := client.Issues.ListComments(ctx, owner, repo, issueNumber, opts)
+		issues, resp, err := client.Issues.ListByRepo(ctx, owner, repo, opts)
 		if err != nil {
 			return nil, err
 		}
-		for _, c := range comments {
-			body := c.GetBody()
-			ownerRepo, ok := parseStageFailCommentMarker(body)
+		for _, issue := range issues {
+			if issue.IsPullRequest() {
+				continue
+			}
+			body := issue.GetBody()
+			ownerRepo, ok := parseStageFailBodyMarker(body)
 			if !ok {
 				continue
 			}
-			out = append(out, stageFailComment{ID: c.GetID(), OwnerRepo: ownerRepo, Body: body})
+			out = append(out, stageFailIssue{
+				Number:    issue.GetNumber(),
+				OwnerRepo: ownerRepo,
+				Title:     issue.GetTitle(),
+				Body:      body,
+			})
 		}
 		if resp.NextPage == 0 {
 			break
 		}
-		opts.Page = resp.NextPage
+		opts.ListOptions.Page = resp.NextPage
 	}
 	return out, nil
 }
 
-// syncStageFailReports 将本轮 pass/fail 同步到固定 Issue：失败 upsert 一仓一条评论，成功则删除。
-// skip 不改动已有评论（例如 hash 未变未复检）；失败且正文（忽略工作流链接）未变则跳过 Edit。
+func closeStageFailIssue(ctx context.Context, client *github.Client, owner, repo string, number int) error {
+	state := "closed"
+	_, _, err := client.Issues.Edit(ctx, owner, repo, number, &github.IssueRequest{State: &state})
+	return err
+}
+
+// syncStageFailReports 将本轮 pass/fail 同步为按仓独立 Issue：失败 upsert（正文未变则跳过 Edit），成功则关闭；skip 不改动。
 func syncStageFailReports(ctx context.Context, client *github.Client, reports []stageReport) error {
 	owner, repo, ok := bazaarOwnerRepo()
 	if !ok {
-		logger.Errorf("skip stage-fail comment sync: GITHUB_REPOSITORY not set / invalid")
+		logger.Errorf("skip stage-fail issue sync: GITHUB_REPOSITORY not set / invalid")
 		return nil
 	}
-	existing, err := listStageFailComments(ctx, client, owner, repo, stageFailIssue)
-	if err != nil {
-		return fmt.Errorf("list comments on %s/%s#%d: %w", owner, repo, stageFailIssue, err)
+	if err := ensureStageFailLabel(ctx, client, owner, repo); err != nil {
+		return fmt.Errorf("ensure label %q: %w", stageFailLabel, err)
 	}
-	commentsByRepo := make(map[string][]stageFailComment, len(existing))
-	for _, c := range existing {
-		commentsByRepo[c.OwnerRepo] = append(commentsByRepo[c.OwnerRepo], c)
+	existing, err := listOpenStageFailIssues(ctx, client, owner, repo)
+	if err != nil {
+		return fmt.Errorf("list open %s issues on %s/%s: %w", stageFailLabel, owner, repo, err)
+	}
+	issuesByRepo := make(map[string][]stageFailIssue, len(existing))
+	for _, issue := range existing {
+		issuesByRepo[issue.OwnerRepo] = append(issuesByRepo[issue.OwnerRepo], issue)
 	}
 
 	var passCount, failCount, skipped, unchanged int
@@ -253,16 +308,16 @@ func syncStageFailReports(ctx context.Context, client *github.Client, reports []
 			continue
 		case stageReportPass:
 			passCount++
-			for _, c := range commentsByRepo[r.OwnerRepo] {
-				if _, err := client.Issues.DeleteComment(ctx, owner, repo, c.ID); err != nil {
+			for _, issue := range issuesByRepo[r.OwnerRepo] {
+				if err := closeStageFailIssue(ctx, client, owner, repo, issue.Number); err != nil {
 					if util.IsGitHubRateLimit(err) {
-						return fmt.Errorf("delete comment %d for [%s]: GitHub API rate limited, stop syncing remaining comments: %w", c.ID, r.OwnerRepo, err)
+						return fmt.Errorf("close issue #%d for [%s]: GitHub API rate limited, stop syncing remaining issues: %w", issue.Number, r.OwnerRepo, err)
 					}
-					return fmt.Errorf("delete comment %d for [%s]: %w", c.ID, r.OwnerRepo, err)
+					return fmt.Errorf("close issue #%d for [%s]: %w", issue.Number, r.OwnerRepo, err)
 				}
-				logger.Infof("deleted stage-fail comment for [%s]", r.OwnerRepo)
+				logger.Infof("closed stage-fail issue #%d for [%s]", issue.Number, r.OwnerRepo)
 			}
-			delete(commentsByRepo, r.OwnerRepo)
+			delete(issuesByRepo, r.OwnerRepo)
 		case stageReportFail:
 			failCount++
 			if len(r.Issues) == 0 {
@@ -271,47 +326,59 @@ func syncStageFailReports(ctx context.Context, client *github.Client, reports []
 					MessageEn: "Stage failed, but no detailed issue was collected. Please check the workflow logs or contact a maintainer.",
 				}}
 			}
-			body, err := formatStageFailComment(r)
+			body, err := formatStageFailIssueBody(r)
 			if err != nil {
-				return fmt.Errorf("format comment for [%s]: %w", r.OwnerRepo, err)
+				return fmt.Errorf("format issue body for [%s]: %w", r.OwnerRepo, err)
 			}
-			comments := commentsByRepo[r.OwnerRepo]
-			if len(comments) == 0 {
-				_, _, err := client.Issues.CreateComment(ctx, owner, repo, stageFailIssue, &github.IssueComment{Body: new(body)})
+			title := stageFailIssueTitle(r.PackageType, r.OwnerRepo)
+			issues := issuesByRepo[r.OwnerRepo]
+			if len(issues) == 0 {
+				labels := []string{stageFailLabel}
+				created, _, err := client.Issues.Create(ctx, owner, repo, &github.IssueRequest{
+					Title:  &title,
+					Body:   &body,
+					Labels: &labels,
+				})
 				if err != nil {
 					if util.IsGitHubRateLimit(err) {
-						return fmt.Errorf("create comment for [%s]: GitHub API rate limited, stop syncing remaining comments: %w", r.OwnerRepo, err)
+						return fmt.Errorf("create issue for [%s]: GitHub API rate limited, stop syncing remaining issues: %w", r.OwnerRepo, err)
 					}
-					return fmt.Errorf("create comment for [%s]: %w", r.OwnerRepo, err)
+					return fmt.Errorf("create issue for [%s]: %w", r.OwnerRepo, err)
 				}
-				logger.Infof("created stage-fail comment for [%s]", r.OwnerRepo)
+				logger.Infof("created stage-fail issue #%d for [%s]", created.GetNumber(), r.OwnerRepo)
 				continue
 			}
-			if stageFailCommentContentEqual(comments[0].Body, body) {
+			primary := issues[0]
+			needEdit := !stageFailIssueContentEqual(primary.Body, body) || primary.Title != title
+			if !needEdit {
 				unchanged++
-				logger.Infof("stage-fail comment unchanged for [%s], skip edit", r.OwnerRepo)
+				logger.Infof("stage-fail issue #%d unchanged for [%s], skip edit", primary.Number, r.OwnerRepo)
 			} else {
-				_, _, err = client.Issues.EditComment(ctx, owner, repo, comments[0].ID, &github.IssueComment{Body: new(body)})
+				_, _, err = client.Issues.Edit(ctx, owner, repo, primary.Number, &github.IssueRequest{
+					Title: &title,
+					Body:  &body,
+				})
 				if err != nil {
 					if util.IsGitHubRateLimit(err) {
-						return fmt.Errorf("edit comment %d for [%s]: GitHub API rate limited, stop syncing remaining comments: %w", comments[0].ID, r.OwnerRepo, err)
+						return fmt.Errorf("edit issue #%d for [%s]: GitHub API rate limited, stop syncing remaining issues: %w", primary.Number, r.OwnerRepo, err)
 					}
-					return fmt.Errorf("edit comment %d for [%s]: %w", comments[0].ID, r.OwnerRepo, err)
+					return fmt.Errorf("edit issue #%d for [%s]: %w", primary.Number, r.OwnerRepo, err)
 				}
-				logger.Infof("updated stage-fail comment for [%s]", r.OwnerRepo)
+				logger.Infof("updated stage-fail issue #%d for [%s]", primary.Number, r.OwnerRepo)
 			}
-			for _, c := range comments[1:] {
-				if _, err := client.Issues.DeleteComment(ctx, owner, repo, c.ID); err != nil {
+			for _, issue := range issues[1:] {
+				if err := closeStageFailIssue(ctx, client, owner, repo, issue.Number); err != nil {
 					if util.IsGitHubRateLimit(err) {
-						return fmt.Errorf("delete duplicate comment %d for [%s]: GitHub API rate limited, stop syncing remaining comments: %w", c.ID, r.OwnerRepo, err)
+						return fmt.Errorf("close duplicate issue #%d for [%s]: GitHub API rate limited, stop syncing remaining issues: %w", issue.Number, r.OwnerRepo, err)
 					}
-					return fmt.Errorf("delete duplicate comment %d for [%s]: %w", c.ID, r.OwnerRepo, err)
+					return fmt.Errorf("close duplicate issue #%d for [%s]: %w", issue.Number, r.OwnerRepo, err)
 				}
+				logger.Infof("closed duplicate stage-fail issue #%d for [%s]", issue.Number, r.OwnerRepo)
 			}
-			delete(commentsByRepo, r.OwnerRepo)
+			delete(issuesByRepo, r.OwnerRepo)
 		}
 	}
-	logger.Infof("stage-fail comment sync done: fail=%d pass=%d skip=%d unchanged=%d issue=#%d", failCount, passCount, skipped, unchanged, stageFailIssue)
+	logger.Infof("stage-fail issue sync done: fail=%d pass=%d skip=%d unchanged=%d", failCount, passCount, skipped, unchanged)
 	return nil
 }
 

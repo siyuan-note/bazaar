@@ -22,7 +22,7 @@ jobs:
   build:
     if: ${{ github.repository_owner == 'siyuan-note' }}
     runs-on: ubuntu-latest
-    # 写 stage JSON / push；固定 Issue #1923 失败汇总评论用 GITHUB_TOKEN。跨仓 Release 仍用 PAT。
+    # 写 stage JSON / push；按仓 Stage 失败 Issue 用 GITHUB_TOKEN。跨仓 Release 仍用 PAT。
     permissions:
       contents: write
       issues: write

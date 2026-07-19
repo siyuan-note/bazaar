@@ -49,7 +49,7 @@
 
 一般情况下，社区集市仓库会每一到三小时自动更新索引并部署，你可以在 [Stage 工作流页面](https://github.com/siyuan-note/bazaar/actions/workflows/stage.yml) 查看部署状态。
 
-如果长时间未更新，可能是更新包存在问题（例如未提升清单中的 version）。请先查看 [Stage 检查失败汇总](https://github.com/siyuan-note/bazaar/issues/1923) 中是否有对应仓库的评论，也可检查最新的 Stage 工作流日志。
+如果长时间未更新，可能是更新包存在问题（例如未提升清单中的 version）。请先查看带 `stage-fail` 标签的 [Stage 检查失败 Issue](https://github.com/siyuan-note/bazaar/issues?q=is%3Aissue+is%3Aopen+label%3Astage-fail) 中是否有对应仓库，也可检查最新的 Stage 工作流日志。
 
 ## 更换维护者
 

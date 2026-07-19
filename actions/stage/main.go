@@ -43,8 +43,8 @@ Stage 流程：
 3. 读取 *s.txt 与既有 stage/*.json，并发索引各 owner/repo
 4. hash 未变则跳过下载；否则下载 package.zip → rules.Check → 上传 OSS（package.zip、README、preview、icon、清单 JSON）
 5. 按 updated 降序排序后写出 stage/*.json（键序经 marshalSortedIndentedJSON 稳定）
-6. 将本轮失败/成功同步到固定 Issue（#1923）：失败 upsert 一仓一条评论（正文未变则跳过 Edit），成功则删除；hash 跳过不改动评论
-   （本仓 Issue 评论用 GITHUB_TOKEN；跨仓 Release / repoStats 用 PAT）
+6. 将本轮失败/成功同步为按仓独立 Issue（标签 stage-fail）：失败 upsert（正文未变则跳过 Edit），成功则关闭；hash 跳过不改动
+   （本仓 Issue 用 GITHUB_TOKEN；跨仓 Release / repoStats 用 PAT）
 7. 运行中若遇 GitHub API 主限流 / 次级限流：保留旧数据、不写 stage-fail，写完当前类型后中止后续类型（退出码 0，便于提交已完成进度）
 8. 结束后根据实际 API 响应头 X-RateLimit-* 观测 PAT / GITHUB_TOKEN 消耗（对照经验值）
 
@@ -58,7 +58,7 @@ type Set map[string]struct{} // 字符串集合
 var (
 	BAZAAR_ROOT_PATH = "."                       // bazaar 仓库根目录（stage 工作区）
 	PAT              = os.Getenv("PAT")          // 个人访问令牌（跨仓 Release / repoStats）
-	GITHUB_TOKEN     = os.Getenv("GITHUB_TOKEN") // Actions 令牌（本仓 Issue 评论）
+	GITHUB_TOKEN     = os.Getenv("GITHUB_TOKEN") // Actions 令牌（本仓 Stage 失败 Issue）
 	STAGE_POOL_SIZE  = envIntDefault("STAGE_POOL_SIZE", 80)
 
 	REQUEST_TIMEOUT = 30 * time.Second // 请求超时时间
@@ -66,7 +66,7 @@ var (
 	logger           = gulu.Log.NewLogger(os.Stdout)
 	githubContext    context.Context
 	githubClient     *github.Client // PAT：跨仓 Release / repoStats
-	githubRepoClient *github.Client // GITHUB_TOKEN：本仓 Stage 失败汇总评论
+	githubRepoClient *github.Client // GITHUB_TOKEN：本仓 Stage 失败 Issue
 	patRateObs       *util.RateHeaderObserver
 	repoRateObs      *util.RateHeaderObserver
 )
@@ -95,7 +95,7 @@ func main() {
 	repoToken := GITHUB_TOKEN
 	if repoToken == "" {
 		repoToken = PAT
-		logger.Infof("GITHUB_TOKEN empty, fall back to PAT for stage-fail comments")
+		logger.Infof("GITHUB_TOKEN empty, fall back to PAT for stage-fail issues")
 	}
 	githubRepoClient, repoRateObs, err = util.NewGitHubClientWithRateObserver(repoToken, REQUEST_TIMEOUT)
 	if err != nil {
@@ -127,10 +127,10 @@ func main() {
 		}
 	}
 
-	// 失败汇总到固定 Issue；同步失败不阻断已写出的 stage JSON（仅记日志）。
-	// 限流导致的失败不会进入 reports，故不会误刷 stage-fail 评论。
+	// 失败同步为按仓独立 Issue；同步失败不阻断已写出的 stage JSON（仅记日志）。
+	// 限流导致的失败不会进入 reports，故不会误刷 stage-fail Issue。
 	if err := syncStageFailReports(githubContext, githubRepoClient, reports.snapshot()); err != nil {
-		logger.Errorf("sync stage-fail comments failed: %s", err)
+		logger.Errorf("sync stage-fail issues failed: %s", err)
 	}
 
 	logRateHeaderObservation("PAT", patRateObs)
@@ -275,7 +275,7 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 
 	markRateLimited := func(ownerRepo string, err error) {
 		if rateLimited.CompareAndSwap(false, true) {
-			logger.Errorf("GitHub API rate limited while staging [%s]: %s; aborting remaining work this run (not reporting as stage-fail)", ownerRepo, err)
+			logger.Errorf("GitHub API rate limited while staging [%s]: %s; aborting remaining work this run (not reporting as stage-fail issue)", ownerRepo, err)
 		}
 	}
 
