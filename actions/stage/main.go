@@ -156,8 +156,8 @@ func loadReposByPackageType() (map[rules.PackageType][]string, error) {
 
 // stageAPIRequestsPerRepo 为每个仓库 staging 时消耗的 GitHub REST API (core) 请求数经验值。
 // 近几轮以 hash skip 为主：GetLatestRelease + GetRef ≈ 2；附注 tag 多 1 次 GetTag，
-// 全量索引另加 DownloadReleaseAsset + repoStats。按 skip 主导工况取 2.1 并留少量余量。
-const stageAPIRequestsPerRepo = 2.1
+// 全量索引另加 DownloadReleaseAsset + repoStats。实测 skip 主导约 2.22，取 2.3 留少量余量。
+const stageAPIRequestsPerRepo = 2.3
 
 // checkRateLimitBeforeStage 统计本次待检查仓库数、请求 GitHub rate_limit（该请求不计入 core），若 core 剩余请求数不足则返回错误。
 // 参考 https://docs.github.com/zh/rest/rate-limit/rate-limit
