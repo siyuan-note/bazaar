@@ -22,25 +22,37 @@ jobs:
   build:
     if: ${{ github.repository_owner == 'siyuan-note' }}
     runs-on: ubuntu-latest
+    # 写 stage JSON / push；按仓 Stage 失败 Issue 用 GITHUB_TOKEN。跨仓 Release 仍用 PAT。
+    permissions:
+      contents: write
+      issues: write
     env:
       PAT: ${{ secrets.PAT }}
+      # 须显式传入；仅写 permissions 不会自动注入到进程环境，否则 Go 会回退 PAT
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       QINIU_BUCKET: ${{ secrets.QINIU_BUCKET }}
       QINIU_AK: ${{ secrets.QINIU_AK }}
       QINIU_SK: ${{ secrets.QINIU_SK }}
       RHYTHEM_TOKEN: ${{ secrets.RHYTHEM_TOKEN }}
+      # push：增量（仅 API 检查本次 *.txt 新增路径）；schedule / workflow_dispatch：全量
+      STAGE_MODE: ${{ github.event_name == 'push' && 'incremental' || 'full' }}
+      STAGE_BEFORE_SHA: ${{ github.event.before || '' }}
     steps:
       - name: Check out repo
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
+        with:
+          # 增量需 git show before:*.txt；单 commit push 时 before 一般为 HEAD~1
+          fetch-depth: 2
 
       - name: Setup Golang
-        uses: actions/setup-go@v6
+        uses: actions/setup-go@v7
         with:
           go-version-file: 'go.mod'
 
       - name: Go staging
         # env:
-        #   STAGE_POOL_SIZE: 80          # 总并发数，多数 skip 时加快检查
-        #   STAGE_HEAVY_CONCURRENCY: 8   # 同时下载+上传的仓库数，避免打满 GitHub/OSS
+        #   STAGE_POOL_SIZE: 80         # 总并发数，多数 skip 时加快检查
+        #   OSS_UPLOAD_CONCURRENCY: 16  # 七牛 OSS 上传并发数
         run: go run ./actions/stage
 
       - name: Commit and push
