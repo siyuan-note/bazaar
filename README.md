@@ -27,7 +27,7 @@ If you have developed a plugin, theme, icon, template or widget and want to list
 
    - One `owner/repo` per line, with no extra commas or empty lines.
    - Example: `siyuan-note/plugin-sample`.
-   - Add only one package per PR (across all types combined). Open separate PRs if you need to list multiple packages.
+   - Each PR may only be one of: add exactly 1 new package; change maintainer (add 1 new `owner/repo` and delete the old `owner/repo` with the same type and same GitHub repository name); or delist one or more packages only. Do not mix adding/changing with unrelated delistings in the same PR.
 
 3. **Open a PR**
 

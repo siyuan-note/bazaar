@@ -28,7 +28,7 @@ var (
 // conventionalPRTitle 生成约定 PR 标题。
 // 新增/换维护者：Add [type] owner/repo（插件省略类型；换维护者附 (maintainer change)）。
 // 纯下架：仅 1 个用 Delist [type] owner/repo；多个用 Delist N packages。
-// 调用方须已通过一次一包（addedOrChanged ≤ 1）。有 parseError，或新增同时带有纯下架时返回 ok=false。
+// 调用方须已通过 validatePRListChangeFlow。有 parseError，或新增同时带有纯下架时返回 ok=false。
 func conventionalPRTitle(plans []typeCheckPlan) (title string, ok bool) {
 	var added string
 	var addedType rules.PackageType

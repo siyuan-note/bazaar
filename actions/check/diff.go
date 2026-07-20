@@ -86,19 +86,79 @@ func computeRepoDiff(
 	}
 }
 
+// validatePRListChangeFlow 校验列表变更形态。
+// 仅允许：
+// 1. 纯新增：跨类型合计恰好新增 1 个，且无下架；
+// 2. 更换维护者：跨类型合计恰好新增 1 个，且仅删除与其同类型、同 GitHub 仓库名的旧 owner/repo（无额外下架）；
+// 3. 纯下架：无新增，删除一个或多个。
+// 违反时返回双语 FlowError；通过返回空串。parseError 的类型跳过统计（由 ParseError 另行展示）。
+func validatePRListChangeFlow(plans []typeCheckPlan) string {
+	totalNew := 0
+	var pureDeleted []string
+	for _, plan := range plans {
+		if plan.parseError != "" {
+			continue
+		}
+		totalNew += len(plan.diff.New)
+		for _, path := range plan.diff.Deleted {
+			if isPreviousRepo(plan.diff, path) {
+				continue
+			}
+			pureDeleted = append(pureDeleted, path)
+		}
+	}
+	if totalNew > 1 {
+		return formatOnePackageLimitError(totalNew, plans)
+	}
+	if totalNew == 1 && len(pureDeleted) > 0 {
+		return formatMixedAddDelistError(plans, pureDeleted)
+	}
+	return ""
+}
+
 // formatOnePackageLimitError 生成「一次只能添加/更改一个包」的双语说明（含涉及仓库列表）。
 // total 为添加或更换维护者的合计数量（须 > 1）。
 func formatOnePackageLimitError(total int, plans []typeCheckPlan) string {
 	var b strings.Builder
-	fmt.Fprintf(&b, "本 PR 添加或更换了 %d 个集市包，但一次只能添加或更换 1 个（下架不限数量）。请将每个包拆成独立的 Pull Request 后再提交。\n\n", total)
-	fmt.Fprintf(&b, "This PR adds or changes %d bazaar packages, but only 1 package may be added or have its maintainer changed per PR (delistings are unlimited). Please split each package into its own Pull Request.\n\n", total)
-
+	fmt.Fprintf(&b, "本 PR 添加或更换了 %d 个集市包，但每个 Pull Request 最多只能添加或更换 1 个包。请将每个包拆成独立的 Pull Request 后再提交。\n\n", total)
+	fmt.Fprintf(&b, "This PR adds or changes %d bazaar packages, but each Pull Request may add or change at most 1 package. Please split each package into its own Pull Request.\n\n", total)
+	b.WriteString(prFlowShapeRulesHint())
 	b.WriteString("涉及的仓库 / Involved repos:\n")
-	for _, plan := range plans {
-		if len(plan.diff.New) == 0 {
-			continue
-		}
-		fmt.Fprintf(&b, "- `%s`: %s\n", plan.packageType.ReposListFile(), strings.Join(plan.diff.New, ", "))
+	appendNewReposList(&b, plans)
+	return b.String()
+}
+
+// formatMixedAddDelistError 生成「新增/换维护者与无关下架混用」的双语说明。
+func formatMixedAddDelistError(plans []typeCheckPlan, pureDeleted []string) string {
+	var b strings.Builder
+	b.WriteString("本 PR 在添加或更换集市包的同时，还下架了其他包。添加/更换与无关下架不能放在同一个 Pull Request 中。\n\n")
+	b.WriteString("This PR both adds or changes a bazaar package and delists unrelated package(s). Adding/changing and unrelated delistings cannot be combined in the same Pull Request.\n\n")
+	b.WriteString(prFlowShapeRulesHint())
+	b.WriteString("涉及的新增或更换 / Involved add or change:\n")
+	appendNewReposList(&b, plans)
+	b.WriteString("涉及的无关下架 / Involved unrelated delistings:\n")
+	for _, path := range pureDeleted {
+		fmt.Fprintf(&b, "- `%s`\n", path)
 	}
 	return b.String()
+}
+
+func prFlowShapeRulesHint() string {
+	return "每个 Pull Request 仅允许以下之一：\n" +
+		"1. 仅添加 1 个新包；\n" +
+		"2. 更换维护者（添加 1 个新 `owner/repo`，并删除同类型、同 GitHub 仓库名的旧 `owner/repo`）；\n" +
+		"3. 仅下架一个或多个包。\n\n" +
+		"Each Pull Request may only be one of:\n" +
+		"1. Add exactly 1 new package;\n" +
+		"2. Change maintainer (add 1 new `owner/repo` and delete the old `owner/repo` with the same type and same GitHub repository name);\n" +
+		"3. Delist one or more packages only.\n\n"
+}
+
+func appendNewReposList(b *strings.Builder, plans []typeCheckPlan) {
+	for _, plan := range plans {
+		if plan.parseError != "" || len(plan.diff.New) == 0 {
+			continue
+		}
+		fmt.Fprintf(b, "- `%s`: %s\n", plan.packageType.ReposListFile(), strings.Join(plan.diff.New, ", "))
+	}
 }

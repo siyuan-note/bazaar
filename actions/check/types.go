@@ -31,7 +31,7 @@ type CheckResult struct {
 	// ParseError 包列表 TXT 读取或格式校验错误，非空时在 PR 评论中优先展示
 	ParseError string
 
-	// FlowError 流程层规则失败说明（如一次只能添加/更改一个包）；非空时在评论中展示，跳过包检查且不展示下架列表
+	// FlowError 流程层规则失败说明（如一次只能添加/更改一个包，或新增与无关下架混用）；非空时在评论中展示，跳过包检查且不展示下架列表
 	FlowError string
 
 	PluginsDeleted   []string

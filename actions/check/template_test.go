@@ -125,7 +125,7 @@ func TestCheckResultTemplate_FlowError(t *testing.T) {
 	if strings.Contains(out, "Check passed.") {
 		t.Fatalf("package checks should be skipped when FlowError is set\n%s", out)
 	}
-	// 一次一包失败时不展示下架列表（FlowError 文案里的「下架不限」除外）
+	// 流程失败时不展示下架列表
 	if strings.Contains(out, "### 下架") || strings.Contains(out, "x/old") {
 		t.Fatalf("deleted repos should be hidden when FlowError is set\n%s", out)
 	}

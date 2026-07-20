@@ -44,10 +44,10 @@ Diff 流程（以 plugins.txt 为例）：
 4. 比较 base 与 head：候选新增 = head 有 base 无，候选删除 = base 有 head 无
 5. 过滤候选新增：排除已在 bazaar head 中的仓库（可能是解决冲突时从 bazaar head 合并来的）
 6. 过滤候选删除：排除在 bazaar head 中已不存在的仓库（可能是其他 PR 删除的）
-7. 流程规则：添加或更换维护者合计只能为 1（下架不限）；违反则写 FlowError，跳过后续 Check（评论亦不展示下架列表）
-8. 一次一包通过后：自动改 PR 标题（Add/Delist [type] owner/repo，插件省略类型；换维护者附 (maintainer change)；多仓纯下架为 Delist N packages）
+7. 流程规则：仅允许纯新增 1 个 / 更换维护者（新增 1 + 删除同名同类型旧仓）/ 纯下架一个或多个；违反则写 FlowError，跳过后续 Check（评论亦不展示下架列表）
+8. 流程通过后：自动改 PR 标题（Add/Delist [type] owner/repo，插件省略类型；换维护者附 (maintainer change)；多仓纯下架为 Delist N packages）
 
-Check 流程（一次一包通过后，对 plan.diff.New 中的仓库）：
+Check 流程（流程通过后，对 plan.diff.New 中的仓库）：
 1. 从 bazaar head 的 stage/*.json 加载 OccupiedNames（跨类型；比较前统一转小写）
 2. 校验仓库公开；不公开（私有 / 不可访问）则记 Issue 并跳过后续检查
 3. 校验根目录 LICENSE / LICENSE.txt；缺失则记 Issue（不阻断后续）
@@ -184,26 +184,24 @@ func main() {
 		}
 		planWg.Wait()
 
-		addedOrChanged := 0
 		for _, plan := range plans {
 			if plan.parseError != "" {
 				parseErrorBuilder.WriteString(plan.parseError)
 				continue
 			}
-			// 将本 PR 的删除列表写入检查结果（一次一包失败时模板不展示）
+			// 将本 PR 的删除列表写入检查结果（流程失败时模板不展示）
 			if !checkResult.setDeleted(plan.packageType, plan.diff.Deleted) {
 				panic("main: invalid package type")
 			}
-			addedOrChanged += len(plan.diff.New)
 		}
 		checkResult.ParseError = parseErrorBuilder.String()
 
-		// 流程规则：添加或更换维护者合计只能为 1（下架不限）
-		if addedOrChanged > 1 {
-			checkResult.FlowError = formatOnePackageLimitError(addedOrChanged, plans)
-			logger.Errorf("one-package limit violated: %d packages added or changed", addedOrChanged)
+		// 流程规则：仅允许纯新增 1 个 / 更换维护者 / 纯下架
+		if flowErr := validatePRListChangeFlow(plans); flowErr != "" {
+			checkResult.FlowError = flowErr
+			logger.Errorf("PR list-change flow rule violated")
 		} else {
-			// 一次一包通过后：自动改 PR 标题（含纯下架；多仓下架为 Delist N packages）
+			// 流程通过后：自动改 PR 标题（含纯下架；多仓下架为 Delist N packages）
 			if title, ok := conventionalPRTitle(plans); ok {
 				maybeUpdatePRTitle(title)
 			}
@@ -213,7 +211,7 @@ func main() {
 				logger.Fatalf("load occupied names failed: %s", err)
 			}
 
-			// 一次一包通过后最多只有一个类型含新增，顺序检查即可
+			// 流程通过后最多只有一个类型含新增，顺序检查即可
 			for _, plan := range plans {
 				if plan.parseError != "" || len(plan.diff.New) == 0 {
 					continue
@@ -345,7 +343,7 @@ func formatParseErrorLabel(label string, err error) string {
 }
 
 // runTypePackageChecks 对本类型新增/换维护者仓库执行 Latest Release → package.zip → rules.Check。
-// 一次一包规则下通常只有一个仓库；更换维护者时从 bazaar head stage 取旧 name/version（视同更新）。
+// 流程规则下通常只有一个仓库；更换维护者时从 bazaar head stage 取旧 name/version（视同更新）。
 func runTypePackageChecks(
 	plan typeCheckPlan,
 	checkResult *CheckResult,

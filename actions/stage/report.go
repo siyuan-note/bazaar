@@ -301,8 +301,8 @@ func stageFailCloseComment(reason stageFailCloseReason) string {
 	var zh, en string
 	switch reason {
 	case stageFailClosePass:
-		zh = "本轮 Stage 已成功重新索引该包，问题已恢复，因此关闭本 Issue。"
-		en = "This package was successfully re-indexed in this Stage run, so this issue is being closed as recovered."
+		zh = "本轮 Stage 已成功重新索引该包，问题已修复，因此关闭本 Issue。"
+		en = "This package was successfully re-indexed in this Stage run, so this issue is being closed as fixed."
 	case stageFailCloseSkip:
 		zh = "本轮 Stage 已能正常获取该包的 Latest Release，且入库内容未变化（hash 未变），视为已恢复，因此关闭本 Issue。"
 		en = "This Stage run could fetch the package's Latest Release successfully, and the staged content is unchanged (hash unchanged), so this issue is being closed as recovered."
