@@ -94,6 +94,8 @@ jobs:
   check:
     needs: prepare
     if: needs.prepare.outputs.any == 'true'
+    # 覆盖默认矩阵名（会把 sha 拼进去）；显示 PR 号与 fork owner/repo
+    name: "#${{ matrix.number }} ${{ matrix.head_repo }}"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
