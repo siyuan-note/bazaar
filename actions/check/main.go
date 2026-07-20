@@ -64,7 +64,7 @@ Check 流程（一次一包通过后，对 plan.diff.New 中的仓库）：
 */
 
 var (
-	BAZAAR_HEAD_PATH    = os.Getenv("BAZAAR_HEAD_PATH")    // bazaar 主分支最新代码目录（用于过滤与 OccupiedNames）
+	BAZAAR_HEAD_PATH    = os.Getenv("BAZAAR_HEAD_PATH")    // bazaar 主分支最新代码目录（用于过滤、OccupiedNames、theme.js 白名单）
 	PR_HEAD_PATH        = os.Getenv("PR_HEAD_PATH")        // 本 PR 当前提交的代码目录（PR head）
 	PR_BASE_PATH        = os.Getenv("PR_BASE_PATH")        // 本 PR 的 merge base 代码目录（做 diff 的旧侧，与 GitHub "Files changed" 一致）
 	PAT                 = os.Getenv("PAT")                 // 个人访问令牌（Release API）
@@ -318,10 +318,11 @@ func prepareTypeCheckPlan(packageType rules.PackageType) typeCheckPlan {
 	}
 
 	if packageType == rules.TypeTheme {
-		ap := filepath.Join(PR_HEAD_PATH, util.ThemeJsAllowlistRelPath)
+		// 白名单为黑名单路径（社区 PR 不可改），始终读 bazaar head
+		ap := filepath.Join(BAZAAR_HEAD_PATH, util.ThemeJsAllowlistRelPath)
 		paths, errAllow := util.ParseReposFromTxt(ap)
 		if errAllow != nil {
-			plan.parseError = formatParseErrorLabel(fmt.Sprintf("%s PR head", util.ThemeJsAllowlistRelPath), errAllow)
+			plan.parseError = formatParseErrorLabel(fmt.Sprintf("%s bazaar head", util.ThemeJsAllowlistRelPath), errAllow)
 			logger.Errorf("load theme.js allowlist [%s] failed: %s, skip this type", ap, errAllow)
 			return plan
 		}
