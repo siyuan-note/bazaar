@@ -46,7 +46,8 @@ Stage 流程：
 5. hash 未变则跳过下载；否则下载 package.zip → rules.Check → 上传 OSS（package.zip、README、preview、icon、清单 JSON）
 6. 按 updated 降序排序后写出 stage/*.json（键序经 marshalSortedIndentedJSON 稳定；新上架用索引时间，更新用 Release 发布时间）
 7. 将本轮失败/成功同步为按仓独立 Issue（标签 stage-fail）：失败 upsert（正文未变则跳过 Edit）；
-   成功入库或 hash 跳过（已能正常取到 Release）则先评论说明再关闭
+   成功入库或 hash 跳过（已能正常取到 Release）则先评论说明再关闭；
+   已不在任一 *s.txt 的仓（下架 / 换维护者旧仓）按 delisted 关闭（对照完整列表，非本轮 reports）
    （本仓 Issue 用 GITHUB_TOKEN；跨仓 Release / repoStats 用 PAT）
 8. 运行中若遇 GitHub API 主限流 / 次级限流：保留旧数据、不写 stage-fail，写完当前类型后中止后续类型（退出码 0，便于提交已完成进度）
 9. 结束后根据实际 API 响应头 X-RateLimit-* 观测 PAT / GITHUB_TOKEN 消耗（对照经验值）
@@ -144,7 +145,8 @@ func main() {
 
 	// 失败同步为按仓独立 Issue；同步失败不阻断已写出的 stage JSON（仅记日志）。
 	// 限流导致的失败不会进入 reports，故不会误刷 stage-fail Issue。
-	if err := syncStageFailReports(githubContext, githubRepoClient, reports.snapshot()); err != nil {
+	// listed 用完整 *s.txt，避免增量跳过类型 / 限流中止时把未检查仓误判为下架。
+	if err := syncStageFailReports(githubContext, githubRepoClient, reports.snapshot(), ownerRepoListedSet(reposByType)); err != nil {
 		logger.Errorf("sync stage-fail issues failed: %s", err)
 	}
 
