@@ -44,7 +44,7 @@ Stage 流程：
 3. 按类型依次执行 performStage；每类开始前重新加载 OccupiedNames，以便上一类本轮新写入的 name 参与后续类型的唯一性检查
 4. 读取 *s.txt 与既有 stage/*.json；增量时未列入 check 的仓沿用旧条目（不打 API、不写 report），下架随当前列表重建自然消失
 5. hash 未变则跳过下载；否则下载 package.zip → rules.Check → 上传 OSS（package.zip、README、preview、icon、清单 JSON）
-6. 按 updated 降序排序后写出 stage/*.json（键序经 marshalSortedIndentedJSON 稳定）
+6. 按 updated 降序排序后写出 stage/*.json（键序经 marshalSortedIndentedJSON 稳定；新上架用索引时间，更新用 Release 发布时间）
 7. 将本轮失败/成功同步为按仓独立 Issue（标签 stage-fail）：失败 upsert（正文未变则跳过 Edit）；
    成功入库或 hash 跳过（已能正常取到 Release）则先评论说明再关闭
    （本仓 Issue 用 GITHUB_TOKEN；跨仓 Release / repoStats 用 PAT）
@@ -337,7 +337,11 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 				return nil
 			}
 			hash := releaseInfo.CommitSHA
+			// 新上架（无旧清单可继承）用 Stage 索引时间；已有包更新仍用 Release 发布时间。
 			updated := releaseInfo.Published
+			if checkOldName == "" {
+				updated = time.Now().UTC().Format(time.RFC3339)
+			}
 			packageZipAssetID := releaseInfo.PackageZipAssetID
 
 			// Latest Release 的 hash 与已 stage 的 hash 一致则跳过，不下载、不更新，沿用旧条目
