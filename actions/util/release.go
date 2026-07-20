@@ -36,11 +36,13 @@ var (
 
 // LatestRelease 仓库 Latest Release 的纯数据摘要。
 type LatestRelease struct {
-	Tag               string
-	URL               string
-	Published         string // RFC3339
-	PackageZipAssetID int64
-	CommitSHA         string
+	ID                  int64 // GitHub Release ID（指纹用）
+	Tag                 string
+	URL                 string
+	Published           string // RFC3339
+	PackageZipAssetID   int64
+	PackageZipUpdatedAt string // package.zip 的 updated_at，RFC3339；指纹用
+	CommitSHA           string
 }
 
 // FetchLatestRelease 获取 Latest Release，并校验 `package.zip` 与 tag → commit。
@@ -73,13 +75,14 @@ func FetchLatestRelease(ctx context.Context, client *github.Client, owner, repo 
 		)
 	}
 
-	info.Tag = release.GetTagName()
-	info.URL = release.GetHTMLURL()
-	info.Published = release.GetPublishedAt().Format(time.RFC3339)
+	fillLatestReleaseSummary(&info, release)
 
 	for _, asset := range release.Assets {
 		if asset.GetName() == "package.zip" {
 			info.PackageZipAssetID = asset.GetID()
+			if t := asset.GetUpdatedAt(); !t.Time.IsZero() {
+				info.PackageZipUpdatedAt = t.Format(time.RFC3339)
+			}
 			break
 		}
 	}
@@ -103,6 +106,42 @@ func FetchLatestRelease(ctx context.Context, client *github.Client, owner, repo 
 		)
 	}
 	return info, nil
+}
+
+// ProbeLatestRelease 仅拉取 Latest Release 与 package.zip 指纹字段，不解析 tag→commit。
+// 供定时复检在 prepare 阶段做廉价变更探测；无 package.zip 时仍返回已取到的 Release 字段（Zip ID 为 0）。
+func ProbeLatestRelease(ctx context.Context, client *github.Client, owner, repo string) (LatestRelease, error) {
+	var info LatestRelease
+	if client == nil {
+		return info, fmt.Errorf("%w: github client is nil", ErrNoLatestRelease)
+	}
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	release, err := getLatestReleaseRetry404(ctx, client, owner, repo)
+	if err != nil {
+		return info, fmt.Errorf("%w: %w", ErrNoLatestRelease, err)
+	}
+	fillLatestReleaseSummary(&info, release)
+	for _, asset := range release.Assets {
+		if asset.GetName() == "package.zip" {
+			info.PackageZipAssetID = asset.GetID()
+			if t := asset.GetUpdatedAt(); !t.Time.IsZero() {
+				info.PackageZipUpdatedAt = t.Format(time.RFC3339)
+			}
+			break
+		}
+	}
+	return info, nil
+}
+
+func fillLatestReleaseSummary(info *LatestRelease, release *github.RepositoryRelease) {
+	info.ID = release.GetID()
+	info.Tag = release.GetTagName()
+	info.URL = release.GetHTMLURL()
+	if t := release.GetPublishedAt(); !t.Time.IsZero() {
+		info.Published = t.Format(time.RFC3339)
+	}
 }
 
 // getLatestReleaseRetry404 调用 GetLatestRelease；遇 404 时短间隔重试，缓解瞬时 Not Found。

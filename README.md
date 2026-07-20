@@ -27,7 +27,7 @@ If you have developed a plugin, theme, icon, template or widget and want to list
 
    - One `owner/repo` per line, with no extra commas or empty lines.
    - Example: `siyuan-note/plugin-sample`.
-   - Add only one package per PR (across all types combined). Open separate PRs if you need to list multiple packages.
+   - Each PR may only be one of: add exactly 1 new package; change maintainer (add 1 new `owner/repo` and delete the old `owner/repo` with the same type and same GitHub repository name); or delist one or more packages only. Do not mix adding/changing with unrelated delistings in the same PR.
 
 3. **Open a PR**
 
@@ -37,7 +37,7 @@ If you have developed a plugin, theme, icon, template or widget and want to list
 
    The PR Check workflow runs automatically to verify that the new package meets bazaar rules (e.g. release, required files, metadata fields). Maintainers will also review. Please make changes as requested.
 
-   If the PR Check workflow fails, update your changes using the check output. Do not open a new pull request. After you fix the package repo (e.g. update the Latest Release / `package.zip`), a scheduled job re-checks open PRs with the `ci-failed` label about every two hours and updates the check comment. Maintainers can also add the `Check` label or run the workflow manually for an immediate re-check.
+   If the PR Check workflow fails, update your changes using the check output. Do not open a new pull request. After you fix the package repo (e.g. update the Latest Release / `package.zip`), a scheduled job runs about every 20 minutes and re-checks open PRs with the `ci-failed` label by activity (Release changes are prioritized; idle PRs are checked less often) and updates the check comment. Maintainers can also add the `Check` label or run the workflow manually for an immediate re-check.
 
 5. **Successfully listed**
 

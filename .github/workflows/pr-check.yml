@@ -4,7 +4,8 @@ name: PR Check
 #
 # 触发：
 # - pull_request_target：PR 打开 / 同步 / 重开 / 打 Check 标签时检查
-# - schedule / workflow_dispatch：直接复检开放中的 ci-failed PR（作者常只改包仓库 Release）
+# - schedule / workflow_dispatch：复检开放中的 ci-failed PR（作者常只改包仓库 Release）
+#   schedule 按评论 meta 指纹变更 / 退避到期筛选；workflow_dispatch 强制全选（仍受 SELECT_LIMIT）
 #
 # 标签：
 # - Check：维护者打标以立即重跑本检查（打标后会自动去掉）
@@ -28,12 +29,18 @@ on:
       - config/themes-theme-js-allowlist.txt
       - stage/**
   schedule:
-    # 每 2 小时复检一次 ci-failed
-    - cron: '17 */2 * * *'
+    # 每 20 分钟：select 按指纹 / 退避筛选后再全检
+    - cron: '7,27,47 * * * *'
   workflow_dispatch:
 
+# pull_request_target：同一 PR 重复触发时取消整次旧 run（含 prepare），减轻双开竞态
+# schedule / workflow_dispatch：用 run_id 互不取消；同 PR 仍靠下方 check job 的 concurrency
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: true
+
 jobs:
-  # 产出待检 PR 矩阵：事件 PR 一条，或定时列出全部开放 ci-failed
+  # 产出待检 PR 矩阵：事件 PR 一条，或定时/手动筛选开放 ci-failed
   prepare:
     if: |
       github.repository_owner == 'siyuan-note' &&
@@ -47,49 +54,55 @@ jobs:
         github.event_name == 'workflow_dispatch'
       )
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     permissions:
       pull-requests: read
+      contents: read
     outputs:
-      matrix: ${{ steps.build.outputs.matrix }}
-      any: ${{ steps.build.outputs.any }}
+      matrix: ${{ steps.build.outputs.matrix || steps.build-select.outputs.matrix }}
+      any: ${{ steps.build.outputs.any || steps.build-select.outputs.any }}
     steps:
-      - name: Build PR matrix
+      - name: Build PR matrix (event)
         id: build
+        if: github.event_name == 'pull_request_target'
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          EVENT_NAME: ${{ github.event_name }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
           PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
           PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
           PR_HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
         run: |
           set -euo pipefail
-          if [ "$EVENT_NAME" = "pull_request_target" ]; then
-            include=$(jq -nc \
-              --argjson number "$PR_NUMBER" \
-              --arg head_sha "$PR_HEAD_SHA" \
-              --arg base_sha "$PR_BASE_SHA" \
-              --arg head_repo "$PR_HEAD_REPO" \
-              '[{number: $number, head_sha: $head_sha, base_sha: $base_sha, head_repo: $head_repo}]')
-          else
-            include=$(gh pr list \
-              --repo "${{ github.repository }}" \
-              --state open \
-              --label ci-failed \
-              --limit 40 \
-              --json number,isDraft,labels,headRefOid,baseRefOid,headRepository,headRepositoryOwner \
-              --jq '[.[] | select(.isDraft | not) | select([.labels[].name] | index("ci-skip") | not) | {
-                number,
-                head_sha: .headRefOid,
-                base_sha: .baseRefOid,
-                head_repo: "\(.headRepositoryOwner.login)/\(.headRepository.name)"
-              }]')
-          fi
+          include=$(jq -nc \
+            --argjson number "$PR_NUMBER" \
+            --arg head_sha "$PR_HEAD_SHA" \
+            --arg base_sha "$PR_BASE_SHA" \
+            --arg head_repo "$PR_HEAD_REPO" \
+            '[{number: $number, head_sha: $head_sha, base_sha: $base_sha, head_repo: $head_repo}]')
           matrix=$(jq -nc --argjson include "$include" '{include: $include}')
           any=$(jq -nc --argjson include "$include" '$include | length > 0')
           echo "PRs to check (any=$any): $include"
           echo "matrix=$matrix" >> "$GITHUB_OUTPUT"
           echo "any=$any" >> "$GITHUB_OUTPUT"
+
+      - name: Check out bazaar (select)
+        if: github.event_name != 'pull_request_target'
+        uses: actions/checkout@v7
+
+      - name: Setup Golang (select)
+        if: github.event_name != 'pull_request_target'
+        uses: actions/setup-go@v7
+        with:
+          go-version-file: 'go.mod'
+
+      - name: Build PR matrix (schedule / dispatch)
+        id: build-select
+        if: github.event_name != 'pull_request_target'
+        env:
+          PAT: ${{ secrets.PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # workflow_dispatch：强制纳入全部开放 ci-failed（仍受 SELECT_LIMIT）
+          SELECT_FORCE_ALL: ${{ github.event_name == 'workflow_dispatch' }}
+        run: go run ./actions/check -select
 
   check:
     needs: prepare
@@ -97,10 +110,13 @@ jobs:
     # 覆盖默认矩阵名（会把 sha 拼进去）；显示 PR 号与 fork owner/repo
     name: "#${{ matrix.number }} ${{ matrix.head_repo }}"
     runs-on: ubuntu-latest
+    # 正常单 PR 检查约 1 分钟；用于尽快杀掉卡在 Starting job 的幽灵占用，避免 concurrency 互等
+    timeout-minutes: 5
     strategy:
       fail-fast: false
       matrix: ${{ fromJSON(needs.prepare.outputs.matrix) }}
     # 同一 PR 只保留最新一次检查，避免 synchronize / 定时复检重叠写评论
+    # （与 workflow 级 concurrency 互补：覆盖 schedule 与 PR 事件撞同一 PR 的情况）
     concurrency:
       group: pr-check-${{ matrix.number }}
       cancel-in-progress: true
@@ -177,6 +193,7 @@ jobs:
 
       # REF https://github.com/marketplace/actions/comment-pull-request
       # 无实际变更且 PR 已合并/关闭时 Go 会设 skip_side_effects，避免竞态误评
+      # result_hash 变化时 Go 输出 comment_mode=recreate，重建评论以便 @ 作者再次收到通知；未变则 upsert
       - name: Comment PR with check-result
         if: steps.go-check.outputs.skip_side_effects != 'true'
         uses: thollander/actions-comment-pull-request@v3
@@ -184,6 +201,7 @@ jobs:
           file-path: ${{ env.CHECK_RESULT_OUTPUT }}
           comment-tag: check-result
           pr-number: ${{ matrix.number }}
+          mode: ${{ steps.go-check.outputs.comment_mode || 'upsert' }}
 
       # REF https://docs.github.com/zh/rest/issues/labels?apiVersion=2022-11-28#remove-all-labels-from-an-issue
       # REF https://docs.github.com/zh/actions/tutorials/authenticate-with-github_token#example-2-calling-the-rest-api
