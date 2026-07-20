@@ -11,9 +11,22 @@
 package main
 
 import (
-	"fmt"
+	"bytes"
+	_ "embed"
 	"strings"
+	"text/template"
 )
+
+//go:embed flow-error.md.tpl
+var flowErrorTemplateText string
+
+var flowErrorTemplate = template.Must(template.New("flow-error.md.tpl").Parse(flowErrorTemplateText))
+
+// flowRepoGroup 流程错误模板中按列表文件分组的仓库。
+type flowRepoGroup struct {
+	ListFile string
+	Repos     string
+}
 
 // repoDiff 单类型列表相对 PR base / bazaar head 过滤后的增删结果。
 type repoDiff struct {
@@ -111,7 +124,7 @@ func validatePRListChangeFlow(plans []typeCheckPlan) string {
 		return formatOnePackageLimitError(totalNew, plans)
 	}
 	if totalNew == 1 && len(pureDeleted) > 0 {
-		return formatMixedAddDelistError(plans, pureDeleted)
+		return formatMixedAddDelistError(plans)
 	}
 	return ""
 }
@@ -119,46 +132,68 @@ func validatePRListChangeFlow(plans []typeCheckPlan) string {
 // formatOnePackageLimitError 生成「一次只能添加/更改一个包」的双语说明（含涉及仓库列表）。
 // total 为添加或更换维护者的合计数量（须 > 1）。
 func formatOnePackageLimitError(total int, plans []typeCheckPlan) string {
-	var b strings.Builder
-	fmt.Fprintf(&b, "本 PR 添加或更换了 %d 个集市包，但每个 Pull Request 最多只能添加或更换 1 个包。请将每个包拆成独立的 Pull Request 后再提交。\n\n", total)
-	fmt.Fprintf(&b, "This PR adds or changes %d bazaar packages, but each Pull Request may add or change at most 1 package. Please split each package into its own Pull Request.\n\n", total)
-	b.WriteString(prFlowShapeRulesHint())
-	b.WriteString("涉及的仓库 / Involved repos:\n")
-	appendNewReposList(&b, plans)
-	return b.String()
+	return executeFlowError("onePackageLimit", struct {
+		Total   int
+		NewRepos []flowRepoGroup
+	}{
+		Total:   total,
+		NewRepos: collectNewRepoGroups(plans),
+	})
 }
 
 // formatMixedAddDelistError 生成「新增/换维护者与无关下架混用」的双语说明。
-func formatMixedAddDelistError(plans []typeCheckPlan, pureDeleted []string) string {
-	var b strings.Builder
-	b.WriteString("本 PR 在添加或更换集市包的同时，还下架了其他包。添加/更换与无关下架不能放在同一个 Pull Request 中。\n\n")
-	b.WriteString("This PR both adds or changes a bazaar package and delists unrelated package(s). Adding/changing and unrelated delistings cannot be combined in the same Pull Request.\n\n")
-	b.WriteString(prFlowShapeRulesHint())
-	b.WriteString("涉及的新增或更换 / Involved add or change:\n")
-	appendNewReposList(&b, plans)
-	b.WriteString("涉及的无关下架 / Involved unrelated delistings:\n")
-	for _, path := range pureDeleted {
-		fmt.Fprintf(&b, "- `%s`\n", path)
-	}
-	return b.String()
+func formatMixedAddDelistError(plans []typeCheckPlan) string {
+	return executeFlowError("mixedAddDelist", struct {
+		NewRepos    []flowRepoGroup
+		PureDeleted []flowRepoGroup
+	}{
+		NewRepos:    collectNewRepoGroups(plans),
+		PureDeleted: collectPureDeletedGroups(plans),
+	})
 }
 
-func prFlowShapeRulesHint() string {
-	return "每个 Pull Request 仅允许以下之一：\n" +
-		"1. 仅添加 1 个新包；\n" +
-		"2. 更换维护者（添加 1 个新 `owner/repo`，并删除同类型、同 GitHub 仓库名的旧 `owner/repo`）；\n" +
-		"3. 仅下架一个或多个包。\n\n" +
-		"Each Pull Request may only be one of:\n" +
-		"1. Add exactly 1 new package;\n" +
-		"2. Change maintainer (add 1 new `owner/repo` and delete the old `owner/repo` with the same type and same GitHub repository name);\n" +
-		"3. Delist one or more packages only.\n\n"
-}
-
-func appendNewReposList(b *strings.Builder, plans []typeCheckPlan) {
+func collectNewRepoGroups(plans []typeCheckPlan) []flowRepoGroup {
+	groups := make([]flowRepoGroup, 0)
 	for _, plan := range plans {
 		if plan.parseError != "" || len(plan.diff.New) == 0 {
 			continue
 		}
-		fmt.Fprintf(b, "- `%s`: %s\n", plan.packageType.ReposListFile(), strings.Join(plan.diff.New, ", "))
+		groups = append(groups, flowRepoGroup{
+			ListFile: plan.packageType.ReposListFile(),
+			Repos:     strings.Join(plan.diff.New, ", "),
+		})
 	}
+	return groups
+}
+
+func collectPureDeletedGroups(plans []typeCheckPlan) []flowRepoGroup {
+	groups := make([]flowRepoGroup, 0)
+	for _, plan := range plans {
+		if plan.parseError != "" {
+			continue
+		}
+		var paths []string
+		for _, path := range plan.diff.Deleted {
+			if isPreviousRepo(plan.diff, path) {
+				continue
+			}
+			paths = append(paths, path)
+		}
+		if len(paths) == 0 {
+			continue
+		}
+		groups = append(groups, flowRepoGroup{
+			ListFile: plan.packageType.ReposListFile(),
+			Repos:     strings.Join(paths, ", "),
+		})
+	}
+	return groups
+}
+
+func executeFlowError(name string, data any) string {
+	var b bytes.Buffer
+	if err := flowErrorTemplate.ExecuteTemplate(&b, name, data); err != nil {
+		panic("flow error template " + name + ": " + err.Error())
+	}
+	return b.String()
 }
