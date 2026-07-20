@@ -157,6 +157,53 @@ func TestStageFailBodyMarkerRoundTrip(t *testing.T) {
 	}
 }
 
+func TestStageFailCloseComment(t *testing.T) {
+	oldServer, oldRepo, oldRun := GITHUB_SERVER_URL, GITHUB_REPOSITORY, GITHUB_RUN_ID
+	GITHUB_SERVER_URL = "https://github.com"
+	GITHUB_REPOSITORY = "siyuan-note/bazaar"
+	GITHUB_RUN_ID = "123"
+	t.Cleanup(func() {
+		GITHUB_SERVER_URL, GITHUB_REPOSITORY, GITHUB_RUN_ID = oldServer, oldRepo, oldRun
+	})
+
+	tests := []struct {
+		reason stageFailCloseReason
+		want   []string
+	}{
+		{
+			reason: stageFailClosePass,
+			want: []string{
+				"已成功重新索引该包",
+				"successfully re-indexed",
+				"工作流日志 / Workflow log: https://github.com/siyuan-note/bazaar/actions/runs/123",
+			},
+		},
+		{
+			reason: stageFailCloseSkip,
+			want: []string{
+				"hash 未变",
+				"hash unchanged",
+				"工作流日志 / Workflow log: https://github.com/siyuan-note/bazaar/actions/runs/123",
+			},
+		},
+		{
+			reason: stageFailCloseDuplicate,
+			want: []string{
+				"重复的 stage-fail Issue",
+				"duplicate stage-fail issue",
+			},
+		},
+	}
+	for _, tt := range tests {
+		body := stageFailCloseComment(tt.reason)
+		for _, want := range tt.want {
+			if !strings.Contains(body, want) {
+				t.Fatalf("reason %d missing %q\nbody:\n%s", tt.reason, want, body)
+			}
+		}
+	}
+}
+
 func TestStageFailIssueContentEqual(t *testing.T) {
 	base := "<!-- bazaar-stage-fail {\"repo\":\"a/b\"} -->\n### [a/b](https://github.com/a/b) (`plugin`)\n\n[01]\n\n缺 icon\n\nmissing icon\n\n---"
 	withRunA := base + "\n\n工作流日志 / Workflow log: https://github.com/siyuan-note/bazaar/actions/runs/1"

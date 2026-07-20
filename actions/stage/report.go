@@ -53,9 +53,18 @@ var (
 type stageReportKind int
 
 const (
-	stageReportSkip stageReportKind = iota // hash 未变等，不改动 Issue
+	stageReportSkip stageReportKind = iota // hash 未变；若有 open stage-fail 则关闭
 	stageReportPass                        // 本轮成功入库，关闭对应 Issue
 	stageReportFail                        // 本轮失败，upsert Issue
+)
+
+// stageFailCloseReason 关闭 stage-fail Issue 的原因，用于评论说明。
+type stageFailCloseReason int
+
+const (
+	stageFailClosePass stageFailCloseReason = iota // 本轮成功重新入库
+	stageFailCloseSkip                             // 本轮校验通过且 hash 未变
+	stageFailCloseDuplicate                        // 同仓重复 Issue
 )
 
 // stageReport 单仓本轮 Stage 结果，供失败同步到按仓独立 Issue。
@@ -285,13 +294,47 @@ func listOpenStageFailIssues(ctx context.Context, client *github.Client, owner, 
 	return out, nil
 }
 
-func closeStageFailIssue(ctx context.Context, client *github.Client, owner, repo string, number int) error {
-	state := "closed"
-	_, _, err := client.Issues.Edit(ctx, owner, repo, number, &github.IssueRequest{State: &state})
-	return err
+// stageFailCloseComment 生成关闭 Issue 前的说明评论（中英双语）。
+func stageFailCloseComment(reason stageFailCloseReason) string {
+	var zh, en string
+	switch reason {
+	case stageFailClosePass:
+		zh = "本轮 Stage 已成功重新索引该包，问题已恢复，因此关闭本 Issue。"
+		en = "This package was successfully re-indexed in this Stage run, so this issue is being closed as recovered."
+	case stageFailCloseSkip:
+		zh = "本轮 Stage 已能正常获取该包的 Latest Release，且入库内容未变化（hash 未变），视为已恢复，因此关闭本 Issue。"
+		en = "This Stage run could fetch the package's Latest Release successfully, and the staged content is unchanged (hash unchanged), so this issue is being closed as recovered."
+	case stageFailCloseDuplicate:
+		zh = "关闭重复的 stage-fail Issue；请以同仓库的主 Issue 为准。"
+		en = "Closing a duplicate stage-fail issue; please follow the primary issue for this repository."
+	default:
+		zh = "本轮 Stage 已确认该包无需继续跟踪，因此关闭本 Issue。"
+		en = "This Stage run confirmed the package no longer needs tracking, so this issue is being closed."
+	}
+	body := zh + "\n\n" + en
+	if runURL := workflowRunURL(); runURL != "" {
+		body += "\n\n工作流日志 / Workflow log: " + runURL
+	}
+	return body
 }
 
-// syncStageFailReports 将本轮 pass/fail 同步为按仓独立 Issue：失败 upsert（正文未变则跳过 Edit），成功则关闭；skip 不改动。
+// closeStageFailIssue 先评论关闭原因，再将 Issue 设为 closed。
+func closeStageFailIssue(ctx context.Context, client *github.Client, owner, repo string, number int, reason stageFailCloseReason) error {
+	comment := stageFailCloseComment(reason)
+	_, _, err := client.Issues.CreateComment(ctx, owner, repo, number, &github.IssueComment{Body: &comment})
+	if err != nil {
+		return fmt.Errorf("comment before close: %w", err)
+	}
+	state := "closed"
+	_, _, err = client.Issues.Edit(ctx, owner, repo, number, &github.IssueRequest{State: &state})
+	if err != nil {
+		return fmt.Errorf("edit state closed: %w", err)
+	}
+	return nil
+}
+
+// syncStageFailReports 将本轮 pass/fail/skip 同步为按仓独立 Issue：失败 upsert（正文未变则跳过 Edit）；
+// 成功入库或 hash 跳过（校验已通过）则先评论说明再关闭。
 func syncStageFailReports(ctx context.Context, client *github.Client, reports []stageReport) error {
 	owner, repo, ok := bazaarOwnerRepo()
 	if !ok {
@@ -310,24 +353,33 @@ func syncStageFailReports(ctx context.Context, client *github.Client, reports []
 		issuesByRepo[issue.OwnerRepo] = append(issuesByRepo[issue.OwnerRepo], issue)
 	}
 
+	closeRepoIssues := func(ownerRepo string, reason stageFailCloseReason) error {
+		for _, issue := range issuesByRepo[ownerRepo] {
+			if err := closeStageFailIssue(ctx, client, owner, repo, issue.Number, reason); err != nil {
+				if util.IsGitHubRateLimit(err) {
+					return fmt.Errorf("close issue #%d for [%s]: GitHub API rate limited, stop syncing remaining issues: %w", issue.Number, ownerRepo, err)
+				}
+				return fmt.Errorf("close issue #%d for [%s]: %w", issue.Number, ownerRepo, err)
+			}
+			logger.Infof("closed stage-fail issue #%d for [%s]", issue.Number, ownerRepo)
+		}
+		delete(issuesByRepo, ownerRepo)
+		return nil
+	}
+
 	var passCount, failCount, skipped, unchanged int
 	for _, r := range reports {
 		switch r.Kind {
 		case stageReportSkip:
 			skipped++
-			continue
+			if err := closeRepoIssues(r.OwnerRepo, stageFailCloseSkip); err != nil {
+				return err
+			}
 		case stageReportPass:
 			passCount++
-			for _, issue := range issuesByRepo[r.OwnerRepo] {
-				if err := closeStageFailIssue(ctx, client, owner, repo, issue.Number); err != nil {
-					if util.IsGitHubRateLimit(err) {
-						return fmt.Errorf("close issue #%d for [%s]: GitHub API rate limited, stop syncing remaining issues: %w", issue.Number, r.OwnerRepo, err)
-					}
-					return fmt.Errorf("close issue #%d for [%s]: %w", issue.Number, r.OwnerRepo, err)
-				}
-				logger.Infof("closed stage-fail issue #%d for [%s]", issue.Number, r.OwnerRepo)
+			if err := closeRepoIssues(r.OwnerRepo, stageFailClosePass); err != nil {
+				return err
 			}
-			delete(issuesByRepo, r.OwnerRepo)
 		case stageReportFail:
 			failCount++
 			if len(r.Issues) == 0 {
@@ -377,7 +429,7 @@ func syncStageFailReports(ctx context.Context, client *github.Client, reports []
 				logger.Infof("updated stage-fail issue #%d for [%s]", primary.Number, r.OwnerRepo)
 			}
 			for _, issue := range issues[1:] {
-				if err := closeStageFailIssue(ctx, client, owner, repo, issue.Number); err != nil {
+				if err := closeStageFailIssue(ctx, client, owner, repo, issue.Number, stageFailCloseDuplicate); err != nil {
 					if util.IsGitHubRateLimit(err) {
 						return fmt.Errorf("close duplicate issue #%d for [%s]: GitHub API rate limited, stop syncing remaining issues: %w", issue.Number, r.OwnerRepo, err)
 					}
