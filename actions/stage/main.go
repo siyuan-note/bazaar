@@ -38,16 +38,18 @@ import (
 
 /*
 Stage 流程：
-1. 检查 PAT 的 GitHub API rate limit 是否足够覆盖本轮待索引仓库数（门槛仍用 GET /rate_limit）
-2. 按类型依次执行 performStage；每类开始前重新加载 OccupiedNames，以便上一类本轮新写入的 name 参与后续类型的唯一性检查
-3. 读取 *s.txt 与既有 stage/*.json，并发索引各 owner/repo
-4. hash 未变则跳过下载；否则下载 package.zip → rules.Check → 上传 OSS（package.zip、README、preview、icon、清单 JSON）
-5. 按 updated 降序排序后写出 stage/*.json（键序经 marshalSortedIndentedJSON 稳定）
-6. 将本轮失败/成功同步为按仓独立 Issue（标签 stage-fail）：失败 upsert（正文未变则跳过 Edit）；
+1. 按 STAGE_MODE 决定范围：push → 增量（仅检查本次 *.txt 相对 STAGE_BEFORE_SHA 新增的 owner/repo，且只重建有变更的类型）；
+   schedule / workflow_dispatch → 全量。增量 before 无效或 diff 失败则回退全量。
+2. 检查 PAT 的 GitHub API rate limit 是否足够覆盖本轮待 API 检查的仓库数（门槛仍用 GET /rate_limit）
+3. 按类型依次执行 performStage；每类开始前重新加载 OccupiedNames，以便上一类本轮新写入的 name 参与后续类型的唯一性检查
+4. 读取 *s.txt 与既有 stage/*.json；增量时未列入 check 的仓沿用旧条目（不打 API、不写 report），下架随当前列表重建自然消失
+5. hash 未变则跳过下载；否则下载 package.zip → rules.Check → 上传 OSS（package.zip、README、preview、icon、清单 JSON）
+6. 按 updated 降序排序后写出 stage/*.json（键序经 marshalSortedIndentedJSON 稳定；新上架用索引时间，更新用 Release 发布时间）
+7. 将本轮失败/成功同步为按仓独立 Issue（标签 stage-fail）：失败 upsert（正文未变则跳过 Edit）；
    成功入库或 hash 跳过（已能正常取到 Release）则先评论说明再关闭
    （本仓 Issue 用 GITHUB_TOKEN；跨仓 Release / repoStats 用 PAT）
-7. 运行中若遇 GitHub API 主限流 / 次级限流：保留旧数据、不写 stage-fail，写完当前类型后中止后续类型（退出码 0，便于提交已完成进度）
-8. 结束后根据实际 API 响应头 X-RateLimit-* 观测 PAT / GITHUB_TOKEN 消耗（对照经验值）
+8. 运行中若遇 GitHub API 主限流 / 次级限流：保留旧数据、不写 stage-fail，写完当前类型后中止后续类型（退出码 0，便于提交已完成进度）
+9. 结束后根据实际 API 响应头 X-RateLimit-* 观测 PAT / GITHUB_TOKEN 消耗（对照经验值）
 
 换维护者（列表中 alice/foo → bob/foo，stage 仍有 alice/foo）：
 - 同路径旧条目用于 hash 跳过 / 失败保留；换路径时不沿用旧 URL 条目
@@ -108,7 +110,14 @@ func main() {
 		logger.Fatalf("parse repos list failed: %s", err)
 	}
 
-	if err := checkRateLimitBeforeStage(reposByType); err != nil {
+	jobs, mode := resolveStageJobs(githubContext, BAZAAR_ROOT_PATH, reposByType)
+	if mode == stageModeIncremental && len(jobs) == 0 {
+		logger.Infof("incremental stage: no package list changes; nothing to do")
+		logger.Infof("Stage completed")
+		return
+	}
+
+	if err := checkRateLimitBeforeStage(countCheckRepos(jobs)); err != nil {
 		logger.Fatalf("GitHub API rate limit check failed: %s", err)
 	}
 
@@ -117,11 +126,16 @@ func main() {
 	reports := &stageReportCollector{}
 	var abortedByRateLimit bool
 	for _, packageType := range rules.AllPackageTypes() {
+		job, ok := jobs[packageType]
+		if !ok {
+			logger.Infof("skip stage [%s], list unchanged in this push", packageType.Plural())
+			continue
+		}
 		occupiedNames, err := util.LoadOccupiedNames(BAZAAR_ROOT_PATH)
 		if err != nil {
 			logger.Fatalf("load occupied names failed: %s", err)
 		}
-		if performStage(packageType, occupiedNames, reposByType[packageType], reports) {
+		if performStage(packageType, occupiedNames, job.repos, job.checkRepos, reports) {
 			abortedByRateLimit = true
 			logger.Errorf("abort remaining package types due to GitHub API rate limit")
 			break
@@ -160,15 +174,12 @@ func loadReposByPackageType() (map[rules.PackageType][]string, error) {
 // 全量索引另加 DownloadReleaseAsset + repoStats。实测 skip 主导约 2.22，取 2.3 留少量余量。
 const stageAPIRequestsPerRepo = 2.3
 
-// checkRateLimitBeforeStage 统计本次待检查仓库数、请求 GitHub rate_limit（该请求不计入 core），若 core 剩余请求数不足则返回错误。
+// checkRateLimitBeforeStage 按本轮待 API 检查的仓库数估算请求量，请求 GitHub rate_limit（该请求不计入 core），若 core 剩余不足则返回错误。
 // 参考 https://docs.github.com/zh/rest/rate-limit/rate-limit
-func checkRateLimitBeforeStage(reposByType map[rules.PackageType][]string) error {
-	var repoCount int
-	for _, repos := range reposByType {
-		repoCount += len(repos)
-	}
+func checkRateLimitBeforeStage(repoCount int) error {
 	required := int(math.Ceil(float64(repoCount) * stageAPIRequestsPerRepo))
 	if required == 0 {
+		logger.Infof("GitHub API rate limit check skipped: 0 repos to check")
 		return nil
 	}
 	ctx, cancel := context.WithTimeout(githubContext, 10*time.Second)
@@ -232,8 +243,13 @@ func loadOldStageData(packageType rules.PackageType) (map[string]*util.StageRepo
 }
 
 // performStage 执行单一类型的 staging。若遇 GitHub API 限流返回 true（调用方应中止后续类型）。
-func performStage(packageType rules.PackageType, occupiedNames map[string]struct{}, reposSlice []string, reports *stageReportCollector) (abortedByRateLimit bool) {
-	logger.Infof("start stage [%s]", packageType.Plural())
+// checkRepos == nil 表示对 reposSlice 全量打 API；非 nil 时仅检查集合内路径，其余沿用同路径旧条目且不写 report。
+func performStage(packageType rules.PackageType, occupiedNames map[string]struct{}, reposSlice []string, checkRepos Set, reports *stageReportCollector) (abortedByRateLimit bool) {
+	if checkRepos == nil {
+		logger.Infof("start stage [%s] (check all %d)", packageType.Plural(), len(reposSlice))
+	} else {
+		logger.Infof("start stage [%s] (check %d / listed %d)", packageType.Plural(), len(checkRepos), len(reposSlice))
+	}
 
 	oldStageData, err := loadOldStageData(packageType)
 	if err != nil {
@@ -285,6 +301,18 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 			repoURL := util.GitHubRepoURL(ownerRepo)
 			exactOld, checkOldName, checkOldVersion := resolveStageCheckLegacy(ownerRepo, oldStageData, oldStageByRepoName, listedRepos)
 
+			if !shouldCheck(ownerRepo, checkRepos) {
+				if exactOld != nil {
+					stageReposMu.Lock()
+					stageRepos = append(stageRepos, exactOld)
+					stageReposMu.Unlock()
+					logger.Infof("keep staged [%s] without recheck (incremental)", ownerRepo)
+				} else {
+					logger.Infof("skip unstaged [%s] without recheck (incremental); leave for full stage", ownerRepo)
+				}
+				return nil
+			}
+
 			if rateLimited.Load() {
 				appendKeptOld(repoURL, "skipped after rate limit", exactOld)
 				return nil
@@ -309,7 +337,11 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 				return nil
 			}
 			hash := releaseInfo.CommitSHA
+			// 新上架（无旧清单可继承）用 Stage 索引时间；已有包更新仍用 Release 发布时间。
 			updated := releaseInfo.Published
+			if checkOldName == "" {
+				updated = time.Now().UTC().Format(time.RFC3339)
+			}
 			packageZipAssetID := releaseInfo.PackageZipAssetID
 
 			// Latest Release 的 hash 与已 stage 的 hash 一致则跳过，不下载、不更新，沿用旧条目

@@ -1,6 +1,53 @@
 {
   "repos": [
     {
+      "installSize": 192183,
+      "openIssues": 0,
+      "package": {
+        "author": "airium",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Display exact hierarchical heading numbers floating in the editor gutter",
+          "zh-CN": "在编辑器侧栏浮动显示精确的层级标题编号"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Floating Heading Number",
+          "zh-CN": "浮动标题编号"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "keywords": [
+          "floating",
+          "heading",
+          "numbering",
+          "outline",
+          "浮动",
+          "标题",
+          "编号",
+          "大纲"
+        ],
+        "minAppVersion": "3.7.1",
+        "name": "siyuan-floating-heading-number",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/airium/siyuan-floating-heading-number",
+        "version": "0.1.0"
+      },
+      "packageZipAssetId": 479167863,
+      "size": 90216,
+      "stars": 0,
+      "updated": "2026-07-20T11:02:30Z",
+      "url": "airium/siyuan-floating-heading-number@a4e8703835c3f993c7a3e6d5e3a3819da306062c"
+    },
+    {
       "installSize": 11902136,
       "openIssues": 14,
       "package": {
@@ -276,6 +323,68 @@
       "stars": 9,
       "updated": "2026-07-19T10:10:42Z",
       "url": "HaoCeans/siyuan-toolbar-customizer@78f83fcfc88f0cf9d48785feddd33c1322a4abf1"
+    },
+    {
+      "installSize": 344411,
+      "openIssues": 0,
+      "package": {
+        "author": "游夏",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "A Finder-style column browser for navigating and organizing SiYuan notebooks and documents, with a document preview at the right.",
+          "zh_CN": "思源笔记的分栏文件浏览器：以列视图方式浏览、整理笔记本与文档，右端附当前文档的预览面板。"
+        },
+        "displayName": {
+          "default": "Finder",
+          "zh_CN": "访达"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop"
+        ],
+        "funding": {
+          "custom": [
+            "https://fastly.jsdelivr.net/gh/fujingzhai/siyuan-finder-plugin@main/assets/sponsor-wechat.png",
+            "https://fastly.jsdelivr.net/gh/fujingzhai/siyuan-finder-plugin@main/assets/sponsor-alipay.jpg"
+          ]
+        },
+        "keywords": [
+          "finder",
+          "访达",
+          "分栏",
+          "columns",
+          "文件浏览",
+          "导航",
+          "navigation",
+          "文档树",
+          "排序",
+          "sort",
+          "预览",
+          "preview",
+          "搜索",
+          "search",
+          "标签",
+          "tags"
+        ],
+        "minAppVersion": "3.6.0",
+        "name": "siyuan-finder-plugin",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/fujingzhai/siyuan-finder-plugin",
+        "version": "0.9.8"
+      },
+      "packageZipAssetId": 483189868,
+      "size": 213533,
+      "stars": 0,
+      "updated": "2026-07-19T09:03:08Z",
+      "url": "fujingzhai/siyuan-finder-plugin@f0697edcf389a3d48932ff6957f77bb3dbf6c8d8"
     },
     {
       "installSize": 2655853,
@@ -832,6 +941,59 @@
       "stars": 4,
       "updated": "2026-07-17T11:34:22Z",
       "url": "HaoCeans/siyuan-points-reward@eb78e447f08a0169ff18bd9fd3aa9284b26a5da1"
+    },
+    {
+      "installSize": 195733,
+      "openIssues": 0,
+      "package": {
+        "author": "游夏",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "A record panel organized around time and categories, with links to native SiYuan notes.",
+          "zh_CN": "以时间和类目为经纬的记录面板，可关联思源原生笔记。"
+        },
+        "displayName": {
+          "default": "Chronicle",
+          "zh_CN": "岁时记"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop"
+        ],
+        "funding": {
+          "custom": [
+            "https://fastly.jsdelivr.net/gh/fujingzhai/siyuan-chronicle-plugin@main/assets/sponsor-wechat.png",
+            "https://fastly.jsdelivr.net/gh/fujingzhai/siyuan-chronicle-plugin@main/assets/sponsor-alipay.jpg"
+          ]
+        },
+        "keywords": [
+          "chronicle",
+          "岁时记",
+          "timeline",
+          "时间轴",
+          "记录",
+          "年表"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-chronicle-plugin",
+        "readme": {
+          "default": "README.md",
+          "en_US": "README_en_US.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/fujingzhai/siyuan-chronicle-plugin",
+        "version": "1.2.0"
+      },
+      "packageZipAssetId": 483208490,
+      "size": 128577,
+      "stars": 2,
+      "updated": "2026-07-17T02:28:32Z",
+      "url": "fujingzhai/siyuan-chronicle-plugin@bcb4d37e880e3ca7ee19d034e828086faf8fc7d4"
     },
     {
       "installSize": 1752517,

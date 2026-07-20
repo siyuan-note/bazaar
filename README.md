@@ -37,7 +37,7 @@ If you have developed a plugin, theme, icon, template or widget and want to list
 
    The PR Check workflow runs automatically to verify that the new package meets bazaar rules (e.g. release, required files, metadata fields). Maintainers will also review. Please make changes as requested.
 
-   If the PR Check workflow fails, update your changes using the check output. Do not open a new pull request. Maintainers will manually re-run the PR Check workflow.
+   If the PR Check workflow fails, update your changes using the check output. Do not open a new pull request. After you fix the package repo (e.g. update the Latest Release / `package.zip`), a scheduled job re-checks open PRs with the `ci-failed` label about every two hours and updates the check comment. Maintainers can also add the `Check` label or run the workflow manually for an immediate re-check.
 
 5. **Successfully listed**
 
