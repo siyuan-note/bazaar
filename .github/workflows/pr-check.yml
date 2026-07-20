@@ -1,6 +1,10 @@
 name: PR Check
 
 # REF https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request_target
+#
+# 标签：
+# - Check：维护者打标以重跑本检查（打标后会自动去掉）
+# - ci-skip：维护者打标则跳过整个 job（与 Check 同时存在时以 ci-skip 为准）
 on:
   pull_request_target:
     types:
@@ -16,23 +20,42 @@ on:
       - icons.txt
       - templates.txt
       - widgets.txt
+      # 黑名单路径：用于触发检查（命中后由 Go 以 FlowError 失败，不跑包检查）
+      - config/themes-theme-js-allowlist.txt
+      - stage/**
+
+# 同一 PR 只保留最新一次检查，避免 synchronize / 打标重跑重叠写评论
+concurrency:
+  group: pr-check-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
 
 jobs:
   check:
     if: |
       github.repository_owner == 'siyuan-note' &&
+      !contains(toJSON(github.event.pull_request.labels.*.name), '"ci-skip"') &&
       (github.event.action != 'labeled' || github.event.label.name == 'Check')
     runs-on: ubuntu-latest
+    # 改 PR 标题 / 同步标签 / 请求审查 / 发评论 / 去掉 Check 标签；Release 与签出 fork 仍用 PAT
+    permissions:
+      contents: read
+      issues: write
+      pull-requests: write
     env:
       PAT: ${{ secrets.PAT }}
+      # 须显式传入；仅写 permissions 不会自动注入到进程环境，否则 Go 会回退 PAT
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # 检查通过后请求审查；名单在仓库 Actions Variables（勿写死在代码里）
+      BAZAAR_REVIEWERS: ${{ vars.BAZAAR_REVIEWERS }}
       BAZAAR_HEAD_PATH: .
       PR_HEAD_PATH: ./pr-head
       PR_BASE_PATH: ./pr-base
-      CHECK_RESULT_OUTPUT: ./templates/check-result.md
+      CHECK_RESULT_OUTPUT: ./check-result.md
+      PR_NUMBER: ${{ github.event.pull_request.number }}
     steps:
       # 签出 bazaar main 分支最新提交，用于过滤与 name 唯一性检查；fetch-depth: 0 以便后续计算 merge base
       - name: Check out bazaar head
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           ref: main
           fetch-depth: 0
@@ -55,25 +78,28 @@ jobs:
           echo "sha=$merge_base_sha" >> $GITHUB_OUTPUT
 
       # 签出 PR 的 head 提交（PR 分支当前提交）
+      # checkout@v7 默认拒绝在 pull_request_target 中签出 fork PR 代码；此处仅将列表文件当数据读取，不执行 PR 代码
       # REF https://github.com/marketplace/actions/checkout#checkout-multiple-repos-nested
       # REF https://github.com/marketplace/actions/checkout#checkout-pull-request-head-commit-instead-of-merge-commit
+      # REF https://gh.io/securely-using-pull_request_target
       - name: Check out PR head
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           path: ${{ env.PR_HEAD_PATH }}
           ref: ${{ github.event.pull_request.head.sha }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           token: ${{ env.PAT }}
+          allow-unsafe-pr-checkout: true
 
       # 签出 PR 的 merge base 提交（与 GitHub "Files changed" 的基准一致，确保检查的 diff 即本 PR 实际改动）
       - name: Check out PR base (merge base)
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           path: ${{ env.PR_BASE_PATH }}
           ref: ${{ steps.merge-base.outputs.sha }}
 
       - name: Setup Golang
-        uses: actions/setup-go@v6
+        uses: actions/setup-go@v7
         with:
           go-version-file: 'go.mod'
 
