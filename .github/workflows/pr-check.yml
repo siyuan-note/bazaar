@@ -183,6 +183,7 @@ jobs:
 
       # REF https://github.com/marketplace/actions/comment-pull-request
       # 无实际变更且 PR 已合并/关闭时 Go 会设 skip_side_effects，避免竞态误评
+      # result_hash 变化时 Go 输出 comment_mode=recreate，重建评论以便 @ 作者再次收到通知；未变则 upsert
       - name: Comment PR with check-result
         if: steps.go-check.outputs.skip_side_effects != 'true'
         uses: thollander/actions-comment-pull-request@v3
@@ -190,6 +191,7 @@ jobs:
           file-path: ${{ env.CHECK_RESULT_OUTPUT }}
           comment-tag: check-result
           pr-number: ${{ matrix.number }}
+          mode: ${{ steps.go-check.outputs.comment_mode || 'upsert' }}
 
       # REF https://docs.github.com/zh/rest/issues/labels?apiVersion=2022-11-28#remove-all-labels-from-an-issue
       # REF https://docs.github.com/zh/actions/tutorials/authenticate-with-github_token#example-2-calling-the-rest-api

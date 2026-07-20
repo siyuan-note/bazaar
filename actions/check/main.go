@@ -259,6 +259,7 @@ func main() {
 }
 
 // attachCheckMeta 读取上次评论 meta，生成本轮调度元数据并填入 MetaJSON。
+// 结果 hash 变化（或无上次 meta）时输出 comment_mode=recreate，以便重建评论并再次 @ 通知作者；未变则 upsert。
 func attachCheckMeta(checkResult *CheckResult) {
 	var prev *CheckMeta
 	if owner, repo, prNumber, ok := prIdentity(); ok && githubRepoClient != nil {
@@ -268,11 +269,17 @@ func attachCheckMeta(checkResult *CheckResult) {
 	metaJSON, err := marshalCheckMetaJSON(meta)
 	if err != nil {
 		logger.Errorf("marshal check meta failed: %s", err)
+		appendGitHubOutput("comment_mode", "upsert")
 		return
 	}
 	checkResult.MetaJSON = metaJSON
-	logger.Infof("check meta: hash=%s streak=%d next_due=%s fp_repo=%v",
-		meta.ResultHash, meta.UnchangedStreak, meta.NextDueAt, meta.FP != nil)
+	mode := "upsert"
+	if prev == nil || prev.ResultHash == "" || prev.ResultHash != meta.ResultHash {
+		mode = "recreate"
+	}
+	appendGitHubOutput("comment_mode", mode)
+	logger.Infof("check meta: hash=%s streak=%d next_due=%s fp_repo=%v comment_mode=%s",
+		meta.ResultHash, meta.UnchangedStreak, meta.NextDueAt, meta.FP != nil, mode)
 }
 
 // appendGitHubOutput 向 GITHUB_OUTPUT 追加 name=value（非 Actions 环境则忽略）。
