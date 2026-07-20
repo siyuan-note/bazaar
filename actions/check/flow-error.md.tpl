@@ -27,7 +27,7 @@ This PR both adds or changes a bazaar package and delists unrelated package(s). 
 {{template "prFlowShapeRules" . -}}
 涉及的新增或更换 / Involved add or change:
 {{range .NewRepos}}- `{{.ListFile}}`: {{.Repos}}
-{{end -}}
+{{end}}
 涉及的无关下架 / Involved unrelated delistings:
 {{range .PureDeleted}}- `{{.ListFile}}`: {{.Repos}}
 {{end}}{{end}}
