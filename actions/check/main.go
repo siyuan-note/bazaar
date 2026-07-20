@@ -57,9 +57,10 @@ Check 流程（一次一包通过后，对 plan.diff.New 中的仓库）：
 7. 通过后将 name 写入 OccupiedNames（同 PR 内唯一性）
 
 收尾（无论是否跑过包检查）：
-1. 用模板写出检查结果文件（含下架列表、检查 Issues；换维护者时附流程说明链接）
-2. 同步标签：类型标签按涉及的 *.txt 对账；CI 状态打 ci-failed 或 ci-passed（互斥，同一次 Replace）
-3. 工作流用 thollander/actions-comment-pull-request 将结果文件发到 PR
+1. 无实际变更且 PR 已合并/关闭：跳过结果评论与标签同步（解冲突触发检查后立刻合并的竞态，避免误打 ci-failed）
+2. 用模板写出检查结果文件（含下架列表、检查 Issues；换维护者时附流程说明链接）
+3. 同步标签：类型标签按涉及的 *.txt 对账；CI 状态打 ci-failed 或 ci-passed（互斥，同一次 Replace）
+4. 工作流用 thollander/actions-comment-pull-request 将结果文件发到 PR
 */
 
 var (
@@ -225,6 +226,14 @@ func main() {
 		logger.Infof("no whitelisted list file changes; skip package checks")
 	}
 
+	// 无实际变更且 PR 已合并/关闭：多为解冲突后立刻合并，检查相对最新 main 滤空；跳过评论与标签，避免误打 ci-failed
+	if isNoActualChange(checkResult) && prIsMergedOrClosed() {
+		logger.Infof("no actual list change and PR already merged/closed; skip result comment and label sync")
+		appendGitHubOutput("skip_side_effects", "true")
+		logger.Infof("PR Check completed (skipped side effects)")
+		return
+	}
+
 	// 将检查结果写入文件
 	if err := checkResultTemplate.Execute(checkResultOutputFile, checkResult); err != nil {
 		logger.Fatalf("write check result failed: %s", err)
@@ -237,6 +246,23 @@ func main() {
 	maybeRequestReviewers(checkResult)
 
 	logger.Infof("PR Check completed")
+}
+
+// appendGitHubOutput 向 GITHUB_OUTPUT 追加 name=value（非 Actions 环境则忽略）。
+func appendGitHubOutput(name, value string) {
+	path := os.Getenv("GITHUB_OUTPUT")
+	if path == "" {
+		return
+	}
+	f, err := os.OpenFile(path, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	if err != nil {
+		logger.Errorf("open GITHUB_OUTPUT failed: %s", err)
+		return
+	}
+	defer f.Close()
+	if _, err := fmt.Fprintf(f, "%s=%s\n", name, value); err != nil {
+		logger.Errorf("write GITHUB_OUTPUT failed: %s", err)
+	}
 }
 
 // parseReposFromRootTxt 从集市包列表 TXT（每行一个 owner/repo）解析出路径列表、路径集合和 name->owner 映射

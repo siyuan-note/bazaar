@@ -106,6 +106,21 @@ func prIdentity() (owner, repo string, prNumber int, ok bool) {
 	return owner, repo, n, true
 }
 
+// prIsMergedOrClosed 查询 PR 是否已合并或关闭。
+// 无法解析身份或 API 失败时返回 false（不跳过副作用，避免误吞 open PR 的真·无变更）。
+func prIsMergedOrClosed() bool {
+	owner, repo, prNumber, ok := prIdentity()
+	if !ok {
+		return false
+	}
+	pr, _, err := githubRepoClient.PullRequests.Get(githubContext, owner, repo, prNumber)
+	if err != nil {
+		logger.Errorf("get PR #%d state failed: %s", prNumber, err)
+		return false
+	}
+	return pr.GetMerged() || pr.GetState() == "closed"
+}
+
 // maybeUpdatePRTitle 将 PR 标题改为约定格式；缺环境变量或已是目标标题时跳过，失败只记日志不中断检查。
 func maybeUpdatePRTitle(title string) {
 	if title == "" {
