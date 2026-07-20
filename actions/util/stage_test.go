@@ -77,12 +77,18 @@ func TestStageFileForPublicIndex_stripsInternalFields(t *testing.T) {
 				Package: rules.Package{
 					Name:    "demo",
 					Version: "1.0.0",
+					DisplayName: rules.LocaleStrings{
+						"default": "Demo",
+						"zh-CN":   "Demo",
+						"en":      "Demo EN",
+					},
 				},
 			},
 		},
 	}
 
-	data, err := json.Marshal(stageFile.ForPublicIndex())
+	public := stageFile.ForPublicIndex()
+	data, err := json.Marshal(public)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -92,5 +98,14 @@ func TestStageFileForPublicIndex_stripsInternalFields(t *testing.T) {
 	}
 	if !strings.Contains(got, `"url":"owner/repo@abc123"`) {
 		t.Fatalf("public index missing expected fields: %s", got)
+	}
+	if _, ok := public.Repos[0].Package.DisplayName["zh-CN"]; ok {
+		t.Fatalf("public index must strip locale identical to default: %s", got)
+	}
+	if _, ok := stageFile.Repos[0].Package.DisplayName["zh-CN"]; !ok {
+		t.Fatalf("ForPublicIndex must not mutate source stage entry locales")
+	}
+	if public.Repos[0].Package.DisplayName["en"] != "Demo EN" {
+		t.Fatalf("public index should keep distinct locales: %s", got)
 	}
 }

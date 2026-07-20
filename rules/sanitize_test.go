@@ -62,3 +62,75 @@ func TestClearEmptyFundingOmitsEmptyFundingJSON(t *testing.T) {
 		t.Fatalf("unexpected json: %s", data)
 	}
 }
+
+func TestClearRedundantLocales(t *testing.T) {
+	t.Run("nil package", func(t *testing.T) {
+		ClearRedundantLocales(nil)
+	})
+
+	t.Run("removes locales identical to default", func(t *testing.T) {
+		pkg := &Package{
+			DisplayName: LocaleStrings{
+				"default": "Demo",
+				"zh-CN":   "Demo",
+				"en":      "Demo EN",
+			},
+			Description: LocaleStrings{
+				"default": "desc",
+				"zh-CN":   "desc",
+			},
+			Readme: LocaleStrings{
+				"default": "README.md",
+				"zh-CN":   "README.md",
+				"en":      "README_en_US.md",
+			},
+		}
+		ClearRedundantLocales(pkg)
+		if _, ok := pkg.DisplayName["zh-CN"]; ok {
+			t.Fatalf("expected zh-CN displayName removed, got %#v", pkg.DisplayName)
+		}
+		if pkg.DisplayName["en"] != "Demo EN" {
+			t.Fatalf("expected distinct en displayName kept, got %#v", pkg.DisplayName)
+		}
+		if _, ok := pkg.Description["zh-CN"]; ok {
+			t.Fatalf("expected zh-CN description removed, got %#v", pkg.Description)
+		}
+		if _, ok := pkg.Readme["zh-CN"]; ok {
+			t.Fatalf("expected zh-CN readme removed, got %#v", pkg.Readme)
+		}
+		if pkg.Readme["en"] != "README_en_US.md" {
+			t.Fatalf("expected distinct en readme kept, got %#v", pkg.Readme)
+		}
+	})
+
+	t.Run("keeps all when no default", func(t *testing.T) {
+		pkg := &Package{
+			DisplayName: LocaleStrings{"zh-CN": "演示"},
+		}
+		ClearRedundantLocales(pkg)
+		if pkg.DisplayName["zh-CN"] != "演示" {
+			t.Fatalf("expected locale kept without default, got %#v", pkg.DisplayName)
+		}
+	})
+}
+
+func TestPackageForPublicIndex(t *testing.T) {
+	src := Package{
+		Name: "demo",
+		DisplayName: LocaleStrings{
+			"default": "Demo",
+			"zh-CN":   "Demo",
+			"en":      "Demo EN",
+		},
+	}
+	out := PackageForPublicIndex(src)
+	if _, ok := out.DisplayName["zh-CN"]; ok {
+		t.Fatalf("expected zh-CN removed in public copy, got %#v", out.DisplayName)
+	}
+	if _, ok := src.DisplayName["zh-CN"]; !ok {
+		t.Fatalf("expected source displayName unchanged, got %#v", src.DisplayName)
+	}
+	if out.DisplayName["en"] != "Demo EN" {
+		t.Fatalf("expected distinct en kept, got %#v", out.DisplayName)
+	}
+}

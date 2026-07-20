@@ -14,6 +14,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"html"
+	"maps"
 	"os"
 	"path/filepath"
 	"strings"
@@ -177,6 +178,51 @@ func ClearEmptyFunding(pkg *Package) {
 	f := pkg.Funding
 	if f.OpenCollective == "" && f.Patreon == "" && f.GitHub == "" && len(f.Custom) == 0 {
 		pkg.Funding = nil
+	}
+}
+
+// PackageForPublicIndex 返回供发布索引使用的 Package 副本（locale map 已拷贝并剔除冗余语言键）。
+func PackageForPublicIndex(pkg Package) Package {
+	out := pkg
+	out.DisplayName = cloneLocaleStrings(pkg.DisplayName)
+	out.Description = cloneLocaleStrings(pkg.Description)
+	out.Readme = cloneLocaleStrings(pkg.Readme)
+	ClearRedundantLocales(&out)
+	return out
+}
+
+func cloneLocaleStrings(m LocaleStrings) LocaleStrings {
+	if m == nil {
+		return nil
+	}
+	out := make(LocaleStrings, len(m))
+	maps.Copy(out, m)
+	return out
+}
+
+// ClearRedundantLocales 删除与 default 值完全相同的语言键。
+// 客户端会回退到 default，冗余键只会增大索引体积；写入 stage / 发布索引前调用。
+func ClearRedundantLocales(pkg *Package) {
+	if pkg == nil {
+		return
+	}
+	clearRedundantLocaleStrings(pkg.DisplayName)
+	clearRedundantLocaleStrings(pkg.Description)
+	clearRedundantLocaleStrings(pkg.Readme)
+}
+
+func clearRedundantLocaleStrings(m LocaleStrings) {
+	if len(m) == 0 {
+		return
+	}
+	def, ok := m["default"]
+	if !ok {
+		return
+	}
+	for k, v := range m {
+		if k != "default" && v == def {
+			delete(m, k)
+		}
 	}
 }
 

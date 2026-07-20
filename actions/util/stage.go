@@ -52,7 +52,8 @@ type StageIndexRepo struct {
 	Package     rules.Package `json:"package"`
 }
 
-// ForPublicIndex 转为供客户端使用的集市索引，去掉 stage 流程内部字段。
+// ForPublicIndex 转为供客户端使用的集市索引，去掉 stage 流程内部字段，
+// 并剔除与 default 值相同的冗余多语言键（对 locale map 做拷贝，不修改原 stage 条目）。
 func (f StageFile) ForPublicIndex() StageIndexFile {
 	out := StageIndexFile{Repos: make([]StageIndexRepo, len(f.Repos))}
 	for i, repo := range f.Repos {
@@ -63,7 +64,7 @@ func (f StageFile) ForPublicIndex() StageIndexFile {
 			OpenIssues:  repo.OpenIssues,
 			Size:        repo.Size,
 			InstallSize: repo.InstallSize,
-			Package:     repo.Package,
+			Package:     rules.PackageForPublicIndex(repo.Package),
 		}
 	}
 	return out
