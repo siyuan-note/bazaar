@@ -49,10 +49,12 @@ Diff 流程（以 plugins.txt 为例）：
 
 Check 流程（一次一包通过后，对 plan.diff.New 中的仓库）：
 1. 从 bazaar head 的 stage/*.json 加载 OccupiedNames（跨类型；比较前统一转小写）
-2. 获取仓库 Latest Release 与 package.zip
-3. 下载并解压 package.zip
-4. 调用 rules.Check（OccupiedNames / AllowThemeJS；纯新仓 OldName/OldVersion 为空；换维护者从旧 stage 取 OldName+OldVersion，视同更新须升版）
-5. 通过后将 name 写入 OccupiedNames（同 PR 内唯一性）
+2. 校验仓库公开；不公开（私有 / 不可访问）则记 Issue 并跳过后续检查
+3. 校验根目录 LICENSE / LICENSE.txt；缺失则记 Issue（不阻断后续）
+4. 获取仓库 Latest Release 与 package.zip
+5. 下载并解压 package.zip
+6. 调用 rules.Check（OccupiedNames / AllowThemeJS；纯新仓 OldName/OldVersion 为空；换维护者从旧 stage 取 OldName+OldVersion，视同更新须升版）
+7. 通过后将 name 写入 OccupiedNames（同 PR 内唯一性）
 
 收尾（无论是否跑过包检查）：
 1. 用模板写出检查结果文件（含下架列表、检查 Issues；换维护者时附流程说明链接）
@@ -375,7 +377,7 @@ func resolveMaintainerChangeLegacy(packageType rules.PackageType, newOwnerRepo, 
 	return oldStage.Package.Name, oldStage.Package.Version, nil
 }
 
-// checkNewRepo 检查 PR 新增的集市包仓库：Latest Release / package.zip → 下载解压 → rules.Check
+// checkNewRepo 检查 PR 新增的集市包仓库：公开性 / LICENSE → Latest Release / package.zip → 下载解压 → rules.Check
 // oldName/oldVersion 在换维护者时来自旧 stage（视同更新）；legacyIssues 为解析旧条目时的前置错误。
 func checkNewRepo(
 	ownerRepo string,
@@ -401,16 +403,27 @@ func checkNewRepo(
 		return out
 	}
 
+	// 仓库须公开；否则跳过后续检查（无法可靠读取 Release / 源码）
+	if err := util.CheckRepoPublic(githubContext, githubClient, repoOwner, repoName); err != nil {
+		logger.Errorf("repo [%s/%s] public check failed: %s", repoOwner, repoName, err)
+		out.Issues = append(out.Issues, rules.IssueFromErr(err))
+		logger.Infof("finish repo check [%s] (not public)", ownerRepo)
+		return out
+	}
+
+	// LICENSE / LICENSE.txt：缺失只记 Issue，继续跑 Release / Pkg Check
+	if err := util.CheckRepoLicenseFile(githubContext, githubClient, repoOwner, repoName); err != nil {
+		logger.Errorf("repo [%s/%s] license check failed: %s", repoOwner, repoName, err)
+		out.Issues = append(out.Issues, rules.IssueFromErr(err))
+	}
+
 	// 检查 Latest Release / package.zip / tag
 	releaseInfo, err := util.FetchLatestRelease(githubContext, githubClient, repoOwner, repoName)
 	out.Release = releaseInfo
 	if err != nil {
 		logger.Errorf("fetch repo [%s/%s] latest release failed: %s", repoOwner, repoName, err)
-		out.Issues = []rules.Issue{rules.IssueFromErr(err)}
-	}
-
-	// Release / package.zip 未通过时只报告流程层 Issue，不调用 rules.Check
-	if len(out.Issues) > 0 {
+		out.Issues = append(out.Issues, rules.IssueFromErr(err))
+		// Release / package.zip 未通过时只报告流程层 Issue（可与 LICENSE Issue 并存），不调用 rules.Check
 		logger.Infof("finish repo check [%s] (release issues)", ownerRepo)
 		return out
 	}
