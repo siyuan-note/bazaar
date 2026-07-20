@@ -12,128 +12,189 @@ package main
 
 import (
 	"bytes"
-	"crypto/tls"
+	"cmp"
+	"context"
 	"encoding/json"
 	"errors"
 	"fmt"
-	"html"
 	"math"
 	"os"
+	"os/signal"
 	"path/filepath"
-	"sort"
+	"slices"
 	"strconv"
 	"strings"
 	"sync"
 	"sync/atomic"
+	"syscall"
 	"time"
 
 	"github.com/88250/gulu"
-	jsoniter "github.com/json-iterator/go"
-	"github.com/panjf2000/ants/v2"
-	"github.com/parnurzeal/gorequest"
+	"github.com/google/go-github/v89/github"
 	"github.com/siyuan-note/bazaar/actions/util"
-	"golang.org/x/mod/semver"
+	"github.com/siyuan-note/bazaar/rules"
+	"golang.org/x/sync/errgroup"
 )
+
+/*
+Stage 流程：
+1. 按 STAGE_MODE 决定范围：push → 增量（仅检查本次 *.txt 相对 STAGE_BEFORE_SHA 新增的 owner/repo，且只重建有变更的类型）；
+   schedule / workflow_dispatch → 全量。增量 before 无效或 diff 失败则回退全量。
+2. 检查 PAT 的 GitHub API rate limit 是否足够覆盖本轮待 API 检查的仓库数（门槛仍用 GET /rate_limit）
+3. 按类型依次执行 performStage；每类开始前重新加载 OccupiedNames，以便上一类本轮新写入的 name 参与后续类型的唯一性检查
+4. 读取 *s.txt 与既有 stage/*.json；增量时未列入 check 的仓沿用旧条目（不打 API、不写 report），下架随当前列表重建自然消失
+5. hash 未变则跳过下载；否则下载 package.zip → rules.Check → 上传 OSS（package.zip、README、preview、icon、清单 JSON）
+6. 按 updated 降序排序后写出 stage/*.json（键序经 marshalSortedIndentedJSON 稳定；新上架用索引时间，更新用 Release 发布时间）
+7. 将本轮失败/成功同步为按仓独立 Issue（标签 stage-fail）：失败 upsert（正文未变则跳过 Edit）；
+   成功入库或 hash 跳过（已能正常取到 Release）则先评论说明再关闭
+   （本仓 Issue 用 GITHUB_TOKEN；跨仓 Release / repoStats 用 PAT）
+8. 运行中若遇 GitHub API 主限流 / 次级限流：保留旧数据、不写 stage-fail，写完当前类型后中止后续类型（退出码 0，便于提交已完成进度）
+9. 结束后根据实际 API 响应头 X-RateLimit-* 观测 PAT / GITHUB_TOKEN 消耗（对照经验值）
+
+换维护者（列表中 alice/foo → bob/foo，stage 仍有 alice/foo）：
+- 同路径旧条目用于 hash 跳过 / 失败保留；换路径时不沿用旧 URL 条目
+- rules.Check 继承旧 package.name 与 version（视同更新，须提升 version）
+*/
+
+type Set map[string]struct{} // 字符串集合
 
 var (
-	logger = gulu.Log.NewLogger(os.Stdout)
-	// heavyStageSem 限制同时进行「下载 + 上传 OSS」的仓库数，避免大量更新时打满 GitHub/OSS；仅 hash 检查不受限。
-	heavyStageSem  chan struct{}
-	heavyStageOnce sync.Once
+	BAZAAR_ROOT_PATH = "."                       // bazaar 仓库根目录（stage 工作区）
+	PAT              = os.Getenv("PAT")          // 个人访问令牌（跨仓 Release / repoStats）
+	GITHUB_TOKEN     = os.Getenv("GITHUB_TOKEN") // Actions 令牌（本仓 Stage 失败 Issue）
+	STAGE_POOL_SIZE  = envIntDefault("STAGE_POOL_SIZE", 80)
+
+	REQUEST_TIMEOUT = 30 * time.Second // 请求超时时间
+
+	logger           = gulu.Log.NewLogger(os.Stdout)
+	githubContext    context.Context
+	githubClient     *github.Client // PAT：跨仓 Release / repoStats
+	githubRepoClient *github.Client // GITHUB_TOKEN：本仓 Stage 失败 Issue
+	patRateObs       *util.RateHeaderObserver
+	repoRateObs      *util.RateHeaderObserver
 )
 
-// getStagePoolSize 从环境变量 STAGE_POOL_SIZE 读取并发池大小，默认 80（接近 GitHub API 的并发限制），以在多数为 skip 时加快检查。
-func getStagePoolSize() int {
-	const defaultPool = 80
-	if s := os.Getenv("STAGE_POOL_SIZE"); s != "" {
+func envIntDefault(key string, defaultVal int) int {
+	if s := os.Getenv(key); s != "" {
 		if n, err := strconv.Atoi(s); err == nil && n > 0 {
 			return n
 		}
 	}
-	return defaultPool
-}
-
-// getStageHeavyConcurrency 从环境变量 STAGE_HEAVY_CONCURRENCY 读取重活（下载+上传）并发上限，默认 8。
-func getStageHeavyConcurrency() int {
-	const defaultHeavy = 8
-	if s := os.Getenv("STAGE_HEAVY_CONCURRENCY"); s != "" {
-		if n, err := strconv.Atoi(s); err == nil && n > 0 {
-			return n
-		}
-	}
-	return defaultHeavy
-}
-
-func initHeavyStageSem() {
-	heavyStageOnce.Do(func() {
-		heavyStageSem = make(chan struct{}, getStageHeavyConcurrency())
-	})
+	return defaultVal
 }
 
 func main() {
-	logger.Infof("bazaar is staging...")
+	logger.Infof("Stage started")
 
-	if err := checkRateLimitBeforeStage(); err != nil {
-		logger.Fatalf("GitHub API rate limit check failed: %v", err)
+	var stop context.CancelFunc
+	githubContext, stop = signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
+	defer stop()
+
+	var err error
+	githubClient, patRateObs, err = util.NewGitHubClientWithRateObserver(PAT, REQUEST_TIMEOUT)
+	if err != nil {
+		logger.Fatalf("create github client failed: %s", err)
+	}
+	repoToken := GITHUB_TOKEN
+	if repoToken == "" {
+		repoToken = PAT
+		logger.Infof("GITHUB_TOKEN empty, fall back to PAT for stage-fail issues")
+	}
+	githubRepoClient, repoRateObs, err = util.NewGitHubClientWithRateObserver(repoToken, REQUEST_TIMEOUT)
+	if err != nil {
+		logger.Fatalf("create github repo client failed: %s", err)
 	}
 
-	performStage("themes")
-	performStage("templates")
-	performStage("icons")
-	performStage("widgets")
-	performStage("plugins")
+	reposByType, err := loadReposByPackageType()
+	if err != nil {
+		logger.Fatalf("parse repos list failed: %s", err)
+	}
 
-	logger.Infof("bazaar staged")
+	jobs, mode := resolveStageJobs(githubContext, BAZAAR_ROOT_PATH, reposByType)
+	if mode == stageModeIncremental && len(jobs) == 0 {
+		logger.Infof("incremental stage: no package list changes; nothing to do")
+		logger.Infof("Stage completed")
+		return
+	}
+
+	if err := checkRateLimitBeforeStage(countCheckRepos(jobs)); err != nil {
+		logger.Fatalf("GitHub API rate limit check failed: %s", err)
+	}
+
+	// 每类 stage 前重新加载 OccupiedNames，以便上一类本轮 performStage 新写入的 name 参与后续类型的唯一性检查。
+	// 仅对新上架的包进行检查
+	reports := &stageReportCollector{}
+	var abortedByRateLimit bool
+	for _, packageType := range rules.AllPackageTypes() {
+		job, ok := jobs[packageType]
+		if !ok {
+			logger.Infof("skip stage [%s], list unchanged in this push", packageType.Plural())
+			continue
+		}
+		occupiedNames, err := util.LoadOccupiedNames(BAZAAR_ROOT_PATH)
+		if err != nil {
+			logger.Fatalf("load occupied names failed: %s", err)
+		}
+		if performStage(packageType, occupiedNames, job.repos, job.checkRepos, reports) {
+			abortedByRateLimit = true
+			logger.Errorf("abort remaining package types due to GitHub API rate limit")
+			break
+		}
+	}
+
+	// 失败同步为按仓独立 Issue；同步失败不阻断已写出的 stage JSON（仅记日志）。
+	// 限流导致的失败不会进入 reports，故不会误刷 stage-fail Issue。
+	if err := syncStageFailReports(githubContext, githubRepoClient, reports.snapshot()); err != nil {
+		logger.Errorf("sync stage-fail issues failed: %s", err)
+	}
+
+	logRateHeaderObservation("PAT", patRateObs)
+	logRateHeaderObservation("GITHUB_TOKEN", repoRateObs)
+	if abortedByRateLimit {
+		logger.Errorf("Stage completed with GitHub API rate limit abort; retry after the quota resets")
+		return
+	}
+	logger.Infof("Stage completed")
 }
 
-// apiCallsPerRepo 每个仓库 staging 时消耗的 GitHub REST API (core) 请求数经验值（repoStats 1 次 + getRepoLatestRelease 等）
-const apiCallsPerRepo = 2.5
-
-// checkRateLimitBeforeStage 统计本次待检查仓库数、请求 GitHub rate_limit（该请求不计入 core），若 core 剩余请求数不足则返回错误。参考 https://docs.github.com/zh/rest/rate-limit/rate-limit
-func checkRateLimitBeforeStage() error {
-	types := []string{"themes", "templates", "icons", "widgets", "plugins"}
-	var repoCount int
-	for _, typ := range types {
-		repos, err := util.ParseReposFromTxt(typ + ".txt")
+func loadReposByPackageType() (map[rules.PackageType][]string, error) {
+	reposByType := make(map[rules.PackageType][]string, len(rules.AllPackageTypes()))
+	for _, packageType := range rules.AllPackageTypes() {
+		repos, err := util.ParseReposFromTxt(packageType.ReposListFile())
 		if err != nil {
-			return fmt.Errorf("count staging repos: %w", err)
+			return nil, fmt.Errorf("parse %s: %w", packageType.ReposListFile(), err)
 		}
-		repoCount += len(repos)
+		reposByType[packageType] = repos
 	}
-	required := int(math.Ceil(float64(repoCount) * apiCallsPerRepo))
+	return reposByType, nil
+}
+
+// stageAPIRequestsPerRepo 为每个仓库 staging 时消耗的 GitHub REST API (core) 请求数经验值。
+// 近几轮以 hash skip 为主：GetLatestRelease + GetRef ≈ 2；附注 tag 多 1 次 GetTag，
+// 全量索引另加 DownloadReleaseAsset + repoStats。实测 skip 主导约 2.22，取 2.3 留少量余量。
+const stageAPIRequestsPerRepo = 2.3
+
+// checkRateLimitBeforeStage 按本轮待 API 检查的仓库数估算请求量，请求 GitHub rate_limit（该请求不计入 core），若 core 剩余不足则返回错误。
+// 参考 https://docs.github.com/zh/rest/rate-limit/rate-limit
+func checkRateLimitBeforeStage(repoCount int) error {
+	required := int(math.Ceil(float64(repoCount) * stageAPIRequestsPerRepo))
 	if required == 0 {
+		logger.Infof("GitHub API rate limit check skipped: 0 repos to check")
 		return nil
 	}
-	pat := os.Getenv("PAT")
-	if pat == "" {
-		return fmt.Errorf("env PAT is not set")
+	ctx, cancel := context.WithTimeout(githubContext, 10*time.Second)
+	defer cancel()
+	limits, _, err := githubClient.RateLimit.Get(ctx)
+	if err != nil {
+		return fmt.Errorf("get rate limit: %w", err)
 	}
-	var out struct {
-		Resources struct {
-			Core struct {
-				Limit     int   `json:"limit"`
-				Remaining int   `json:"remaining"`
-				Reset     int64 `json:"reset"`
-			} `json:"core"`
-		} `json:"resources"`
+	core := limits.GetCore()
+	if core == nil {
+		return fmt.Errorf("rate_limit response missing core")
 	}
-	request := gorequest.New().TLSClientConfig(&tls.Config{InsecureSkipVerify: true})
-	resp, _, errs := request.Get("https://api.github.com/rate_limit").
-		Set("Accept", "application/vnd.github+json").
-		Set("Authorization", "Token "+pat).
-		Set("User-Agent", util.UserAgent).
-		Set("X-GitHub-Api-Version", "2022-11-28").
-		Timeout(10 * time.Second).
-		EndStruct(&out)
-	if len(errs) > 0 {
-		return fmt.Errorf("get rate limit: %w", errs[0])
-	}
-	if resp != nil && resp.StatusCode != 200 {
-		return fmt.Errorf("rate_limit returned %d", resp.StatusCode)
-	}
-	remaining := out.Resources.Core.Remaining
-	limit := out.Resources.Core.Limit
-	reset := out.Resources.Core.Reset
+	remaining := core.Remaining
+	limit := core.Limit
+	reset := core.Reset.Unix()
 	if remaining < required {
 		return fmt.Errorf("GitHub REST API (core) remaining %d / %d is below required %d for %d repos (~%d requests); reset at %d", remaining, limit, required, repoCount, required, reset)
 	}
@@ -141,841 +202,364 @@ func checkRateLimitBeforeStage() error {
 	return nil
 }
 
-// loadOldStageData 加载现有的 stage 文件数据，返回以 owner/repo 为 key 的映射
-func loadOldStageData(typ string) map[string]*StageRepo {
-	oldStageData := make(map[string]*StageRepo)
-	stageFilePath := "stage/" + typ + ".json"
+// logRateHeaderObservation 根据实际 API 响应头 X-RateLimit-* 打消耗日志，便于对照经验值。
+func logRateHeaderObservation(label string, obs *util.RateHeaderObserver) {
+	snap := obs.Snapshot()
+	if !snap.HasData {
+		logger.Infof("GitHub API (%s core via headers) no rate-limit headers observed", label)
+		return
+	}
+	usedDelta := snap.UsedDelta()
+	if usedDelta < 0 {
+		logger.Infof("GitHub API (%s core via headers) samples=%d remaining %d→%d (min %d) / %d, used %d→%d (quota likely reset)",
+			label, snap.Samples, snap.FirstRemaining, snap.LastRemaining, snap.MinRemaining, snap.Limit, snap.FirstUsed, snap.MaxUsed)
+		return
+	}
+	logger.Infof("GitHub API (%s core via headers) samples=%d remaining %d→%d (min %d) / %d, used %d→%d (Δ %d)",
+		label, snap.Samples, snap.FirstRemaining, snap.LastRemaining, snap.MinRemaining, snap.Limit, snap.FirstUsed, snap.MaxUsed, usedDelta)
+}
 
-	stageData, err := os.ReadFile(stageFilePath)
-	if nil != err {
-		return oldStageData
+// loadOldStageData 加载现有的 stage 文件数据，返回以 owner/repo 为 key 的映射。
+// 文件不存在时返回空映射（不报错）；读取或解析失败时返回错误，避免误把已有 stage 当作无旧数据。
+func loadOldStageData(packageType rules.PackageType) (map[string]*util.StageRepo, error) {
+	oldStageData := make(map[string]*util.StageRepo)
+	stageFilePath := filepath.Join(BAZAAR_ROOT_PATH, "stage", packageType.StageJSONFile())
+
+	stageFile, err := util.ReadStageFile(stageFilePath)
+	if err != nil {
+		return nil, fmt.Errorf("read stage [%s]: %w", stageFilePath, err)
 	}
 
-	oldStaged := map[string]any{}
-	if err = gulu.JSON.UnmarshalJSON(stageData, &oldStaged); nil != err {
-		return oldStageData
-	}
-
-	oldRepos, ok := oldStaged["repos"].([]any)
-	if !ok {
-		return oldStageData
-	}
-
-	for _, repo := range oldRepos {
-		repoMap, ok := repo.(map[string]any)
+	for i := range stageFile.Repos {
+		repo := &stageFile.Repos[i]
+		repoKey, ok := util.OwnerRepoFromStageURL(repo.URL)
 		if !ok {
 			continue
 		}
-
-		url, ok := repoMap["url"].(string)
-		if !ok {
-			continue
-		}
-
-		// 从 URL 中提取 owner/repo（去掉 @hash 部分）
-		idx := strings.Index(url, "@")
-		if idx <= 0 {
-			continue
-		}
-
-		repoKey := url[:idx]
-		stageRepo := &StageRepo{}
-		repoJSON, marshalErr := gulu.JSON.MarshalJSON(repoMap)
-		if nil != marshalErr {
-			continue
-		}
-
-		if err = gulu.JSON.UnmarshalJSON(repoJSON, stageRepo); nil != err {
-			continue
-		}
-
-		oldStageData[repoKey] = stageRepo
+		oldStageData[repoKey] = repo
 	}
 
-	return oldStageData
+	return oldStageData, nil
 }
 
-// jsoniterSortKeys 使用 json-iterator 的 SortMapKeys 配置，固定键的顺序。
-var jsoniterSortKeys = jsoniter.Config{SortMapKeys: true}.Froze()
-
-// sortJSONKeys 对 JSON 反序列化后按对象键排序再序列化（带缩进），保证输出键序稳定。
-// 使用 jsoniter 输出紧凑 JSON（键已排序），再用标准库 json.Indent 做缩进，避免 jsoniter.MarshalIndent 对嵌套 any 的缩进错乱。
-func sortJSONKeys(data []byte) ([]byte, error) {
-	var v any
-	if err := jsoniterSortKeys.Unmarshal(data, &v); nil != err {
-		return nil, err
-	}
-	compact, err := jsoniterSortKeys.Marshal(v)
-	if nil != err {
-		return nil, err
-	}
-	var buf bytes.Buffer
-	if err := json.Indent(&buf, compact, "", "  "); nil != err {
-		return nil, err
-	}
-	return buf.Bytes(), nil
-}
-
-func performStage(typ string) {
-	logger.Infof("staging [%s]", typ)
-
-	reposSlice, err := util.ParseReposFromTxt(typ + ".txt")
-	if nil != err {
-		logger.Fatalf("read or parse [%s.txt] failed: %s", typ, err)
-	}
-	// 与后续 Invoke(arg) 的 arg.(string) 兼容，转为 []any
-	repos := make([]any, len(reposSlice))
-	for i, s := range reposSlice {
-		repos[i] = s
+// performStage 执行单一类型的 staging。若遇 GitHub API 限流返回 true（调用方应中止后续类型）。
+// checkRepos == nil 表示对 reposSlice 全量打 API；非 nil 时仅检查集合内路径，其余沿用同路径旧条目且不写 report。
+func performStage(packageType rules.PackageType, occupiedNames map[string]struct{}, reposSlice []string, checkRepos Set, reports *stageReportCollector) (abortedByRateLimit bool) {
+	if checkRepos == nil {
+		logger.Infof("start stage [%s] (check all %d)", packageType.Plural(), len(reposSlice))
+	} else {
+		logger.Infof("start stage [%s] (check %d / listed %d)", packageType.Plural(), len(checkRepos), len(reposSlice))
 	}
 
-	oldStageData := loadOldStageData(typ)
+	oldStageData, err := loadOldStageData(packageType)
+	if err != nil {
+		logger.Fatalf("load old stage [%s] failed: %s", packageType.Plural(), err)
+	}
+	listedRepos := make(Set, len(reposSlice))
+	for _, ownerRepo := range reposSlice {
+		listedRepos[ownerRepo] = struct{}{}
+	}
+	oldStageByRepoName := indexOldStageByRepoName(oldStageData)
 
-	var themeJsAllowSet map[string]struct{}
-	if typ == "themes" {
+	var themeJsAllowSet Set
+	if packageType == rules.TypeTheme {
 		paths, err := util.ParseReposFromTxt(util.ThemeJsAllowlistRelPath)
 		if err != nil {
 			logger.Fatalf("read or parse [%s] failed: %s", util.ThemeJsAllowlistRelPath, err)
 		}
-		themeJsAllowSet = make(map[string]struct{}, len(paths))
+		themeJsAllowSet = make(Set, len(paths))
 		for _, p := range paths {
 			themeJsAllowSet[p] = struct{}{}
 		}
 	}
 
-	initHeavyStageSem()
-	lock := sync.Mutex{}
-	var stageRepos []any
-	waitGroup := &sync.WaitGroup{}
+	var stageReposMu sync.Mutex
+	var stageRepos []*util.StageRepo
+	var rateLimited atomic.Bool
+	var g errgroup.Group
+	g.SetLimit(STAGE_POOL_SIZE)
 
-	poolSize := getStagePoolSize()
-	p, _ := ants.NewPoolWithFunc(poolSize, func(arg any) {
-		defer waitGroup.Done()
-		ownerRepo := arg.(string)
-		var oldStageURL string
-		var oldRepo *StageRepo
-		if o, exists := oldStageData[ownerRepo]; exists {
-			oldStageURL = o.URL
-			oldRepo = o
-		}
-		ok, skipped, hash, updated, size, installSize, pkg := indexPackage(ownerRepo, typ, oldStageURL, oldRepo, themeJsAllowSet)
-		if skipped {
-			// hash 未变化，跳过下载，直接沿用旧 stage 条目
-			lock.Lock()
-			stageRepos = append(stageRepos, oldStageData[ownerRepo])
-			lock.Unlock()
+	appendKeptOld := func(repoURL, reason string, exactOld *util.StageRepo) {
+		stageReposMu.Lock()
+		defer stageReposMu.Unlock()
+		if exactOld != nil {
+			stageRepos = append(stageRepos, exactOld)
+			logger.Errorf("%s for [%s], keeping old data", reason, repoURL)
 			return
 		}
-		if !ok || pkg == nil {
-			// 索引失败或 pkg 为空时使用旧数据，避免 "package": null 的坏数据覆盖
-			lock.Lock()
-			if oldRepo, exists := oldStageData[ownerRepo]; exists {
-				stageRepos = append(stageRepos, oldRepo)
-				logger.Warnf("index failed for [%s], keeping old data", ownerRepo)
-			} else {
-				logger.Warnf("index failed for [%s] and no old data found", ownerRepo)
-			}
-			lock.Unlock()
-			return
-		}
-
-		stars, openIssues, ok := repoStats(ownerRepo)
-		// 如果获取统计数据失败，尝试使用旧数据
-		if !ok {
-			lock.Lock()
-			if oldRepo, exists := oldStageData[ownerRepo]; exists {
-				stageRepos = append(stageRepos, oldRepo)
-				logger.Warnf("repoStats failed for [%s], keeping old data", ownerRepo)
-			} else {
-				logger.Warnf("repoStats failed for [%s] and no old data found", ownerRepo)
-			}
-			lock.Unlock()
-			return
-		}
-
-		lock.Lock()
-		defer lock.Unlock()
-		stageRepos = append(stageRepos, &StageRepo{
-			URL:         ownerRepo + "@" + hash,
-			Stars:       stars,
-			OpenIssues:  openIssues,
-			Updated:     updated,
-			Size:        size,
-			InstallSize: installSize,
-			Package:     pkg,
-		})
-		logger.Infof("updated repo [%s]", ownerRepo)
-	})
-	for _, ownerRepo := range repos {
-		waitGroup.Add(1)
-		p.Invoke(ownerRepo)
-	}
-	waitGroup.Wait()
-	p.Release()
-
-	sort.SliceStable(stageRepos, func(i, j int) bool {
-		return stageRepos[i].(*StageRepo).Updated > stageRepos[j].(*StageRepo).Updated
-	})
-
-	staged := map[string]any{
-		"repos": stageRepos,
+		logger.Errorf("%s for [%s] and no old data found", reason, repoURL)
 	}
 
-	data, err := gulu.JSON.MarshalIndentJSON(staged, "", "  ")
-	if nil != err {
-		logger.Fatalf("marshal stage [%s.json] failed: %s", typ, err)
-	}
-	data, err = sortJSONKeys(data)
-	if nil != err {
-		logger.Fatalf("sort stage [%s.json] keys failed: %s", typ, err)
-	}
-
-	if err = os.WriteFile("stage/"+typ+".json", data, 0644); nil != err {
-		logger.Fatalf("write stage [%s.json] failed: %s", typ, err)
-	}
-
-	logger.Infof("staged [%s]", typ)
-}
-
-// parseHashFromStageURL 从 stage 条目的 URL（格式 owner/repo@hash）中解析出 hash 部分，若无 @ 或 @ 后为空则返回空字符串
-func parseHashFromStageURL(stageURL string) string {
-	idx := strings.Index(stageURL, "@")
-	if idx < 0 || idx >= len(stageURL)-1 {
-		return ""
-	}
-	return stageURL[idx+1:]
-}
-
-// requiredFilesByType 各类型集市包在包根目录下必须存在的文件（大小写敏感）
-var requiredFilesByType = map[string][]string{
-	"plugins":   {"plugin.json", "index.js"},
-	"themes":    {"theme.json", "theme.css"},
-	"icons":     {"icon.json", "icon.js"},
-	"templates": {"template.json"},
-	"widgets":   {"widget.json", "index.html"},
-}
-
-// validateUnzipRoot 检查解压根目录结构：正常情况下所有文件应在根目录；若根目录仅有一个子目录，则将该子目录视为包根目录。返回包根目录的绝对路径。
-func validateUnzipRoot(unzipPath string) (packageRoot string, err error) {
-	entries, err := os.ReadDir(unzipPath)
-	if err != nil {
-		return "", err
-	}
-	srcPath := unzipPath
-	if len(entries) == 1 && entries[0].IsDir() {
-		srcPath = filepath.Join(unzipPath, entries[0].Name())
-	}
-	return srcPath, nil
-}
-
-// fileExistsInDir 判断 dir 下是否存在名为 name 的文件或目录（大小写敏感，通过列目录比对）。
-func fileExistsInDir(dir, name string) bool {
-	entries, err := os.ReadDir(dir)
-	if err != nil {
-		return false
-	}
-	for _, e := range entries {
-		if e.Name() == name {
-			return true
+	markRateLimited := func(ownerRepo string, err error) {
+		if rateLimited.CompareAndSwap(false, true) {
+			logger.Errorf("GitHub API rate limited while staging [%s]: %s; aborting remaining work this run (not reporting as stage-fail issue)", ownerRepo, err)
 		}
 	}
-	return false
-}
 
-// validatePackageRoot 按类型检查包根目录下是否存在所有必要文件
-func validatePackageRoot(packageRoot, typ string) error {
-	required, ok := requiredFilesByType[typ]
-	if !ok {
-		return nil
-	}
-	for _, name := range required {
-		if !fileExistsInDir(packageRoot, name) {
-			return errors.New("missing required file: " + name)
-		}
-	}
-	// 特殊检查
-	if typ == "templates" {
-		// 模板：至少包含一个模板文件
-		var foundNonReadmeMd bool
-		filepath.Walk(packageRoot, func(path string, info os.FileInfo, err error) error {
-			if err != nil || info.IsDir() {
+	for _, ownerRepo := range reposSlice {
+		g.Go(func() error {
+			repoURL := util.GitHubRepoURL(ownerRepo)
+			exactOld, checkOldName, checkOldVersion := resolveStageCheckLegacy(ownerRepo, oldStageData, oldStageByRepoName, listedRepos)
+
+			if !shouldCheck(ownerRepo, checkRepos) {
+				if exactOld != nil {
+					stageReposMu.Lock()
+					stageRepos = append(stageRepos, exactOld)
+					stageReposMu.Unlock()
+					logger.Infof("keep staged [%s] without recheck (incremental)", ownerRepo)
+				} else {
+					logger.Infof("skip unstaged [%s] without recheck (incremental); leave for full stage", ownerRepo)
+				}
 				return nil
 			}
-			base := strings.ToLower(filepath.Base(path))
-			if strings.HasSuffix(base, ".md") && !strings.HasPrefix(base, "readme") { // 跟思源内核判断逻辑一致
-				foundNonReadmeMd = true
-				return filepath.SkipAll
+
+			if rateLimited.Load() {
+				appendKeptOld(repoURL, "skipped after rate limit", exactOld)
+				return nil
 			}
+
+			releaseInfo, releaseErr := getRepoLatestRelease(ownerRepo)
+			if releaseErr != nil {
+				appendKeptOld(repoURL, "get latest release failed", exactOld)
+				if util.IsGitHubRateLimit(releaseErr) {
+					markRateLimited(ownerRepo, releaseErr)
+					return nil
+				}
+				if !errors.Is(releaseErr, errInvalidOwnerRepo) {
+					reports.add(stageReport{
+						OwnerRepo:   ownerRepo,
+						PackageType: packageType,
+						Kind:        stageReportFail,
+						Release:     releaseInfo,
+						Issues:      stageIssueFromErr(releaseErr),
+					})
+				}
+				return nil
+			}
+			hash := releaseInfo.CommitSHA
+			// 新上架（无旧清单可继承）用 Stage 索引时间；已有包更新仍用 Release 发布时间。
+			updated := releaseInfo.Published
+			if checkOldName == "" {
+				updated = time.Now().UTC().Format(time.RFC3339)
+			}
+			packageZipAssetID := releaseInfo.PackageZipAssetID
+
+			// Latest Release 的 hash 与已 stage 的 hash 一致则跳过，不下载、不更新，沿用旧条目
+			// 仅同路径 exactOld：换维护者不得沿用旧 owner/repo@hash 条目
+			if exactOld != nil {
+				oldHash := parseHashFromStageURL(exactOld.URL)
+				if oldHash != "" && hash == oldHash {
+					if sameCommitPackageZipChanged(exactOld, packageZipAssetID) {
+						logger.Errorf("repo [%s] hash unchanged [%s] but package.zip asset id changed (%d -> %d); a new release tag is required to update the staged package",
+							repoURL, hash, exactOld.PackageZipAssetID, packageZipAssetID)
+						stageReposMu.Lock()
+						stageRepos = append(stageRepos, exactOld)
+						stageReposMu.Unlock()
+						reports.add(stageReport{
+							OwnerRepo:   ownerRepo,
+							PackageType: packageType,
+							Kind:        stageReportFail,
+							Release:     releaseInfo,
+							Hash:        hash,
+							Issues: stageInternalIssue(
+								fmt.Sprintf("Latest Release 仍指向同一 commit（`%s`），但 `package.zip` 资源已被替换（asset id %d → %d）。集市 Stage 需要新的 Release 标签才会更新入库。请提升清单 `version`，重新打包 `package.zip`，并发布带新 tag 的 GitHub Release（标记为 Latest）。",
+									hash, exactOld.PackageZipAssetID, packageZipAssetID),
+								fmt.Sprintf("The Latest Release still points to the same commit (`%s`), but the `package.zip` asset was replaced (asset id %d → %d). Stage only updates when there is a new release tag. Please bump the manifest `version`, rebuild `package.zip`, and publish a new GitHub Release with a new tag (marked as Latest).",
+									hash, exactOld.PackageZipAssetID, packageZipAssetID),
+							),
+						})
+						return nil
+					}
+					logger.Infof("skip repo [%s], hash unchanged [%s]", ownerRepo, hash)
+					stageReposMu.Lock()
+					stageRepos = append(stageRepos, exactOld)
+					stageReposMu.Unlock()
+					reports.add(stageReport{
+						OwnerRepo:   ownerRepo,
+						PackageType: packageType,
+						Kind:        stageReportSkip,
+						Release:     releaseInfo,
+						Hash:        hash,
+					})
+					return nil
+				}
+			}
+
+			var allowThemeJS bool
+			if packageType == rules.TypeTheme {
+				_, allowThemeJS = themeJsAllowSet[ownerRepo]
+			}
+			if checkOldName != "" && exactOld == nil {
+				logger.Infof("maintainer change staging [%s], inherit old name [%s] version [%s]", ownerRepo, checkOldName, checkOldVersion)
+			}
+			ok, size, installSize, pkg, indexIssues, indexErr := indexPackage(ownerRepo, packageType, hash, packageZipAssetID, checkOldName, checkOldVersion, allowThemeJS, occupiedNames)
+			if indexErr != nil && util.IsGitHubRateLimit(indexErr) {
+				appendKeptOld(repoURL, "index failed due to rate limit", exactOld)
+				markRateLimited(ownerRepo, indexErr)
+				return nil
+			}
+			if !ok || pkg == nil {
+				// 索引失败或 pkg 为空时使用旧数据，避免 "package": null 的坏数据覆盖
+				// 换维护者无 exactOld：不得把旧 owner/repo 条目写回
+				appendKeptOld(repoURL, "index failed", exactOld)
+				// 无 Issues 时多为防御性路径（如非法 owner/repo），仅日志、不写汇总 Issue
+				if len(indexIssues) > 0 {
+					reports.add(stageReport{
+						OwnerRepo:   ownerRepo,
+						PackageType: packageType,
+						Kind:        stageReportFail,
+						Release:     releaseInfo,
+						Hash:        hash,
+						Issues:      indexIssues,
+					})
+				}
+				return nil
+			}
+
+			stars, openIssues, ok, statsErr := repoStats(ownerRepo)
+			// 如果获取统计数据失败，尝试使用旧数据
+			if !ok {
+				appendKeptOld(repoURL, "repoStats failed", exactOld)
+				if util.IsGitHubRateLimit(statsErr) {
+					markRateLimited(ownerRepo, statsErr)
+					return nil
+				}
+				reports.add(stageReport{
+					OwnerRepo:   ownerRepo,
+					PackageType: packageType,
+					Kind:        stageReportFail,
+					Release:     releaseInfo,
+					Hash:        hash,
+					Issues: stageInternalIssue(
+						"获取仓库 Star / Open Issues 统计失败，本轮未更新入库。请稍后重试；若持续失败请联系维护者。",
+						"Failed to fetch repository star / open-issue stats, so this run did not update the staged package. Please retry later; if it keeps failing, contact a maintainer.",
+					),
+				})
+				return nil
+			}
+
+			stageReposMu.Lock()
+			stageRepos = append(stageRepos, &util.StageRepo{
+				URL:               ownerRepo + "@" + hash,
+				Stars:             stars,
+				OpenIssues:        openIssues,
+				Updated:           updated,
+				Size:              size,
+				InstallSize:       installSize,
+				PackageZipAssetID: packageZipAssetID,
+				Package:           *pkg,
+			})
+			stageReposMu.Unlock()
+			reports.add(stageReport{
+				OwnerRepo:   ownerRepo,
+				PackageType: packageType,
+				Kind:        stageReportPass,
+				Release:     releaseInfo,
+				Hash:        hash,
+			})
+			logger.Infof("updated repo [%s]", ownerRepo)
 			return nil
 		})
-		if !foundNonReadmeMd {
-			return errors.New("template must contain at least one .md file not starting with readme (case-insensitive)")
-		}
 	}
-	return nil
+	_ = g.Wait()
+
+	abortedByRateLimit = rateLimited.Load()
+	if abortedByRateLimit {
+		stageRepos = backfillUnprocessedStageRepos(reposSlice, stageRepos, oldStageData)
+		logger.Errorf("stage [%s] aborted due to GitHub API rate limit; kept old data for unchecked repos", packageType.Plural())
+	}
+
+	slices.SortStableFunc(stageRepos, func(a, b *util.StageRepo) int {
+		return cmp.Compare(b.Updated, a.Updated)
+	})
+
+	staged := util.StageFile{Repos: make([]util.StageRepo, len(stageRepos))}
+	for i, repo := range stageRepos {
+		staged.Repos[i] = *repo
+		// hash 跳过 / 失败保留的旧条目也可能带有 "funding": {}，写回前一并清理。
+		rules.ClearEmptyFunding(&staged.Repos[i].Package)
+	}
+
+	data, err := marshalSortedIndentedJSON(staged)
+	if err != nil {
+		logger.Fatalf("marshal stage [%s] failed: %s", packageType.StageJSONFile(), err)
+	}
+
+	stageFilePath := filepath.Join(BAZAAR_ROOT_PATH, "stage", packageType.StageJSONFile())
+	if err = os.WriteFile(stageFilePath, data, 0644); err != nil {
+		logger.Fatalf("write stage [%s] failed: %s", packageType.StageJSONFile(), err)
+	}
+
+	logger.Infof("finish stage [%s]", packageType.Plural())
+	return abortedByRateLimit
 }
 
-// getOldPackageFields 从已 stage 的条目中解析出 package 的 name、version
-func getOldPackageFields(oldRepo *StageRepo) (name, version string) {
-	if oldRepo == nil || oldRepo.Package == nil {
-		return "", ""
+// backfillUnprocessedStageRepos 在限流中止后，为尚未写入结果的列表仓库补回同路径旧条目，避免 stage JSON 丢仓。
+func backfillUnprocessedStageRepos(reposSlice []string, stageRepos []*util.StageRepo, oldStageData map[string]*util.StageRepo) []*util.StageRepo {
+	processed := make(Set, len(stageRepos))
+	for _, repo := range stageRepos {
+		if key, ok := util.OwnerRepoFromStageURL(repo.URL); ok {
+			processed[key] = struct{}{}
+		}
 	}
-	m, ok := oldRepo.Package.(map[string]any)
+	for _, ownerRepo := range reposSlice {
+		if _, ok := processed[ownerRepo]; ok {
+			continue
+		}
+		if old := oldStageData[ownerRepo]; old != nil {
+			stageRepos = append(stageRepos, old)
+			logger.Errorf("backfill old stage data for [%s] after rate limit abort", ownerRepo)
+		}
+	}
+	return stageRepos
+}
+
+func repoStats(ownerRepo string) (stars, openIssues int, ok bool, err error) {
+	repoURL := util.GitHubRepoURL(ownerRepo)
+	owner, name, cutOk := strings.Cut(ownerRepo, "/")
+	if !cutOk {
+		logger.Errorf("get repo stats [%s] failed: invalid owner/repo", ownerRepo)
+		return
+	}
+	ctx, cancel := context.WithTimeout(githubContext, REQUEST_TIMEOUT)
+	defer cancel()
+	repo, _, err := githubClient.Repositories.Get(ctx, owner, name)
+	if err != nil {
+		logger.Errorf("get repo stats [%s] failed: %s", repoURL, err)
+		return
+	}
+	stars = repo.GetStargazersCount()
+	openIssues = repo.GetOpenIssuesCount()
+	ok = true
+	return
+}
+
+// marshalSortedIndentedJSON 序列化为键序稳定、带缩进的 JSON。
+// v 可为 struct，或原始 JSON 字节（[]byte）；struct 会先经 json.Marshal / Unmarshal 转为 JSON 树（map[string]any），
+// 再按字典序输出键。先输出紧凑 JSON，再用 json.Indent 缩进，避免 json.MarshalIndent 对嵌套 any 的缩进错乱。
+// SetEscapeHTML(false) 避免将 & 等字符转为 \uXXXX。
+func marshalSortedIndentedJSON(v any) ([]byte, error) {
+	data, ok := v.([]byte)
 	if !ok {
-		return "", ""
-	}
-	if v, _ := m["name"].(string); v != "" {
-		name = v
-	}
-	if v, _ := m["version"].(string); v != "" {
-		version = v
-	}
-	return name, version
-}
-
-// packageValidationMeta 聚合元数据与校验所需上下文
-type packageValidationMeta struct {
-	ownerRepo       string
-	packageRoot     string
-	typ             string
-	basePkg         *Package
-	oldRepo         *StageRepo
-	themeJsAllowSet map[string]struct{} // 非 nil 时：仅在此集合内的主题允许包含 theme.js
-}
-
-// validatePackageMetadata 校验元数据
-//   - 如果涉及文件，文件名大小写敏感
-func validatePackageMetadata(meta *packageValidationMeta) error {
-	// 必须为 https://github.com/owner/repo ，禁止末尾斜杠或 .git 结尾
-	expectedURL := "https://github.com/" + meta.ownerRepo
-	if meta.basePkg.URL != expectedURL {
-		return fmt.Errorf("url must be exactly %s (no trailing slash, no .git)", expectedURL)
-	}
-
-	// 不存在 oldRepo 时（新上架集市包），oldName 和 oldVersion 都为空
-	oldName, oldVersion := getOldPackageFields(meta.oldRepo)
-
-	if oldName == "" {
-		// 新集市包，完整校验 name
-		if err := util.ValidateName(meta.basePkg.Name); err != nil {
-			return fmt.Errorf("package name invalid: %w", err)
-		}
-	} else if meta.basePkg.Name != oldName {
-		// 旧集市包，name 必须与旧信息完全一致
-		return fmt.Errorf("name must be identical to current stage: got %q, expected %q", meta.basePkg.Name, oldName)
-	}
-
-	newVer := meta.basePkg.Version
-	if !strings.HasPrefix(newVer, "v") {
-		newVer = "v" + newVer
-	}
-	// version 需为合法语义化版本，且若存在旧 version 则必须高于旧 version
-	if !semver.IsValid(newVer) {
-		return fmt.Errorf("version must be valid semver: %q", meta.basePkg.Version)
-	}
-	if oldVersion != "" {
-		oldVer := oldVersion
-		if !strings.HasPrefix(oldVer, "v") {
-			oldVer = "v" + oldVer
-		}
-		if semver.Compare(newVer, oldVer) <= 0 {
-			return fmt.Errorf("version must be higher than current stage: %s <= %s", meta.basePkg.Version, oldVersion)
-		}
-	}
-
-	// author
-	if err := util.ValidatePlainStringForHTML(meta.basePkg.Author); err != nil {
-		return fmt.Errorf("author invalid: %w", err)
-	}
-
-	// readme：声明的 README 文件在解压后的包内存在（路径大小写敏感）
-	if meta.basePkg.Readme != nil {
-		for _, readmePath := range meta.basePkg.Readme {
-			if readmePath == "" {
-				continue
-			}
-			readmePath = strings.TrimSpace(readmePath) // 跟思源内核逻辑一致，TrimSpace
-			// 必须是相对路径，不能以 / 开头
-			if strings.HasPrefix(readmePath, "/") {
-				return fmt.Errorf("readme path invalid: %q", readmePath)
-			}
-			// 禁止包含 ..，防止路径穿越
-			if strings.Contains(readmePath, "..") {
-				return fmt.Errorf("readme path invalid: %q", readmePath)
-			}
-			// 要求使用 / 作为分隔符，拒绝 \
-			if strings.Contains(readmePath, "\\") {
-				return fmt.Errorf("readme path invalid: %q", readmePath)
-			}
-			absPath := filepath.Join(meta.packageRoot, filepath.FromSlash(readmePath))
-			info, err := os.Stat(absPath)
-			if err != nil || info.IsDir() {
-				return fmt.Errorf("readme file declared but not found in package: %s", readmePath)
-			}
-		}
-	}
-
-	// funding：Custom 链接仅允许 http(s) / mailto，禁止 javascript: / data: / file: 等
-	if meta.basePkg.Funding != nil {
-		for i, v := range meta.basePkg.Funding.Custom {
-			if v != "" && !strings.HasPrefix(v, "https://") && !strings.HasPrefix(v, "http://") && !strings.HasPrefix(v, "mailto:") {
-				return fmt.Errorf("funding.custom[%d] invalid protocol: must start with https:// http:// or mailto: ", i)
-			}
-		}
-	}
-
-	// 插件：若存在 disabledInPublish 则校验为 bool（JSON 中该键存在时值必须为 bool，通过 raw 校验）
-	if meta.typ == "plugins" {
-		name := strings.TrimSuffix(meta.typ, "s")
-		jsonPath := filepath.Join(meta.packageRoot, name+".json")
-		data, err := os.ReadFile(jsonPath)
+		var err error
+		data, err = json.Marshal(v)
 		if err != nil {
-			return fmt.Errorf("read plugin.json for disabledInPublish check: %w", err)
-		}
-		var raw map[string]any
-		if err := gulu.JSON.UnmarshalJSON(data, &raw); err != nil {
-			return fmt.Errorf("unmarshal plugin.json: %w", err)
-		}
-		if v, has := raw["disabledInPublish"]; has && v != nil {
-			if _, ok := v.(bool); !ok {
-				return fmt.Errorf("disabledInPublish must be bool when present, got %T", v)
-			}
+			return nil, err
 		}
 	}
-
-	// 主题
-	if meta.typ == "themes" && meta.themeJsAllowSet != nil {
-		// theme.js：仅 config/themes-theme-js-allowlist.txt 中的旧仓库允许在包根目录包含 theme.js（存量豁免），其余新上架的主题必须移除。
-		if _, allowed := meta.themeJsAllowSet[meta.ownerRepo]; !allowed && fileExistsInDir(meta.packageRoot, "theme.js") {
-			return fmt.Errorf("the use of [theme.js] is not allowed and must be removed. https://github.com/siyuan-note/bazaar/issues/1821")
-		}
+	var tree any
+	if err := json.Unmarshal(data, &tree); err != nil {
+		return nil, err
 	}
-
-	return nil
-}
-
-// indexPackage 索引包，返回的 pkg 为 *Package / *PluginPackage / *ThemePackage 之一。
-// oldStageURL 为当前已 stage 的该仓库 URL（格式 owner/repo@hash），若与 Latest Release 的 hash 一致则跳过下载并返回 skipped=true。
-// oldStageRepo 用于元数据校验时与旧 name/url/version 对比，可为 nil（如新仓库）。
-// themeJsAllowSet 仅 typ 为 themes 时使用；为 nil 时不做 theme.js 策略校验。
-func indexPackage(ownerRepo, typ, oldStageURL string, oldStageRepo *StageRepo, themeJsAllowSet map[string]struct{}) (ok, skipped bool, hash, published string, size, installSize int64, pkg any) {
-	// 获取该仓库 Latest Release 信息（hash、发布时间、package.zip 下载地址）
-	hash, published, packageZip, releaseOk := getRepoLatestRelease(ownerRepo)
-	if !releaseOk {
-		logger.Warnf("get [%s] latest release failed", ownerRepo)
-		return
+	var compact bytes.Buffer
+	enc := json.NewEncoder(&compact)
+	enc.SetEscapeHTML(false)
+	if err := enc.Encode(tree); err != nil {
+		return nil, err
 	}
-
-	// Latest Release 的 hash 与已 stage 的 hash 一致则跳过，不下载、不更新，沿用旧条目
-	if oldStageURL != "" {
-		oldHash := parseHashFromStageURL(oldStageURL)
-		if oldHash != "" && hash == oldHash {
-			logger.Infof("skip repo [%s], hash unchanged [%s]", ownerRepo, hash)
-			skipped = true
-			return
-		}
+	var buf bytes.Buffer
+	if err := json.Indent(&buf, bytes.TrimSpace(compact.Bytes()), "", "  "); err != nil {
+		return nil, err
 	}
-
-	// 限制同时进行「下载 + 上传」的仓库数
-	heavyStageSem <- struct{}{}
-	defer func() { <-heavyStageSem }()
-
-	// 下载 package.zip
-	resp, data, errs := gorequest.New().Get(packageZip).
-		Set("User-Agent", util.UserAgent).
-		Retry(1, 3*time.Second).Timeout(30 * time.Second).EndBytes()
-	if nil != errs {
-		logger.Errorf("get [%s] failed: %s", packageZip, errs)
-		return
-	}
-	if 200 != resp.StatusCode {
-		logger.Errorf("get [%s] failed: %d", packageZip, resp.StatusCode)
-		return
-	}
-
-	// 记录 zip 体积，用于 stage 条目的 size 字段
-	size = int64(len(data))
-
-	// 将 zip 写入临时文件并解压到临时目录
-	installSize = size
-	var err error
-	osTmpDir := filepath.Join(os.TempDir(), "bazaar")
-	if err = os.MkdirAll(osTmpDir, 0755); nil != err {
-		logger.Errorf("mkdir [%s] failed: %s", osTmpDir, err)
-		return
-	}
-	tmpZipPath := filepath.Join(os.TempDir(), "bazaar", gulu.Rand.String(7)+".zip")
-	if err = os.WriteFile(tmpZipPath, data, 0644); nil != err {
-		logger.Errorf("write package.zip failed: %s", err)
-		return
-	}
-	defer os.RemoveAll(tmpZipPath)
-
-	tmpUnzipPath := filepath.Join(os.TempDir(), "bazaar", gulu.Rand.String(7))
-	if err = gulu.Zip.Unzip(tmpZipPath, tmpUnzipPath); nil != err {
-		logger.Errorf("unzip package.zip failed: %s", err)
-		return
-	}
-	defer os.RemoveAll(tmpUnzipPath)
-
-	// 校验解压根目录结构（仅有一个子目录视为打包错误），且包根下存在该类型必要文件
-	packageRoot, err := validateUnzipRoot(tmpUnzipPath)
-	if err != nil {
-		logger.Warnf("validate unzip root [%s] failed: %s", ownerRepo, err)
-		return
-	}
-	if err = validatePackageRoot(packageRoot, typ); err != nil {
-		logger.Warnf("validate package root [%s] failed: %s", ownerRepo, err)
-		return
-	}
-
-	// 计算解压后目录体积，用于 stage 条目的 installSize 字段
-	installSize, err = util.SizeOfDirectory(packageRoot)
-	if nil != err {
-		logger.Errorf("stat package [%s] size failed: %s", ownerRepo, err)
-		return
-	}
-
-	// 从解压目录读取元数据，以便根据 readme 字段收集要上传的文件
-	var basePkg *Package
-	pkg, basePkg = getPackage(packageRoot, typ)
-	if nil == pkg || nil == basePkg {
-		logger.Warnf("get package [%s] failed", ownerRepo)
-		return
-	}
-
-	// 元数据校验：name/url/version/readme 及类型相关字段；失败则本轮索引失败，沿用旧数据
-	if err := validatePackageMetadata(&packageValidationMeta{
-		ownerRepo:       ownerRepo,
-		packageRoot:     packageRoot,
-		typ:             typ,
-		basePkg:         basePkg,
-		oldRepo:         oldStageRepo,
-		themeJsAllowSet: themeJsAllowSet,
-	}); err != nil {
-		logger.Warnf("validate package metadata [%s] failed: %v", ownerRepo, err)
-		return
-	}
-
-	// 校验通过后再上传 package.zip，避免无效包写入 OSS
-	key := "package/" + ownerRepo + "@" + hash
-	if err := util.UploadOSS(key, "application/zip", data); nil != err {
-		logger.Errorf("upload package [%s] failed: %s", ownerRepo, err)
-		return
-	}
-
-	// 收集需要上传的 README 文件列表（根据包配置中的 readme 字段）
-	readmeFiles := make(map[string]bool)
-	if nil != basePkg.Readme {
-		for _, readmePath := range basePkg.Readme {
-			readmePath = strings.TrimSpace(readmePath) // 跟思源内核逻辑一致，TrimSpace
-			if readmePath == "" {
-				continue
-			}
-			readmeFiles["/"+readmePath] = true
-		}
-	}
-	// 仅 README.md 始终加入上传列表（若包内存在则上传）
-	readmeFiles["/README.md"] = true
-
-	// 从解压目录读取 README、preview、icon、元数据 JSON 并并发上传到 OSS；任一份上传失败则整包视为失败
-	var anyUploadFailed int32
-	wg := &sync.WaitGroup{}
-	wg.Add(3 + len(readmeFiles))
-	for readmeFile := range readmeFiles {
-		go indexPackageFile(ownerRepo, hash, packageRoot, readmeFile, 0, 0, wg, &anyUploadFailed)
-	}
-	go indexPackageFile(ownerRepo, hash, packageRoot, "/preview.png", 0, 0, wg, &anyUploadFailed)
-	go indexPackageFile(ownerRepo, hash, packageRoot, "/icon.png", 0, 0, wg, &anyUploadFailed)
-	go indexPackageFile(ownerRepo, hash, packageRoot, "/"+strings.TrimSuffix(typ, "s")+".json", size, installSize, wg, &anyUploadFailed)
-	wg.Wait()
-	if atomic.LoadInt32(&anyUploadFailed) != 0 {
-		return
-	}
-	ok = true
-	return
-}
-
-// getPackage 从解压后的包根目录 unzipRoot 读取该类型的元数据 JSON（如 plugin.json），按 typ 解析为 Package / PluginPackage / ThemePackage，并返回用于 Readme 等的 *Package。
-func getPackage(unzipRoot, typ string) (pkgVal any, basePkg *Package) {
-	name := strings.TrimSuffix(typ, "s")
-	jsonPath := filepath.Join(unzipRoot, name+".json")
-	data, err := os.ReadFile(jsonPath)
-	if err != nil {
-		logger.Errorf("read [%s] failed: %s", jsonPath, err)
-		return nil, nil
-	}
-
-	switch typ {
-	case "plugins":
-		p := &PluginPackage{Package: &Package{}}
-		if err := gulu.JSON.UnmarshalJSON(data, p); nil != err {
-			logger.Errorf("unmarshal [%s] failed: %s", jsonPath, err)
-			return nil, nil
-		}
-		sanitizePackageDisplayStrings(p.Package)
-		return p, p.Package
-	case "themes":
-		p := &ThemePackage{Package: &Package{}}
-		if err := gulu.JSON.UnmarshalJSON(data, p); nil != err {
-			logger.Errorf("unmarshal [%s] failed: %s", jsonPath, err)
-			return nil, nil
-		}
-		sanitizePackageDisplayStrings(p.Package)
-		return p, p.Package
-	default:
-		ret := &Package{}
-		if err := gulu.JSON.UnmarshalJSON(data, ret); nil != err {
-			logger.Errorf("unmarshal [%s] failed: %s", jsonPath, err)
-			return nil, nil
-		}
-		sanitizePackageDisplayStrings(ret)
-		return ret, ret
-	}
-}
-
-// indexPackageFile 从解压后的包根目录 unzipRoot 读取 filePath 对应文件（大小写敏感），上传到 OSS；可选文件不存在时仅记录并跳过，其它失败时设置 anyFail。filePath 为相对包根的路径，如 /README.md、/icon.png。
-func indexPackageFile(ownerRepo, hash, unzipRoot, filePath string, size, installSize int64, wg *sync.WaitGroup, anyFail *int32) {
-	defer wg.Done()
-
-	relPath := strings.TrimPrefix(filepath.ToSlash(filePath), "/")
-	localPath := filepath.Join(unzipRoot, filepath.FromSlash(relPath))
-	data, err := os.ReadFile(localPath)
-	if err != nil {
-		// 可选文件（如部分 README、preview.png）可能不存在，仅记录并跳过，不导致整包失败
-		if os.IsNotExist(err) {
-			logger.Warnf("file not found in package, skip upload [%s]", relPath)
-			return
-		}
-		logger.Errorf("read [%s] failed: %s", localPath, err)
-		atomic.StoreInt32(anyFail, 1)
-		return
-	}
-
-	// 规范化为 /path 形式用于 OSS key
-	normPath := "/" + filepath.ToSlash(relPath)
-
-	var contentType string
-	if strings.HasSuffix(normPath, ".md") {
-		contentType = "text/markdown"
-	} else if strings.HasSuffix(normPath, ".png") {
-		contentType = "image/png"
-	} else if strings.HasSuffix(normPath, ".json") {
-		contentType = "application/json"
-		// 注入 size/installSize 到清单 JSON
-		meta := map[string]any{}
-		if err := gulu.JSON.UnmarshalJSON(data, &meta); err != nil {
-			logger.Errorf("unmarshal package meta [%s] failed: %s", localPath, err)
-			atomic.StoreInt32(anyFail, 1)
-			return
-		}
-		meta["size"] = size
-		meta["installSize"] = installSize
-		data, err = gulu.JSON.MarshalIndentJSON(meta, "", "  ")
-		if err != nil {
-			logger.Errorf("marshal package [%s] meta json failed: %s", localPath, err)
-			atomic.StoreInt32(anyFail, 1)
-			return
-		}
-	}
-
-	key := "package/" + ownerRepo + "@" + hash + normPath
-	if err := util.UploadOSS(key, contentType, data); err != nil {
-		logger.Errorf("upload package file [%s] failed: %s", key, err)
-		atomic.StoreInt32(anyFail, 1)
-		return
-	}
-}
-
-func repoStats(ownerRepo string) (stars, openIssues int, ok bool) {
-	result := map[string]any{}
-	request := gorequest.New().TLSClientConfig(&tls.Config{InsecureSkipVerify: true})
-	pat := os.Getenv("PAT")
-	u := "https://api.github.com/repos/" + ownerRepo
-	resp, _, errs := request.Get(u).
-		Set("Authorization", "Token "+pat).
-		Set("User-Agent", util.UserAgent).Timeout(30*time.Second).
-		Retry(1, 3*time.Second).EndStruct(&result)
-	if nil != errs {
-		logger.Warnf("get [%s] failed: %s", u, errs)
-		return
-	}
-	if 200 != resp.StatusCode {
-		logger.Warnf("get [%s] failed: %d", u, resp.StatusCode)
-		return
-	}
-
-	//logger.Infof("X-Ratelimit-Remaining=%s]", resp.Header.Get("X-Ratelimit-Remaining"))
-	stars = int(result["stargazers_count"].(float64))
-	openIssues = int(result["open_issues_count"].(float64))
-	ok = true
-	return
-}
-
-// getRepoLatestRelease 获取仓库最新发布的版本
-func getRepoLatestRelease(ownerRepo string) (hash, published, packageZip string, ok bool) {
-	result := map[string]any{}
-	request := gorequest.New().TLSClientConfig(&tls.Config{InsecureSkipVerify: true})
-	pat := os.Getenv("PAT")
-	// REF https://docs.github.com/en/rest/releases/releases#get-the-latest-release
-	u := "https://api.github.com/repos/" + ownerRepo + "/releases/latest"
-	resp, _, errs := request.Get(u).
-		Set("Authorization", "Token "+pat).
-		Set("User-Agent", util.UserAgent).Timeout(30*time.Second).
-		Retry(3, 3*time.Second).EndStruct(&result)
-	if nil != errs {
-		logger.Warnf("get release hash [%s] failed: %s", u, errs)
-		return
-	}
-	if 200 != resp.StatusCode {
-		logger.Warnf("get release hash [%s] failed: %d", u, resp.StatusCode)
-		return
-	}
-
-	// 获取 package.zip 下载 url packageZip
-	assets := result["assets"].([]any)
-	if 0 < len(assets) {
-		for _, asset := range assets {
-			asset := asset.(map[string]any)
-			if name := asset["name"].(string); "package.zip" == name {
-				packageZip = asset["browser_download_url"].(string)
-			}
-		}
-	}
-
-	if "" == packageZip {
-		logger.Warnf("get [%s] package.zip failed: package.zip not found in release assets", ownerRepo)
-		return
-	}
-
-	// 获取 release 对应的 tag
-	published = result["published_at"].(string)
-	tagName := result["tag_name"].(string)
-	if "" == tagName {
-		logger.Warnf("get [%s] tag_name failed: tag_name is empty", ownerRepo)
-		return
-	}
-	// REF https://docs.github.com/en/rest/git/refs#get-a-reference
-	u = "https://api.github.com/repos/" + ownerRepo + "/git/ref/tags/" + tagName
-	resp, _, errs = request.Get(u).
-		Set("Authorization", "Token "+pat).
-		Set("User-Agent", util.UserAgent).Timeout(30*time.Second).
-		Retry(1, 3*time.Second).EndStruct(&result)
-	if nil != errs {
-		logger.Warnf("get release hash [%s] failed: %s", u, errs)
-		return
-	}
-	if 200 != resp.StatusCode {
-		logger.Warnf("get release hash [%s] failed: %d", u, resp.StatusCode)
-		return
-	}
-
-	// 获取 release 对应的提交的 hash
-	hash = result["object"].(map[string]any)["sha"].(string)
-	if "" == hash {
-		logger.Warnf("get [%s] release hash failed: hash is empty", ownerRepo)
-		return
-	}
-	typ := result["object"].(map[string]any)["type"].(string)
-	if "tag" == typ {
-		// REF https://docs.github.com/en/rest/git/tags#get-a-tag
-		u = "https://api.github.com/repos/" + ownerRepo + "/git/tags/" + hash
-		resp, _, errs = request.Get(u).
-			Set("Authorization", "Token "+pat).
-			Set("User-Agent", util.UserAgent).Timeout(30*time.Second).
-			Retry(1, 3*time.Second).EndStruct(&result)
-		if nil != errs {
-			logger.Warnf("get release hash [%s] failed: %s", u, errs)
-			return
-		}
-		if 200 != resp.StatusCode {
-			logger.Warnf("get release hash [%s] failed: %d", u, resp.StatusCode)
-			return
-		}
-
-		hash = result["object"].(map[string]any)["sha"].(string)
-		if "" == hash {
-			logger.Warnf("get [%s] tag hash failed: hash is empty", ownerRepo)
-			return
-		}
-	}
-	ok = true
-	return
-}
-
-// sanitizePackageDisplayStrings 对集市包直接可能显示的信息做 HTML 转义，避免 XSS。（跟思源内核 kernel/bazaar/package.go 保持一致）
-// 思源旧版本没有转义，为了避免旧版本受到攻击，必须在线上进行转义。
-func sanitizePackageDisplayStrings(pkg *Package) {
-	if pkg == nil {
-		return
-	}
-	pkg.Name = html.EscapeString(pkg.Name)
-	pkg.Author = html.EscapeString(pkg.Author)
-	pkg.Version = html.EscapeString(pkg.Version)
-	for k, v := range pkg.DisplayName {
-		pkg.DisplayName[k] = html.EscapeString(v)
-	}
-	for k, v := range pkg.Description {
-		pkg.Description[k] = html.EscapeString(v)
-	}
-	if pkg.Funding != nil {
-		pkg.Funding.OpenCollective = html.EscapeString(pkg.Funding.OpenCollective)
-		pkg.Funding.Patreon = html.EscapeString(pkg.Funding.Patreon)
-		pkg.Funding.GitHub = html.EscapeString(pkg.Funding.GitHub)
-		for i, v := range pkg.Funding.Custom {
-			pkg.Funding.Custom[i] = html.EscapeString(v)
-		}
-	}
-	for i, kw := range pkg.Keywords {
-		pkg.Keywords[i] = html.EscapeString(kw)
-	}
-}
-
-// LocaleStrings 表示按 locale 键（如 default、zh_CN、en_US）组织的多语言字符串
-type LocaleStrings map[string]string
-
-type Funding struct {
-	OpenCollective string   `json:"openCollective"`
-	Patreon        string   `json:"patreon"`
-	GitHub         string   `json:"github"`
-	Custom         []string `json:"custom"`
-}
-
-type Package struct {
-	Name          string        `json:"name"`
-	Author        string        `json:"author"`
-	URL           string        `json:"url"`
-	Version       string        `json:"version"`
-	MinAppVersion string        `json:"minAppVersion"`
-	DisplayName   LocaleStrings `json:"displayName"`
-	Description   LocaleStrings `json:"description"`
-	Readme        LocaleStrings `json:"readme"`
-	Funding       *Funding      `json:"funding"`
-	Keywords      []string      `json:"keywords"`
-}
-
-// PluginPackage 插件的 package
-type PluginPackage struct {
-	*Package
-	Backends          []string `json:"backends"`
-	Frontends         []string `json:"frontends"`
-	DisabledInPublish bool     `json:"disabledInPublish"`
-}
-
-// ThemePackage 主题的 package
-type ThemePackage struct {
-	*Package
-	Modes []string `json:"modes"`
-}
-
-type StageRepo struct {
-	URL         string `json:"url"`
-	Updated     string `json:"updated"`
-	Stars       int    `json:"stars"`
-	OpenIssues  int    `json:"openIssues"`
-	Size        int64  `json:"size"`
-	InstallSize int64  `json:"installSize"`
-
-	// Package 为 *Package（模板/图标/挂件）、*PluginPackage（插件）或 *ThemePackage（主题）
-	Package any `json:"package"`
+	return buf.Bytes(), nil
 }
