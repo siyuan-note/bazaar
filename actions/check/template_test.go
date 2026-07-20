@@ -27,6 +27,7 @@ func TestCheckResultTemplate(t *testing.T) {
 	}
 
 	sample := CheckResult{
+		PRAuthor: "demo-author",
 		Plugins: []PackageCheck{
 			{
 				RepoInfo: RepoInfo{Path: "siyuan-note/plugin-sample", Home: "https://github.com/siyuan-note/plugin-sample"},
@@ -62,6 +63,7 @@ func TestCheckResultTemplate(t *testing.T) {
 	}
 	out := buf.String()
 	for _, want := range []string{
+		"@demo-author",
 		"无 Latest Release",
 		"无 package.zip",
 		"缺少 icon.png",

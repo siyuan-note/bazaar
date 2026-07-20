@@ -1,4 +1,8 @@
 ## 拉取请求自动化检查 / Pull Request Automated Check
+{{- if .PRAuthor }}
+
+@{{ .PRAuthor }}
+{{- end }}
 
 {{- if .ParseError }}
 

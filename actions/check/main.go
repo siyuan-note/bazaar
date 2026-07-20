@@ -234,6 +234,8 @@ func main() {
 		return
 	}
 
+	checkResult.PRAuthor = prAuthorLogin()
+
 	// 将检查结果写入文件
 	if err := checkResultTemplate.Execute(checkResultOutputFile, checkResult); err != nil {
 		logger.Fatalf("write check result failed: %s", err)

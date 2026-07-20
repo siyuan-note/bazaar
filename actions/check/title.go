@@ -121,6 +121,20 @@ func prIsMergedOrClosed() bool {
 	return pr.GetMerged() || pr.GetState() == "closed"
 }
 
+// prAuthorLogin 返回当前 PR 作者 login；缺环境变量或 API 失败时返回空。
+func prAuthorLogin() string {
+	owner, repo, prNumber, ok := prIdentity()
+	if !ok {
+		return ""
+	}
+	pr, _, err := githubRepoClient.PullRequests.Get(githubContext, owner, repo, prNumber)
+	if err != nil {
+		logger.Errorf("get PR #%d author failed: %s", prNumber, err)
+		return ""
+	}
+	return pr.GetUser().GetLogin()
+}
+
 // maybeUpdatePRTitle 将 PR 标题改为约定格式；缺环境变量或已是目标标题时跳过，失败只记日志不中断检查。
 func maybeUpdatePRTitle(title string) {
 	if title == "" {
