@@ -17,6 +17,7 @@ import (
 	"maps"
 	"os"
 	"path/filepath"
+	"slices"
 	"strings"
 
 	"golang.org/x/mod/semver"
@@ -254,7 +255,13 @@ func Manifest(m map[string]any, in ManifestInput) []Issue {
 func checkUnknownKeys(m map[string]any, typ PackageType) []Issue {
 	var issues []Issue
 	allowed := allowedManifestKeys[typ]
+	// 按键名排序，避免 map 遍历顺序不稳定导致检查结果 / result_hash 抖动
+	keys := make([]string, 0, len(m))
 	for k := range m {
+		keys = append(keys, k)
+	}
+	slices.Sort(keys)
+	for _, k := range keys {
 		if _, ok := allowed[k]; !ok {
 			issues = append(issues, issue(
 				fmt.Sprintf("`%s` 中出现了预期外的字段 `%s`。请删除该字段（保留未知字段会妨碍思源日后扩展同名字段）。若确有自定义需求，请先在[思源仓库](https://github.com/siyuan-note/siyuan)提 issue 讨论。", typ.ManifestFile(), k),
@@ -617,7 +624,12 @@ func checkFunding(m map[string]any) []Issue {
 		)}
 	}
 	var issues []Issue
+	keys := make([]string, 0, len(obj))
 	for k := range obj {
+		keys = append(keys, k)
+	}
+	slices.Sort(keys)
+	for _, k := range keys {
 		if _, ok := allowedFundingKeys[k]; !ok {
 			issues = append(issues, issue(
 				fmt.Sprintf("`funding` 中出现了预期外的字段 `%s`。仅允许 `openCollective`、`patreon`、`github`、`custom`。", k),

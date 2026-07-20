@@ -51,6 +51,32 @@ func TestBackoffInterval(t *testing.T) {
 	}
 }
 
+func TestComputeResultHashIgnoresIssueOrder(t *testing.T) {
+	a := &CheckResult{
+		Widgets: []PackageCheck{{
+			RepoInfo: RepoInfo{Path: "o/w"},
+			Release:  util.LatestRelease{ID: 1, Tag: "1.0.0", PackageZipAssetID: 2},
+			Issues: []rules.Issue{
+				{MessageZh: "字段 backends", MessageEn: "field backends"},
+				{MessageZh: "字段 frontends", MessageEn: "field frontends"},
+			},
+		}},
+	}
+	b := &CheckResult{
+		Widgets: []PackageCheck{{
+			RepoInfo: RepoInfo{Path: "o/w"},
+			Release:  util.LatestRelease{ID: 1, Tag: "1.0.0", PackageZipAssetID: 2},
+			Issues: []rules.Issue{
+				{MessageZh: "字段 frontends", MessageEn: "field frontends"},
+				{MessageZh: "字段 backends", MessageEn: "field backends"},
+			},
+		}},
+	}
+	if ha, hb := computeResultHash(a), computeResultHash(b); ha != hb {
+		t.Fatalf("hash should ignore issue order: %s vs %s", ha, hb)
+	}
+}
+
 func TestBuildNextCheckMetaStreak(t *testing.T) {
 	now := time.Date(2026, 7, 20, 14, 0, 0, 0, time.UTC)
 	result := &CheckResult{
