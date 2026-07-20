@@ -61,6 +61,10 @@ Check 流程（流程通过后，对 plan.diff.New 中的仓库）：
 2. 用模板写出检查结果文件（含下架列表、检查 Issues；换维护者时附流程说明链接）
 3. 同步标签：类型标签按涉及的 *.txt 对账；CI 状态打 ci-failed 或 ci-passed（互斥，同一次 Replace）
 4. 工作流用 thollander/actions-comment-pull-request 将结果文件发到 PR
+
+定时复检（schedule）：
+1. go run ./actions/check -select：按评论开头 bazaar-check-meta（指纹变更 / 退避到期 / max-age）筛选 ci-failed PR
+2. 对入选 PR 跑完整 Check；评论写回新 meta（JSON）
 */
 
 var (
@@ -123,6 +127,11 @@ type typeCheckPlan struct {
 }
 
 func main() {
+	if len(os.Args) > 1 && os.Args[1] == "-select" {
+		runSelect()
+		return
+	}
+
 	logger.Infof("PR Check started")
 
 	var stop context.CancelFunc
@@ -233,6 +242,7 @@ func main() {
 	}
 
 	checkResult.PRAuthor = prAuthorLogin()
+	attachCheckMeta(checkResult)
 
 	// 将检查结果写入文件
 	if err := checkResultTemplate.Execute(checkResultOutputFile, checkResult); err != nil {
@@ -248,7 +258,25 @@ func main() {
 	logger.Infof("PR Check completed")
 }
 
+// attachCheckMeta 读取上次评论 meta，生成本轮调度元数据并填入 MetaJSON。
+func attachCheckMeta(checkResult *CheckResult) {
+	var prev *CheckMeta
+	if owner, repo, prNumber, ok := prIdentity(); ok && githubRepoClient != nil {
+		prev, _ = loadCheckMetaFromPRComments(githubContext, githubRepoClient, owner, repo, prNumber)
+	}
+	meta := buildNextCheckMeta(prev, checkResult, time.Now())
+	metaJSON, err := marshalCheckMetaJSON(meta)
+	if err != nil {
+		logger.Errorf("marshal check meta failed: %s", err)
+		return
+	}
+	checkResult.MetaJSON = metaJSON
+	logger.Infof("check meta: hash=%s streak=%d next_due=%s fp_repo=%v",
+		meta.ResultHash, meta.UnchangedStreak, meta.NextDueAt, meta.FP != nil)
+}
+
 // appendGitHubOutput 向 GITHUB_OUTPUT 追加 name=value（非 Actions 环境则忽略）。
+// value 含换行或 JSON 引号时用 heredoc，避免 Actions 截断 / 解析失败。
 func appendGitHubOutput(name, value string) {
 	path := os.Getenv("GITHUB_OUTPUT")
 	if path == "" {
@@ -260,8 +288,15 @@ func appendGitHubOutput(name, value string) {
 		return
 	}
 	defer f.Close()
-	if _, err := fmt.Fprintf(f, "%s=%s\n", name, value); err != nil {
-		logger.Errorf("write GITHUB_OUTPUT failed: %s", err)
+	useHeredoc := strings.ContainsAny(value, "\n\r\"'") || strings.Contains(value, "{")
+	var writeErr error
+	if useHeredoc {
+		_, writeErr = fmt.Fprintf(f, "%s<<EOF\n%s\nEOF\n", name, value)
+	} else {
+		_, writeErr = fmt.Fprintf(f, "%s=%s\n", name, value)
+	}
+	if writeErr != nil {
+		logger.Errorf("write GITHUB_OUTPUT failed: %s", writeErr)
 	}
 }
 

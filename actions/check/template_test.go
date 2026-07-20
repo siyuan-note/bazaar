@@ -28,6 +28,7 @@ func TestCheckResultTemplate(t *testing.T) {
 
 	sample := CheckResult{
 		PRAuthor: "demo-author",
+		MetaJSON: `{"v":1,"checked_at":"2026-07-20T14:00:00Z","result_hash":"deadbeef","unchanged_streak":0,"next_due_at":"2026-07-20T14:20:00Z"}`,
 		Plugins: []PackageCheck{
 			{
 				RepoInfo: RepoInfo{Path: "siyuan-note/plugin-sample", Home: "https://github.com/siyuan-note/plugin-sample"},
@@ -63,6 +64,8 @@ func TestCheckResultTemplate(t *testing.T) {
 	}
 	out := buf.String()
 	for _, want := range []string{
+		"<!-- bazaar-check-meta",
+		`"result_hash":"deadbeef"`,
 		"@demo-author",
 		"无 Latest Release",
 		"无 package.zip",

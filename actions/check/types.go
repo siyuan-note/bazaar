@@ -22,6 +22,9 @@ type CheckResult struct {
 	// PRAuthor PR 作者 GitHub login，用于评论中 @ 提醒；为空则不展示
 	PRAuthor string
 
+	// MetaJSON 调度元数据的紧凑 JSON，写入评论开头 HTML 注释；空则不渲染
+	MetaJSON string
+
 	Plugins   []PackageCheck
 	Themes    []PackageCheck
 	Icons     []PackageCheck

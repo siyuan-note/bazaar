@@ -1,3 +1,9 @@
+{{- if .MetaJSON }}
+<!-- bazaar-check-meta
+{{ .MetaJSON }}
+-->
+
+{{- end }}
 ## 拉取请求自动化检查 / Pull Request Automated Check
 {{- if .PRAuthor }}
 
