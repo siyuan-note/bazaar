@@ -27,6 +27,11 @@ var (
 	ErrNoPackageZip = errors.New("package.zip not found in latest release")
 	// ErrReleaseTag 无法将 Release tag 解析为有效 commit。
 	ErrReleaseTag = errors.New("release tag could not be resolved")
+
+	// latestRelease404MaxAttempts：GetLatestRelease 遇 404 时的最大尝试次数（含首次）。
+	// 真无 Release 时 GitHub 也返回 404；短重试用于消化偶发瞬时 404，避免 Stage 误报。
+	latestRelease404MaxAttempts = 3
+	latestRelease404RetryWait   = time.Second
 )
 
 // LatestRelease 仓库 Latest Release 的纯数据摘要。
@@ -59,7 +64,7 @@ func FetchLatestRelease(ctx context.Context, client *github.Client, owner, repo 
 	}
 
 	// REF https://docs.github.com/en/rest/releases/releases#get-the-latest-release
-	release, _, err := client.Repositories.GetLatestRelease(ctx, owner, repo)
+	release, err := getLatestReleaseRetry404(ctx, client, owner, repo)
 	if err != nil {
 		return info, rules.LocalizedErr(
 			fmt.Sprintf("无法获取 Latest Release：%v。请在 GitHub 上创建 Release，并确保仓库已设为公开。", err),
@@ -98,6 +103,38 @@ func FetchLatestRelease(ctx context.Context, client *github.Client, owner, repo 
 		)
 	}
 	return info, nil
+}
+
+// getLatestReleaseRetry404 调用 GetLatestRelease；遇 404 时短间隔重试，缓解瞬时 Not Found。
+func getLatestReleaseRetry404(ctx context.Context, client *github.Client, owner, repo string) (*github.RepositoryRelease, error) {
+	maxAttempts := latestRelease404MaxAttempts
+	if maxAttempts < 1 {
+		maxAttempts = 1
+	}
+	var lastErr error
+	for attempt := 1; attempt <= maxAttempts; attempt++ {
+		release, _, err := client.Repositories.GetLatestRelease(ctx, owner, repo)
+		if err == nil {
+			return release, nil
+		}
+		lastErr = err
+		if !IsGitHubNotFound(err) || attempt == maxAttempts {
+			return nil, err
+		}
+		logger.Warnf("get latest release [%s/%s] returned 404, retry %d/%d after %s",
+			owner, repo, attempt, maxAttempts-1, latestRelease404RetryWait)
+		timer := time.NewTimer(latestRelease404RetryWait)
+		select {
+		case <-ctx.Done():
+			timer.Stop()
+			if ctxErr := ctx.Err(); ctxErr != nil {
+				return nil, ctxErr
+			}
+			return nil, lastErr
+		case <-timer.C:
+		}
+	}
+	return nil, lastErr
 }
 
 func resolveReleaseTagCommit(ctx context.Context, client *github.Client, owner, repo, tagName string) (string, error) {

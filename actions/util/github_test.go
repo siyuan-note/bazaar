@@ -75,3 +75,46 @@ func TestIsGitHubRateLimit(t *testing.T) {
 		})
 	}
 }
+
+func TestIsGitHubNotFound(t *testing.T) {
+	notFound := &github.ErrorResponse{
+		Response: &http.Response{StatusCode: http.StatusNotFound, Request: &http.Request{Method: http.MethodGet}},
+		Message:  "Not Found",
+	}
+	forbidden := &github.ErrorResponse{
+		Response: &http.Response{StatusCode: http.StatusForbidden, Request: &http.Request{Method: http.MethodGet}},
+		Message:  "Forbidden",
+	}
+
+	tests := []struct {
+		name string
+		err  error
+		want bool
+	}{
+		{name: "nil", err: nil, want: false},
+		{name: "普通错误", err: errors.New("boom"), want: false},
+		{name: "ErrorResponse 404", err: notFound, want: true},
+		{name: "ErrorResponse 403", err: forbidden, want: false},
+		{
+			name: "LocalizedError 包装 404",
+			err: rules.LocalizedErr(
+				"无法获取 Latest Release",
+				"Couldn't fetch the Latest Release",
+				fmt.Errorf("%w: %w", ErrNoLatestRelease, notFound),
+			),
+			want: true,
+		},
+		{
+			name: "纯字符串 404 不误判",
+			err:  errors.New("404 Not Found"),
+			want: false,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := IsGitHubNotFound(tt.err); got != tt.want {
+				t.Fatalf("IsGitHubNotFound() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}

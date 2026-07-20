@@ -37,7 +37,7 @@
 
    PR Check 工作流会自动运行以检查新增包是否符合集市规范（如 release、必要文件、清单字段等），维护者也会进行审核，请根据要求进行相应修改。
 
-   如果 PR Check 工作流检查不成功，请根据检查结果进行修改，不要重新创建 PR，维护者会手动再次运行 PR Check 工作流检查。
+   如果 PR Check 工作流检查不成功，请根据检查结果进行修改，不要重新创建 PR。修好包仓库（例如更新 Latest Release / `package.zip`）后，定时任务会每隔约两小时自动复检带 `ci-failed` 标签的开放 PR 并更新检查评论；维护者也可手动打 `Check` 标签或触发工作流立即复检。
 
 5. **成功上架**
 
@@ -49,7 +49,7 @@
 
 一般情况下，社区集市仓库会每一到三小时自动更新索引并部署，你可以在 [Stage 工作流页面](https://github.com/siyuan-note/bazaar/actions/workflows/stage.yml) 查看部署状态。
 
-如果长时间未更新，可能是更新包存在问题（例如未提升清单中的 version）。请先查看 [Stage 检查失败汇总](https://github.com/siyuan-note/bazaar/issues/1923) 中是否有对应仓库的评论，也可检查最新的 Stage 工作流日志。
+如果长时间未更新，可能是更新包存在问题（例如未提升清单中的 version）。请先查看带 `stage-fail` 标签的 [Stage 检查失败 Issue](https://github.com/siyuan-note/bazaar/issues?q=is%3Aissue+is%3Aopen+label%3Astage-fail) 中是否有对应仓库，也可检查最新的 Stage 工作流日志。
 
 ## 更换维护者
 

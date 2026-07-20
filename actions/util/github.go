@@ -12,6 +12,7 @@ package util
 
 import (
 	"errors"
+	"net/http"
 	"time"
 
 	"github.com/google/go-github/v89/github"
@@ -37,6 +38,19 @@ func IsGitHubRateLimit(err error) bool {
 	}
 	_, ok := errors.AsType[*github.AbuseRateLimitError](err)
 	return ok
+}
+
+// IsGitHubNotFound 判断 err 是否为 GitHub REST API 的 404 Not Found。
+// 可穿透 LocalizedError / fmt %w 等包装链。
+func IsGitHubNotFound(err error) bool {
+	if err == nil {
+		return false
+	}
+	resp, ok := errors.AsType[*github.ErrorResponse](err)
+	if !ok || resp.Response == nil {
+		return false
+	}
+	return resp.Response.StatusCode == http.StatusNotFound
 }
 
 // GitHubRepoURL 由 owner/repo 拼出仓库主页地址

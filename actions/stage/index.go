@@ -77,7 +77,7 @@ func resolveStageCheckLegacy(
 // oldName/oldVersion 供清单校验（含换维护者：视同更新，须 version 更高）。
 // allowThemeJS 仅主题为 themes 时可能为 true（theme.js 白名单内仓库）；其他类型恒为 false。
 // occupiedNames 为已占用 package.name 集合，供 rules.Check 做跨类型唯一性检查。
-// 失败时 issues 供固定 Issue 评论汇总（与 PR Check 同一套 MessageZh/MessageEn）。
+// 失败时 issues 供按仓 Stage 失败 Issue 正文（与 PR Check 同一套 MessageZh/MessageEn）。
 // 若遇 GitHub API 限流，返回 err（issues 为空），由调用方中止本轮并保留旧数据，不写 stage-fail。
 func indexPackage(
 	ownerRepo string,
