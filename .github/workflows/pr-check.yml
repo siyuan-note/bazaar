@@ -33,6 +33,12 @@ on:
     - cron: '7,27,47 * * * *'
   workflow_dispatch:
 
+# pull_request_target：同一 PR 重复触发时取消整次旧 run（含 prepare），减轻双开竞态
+# schedule / workflow_dispatch：用 run_id 互不取消；同 PR 仍靠下方 check job 的 concurrency
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: true
+
 jobs:
   # 产出待检 PR 矩阵：事件 PR 一条，或定时/手动筛选开放 ci-failed
   prepare:
@@ -48,6 +54,7 @@ jobs:
         github.event_name == 'workflow_dispatch'
       )
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     permissions:
       pull-requests: read
       contents: read
@@ -103,10 +110,13 @@ jobs:
     # 覆盖默认矩阵名（会把 sha 拼进去）；显示 PR 号与 fork owner/repo
     name: "#${{ matrix.number }} ${{ matrix.head_repo }}"
     runs-on: ubuntu-latest
+    # 正常单 PR 检查约 1 分钟；用于尽快杀掉卡在 Starting job 的幽灵占用，避免 concurrency 互等
+    timeout-minutes: 5
     strategy:
       fail-fast: false
       matrix: ${{ fromJSON(needs.prepare.outputs.matrix) }}
     # 同一 PR 只保留最新一次检查，避免 synchronize / 定时复检重叠写评论
+    # （与 workflow 级 concurrency 互补：覆盖 schedule 与 PR 事件撞同一 PR 的情况）
     concurrency:
       group: pr-check-${{ matrix.number }}
       cancel-in-progress: true
