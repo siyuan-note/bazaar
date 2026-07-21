@@ -176,7 +176,7 @@ func TestValidatePRListChangeFlow_Reject(t *testing.T) {
 		if got == "" || !strings.Contains(got, "还下架了其他包") {
 			t.Fatalf("unexpected error:\n%s", got)
 		}
-		if !strings.Contains(got, "`b/old`") {
+		if !strings.Contains(got, "`plugins.txt`: b/old") {
 			t.Fatalf("error should list unrelated delist:\n%s", got)
 		}
 	})
@@ -192,10 +192,10 @@ func TestValidatePRListChangeFlow_Reject(t *testing.T) {
 			},
 		}
 		got := validatePRListChangeFlow(plans)
-		if got == "" || !strings.Contains(got, "`carol/bar`") {
+		if got == "" || !strings.Contains(got, "`plugins.txt`: carol/bar") {
 			t.Fatalf("unexpected error:\n%s", got)
 		}
-		if strings.Contains(got, "`alice/foo`") {
+		if strings.Contains(got, "alice/foo") {
 			t.Fatalf("previous repo should not be listed as unrelated delist:\n%s", got)
 		}
 	})
