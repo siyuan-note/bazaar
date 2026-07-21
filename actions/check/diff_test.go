@@ -108,9 +108,95 @@ func TestFormatOnePackageLimitError(t *testing.T) {
 		"`themes.txt`: c/t1",
 		"拆成独立的 Pull Request",
 		"split each package into its own Pull Request",
+		"仅添加 1 个新包",
+		"Add exactly 1 new package",
 	} {
 		if !strings.Contains(out, want) {
 			t.Fatalf("output missing %q\n%s", want, out)
 		}
 	}
+}
+
+func TestValidatePRListChangeFlow_OK(t *testing.T) {
+	cases := []struct {
+		name  string
+		plans []typeCheckPlan
+	}{
+		{
+			name: "pure add",
+			plans: []typeCheckPlan{
+				{packageType: rules.TypePlugin, diff: repoDiff{New: []string{"alice/foo"}}},
+			},
+		},
+		{
+			name: "maintainer change",
+			plans: []typeCheckPlan{
+				{
+					packageType: rules.TypeTheme,
+					diff: repoDiff{
+						New:           []string{"bob/theme"},
+						Deleted:       []string{"alice/theme"},
+						PreviousRepos: map[string]string{"bob/theme": "alice/theme"},
+					},
+				},
+			},
+		},
+		{
+			name: "pure delist multiple",
+			plans: []typeCheckPlan{
+				{packageType: rules.TypePlugin, diff: repoDiff{Deleted: []string{"a/p1", "b/p2"}}},
+				{packageType: rules.TypeIcon, diff: repoDiff{Deleted: []string{"c/i1"}}},
+			},
+		},
+	}
+	for _, tc := range cases {
+		t.Run(tc.name, func(t *testing.T) {
+			if got := validatePRListChangeFlow(tc.plans); got != "" {
+				t.Fatalf("want empty, got:\n%s", got)
+			}
+		})
+	}
+}
+
+func TestValidatePRListChangeFlow_Reject(t *testing.T) {
+	t.Run("multiple adds", func(t *testing.T) {
+		plans := []typeCheckPlan{
+			{packageType: rules.TypePlugin, diff: repoDiff{New: []string{"a/p1", "b/p2"}}},
+		}
+		got := validatePRListChangeFlow(plans)
+		if got == "" || !strings.Contains(got, "添加或更换了 2 个集市包") {
+			t.Fatalf("unexpected error:\n%s", got)
+		}
+	})
+	t.Run("add plus unrelated delist", func(t *testing.T) {
+		plans := []typeCheckPlan{
+			{packageType: rules.TypePlugin, diff: repoDiff{New: []string{"a/p1"}, Deleted: []string{"b/old"}}},
+		}
+		got := validatePRListChangeFlow(plans)
+		if got == "" || !strings.Contains(got, "还下架了其他包") {
+			t.Fatalf("unexpected error:\n%s", got)
+		}
+		if !strings.Contains(got, "`plugins.txt`: b/old") {
+			t.Fatalf("error should list unrelated delist:\n%s", got)
+		}
+	})
+	t.Run("maintainer change plus extra delist", func(t *testing.T) {
+		plans := []typeCheckPlan{
+			{
+				packageType: rules.TypePlugin,
+				diff: repoDiff{
+					New:           []string{"bob/foo"},
+					Deleted:       []string{"alice/foo", "carol/bar"},
+					PreviousRepos: map[string]string{"bob/foo": "alice/foo"},
+				},
+			},
+		}
+		got := validatePRListChangeFlow(plans)
+		if got == "" || !strings.Contains(got, "`plugins.txt`: carol/bar") {
+			t.Fatalf("unexpected error:\n%s", got)
+		}
+		if strings.Contains(got, "alice/foo") {
+			t.Fatalf("previous repo should not be listed as unrelated delist:\n%s", got)
+		}
+	})
 }

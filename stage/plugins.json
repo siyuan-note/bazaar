@@ -1,6 +1,1253 @@
 {
   "repos": [
     {
+      "installSize": 287985,
+      "openIssues": 0,
+      "package": {
+        "author": "demisse",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "AI-powered RSS reader for focused reading in SiYuan.",
+          "zh-CN": "思源笔记的 AI RSS 阅读器，用 AI 收敛信息噪音。"
+        },
+        "displayName": {
+          "default": "LimitRSS"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "RSS",
+          "AI",
+          "Reader",
+          "Subscription",
+          "Feed",
+          "Summary",
+          "Translation",
+          "Knowledge",
+          "订阅",
+          "阅读器",
+          "总结",
+          "翻译"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "LimitRSS",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/Demisse233/LimitRSS",
+        "version": "0.1.1"
+      },
+      "packageZipAssetId": 484311282,
+      "size": 96226,
+      "stars": 0,
+      "updated": "2026-07-21T06:23:25Z",
+      "url": "Demisse233/LimitRSS@129160287dfef436377c3d77aa1ad601e9d8e6a8"
+    },
+    {
+      "installSize": 799083,
+      "openIssues": 0,
+      "package": {
+        "author": "ying",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Use your SiYuan notes from MCP-compatible AI tools with notebook and action permissions.",
+          "zh-CN": "让支持 MCP 的 AI 工具在授权范围内读取、搜索和整理思源笔记。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan MCP",
+          "zh-CN": "思源MCP"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "MCP",
+          "AI",
+          "agent",
+          "SiYuan",
+          "permission"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-ai-mcp-bridge",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/appdev/siyuan-ai-mcp-bridge",
+        "version": "0.1.4"
+      },
+      "packageZipAssetId": 484121677,
+      "size": 643116,
+      "stars": 0,
+      "updated": "2026-07-21T06:00:38Z",
+      "url": "appdev/siyuan-ai-mcp-bridge@e5454c58e0e2f51efa13b75bf1a8e095c48c9630"
+    },
+    {
+      "installSize": 159301,
+      "openIssues": 0,
+      "package": {
+        "author": "Cyprien63",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "docker"
+        ],
+        "description": {
+          "default": "Sync SiYuan notes with a GitHub repository. Incremental push/pull, 3-way merge, commit history, restore, Groq AI commit messages.",
+          "zh_CN": "将思源笔记与 GitHub 仓库同步。增量推送/拉取、三方合并、提交历史、恢复、Groq AI 提交消息。"
+        },
+        "displayName": {
+          "default": "GitHub Sync",
+          "zh_CN": "GitHub 同步"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "keywords": [
+          "sync",
+          "github",
+          "backup",
+          "git",
+          "version-control"
+        ],
+        "minAppVersion": "3.6.4",
+        "name": "siyuan-github-sync",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/cyprien63/siyuan-plugin",
+        "version": "1.0.0"
+      },
+      "packageZipAssetId": 484283454,
+      "size": 122958,
+      "stars": 0,
+      "updated": "2026-07-21T05:58:42Z",
+      "url": "cyprien63/siyuan-plugin@6c8eff0915d3f94c29695b6ff8bbf7e6457e1ae6"
+    },
+    {
+      "installSize": 260429,
+      "openIssues": 0,
+      "package": {
+        "author": "jeefeng",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Upload local document images to custom image beds and replace links automatically.",
+          "zh_CN": "支持自定义图床配置，自动上传文章本地图片并替换为远程链接。"
+        },
+        "displayName": {
+          "default": "Image Hub",
+          "zh_CN": "思源图床"
+        },
+        "frontends": [
+          "all"
+        ],
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "图床",
+          "阿里云 OSS",
+          "image bed",
+          "Aliyun OSS",
+          "图片上传"
+        ],
+        "minAppVersion": "3.6.4",
+        "name": "siyuan-plugin-image-hub",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/jeefeng/siyuan-plugin-image-hub",
+        "version": "0.1.1"
+      },
+      "packageZipAssetId": 484148851,
+      "size": 133548,
+      "stars": 0,
+      "updated": "2026-07-21T05:57:51Z",
+      "url": "jeefeng/siyuan-plugin-image-hub@927ae703e0dbade924d58dc2cfc5315d24b73b09"
+    },
+    {
+      "installSize": 660956,
+      "openIssues": 2,
+      "package": {
+        "author": "gradypark86",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Quickly create a new or go to diary or weekly notes on the calendar panel, with support for periodic note templates",
+          "zh_CN": "在日历面板上快速新建或转到日记与周记，支持周期笔记模板"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Siyuan Calendar Panel",
+          "zh_CN": "思源日历面板"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "calendar",
+          "日历",
+          "日记",
+          "daily",
+          "weekly",
+          "周记"
+        ],
+        "minAppVersion": "2.13.0",
+        "name": "siyuan-plugin-calendar",
+        "readme": {
+          "default": "README_en_US.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/gradypark86/siyuan-plugin-calendar",
+        "version": "0.3.1"
+      },
+      "packageZipAssetId": 484280383,
+      "size": 286368,
+      "stars": 2,
+      "updated": "2026-07-21T05:14:34Z",
+      "url": "gradypark86/siyuan-plugin-calendar@f00c5faf1d792b20aea92702dce2542942aa741b"
+    },
+    {
+      "installSize": 143352,
+      "openIssues": 0,
+      "package": {
+        "author": "chenxuan",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Record your voice and insert the recognized text at the cursor. Multiple recognition providers supported (Xiaomi MiMo, browser Web Speech).",
+          "zh-CN": "录音并把识别出的文字插入到当前光标处，支持多种识别服务（小米 MiMo、浏览器 Web Speech）。"
+        },
+        "displayName": {
+          "default": "Voice to Text",
+          "zh-CN": "语音转文字"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop"
+        ],
+        "keywords": [
+          "asr",
+          "voice",
+          "speech-to-text",
+          "mimo",
+          "web-speech",
+          "语音转文字"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-plugin-voice2text",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/chenxuan520/siyuan-plugin-voice2text",
+        "version": "0.1.4"
+      },
+      "packageZipAssetId": 484214623,
+      "size": 115780,
+      "stars": 0,
+      "updated": "2026-07-21T03:49:45Z",
+      "url": "chenxuan520/siyuan-plugin-voice2text@2cfb8236d1a4aa8b569845dd42199496fea0e380"
+    },
+    {
+      "installSize": 2300948,
+      "openIssues": 3,
+      "package": {
+        "author": "IAliceBobI",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "[🔓Open Source] [🛡️GitHub Online Compilation] Excerpt-based progressive learning, chunk-based progressive learning, multi-line selection via double-tap on mobile, word highlighting with explanations, sentence splitting, split block by pressing Enter, merge blocks, word flashcards, multi-line cloze deletion, multi-line card creation, Daily Card, display pinyin for content",
+          "zh_CN": "【🔓已开源】【🛡️Github在线编译】摘抄式渐进学习、分片式渐进学习、移动端双击多行选择、划词解释、断句拆分、按回车拆分块、合并块、单词闪卡、多行挖空、多行制卡、Daily Card、显示拼音"
+        },
+        "displayName": {
+          "default": "Progressive Learning",
+          "zh_CN": "渐进学习"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/playerv5"
+          ]
+        },
+        "keywords": [
+          "Learning",
+          "Progressive",
+          "Progressive Learning",
+          "Progressive Reading",
+          "Progressive Writing"
+        ],
+        "minAppVersion": "2.12.6",
+        "name": "sy-progressive-plugin",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/IAliceBobI/sy-progressive-plugin",
+        "version": "2.1.41"
+      },
+      "packageZipAssetId": 484148250,
+      "size": 698240,
+      "stars": 25,
+      "updated": "2026-07-21T02:23:31Z",
+      "url": "IAliceBobI/sy-progressive-plugin@6b5a93d5cd80b7295dd7ee68a691d7c351fb1e25"
+    },
+    {
+      "installSize": 3486208,
+      "openIssues": 4,
+      "package": {
+        "author": "IAliceBobI",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "[🔓Open Source] [🛡️GitHub Online Compilation] Status Bar Pomodoro, Automatic Export to Markdown, Prefix Document Tree, Mobile Multi-Select, Enhanced Folding, Annotations, Bottom Backlinks, Synchronization Blocks, Mind Guides, Block Relationship Diagrams, Text to Citations, Photo Flash Notes, Reading Points, Bidirectional Links, AI Knowledge Base Q&amp;A, Streaming AI, Database Backlinks, Flashcard Priority, Document Merging, Regular Reminders, Delete Cards During Review, Flashcard Image Blanking, Move to Today&#39;s Notes, Clean Up Invalid Flashcards",
+          "zh-CN": "【🔓已开源】【🛡️Github在线编译】状态栏番茄钟、自动导出markdown、前缀文档树、移动端多选、增强折叠、批注、底部反链、同步块、思维导线、块关系图、文本转引用、拍照闪念、阅读点、双向互链、AI知识库问答、流式AI、数据库反链、闪卡优先级、文档合并、定期提醒、复习时删卡、闪卡图片挖空、移到今日笔记、清理失效闪卡"
+        },
+        "displayName": {
+          "default": "Tomato Toolbox",
+          "zh-CN": "番茄工具箱"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/playerv5"
+          ]
+        },
+        "keywords": [
+          "TomatoClock",
+          "Time management",
+          "Productivity",
+          "Pomodoro technique",
+          "Timer plugin",
+          "Task scheduling",
+          "Focus sessions",
+          "Work intervals",
+          "Breaks",
+          "Time tracking",
+          "Timeboxing",
+          "Time optimization",
+          "Efficiency",
+          "Work-life balance",
+          "Distraction management",
+          "Task prioritization",
+          "Time blocking",
+          "Time visualization",
+          "Progress tracking",
+          "Goal setting"
+        ],
+        "minAppVersion": "3.0.3",
+        "name": "sy-tomato-plugin",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/IAliceBobI/sy-tomato-plugin",
+        "version": "5.3.101"
+      },
+      "packageZipAssetId": 484128133,
+      "size": 1086353,
+      "stars": 51,
+      "updated": "2026-07-21T01:55:49Z",
+      "url": "IAliceBobI/sy-tomato-plugin@d1113e65310f6a537d0113d2631d247581b50ebc"
+    },
+    {
+      "installSize": 6057719,
+      "openIssues": 1,
+      "package": {
+        "author": "whale🐋",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Quick note on app switch, click automation, quick access to built-in features, date templates, mobile shortcuts. Supports both mobile and desktop! Replace Quicker, FV, Notion automation within SiYuan!",
+          "zh-CN": "一键记事，手机端全流程解决方案。操作一步到位，重塑思源笔记移动端体验。自启动一键记事、一键按钮直达、定制化工具栏按钮、自动化模拟点击、手机快捷键使用、手写模板插入、思源内置功能选择等。手机端、电脑端均支持。可在思源内基本替换Quicker、FV悬浮球、notion自动化、宏命令等。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan Mobile Enhancer",
+          "zh-CN": "思源手机端增强"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "toolbar",
+          "customization",
+          "mobile",
+          "automation",
+          "buttons",
+          "工具栏",
+          "自定义",
+          "手机端",
+          "手机端增强",
+          "移动端",
+          "移动端增强",
+          "模拟点击",
+          "自动化",
+          "按钮",
+          "鲸鱼",
+          "工具箱",
+          "鲸鱼工具箱",
+          "一键记事",
+          "快速记事"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-toolbar-customizer",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/HaoCeans/siyuan-toolbar-customizer",
+        "version": "3.7.4"
+      },
+      "packageZipAssetId": 483720119,
+      "size": 2037834,
+      "stars": 9,
+      "updated": "2026-07-20T17:28:52Z",
+      "url": "HaoCeans/siyuan-toolbar-customizer@0e07085713b84c9aab74cdd5e2b81c69cf607197"
+    },
+    {
+      "installSize": 860306,
+      "openIssues": 0,
+      "package": {
+        "author": "suka233",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Generate SiYuan plugins in one sentence with the built-in SiYuan Agent, then install them automatically.",
+          "zh-CN": "一句话通过思源内置 agent 生成思源插件，并自动安装"
+        },
+        "displayName": {
+          "default": "Kikit SiYuan Plugin Generator",
+          "zh-CN": "kikit 思源插件生成器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "agent",
+          "skill",
+          "plugin-maker",
+          "kikit"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "kikit-siyuan-plugin-generator",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/suka233/kikit-siyuan-plugin-generator",
+        "version": "0.1.2"
+      },
+      "packageZipAssetId": 483678366,
+      "size": 792494,
+      "stars": 4,
+      "updated": "2026-07-20T16:53:59Z",
+      "url": "suka233/kikit-siyuan-plugin-generator@68c166e2f2d9ebc7c9220074e69c7739ae00e9ad"
+    },
+    {
+      "installSize": 303482,
+      "openIssues": 0,
+      "package": {
+        "author": "QMike0",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Optimize the callout block style, and provide features such as quick title editing, collapse/expand, autocomplete menu, type menu, appearance customization, and type management",
+          "zh-CN": "优化callout块样式，并提供标题快速编辑、折叠/展开、补全菜单、类型菜单、外观自定义与类型管理等功能"
+        },
+        "displayName": {
+          "default": "Callout Enhance",
+          "zh-CN": "Callout 增强"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "提示块",
+          "callout",
+          "Callout"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-callout-enhance",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/QMike0/siyuan-plugin-callout-enhance",
+        "version": "0.3.0"
+      },
+      "packageZipAssetId": 483656606,
+      "size": 89117,
+      "stars": 2,
+      "updated": "2026-07-20T16:48:25Z",
+      "url": "QMike0/siyuan-plugin-callout-enhance@900e114f84daf711ef7858497e5f22064bf6a689"
+    },
+    {
+      "installSize": 130859,
+      "openIssues": 0,
+      "package": {
+        "author": "Vanessa",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Set reminders with comprehensive data collection for SiYuan notes",
+          "zh-CN": "为思源笔记设置提醒，支持全面数据采集"
+        },
+        "displayName": {
+          "default": "Reminder",
+          "zh-CN": "提醒"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://github.com/work-1970"
+          ]
+        },
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "reminder",
+          "提醒",
+          "notification",
+          "通知"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-reminder",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/work-1970/siyuan-plugin-reminder",
+        "version": "1.0.0"
+      },
+      "packageZipAssetId": 483588806,
+      "size": 88691,
+      "stars": 0,
+      "updated": "2026-07-20T15:49:42Z",
+      "url": "Work-1970/siyuan-plugin-reminder@490df3fc52ad74e4ea6533ffd34b2e128652ad82"
+    },
+    {
+      "installSize": 887831,
+      "openIssues": 0,
+      "package": {
+        "author": "whale🐋",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Professional annotation plugin — select text, add comments, manage in sidebar, with slide-to-annotate, tagging, and cross-document navigation.",
+          "zh-CN": "专业批注插件：绝对安全、零污染、数据永久原始保留、万字文档秒批、可离线使用。选中文字添加批注，侧边栏管理，支持滑动快速批注、标签分类、跨文档跳转。"
+        },
+        "displayName": {
+          "default": "鲸鱼快速批注",
+          "en": "Whale Quick Comment"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "comment",
+          "annotation",
+          "批注",
+          "标注",
+          "笔记"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-comment",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/HaoCeans/siyuan-comment",
+        "version": "2.1.6"
+      },
+      "packageZipAssetId": 483602285,
+      "size": 519845,
+      "stars": 1,
+      "updated": "2026-07-20T15:26:00Z",
+      "url": "HaoCeans/siyuan-comment@97ae901c35a4789d0630961ef72044dc203004c6"
+    },
+    {
+      "installSize": 418544,
+      "openIssues": 0,
+      "package": {
+        "author": "养恐龙",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Sleek and adaptive floating navigation bar for SiYuan Note mobile and desktop.",
+          "zh-CN": "熊猫总能带你回家～"
+        },
+        "displayName": {
+          "default": "熊猫导航"
+        },
+        "frontends": [
+          "all"
+        ],
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "plugin",
+          "navigation",
+          "mobile"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-panda-navigation",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/hqweay/siyuan-panda-navigation",
+        "version": "0.8.2"
+      },
+      "packageZipAssetId": 483493963,
+      "size": 175398,
+      "stars": 3,
+      "updated": "2026-07-20T14:11:57Z",
+      "url": "hqweay/siyuan-panda-navigation@83251b840f180a238a53043ff301cad89e0c2202"
+    },
+    {
+      "installSize": 1845367,
+      "openIssues": 5,
+      "package": {
+        "author": "Zuoqiu Yingyi",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Customize the fonts of various elements in the SiYuan interface.",
+          "zh_CHT": "自定義思源介面中各種元素的字型。",
+          "zh_CN": "自定义思源界面中各种元素的字体。"
+        },
+        "displayName": {
+          "default": "Custom Fonts",
+          "zh_CHT": "自定義字型",
+          "zh_CN": "自定义字体"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/zuoqiu",
+            "https://ko-fi.com/zuoqiu"
+          ],
+          "github": "https://github.com/Zuoqiu-Yingyi"
+        },
+        "keywords": [
+          "字体",
+          "字體",
+          "字型",
+          "font",
+          "字族",
+          "font family",
+          "字体列表",
+          "字體列表",
+          "字型列表",
+          "font list",
+          "块字体",
+          "塊字體",
+          "塊字型",
+          "block font"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "custom-fonts",
+        "readme": {
+          "default": "README.md",
+          "zh_CHT": "README_zh_CN.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/Zuoqiu-Yingyi/siyuan-plugin-custom-fonts",
+        "version": "2.0.1"
+      },
+      "packageZipAssetId": 483446063,
+      "size": 917159,
+      "stars": 13,
+      "updated": "2026-07-20T12:36:03Z",
+      "url": "Zuoqiu-Yingyi/siyuan-plugin-custom-fonts@2bd597c6081ffe5719f3fe22dc90906a1fe9571c"
+    },
+    {
+      "installSize": 367212,
+      "openIssues": 0,
+      "package": {
+        "author": "Quincy Zou",
+        "backends": [
+          "windows"
+        ],
+        "description": {
+          "default": "我是一个粉刷匠——拾色、调配、粉刷，装扮你的笔记空间。",
+          "en_US": "I am a painter - pick colors, mix them, and paint to decorate your note space."
+        },
+        "displayName": {
+          "default": "Style Editor",
+          "zh_CN": "粉刷匠"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "keywords": [
+          "style",
+          "template",
+          "editor",
+          "theme"
+        ],
+        "minAppVersion": "2.10.14",
+        "name": "siyuan-style-editor",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/famotime/siyuan-style-editor",
+        "version": "1.0.0"
+      },
+      "packageZipAssetId": 466761400,
+      "size": 111052,
+      "stars": 1,
+      "updated": "2026-07-20T12:29:51Z",
+      "url": "famotime/siyuan-style-editor@cc1679fea720dc43e245c53451b6763fa894779b"
+    },
+    {
+      "installSize": 56544,
+      "openIssues": 0,
+      "package": {
+        "author": "zhuxiucai",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Refresh document title YYMMDD prefixes from SiYuan&#39;s internal updated field, while always skipping directory/container documents.",
+          "zh_CN": "根据思源内部 updated 字段刷新文档标题 YYMMDD 前缀，并永远跳过目录型文档。"
+        },
+        "displayName": {
+          "default": "Date Prefix Refresh",
+          "zh_CN": "日期前缀刷新"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "date",
+          "prefix",
+          "rename",
+          "updated",
+          "日期",
+          "前缀",
+          "重命名"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuandateprefix",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/zhuxiucai/siyuandateprefix",
+        "version": "0.1.1"
+      },
+      "packageZipAssetId": 465414521,
+      "size": 41060,
+      "stars": 0,
+      "updated": "2026-07-20T12:27:12Z",
+      "url": "zhuxiucai/siyuandateprefix@b94bf5cff15d7dd9fb400cd0ac94c6fc91c15d1a"
+    },
+    {
+      "installSize": 274526,
+      "openIssues": 0,
+      "package": {
+        "author": "Quincy Zou",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "description": {
+          "default": "Inspect and edit the SiYuan block attributes of the currently focused block from a side dock.",
+          "zh_CN": "在侧栏面板实时展示、编辑当前块的属性。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Property Manager",
+          "zh_CN": "属性管家"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop"
+        ],
+        "keywords": [
+          "siyuan",
+          "block",
+          "attribute",
+          "property",
+          "custom"
+        ],
+        "minAppVersion": "3.5.7",
+        "name": "siyuan-property-manager",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/famotime/siyuan-property-manager",
+        "version": "1.0.0"
+      },
+      "packageZipAssetId": 456739623,
+      "size": 129056,
+      "stars": 0,
+      "updated": "2026-07-20T12:24:02Z",
+      "url": "famotime/siyuan-property-manager@aa91616d732a0adc987c06b39495ce63eb12a137"
+    },
+    {
+      "installSize": 1064944,
+      "openIssues": 0,
+      "package": {
+        "author": "Cloudquill-Z",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "独立的思源 OpenCode AI 对话插件，基于笔记上下文进行智能对话"
+        },
+        "displayName": {
+          "default": "SiYuan OpenCode",
+          "zh_CN": "思源 OpenCode"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "keywords": [
+          "opencode",
+          "siyuan",
+          "ai",
+          "assistant"
+        ],
+        "minAppVersion": "3.6.0",
+        "name": "siyuan-copilot-opencode",
+        "readme": {
+          "default": "README.md",
+          "en_US": "README_en_US.md"
+        },
+        "url": "https://github.com/Cloudquill-Z/siyuan-copilot-opencode",
+        "version": "3.0.15"
+      },
+      "packageZipAssetId": 451814813,
+      "size": 403159,
+      "stars": 0,
+      "updated": "2026-07-20T12:05:07Z",
+      "url": "Cloudquill-Z/siyuan-copilot-opencode@efae43b02da60f16302b96e440bb22871cdc74f8"
+    },
+    {
+      "installSize": 82372,
+      "openIssues": 0,
+      "package": {
+        "author": "xuhua-zheng",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Right-click a database item to sync block reference names under same-name headings into matching text fields.",
+          "zh_CN": "右键数据库条目，将绑定文档中同名标题下的块引用名称同步到对应文本字段。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Heading Ref Sync",
+          "zh_CN": "标题引用同步"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "database",
+          "heading",
+          "block reference",
+          "sync",
+          "数据库",
+          "标题",
+          "块引用",
+          "同步"
+        ],
+        "minAppVersion": "3.6.4",
+        "name": "siyuan-db-heading-ref-stats",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/xuhua-zheng/siyuan-db-heading-ref-stats",
+        "version": "0.1.3"
+      },
+      "packageZipAssetId": 441559280,
+      "size": 55538,
+      "stars": 0,
+      "updated": "2026-07-20T11:57:13Z",
+      "url": "xuhua-zheng/siyuan-db-heading-ref-stats@ac49221fd703f5384b00613a47829de660d025a1"
+    },
+    {
+      "installSize": 241008,
+      "openIssues": 0,
+      "package": {
+        "author": "TianGong AI",
+        "description": {
+          "default": "Turn SiYuan into a chat-first AI workspace for current-document context, model testing, and HTML, diagram, and image generation.",
+          "zh_CN": "把 SiYuan 变成可对话的 AI 工作台，支持当前文档上下文、模型测试，以及 HTML、图表和图片生成。"
+        },
+        "displayName": {
+          "default": "TianGong AI",
+          "zh_CN": "天工智绘"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "ai",
+          "chat",
+          "html",
+          "diagram",
+          "image"
+        ],
+        "minAppVersion": "3.6.4",
+        "name": "siyuan-plugin-tiangong",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/TangQi001/siyuan-plugin-tiangong",
+        "version": "0.1.5"
+      },
+      "packageZipAssetId": 430903152,
+      "size": 121504,
+      "stars": 0,
+      "updated": "2026-07-20T11:53:29Z",
+      "url": "TangQi001/siyuan-plugin-tiangong@c192832aa84a810930071d1567a296d391140c43"
+    },
+    {
+      "installSize": 326800,
+      "openIssues": 2,
+      "package": {
+        "author": "notesynchelper",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "从微信同步到思源笔记，支持文字、图片、聊天记录、文章"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "笔记同步助手"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "wechat",
+          "template",
+          "企微",
+          "模板",
+          "微信",
+          "速记",
+          "剪藏",
+          "搜集",
+          "日记",
+          "闪念",
+          "memo",
+          "备忘",
+          "公众号",
+          "小红书",
+          "得到"
+        ],
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-notehelper",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/notesynchelper/siyuan-notehelper",
+        "version": "1.8.15"
+      },
+      "packageZipAssetId": 483406980,
+      "size": 151455,
+      "stars": 1,
+      "updated": "2026-07-20T11:48:24Z",
+      "url": "notesynchelper/siyuan-notehelper@f10a6f900f2f11b6034b7ae913bf40163643c793"
+    },
+    {
+      "installSize": 548212,
+      "openIssues": 0,
+      "package": {
+        "author": "Quincy Zou",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "description": {
+          "default": "Improved table navigation, formatting, and manipulation for SiYuan Note",
+          "zh_CN": "表哥来了，专治 Markdown 表格的各种不爽：移动、转置、排序、计算、可视化……"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Table Master",
+          "zh_CN": "表哥"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "keywords": [
+          "table",
+          "markdown",
+          "format",
+          "navigation",
+          "formula"
+        ],
+        "minAppVersion": "3.5.7",
+        "name": "siyuan-table-master",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/famotime/siyuan-table-master",
+        "version": "1.0.0"
+      },
+      "packageZipAssetId": 481531603,
+      "size": 307090,
+      "stars": 0,
+      "updated": "2026-07-20T11:35:11Z",
+      "url": "famotime/siyuan-table-master@63d6ae6f0fa361cf82182d8d907412f14f5e13bd"
+    },
+    {
+      "installSize": 433312,
+      "openIssues": 0,
+      "package": {
+        "author": "zfb517",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "android",
+          "ios",
+          "harmony"
+        ],
+        "description": {
+          "default": "Track token consumption for SiYuan AI and third-party plugins, with per-API-key quota limits, custom alert thresholds, auto-cutoff, and cloud sync support. (Stats are estimates for reference only; please read the README — especially the &#39;Statistics Accuracy &amp; Disclaimer&#39; section — and refer to your API provider&#39;s official billing.)",
+          "zh-CN": "统计思源智能体及第三方插件的 Token 消耗，支持每个 API Key 单独设置限额与自定义提醒阈值，限额自动切断，S3/WebDAV 云同步数据合并。（统计数据为估算、仅供参考；使用前请仔细阅读 README，特别是「统计精度与免责声明」章节，并以 API 供应商官方账单为准）"
+        },
+        "displayName": {
+          "default": "Token Usage Statistics",
+          "zh-CN": "Token 用量统计"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop",
+          "mobile",
+          "browser-mobile"
+        ],
+        "keywords": [
+          "token",
+          "Token 统计",
+          "用量",
+          "API Key",
+          "限额",
+          "费用",
+          "stats",
+          "quota"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-token-stats",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/zfb517/siyuan-token-stats",
+        "version": "1.5.6"
+      },
+      "packageZipAssetId": 481978297,
+      "size": 245831,
+      "stars": 0,
+      "updated": "2026-07-20T11:22:34Z",
+      "url": "zfb517/siyuan-token-stats@d3c431db5a5ec75d74fa75ffe78969d44ea9c309"
+    },
+    {
+      "installSize": 148060,
+      "openIssues": 0,
+      "package": {
+        "author": "zfb517",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "android",
+          "ios",
+          "harmony"
+        ],
+        "description": {
+          "default": "Literal text input + auto-escape *# + rich paste with image download",
+          "zh-CN": "字面文本输入（*#不被渲染）+ 自动转义 + 富文本粘贴自动下载图片"
+        },
+        "displayName": {
+          "default": "Escape",
+          "zh-CN": "转义"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "mobile",
+          "browser-mobile"
+        ],
+        "keywords": [
+          "字面文本",
+          "转义",
+          "富文本粘贴",
+          "公众号",
+          "图片下载",
+          "escape",
+          "paste",
+          "literal"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-literal-text",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/zfb517/siyuan-plugin-literal-text",
+        "version": "2.8.7"
+      },
+      "packageZipAssetId": 483329490,
+      "size": 97913,
+      "stars": 0,
+      "updated": "2026-07-20T11:20:11Z",
+      "url": "zfb517/siyuan-plugin-literal-text@9a785ffe5d17531f7b3b435a2df8cb721eb45e47"
+    },
+    {
+      "installSize": 192183,
+      "openIssues": 0,
+      "package": {
+        "author": "airium",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Display exact hierarchical heading numbers floating in the editor gutter",
+          "zh-CN": "在编辑器侧栏浮动显示精确的层级标题编号"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Floating Heading Number",
+          "zh-CN": "浮动标题编号"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "keywords": [
+          "floating",
+          "heading",
+          "numbering",
+          "outline",
+          "浮动",
+          "标题",
+          "编号",
+          "大纲"
+        ],
+        "minAppVersion": "3.7.1",
+        "name": "siyuan-floating-heading-number",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/airium/siyuan-floating-heading-number",
+        "version": "0.1.0"
+      },
+      "packageZipAssetId": 479167863,
+      "size": 90216,
+      "stars": 0,
+      "updated": "2026-07-20T11:02:30Z",
+      "url": "airium/siyuan-floating-heading-number@a4e8703835c3f993c7a3e6d5e3a3819da306062c"
+    },
+    {
+      "installSize": 11902136,
+      "openIssues": 14,
+      "package": {
+        "author": "steve",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "schedule management, docker sync awareness, ai sidebar",
+          "zh-CN": "[白板已接入思源智能体]互联日程管理（基于数据库日历视图）支持ics，滴答清单双向联动, docker同步感知, ai侧边栏, 资源压缩, 白板, WPS联动, （SQL，数据库）聚合可视化, 随机题头图背景图。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "STtools"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://pic.imgdb.cn/item/6751b929d0e0a243d4de55a7.png"
+          ]
+        },
+        "keywords": [
+          "tools",
+          "schedule",
+          "calendar",
+          "st"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-steve-tools",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/loonghfut/siyuan-steve-tools",
+        "version": "0.50.1"
+      },
+      "packageZipAssetId": 483207175,
+      "size": 4490152,
+      "stars": 81,
+      "updated": "2026-07-20T07:49:17Z",
+      "url": "loonghfut/siyuan-steve-tools@46f1d8016f351a0ea8927b49e772c227cd7d8384"
+    },
+    {
       "installSize": 9946607,
       "openIssues": 2,
       "package": {
@@ -149,8 +1396,7 @@
         },
         "disabledInPublish": true,
         "displayName": {
-          "default": "ImgReEditor",
-          "zh_CN": "ImgReEditor"
+          "default": "ImgReEditor"
         },
         "frontends": [
           "all"
@@ -176,60 +1422,65 @@
       "url": "Achuan-2/siyuan-plugin-imgReEditor@6008cb7da04448ce2150996cc4774ade397183ed"
     },
     {
-      "installSize": 6037754,
-      "openIssues": 1,
+      "installSize": 344411,
+      "openIssues": 0,
       "package": {
-        "author": "whale🐋",
+        "author": "游夏",
         "backends": [
-          "all"
+          "windows",
+          "linux",
+          "darwin"
         ],
         "description": {
-          "default": "Quick note on app switch, click automation, quick access to built-in features, date templates, mobile shortcuts. Supports both mobile and desktop! Replace Quicker, FV, Notion automation within SiYuan!",
-          "zh-CN": "一键记事，手机端全流程解决方案。操作一步到位，重塑思源笔记移动端体验。自启动一键记事、一键按钮直达、定制化工具栏按钮、自动化模拟点击、手机快捷键使用、手写模板插入、思源内置功能选择等。手机端、电脑端均支持。可在思源内基本替换Quicker、FV悬浮球、notion自动化、宏命令等。"
+          "default": "A Finder-style column browser for navigating and organizing SiYuan notebooks and documents, with a document preview at the right.",
+          "zh_CN": "思源笔记的分栏文件浏览器：以列视图方式浏览、整理笔记本与文档，右端附当前文档的预览面板。"
         },
-        "disabledInPublish": true,
         "displayName": {
-          "default": "SiYuan Mobile Enhancer",
-          "zh-CN": "思源手机端增强"
+          "default": "Finder",
+          "zh_CN": "访达"
         },
         "frontends": [
-          "all"
+          "desktop",
+          "desktop-window",
+          "browser-desktop"
         ],
-        "keywords": [
-          "toolbar",
-          "customization",
-          "mobile",
-          "automation",
-          "buttons",
-          "工具栏",
-          "自定义",
-          "手机端",
-          "手机端增强",
-          "移动端",
-          "移动端增强",
-          "模拟点击",
-          "自动化",
-          "按钮",
-          "鲸鱼",
-          "工具箱",
-          "鲸鱼工具箱",
-          "一键记事",
-          "快速记事"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-toolbar-customizer",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md"
+        "funding": {
+          "custom": [
+            "https://fastly.jsdelivr.net/gh/fujingzhai/siyuan-finder-plugin@main/assets/sponsor-wechat.png",
+            "https://fastly.jsdelivr.net/gh/fujingzhai/siyuan-finder-plugin@main/assets/sponsor-alipay.jpg"
+          ]
         },
-        "url": "https://github.com/HaoCeans/siyuan-toolbar-customizer",
-        "version": "3.7.3"
+        "keywords": [
+          "finder",
+          "访达",
+          "分栏",
+          "columns",
+          "文件浏览",
+          "导航",
+          "navigation",
+          "文档树",
+          "排序",
+          "sort",
+          "预览",
+          "preview",
+          "搜索",
+          "search",
+          "标签",
+          "tags"
+        ],
+        "minAppVersion": "3.6.0",
+        "name": "siyuan-finder-plugin",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/fujingzhai/siyuan-finder-plugin",
+        "version": "0.9.8"
       },
-      "packageZipAssetId": 482292176,
-      "size": 2031266,
-      "stars": 9,
-      "updated": "2026-07-19T10:10:42Z",
-      "url": "HaoCeans/siyuan-toolbar-customizer@78f83fcfc88f0cf9d48785feddd33c1322a4abf1"
+      "packageZipAssetId": 483189868,
+      "size": 213533,
+      "stars": 0,
+      "updated": "2026-07-19T09:03:08Z",
+      "url": "fujingzhai/siyuan-finder-plugin@f0697edcf389a3d48932ff6957f77bb3dbf6c8d8"
     },
     {
       "installSize": 2655853,
@@ -293,8 +1544,7 @@
         },
         "disabledInPublish": true,
         "displayName": {
-          "default": "SiYuan Copilot",
-          "zh_CN": "SiYuan Copilot"
+          "default": "SiYuan Copilot"
         },
         "frontends": [
           "all"
@@ -318,49 +1568,6 @@
       "stars": 148,
       "updated": "2026-07-19T04:38:50Z",
       "url": "Achuan-2/siyuan-plugin-copilot@cff7992b7b8252f7ea9f677f79d36888af1e447d"
-    },
-    {
-      "installSize": 655922,
-      "openIssues": 2,
-      "package": {
-        "author": "gradypark86",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Quickly create a new or go to diary or weekly notes on the calendar panel, with support for periodic note templates",
-          "zh_CN": "在日历面板上快速新建或转到日记与周记，支持周期笔记模板"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Siyuan Calendar Panel",
-          "zh_CN": "思源日历面板"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "calendar",
-          "日历",
-          "日记",
-          "daily",
-          "weekly",
-          "周记"
-        ],
-        "minAppVersion": "2.13.0",
-        "name": "siyuan-plugin-calendar",
-        "readme": {
-          "default": "README_en_US.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/gradypark86/siyuan-plugin-calendar",
-        "version": "0.3.0"
-      },
-      "packageZipAssetId": 482002231,
-      "size": 284849,
-      "stars": 1,
-      "updated": "2026-07-19T02:34:32Z",
-      "url": "gradypark86/siyuan-plugin-calendar@30e817c4fc8dd1cf69b137eb458003581a064d4d"
     },
     {
       "installSize": 9168023,
@@ -509,13 +1716,11 @@
         ],
         "description": {
           "default": "专业电子书阅读器，支持 EPUB/PDF/MOBI/TXT/在线小说；PDF 支持高亮、墨迹、形状、表单、印章、签名、图片、截图、搜索、打印、导出和回链，并提供标注笔记、词典、翻译、主题与书架管理",
-          "en_US": "Professional eBook reader for EPUB/PDF/MOBI/TXT/online novels. PDFs support highlights, ink, shapes, forms, stamps, signatures, images, screenshots, search, printing, export, and backlinks, with annotation notes, dictionary, translation, themes, and bookshelf management.",
-          "zh_CN": "专业电子书阅读器，支持 EPUB/PDF/MOBI/TXT/在线小说；PDF 支持高亮、墨迹、形状、表单、印章、签名、图片、截图、搜索、打印、导出和回链，并提供标注笔记、词典、翻译、主题与书架管理"
+          "en_US": "Professional eBook reader for EPUB/PDF/MOBI/TXT/online novels. PDFs support highlights, ink, shapes, forms, stamps, signatures, images, screenshots, search, printing, export, and backlinks, with annotation notes, dictionary, translation, themes, and bookshelf management."
         },
         "disabledInPublish": true,
         "displayName": {
           "default": "SiReader",
-          "en_US": "SiReader",
           "zh_CN": "思阅"
         },
         "frontends": [
@@ -559,7 +1764,6 @@
         "name": "siyuan-sireader",
         "readme": {
           "default": "README.md",
-          "en_US": "README.md",
           "zh_CN": "README_zh_CN.md"
         },
         "url": "https://github.com/mm-o/siyuan-sireader",
@@ -739,51 +1943,6 @@
       "url": "Glaube-TY/siyuan-homepage@2790b86f465ac70132f4dea1c3dfe9021fa9ca02"
     },
     {
-      "installSize": 13234382,
-      "openIssues": 14,
-      "package": {
-        "author": "steve",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "schedule management, docker sync awareness, ai sidebar",
-          "zh-CN": "[白板已接入思源智能体]互联日程管理（基于数据库日历视图）支持ics，滴答清单双向联动, docker同步感知, ai侧边栏, 资源压缩, 白板, WPS联动, （SQL，数据库）聚合可视化, 随机题头图背景图。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "STtools",
-          "zh-CN": "STtools"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://pic.imgdb.cn/item/6751b929d0e0a243d4de55a7.png"
-          ]
-        },
-        "keywords": [
-          "tools",
-          "schedule",
-          "calendar",
-          "st"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-steve-tools",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/loonghfut/siyuan-steve-tools",
-        "version": "0.49.1"
-      },
-      "size": 5808763,
-      "stars": 81,
-      "updated": "2026-07-17T13:55:47Z",
-      "url": "loonghfut/siyuan-steve-tools@1c76b554a0689cfd03e9defe75703676aaf9d265"
-    },
-    {
       "installSize": 847399,
       "openIssues": 1,
       "package": {
@@ -831,6 +1990,58 @@
       "stars": 4,
       "updated": "2026-07-17T11:34:22Z",
       "url": "HaoCeans/siyuan-points-reward@eb78e447f08a0169ff18bd9fd3aa9284b26a5da1"
+    },
+    {
+      "installSize": 195733,
+      "openIssues": 0,
+      "package": {
+        "author": "游夏",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "A record panel organized around time and categories, with links to native SiYuan notes.",
+          "zh_CN": "以时间和类目为经纬的记录面板，可关联思源原生笔记。"
+        },
+        "displayName": {
+          "default": "Chronicle",
+          "zh_CN": "岁时记"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop"
+        ],
+        "funding": {
+          "custom": [
+            "https://fastly.jsdelivr.net/gh/fujingzhai/siyuan-chronicle-plugin@main/assets/sponsor-wechat.png",
+            "https://fastly.jsdelivr.net/gh/fujingzhai/siyuan-chronicle-plugin@main/assets/sponsor-alipay.jpg"
+          ]
+        },
+        "keywords": [
+          "chronicle",
+          "岁时记",
+          "timeline",
+          "时间轴",
+          "记录",
+          "年表"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-chronicle-plugin",
+        "readme": {
+          "default": "README.md",
+          "en_US": "README_en_US.md"
+        },
+        "url": "https://github.com/fujingzhai/siyuan-chronicle-plugin",
+        "version": "1.2.0"
+      },
+      "packageZipAssetId": 483208490,
+      "size": 128577,
+      "stars": 2,
+      "updated": "2026-07-17T02:28:32Z",
+      "url": "fujingzhai/siyuan-chronicle-plugin@bcb4d37e880e3ca7ee19d034e828086faf8fc7d4"
     },
     {
       "installSize": 1752517,
@@ -978,54 +2189,6 @@
       "stars": 28,
       "updated": "2026-07-16T14:15:09Z",
       "url": "Glaube-TY/siyuan-douban@d4dabc134c9cb99b2a4c61614a0c69054fb16313"
-    },
-    {
-      "installSize": 323844,
-      "openIssues": 2,
-      "package": {
-        "author": "notesynchelper",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "从微信同步到思源笔记，支持文字、图片、聊天记录、文章"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "笔记同步助手"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "wechat",
-          "template",
-          "企微",
-          "模板",
-          "微信",
-          "速记",
-          "剪藏",
-          "搜集",
-          "日记",
-          "闪念",
-          "memo",
-          "备忘",
-          "公众号",
-          "小红书",
-          "得到"
-        ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-notehelper",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/notesynchelper/siyuan-notehelper",
-        "version": "1.8.13"
-      },
-      "size": 151061,
-      "stars": 1,
-      "updated": "2026-07-16T11:03:00Z",
-      "url": "notesynchelper/siyuan-notehelper@b8b2ae52bc5699bdba3ab342e8ec8d1b5190e1ae"
     },
     {
       "installSize": 13071140,
@@ -1509,8 +2672,7 @@
           "zh-CN": "专为Asri主题设计的增强插件"
         },
         "displayName": {
-          "default": "Asri+",
-          "zh-CN": "Asri+"
+          "default": "Asri+"
         },
         "frontends": [
           "all"
@@ -1533,111 +2695,6 @@
       "stars": 7,
       "updated": "2026-07-11T12:15:39Z",
       "url": "QYLexpired/Asri-enhance@8ab6eb221f89de6159e1f84122b399431277e1e6"
-    },
-    {
-      "installSize": 2918110,
-      "openIssues": 3,
-      "package": {
-        "author": "IAliceBobI",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "[🔓Open Source] [🛡️GitHub Online Compilation] Excerpt-based progressive learning, chunk-based progressive learning, multi-line selection via double-tap on mobile, word highlighting with explanations, sentence splitting, split block by pressing Enter, merge blocks, word flashcards, multi-line cloze deletion, multi-line card creation, Daily Card, display pinyin for content",
-          "zh_CN": "【🔓已开源】【🛡️Github在线编译】摘抄式渐进学习、分片式渐进学习、移动端双击多行选择、划词解释、断句拆分、按回车拆分块、合并块、单词闪卡、多行挖空、多行制卡、Daily Card、显示拼音"
-        },
-        "displayName": {
-          "default": "Progressive Learning",
-          "zh_CN": "渐进学习"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/playerv5"
-          ]
-        },
-        "keywords": [
-          "Learning",
-          "Progressive",
-          "Progressive Learning",
-          "Progressive Reading",
-          "Progressive Writing"
-        ],
-        "minAppVersion": "2.12.6",
-        "name": "sy-progressive-plugin",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/IAliceBobI/sy-progressive-plugin",
-        "version": "2.1.40"
-      },
-      "size": 1317521,
-      "stars": 25,
-      "updated": "2026-07-11T05:31:33Z",
-      "url": "IAliceBobI/sy-progressive-plugin@5d05887bfae21319b07e229997b8d708d5ec3144"
-    },
-    {
-      "installSize": 3939492,
-      "openIssues": 3,
-      "package": {
-        "author": "IAliceBobI",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "[🔓Open Source] [🛡️GitHub Online Compilation] Status Bar Pomodoro, Automatic Export to Markdown, Prefix Document Tree, Mobile Multi-Select, Enhanced Folding, Annotations, Bottom Backlinks, Synchronization Blocks, Mind Guides, Block Relationship Diagrams, Text to Citations, Photo Flash Notes, Reading Points, Bidirectional Links, AI Knowledge Base Q&amp;A, Streaming AI, Database Backlinks, Flashcard Priority, Document Merging, Regular Reminders, Delete Cards During Review, Flashcard Image Blanking, Move to Today&#39;s Notes, Clean Up Invalid Flashcards",
-          "zh-CN": "【🔓已开源】【🛡️Github在线编译】状态栏番茄钟、自动导出markdown、前缀文档树、移动端多选、增强折叠、批注、底部反链、同步块、思维导线、块关系图、文本转引用、拍照闪念、阅读点、双向互链、AI知识库问答、流式AI、数据库反链、闪卡优先级、文档合并、定期提醒、复习时删卡、闪卡图片挖空、移到今日笔记、清理失效闪卡"
-        },
-        "displayName": {
-          "default": "Tomato Toolbox",
-          "zh-CN": "番茄工具箱"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/playerv5"
-          ]
-        },
-        "keywords": [
-          "TomatoClock",
-          "Time management",
-          "Productivity",
-          "Pomodoro technique",
-          "Timer plugin",
-          "Task scheduling",
-          "Focus sessions",
-          "Work intervals",
-          "Breaks",
-          "Time tracking",
-          "Timeboxing",
-          "Time optimization",
-          "Efficiency",
-          "Work-life balance",
-          "Distraction management",
-          "Task prioritization",
-          "Time blocking",
-          "Time visualization",
-          "Progress tracking",
-          "Goal setting"
-        ],
-        "minAppVersion": "3.0.3",
-        "name": "sy-tomato-plugin",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/IAliceBobI/sy-tomato-plugin",
-        "version": "5.3.97"
-      },
-      "size": 1544808,
-      "stars": 49,
-      "updated": "2026-07-11T04:33:53Z",
-      "url": "IAliceBobI/sy-tomato-plugin@65a5d17fda78e3b43d875f9946dea04a926c5839"
     },
     {
       "installSize": 1070732,
@@ -1729,13 +2786,11 @@
         ],
         "description": {
           "default": "Cloud-drive aggregation manager for SiYuan: file viewing, media playback, reading annotations, image-hosting links, and more.",
-          "en_US": "Cloud-drive aggregation manager for SiYuan: file viewing, media playback, reading annotations, image-hosting links, and more.",
           "zh_CN": "思源网盘聚合管理器，支持网盘文件查看、媒体播放、阅读批注、图床直链等能力，更多玩法期待你的探索。"
         },
         "disabledInPublish": true,
         "displayName": {
           "default": "Cloud Drive Manager",
-          "en_US": "Cloud Drive Manager",
           "zh_CN": "思盘"
         },
         "frontends": [
@@ -1755,7 +2810,6 @@
         "name": "siyuan-cloud",
         "readme": {
           "default": "README.md",
-          "en_US": "README.md",
           "zh_CN": "README_zh_CN.md"
         },
         "url": "https://github.com/mm-o/siyuan-cloud",
@@ -2032,12 +3086,10 @@
           "all"
         ],
         "description": {
-          "default": "这使你充满了决心。",
-          "zh-CN": "这使你充满了决心。"
+          "default": "这使你充满了决心。"
         },
         "displayName": {
-          "default": "恐龙工具箱",
-          "zh-CN": "恐龙工具箱"
+          "default": "恐龙工具箱"
         },
         "frontends": [
           "all"
@@ -2048,8 +3100,7 @@
         "minAppVersion": "3.7.0",
         "name": "siyuan-hqweay-go",
         "readme": {
-          "default": "README.md",
-          "zh-CN": "README.md"
+          "default": "README.md"
         },
         "url": "https://github.com/hqweay/siyuan-hqweay-go",
         "version": "0.25.1"
@@ -2128,12 +3179,10 @@
         ],
         "description": {
           "default": "Synchronize notes from Dinox to SiYuan",
-          "en_US": "Synchronize notes from Dinox to SiYuan",
           "zh_CN": "从 Dinox 同步笔记到思源"
         },
         "displayName": {
           "default": "Dinox Sync",
-          "en_US": "Dinox Sync",
           "zh_CN": "Dinox 同步"
         },
         "frontends": [
@@ -2152,7 +3201,6 @@
         "name": "dinox-siyuan-sync",
         "readme": {
           "default": "README.md",
-          "en_US": "README.md",
           "zh_CN": "README_zh_CN.md"
         },
         "url": "https://github.com/ryzencool/dinox-siyuan-sync",
@@ -2258,15 +3306,11 @@
         ],
         "description": {
           "default": "This plugin has entered maintenance mode. We strongly recommend using the newer and more powerful KMind Zen. You can search and install it directly from the SiYuan marketplace. KMind mind map plugin, one-click convert SiYuan documents to mind maps, mirror blocks, document tree mind maps, PDF annotation jump, etc.",
-          "en": "This plugin has entered maintenance mode. We strongly recommend using the newer and more powerful KMind Zen. You can search and install it directly from the SiYuan marketplace. KMind mind map plugin, one-click convert SiYuan documents to mind maps, mirror blocks, document tree mind maps, PDF annotation jump, etc.",
-          "en_US": "This plugin has entered maintenance mode. We strongly recommend using the newer and more powerful KMind Zen. You can search and install it directly from the SiYuan marketplace. KMind mind map plugin, one-click convert SiYuan documents to mind maps, mirror blocks, document tree mind maps, PDF annotation jump, etc.",
           "zh-CN": "本插件已经进入维护阶段，强烈推荐使用更新更强的 KMind Zen，思源集市中可以直接搜索下载！KMind思维导图插件,多根节点，MOC模式，思源文档一键转导图，导图镜像块，文档树导图，PDF标注跳转等功能，交流QQ群号：130584086",
           "zh_CN": "本插件已经进入维护阶段，强烈推荐使用更新更强的 KMind Zen，思源集市中可以直接搜索下载！KMind思维导图插件,多根节点，MOC模式，思源文档一键转导图，导图镜像块，文档树导图，PDF标注跳转等功能，交流QQ群号：130584086"
         },
         "displayName": {
           "default": "KMind plugin",
-          "en": "KMind plugin",
-          "en_US": "KMind plugin",
           "zh-CN": "KMind思维导图插件",
           "zh_CN": "KMind思维导图插件"
         },
@@ -2284,8 +3328,7 @@
           "default": "README.md",
           "en": "README.en.md",
           "en_US": "README_en_US.md",
-          "zh-CN": "README.zh-CN.md",
-          "zh_CN": "README.md"
+          "zh-CN": "README.zh-CN.md"
         },
         "url": "https://github.com/suka233/siyuan-kmind-plugin",
         "version": "2.14.1"
@@ -2470,8 +3513,7 @@
         "name": "siyuan-plugin-background-cover",
         "readme": {
           "default": "README.md",
-          "en_US": "README_en_US.md",
-          "zh_CN": "README.md"
+          "en_US": "README_en_US.md"
         },
         "url": "https://github.com/HowcanoeWang/siyuan-plugin-background-cover",
         "version": "1.3.0"
@@ -2996,13 +4038,11 @@
         "author": "OpaqueGlass",
         "description": {
           "default": "Double-click to expand the next level or double-click to open the document.",
-          "en_US": "Double-click to expand the next level or double-click to open the document.",
           "zh-CN": "双击展开下一层级，或双击打开文档（测试中功能：对大纲、标签、移动端的单双击处理）",
           "zh_CN": "双击展开下一层级，或双击打开文档（测试中功能：对大纲、标签、移动端的单双击处理）"
         },
         "displayName": {
           "default": "double click file tree",
-          "en_US": "double click file tree",
           "zh-CN": "双击文档树",
           "zh_CN": "双击文档树"
         },
@@ -3014,7 +4054,6 @@
         "name": "syplugin-doubleClickFileTree",
         "readme": {
           "default": "README.md",
-          "en_US": "README.md",
           "zh-CN": "README_zh_CN.md",
           "zh_CN": "README_zh_CN.md"
         },
@@ -3467,8 +4506,7 @@
         "name": "siyuan-network-lens",
         "readme": {
           "default": "README_zh_CN.md",
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
+          "en_US": "README.md"
         },
         "url": "https://github.com/famotime/siyuan-network-lens",
         "version": "0.9.7"
@@ -4133,7 +5171,6 @@
         "name": "syplugin-fakeDocBreadcrumb",
         "readme": {
           "default": "README.md",
-          "en_US": "README.md",
           "zh_CN": "README_zh_CN.md"
         },
         "url": "https://github.com/OpaqueGlass/syplugin-fakeDocBreadcrumb",
@@ -4421,8 +5458,7 @@
         "name": "siyuan-auto-seq-number",
         "readme": {
           "default": "README_zh_CN.md",
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
+          "en_US": "README.md"
         },
         "url": "https://github.com/dale0525/siyuan-auto-seq-number",
         "version": "2.2.8"
@@ -4975,8 +6011,7 @@
         },
         "disabledInPublish": true,
         "displayName": {
-          "default": "新枝Newledge",
-          "zh_CN": "新枝Newledge"
+          "default": "新枝Newledge"
         },
         "frontends": [
           "desktop",
@@ -6424,8 +7459,7 @@
           "zh_CN": "个人自用 Codex 插件，随缘更新。"
         },
         "displayName": {
-          "default": "Codex",
-          "zh_CN": "Codex"
+          "default": "Codex"
         },
         "frontends": [
           "all"
@@ -6558,8 +7592,7 @@
         "minAppVersion": "3.0.0",
         "name": "siyuan-timetrail",
         "readme": {
-          "default": "README_zh_CN.md",
-          "zh_CN": "README_zh_CN.md"
+          "default": "README_zh_CN.md"
         },
         "url": "https://github.com/LunaNorth/siyuan-timetrail",
         "version": "1.0.0"
@@ -6950,7 +7983,6 @@
         },
         "disabledInPublish": true,
         "displayName": {
-          "de_DE": "Code Line Highlighter",
           "default": "Code Line Highlighter",
           "zh_CN": "代码行高亮"
         },
@@ -7046,8 +8078,7 @@
         },
         "disabledInPublish": true,
         "displayName": {
-          "default": "audio2text",
-          "zh_CN": "audio2text"
+          "default": "audio2text"
         },
         "frontends": [
           "desktop",
@@ -7202,8 +8233,7 @@
           "all"
         ],
         "description": {
-          "default": "更高效的搜索方式",
-          "zh_CN": "更高效的搜索方式"
+          "default": "更高效的搜索方式"
         },
         "displayName": {
           "default": "Simple Search",
@@ -7222,8 +8252,7 @@
         "minAppVersion": "3.2.1",
         "name": "Simple Search",
         "readme": {
-          "default": "README.md",
-          "zh_CN": "README.md"
+          "default": "README.md"
         },
         "url": "https://github.com/choyy/simple-search",
         "version": "0.5.0"
@@ -7441,13 +8470,11 @@
         "author": "onemorework",
         "description": {
           "default": "发送消息到微信公众号, 定时同步到思源笔记",
-          "en_US": "Send message to Wechat Official Account, sync to Siyuan Note",
-          "zh_CN": "发送消息到微信公众号, 定时同步到思源笔记"
+          "en_US": "Send message to Wechat Official Account, sync to Siyuan Note"
         },
         "displayName": {
           "default": "微信同步插件",
-          "en_US": "Wechat Sync Plugin",
-          "zh_CN": "微信同步插件"
+          "en_US": "Wechat Sync Plugin"
         },
         "keywords": [
           "微信",
@@ -7460,8 +8487,7 @@
         "name": "siyuan-plugin-wehchat-sync",
         "readme": {
           "default": "README.md",
-          "en_US": "README_en_US.md",
-          "zh_CN": "README.md"
+          "en_US": "README_en_US.md"
         },
         "url": "https://github.com/onemorework/SiyuanWechatSync",
         "version": "1.1.0"
@@ -8105,7 +9131,6 @@
           "zh_CN": "根据新文档的路径，自动插入特定的模板。"
         },
         "displayName": {
-          "de_DE": "Templater",
           "default": "Templater",
           "zh_CN": "模板器"
         },
@@ -8184,8 +9209,7 @@
         },
         "disabledInPublish": true,
         "displayName": {
-          "default": "Drawnix",
-          "zh_CN": "Drawnix"
+          "default": "Drawnix"
         },
         "frontends": [
           "all"
@@ -8463,8 +9487,7 @@
           "all"
         ],
         "description": {
-          "default": "让你的搜索更简单, 更优雅, 参考简易搜索",
-          "zh_CN": "让你的搜索更简单, 更优雅, 参考简易搜索"
+          "default": "让你的搜索更简单, 更优雅, 参考简易搜索"
         },
         "disabledInPublish": true,
         "displayName": {
@@ -8479,8 +9502,7 @@
         "minAppVersion": "3.2.1",
         "name": "HZ-syplugin-simple-search",
         "readme": {
-          "default": "README.md",
-          "zh_CN": "README.md"
+          "default": "README.md"
         },
         "url": "https://github.com/Hug-Zephyr/HZ-syplugin-simple-search",
         "version": "1.3.6"
@@ -9459,13 +10481,11 @@
         ],
         "description": {
           "default": "管理思源笔记中的图床配置，支持粘贴上传图片与管理多个平台的图床",
-          "en_US": "Manage pic bed configurations in SiYuan Note, supporting paste-to-upload images and multiple pic bed platforms",
-          "zh_CN": "管理思源笔记中的图床配置，支持粘贴上传图片与管理多个平台的图床"
+          "en_US": "Manage pic bed configurations in SiYuan Note, supporting paste-to-upload images and multiple pic bed platforms"
         },
         "displayName": {
           "default": "图床管家",
-          "en_US": "Pic Bed Manager",
-          "zh_CN": "图床管家"
+          "en_US": "Pic Bed Manager"
         },
         "frontends": [
           "all"
@@ -9474,7 +10494,6 @@
         "name": "siyuan-plugin-pic-bed-manager",
         "readme": {
           "default": "README.md",
-          "en_US": "README.md",
           "zh_CN": "README_zh_CN.md"
         },
         "url": "https://github.com/hausen1012/siyuan-plugin-pic-bed-manager",
@@ -10083,13 +11102,10 @@
         ],
         "description": {
           "default": "A modern task management plugin with project tracking, task organization, and focus timer",
-          "en_US": "A modern task management plugin with project tracking, task organization, and focus timer",
           "zh_CN": "现代化的任务管理插件，支持项目管理、任务分组和专注计时"
         },
         "displayName": {
-          "default": "TaskMap",
-          "en_US": "TaskMap",
-          "zh_CN": "TaskMap"
+          "default": "TaskMap"
         },
         "frontends": [
           "all"
@@ -10105,8 +11121,7 @@
         "name": "siyuan-plugin-taskmap",
         "readme": {
           "default": "README_zh_CN.md",
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
+          "en_US": "README.md"
         },
         "url": "https://github.com/LeonZ1998/siyuan-plugin-taskmap",
         "version": "1.1.5"
@@ -10397,8 +11412,7 @@
           "zh_CN": "在思源笔记中直接管理和编辑 TiddlyWiki 文件，支持保存功能"
         },
         "displayName": {
-          "default": "TiddlyWiki(Aplha)",
-          "zh_CN": "TiddlyWiki(Aplha)"
+          "default": "TiddlyWiki(Aplha)"
         },
         "frontends": [
           "desktop",
@@ -10505,8 +11519,7 @@
           "zh_CN": "题头图增强插件，支持将视频作为题头图, 支持多个源的随机在线题头图，支持从剪贴板上传"
         },
         "displayName": {
-          "default": "题头图Plus",
-          "zh_CN": "题头图Plus"
+          "default": "题头图Plus"
         },
         "name": "siyuan-plugin-more-background",
         "readme": {
@@ -10585,12 +11598,10 @@
           "darwin"
         ],
         "description": {
-          "default": "集成WebAPP在线网页版, 内置Flomo、Cubox、Dida365, 支持自定义",
-          "zh_CN": "集成WebAPP在线网页版, 内置Flomo、Cubox、Dida365, 支持自定义"
+          "default": "集成WebAPP在线网页版, 内置Flomo、Cubox、Dida365, 支持自定义"
         },
         "displayName": {
-          "default": "Web工具集成",
-          "zh_CN": "Web工具集成"
+          "default": "Web工具集成"
         },
         "frontends": [
           "desktop"
@@ -10619,8 +11630,7 @@
       "package": {
         "author": "zuoez02",
         "description": {
-          "default": "可设置形状和颜色的背景纹路插件，支持配置网格与点阵背景，支持配置颜色、大小、间距",
-          "zh_CN": "可设置形状和颜色的背景纹路插件，支持配置网格与点阵背景，支持配置颜色、大小、间距"
+          "default": "可设置形状和颜色的背景纹路插件，支持配置网格与点阵背景，支持配置颜色、大小、间距"
         },
         "displayName": {
           "default": "Background Grid",
@@ -10743,8 +11753,7 @@
         },
         "displayName": {
           "default": "基于文档搜索",
-          "en_US": "Document Search",
-          "zh_CN": "基于文档搜索"
+          "en_US": "Document Search"
         },
         "frontends": [
           "all"
@@ -10761,8 +11770,7 @@
         "name": "syplugin-document-search",
         "readme": {
           "default": "README_zh_CN.md",
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
+          "en_US": "README.md"
         },
         "url": "https://github.com/Misuzu2027/syplugin-document-search",
         "version": "0.11.3"
@@ -10871,7 +11879,6 @@
         },
         "displayName": {
           "default": "Block Converter",
-          "en_US": "Block Converter",
           "zh_CN": "块转换工具"
         },
         "frontends": [
@@ -11285,8 +12292,7 @@
           "darwin"
         ],
         "description": {
-          "default": "用小窗口打开块",
-          "zh_CN": "用小窗口打开块"
+          "default": "用小窗口打开块"
         },
         "displayName": {
           "default": "Small Window",
@@ -11299,8 +12305,7 @@
         "minAppVersion": "2.10.3",
         "name": "small-window",
         "readme": {
-          "default": "README.md",
-          "zh_CN": "README.md"
+          "default": "README.md"
         },
         "url": "https://github.com/choyy/small-window",
         "version": "0.0.4"
@@ -11973,53 +12978,6 @@
       "url": "chenxuan520/plugin-block-reminder@7fc7a63bf856a59ee8823bb03159f9fdab0f6d3c"
     },
     {
-      "installSize": 8726741,
-      "openIssues": 10,
-      "package": {
-        "author": "jaar23",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "en_US": "AI powered assistant for your notebook, you can chat with it or instruct it to tag your note, extract summary and so on.",
-          "zh_CN": "一个可以与你聊天以及做文本摘要的智能助手"
-        },
-        "displayName": {
-          "en_US": "Notebook Assistant",
-          "zh_CN": "笔记小助手"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            ""
-          ]
-        },
-        "keywords": [
-          "ai",
-          "assistant",
-          "助手",
-          "auto-tag",
-          "summary",
-          "reasoning model",
-          "image generate"
-        ],
-        "minAppVersion": "3.0.12",
-        "name": "nb-assistant",
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/jaar23/nb-assistant",
-        "version": "0.1.4-rc.5"
-      },
-      "size": 2282389,
-      "stars": 7,
-      "updated": "2025-04-22T03:33:02Z",
-      "url": "jaar23/nb-assistant@b0ab34ba442ba4d40b83fd8d5d69fedbb4f47758"
-    },
-    {
       "installSize": 601523,
       "openIssues": 13,
       "package": {
@@ -12218,8 +13176,7 @@
         "minAppVersion": "2.11.1",
         "name": "siyuan-to-emlog",
         "readme": {
-          "default": "README.md",
-          "zh_CN": "README.md"
+          "default": "README.md"
         },
         "url": "https://github.com/emlog/siyuan-to-emlog",
         "version": "0.1.5"
@@ -12308,8 +13265,7 @@
         "minAppVersion": "3.1.24",
         "name": "showtime-siyuan",
         "readme": {
-          "default": "README_zh_CN.md",
-          "zh_CN": "README_zh_CN.md"
+          "default": "README_zh_CN.md"
         },
         "url": "https://github.com/mcwz/showtime-siyuan",
         "version": "0.3.0"
@@ -12334,12 +13290,10 @@
         ],
         "description": {
           "default": "A plugin that adds nice lines to nested list elements (bullets). Based on simliar plugin for LogSeq.",
-          "en_US": "A plugin that adds nice lines to nested list elements (bullets). Based on simliar plugin for LogSeq.",
           "pl_PL": "Wtyczka dodająca estetyczne linie łączące elementy zagnieżdżonych list. Bazuje na podobnej wtyczce dla LogSeq."
         },
         "displayName": {
           "default": "Bullet threading for lists",
-          "en_US": "Bullet threading for lists",
           "pl_PL": "Linie łączące elementy zagnieżdżonych list"
         },
         "frontends": [
@@ -12929,58 +13883,6 @@
       "url": "DD3Boh/better-block-styling@f32b0933b0a3205b36a148900e0be330a1077916"
     },
     {
-      "installSize": 42306,
-      "openIssues": 6,
-      "package": {
-        "author": "寒Orz",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "description": {
-          "en_US": "balabala",
-          "zh_CN": "聚焦当前行，打字机模式与顺滑光标"
-        },
-        "displayName": {
-          "en_US": "balabala",
-          "zh_CN": "焦点写作"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            ""
-          ]
-        },
-        "keywords": [
-          "禅",
-          "zen",
-          "打字机"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "ZenType",
-        "readme": {
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/Han-Orz/siyuan-zen",
-        "version": "1.0.6"
-      },
-      "size": 23183,
-      "stars": 4,
-      "updated": "2025-02-09T11:55:41Z",
-      "url": "Han-Orz/siyuan-zen@977ffac67c3bbe494c6ce54289c264fa2763b7bb"
-    },
-    {
       "installSize": 3149027,
       "openIssues": 9,
       "package": {
@@ -13277,64 +14179,6 @@
       "stars": 3,
       "updated": "2024-12-28T14:41:43Z",
       "url": "Achuan-2/siyuan-plugin-imgAddLink@b8860034698530eff1beb35fab172126b86e40d9"
-    },
-    {
-      "installSize": 1810972,
-      "openIssues": 7,
-      "package": {
-        "author": "Zuoqiu Yingyi",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Customize the fonts of various elements in the SiYuan interface.",
-          "zh_CHT": "自定義思源介面中各種元素的字型。",
-          "zh_CN": "自定义思源界面中各种元素的字体。"
-        },
-        "displayName": {
-          "default": "Custom Fonts",
-          "zh_CHT": "自定義字型",
-          "zh_CN": "自定义字体"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/zuoqiu",
-            "https://ko-fi.com/zuoqiu"
-          ]
-        },
-        "keywords": [
-          "字体",
-          "字體",
-          "字型",
-          "font",
-          "字族",
-          "font family",
-          "字体列表",
-          "字體列表",
-          "字型列表",
-          "font list",
-          "块字体",
-          "塊字體",
-          "塊字型",
-          "block font"
-        ],
-        "minAppVersion": "2.10.13",
-        "name": "custom-fonts",
-        "readme": {
-          "default": "README.md",
-          "zh_CHT": "README_zh_CN.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/Zuoqiu-Yingyi/siyuan-plugin-custom-fonts",
-        "version": "1.2.1"
-      },
-      "size": 905759,
-      "stars": 12,
-      "updated": "2024-12-28T11:57:08Z",
-      "url": "Zuoqiu-Yingyi/siyuan-plugin-custom-fonts@698960959902f0a40fc3334f8f42f33ae6b082a5"
     },
     {
       "installSize": 147517,
@@ -13738,13 +14582,11 @@
         ],
         "description": {
           "default": "A plugin that extracts oembed data from links and creates a Ghost CMS-style cards as bookmarks",
-          "en_US": "A plugin that extracts oembed data from links and creates a Ghost CMS-style cards as bookmarks",
           "pl_PL": "Wtyczka wyodrębniająca dane oembed z linków i tworząca karty w stylu Ghost CMS jako zakładki",
           "zh_CN": "一个从链接中提取oembed数据并且创建一个Ghost CMS-style卡片作为书签的插件"
         },
         "displayName": {
           "default": "Oembed and bookmark cards",
-          "en_US": "Oembed and bookmark cards",
           "pl_PL": "Oembed i karty zakładek",
           "zh_CN": "Oembed和书签卡片"
         },
@@ -13774,7 +14616,6 @@
         "name": "siyuan-oembed",
         "readme": {
           "default": "README.md",
-          "en_US": "README.md",
           "pl_PL": "README_pl_PL.md",
           "zh_CN": "README_zh_CN.md"
         },
@@ -14736,12 +15577,10 @@
           "android"
         ],
         "description": {
-          "default": "在顶栏和编辑器的工具栏里添加图标,点击之后执行自定义的快捷键;调整原有图标的顺序;隐藏指定的原有图标",
-          "zh_CN": "在顶栏和编辑器的工具栏里添加图标,点击之后执行自定义的快捷键;调整原有图标的顺序;隐藏指定的原有图标"
+          "default": "在顶栏和编辑器的工具栏里添加图标,点击之后执行自定义的快捷键;调整原有图标的顺序;隐藏指定的原有图标"
         },
         "displayName": {
-          "default": "工具栏自定义(排序|隐藏|添加快捷键)",
-          "zh_CN": "工具栏自定义(排序|隐藏|添加快捷键)"
+          "default": "工具栏自定义(排序|隐藏|添加快捷键)"
         },
         "frontends": [
           "desktop",
@@ -14902,13 +15741,11 @@
         "author": "frostime",
         "description": {
           "default": "调节编辑器的宽度",
-          "en_US": "Change the width of center editor",
-          "zh_CN": "调节编辑器的宽度"
+          "en_US": "Change the width of center editor"
         },
         "displayName": {
           "default": "编辑器宽度",
-          "en_US": "Center Editor Width",
-          "zh_CN": "编辑器宽度"
+          "en_US": "Center Editor Width"
         },
         "funding": {
           "custom": [
@@ -15190,8 +16027,7 @@
       "package": {
         "author": "zuoez02",
         "description": {
-          "default": "快速笔记插件，只为便于在一个笔记本里快速插入笔记。",
-          "zh_CN": "快速笔记插件，只为便于在一个笔记本里快速插入笔记。"
+          "default": "快速笔记插件，只为便于在一个笔记本里快速插入笔记。"
         },
         "displayName": {
           "default": "QuickNote",
@@ -15388,43 +16224,6 @@
       "url": "Zuoqiu-Yingyi/siyuan-plugin-wakatime@20572b49bd184572571f4c58364b037a34638dd1"
     },
     {
-      "installSize": 1732511,
-      "openIssues": 1,
-      "package": {
-        "author": "suka233",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "en_US": "Virtual flashcard tree, automatic flashcard reading point, incremental learning",
-          "zh_CN": "虚拟闪卡树，自动闪卡阅读点，渐进式学习"
-        },
-        "displayName": {
-          "en_US": "Keep Incremental Learning plugin",
-          "zh_CN": "KeepIncremental渐进式学习插件"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://wj.qq.com/s2/12591272/adf1/"
-          ]
-        },
-        "minAppVersion": "2.8.10",
-        "name": "keep-incremental-learning-plugin",
-        "readme": {
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/suka233/siyuan-knote",
-        "version": "1.0.0"
-      },
-      "size": 627975,
-      "stars": 8,
-      "updated": "2024-03-22T05:13:18Z",
-      "url": "suka233/siyuan-keep-incremental-learning-plugin@aaa8ab1dfda951a69dd41cb0e01f7706701eb95b"
-    },
-    {
       "installSize": 216140,
       "openIssues": 4,
       "package": {
@@ -15581,8 +16380,7 @@
         },
         "displayName": {
           "default": "基于文档搜索(es)",
-          "en_US": "document search(es)",
-          "zh_CN": "基于文档搜索(es)"
+          "en_US": "document search(es)"
         },
         "frontends": [
           "all"
@@ -15599,8 +16397,7 @@
         "name": "syplugin-document-es-search",
         "readme": {
           "default": "README_zh_CN.md",
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
+          "en_US": "README.md"
         },
         "url": "https://github.com/Misuzu2027/syplugin-document-search",
         "version": "0.6.0"
@@ -16137,8 +16934,7 @@
         "minAppVersion": "2.11.1",
         "name": "plugin-flomo-sync",
         "readme": {
-          "default": "README.md",
-          "zh_CN": "README.md"
+          "default": "README.md"
         },
         "url": "https://github.com/winter60/plugin-flomo-sync",
         "version": "0.1.0"
@@ -16221,7 +17017,6 @@
         "name": "siyuan-genshin-launcher",
         "readme": {
           "default": "README_en_US.md",
-          "en_US": "README_en_US.md",
           "zh_CN": "README.md"
         },
         "url": "https://github.com/HowcanoeWang/siyuan-genshin-launcher",
@@ -16536,8 +17331,7 @@
           "zh_CN": "思源笔记看视频做笔记插件"
         },
         "displayName": {
-          "default": "子魚笔记插件",
-          "zh_CN": "子魚笔记插件"
+          "default": "子魚笔记插件"
         },
         "frontends": [
           "desktop"
@@ -16550,8 +17344,7 @@
         "minAppVersion": "2.9.0",
         "name": "siyuan-ziyunote",
         "readme": {
-          "default": "README_zh_CN.md",
-          "zh_CN": "README_zh_CN.md"
+          "default": "README_zh_CN.md"
         },
         "url": "https://github.com/zhuangziyu/siyuan-ziyunote",
         "version": "1.3.3"
@@ -17103,12 +17896,10 @@
       "package": {
         "author": "zxhd863943427",
         "description": {
-          "default": "标注后自动跳转到文档的位置",
-          "zh_CN": "标注后自动跳转到文档的位置"
+          "default": "标注后自动跳转到文档的位置"
         },
         "displayName": {
-          "default": "pdf标注增强",
-          "zh_CN": "pdf标注增强"
+          "default": "pdf标注增强"
         },
         "funding": {
           "custom": [

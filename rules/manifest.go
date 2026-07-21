@@ -14,8 +14,10 @@ import (
 	"encoding/json"
 	"fmt"
 	"html"
+	"maps"
 	"os"
 	"path/filepath"
+	"slices"
 	"strings"
 
 	"golang.org/x/mod/semver"
@@ -180,6 +182,51 @@ func ClearEmptyFunding(pkg *Package) {
 	}
 }
 
+// PackageForPublicIndex 返回供发布索引使用的 Package 副本（locale map 已拷贝并剔除冗余语言键）。
+func PackageForPublicIndex(pkg Package) Package {
+	out := pkg
+	out.DisplayName = cloneLocaleStrings(pkg.DisplayName)
+	out.Description = cloneLocaleStrings(pkg.Description)
+	out.Readme = cloneLocaleStrings(pkg.Readme)
+	ClearRedundantLocales(&out)
+	return out
+}
+
+func cloneLocaleStrings(m LocaleStrings) LocaleStrings {
+	if m == nil {
+		return nil
+	}
+	out := make(LocaleStrings, len(m))
+	maps.Copy(out, m)
+	return out
+}
+
+// ClearRedundantLocales 删除与 default 值完全相同的语言键。
+// 客户端会回退到 default，冗余键只会增大索引体积；写入 stage / 发布索引前调用。
+func ClearRedundantLocales(pkg *Package) {
+	if pkg == nil {
+		return
+	}
+	clearRedundantLocaleStrings(pkg.DisplayName)
+	clearRedundantLocaleStrings(pkg.Description)
+	clearRedundantLocaleStrings(pkg.Readme)
+}
+
+func clearRedundantLocaleStrings(m LocaleStrings) {
+	if len(m) == 0 {
+		return
+	}
+	def, ok := m["default"]
+	if !ok {
+		return
+	}
+	for k, v := range m {
+		if k != "default" && v == def {
+			delete(m, k)
+		}
+	}
+}
+
 // ManifestInput 清单规则所需的上下文。
 type ManifestInput struct {
 	PackageRoot   string
@@ -208,7 +255,13 @@ func Manifest(m map[string]any, in ManifestInput) []Issue {
 func checkUnknownKeys(m map[string]any, typ PackageType) []Issue {
 	var issues []Issue
 	allowed := allowedManifestKeys[typ]
+	// 按键名排序，避免 map 遍历顺序不稳定导致检查结果 / result_hash 抖动
+	keys := make([]string, 0, len(m))
 	for k := range m {
+		keys = append(keys, k)
+	}
+	slices.Sort(keys)
+	for _, k := range keys {
 		if _, ok := allowed[k]; !ok {
 			issues = append(issues, issue(
 				fmt.Sprintf("`%s` 中出现了预期外的字段 `%s`。请删除该字段（保留未知字段会妨碍思源日后扩展同名字段）。若确有自定义需求，请先在[思源仓库](https://github.com/siyuan-note/siyuan)提 issue 讨论。", typ.ManifestFile(), k),
@@ -571,7 +624,12 @@ func checkFunding(m map[string]any) []Issue {
 		)}
 	}
 	var issues []Issue
+	keys := make([]string, 0, len(obj))
 	for k := range obj {
+		keys = append(keys, k)
+	}
+	slices.Sort(keys)
+	for _, k := range keys {
 		if _, ok := allowedFundingKeys[k]; !ok {
 			issues = append(issues, issue(
 				fmt.Sprintf("`funding` 中出现了预期外的字段 `%s`。仅允许 `openCollective`、`patreon`、`github`、`custom`。", k),

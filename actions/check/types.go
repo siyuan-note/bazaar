@@ -19,6 +19,12 @@ type Set map[string]struct{} // 字符串集合
 
 // CheckResult 检查结果（字段顺序：插件、主题、图标、模板、挂件）。
 type CheckResult struct {
+	// PRAuthor PR 作者 GitHub login，用于评论中 @ 提醒；为空则不展示
+	PRAuthor string
+
+	// MetaJSON 调度元数据的紧凑 JSON，写入评论开头 HTML 注释；空则不渲染
+	MetaJSON string
+
 	Plugins   []PackageCheck
 	Themes    []PackageCheck
 	Icons     []PackageCheck
@@ -28,7 +34,7 @@ type CheckResult struct {
 	// ParseError 包列表 TXT 读取或格式校验错误，非空时在 PR 评论中优先展示
 	ParseError string
 
-	// FlowError 流程层规则失败说明（如一次只能添加/更改一个包）；非空时在评论中展示，跳过包检查且不展示下架列表
+	// FlowError 流程层规则失败说明（如一次只能添加/更改一个包，或新增与无关下架混用）；非空时在评论中展示，跳过包检查且不展示下架列表
 	FlowError string
 
 	PluginsDeleted   []string

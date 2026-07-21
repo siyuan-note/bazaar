@@ -28,7 +28,7 @@ var (
 // conventionalPRTitle 生成约定 PR 标题。
 // 新增/换维护者：Add [type] owner/repo（插件省略类型；换维护者附 (maintainer change)）。
 // 纯下架：仅 1 个用 Delist [type] owner/repo；多个用 Delist N packages。
-// 调用方须已通过一次一包（addedOrChanged ≤ 1）。有 parseError，或新增同时带有纯下架时返回 ok=false。
+// 调用方须已通过 validatePRListChangeFlow。有 parseError，或新增同时带有纯下架时返回 ok=false。
 func conventionalPRTitle(plans []typeCheckPlan) (title string, ok bool) {
 	var added string
 	var addedType rules.PackageType
@@ -104,6 +104,35 @@ func prIdentity() (owner, repo string, prNumber int, ok bool) {
 		return "", "", 0, false
 	}
 	return owner, repo, n, true
+}
+
+// prIsMergedOrClosed 查询 PR 是否已合并或关闭。
+// 无法解析身份或 API 失败时返回 false（不跳过副作用，避免误吞 open PR 的真·无变更）。
+func prIsMergedOrClosed() bool {
+	owner, repo, prNumber, ok := prIdentity()
+	if !ok {
+		return false
+	}
+	pr, _, err := githubRepoClient.PullRequests.Get(githubContext, owner, repo, prNumber)
+	if err != nil {
+		logger.Errorf("get PR #%d state failed: %s", prNumber, err)
+		return false
+	}
+	return pr.GetMerged() || pr.GetState() == "closed"
+}
+
+// prAuthorLogin 返回当前 PR 作者 login；缺环境变量或 API 失败时返回空。
+func prAuthorLogin() string {
+	owner, repo, prNumber, ok := prIdentity()
+	if !ok {
+		return ""
+	}
+	pr, _, err := githubRepoClient.PullRequests.Get(githubContext, owner, repo, prNumber)
+	if err != nil {
+		logger.Errorf("get PR #%d author failed: %s", prNumber, err)
+		return ""
+	}
+	return pr.GetUser().GetLogin()
 }
 
 // maybeUpdatePRTitle 将 PR 标题改为约定格式；缺环境变量或已是目标标题时跳过，失败只记日志不中断检查。

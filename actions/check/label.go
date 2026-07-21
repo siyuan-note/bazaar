@@ -88,6 +88,28 @@ func checkResultCIPassed(r *CheckResult) bool {
 	return hasActivity
 }
 
+// isNoActualChange 是否为「无实际变更」：无解析/流程错误，且无任何增删与包检查结果。
+// 与 check-result 模板中「无实际变更」展示条件一致；有 Issues 的包检查结果不算无变更。
+func isNoActualChange(r *CheckResult) bool {
+	if r == nil {
+		return true
+	}
+	if r.ParseError != "" || r.FlowError != "" {
+		return false
+	}
+	for _, list := range [][]PackageCheck{r.Plugins, r.Themes, r.Icons, r.Templates, r.Widgets} {
+		if len(list) > 0 {
+			return false
+		}
+	}
+	for _, deleted := range [][]string{r.PluginsDeleted, r.ThemesDeleted, r.IconsDeleted, r.TemplatesDeleted, r.WidgetsDeleted} {
+		if len(deleted) > 0 {
+			return false
+		}
+	}
+	return true
+}
+
 // ciStatusLabel 根据检查结果返回应挂的 CI 标签（ci-failed / ci-passed 互斥）。
 func ciStatusLabel(passed bool) string {
 	if passed {

@@ -36,6 +36,12 @@ func ParseReposFromTxt(filePath string) (repos []string, err error) {
 			err,
 		)
 	}
+	return ParseReposFromBytes(fileLabel, data)
+}
+
+// ParseReposFromBytes 从 TXT 内容解析包列表，规则与 ParseReposFromTxt 相同。
+// fileLabel 用于错误文案（通常为文件名，如 plugins.txt）。
+func ParseReposFromBytes(fileLabel string, data []byte) (repos []string, err error) {
 	scanner := bufio.NewScanner(strings.NewReader(string(data)))
 	repos = make([]string, 0)
 	lineNum := 0
