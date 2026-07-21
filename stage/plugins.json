@@ -1,6 +1,140 @@
 {
   "repos": [
     {
+      "installSize": 799083,
+      "openIssues": 0,
+      "package": {
+        "author": "ying",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Use your SiYuan notes from MCP-compatible AI tools with notebook and action permissions.",
+          "zh-CN": "让支持 MCP 的 AI 工具在授权范围内读取、搜索和整理思源笔记。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan MCP",
+          "zh-CN": "思源MCP"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "MCP",
+          "AI",
+          "agent",
+          "SiYuan",
+          "permission"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-ai-mcp-bridge",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/appdev/siyuan-ai-mcp-bridge",
+        "version": "0.1.4"
+      },
+      "packageZipAssetId": 484121677,
+      "size": 643116,
+      "stars": 0,
+      "updated": "2026-07-21T06:00:38Z",
+      "url": "appdev/siyuan-ai-mcp-bridge@e5454c58e0e2f51efa13b75bf1a8e095c48c9630"
+    },
+    {
+      "installSize": 159301,
+      "openIssues": 0,
+      "package": {
+        "author": "Cyprien63",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "docker"
+        ],
+        "description": {
+          "default": "Sync SiYuan notes with a GitHub repository. Incremental push/pull, 3-way merge, commit history, restore, Groq AI commit messages.",
+          "zh_CN": "将思源笔记与 GitHub 仓库同步。增量推送/拉取、三方合并、提交历史、恢复、Groq AI 提交消息。"
+        },
+        "displayName": {
+          "default": "GitHub Sync",
+          "zh_CN": "GitHub 同步"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "keywords": [
+          "sync",
+          "github",
+          "backup",
+          "git",
+          "version-control"
+        ],
+        "minAppVersion": "3.6.4",
+        "name": "siyuan-github-sync",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/cyprien63/siyuan-plugin",
+        "version": "1.0.0"
+      },
+      "packageZipAssetId": 484283454,
+      "size": 122958,
+      "stars": 0,
+      "updated": "2026-07-21T05:58:42Z",
+      "url": "cyprien63/siyuan-plugin@6c8eff0915d3f94c29695b6ff8bbf7e6457e1ae6"
+    },
+    {
+      "installSize": 260429,
+      "openIssues": 0,
+      "package": {
+        "author": "jeefeng",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Upload local document images to custom image beds and replace links automatically.",
+          "zh_CN": "支持自定义图床配置，自动上传文章本地图片并替换为远程链接。"
+        },
+        "displayName": {
+          "default": "Image Hub",
+          "zh_CN": "思源图床"
+        },
+        "frontends": [
+          "all"
+        ],
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "图床",
+          "阿里云 OSS",
+          "image bed",
+          "Aliyun OSS",
+          "图片上传"
+        ],
+        "minAppVersion": "3.6.4",
+        "name": "siyuan-plugin-image-hub",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/jeefeng/siyuan-plugin-image-hub",
+        "version": "0.1.1"
+      },
+      "packageZipAssetId": 484148851,
+      "size": 133548,
+      "stars": 0,
+      "updated": "2026-07-21T05:57:51Z",
+      "url": "jeefeng/siyuan-plugin-image-hub@927ae703e0dbade924d58dc2cfc5315d24b73b09"
+    },
+    {
       "installSize": 2300948,
       "openIssues": 3,
       "package": {
