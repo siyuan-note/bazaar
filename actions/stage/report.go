@@ -18,6 +18,7 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"slices"
 	"strconv"
 	"strings"
 	"sync"
@@ -65,6 +66,7 @@ const (
 	stageFailClosePass stageFailCloseReason = iota // 本轮成功重新入库
 	stageFailCloseSkip                             // 本轮校验通过且 hash 未变
 	stageFailCloseDuplicate                        // 同仓重复 Issue
+	stageFailCloseDelisted                         // 已不在任一 *s.txt（下架或换维护者旧仓）
 )
 
 // stageReport 单仓本轮 Stage 结果，供失败同步到按仓独立 Issue。
@@ -299,14 +301,17 @@ func stageFailCloseComment(reason stageFailCloseReason) string {
 	var zh, en string
 	switch reason {
 	case stageFailClosePass:
-		zh = "本轮 Stage 已成功重新索引该包，问题已恢复，因此关闭本 Issue。"
-		en = "This package was successfully re-indexed in this Stage run, so this issue is being closed as recovered."
+		zh = "本轮 Stage 已成功重新索引该包，问题已修复，因此关闭本 Issue。"
+		en = "This package was successfully re-indexed in this Stage run, so this issue is being closed as fixed."
 	case stageFailCloseSkip:
 		zh = "本轮 Stage 已能正常获取该包的 Latest Release，且入库内容未变化（hash 未变），视为已恢复，因此关闭本 Issue。"
 		en = "This Stage run could fetch the package's Latest Release successfully, and the staged content is unchanged (hash unchanged), so this issue is being closed as recovered."
 	case stageFailCloseDuplicate:
 		zh = "关闭重复的 stage-fail Issue；请以同仓库的主 Issue 为准。"
 		en = "Closing a duplicate stage-fail issue; please follow the primary issue for this repository."
+	case stageFailCloseDelisted:
+		zh = "该仓库已不在集市包列表中（已下架或更换维护者），因此关闭本 Issue。"
+		en = "This repository is no longer in the bazaar package lists (delisted or maintainer changed), so this issue is being closed."
 	default:
 		zh = "本轮 Stage 已确认该包无需继续跟踪，因此关闭本 Issue。"
 		en = "This Stage run confirmed the package no longer needs tracking, so this issue is being closed."
@@ -333,9 +338,35 @@ func closeStageFailIssue(ctx context.Context, client *github.Client, owner, repo
 	return nil
 }
 
+// ownerRepoListedSet 将各类型当前 *s.txt 路径收成集合，供判断 stage-fail 是否对应已下架仓。
+func ownerRepoListedSet(reposByType map[rules.PackageType][]string) Set {
+	listed := make(Set)
+	for _, repos := range reposByType {
+		for _, ownerRepo := range repos {
+			listed[ownerRepo] = struct{}{}
+		}
+	}
+	return listed
+}
+
+// stageFailDelistedRepos 返回仍有 open Issue、但已不在当前包列表中的 owner/repo（稳定排序便于测试）。
+func stageFailDelistedRepos(issuesByRepo map[string][]stageFailIssue, listed Set) []string {
+	var out []string
+	for ownerRepo := range issuesByRepo {
+		if _, ok := listed[ownerRepo]; ok {
+			continue
+		}
+		out = append(out, ownerRepo)
+	}
+	slices.Sort(out)
+	return out
+}
+
 // syncStageFailReports 将本轮 pass/fail/skip 同步为按仓独立 Issue：失败 upsert（正文未变则跳过 Edit）；
-// 成功入库或 hash 跳过（校验已通过）则先评论说明再关闭。
-func syncStageFailReports(ctx context.Context, client *github.Client, reports []stageReport) error {
+// 成功入库或 hash 跳过（校验已通过）则先评论说明再关闭；
+// 仍有 open Issue 但已不在任一 *s.txt 的仓（下架 / 换维护者旧仓）按 delisted 关闭。
+// listed 须为当前完整包列表：不得用「本轮未出现在 reports」判断下架（增量跳过类型、限流中止时会误关）。
+func syncStageFailReports(ctx context.Context, client *github.Client, reports []stageReport, listed Set) error {
 	owner, repo, ok := bazaarOwnerRepo()
 	if !ok {
 		logger.Errorf("skip stage-fail issue sync: GITHUB_REPOSITORY not set / invalid")
@@ -367,7 +398,7 @@ func syncStageFailReports(ctx context.Context, client *github.Client, reports []
 		return nil
 	}
 
-	var passCount, failCount, skipped, unchanged int
+	var passCount, failCount, skipped, unchanged, delisted int
 	for _, r := range reports {
 		switch r.Kind {
 		case stageReportSkip:
@@ -440,7 +471,13 @@ func syncStageFailReports(ctx context.Context, client *github.Client, reports []
 			delete(issuesByRepo, r.OwnerRepo)
 		}
 	}
-	logger.Infof("stage-fail issue sync done: fail=%d pass=%d skip=%d unchanged=%d", failCount, passCount, skipped, unchanged)
+	for _, ownerRepo := range stageFailDelistedRepos(issuesByRepo, listed) {
+		if err := closeRepoIssues(ownerRepo, stageFailCloseDelisted); err != nil {
+			return err
+		}
+		delisted++
+	}
+	logger.Infof("stage-fail issue sync done: fail=%d pass=%d skip=%d unchanged=%d delisted=%d", failCount, passCount, skipped, unchanged, delisted)
 	return nil
 }
 

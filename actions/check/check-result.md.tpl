@@ -1,4 +1,14 @@
+{{- if .MetaJSON }}
+<!-- bazaar-check-meta
+{{ .MetaJSON }}
+-->
+
+{{- end }}
 ## 拉取请求自动化检查 / Pull Request Automated Check
+{{- if .PRAuthor }}
+
+@{{ .PRAuthor }}
+{{- end }}
 
 {{- if .ParseError }}
 
@@ -72,7 +82,7 @@ Check passed.
   {{- end }}
 {{- end }}
 
-{{- /* 一次一包失败时不展示下架列表；通过时下架放在新增前面便于审阅 */ -}}
+{{- /* 流程失败时不展示下架列表；通过时下架放在新增前面便于审阅 */ -}}
 {{- if not .FlowError }}
 {{- if .PluginsDeleted }}
 

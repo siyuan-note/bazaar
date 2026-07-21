@@ -11,6 +11,7 @@
 package main
 
 import (
+	"reflect"
 	"strings"
 	"testing"
 
@@ -193,6 +194,13 @@ func TestStageFailCloseComment(t *testing.T) {
 				"duplicate stage-fail issue",
 			},
 		},
+		{
+			reason: stageFailCloseDelisted,
+			want: []string{
+				"已不在集市包列表中",
+				"no longer in the bazaar package lists",
+			},
+		},
 	}
 	for _, tt := range tests {
 		body := stageFailCloseComment(tt.reason)
@@ -201,6 +209,44 @@ func TestStageFailCloseComment(t *testing.T) {
 				t.Fatalf("reason %d missing %q\nbody:\n%s", tt.reason, want, body)
 			}
 		}
+	}
+}
+
+func TestOwnerRepoListedSet(t *testing.T) {
+	listed := ownerRepoListedSet(map[rules.PackageType][]string{
+		rules.TypePlugin: {"a/p1", "b/p2"},
+		rules.TypeTheme:  {"c/t1"},
+		rules.TypeWidget: nil,
+	})
+	for _, want := range []string{"a/p1", "b/p2", "c/t1"} {
+		if _, ok := listed[want]; !ok {
+			t.Fatalf("missing %q in listed set", want)
+		}
+	}
+	if _, ok := listed["x/gone"]; ok {
+		t.Fatal("unexpected x/gone in listed set")
+	}
+}
+
+func TestStageFailDelistedRepos(t *testing.T) {
+	issuesByRepo := map[string][]stageFailIssue{
+		"keep/listed":   {{Number: 1, OwnerRepo: "keep/listed"}},
+		"gone/delisted": {{Number: 2, OwnerRepo: "gone/delisted"}},
+		"also/gone":     {{Number: 3, OwnerRepo: "also/gone"}},
+	}
+	listed := Set{"keep/listed": {}}
+	got := stageFailDelistedRepos(issuesByRepo, listed)
+	want := []string{"also/gone", "gone/delisted"}
+	if !reflect.DeepEqual(got, want) {
+		t.Fatalf("got %#v, want %#v", got, want)
+	}
+	// 仍在列表中的仓即使本轮无 report，也不应视为下架（增量 / 限流场景）
+	if got := stageFailDelistedRepos(issuesByRepo, Set{
+		"keep/listed":   {},
+		"gone/delisted": {},
+		"also/gone":     {},
+	}); len(got) != 0 {
+		t.Fatalf("want empty when all listed, got %#v", got)
 	}
 }
 

@@ -44,10 +44,10 @@ Diff 流程（以 plugins.txt 为例）：
 4. 比较 base 与 head：候选新增 = head 有 base 无，候选删除 = base 有 head 无
 5. 过滤候选新增：排除已在 bazaar head 中的仓库（可能是解决冲突时从 bazaar head 合并来的）
 6. 过滤候选删除：排除在 bazaar head 中已不存在的仓库（可能是其他 PR 删除的）
-7. 流程规则：添加或更换维护者合计只能为 1（下架不限）；违反则写 FlowError，跳过后续 Check（评论亦不展示下架列表）
-8. 一次一包通过后：自动改 PR 标题（Add/Delist [type] owner/repo，插件省略类型；换维护者附 (maintainer change)；多仓纯下架为 Delist N packages）
+7. 流程规则：仅允许纯新增 1 个 / 更换维护者（新增 1 + 删除同名同类型旧仓）/ 纯下架一个或多个；违反则写 FlowError，跳过后续 Check（评论亦不展示下架列表）
+8. 流程通过后：自动改 PR 标题（Add/Delist [type] owner/repo，插件省略类型；换维护者附 (maintainer change)；多仓纯下架为 Delist N packages）
 
-Check 流程（一次一包通过后，对 plan.diff.New 中的仓库）：
+Check 流程（流程通过后，对 plan.diff.New 中的仓库）：
 1. 从 bazaar head 的 stage/*.json 加载 OccupiedNames（跨类型；比较前统一转小写）
 2. 校验仓库公开；不公开（私有 / 不可访问）则记 Issue 并跳过后续检查
 3. 校验根目录 LICENSE / LICENSE.txt；缺失则记 Issue（不阻断后续）
@@ -57,13 +57,18 @@ Check 流程（一次一包通过后，对 plan.diff.New 中的仓库）：
 7. 通过后将 name 写入 OccupiedNames（同 PR 内唯一性）
 
 收尾（无论是否跑过包检查）：
-1. 用模板写出检查结果文件（含下架列表、检查 Issues；换维护者时附流程说明链接）
-2. 同步标签：类型标签按涉及的 *.txt 对账；CI 状态打 ci-failed 或 ci-passed（互斥，同一次 Replace）
-3. 工作流用 thollander/actions-comment-pull-request 将结果文件发到 PR
+1. 无实际变更且 PR 已合并/关闭：跳过结果评论与标签同步（解冲突触发检查后立刻合并的竞态，避免误打 ci-failed）
+2. 用模板写出检查结果文件（含下架列表、检查 Issues；换维护者时附流程说明链接）
+3. 同步标签：类型标签按涉及的 *.txt 对账；CI 状态打 ci-failed 或 ci-passed（互斥，同一次 Replace）
+4. 工作流用 thollander/actions-comment-pull-request 将结果文件发到 PR
+
+定时复检（schedule）：
+1. go run ./actions/check -select：按评论开头 bazaar-check-meta（指纹变更 / 退避到期 / max-age）筛选 ci-failed PR
+2. 对入选 PR 跑完整 Check；评论写回新 meta（JSON）
 */
 
 var (
-	BAZAAR_HEAD_PATH    = os.Getenv("BAZAAR_HEAD_PATH")    // bazaar 主分支最新代码目录（用于过滤与 OccupiedNames）
+	BAZAAR_HEAD_PATH    = os.Getenv("BAZAAR_HEAD_PATH")    // bazaar 主分支最新代码目录（用于过滤、OccupiedNames、theme.js 白名单）
 	PR_HEAD_PATH        = os.Getenv("PR_HEAD_PATH")        // 本 PR 当前提交的代码目录（PR head）
 	PR_BASE_PATH        = os.Getenv("PR_BASE_PATH")        // 本 PR 的 merge base 代码目录（做 diff 的旧侧，与 GitHub "Files changed" 一致）
 	PAT                 = os.Getenv("PAT")                 // 个人访问令牌（Release API）
@@ -122,6 +127,11 @@ type typeCheckPlan struct {
 }
 
 func main() {
+	if len(os.Args) > 1 && os.Args[1] == "-select" {
+		runSelect()
+		return
+	}
+
 	logger.Infof("PR Check started")
 
 	var stop context.CancelFunc
@@ -183,26 +193,24 @@ func main() {
 		}
 		planWg.Wait()
 
-		addedOrChanged := 0
 		for _, plan := range plans {
 			if plan.parseError != "" {
 				parseErrorBuilder.WriteString(plan.parseError)
 				continue
 			}
-			// 将本 PR 的删除列表写入检查结果（一次一包失败时模板不展示）
+			// 将本 PR 的删除列表写入检查结果（流程失败时模板不展示）
 			if !checkResult.setDeleted(plan.packageType, plan.diff.Deleted) {
 				panic("main: invalid package type")
 			}
-			addedOrChanged += len(plan.diff.New)
 		}
 		checkResult.ParseError = parseErrorBuilder.String()
 
-		// 流程规则：添加或更换维护者合计只能为 1（下架不限）
-		if addedOrChanged > 1 {
-			checkResult.FlowError = formatOnePackageLimitError(addedOrChanged, plans)
-			logger.Errorf("one-package limit violated: %d packages added or changed", addedOrChanged)
+		// 流程规则：仅允许纯新增 1 个 / 更换维护者 / 纯下架
+		if flowErr := validatePRListChangeFlow(plans); flowErr != "" {
+			checkResult.FlowError = flowErr
+			logger.Errorf("PR list-change flow rule violated")
 		} else {
-			// 一次一包通过后：自动改 PR 标题（含纯下架；多仓下架为 Delist N packages）
+			// 流程通过后：自动改 PR 标题（含纯下架；多仓下架为 Delist N packages）
 			if title, ok := conventionalPRTitle(plans); ok {
 				maybeUpdatePRTitle(title)
 			}
@@ -212,7 +220,7 @@ func main() {
 				logger.Fatalf("load occupied names failed: %s", err)
 			}
 
-			// 一次一包通过后最多只有一个类型含新增，顺序检查即可
+			// 流程通过后最多只有一个类型含新增，顺序检查即可
 			for _, plan := range plans {
 				if plan.parseError != "" || len(plan.diff.New) == 0 {
 					continue
@@ -224,6 +232,17 @@ func main() {
 		// 无白名单改动（且未命中黑名单）：不跑包检查，模板展示「无实际变更」，ci-failed
 		logger.Infof("no whitelisted list file changes; skip package checks")
 	}
+
+	// 无实际变更且 PR 已合并/关闭：多为解冲突后立刻合并，检查相对最新 main 滤空；跳过评论与标签，避免误打 ci-failed
+	if isNoActualChange(checkResult) && prIsMergedOrClosed() {
+		logger.Infof("no actual list change and PR already merged/closed; skip result comment and label sync")
+		appendGitHubOutput("skip_side_effects", "true")
+		logger.Infof("PR Check completed (skipped side effects)")
+		return
+	}
+
+	checkResult.PRAuthor = prAuthorLogin()
+	attachCheckMeta(checkResult)
 
 	// 将检查结果写入文件
 	if err := checkResultTemplate.Execute(checkResultOutputFile, checkResult); err != nil {
@@ -237,6 +256,55 @@ func main() {
 	maybeRequestReviewers(checkResult)
 
 	logger.Infof("PR Check completed")
+}
+
+// attachCheckMeta 读取上次评论 meta，生成本轮调度元数据并填入 MetaJSON。
+// 结果 hash 变化（或无上次 meta）时输出 comment_mode=recreate，以便重建评论并再次 @ 通知作者；未变则 upsert。
+func attachCheckMeta(checkResult *CheckResult) {
+	var prev *CheckMeta
+	if owner, repo, prNumber, ok := prIdentity(); ok && githubRepoClient != nil {
+		prev, _ = loadCheckMetaFromPRComments(githubContext, githubRepoClient, owner, repo, prNumber)
+	}
+	meta := buildNextCheckMeta(prev, checkResult, time.Now())
+	metaJSON, err := marshalCheckMetaJSON(meta)
+	if err != nil {
+		logger.Errorf("marshal check meta failed: %s", err)
+		appendGitHubOutput("comment_mode", "upsert")
+		return
+	}
+	checkResult.MetaJSON = metaJSON
+	mode := "upsert"
+	if prev == nil || prev.ResultHash == "" || prev.ResultHash != meta.ResultHash {
+		mode = "recreate"
+	}
+	appendGitHubOutput("comment_mode", mode)
+	logger.Infof("check meta: hash=%s streak=%d next_due=%s fp_repo=%v comment_mode=%s",
+		meta.ResultHash, meta.UnchangedStreak, meta.NextDueAt, meta.FP != nil, mode)
+}
+
+// appendGitHubOutput 向 GITHUB_OUTPUT 追加 name=value（非 Actions 环境则忽略）。
+// value 含换行或 JSON 引号时用 heredoc，避免 Actions 截断 / 解析失败。
+func appendGitHubOutput(name, value string) {
+	path := os.Getenv("GITHUB_OUTPUT")
+	if path == "" {
+		return
+	}
+	f, err := os.OpenFile(path, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	if err != nil {
+		logger.Errorf("open GITHUB_OUTPUT failed: %s", err)
+		return
+	}
+	defer f.Close()
+	useHeredoc := strings.ContainsAny(value, "\n\r\"'") || strings.Contains(value, "{")
+	var writeErr error
+	if useHeredoc {
+		_, writeErr = fmt.Fprintf(f, "%s<<EOF\n%s\nEOF\n", name, value)
+	} else {
+		_, writeErr = fmt.Fprintf(f, "%s=%s\n", name, value)
+	}
+	if writeErr != nil {
+		logger.Errorf("write GITHUB_OUTPUT failed: %s", writeErr)
+	}
 }
 
 // parseReposFromRootTxt 从集市包列表 TXT（每行一个 owner/repo）解析出路径列表、路径集合和 name->owner 映射
@@ -292,10 +360,11 @@ func prepareTypeCheckPlan(packageType rules.PackageType) typeCheckPlan {
 	}
 
 	if packageType == rules.TypeTheme {
-		ap := filepath.Join(PR_HEAD_PATH, util.ThemeJsAllowlistRelPath)
+		// 白名单为黑名单路径（社区 PR 不可改），始终读 bazaar head
+		ap := filepath.Join(BAZAAR_HEAD_PATH, util.ThemeJsAllowlistRelPath)
 		paths, errAllow := util.ParseReposFromTxt(ap)
 		if errAllow != nil {
-			plan.parseError = formatParseErrorLabel(fmt.Sprintf("%s PR head", util.ThemeJsAllowlistRelPath), errAllow)
+			plan.parseError = formatParseErrorLabel(fmt.Sprintf("%s bazaar head", util.ThemeJsAllowlistRelPath), errAllow)
 			logger.Errorf("load theme.js allowlist [%s] failed: %s, skip this type", ap, errAllow)
 			return plan
 		}
@@ -316,7 +385,7 @@ func formatParseErrorLabel(label string, err error) string {
 }
 
 // runTypePackageChecks 对本类型新增/换维护者仓库执行 Latest Release → package.zip → rules.Check。
-// 一次一包规则下通常只有一个仓库；更换维护者时从 bazaar head stage 取旧 name/version（视同更新）。
+// 流程规则下通常只有一个仓库；更换维护者时从 bazaar head stage 取旧 name/version（视同更新）。
 func runTypePackageChecks(
 	plan typeCheckPlan,
 	checkResult *CheckResult,

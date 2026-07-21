@@ -200,6 +200,39 @@ func TestCheckUnknownField(t *testing.T) {
 	}
 }
 
+func TestCheckUnknownKeysStableOrder(t *testing.T) {
+	m := map[string]any{
+		"backends":  []any{"all"},
+		"frontends": []any{"all"},
+		"zz":        1,
+		"aa":        2,
+	}
+	var first []string
+	for i := 0; i < 50; i++ {
+		issues := checkUnknownKeys(m, TypeWidget)
+		got := make([]string, len(issues))
+		for j, iss := range issues {
+			got[j] = iss.MessageEn
+		}
+		if i == 0 {
+			first = got
+			if len(first) < 2 {
+				t.Fatalf("want multiple unknown-key issues, got %v", first)
+			}
+			// 字典序：aa → backends → frontends → zz
+			if !strings.Contains(first[0], "`aa`") || !strings.Contains(first[1], "`backends`") {
+				t.Fatalf("want sorted keys aa, backends, ...; got %v", first)
+			}
+			continue
+		}
+		for j := range got {
+			if got[j] != first[j] {
+				t.Fatalf("iteration %d: unstable order\nfirst=%v\ngot=%v", i, first, got)
+			}
+		}
+	}
+}
+
 func TestManifestKeysByPackageType(t *testing.T) {
 	// 插件不得带 modes；主题不得带 backends；图标等仅通用字段
 	cases := []struct {

@@ -11,9 +11,22 @@
 package main
 
 import (
-	"fmt"
+	"bytes"
+	_ "embed"
 	"strings"
+	"text/template"
 )
+
+//go:embed flow-error.md.tpl
+var flowErrorTemplateText string
+
+var flowErrorTemplate = template.Must(template.New("flow-error.md.tpl").Parse(flowErrorTemplateText))
+
+// flowRepoGroup 流程错误模板中按列表文件分组的仓库。
+type flowRepoGroup struct {
+	ListFile string
+	Repos     string
+}
 
 // repoDiff 单类型列表相对 PR base / bazaar head 过滤后的增删结果。
 type repoDiff struct {
@@ -86,19 +99,101 @@ func computeRepoDiff(
 	}
 }
 
+// validatePRListChangeFlow 校验列表变更形态。
+// 仅允许：
+// 1. 纯新增：跨类型合计恰好新增 1 个，且无下架；
+// 2. 更换维护者：跨类型合计恰好新增 1 个，且仅删除与其同类型、同 GitHub 仓库名的旧 owner/repo（无额外下架）；
+// 3. 纯下架：无新增，删除一个或多个。
+// 违反时返回双语 FlowError；通过返回空串。parseError 的类型跳过统计（由 ParseError 另行展示）。
+func validatePRListChangeFlow(plans []typeCheckPlan) string {
+	totalNew := 0
+	var pureDeleted []string
+	for _, plan := range plans {
+		if plan.parseError != "" {
+			continue
+		}
+		totalNew += len(plan.diff.New)
+		for _, path := range plan.diff.Deleted {
+			if isPreviousRepo(plan.diff, path) {
+				continue
+			}
+			pureDeleted = append(pureDeleted, path)
+		}
+	}
+	if totalNew > 1 {
+		return formatOnePackageLimitError(totalNew, plans)
+	}
+	if totalNew == 1 && len(pureDeleted) > 0 {
+		return formatMixedAddDelistError(plans)
+	}
+	return ""
+}
+
 // formatOnePackageLimitError 生成「一次只能添加/更改一个包」的双语说明（含涉及仓库列表）。
 // total 为添加或更换维护者的合计数量（须 > 1）。
 func formatOnePackageLimitError(total int, plans []typeCheckPlan) string {
-	var b strings.Builder
-	fmt.Fprintf(&b, "本 PR 添加或更换了 %d 个集市包，但一次只能添加或更换 1 个（下架不限数量）。请将每个包拆成独立的 Pull Request 后再提交。\n\n", total)
-	fmt.Fprintf(&b, "This PR adds or changes %d bazaar packages, but only 1 package may be added or have its maintainer changed per PR (delistings are unlimited). Please split each package into its own Pull Request.\n\n", total)
+	return executeFlowError("onePackageLimit", struct {
+		Total   int
+		NewRepos []flowRepoGroup
+	}{
+		Total:   total,
+		NewRepos: collectNewRepoGroups(plans),
+	})
+}
 
-	b.WriteString("涉及的仓库 / Involved repos:\n")
+// formatMixedAddDelistError 生成「新增/换维护者与无关下架混用」的双语说明。
+func formatMixedAddDelistError(plans []typeCheckPlan) string {
+	return executeFlowError("mixedAddDelist", struct {
+		NewRepos    []flowRepoGroup
+		PureDeleted []flowRepoGroup
+	}{
+		NewRepos:    collectNewRepoGroups(plans),
+		PureDeleted: collectPureDeletedGroups(plans),
+	})
+}
+
+func collectNewRepoGroups(plans []typeCheckPlan) []flowRepoGroup {
+	groups := make([]flowRepoGroup, 0)
 	for _, plan := range plans {
-		if len(plan.diff.New) == 0 {
+		if plan.parseError != "" || len(plan.diff.New) == 0 {
 			continue
 		}
-		fmt.Fprintf(&b, "- `%s`: %s\n", plan.packageType.ReposListFile(), strings.Join(plan.diff.New, ", "))
+		groups = append(groups, flowRepoGroup{
+			ListFile: plan.packageType.ReposListFile(),
+			Repos:     strings.Join(plan.diff.New, ", "),
+		})
+	}
+	return groups
+}
+
+func collectPureDeletedGroups(plans []typeCheckPlan) []flowRepoGroup {
+	groups := make([]flowRepoGroup, 0)
+	for _, plan := range plans {
+		if plan.parseError != "" {
+			continue
+		}
+		var paths []string
+		for _, path := range plan.diff.Deleted {
+			if isPreviousRepo(plan.diff, path) {
+				continue
+			}
+			paths = append(paths, path)
+		}
+		if len(paths) == 0 {
+			continue
+		}
+		groups = append(groups, flowRepoGroup{
+			ListFile: plan.packageType.ReposListFile(),
+			Repos:     strings.Join(paths, ", "),
+		})
+	}
+	return groups
+}
+
+func executeFlowError(name string, data any) string {
+	var b bytes.Buffer
+	if err := flowErrorTemplate.ExecuteTemplate(&b, name, data); err != nil {
+		panic("flow error template " + name + ": " + err.Error())
 	}
 	return b.String()
 }
