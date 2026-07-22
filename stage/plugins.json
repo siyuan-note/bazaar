@@ -1,6 +1,149 @@
 {
   "repos": [
     {
+      "installSize": 203144,
+      "openIssues": 0,
+      "package": {
+        "author": "airium",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Display exact hierarchical heading numbers beside headings in the editor",
+          "zh-CN": "在编辑器标题旁显示精确的层级标题编号"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Floating Heading Number",
+          "zh-CN": "浮动标题编号"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "keywords": [
+          "floating",
+          "heading",
+          "numbering",
+          "outline",
+          "浮动",
+          "标题",
+          "编号",
+          "大纲"
+        ],
+        "minAppVersion": "3.7.1",
+        "name": "siyuan-floating-heading-number",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/airium/siyuan-floating-heading-number",
+        "version": "0.3.0"
+      },
+      "packageZipAssetId": 485770869,
+      "size": 92441,
+      "stars": 0,
+      "updated": "2026-07-22T09:31:31Z",
+      "url": "airium/siyuan-floating-heading-number@250fcf43e992bb5d510e25b0c8b1a0edcfb033aa"
+    },
+    {
+      "installSize": 9954665,
+      "openIssues": 2,
+      "package": {
+        "author": "steve",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "(Split from STtools plugin) Integrate tldraw whiteboard tool, deeply linked with SiYuan Note, with interaction part borrowed from affine",
+          "zh-CN": "(拆分自STtools插件)集成 tldraw 白板工具，深度联动思源笔记，交互部分借鉴affine",
+          "zh_CN": "(拆分自STtools插件)集成 tldraw 白板工具，深度联动思源笔记，交互部分借鉴affine"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "STtldraw",
+          "zh-CN": "ST白板",
+          "zh_CN": "ST白板"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://pic.imgdb.cn/item/6751b929d0e0a243d4de55a7.png"
+          ]
+        },
+        "keywords": [
+          "白板",
+          "whiteboard",
+          "handwriting",
+          "drawing",
+          "sketch",
+          "mindmap"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-steve-tldraw",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/loonghfut/siyuan-steve-tldraw",
+        "version": "3.2.0"
+      },
+      "packageZipAssetId": 485732590,
+      "size": 3925034,
+      "stars": 1,
+      "updated": "2026-07-22T08:51:36Z",
+      "url": "loonghfut/siyuan-steve-tldraw@1b59da73abc203c4e54af79710c0a4a71149cf92"
+    },
+    {
+      "installSize": 11908939,
+      "openIssues": 14,
+      "package": {
+        "author": "steve",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "schedule management, docker sync awareness, ai sidebar",
+          "zh-CN": "[白板已接入思源智能体]互联日程管理（基于数据库日历视图）支持ics，滴答清单双向联动, docker同步感知, ai侧边栏, 资源压缩, 白板, WPS联动, （SQL，数据库）聚合可视化, 随机题头图背景图。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "STtools"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://pic.imgdb.cn/item/6751b929d0e0a243d4de55a7.png"
+          ]
+        },
+        "keywords": [
+          "tools",
+          "schedule",
+          "calendar",
+          "st"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-steve-tools",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/loonghfut/siyuan-steve-tools",
+        "version": "0.51.0"
+      },
+      "packageZipAssetId": 485729235,
+      "size": 4492928,
+      "stars": 81,
+      "updated": "2026-07-22T08:47:51Z",
+      "url": "loonghfut/siyuan-steve-tools@5ed2dd773ce20f1da9408113d88fab9830d79b55"
+    },
+    {
       "installSize": 462131,
       "openIssues": 1,
       "package": {
@@ -46,53 +189,6 @@
       "stars": 0,
       "updated": "2026-07-22T06:32:34Z",
       "url": "Demisse233/LimitRSS@f9c1378967f8c0117f8159fa41319b364c9ebc59"
-    },
-    {
-      "installSize": 192391,
-      "openIssues": 1,
-      "package": {
-        "author": "airium",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Display exact hierarchical heading numbers floating in the editor gutter",
-          "zh-CN": "在编辑器侧栏浮动显示精确的层级标题编号"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Floating Heading Number",
-          "zh-CN": "浮动标题编号"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window"
-        ],
-        "keywords": [
-          "floating",
-          "heading",
-          "numbering",
-          "outline",
-          "浮动",
-          "标题",
-          "编号",
-          "大纲"
-        ],
-        "minAppVersion": "3.7.1",
-        "name": "siyuan-floating-heading-number",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/airium/siyuan-floating-heading-number",
-        "version": "0.1.1"
-      },
-      "packageZipAssetId": 485462111,
-      "size": 90285,
-      "stars": 0,
-      "updated": "2026-07-22T03:35:04Z",
-      "url": "airium/siyuan-floating-heading-number@031b5f25e12eb1f5adf7d104d529e57c8f9b7d70"
     },
     {
       "installSize": 2012714,
@@ -2020,102 +2116,6 @@
       "stars": 0,
       "updated": "2026-07-20T11:20:11Z",
       "url": "zfb517/siyuan-plugin-literal-text@9a785ffe5d17531f7b3b435a2df8cb721eb45e47"
-    },
-    {
-      "installSize": 11902136,
-      "openIssues": 14,
-      "package": {
-        "author": "steve",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "schedule management, docker sync awareness, ai sidebar",
-          "zh-CN": "[白板已接入思源智能体]互联日程管理（基于数据库日历视图）支持ics，滴答清单双向联动, docker同步感知, ai侧边栏, 资源压缩, 白板, WPS联动, （SQL，数据库）聚合可视化, 随机题头图背景图。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "STtools"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://pic.imgdb.cn/item/6751b929d0e0a243d4de55a7.png"
-          ]
-        },
-        "keywords": [
-          "tools",
-          "schedule",
-          "calendar",
-          "st"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-steve-tools",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/loonghfut/siyuan-steve-tools",
-        "version": "0.50.1"
-      },
-      "packageZipAssetId": 483207175,
-      "size": 4490152,
-      "stars": 81,
-      "updated": "2026-07-20T07:49:17Z",
-      "url": "loonghfut/siyuan-steve-tools@46f1d8016f351a0ea8927b49e772c227cd7d8384"
-    },
-    {
-      "installSize": 9946607,
-      "openIssues": 2,
-      "package": {
-        "author": "steve",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "(Split from STtools plugin) Integrate tldraw whiteboard tool, deeply linked with SiYuan Note, with interaction part borrowed from affine",
-          "zh-CN": "(拆分自STtools插件)集成 tldraw 白板工具，深度联动思源笔记，交互部分借鉴affine",
-          "zh_CN": "(拆分自STtools插件)集成 tldraw 白板工具，深度联动思源笔记，交互部分借鉴affine"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "STtldraw",
-          "zh-CN": "ST白板",
-          "zh_CN": "ST白板"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://pic.imgdb.cn/item/6751b929d0e0a243d4de55a7.png"
-          ]
-        },
-        "keywords": [
-          "白板",
-          "whiteboard",
-          "handwriting",
-          "drawing",
-          "sketch",
-          "mindmap"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-steve-tldraw",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/loonghfut/siyuan-steve-tldraw",
-        "version": "3.1.0"
-      },
-      "packageZipAssetId": 483186272,
-      "size": 3921466,
-      "stars": 1,
-      "updated": "2026-07-20T07:22:47Z",
-      "url": "loonghfut/siyuan-steve-tldraw@0d3ed04004ea9d71fb62cea3c26dbcb6c7d766fe"
     },
     {
       "installSize": 2087456,
