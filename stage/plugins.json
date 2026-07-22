@@ -1,7 +1,96 @@
 {
   "repos": [
     {
-      "installSize": 14341056,
+      "installSize": 192391,
+      "openIssues": 1,
+      "package": {
+        "author": "airium",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Display exact hierarchical heading numbers floating in the editor gutter",
+          "zh-CN": "在编辑器侧栏浮动显示精确的层级标题编号"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Floating Heading Number",
+          "zh-CN": "浮动标题编号"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "keywords": [
+          "floating",
+          "heading",
+          "numbering",
+          "outline",
+          "浮动",
+          "标题",
+          "编号",
+          "大纲"
+        ],
+        "minAppVersion": "3.7.1",
+        "name": "siyuan-floating-heading-number",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/airium/siyuan-floating-heading-number",
+        "version": "0.1.1"
+      },
+      "packageZipAssetId": 485462111,
+      "size": 90285,
+      "stars": 0,
+      "updated": "2026-07-22T03:35:04Z",
+      "url": "airium/siyuan-floating-heading-number@031b5f25e12eb1f5adf7d104d529e57c8f9b7d70"
+    },
+    {
+      "installSize": 2012714,
+      "openIssues": 5,
+      "package": {
+        "author": "alone-tree",
+        "backends": [
+          "windows",
+          "darwin",
+          "linux"
+        ],
+        "description": {
+          "default": "Lean, fast, and hassle-free SiYuan MCP tool.",
+          "zh-CN": "精简、高效、省心的思源笔记 MCP 工具。"
+        },
+        "displayName": {
+          "default": "Siyuan Bridge",
+          "zh-CN": "思源桥"
+        },
+        "frontends": [
+          "desktop"
+        ],
+        "keywords": [
+          "siyuan",
+          "mcp",
+          "ai",
+          "knowledge-base"
+        ],
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-bridge",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/alone-tree/siyuan-bridge",
+        "version": "1.0.4"
+      },
+      "packageZipAssetId": 485440574,
+      "size": 1568225,
+      "stars": 9,
+      "updated": "2026-07-22T03:13:30Z",
+      "url": "alone-tree/siyuan-bridge@caf7bf4e62c451ba3778062985169786a8706329"
+    },
+    {
+      "installSize": 14347207,
       "openIssues": 0,
       "package": {
         "author": "5kyfkr",
@@ -39,13 +128,61 @@
           "default": "README.md"
         },
         "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "2.7.5"
+        "version": "2.7.6"
       },
-      "packageZipAssetId": 484980620,
-      "size": 2934336,
+      "packageZipAssetId": 485407864,
+      "size": 2935751,
       "stars": 31,
-      "updated": "2026-07-21T17:58:08Z",
-      "url": "5kyfkr/siyuan-plugin-task-horizon@7a0b5861e0087cb3eb99f76219fa162fce4394d4"
+      "updated": "2026-07-22T02:34:15Z",
+      "url": "5kyfkr/siyuan-plugin-task-horizon@04c8f1fb06bfa227b3a8c996906c27d64b5c6b84"
+    },
+    {
+      "installSize": 2832406,
+      "openIssues": 2,
+      "package": {
+        "author": "Roy",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A habit tracking plugin for SiYuan",
+          "zh_CN": "每一次微小的坚持都值得记录"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Pinch Habit",
+          "zh_CN": "片趣-习惯打卡&amp;任务管理"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/Savor"
+          ]
+        },
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "habit",
+          "tracker",
+          "check-in"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "pinch",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/royc01/pinch",
+        "version": "2.4.6"
+      },
+      "packageZipAssetId": 485387166,
+      "size": 971011,
+      "stars": 15,
+      "updated": "2026-07-22T02:08:53Z",
+      "url": "royc01/pinch@6828feecc491e3dd2d5272da27a017275574410d"
     },
     {
       "installSize": 2168764,
@@ -352,48 +489,6 @@
       "stars": 0,
       "updated": "2026-07-21T13:05:05Z",
       "url": "Genwaygenway/siyuan-folder-lock@cd2e3282ba3dbbe9d32e5f1e76bbe7e7b60108ab"
-    },
-    {
-      "installSize": 2005861,
-      "openIssues": 5,
-      "package": {
-        "author": "alone-tree",
-        "backends": [
-          "windows",
-          "darwin",
-          "linux"
-        ],
-        "description": {
-          "default": "Lean, fast, and hassle-free SiYuan MCP tool.",
-          "zh-CN": "精简、高效、省心的思源笔记 MCP 工具。"
-        },
-        "displayName": {
-          "default": "Siyuan Bridge",
-          "zh-CN": "思源桥"
-        },
-        "frontends": [
-          "desktop"
-        ],
-        "keywords": [
-          "siyuan",
-          "mcp",
-          "ai",
-          "knowledge-base"
-        ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-bridge",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/alone-tree/siyuan-bridge",
-        "version": "1.0.3"
-      },
-      "packageZipAssetId": 484642836,
-      "size": 1567325,
-      "stars": 9,
-      "updated": "2026-07-21T12:20:30Z",
-      "url": "alone-tree/siyuan-bridge@5c810e98197d923cb72ccaa95c981da691d6fe0a"
     },
     {
       "installSize": 157362,
@@ -1927,53 +2022,6 @@
       "url": "zfb517/siyuan-plugin-literal-text@9a785ffe5d17531f7b3b435a2df8cb721eb45e47"
     },
     {
-      "installSize": 192183,
-      "openIssues": 0,
-      "package": {
-        "author": "airium",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Display exact hierarchical heading numbers floating in the editor gutter",
-          "zh-CN": "在编辑器侧栏浮动显示精确的层级标题编号"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Floating Heading Number",
-          "zh-CN": "浮动标题编号"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window"
-        ],
-        "keywords": [
-          "floating",
-          "heading",
-          "numbering",
-          "outline",
-          "浮动",
-          "标题",
-          "编号",
-          "大纲"
-        ],
-        "minAppVersion": "3.7.1",
-        "name": "siyuan-floating-heading-number",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/airium/siyuan-floating-heading-number",
-        "version": "0.1.0"
-      },
-      "packageZipAssetId": 479167863,
-      "size": 90216,
-      "stars": 0,
-      "updated": "2026-07-20T11:02:30Z",
-      "url": "airium/siyuan-floating-heading-number@a4e8703835c3f993c7a3e6d5e3a3819da306062c"
-    },
-    {
       "installSize": 11902136,
       "openIssues": 14,
       "package": {
@@ -2191,54 +2239,6 @@
       "stars": 17,
       "updated": "2026-07-19T14:22:57Z",
       "url": "Achuan-2/siyuan-plugin-imgReEditor@6008cb7da04448ce2150996cc4774ade397183ed"
-    },
-    {
-      "installSize": 2655853,
-      "openIssues": 2,
-      "package": {
-        "author": "Roy",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A habit tracking plugin for SiYuan",
-          "zh_CN": "每一次微小的坚持都值得记录"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Pinch Habit",
-          "zh_CN": "片趣-习惯打卡&amp;任务管理"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/Savor"
-          ]
-        },
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "habit",
-          "tracker",
-          "check-in"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "pinch",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/royc01/pinch",
-        "version": "2.4.5"
-      },
-      "packageZipAssetId": 482114246,
-      "size": 850320,
-      "stars": 15,
-      "updated": "2026-07-19T05:22:16Z",
-      "url": "royc01/pinch@bb9c4c009b2d4686531e02ea57cc393e2ab79dd0"
     },
     {
       "installSize": 1757339,
