@@ -1,6 +1,157 @@
 {
   "repos": [
     {
+      "installSize": 1408735,
+      "openIssues": 1,
+      "package": {
+        "author": "mm-o",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Cloud-drive aggregation manager for SiYuan: file viewing, media playback, reading annotations, image-hosting links, and more.",
+          "zh_CN": "思源网盘聚合管理器，支持网盘文件查看、媒体播放、阅读批注、图床直链等能力，更多玩法期待你的探索。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Cloud Drive Manager",
+          "zh_CN": "思盘"
+        },
+        "frontends": [
+          "all"
+        ],
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "思盘",
+          "cloud drive",
+          "file manager",
+          "openlist",
+          "media",
+          "s3",
+          "kernel plugin",
+          "webdav"
+        ],
+        "minAppVersion": "3.6.5",
+        "name": "siyuan-cloud",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/mm-o/siyuan-cloud",
+        "version": "0.6.0"
+      },
+      "packageZipAssetId": 486067162,
+      "size": 507288,
+      "stars": 4,
+      "updated": "2026-07-22T14:48:24Z",
+      "url": "mm-o/siyuan-cloud@22578e862768bd1db6176f80155e63b5b9a31319"
+    },
+    {
+      "installSize": 348939,
+      "openIssues": 0,
+      "package": {
+        "author": "游夏",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "A Finder-style column browser for navigating and organizing SiYuan notebooks and documents, with a document preview at the right.",
+          "zh_CN": "思源笔记的分栏文件浏览器：以列视图方式浏览、整理笔记本与文档，右端附当前文档的预览面板。"
+        },
+        "displayName": {
+          "default": "Finder",
+          "zh_CN": "访达"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop"
+        ],
+        "funding": {
+          "custom": [
+            "https://fastly.jsdelivr.net/gh/fujingzhai/siyuan-finder-plugin@main/assets/sponsor-wechat.png",
+            "https://fastly.jsdelivr.net/gh/fujingzhai/siyuan-finder-plugin@main/assets/sponsor-alipay.jpg"
+          ]
+        },
+        "keywords": [
+          "finder",
+          "访达",
+          "分栏",
+          "columns",
+          "文件浏览",
+          "导航",
+          "navigation",
+          "文档树",
+          "排序",
+          "sort",
+          "预览",
+          "preview",
+          "搜索",
+          "search",
+          "标签",
+          "tags"
+        ],
+        "minAppVersion": "3.6.0",
+        "name": "siyuan-finder-plugin",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/fujingzhai/siyuan-finder-plugin",
+        "version": "0.9.13"
+      },
+      "packageZipAssetId": 486035074,
+      "size": 214896,
+      "stars": 1,
+      "updated": "2026-07-22T14:16:47Z",
+      "url": "fujingzhai/siyuan-finder-plugin@a650a16f5948bd4f963573de0e056aa788a5b2dd"
+    },
+    {
+      "installSize": 799621,
+      "openIssues": 0,
+      "package": {
+        "author": "ying",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Use your SiYuan notes from MCP-compatible AI tools with notebook and action permissions.",
+          "zh-CN": "让支持 MCP 的 AI 工具在授权范围内读取、搜索和整理思源笔记。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan MCP",
+          "zh-CN": "思源MCP"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "MCP",
+          "AI",
+          "agent",
+          "SiYuan",
+          "permission"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-ai-mcp-bridge",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/appdev/siyuan-ai-mcp-bridge",
+        "version": "0.1.5"
+      },
+      "packageZipAssetId": 485960192,
+      "size": 643207,
+      "stars": 0,
+      "updated": "2026-07-22T12:59:54Z",
+      "url": "appdev/siyuan-ai-mcp-bridge@ea74afcdd33b188613f1a4be512f8fe89360e721"
+    },
+    {
       "installSize": 1233340,
       "openIssues": 1,
       "package": {
@@ -84,67 +235,6 @@
       "stars": 0,
       "updated": "2026-07-22T12:06:59Z",
       "url": "lisontowind/siyuan-footnote-jumper@0ee314d326196c7485af1678541f70600e0db334"
-    },
-    {
-      "installSize": 347252,
-      "openIssues": 0,
-      "package": {
-        "author": "游夏",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "A Finder-style column browser for navigating and organizing SiYuan notebooks and documents, with a document preview at the right.",
-          "zh_CN": "思源笔记的分栏文件浏览器：以列视图方式浏览、整理笔记本与文档，右端附当前文档的预览面板。"
-        },
-        "displayName": {
-          "default": "Finder",
-          "zh_CN": "访达"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop"
-        ],
-        "funding": {
-          "custom": [
-            "https://fastly.jsdelivr.net/gh/fujingzhai/siyuan-finder-plugin@main/assets/sponsor-wechat.png",
-            "https://fastly.jsdelivr.net/gh/fujingzhai/siyuan-finder-plugin@main/assets/sponsor-alipay.jpg"
-          ]
-        },
-        "keywords": [
-          "finder",
-          "访达",
-          "分栏",
-          "columns",
-          "文件浏览",
-          "导航",
-          "navigation",
-          "文档树",
-          "排序",
-          "sort",
-          "预览",
-          "preview",
-          "搜索",
-          "search",
-          "标签",
-          "tags"
-        ],
-        "minAppVersion": "3.6.0",
-        "name": "siyuan-finder-plugin",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/fujingzhai/siyuan-finder-plugin",
-        "version": "0.9.12"
-      },
-      "packageZipAssetId": 485892165,
-      "size": 214445,
-      "stars": 1,
-      "updated": "2026-07-22T11:42:35Z",
-      "url": "fujingzhai/siyuan-finder-plugin@aa3152626a42c45ed556f6447589b39aac923b5d"
     },
     {
       "installSize": 204152,
@@ -1141,48 +1231,6 @@
       "stars": 0,
       "updated": "2026-07-21T06:42:29Z",
       "url": "Genwaygenway/siyuan-calendar-plus@7e2e51bd0e523805b372ba609f71b0162b585b8a"
-    },
-    {
-      "installSize": 799083,
-      "openIssues": 0,
-      "package": {
-        "author": "ying",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Use your SiYuan notes from MCP-compatible AI tools with notebook and action permissions.",
-          "zh-CN": "让支持 MCP 的 AI 工具在授权范围内读取、搜索和整理思源笔记。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiYuan MCP",
-          "zh-CN": "思源MCP"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "MCP",
-          "AI",
-          "agent",
-          "SiYuan",
-          "permission"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-ai-mcp-bridge",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/appdev/siyuan-ai-mcp-bridge",
-        "version": "0.1.4"
-      },
-      "packageZipAssetId": 484121677,
-      "size": 643116,
-      "stars": 0,
-      "updated": "2026-07-21T06:00:38Z",
-      "url": "appdev/siyuan-ai-mcp-bridge@e5454c58e0e2f51efa13b75bf1a8e095c48c9630"
     },
     {
       "installSize": 260429,
@@ -3414,50 +3462,6 @@
       "stars": 20,
       "updated": "2026-07-10T13:57:08Z",
       "url": "OpaqueGlass/syplugin-hierarchyNavigate@151d0e5caa05af9789d5871fbce5818db39c9fc2"
-    },
-    {
-      "installSize": 1603955,
-      "openIssues": 0,
-      "package": {
-        "author": "mm-o",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Cloud-drive aggregation manager for SiYuan: file viewing, media playback, reading annotations, image-hosting links, and more.",
-          "zh_CN": "思源网盘聚合管理器，支持网盘文件查看、媒体播放、阅读批注、图床直链等能力，更多玩法期待你的探索。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Cloud Drive Manager",
-          "zh_CN": "思盘"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "思盘",
-          "cloud drive",
-          "file manager",
-          "openlist",
-          "media",
-          "s3",
-          "kernel plugin",
-          "webdav"
-        ],
-        "minAppVersion": "3.6.5",
-        "name": "siyuan-cloud",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/mm-o/siyuan-cloud",
-        "version": "0.5.4"
-      },
-      "size": 593054,
-      "stars": 4,
-      "updated": "2026-07-10T13:49:21Z",
-      "url": "mm-o/siyuan-cloud@71a44fcaf955391b2f4695f11566b555a42efc23"
     },
     {
       "installSize": 53071,
