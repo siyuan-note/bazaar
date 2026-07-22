@@ -1,6 +1,49 @@
 {
   "repos": [
     {
+      "installSize": 1233340,
+      "openIssues": 1,
+      "package": {
+        "author": "LXiuu",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Switch the current document into a lightweight Markdown source editor.",
+          "zh_CN": "将当前文档切换为轻量 Markdown 源码编辑状态。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Markdown Source Mode",
+          "zh_CN": "Markdown源码模式"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "keywords": [
+          "Markdown",
+          "源码模式",
+          "编辑器",
+          "Source Mode"
+        ],
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-plugin-markdown-edit-mode",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/LXiuu/siyuan-plugin-markdown-edit-mode",
+        "version": "0.1.8"
+      },
+      "packageZipAssetId": 485924368,
+      "size": 365820,
+      "stars": 4,
+      "updated": "2026-07-22T12:17:29Z",
+      "url": "LXiuu/siyuan-plugin-markdown-edit-mode@2f5d25b037097083877fec4f1a153d31899bd5e2"
+    },
+    {
       "installSize": 245156,
       "openIssues": 0,
       "package": {
@@ -43,7 +86,68 @@
       "url": "lisontowind/siyuan-footnote-jumper@0ee314d326196c7485af1678541f70600e0db334"
     },
     {
-      "installSize": 203144,
+      "installSize": 347252,
+      "openIssues": 0,
+      "package": {
+        "author": "游夏",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "A Finder-style column browser for navigating and organizing SiYuan notebooks and documents, with a document preview at the right.",
+          "zh_CN": "思源笔记的分栏文件浏览器：以列视图方式浏览、整理笔记本与文档，右端附当前文档的预览面板。"
+        },
+        "displayName": {
+          "default": "Finder",
+          "zh_CN": "访达"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop"
+        ],
+        "funding": {
+          "custom": [
+            "https://fastly.jsdelivr.net/gh/fujingzhai/siyuan-finder-plugin@main/assets/sponsor-wechat.png",
+            "https://fastly.jsdelivr.net/gh/fujingzhai/siyuan-finder-plugin@main/assets/sponsor-alipay.jpg"
+          ]
+        },
+        "keywords": [
+          "finder",
+          "访达",
+          "分栏",
+          "columns",
+          "文件浏览",
+          "导航",
+          "navigation",
+          "文档树",
+          "排序",
+          "sort",
+          "预览",
+          "preview",
+          "搜索",
+          "search",
+          "标签",
+          "tags"
+        ],
+        "minAppVersion": "3.6.0",
+        "name": "siyuan-finder-plugin",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/fujingzhai/siyuan-finder-plugin",
+        "version": "0.9.12"
+      },
+      "packageZipAssetId": 485892165,
+      "size": 214445,
+      "stars": 1,
+      "updated": "2026-07-22T11:42:35Z",
+      "url": "fujingzhai/siyuan-finder-plugin@aa3152626a42c45ed556f6447589b39aac923b5d"
+    },
+    {
+      "installSize": 204152,
       "openIssues": 0,
       "package": {
         "author": "airium",
@@ -81,13 +185,13 @@
           "zh-CN": "README.zh-CN.md"
         },
         "url": "https://github.com/airium/siyuan-floating-heading-number",
-        "version": "0.3.0"
+        "version": "0.3.1"
       },
-      "packageZipAssetId": 485770869,
-      "size": 92441,
+      "packageZipAssetId": 485854516,
+      "size": 92795,
       "stars": 0,
-      "updated": "2026-07-22T09:31:31Z",
-      "url": "airium/siyuan-floating-heading-number@250fcf43e992bb5d510e25b0c8b1a0edcfb033aa"
+      "updated": "2026-07-22T11:02:02Z",
+      "url": "airium/siyuan-floating-heading-number@774e2c0a1a135f590a7d90daa13d8057f47d84a0"
     },
     {
       "installSize": 9954665,
@@ -872,67 +976,6 @@
       "stars": 11,
       "updated": "2026-07-21T08:36:02Z",
       "url": "YuxinZhaozyx/siyuan-embed-tikz@4637ec3e24642ccb40803b91b2d738040f0c54f9"
-    },
-    {
-      "installSize": 344928,
-      "openIssues": 0,
-      "package": {
-        "author": "游夏",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "A Finder-style column browser for navigating and organizing SiYuan notebooks and documents, with a document preview at the right.",
-          "zh_CN": "思源笔记的分栏文件浏览器：以列视图方式浏览、整理笔记本与文档，右端附当前文档的预览面板。"
-        },
-        "displayName": {
-          "default": "Finder",
-          "zh_CN": "访达"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop"
-        ],
-        "funding": {
-          "custom": [
-            "https://fastly.jsdelivr.net/gh/fujingzhai/siyuan-finder-plugin@main/assets/sponsor-wechat.png",
-            "https://fastly.jsdelivr.net/gh/fujingzhai/siyuan-finder-plugin@main/assets/sponsor-alipay.jpg"
-          ]
-        },
-        "keywords": [
-          "finder",
-          "访达",
-          "分栏",
-          "columns",
-          "文件浏览",
-          "导航",
-          "navigation",
-          "文档树",
-          "排序",
-          "sort",
-          "预览",
-          "preview",
-          "搜索",
-          "search",
-          "标签",
-          "tags"
-        ],
-        "minAppVersion": "3.6.0",
-        "name": "siyuan-finder-plugin",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/fujingzhai/siyuan-finder-plugin",
-        "version": "0.9.10"
-      },
-      "packageZipAssetId": 484384841,
-      "size": 213737,
-      "stars": 0,
-      "updated": "2026-07-21T07:26:33Z",
-      "url": "fujingzhai/siyuan-finder-plugin@0054f4b2ef3cf3ec7ceba5d159504c580b7ae812"
     },
     {
       "installSize": 1498289,
@@ -4660,48 +4703,6 @@
       "stars": 6,
       "updated": "2026-06-24T15:06:35Z",
       "url": "OpaqueGlass/syplugin-doubleClickFileTree@5f7f9b2620a805fb1b8e1d544b0f1acb57e4fcae"
-    },
-    {
-      "installSize": 1163217,
-      "openIssues": 1,
-      "package": {
-        "author": "LXiuu",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Switch the current document into a lightweight Markdown source editor.",
-          "zh_CN": "将当前文档切换为轻量 Markdown 源码编辑状态。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Markdown Source Mode",
-          "zh_CN": "Markdown源码模式"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window"
-        ],
-        "keywords": [
-          "Markdown",
-          "源码模式",
-          "编辑器",
-          "Source Mode"
-        ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-plugin-markdown-edit-mode",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/LXiuu/siyuan-plugin-markdown-edit-mode",
-        "version": "0.1.7"
-      },
-      "size": 351144,
-      "stars": 4,
-      "updated": "2026-06-22T03:18:17Z",
-      "url": "LXiuu/siyuan-plugin-markdown-edit-mode@b68b8a6918a2db357af89ed6057c5adec2c5a814"
     },
     {
       "installSize": 694630,
