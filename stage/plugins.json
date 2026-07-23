@@ -1,6 +1,145 @@
 {
   "repos": [
     {
+      "installSize": 992565,
+      "openIssues": 0,
+      "package": {
+        "author": "li.mian",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A personal ledger plugin for SiYuan.",
+          "zh_CN": "一个基于思源笔记的账本插件"
+        },
+        "displayName": {
+          "default": "pledger",
+          "zh_CN": "账本"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/limian"
+          ]
+        },
+        "keywords": [
+          "ledger",
+          "账本"
+        ],
+        "minAppVersion": "3.2.1",
+        "name": "siyuan-pledger",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/double3-org/siyuan-pledger",
+        "version": "0.2.1"
+      },
+      "packageZipAssetId": 487108774,
+      "size": 459851,
+      "stars": 5,
+      "updated": "2026-07-23T11:23:53Z",
+      "url": "double3-org/siyuan-pledger@a64ab1f312d871145b22c365e8b4f6e86a57d470"
+    },
+    {
+      "installSize": 326800,
+      "openIssues": 2,
+      "package": {
+        "author": "notesynchelper",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "从微信同步到思源笔记，支持文字、图片、聊天记录、文章"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "笔记同步助手"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "wechat",
+          "template",
+          "企微",
+          "模板",
+          "微信",
+          "速记",
+          "剪藏",
+          "搜集",
+          "日记",
+          "闪念",
+          "memo",
+          "备忘",
+          "公众号",
+          "小红书",
+          "得到"
+        ],
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-notehelper",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/notesynchelper/siyuan-notehelper",
+        "version": "1.8.16"
+      },
+      "packageZipAssetId": 487099492,
+      "size": 151455,
+      "stars": 1,
+      "updated": "2026-07-23T11:13:13Z",
+      "url": "notesynchelper/siyuan-notehelper@416a4c95f0334daed3849785603ed54ca79a08cf"
+    },
+    {
+      "installSize": 91410,
+      "openIssues": 0,
+      "package": {
+        "author": "Cyprien63",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "docker"
+        ],
+        "description": {
+          "default": "Sync SiYuan notes with a GitHub repository. Incremental push/pull, 3-way merge, commit history, restore, Groq AI commit messages.",
+          "zh_CN": "将思源笔记与 GitHub 仓库同步。增量推送/拉取、三方合并、提交历史、恢复、Groq AI 提交消息。"
+        },
+        "displayName": {
+          "default": "GitHub Sync",
+          "zh_CN": "GitHub 同步"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "keywords": [
+          "sync",
+          "github",
+          "backup",
+          "git",
+          "version-control"
+        ],
+        "minAppVersion": "3.6.4",
+        "name": "siyuan-github-sync",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/cyprien63/siyuan-plugin",
+        "version": "1.0.3"
+      },
+      "packageZipAssetId": 487085368,
+      "size": 54420,
+      "stars": 0,
+      "updated": "2026-07-23T10:56:14Z",
+      "url": "cyprien63/siyuan-plugin@5e0a1c3e58628b1ba2ca638ff8f452fc2c2b7490"
+    },
+    {
       "installSize": 128842,
       "openIssues": 0,
       "package": {
@@ -861,54 +1000,6 @@
       "stars": 18,
       "updated": "2026-07-21T13:33:13Z",
       "url": "Zuoqiu-Yingyi/siyuan-plugin-custom-block@799c5d4794e1c2518bb18088ea28b7032f271e42"
-    },
-    {
-      "installSize": 143663,
-      "openIssues": 0,
-      "package": {
-        "author": "Cyprien63",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "docker"
-        ],
-        "description": {
-          "default": "Sync SiYuan notes with a GitHub repository. Incremental push/pull, 3-way merge, commit history, restore, Groq AI commit messages.",
-          "zh_CN": "将思源笔记与 GitHub 仓库同步。增量推送/拉取、三方合并、提交历史、恢复、Groq AI 提交消息。"
-        },
-        "displayName": {
-          "default": "GitHub Sync",
-          "zh_CN": "GitHub 同步"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile"
-        ],
-        "keywords": [
-          "sync",
-          "github",
-          "backup",
-          "git",
-          "version-control"
-        ],
-        "minAppVersion": "3.6.4",
-        "name": "siyuan-github-sync",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/cyprien63/siyuan-plugin",
-        "version": "1.0.1"
-      },
-      "packageZipAssetId": 484705455,
-      "size": 107988,
-      "stars": 0,
-      "updated": "2026-07-21T13:20:27Z",
-      "url": "cyprien63/siyuan-plugin@d7a1ecd216b327ed783e08bc08b15d1de26ad28e"
     },
     {
       "installSize": 66518,
@@ -2183,55 +2274,6 @@
       "url": "TangQi001/siyuan-plugin-tiangong@c192832aa84a810930071d1567a296d391140c43"
     },
     {
-      "installSize": 326800,
-      "openIssues": 2,
-      "package": {
-        "author": "notesynchelper",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "从微信同步到思源笔记，支持文字、图片、聊天记录、文章"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "笔记同步助手"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "wechat",
-          "template",
-          "企微",
-          "模板",
-          "微信",
-          "速记",
-          "剪藏",
-          "搜集",
-          "日记",
-          "闪念",
-          "memo",
-          "备忘",
-          "公众号",
-          "小红书",
-          "得到"
-        ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-notehelper",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/notesynchelper/siyuan-notehelper",
-        "version": "1.8.15"
-      },
-      "packageZipAssetId": 483406980,
-      "size": 151455,
-      "stars": 1,
-      "updated": "2026-07-20T11:48:24Z",
-      "url": "notesynchelper/siyuan-notehelper@f10a6f900f2f11b6034b7ae913bf40163643c793"
-    },
-    {
       "installSize": 548212,
       "openIssues": 0,
       "package": {
@@ -2948,47 +2990,6 @@
       "stars": 2,
       "updated": "2026-07-17T02:28:32Z",
       "url": "fujingzhai/siyuan-chronicle-plugin@bcb4d37e880e3ca7ee19d034e828086faf8fc7d4"
-    },
-    {
-      "installSize": 1752517,
-      "openIssues": 2,
-      "package": {
-        "author": "li.mian",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A personal ledger plugin for SiYuan.",
-          "zh_CN": "一个基于思源笔记的账本插件"
-        },
-        "displayName": {
-          "default": "pledger",
-          "zh_CN": "账本"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/limian"
-          ]
-        },
-        "keywords": [
-          "ledger",
-          "账本"
-        ],
-        "minAppVersion": "3.2.1",
-        "name": "siyuan-pledger",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/double3-org/siyuan-pledger",
-        "version": "0.2.0"
-      },
-      "size": 1231496,
-      "stars": 5,
-      "updated": "2026-07-17T01:37:57Z",
-      "url": "double3-org/siyuan-pledger@866241a9192645643038d7ef94794707d830b6bf"
     },
     {
       "installSize": 1734311,
