@@ -1,6 +1,272 @@
 {
   "repos": [
     {
+      "installSize": 548981,
+      "openIssues": 7,
+      "package": {
+        "author": "OpaqueGlass",
+        "description": {
+          "default": "Insert doc-links under current doc title",
+          "zh-CN": "在标题下方显示上下层级文档链接",
+          "zh_CN": "在标题下方显示上下层级文档链接"
+        },
+        "displayName": {
+          "default": "HierarchyNavigate",
+          "zh-CN": "文档层级导航",
+          "zh_CN": "文档层级导航"
+        },
+        "funding": {
+          "custom": [
+            "https://wj.qq.com/s2/12395364/b69f/"
+          ]
+        },
+        "name": "syplugin-hierarchyNavigate",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/OpaqueGlass/syplugin-hierarchyNavigate",
+        "version": "1.11.0"
+      },
+      "packageZipAssetId": 488569561,
+      "size": 222256,
+      "stars": 21,
+      "updated": "2026-07-24T15:51:52Z",
+      "url": "OpaqueGlass/syplugin-hierarchyNavigate@06e831df4d904dab0d3573ae1cbdd03165ed594a"
+    },
+    {
+      "installSize": 9255903,
+      "openIssues": 3,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android",
+          "harmony"
+        ],
+        "description": {
+          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
+          "zh_CN": "一款在思源笔记里实现任务管理功能的插件，为了践行「防弹笔记法」而开发。支持电脑端和移动端系统通知提醒任务执行、日历视图查看行事历、项目管理、四象限面板、番茄钟专注、习惯打卡等功能"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Note Management",
+          "zh_CN": "任务笔记管理"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ]
+        },
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android",
+          "harmony"
+        ],
+        "keywords": [
+          "reminder",
+          "time",
+          "calendar",
+          "notification",
+          "提醒",
+          "时间",
+          "日历",
+          "通知",
+          "番茄钟",
+          "四象限",
+          "任务管理",
+          "项目管理",
+          "习惯打卡"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-task-note-management",
+        "readme": {
+          "default": "README_en.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
+        "version": "7.0.5"
+      },
+      "packageZipAssetId": 488561872,
+      "size": 4335079,
+      "stars": 207,
+      "updated": "2026-07-24T15:44:09Z",
+      "url": "Achuan-2/siyuan-plugin-task-note-management@48fedf877a8d1df7848806452ab74daf321c72b6"
+    },
+    {
+      "installSize": 1785800,
+      "openIssues": 7,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Edit images in SiYuan with crop, shapes, arrows, text, markers and more. Supports re-editing.",
+          "zh_CN": "一款思源笔记图片编辑/标注插件，支持裁剪、旋转图片，支持添加形状、文字、支持添加图片边框、设置图片圆角等功能，最大亮点是已编辑的图片支持再编辑！并支持上传图片自动压缩和编辑图片自动压缩！"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "ImgReEditor"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ]
+        },
+        "minAppVersion": "3.0.12",
+        "name": "siyuan-plugin-imgReEditor",
+        "readme": {
+          "default": "README_en_US.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-imgReEditor",
+        "version": "0.9.5"
+      },
+      "packageZipAssetId": 488550482,
+      "size": 703108,
+      "stars": 18,
+      "updated": "2026-07-24T15:30:17Z",
+      "url": "Achuan-2/siyuan-plugin-imgReEditor@eb925259140dac037bac377186c1d9ab79a658ac"
+    },
+    {
+      "installSize": 1762282,
+      "openIssues": 13,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "SiYuan AI Assistant, supports dragging blocks and tabs to get note context, enabling Q&amp;A and editing based on SiYuan note content",
+          "zh_CN": "思源笔记 AI 助手,支持拖动块、页签获取笔记上下文，实现基于思源笔记内容进行问答和编辑"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan Copilot"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ]
+        },
+        "minAppVersion": "3.7.2",
+        "name": "siyuan-plugin-copilot",
+        "readme": {
+          "default": "README_en_US.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-copilot",
+        "version": "2.7.5"
+      },
+      "packageZipAssetId": 488549951,
+      "size": 615648,
+      "stars": 150,
+      "updated": "2026-07-24T15:29:38Z",
+      "url": "Achuan-2/siyuan-plugin-copilot@d2c84f1c23aace1f957c99df8d1ee002187d6334"
+    },
+    {
+      "installSize": 301774,
+      "openIssues": 0,
+      "package": {
+        "author": "QMike0",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Optimize the callout block style, and provide features such as quick title editing, collapse/expand, autocomplete menu, type menu, appearance customization, and type management",
+          "zh-CN": "优化callout块样式，并提供标题快速编辑、折叠/展开、补全菜单、类型菜单、外观自定义与类型管理等功能"
+        },
+        "displayName": {
+          "default": "Callout Enhance",
+          "zh-CN": "Callout 增强"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "提示块",
+          "callout",
+          "Callout"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-callout-enhance",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/QMike0/siyuan-plugin-callout-enhance",
+        "version": "0.3.1"
+      },
+      "packageZipAssetId": 488533025,
+      "size": 89235,
+      "stars": 2,
+      "updated": "2026-07-24T15:12:25Z",
+      "url": "QMike0/siyuan-plugin-callout-enhance@9b6622606dc068c21ab1bec34691d9b67693a1a2"
+    },
+    {
+      "installSize": 936018,
+      "openIssues": 0,
+      "package": {
+        "author": "whale🐋",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Professional annotation plugin — select text, add comments, manage in sidebar, with slide-to-annotate, tagging, and cross-document navigation.",
+          "zh-CN": "专业批注插件：绝对安全、零污染、数据永久原始保留、万字文档秒批、可离线使用。选中文字添加批注，侧边栏管理，支持滑动快速批注、标签分类、跨文档跳转。"
+        },
+        "displayName": {
+          "default": "鲸鱼快速批注",
+          "en": "Whale Quick Comment"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "comment",
+          "annotation",
+          "批注",
+          "标注",
+          "笔记"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-comment",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/HaoCeans/siyuan-comment",
+        "version": "2.2.1"
+      },
+      "packageZipAssetId": 488523533,
+      "size": 531099,
+      "stars": 3,
+      "updated": "2026-07-24T15:01:52Z",
+      "url": "HaoCeans/siyuan-comment@2a3da0444a96ec3c12f814f5312a24074478c946"
+    },
+    {
       "installSize": 283146,
       "openIssues": 10,
       "package": {
@@ -571,46 +837,6 @@
       "stars": 9,
       "updated": "2026-07-23T13:32:51Z",
       "url": "HaoCeans/siyuan-toolbar-customizer@bb01079385ebb0303368a0ffce7eb39c91f81174"
-    },
-    {
-      "installSize": 933775,
-      "openIssues": 0,
-      "package": {
-        "author": "whale🐋",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Professional annotation plugin — select text, add comments, manage in sidebar, with slide-to-annotate, tagging, and cross-document navigation.",
-          "zh-CN": "专业批注插件：绝对安全、零污染、数据永久原始保留、万字文档秒批、可离线使用。选中文字添加批注，侧边栏管理，支持滑动快速批注、标签分类、跨文档跳转。"
-        },
-        "displayName": {
-          "default": "鲸鱼快速批注",
-          "en": "Whale Quick Comment"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "comment",
-          "annotation",
-          "批注",
-          "标注",
-          "笔记"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-comment",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/HaoCeans/siyuan-comment",
-        "version": "2.2.0"
-      },
-      "packageZipAssetId": 487215755,
-      "size": 530604,
-      "stars": 2,
-      "updated": "2026-07-23T13:04:53Z",
-      "url": "HaoCeans/siyuan-comment@19427488256cb54167364e10291d51d8c010ace4"
     },
     {
       "installSize": 82977,
@@ -2188,45 +2414,6 @@
       "url": "suka233/kikit-siyuan-plugin-generator@68c166e2f2d9ebc7c9220074e69c7739ae00e9ad"
     },
     {
-      "installSize": 303482,
-      "openIssues": 0,
-      "package": {
-        "author": "QMike0",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Optimize the callout block style, and provide features such as quick title editing, collapse/expand, autocomplete menu, type menu, appearance customization, and type management",
-          "zh-CN": "优化callout块样式，并提供标题快速编辑、折叠/展开、补全菜单、类型菜单、外观自定义与类型管理等功能"
-        },
-        "displayName": {
-          "default": "Callout Enhance",
-          "zh-CN": "Callout 增强"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "提示块",
-          "callout",
-          "Callout"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-callout-enhance",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/QMike0/siyuan-plugin-callout-enhance",
-        "version": "0.3.0"
-      },
-      "packageZipAssetId": 483656606,
-      "size": 89117,
-      "stars": 2,
-      "updated": "2026-07-20T16:48:25Z",
-      "url": "QMike0/siyuan-plugin-callout-enhance@900e114f84daf711ef7858497e5f22064bf6a689"
-    },
-    {
       "installSize": 130859,
       "openIssues": 0,
       "package": {
@@ -2823,158 +3010,6 @@
       "stars": 12,
       "updated": "2026-07-20T04:03:00Z",
       "url": "LunaNorth/siyuan-lumina@305fef3fce0c6519e48ff81cfd87f43b63c7b6df"
-    },
-    {
-      "installSize": 1784504,
-      "openIssues": 9,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Edit images in SiYuan with crop, shapes, arrows, text, markers and more. Supports re-editing.",
-          "zh_CN": "一款思源笔记图片编辑/标注插件，支持裁剪、旋转图片，支持添加形状、文字、支持添加图片边框、设置图片圆角等功能，最大亮点是已编辑的图片支持再编辑！"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "ImgReEditor"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ]
-        },
-        "minAppVersion": "3.0.12",
-        "name": "siyuan-plugin-imgReEditor",
-        "readme": {
-          "default": "README_en_US.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-imgReEditor",
-        "version": "0.9.4"
-      },
-      "packageZipAssetId": 482453979,
-      "size": 702694,
-      "stars": 17,
-      "updated": "2026-07-19T14:22:57Z",
-      "url": "Achuan-2/siyuan-plugin-imgReEditor@6008cb7da04448ce2150996cc4774ade397183ed"
-    },
-    {
-      "installSize": 1757339,
-      "openIssues": 13,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "SiYuan AI Assistant, supports dragging blocks and tabs to get note context, enabling Q&amp;A and editing based on SiYuan note content",
-          "zh_CN": "思源笔记 AI 助手,支持拖动块、页签获取笔记上下文，实现基于思源笔记内容进行问答和编辑"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiYuan Copilot"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ]
-        },
-        "minAppVersion": "3.7.2",
-        "name": "siyuan-plugin-copilot",
-        "readme": {
-          "default": "README_en_US.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-copilot",
-        "version": "2.7.4"
-      },
-      "packageZipAssetId": 482088961,
-      "size": 614847,
-      "stars": 148,
-      "updated": "2026-07-19T04:38:50Z",
-      "url": "Achuan-2/siyuan-plugin-copilot@cff7992b7b8252f7ea9f677f79d36888af1e447d"
-    },
-    {
-      "installSize": 9168023,
-      "openIssues": 5,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "description": {
-          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
-          "zh_CN": "一款在思源笔记里实现任务管理功能的插件，为了践行「防弹笔记法」而开发。支持电脑端和移动端系统通知提醒任务执行、日历视图查看行事历、项目管理、四象限面板、番茄钟专注、习惯打卡等功能"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Note Management",
-          "zh_CN": "任务笔记管理"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ]
-        },
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "keywords": [
-          "reminder",
-          "time",
-          "calendar",
-          "notification",
-          "提醒",
-          "时间",
-          "日历",
-          "通知",
-          "番茄钟",
-          "四象限",
-          "任务管理",
-          "项目管理",
-          "习惯打卡"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-task-note-management",
-        "readme": {
-          "default": "README_en.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
-        "version": "7.0.4"
-      },
-      "packageZipAssetId": 481935547,
-      "size": 4278308,
-      "stars": 206,
-      "updated": "2026-07-19T00:53:21Z",
-      "url": "Achuan-2/siyuan-plugin-task-note-management@a69a85df0b9d4cc43de2c3c0461dcf470973d80c"
     },
     {
       "installSize": 714306,
@@ -3754,40 +3789,6 @@
       "stars": 1,
       "updated": "2026-07-10T23:16:04Z",
       "url": "wj1002/plugin-ChronicleX-vite-svelte@efd3019af23d4f837ebd5cbec3713793fd5e3277"
-    },
-    {
-      "installSize": 544738,
-      "openIssues": 5,
-      "package": {
-        "author": "OpaqueGlass",
-        "description": {
-          "default": "Insert doc-links under current doc title",
-          "zh-CN": "在标题下方显示上下层级文档链接",
-          "zh_CN": "在标题下方显示上下层级文档链接"
-        },
-        "displayName": {
-          "default": "HierarchyNavigate",
-          "zh-CN": "文档层级导航",
-          "zh_CN": "文档层级导航"
-        },
-        "funding": {
-          "custom": [
-            "https://wj.qq.com/s2/12395364/b69f/"
-          ]
-        },
-        "name": "syplugin-hierarchyNavigate",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/OpaqueGlass/syplugin-hierarchyNavigate",
-        "version": "1.10.5"
-      },
-      "size": 220892,
-      "stars": 20,
-      "updated": "2026-07-10T13:57:08Z",
-      "url": "OpaqueGlass/syplugin-hierarchyNavigate@151d0e5caa05af9789d5871fbce5818db39c9fc2"
     },
     {
       "installSize": 53071,
