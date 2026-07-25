@@ -46,7 +46,7 @@ type selectCandidate struct {
 	checkedAt time.Time
 }
 
-// runSelect 定时 / 手动复检：筛选待完整检查的 ci-failed PR，写入 GITHUB_OUTPUT matrix。
+// runSelect 定时 / 手动复检：筛选待完整检查的非 ci-passed PR，写入 GITHUB_OUTPUT matrix。
 func runSelect() {
 	logger.Infof("PR Check select started")
 
@@ -81,11 +81,11 @@ func runSelect() {
 	limit := envIntDefault("SELECT_LIMIT", selectPRLimitDefault)
 	now := time.Now().UTC()
 
-	prs, err := listOpenCIFailedPRs(githubContext, githubRepoClient, owner, repo)
+	prs, err := listOpenNonCIPassedPRs(githubContext, githubRepoClient, owner, repo)
 	if err != nil {
-		logger.Fatalf("list ci-failed PRs failed: %s", err)
+		logger.Fatalf("list non-ci-passed PRs failed: %s", err)
 	}
-	logger.Infof("open ci-failed PRs: %d (force=%v limit=%d)", len(prs), forceAll, limit)
+	logger.Infof("open non-ci-passed PRs: %d (force=%v limit=%d)", len(prs), forceAll, limit)
 
 	candidates := make([]selectCandidate, 0, len(prs))
 	for _, pr := range prs {
@@ -138,7 +138,9 @@ func splitOwnerRepo(s string) (owner, repo string, ok bool) {
 	return owner, repo, true
 }
 
-func listOpenCIFailedPRs(ctx context.Context, client *github.Client, owner, repo string) ([]*github.PullRequest, error) {
+// listOpenNonCIPassedPRs 列出开放中、非草稿、无 ci-skip、且未挂 ci-passed 的 PR。
+// 含 ci-failed 与尚无 CI 标签的 PR（例如首次检查因 runner 排队未完成），便于定时/手动补检。
+func listOpenNonCIPassedPRs(ctx context.Context, client *github.Client, owner, repo string) ([]*github.PullRequest, error) {
 	var out []*github.PullRequest
 	opts := &github.PullRequestListOptions{
 		State:       "open",
@@ -158,7 +160,7 @@ func listOpenCIFailedPRs(ctx context.Context, client *github.Client, owner, repo
 			if prHasLabel(pr, "ci-skip") {
 				continue
 			}
-			if !prHasLabel(pr, labelCIFailed) {
+			if prHasLabel(pr, labelCIPassed) {
 				continue
 			}
 			out = append(out, pr)

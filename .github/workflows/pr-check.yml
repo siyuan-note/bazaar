@@ -4,7 +4,7 @@ name: PR Check
 #
 # 触发：
 # - pull_request_target：PR 打开 / 同步 / 重开 / 打 Check 标签时检查
-# - schedule / workflow_dispatch：复检开放中的 ci-failed PR（作者常只改包仓库 Release）
+# - schedule / workflow_dispatch：复检开放中非 ci-passed 的 PR（作者常只改包仓库 Release；亦覆盖尚无 CI 标签者）
 #   schedule 按评论 meta 指纹变更 / 退避到期筛选；workflow_dispatch 强制全选（仍受 SELECT_LIMIT）
 #
 # 标签：
@@ -40,7 +40,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # 产出待检 PR 矩阵：事件 PR 一条，或定时/手动筛选开放 ci-failed
+  # 产出待检 PR 矩阵：事件 PR 一条，或定时/手动筛选开放非 ci-passed
   prepare:
     if: |
       github.repository_owner == 'siyuan-note' &&
@@ -100,7 +100,7 @@ jobs:
         env:
           PAT: ${{ secrets.PAT }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # workflow_dispatch：强制纳入全部开放 ci-failed（仍受 SELECT_LIMIT）
+          # workflow_dispatch：强制纳入全部开放非 ci-passed（仍受 SELECT_LIMIT）
           SELECT_FORCE_ALL: ${{ github.event_name == 'workflow_dispatch' }}
         run: go run ./actions/check -select
 

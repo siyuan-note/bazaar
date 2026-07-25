@@ -63,7 +63,7 @@ Check 流程（流程通过后，对 plan.diff.New 中的仓库）：
 4. 工作流用 thollander/actions-comment-pull-request 将结果文件发到 PR
 
 定时复检（schedule）：
-1. go run ./actions/check -select：按评论开头 bazaar-check-meta（指纹变更 / 退避到期 / max-age）筛选 ci-failed PR
+1. go run ./actions/check -select：按评论开头 bazaar-check-meta（指纹变更 / 退避到期 / max-age）筛选非 ci-passed PR
 2. 对入选 PR 跑完整 Check；评论写回新 meta（JSON）
 */
 
