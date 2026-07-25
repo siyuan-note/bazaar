@@ -54,15 +54,13 @@ func TestRateHeaderObserverCoreHeaders(t *testing.T) {
 	if snap.Samples != 2 {
 		t.Fatalf("Samples=%d, want 2", snap.Samples)
 	}
-	if snap.FirstRemaining != 4990 || snap.LastRemaining != 4988 || snap.MinRemaining != 4988 {
-		t.Fatalf("remaining first/last/min = %d/%d/%d", snap.FirstRemaining, snap.LastRemaining, snap.MinRemaining)
-	}
-	if snap.UsedDelta() != 2 {
-		t.Fatalf("UsedDelta=%d, want 2", snap.UsedDelta())
+	// 首次响应 Remaining=4990 → 开始前剩余 4991；结束为最后一次 4988
+	if snap.StartRemaining != 4991 || snap.FirstRemaining != 4990 || snap.LastRemaining != 4988 || snap.MinRemaining != 4988 {
+		t.Fatalf("remaining start/first/last/min = %d/%d/%d/%d", snap.StartRemaining, snap.FirstRemaining, snap.LastRemaining, snap.MinRemaining)
 	}
 }
 
-func TestRateHeaderObserverSkipsRateLimitPathAndSearch(t *testing.T) {
+func TestRateHeaderObserverIgnoresRateLimitPathAndSearch(t *testing.T) {
 	obs := &RateHeaderObserver{}
 	rt := obs.wrapTransport(roundTripperFunc(func(req *http.Request) (*http.Response, error) {
 		resp := httptest.NewRecorder()
@@ -88,14 +86,31 @@ func TestRateHeaderObserverSkipsRateLimitPathAndSearch(t *testing.T) {
 	}
 
 	snap := obs.Snapshot()
-	if !snap.HasData {
-		t.Fatal("rate_limit response should seed HasData")
+	if snap.HasData {
+		t.Fatal("rate_limit / search must not seed observer")
 	}
 	if snap.Samples != 0 {
-		t.Fatalf("Samples=%d, want 0 (rate_limit excluded, search ignored)", snap.Samples)
+		t.Fatalf("Samples=%d, want 0", snap.Samples)
 	}
-	if snap.FirstRemaining != 5000 {
-		t.Fatalf("FirstRemaining=%d, want 5000", snap.FirstRemaining)
+
+	// 随后真实 core 响应才锚定起点（即使 rate_limit 曾报 5000）
+	rt = obs.wrapTransport(roundTripperFunc(func(req *http.Request) (*http.Response, error) {
+		resp := httptest.NewRecorder()
+		resp.Header().Set(github.HeaderRateLimit, "5000")
+		resp.Header().Set(github.HeaderRateRemaining, "3747")
+		resp.Header().Set(github.HeaderRateUsed, "1253")
+		resp.Header().Set(github.HeaderRateResource, "core")
+		return resp.Result(), nil
+	}))
+	if _, err := rt.RoundTrip(httptest.NewRequest(http.MethodGet, "https://api.github.com/user", nil)); err != nil {
+		t.Fatalf("user: %v", err)
+	}
+	snap = obs.Snapshot()
+	if !snap.HasData || snap.Samples != 1 {
+		t.Fatalf("HasData=%v Samples=%d", snap.HasData, snap.Samples)
+	}
+	if snap.StartRemaining != 3748 || snap.LastRemaining != 3747 {
+		t.Fatalf("StartRemaining=%d LastRemaining=%d", snap.StartRemaining, snap.LastRemaining)
 	}
 }
 

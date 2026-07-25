@@ -11,6 +11,8 @@
 package util
 
 import (
+	"context"
+	"fmt"
 	"net/http"
 	"strconv"
 	"strings"
@@ -21,29 +23,18 @@ import (
 )
 
 // RateHeaderSnapshot 汇总本客户端实际 API 响应头中的 X-RateLimit-*（仅 core）。
-// 官方建议优先用响应头而非单独轮询 GET /rate_limit。
+// 官方建议优先用响应头而非单独轮询 GET /rate_limit；本观测器完全忽略 /rate_limit。
 type RateHeaderSnapshot struct {
-	Samples        int // 带 core 限流头的响应次数（不含 GET /rate_limit）
+	Samples        int // 计入 core 配额的响应次数（本客户端实际 core 请求数）
 	Limit          int
-	FirstRemaining int
-	LastRemaining  int
+	StartRemaining int // 第一次计入 samples 的请求之前的剩余（由该响应 Remaining+1 还原）
+	FirstRemaining int // 第一次计入 samples 的响应头 Remaining（该请求已扣减后）
+	LastRemaining  int // 最后一次观测到的 Remaining（结束时剩余配额）
 	MinRemaining   int
 	FirstUsed      int
 	LastUsed       int
 	MaxUsed        int
 	HasData        bool
-}
-
-// UsedDelta 为本轮观测窗口内 X-RateLimit-Used 的增量；窗口重置导致 Used 回落时返回 -1。
-func (s RateHeaderSnapshot) UsedDelta() int {
-	if !s.HasData {
-		return 0
-	}
-	d := s.MaxUsed - s.FirstUsed
-	if d < 0 {
-		return -1
-	}
-	return d
 }
 
 // RateHeaderObserver 通过 HTTP Transport 采集 GitHub REST 响应头中的 rate limit。
@@ -52,6 +43,7 @@ type RateHeaderObserver struct {
 
 	samples        int
 	limit          int
+	startRemaining int
 	firstRemaining int
 	lastRemaining  int
 	minRemaining   int
@@ -76,6 +68,19 @@ func NewGitHubClientWithRateObserver(token string, timeout time.Duration) (*gith
 	return client, obs, nil
 }
 
+// SeedRateHeaderBaseline 串行打一次计入 core 的 API（GET /user），用真实响应头锚定观测起点，并返回该响应的 Rate。
+// 不要用 GET /rate_limit：其 remaining 可能与后续业务响应头不一致。
+func SeedRateHeaderBaseline(ctx context.Context, client *github.Client) (github.Rate, error) {
+	_, resp, err := client.Users.Get(ctx, "")
+	if err != nil {
+		return github.Rate{}, err
+	}
+	if resp == nil {
+		return github.Rate{}, fmt.Errorf("users.get: empty response")
+	}
+	return resp.Rate, nil
+}
+
 func (o *RateHeaderObserver) wrapTransport(base http.RoundTripper) http.RoundTripper {
 	if base == nil {
 		base = http.DefaultTransport
@@ -97,6 +102,10 @@ func (t *rateObserveTransport) RoundTrip(req *http.Request) (*http.Response, err
 }
 
 func (o *RateHeaderObserver) observe(req *http.Request, h http.Header) {
+	// GET /rate_limit 不计入 core，且其实测 remaining 可能与业务响应头脱节，整段忽略。
+	if req != nil && isGitHubRateLimitPath(req.URL.Path) {
+		return
+	}
 	resource := h.Get(github.HeaderRateResource)
 	if resource != "" && !strings.EqualFold(resource, "core") {
 		return
@@ -120,16 +129,14 @@ func (o *RateHeaderObserver) observe(req *http.Request, h http.Header) {
 		}
 	}
 
-	skipSample := req != nil && isGitHubRateLimitPath(req.URL.Path)
-
 	o.mu.Lock()
 	defer o.mu.Unlock()
-	if !skipSample {
-		o.samples++
-	}
+	o.samples++
 	if !o.hasData {
 		o.hasData = true
 		o.limit = limit
+		// 响应头 Remaining 为该请求扣减后的值；+1 还原「本次观测窗口开始前」的剩余。
+		o.startRemaining = remaining + 1
 		o.firstRemaining = remaining
 		o.lastRemaining = remaining
 		o.minRemaining = remaining
@@ -167,6 +174,7 @@ func (o *RateHeaderObserver) Snapshot() RateHeaderSnapshot {
 	return RateHeaderSnapshot{
 		Samples:        o.samples,
 		Limit:          o.limit,
+		StartRemaining: o.startRemaining,
 		FirstRemaining: o.firstRemaining,
 		LastRemaining:  o.lastRemaining,
 		MinRemaining:   o.minRemaining,
