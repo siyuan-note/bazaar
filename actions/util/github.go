@@ -53,6 +53,20 @@ func IsGitHubNotFound(err error) bool {
 	return resp.Response.StatusCode == http.StatusNotFound
 }
 
+// IsGitHubServerError 判断 err 是否为 GitHub REST API 的 5xx 服务端错误。
+// 常见于瞬时故障；可穿透 LocalizedError / fmt %w 等包装链。
+func IsGitHubServerError(err error) bool {
+	if err == nil {
+		return false
+	}
+	resp, ok := errors.AsType[*github.ErrorResponse](err)
+	if !ok || resp.Response == nil {
+		return false
+	}
+	code := resp.Response.StatusCode
+	return code >= 500 && code <= 599
+}
+
 // GitHubRepoURL 由 owner/repo 拼出仓库主页地址
 func GitHubRepoURL(ownerRepo string) string {
 	return "https://github.com/" + ownerRepo

@@ -50,7 +50,8 @@ Stage 流程：
    已不在任一 *s.txt 的仓（下架 / 换维护者旧仓）按 delisted 关闭（对照完整列表，非本轮 reports）
    （本仓 Issue 用 GITHUB_TOKEN；跨仓 Release / repoStats 用 PAT）
 8. 运行中若遇 GitHub API 主限流 / 次级限流：保留旧数据、不写 stage-fail，写完当前类型后中止后续类型（退出码 0，便于提交已完成进度）
-9. 结束后根据实际 API 响应头 X-RateLimit-* 观测 PAT / GITHUB_TOKEN 消耗（对照经验值）
+9. 运行中若遇 GitHub API 5xx 服务端错误：保留旧数据、不写 stage-fail（不归咎作者；下轮索引再试），不中止其他仓库
+10. 结束后根据实际 API 响应头 X-RateLimit-* 观测 PAT / GITHUB_TOKEN 消耗（对照经验值）
 
 换维护者（列表中 alice/foo → bob/foo，stage 仍有 alice/foo）：
 - 同路径旧条目用于 hash 跳过 / 失败保留；换路径时不沿用旧 URL 条目
@@ -325,6 +326,11 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 				appendKeptOld(repoURL, "get latest release failed", exactOld)
 				if util.IsGitHubRateLimit(releaseErr) {
 					markRateLimited(ownerRepo, releaseErr)
+					return nil
+				}
+				if util.IsGitHubServerError(releaseErr) {
+					// 5xx 多为 GitHub 瞬时故障，不向作者开 stage-fail（避免误报「找不到 tag」）。
+					logger.Errorf("GitHub API server error while staging [%s]: %s; keeping old data (not reporting as stage-fail issue)", ownerRepo, releaseErr)
 					return nil
 				}
 				if !errors.Is(releaseErr, errInvalidOwnerRepo) {
