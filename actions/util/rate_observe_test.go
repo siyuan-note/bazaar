@@ -114,6 +114,28 @@ func TestRateHeaderObserverIgnoresRateLimitPathAndSearch(t *testing.T) {
 	}
 }
 
+func TestFormatRateHeaderObservation(t *testing.T) {
+	if msg := FormatRateHeaderObservation("PAT", nil); msg != "GitHub API (PAT core via headers) no rate-limit headers observed" {
+		t.Fatalf("empty: %q", msg)
+	}
+	obs := &RateHeaderObserver{}
+	rt := obs.wrapTransport(roundTripperFunc(func(req *http.Request) (*http.Response, error) {
+		resp := httptest.NewRecorder()
+		resp.Header().Set(github.HeaderRateLimit, "5000")
+		resp.Header().Set(github.HeaderRateRemaining, "4990")
+		resp.Header().Set(github.HeaderRateResource, "core")
+		return resp.Result(), nil
+	}))
+	if _, err := rt.RoundTrip(httptest.NewRequest(http.MethodGet, "https://api.github.com/user", nil)); err != nil {
+		t.Fatalf("RoundTrip: %v", err)
+	}
+	msg := FormatRateHeaderObservation("PAT", obs)
+	want := "GitHub API (PAT core via headers) samples=1 remaining 4991→4990 (min 4990) / 5000"
+	if msg != want {
+		t.Fatalf("got %q, want %q", msg, want)
+	}
+}
+
 type roundTripperFunc func(*http.Request) (*http.Response, error)
 
 func (f roundTripperFunc) RoundTrip(req *http.Request) (*http.Response, error) {

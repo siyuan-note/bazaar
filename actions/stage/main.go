@@ -151,8 +151,8 @@ func main() {
 		logger.Errorf("sync stage-fail issues failed: %s", err)
 	}
 
-	logRateHeaderObservation("PAT", patRateObs)
-	logRateHeaderObservation("GITHUB_TOKEN", repoRateObs)
+	logger.Infof("%s", util.FormatRateHeaderObservation("PAT", patRateObs))
+	logger.Infof("%s", util.FormatRateHeaderObservation("GITHUB_TOKEN", repoRateObs))
 	if abortedByRateLimit {
 		logger.Errorf("Stage completed with GitHub API rate limit abort; retry after the quota resets")
 		return
@@ -204,17 +204,6 @@ func checkRateLimitBeforeStage(repoCount int) error {
 	}
 	logger.Infof("GitHub API (core via headers) remaining %d / %d, %d repos to check (~%d requests), OK", remaining, limit, repoCount, required)
 	return nil
-}
-
-// logRateHeaderObservation 根据实际 API 响应头记录：当次 core 请求次数、开始/结束剩余配额。
-func logRateHeaderObservation(label string, obs *util.RateHeaderObserver) {
-	snap := obs.Snapshot()
-	if !snap.HasData {
-		logger.Infof("GitHub API (%s core via headers) no rate-limit headers observed", label)
-		return
-	}
-	logger.Infof("GitHub API (%s core via headers) samples=%d remaining %d→%d (min %d) / %d",
-		label, snap.Samples, snap.StartRemaining, snap.LastRemaining, snap.MinRemaining, snap.Limit)
 }
 
 // loadOldStageData 加载现有的 stage 文件数据，返回以 owner/repo 为 key 的映射。

@@ -164,6 +164,16 @@ func isGitHubRateLimitPath(path string) bool {
 	return path == "rate_limit" || strings.HasSuffix(path, "/rate_limit")
 }
 
+// FormatRateHeaderObservation 格式化当次 core 请求次数与开始/结束剩余配额日志行。
+func FormatRateHeaderObservation(label string, obs *RateHeaderObserver) string {
+	snap := obs.Snapshot()
+	if !snap.HasData {
+		return fmt.Sprintf("GitHub API (%s core via headers) no rate-limit headers observed", label)
+	}
+	return fmt.Sprintf("GitHub API (%s core via headers) samples=%d remaining %d→%d (min %d) / %d",
+		label, snap.Samples, snap.StartRemaining, snap.LastRemaining, snap.MinRemaining, snap.Limit)
+}
+
 // Snapshot 返回当前观测快照。
 func (o *RateHeaderObserver) Snapshot() RateHeaderSnapshot {
 	if o == nil {
