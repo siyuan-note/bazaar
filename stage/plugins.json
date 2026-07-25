@@ -1,6 +1,162 @@
 {
   "repos": [
     {
+      "installSize": 215857,
+      "openIssues": 25,
+      "package": {
+        "author": "Jeffrey Chen",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "Install marketplace packages via GitHub links — faster than the official marketplace!",
+          "zh-CN": "使用 GitHub 链接安装集市包，比官方集市更快一步！"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Install Marketplace Package",
+          "zh-CN": "安装集市包"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://mytemos.com/"
+          ]
+        },
+        "keywords": [
+          "开发者工具",
+          "developer tool"
+        ],
+        "minAppVersion": "3.7.0-beta.1",
+        "name": "install-package",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/TCOTC/install-package",
+        "version": "0.4.1"
+      },
+      "packageZipAssetId": 489677031,
+      "size": 73992,
+      "stars": 2,
+      "updated": "2026-07-25T19:05:46Z",
+      "url": "TCOTC/install-package@ff60f6f33229015f9e52152f22ea52d6563475fe"
+    },
+    {
+      "installSize": 8491991,
+      "openIssues": 2,
+      "package": {
+        "author": "mm-o",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "专业电子书阅读器，支持 EPUB/PDF/MOBI/TXT/在线小说；PDF 支持高亮、墨迹、形状、表单、印章、签名、图片、截图、搜索、打印、导出和回链，并提供标注笔记、词典、翻译、主题与书架管理",
+          "en_US": "Professional eBook reader for EPUB/PDF/MOBI/TXT/online novels. PDFs support highlights, ink, shapes, forms, stamps, signatures, images, screenshots, search, printing, export, and backlinks, with annotation notes, dictionary, translation, themes, and bookshelf management."
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiReader",
+          "zh_CN": "思阅"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://745201.xyz/pay.jpg"
+          ]
+        },
+        "keywords": [
+          "阅读",
+          "reading",
+          "电子书",
+          "ebook",
+          "pdf",
+          "epub",
+          "mobi",
+          "txt",
+          "azw3",
+          "fb2",
+          "cbz",
+          "sireader",
+          "思阅",
+          "标注",
+          "annotation",
+          "笔记",
+          "note",
+          "书签",
+          "bookmark",
+          "词典",
+          "dictionary",
+          "书源",
+          "book source",
+          "在线小说",
+          "online novel",
+          "主题",
+          "theme"
+        ],
+        "minAppVersion": "2.10.14",
+        "name": "siyuan-sireader",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/mm-o/siyuan-sireader",
+        "version": "2.2.2"
+      },
+      "packageZipAssetId": 489625841,
+      "size": 3270571,
+      "stars": 30,
+      "updated": "2026-07-25T17:48:56Z",
+      "url": "mm-o/siyuan-sireader@d808638b02131c6e2930861cbb259306480979a2"
+    },
+    {
+      "installSize": 940743,
+      "openIssues": 0,
+      "package": {
+        "author": "whale🐋",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Professional annotation plugin — select text, add comments, manage in sidebar, with slide-to-annotate, tagging, and cross-document navigation.",
+          "zh-CN": "专业批注插件：绝对安全、零污染、数据永久原始保留、万字文档秒批、可离线使用。选中文字添加批注，侧边栏管理，支持滑动快速批注、标签分类、跨文档跳转。"
+        },
+        "displayName": {
+          "default": "鲸鱼快速批注",
+          "en": "Whale Quick Comment"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "comment",
+          "annotation",
+          "批注",
+          "标注",
+          "笔记"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-comment",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/HaoCeans/siyuan-comment",
+        "version": "2.2.3"
+      },
+      "packageZipAssetId": 489625506,
+      "size": 532726,
+      "stars": 4,
+      "updated": "2026-07-25T17:48:28Z",
+      "url": "HaoCeans/siyuan-comment@0256a6d8bbefa4e0eecddd65aa80321109697977"
+    },
+    {
       "installSize": 779786,
       "openIssues": 1,
       "package": {
@@ -254,46 +410,6 @@
       "stars": 0,
       "updated": "2026-07-25T10:32:55Z",
       "url": "DilyarEziz/siyuan-plugin-asset-management@912ff6700dc15a53637cb4aa2e12edd09c42be15"
-    },
-    {
-      "installSize": 938835,
-      "openIssues": 0,
-      "package": {
-        "author": "whale🐋",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Professional annotation plugin — select text, add comments, manage in sidebar, with slide-to-annotate, tagging, and cross-document navigation.",
-          "zh-CN": "专业批注插件：绝对安全、零污染、数据永久原始保留、万字文档秒批、可离线使用。选中文字添加批注，侧边栏管理，支持滑动快速批注、标签分类、跨文档跳转。"
-        },
-        "displayName": {
-          "default": "鲸鱼快速批注",
-          "en": "Whale Quick Comment"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "comment",
-          "annotation",
-          "批注",
-          "标注",
-          "笔记"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-comment",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/HaoCeans/siyuan-comment",
-        "version": "2.2.2"
-      },
-      "packageZipAssetId": 489103143,
-      "size": 531985,
-      "stars": 4,
-      "updated": "2026-07-25T03:41:59Z",
-      "url": "HaoCeans/siyuan-comment@d856c79bed54e2132b988eeb102ea6962e4dae66"
     },
     {
       "installSize": 548981,
@@ -714,75 +830,6 @@
       "stars": 39,
       "updated": "2026-07-24T07:12:46Z",
       "url": "Szerelem0617/siyuan-plugins-index@0338657d0528025d9cea9ebcfab9be529bdae8b1"
-    },
-    {
-      "installSize": 8484889,
-      "openIssues": 4,
-      "package": {
-        "author": "mm-o",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "专业电子书阅读器，支持 EPUB/PDF/MOBI/TXT/在线小说；PDF 支持高亮、墨迹、形状、表单、印章、签名、图片、截图、搜索、打印、导出和回链，并提供标注笔记、词典、翻译、主题与书架管理",
-          "en_US": "Professional eBook reader for EPUB/PDF/MOBI/TXT/online novels. PDFs support highlights, ink, shapes, forms, stamps, signatures, images, screenshots, search, printing, export, and backlinks, with annotation notes, dictionary, translation, themes, and bookshelf management."
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiReader",
-          "zh_CN": "思阅"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://745201.xyz/pay.jpg"
-          ]
-        },
-        "keywords": [
-          "阅读",
-          "reading",
-          "电子书",
-          "ebook",
-          "pdf",
-          "epub",
-          "mobi",
-          "txt",
-          "azw3",
-          "fb2",
-          "cbz",
-          "sireader",
-          "思阅",
-          "标注",
-          "annotation",
-          "笔记",
-          "note",
-          "书签",
-          "bookmark",
-          "词典",
-          "dictionary",
-          "书源",
-          "book source",
-          "在线小说",
-          "online novel",
-          "主题",
-          "theme"
-        ],
-        "minAppVersion": "2.10.14",
-        "name": "siyuan-sireader",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/mm-o/siyuan-sireader",
-        "version": "2.2.1"
-      },
-      "packageZipAssetId": 488100118,
-      "size": 3267997,
-      "stars": 30,
-      "updated": "2026-07-24T06:33:59Z",
-      "url": "mm-o/siyuan-sireader@cfeaa1ee1b465d12813d608b54b83b42672feb43"
     },
     {
       "installSize": 304198,
@@ -4890,52 +4937,6 @@
       "stars": 36,
       "updated": "2026-06-29T04:48:25Z",
       "url": "terwer/siyuan-plugin-picgo@1eaa3bc41fdb250d8170a596163020d88dba7693"
-    },
-    {
-      "installSize": 212769,
-      "openIssues": 22,
-      "package": {
-        "author": "Jeffrey Chen",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Install marketplace packages via GitHub links — faster than the official marketplace!",
-          "zh-CN": "使用 GitHub 链接安装集市包，比官方集市更快一步！"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Install Marketplace Package",
-          "zh-CN": "安装集市包"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://mytemos.com/"
-          ]
-        },
-        "keywords": [
-          "开发者工具",
-          "developer tool"
-        ],
-        "minAppVersion": "3.7.0-beta.1",
-        "name": "install-package",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/TCOTC/install-package",
-        "version": "0.4.0"
-      },
-      "size": 72887,
-      "stars": 2,
-      "updated": "2026-06-28T18:26:01Z",
-      "url": "TCOTC/install-package@8e3c8259554a7f487cadff5fb55f2740514ebe97"
     },
     {
       "installSize": 864075,
