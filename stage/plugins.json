@@ -1,6 +1,203 @@
 {
   "repos": [
     {
+      "installSize": 6066572,
+      "openIssues": 1,
+      "package": {
+        "author": "whale🐋",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Quick note on app switch, click automation, quick access to built-in features, date templates, mobile shortcuts. Supports both mobile and desktop! Replace Quicker, FV, Notion automation within SiYuan!",
+          "zh-CN": "一键记事，手机端全流程解决方案。操作一步到位，重塑思源笔记移动端体验。自启动一键记事、一键按钮直达、定制化工具栏按钮、自动化模拟点击、手机快捷键使用、手写模板插入、思源内置功能选择等。手机端、电脑端均支持。可在思源内基本替换Quicker、FV悬浮球、notion自动化、宏命令等。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan Mobile Enhancer",
+          "zh-CN": "思源手机端增强"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "toolbar",
+          "customization",
+          "mobile",
+          "automation",
+          "buttons",
+          "工具栏",
+          "自定义",
+          "手机端",
+          "手机端增强",
+          "移动端",
+          "移动端增强",
+          "模拟点击",
+          "自动化",
+          "按钮",
+          "鲸鱼",
+          "工具箱",
+          "鲸鱼工具箱",
+          "一键记事",
+          "快速记事"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-toolbar-customizer",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/HaoCeans/siyuan-toolbar-customizer",
+        "version": "3.7.7"
+      },
+      "packageZipAssetId": 490283126,
+      "size": 2041817,
+      "stars": 9,
+      "updated": "2026-07-26T10:20:27Z",
+      "url": "HaoCeans/siyuan-toolbar-customizer@e3ba78b9c85ddccb273399a6772995e164ed818d"
+    },
+    {
+      "installSize": 198974,
+      "openIssues": 0,
+      "package": {
+        "author": "zange",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Collect plugin controls and selected native SiYuan features into a configurable left or right sidebar.",
+          "zh-CN": "将插件按钮和可选的思源原生功能收纳到可切换的左侧或右侧栏。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Plugin Drawer",
+          "zh-CN": "插件抽屉"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop"
+        ],
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "plugin center",
+          "toolbar",
+          "clean interface",
+          "插件抽屉",
+          "顶栏收纳",
+          "左右侧栏",
+          "原生功能",
+          "界面整理"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-drawer",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh_CN.md"
+        },
+        "url": "https://github.com/tianxia704/siyuan-plugin-drawer",
+        "version": "0.4.4"
+      },
+      "packageZipAssetId": 490240820,
+      "size": 138565,
+      "stars": 0,
+      "updated": "2026-07-26T09:53:16Z",
+      "url": "tianxia704/siyuan-plugin-drawer@824c5b6ac41f353a3a8a6bbb536e06b68f13fda0"
+    },
+    {
+      "installSize": 2190672,
+      "openIssues": 0,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A dock Tomato Timer for SiYuan.",
+          "zh_CN": "思源底栏番茄钟：支持时间轴视图/任务提醒/日常事务记录/多端状态同步/移动端/数据库联动/块绑定/历史记录/任务管理器联动/移动端原生通知提醒"
+        },
+        "displayName": {
+          "default": "Dock Tomato",
+          "zh_CN": "底栏番茄钟"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ]
+        },
+        "keywords": [
+          "tomato",
+          "timer",
+          "pomodoro",
+          "dock"
+        ],
+        "minAppVersion": "3.5.10",
+        "name": "siyuan-plugin-docktomato",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-docktomato",
+        "version": "2.0.7"
+      },
+      "packageZipAssetId": 490229718,
+      "size": 529320,
+      "stars": 8,
+      "updated": "2026-07-26T09:37:25Z",
+      "url": "5kyfkr/siyuan-plugin-docktomato@7194ce3884314c9d3e78eff72d1960443b3e3943"
+    },
+    {
+      "installSize": 14719864,
+      "openIssues": 0,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
+          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Horizon",
+          "zh_CN": "任务管理器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ]
+        },
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "task",
+          "manager",
+          "filter"
+        ],
+        "minAppVersion": "3.7.3",
+        "name": "siyuan-plugin-task-horizon",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
+        "version": "2.7.9"
+      },
+      "packageZipAssetId": 490229097,
+      "size": 3009951,
+      "stars": 31,
+      "updated": "2026-07-26T09:36:24Z",
+      "url": "5kyfkr/siyuan-plugin-task-horizon@79d8f0ffc670f43ac4754cf11993b166a8ca2c8b"
+    },
+    {
       "installSize": 285619,
       "openIssues": 10,
       "package": {
@@ -168,62 +365,6 @@
       "stars": 36,
       "updated": "2026-07-26T05:37:11Z",
       "url": "Glaube-TY/siyuan-homepage@a0919f28c890f3b1e3e21b0b7965ea8a29e1349c"
-    },
-    {
-      "installSize": 6065157,
-      "openIssues": 1,
-      "package": {
-        "author": "whale🐋",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Quick note on app switch, click automation, quick access to built-in features, date templates, mobile shortcuts. Supports both mobile and desktop! Replace Quicker, FV, Notion automation within SiYuan!",
-          "zh-CN": "一键记事，手机端全流程解决方案。操作一步到位，重塑思源笔记移动端体验。自启动一键记事、一键按钮直达、定制化工具栏按钮、自动化模拟点击、手机快捷键使用、手写模板插入、思源内置功能选择等。手机端、电脑端均支持。可在思源内基本替换Quicker、FV悬浮球、notion自动化、宏命令等。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiYuan Mobile Enhancer",
-          "zh-CN": "思源手机端增强"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "toolbar",
-          "customization",
-          "mobile",
-          "automation",
-          "buttons",
-          "工具栏",
-          "自定义",
-          "手机端",
-          "手机端增强",
-          "移动端",
-          "移动端增强",
-          "模拟点击",
-          "自动化",
-          "按钮",
-          "鲸鱼",
-          "工具箱",
-          "鲸鱼工具箱",
-          "一键记事",
-          "快速记事"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-toolbar-customizer",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/HaoCeans/siyuan-toolbar-customizer",
-        "version": "3.7.6"
-      },
-      "packageZipAssetId": 490047541,
-      "size": 2041704,
-      "stars": 9,
-      "updated": "2026-07-26T04:37:58Z",
-      "url": "HaoCeans/siyuan-toolbar-customizer@86041f877db9f066d3f52cf5cf70df013785f410"
     },
     {
       "installSize": 1603549,
@@ -555,53 +696,6 @@
       "stars": 0,
       "updated": "2026-07-25T16:46:43Z",
       "url": "houm01/stillmark-workbench@99ed45bfdc48adb2644cefa7db09f5c7d913d224"
-    },
-    {
-      "installSize": 91863,
-      "openIssues": 0,
-      "package": {
-        "author": "zange",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Replace scattered plugin controls with one top-bar entry and a native right-side plugin center.",
-          "zh-CN": "用一个右上角入口收纳第三方插件按钮，并在原生右侧栏集中显示。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Plugin Drawer",
-          "zh-CN": "插件抽屉"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop"
-        ],
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "plugin center",
-          "toolbar",
-          "clean interface",
-          "插件抽屉",
-          "顶栏收纳",
-          "界面整理"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-drawer",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh_CN.md"
-        },
-        "url": "https://github.com/tianxia704/siyuan-plugin-drawer",
-        "version": "0.3.0"
-      },
-      "packageZipAssetId": 489528327,
-      "size": 50940,
-      "stars": 0,
-      "updated": "2026-07-25T15:28:32Z",
-      "url": "tianxia704/siyuan-plugin-drawer@2bcc47f95e99f4f3dc132e24fae460ad79ec64f6"
     },
     {
       "installSize": 548981,
@@ -1066,53 +1160,6 @@
       "stars": 0,
       "updated": "2026-07-24T03:29:30Z",
       "url": "alvisliu818/siyuan-plugin-browser@85a0d6e683f3875e05f1035487d5995e72529607"
-    },
-    {
-      "installSize": 14426316,
-      "openIssues": 0,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
-          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Horizon",
-          "zh_CN": "任务管理器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ]
-        },
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "task",
-          "manager",
-          "filter"
-        ],
-        "minAppVersion": "3.7.3",
-        "name": "siyuan-plugin-task-horizon",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "2.7.8"
-      },
-      "packageZipAssetId": 487369426,
-      "size": 2950767,
-      "stars": 31,
-      "updated": "2026-07-23T16:04:33Z",
-      "url": "5kyfkr/siyuan-plugin-task-horizon@527a905a38154bdb9702be86edfb8916c101e664"
     },
     {
       "installSize": 1906639,
@@ -1937,51 +1984,6 @@
       "stars": 15,
       "updated": "2026-07-22T02:08:53Z",
       "url": "royc01/pinch@6828feecc491e3dd2d5272da27a017275574410d"
-    },
-    {
-      "installSize": 2168764,
-      "openIssues": 0,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A dock Tomato Timer for SiYuan.",
-          "zh_CN": "思源底栏番茄钟：支持时间轴视图/任务提醒/日常事务记录/多端状态同步/移动端/数据库联动/块绑定/历史记录/任务管理器联动/移动端原生通知提醒"
-        },
-        "displayName": {
-          "default": "Dock Tomato",
-          "zh_CN": "底栏番茄钟"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ]
-        },
-        "keywords": [
-          "tomato",
-          "timer",
-          "pomodoro",
-          "dock"
-        ],
-        "minAppVersion": "3.5.10",
-        "name": "siyuan-plugin-docktomato",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-docktomato",
-        "version": "2.0.6"
-      },
-      "packageZipAssetId": 484979504,
-      "size": 524712,
-      "stars": 8,
-      "updated": "2026-07-21T17:56:24Z",
-      "url": "5kyfkr/siyuan-plugin-docktomato@d3e95c859bf33fd6a36cc67c81b3ede2714b08f2"
     },
     {
       "installSize": 161823,
