@@ -1,6 +1,154 @@
 {
   "repos": [
     {
+      "installSize": 1848519,
+      "openIssues": 4,
+      "package": {
+        "author": "Taihong Yang",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Siyuan sisyphus enables AI Agents to operate your Siyuan with notebook-level permission control, covering most of Siyuan&#39;s functionality. Supports desktop、 docker、 mobile.",
+          "zh_CN": "思源 西西弗斯，让 AI Agent 操作你的思源，提供 MCP CLI 两种方式，支持笔记本级权限管控、覆盖SIYUAN绝大部分功能，支持思源的桌面、docker端、移动端。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan sisyphus MCP &amp; CLI &amp; GIT",
+          "zh_CN": "思源 sisyphus MCP &amp; CLI &amp; GIT"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://github.com/yangtaihong59/siyuan-plugins-mcp-sisyphus/blob/main/docs/archive/thank.jpeg"
+          ]
+        },
+        "keywords": [
+          "AI",
+          "Agent",
+          "MCP"
+        ],
+        "minAppVersion": "2.9.0",
+        "name": "siyuan-plugins-mcp-sisyphus",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/yangtaihong59/siyuan-plugins-mcp-sisyphus",
+        "version": "0.5.0"
+      },
+      "packageZipAssetId": 491669638,
+      "size": 682771,
+      "stars": 88,
+      "updated": "2026-07-27T16:28:17Z",
+      "url": "yangtaihong59/siyuan-plugins-mcp-sisyphus@e42a226449d473200831c5022cc375c4e69cd1ab"
+    },
+    {
+      "installSize": 1664009,
+      "openIssues": 1,
+      "package": {
+        "author": "养恐龙",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "这使你充满了决心。"
+        },
+        "displayName": {
+          "default": "恐龙工具箱"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "plugin"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-hqweay-go",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/hqweay/siyuan-hqweay-go",
+        "version": "0.25.3"
+      },
+      "packageZipAssetId": 491588831,
+      "size": 515879,
+      "stars": 12,
+      "updated": "2026-07-27T15:08:57Z",
+      "url": "hqweay/siyuan-hqweay-go@84e74939df8e5d7d9796f1930d0a36413730a330"
+    },
+    {
+      "installSize": 8493401,
+      "openIssues": 4,
+      "package": {
+        "author": "mm-o",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "专业电子书阅读器，支持 EPUB/PDF/MOBI/TXT/在线小说；PDF 支持高亮、墨迹、形状、表单、印章、签名、图片、截图、搜索、打印、导出和回链，并提供标注笔记、词典、翻译、主题与书架管理",
+          "en_US": "Professional eBook reader for EPUB/PDF/MOBI/TXT/online novels. PDFs support highlights, ink, shapes, forms, stamps, signatures, images, screenshots, search, printing, export, and backlinks, with annotation notes, dictionary, translation, themes, and bookshelf management."
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiReader",
+          "zh_CN": "思阅"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://745201.xyz/pay.jpg"
+          ]
+        },
+        "keywords": [
+          "阅读",
+          "reading",
+          "电子书",
+          "ebook",
+          "pdf",
+          "epub",
+          "mobi",
+          "txt",
+          "azw3",
+          "fb2",
+          "cbz",
+          "sireader",
+          "思阅",
+          "标注",
+          "annotation",
+          "笔记",
+          "note",
+          "书签",
+          "bookmark",
+          "词典",
+          "dictionary",
+          "书源",
+          "book source",
+          "在线小说",
+          "online novel",
+          "主题",
+          "theme"
+        ],
+        "minAppVersion": "2.10.14",
+        "name": "siyuan-sireader",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/mm-o/siyuan-sireader",
+        "version": "2.2.3"
+      },
+      "packageZipAssetId": 491584105,
+      "size": 3271728,
+      "stars": 30,
+      "updated": "2026-07-27T15:04:19Z",
+      "url": "mm-o/siyuan-sireader@d73df27950c223b6d3dcea1fe36458949aa8d9c4"
+    },
+    {
       "installSize": 115155,
       "openIssues": 0,
       "package": {
@@ -39,6 +187,50 @@
       "stars": 0,
       "updated": "2026-07-27T14:53:45Z",
       "url": "wlnyx/siyuan-typst-formula@23f4c8de52ab26ef223ce60fae4c574a7d06cba0"
+    },
+    {
+      "installSize": 366637,
+      "openIssues": 13,
+      "package": {
+        "author": "Zuoqiu Yingyi",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Provide multi-tab/multi-window web page view for SiYuan",
+          "zh_CHT": "為思源提供 多頁簽/多窗口 網頁視圖",
+          "zh_CN": "为思源提供 多页签/多窗口 网页视图"
+        },
+        "displayName": {
+          "default": "Web Page View",
+          "zh_CHT": "網頁視圖",
+          "zh_CN": "网页视图"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/zuoqiu",
+            "https://ko-fi.com/zuoqiu"
+          ],
+          "github": "https://github.com/Zuoqiu-Yingyi"
+        },
+        "minAppVersion": "3.7.0",
+        "name": "webview",
+        "readme": {
+          "default": "README.md",
+          "zh_CHT": "README_zh_CN.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/Zuoqiu-Yingyi/siyuan-plugin-webview",
+        "version": "1.4.3"
+      },
+      "packageZipAssetId": 491573187,
+      "size": 163879,
+      "stars": 12,
+      "updated": "2026-07-27T14:53:43Z",
+      "url": "Zuoqiu-Yingyi/siyuan-plugin-webview@c8302837fac36ef2d5652aa076d0dfbd9d1d2876"
     },
     {
       "installSize": 383000,
@@ -1391,75 +1583,6 @@
       "url": "TCOTC/install-package@ff60f6f33229015f9e52152f22ea52d6563475fe"
     },
     {
-      "installSize": 8491991,
-      "openIssues": 2,
-      "package": {
-        "author": "mm-o",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "专业电子书阅读器，支持 EPUB/PDF/MOBI/TXT/在线小说；PDF 支持高亮、墨迹、形状、表单、印章、签名、图片、截图、搜索、打印、导出和回链，并提供标注笔记、词典、翻译、主题与书架管理",
-          "en_US": "Professional eBook reader for EPUB/PDF/MOBI/TXT/online novels. PDFs support highlights, ink, shapes, forms, stamps, signatures, images, screenshots, search, printing, export, and backlinks, with annotation notes, dictionary, translation, themes, and bookshelf management."
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiReader",
-          "zh_CN": "思阅"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://745201.xyz/pay.jpg"
-          ]
-        },
-        "keywords": [
-          "阅读",
-          "reading",
-          "电子书",
-          "ebook",
-          "pdf",
-          "epub",
-          "mobi",
-          "txt",
-          "azw3",
-          "fb2",
-          "cbz",
-          "sireader",
-          "思阅",
-          "标注",
-          "annotation",
-          "笔记",
-          "note",
-          "书签",
-          "bookmark",
-          "词典",
-          "dictionary",
-          "书源",
-          "book source",
-          "在线小说",
-          "online novel",
-          "主题",
-          "theme"
-        ],
-        "minAppVersion": "2.10.14",
-        "name": "siyuan-sireader",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/mm-o/siyuan-sireader",
-        "version": "2.2.2"
-      },
-      "packageZipAssetId": 489625841,
-      "size": 3270571,
-      "stars": 30,
-      "updated": "2026-07-25T17:48:56Z",
-      "url": "mm-o/siyuan-sireader@d808638b02131c6e2930861cbb259306480979a2"
-    },
-    {
       "installSize": 779786,
       "openIssues": 1,
       "package": {
@@ -2057,51 +2180,6 @@
       "stars": 0,
       "updated": "2026-07-23T03:18:09Z",
       "url": "Acetab/auto-favicon@0feccc4300f365db37309be21d2ca8912961e05c"
-    },
-    {
-      "installSize": 1734765,
-      "openIssues": 4,
-      "package": {
-        "author": "Taihong Yang",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Siyuan sisyphus enables AI Agents to operate your Siyuan with notebook-level permission control, covering most of Siyuan&#39;s functionality. Supports desktop、 docker、 mobile.",
-          "zh_CN": "思源 西西弗斯，让 AI Agent 操作你的思源，提供 MCP CLI 两种方式，支持笔记本级权限管控、覆盖SIYUAN绝大部分功能，支持思源的桌面、docker端、移动端。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiYuan sisyphus MCP &amp; CLI &amp; GIT",
-          "zh_CN": "思源 sisyphus MCP &amp; CLI &amp; GIT"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://github.com/yangtaihong59/siyuan-plugins-mcp-sisyphus/blob/main/docs/archive/thank.jpeg"
-          ]
-        },
-        "keywords": [
-          "AI",
-          "Agent",
-          "MCP"
-        ],
-        "minAppVersion": "2.9.0",
-        "name": "siyuan-plugins-mcp-sisyphus",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/yangtaihong59/siyuan-plugins-mcp-sisyphus",
-        "version": "0.4.15"
-      },
-      "packageZipAssetId": 486701412,
-      "size": 649816,
-      "stars": 87,
-      "updated": "2026-07-23T03:10:33Z",
-      "url": "yangtaihong59/siyuan-plugins-mcp-sisyphus@8410a3f985ef24e029f7713795b7900e2936e791"
     },
     {
       "installSize": 476870,
@@ -4556,39 +4634,6 @@
       "stars": 16,
       "updated": "2026-07-05T13:53:47Z",
       "url": "MoonBottle/siyuan-plugin-bullet-journal@bc4afe2e5cd798bd222ed02fbec35831ce2ba0b7"
-    },
-    {
-      "installSize": 2041843,
-      "openIssues": 1,
-      "package": {
-        "author": "养恐龙",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "这使你充满了决心。"
-        },
-        "displayName": {
-          "default": "恐龙工具箱"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "plugin"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-hqweay-go",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/hqweay/siyuan-hqweay-go",
-        "version": "0.25.1"
-      },
-      "size": 832792,
-      "stars": 12,
-      "updated": "2026-07-05T13:41:15Z",
-      "url": "hqweay/siyuan-hqweay-go@65d58e2f86b6f553f82940d7660590cd93eb985d"
     },
     {
       "installSize": 395870,
@@ -17862,48 +17907,6 @@
       "stars": 10,
       "updated": "2024-01-16T02:34:05Z",
       "url": "InEase/siyuan-attributes-panel@48ece4f7268620e49bb2254794e662c099d4d74c"
-    },
-    {
-      "installSize": 511396,
-      "openIssues": 15,
-      "package": {
-        "author": "Zuoqiu Yingyi",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Provide <code>multi-tab / multi-window web</code> page view for SiYuan",
-          "zh_CHT": "為思源提供 <code>多頁簽 / 多窗口</code> 網頁視圖",
-          "zh_CN": "为思源提供 <code>多页签 / 多窗口</code> 网页视图"
-        },
-        "displayName": {
-          "default": "Web Page View",
-          "zh_CHT": "網頁視圖",
-          "zh_CN": "网页视图"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.net/a/zuoqiu",
-            "https://ko-fi.com/zuoqiu"
-          ]
-        },
-        "minAppVersion": "2.10.3",
-        "name": "webview",
-        "readme": {
-          "default": "README.md",
-          "zh_CHT": "README_zh_CN.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/Zuoqiu-Yingyi/siyuan-plugin-webview",
-        "version": "1.4.1"
-      },
-      "size": 314632,
-      "stars": 9,
-      "updated": "2023-12-26T16:27:17Z",
-      "url": "Zuoqiu-Yingyi/siyuan-plugin-webview@ab5943973dfcea9d30f7abfab98ea33f2e28befd"
     },
     {
       "installSize": 4759942,
