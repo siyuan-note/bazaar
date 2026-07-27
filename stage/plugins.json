@@ -1,6 +1,135 @@
 {
   "repos": [
     {
+      "installSize": 115268,
+      "openIssues": 0,
+      "package": {
+        "author": "zange",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Collect plugin controls and selected native SiYuan features into a configurable left or right sidebar.",
+          "zh-CN": "将插件按钮和可选的思源原生功能收纳到可切换的左侧或右侧栏。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Plugin Drawer",
+          "zh-CN": "插件抽屉"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop"
+        ],
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "plugin center",
+          "toolbar",
+          "clean interface",
+          "插件抽屉",
+          "顶栏收纳",
+          "左右侧栏",
+          "原生功能",
+          "界面整理"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-drawer",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh_CN.md"
+        },
+        "url": "https://github.com/tianxia704/siyuan-plugin-drawer",
+        "version": "0.4.5"
+      },
+      "packageZipAssetId": 490959337,
+      "size": 56809,
+      "stars": 0,
+      "updated": "2026-07-27T03:23:45Z",
+      "url": "tianxia704/siyuan-plugin-drawer@a7a70951d4e78425a7f383064af452ae33582faf"
+    },
+    {
+      "installSize": 15325934,
+      "openIssues": 0,
+      "package": {
+        "author": "Glaube-TY",
+        "backends": [
+          "windows",
+          "linux",
+          "ios",
+          "android",
+          "harmony",
+          "docker",
+          "darwin"
+        ],
+        "description": {
+          "en_US": "Provides personalized homepage layout and rich functional modules, as well as AI knowledge base.",
+          "zh_CN": "提供个性化首页布局和丰富的功能模块以及 AI 知识库功能。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "en_US": "HOME",
+          "zh_CN": "主页"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://blog.glaube-ty.top/da-shang"
+          ]
+        },
+        "keywords": [
+          "homepage",
+          "home",
+          "主页",
+          "首页",
+          "task",
+          "task manager",
+          "任务",
+          "任务管理",
+          "SQL",
+          "sql",
+          "查询",
+          "widget",
+          "widget manager",
+          "挂件",
+          "挂件管理",
+          "组件",
+          "组件管理",
+          "Pomodoro",
+          "Pomodoro timer",
+          "番茄钟",
+          "番茄",
+          "heat map",
+          "热力图",
+          "热搜",
+          "搜索",
+          "AI",
+          "智能助手",
+          "agent",
+          "智能体"
+        ],
+        "minAppVersion": "3.6.5",
+        "name": "siyuan-homepage",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/Glaube-TY/siyuan-homepage",
+        "version": "4.8.11"
+      },
+      "packageZipAssetId": 490870418,
+      "size": 4868515,
+      "stars": 36,
+      "updated": "2026-07-27T01:28:05Z",
+      "url": "Glaube-TY/siyuan-homepage@2cb3c854d1ca45fd968aa9b222fa0ecb12388ed2"
+    },
+    {
       "installSize": 2086145,
       "openIssues": 7,
       "package": {
@@ -230,86 +359,6 @@
       "url": "Genwaygenway/siyuan-todo-plus@8c9fce51c3315aceb87ec7228cab5e32a36fb0b5"
     },
     {
-      "installSize": 15325324,
-      "openIssues": 0,
-      "package": {
-        "author": "Glaube-TY",
-        "backends": [
-          "windows",
-          "linux",
-          "ios",
-          "android",
-          "harmony",
-          "docker",
-          "darwin"
-        ],
-        "description": {
-          "en_US": "Provides personalized homepage layout and rich functional modules, as well as AI knowledge base.",
-          "zh_CN": "提供个性化首页布局和丰富的功能模块以及 AI 知识库功能。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "en_US": "HOME",
-          "zh_CN": "主页"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://blog.glaube-ty.top/da-shang"
-          ]
-        },
-        "keywords": [
-          "homepage",
-          "home",
-          "主页",
-          "首页",
-          "task",
-          "task manager",
-          "任务",
-          "任务管理",
-          "SQL",
-          "sql",
-          "查询",
-          "widget",
-          "widget manager",
-          "挂件",
-          "挂件管理",
-          "组件",
-          "组件管理",
-          "Pomodoro",
-          "Pomodoro timer",
-          "番茄钟",
-          "番茄",
-          "heat map",
-          "热力图",
-          "热搜",
-          "搜索",
-          "AI",
-          "智能助手",
-          "agent",
-          "智能体"
-        ],
-        "minAppVersion": "3.6.5",
-        "name": "siyuan-homepage",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/Glaube-TY/siyuan-homepage",
-        "version": "4.8.10"
-      },
-      "packageZipAssetId": 490330135,
-      "size": 4868251,
-      "stars": 36,
-      "updated": "2026-07-26T12:19:26Z",
-      "url": "Glaube-TY/siyuan-homepage@4a8860b10b370c4562ddc80a36f0114dc09e63f0"
-    },
-    {
       "installSize": 1907362,
       "openIssues": 0,
       "package": {
@@ -404,55 +453,6 @@
       "stars": 9,
       "updated": "2026-07-26T10:20:27Z",
       "url": "HaoCeans/siyuan-toolbar-customizer@e3ba78b9c85ddccb273399a6772995e164ed818d"
-    },
-    {
-      "installSize": 198974,
-      "openIssues": 0,
-      "package": {
-        "author": "zange",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Collect plugin controls and selected native SiYuan features into a configurable left or right sidebar.",
-          "zh-CN": "将插件按钮和可选的思源原生功能收纳到可切换的左侧或右侧栏。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Plugin Drawer",
-          "zh-CN": "插件抽屉"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop"
-        ],
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "plugin center",
-          "toolbar",
-          "clean interface",
-          "插件抽屉",
-          "顶栏收纳",
-          "左右侧栏",
-          "原生功能",
-          "界面整理"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-drawer",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh_CN.md"
-        },
-        "url": "https://github.com/tianxia704/siyuan-plugin-drawer",
-        "version": "0.4.4"
-      },
-      "packageZipAssetId": 490240820,
-      "size": 138565,
-      "stars": 0,
-      "updated": "2026-07-26T09:53:16Z",
-      "url": "tianxia704/siyuan-plugin-drawer@824c5b6ac41f353a3a8a6bbb536e06b68f13fda0"
     },
     {
       "installSize": 2190672,
