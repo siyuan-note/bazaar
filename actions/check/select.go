@@ -59,7 +59,7 @@ func runSelect() {
 		repoToken = PAT
 	}
 	var err error
-	githubRepoClient, err = util.NewGitHubClient(repoToken, REQUEST_TIMEOUT)
+	githubRepoClient, repoRateObs, err = util.NewGitHubClientWithRateObserver(repoToken, REQUEST_TIMEOUT)
 	if err != nil {
 		logger.Fatalf("create github repo client failed: %s", err)
 	}
@@ -67,10 +67,11 @@ func runSelect() {
 	if pat == "" {
 		pat = repoToken
 	}
-	githubClient, err = util.NewGitHubClient(pat, REQUEST_TIMEOUT)
+	githubClient, patRateObs, err = util.NewGitHubClientWithRateObserver(pat, REQUEST_TIMEOUT)
 	if err != nil {
 		logger.Fatalf("create github client failed: %s", err)
 	}
+	seedRateHeaderBaselines()
 
 	owner, repo, ok := splitOwnerRepo(GITHUB_REPOSITORY)
 	if !ok {
@@ -109,6 +110,8 @@ func runSelect() {
 		include = append(include, c.entry)
 	}
 	writeSelectMatrixOutput(include)
+	logger.Infof("%s", util.FormatRateHeaderObservation("PAT", patRateObs))
+	logger.Infof("%s", util.FormatRateHeaderObservation("GITHUB_TOKEN", repoRateObs))
 	logger.Infof("PR Check select completed: %d PRs", len(include))
 }
 

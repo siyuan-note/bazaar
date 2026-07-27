@@ -28,10 +28,14 @@ var (
 	// ErrReleaseTag 无法将 Release tag 解析为有效 commit。
 	ErrReleaseTag = errors.New("release tag could not be resolved")
 
-	// latestRelease404MaxAttempts：GetLatestRelease 遇 404 时的最大尝试次数（含首次）。
-	// 真无 Release 时 GitHub 也返回 404；短重试用于消化偶发瞬时 404，避免 Stage 误报。
+	// latestRelease404MaxAttempts：GetLatestRelease 遇瞬时 404 / 5xx 时的最大尝试次数（含首次）。
+	// 真无 Release 时 GitHub 也返回 404；短重试用于消化偶发瞬时故障，避免 Stage 误报。
 	latestRelease404MaxAttempts = 3
 	latestRelease404RetryWait   = time.Second
+
+	// releaseTagResolveMaxAttempts：解析 Release tag→commit 遇 5xx 时的最大尝试次数（含首次）。
+	releaseTagResolveMaxAttempts = 3
+	releaseTagResolveRetryWait   = time.Second
 )
 
 // LatestRelease 仓库 Latest Release 的纯数据摘要。
@@ -144,7 +148,7 @@ func fillLatestReleaseSummary(info *LatestRelease, release *github.RepositoryRel
 	}
 }
 
-// getLatestReleaseRetry404 调用 GetLatestRelease；遇 404 时短间隔重试，缓解瞬时 Not Found。
+// getLatestReleaseRetry404 调用 GetLatestRelease；遇 404 / 5xx 时短间隔重试，缓解瞬时故障。
 func getLatestReleaseRetry404(ctx context.Context, client *github.Client, owner, repo string) (*github.RepositoryRelease, error) {
 	maxAttempts := latestRelease404MaxAttempts
 	if maxAttempts < 1 {
@@ -157,20 +161,13 @@ func getLatestReleaseRetry404(ctx context.Context, client *github.Client, owner,
 			return release, nil
 		}
 		lastErr = err
-		if !IsGitHubNotFound(err) || attempt == maxAttempts {
+		if !isRetryableGitHubAPIError(err) || attempt == maxAttempts {
 			return nil, err
 		}
-		logger.Warnf("get latest release [%s/%s] returned 404, retry %d/%d after %s",
-			owner, repo, attempt, maxAttempts-1, latestRelease404RetryWait)
-		timer := time.NewTimer(latestRelease404RetryWait)
-		select {
-		case <-ctx.Done():
-			timer.Stop()
-			if ctxErr := ctx.Err(); ctxErr != nil {
-				return nil, ctxErr
-			}
-			return nil, lastErr
-		case <-timer.C:
+		logger.Warnf("get latest release [%s/%s] failed (%v), retry %d/%d after %s",
+			owner, repo, err, attempt, maxAttempts-1, latestRelease404RetryWait)
+		if waitErr := waitContext(ctx, latestRelease404RetryWait); waitErr != nil {
+			return nil, waitErr
 		}
 	}
 	return nil, lastErr
@@ -186,13 +183,9 @@ func resolveReleaseTagCommit(ctx context.Context, client *github.Client, owner, 
 	}
 
 	// REF https://pkg.go.dev/github.com/google/go-github/v89/github#GitService.GetRef
-	ref, _, err := client.Git.GetRef(ctx, owner, repo, "tags/"+tagName)
+	ref, err := getReleaseTagRefRetry(ctx, client, owner, repo, tagName)
 	if err != nil {
-		return "", rules.LocalizedErr(
-			fmt.Sprintf("无法在仓库中找到 Release 标签 `%s`：%v。请确认 tag 已推送到 GitHub 且拼写正确。", tagName, err),
-			fmt.Sprintf("Couldn't find release tag `%s` in the repository: %v. Please make sure the tag is pushed to GitHub and spelled correctly.", tagName, err),
-			err,
-		)
+		return "", releaseTagResolveErr(tagName, err)
 	}
 
 	sha := ref.GetObject().GetSHA()
@@ -210,13 +203,9 @@ func resolveReleaseTagCommit(ctx context.Context, client *github.Client, owner, 
 		return sha, nil
 	case "tag":
 		// REF https://pkg.go.dev/github.com/google/go-github/v89/github#GitService.GetTag
-		tag, _, err := client.Git.GetTag(ctx, owner, repo, sha)
+		tag, err := getAnnotatedReleaseTagRetry(ctx, client, owner, repo, tagName, sha)
 		if err != nil {
-			return "", rules.LocalizedErr(
-				fmt.Sprintf("无法读取 Release 附注标签 `%s`：%v。请确认 tag 未损坏，必要时在 GitHub 上重新创建。", tagName, err),
-				fmt.Sprintf("Couldn't read annotated release tag `%s`: %v. Please make sure the tag is valid, or recreate it on GitHub.", tagName, err),
-				err,
-			)
+			return "", err
 		}
 		commitSHA := tag.GetObject().GetSHA()
 		if commitSHA == "" {
@@ -233,5 +222,101 @@ func resolveReleaseTagCommit(ctx context.Context, client *github.Client, owner, 
 			fmt.Sprintf("Release tag `%s` has unsupported type `%s`. Please use a lightweight tag or a standard annotated tag that points to a commit.", tagName, ref.GetObject().GetType()),
 			nil,
 		)
+	}
+}
+
+// getReleaseTagRefRetry 解析 tags/<tag> 引用；遇 5xx 短间隔重试。
+func getReleaseTagRefRetry(ctx context.Context, client *github.Client, owner, repo, tagName string) (*github.Reference, error) {
+	maxAttempts := releaseTagResolveMaxAttempts
+	if maxAttempts < 1 {
+		maxAttempts = 1
+	}
+	var lastErr error
+	for attempt := 1; attempt <= maxAttempts; attempt++ {
+		ref, _, err := client.Git.GetRef(ctx, owner, repo, "tags/"+tagName)
+		if err == nil {
+			return ref, nil
+		}
+		lastErr = err
+		if !IsGitHubServerError(err) || attempt == maxAttempts {
+			return nil, err
+		}
+		logger.Warnf("get release tag ref [%s/%s tags/%s] returned server error (%v), retry %d/%d after %s",
+			owner, repo, tagName, err, attempt, maxAttempts-1, releaseTagResolveRetryWait)
+		if waitErr := waitContext(ctx, releaseTagResolveRetryWait); waitErr != nil {
+			return nil, waitErr
+		}
+	}
+	return nil, lastErr
+}
+
+// getAnnotatedReleaseTagRetry 读取附注 tag 对象；遇 5xx 短间隔重试。
+func getAnnotatedReleaseTagRetry(ctx context.Context, client *github.Client, owner, repo, tagName, sha string) (*github.Tag, error) {
+	maxAttempts := releaseTagResolveMaxAttempts
+	if maxAttempts < 1 {
+		maxAttempts = 1
+	}
+	var lastErr error
+	for attempt := 1; attempt <= maxAttempts; attempt++ {
+		tag, _, err := client.Git.GetTag(ctx, owner, repo, sha)
+		if err == nil {
+			return tag, nil
+		}
+		lastErr = err
+		if !IsGitHubServerError(err) || attempt == maxAttempts {
+			if IsGitHubServerError(err) {
+				return nil, rules.LocalizedErr(
+					fmt.Sprintf("读取 Release 附注标签 `%s` 时 GitHub API 返回服务端错误：%v。这通常是瞬时故障，集市索引稍后会自动重试。", tagName, err),
+					fmt.Sprintf("GitHub API returned a server error while reading annotated release tag `%s`: %v. This is usually transient; the bazaar indexer will retry later.", tagName, err),
+					err,
+				)
+			}
+			return nil, rules.LocalizedErr(
+				fmt.Sprintf("无法读取 Release 附注标签 `%s`：%v。请确认 tag 未损坏，必要时在 GitHub 上重新创建。", tagName, err),
+				fmt.Sprintf("Couldn't read annotated release tag `%s`: %v. Please make sure the tag is valid, or recreate it on GitHub.", tagName, err),
+				err,
+			)
+		}
+		logger.Warnf("get annotated release tag [%s/%s %s] returned server error (%v), retry %d/%d after %s",
+			owner, repo, tagName, err, attempt, maxAttempts-1, releaseTagResolveRetryWait)
+		if waitErr := waitContext(ctx, releaseTagResolveRetryWait); waitErr != nil {
+			return nil, waitErr
+		}
+	}
+	return nil, lastErr
+}
+
+func releaseTagResolveErr(tagName string, err error) error {
+	if IsGitHubServerError(err) {
+		return rules.LocalizedErr(
+			fmt.Sprintf("解析 Release 标签 `%s` 时 GitHub API 返回服务端错误：%v。这通常是瞬时故障，集市索引稍后会自动重试。", tagName, err),
+			fmt.Sprintf("GitHub API returned a server error while resolving release tag `%s`: %v. This is usually transient; the bazaar indexer will retry later.", tagName, err),
+			err,
+		)
+	}
+	return rules.LocalizedErr(
+		fmt.Sprintf("无法在仓库中找到 Release 标签 `%s`：%v。请确认 tag 已推送到 GitHub 且拼写正确。", tagName, err),
+		fmt.Sprintf("Couldn't find release tag `%s` in the repository: %v. Please make sure the tag is pushed to GitHub and spelled correctly.", tagName, err),
+		err,
+	)
+}
+
+// isRetryableGitHubAPIError 判断是否值得短间隔重试（瞬时 404 或 5xx）。
+func isRetryableGitHubAPIError(err error) bool {
+	return IsGitHubNotFound(err) || IsGitHubServerError(err)
+}
+
+// waitContext 等待 wait；wait<=0 时立即返回。ctx 取消则返回 ctx.Err()。
+func waitContext(ctx context.Context, wait time.Duration) error {
+	if wait <= 0 {
+		return nil
+	}
+	timer := time.NewTimer(wait)
+	select {
+	case <-ctx.Done():
+		timer.Stop()
+		return ctx.Err()
+	case <-timer.C:
+		return nil
 	}
 }

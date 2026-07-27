@@ -61,6 +61,7 @@ Check 流程（流程通过后，对 plan.diff.New 中的仓库）：
 2. 用模板写出检查结果文件（含下架列表、检查 Issues；换维护者时附流程说明链接）
 3. 同步标签：类型标签按涉及的 *.txt 对账；CI 状态打 ci-failed 或 ci-passed（互斥，同一次 Replace）
 4. 工作流用 thollander/actions-comment-pull-request 将结果文件发到 PR
+5. 结束后用响应头记录 PAT / GITHUB_TOKEN 开始/结束剩余配额与当次实际 core 请求次数（samples）
 
 定时复检（schedule）：
 1. go run ./actions/check -select：按评论开头 bazaar-check-meta（指纹变更 / 退避到期 / max-age）筛选非 ci-passed PR
@@ -81,6 +82,8 @@ var (
 	githubContext    context.Context
 	githubClient     *github.Client // PAT：跨仓 Release
 	githubRepoClient *github.Client // GITHUB_TOKEN：本仓 PR 标题 / 标签 / 请求审查
+	patRateObs       *util.RateHeaderObserver
+	repoRateObs      *util.RateHeaderObserver
 )
 
 //go:embed check-result.md.tpl
@@ -139,7 +142,7 @@ func main() {
 	defer stop()
 
 	var err error
-	githubClient, err = util.NewGitHubClient(PAT, REQUEST_TIMEOUT)
+	githubClient, patRateObs, err = util.NewGitHubClientWithRateObserver(PAT, REQUEST_TIMEOUT)
 	if err != nil {
 		logger.Fatalf("create github client failed: %s", err)
 	}
@@ -148,10 +151,11 @@ func main() {
 		repoToken = PAT
 		logger.Infof("GITHUB_TOKEN empty, fall back to PAT for PR title/labels/reviewers")
 	}
-	githubRepoClient, err = util.NewGitHubClient(repoToken, REQUEST_TIMEOUT)
+	githubRepoClient, repoRateObs, err = util.NewGitHubClientWithRateObserver(repoToken, REQUEST_TIMEOUT)
 	if err != nil {
 		logger.Fatalf("create github repo client failed: %s", err)
 	}
+	seedRateHeaderBaselines()
 
 	checkResultTemplate, err := parseCheckResultTemplate(githubContext)
 	if err != nil {
@@ -237,6 +241,8 @@ func main() {
 	if isNoActualChange(checkResult) && prIsMergedOrClosed() {
 		logger.Infof("no actual list change and PR already merged/closed; skip result comment and label sync")
 		appendGitHubOutput("skip_side_effects", "true")
+		logger.Infof("%s", util.FormatRateHeaderObservation("PAT", patRateObs))
+		logger.Infof("%s", util.FormatRateHeaderObservation("GITHUB_TOKEN", repoRateObs))
 		logger.Infof("PR Check completed (skipped side effects)")
 		return
 	}
@@ -255,7 +261,20 @@ func main() {
 	// 检查通过后请求审查者（名单来自仓库 Variables，失败只记日志）
 	maybeRequestReviewers(checkResult)
 
+	logger.Infof("%s", util.FormatRateHeaderObservation("PAT", patRateObs))
+	logger.Infof("%s", util.FormatRateHeaderObservation("GITHUB_TOKEN", repoRateObs))
 	logger.Infof("PR Check completed")
+}
+
+func seedRateHeaderBaselines() {
+	ctx, cancel := context.WithTimeout(githubContext, 10*time.Second)
+	defer cancel()
+	if _, err := util.SeedRateHeaderBaseline(ctx, githubClient); err != nil {
+		logger.Errorf("seed PAT rate header baseline failed: %s", err)
+	}
+	if _, err := util.SeedRateHeaderBaseline(ctx, githubRepoClient); err != nil {
+		logger.Errorf("seed GITHUB_TOKEN rate header baseline failed: %s", err)
+	}
 }
 
 // attachCheckMeta 读取上次评论 meta，生成本轮调度元数据并填入 MetaJSON。

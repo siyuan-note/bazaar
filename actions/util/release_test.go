@@ -165,3 +165,199 @@ func TestFetchLatestReleasePersistent404(t *testing.T) {
 		t.Fatalf("latest release hits = %d, want 3", got)
 	}
 }
+
+func TestFetchLatestReleaseRetriesTransientTag500(t *testing.T) {
+	oldLatestWait := latestRelease404RetryWait
+	oldLatestMax := latestRelease404MaxAttempts
+	oldTagWait := releaseTagResolveRetryWait
+	oldTagMax := releaseTagResolveMaxAttempts
+	latestRelease404RetryWait = 0
+	latestRelease404MaxAttempts = 1
+	releaseTagResolveRetryWait = 0
+	releaseTagResolveMaxAttempts = 3
+	t.Cleanup(func() {
+		latestRelease404RetryWait = oldLatestWait
+		latestRelease404MaxAttempts = oldLatestMax
+		releaseTagResolveRetryWait = oldTagWait
+		releaseTagResolveMaxAttempts = oldTagMax
+	})
+
+	var tagHits atomic.Int32
+	mux := http.NewServeMux()
+	mux.HandleFunc("/api/v3/repos/o/r/releases/latest", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		_ = json.NewEncoder(w).Encode(map[string]any{
+			"id":           99,
+			"tag_name":     "v1.0.0",
+			"html_url":     "https://github.com/o/r/releases/tag/v1.0.0",
+			"published_at": "2024-01-02T03:04:05Z",
+			"assets": []map[string]any{
+				{"id": 42, "name": "package.zip", "updated_at": "2024-01-02T04:00:00Z"},
+			},
+		})
+	})
+	mux.HandleFunc("/api/v3/repos/o/r/git/ref/tags/v1.0.0", func(w http.ResponseWriter, r *http.Request) {
+		n := tagHits.Add(1)
+		if n < 3 {
+			w.WriteHeader(http.StatusInternalServerError)
+			_, _ = w.Write([]byte(`{"message":"Internal Server Error"}`))
+			return
+		}
+		w.Header().Set("Content-Type", "application/json")
+		_ = json.NewEncoder(w).Encode(map[string]any{
+			"ref": "refs/tags/v1.0.0",
+			"object": map[string]any{
+				"type": "commit",
+				"sha":  "abc123def456",
+			},
+		})
+	})
+
+	srv := httptest.NewServer(mux)
+	t.Cleanup(srv.Close)
+
+	client, err := github.NewClient(github.WithEnterpriseURLs(srv.URL, srv.URL))
+	if err != nil {
+		t.Fatalf("NewClient: %v", err)
+	}
+
+	info, err := FetchLatestRelease(context.Background(), client, "o", "r")
+	if err != nil {
+		t.Fatalf("FetchLatestRelease: %v", err)
+	}
+	if got := tagHits.Load(); got != 3 {
+		t.Fatalf("tag ref hits = %d, want 3", got)
+	}
+	if info.CommitSHA != "abc123def456" {
+		t.Fatalf("CommitSHA = %q, want abc123def456", info.CommitSHA)
+	}
+}
+
+func TestFetchLatestReleasePersistentTag500(t *testing.T) {
+	oldLatestWait := latestRelease404RetryWait
+	oldLatestMax := latestRelease404MaxAttempts
+	oldTagWait := releaseTagResolveRetryWait
+	oldTagMax := releaseTagResolveMaxAttempts
+	latestRelease404RetryWait = 0
+	latestRelease404MaxAttempts = 1
+	releaseTagResolveRetryWait = 0
+	releaseTagResolveMaxAttempts = 3
+	t.Cleanup(func() {
+		latestRelease404RetryWait = oldLatestWait
+		latestRelease404MaxAttempts = oldLatestMax
+		releaseTagResolveRetryWait = oldTagWait
+		releaseTagResolveMaxAttempts = oldTagMax
+	})
+
+	var tagHits atomic.Int32
+	mux := http.NewServeMux()
+	mux.HandleFunc("/api/v3/repos/o/r/releases/latest", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		_ = json.NewEncoder(w).Encode(map[string]any{
+			"id":           99,
+			"tag_name":     "v1.0.0",
+			"html_url":     "https://github.com/o/r/releases/tag/v1.0.0",
+			"published_at": "2024-01-02T03:04:05Z",
+			"assets": []map[string]any{
+				{"id": 42, "name": "package.zip", "updated_at": "2024-01-02T04:00:00Z"},
+			},
+		})
+	})
+	mux.HandleFunc("/api/v3/repos/o/r/git/ref/tags/v1.0.0", func(w http.ResponseWriter, r *http.Request) {
+		tagHits.Add(1)
+		w.WriteHeader(http.StatusInternalServerError)
+		_, _ = w.Write([]byte(`{"message":"Internal Server Error"}`))
+	})
+
+	srv := httptest.NewServer(mux)
+	t.Cleanup(srv.Close)
+
+	client, err := github.NewClient(github.WithEnterpriseURLs(srv.URL, srv.URL))
+	if err != nil {
+		t.Fatalf("NewClient: %v", err)
+	}
+
+	info, err := FetchLatestRelease(context.Background(), client, "o", "r")
+	if err == nil {
+		t.Fatal("expected error")
+	}
+	if !errors.Is(err, ErrReleaseTag) {
+		t.Fatalf("errors.Is(ErrReleaseTag) = false, err=%v", err)
+	}
+	if !IsGitHubServerError(err) {
+		t.Fatalf("want wrapped 500, err=%v", err)
+	}
+	if got := tagHits.Load(); got != 3 {
+		t.Fatalf("tag ref hits = %d, want 3", got)
+	}
+	if info.Tag != "v1.0.0" || info.PackageZipAssetID != 42 {
+		t.Fatalf("should retain release summary on tag resolve failure: %+v", info)
+	}
+}
+
+func TestFetchLatestReleaseRetriesTransientLatest500(t *testing.T) {
+	oldWait := latestRelease404RetryWait
+	oldMax := latestRelease404MaxAttempts
+	oldTagWait := releaseTagResolveRetryWait
+	oldTagMax := releaseTagResolveMaxAttempts
+	latestRelease404RetryWait = 0
+	latestRelease404MaxAttempts = 3
+	releaseTagResolveRetryWait = 0
+	releaseTagResolveMaxAttempts = 1
+	t.Cleanup(func() {
+		latestRelease404RetryWait = oldWait
+		latestRelease404MaxAttempts = oldMax
+		releaseTagResolveRetryWait = oldTagWait
+		releaseTagResolveMaxAttempts = oldTagMax
+	})
+
+	var latestHits atomic.Int32
+	mux := http.NewServeMux()
+	mux.HandleFunc("/api/v3/repos/o/r/releases/latest", func(w http.ResponseWriter, r *http.Request) {
+		n := latestHits.Add(1)
+		if n < 2 {
+			w.WriteHeader(http.StatusBadGateway)
+			_, _ = w.Write([]byte(`{"message":"Bad Gateway"}`))
+			return
+		}
+		w.Header().Set("Content-Type", "application/json")
+		_ = json.NewEncoder(w).Encode(map[string]any{
+			"id":           99,
+			"tag_name":     "v1.0.0",
+			"html_url":     "https://github.com/o/r/releases/tag/v1.0.0",
+			"published_at": "2024-01-02T03:04:05Z",
+			"assets": []map[string]any{
+				{"id": 42, "name": "package.zip", "updated_at": "2024-01-02T04:00:00Z"},
+			},
+		})
+	})
+	mux.HandleFunc("/api/v3/repos/o/r/git/ref/tags/v1.0.0", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		_ = json.NewEncoder(w).Encode(map[string]any{
+			"ref": "refs/tags/v1.0.0",
+			"object": map[string]any{
+				"type": "commit",
+				"sha":  "abc123def456",
+			},
+		})
+	})
+
+	srv := httptest.NewServer(mux)
+	t.Cleanup(srv.Close)
+
+	client, err := github.NewClient(github.WithEnterpriseURLs(srv.URL, srv.URL))
+	if err != nil {
+		t.Fatalf("NewClient: %v", err)
+	}
+
+	info, err := FetchLatestRelease(context.Background(), client, "o", "r")
+	if err != nil {
+		t.Fatalf("FetchLatestRelease: %v", err)
+	}
+	if got := latestHits.Load(); got != 2 {
+		t.Fatalf("latest release hits = %d, want 2", got)
+	}
+	if info.CommitSHA != "abc123def456" {
+		t.Fatalf("CommitSHA = %q", info.CommitSHA)
+	}
+}

@@ -118,3 +118,51 @@ func TestIsGitHubNotFound(t *testing.T) {
 		})
 	}
 }
+
+func TestIsGitHubServerError(t *testing.T) {
+	serverErr := &github.ErrorResponse{
+		Response: &http.Response{StatusCode: http.StatusInternalServerError, Request: &http.Request{Method: http.MethodGet}},
+		Message:  "Internal Server Error",
+	}
+	badGateway := &github.ErrorResponse{
+		Response: &http.Response{StatusCode: http.StatusBadGateway, Request: &http.Request{Method: http.MethodGet}},
+		Message:  "Bad Gateway",
+	}
+	notFound := &github.ErrorResponse{
+		Response: &http.Response{StatusCode: http.StatusNotFound, Request: &http.Request{Method: http.MethodGet}},
+		Message:  "Not Found",
+	}
+
+	tests := []struct {
+		name string
+		err  error
+		want bool
+	}{
+		{name: "nil", err: nil, want: false},
+		{name: "普通错误", err: errors.New("boom"), want: false},
+		{name: "ErrorResponse 500", err: serverErr, want: true},
+		{name: "ErrorResponse 502", err: badGateway, want: true},
+		{name: "ErrorResponse 404", err: notFound, want: false},
+		{
+			name: "LocalizedError 包装 500",
+			err: rules.LocalizedErr(
+				"无法解析 Release 标签",
+				"Couldn't resolve release tag",
+				fmt.Errorf("%w: %w", ErrReleaseTag, serverErr),
+			),
+			want: true,
+		},
+		{
+			name: "纯字符串 500 不误判",
+			err:  errors.New("500 Internal Server Error"),
+			want: false,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := IsGitHubServerError(tt.err); got != tt.want {
+				t.Fatalf("IsGitHubServerError() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
