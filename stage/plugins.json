@@ -1,7 +1,124 @@
 {
   "repos": [
     {
-      "installSize": 115605,
+      "installSize": 256793,
+      "openIssues": 5,
+      "package": {
+        "author": "Misuzu2027",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "en_US": "This plugin operates differently from the built-in block-level queries of the system. It conducts searches on a document basis.",
+          "zh_CN": "这个插件与系统内置的块级别查询不同，它以文档为单位进行查询。"
+        },
+        "displayName": {
+          "default": "基于文档搜索",
+          "en_US": "Document Search"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "document",
+          "search",
+          "query",
+          "文档",
+          "查询",
+          "搜索"
+        ],
+        "minAppVersion": "2.10.14",
+        "name": "syplugin-document-search",
+        "readme": {
+          "default": "README_zh_CN.md",
+          "en_US": "README.md"
+        },
+        "url": "https://github.com/Misuzu2027/syplugin-document-search",
+        "version": "0.11.4"
+      },
+      "packageZipAssetId": 492859334,
+      "size": 133057,
+      "stars": 21,
+      "updated": "2026-07-28T15:15:58Z",
+      "url": "Misuzu2027/syplugin-document-search@30a5eaa04228e81a1ec907da3d79ed4b627574c2"
+    },
+    {
+      "installSize": 240677,
+      "openIssues": 0,
+      "package": {
+        "author": "acornyio",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Sync your Acorny highlights into SiYuan notes.",
+          "zh-CN": "将 Acorny 高亮单向同步进思源笔记。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Acorny Sync",
+          "zh-CN": "Acorny 高亮同步"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "acorny",
+          "highlight",
+          "sync",
+          "readwise"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-note-sync",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/acornyio/siyuan-note-sync",
+        "version": "1.2.0"
+      },
+      "packageZipAssetId": 492779890,
+      "size": 207191,
+      "stars": 0,
+      "updated": "2026-07-28T13:56:53Z",
+      "url": "acornyio/siyuan-note-sync@136d645d9d507b3653bf84307a4f4d0b37017be6"
+    },
+    {
+      "installSize": 220572,
+      "openIssues": 2,
+      "package": {
+        "author": "OpaqueGlass",
+        "description": {
+          "default": "Add a doc-breadcrumb",
+          "en_US": "Add a document breadcrumb. Add document path information that can be jumped to at the top of the editing area.",
+          "zh_CN": "再添加一个文档面包屑：在编辑区域顶部添加可跳转的文档路径信息导航条"
+        },
+        "displayName": {
+          "default": "fakeDocBreadcrumb",
+          "en_US": "Fake Doc Breadcrumb",
+          "zh_CN": "(伪)文档面包屑"
+        },
+        "funding": {
+          "custom": [
+            "https://wj.qq.com/s2/12395364/b69f/"
+          ]
+        },
+        "name": "syplugin-fakeDocBreadcrumb",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/OpaqueGlass/syplugin-fakeDocBreadcrumb",
+        "version": "1.5.1"
+      },
+      "packageZipAssetId": 492756759,
+      "size": 88153,
+      "stars": 9,
+      "updated": "2026-07-28T13:35:08Z",
+      "url": "OpaqueGlass/syplugin-fakeDocBreadcrumb@a4df2f94dfdec0b85aa483b38bb7cb3976cb8521"
+    },
+    {
+      "installSize": 115211,
       "openIssues": 0,
       "package": {
         "author": "Acetab",
@@ -42,13 +159,93 @@
           "zh-CN": "README.zh-CN.md"
         },
         "url": "https://github.com/Acetab/siyuan-table-merge",
-        "version": "0.1.5"
+        "version": "0.1.6"
       },
-      "packageZipAssetId": 492709862,
-      "size": 74808,
+      "packageZipAssetId": 492744447,
+      "size": 74398,
       "stars": 0,
-      "updated": "2026-07-28T13:09:04Z",
-      "url": "Acetab/siyuan-table-merge@23872dff9d3ba8bec54f64e38fc90634abaf1bca"
+      "updated": "2026-07-28T13:21:44Z",
+      "url": "Acetab/siyuan-table-merge@78548f52843da9e0ac3d014046c4fe1bfa97729b"
+    },
+    {
+      "installSize": 2158231,
+      "openIssues": 5,
+      "package": {
+        "author": "alone-tree",
+        "backends": [
+          "windows",
+          "darwin",
+          "linux"
+        ],
+        "description": {
+          "default": "Lean, fast, and hassle-free SiYuan MCP tool.",
+          "zh-CN": "精简、高效、省心的思源笔记 MCP 工具。"
+        },
+        "displayName": {
+          "default": "Siyuan Bridge",
+          "zh-CN": "思源桥"
+        },
+        "frontends": [
+          "desktop"
+        ],
+        "keywords": [
+          "siyuan",
+          "mcp",
+          "ai",
+          "knowledge-base"
+        ],
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-bridge",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/alone-tree/siyuan-bridge",
+        "version": "1.2.0"
+      },
+      "packageZipAssetId": 492734125,
+      "size": 1608576,
+      "stars": 9,
+      "updated": "2026-07-28T13:11:50Z",
+      "url": "alone-tree/siyuan-bridge@45e1e7f97fb71d30ec434a4bc745e73bcfea0395"
+    },
+    {
+      "installSize": 494441,
+      "openIssues": 0,
+      "package": {
+        "author": "itdh",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Key-Buddy: Your smart, local password companion",
+          "zh_CN": "密友：您的智能本地密码管家"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Key-Buddy",
+          "zh_CN": "密友"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "password"
+        ],
+        "minAppVersion": "3.7.2",
+        "name": "siyuan-plugin-key-buddy",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/itdh/siyuan-plugin-key-buddy",
+        "version": "0.1.1"
+      },
+      "packageZipAssetId": 492725911,
+      "size": 198383,
+      "stars": 0,
+      "updated": "2026-07-28T13:03:38Z",
+      "url": "itdh/siyuan-plugin-key-buddy@70dd29694029fa27f9d74e6b6ace2022e8d9707e"
     },
     {
       "installSize": 293511,
@@ -277,44 +474,6 @@
       "stars": 3,
       "updated": "2026-07-28T11:57:39Z",
       "url": "Zuoqiu-Yingyi/siyuan-plugin-typewriter@b3c1675c5e51302d1620a48a1771ac22ccda8aec"
-    },
-    {
-      "installSize": 491558,
-      "openIssues": 0,
-      "package": {
-        "author": "itdh",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Key-Buddy: Your smart, local password companion",
-          "zh_CN": "密友：您的智能本地密码管家"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Key-Buddy",
-          "zh_CN": "密友"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "password"
-        ],
-        "minAppVersion": "3.7.2",
-        "name": "siyuan-plugin-key-buddy",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/itdh/siyuan-plugin-key-buddy",
-        "version": "0.1.0"
-      },
-      "packageZipAssetId": 492563054,
-      "size": 197458,
-      "stars": 0,
-      "updated": "2026-07-28T10:49:51Z",
-      "url": "itdh/siyuan-plugin-key-buddy@98f0e21f50edce73bea54494f3d948fea0820c38"
     },
     {
       "installSize": 252153,
@@ -862,47 +1021,6 @@
       "stars": 151,
       "updated": "2026-07-28T01:29:34Z",
       "url": "Achuan-2/siyuan-plugin-copilot@9154053faabc014ad3e336f57bde1c0e8de234c6"
-    },
-    {
-      "installSize": 72435,
-      "openIssues": 0,
-      "package": {
-        "author": "acornyio",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Sync your Acorny highlights into SiYuan notes.",
-          "zh-CN": "将 Acorny 高亮单向同步进思源笔记。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Acorny Sync",
-          "zh-CN": "Acorny 高亮同步"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "acorny",
-          "highlight",
-          "sync",
-          "readwise"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-note-sync",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/acornyio/siyuan-note-sync",
-        "version": "1.1.0"
-      },
-      "packageZipAssetId": 491707714,
-      "size": 36990,
-      "stars": 0,
-      "updated": "2026-07-27T17:19:42Z",
-      "url": "acornyio/siyuan-note-sync@c8db43d42f26224e56143d429cce16805167df70"
     },
     {
       "installSize": 1664009,
@@ -1673,48 +1791,6 @@
       "url": "LunaNorth/siyuan-lumina@06f914aa8636a4fcca15761b9d8efa9a679307cc"
     },
     {
-      "installSize": 2140125,
-      "openIssues": 5,
-      "package": {
-        "author": "alone-tree",
-        "backends": [
-          "windows",
-          "darwin",
-          "linux"
-        ],
-        "description": {
-          "default": "Lean, fast, and hassle-free SiYuan MCP tool.",
-          "zh-CN": "精简、高效、省心的思源笔记 MCP 工具。"
-        },
-        "displayName": {
-          "default": "Siyuan Bridge",
-          "zh-CN": "思源桥"
-        },
-        "frontends": [
-          "desktop"
-        ],
-        "keywords": [
-          "siyuan",
-          "mcp",
-          "ai",
-          "knowledge-base"
-        ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-bridge",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/alone-tree/siyuan-bridge",
-        "version": "1.0.5"
-      },
-      "packageZipAssetId": 490437765,
-      "size": 1604124,
-      "stars": 9,
-      "updated": "2026-07-26T14:51:41Z",
-      "url": "alone-tree/siyuan-bridge@b251973dd5ec69249cc56738512a28e5bf04f992"
-    },
-    {
       "installSize": 1907362,
       "openIssues": 0,
       "package": {
@@ -2190,40 +2266,6 @@
       "stars": 2,
       "updated": "2026-07-24T15:12:25Z",
       "url": "QMike0/siyuan-plugin-callout-enhance@9b6622606dc068c21ab1bec34691d9b67693a1a2"
-    },
-    {
-      "installSize": 220583,
-      "openIssues": 3,
-      "package": {
-        "author": "OpaqueGlass",
-        "description": {
-          "default": "Add a doc-breadcrumb",
-          "en_US": "Add a document breadcrumb. Add document path information that can be jumped to at the top of the editing area.",
-          "zh_CN": "再添加一个文档面包屑：在编辑区域顶部添加可跳转的文档路径信息导航条"
-        },
-        "displayName": {
-          "default": "fakeDocBreadcrumb",
-          "en_US": "Fake Doc Breadcrumb",
-          "zh_CN": "(伪)文档面包屑"
-        },
-        "funding": {
-          "custom": [
-            "https://wj.qq.com/s2/12395364/b69f/"
-          ]
-        },
-        "name": "syplugin-fakeDocBreadcrumb",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/OpaqueGlass/syplugin-fakeDocBreadcrumb",
-        "version": "1.5.0"
-      },
-      "packageZipAssetId": 488458111,
-      "size": 88187,
-      "stars": 9,
-      "updated": "2026-07-24T13:52:49Z",
-      "url": "OpaqueGlass/syplugin-fakeDocBreadcrumb@dee3295c7892a2608cc598a7aa445710bdadeb85"
     },
     {
       "installSize": 173515,
@@ -13146,47 +13188,6 @@
       "stars": 57,
       "updated": "2025-07-21T04:37:49Z",
       "url": "terwer/siyuan-plugin-blog@4725e2cbfb182b56abbd6fcbc61423bf06e4a534"
-    },
-    {
-      "installSize": 256827,
-      "openIssues": 5,
-      "package": {
-        "author": "Misuzu2027",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "en_US": "This plugin operates differently from the built-in block-level queries of the system. It conducts searches on a document basis.",
-          "zh_CN": "这个插件与系统内置的块级别查询不同，它以文档为单位进行查询。"
-        },
-        "displayName": {
-          "default": "基于文档搜索",
-          "en_US": "Document Search"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "document",
-          "search",
-          "query",
-          "文档",
-          "查询",
-          "搜索"
-        ],
-        "minAppVersion": "2.10.14",
-        "name": "syplugin-document-search",
-        "readme": {
-          "default": "README_zh_CN.md",
-          "en_US": "README.md"
-        },
-        "url": "https://github.com/Misuzu2027/syplugin-document-search",
-        "version": "0.11.3"
-      },
-      "size": 133064,
-      "stars": 21,
-      "updated": "2025-07-15T14:30:26Z",
-      "url": "Misuzu2027/syplugin-document-search@2c8549a90a3a2b8cce7f489f9d729e2575f08a9d"
     },
     {
       "installSize": 343200,
