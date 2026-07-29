@@ -46,7 +46,7 @@ type selectCandidate struct {
 	checkedAt time.Time
 }
 
-// runSelect 定时 / 手动复检：筛选待完整检查的非 ci-passed PR，写入 GITHUB_OUTPUT matrix。
+// runSelect 定时 / 手动复检：先关超龄 ci-failed，再筛选待完整检查的非 ci-passed PR，写入 GITHUB_OUTPUT matrix。
 func runSelect() {
 	logger.Infof("PR Check select started")
 
@@ -87,6 +87,9 @@ func runSelect() {
 		logger.Fatalf("list non-ci-passed PRs failed: %s", err)
 	}
 	logger.Infof("open non-ci-passed PRs: %d (force=%v limit=%d)", len(prs), forceAll, limit)
+
+	// 复用同一次 list：先关超龄 ci-failed，再对剩余 PR 做指纹 / 退避筛选
+	prs = closeStaleCIFailedPRs(githubContext, githubRepoClient, owner, repo, prs, now, staleCIFailedAge)
 
 	candidates := make([]selectCandidate, 0, len(prs))
 	for _, pr := range prs {
