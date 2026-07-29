@@ -116,7 +116,7 @@ func TestCloseStaleTemplate(t *testing.T) {
 			"打开一个新的拉取请求",
 			"open a new pull request",
 			"ci-skip",
-			"<small>",
+			"<sub>",
 		} {
 			if !strings.Contains(out, want) {
 				t.Fatalf("output missing %q\n%s", want, out)

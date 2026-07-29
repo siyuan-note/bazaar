@@ -11,5 +11,5 @@ This pull request has been open for more than {{ .Days }} days and still has the
 
 Please fix the issues from the check comments first, then **open a new pull request**.
 
-<small>若维护者需要保留本 PR 不被自动关闭，请打上 `ci-skip` 标签。</small>
-<small>If maintainers need to keep this PR open without auto-close, please add the `ci-skip` label.</small>
+<sub>若维护者需要保留本 PR 不被自动关闭，请打上 `ci-skip` 标签。</sub>
+<sub>If maintainers need to keep this PR open without auto-close, please add the `ci-skip` label.</sub>
