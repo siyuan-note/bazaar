@@ -41,8 +41,8 @@ func isBlacklistedPath(p string) bool {
 	return p == util.ThemeJsAllowlistRelPath || p == "stage" || strings.HasPrefix(p, "stage/")
 }
 
-// classifyPRFiles 将本 PR 变更路径分为黑名单与白名单（其余为灰区，忽略）；黑名单优先。
-func classifyPRFiles(paths []string) (black, white []string) {
+// classifyPRFiles 将本 PR 变更路径分为黑名单、白名单与灰区；黑名单优先于白名单。
+func classifyPRFiles(paths []string) (black, white, other []string) {
 	for _, raw := range paths {
 		p := normalizeRepoRelPath(raw)
 		if p == "" {
@@ -53,12 +53,14 @@ func classifyPRFiles(paths []string) (black, white []string) {
 			black = append(black, p)
 		case isWhitelistedPath(p):
 			white = append(white, p)
+		default:
+			other = append(other, p)
 		}
 	}
-	return black, white
+	return black, white, other
 }
 
-// formatBlacklistFlowError 返回命中黑名单时的固定双语 FlowError 正文。
+// formatBlacklistFlowError 返回命中黑名单、或白名单与其它文件混改时的固定双语 FlowError 正文。
 func formatBlacklistFlowError() string {
 	return "本 PR 修改了不允许直接改动的文件。集市包列表更新请只编辑仓库根目录的五个列表文件（`plugins.txt` / `themes.txt` / `icons.txt` / `templates.txt` / `widgets.txt`），每行一个 `owner/repo`，然后推送到本 PR。\n\n" +
 		"This PR modifies files that must not be changed directly. To update the bazaar package list, edit only the five list files at the repo root (`plugins.txt` / `themes.txt` / `icons.txt` / `templates.txt` / `widgets.txt`), one `owner/repo` per line, then push to this PR.\n"

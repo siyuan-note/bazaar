@@ -34,8 +34,8 @@ import (
 路径黑白名单（最先执行）：
 1. git diff（PR merge base → head）得到变更文件
 2. 黑名单（stage/**、config/themes-theme-js-allowlist.txt）：写 FlowError，跳过包检查
-3. 白名单（五个 *.txt）：进入下方 Diff / Check；灰区文件忽略
-4. 同改黑+白：优先黑名单；无白名单改动：不跑包检查（模板「无实际变更」，ci-failed）
+3. 白名单（五个 *.txt）：进入下方 Diff / Check；若同时改了白名单以外的文件则 FlowError
+4. 同改黑+白：优先黑名单；无白名单改动（含纯灰区）：不跑包检查（模板「无实际变更」，ci-failed）
 
 Diff 流程（以 plugins.txt 为例）：
 1. 签出 bazaar head（主分支最新）：读 plugins.txt，得到 bazaar head 的 owner/repo 集合，用于过滤
@@ -175,14 +175,18 @@ func main() {
 	if err != nil {
 		logger.Fatalf("list PR changed files failed: %s", err)
 	}
-	blackFiles, whiteFiles := classifyPRFiles(changedFiles)
-	logger.Infof("PR path scope: changed=%d black=%d white=%d", len(changedFiles), len(blackFiles), len(whiteFiles))
+	blackFiles, whiteFiles, otherFiles := classifyPRFiles(changedFiles)
+	logger.Infof("PR path scope: changed=%d black=%d white=%d other=%d", len(changedFiles), len(blackFiles), len(whiteFiles), len(otherFiles))
 
 	switch {
 	case len(blackFiles) > 0:
 		// 黑名单优先：固定 FlowError，跳过包列表 diff 与包检查
 		checkResult.FlowError = formatBlacklistFlowError()
 		logger.Errorf("blacklisted path changes: %s", strings.Join(blackFiles, ", "))
+	case len(whiteFiles) > 0 && len(otherFiles) > 0:
+		// 改了列表文件时不允许再改其它路径（例如 .github/workflows）
+		checkResult.FlowError = formatBlacklistFlowError()
+		logger.Errorf("whitelist changes mixed with other paths: %s", strings.Join(otherFiles, ", "))
 	case len(whiteFiles) > 0:
 		var parseErrorBuilder strings.Builder
 
