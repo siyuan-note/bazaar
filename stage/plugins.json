@@ -1,6 +1,144 @@
 {
   "repos": [
     {
+      "installSize": 1355758,
+      "openIssues": 0,
+      "package": {
+        "author": "mm-o",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A cloud-drive aggregation manager for SiYuan: mount 25+ cloud drives and disks, preview 300+ formats, work with SiYuan Reader/Media Player, share online, insert file links, and use cloud files as image/video beds without filling your workspace.",
+          "zh_CN": "思源网盘聚合管理器：支持 25+ 网盘和磁盘挂载、300+ 文件格式预览，联动思阅和思播，在线分享、文件链接插入文档、图床/视频文件床一站完成，让远程文件随时可用，思源空间 0 负担。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Cloud Drive Manager",
+          "zh_CN": "思盘"
+        },
+        "frontends": [
+          "all"
+        ],
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "思盘",
+          "cloud drive",
+          "file manager",
+          "openlist",
+          "media",
+          "s3",
+          "kernel plugin",
+          "webdav"
+        ],
+        "minAppVersion": "3.6.5",
+        "name": "siyuan-cloud",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/mm-o/siyuan-cloud",
+        "version": "0.7.1"
+      },
+      "packageZipAssetId": 495409471,
+      "size": 455247,
+      "stars": 4,
+      "updated": "2026-07-30T13:40:17Z",
+      "url": "mm-o/siyuan-cloud@e9490d55784ec89b8884d3096fc0f49cb610ebc3"
+    },
+    {
+      "installSize": 1686904,
+      "openIssues": 0,
+      "package": {
+        "author": "Dilyar",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Manage your physical items, memberships, and prepaid benefits in one place — see what&#39;s active and what&#39;s retired, automatically calculate daily cost and depreciation, see expiry badges before memberships expire, keep a wishlist, browse category reports, and convert between CNY and USD, with Markdown notes, tags, maintenance and usage records, and Markdown export.",
+          "zh-CN": "在一处管理你的实物、会员和预付权益：看清哪些在役、哪些已退役，自动计算日均成本与折旧，会员到期前显示醒目徽章，记录想买清单，浏览分类报表，并支持人民币/美元换算、Markdown 备注、标签、维保与使用记录以及 Markdown 导出。"
+        },
+        "displayName": {
+          "default": "Asset Management",
+          "zh-CN": "资产管理"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "asset",
+          "资产管理",
+          "tracker",
+          "inventory",
+          "折旧"
+        ],
+        "minAppVersion": "3.0.12",
+        "name": "siyuan-plugin-asset-management",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/DilyarEziz/siyuan-plugin-asset-management",
+        "version": "1.5.0"
+      },
+      "packageZipAssetId": 495367985,
+      "size": 520710,
+      "stars": 3,
+      "updated": "2026-07-30T12:59:16Z",
+      "url": "DilyarEziz/siyuan-plugin-asset-management@60ee2bcd5fd62ab25d41b46b874a6530d2ab970c"
+    },
+    {
+      "installSize": 333454,
+      "openIssues": 2,
+      "package": {
+        "author": "notesynchelper",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "从微信同步到思源笔记，支持文字、图片、聊天记录、文章"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "笔记同步助手"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "wechat",
+          "template",
+          "企微",
+          "模板",
+          "微信",
+          "速记",
+          "剪藏",
+          "搜集",
+          "日记",
+          "闪念",
+          "memo",
+          "备忘",
+          "公众号",
+          "小红书",
+          "得到"
+        ],
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-notehelper",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/notesynchelper/siyuan-notehelper",
+        "version": "1.8.19"
+      },
+      "packageZipAssetId": 495268500,
+      "size": 153499,
+      "stars": 2,
+      "updated": "2026-07-30T11:10:14Z",
+      "url": "notesynchelper/siyuan-notehelper@7eb07f489273a7f998c201fa5edf21caa4ddfd01"
+    },
+    {
       "installSize": 131312,
       "openIssues": 0,
       "package": {
@@ -168,95 +306,6 @@
       "stars": 0,
       "updated": "2026-07-30T05:32:08Z",
       "url": "yanxuwei666/siyuan-export@5f4f2167542e0b1594431a607ae34bef956d5059"
-    },
-    {
-      "installSize": 1668500,
-      "openIssues": 0,
-      "package": {
-        "author": "Dilyar",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Manage your physical items, memberships, and prepaid benefits in one place — see what&#39;s active and what&#39;s retired, automatically calculate daily cost and depreciation, see expiry badges before memberships expire, keep a wishlist, browse category reports, and convert between CNY and USD, with Markdown notes, tags, maintenance and usage records, and Markdown export.",
-          "zh-CN": "在一处管理你的实物、会员和预付权益：看清哪些在役、哪些已退役，自动计算日均成本与折旧，会员到期前显示醒目徽章，记录想买清单，浏览分类报表，并支持人民币/美元换算、Markdown 备注、标签、维保与使用记录以及 Markdown 导出。"
-        },
-        "displayName": {
-          "default": "Asset Management",
-          "zh-CN": "资产管理"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "asset",
-          "资产管理",
-          "tracker",
-          "inventory",
-          "折旧"
-        ],
-        "minAppVersion": "3.0.12",
-        "name": "siyuan-plugin-asset-management",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/DilyarEziz/siyuan-plugin-asset-management",
-        "version": "1.4.0"
-      },
-      "packageZipAssetId": 494863979,
-      "size": 514490,
-      "stars": 3,
-      "updated": "2026-07-30T03:31:07Z",
-      "url": "DilyarEziz/siyuan-plugin-asset-management@6da9ffa85d4c1c5bcceae939f40ec0489260a3aa"
-    },
-    {
-      "installSize": 1349061,
-      "openIssues": 0,
-      "package": {
-        "author": "mm-o",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Cloud-drive aggregation manager for SiYuan: file viewing, media playback, reading annotations, image-hosting links, and more.",
-          "zh_CN": "思源网盘聚合管理器，支持网盘文件查看、媒体播放、阅读批注、图床直链等能力，更多玩法期待你的探索。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Cloud Drive Manager",
-          "zh_CN": "思盘"
-        },
-        "frontends": [
-          "all"
-        ],
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "思盘",
-          "cloud drive",
-          "file manager",
-          "openlist",
-          "media",
-          "s3",
-          "kernel plugin",
-          "webdav"
-        ],
-        "minAppVersion": "3.6.5",
-        "name": "siyuan-cloud",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/mm-o/siyuan-cloud",
-        "version": "0.7.0"
-      },
-      "packageZipAssetId": 494858973,
-      "size": 453118,
-      "stars": 4,
-      "updated": "2026-07-30T03:25:56Z",
-      "url": "mm-o/siyuan-cloud@442b63905002c6d1970db1124451ec91aa5808ec"
     },
     {
       "installSize": 265571,
@@ -1144,55 +1193,6 @@
       "stars": 13,
       "updated": "2026-07-29T03:22:19Z",
       "url": "Misuzu2027/syplugin-backlink-panel@97b9ff5d542c75936fd2928310c50749a2efcd85"
-    },
-    {
-      "installSize": 333454,
-      "openIssues": 2,
-      "package": {
-        "author": "notesynchelper",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "从微信同步到思源笔记，支持文字、图片、聊天记录、文章"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "笔记同步助手"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "wechat",
-          "template",
-          "企微",
-          "模板",
-          "微信",
-          "速记",
-          "剪藏",
-          "搜集",
-          "日记",
-          "闪念",
-          "memo",
-          "备忘",
-          "公众号",
-          "小红书",
-          "得到"
-        ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-notehelper",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/notesynchelper/siyuan-notehelper",
-        "version": "1.8.18"
-      },
-      "packageZipAssetId": 493495302,
-      "size": 153500,
-      "stars": 2,
-      "updated": "2026-07-29T02:43:23Z",
-      "url": "notesynchelper/siyuan-notehelper@ccd3d99f4793d28242dcf92e5430b130a6c88647"
     },
     {
       "installSize": 111386,
