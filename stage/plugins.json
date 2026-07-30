@@ -44,6 +44,145 @@
       "url": "yanxuwei666/siyuan-export@5f4f2167542e0b1594431a607ae34bef956d5059"
     },
     {
+      "installSize": 1668500,
+      "openIssues": 0,
+      "package": {
+        "author": "Dilyar",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Manage your physical items, memberships, and prepaid benefits in one place — see what&#39;s active and what&#39;s retired, automatically calculate daily cost and depreciation, see expiry badges before memberships expire, keep a wishlist, browse category reports, and convert between CNY and USD, with Markdown notes, tags, maintenance and usage records, and Markdown export.",
+          "zh-CN": "在一处管理你的实物、会员和预付权益：看清哪些在役、哪些已退役，自动计算日均成本与折旧，会员到期前显示醒目徽章，记录想买清单，浏览分类报表，并支持人民币/美元换算、Markdown 备注、标签、维保与使用记录以及 Markdown 导出。"
+        },
+        "displayName": {
+          "default": "Asset Management",
+          "zh-CN": "资产管理"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "asset",
+          "资产管理",
+          "tracker",
+          "inventory",
+          "折旧"
+        ],
+        "minAppVersion": "3.0.12",
+        "name": "siyuan-plugin-asset-management",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/DilyarEziz/siyuan-plugin-asset-management",
+        "version": "1.4.0"
+      },
+      "packageZipAssetId": 494863979,
+      "size": 514490,
+      "stars": 3,
+      "updated": "2026-07-30T03:31:07Z",
+      "url": "DilyarEziz/siyuan-plugin-asset-management@6da9ffa85d4c1c5bcceae939f40ec0489260a3aa"
+    },
+    {
+      "installSize": 1349061,
+      "openIssues": 0,
+      "package": {
+        "author": "mm-o",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Cloud-drive aggregation manager for SiYuan: file viewing, media playback, reading annotations, image-hosting links, and more.",
+          "zh_CN": "思源网盘聚合管理器，支持网盘文件查看、媒体播放、阅读批注、图床直链等能力，更多玩法期待你的探索。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Cloud Drive Manager",
+          "zh_CN": "思盘"
+        },
+        "frontends": [
+          "all"
+        ],
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "思盘",
+          "cloud drive",
+          "file manager",
+          "openlist",
+          "media",
+          "s3",
+          "kernel plugin",
+          "webdav"
+        ],
+        "minAppVersion": "3.6.5",
+        "name": "siyuan-cloud",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/mm-o/siyuan-cloud",
+        "version": "0.7.0"
+      },
+      "packageZipAssetId": 494858973,
+      "size": 453118,
+      "stars": 4,
+      "updated": "2026-07-30T03:25:56Z",
+      "url": "mm-o/siyuan-cloud@442b63905002c6d1970db1124451ec91aa5808ec"
+    },
+    {
+      "installSize": 265571,
+      "openIssues": 0,
+      "package": {
+        "author": "QMike0",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Provide search and replace functionality for most visible text within document pages in SiYuan (with support for undo &amp; redo), along with block-level type control and separate search for inline elements",
+          "zh-CN": "为思源笔记提供文档页面内绝大多数可见文字的搜索、替换功能（支持撤销&amp;重做），并支持块级类型的控制与行内元素的单独搜索"
+        },
+        "displayName": {
+          "default": "In-Page Search &amp; Replace",
+          "zh-CN": "页内搜索替换"
+        },
+        "frontends": [
+          "all"
+        ],
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "Ctrl+F",
+          "Ctrl+H",
+          "highlight",
+          "search",
+          "replace",
+          "页内搜索",
+          "搜索",
+          "查询",
+          "查找",
+          "高亮",
+          "替换"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-page-search-replace",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/QMike0/siyuan-plugin-page-search",
+        "version": "1.0.4"
+      },
+      "packageZipAssetId": 494832021,
+      "size": 85371,
+      "stars": 1,
+      "updated": "2026-07-30T02:55:29Z",
+      "url": "QMike0/siyuan-plugin-page-search@f1b212babb6d4fd92ad0f0bbb987bee79a682caf"
+    },
+    {
       "installSize": 2220863,
       "openIssues": 0,
       "package": {
@@ -1072,47 +1211,6 @@
       "url": "cyprien63/siyuan-plugin@ea7de239f70b7756d09a078dd3086d7f757acb82"
     },
     {
-      "installSize": 1644742,
-      "openIssues": 1,
-      "package": {
-        "author": "Dilyar",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Manage your physical items, memberships, and prepaid benefits in one place — see what&#39;s active and what&#39;s retired, automatically calculate daily cost and depreciation, see expiry badges before memberships expire, keep a wishlist, browse category reports, and convert between CNY and USD, with Markdown notes, tags, maintenance and usage records, and Markdown export.",
-          "zh-CN": "在一处管理你的实物、会员和预付权益：看清哪些在役、哪些已退役，自动计算日均成本与折旧，会员到期前显示醒目徽章，记录想买清单，浏览分类报表，并支持人民币/美元换算、Markdown 备注、标签、维保与使用记录以及 Markdown 导出。"
-        },
-        "displayName": {
-          "default": "Asset Management",
-          "zh-CN": "资产管理"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "asset",
-          "资产管理",
-          "tracker",
-          "inventory",
-          "折旧"
-        ],
-        "minAppVersion": "3.0.12",
-        "name": "siyuan-plugin-asset-management",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/DilyarEziz/siyuan-plugin-asset-management",
-        "version": "1.3.0"
-      },
-      "packageZipAssetId": 492988771,
-      "size": 506434,
-      "stars": 2,
-      "updated": "2026-07-28T17:29:08Z",
-      "url": "DilyarEziz/siyuan-plugin-asset-management@ab8ae75baef5964fdf317261063130d4acfb0f82"
-    },
-    {
       "installSize": 256793,
       "openIssues": 5,
       "package": {
@@ -1556,56 +1654,6 @@
       "stars": 0,
       "updated": "2026-07-28T08:10:43Z",
       "url": "tianxia704/siyuan-plugin-left-shortcuts@8573feda0d1620444f641b48e8e177ec47e46bfa"
-    },
-    {
-      "installSize": 265455,
-      "openIssues": 0,
-      "package": {
-        "author": "QMike0",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Provide search and replace functionality for most visible text within document pages in SiYuan (with support for undo &amp; redo), along with block-level type control and separate search for inline elements",
-          "zh-CN": "为思源笔记提供文档页面内绝大多数可见文字的搜索、替换功能（支持撤销&amp;重做），并支持块级类型的控制与行内元素的单独搜索"
-        },
-        "displayName": {
-          "default": "In-Page Search &amp; Replace",
-          "zh-CN": "页内搜索替换"
-        },
-        "frontends": [
-          "all"
-        ],
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "Ctrl+F",
-          "Ctrl+H",
-          "highlight",
-          "search",
-          "replace",
-          "页内搜索",
-          "搜索",
-          "查询",
-          "查找",
-          "高亮",
-          "替换"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-page-search-replace",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/QMike0/siyuan-plugin-page-search",
-        "version": "1.0.3"
-      },
-      "packageZipAssetId": 492218899,
-      "size": 85339,
-      "stars": 0,
-      "updated": "2026-07-28T07:08:23Z",
-      "url": "QMike0/siyuan-plugin-page-search@fa2f86f08da84f435a3ce63f83cbee14c72bb4d1"
     },
     {
       "installSize": 752442,
@@ -2060,54 +2108,6 @@
       "stars": 28,
       "updated": "2026-07-27T11:35:56Z",
       "url": "Glaube-TY/siyuan-douban@b089fa9be5fc78127bafbe43d970a121c7b2a719"
-    },
-    {
-      "installSize": 1413690,
-      "openIssues": 0,
-      "package": {
-        "author": "mm-o",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Cloud-drive aggregation manager for SiYuan: file viewing, media playback, reading annotations, image-hosting links, and more.",
-          "zh_CN": "思源网盘聚合管理器，支持网盘文件查看、媒体播放、阅读批注、图床直链等能力，更多玩法期待你的探索。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Cloud Drive Manager",
-          "zh_CN": "思盘"
-        },
-        "frontends": [
-          "all"
-        ],
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "思盘",
-          "cloud drive",
-          "file manager",
-          "openlist",
-          "media",
-          "s3",
-          "kernel plugin",
-          "webdav"
-        ],
-        "minAppVersion": "3.6.5",
-        "name": "siyuan-cloud",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/mm-o/siyuan-cloud",
-        "version": "0.6.2"
-      },
-      "packageZipAssetId": 491304887,
-      "size": 508938,
-      "stars": 4,
-      "updated": "2026-07-27T10:08:35Z",
-      "url": "mm-o/siyuan-cloud@1f375e258271b5d567196b4711ace21166d94288"
     },
     {
       "installSize": 661381,
