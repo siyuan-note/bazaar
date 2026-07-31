@@ -1,6 +1,102 @@
 {
   "repos": [
     {
+      "installSize": 144915,
+      "openIssues": 0,
+      "package": {
+        "author": "Acetab",
+        "backends": [
+          "windows"
+        ],
+        "description": {
+          "default": "Maintenance mode; prefer Table Master for general tables. This plugin only retains safe resource merging and link deduplication.",
+          "zh-CN": "维护模式；通用表格增强请优先使用「表哥」，本插件仅保留资源表安全合并与链接去重。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Table Merge",
+          "zh-CN": "表格合并"
+        },
+        "frontends": [
+          "desktop"
+        ],
+        "kernels": [
+          "windows"
+        ],
+        "keywords": [
+          "table",
+          "markdown",
+          "merge",
+          "AI",
+          "resource",
+          "link",
+          "表格",
+          "合并",
+          "资源整理",
+          "链接"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-table-merge",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/Acetab/siyuan-table-merge",
+        "version": "0.2.2"
+      },
+      "packageZipAssetId": 496580247,
+      "size": 82994,
+      "stars": 0,
+      "updated": "2026-07-31T10:46:32Z",
+      "url": "Acetab/siyuan-table-merge@e8c9e77e6e4c35cf866ffca41d85ab3696b0be73"
+    },
+    {
+      "installSize": 263827,
+      "openIssues": 0,
+      "package": {
+        "author": "Acetab",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Automatically fetch and cache favicons for SiYuan web links, with multiple sources, local monogram fallbacks, and smart compatibility with Link Icon.",
+          "zh-CN": "自动为思源网页链接获取并缓存网站图标，支持多来源、本地字母兜底，并可与「链接图标」插件智能配合。"
+        },
+        "displayName": {
+          "default": "Auto Favicon",
+          "zh-CN": "自动网站图标"
+        },
+        "frontends": [
+          "desktop",
+          "mobile"
+        ],
+        "keywords": [
+          "网站图标",
+          "自动图标",
+          "网页链接",
+          "外链",
+          "favicon",
+          "链接",
+          "link icon",
+          "website icon",
+          "Vibe Coding"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "auto-favicon",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/Acetab/auto-favicon",
+        "version": "0.5.7"
+      },
+      "packageZipAssetId": 496543323,
+      "size": 187354,
+      "stars": 0,
+      "updated": "2026-07-31T10:06:45Z",
+      "url": "Acetab/auto-favicon@502640a22c20cb3436766b9be29a3b8ae811279b"
+    },
+    {
       "installSize": 374874,
       "openIssues": 0,
       "package": {
@@ -190,102 +286,6 @@
       "stars": 9,
       "updated": "2026-07-31T06:43:46Z",
       "url": "HaoCeans/siyuan-toolbar-customizer@3c16d5d7e86455661d9af81eb206bf8493ff1b63"
-    },
-    {
-      "installSize": 262830,
-      "openIssues": 0,
-      "package": {
-        "author": "Acetab",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Automatically fetch and cache favicons for SiYuan web links, with multiple sources, local monogram fallbacks, and smart compatibility with Link Icon.",
-          "zh-CN": "自动为思源网页链接获取并缓存网站图标，支持多来源、本地字母兜底，并可与「链接图标」插件智能配合。"
-        },
-        "displayName": {
-          "default": "Auto Favicon",
-          "zh-CN": "自动网站图标"
-        },
-        "frontends": [
-          "desktop",
-          "mobile"
-        ],
-        "keywords": [
-          "网站图标",
-          "自动图标",
-          "网页链接",
-          "外链",
-          "favicon",
-          "链接",
-          "link icon",
-          "website icon",
-          "Vibe Coding"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "auto-favicon",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/Acetab/auto-favicon",
-        "version": "0.5.6"
-      },
-      "packageZipAssetId": 496262014,
-      "size": 187037,
-      "stars": 0,
-      "updated": "2026-07-31T04:58:56Z",
-      "url": "Acetab/auto-favicon@9b912177463b177db61ba0608d2a3d490feb8724"
-    },
-    {
-      "installSize": 143880,
-      "openIssues": 0,
-      "package": {
-        "author": "Acetab",
-        "backends": [
-          "windows"
-        ],
-        "description": {
-          "default": "Safely merge and deduplicate reviewed, same-schema resource tables, especially cloud-drive link tables.",
-          "zh-CN": "安全合并并去重人工复核过的同结构资源表，尤其适合网盘链接表。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Table Merge",
-          "zh-CN": "表格合并"
-        },
-        "frontends": [
-          "desktop"
-        ],
-        "kernels": [
-          "windows"
-        ],
-        "keywords": [
-          "table",
-          "markdown",
-          "merge",
-          "AI",
-          "resource",
-          "link",
-          "表格",
-          "合并",
-          "资源整理",
-          "链接"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-table-merge",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/Acetab/siyuan-table-merge",
-        "version": "0.2.1"
-      },
-      "packageZipAssetId": 496146743,
-      "size": 82509,
-      "stars": 0,
-      "updated": "2026-07-31T02:49:38Z",
-      "url": "Acetab/siyuan-table-merge@07396ed1a9a520ae6ad75adf42fee2063803bac1"
     },
     {
       "installSize": 60087,
