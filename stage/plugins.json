@@ -1,6 +1,186 @@
 {
   "repos": [
     {
+      "installSize": 152427,
+      "openIssues": 0,
+      "package": {
+        "author": "Acetab",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Automatically fetch and cache favicons for SiYuan web links, with multiple sources, local monogram fallbacks, and smart compatibility with Link Icon.",
+          "zh-CN": "自动为思源网页链接获取并缓存网站图标，支持多来源、本地字母兜底，并可与「链接图标」插件智能配合。"
+        },
+        "displayName": {
+          "default": "Auto Favicon",
+          "zh-CN": "自动网站图标"
+        },
+        "frontends": [
+          "desktop",
+          "mobile"
+        ],
+        "keywords": [
+          "网站图标",
+          "自动图标",
+          "网页链接",
+          "外链",
+          "favicon",
+          "链接",
+          "link icon",
+          "website icon",
+          "Vibe Coding"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "auto-favicon",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/Acetab/auto-favicon",
+        "version": "0.5.5"
+      },
+      "packageZipAssetId": 496130479,
+      "size": 97666,
+      "stars": 0,
+      "updated": "2026-07-31T02:30:39Z",
+      "url": "Acetab/auto-favicon@cbdf831fa29a8de5003bcb656e3e6654f80d0484"
+    },
+    {
+      "installSize": 60087,
+      "openIssues": 0,
+      "package": {
+        "author": "yxw",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "Export SiYuan notebooks to Markdown.",
+          "zh-CN": "将思源笔记导出为 Markdown。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Notebook Export",
+          "zh-CN": "笔记导出"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "keywords": [
+          "export",
+          "markdown",
+          "导出"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-export",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/yanxuwei666/siyuan-export",
+        "version": "0.2.0"
+      },
+      "packageZipAssetId": 496108285,
+      "size": 25219,
+      "stars": 0,
+      "updated": "2026-07-31T02:04:56Z",
+      "url": "yanxuwei666/siyuan-export@7c42a9d14635c0d9bdaee3f8d2a0f6a0b6dee6c0"
+    },
+    {
+      "installSize": 116203,
+      "openIssues": 0,
+      "package": {
+        "author": "lovelife88",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "android",
+          "ios"
+        ],
+        "description": {
+          "default": "Display recently updated documents in a timeline, click to navigate",
+          "zh_CN": "以时间线形式展示最近更新的文档，点击可快速跳转"
+        },
+        "displayName": {
+          "default": "Recent Timeline",
+          "zh_CN": "最近更新时间线"
+        },
+        "frontends": [
+          "desktop",
+          "mobile"
+        ],
+        "keywords": [
+          "timeline",
+          "recent",
+          "时间线",
+          "最近更新",
+          "最近文档"
+        ],
+        "minAppVersion": "2.10.3",
+        "name": "siyuan-plugin-recent-timeline",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/lovelife88/siyuan-plugin-recent-timeline",
+        "version": "1.4.3"
+      },
+      "packageZipAssetId": 496093311,
+      "size": 43826,
+      "stars": 1,
+      "updated": "2026-07-31T01:44:39Z",
+      "url": "lovelife88/siyuan-plugin-recent-timeline@6bc9636dfbd2d8ec09ee9a6ff2be30f601fe203a"
+    },
+    {
+      "installSize": 228341,
+      "openIssues": 2,
+      "package": {
+        "author": "steve",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Advanced database attribute display plugin with field hiding, date formatting, checkbox beautification, and customizable settings. Supports 99% of blocks!",
+          "zh-CN": "数据库属性显示插件，支持字段隐藏、日期格式化、复选框美化和可自定义设置。支持99%的块！"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Database Display",
+          "zh-CN": "数据库数据展示"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "database",
+          "display",
+          "attribute"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-database-display",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/loonghfut/siyuan-database-display",
+        "version": "3.0.0"
+      },
+      "packageZipAssetId": 496081429,
+      "size": 129552,
+      "stars": 7,
+      "updated": "2026-07-31T01:26:23Z",
+      "url": "loonghfut/siyuan-database-display@66509bc43f157a28ff6b420c03fc644c696afe11"
+    },
+    {
       "installSize": 304171,
       "openIssues": 0,
       "package": {
@@ -300,95 +480,6 @@
       "stars": 2,
       "updated": "2026-07-30T11:10:14Z",
       "url": "notesynchelper/siyuan-notehelper@7eb07f489273a7f998c201fa5edf21caa4ddfd01"
-    },
-    {
-      "installSize": 131312,
-      "openIssues": 0,
-      "package": {
-        "author": "Acetab",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Automatically fetch and cache favicons for SiYuan web links, with multiple sources, local monogram fallbacks, and smart compatibility with Link Icon.",
-          "zh-CN": "自动为思源网页链接获取并缓存网站图标，支持多来源、本地字母兜底，并可与「链接图标」插件智能配合。"
-        },
-        "displayName": {
-          "default": "Auto Favicon",
-          "zh-CN": "自动网站图标"
-        },
-        "frontends": [
-          "desktop",
-          "mobile"
-        ],
-        "keywords": [
-          "网站图标",
-          "自动图标",
-          "网页链接",
-          "外链",
-          "favicon",
-          "链接",
-          "link icon",
-          "website icon",
-          "Vibe Coding"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "auto-favicon",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/Acetab/auto-favicon",
-        "version": "0.5.3"
-      },
-      "packageZipAssetId": 495142602,
-      "size": 78611,
-      "stars": 0,
-      "updated": "2026-07-30T08:56:04Z",
-      "url": "Acetab/auto-favicon@cd924ac6bb74c15994cc5e8c81af886b428bd388"
-    },
-    {
-      "installSize": 56668,
-      "openIssues": 0,
-      "package": {
-        "author": "yxw",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Export SiYuan notebooks to Markdown.",
-          "zh-CN": "将思源笔记导出为 Markdown。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Notebook Export",
-          "zh-CN": "笔记导出"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window"
-        ],
-        "keywords": [
-          "export",
-          "markdown",
-          "导出"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-export",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/yanxuwei666/siyuan-export",
-        "version": "0.1.0"
-      },
-      "packageZipAssetId": 494770768,
-      "size": 21780,
-      "stars": 0,
-      "updated": "2026-07-30T05:32:08Z",
-      "url": "yanxuwei666/siyuan-export@5f4f2167542e0b1594431a607ae34bef956d5059"
     },
     {
       "installSize": 265571,
@@ -1062,51 +1153,6 @@
       "url": "Acetab/siyuan-table-merge@11463b08e01e593910230b7dcfcefcc7a542c7ec"
     },
     {
-      "installSize": 207488,
-      "openIssues": 2,
-      "package": {
-        "author": "steve",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Advanced database attribute display plugin with field hiding, date formatting, checkbox beautification, and customizable settings. Supports 99% of blocks!",
-          "zh-CN": "数据库属性显示插件，支持字段隐藏、日期格式化、复选框美化和可自定义设置。支持99%的块！"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Database Display",
-          "zh-CN": "数据库数据展示"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            ""
-          ]
-        },
-        "keywords": [
-          "database",
-          "display",
-          "attribute"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-database-display",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/loonghfut/siyuan-database-display",
-        "version": "2.0.1"
-      },
-      "packageZipAssetId": 493797048,
-      "size": 123583,
-      "stars": 7,
-      "updated": "2026-07-29T08:25:30Z",
-      "url": "loonghfut/siyuan-database-display@6a731a94fd5ab5b7792c202f3aeb08ad7497b297"
-    },
-    {
       "installSize": 132971,
       "openIssues": 1,
       "package": {
@@ -1276,52 +1322,6 @@
       "stars": 13,
       "updated": "2026-07-29T03:22:19Z",
       "url": "Misuzu2027/syplugin-backlink-panel@97b9ff5d542c75936fd2928310c50749a2efcd85"
-    },
-    {
-      "installSize": 111386,
-      "openIssues": 1,
-      "package": {
-        "author": "lovelife88",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "android",
-          "ios"
-        ],
-        "description": {
-          "default": "Display recently updated documents in a timeline, click to navigate",
-          "zh_CN": "以时间线形式展示最近更新的文档，点击可快速跳转"
-        },
-        "displayName": {
-          "default": "Recent Timeline",
-          "zh_CN": "最近更新时间线"
-        },
-        "frontends": [
-          "desktop",
-          "mobile"
-        ],
-        "keywords": [
-          "timeline",
-          "recent",
-          "时间线",
-          "最近更新",
-          "最近文档"
-        ],
-        "minAppVersion": "2.10.3",
-        "name": "siyuan-plugin-recent-timeline",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/lovelife88/siyuan-plugin-recent-timeline",
-        "version": "1.4.1"
-      },
-      "packageZipAssetId": 493336820,
-      "size": 42202,
-      "stars": 1,
-      "updated": "2026-07-28T23:29:00Z",
-      "url": "lovelife88/siyuan-plugin-recent-timeline@bfa58801a5398eb8ecdc1c9573b25d687620ea41"
     },
     {
       "installSize": 102219,
