@@ -1,6 +1,125 @@
 {
   "repos": [
     {
+      "installSize": 9270970,
+      "openIssues": 3,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android",
+          "harmony"
+        ],
+        "description": {
+          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
+          "zh_CN": "一款在思源笔记里实现任务管理功能的插件，为了践行「防弹笔记法」而开发。支持电脑端和移动端系统通知提醒任务执行、日历视图查看行事历、项目管理、四象限面板、番茄钟专注、习惯打卡等功能"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Note Management",
+          "zh_CN": "任务笔记管理"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ]
+        },
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android",
+          "harmony"
+        ],
+        "keywords": [
+          "reminder",
+          "time",
+          "calendar",
+          "notification",
+          "提醒",
+          "时间",
+          "日历",
+          "通知",
+          "番茄钟",
+          "四象限",
+          "任务管理",
+          "项目管理",
+          "习惯打卡"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-task-note-management",
+        "readme": {
+          "default": "README_en.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
+        "version": "7.0.9"
+      },
+      "packageZipAssetId": 497387688,
+      "size": 4338790,
+      "stars": 210,
+      "updated": "2026-08-01T01:17:14Z",
+      "url": "Achuan-2/siyuan-plugin-task-note-management@09230f33054f1ceb1370c8b3de630b1c998c2f48"
+    },
+    {
+      "installSize": 1043443,
+      "openIssues": 0,
+      "package": {
+        "author": "whale🐋",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Professional annotation plugin — select text, add comments, manage in sidebar, with slide-to-annotate, tagging, cross-document navigation, and AI-powered explanation.",
+          "zh-CN": "专业批注插件：绝对安全、零污染、数据永久原始保留、万字文档秒批、可离线使用。在线AI 解释（思源原生 AI 驱动）。选中文字添加批注，侧边栏管理，支持滑动快速批注、标签分类、跨文档跳转。"
+        },
+        "displayName": {
+          "default": "鲸鱼快速批注",
+          "en": "Whale Quick Comment"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "comment",
+          "annotation",
+          "批注",
+          "标注",
+          "笔记",
+          "AI",
+          "AI批注",
+          "人工智能",
+          "鲸鱼",
+          "快速批注"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-comment",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/HaoCeans/siyuan-comment",
+        "version": "2.3.7"
+      },
+      "packageZipAssetId": 497343659,
+      "size": 557966,
+      "stars": 4,
+      "updated": "2026-08-01T00:18:49Z",
+      "url": "HaoCeans/siyuan-comment@9a28941e0881f824378a612584a2a90fdf3e28c8"
+    },
+    {
       "installSize": 14980405,
       "openIssues": 0,
       "package": {
@@ -46,51 +165,6 @@
       "stars": 31,
       "updated": "2026-07-31T17:39:42Z",
       "url": "5kyfkr/siyuan-plugin-task-horizon@6d871b2e01435690eb473c0225e4303f2a677473"
-    },
-    {
-      "installSize": 1039564,
-      "openIssues": 0,
-      "package": {
-        "author": "whale🐋",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Professional annotation plugin — select text, add comments, manage in sidebar, with slide-to-annotate, tagging, cross-document navigation, and AI-powered explanation.",
-          "zh-CN": "专业批注插件：绝对安全、零污染、数据永久原始保留、万字文档秒批、可离线使用。在线AI 解释（思源原生 AI 驱动）。选中文字添加批注，侧边栏管理，支持滑动快速批注、标签分类、跨文档跳转。"
-        },
-        "displayName": {
-          "default": "鲸鱼快速批注",
-          "en": "Whale Quick Comment"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "comment",
-          "annotation",
-          "批注",
-          "标注",
-          "笔记",
-          "AI",
-          "AI批注",
-          "人工智能",
-          "鲸鱼",
-          "快速批注"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-comment",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/HaoCeans/siyuan-comment",
-        "version": "2.3.6"
-      },
-      "packageZipAssetId": 496960655,
-      "size": 556675,
-      "stars": 4,
-      "updated": "2026-07-31T17:26:09Z",
-      "url": "HaoCeans/siyuan-comment@fcf379af577d7ea622b7eb4955221b72e941ea6a"
     },
     {
       "installSize": 2199411,
@@ -913,80 +987,6 @@
       "stars": 1,
       "updated": "2026-07-30T02:55:29Z",
       "url": "QMike0/siyuan-plugin-page-search@f1b212babb6d4fd92ad0f0bbb987bee79a682caf"
-    },
-    {
-      "installSize": 9265804,
-      "openIssues": 3,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "description": {
-          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
-          "zh_CN": "一款在思源笔记里实现任务管理功能的插件，为了践行「防弹笔记法」而开发。支持电脑端和移动端系统通知提醒任务执行、日历视图查看行事历、项目管理、四象限面板、番茄钟专注、习惯打卡等功能"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Note Management",
-          "zh_CN": "任务笔记管理"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ]
-        },
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "keywords": [
-          "reminder",
-          "time",
-          "calendar",
-          "notification",
-          "提醒",
-          "时间",
-          "日历",
-          "通知",
-          "番茄钟",
-          "四象限",
-          "任务管理",
-          "项目管理",
-          "习惯打卡"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-task-note-management",
-        "readme": {
-          "default": "README_en.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
-        "version": "7.0.8"
-      },
-      "packageZipAssetId": 494279987,
-      "size": 4337310,
-      "stars": 209,
-      "updated": "2026-07-29T16:43:34Z",
-      "url": "Achuan-2/siyuan-plugin-task-note-management@bac43d17edc6099602a0beb7c8bf0d7475e8414c"
     },
     {
       "installSize": 4162280,
