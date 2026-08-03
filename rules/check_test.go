@@ -475,7 +475,7 @@ func TestCheckOptionalTypedFields(t *testing.T) {
 	}
 }
 
-func TestOfficialSampleAllMixAllowed(t *testing.T) {
+func TestBazaarSampleAllMixAllowed(t *testing.T) {
 	dir := t.TempDir()
 	copyTree(t, filepath.Join("testdata", "plugin_ok"), dir)
 	content := `{
@@ -492,23 +492,29 @@ func TestOfficialSampleAllMixAllowed(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	r := Check(Input{
-		PackageRoot: dir,
-		OwnerRepo:   "siyuan-note/plugin-sample",
-		Type:        TypePlugin,
-	})
-	if !r.OK {
-		t.Fatalf("expected official sample all-mix to pass, issues=%v", r.Issues)
+	for _, ownerRepo := range []string{
+		"siyuan-note/plugin-sample",
+		"siyuan-note/plugin-sample-vite-svelte",
+		"siyuan-note/plugin-sample-vite-vue",
+	} {
+		r := Check(Input{
+			PackageRoot: dir,
+			OwnerRepo:   ownerRepo,
+			Type:        TypePlugin,
+		})
+		if hasIssueMsg(r, "all") {
+			t.Fatalf("expected sample repo %s all-mix to pass, issues=%v", ownerRepo, r.Issues)
+		}
 	}
 
-	// 非官方仓库仍应拦截 all 混用
-	r = Check(Input{
+	// 非示例仓库仍应拦截 all 混用
+	r := Check(Input{
 		PackageRoot: dir,
 		OwnerRepo:   "demo/plugin-sample",
 		Type:        TypePlugin,
 	})
 	if r.OK || !hasIssueMsg(r, "all") {
-		t.Fatalf("expected non-official repo all-mix to fail, issues=%v", r.Issues)
+		t.Fatalf("expected non-sample repo all-mix to fail, issues=%v", r.Issues)
 	}
 }
 
@@ -581,6 +587,22 @@ func TestCheckFunding(t *testing.T) {
 	writePlugin(`{ "custom": ["https://ld246.com/sponsor"] }`)
 	if r := check(); r.OK || !hasIssueMsg(r, "ld246.com/sponsor") {
 		t.Fatalf("expected placeholder funding.custom ld246.com/sponsor to fail, issues=%v", r.Issues)
+	}
+
+	// 官方 / 社区集市开发示例允许保留模板占位链接
+	for _, ownerRepo := range []string{
+		"siyuan-note/plugin-sample",
+		"siyuan-note/plugin-sample-vite-svelte",
+		"siyuan-note/plugin-sample-vite-vue",
+	} {
+		r := Check(Input{
+			PackageRoot: dir,
+			OwnerRepo:   ownerRepo,
+			Type:        TypePlugin,
+		})
+		if hasIssueMsg(r, "ld246.com/sponsor") {
+			t.Fatalf("expected sample repo %s to allow funding placeholder, issues=%v", ownerRepo, r.Issues)
+		}
 	}
 }
 

@@ -247,24 +247,26 @@ func Manifest(m map[string]any, in ManifestInput) []Issue {
 	issues = append(issues, checkURL(m, in.Owner, in.Repo)...)
 	issues = append(issues, checkVersion(m, in.OldVersion)...)
 	issues = append(issues, checkReadme(m, in.PackageRoot)...)
-	issues = append(issues, checkFunding(m)...)
+	issues = append(issues, checkFunding(m, in.Owner, in.Repo)...)
 	issues = append(issues, checkOptionalTypedFields(m, in)...)
 	return issues
 }
 
-// officialSampleRepos 官方集市开发示例仓库（README「集市包开发示例」中由官方维护的样本）。
-// 这些包故意在 backends / frontends / kernels 中同时列出具体平台与 "all"，作为字段取值示例，
-// 故豁免 all 互斥规则。社区维护的 sample（如 plugin-sample-vite-*）不在此列。
-var officialSampleRepos = Set{
-	"siyuan-note/plugin-sample":   {},
-	"siyuan-note/theme-sample":    {},
-	"siyuan-note/icon-sample":     {},
-	"siyuan-note/template-sample": {},
-	"siyuan-note/widget-sample":   {},
+// bazaarSampleRepos README「集市包开发示例」列出的样本仓库（官方 + 社区维护）。
+// 这些包故意保留 funding 模板占位链接，并在 backends / frontends / kernels 中同时列出
+// 具体平台与 "all" 作为字段取值示例，故豁免对应规则。
+var bazaarSampleRepos = Set{
+	"siyuan-note/plugin-sample":             {},
+	"siyuan-note/plugin-sample-vite-svelte": {},
+	"siyuan-note/plugin-sample-vite-vue":    {},
+	"siyuan-note/theme-sample":              {},
+	"siyuan-note/icon-sample":               {},
+	"siyuan-note/template-sample":           {},
+	"siyuan-note/widget-sample":             {},
 }
 
-func isOfficialSampleRepo(owner, repo string) bool {
-	_, ok := officialSampleRepos[owner+"/"+repo]
+func isBazaarSampleRepo(owner, repo string) bool {
+	_, ok := bazaarSampleRepos[owner+"/"+repo]
 	return ok
 }
 
@@ -626,8 +628,8 @@ var allowedFundingKeys = map[string]struct{}{
 // checkFunding 校验 funding 字段。
 // openCollective / patreon / github：字符串，可为平台短名或 http(s) 完整链接（与 normalizeFundingURL 一致）。
 // custom：字符串数组，允许纯文本或 http(s) / mailto 链接；禁止 javascript: / data: / file: 等；
-// 禁止包含模板占位链接 https://ld246.com/sponsor。
-func checkFunding(m map[string]any) []Issue {
+// 禁止包含模板占位链接 https://ld246.com/sponsor（集市开发示例仓库豁免，见 bazaarSampleRepos）。
+func checkFunding(m map[string]any, owner, repo string) []Issue {
 	raw, ok := m["funding"]
 	if !ok || raw == nil {
 		return nil
@@ -691,6 +693,7 @@ func checkFunding(m map[string]any) []Issue {
 			"`funding.custom` must be an array of strings, e.g. `\"custom\": [\"https://example.com/sponsor\"]`.",
 		))
 	}
+	allowPlaceholder := isBazaarSampleRepo(owner, repo)
 	for i, item := range arr {
 		s, ok := item.(string)
 		if !ok {
@@ -710,7 +713,7 @@ func checkFunding(m map[string]any) []Issue {
 			))
 			continue
 		}
-		if strings.Contains(s, "https://ld246.com/sponsor") {
+		if !allowPlaceholder && strings.Contains(s, "https://ld246.com/sponsor") {
 			issues = append(issues, issue(
 				fmt.Sprintf("`funding.custom[%d]` 不能包含模板占位链接 `https://ld246.com/sponsor`。请填写真实的赞助地址，或删除该条目。", i),
 				fmt.Sprintf("`funding.custom[%d]` still has the template placeholder link `https://ld246.com/sponsor`. Please replace it with a real funding URL, or delete this entry.", i),
@@ -816,10 +819,10 @@ func checkCommonOptionalTypedFields(m map[string]any) []Issue {
 }
 
 // checkPluginOptionalTypedFields 校验插件专用可选字段。
-// backends / frontends / kernels（[]string，含 all 互斥；官方示例仓库豁免）、disabledInPublish（bool）
+// backends / frontends / kernels（[]string，含 all 互斥；集市开发示例仓库豁免）、disabledInPublish（bool）
 func checkPluginOptionalTypedFields(m map[string]any, owner, repo string) []Issue {
 	var issues []Issue
-	allowAllMix := isOfficialSampleRepo(owner, repo)
+	allowAllMix := isBazaarSampleRepo(owner, repo)
 	for _, key := range []string{"backends", "frontends", "kernels"} {
 		issues = append(issues, checkOptionalStringArray(m, key, allowAllMix)...)
 	}
@@ -884,7 +887,7 @@ func stringArrayExample(key string) string {
 }
 
 // checkOptionalStringArray 校验可选的字符串数组字段。
-// allowAllMix 为 true 时跳过 all 互斥（供官方示例仓库展示全部合法取值）。
+// allowAllMix 为 true 时跳过 all 互斥（供集市开发示例仓库展示全部合法取值）。
 func checkOptionalStringArray(m map[string]any, key string, allowAllMix bool) []Issue {
 	raw, ok := m[key]
 	if !ok {
