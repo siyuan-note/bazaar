@@ -475,6 +475,43 @@ func TestCheckOptionalTypedFields(t *testing.T) {
 	}
 }
 
+func TestOfficialSampleAllMixAllowed(t *testing.T) {
+	dir := t.TempDir()
+	copyTree(t, filepath.Join("testdata", "plugin_ok"), dir)
+	content := `{
+  "name": "plugin-sample",
+  "author": "siyuan-note",
+  "url": "https://github.com/siyuan-note/plugin-sample",
+  "version": "1.0.0",
+  "readme": { "default": "README.md" },
+  "backends": ["windows", "linux", "darwin", "ios", "android", "harmony", "docker", "all"],
+  "frontends": ["desktop", "mobile", "browser-desktop", "browser-mobile", "desktop-window", "all"],
+  "kernels": ["windows", "linux", "darwin", "ios", "android", "harmony", "docker", "all"]
+}`
+	if err := os.WriteFile(filepath.Join(dir, "plugin.json"), []byte(content), 0644); err != nil {
+		t.Fatal(err)
+	}
+
+	r := Check(Input{
+		PackageRoot: dir,
+		OwnerRepo:   "siyuan-note/plugin-sample",
+		Type:        TypePlugin,
+	})
+	if !r.OK {
+		t.Fatalf("expected official sample all-mix to pass, issues=%v", r.Issues)
+	}
+
+	// 非官方仓库仍应拦截 all 混用
+	r = Check(Input{
+		PackageRoot: dir,
+		OwnerRepo:   "demo/plugin-sample",
+		Type:        TypePlugin,
+	})
+	if r.OK || !hasIssueMsg(r, "all") {
+		t.Fatalf("expected non-official repo all-mix to fail, issues=%v", r.Issues)
+	}
+}
+
 func TestCheckFunding(t *testing.T) {
 	dir := t.TempDir()
 	copyTree(t, filepath.Join("testdata", "plugin_ok"), dir)

@@ -248,8 +248,24 @@ func Manifest(m map[string]any, in ManifestInput) []Issue {
 	issues = append(issues, checkVersion(m, in.OldVersion)...)
 	issues = append(issues, checkReadme(m, in.PackageRoot)...)
 	issues = append(issues, checkFunding(m)...)
-	issues = append(issues, checkOptionalTypedFields(m, in.Type)...)
+	issues = append(issues, checkOptionalTypedFields(m, in)...)
 	return issues
+}
+
+// officialSampleRepos 官方集市开发示例仓库（README「集市包开发示例」中由官方维护的样本）。
+// 这些包故意在 backends / frontends / kernels 中同时列出具体平台与 "all"，作为字段取值示例，
+// 故豁免 all 互斥规则。社区维护的 sample（如 plugin-sample-vite-*）不在此列。
+var officialSampleRepos = Set{
+	"siyuan-note/plugin-sample":   {},
+	"siyuan-note/theme-sample":    {},
+	"siyuan-note/icon-sample":     {},
+	"siyuan-note/template-sample": {},
+	"siyuan-note/widget-sample":   {},
+}
+
+func isOfficialSampleRepo(owner, repo string) bool {
+	_, ok := officialSampleRepos[owner+"/"+repo]
+	return ok
 }
 
 func checkUnknownKeys(m map[string]any, typ PackageType) []Issue {
@@ -752,12 +768,12 @@ func unsafeFundingURI(s string) bool {
 // checkOptionalTypedFields 按包类型校验可选字段（若存在）的 JSON 类型。
 // 未知字段由 checkUnknownKeys 按 allowedManifestKeys 拒绝；此处只校验当前类型允许的字段。
 // readme / funding 由专用校验函数处理，此处不重复。
-func checkOptionalTypedFields(m map[string]any, typ PackageType) []Issue {
+func checkOptionalTypedFields(m map[string]any, in ManifestInput) []Issue {
 	var issues []Issue
 	issues = append(issues, checkCommonOptionalTypedFields(m)...)
-	switch typ {
+	switch in.Type {
 	case TypePlugin:
-		issues = append(issues, checkPluginOptionalTypedFields(m)...)
+		issues = append(issues, checkPluginOptionalTypedFields(m, in.Owner, in.Repo)...)
 	case TypeTheme:
 		issues = append(issues, checkThemeOptionalTypedFields(m)...)
 	}
@@ -795,16 +811,17 @@ func checkCommonOptionalTypedFields(m map[string]any) []Issue {
 	for _, key := range []string{"displayName", "description"} {
 		issues = append(issues, checkOptionalLocaleStrings(m, key)...)
 	}
-	issues = append(issues, checkOptionalStringArray(m, "keywords")...)
+	issues = append(issues, checkOptionalStringArray(m, "keywords", false)...)
 	return issues
 }
 
 // checkPluginOptionalTypedFields 校验插件专用可选字段。
-// backends / frontends / kernels（[]string，含 all 互斥）、disabledInPublish（bool）
-func checkPluginOptionalTypedFields(m map[string]any) []Issue {
+// backends / frontends / kernels（[]string，含 all 互斥；官方示例仓库豁免）、disabledInPublish（bool）
+func checkPluginOptionalTypedFields(m map[string]any, owner, repo string) []Issue {
 	var issues []Issue
+	allowAllMix := isOfficialSampleRepo(owner, repo)
 	for _, key := range []string{"backends", "frontends", "kernels"} {
-		issues = append(issues, checkOptionalStringArray(m, key)...)
+		issues = append(issues, checkOptionalStringArray(m, key, allowAllMix)...)
 	}
 	if raw, ok := m["disabledInPublish"]; ok {
 		if _, isBool := raw.(bool); !isBool {
@@ -820,7 +837,7 @@ func checkPluginOptionalTypedFields(m map[string]any) []Issue {
 // checkThemeOptionalTypedFields 校验主题专用可选字段。
 // modes（[]string）
 func checkThemeOptionalTypedFields(m map[string]any) []Issue {
-	return checkOptionalStringArray(m, "modes")
+	return checkOptionalStringArray(m, "modes", false)
 }
 
 // checkOptionalLocaleStrings 校验可选的 LocaleStrings 字段（displayName / description）。
@@ -867,7 +884,8 @@ func stringArrayExample(key string) string {
 }
 
 // checkOptionalStringArray 校验可选的字符串数组字段。
-func checkOptionalStringArray(m map[string]any, key string) []Issue {
+// allowAllMix 为 true 时跳过 all 互斥（供官方示例仓库展示全部合法取值）。
+func checkOptionalStringArray(m map[string]any, key string, allowAllMix bool) []Issue {
 	raw, ok := m[key]
 	if !ok {
 		return nil
@@ -895,7 +913,7 @@ func checkOptionalStringArray(m map[string]any, key string) []Issue {
 			hasAll = true
 		}
 	}
-	if _, exclusive := allExclusiveArrayKeys[key]; exclusive && hasAll && len(arr) > 1 {
+	if _, exclusive := allExclusiveArrayKeys[key]; exclusive && !allowAllMix && hasAll && len(arr) > 1 {
 		issues = append(issues, issue(
 			fmt.Sprintf("清单字段 `%s` 若包含 `\"all\"`，则不应再包含其他值；请只写 `[\"all\"]`，或改成具体平台列表（不要与 `all` 混用）。", key),
 			fmt.Sprintf("If `%s` includes `\"all\"`, please don't mix in other values — use only `[\"all\"]`, or list the concrete platforms without `all`.", key),
