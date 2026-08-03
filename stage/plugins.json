@@ -1,6 +1,167 @@
 {
   "repos": [
     {
+      "installSize": 15130098,
+      "openIssues": 0,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
+          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Horizon",
+          "zh_CN": "任务管理器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ]
+        },
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "task",
+          "manager",
+          "filter"
+        ],
+        "minAppVersion": "3.7.3",
+        "name": "siyuan-plugin-task-horizon",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
+        "version": "2.8.7"
+      },
+      "packageZipAssetId": 500347144,
+      "packageZipSha256": "da1ae8c948ca2accfef8f9b0c5f812564cdeb22aa79e1b07d620af1afc999f42",
+      "size": 3080986,
+      "stars": 31,
+      "updated": "2026-08-03T17:37:44Z",
+      "url": "5kyfkr/siyuan-plugin-task-horizon@da1ae8c"
+    },
+    {
+      "installSize": 2208667,
+      "openIssues": 0,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A dock Tomato Timer for SiYuan.",
+          "zh_CN": "思源底栏番茄钟：支持时间轴视图/任务提醒/日常事务记录/多端状态同步/移动端/数据库联动/块绑定/历史记录/任务管理器联动/移动端原生通知提醒"
+        },
+        "displayName": {
+          "default": "Dock Tomato",
+          "zh_CN": "底栏番茄钟"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ]
+        },
+        "keywords": [
+          "tomato",
+          "timer",
+          "pomodoro",
+          "dock"
+        ],
+        "minAppVersion": "3.5.10",
+        "name": "siyuan-plugin-docktomato",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-docktomato",
+        "version": "2.1.1"
+      },
+      "packageZipAssetId": 500322492,
+      "packageZipSha256": "7174b39d52ab60ad55c6569383f5894ebf5e270930030c9888a2c71b94022087",
+      "size": 536146,
+      "stars": 8,
+      "updated": "2026-08-03T17:12:25Z",
+      "url": "5kyfkr/siyuan-plugin-docktomato@7174b39"
+    },
+    {
+      "installSize": 67559,
+      "openIssues": 1,
+      "package": {
+        "author": "Vanessa",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker",
+          "all"
+        ],
+        "description": {
+          "default": "This is a plugin development sample",
+          "zh-CN": "这是一个插件开发示例"
+        },
+        "displayName": {
+          "default": "Plugin Sample",
+          "zh-CN": "插件示例"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window",
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://ld246.com/sponsor"
+          ]
+        },
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker",
+          "all"
+        ],
+        "keywords": [
+          "开发者参考",
+          "developer reference",
+          "示例插件"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "plugin-sample",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/siyuan-note/plugin-sample",
+        "version": "0.4.9"
+      },
+      "packageZipAssetId": 500303825,
+      "packageZipSha256": "580c7ba6e8ccc3586daf72dfdcaeb4a638fadc39e4329661cc295f7bf105dd4d",
+      "size": 26403,
+      "stars": 78,
+      "updated": "2026-08-03T16:54:21Z",
+      "url": "siyuan-note/plugin-sample@580c7ba"
+    },
+    {
       "installSize": 2971022,
       "openIssues": 19,
       "package": {
@@ -567,100 +728,6 @@
       "stars": 15,
       "updated": "2026-08-02T22:08:39Z",
       "url": "LunaNorth/siyuan-lumina@e911b07"
-    },
-    {
-      "installSize": 2204838,
-      "openIssues": 0,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A dock Tomato Timer for SiYuan.",
-          "zh_CN": "思源底栏番茄钟：支持时间轴视图/任务提醒/日常事务记录/多端状态同步/移动端/数据库联动/块绑定/历史记录/任务管理器联动/移动端原生通知提醒"
-        },
-        "displayName": {
-          "default": "Dock Tomato",
-          "zh_CN": "底栏番茄钟"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ]
-        },
-        "keywords": [
-          "tomato",
-          "timer",
-          "pomodoro",
-          "dock"
-        ],
-        "minAppVersion": "3.5.10",
-        "name": "siyuan-plugin-docktomato",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-docktomato",
-        "version": "2.1.0"
-      },
-      "packageZipAssetId": 499128924,
-      "packageZipSha256": "39c0b613e4d6067f74d01db4fcc064ffa8e4a38f529c1e05dbcf046df2c49660",
-      "size": 535324,
-      "stars": 8,
-      "updated": "2026-08-02T17:49:06Z",
-      "url": "5kyfkr/siyuan-plugin-docktomato@39c0b61"
-    },
-    {
-      "installSize": 15063404,
-      "openIssues": 0,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
-          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Horizon",
-          "zh_CN": "任务管理器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ]
-        },
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "task",
-          "manager",
-          "filter"
-        ],
-        "minAppVersion": "3.7.3",
-        "name": "siyuan-plugin-task-horizon",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "2.8.6"
-      },
-      "packageZipAssetId": 499128909,
-      "packageZipSha256": "969909e2da4f20e898a348fa933a5be6572091a9498391321b5f118e0515cdf6",
-      "size": 3070901,
-      "stars": 31,
-      "updated": "2026-08-02T17:49:06Z",
-      "url": "5kyfkr/siyuan-plugin-task-horizon@969909e"
     },
     {
       "installSize": 549025,
@@ -6218,63 +6285,6 @@
       "stars": 0,
       "updated": "2026-06-30T05:18:34Z",
       "url": "emptylight370/siyuan-ttf-Noto_Sans@105cba3"
-    },
-    {
-      "installSize": 66354,
-      "openIssues": 1,
-      "package": {
-        "author": "Vanessa",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker",
-          "all"
-        ],
-        "description": {
-          "default": "This is a plugin development sample",
-          "zh-CN": "这是一个插件开发示例"
-        },
-        "displayName": {
-          "default": "Plugin Sample",
-          "zh-CN": "插件示例"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window",
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://ld246.com/sponsor"
-          ]
-        },
-        "keywords": [
-          "开发者参考",
-          "developer reference",
-          "示例插件"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "plugin-sample",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/siyuan-note/plugin-sample",
-        "version": "0.4.8"
-      },
-      "packageZipAssetId": 461831235,
-      "packageZipSha256": "8359a03e6542b1273810c90f428581032694fd27a22c8d16bf79826a5b3726c5",
-      "size": 26118,
-      "stars": 75,
-      "updated": "2026-06-30T05:03:35Z",
-      "url": "siyuan-note/plugin-sample@8359a03"
     },
     {
       "installSize": 24851666,
