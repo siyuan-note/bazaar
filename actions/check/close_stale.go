@@ -27,8 +27,7 @@ var closeStaleTemplateText string
 
 // closeStaleCommentData 关闭超龄 ci-failed PR 时的评论模板数据。
 type closeStaleCommentData struct {
-	PRAuthor string
-	Days     int
+	Days int
 }
 
 // shouldCloseStaleCIFailed 判断是否应因超龄 ci-failed 自动关闭。
@@ -97,12 +96,8 @@ func closeStaleCIFailedPRs(ctx context.Context, client *github.Client, owner, re
 }
 
 func closeOneStaleCIFailedPR(ctx context.Context, client *github.Client, owner, repo string, pr *github.PullRequest, tmpl *template.Template, days int) error {
-	author := ""
-	if u := pr.GetUser(); u != nil {
-		author = u.GetLogin()
-	}
 	var buf bytes.Buffer
-	if err := tmpl.Execute(&buf, closeStaleCommentData{PRAuthor: author, Days: days}); err != nil {
+	if err := tmpl.Execute(&buf, closeStaleCommentData{Days: days}); err != nil {
 		return err
 	}
 	body := buf.String()

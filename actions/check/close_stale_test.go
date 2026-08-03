@@ -102,39 +102,25 @@ func TestCloseStaleTemplate(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	t.Run("with author", func(t *testing.T) {
-		var buf bytes.Buffer
-		if err := tmpl.Execute(&buf, closeStaleCommentData{PRAuthor: "demo-author", Days: 30}); err != nil {
-			t.Fatal(err)
+	var buf bytes.Buffer
+	if err := tmpl.Execute(&buf, closeStaleCommentData{Days: 30}); err != nil {
+		t.Fatal(err)
+	}
+	out := buf.String()
+	for _, want := range []string{
+		"超过 30 天",
+		"more than 30 days",
+		"ci-failed",
+		"打开一个新的拉取请求",
+		"open a new pull request",
+		"ci-skip",
+		"<sub>",
+	} {
+		if !strings.Contains(out, want) {
+			t.Fatalf("output missing %q\n%s", want, out)
 		}
-		out := buf.String()
-		for _, want := range []string{
-			"@demo-author",
-			"超过 30 天",
-			"more than 30 days",
-			"ci-failed",
-			"打开一个新的拉取请求",
-			"open a new pull request",
-			"ci-skip",
-			"<sub>",
-		} {
-			if !strings.Contains(out, want) {
-				t.Fatalf("output missing %q\n%s", want, out)
-			}
-		}
-	})
-
-	t.Run("without author", func(t *testing.T) {
-		var buf bytes.Buffer
-		if err := tmpl.Execute(&buf, closeStaleCommentData{Days: 30}); err != nil {
-			t.Fatal(err)
-		}
-		out := buf.String()
-		if strings.Contains(out, "@") {
-			t.Fatalf("unexpected @ mention:\n%s", out)
-		}
-		if !strings.Contains(out, "超过 30 天") {
-			t.Fatalf("output missing days text:\n%s", out)
-		}
-	})
+	}
+	if strings.Contains(out, "@") {
+		t.Fatalf("unexpected @ mention:\n%s", out)
+	}
 }

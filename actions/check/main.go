@@ -11,6 +11,7 @@
 package main
 
 import (
+	"bytes"
 	"context"
 	_ "embed"
 	"fmt"
@@ -58,9 +59,9 @@ Check 流程（流程通过后，对 plan.diff.New 中的仓库）：
 
 收尾（无论是否跑过包检查）：
 1. 无实际变更且 PR 已合并/关闭：跳过结果评论与标签同步（解冲突触发检查后立刻合并的竞态，避免误打 ci-failed）
-2. 用模板写出检查结果文件（含下架列表、检查 Issues；换维护者时附流程说明链接）
+2. 用模板写出检查结果（含下架列表、检查 Issues；换维护者时附流程说明链接），并写入可选输出文件
 3. 同步标签：类型标签按涉及的 *.txt 对账；CI 状态打 ci-failed 或 ci-passed（互斥，同一次 Replace）
-4. 工作流用 thollander/actions-comment-pull-request 将结果文件发到 PR
+4. 自行发/改 PR 检查评论：结果未变则编辑当前评；结果变了则将旧评折叠为过时并新建
 5. 结束后用响应头记录 PAT / GITHUB_TOKEN 开始/结束剩余配额与当次实际 core 请求次数（samples）
 
 定时复检（schedule）：
@@ -162,12 +163,6 @@ func main() {
 		logger.Fatalf("load check result template failed: %s", err)
 	}
 
-	checkResultOutputFile, err := os.OpenFile(CHECK_RESULT_OUTPUT, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0666)
-	if err != nil {
-		logger.Fatalf("open check result output file [%s] failed: %s", CHECK_RESULT_OUTPUT, err)
-	}
-	defer checkResultOutputFile.Close()
-
 	checkResult := &CheckResult{}
 	var plans []typeCheckPlan
 
@@ -251,12 +246,25 @@ func main() {
 		return
 	}
 
-	checkResult.PRAuthor = prAuthorLogin()
-	attachCheckMeta(checkResult)
+	resultChanged := attachCheckMeta(checkResult)
 
-	// 将检查结果写入文件
-	if err := checkResultTemplate.Execute(checkResultOutputFile, checkResult); err != nil {
-		logger.Fatalf("write check result failed: %s", err)
+	var resultBuf bytes.Buffer
+	if err := checkResultTemplate.Execute(&resultBuf, checkResult); err != nil {
+		logger.Fatalf("render check result failed: %s", err)
+	}
+	resultBody := resultBuf.String()
+	// 将检查结果写入文件（便于 Actions 产物 / 本地调试）；发评由下方 Go 直接完成
+	if CHECK_RESULT_OUTPUT != "" {
+		if err := os.WriteFile(CHECK_RESULT_OUTPUT, []byte(resultBody), 0644); err != nil {
+			logger.Fatalf("write check result failed: %s", err)
+		}
+	}
+	if owner, repo, prNumber, ok := prIdentity(); ok && githubRepoClient != nil {
+		if err := publishCheckResultComment(githubContext, githubRepoClient, owner, repo, prNumber, resultBody, resultChanged); err != nil {
+			logger.Errorf("publish check-result comment failed: %s", err)
+		}
+	} else {
+		logger.Errorf("publish check-result comment skipped: missing PR identity or github client")
 	}
 
 	// 类型标签 + CI 状态标签对账（失败只记日志）
@@ -287,8 +295,8 @@ func seedRateHeaderBaselines() {
 }
 
 // attachCheckMeta 读取上次评论 meta，生成本轮调度元数据并填入 MetaJSON。
-// 结果 hash 变化（或无上次 meta）时输出 comment_mode=recreate，以便重建评论并再次 @ 通知作者；未变则 upsert。
-func attachCheckMeta(checkResult *CheckResult) {
+// 返回 resultChanged：与上次 result_hash 不同（或无上次 meta）时为 true，调用方据此折叠旧评并新建。
+func attachCheckMeta(checkResult *CheckResult) (resultChanged bool) {
 	var prev *CheckMeta
 	if owner, repo, prNumber, ok := prIdentity(); ok && githubRepoClient != nil {
 		prev, _ = loadCheckMetaFromPRComments(githubContext, githubRepoClient, owner, repo, prNumber)
@@ -297,17 +305,13 @@ func attachCheckMeta(checkResult *CheckResult) {
 	metaJSON, err := marshalCheckMetaJSON(meta)
 	if err != nil {
 		logger.Errorf("marshal check meta failed: %s", err)
-		appendGitHubOutput("comment_mode", "upsert")
-		return
+		return true
 	}
 	checkResult.MetaJSON = metaJSON
-	mode := "upsert"
-	if prev == nil || prev.ResultHash == "" || prev.ResultHash != meta.ResultHash {
-		mode = "recreate"
-	}
-	appendGitHubOutput("comment_mode", mode)
-	logger.Infof("check meta: hash=%s streak=%d next_due=%s fp_repo=%v comment_mode=%s",
-		meta.ResultHash, meta.UnchangedStreak, meta.NextDueAt, meta.FP != nil, mode)
+	resultChanged = prev == nil || prev.ResultHash == "" || prev.ResultHash != meta.ResultHash
+	logger.Infof("check meta: hash=%s streak=%d next_due=%s fp_repo=%v result_changed=%v",
+		meta.ResultHash, meta.UnchangedStreak, meta.NextDueAt, meta.FP != nil, resultChanged)
+	return resultChanged
 }
 
 // appendGitHubOutput 向 GITHUB_OUTPUT 追加 name=value（非 Actions 环境则忽略）。

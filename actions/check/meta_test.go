@@ -21,7 +21,7 @@ import (
 )
 
 func TestParseCheckMetaFromComment(t *testing.T) {
-	body := `<!-- thollander/actions-comment-pull-request "check-result" -->
+	body := `<!-- bazaar-check-result -->
 <!-- bazaar-check-meta
 {"v":1,"checked_at":"2026-07-20T14:00:00Z","result_hash":"abcd","unchanged_streak":2,"next_due_at":"2026-07-20T15:20:00Z","fp":{"repo":"a/b","release_id":1,"tag":"v1","zip_id":2,"zip_updated_at":"2026-07-20T13:00:00Z"}}
 -->

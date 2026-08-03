@@ -26,8 +26,7 @@ import (
 )
 
 const (
-	selectPRLimitDefault  = 100
-	checkResultCommentTag = `thollander/actions-comment-pull-request "check-result"`
+	selectPRLimitDefault = 100
 )
 
 // selectMatrixEntry 写入 GitHub Actions matrix 的单条 PR。
@@ -248,41 +247,52 @@ func matrixEntryFromPR(pr *github.PullRequest) (selectMatrixEntry, bool) {
 	}, true
 }
 
-// loadCheckMetaFromPRComments 从 PR 评论中读取最新的 bazaar-check-meta（优先含 meta 的评论）。
+// loadCheckMetaFromPRComments 从 PR 评论中读取调度 meta。
+// 优先取带「当前检查」标记的评论中最新一条；若无则回退到任意含 bazaar-check-meta 的评论。
 func loadCheckMetaFromPRComments(ctx context.Context, client *github.Client, owner, repo string, prNumber int) (*CheckMeta, bool) {
 	if client == nil {
 		return nil, false
 	}
-	opts := &github.IssueListCommentsOptions{ListOptions: github.ListOptions{PerPage: 100}}
-	var latest *CheckMeta
-	var fallbackBody string
-	for {
-		comments, resp, err := client.Issues.ListComments(ctx, owner, repo, prNumber, opts)
-		if err != nil {
-			logger.Warnf("list comments for PR #%d failed: %s", prNumber, err)
-			return nil, false
-		}
-		// ListComments 默认按 created 升序：同页内后者更新，跨页继续覆盖
-		for _, c := range comments {
-			body := c.GetBody()
-			if meta, ok := parseCheckMetaFromComment(body); ok {
-				latest = meta
-				continue
-			}
-			if strings.Contains(body, checkResultCommentTag) {
-				fallbackBody = body
-			}
-		}
-		if resp.NextPage == 0 {
-			break
-		}
-		opts.Page = resp.NextPage
+	comments, err := listIssueComments(ctx, client, owner, repo, prNumber)
+	if err != nil {
+		logger.Warnf("list comments for PR #%d failed: %s", prNumber, err)
+		return nil, false
 	}
-	if latest != nil {
-		return latest, true
+	var latestActive *CheckMeta
+	var latestAny *CheckMeta
+	var fallbackActiveBody, fallbackAnyBody string
+	// ListComments 默认按 created 升序：同页内后者更新，跨页继续覆盖
+	for _, c := range comments {
+		body := c.GetBody()
+		meta, ok := parseCheckMetaFromComment(body)
+		active := isActiveCheckResultComment(body)
+		if ok {
+			latestAny = meta
+			if active {
+				latestActive = meta
+			}
+			continue
+		}
+		if active {
+			fallbackActiveBody = body
+		}
+		if strings.Contains(body, checkResultCommentMarker) ||
+			strings.Contains(body, checkResultCommentMarkerOutdated) ||
+			strings.Contains(body, checkResultCommentTagLegacy) {
+			fallbackAnyBody = body
+		}
 	}
-	if fallbackBody != "" {
-		return parseCheckMetaFromComment(fallbackBody)
+	if latestActive != nil {
+		return latestActive, true
+	}
+	if latestAny != nil {
+		return latestAny, true
+	}
+	if fallbackActiveBody != "" {
+		return parseCheckMetaFromComment(fallbackActiveBody)
+	}
+	if fallbackAnyBody != "" {
+		return parseCheckMetaFromComment(fallbackAnyBody)
 	}
 	return nil, false
 }

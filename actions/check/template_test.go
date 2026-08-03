@@ -27,7 +27,6 @@ func TestCheckResultTemplate(t *testing.T) {
 	}
 
 	sample := CheckResult{
-		PRAuthor: "demo-author",
 		MetaJSON: `{"v":1,"checked_at":"2026-07-20T14:00:00Z","result_hash":"deadbeef","unchanged_streak":0,"next_due_at":"2026-07-20T14:20:00Z"}`,
 		Plugins: []PackageCheck{
 			{
@@ -64,9 +63,9 @@ func TestCheckResultTemplate(t *testing.T) {
 	}
 	out := buf.String()
 	for _, want := range []string{
+		"<!-- bazaar-check-result -->",
 		"<!-- bazaar-check-meta",
 		`"result_hash":"deadbeef"`,
-		"@demo-author",
 		"无 Latest Release",
 		"无 package.zip",
 		"缺少 icon.png",
@@ -78,6 +77,9 @@ func TestCheckResultTemplate(t *testing.T) {
 		if !strings.Contains(out, want) {
 			t.Fatalf("output missing %q\n%s", want, out)
 		}
+	}
+	if strings.Contains(out, "@") {
+		t.Fatalf("check-result comment should not @ anyone\n%s", out)
 	}
 	introIdx := strings.Index(out, "检测到以下问题")
 	issueIdx := strings.Index(out, "[01]")

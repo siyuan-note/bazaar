@@ -17,11 +17,10 @@ jobs:
     permissions:
       pull-requests: write
     steps:
-      # REF https://github.com/marketplace/actions/comment-pull-request
       - name: Comment thank-you
-        uses: thollander/actions-comment-pull-request@v3
-        with:
-          message: |
-            感谢你的贡献，思源有你更精彩！
-            Thank you for your contribution. SiYuan will be more wonderful with you!
-          pr-number: ${{ github.event.pull_request.number }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr comment "${{ github.event.pull_request.number }}" --body "$(printf '%s\n%s' \
+            '感谢你的贡献，思源有你更精彩！' \
+            'Thank you for your contribution. SiYuan will be more wonderful with you!')"

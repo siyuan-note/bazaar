@@ -195,7 +195,7 @@ func computeResultHash(r *CheckResult) string {
 			for _, iss := range pc.Issues {
 				issues = append(issues, iss.MessageZh, iss.MessageEn)
 			}
-			// 排序后再摘要，避免 issue 顺序抖动导致误 recreate
+			// 排序后再摘要，避免 issue 顺序抖动导致误判结果变化
 			slices.Sort(issues)
 			payload.Packages = append(payload.Packages, pkgHash{
 				Path:              typ.String() + ":" + pc.RepoInfo.Path,
