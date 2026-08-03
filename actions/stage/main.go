@@ -43,7 +43,7 @@ Stage 流程：
 2. 并发前串行 GET /user：用响应头检查 PAT core 剩余是否够本轮估算量，并锚定 PAT / GITHUB_TOKEN 观测起点（不用 GET /rate_limit）
 3. 按类型依次执行 performStage；每类开始前重新加载 OccupiedNames，以便上一类本轮新写入的 name 参与后续类型的唯一性检查
 4. 读取 *s.txt 与既有 stage/*.json；增量时未列入 check 的仓沿用旧条目（不打 API、不写 report），下架随当前列表重建自然消失
-5. hash 未变则跳过下载；否则下载 package.zip → rules.Check → 上传 OSS（package.zip、README、preview、icon、清单 JSON）
+5. 先比 packageZipAssetId：相同则跳过；不同则取 SHA-256（优先 GitHub digest，否则下载 zip 计算）。内容未变则只回写 asset id；内容变了则校验并上传 OSS（package.zip、README、preview、icon、清单 JSON）。url 的 @hash 为 SHA-256 前 7 位
 6. 按 updated 降序排序后写出 stage/*.json（键序经 marshalSortedIndentedJSON 稳定；新上架用索引时间，更新用 Release 发布时间）
 7. 将本轮失败/成功同步为按仓独立 Issue（标签 stage-fail）：失败 upsert（正文未变则跳过 Edit）；
    成功入库或 hash 跳过（已能正常取到 Release）则先评论说明再关闭；
@@ -173,9 +173,9 @@ func loadReposByPackageType() (map[rules.PackageType][]string, error) {
 }
 
 // stageAPIRequestsPerRepo 为每个仓库 staging 时消耗的 GitHub REST API (core) 请求数经验值。
-// 近几轮以 hash skip 为主：GetLatestRelease + GetRef ≈ 2；附注 tag 多 1 次 GetTag，
-// 全量索引另加 DownloadReleaseAsset + repoStats。实测 skip 主导约 2.22，取 2.3 留少量余量。
-const stageAPIRequestsPerRepo = 2.3
+// 近几轮以 hash skip 为主：仅 GetLatestRelease ≈ 1；全量更新另加 DownloadReleaseAsset + repoStats。
+// 取 1.3 覆盖少量更新与余量（不再解析 tag→commit）。
+const stageAPIRequestsPerRepo = 1.3
 
 // checkRateLimitBeforeStage 按本轮待 API 检查的仓库数估算请求量；串行 GET /user 读取真实 core 响应头做门槛，并锚定观测起点。
 // 不用 GET /rate_limit（其实测 remaining 可能偏高）。探测本身计入 samples，响应头 Remaining 为扣减后值。
@@ -313,7 +313,7 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 					return nil
 				}
 				if util.IsGitHubServerError(releaseErr) {
-					// 5xx 多为 GitHub 瞬时故障，不向作者开 stage-fail（避免误报「找不到 tag」）。
+					// 5xx 多为 GitHub 瞬时故障，不向作者开 stage-fail（避免误报 Release 获取失败）。
 					logger.Errorf("GitHub API server error while staging [%s]: %s; keeping old data (not reporting as stage-fail issue)", ownerRepo, releaseErr)
 					return nil
 				}
@@ -328,53 +328,83 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 				}
 				return nil
 			}
-			hash := releaseInfo.CommitSHA
+			packageZipAssetID := releaseInfo.PackageZipAssetID
 			// 新上架（无旧清单可继承）用 Stage 索引时间；已有包更新仍用 Release 发布时间。
 			updated := releaseInfo.Published
 			if checkOldName == "" {
 				updated = time.Now().UTC().Format(time.RFC3339)
 			}
-			packageZipAssetID := releaseInfo.PackageZipAssetID
 
-			// Latest Release 的 hash 与已 stage 的 hash 一致则跳过，不下载、不更新，沿用旧条目
+			// 快路径：asset id 未变则跳过（无需看 SHA-256）
 			// 仅同路径 exactOld：换维护者不得沿用旧 owner/repo@hash 条目
-			if exactOld != nil {
-				oldHash := parseHashFromStageURL(exactOld.URL)
-				if oldHash != "" && hash == oldHash {
-					if sameCommitPackageZipChanged(exactOld, packageZipAssetID) {
-						logger.Errorf("repo [%s] hash unchanged [%s] but package.zip asset id changed (%d -> %d); a new release tag is required to update the staged package",
-							repoURL, hash, exactOld.PackageZipAssetID, packageZipAssetID)
-						stageReposMu.Lock()
-						stageRepos = append(stageRepos, exactOld)
-						stageReposMu.Unlock()
-						reports.add(stageReport{
-							OwnerRepo:   ownerRepo,
-							PackageType: packageType,
-							Kind:        stageReportFail,
-							Release:     releaseInfo,
-							Hash:        hash,
-							Issues: stageInternalIssue(
-								fmt.Sprintf("Latest Release 仍指向同一 commit（`%s`），但 `package.zip` 资源已被替换（asset id %d → %d）。集市 Stage 需要新的 Release 标签才会更新入库。请提升清单 `version`，重新打包 `package.zip`，并发布带新 tag 的 GitHub Release（标记为 Latest）。",
-									hash, exactOld.PackageZipAssetID, packageZipAssetID),
-								fmt.Sprintf("The Latest Release still points to the same commit (`%s`), but the `package.zip` asset was replaced (asset id %d → %d). Stage only updates when there is a new release tag. Please bump the manifest `version`, rebuild `package.zip`, and publish a new GitHub Release with a new tag (marked as Latest).",
-									hash, exactOld.PackageZipAssetID, packageZipAssetID),
-							),
-						})
-						return nil
-					}
-					logger.Infof("skip repo [%s], hash unchanged [%s]", ownerRepo, hash)
-					stageReposMu.Lock()
-					stageRepos = append(stageRepos, exactOld)
-					stageReposMu.Unlock()
-					reports.add(stageReport{
-						OwnerRepo:   ownerRepo,
-						PackageType: packageType,
-						Kind:        stageReportSkip,
-						Release:     releaseInfo,
-						Hash:        hash,
-					})
+			if exactOld != nil && exactOld.PackageZipAssetID != 0 && exactOld.PackageZipAssetID == packageZipAssetID {
+				logger.Infof("skip repo [%s], package.zip asset id unchanged [%d]", ownerRepo, packageZipAssetID)
+				stageReposMu.Lock()
+				stageRepos = append(stageRepos, exactOld)
+				stageReposMu.Unlock()
+				reports.add(stageReport{
+					OwnerRepo:   ownerRepo,
+					PackageType: packageType,
+					Kind:        stageReportSkip,
+					Release:     releaseInfo,
+					Hash:        parseHashFromStageURL(exactOld.URL),
+				})
+				return nil
+			}
+
+			sha256Hex, zipData, shaErr := resolvePackageZipSHA256(ownerRepo, releaseInfo)
+			if shaErr != nil {
+				appendKeptOld(repoURL, "resolve package.zip sha256 failed", exactOld)
+				if util.IsGitHubRateLimit(shaErr) {
+					markRateLimited(ownerRepo, shaErr)
 					return nil
 				}
+				if util.IsGitHubServerError(shaErr) {
+					logger.Errorf("GitHub API server error while hashing [%s]: %s; keeping old data", ownerRepo, shaErr)
+					return nil
+				}
+				reports.add(stageReport{
+					OwnerRepo:   ownerRepo,
+					PackageType: packageType,
+					Kind:        stageReportFail,
+					Release:     releaseInfo,
+					Issues:      stageIssueFromErr(shaErr),
+				})
+				return nil
+			}
+			hash := util.PackageHashFromSHA256(sha256Hex)
+			if hash == "" {
+				appendKeptOld(repoURL, "empty package hash", exactOld)
+				reports.add(stageReport{
+					OwnerRepo:   ownerRepo,
+					PackageType: packageType,
+					Kind:        stageReportFail,
+					Release:     releaseInfo,
+					Issues: stageInternalIssue(
+						"无法由 `package.zip` 计算包 hash。请确认 Latest Release 中的 `package.zip` 可正常下载。",
+						"Couldn't derive a package hash from `package.zip`. Please make sure `package.zip` in the Latest Release can be downloaded.",
+					),
+				})
+				return nil
+			}
+
+			// asset id 变了但内容 SHA-256 未变：只回写 asset id，不重跑校验/上传
+			if exactOld != nil && exactOld.PackageZipSHA256 != "" && exactOld.PackageZipSHA256 == sha256Hex {
+				kept := *exactOld
+				kept.PackageZipAssetID = packageZipAssetID
+				kept.PackageZipSHA256 = sha256Hex
+				logger.Infof("skip repo [%s], package.zip sha256 unchanged [%s] (asset id %d -> %d)", ownerRepo, hash, exactOld.PackageZipAssetID, packageZipAssetID)
+				stageReposMu.Lock()
+				stageRepos = append(stageRepos, &kept)
+				stageReposMu.Unlock()
+				reports.add(stageReport{
+					OwnerRepo:   ownerRepo,
+					PackageType: packageType,
+					Kind:        stageReportSkip,
+					Release:     releaseInfo,
+					Hash:        hash,
+				})
+				return nil
 			}
 
 			var allowThemeJS bool
@@ -384,7 +414,7 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 			if checkOldName != "" && exactOld == nil {
 				logger.Infof("maintainer change staging [%s], inherit old name [%s] version [%s]", ownerRepo, checkOldName, checkOldVersion)
 			}
-			ok, size, installSize, pkg, indexIssues, indexErr := indexPackage(ownerRepo, packageType, hash, packageZipAssetID, checkOldName, checkOldVersion, allowThemeJS, occupiedNames)
+			ok, size, installSize, pkg, indexIssues, indexErr := indexPackage(ownerRepo, packageType, hash, packageZipAssetID, zipData, checkOldName, checkOldVersion, allowThemeJS, occupiedNames)
 			if indexErr != nil && util.IsGitHubRateLimit(indexErr) {
 				appendKeptOld(repoURL, "index failed due to rate limit", exactOld)
 				markRateLimited(ownerRepo, indexErr)
@@ -439,6 +469,7 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 				Size:              size,
 				InstallSize:       installSize,
 				PackageZipAssetID: packageZipAssetID,
+				PackageZipSHA256:  sha256Hex,
 				Package:           *pkg,
 			})
 			stageReposMu.Unlock()
@@ -505,6 +536,23 @@ func backfillUnprocessedStageRepos(reposSlice []string, stageRepos []*util.Stage
 		}
 	}
 	return stageRepos
+}
+
+// resolvePackageZipSHA256 解析 package.zip 内容 SHA-256。
+// 优先使用 GitHub asset digest；缺失时下载 zip 计算，并返回 zip 字节供后续入库复用。
+func resolvePackageZipSHA256(ownerRepo string, release util.LatestRelease) (sha256Hex string, zipData []byte, err error) {
+	if hex := util.NormalizeAssetDigest(release.PackageZipDigest); hex != "" {
+		return hex, nil, nil
+	}
+	owner, name, cutOk := strings.Cut(ownerRepo, "/")
+	if !cutOk {
+		return "", nil, errInvalidOwnerRepo
+	}
+	data, downloadErr := util.DownloadPackageZip(githubContext, githubClient, owner, name, release.PackageZipAssetID)
+	if downloadErr != nil {
+		return "", nil, downloadErr
+	}
+	return util.SHA256Hex(data), data, nil
 }
 
 func repoStats(ownerRepo string) (stars, openIssues int, ok bool, err error) {

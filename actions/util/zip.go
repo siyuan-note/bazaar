@@ -28,15 +28,28 @@ import (
 // zipData 供 Stage 上传 OSS；cleanup 删除临时工作目录，调用方应 defer cleanup()。
 func DownloadAndUnzipPackageZip(ctx context.Context, client *github.Client, owner, repo string, assetID int64) (unzipDir string, zipData []byte, cleanup func(), err error) {
 	cleanup = func() {}
+	data, err := DownloadPackageZip(ctx, client, owner, repo, assetID)
+	if err != nil {
+		return "", nil, cleanup, err
+	}
+	unzipDir, cleanup, err = UnzipPackageZipData(data)
+	if err != nil {
+		return "", nil, cleanup, err
+	}
+	return unzipDir, data, cleanup, nil
+}
+
+// DownloadPackageZip 通过 GitHub Release Asset API 下载 `package.zip` 原始字节。
+func DownloadPackageZip(ctx context.Context, client *github.Client, owner, repo string, assetID int64) ([]byte, error) {
 	if client == nil {
-		return "", nil, cleanup, rules.LocalizedErr(
+		return nil, rules.LocalizedErr(
 			"内部错误：下载 `package.zip` 时 GitHub 客户端未初始化。这通常是集市检查流程配置问题，请联系维护者。",
 			"Internal error: the GitHub client isn't initialized while downloading `package.zip`. This usually means a bazaar checker config problem — please contact a maintainer.",
 			nil,
 		)
 	}
 	if assetID == 0 {
-		return "", nil, cleanup, rules.LocalizedErr(
+		return nil, rules.LocalizedErr(
 			"无法下载 `package.zip`：Latest Release 中未找到有效的 `package.zip` 资源。请把打包好的 `package.zip` 作为 Release Asset 上传（文件名必须是 `package.zip`）。",
 			"Couldn't download `package.zip`: no valid `package.zip` asset was found in the Latest Release. Please upload your built `package.zip` as a Release asset (the filename must be exactly `package.zip`).",
 			nil,
@@ -59,14 +72,14 @@ func DownloadAndUnzipPackageZip(ctx context.Context, client *github.Client, owne
 	}
 	rc, _, err := client.Repositories.DownloadReleaseAsset(ctx, owner, repo, assetID, followClient)
 	if err != nil {
-		return "", nil, cleanup, rules.LocalizedErr(
+		return nil, rules.LocalizedErr(
 			fmt.Sprintf("下载 `package.zip` 失败：%v。请确认仓库已公开，且 Latest Release 中的 `package.zip` 可正常下载。", err),
 			fmt.Sprintf("Failed to download `package.zip`: %v. Please make sure the repository is public and `package.zip` in the Latest Release can be downloaded.", err),
 			err,
 		)
 	}
 	if rc == nil {
-		return "", nil, cleanup, rules.LocalizedErr(
+		return nil, rules.LocalizedErr(
 			"下载 `package.zip` 失败：GitHub 返回了空响应。请确认 Latest Release 中的 `package.zip` 可正常下载。",
 			"Failed to download `package.zip`: GitHub returned an empty response. Please make sure `package.zip` in the Latest Release can be downloaded.",
 			nil,
@@ -76,16 +89,29 @@ func DownloadAndUnzipPackageZip(ctx context.Context, client *github.Client, owne
 
 	data, err := io.ReadAll(rc)
 	if err != nil {
-		return "", nil, cleanup, rules.LocalizedErr(
+		return nil, rules.LocalizedErr(
 			fmt.Sprintf("读取 `package.zip` 失败：%v。请确认 Release 中的 zip 未损坏。", err),
 			fmt.Sprintf("Failed to read `package.zip`: %v. Please make sure the Release zip isn't corrupted.", err),
 			err,
 		)
 	}
+	return data, nil
+}
 
+// UnzipPackageZipData 将已下载的 package.zip 字节解压到临时目录。
+// cleanup 删除临时工作目录，调用方应 defer cleanup()。
+func UnzipPackageZipData(data []byte) (unzipDir string, cleanup func(), err error) {
+	cleanup = func() {}
+	if len(data) == 0 {
+		return "", cleanup, rules.LocalizedErr(
+			"无法解压 `package.zip`：内容为空。",
+			"Couldn't unzip `package.zip`: the content is empty.",
+			nil,
+		)
+	}
 	workDir, err := os.MkdirTemp("", "bazaar-*")
 	if err != nil {
-		return "", nil, cleanup, rules.LocalizedErr(
+		return "", cleanup, rules.LocalizedErr(
 			fmt.Sprintf("内部错误：解压 `package.zip` 时无法创建临时目录：%v。请联系维护者。", err),
 			fmt.Sprintf("Internal error: couldn't create a temp directory while extracting `package.zip`: %v. Please contact a maintainer.", err),
 			err,
@@ -94,28 +120,31 @@ func DownloadAndUnzipPackageZip(ctx context.Context, client *github.Client, owne
 	cleanup = func() {
 		os.RemoveAll(workDir)
 	}
-
-	tmpZipPath := filepath.Join(workDir, "package.zip")
-	if err = os.WriteFile(tmpZipPath, data, 0644); err != nil {
+	unzipDir, err = unzipPackageZipData(workDir, data)
+	if err != nil {
 		cleanup()
 		cleanup = func() {}
-		return "", nil, cleanup, rules.LocalizedErr(
+		return "", cleanup, err
+	}
+	return unzipDir, cleanup, nil
+}
+
+func unzipPackageZipData(workDir string, data []byte) (string, error) {
+	tmpZipPath := filepath.Join(workDir, "package.zip")
+	if err := os.WriteFile(tmpZipPath, data, 0644); err != nil {
+		return "", rules.LocalizedErr(
 			fmt.Sprintf("内部错误：保存 `package.zip` 时写入失败：%v。请联系维护者。", err),
 			fmt.Sprintf("Internal error: failed to save `package.zip`: %v. Please contact a maintainer.", err),
 			err,
 		)
 	}
-
 	tmpUnzipPath := filepath.Join(workDir, "unzip")
-	if err = gulu.Zip.Unzip(tmpZipPath, tmpUnzipPath); err != nil {
-		cleanup()
-		cleanup = func() {}
-		return "", nil, cleanup, rules.LocalizedErr(
+	if err := gulu.Zip.Unzip(tmpZipPath, tmpUnzipPath); err != nil {
+		return "", rules.LocalizedErr(
 			fmt.Sprintf("解压 `package.zip` 失败：%v。请确认 zip 内结构正确且未损坏。", err),
 			fmt.Sprintf("Failed to unzip `package.zip`: %v. Please make sure the archive structure is valid and isn't corrupted.", err),
 			err,
 		)
 	}
-
-	return tmpUnzipPath, data, cleanup, nil
+	return tmpUnzipPath, nil
 }

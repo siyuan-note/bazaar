@@ -72,8 +72,9 @@ func resolveStageCheckLegacy(
 	return nil, legacy.Package.Name, legacy.Package.Version
 }
 
-// indexPackage 下载、校验并上传包，返回的 pkg 为解析后的清单元数据。
-// hash、packageZipAssetID 来自 Latest Release，由调用方在跳过判断后传入。
+// indexPackage 校验并上传包，返回的 pkg 为解析后的清单元数据。
+// hash 为 package.zip 内容 SHA-256 前 7 位；packageZipAssetID 用于下载（zipData 为空时）。
+// zipData 非空时直接解压使用，避免重复下载。
 // oldName/oldVersion 供清单校验（含换维护者：视同更新，须 version 更高）。
 // allowThemeJS 仅主题为 themes 时可能为 true（theme.js 白名单内仓库）；其他类型恒为 false。
 // occupiedNames 为已占用 package.name 集合，供 rules.Check 做跨类型唯一性检查。
@@ -84,6 +85,7 @@ func indexPackage(
 	packageType rules.PackageType,
 	hash string,
 	packageZipAssetID int64,
+	zipData []byte,
 	oldName, oldVersion string,
 	allowThemeJS bool,
 	occupiedNames map[string]struct{},
@@ -96,7 +98,18 @@ func indexPackage(
 		return
 	}
 
-	tmpUnzipPath, data, cleanup, downloadErr := util.DownloadAndUnzipPackageZip(githubContext, githubClient, owner, name, packageZipAssetID)
+	var (
+		tmpUnzipPath string
+		data         []byte
+		cleanup      func()
+		downloadErr  error
+	)
+	if len(zipData) > 0 {
+		data = zipData
+		tmpUnzipPath, cleanup, downloadErr = util.UnzipPackageZipData(zipData)
+	} else {
+		tmpUnzipPath, data, cleanup, downloadErr = util.DownloadAndUnzipPackageZip(githubContext, githubClient, owner, name, packageZipAssetID)
+	}
 	if downloadErr != nil {
 		logger.Errorf("download/unzip [%s] asset %d failed: %s", repoURL, packageZipAssetID, downloadErr)
 		if util.IsGitHubRateLimit(downloadErr) {
@@ -211,7 +224,7 @@ func getRepoLatestRelease(ownerRepo string) (util.LatestRelease, error) {
 	ctx, cancel := context.WithTimeout(githubContext, REQUEST_TIMEOUT)
 	defer cancel()
 
-	releaseInfo, err := util.FetchLatestRelease(ctx, githubClient, owner, name)
+	releaseInfo, err := util.FetchLatestReleaseZip(ctx, githubClient, owner, name)
 	if err != nil {
 		logger.Errorf("get release [%s] failed: %s", repoURL, err)
 		return releaseInfo, err
@@ -219,15 +232,8 @@ func getRepoLatestRelease(ownerRepo string) (util.LatestRelease, error) {
 	return releaseInfo, nil
 }
 
-// sameCommitPackageZipChanged 判断 Latest Release 仍指向同一 commit，但 package.zip 是否已被替换。
-func sameCommitPackageZipChanged(old *util.StageRepo, assetID int64) bool {
-	if old == nil || old.PackageZipAssetID == 0 || assetID == 0 {
-		return false
-	}
-	return old.PackageZipAssetID != assetID
-}
-
-// parseHashFromStageURL 从 stage 条目的 URL（格式 owner/repo@hash）中解析出 hash 部分，若无 @ 或 @ 后为空则返回空字符串
+// parseHashFromStageURL 从 stage 条目的 URL（格式 owner/repo@hash）中解析出 hash 部分，若无 @ 或 @ 后为空则返回空字符串。
+// hash 为 package.zip 内容 SHA-256 hex 的前 7 位（见 util.PackageHashFromSHA256）。
 func parseHashFromStageURL(stageURL string) string {
 	_, hash, ok := strings.Cut(stageURL, "@")
 	if !ok || hash == "" {

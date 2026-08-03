@@ -103,7 +103,9 @@ func TestFormatStageFailIssueBody(t *testing.T) {
 		"可直接在本 Issue 中回复",
 		"please reply in this issue",
 		"检查的 Release / Checked release: [v1.2.3](https://github.com/owner/repo/releases/tag/v1.2.3)",
-		"hash `abc123`",
+		"package hash `abc123`",
+		"发布（或更新）标记为 Latest 的 GitHub Release",
+		"publish (or update) a GitHub Release marked as Latest",
 		"[01]",
 		"缺少 icon.png",
 		"missing icon.png",
@@ -182,8 +184,8 @@ func TestStageFailCloseComment(t *testing.T) {
 		{
 			reason: stageFailCloseSkip,
 			want: []string{
-				"hash 未变",
-				"hash unchanged",
+				"package hash 未变",
+				"package hash unchanged",
 				"工作流日志 / Workflow log: https://github.com/siyuan-note/bazaar/actions/runs/123",
 			},
 		},

@@ -80,47 +80,6 @@ func TestResolveStageCheckLegacy(t *testing.T) {
 	})
 }
 
-func TestSameCommitPackageZipChanged(t *testing.T) {
-	old := &util.StageRepo{PackageZipAssetID: 42}
-
-	tests := []struct {
-		name    string
-		old     *util.StageRepo
-		assetID int64
-		want    bool
-	}{
-		{
-			name:    "无旧条目",
-			old:     nil,
-			assetID: 99,
-		},
-		{
-			name:    "旧条目无 asset id",
-			old:     &util.StageRepo{},
-			assetID: 99,
-		},
-		{
-			name:    "asset id 未变化",
-			old:     old,
-			assetID: 42,
-		},
-		{
-			name:    "asset id 变化",
-			old:     old,
-			assetID: 99,
-			want:    true,
-		},
-	}
-
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := sameCommitPackageZipChanged(tt.old, tt.assetID); got != tt.want {
-				t.Fatalf("sameCommitPackageZipChanged() = %v, want %v", got, tt.want)
-			}
-		})
-	}
-}
-
 func TestParseHashFromStageURL(t *testing.T) {
 	tests := []struct {
 		name     string

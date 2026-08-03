@@ -304,8 +304,8 @@ func stageFailCloseComment(reason stageFailCloseReason) string {
 		zh = "本轮 Stage 已成功重新索引该包，问题已修复，因此关闭本 Issue。"
 		en = "This package was successfully re-indexed in this Stage run, so this issue is being closed as fixed."
 	case stageFailCloseSkip:
-		zh = "本轮 Stage 已能正常获取该包的 Latest Release，且入库内容未变化（hash 未变），视为已恢复，因此关闭本 Issue。"
-		en = "This Stage run could fetch the package's Latest Release successfully, and the staged content is unchanged (hash unchanged), so this issue is being closed as recovered."
+		zh = "本轮 Stage 已能正常获取该包的 Latest Release，且入库内容未变化（package hash 未变），视为已恢复，因此关闭本 Issue。"
+		en = "This Stage run could fetch the package's Latest Release successfully, and the staged content is unchanged (package hash unchanged), so this issue is being closed as recovered."
 	case stageFailCloseDuplicate:
 		zh = "关闭重复的 stage-fail Issue；请以同仓库的主 Issue 为准。"
 		en = "Closing a duplicate stage-fail issue; please follow the primary issue for this repository."

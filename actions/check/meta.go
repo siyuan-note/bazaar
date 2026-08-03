@@ -61,6 +61,7 @@ type CheckFingerprint struct {
 	ReleaseID    int64  `json:"release_id"`
 	Tag          string `json:"tag"`
 	ZipID        int64  `json:"zip_id"`
+	ZipSHA256    string `json:"zip_sha256,omitempty"` // 完整 SHA-256 hex（来自 digest；探测阶段不下载计算）
 	ZipUpdatedAt string `json:"zip_updated_at,omitempty"`
 }
 
@@ -120,6 +121,7 @@ func fingerprintFromRelease(ownerRepo string, rel util.LatestRelease) *CheckFing
 		ReleaseID:    rel.ID,
 		Tag:          rel.Tag,
 		ZipID:        rel.PackageZipAssetID,
+		ZipSHA256:    util.NormalizeAssetDigest(rel.PackageZipDigest),
 		ZipUpdatedAt: rel.PackageZipUpdatedAt,
 	}
 }
@@ -146,8 +148,19 @@ func fingerprintsEqual(a, b *CheckFingerprint) bool {
 	if a == nil || b == nil {
 		return false
 	}
-	return a.Repo == b.Repo &&
-		a.ReleaseID == b.ReleaseID &&
+	if a.Repo != b.Repo {
+		return false
+	}
+	// 快路径：同一 package.zip asset id 视为未变
+	if a.ZipID != 0 && a.ZipID == b.ZipID {
+		return true
+	}
+	// asset id 不同：若双方都有 SHA-256 且相同，视为内容未变
+	if a.ZipSHA256 != "" && b.ZipSHA256 != "" {
+		return a.ZipSHA256 == b.ZipSHA256
+	}
+	// 兼容旧指纹 / 无 digest：回退到完整字段比较
+	return a.ReleaseID == b.ReleaseID &&
 		a.Tag == b.Tag &&
 		a.ZipID == b.ZipID &&
 		a.ZipUpdatedAt == b.ZipUpdatedAt
@@ -164,6 +177,7 @@ func computeResultHash(r *CheckResult) string {
 		ReleaseID         int64    `json:"release_id,omitempty"`
 		Tag               string   `json:"tag,omitempty"`
 		ZipID             int64    `json:"zip_id,omitempty"`
+		ZipSHA256         string   `json:"zip_sha256,omitempty"`
 		Issues            []string `json:"issues,omitempty"`
 	}
 	payload := struct {
@@ -189,6 +203,7 @@ func computeResultHash(r *CheckResult) string {
 				ReleaseID:         pc.Release.ID,
 				Tag:               pc.Release.Tag,
 				ZipID:             pc.Release.PackageZipAssetID,
+				ZipSHA256:         util.NormalizeAssetDigest(pc.Release.PackageZipDigest),
 				Issues:            issues,
 			})
 		}

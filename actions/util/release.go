@@ -45,8 +45,18 @@ type LatestRelease struct {
 	URL                 string
 	Published           string // RFC3339
 	PackageZipAssetID   int64
+	PackageZipDigest    string // package.zip 的 digest，形如 sha256:<hex>
 	PackageZipUpdatedAt string // package.zip 的 updated_at，RFC3339；指纹用
 	CommitSHA           string
+}
+
+// FetchLatestReleaseZip 获取 Latest Release，并校验存在 `package.zip`，不解析 tag→commit。
+// PackageZipDigest 若 GitHub 已提供则填入（可能为空，Stage 可再下载计算 SHA-256）。
+//
+// 返回的 error 用 sentinel（ErrNoLatestRelease / ErrNoPackageZip）标识失败阶段。
+// 若在 GetLatestRelease 之后因缺少 `package.zip` 失败，仍返回已取到的 Tag、URL 等字段。
+func FetchLatestReleaseZip(ctx context.Context, client *github.Client, owner, repo string) (LatestRelease, error) {
+	return fetchLatestReleaseWithZip(ctx, client, owner, repo)
 }
 
 // FetchLatestRelease 获取 Latest Release，并校验 `package.zip` 与 tag → commit。
@@ -55,8 +65,27 @@ type LatestRelease struct {
 //
 // 若在 GetLatestRelease 之后失败（缺 `package.zip` 或 tag 无效），仍返回已取到的 Tag、URL 等字段：
 // PR Check 的评论模板 check-result.md.tpl 在报错时也会渲染 Release 链接，便于作者点开对应 Release 补传 zip 或修 tag。
-// Stage 在 err != nil 时不使用这些字段，可忽略。
 func FetchLatestRelease(ctx context.Context, client *github.Client, owner, repo string) (LatestRelease, error) {
+	info, err := fetchLatestReleaseWithZip(ctx, client, owner, repo)
+	if err != nil {
+		return info, err
+	}
+
+	info.CommitSHA, err = resolveReleaseTagCommit(ctx, client, owner, repo, info.Tag)
+	if err != nil {
+		// `package.zip` 已找到；保留 Tag / URL / PackageZipAssetID 供 PR 评论展示链接。
+		zh, en := rules.LocalizedMessages(err)
+		return info, rules.LocalizedErr(
+			fmt.Sprintf("已找到 Latest Release 与 `package.zip`，但无法解析 Release 标签 `%s` 对应的提交：%s。请在 GitHub 上确认该 tag 指向有效 commit（可尝试删除并重新创建 tag）。", info.Tag, zh),
+			fmt.Sprintf("We found the Latest Release and `package.zip`, but couldn't resolve release tag `%s` to a commit: %s. Please make sure that tag points to a valid commit on GitHub (you can try deleting and recreating the tag).", info.Tag, en),
+			fmt.Errorf("%w: %w", ErrReleaseTag, err),
+		)
+	}
+	return info, nil
+}
+
+// fetchLatestReleaseWithZip 拉取 Latest Release 并要求存在 `package.zip`（不解析 tag→commit）。
+func fetchLatestReleaseWithZip(ctx context.Context, client *github.Client, owner, repo string) (LatestRelease, error) {
 	var info LatestRelease
 	if client == nil {
 		return info, rules.LocalizedErr(
@@ -84,6 +113,7 @@ func FetchLatestRelease(ctx context.Context, client *github.Client, owner, repo 
 	for _, asset := range release.Assets {
 		if asset.GetName() == "package.zip" {
 			info.PackageZipAssetID = asset.GetID()
+			info.PackageZipDigest = asset.GetDigest()
 			if t := asset.GetUpdatedAt(); !t.Time.IsZero() {
 				info.PackageZipUpdatedAt = t.Format(time.RFC3339)
 			}
@@ -96,17 +126,6 @@ func FetchLatestRelease(ctx context.Context, client *github.Client, owner, repo 
 			"Latest Release 中缺少名为 `package.zip` 的资源文件。请把打包好的 `package.zip` 作为 Release Asset 上传（文件名必须是 `package.zip`）。",
 			"The Latest Release is missing an asset named `package.zip`. Please upload your built `package.zip` as a Release asset (the filename must be exactly `package.zip`).",
 			ErrNoPackageZip,
-		)
-	}
-
-	info.CommitSHA, err = resolveReleaseTagCommit(ctx, client, owner, repo, info.Tag)
-	if err != nil {
-		// `package.zip` 已找到；保留 Tag / URL / PackageZipAssetID 供 PR 评论展示链接。
-		zh, en := rules.LocalizedMessages(err)
-		return info, rules.LocalizedErr(
-			fmt.Sprintf("已找到 Latest Release 与 `package.zip`，但无法解析 Release 标签 `%s` 对应的提交：%s。请在 GitHub 上确认该 tag 指向有效 commit（可尝试删除并重新创建 tag）。", info.Tag, zh),
-			fmt.Sprintf("We found the Latest Release and `package.zip`, but couldn't resolve release tag `%s` to a commit: %s. Please make sure that tag points to a valid commit on GitHub (you can try deleting and recreating the tag).", info.Tag, en),
-			fmt.Errorf("%w: %w", ErrReleaseTag, err),
 		)
 	}
 	return info, nil
@@ -130,6 +149,7 @@ func ProbeLatestRelease(ctx context.Context, client *github.Client, owner, repo 
 	for _, asset := range release.Assets {
 		if asset.GetName() == "package.zip" {
 			info.PackageZipAssetID = asset.GetID()
+			info.PackageZipDigest = asset.GetDigest()
 			if t := asset.GetUpdatedAt(); !t.Time.IsZero() {
 				info.PackageZipUpdatedAt = t.Format(time.RFC3339)
 			}

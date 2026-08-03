@@ -115,6 +115,20 @@ func TestBuildNextCheckMetaStreak(t *testing.T) {
 	}
 }
 
+func TestFingerprintsEqual(t *testing.T) {
+	const sha = "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
+	a := &CheckFingerprint{Repo: "o/r", ReleaseID: 1, Tag: "v1", ZipID: 2, ZipSHA256: sha}
+	if !fingerprintsEqual(a, &CheckFingerprint{Repo: "o/r", ReleaseID: 9, Tag: "v9", ZipID: 2}) {
+		t.Fatal("same ZipID should be equal")
+	}
+	if !fingerprintsEqual(a, &CheckFingerprint{Repo: "o/r", ReleaseID: 9, Tag: "v9", ZipID: 99, ZipSHA256: sha}) {
+		t.Fatal("same ZipSHA256 should be equal when ZipID differs")
+	}
+	if fingerprintsEqual(a, &CheckFingerprint{Repo: "o/r", ReleaseID: 1, Tag: "v1", ZipID: 99}) {
+		t.Fatal("different ZipID without sha256 should not be equal")
+	}
+}
+
 func TestShouldScheduleRecheck(t *testing.T) {
 	now := time.Date(2026, 7, 20, 14, 0, 0, 0, time.UTC)
 	meta := &CheckMeta{

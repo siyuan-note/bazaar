@@ -48,7 +48,7 @@ func TestFetchLatestReleaseRetriesTransient404(t *testing.T) {
 			"html_url":     "https://github.com/o/r/releases/tag/v1.0.0",
 			"published_at": "2024-01-02T03:04:05Z",
 			"assets": []map[string]any{
-				{"id": 42, "name": "package.zip", "updated_at": "2024-01-02T04:00:00Z"},
+				{"id": 42, "name": "package.zip", "digest": "sha256:0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef", "updated_at": "2024-01-02T04:00:00Z"},
 			},
 		})
 	})
@@ -105,7 +105,7 @@ func TestProbeLatestRelease(t *testing.T) {
 			"html_url":     "https://github.com/o/r/releases/tag/v2",
 			"published_at": "2024-02-01T00:00:00Z",
 			"assets": []map[string]any{
-				{"id": 8, "name": "package.zip", "updated_at": "2024-02-01T01:00:00Z"},
+				{"id": 8, "name": "package.zip", "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "updated_at": "2024-02-01T01:00:00Z"},
 			},
 		})
 	})
@@ -122,6 +122,97 @@ func TestProbeLatestRelease(t *testing.T) {
 	}
 	if info.ID != 7 || info.Tag != "v2" || info.PackageZipAssetID != 8 || info.CommitSHA != "" {
 		t.Fatalf("unexpected probe info: %+v", info)
+	}
+}
+
+func TestFetchLatestReleaseZip(t *testing.T) {
+	oldWait := latestRelease404RetryWait
+	oldMax := latestRelease404MaxAttempts
+	latestRelease404RetryWait = 0
+	latestRelease404MaxAttempts = 1
+	t.Cleanup(func() {
+		latestRelease404RetryWait = oldWait
+		latestRelease404MaxAttempts = oldMax
+	})
+
+	var gitHits atomic.Int32
+	mux := http.NewServeMux()
+	mux.HandleFunc("/api/v3/repos/o/r/releases/latest", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		_ = json.NewEncoder(w).Encode(map[string]any{
+			"id":           9,
+			"tag_name":     "v3",
+			"html_url":     "https://github.com/o/r/releases/tag/v3",
+			"published_at": "2024-03-01T00:00:00Z",
+			"assets": []map[string]any{
+				{"id": 42, "name": "package.zip", "digest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb", "updated_at": "2024-03-01T01:00:00Z"},
+			},
+		})
+	})
+	mux.HandleFunc("/api/v3/repos/o/r/git/", func(w http.ResponseWriter, r *http.Request) {
+		gitHits.Add(1)
+		w.WriteHeader(http.StatusInternalServerError)
+	})
+	srv := httptest.NewServer(mux)
+	t.Cleanup(srv.Close)
+
+	client, err := github.NewClient(github.WithEnterpriseURLs(srv.URL, srv.URL))
+	if err != nil {
+		t.Fatalf("NewClient: %v", err)
+	}
+	info, err := FetchLatestReleaseZip(context.Background(), client, "o", "r")
+	if err != nil {
+		t.Fatalf("FetchLatestReleaseZip: %v", err)
+	}
+	if info.ID != 9 || info.Tag != "v3" || info.PackageZipAssetID != 42 || info.CommitSHA != "" {
+		t.Fatalf("unexpected zip release info: %+v", info)
+	}
+	if info.PackageZipDigest == "" {
+		t.Fatalf("PackageZipDigest empty: %+v", info)
+	}
+	if gitHits.Load() != 0 {
+		t.Fatalf("FetchLatestReleaseZip must not resolve tag→commit, gitHits=%d", gitHits.Load())
+	}
+	if got := PackageHashFromDigest(info.PackageZipDigest); got != "bbbbbbb" {
+		t.Fatalf("PackageHashFromDigest = %q, want bbbbbbb", got)
+	}
+}
+
+func TestFetchLatestReleaseZipAllowsMissingDigest(t *testing.T) {
+	oldWait := latestRelease404RetryWait
+	oldMax := latestRelease404MaxAttempts
+	latestRelease404RetryWait = 0
+	latestRelease404MaxAttempts = 1
+	t.Cleanup(func() {
+		latestRelease404RetryWait = oldWait
+		latestRelease404MaxAttempts = oldMax
+	})
+
+	mux := http.NewServeMux()
+	mux.HandleFunc("/api/v3/repos/o/r/releases/latest", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		_ = json.NewEncoder(w).Encode(map[string]any{
+			"id":       1,
+			"tag_name": "v1",
+			"html_url": "https://github.com/o/r/releases/tag/v1",
+			"assets": []map[string]any{
+				{"id": 42, "name": "package.zip"},
+			},
+		})
+	})
+	srv := httptest.NewServer(mux)
+	t.Cleanup(srv.Close)
+
+	client, err := github.NewClient(github.WithEnterpriseURLs(srv.URL, srv.URL))
+	if err != nil {
+		t.Fatalf("NewClient: %v", err)
+	}
+	info, err := FetchLatestReleaseZip(context.Background(), client, "o", "r")
+	if err != nil {
+		t.Fatalf("FetchLatestReleaseZip: %v", err)
+	}
+	if info.PackageZipAssetID != 42 || info.PackageZipDigest != "" {
+		t.Fatalf("unexpected info: %+v", info)
 	}
 }
 
@@ -192,7 +283,7 @@ func TestFetchLatestReleaseRetriesTransientTag500(t *testing.T) {
 			"html_url":     "https://github.com/o/r/releases/tag/v1.0.0",
 			"published_at": "2024-01-02T03:04:05Z",
 			"assets": []map[string]any{
-				{"id": 42, "name": "package.zip", "updated_at": "2024-01-02T04:00:00Z"},
+				{"id": 42, "name": "package.zip", "digest": "sha256:0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef", "updated_at": "2024-01-02T04:00:00Z"},
 			},
 		})
 	})
@@ -259,7 +350,7 @@ func TestFetchLatestReleasePersistentTag500(t *testing.T) {
 			"html_url":     "https://github.com/o/r/releases/tag/v1.0.0",
 			"published_at": "2024-01-02T03:04:05Z",
 			"assets": []map[string]any{
-				{"id": 42, "name": "package.zip", "updated_at": "2024-01-02T04:00:00Z"},
+				{"id": 42, "name": "package.zip", "digest": "sha256:0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef", "updated_at": "2024-01-02T04:00:00Z"},
 			},
 		})
 	})
@@ -327,7 +418,7 @@ func TestFetchLatestReleaseRetriesTransientLatest500(t *testing.T) {
 			"html_url":     "https://github.com/o/r/releases/tag/v1.0.0",
 			"published_at": "2024-01-02T03:04:05Z",
 			"assets": []map[string]any{
-				{"id": 42, "name": "package.zip", "updated_at": "2024-01-02T04:00:00Z"},
+				{"id": 42, "name": "package.zip", "digest": "sha256:0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef", "updated_at": "2024-01-02T04:00:00Z"},
 			},
 		})
 	})
