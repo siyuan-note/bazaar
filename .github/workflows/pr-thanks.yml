@@ -21,6 +21,8 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh pr comment "${{ github.event.pull_request.number }}" --body "$(printf '%s\n%s' \
-            '感谢你的贡献，思源有你更精彩！' \
-            'Thank you for your contribution. SiYuan will be more wonderful with you!')"
+          gh pr comment "${{ github.event.pull_request.number }}" \
+            --repo "${{ github.repository }}" \
+            --body "$(printf '%s\n%s' \
+              '感谢你的贡献，思源有你更精彩！' \
+              'Thank you for your contribution. SiYuan will be more wonderful with you!')"
