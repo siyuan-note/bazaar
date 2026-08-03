@@ -76,8 +76,9 @@ func TestStageFileForPublicIndex_stripsInternalFields(t *testing.T) {
 				PackageZipAssetID: 424242,
 				PackageZipSHA256:  "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
 				Package: rules.Package{
-					Name:    "demo",
-					Version: "1.0.0",
+					Name:      "demo",
+					Version:   "1.0.0",
+					Frontends: []string{"desktop", "browser-desktop"},
 					DisplayName: rules.LocaleStrings{
 						"default": "Demo",
 						"zh-CN":   "Demo",
@@ -99,6 +100,9 @@ func TestStageFileForPublicIndex_stripsInternalFields(t *testing.T) {
 	}
 	if !strings.Contains(got, `"url":"owner/repo@abc1234"`) {
 		t.Fatalf("public index missing expected fields: %s", got)
+	}
+	if !strings.Contains(got, `"frontends":["desktop","browser-desktop"]`) {
+		t.Fatalf("public index missing theme frontends: %s", got)
 	}
 	if _, ok := public.Repos[0].Package.DisplayName["zh-CN"]; ok {
 		t.Fatalf("public index must strip locale identical to default: %s", got)

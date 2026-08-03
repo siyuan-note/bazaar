@@ -116,7 +116,8 @@ func TestClearRedundantLocales(t *testing.T) {
 
 func TestPackageForPublicIndex(t *testing.T) {
 	src := Package{
-		Name: "demo",
+		Name:      "demo",
+		Frontends: []string{"desktop", "browser-desktop"},
 		DisplayName: LocaleStrings{
 			"default": "Demo",
 			"zh-CN":   "Demo",
@@ -132,5 +133,8 @@ func TestPackageForPublicIndex(t *testing.T) {
 	}
 	if out.DisplayName["en"] != "Demo EN" {
 		t.Fatalf("expected distinct en kept, got %#v", out.DisplayName)
+	}
+	if len(out.Frontends) != 2 || out.Frontends[0] != "desktop" || out.Frontends[1] != "browser-desktop" {
+		t.Fatalf("expected frontends kept in public copy, got %#v", out.Frontends)
 	}
 }

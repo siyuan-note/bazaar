@@ -51,6 +51,12 @@
 
 如果长时间未更新，可能是更新包存在问题（例如未提升清单中的 version）。请先查看带 `stage-fail` 标签的 [Stage 检查失败 Issue](https://github.com/siyuan-note/bazaar/issues?q=is%3Aissue+is%3Aopen+label%3Astage-fail) 中是否有对应仓库，也可检查最新的 Stage 工作流日志。
 
+## 主题前端兼容性
+
+主题可以在 `theme.json` 中声明字符串数组 `frontends`，列出支持的思源前端。可用值与插件清单一致：`desktop`、`desktop-window`、`mobile`、`browser-desktop`、`browser-mobile` 和 `all`。该字段使用精确匹配，因此支持伺服桌面端的主题必须显式包含 `browser-desktop`。字段缺失、空数组或 `["all"]` 表示支持所有前端；`all` 不得与其他值混用。
+
+如果主题依赖该字段排除某个前端，请将 `minAppVersion` 设置为首个支持主题前端兼容性的思源版本。旧版客户端会忽略 `frontends`，否则仍可能加载不兼容主题。
+
 ## 更换维护者
 
 若原作者无力继续维护，可由新维护者接手已上架的集市包。更换维护者需要单独提交 PR（一次只更换一个包），并经过原维护者确认后才会合并。

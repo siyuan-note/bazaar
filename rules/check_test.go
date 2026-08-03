@@ -263,6 +263,7 @@ func TestManifestKeysByPackageType(t *testing.T) {
 		{TypePlugin, "backends"},
 		{TypePlugin, "disabledInPublish"},
 		{TypeTheme, "modes"},
+		{TypeTheme, "frontends"},
 		{TypeIcon, "keywords"},
 		{TypeTemplate, "minAppVersion"},
 		{TypeWidget, "displayName"},
@@ -272,6 +273,33 @@ func TestManifestKeysByPackageType(t *testing.T) {
 		if len(issues) != 0 {
 			t.Fatalf("%v with allowed key %s: unexpected issues %v", tc.typ, tc.key, issues)
 		}
+	}
+}
+
+func TestCheckThemeOptionalTypedFields(t *testing.T) {
+	if issues := checkThemeOptionalTypedFields(map[string]any{
+		"modes":     []any{"light", "dark"},
+		"frontends": []any{"desktop", "browser-desktop"},
+	}); len(issues) != 0 {
+		t.Fatalf("expected valid theme fields, got %v", issues)
+	}
+
+	if issues := checkThemeOptionalTypedFields(map[string]any{
+		"frontends": "desktop",
+	}); !issuesContain(issues, "frontends") {
+		t.Fatalf("expected invalid frontends type, got %v", issues)
+	}
+
+	if issues := checkThemeOptionalTypedFields(map[string]any{
+		"frontends": []any{"desktop", 1},
+	}); !issuesContain(issues, "frontends") {
+		t.Fatalf("expected invalid frontends element, got %v", issues)
+	}
+
+	if issues := checkThemeOptionalTypedFields(map[string]any{
+		"frontends": []any{"desktop", "all"},
+	}); !issuesContain(issues, "frontends") || !issuesContain(issues, "all") {
+		t.Fatalf("expected frontends all-mix issue, got %v", issues)
 	}
 }
 
