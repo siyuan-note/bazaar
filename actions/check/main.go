@@ -273,10 +273,15 @@ func main() {
 func seedRateHeaderBaselines() {
 	ctx, cancel := context.WithTimeout(githubContext, 10*time.Second)
 	defer cancel()
-	if _, err := util.SeedRateHeaderBaseline(ctx, githubClient); err != nil {
+	owner, repo, ok := splitOwnerRepo(GITHUB_REPOSITORY)
+	if !ok {
+		logger.Errorf("seed rate header baselines skipped: invalid GITHUB_REPOSITORY %q", GITHUB_REPOSITORY)
+		return
+	}
+	if _, err := util.SeedRateHeaderBaseline(ctx, githubClient, owner, repo); err != nil {
 		logger.Errorf("seed PAT rate header baseline failed: %s", err)
 	}
-	if _, err := util.SeedRateHeaderBaseline(ctx, githubRepoClient); err != nil {
+	if _, err := util.SeedRateHeaderBaseline(ctx, githubRepoClient, owner, repo); err != nil {
 		logger.Errorf("seed GITHUB_TOKEN rate header baseline failed: %s", err)
 	}
 }

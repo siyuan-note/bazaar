@@ -13,6 +13,7 @@ package util
 import (
 	"net/http"
 	"net/http/httptest"
+	"strings"
 	"testing"
 
 	"github.com/google/go-github/v89/github"
@@ -133,6 +134,21 @@ func TestFormatRateHeaderObservation(t *testing.T) {
 	want := "GitHub API (PAT core via headers) samples=1 remaining 4991→4990 (min 4990) / 5000"
 	if msg != want {
 		t.Fatalf("got %q, want %q", msg, want)
+	}
+}
+
+func TestSeedRateHeaderBaselineEmptyOwnerRepo(t *testing.T) {
+	client, err := github.NewClient()
+	if err != nil {
+		t.Fatalf("NewClient: %v", err)
+	}
+	_, err = SeedRateHeaderBaseline(t.Context(), client, "", "bazaar")
+	if err == nil || !strings.Contains(err.Error(), "empty owner/repo") {
+		t.Fatalf("got %v, want empty owner/repo error", err)
+	}
+	_, err = SeedRateHeaderBaseline(t.Context(), client, "siyuan-note", "")
+	if err == nil || !strings.Contains(err.Error(), "empty owner/repo") {
+		t.Fatalf("got %v, want empty owner/repo error", err)
 	}
 }
 

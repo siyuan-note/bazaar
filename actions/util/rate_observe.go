@@ -68,15 +68,19 @@ func NewGitHubClientWithRateObserver(token string, timeout time.Duration) (*gith
 	return client, obs, nil
 }
 
-// SeedRateHeaderBaseline 串行打一次计入 core 的 API（GET /user），用真实响应头锚定观测起点，并返回该响应的 Rate。
+// SeedRateHeaderBaseline 串行打一次计入 core 的 API（GET /repos/{owner}/{repo}），用真实响应头锚定观测起点，并返回该响应的 Rate。
+// 使用本仓 repos.get：PAT 与 Actions GITHUB_TOKEN（Metadata）均可访问；勿用 GET /user（installation token 会 403）。
 // 不要用 GET /rate_limit：其 remaining 可能与后续业务响应头不一致。
-func SeedRateHeaderBaseline(ctx context.Context, client *github.Client) (github.Rate, error) {
-	_, resp, err := client.Users.Get(ctx, "")
+func SeedRateHeaderBaseline(ctx context.Context, client *github.Client, owner, repo string) (github.Rate, error) {
+	if owner == "" || repo == "" {
+		return github.Rate{}, fmt.Errorf("repos.get: empty owner/repo")
+	}
+	_, resp, err := client.Repositories.Get(ctx, owner, repo)
 	if err != nil {
 		return github.Rate{}, err
 	}
 	if resp == nil {
-		return github.Rate{}, fmt.Errorf("users.get: empty response")
+		return github.Rate{}, fmt.Errorf("repos.get: empty response")
 	}
 	return resp.Rate, nil
 }

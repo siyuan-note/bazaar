@@ -40,7 +40,7 @@ import (
 Stage 流程：
 1. 按 STAGE_MODE 决定范围：push → 增量（仅检查本次 *.txt 相对 STAGE_BEFORE_SHA 新增的 owner/repo，且只重建有变更的类型）；
    schedule / workflow_dispatch → 全量。增量 before 无效或 diff 失败则回退全量。
-2. 并发前串行 GET /user：用响应头检查 PAT core 剩余是否够本轮估算量，并锚定 PAT / GITHUB_TOKEN 观测起点（不用 GET /rate_limit）
+2. 并发前串行 GET /repos/{owner}/{repo}：用响应头检查 PAT core 剩余是否够本轮估算量，并锚定 PAT / GITHUB_TOKEN 观测起点（不用 GET /rate_limit；不用 GET /user，以免 GITHUB_TOKEN 403）
 3. 按类型依次执行 performStage；每类开始前重新加载 OccupiedNames，以便上一类本轮新写入的 name 参与后续类型的唯一性检查
 4. 读取 *s.txt 与既有 stage/*.json；增量时未列入 check 的仓沿用旧条目（不打 API、不写 report），下架随当前列表重建自然消失
 5. 先比 packageZipAssetId：相同则跳过；不同则取 SHA-256（优先 GitHub digest，否则下载 zip 计算）。内容未变则只回写 asset id；内容变了则校验并上传 OSS（package.zip、README、preview、icon、清单 JSON）。url 的 @hash 为 SHA-256 前 7 位
@@ -177,18 +177,22 @@ func loadReposByPackageType() (map[rules.PackageType][]string, error) {
 // 取 1.3 覆盖少量更新与余量（不再解析 tag→commit）。
 const stageAPIRequestsPerRepo = 1.3
 
-// checkRateLimitBeforeStage 按本轮待 API 检查的仓库数估算请求量；串行 GET /user 读取真实 core 响应头做门槛，并锚定观测起点。
+// checkRateLimitBeforeStage 按本轮待 API 检查的仓库数估算请求量；串行 GET 本仓 repos 读取真实 core 响应头做门槛，并锚定观测起点。
 // 不用 GET /rate_limit（其实测 remaining 可能偏高）。探测本身计入 samples，响应头 Remaining 为扣减后值。
 func checkRateLimitBeforeStage(repoCount int) error {
 	required := int(math.Ceil(float64(repoCount) * stageAPIRequestsPerRepo))
 	ctx, cancel := context.WithTimeout(githubContext, 10*time.Second)
 	defer cancel()
 
-	rate, err := util.SeedRateHeaderBaseline(ctx, githubClient)
+	owner, repo, ok := bazaarOwnerRepo()
+	if !ok {
+		return fmt.Errorf("probe rate headers: GITHUB_REPOSITORY not set / invalid")
+	}
+	rate, err := util.SeedRateHeaderBaseline(ctx, githubClient, owner, repo)
 	if err != nil {
 		return fmt.Errorf("probe PAT core rate headers: %w", err)
 	}
-	if _, err := util.SeedRateHeaderBaseline(ctx, githubRepoClient); err != nil {
+	if _, err := util.SeedRateHeaderBaseline(ctx, githubRepoClient, owner, repo); err != nil {
 		logger.Errorf("seed GITHUB_TOKEN rate header baseline failed: %s", err)
 	}
 
