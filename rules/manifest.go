@@ -55,10 +55,13 @@ type Package struct {
 	Funding       *Funding      `json:"funding,omitempty"`
 	Keywords      []string      `json:"keywords,omitempty"`
 
+	// 插件和主题共用（plugin.json / theme.json）
+
+	Frontends []string `json:"frontends,omitempty"`
+
 	// 插件专用（仅 plugin.json；见 kernel/bazaar/plugin.go）
 
 	Backends          []string `json:"backends,omitempty"`
-	Frontends         []string `json:"frontends,omitempty"`
 	Kernels           []string `json:"kernels,omitempty"`
 	DisabledInPublish bool     `json:"disabledInPublish,omitempty"`
 
@@ -76,7 +79,7 @@ var commonManifestKeys = []string{
 
 var allowedManifestKeys = map[PackageType]Set{
 	TypePlugin:   toKeySet(commonManifestKeys, "backends", "frontends", "kernels", "disabledInPublish"), // 插件专用字段见 kernel/bazaar/plugin.go（兼容性与发布禁用判断）。
-	TypeTheme:    toKeySet(commonManifestKeys, "modes"),                                                 // 主题专用字段：亮色 / 暗色模式列表。
+	TypeTheme:    toKeySet(commonManifestKeys, "modes", "frontends"),                                    // 主题专用字段：亮色 / 暗色模式和前端兼容性。
 	TypeIcon:     toKeySet(commonManifestKeys),
 	TypeTemplate: toKeySet(commonManifestKeys),
 	TypeWidget:   toKeySet(commonManifestKeys),
@@ -838,9 +841,10 @@ func checkPluginOptionalTypedFields(m map[string]any, owner, repo string) []Issu
 }
 
 // checkThemeOptionalTypedFields 校验主题专用可选字段。
-// modes（[]string）
+// modes / frontends（[]string）
 func checkThemeOptionalTypedFields(m map[string]any) []Issue {
-	return checkOptionalStringArray(m, "modes", false)
+	issues := checkOptionalStringArray(m, "modes", false)
+	return append(issues, checkOptionalStringArray(m, "frontends", false)...)
 }
 
 // checkOptionalLocaleStrings 校验可选的 LocaleStrings 字段（displayName / description）。
