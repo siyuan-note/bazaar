@@ -92,13 +92,6 @@ func main() {
 	githubContext, stop = signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer stop()
 
-	// TEMP: 见 migrate_hash.go；跑完迁移后删除此分支并恢复常规流程。
-	if stageHashMigrateOnly {
-		runStageHashMigrate()
-		logger.Infof("Stage completed (hash migrate only)")
-		return
-	}
-
 	var err error
 	githubClient, patRateObs, err = util.NewGitHubClientWithRateObserver(PAT, REQUEST_TIMEOUT)
 	if err != nil {
