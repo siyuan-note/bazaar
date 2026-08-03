@@ -51,12 +51,6 @@ Under normal circumstances, the community bazaar repo updates the index and depl
 
 If it has not been updated for a long time, there may be an issue with the update (for example, the metadata version was not bumped). First check whether your repository has an open [Stage check failure issue](https://github.com/siyuan-note/bazaar/issues?q=is%3Aissue+is%3Aopen+label%3Astage-fail) (label `stage-fail`); you can also inspect the latest Stage workflow logs.
 
-## Theme frontend compatibility
-
-Themes may declare a `frontends` string array in `theme.json` to list supported SiYuan frontends. Supported values follow the plugin manifest: `desktop`, `desktop-window`, `mobile`, `browser-desktop`, `browser-mobile`, and `all`. Matching is exact, so a theme that supports the served desktop UI must include `browser-desktop` explicitly. A missing or empty field, or `["all"]`, means all frontends are supported; `all` must not be mixed with other values.
-
-When a theme relies on this field to exclude a frontend, set `minAppVersion` to the first SiYuan version that supports theme frontend compatibility. Older clients ignore `frontends` and may otherwise load an incompatible theme.
-
 ## Changing maintainers
 
 If the original author can no longer maintain a listed bazaar package, a new maintainer may take it over. Changing maintainers requires a dedicated PR (one package per PR) and will only be merged after the original maintainer confirms.
