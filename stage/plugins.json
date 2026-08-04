@@ -1,6 +1,146 @@
 {
   "repos": [
     {
+      "installSize": 495359,
+      "openIssues": 1,
+      "package": {
+        "author": "FEUAZUR",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Import Notion HTML exports into SiYuan with deterministic hierarchy, databases, media, and style preservation",
+          "fr-FR": "Importez vos exports HTML Notion dans SiYuan en preservant la hierarchie, les bases de donnees, les medias et les styles",
+          "zh-CN": "将 Notion 的 HTML 导出文件导入思源，保留层级结构、数据库、媒体与样式"
+        },
+        "displayName": {
+          "default": "Notion Importer",
+          "fr-FR": "Importateur Notion",
+          "zh-CN": "Notion 导入器"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "keywords": [
+          "import",
+          "notion",
+          "migration"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "notion-importer",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/FEUAZUR/notion-importer",
+        "version": "1.1.0"
+      },
+      "packageZipAssetId": 501229607,
+      "packageZipSha256": "48c51ba83860708ad8f152fc19d142c9e724aceb255f6497abca44aabf34d127",
+      "size": 213631,
+      "stars": 3,
+      "updated": "2026-08-04T10:51:50Z",
+      "url": "FEUAZUR/notion-importer@48c51ba"
+    },
+    {
+      "installSize": 2326663,
+      "openIssues": 5,
+      "package": {
+        "author": "frostime",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "en_US": "Personal tools. GPT Chat (API Key) | Toggl | Reference | Md Process | Zotero...",
+          "zh_CN": "个人插件合集. GPT 对话 (API Key) | Toggl | 引用管理 | Md 处理 | Zotero..."
+        },
+        "displayName": {
+          "en_US": "F&#39;s Toolbox",
+          "zh_CN": "F&#39;s 工具箱"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/frostime"
+          ]
+        },
+        "keywords": [
+          "frostime",
+          "toolbox",
+          "misc",
+          "gpt",
+          "chat",
+          "ai",
+          "toggl",
+          "fs",
+          "fmisc"
+        ],
+        "minAppVersion": "3.1.20",
+        "name": "sy-f-misc",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/frostime/sy-f-misc",
+        "version": "7.14.1"
+      },
+      "packageZipAssetId": 501215816,
+      "packageZipSha256": "1137ba87889389ee135d1743ca48432a13869ed66417a7ab8651ea5074ada8b3",
+      "size": 699679,
+      "stars": 29,
+      "updated": "2026-08-04T10:37:33Z",
+      "url": "frostime/sy-f-misc@1137ba8"
+    },
+    {
+      "installSize": 309025,
+      "openIssues": 1,
+      "package": {
+        "author": "alvisliu818",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A full-featured browser inside SiYuan, powered by Electron &lt;webview&gt;. Supports multi-tab, bookmarks, history, downloads.",
+          "zh-CN": "思源浏览器，基于 Electron &lt;webview&gt;，支持多页签、书签、历史、下载。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Browser",
+          "zh-CN": "思源浏览器"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "browser",
+          "webview",
+          "浏览器"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-browser",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/alvisliu818/siyuan-plugin-browser",
+        "version": "0.1.1"
+      },
+      "packageZipAssetId": 501325130,
+      "packageZipSha256": "523e0d7f138928eb7a83abba75ac5c418c90bfae9e2facc812f81a6f2d9a3bae",
+      "size": 228677,
+      "stars": 0,
+      "updated": "2026-08-04T08:14:28Z",
+      "url": "alvisliu818/siyuan-plugin-browser@523e0d7"
+    },
+    {
       "installSize": 3314113,
       "openIssues": 0,
       "package": {
@@ -3403,51 +3543,6 @@
       "stars": 0,
       "updated": "2026-07-24T08:15:01Z",
       "url": "alvisliu818/siyuan-virtual-tree@b450ee0"
-    },
-    {
-      "installSize": 304198,
-      "openIssues": 0,
-      "package": {
-        "author": "alvisliu818",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A full-featured browser inside SiYuan, powered by Electron &lt;webview&gt;. Supports multi-tab, bookmarks, history, downloads.",
-          "zh-CN": "思源浏览器，基于 Electron &lt;webview&gt;，支持多页签、书签、历史、下载。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Browser",
-          "zh-CN": "思源浏览器"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window"
-        ],
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "browser",
-          "webview",
-          "浏览器"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-browser",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/alvisliu818/siyuan-plugin-browser",
-        "version": "0.1.0"
-      },
-      "packageZipAssetId": 487934474,
-      "packageZipSha256": "823d22b47fc0148fb56eb0137aa02aa57a7f243780bb67658021c40182a7d196",
-      "size": 227350,
-      "stars": 0,
-      "updated": "2026-07-24T03:29:30Z",
-      "url": "alvisliu818/siyuan-plugin-browser@823d22b"
     },
     {
       "installSize": 992565,
@@ -7060,56 +7155,6 @@
       "url": "xuhua-zheng/siyuan-db-content-images@63c6c9d"
     },
     {
-      "installSize": 2248004,
-      "openIssues": 4,
-      "package": {
-        "author": "frostime",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "en_US": "Personal tools. GPT Chat (API Key) | Toggl | Reference | Md Process | Zotero...",
-          "zh_CN": "个人插件合集. GPT 对话 (API Key) | Toggl | 引用管理 | Md 处理 | Zotero..."
-        },
-        "displayName": {
-          "en_US": "F&#39;s Toolbox",
-          "zh_CN": "F&#39;s 工具箱"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/frostime"
-          ]
-        },
-        "keywords": [
-          "frostime",
-          "toolbox",
-          "misc",
-          "gpt",
-          "chat",
-          "ai",
-          "toggl",
-          "fs",
-          "fmisc"
-        ],
-        "minAppVersion": "3.1.20",
-        "name": "sy-f-misc",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/frostime/sy-f-misc",
-        "version": "7.11.6"
-      },
-      "packageZipAssetId": 441414261,
-      "packageZipSha256": "287952bbfe07c7f2a4c3c05274bc4ec2b221ebaa802498d029f5a6ba9e1789cf",
-      "size": 672374,
-      "stars": 28,
-      "updated": "2026-06-08T04:14:20Z",
-      "url": "frostime/sy-f-misc@287952b"
-    },
-    {
       "installSize": 156240,
       "openIssues": 0,
       "package": {
@@ -9292,45 +9337,6 @@
       "stars": 0,
       "updated": "2026-03-10T16:59:38Z",
       "url": "Run-os/sy-flashcard-toolbox-plugin@e6ac434"
-    },
-    {
-      "installSize": 758168,
-      "openIssues": 0,
-      "package": {
-        "author": "FEUAZUR",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Import Notion HTML exports into SiYuan with deterministic hierarchy, databases, media, and style preservation"
-        },
-        "displayName": {
-          "default": "Notion Importer"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window"
-        ],
-        "keywords": [
-          "import",
-          "notion",
-          "migration"
-        ],
-        "minAppVersion": "3.0.12",
-        "name": "notion-importer",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/FEUAZUR/notion-importer",
-        "version": "1.0.2"
-      },
-      "packageZipAssetId": 369359139,
-      "packageZipSha256": "f8e0456f0855202ec378ecae30d8f0b5694beb3877d4fc92cbc3cf36526c140e",
-      "size": 270487,
-      "stars": 0,
-      "updated": "2026-03-08T08:59:55Z",
-      "url": "FEUAZUR/notion-importer@f8e0456"
     },
     {
       "installSize": 720527,
