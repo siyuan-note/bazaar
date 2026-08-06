@@ -1,6 +1,60 @@
 {
   "repos": [
     {
+      "installSize": 360105,
+      "openIssues": 0,
+      "package": {
+        "author": "zfb517",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "android",
+          "ios",
+          "harmony"
+        ],
+        "description": {
+          "default": "Track token consumption for SiYuan AI and third-party plugins, with per-API-key quota limits, custom alert thresholds, auto-cutoff, and cloud sync support. (Stats are estimates for reference only; please read the README — especially the &#39;Statistics Accuracy &amp; Disclaimer&#39; section — and refer to your API provider&#39;s official billing.)",
+          "zh-CN": "统计思源智能体及第三方插件的 Token 消耗，支持每个 API Key 单独设置限额与自定义提醒阈值，限额自动切断，S3/WebDAV 云同步数据合并。（统计数据为估算、仅供参考；使用前请仔细阅读 README，特别是「统计精度与免责声明」章节，并以 API 供应商官方账单为准）"
+        },
+        "displayName": {
+          "default": "Token Usage Statistics",
+          "zh-CN": "Token 用量统计"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop",
+          "mobile",
+          "browser-mobile"
+        ],
+        "keywords": [
+          "token",
+          "Token 统计",
+          "用量",
+          "API Key",
+          "限额",
+          "费用",
+          "stats",
+          "quota"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-token-stats",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/zfb517/siyuan-token-stats",
+        "version": "1.5.8"
+      },
+      "packageZipAssetId": 503867816,
+      "packageZipSha256": "e6d677ddb48985bb1fb90a35041888fab034438db0a50d1715215fc6aa6051a1",
+      "size": 211796,
+      "stars": 0,
+      "updated": "2026-08-06T11:36:21Z",
+      "url": "zfb517/siyuan-token-stats@e6d677d"
+    },
+    {
       "installSize": 1246257,
       "openIssues": 0,
       "package": {
@@ -34,6 +88,56 @@
       "stars": 0,
       "updated": "2026-08-06T11:32:11Z",
       "url": "HibernalGlow/siyuan-damophus@b967a2a"
+    },
+    {
+      "installSize": 333454,
+      "openIssues": 2,
+      "package": {
+        "author": "notesynchelper",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "从微信同步到思源笔记，支持文字、图片、聊天记录、文章"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "笔记同步助手"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "wechat",
+          "template",
+          "企微",
+          "模板",
+          "微信",
+          "速记",
+          "剪藏",
+          "搜集",
+          "日记",
+          "闪念",
+          "memo",
+          "备忘",
+          "公众号",
+          "小红书",
+          "得到"
+        ],
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-notehelper",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/notesynchelper/siyuan-notehelper",
+        "version": "1.8.21"
+      },
+      "packageZipAssetId": 503857720,
+      "packageZipSha256": "3f6986bf067283d193e414535d22cd0e71bbf44ed222ed33ceb80dcef5f7b836",
+      "size": 153499,
+      "stars": 2,
+      "updated": "2026-08-06T11:26:03Z",
+      "url": "notesynchelper/siyuan-notehelper@3f6986b"
     },
     {
       "installSize": 150662,
@@ -146,6 +250,53 @@
       "stars": 0,
       "updated": "2026-08-06T11:05:33Z",
       "url": "Glaube-TY/siyuan-gesture-flow@94b35a8"
+    },
+    {
+      "installSize": 1119370,
+      "openIssues": 0,
+      "package": {
+        "author": "whale🐋",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Professional annotation plugin — select text, add comments, manage in sidebar, with slide-to-annotate, tagging, cross-document navigation, and AI-powered explanation.",
+          "zh-CN": "专业批注插件：绝对安全、零污染、数据永久原始保留、万字文档秒批、可离线使用。在线AI 解释（思源原生 AI 驱动）。选中文字添加批注，侧边栏管理，支持滑动快速批注、标签分类、跨文档跳转。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "鲸鱼快速批注",
+          "en": "Whale Quick Comment"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "comment",
+          "annotation",
+          "批注",
+          "标注",
+          "笔记",
+          "AI",
+          "AI批注",
+          "人工智能",
+          "鲸鱼",
+          "快速批注"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-comment",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/HaoCeans/siyuan-comment",
+        "version": "2.4.4"
+      },
+      "packageZipAssetId": 503931680,
+      "packageZipSha256": "97cea38b67b5e3d18ccbea16e2e705467d04df789f73c32ccb6be1d00c683f53",
+      "size": 576857,
+      "stars": 4,
+      "updated": "2026-08-06T09:00:45Z",
+      "url": "HaoCeans/siyuan-comment@97cea38"
     },
     {
       "installSize": 1828115,
@@ -661,53 +812,6 @@
       "stars": 92,
       "updated": "2026-08-05T14:48:00Z",
       "url": "yangtaihong59/siyuan-plugins-mcp-sisyphus@8880e00"
-    },
-    {
-      "installSize": 1109813,
-      "openIssues": 0,
-      "package": {
-        "author": "whale🐋",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Professional annotation plugin — select text, add comments, manage in sidebar, with slide-to-annotate, tagging, cross-document navigation, and AI-powered explanation.",
-          "zh-CN": "专业批注插件：绝对安全、零污染、数据永久原始保留、万字文档秒批、可离线使用。在线AI 解释（思源原生 AI 驱动）。选中文字添加批注，侧边栏管理，支持滑动快速批注、标签分类、跨文档跳转。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "鲸鱼快速批注",
-          "en": "Whale Quick Comment"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "comment",
-          "annotation",
-          "批注",
-          "标注",
-          "笔记",
-          "AI",
-          "AI批注",
-          "人工智能",
-          "鲸鱼",
-          "快速批注"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-comment",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/HaoCeans/siyuan-comment",
-        "version": "2.4.3"
-      },
-      "packageZipAssetId": 502662640,
-      "packageZipSha256": "12cf32c0a5b88adacf6cfb83d9ae74f95bb6a70c6711e4e0843a86da2834ee76",
-      "size": 573706,
-      "stars": 4,
-      "updated": "2026-08-05T13:38:42Z",
-      "url": "HaoCeans/siyuan-comment@12cf32c"
     },
     {
       "installSize": 1942127,
@@ -1651,56 +1755,6 @@
       "stars": 5,
       "updated": "2026-08-03T14:06:32Z",
       "url": "LunaNorth/siyuan-deco@c8b8071"
-    },
-    {
-      "installSize": 333454,
-      "openIssues": 2,
-      "package": {
-        "author": "notesynchelper",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "从微信同步到思源笔记，支持文字、图片、聊天记录、文章"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "笔记同步助手"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "wechat",
-          "template",
-          "企微",
-          "模板",
-          "微信",
-          "速记",
-          "剪藏",
-          "搜集",
-          "日记",
-          "闪念",
-          "memo",
-          "备忘",
-          "公众号",
-          "小红书",
-          "得到"
-        ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-notehelper",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/notesynchelper/siyuan-notehelper",
-        "version": "1.8.20"
-      },
-      "packageZipAssetId": 500034729,
-      "packageZipSha256": "eab6c4c734a6c88123817291bb84c681001957aecb821d63d9c09ee77612f44d",
-      "size": 153498,
-      "stars": 2,
-      "updated": "2026-08-03T12:27:58Z",
-      "url": "notesynchelper/siyuan-notehelper@eab6c4c"
     },
     {
       "installSize": 491948,
@@ -5270,60 +5324,6 @@
       "stars": 0,
       "updated": "2026-07-20T11:35:11Z",
       "url": "famotime/siyuan-table-master@c421d23"
-    },
-    {
-      "installSize": 433312,
-      "openIssues": 0,
-      "package": {
-        "author": "zfb517",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "android",
-          "ios",
-          "harmony"
-        ],
-        "description": {
-          "default": "Track token consumption for SiYuan AI and third-party plugins, with per-API-key quota limits, custom alert thresholds, auto-cutoff, and cloud sync support. (Stats are estimates for reference only; please read the README — especially the &#39;Statistics Accuracy &amp; Disclaimer&#39; section — and refer to your API provider&#39;s official billing.)",
-          "zh-CN": "统计思源智能体及第三方插件的 Token 消耗，支持每个 API Key 单独设置限额与自定义提醒阈值，限额自动切断，S3/WebDAV 云同步数据合并。（统计数据为估算、仅供参考；使用前请仔细阅读 README，特别是「统计精度与免责声明」章节，并以 API 供应商官方账单为准）"
-        },
-        "displayName": {
-          "default": "Token Usage Statistics",
-          "zh-CN": "Token 用量统计"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop",
-          "mobile",
-          "browser-mobile"
-        ],
-        "keywords": [
-          "token",
-          "Token 统计",
-          "用量",
-          "API Key",
-          "限额",
-          "费用",
-          "stats",
-          "quota"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-token-stats",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/zfb517/siyuan-token-stats",
-        "version": "1.5.6"
-      },
-      "packageZipAssetId": 481978297,
-      "packageZipSha256": "f018d1498177e40e28a516eeeb355759401ccc543a0c8bc82e3380caf0d7974d",
-      "size": 245831,
-      "stars": 0,
-      "updated": "2026-07-20T11:22:34Z",
-      "url": "zfb517/siyuan-token-stats@f018d14"
     },
     {
       "installSize": 714306,
