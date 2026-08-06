@@ -1,6 +1,59 @@
 {
   "repos": [
     {
+      "installSize": 150662,
+      "openIssues": 0,
+      "package": {
+        "author": "zfb517",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "android",
+          "ios",
+          "harmony"
+        ],
+        "description": {
+          "default": "Literal text input + auto-escape *# + rich paste with image download",
+          "zh-CN": "字面文本输入（*#不被渲染）+ 自动转义 + 富文本粘贴自动下载图片"
+        },
+        "displayName": {
+          "default": "Escape",
+          "zh-CN": "转义"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "mobile",
+          "browser-mobile"
+        ],
+        "keywords": [
+          "字面文本",
+          "转义",
+          "富文本粘贴",
+          "公众号",
+          "图片下载",
+          "escape",
+          "paste",
+          "literal"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-literal-text",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/zfb517/siyuan-plugin-literal-text",
+        "version": "2.8.9"
+      },
+      "packageZipAssetId": 503852236,
+      "packageZipSha256": "5fa8718456f20974418d8ca8ac8e6abbe04afa7619ff04ae9923c0b5185b5fe5",
+      "size": 98908,
+      "stars": 0,
+      "updated": "2026-08-06T11:20:47Z",
+      "url": "zfb517/siyuan-plugin-literal-text@5fa8718"
+    },
+    {
       "installSize": 258119,
       "openIssues": 0,
       "package": {
@@ -58,6 +111,51 @@
       "stars": 0,
       "updated": "2026-08-06T11:05:33Z",
       "url": "Glaube-TY/siyuan-gesture-flow@94b35a8"
+    },
+    {
+      "installSize": 1828115,
+      "openIssues": 0,
+      "package": {
+        "author": "LunaNorth",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A lightweight note-taking plugin for SiYuan, inspired by Flomo",
+          "zh_CN": "记录每一个轻闪而过的念头"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Lumina",
+          "zh_CN": "轻语"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://testingcf.jsdelivr.net/gh/LunaNorth/north-img/images/20260519195219305.png"
+          ]
+        },
+        "keywords": [
+          "碎碎念",
+          "记录",
+          "回顾"
+        ],
+        "minAppVersion": "3.3.3",
+        "name": "siyuan-lumina",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/LunaNorth/siyuan-lumina",
+        "version": "2.0.4"
+      },
+      "packageZipAssetId": 503695483,
+      "packageZipSha256": "fd4fa339f52e830b637c35179fb28127b3bdb67a57ad41feb7b8d2cac7635b5d",
+      "size": 484919,
+      "stars": 16,
+      "updated": "2026-08-06T08:35:30Z",
+      "url": "LunaNorth/siyuan-lumina@fd4fa33"
     },
     {
       "installSize": 1073999,
@@ -380,51 +478,6 @@
       "stars": 51,
       "updated": "2026-08-06T02:59:15Z",
       "url": "IAliceBobI/sy-tomato-plugin@eac4357"
-    },
-    {
-      "installSize": 1806479,
-      "openIssues": 0,
-      "package": {
-        "author": "LunaNorth",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A lightweight note-taking plugin for SiYuan, inspired by Flomo",
-          "zh_CN": "记录每一个轻闪而过的念头"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Lumina",
-          "zh_CN": "轻语"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://testingcf.jsdelivr.net/gh/LunaNorth/north-img/images/20260519195219305.png"
-          ]
-        },
-        "keywords": [
-          "碎碎念",
-          "记录",
-          "回顾"
-        ],
-        "minAppVersion": "3.3.3",
-        "name": "siyuan-lumina",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/LunaNorth/siyuan-lumina",
-        "version": "2.0.3"
-      },
-      "packageZipAssetId": 503360999,
-      "packageZipSha256": "df0f791ba9ab7d15784bf49abca66f70ce26e6b4577a05aae8c1ab3a66809ace",
-      "size": 481012,
-      "stars": 15,
-      "updated": "2026-08-06T02:29:34Z",
-      "url": "LunaNorth/siyuan-lumina@df0f791"
     },
     {
       "installSize": 355146,
@@ -5236,59 +5289,6 @@
       "stars": 0,
       "updated": "2026-07-20T11:22:34Z",
       "url": "zfb517/siyuan-token-stats@f018d14"
-    },
-    {
-      "installSize": 148060,
-      "openIssues": 0,
-      "package": {
-        "author": "zfb517",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "android",
-          "ios",
-          "harmony"
-        ],
-        "description": {
-          "default": "Literal text input + auto-escape *# + rich paste with image download",
-          "zh-CN": "字面文本输入（*#不被渲染）+ 自动转义 + 富文本粘贴自动下载图片"
-        },
-        "displayName": {
-          "default": "Escape",
-          "zh-CN": "转义"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "mobile",
-          "browser-mobile"
-        ],
-        "keywords": [
-          "字面文本",
-          "转义",
-          "富文本粘贴",
-          "公众号",
-          "图片下载",
-          "escape",
-          "paste",
-          "literal"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-literal-text",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/zfb517/siyuan-plugin-literal-text",
-        "version": "2.8.7"
-      },
-      "packageZipAssetId": 483329490,
-      "packageZipSha256": "23b84db86e7e6d6e16b2aa50a75dca6912e1bb1badf213b92ee97755850d674c",
-      "size": 97913,
-      "stars": 0,
-      "updated": "2026-07-20T11:20:11Z",
-      "url": "zfb517/siyuan-plugin-literal-text@23b84db"
     },
     {
       "installSize": 714306,
