@@ -271,3 +271,22 @@ func TestStageFailIssueContentEqual(t *testing.T) {
 		t.Fatal("want unequal when issue body differs")
 	}
 }
+
+func TestIdenticalPackageZipIssues(t *testing.T) {
+	issues := identicalPackageZipIssues()
+	if len(issues) != 1 {
+		t.Fatalf("want 1 issue, got %d", len(issues))
+	}
+	wantZh := []string{"SHA-256 未变", "重新构建", "清单 `version`"}
+	for _, w := range wantZh {
+		if !strings.Contains(issues[0].MessageZh, w) {
+			t.Fatalf("MessageZh missing %q:\n%s", w, issues[0].MessageZh)
+		}
+	}
+	wantEn := []string{"SHA-256 unchanged", "rebuild `package.zip`", "manifest `version`"}
+	for _, w := range wantEn {
+		if !strings.Contains(issues[0].MessageEn, w) {
+			t.Fatalf("MessageEn missing %q:\n%s", w, issues[0].MessageEn)
+		}
+	}
+}

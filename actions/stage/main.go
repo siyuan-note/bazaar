@@ -43,10 +43,12 @@ Stage 流程：
 2. 并发前串行 GET /repos/{owner}/{repo}：用响应头检查 PAT core 剩余是否够本轮估算量，并锚定 PAT / GITHUB_TOKEN 观测起点（不用 GET /rate_limit；不用 GET /user，以免 GITHUB_TOKEN 403）
 3. 按类型依次执行 performStage；每类开始前重新加载 OccupiedNames，以便上一类本轮新写入的 name 参与后续类型的唯一性检查
 4. 读取 *s.txt 与既有 stage/*.json；增量时未列入 check 的仓沿用旧条目（不打 API、不写 report），下架随当前列表重建自然消失
-5. 先比 packageZipAssetId：相同则跳过；不同则取 SHA-256（优先 GitHub digest，否则下载 zip 计算）。内容未变则只回写 asset id；内容变了则校验并上传 OSS（package.zip、README、preview、icon、清单 JSON）。url 的 @hash 为 SHA-256 前 7 位
+5. 先比 packageZipAssetId：相同则跳过；不同则取 SHA-256（优先 GitHub digest，否则下载 zip 计算）。
+   内容未变（新 asset id、同一 SHA-256）则保留旧条目（不回写 asset id）并记 stage-fail，提示开发者「空更新」；
+   内容变了则校验并上传 OSS（package.zip、README、preview、icon、清单 JSON）。url 的 @hash 为 SHA-256 前 7 位
 6. 按 updated 降序排序后写出 stage/*.json（键序经 marshalSortedIndentedJSON 稳定；新上架用索引时间，更新用 Release 发布时间）
 7. 将本轮失败/成功同步为按仓独立 Issue（标签 stage-fail）：失败 upsert（正文未变则跳过 Edit）；
-   成功入库或 hash 跳过（已能正常取到 Release）则先评论说明再关闭；
+   成功入库或 asset id 未变跳过（已能正常取到 Release）则先评论说明再关闭；
    已不在任一 *s.txt 的仓（下架 / 换维护者旧仓）按 delisted 关闭（对照完整列表，非本轮 reports）
    （本仓 Issue 用 GITHUB_TOKEN；跨仓 Release / repoStats 用 PAT）
 8. 运行中若遇 GitHub API 主限流 / 次级限流：保留旧数据、不写 stage-fail，写完当前类型后中止后续类型（退出码 0，便于提交已完成进度）
@@ -392,21 +394,17 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 				return nil
 			}
 
-			// asset id 变了但内容 SHA-256 未变：只回写 asset id，不重跑校验/上传
+			// asset id 变了但内容 SHA-256 未变：空更新——保留旧条目（不回写 asset id），开 stage-fail 提示开发者
 			if exactOld != nil && exactOld.PackageZipSHA256 != "" && exactOld.PackageZipSHA256 == sha256Hex {
-				kept := *exactOld
-				kept.PackageZipAssetID = packageZipAssetID
-				kept.PackageZipSHA256 = sha256Hex
-				logger.Infof("skip repo [%s], package.zip sha256 unchanged [%s] (asset id %d -> %d)", ownerRepo, hash, exactOld.PackageZipAssetID, packageZipAssetID)
-				stageReposMu.Lock()
-				stageRepos = append(stageRepos, &kept)
-				stageReposMu.Unlock()
+				appendKeptOld(repoURL, "package.zip content unchanged (new asset id)", exactOld)
+				logger.Infof("fail repo [%s], package.zip sha256 unchanged [%s] (asset id %d -> %d); keeping old asset id", ownerRepo, hash, exactOld.PackageZipAssetID, packageZipAssetID)
 				reports.add(stageReport{
 					OwnerRepo:   ownerRepo,
 					PackageType: packageType,
-					Kind:        stageReportSkip,
+					Kind:        stageReportFail,
 					Release:     releaseInfo,
 					Hash:        hash,
+					Issues:      identicalPackageZipIssues(),
 				})
 				return nil
 			}

@@ -491,3 +491,12 @@ func stageIssueFromErr(err error) []rules.Issue {
 func stageInternalIssue(zh, en string) []rules.Issue {
 	return []rules.Issue{{MessageZh: zh, MessageEn: en}}
 }
+
+// identicalPackageZipIssues 用于「Latest Release 换了 package.zip 资源，但内容 SHA-256 与已入库相同」。
+// 不回写新 asset id，以便下轮仍能检出并保持 stage-fail 打开，直到开发者上传真正新的 zip。
+func identicalPackageZipIssues() []rules.Issue {
+	return stageInternalIssue(
+		"Latest Release 中的 `package.zip` 与集市已入库内容完全相同（SHA-256 未变）。发布了新的 Release 资源，但产物字节未更新，因此集市不会升版。请用新版本重新构建 `package.zip`（并提升清单 `version`）后上传到 Latest Release。若本次仅更新 Release 说明、产物本就无需变更，可在本 Issue 中回复说明。",
+		"The `package.zip` in the Latest Release is byte-identical to what is already indexed in the bazaar (SHA-256 unchanged). A new Release asset was published, but the package contents did not change, so the bazaar will not bump the listing. Please rebuild `package.zip` with a new version (and bump the manifest `version`), then upload it to the Latest Release. If you only changed Release notes and the package intentionally stays the same, reply in this issue to let maintainers know.",
+	)
+}
