@@ -1,6 +1,151 @@
 {
   "repos": [
     {
+      "installSize": 507626,
+      "openIssues": 0,
+      "package": {
+        "author": "itdh",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Key-Buddy: Your smart, local password companion",
+          "zh_CN": "密友：您的智能本地密码管家"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Key-Buddy",
+          "zh_CN": "密友"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "Password Manager",
+          "密码管理器",
+          "kdbx",
+          "KeePass"
+        ],
+        "minAppVersion": "3.7.2",
+        "name": "siyuan-plugin-key-buddy",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/itdh/siyuan-plugin-key-buddy",
+        "version": "0.1.3"
+      },
+      "packageZipAssetId": 508405733,
+      "packageZipSha256": "7e75f57393bccba70266b235dc94f5e8b93e00913be179fbcc353e9145e48037",
+      "size": 201823,
+      "stars": 0,
+      "updated": "2026-08-10T06:39:40Z",
+      "url": "itdh/siyuan-plugin-key-buddy@7e75f57"
+    },
+    {
+      "installSize": 365474,
+      "openIssues": 0,
+      "package": {
+        "author": "zfb517",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "android",
+          "ios",
+          "harmony"
+        ],
+        "description": {
+          "default": "Track token consumption for SiYuan&#39;s built-in AI agent and third-party plugins, with per-API-key quota limits, custom alert thresholds, auto-cutoff, and cloud sync support. (Stats are estimates for reference only; please read the README — especially the &#39;Statistics Accuracy &amp; Disclaimer&#39; section — and refer to your API provider&#39;s official billing.)",
+          "zh-CN": "统计思源智能体及第三方插件的 Token 消耗，支持每个 API Key 单独设置限额与自定义提醒阈值，限额自动切断，S3/WebDAV 云同步数据合并。（统计数据为估算、仅供参考；使用前请仔细阅读 README，特别是「统计精度与免责声明」章节，并以 API 供应商官方账单为准）"
+        },
+        "displayName": {
+          "default": "Token Usage Statistics",
+          "zh-CN": "Token 用量统计"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop",
+          "mobile",
+          "browser-mobile"
+        ],
+        "keywords": [
+          "token",
+          "Token 统计",
+          "用量",
+          "API Key",
+          "限额",
+          "费用",
+          "stats",
+          "quota"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-token-stats",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/zfb517/siyuan-token-stats",
+        "version": "1.6.1"
+      },
+      "packageZipAssetId": 508380385,
+      "packageZipSha256": "f034ee8e8b85b2558a4681fe9830dd97147db3f5016869a1aa4fd695ad75c468",
+      "size": 213019,
+      "stars": 0,
+      "updated": "2026-08-10T06:19:08Z",
+      "url": "zfb517/siyuan-token-stats@f034ee8"
+    },
+    {
+      "installSize": 193472,
+      "openIssues": 1,
+      "package": {
+        "author": "liao-zh",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A light document navigation bar plugin for SiYuan",
+          "zh-CN": "一个文档导航条插件，在编辑区顶部显示文档路径和相邻文档"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Doc NavBar Light",
+          "zh-CN": "简易文档导航条"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "navigate",
+          "breadcrumb",
+          "导航",
+          "面包屑"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-doc-navbar-light",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/liao-zh/siyuan-doc-navbar-light",
+        "version": "0.7.5"
+      },
+      "packageZipAssetId": 508343870,
+      "packageZipSha256": "c818b6ad8ec95a408e2344f1a9ea0e888599d7d05b7a95e0d96347d54acd9ec8",
+      "size": 155538,
+      "stars": 0,
+      "updated": "2026-08-10T05:38:48Z",
+      "url": "liao-zh/siyuan-doc-navbar-light@c818b6a"
+    },
+    {
       "installSize": 7851602,
       "openIssues": 0,
       "package": {
@@ -113,6 +258,42 @@
       "stars": 0,
       "updated": "2026-08-10T05:26:10Z",
       "url": "moonejue/siyuan-knowledge-weaver-ai@332f873"
+    },
+    {
+      "installSize": 2208260,
+      "openIssues": 0,
+      "package": {
+        "author": "HibernalGlow",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Personal SiYuan extensions for a recoverable question bank and mobile workspace UI.",
+          "zh-CN": "自用的思源增强插件，提供可恢复题库与移动端工作区界面优化。"
+        },
+        "displayName": {
+          "default": "Damophus"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "plugin"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-damophus",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/HibernalGlow/siyuan-damophus",
+        "version": "0.2.0"
+      },
+      "packageZipAssetId": 508332468,
+      "packageZipSha256": "2cac71a6dbb1a687468871f847566678b2723526d1da39ba3f9697c2d1d496ce",
+      "size": 873667,
+      "stars": 0,
+      "updated": "2026-08-10T05:24:15Z",
+      "url": "HibernalGlow/siyuan-damophus@2cac71a"
     },
     {
       "installSize": 1091047,
@@ -711,60 +892,6 @@
       "url": "Solathis/siyuan-recallgen@7739383"
     },
     {
-      "installSize": 360719,
-      "openIssues": 0,
-      "package": {
-        "author": "zfb517",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "android",
-          "ios",
-          "harmony"
-        ],
-        "description": {
-          "default": "Track token consumption for SiYuan&#39;s built-in AI agent and third-party plugins, with per-API-key quota limits, custom alert thresholds, auto-cutoff, and cloud sync support. (Stats are estimates for reference only; please read the README — especially the &#39;Statistics Accuracy &amp; Disclaimer&#39; section — and refer to your API provider&#39;s official billing.)",
-          "zh-CN": "统计思源智能体及第三方插件的 Token 消耗，支持每个 API Key 单独设置限额与自定义提醒阈值，限额自动切断，S3/WebDAV 云同步数据合并。（统计数据为估算、仅供参考；使用前请仔细阅读 README，特别是「统计精度与免责声明」章节，并以 API 供应商官方账单为准）"
-        },
-        "displayName": {
-          "default": "Token Usage Statistics",
-          "zh-CN": "Token 用量统计"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop",
-          "mobile",
-          "browser-mobile"
-        ],
-        "keywords": [
-          "token",
-          "Token 统计",
-          "用量",
-          "API Key",
-          "限额",
-          "费用",
-          "stats",
-          "quota"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-token-stats",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/zfb517/siyuan-token-stats",
-        "version": "1.5.9"
-      },
-      "packageZipAssetId": 507402662,
-      "packageZipSha256": "08596032b04cbc8ae5fec577d92aa47e7d1ba3174622b23a1d000639e0eb9c42",
-      "size": 211751,
-      "stars": 0,
-      "updated": "2026-08-09T10:36:49Z",
-      "url": "zfb517/siyuan-token-stats@0859603"
-    },
-    {
       "installSize": 154042,
       "openIssues": 0,
       "package": {
@@ -863,55 +990,6 @@
       "stars": 4,
       "updated": "2026-08-09T09:25:43Z",
       "url": "HaoCeans/siyuan-comment@ce74bb0"
-    },
-    {
-      "installSize": 193005,
-      "openIssues": 0,
-      "package": {
-        "author": "liao-zh",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A light document navigation bar plugin for SiYuan",
-          "zh-CN": "一个文档导航条插件，在编辑区顶部显示文档路径和相邻文档"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Doc NavBar Light",
-          "zh-CN": "简易文档导航条"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            ""
-          ]
-        },
-        "keywords": [
-          "navigate",
-          "breadcrumb",
-          "导航",
-          "面包屑"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-doc-navbar-light",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/liao-zh/siyuan-doc-navbar-light",
-        "version": "0.7.4"
-      },
-      "packageZipAssetId": 506605055,
-      "packageZipSha256": "aef1f946bd1f14e7b2571da2d2c7fa0eb2b24791471da10170794ca7efaf5d99",
-      "size": 155508,
-      "stars": 0,
-      "updated": "2026-08-08T17:38:16Z",
-      "url": "liao-zh/siyuan-doc-navbar-light@aef1f94"
     },
     {
       "installSize": 265020,
@@ -1177,42 +1255,6 @@
       "stars": 0,
       "updated": "2026-08-08T10:10:50Z",
       "url": "maoruibin/siyuan-inbox-sync@31cd612"
-    },
-    {
-      "installSize": 2041769,
-      "openIssues": 0,
-      "package": {
-        "author": "HibernalGlow",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Personal SiYuan extensions for a recoverable question bank and mobile workspace UI.",
-          "zh-CN": "自用的思源增强插件，提供可恢复题库与移动端工作区界面优化。"
-        },
-        "displayName": {
-          "default": "Damophus"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "plugin"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-damophus",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/HibernalGlow/siyuan-damophus",
-        "version": "0.1.0"
-      },
-      "packageZipAssetId": 506196829,
-      "packageZipSha256": "d81c0dd0de2f9618a693a782dd09ced6071c2d0087c89701e95560e283287c04",
-      "size": 830114,
-      "stars": 0,
-      "updated": "2026-08-08T08:17:03Z",
-      "url": "HibernalGlow/siyuan-damophus@d81c0dd"
     },
     {
       "installSize": 366758,
@@ -3806,48 +3848,6 @@
       "stars": 2,
       "updated": "2026-07-29T12:36:26Z",
       "url": "TCOTC/install-package@c71aae8"
-    },
-    {
-      "installSize": 499040,
-      "openIssues": 0,
-      "package": {
-        "author": "itdh",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Key-Buddy: Your smart, local password companion",
-          "zh_CN": "密友：您的智能本地密码管家"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Key-Buddy",
-          "zh_CN": "密友"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "Password Manager",
-          "密码管理器",
-          "kdbx",
-          "KeePass"
-        ],
-        "minAppVersion": "3.7.2",
-        "name": "siyuan-plugin-key-buddy",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/itdh/siyuan-plugin-key-buddy",
-        "version": "0.1.2"
-      },
-      "packageZipAssetId": 493939615,
-      "packageZipSha256": "93e0b269c7d7f455d8953959a5fd74a781efc1ed44ef8b6086d21b8d95577be4",
-      "size": 199721,
-      "stars": 0,
-      "updated": "2026-07-29T11:00:21Z",
-      "url": "itdh/siyuan-plugin-key-buddy@93e0b26"
     },
     {
       "installSize": 293845,
