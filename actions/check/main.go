@@ -65,7 +65,7 @@ Check 流程（流程通过后，对 plan.diff.New 中的仓库）：
 5. 结束后用响应头记录 PAT / GITHUB_TOKEN 开始/结束剩余配额与当次实际 core 请求次数（samples）
 
 定时复检（schedule）：
-1. go run ./actions/check -select：列出开放非 ci-passed PR；先关开立超 30 天且仍为 ci-failed 者（评论后关闭）；再按评论开头 bazaar-check-meta（指纹变更 / 退避到期 / max-age）筛选
+1. go run ./actions/check -select：列出开放非 ci-passed PR，以及 ci-passed+manual-review；先关开立超 30 天且仍为 ci-failed 或 ci-passed+manual-review 者（评论后关闭）；再对非 ci-passed 按评论开头 bazaar-check-meta（指纹变更 / 退避到期 / max-age）筛选
 2. 对入选 PR 跑完整 Check；评论写回新 meta（JSON）
 */
 

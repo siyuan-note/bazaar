@@ -1,6 +1,711 @@
 {
   "repos": [
     {
+      "installSize": 507626,
+      "openIssues": 0,
+      "package": {
+        "author": "itdh",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Key-Buddy: Your smart, local password companion",
+          "zh_CN": "密友：您的智能本地密码管家"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Key-Buddy",
+          "zh_CN": "密友"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "Password Manager",
+          "密码管理器",
+          "kdbx",
+          "KeePass"
+        ],
+        "minAppVersion": "3.7.2",
+        "name": "siyuan-plugin-key-buddy",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/itdh/siyuan-plugin-key-buddy",
+        "version": "0.1.3"
+      },
+      "packageZipAssetId": 508405733,
+      "packageZipSha256": "7e75f57393bccba70266b235dc94f5e8b93e00913be179fbcc353e9145e48037",
+      "size": 201823,
+      "stars": 0,
+      "updated": "2026-08-10T06:39:40Z",
+      "url": "itdh/siyuan-plugin-key-buddy@7e75f57"
+    },
+    {
+      "installSize": 365474,
+      "openIssues": 0,
+      "package": {
+        "author": "zfb517",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "android",
+          "ios",
+          "harmony"
+        ],
+        "description": {
+          "default": "Track token consumption for SiYuan&#39;s built-in AI agent and third-party plugins, with per-API-key quota limits, custom alert thresholds, auto-cutoff, and cloud sync support. (Stats are estimates for reference only; please read the README — especially the &#39;Statistics Accuracy &amp; Disclaimer&#39; section — and refer to your API provider&#39;s official billing.)",
+          "zh-CN": "统计思源智能体及第三方插件的 Token 消耗，支持每个 API Key 单独设置限额与自定义提醒阈值，限额自动切断，S3/WebDAV 云同步数据合并。（统计数据为估算、仅供参考；使用前请仔细阅读 README，特别是「统计精度与免责声明」章节，并以 API 供应商官方账单为准）"
+        },
+        "displayName": {
+          "default": "Token Usage Statistics",
+          "zh-CN": "Token 用量统计"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop",
+          "mobile",
+          "browser-mobile"
+        ],
+        "keywords": [
+          "token",
+          "Token 统计",
+          "用量",
+          "API Key",
+          "限额",
+          "费用",
+          "stats",
+          "quota"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-token-stats",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/zfb517/siyuan-token-stats",
+        "version": "1.6.1"
+      },
+      "packageZipAssetId": 508380385,
+      "packageZipSha256": "f034ee8e8b85b2558a4681fe9830dd97147db3f5016869a1aa4fd695ad75c468",
+      "size": 213019,
+      "stars": 0,
+      "updated": "2026-08-10T06:19:08Z",
+      "url": "zfb517/siyuan-token-stats@f034ee8"
+    },
+    {
+      "installSize": 193472,
+      "openIssues": 1,
+      "package": {
+        "author": "liao-zh",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A light document navigation bar plugin for SiYuan",
+          "zh-CN": "一个文档导航条插件，在编辑区顶部显示文档路径和相邻文档"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Doc NavBar Light",
+          "zh-CN": "简易文档导航条"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "navigate",
+          "breadcrumb",
+          "导航",
+          "面包屑"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-doc-navbar-light",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/liao-zh/siyuan-doc-navbar-light",
+        "version": "0.7.5"
+      },
+      "packageZipAssetId": 508343870,
+      "packageZipSha256": "c818b6ad8ec95a408e2344f1a9ea0e888599d7d05b7a95e0d96347d54acd9ec8",
+      "size": 155538,
+      "stars": 0,
+      "updated": "2026-08-10T05:38:48Z",
+      "url": "liao-zh/siyuan-doc-navbar-light@c818b6a"
+    },
+    {
+      "installSize": 7851602,
+      "openIssues": 0,
+      "package": {
+        "author": "moonejue",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Edit Excel files in SiYuan and run AI applications on selected spreadsheet rows.",
+          "zh_CN": "在思源中编辑 Excel，并对选中表格行运行 AI 应用。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Excel AI Editor",
+          "zh_CN": "Excel AI 编辑器"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://github.com/moonejue/siyuan-excel-ai#%E6%94%AF%E6%8C%81%E4%B8%8E%E6%89%93%E8%B5%8F"
+          ]
+        },
+        "keywords": [
+          "excel",
+          "spreadsheet",
+          "ai",
+          "luckysheet",
+          "ollama",
+          "openai",
+          "本地模型",
+          "表格"
+        ],
+        "minAppVersion": "3.6.5",
+        "name": "siyuan-excel-ai",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/moonejue/siyuan-excel-ai",
+        "version": "0.1.26"
+      },
+      "packageZipAssetId": 482046464,
+      "packageZipSha256": "dacab4748a737f3917fbb710b1c83d6ba11fbbbb97ea68a565446f8ef304f48b",
+      "size": 2549741,
+      "stars": 1,
+      "updated": "2026-08-10T05:33:21Z",
+      "url": "moonejue/siyuan-excel-ai@dacab47"
+    },
+    {
+      "installSize": 192488,
+      "openIssues": 0,
+      "package": {
+        "author": "moonejue",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "AI-powered knowledge base governance for SiYuan: batch tagging, attributes, summaries, aliases, title cleanup, link suggestions, orphan document checks, and duplicate review.",
+          "zh_CN": "AI 批量治理思源知识库：自动标签、属性补全、简介别名、标题规范、内链推荐、孤岛巡检与冗余标记。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Knowledge Weaver AI",
+          "zh_CN": "织识 AI"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://raw.githubusercontent.com/moonejue/siyuan-knowledge-weaver-ai/main/assets/donate-wechat.jpg"
+          ]
+        },
+        "keywords": [
+          "ai",
+          "knowledge",
+          "automation",
+          "governance",
+          "tag",
+          "link",
+          "graph",
+          "ollama",
+          "openai",
+          "deepseek",
+          "知识库",
+          "自动化",
+          "标签",
+          "内链",
+          "图谱",
+          "治理"
+        ],
+        "minAppVersion": "3.6.5",
+        "name": "siyuan-knowledge-weaver-ai",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/moonejue/siyuan-knowledge-weaver-ai",
+        "version": "0.1.0"
+      },
+      "packageZipAssetId": 440123662,
+      "packageZipSha256": "332f87342b170a24d1b657626f473c5960c34663c1d73af4960b3ac9fbbf4bb2",
+      "size": 131946,
+      "stars": 0,
+      "updated": "2026-08-10T05:26:10Z",
+      "url": "moonejue/siyuan-knowledge-weaver-ai@332f873"
+    },
+    {
+      "installSize": 2208260,
+      "openIssues": 0,
+      "package": {
+        "author": "HibernalGlow",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Personal SiYuan extensions for a recoverable question bank and mobile workspace UI.",
+          "zh-CN": "自用的思源增强插件，提供可恢复题库与移动端工作区界面优化。"
+        },
+        "displayName": {
+          "default": "Damophus"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "plugin"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-damophus",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/HibernalGlow/siyuan-damophus",
+        "version": "0.2.0"
+      },
+      "packageZipAssetId": 508332468,
+      "packageZipSha256": "2cac71a6dbb1a687468871f847566678b2723526d1da39ba3f9697c2d1d496ce",
+      "size": 873667,
+      "stars": 0,
+      "updated": "2026-08-10T05:24:15Z",
+      "url": "HibernalGlow/siyuan-damophus@2cac71a"
+    },
+    {
+      "installSize": 1091047,
+      "openIssues": 0,
+      "package": {
+        "author": "moonejue",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Import Excel, XLS and CSV rows directly into a SiYuan database.",
+          "zh_CN": "将 Excel、XLS 或 CSV 表格内容直接批量导入思源数据库。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Excel Database Import",
+          "zh_CN": "Excel 导入数据库"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://github.com/moonejue/siyuan-excel-database-import#赞赏"
+          ]
+        },
+        "keywords": [
+          "Excel",
+          "CSV",
+          "数据库",
+          "database",
+          "import",
+          "批量导入"
+        ],
+        "minAppVersion": "3.1.0",
+        "name": "siyuan-excel-database-import",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/moonejue/siyuan-excel-database-import",
+        "version": "1.1.4"
+      },
+      "packageZipAssetId": 440740334,
+      "packageZipSha256": "dbe642da2ec3240f289d3bdc61150d200765c38bd094093a12dc5f824d7c67e2",
+      "size": 364140,
+      "stars": 2,
+      "updated": "2026-08-10T05:24:06Z",
+      "url": "moonejue/siyuan-excel-database-import@dbe642d"
+    },
+    {
+      "installSize": 242099,
+      "openIssues": 0,
+      "package": {
+        "author": "dapan",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Reviewable AI tag classification for SiYuan, with whitelist-only suggestions and notebook scans for unclassified notes",
+          "zh_CN": "在限定分类标签范围内，用大模型为思源笔记生成可审阅的分类标签建议，并支持扫描未分类笔记。"
+        },
+        "displayName": {
+          "default": "AutoTag",
+          "zh_CN": "自动打分类标签"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop"
+        ],
+        "keywords": [
+          "autotag",
+          "tag",
+          "classification",
+          "llm",
+          "ai",
+          "分类"
+        ],
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-autotag",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/sonicpic/siyuan-autotag",
+        "version": "0.1.0"
+      },
+      "packageZipAssetId": 380165508,
+      "packageZipSha256": "a65333517ac9f6f429d650bd7af7d55975d730490865abf939ed164f5dd81afc",
+      "size": 177508,
+      "stars": 3,
+      "updated": "2026-08-10T05:22:26Z",
+      "url": "sonicpic/siyuan-autotag@a653335"
+    },
+    {
+      "installSize": 145813,
+      "openIssues": 0,
+      "package": {
+        "author": "kx1356",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Floating ball review; Alt+F current doc; blur cloze; built-in card check-in stats with doc path.",
+          "zh-CN": "悬浮球复习；Alt+F 复习当前文档；模糊答案遮挡；按标签筛选；内置卡片打卡统计（复习/遗忘/上次时间/文档路径）。"
+        },
+        "displayName": {
+          "default": "Flashcard Assistant",
+          "zh-CN": "闪卡小助手（ZY）"
+        },
+        "frontends": [
+          "all"
+        ],
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "flashcard",
+          "review",
+          "notebook",
+          "statistics"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-flashcard-zy",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/kx1356/siyuan-flashcard-zy",
+        "version": "7.0.1"
+      },
+      "packageZipAssetId": 508254948,
+      "packageZipSha256": "23113763490e941129417c0bbdcdf10bf254e5945aefd28d1a2c8e63d17a00e8",
+      "size": 51045,
+      "stars": 0,
+      "updated": "2026-08-10T05:11:13Z",
+      "url": "kx1356/siyuan-flashcard-zy@2311376"
+    },
+    {
+      "installSize": 1910291,
+      "openIssues": 0,
+      "package": {
+        "author": "LunaNorth",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A lightweight note-taking plugin for SiYuan, inspired by Flomo",
+          "zh_CN": "记录每一个轻闪而过的念头"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Lumina",
+          "zh_CN": "轻语"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://testingcf.jsdelivr.net/gh/LunaNorth/north-img/images/20260519195219305.png"
+          ]
+        },
+        "keywords": [
+          "碎碎念",
+          "记录",
+          "回顾"
+        ],
+        "minAppVersion": "3.3.3",
+        "name": "siyuan-lumina",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/LunaNorth/siyuan-lumina",
+        "version": "2.1.2"
+      },
+      "packageZipAssetId": 508292664,
+      "packageZipSha256": "a23698186c88fbabc65077df73aef5449a51ad2d4aad9327d610e9bcf882fb9c",
+      "size": 500217,
+      "stars": 16,
+      "updated": "2026-08-10T04:36:47Z",
+      "url": "LunaNorth/siyuan-lumina@a236981"
+    },
+    {
+      "installSize": 124851,
+      "openIssues": 0,
+      "package": {
+        "author": "zange",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Collect plugin controls and selected native SiYuan features into a configurable left or right sidebar.",
+          "zh-CN": "将插件按钮和可选的思源原生功能收纳到可切换的左侧或右侧栏。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Plugin Drawer",
+          "zh-CN": "插件抽屉"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop"
+        ],
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "plugin center",
+          "toolbar",
+          "clean interface",
+          "插件抽屉",
+          "顶栏收纳",
+          "左右侧栏",
+          "原生功能",
+          "界面整理"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-drawer",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh_CN.md"
+        },
+        "url": "https://github.com/tianxia704/siyuan-plugin-drawer",
+        "version": "0.4.8"
+      },
+      "packageZipAssetId": 508219704,
+      "packageZipSha256": "d987575749daaaa7122968f3010466e9a4b72675566775c8358534e299faa059",
+      "size": 58636,
+      "stars": 0,
+      "updated": "2026-08-10T03:16:55Z",
+      "url": "tianxia704/siyuan-plugin-drawer@d987575"
+    },
+    {
+      "installSize": 686837,
+      "openIssues": 62,
+      "package": {
+        "author": "terwer",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "Import md, epub, docx, html, etc. into Siyuan notes. Currently supported formats: .md, .epub, .docx, .html, .opml.",
+          "zh_CN": "将 md, epub, docx, html 等格式的文件导入到思源笔记。目前支持的格式：.md, .epub, .docx, .html, .opml。"
+        },
+        "displayName": {
+          "default": "Importer",
+          "zh_CN": "导入工具"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/terwer"
+          ]
+        },
+        "minAppVersion": "2.9.2",
+        "name": "siyuan-importer",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/terwer/siyuan-plugin-importer",
+        "version": "1.9.1"
+      },
+      "packageZipAssetId": 508206949,
+      "packageZipSha256": "3b2b009355b6c609636a82422bc42e0ac6b82f44888d0e988a4038c84c2f7e9c",
+      "size": 680083,
+      "stars": 50,
+      "updated": "2026-08-10T03:02:38Z",
+      "url": "terwer/siyuan-plugin-importer@3b2b009"
+    },
+    {
+      "installSize": 14013596,
+      "openIssues": 1,
+      "package": {
+        "author": "Glaube-TY",
+        "backends": [
+          "windows",
+          "linux",
+          "ios",
+          "android",
+          "harmony",
+          "docker",
+          "darwin"
+        ],
+        "description": {
+          "en_US": "Provides personalized homepage layout and rich functional modules, as well as AI knowledge base.",
+          "zh_CN": "提供个性化首页布局和丰富的功能模块以及 AI 知识库功能。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "en_US": "HOME",
+          "zh_CN": "主页"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://glaube-ty.top/da-shang/"
+          ]
+        },
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "keywords": [
+          "homepage",
+          "home",
+          "主页",
+          "首页",
+          "task",
+          "task manager",
+          "任务",
+          "任务管理",
+          "SQL",
+          "sql",
+          "查询",
+          "widget",
+          "widget manager",
+          "挂件",
+          "挂件管理",
+          "组件",
+          "组件管理",
+          "Pomodoro",
+          "Pomodoro timer",
+          "番茄钟",
+          "番茄",
+          "heat map",
+          "热力图",
+          "热搜",
+          "搜索",
+          "AI",
+          "智能助手",
+          "agent",
+          "智能体"
+        ],
+        "minAppVersion": "3.7.3",
+        "name": "siyuan-homepage",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/Glaube-TY/siyuan-homepage",
+        "version": "4.10.0"
+      },
+      "packageZipAssetId": 507792959,
+      "packageZipSha256": "81c314dc6b0ac6e71b2f576c252e0b18e5460110259e96441324472b3f29a4a8",
+      "size": 5200262,
+      "stars": 39,
+      "updated": "2026-08-09T18:44:19Z",
+      "url": "Glaube-TY/siyuan-homepage@81c314d"
+    },
+    {
+      "installSize": 2784461,
+      "openIssues": 2,
+      "package": {
+        "author": "Taihong Yang",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Siyuan sisyphus enables AI Agents to operate your Siyuan with notebook-level permission control, covering most of Siyuan&#39;s functionality. Supports desktop、 docker、 mobile.",
+          "zh_CN": "让 AI Agent 操作你的思源，提供 MCP CLI 两种方式，支持笔记本级权限管控、覆盖SIYUAN绝大部分功能，支持思源的桌面、docker端、移动端。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan sisyphus MCP &amp; CLI &amp; GIT",
+          "zh_CN": "思源 sisyphus MCP &amp; CLI &amp; GIT"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://github.com/yangtaihong59/siyuan-plugins-mcp-sisyphus/blob/main/docs/archive/thank.jpeg"
+          ]
+        },
+        "keywords": [
+          "AI",
+          "Agent",
+          "MCP"
+        ],
+        "minAppVersion": "2.9.0",
+        "name": "siyuan-plugins-mcp-sisyphus",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/yangtaihong59/siyuan-plugins-mcp-sisyphus",
+        "version": "0.6.0"
+      },
+      "packageZipAssetId": 507746671,
+      "packageZipSha256": "49c3cb70f958aab61ea2717def6e97e8592d5470a91606421347a1e5779f1841",
+      "size": 927820,
+      "stars": 97,
+      "updated": "2026-08-09T17:46:52Z",
+      "url": "yangtaihong59/siyuan-plugins-mcp-sisyphus@49c3cb7"
+    },
+    {
       "installSize": 662263,
       "openIssues": 2,
       "package": {
@@ -88,51 +793,6 @@
       "stars": 0,
       "updated": "2026-08-09T14:00:51Z",
       "url": "macmullanjed-cell/siyuan-plugin-wordflow@10c18d3"
-    },
-    {
-      "installSize": 1903079,
-      "openIssues": 0,
-      "package": {
-        "author": "LunaNorth",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A lightweight note-taking plugin for SiYuan, inspired by Flomo",
-          "zh_CN": "记录每一个轻闪而过的念头"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Lumina",
-          "zh_CN": "轻语"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://testingcf.jsdelivr.net/gh/LunaNorth/north-img/images/20260519195219305.png"
-          ]
-        },
-        "keywords": [
-          "碎碎念",
-          "记录",
-          "回顾"
-        ],
-        "minAppVersion": "3.3.3",
-        "name": "siyuan-lumina",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/LunaNorth/siyuan-lumina",
-        "version": "2.0.9"
-      },
-      "packageZipAssetId": 507457277,
-      "packageZipSha256": "9fbc43b9823ccd461307d39ef0626fde726de60ee8b5596b2453487b10a121d9",
-      "size": 498327,
-      "stars": 16,
-      "updated": "2026-08-09T11:43:38Z",
-      "url": "LunaNorth/siyuan-lumina@9fbc43b"
     },
     {
       "installSize": 4209132,
@@ -232,60 +892,6 @@
       "url": "Solathis/siyuan-recallgen@7739383"
     },
     {
-      "installSize": 360719,
-      "openIssues": 0,
-      "package": {
-        "author": "zfb517",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "android",
-          "ios",
-          "harmony"
-        ],
-        "description": {
-          "default": "Track token consumption for SiYuan&#39;s built-in AI agent and third-party plugins, with per-API-key quota limits, custom alert thresholds, auto-cutoff, and cloud sync support. (Stats are estimates for reference only; please read the README — especially the &#39;Statistics Accuracy &amp; Disclaimer&#39; section — and refer to your API provider&#39;s official billing.)",
-          "zh-CN": "统计思源智能体及第三方插件的 Token 消耗，支持每个 API Key 单独设置限额与自定义提醒阈值，限额自动切断，S3/WebDAV 云同步数据合并。（统计数据为估算、仅供参考；使用前请仔细阅读 README，特别是「统计精度与免责声明」章节，并以 API 供应商官方账单为准）"
-        },
-        "displayName": {
-          "default": "Token Usage Statistics",
-          "zh-CN": "Token 用量统计"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop",
-          "mobile",
-          "browser-mobile"
-        ],
-        "keywords": [
-          "token",
-          "Token 统计",
-          "用量",
-          "API Key",
-          "限额",
-          "费用",
-          "stats",
-          "quota"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-token-stats",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/zfb517/siyuan-token-stats",
-        "version": "1.5.9"
-      },
-      "packageZipAssetId": 507402662,
-      "packageZipSha256": "08596032b04cbc8ae5fec577d92aa47e7d1ba3174622b23a1d000639e0eb9c42",
-      "size": 211751,
-      "stars": 0,
-      "updated": "2026-08-09T10:36:49Z",
-      "url": "zfb517/siyuan-token-stats@0859603"
-    },
-    {
       "installSize": 154042,
       "openIssues": 0,
       "package": {
@@ -339,7 +945,7 @@
       "url": "zfb517/siyuan-plugin-literal-text@068c7e7"
     },
     {
-      "installSize": 1126556,
+      "installSize": 1134454,
       "openIssues": 0,
       "package": {
         "author": "whale🐋",
@@ -376,63 +982,14 @@
           "default": "README.md"
         },
         "url": "https://github.com/HaoCeans/siyuan-comment",
-        "version": "2.5.0"
+        "version": "2.5.1"
       },
-      "packageZipAssetId": 507066295,
-      "packageZipSha256": "a49d3bc55b1d6a7deb8e0f4bba000361b4a24d2fd755e07f0cc43f10b27e35ef",
-      "size": 579018,
+      "packageZipAssetId": 507469171,
+      "packageZipSha256": "ce74bb0fac4b86acf4dc1e03e9b8f94d0a2b39b0e2d44bf3a7635b79a60a2726",
+      "size": 580944,
       "stars": 4,
-      "updated": "2026-08-09T03:38:46Z",
-      "url": "HaoCeans/siyuan-comment@a49d3bc"
-    },
-    {
-      "installSize": 193005,
-      "openIssues": 0,
-      "package": {
-        "author": "liao-zh",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A light document navigation bar plugin for SiYuan",
-          "zh-CN": "一个文档导航条插件，在编辑区顶部显示文档路径和相邻文档"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Doc NavBar Light",
-          "zh-CN": "简易文档导航条"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            ""
-          ]
-        },
-        "keywords": [
-          "navigate",
-          "breadcrumb",
-          "导航",
-          "面包屑"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-doc-navbar-light",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/liao-zh/siyuan-doc-navbar-light",
-        "version": "0.7.4"
-      },
-      "packageZipAssetId": 506605055,
-      "packageZipSha256": "aef1f946bd1f14e7b2571da2d2c7fa0eb2b24791471da10170794ca7efaf5d99",
-      "size": 155508,
-      "stars": 0,
-      "updated": "2026-08-08T17:38:16Z",
-      "url": "liao-zh/siyuan-doc-navbar-light@aef1f94"
+      "updated": "2026-08-09T09:25:43Z",
+      "url": "HaoCeans/siyuan-comment@ce74bb0"
     },
     {
       "installSize": 265020,
@@ -615,87 +1172,6 @@
       "url": "DilyarEziz/siyuan-plugin-asset-management@e9976d7"
     },
     {
-      "installSize": 15781032,
-      "openIssues": 1,
-      "package": {
-        "author": "Glaube-TY",
-        "backends": [
-          "windows",
-          "linux",
-          "ios",
-          "android",
-          "harmony",
-          "docker",
-          "darwin"
-        ],
-        "description": {
-          "en_US": "Provides personalized homepage layout and rich functional modules, as well as AI knowledge base.",
-          "zh_CN": "提供个性化首页布局和丰富的功能模块以及 AI 知识库功能。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "en_US": "HOME",
-          "zh_CN": "主页"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://glaube-ty.top/da-shang/"
-          ]
-        },
-        "keywords": [
-          "homepage",
-          "home",
-          "主页",
-          "首页",
-          "task",
-          "task manager",
-          "任务",
-          "任务管理",
-          "SQL",
-          "sql",
-          "查询",
-          "widget",
-          "widget manager",
-          "挂件",
-          "挂件管理",
-          "组件",
-          "组件管理",
-          "Pomodoro",
-          "Pomodoro timer",
-          "番茄钟",
-          "番茄",
-          "heat map",
-          "热力图",
-          "热搜",
-          "搜索",
-          "AI",
-          "智能助手",
-          "agent",
-          "智能体"
-        ],
-        "minAppVersion": "3.6.5",
-        "name": "siyuan-homepage",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/Glaube-TY/siyuan-homepage",
-        "version": "4.9.1"
-      },
-      "packageZipAssetId": 506296810,
-      "packageZipSha256": "baa91ee889a3812e36816fed74b571c311ea2b1a04ca69e48f615cc88ec20366",
-      "size": 4991629,
-      "stars": 39,
-      "updated": "2026-08-08T10:50:06Z",
-      "url": "Glaube-TY/siyuan-homepage@baa91ee"
-    },
-    {
       "installSize": 1940652,
       "openIssues": 0,
       "package": {
@@ -779,42 +1255,6 @@
       "stars": 0,
       "updated": "2026-08-08T10:10:50Z",
       "url": "maoruibin/siyuan-inbox-sync@31cd612"
-    },
-    {
-      "installSize": 2041769,
-      "openIssues": 0,
-      "package": {
-        "author": "HibernalGlow",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Personal SiYuan extensions for a recoverable question bank and mobile workspace UI.",
-          "zh-CN": "自用的思源增强插件，提供可恢复题库与移动端工作区界面优化。"
-        },
-        "displayName": {
-          "default": "Damophus"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "plugin"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-damophus",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/HibernalGlow/siyuan-damophus",
-        "version": "0.1.0"
-      },
-      "packageZipAssetId": 506196829,
-      "packageZipSha256": "d81c0dd0de2f9618a693a782dd09ced6071c2d0087c89701e95560e283287c04",
-      "size": 830114,
-      "stars": 0,
-      "updated": "2026-08-08T08:17:03Z",
-      "url": "HibernalGlow/siyuan-damophus@d81c0dd"
     },
     {
       "installSize": 366758,
@@ -1456,52 +1896,6 @@
       "stars": 0,
       "updated": "2026-08-05T17:23:38Z",
       "url": "shangwuqinu/siyuan-block-meta-info@4223026"
-    },
-    {
-      "installSize": 2014173,
-      "openIssues": 2,
-      "package": {
-        "author": "Taihong Yang",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Siyuan sisyphus enables AI Agents to operate your Siyuan with notebook-level permission control, covering most of Siyuan&#39;s functionality. Supports desktop、 docker、 mobile.",
-          "zh_CN": "思源 西西弗斯，让 AI Agent 操作你的思源，提供 MCP CLI 两种方式，支持笔记本级权限管控、覆盖SIYUAN绝大部分功能，支持思源的桌面、docker端、移动端。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiYuan sisyphus MCP &amp; CLI &amp; GIT",
-          "zh_CN": "思源 sisyphus MCP &amp; CLI &amp; GIT"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://github.com/yangtaihong59/siyuan-plugins-mcp-sisyphus/blob/main/docs/archive/thank.jpeg"
-          ]
-        },
-        "keywords": [
-          "AI",
-          "Agent",
-          "MCP"
-        ],
-        "minAppVersion": "2.9.0",
-        "name": "siyuan-plugins-mcp-sisyphus",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/yangtaihong59/siyuan-plugins-mcp-sisyphus",
-        "version": "0.5.2"
-      },
-      "packageZipAssetId": 502742168,
-      "packageZipSha256": "8880e00e4526ea20f8d30c73cfbee3eaeb5500152e79e01c7073d2cb7098e254",
-      "size": 732748,
-      "stars": 92,
-      "updated": "2026-08-05T14:48:00Z",
-      "url": "yangtaihong59/siyuan-plugins-mcp-sisyphus@8880e00"
     },
     {
       "installSize": 669048,
@@ -3456,48 +3850,6 @@
       "url": "TCOTC/install-package@c71aae8"
     },
     {
-      "installSize": 499040,
-      "openIssues": 0,
-      "package": {
-        "author": "itdh",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Key-Buddy: Your smart, local password companion",
-          "zh_CN": "密友：您的智能本地密码管家"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Key-Buddy",
-          "zh_CN": "密友"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "Password Manager",
-          "密码管理器",
-          "kdbx",
-          "KeePass"
-        ],
-        "minAppVersion": "3.7.2",
-        "name": "siyuan-plugin-key-buddy",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/itdh/siyuan-plugin-key-buddy",
-        "version": "0.1.2"
-      },
-      "packageZipAssetId": 493939615,
-      "packageZipSha256": "93e0b269c7d7f455d8953959a5fd74a781efc1ed44ef8b6086d21b8d95577be4",
-      "size": 199721,
-      "stars": 0,
-      "updated": "2026-07-29T11:00:21Z",
-      "url": "itdh/siyuan-plugin-key-buddy@93e0b26"
-    },
-    {
       "installSize": 293845,
       "openIssues": 0,
       "package": {
@@ -3716,56 +4068,6 @@
       "stars": 9,
       "updated": "2026-07-28T13:35:08Z",
       "url": "OpaqueGlass/syplugin-fakeDocBreadcrumb@e8d84f2"
-    },
-    {
-      "installSize": 115244,
-      "openIssues": 0,
-      "package": {
-        "author": "zange",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Collect plugin controls and selected native SiYuan features into a configurable left or right sidebar.",
-          "zh-CN": "将插件按钮和可选的思源原生功能收纳到可切换的左侧或右侧栏。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Plugin Drawer",
-          "zh-CN": "插件抽屉"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop"
-        ],
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "plugin center",
-          "toolbar",
-          "clean interface",
-          "插件抽屉",
-          "顶栏收纳",
-          "左右侧栏",
-          "原生功能",
-          "界面整理"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-drawer",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh_CN.md"
-        },
-        "url": "https://github.com/tianxia704/siyuan-plugin-drawer",
-        "version": "0.4.6"
-      },
-      "packageZipAssetId": 492683933,
-      "packageZipSha256": "5fd33cb7d71be47762b4941153d914f840567f337fd09b862da6e258d90ffe1e",
-      "size": 56709,
-      "stars": 0,
-      "updated": "2026-07-28T12:18:26Z",
-      "url": "tianxia704/siyuan-plugin-drawer@5fd33cb"
     },
     {
       "installSize": 367338,
@@ -8902,49 +9204,6 @@
       "stars": 18,
       "updated": "2026-04-28T07:05:18Z",
       "url": "Dammyxy/siyuan-plugin-siyuanmemo@f310278"
-    },
-    {
-      "installSize": 677174,
-      "openIssues": 66,
-      "package": {
-        "author": "terwer",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Import md, epub, docx, html, etc. into Siyuan notes. Currently supported formats: .md, .epub, .docx, .html, .opml.",
-          "zh_CN": "将 md, epub, docx, html 等格式的文件导入到思源笔记。目前支持的格式：.md, .epub, .docx, .html, .opml。"
-        },
-        "displayName": {
-          "default": "Importer",
-          "zh_CN": "导入工具"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.net/a/terwer"
-          ]
-        },
-        "minAppVersion": "2.9.2",
-        "name": "siyuan-importer",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/terwer/siyuan-plugin-importer",
-        "version": "1.8.2"
-      },
-      "packageZipAssetId": 400587306,
-      "packageZipSha256": "3c6acaad4cc5f4ec392cfd10936160f3ed81c3253b7e664f5f3792038b7d4e6c",
-      "size": 670420,
-      "stars": 46,
-      "updated": "2026-04-20T09:26:56Z",
-      "url": "terwer/siyuan-plugin-importer@3c6acaa"
     },
     {
       "installSize": 712351,
