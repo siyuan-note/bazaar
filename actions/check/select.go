@@ -45,7 +45,7 @@ type selectCandidate struct {
 	checkedAt time.Time
 }
 
-// runSelect 定时 / 手动复检：先关超龄 ci-failed，再筛选待完整检查的非 ci-passed PR，写入 GITHUB_OUTPUT matrix。
+// runSelect 定时 / 手动复检：先关超龄 PR，再筛选待完整检查的非 ci-passed PR，写入 GITHUB_OUTPUT matrix。
 func runSelect() {
 	logger.Infof("PR Check select started")
 
@@ -81,17 +81,22 @@ func runSelect() {
 	limit := envIntDefault("SELECT_LIMIT", selectPRLimitDefault)
 	now := time.Now().UTC()
 
-	prs, err := listOpenNonCIPassedPRs(githubContext, githubRepoClient, owner, repo)
+	prs, err := listOpenPRsForSelect(githubContext, githubRepoClient, owner, repo)
 	if err != nil {
-		logger.Fatalf("list non-ci-passed PRs failed: %s", err)
+		logger.Fatalf("list PRs for select failed: %s", err)
 	}
-	logger.Infof("open non-ci-passed PRs: %d (force=%v limit=%d)", len(prs), forceAll, limit)
+	logger.Infof("open PRs for select/stale-close: %d (force=%v limit=%d)", len(prs), forceAll, limit)
 
-	// 复用同一次 list：先关超龄 ci-failed，再对剩余 PR 做指纹 / 退避筛选
-	prs = closeStaleCIFailedPRs(githubContext, githubRepoClient, owner, repo, prs, now, staleCIFailedAge)
+	// 复用同一次 list：先关超龄（ci-failed，或 ci-passed+manual-review），再对剩余非 ci-passed 做指纹 / 退避筛选
+	prs = closeStalePRs(githubContext, githubRepoClient, owner, repo, prs, now, staleCIFailedAge)
 
 	candidates := make([]selectCandidate, 0, len(prs))
 	for _, pr := range prs {
+		if prHasLabel(pr, labelCIPassed) {
+			// 仅因超龄关闭而列入（ci-passed + manual-review）；未到龄则不参与复检
+			logger.Infof("skip PR #%d (ci-passed; listed for stale-close only)", pr.GetNumber())
+			continue
+		}
 		c, include := evaluateSelectPR(githubContext, owner, repo, pr, now, forceAll)
 		if !include {
 			logger.Infof("skip PR #%d (%s)", pr.GetNumber(), c.reason)
@@ -143,9 +148,10 @@ func splitOwnerRepo(s string) (owner, repo string, ok bool) {
 	return owner, repo, true
 }
 
-// listOpenNonCIPassedPRs 列出开放中、非草稿、无 ci-skip、且未挂 ci-passed 的 PR。
-// 含 ci-failed 与尚无 CI 标签的 PR（例如首次检查因 runner 排队未完成），便于定时/手动补检。
-func listOpenNonCIPassedPRs(ctx context.Context, client *github.Client, owner, repo string) ([]*github.PullRequest, error) {
+// listOpenPRsForSelect 列出开放中、非草稿、无 ci-skip，且需参与复检或超龄关闭的 PR：
+//   - 未挂 ci-passed：参与复检与 ci-failed 超龄关闭（含尚无 CI 标签者）
+//   - 同时挂 ci-passed 与 manual-review：仅参与超龄关闭（不复检）
+func listOpenPRsForSelect(ctx context.Context, client *github.Client, owner, repo string) ([]*github.PullRequest, error) {
 	var out []*github.PullRequest
 	opts := &github.PullRequestListOptions{
 		State:       "open",
@@ -166,7 +172,10 @@ func listOpenNonCIPassedPRs(ctx context.Context, client *github.Client, owner, r
 				continue
 			}
 			if prHasLabel(pr, labelCIPassed) {
-				continue
+				if !prHasLabel(pr, labelManualReview) {
+					continue
+				}
+				// ci-passed + manual-review：仅供超龄关闭
 			}
 			out = append(out, pr)
 		}

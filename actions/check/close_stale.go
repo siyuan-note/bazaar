@@ -20,46 +20,62 @@ import (
 	"github.com/google/go-github/v89/github"
 )
 
-const staleCIFailedAge = 30 * 24 * time.Hour
+const (
+	staleCIFailedAge = 30 * 24 * time.Hour
+
+	labelManualReview = "manual-review"
+
+	staleCloseReasonCIFailed     = "ci-failed"
+	staleCloseReasonManualReview = "manual-review"
+)
 
 //go:embed close-stale.md.tpl
 var closeStaleTemplateText string
 
-// closeStaleCommentData 关闭超龄 ci-failed PR 时的评论模板数据。
+// closeStaleCommentData 关闭超龄 PR 时的评论模板数据。
 type closeStaleCommentData struct {
-	Days int
+	Days   int
+	Reason string // ci-failed | manual-review
 }
 
-// shouldCloseStaleCIFailed 判断是否应因超龄 ci-failed 自动关闭。
-// 条件：非草稿、有 ci-failed、无 ci-skip、created_at 距今 ≥ age。
-func shouldCloseStaleCIFailed(pr *github.PullRequest, now time.Time, age time.Duration) bool {
+// staleCloseReason 返回超龄自动关闭原因；空字符串表示不应关闭。
+// 条件：非草稿、无 ci-skip、created_at 距今 ≥ age，且满足其一：
+//   - 有 ci-failed
+//   - 同时有 ci-passed 与 manual-review（维护者已要求修改，作者未跟进）
+func staleCloseReason(pr *github.PullRequest, now time.Time, age time.Duration) string {
 	if pr == nil || age <= 0 {
-		return false
+		return ""
 	}
 	if pr.GetDraft() {
-		return false
+		return ""
 	}
 	if prHasLabel(pr, "ci-skip") {
-		return false
-	}
-	if !prHasLabel(pr, labelCIFailed) {
-		return false
+		return ""
 	}
 	created := pr.GetCreatedAt().Time
 	if created.IsZero() {
-		return false
+		return ""
 	}
 	if now.IsZero() {
 		now = time.Now().UTC()
 	} else {
 		now = now.UTC()
 	}
-	return !now.Before(created.UTC().Add(age))
+	if now.Before(created.UTC().Add(age)) {
+		return ""
+	}
+	if prHasLabel(pr, labelCIFailed) {
+		return staleCloseReasonCIFailed
+	}
+	if prHasLabel(pr, labelCIPassed) && prHasLabel(pr, labelManualReview) {
+		return staleCloseReasonManualReview
+	}
+	return ""
 }
 
-// closeStaleCIFailedPRs 关闭超龄 ci-failed PR（先评论再关），返回仍应参与 select 的 PR。
+// closeStalePRs 关闭超龄 PR（先评论再关），返回仍应参与后续处理的 PR。
 // 单 PR 失败只记日志，不中断 select。
-func closeStaleCIFailedPRs(ctx context.Context, client *github.Client, owner, repo string, prs []*github.PullRequest, now time.Time, age time.Duration) []*github.PullRequest {
+func closeStalePRs(ctx context.Context, client *github.Client, owner, repo string, prs []*github.PullRequest, now time.Time, age time.Duration) []*github.PullRequest {
 	if len(prs) == 0 {
 		return prs
 	}
@@ -76,28 +92,29 @@ func closeStaleCIFailedPRs(ctx context.Context, client *github.Client, owner, re
 	kept := make([]*github.PullRequest, 0, len(prs))
 	closed := 0
 	for _, pr := range prs {
-		if !shouldCloseStaleCIFailed(pr, now, age) {
+		reason := staleCloseReason(pr, now, age)
+		if reason == "" {
 			kept = append(kept, pr)
 			continue
 		}
 		n := pr.GetNumber()
-		if err := closeOneStaleCIFailedPR(ctx, client, owner, repo, pr, tmpl, days); err != nil {
-			logger.Errorf("close stale ci-failed PR #%d failed: %s", n, err)
+		if err := closeOneStalePR(ctx, client, owner, repo, pr, tmpl, days, reason); err != nil {
+			logger.Errorf("close stale PR #%d (%s) failed: %s", n, reason, err)
 			kept = append(kept, pr) // 关闭失败则仍参与后续 select
 			continue
 		}
-		logger.Infof("closed stale ci-failed PR #%d (created_at=%s)", n, pr.GetCreatedAt().UTC().Format(time.RFC3339))
+		logger.Infof("closed stale PR #%d reason=%s (created_at=%s)", n, reason, pr.GetCreatedAt().UTC().Format(time.RFC3339))
 		closed++
 	}
 	if closed > 0 {
-		logger.Infof("closed %d stale ci-failed PR(s); remaining for select: %d", closed, len(kept))
+		logger.Infof("closed %d stale PR(s); remaining for select: %d", closed, len(kept))
 	}
 	return kept
 }
 
-func closeOneStaleCIFailedPR(ctx context.Context, client *github.Client, owner, repo string, pr *github.PullRequest, tmpl *template.Template, days int) error {
+func closeOneStalePR(ctx context.Context, client *github.Client, owner, repo string, pr *github.PullRequest, tmpl *template.Template, days int, reason string) error {
 	var buf bytes.Buffer
-	if err := tmpl.Execute(&buf, closeStaleCommentData{Days: days}); err != nil {
+	if err := tmpl.Execute(&buf, closeStaleCommentData{Days: days, Reason: reason}); err != nil {
 		return err
 	}
 	body := buf.String()

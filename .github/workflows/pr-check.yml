@@ -6,7 +6,9 @@ name: PR Check
 # - pull_request_target：PR 打开 / 同步 / 重开 / 打 Check 标签时检查
 # - schedule / workflow_dispatch：复检开放中非 ci-passed 的 PR（作者常只改包仓库 Release；亦覆盖尚无 CI 标签者）
 #   schedule 按评论 meta 指纹变更 / 退避到期筛选；workflow_dispatch 强制全选（仍受 SELECT_LIMIT）
-#   select 顺带关闭开立超过 30 天且仍为 ci-failed 的 PR（先评论再关；ci-skip 除外）
+#   select 顺带关闭开立超过 30 天且仍为下列之一的 PR（先评论再关；ci-skip 除外）：
+#   - ci-failed
+#   - 同时带 ci-passed 与 manual-review（维护者已要求修改，作者未跟进）
 #
 # 标签：
 # - Check：维护者打标以立即重跑本检查（打标后会自动去掉）
