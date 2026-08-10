@@ -154,6 +154,34 @@ func TestCheckResultCIPassed(t *testing.T) {
 	}
 }
 
+func TestIsNoActualChange(t *testing.T) {
+	if !isNoActualChange(nil) {
+		t.Fatal("nil should be no actual change")
+	}
+	if !isNoActualChange(&CheckResult{}) {
+		t.Fatal("empty result should be no actual change")
+	}
+	if isNoActualChange(&CheckResult{ParseError: "bad"}) {
+		t.Fatal("ParseError is not no actual change")
+	}
+	if isNoActualChange(&CheckResult{FlowError: "limit"}) {
+		t.Fatal("FlowError is not no actual change")
+	}
+	if isNoActualChange(&CheckResult{
+		Plugins: []PackageCheck{{Issues: []rules.Issue{{MessageZh: "x"}}}},
+	}) {
+		t.Fatal("package with Issues is not no actual change")
+	}
+	if isNoActualChange(&CheckResult{
+		Plugins: []PackageCheck{{RepoInfo: RepoInfo{Path: "a/b"}}},
+	}) {
+		t.Fatal("added package is not no actual change")
+	}
+	if isNoActualChange(&CheckResult{PluginsDeleted: []string{"c/d"}}) {
+		t.Fatal("deletion is not no actual change")
+	}
+}
+
 func TestCIStatusLabel(t *testing.T) {
 	if got := ciStatusLabel(true); got != labelCIPassed {
 		t.Fatalf("got %q, want %q", got, labelCIPassed)

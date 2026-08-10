@@ -33,6 +33,7 @@ type StageRepo struct {
 	Size              int64         `json:"size"`
 	InstallSize       int64         `json:"installSize"`
 	PackageZipAssetID int64         `json:"packageZipAssetId,omitempty"`
+	PackageZipSHA256  string        `json:"packageZipSha256,omitempty"` // 完整 SHA-256 hex；仅 stage 内部，不进公开索引
 	Package           rules.Package `json:"package"`
 }
 
@@ -52,7 +53,8 @@ type StageIndexRepo struct {
 	Package     rules.Package `json:"package"`
 }
 
-// ForPublicIndex 转为供客户端使用的集市索引，去掉 stage 流程内部字段。
+// ForPublicIndex 转为供客户端使用的集市索引，去掉 stage 流程内部字段，
+// 并剔除与 default 值相同的冗余多语言键（对 locale map 做拷贝，不修改原 stage 条目）。
 func (f StageFile) ForPublicIndex() StageIndexFile {
 	out := StageIndexFile{Repos: make([]StageIndexRepo, len(f.Repos))}
 	for i, repo := range f.Repos {
@@ -63,7 +65,7 @@ func (f StageFile) ForPublicIndex() StageIndexFile {
 			OpenIssues:  repo.OpenIssues,
 			Size:        repo.Size,
 			InstallSize: repo.InstallSize,
-			Package:     repo.Package,
+			Package:     rules.PackageForPublicIndex(repo.Package),
 		}
 	}
 	return out
@@ -87,6 +89,7 @@ func ReadStageFile(filePath string) (*StageFile, error) {
 }
 
 // OwnerRepoFromStageURL 从 stage 条目的 URL（格式 owner/repo@hash）中解析 owner/repo。
+// hash 为 package.zip 内容 SHA-256 hex 的前 7 位（见 PackageHashFromSHA256）。
 func OwnerRepoFromStageURL(stageURL string) (ownerRepo string, ok bool) {
 	ownerRepo, _, ok = strings.Cut(stageURL, "@")
 	if !ok || ownerRepo == "" {

@@ -73,21 +73,26 @@ func TestIsBlacklistedPath(t *testing.T) {
 }
 
 func TestClassifyPRFiles(t *testing.T) {
-	black, white := classifyPRFiles([]string{
+	black, white, other := classifyPRFiles([]string{
 		"stage/plugins.json",
 		`stage\themes.json`,
 		"plugins.txt",
 		"README.md",
+		".github/workflows/pr-check.yml",
 		util.ThemeJsAllowlistRelPath,
 		"./themes.txt",
 	})
 	wantBlack := []string{"stage/plugins.json", "stage/themes.json", util.ThemeJsAllowlistRelPath}
 	wantWhite := []string{"plugins.txt", "themes.txt"}
+	wantOther := []string{"README.md", ".github/workflows/pr-check.yml"}
 	if !slices.Equal(black, wantBlack) {
 		t.Fatalf("black=%v, want %v", black, wantBlack)
 	}
 	if !slices.Equal(white, wantWhite) {
 		t.Fatalf("white=%v, want %v", white, wantWhite)
+	}
+	if !slices.Equal(other, wantOther) {
+		t.Fatalf("other=%v, want %v", other, wantOther)
 	}
 }
 

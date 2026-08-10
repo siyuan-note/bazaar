@@ -14,8 +14,10 @@ import (
 	"encoding/json"
 	"fmt"
 	"html"
+	"maps"
 	"os"
 	"path/filepath"
+	"slices"
 	"strings"
 
 	"golang.org/x/mod/semver"
@@ -53,10 +55,13 @@ type Package struct {
 	Funding       *Funding      `json:"funding,omitempty"`
 	Keywords      []string      `json:"keywords,omitempty"`
 
+	// 插件和主题共用（plugin.json / theme.json）
+
+	Frontends []string `json:"frontends,omitempty"`
+
 	// 插件专用（仅 plugin.json；见 kernel/bazaar/plugin.go）
 
 	Backends          []string `json:"backends,omitempty"`
-	Frontends         []string `json:"frontends,omitempty"`
 	Kernels           []string `json:"kernels,omitempty"`
 	DisabledInPublish bool     `json:"disabledInPublish,omitempty"`
 
@@ -74,7 +79,7 @@ var commonManifestKeys = []string{
 
 var allowedManifestKeys = map[PackageType]Set{
 	TypePlugin:   toKeySet(commonManifestKeys, "backends", "frontends", "kernels", "disabledInPublish"), // 插件专用字段见 kernel/bazaar/plugin.go（兼容性与发布禁用判断）。
-	TypeTheme:    toKeySet(commonManifestKeys, "modes"),                                                 // 主题专用字段：亮色 / 暗色模式列表。
+	TypeTheme:    toKeySet(commonManifestKeys, "modes", "frontends"),                                    // 主题专用字段：亮色 / 暗色模式和前端兼容性。
 	TypeIcon:     toKeySet(commonManifestKeys),
 	TypeTemplate: toKeySet(commonManifestKeys),
 	TypeWidget:   toKeySet(commonManifestKeys),
@@ -180,6 +185,51 @@ func ClearEmptyFunding(pkg *Package) {
 	}
 }
 
+// PackageForPublicIndex 返回供发布索引使用的 Package 副本（locale map 已拷贝并剔除冗余语言键）。
+func PackageForPublicIndex(pkg Package) Package {
+	out := pkg
+	out.DisplayName = cloneLocaleStrings(pkg.DisplayName)
+	out.Description = cloneLocaleStrings(pkg.Description)
+	out.Readme = cloneLocaleStrings(pkg.Readme)
+	ClearRedundantLocales(&out)
+	return out
+}
+
+func cloneLocaleStrings(m LocaleStrings) LocaleStrings {
+	if m == nil {
+		return nil
+	}
+	out := make(LocaleStrings, len(m))
+	maps.Copy(out, m)
+	return out
+}
+
+// ClearRedundantLocales 删除与 default 值完全相同的语言键。
+// 客户端会回退到 default，冗余键只会增大索引体积；写入 stage / 发布索引前调用。
+func ClearRedundantLocales(pkg *Package) {
+	if pkg == nil {
+		return
+	}
+	clearRedundantLocaleStrings(pkg.DisplayName)
+	clearRedundantLocaleStrings(pkg.Description)
+	clearRedundantLocaleStrings(pkg.Readme)
+}
+
+func clearRedundantLocaleStrings(m LocaleStrings) {
+	if len(m) == 0 {
+		return
+	}
+	def, ok := m["default"]
+	if !ok {
+		return
+	}
+	for k, v := range m {
+		if k != "default" && v == def {
+			delete(m, k)
+		}
+	}
+}
+
 // ManifestInput 清单规则所需的上下文。
 type ManifestInput struct {
 	PackageRoot   string
@@ -200,15 +250,39 @@ func Manifest(m map[string]any, in ManifestInput) []Issue {
 	issues = append(issues, checkURL(m, in.Owner, in.Repo)...)
 	issues = append(issues, checkVersion(m, in.OldVersion)...)
 	issues = append(issues, checkReadme(m, in.PackageRoot)...)
-	issues = append(issues, checkFunding(m)...)
-	issues = append(issues, checkOptionalTypedFields(m, in.Type)...)
+	issues = append(issues, checkFunding(m, in.Owner, in.Repo)...)
+	issues = append(issues, checkOptionalTypedFields(m, in)...)
 	return issues
+}
+
+// bazaarSampleRepos README「集市包开发示例」列出的样本仓库（官方 + 社区维护）。
+// 这些包故意保留 funding 模板占位链接，并在 backends / frontends / kernels 中同时列出
+// 具体平台与 "all" 作为字段取值示例，故豁免对应规则。
+var bazaarSampleRepos = Set{
+	"siyuan-note/plugin-sample":             {},
+	"siyuan-note/plugin-sample-vite-svelte": {},
+	"siyuan-note/plugin-sample-vite-vue":    {},
+	"siyuan-note/theme-sample":              {},
+	"siyuan-note/icon-sample":               {},
+	"siyuan-note/template-sample":           {},
+	"siyuan-note/widget-sample":             {},
+}
+
+func isBazaarSampleRepo(owner, repo string) bool {
+	_, ok := bazaarSampleRepos[owner+"/"+repo]
+	return ok
 }
 
 func checkUnknownKeys(m map[string]any, typ PackageType) []Issue {
 	var issues []Issue
 	allowed := allowedManifestKeys[typ]
+	// 按键名排序，避免 map 遍历顺序不稳定导致检查结果 / result_hash 抖动
+	keys := make([]string, 0, len(m))
 	for k := range m {
+		keys = append(keys, k)
+	}
+	slices.Sort(keys)
+	for _, k := range keys {
 		if _, ok := allowed[k]; !ok {
 			issues = append(issues, issue(
 				fmt.Sprintf("`%s` 中出现了预期外的字段 `%s`。请删除该字段（保留未知字段会妨碍思源日后扩展同名字段）。若确有自定义需求，请先在[思源仓库](https://github.com/siyuan-note/siyuan)提 issue 讨论。", typ.ManifestFile(), k),
@@ -557,8 +631,8 @@ var allowedFundingKeys = map[string]struct{}{
 // checkFunding 校验 funding 字段。
 // openCollective / patreon / github：字符串，可为平台短名或 http(s) 完整链接（与 normalizeFundingURL 一致）。
 // custom：字符串数组，允许纯文本或 http(s) / mailto 链接；禁止 javascript: / data: / file: 等；
-// 禁止包含模板占位链接 https://ld246.com/sponsor。
-func checkFunding(m map[string]any) []Issue {
+// 禁止包含模板占位链接 https://ld246.com/sponsor（集市开发示例仓库豁免，见 bazaarSampleRepos）。
+func checkFunding(m map[string]any, owner, repo string) []Issue {
 	raw, ok := m["funding"]
 	if !ok || raw == nil {
 		return nil
@@ -571,7 +645,12 @@ func checkFunding(m map[string]any) []Issue {
 		)}
 	}
 	var issues []Issue
+	keys := make([]string, 0, len(obj))
 	for k := range obj {
+		keys = append(keys, k)
+	}
+	slices.Sort(keys)
+	for _, k := range keys {
 		if _, ok := allowedFundingKeys[k]; !ok {
 			issues = append(issues, issue(
 				fmt.Sprintf("`funding` 中出现了预期外的字段 `%s`。仅允许 `openCollective`、`patreon`、`github`、`custom`。", k),
@@ -617,6 +696,7 @@ func checkFunding(m map[string]any) []Issue {
 			"`funding.custom` must be an array of strings, e.g. `\"custom\": [\"https://example.com/sponsor\"]`.",
 		))
 	}
+	allowPlaceholder := isBazaarSampleRepo(owner, repo)
 	for i, item := range arr {
 		s, ok := item.(string)
 		if !ok {
@@ -636,7 +716,7 @@ func checkFunding(m map[string]any) []Issue {
 			))
 			continue
 		}
-		if strings.Contains(s, "https://ld246.com/sponsor") {
+		if !allowPlaceholder && strings.Contains(s, "https://ld246.com/sponsor") {
 			issues = append(issues, issue(
 				fmt.Sprintf("`funding.custom[%d]` 不能包含模板占位链接 `https://ld246.com/sponsor`。请填写真实的赞助地址，或删除该条目。", i),
 				fmt.Sprintf("`funding.custom[%d]` still has the template placeholder link `https://ld246.com/sponsor`. Please replace it with a real funding URL, or delete this entry.", i),
@@ -694,12 +774,12 @@ func unsafeFundingURI(s string) bool {
 // checkOptionalTypedFields 按包类型校验可选字段（若存在）的 JSON 类型。
 // 未知字段由 checkUnknownKeys 按 allowedManifestKeys 拒绝；此处只校验当前类型允许的字段。
 // readme / funding 由专用校验函数处理，此处不重复。
-func checkOptionalTypedFields(m map[string]any, typ PackageType) []Issue {
+func checkOptionalTypedFields(m map[string]any, in ManifestInput) []Issue {
 	var issues []Issue
 	issues = append(issues, checkCommonOptionalTypedFields(m)...)
-	switch typ {
+	switch in.Type {
 	case TypePlugin:
-		issues = append(issues, checkPluginOptionalTypedFields(m)...)
+		issues = append(issues, checkPluginOptionalTypedFields(m, in.Owner, in.Repo)...)
 	case TypeTheme:
 		issues = append(issues, checkThemeOptionalTypedFields(m)...)
 	}
@@ -737,16 +817,17 @@ func checkCommonOptionalTypedFields(m map[string]any) []Issue {
 	for _, key := range []string{"displayName", "description"} {
 		issues = append(issues, checkOptionalLocaleStrings(m, key)...)
 	}
-	issues = append(issues, checkOptionalStringArray(m, "keywords")...)
+	issues = append(issues, checkOptionalStringArray(m, "keywords", false)...)
 	return issues
 }
 
 // checkPluginOptionalTypedFields 校验插件专用可选字段。
-// backends / frontends / kernels（[]string，含 all 互斥）、disabledInPublish（bool）
-func checkPluginOptionalTypedFields(m map[string]any) []Issue {
+// backends / frontends / kernels（[]string，含 all 互斥；集市开发示例仓库豁免）、disabledInPublish（bool）
+func checkPluginOptionalTypedFields(m map[string]any, owner, repo string) []Issue {
 	var issues []Issue
+	allowAllMix := isBazaarSampleRepo(owner, repo)
 	for _, key := range []string{"backends", "frontends", "kernels"} {
-		issues = append(issues, checkOptionalStringArray(m, key)...)
+		issues = append(issues, checkOptionalStringArray(m, key, allowAllMix)...)
 	}
 	if raw, ok := m["disabledInPublish"]; ok {
 		if _, isBool := raw.(bool); !isBool {
@@ -760,9 +841,10 @@ func checkPluginOptionalTypedFields(m map[string]any) []Issue {
 }
 
 // checkThemeOptionalTypedFields 校验主题专用可选字段。
-// modes（[]string）
+// modes / frontends（[]string）
 func checkThemeOptionalTypedFields(m map[string]any) []Issue {
-	return checkOptionalStringArray(m, "modes")
+	issues := checkOptionalStringArray(m, "modes", false)
+	return append(issues, checkOptionalStringArray(m, "frontends", false)...)
 }
 
 // checkOptionalLocaleStrings 校验可选的 LocaleStrings 字段（displayName / description）。
@@ -809,7 +891,8 @@ func stringArrayExample(key string) string {
 }
 
 // checkOptionalStringArray 校验可选的字符串数组字段。
-func checkOptionalStringArray(m map[string]any, key string) []Issue {
+// allowAllMix 为 true 时跳过 all 互斥（供集市开发示例仓库展示全部合法取值）。
+func checkOptionalStringArray(m map[string]any, key string, allowAllMix bool) []Issue {
 	raw, ok := m[key]
 	if !ok {
 		return nil
@@ -837,7 +920,7 @@ func checkOptionalStringArray(m map[string]any, key string) []Issue {
 			hasAll = true
 		}
 	}
-	if _, exclusive := allExclusiveArrayKeys[key]; exclusive && hasAll && len(arr) > 1 {
+	if _, exclusive := allExclusiveArrayKeys[key]; exclusive && !allowAllMix && hasAll && len(arr) > 1 {
 		issues = append(issues, issue(
 			fmt.Sprintf("清单字段 `%s` 若包含 `\"all\"`，则不应再包含其他值；请只写 `[\"all\"]`，或改成具体平台列表（不要与 `all` 混用）。", key),
 			fmt.Sprintf("If `%s` includes `\"all\"`, please don't mix in other values — use only `[\"all\"]`, or list the concrete platforms without `all`.", key),

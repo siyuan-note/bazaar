@@ -11,6 +11,7 @@
 package main
 
 import (
+	"reflect"
 	"strings"
 	"testing"
 
@@ -102,7 +103,9 @@ func TestFormatStageFailIssueBody(t *testing.T) {
 		"可直接在本 Issue 中回复",
 		"please reply in this issue",
 		"检查的 Release / Checked release: [v1.2.3](https://github.com/owner/repo/releases/tag/v1.2.3)",
-		"hash `abc123`",
+		"package hash `abc123`",
+		"发布（或更新）标记为 Latest 的 GitHub Release",
+		"publish (or update) a GitHub Release marked as Latest",
 		"[01]",
 		"缺少 icon.png",
 		"missing icon.png",
@@ -181,8 +184,8 @@ func TestStageFailCloseComment(t *testing.T) {
 		{
 			reason: stageFailCloseSkip,
 			want: []string{
-				"hash 未变",
-				"hash unchanged",
+				"package hash 未变",
+				"package hash unchanged",
 				"工作流日志 / Workflow log: https://github.com/siyuan-note/bazaar/actions/runs/123",
 			},
 		},
@@ -193,6 +196,13 @@ func TestStageFailCloseComment(t *testing.T) {
 				"duplicate stage-fail issue",
 			},
 		},
+		{
+			reason: stageFailCloseDelisted,
+			want: []string{
+				"已不在集市包列表中",
+				"no longer in the bazaar package lists",
+			},
+		},
 	}
 	for _, tt := range tests {
 		body := stageFailCloseComment(tt.reason)
@@ -201,6 +211,44 @@ func TestStageFailCloseComment(t *testing.T) {
 				t.Fatalf("reason %d missing %q\nbody:\n%s", tt.reason, want, body)
 			}
 		}
+	}
+}
+
+func TestOwnerRepoListedSet(t *testing.T) {
+	listed := ownerRepoListedSet(map[rules.PackageType][]string{
+		rules.TypePlugin: {"a/p1", "b/p2"},
+		rules.TypeTheme:  {"c/t1"},
+		rules.TypeWidget: nil,
+	})
+	for _, want := range []string{"a/p1", "b/p2", "c/t1"} {
+		if _, ok := listed[want]; !ok {
+			t.Fatalf("missing %q in listed set", want)
+		}
+	}
+	if _, ok := listed["x/gone"]; ok {
+		t.Fatal("unexpected x/gone in listed set")
+	}
+}
+
+func TestStageFailDelistedRepos(t *testing.T) {
+	issuesByRepo := map[string][]stageFailIssue{
+		"keep/listed":   {{Number: 1, OwnerRepo: "keep/listed"}},
+		"gone/delisted": {{Number: 2, OwnerRepo: "gone/delisted"}},
+		"also/gone":     {{Number: 3, OwnerRepo: "also/gone"}},
+	}
+	listed := Set{"keep/listed": {}}
+	got := stageFailDelistedRepos(issuesByRepo, listed)
+	want := []string{"also/gone", "gone/delisted"}
+	if !reflect.DeepEqual(got, want) {
+		t.Fatalf("got %#v, want %#v", got, want)
+	}
+	// 仍在列表中的仓即使本轮无 report，也不应视为下架（增量 / 限流场景）
+	if got := stageFailDelistedRepos(issuesByRepo, Set{
+		"keep/listed":   {},
+		"gone/delisted": {},
+		"also/gone":     {},
+	}); len(got) != 0 {
+		t.Fatalf("want empty when all listed, got %#v", got)
 	}
 }
 
@@ -221,5 +269,24 @@ func TestStageFailIssueContentEqual(t *testing.T) {
 	}
 	if stageFailIssueContentEqual(base, changed) {
 		t.Fatal("want unequal when issue body differs")
+	}
+}
+
+func TestIdenticalPackageZipIssues(t *testing.T) {
+	issues := identicalPackageZipIssues()
+	if len(issues) != 1 {
+		t.Fatalf("want 1 issue, got %d", len(issues))
+	}
+	wantZh := []string{"SHA-256 未变", "重新构建", "清单 `version`"}
+	for _, w := range wantZh {
+		if !strings.Contains(issues[0].MessageZh, w) {
+			t.Fatalf("MessageZh missing %q:\n%s", w, issues[0].MessageZh)
+		}
+	}
+	wantEn := []string{"SHA-256 unchanged", "rebuild `package.zip`", "manifest `version`"}
+	for _, w := range wantEn {
+		if !strings.Contains(issues[0].MessageEn, w) {
+			t.Fatalf("MessageEn missing %q:\n%s", w, issues[0].MessageEn)
+		}
 	}
 }

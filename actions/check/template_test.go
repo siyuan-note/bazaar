@@ -27,6 +27,7 @@ func TestCheckResultTemplate(t *testing.T) {
 	}
 
 	sample := CheckResult{
+		MetaJSON: `{"v":1,"checked_at":"2026-07-20T14:00:00Z","result_hash":"deadbeef","unchanged_streak":0,"next_due_at":"2026-07-20T14:20:00Z"}`,
 		Plugins: []PackageCheck{
 			{
 				RepoInfo: RepoInfo{Path: "siyuan-note/plugin-sample", Home: "https://github.com/siyuan-note/plugin-sample"},
@@ -62,6 +63,9 @@ func TestCheckResultTemplate(t *testing.T) {
 	}
 	out := buf.String()
 	for _, want := range []string{
+		"<!-- bazaar-check-result -->",
+		"<!-- bazaar-check-meta",
+		`"result_hash":"deadbeef"`,
 		"无 Latest Release",
 		"无 package.zip",
 		"缺少 icon.png",
@@ -73,6 +77,9 @@ func TestCheckResultTemplate(t *testing.T) {
 		if !strings.Contains(out, want) {
 			t.Fatalf("output missing %q\n%s", want, out)
 		}
+	}
+	if strings.Contains(out, "@") {
+		t.Fatalf("check-result comment should not @ anyone\n%s", out)
 	}
 	introIdx := strings.Index(out, "检测到以下问题")
 	issueIdx := strings.Index(out, "[01]")
@@ -123,7 +130,7 @@ func TestCheckResultTemplate_FlowError(t *testing.T) {
 	if strings.Contains(out, "Check passed.") {
 		t.Fatalf("package checks should be skipped when FlowError is set\n%s", out)
 	}
-	// 一次一包失败时不展示下架列表（FlowError 文案里的「下架不限」除外）
+	// 流程失败时不展示下架列表
 	if strings.Contains(out, "### 下架") || strings.Contains(out, "x/old") {
 		t.Fatalf("deleted repos should be hidden when FlowError is set\n%s", out)
 	}

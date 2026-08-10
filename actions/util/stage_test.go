@@ -67,30 +67,50 @@ func TestStageFileForPublicIndex_stripsInternalFields(t *testing.T) {
 	stageFile := StageFile{
 		Repos: []StageRepo{
 			{
-				URL:               "owner/repo@abc123",
+				URL:               "owner/repo@abc1234",
 				Updated:           "2025-01-01T00:00:00Z",
 				Stars:             10,
 				OpenIssues:        1,
 				Size:              100,
 				InstallSize:       200,
 				PackageZipAssetID: 424242,
+				PackageZipSHA256:  "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
 				Package: rules.Package{
-					Name:    "demo",
-					Version: "1.0.0",
+					Name:      "demo",
+					Version:   "1.0.0",
+					Frontends: []string{"desktop", "browser-desktop"},
+					DisplayName: rules.LocaleStrings{
+						"default": "Demo",
+						"zh-CN":   "Demo",
+						"en":      "Demo EN",
+					},
 				},
 			},
 		},
 	}
 
-	data, err := json.Marshal(stageFile.ForPublicIndex())
+	public := stageFile.ForPublicIndex()
+	data, err := json.Marshal(public)
 	if err != nil {
 		t.Fatal(err)
 	}
 	got := string(data)
-	if strings.Contains(got, "packageZipAssetId") {
-		t.Fatalf("public index must not contain packageZipAssetId: %s", got)
+	if strings.Contains(got, "packageZipAssetId") || strings.Contains(got, "packageZipSha256") {
+		t.Fatalf("public index must not contain stage-internal fields: %s", got)
 	}
-	if !strings.Contains(got, `"url":"owner/repo@abc123"`) {
+	if !strings.Contains(got, `"url":"owner/repo@abc1234"`) {
 		t.Fatalf("public index missing expected fields: %s", got)
+	}
+	if !strings.Contains(got, `"frontends":["desktop","browser-desktop"]`) {
+		t.Fatalf("public index missing theme frontends: %s", got)
+	}
+	if _, ok := public.Repos[0].Package.DisplayName["zh-CN"]; ok {
+		t.Fatalf("public index must strip locale identical to default: %s", got)
+	}
+	if _, ok := stageFile.Repos[0].Package.DisplayName["zh-CN"]; !ok {
+		t.Fatalf("ForPublicIndex must not mutate source stage entry locales")
+	}
+	if public.Repos[0].Package.DisplayName["en"] != "Demo EN" {
+		t.Fatalf("public index should keep distinct locales: %s", got)
 	}
 }

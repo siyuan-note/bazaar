@@ -200,6 +200,39 @@ func TestCheckUnknownField(t *testing.T) {
 	}
 }
 
+func TestCheckUnknownKeysStableOrder(t *testing.T) {
+	m := map[string]any{
+		"backends":  []any{"all"},
+		"frontends": []any{"all"},
+		"zz":        1,
+		"aa":        2,
+	}
+	var first []string
+	for i := 0; i < 50; i++ {
+		issues := checkUnknownKeys(m, TypeWidget)
+		got := make([]string, len(issues))
+		for j, iss := range issues {
+			got[j] = iss.MessageEn
+		}
+		if i == 0 {
+			first = got
+			if len(first) < 2 {
+				t.Fatalf("want multiple unknown-key issues, got %v", first)
+			}
+			// 字典序：aa → backends → frontends → zz
+			if !strings.Contains(first[0], "`aa`") || !strings.Contains(first[1], "`backends`") {
+				t.Fatalf("want sorted keys aa, backends, ...; got %v", first)
+			}
+			continue
+		}
+		for j := range got {
+			if got[j] != first[j] {
+				t.Fatalf("iteration %d: unstable order\nfirst=%v\ngot=%v", i, first, got)
+			}
+		}
+	}
+}
+
 func TestManifestKeysByPackageType(t *testing.T) {
 	// 插件不得带 modes；主题不得带 backends；图标等仅通用字段
 	cases := []struct {
@@ -230,6 +263,7 @@ func TestManifestKeysByPackageType(t *testing.T) {
 		{TypePlugin, "backends"},
 		{TypePlugin, "disabledInPublish"},
 		{TypeTheme, "modes"},
+		{TypeTheme, "frontends"},
 		{TypeIcon, "keywords"},
 		{TypeTemplate, "minAppVersion"},
 		{TypeWidget, "displayName"},
@@ -239,6 +273,33 @@ func TestManifestKeysByPackageType(t *testing.T) {
 		if len(issues) != 0 {
 			t.Fatalf("%v with allowed key %s: unexpected issues %v", tc.typ, tc.key, issues)
 		}
+	}
+}
+
+func TestCheckThemeOptionalTypedFields(t *testing.T) {
+	if issues := checkThemeOptionalTypedFields(map[string]any{
+		"modes":     []any{"light", "dark"},
+		"frontends": []any{"desktop", "browser-desktop"},
+	}); len(issues) != 0 {
+		t.Fatalf("expected valid theme fields, got %v", issues)
+	}
+
+	if issues := checkThemeOptionalTypedFields(map[string]any{
+		"frontends": "desktop",
+	}); !issuesContain(issues, "frontends") {
+		t.Fatalf("expected invalid frontends type, got %v", issues)
+	}
+
+	if issues := checkThemeOptionalTypedFields(map[string]any{
+		"frontends": []any{"desktop", 1},
+	}); !issuesContain(issues, "frontends") {
+		t.Fatalf("expected invalid frontends element, got %v", issues)
+	}
+
+	if issues := checkThemeOptionalTypedFields(map[string]any{
+		"frontends": []any{"desktop", "all"},
+	}); !issuesContain(issues, "frontends") || !issuesContain(issues, "all") {
+		t.Fatalf("expected frontends all-mix issue, got %v", issues)
 	}
 }
 
@@ -442,6 +503,49 @@ func TestCheckOptionalTypedFields(t *testing.T) {
 	}
 }
 
+func TestBazaarSampleAllMixAllowed(t *testing.T) {
+	dir := t.TempDir()
+	copyTree(t, filepath.Join("testdata", "plugin_ok"), dir)
+	content := `{
+  "name": "plugin-sample",
+  "author": "siyuan-note",
+  "url": "https://github.com/siyuan-note/plugin-sample",
+  "version": "1.0.0",
+  "readme": { "default": "README.md" },
+  "backends": ["windows", "linux", "darwin", "ios", "android", "harmony", "docker", "all"],
+  "frontends": ["desktop", "mobile", "browser-desktop", "browser-mobile", "desktop-window", "all"],
+  "kernels": ["windows", "linux", "darwin", "ios", "android", "harmony", "docker", "all"]
+}`
+	if err := os.WriteFile(filepath.Join(dir, "plugin.json"), []byte(content), 0644); err != nil {
+		t.Fatal(err)
+	}
+
+	for _, ownerRepo := range []string{
+		"siyuan-note/plugin-sample",
+		"siyuan-note/plugin-sample-vite-svelte",
+		"siyuan-note/plugin-sample-vite-vue",
+	} {
+		r := Check(Input{
+			PackageRoot: dir,
+			OwnerRepo:   ownerRepo,
+			Type:        TypePlugin,
+		})
+		if hasIssueMsg(r, "all") {
+			t.Fatalf("expected sample repo %s all-mix to pass, issues=%v", ownerRepo, r.Issues)
+		}
+	}
+
+	// 非示例仓库仍应拦截 all 混用
+	r := Check(Input{
+		PackageRoot: dir,
+		OwnerRepo:   "demo/plugin-sample",
+		Type:        TypePlugin,
+	})
+	if r.OK || !hasIssueMsg(r, "all") {
+		t.Fatalf("expected non-sample repo all-mix to fail, issues=%v", r.Issues)
+	}
+}
+
 func TestCheckFunding(t *testing.T) {
 	dir := t.TempDir()
 	copyTree(t, filepath.Join("testdata", "plugin_ok"), dir)
@@ -511,6 +615,22 @@ func TestCheckFunding(t *testing.T) {
 	writePlugin(`{ "custom": ["https://ld246.com/sponsor"] }`)
 	if r := check(); r.OK || !hasIssueMsg(r, "ld246.com/sponsor") {
 		t.Fatalf("expected placeholder funding.custom ld246.com/sponsor to fail, issues=%v", r.Issues)
+	}
+
+	// 官方 / 社区集市开发示例允许保留模板占位链接
+	for _, ownerRepo := range []string{
+		"siyuan-note/plugin-sample",
+		"siyuan-note/plugin-sample-vite-svelte",
+		"siyuan-note/plugin-sample-vite-vue",
+	} {
+		r := Check(Input{
+			PackageRoot: dir,
+			OwnerRepo:   ownerRepo,
+			Type:        TypePlugin,
+		})
+		if hasIssueMsg(r, "ld246.com/sponsor") {
+			t.Fatalf("expected sample repo %s to allow funding placeholder, issues=%v", ownerRepo, r.Issues)
+		}
 	}
 }
 

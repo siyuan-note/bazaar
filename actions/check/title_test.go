@@ -97,7 +97,7 @@ func TestConventionalPRTitle_ParseError(t *testing.T) {
 }
 
 func TestConventionalPRTitle_AddPlusUnrelatedDelist(t *testing.T) {
-	// 一次一包允许「1 个新增 + 任意下架」，但标题要求仅涉及一个仓库
+	// 流程规则禁止「新增 + 无关下架」；标题同样不生成
 	plans := []typeCheckPlan{
 		{packageType: rules.TypePlugin, diff: repoDiff{New: []string{"a/p1"}, Deleted: []string{"b/old"}}},
 	}
