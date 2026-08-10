@@ -15,70 +15,84 @@ import (
 	"context"
 	"fmt"
 	"os"
-	"path/filepath"
+	"strconv"
 	"strings"
+	"sync"
 
 	"github.com/88250/gulu"
 	"github.com/qiniu/go-sdk/v7/auth/qbox"
 	"github.com/qiniu/go-sdk/v7/storage"
 )
 
-var logger = gulu.Log.NewLogger(os.Stdout)
+var (
+	logger       = gulu.Log.NewLogger(os.Stdout)
+	QINIU_BUCKET = os.Getenv("QINIU_BUCKET")
+	QINIU_AK     = os.Getenv("QINIU_AK")
+	QINIU_SK     = os.Getenv("QINIU_SK")
 
-func UploadOSS(key, contentType string, data []byte) (err error) {
-	bucket := os.Getenv("QINIU_BUCKET")
-	ak := os.Getenv("QINIU_AK")
-	sk := os.Getenv("QINIU_SK")
+	ossUploadSem     chan struct{}
+	ossUploadSemOnce sync.Once
+)
+
+func getOSSUploadSem() chan struct{} {
+	ossUploadSemOnce.Do(func() {
+		n := 16
+		if s := os.Getenv("OSS_UPLOAD_CONCURRENCY"); s != "" {
+			if parsed, err := strconv.Atoi(s); err == nil && parsed > 0 {
+				n = parsed
+			}
+		}
+		ossUploadSem = make(chan struct{}, n)
+	})
+	return ossUploadSem
+}
+
+func UploadOSS(ctx context.Context, key string, data []byte) (err error) {
+	sem := getOSSUploadSem()
+	select {
+	case <-ctx.Done():
+		return ctx.Err()
+	case sem <- struct{}{}:
+	}
+	defer func() { <-sem }()
 
 	cfg := storage.Config{UseCdnDomains: true, UseHTTPS: true}
-	mac := qbox.NewMac(ak, sk)
+	mac := qbox.NewMac(QINIU_AK, QINIU_SK)
 	bucketManager := storage.NewBucketManager(mac, &cfg)
-	stat, err := bucketManager.Stat(bucket, key)
-	if nil != err {
+	stat, err := bucketManager.Stat(QINIU_BUCKET, key)
+	if err != nil {
 		if !strings.Contains(err.Error(), "no such file or directory") {
 			logger.Warnf("stat [%s] failed: %s", key, err)
 		}
-	} else {
-		if "" != stat.Hash {
-			return
-		}
+	} else if stat.Hash != "" {
+		return nil
+	}
+
+	// 阻塞结束后检查是否已取消
+	if err = ctx.Err(); err != nil {
+		return err
 	}
 
 	putPolicy := storage.PutPolicy{
-		Scope: fmt.Sprintf("%s:%s", bucket, key), // overwrite if exists
+		Scope: fmt.Sprintf("%s:%s", QINIU_BUCKET, key), // overwrite if exists
 	}
 
 	formUploader := storage.NewFormUploader(&cfg)
-	if err = formUploader.Put(context.Background(), nil, putPolicy.UploadToken(qbox.NewMac(ak, sk)),
-		key, bytes.NewReader(data), int64(len(data)), &storage.PutExtra{MimeType: contentType}); nil != err {
+	uploadToken := putPolicy.UploadToken(mac)
+	if err = formUploader.Put(ctx, nil, uploadToken,
+		key, bytes.NewReader(data), int64(len(data)), &storage.PutExtra{}); err != nil {
+		if ctx.Err() != nil {
+			return ctx.Err()
+		}
 		logger.Warnf("upload [%s] failed: %s, retry it", key, err)
-		if err = formUploader.Put(context.Background(), nil, putPolicy.UploadToken(qbox.NewMac(ak, sk)),
-			key, bytes.NewReader(data), int64(len(data)), &storage.PutExtra{MimeType: contentType}); nil != err {
+		if err = formUploader.Put(ctx, nil, uploadToken,
+			key, bytes.NewReader(data), int64(len(data)), &storage.PutExtra{}); err != nil {
 			logger.Errorf("retry upload [%s] failed: %s", key, err)
-			return
+			return err
 		}
 		logger.Infof("retry upload [%s] success", key)
 	}
-	return
+	return nil
 }
 
 const UserAgent = "bazaar/1.0.0 https://github.com/siyuan-note/bazaar"
-
-func SizeOfDirectory(path string) (size int64, err error) {
-	err = filepath.Walk(path, func(_ string, info os.FileInfo, err error) error {
-		if nil != err {
-			return err
-		}
-		if !info.IsDir() {
-			s := info.Size()
-			size += s
-		} else {
-			size += 4096
-		}
-		return nil
-	})
-	if nil != err {
-		logger.Errorf("size of dir [%s] failed: %s", path, err)
-	}
-	return
-}
