@@ -1,6 +1,99 @@
 {
   "repos": [
     {
+      "installSize": 124851,
+      "openIssues": 0,
+      "package": {
+        "author": "zange",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Collect plugin controls and selected native SiYuan features into a configurable left or right sidebar.",
+          "zh-CN": "将插件按钮和可选的思源原生功能收纳到可切换的左侧或右侧栏。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Plugin Drawer",
+          "zh-CN": "插件抽屉"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop"
+        ],
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "plugin center",
+          "toolbar",
+          "clean interface",
+          "插件抽屉",
+          "顶栏收纳",
+          "左右侧栏",
+          "原生功能",
+          "界面整理"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-drawer",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh_CN.md"
+        },
+        "url": "https://github.com/tianxia704/siyuan-plugin-drawer",
+        "version": "0.4.8"
+      },
+      "packageZipAssetId": 508219704,
+      "packageZipSha256": "d987575749daaaa7122968f3010466e9a4b72675566775c8358534e299faa059",
+      "size": 58636,
+      "stars": 0,
+      "updated": "2026-08-10T03:16:55Z",
+      "url": "tianxia704/siyuan-plugin-drawer@d987575"
+    },
+    {
+      "installSize": 686837,
+      "openIssues": 62,
+      "package": {
+        "author": "terwer",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "Import md, epub, docx, html, etc. into Siyuan notes. Currently supported formats: .md, .epub, .docx, .html, .opml.",
+          "zh_CN": "将 md, epub, docx, html 等格式的文件导入到思源笔记。目前支持的格式：.md, .epub, .docx, .html, .opml。"
+        },
+        "displayName": {
+          "default": "Importer",
+          "zh_CN": "导入工具"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/terwer"
+          ]
+        },
+        "minAppVersion": "2.9.2",
+        "name": "siyuan-importer",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/terwer/siyuan-plugin-importer",
+        "version": "1.9.1"
+      },
+      "packageZipAssetId": 508206949,
+      "packageZipSha256": "3b2b009355b6c609636a82422bc42e0ac6b82f44888d0e988a4038c84c2f7e9c",
+      "size": 680083,
+      "stars": 50,
+      "updated": "2026-08-10T03:02:38Z",
+      "url": "terwer/siyuan-plugin-importer@3b2b009"
+    },
+    {
       "installSize": 1904813,
       "openIssues": 0,
       "package": {
@@ -177,56 +270,6 @@
       "stars": 97,
       "updated": "2026-08-09T17:46:52Z",
       "url": "yangtaihong59/siyuan-plugins-mcp-sisyphus@49c3cb7"
-    },
-    {
-      "installSize": 122480,
-      "openIssues": 0,
-      "package": {
-        "author": "zange",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Collect plugin controls and selected native SiYuan features into a configurable left or right sidebar.",
-          "zh-CN": "将插件按钮和可选的思源原生功能收纳到可切换的左侧或右侧栏。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Plugin Drawer",
-          "zh-CN": "插件抽屉"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop"
-        ],
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "plugin center",
-          "toolbar",
-          "clean interface",
-          "插件抽屉",
-          "顶栏收纳",
-          "左右侧栏",
-          "原生功能",
-          "界面整理"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-drawer",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh_CN.md"
-        },
-        "url": "https://github.com/tianxia704/siyuan-plugin-drawer",
-        "version": "0.4.7"
-      },
-      "packageZipAssetId": 507724888,
-      "packageZipSha256": "47ff2ba09e9c123fb3608ac0ae8955bb88e7b3545fac16ed0ed32f8c007db6f3",
-      "size": 57980,
-      "stars": 0,
-      "updated": "2026-08-09T17:15:48Z",
-      "url": "tianxia704/siyuan-plugin-drawer@47ff2ba"
     },
     {
       "installSize": 662263,
@@ -8908,49 +8951,6 @@
       "stars": 18,
       "updated": "2026-04-28T07:05:18Z",
       "url": "Dammyxy/siyuan-plugin-siyuanmemo@f310278"
-    },
-    {
-      "installSize": 677174,
-      "openIssues": 66,
-      "package": {
-        "author": "terwer",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Import md, epub, docx, html, etc. into Siyuan notes. Currently supported formats: .md, .epub, .docx, .html, .opml.",
-          "zh_CN": "将 md, epub, docx, html 等格式的文件导入到思源笔记。目前支持的格式：.md, .epub, .docx, .html, .opml。"
-        },
-        "displayName": {
-          "default": "Importer",
-          "zh_CN": "导入工具"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.net/a/terwer"
-          ]
-        },
-        "minAppVersion": "2.9.2",
-        "name": "siyuan-importer",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/terwer/siyuan-plugin-importer",
-        "version": "1.8.2"
-      },
-      "packageZipAssetId": 400587306,
-      "packageZipSha256": "3c6acaad4cc5f4ec392cfd10936160f3ed81c3253b7e664f5f3792038b7d4e6c",
-      "size": 670420,
-      "stars": 46,
-      "updated": "2026-04-20T09:26:56Z",
-      "url": "terwer/siyuan-plugin-importer@3c6acaa"
     },
     {
       "installSize": 712351,
