@@ -1,6 +1,96 @@
 {
   "repos": [
     {
+      "installSize": 13874704,
+      "openIssues": 9,
+      "package": {
+        "author": "suka233",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A fully redesigned KMind mind mapping plugin for SiYuan. Drag SiYuan documents and blocks directly into your mind maps, with unlimited summary levels, cloze nodes, bidirectional links, and more. Currently in public beta.",
+          "zh_CN": "全新设计的 KMind 思维导图插件，可直接将思源文档和思源块拖入导图，支持无限层级概要、节点挖空、节点双链等能力；当前为公测版。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "KMind Zen Mind Map Plugin",
+          "zh_CN": "KMind Zen 思维导图插件"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "思维导图",
+          "mindmap",
+          "KMind",
+          "KMindZen",
+          "KMind Zen"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-kmind-zen",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/suka233/siyuan-kmind-zen",
+        "version": "0.35.0"
+      },
+      "packageZipAssetId": 509011354,
+      "packageZipSha256": "c26f841f2c3afd1f864d67d78bd8f8d41cd0bcb755d0b1d6ba1f494e948026aa",
+      "size": 9350736,
+      "stars": 4,
+      "updated": "2026-08-10T16:52:38Z",
+      "url": "suka233/siyuan-kmind-zen@c26f841"
+    },
+    {
+      "installSize": 1143908,
+      "openIssues": 0,
+      "package": {
+        "author": "whale🐋",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Professional annotation plugin — select text, add comments, manage in sidebar, with slide-to-annotate, tagging, cross-document navigation, and AI-powered explanation.",
+          "zh-CN": "专业批注插件：绝对安全、零污染、数据永久原始保留、万字文档秒批、可离线使用。在线AI 解释（思源原生 AI 驱动）。选中文字添加批注，侧边栏管理，支持滑动快速批注、标签分类、跨文档跳转。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "鲸鱼快速批注",
+          "en": "Whale Quick Comment"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "comment",
+          "annotation",
+          "批注",
+          "标注",
+          "笔记",
+          "AI",
+          "AI批注",
+          "人工智能",
+          "鲸鱼",
+          "快速批注"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-comment",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/HaoCeans/siyuan-comment",
+        "version": "2.5.3"
+      },
+      "packageZipAssetId": 508979959,
+      "packageZipSha256": "96271cf19fac93cb4cdcb3d2ddda6964da18872c9d1b8623fb34a03ca3049dfd",
+      "size": 583277,
+      "stars": 4,
+      "updated": "2026-08-10T16:22:57Z",
+      "url": "HaoCeans/siyuan-comment@96271cf"
+    },
+    {
       "installSize": 1667466,
       "openIssues": 2,
       "package": {
@@ -1289,53 +1379,6 @@
       "stars": 0,
       "updated": "2026-08-09T09:47:35Z",
       "url": "zfb517/siyuan-plugin-literal-text@068c7e7"
-    },
-    {
-      "installSize": 1134454,
-      "openIssues": 0,
-      "package": {
-        "author": "whale🐋",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Professional annotation plugin — select text, add comments, manage in sidebar, with slide-to-annotate, tagging, cross-document navigation, and AI-powered explanation.",
-          "zh-CN": "专业批注插件：绝对安全、零污染、数据永久原始保留、万字文档秒批、可离线使用。在线AI 解释（思源原生 AI 驱动）。选中文字添加批注，侧边栏管理，支持滑动快速批注、标签分类、跨文档跳转。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "鲸鱼快速批注",
-          "en": "Whale Quick Comment"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "comment",
-          "annotation",
-          "批注",
-          "标注",
-          "笔记",
-          "AI",
-          "AI批注",
-          "人工智能",
-          "鲸鱼",
-          "快速批注"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-comment",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/HaoCeans/siyuan-comment",
-        "version": "2.5.1"
-      },
-      "packageZipAssetId": 507469171,
-      "packageZipSha256": "ce74bb0fac4b86acf4dc1e03e9b8f94d0a2b39b0e2d44bf3a7635b79a60a2726",
-      "size": 580944,
-      "stars": 4,
-      "updated": "2026-08-09T09:25:43Z",
-      "url": "HaoCeans/siyuan-comment@ce74bb0"
     },
     {
       "installSize": 265020,
@@ -6481,49 +6524,6 @@
       "stars": 2,
       "updated": "2026-07-17T02:28:32Z",
       "url": "fujingzhai/siyuan-chronicle-plugin@6022995"
-    },
-    {
-      "installSize": 13071140,
-      "openIssues": 6,
-      "package": {
-        "author": "suka233",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A fully redesigned KMind mind mapping plugin for SiYuan. Drag SiYuan documents and blocks directly into your mind maps, with unlimited summary levels, cloze nodes, bidirectional links, and more. Currently in public beta.",
-          "zh_CN": "全新设计的 KMind 思维导图插件，可直接将思源文档和思源块拖入导图，支持无限层级概要、节点挖空、节点双链等能力；当前为公测版。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "KMind Zen Mind Map Plugin",
-          "zh_CN": "KMind Zen 思维导图插件"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "思维导图",
-          "mindmap",
-          "KMind",
-          "KMindZen",
-          "KMind Zen"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-kmind-zen",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/suka233/siyuan-kmind-zen",
-        "version": "0.34.0"
-      },
-      "packageZipAssetId": 478910218,
-      "packageZipSha256": "c75a8572ae8d422bb4b42306fb8a4d99ee3b6175848011c495bd89976d1a00e8",
-      "size": 8964175,
-      "stars": 4,
-      "updated": "2026-07-16T07:41:21Z",
-      "url": "suka233/siyuan-kmind-zen@c75a857"
     },
     {
       "installSize": 110879,
