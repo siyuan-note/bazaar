@@ -1,7 +1,43 @@
 {
   "repos": [
     {
-      "installSize": 120697,
+      "installSize": 1000280,
+      "openIssues": 3,
+      "package": {
+        "author": "Quincy Zou",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Import, edit, and export Obsidian Canvas files inside SiYuan",
+          "zh_CN": "在思源笔记中导入、编辑 Obsidian 画布，支持 canvas 开放文件格式，与 Obsidian 兼容互通。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Canvas",
+          "zh_CN": "无界"
+        },
+        "frontends": [
+          "all"
+        ],
+        "minAppVersion": "2.10.14",
+        "name": "siyuan-canvas",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/famotime/siyuan-canvas",
+        "version": "1.5.0"
+      },
+      "packageZipAssetId": 507381371,
+      "packageZipSha256": "747b97124eeb80ea3b092c6d38adcf026bfe0d2a64905863e6b8feb0cf3a4285",
+      "size": 382663,
+      "stars": 7,
+      "updated": "2026-08-10T12:26:07Z",
+      "url": "famotime/siyuan-canvas@747b971"
+    },
+    {
+      "installSize": 1930203,
       "openIssues": 0,
       "package": {
         "author": "月亮老师",
@@ -32,14 +68,60 @@
           "default": "README.md"
         },
         "url": "https://github.com/moonejue/siyuan-moon-export",
-        "version": "1.0.1"
+        "version": "1.0.3"
       },
-      "packageZipAssetId": 508626243,
-      "packageZipSha256": "601d77d97ce6f555aa010ab5af1ae17e40928f29e9655b117016215c0cb5a482",
-      "size": 90591,
+      "packageZipAssetId": 508669477,
+      "packageZipSha256": "64a6c0d050c22bdc35fb65b87c01d394110c4cb16cd528287ddb1e5a3a296c96",
+      "size": 1823784,
       "stars": 0,
-      "updated": "2026-08-10T10:48:36Z",
-      "url": "moonejue/siyuan-moon-export@601d77d"
+      "updated": "2026-08-10T11:23:34Z",
+      "url": "moonejue/siyuan-moon-export@64a6c0d"
+    },
+    {
+      "installSize": 819103,
+      "openIssues": 0,
+      "package": {
+        "author": "houm01",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A quiet collection of focused tools for SiYuan Note.",
+          "zh-CN": "一组安静、克制、专注的思源笔记实用工具。"
+        },
+        "displayName": {
+          "default": "Stillmark Workbench",
+          "zh-CN": "静痕工作台"
+        },
+        "frontends": [
+          "all"
+        ],
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "静痕",
+          "工作台",
+          "块样式",
+          "stillmark",
+          "workbench",
+          "block style"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "stillmark-workbench",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/houm01/stillmark-workbench",
+        "version": "0.4.1"
+      },
+      "packageZipAssetId": 508664573,
+      "packageZipSha256": "70a0583f9e2d54cd02c530a6c71a1e9b2a219556486c7c4c774703275d0d0f55",
+      "size": 304989,
+      "stars": 1,
+      "updated": "2026-08-10T11:17:56Z",
+      "url": "houm01/stillmark-workbench@70a0583"
     },
     {
       "installSize": 282244,
@@ -278,52 +360,6 @@
       "stars": 2,
       "updated": "2026-08-10T10:19:35Z",
       "url": "notesynchelper/siyuan-notehelper@13ec1b6"
-    },
-    {
-      "installSize": 810389,
-      "openIssues": 0,
-      "package": {
-        "author": "houm01",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A quiet collection of focused tools for SiYuan Note.",
-          "zh-CN": "一组安静、克制、专注的思源笔记实用工具。"
-        },
-        "displayName": {
-          "default": "Stillmark Workbench",
-          "zh-CN": "静痕工作台"
-        },
-        "frontends": [
-          "all"
-        ],
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "静痕",
-          "工作台",
-          "块样式",
-          "stillmark",
-          "workbench",
-          "block style"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "stillmark-workbench",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/houm01/stillmark-workbench",
-        "version": "0.4.0"
-      },
-      "packageZipAssetId": 508582965,
-      "packageZipSha256": "177a8f1138c453ac3375ca06e50c09518a142a779a06c39420b6c9850bdfe3c7",
-      "size": 302126,
-      "stars": 1,
-      "updated": "2026-08-10T09:49:47Z",
-      "url": "houm01/stillmark-workbench@177a8f1"
     },
     {
       "installSize": 308560,
@@ -6812,42 +6848,6 @@
       "stars": 26,
       "updated": "2026-07-10T04:57:41Z",
       "url": "zxkmm/siyuan_mobile_marketplace@61a73fc"
-    },
-    {
-      "installSize": 797581,
-      "openIssues": 3,
-      "package": {
-        "author": "Quincy Zou",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Import, edit, and export Obsidian Canvas files inside SiYuan",
-          "zh_CN": "在思源笔记中导入、编辑 Obsidian 画布，支持 canvas 开放文件格式，与 Obsidian 兼容互通。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Canvas",
-          "zh_CN": "无界"
-        },
-        "frontends": [
-          "all"
-        ],
-        "minAppVersion": "2.10.14",
-        "name": "siyuan-canvas",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/famotime/siyuan-canvas",
-        "version": "1.4.5"
-      },
-      "packageZipAssetId": 471440395,
-      "packageZipSha256": "0d756940b90e468d5db832d61a0a3adcb24852af70649b726a4b5f8ae7c8101c",
-      "size": 337458,
-      "stars": 7,
-      "updated": "2026-07-09T14:55:55Z",
-      "url": "famotime/siyuan-canvas@0d75694"
     },
     {
       "installSize": 5117356,
