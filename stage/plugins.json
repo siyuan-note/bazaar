@@ -1,6 +1,174 @@
 {
   "repos": [
     {
+      "installSize": 332899,
+      "openIssues": 0,
+      "package": {
+        "author": "mixyoung",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "SiYuanMaster: policy-aware note access and safe write tools for trusted local agents.",
+          "zh-CN": "思源大师：为可信本机 Agent 提供笔记本范围控制、安全写入与受控 MCP 工具。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuanMaster",
+          "zh-CN": "思源大师"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop"
+        ],
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "MCP",
+          "AI",
+          "Agent",
+          "SiYuanMaster",
+          "思源大师",
+          "访问控制",
+          "标签"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuanmaster",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/mixyoung/siyuanmaster",
+        "version": "0.5.2"
+      },
+      "packageZipAssetId": 510374187,
+      "packageZipSha256": "fb9958531c2386684f6fc03fa812e6a3bd2d9e07421a763d99640d31edc7a445",
+      "size": 177468,
+      "stars": 2,
+      "updated": "2026-08-11T16:40:44Z",
+      "url": "mixyoung/siyuanmaster@fb99585"
+    },
+    {
+      "installSize": 1561211,
+      "openIssues": 2,
+      "package": {
+        "author": "WingDr",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "Enhance the KaTex editor of SiYuan.",
+          "zh_CN": "对现有的siyuan公式编辑器进行增强"
+        },
+        "displayName": {
+          "default": "Enhanced Editor",
+          "zh_CN": "编辑器增强"
+        },
+        "frontends": [
+          "all"
+        ],
+        "minAppVersion": "3.1.10",
+        "name": "siyuan-plugin-enhance-editor",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/WingDr/siyuan-plugin-enhance-editor",
+        "version": "0.1.4"
+      },
+      "packageZipAssetId": 510342421,
+      "packageZipSha256": "91188fda1db35adc9fa73311682b2e4eca777e07a75225e8b397eb28254937f1",
+      "size": 744043,
+      "stars": 3,
+      "updated": "2026-08-11T16:10:30Z",
+      "url": "WingDr/siyuan-plugin-enhance-editor@91188fd"
+    },
+    {
+      "installSize": 14124573,
+      "openIssues": 9,
+      "package": {
+        "author": "suka233",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A fully redesigned KMind mind mapping plugin for SiYuan. Drag SiYuan documents and blocks directly into your mind maps, with unlimited summary levels, cloze nodes, bidirectional links, and more. Currently in public beta.",
+          "zh_CN": "全新设计的 KMind 思维导图插件，可直接将思源文档和思源块拖入导图，支持无限层级概要、节点挖空、节点双链等能力；当前为公测版。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "KMind Zen Mind Map Plugin",
+          "zh_CN": "KMind Zen 思维导图插件"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "思维导图",
+          "mindmap",
+          "KMind",
+          "KMindZen",
+          "KMind Zen"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-kmind-zen",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/suka233/siyuan-kmind-zen",
+        "version": "0.37.0"
+      },
+      "packageZipAssetId": 510335737,
+      "packageZipSha256": "80ca1063b646f7f6bcc3fc116d9270ed7d77b0fcded8720dbe8b7580b6c75c11",
+      "size": 9375575,
+      "stars": 4,
+      "updated": "2026-08-11T16:02:33Z",
+      "url": "suka233/siyuan-kmind-zen@80ca106"
+    },
+    {
+      "installSize": 2970435,
+      "openIssues": 21,
+      "package": {
+        "author": "WingDr",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "description": {
+          "default": "Insert literature citations to your notes",
+          "zh_CN": "在笔记中插入文献引用"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Citation for SiYuan",
+          "zh_CN": "文献引用"
+        },
+        "frontends": [
+          "all"
+        ],
+        "minAppVersion": "3.3.1",
+        "name": "siyuan-plugin-citation",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/WingDr/siyuan-plugin-citation",
+        "version": "0.4.17"
+      },
+      "packageZipAssetId": 510333672,
+      "packageZipSha256": "c29bf8c97a5f2a290c76e4f5edd4f124c9711ab8202efc74e8a86dc508dec705",
+      "size": 1596902,
+      "stars": 73,
+      "updated": "2026-08-11T16:00:30Z",
+      "url": "WingDr/siyuan-plugin-citation@c29bf8c"
+    },
+    {
       "installSize": 25525292,
       "openIssues": 11,
       "package": {
@@ -475,49 +643,6 @@
       "url": "double3-org/siyuan-pledger@54ea186"
     },
     {
-      "installSize": 14118061,
-      "openIssues": 9,
-      "package": {
-        "author": "suka233",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A fully redesigned KMind mind mapping plugin for SiYuan. Drag SiYuan documents and blocks directly into your mind maps, with unlimited summary levels, cloze nodes, bidirectional links, and more. Currently in public beta.",
-          "zh_CN": "全新设计的 KMind 思维导图插件，可直接将思源文档和思源块拖入导图，支持无限层级概要、节点挖空、节点双链等能力；当前为公测版。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "KMind Zen Mind Map Plugin",
-          "zh_CN": "KMind Zen 思维导图插件"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "思维导图",
-          "mindmap",
-          "KMind",
-          "KMindZen",
-          "KMind Zen"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-kmind-zen",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/suka233/siyuan-kmind-zen",
-        "version": "0.36.0"
-      },
-      "packageZipAssetId": 509863735,
-      "packageZipSha256": "36e3ffdf04758e8e2ad6a93e26afce8d80463dd7491f181e7cc95b4d38aa66d5",
-      "size": 9373420,
-      "stars": 4,
-      "updated": "2026-08-11T08:14:35Z",
-      "url": "suka233/siyuan-kmind-zen@36e3ffd"
-    },
-    {
       "installSize": 66476,
       "openIssues": 0,
       "package": {
@@ -597,55 +722,6 @@
       "stars": 0,
       "updated": "2026-08-11T06:54:17Z",
       "url": "HibernalGlow/siyuan-damophus@988f345"
-    },
-    {
-      "installSize": 332897,
-      "openIssues": 0,
-      "package": {
-        "author": "dnolin",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "SiYuanMaster: policy-aware note access and safe write tools for trusted local agents.",
-          "zh-CN": "思源大师：为可信本机 Agent 提供笔记本范围控制、安全写入与受控 MCP 工具。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiYuanMaster",
-          "zh-CN": "思源大师"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop"
-        ],
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "MCP",
-          "AI",
-          "Agent",
-          "SiYuanMaster",
-          "思源大师",
-          "访问控制",
-          "标签"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuanmaster",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/mixyoung/siyuanmaster",
-        "version": "0.5.1"
-      },
-      "packageZipAssetId": 509501598,
-      "packageZipSha256": "e10da0f1dedee97d03c642146246b6563ee9642a75f2beef7db1382247376783",
-      "size": 177469,
-      "stars": 1,
-      "updated": "2026-08-11T04:14:32Z",
-      "url": "mixyoung/siyuanmaster@e10da0f"
     },
     {
       "installSize": 1667466,
@@ -3342,82 +3418,6 @@
       "stars": 78,
       "updated": "2026-08-03T16:54:21Z",
       "url": "siyuan-note/plugin-sample@580c7ba"
-    },
-    {
-      "installSize": 2971022,
-      "openIssues": 19,
-      "package": {
-        "author": "WingDr",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker"
-        ],
-        "description": {
-          "default": "Insert literature citations to your notes",
-          "zh_CN": "在笔记中插入文献引用"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Citation for SiYuan",
-          "zh_CN": "文献引用"
-        },
-        "frontends": [
-          "all"
-        ],
-        "minAppVersion": "3.3.1",
-        "name": "siyuan-plugin-citation",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/WingDr/siyuan-plugin-citation",
-        "version": "0.4.16"
-      },
-      "packageZipAssetId": 500261029,
-      "packageZipSha256": "205d927f0fa580df27b48710478209a384954dcc4e24b43dd93c51d8c8c20821",
-      "size": 1596957,
-      "stars": 72,
-      "updated": "2026-08-03T16:15:00Z",
-      "url": "WingDr/siyuan-plugin-citation@205d927"
-    },
-    {
-      "installSize": 1560734,
-      "openIssues": 0,
-      "package": {
-        "author": "WingDr",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Enhance the KaTex editor of SiYuan.",
-          "zh_CN": "对现有的siyuan公式编辑器进行增强"
-        },
-        "displayName": {
-          "default": "Enhanced Editor",
-          "zh_CN": "编辑器增强"
-        },
-        "frontends": [
-          "all"
-        ],
-        "minAppVersion": "3.1.10",
-        "name": "siyuan-plugin-enhance-editor",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/WingDr/siyuan-plugin-enhance-editor",
-        "version": "0.1.3"
-      },
-      "packageZipAssetId": 500261571,
-      "packageZipSha256": "f4eb53e902affca2d99df3e5b14f0c450ed65a801eb81d3bf358a5124a8a80ad",
-      "size": 743847,
-      "stars": 3,
-      "updated": "2026-08-03T16:04:01Z",
-      "url": "WingDr/siyuan-plugin-enhance-editor@f4eb53e"
     },
     {
       "installSize": 437722,
