@@ -1,6 +1,137 @@
 {
   "repos": [
     {
+      "installSize": 1048599,
+      "openIssues": 1,
+      "package": {
+        "author": "li.mian",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A personal ledger plugin for SiYuan.",
+          "zh_CN": "一个基于思源笔记的账本插件"
+        },
+        "displayName": {
+          "default": "pledger",
+          "zh_CN": "账本"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/limian"
+          ]
+        },
+        "keywords": [
+          "ledger",
+          "账本"
+        ],
+        "minAppVersion": "3.2.1",
+        "name": "siyuan-pledger",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/double3-org/siyuan-pledger",
+        "version": "0.2.2"
+      },
+      "packageZipAssetId": 509894226,
+      "packageZipSha256": "54ea1862d0cb88b78d28c0c0cbfc6917f1cd6be27d673746497d473eb16a1914",
+      "size": 475391,
+      "stars": 6,
+      "updated": "2026-08-11T08:46:27Z",
+      "url": "double3-org/siyuan-pledger@54ea186"
+    },
+    {
+      "installSize": 14118061,
+      "openIssues": 9,
+      "package": {
+        "author": "suka233",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A fully redesigned KMind mind mapping plugin for SiYuan. Drag SiYuan documents and blocks directly into your mind maps, with unlimited summary levels, cloze nodes, bidirectional links, and more. Currently in public beta.",
+          "zh_CN": "全新设计的 KMind 思维导图插件，可直接将思源文档和思源块拖入导图，支持无限层级概要、节点挖空、节点双链等能力；当前为公测版。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "KMind Zen Mind Map Plugin",
+          "zh_CN": "KMind Zen 思维导图插件"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "思维导图",
+          "mindmap",
+          "KMind",
+          "KMindZen",
+          "KMind Zen"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-kmind-zen",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/suka233/siyuan-kmind-zen",
+        "version": "0.36.0"
+      },
+      "packageZipAssetId": 509863735,
+      "packageZipSha256": "36e3ffdf04758e8e2ad6a93e26afce8d80463dd7491f181e7cc95b4d38aa66d5",
+      "size": 9373420,
+      "stars": 4,
+      "updated": "2026-08-11T08:14:35Z",
+      "url": "suka233/siyuan-kmind-zen@36e3ffd"
+    },
+    {
+      "installSize": 66476,
+      "openIssues": 0,
+      "package": {
+        "author": "shangwuqiniu",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Show the confirmed local editor, update time, and notebook at the hovered block&#39;s right edge",
+          "zh-CN": "悬停块时在最右侧显示可信的本机提交人、提交时间和所属笔记本"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Block Metadata Info",
+          "zh-CN": "块元信息悬浮显示"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "keywords": [
+          "块元信息",
+          "修改时间",
+          "提交人",
+          "block metadata",
+          "audit"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-block-meta-info",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/shangwuqinu/siyuan-block-meta-info",
+        "version": "0.1.2"
+      },
+      "packageZipAssetId": 509886651,
+      "packageZipSha256": "249be33b5c9f647eb392114aa637734d486ac0abe9c60a4aa3b1685f0b96208c",
+      "size": 30663,
+      "stars": 0,
+      "updated": "2026-08-11T08:00:22Z",
+      "url": "shangwuqinu/siyuan-block-meta-info@249be33"
+    },
+    {
       "installSize": 2317198,
       "openIssues": 0,
       "package": {
@@ -129,49 +260,6 @@
       "stars": 0,
       "updated": "2026-08-11T03:18:17Z",
       "url": "Cloudquill-Z/siyuan-dida@a50b546"
-    },
-    {
-      "installSize": 13874704,
-      "openIssues": 9,
-      "package": {
-        "author": "suka233",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A fully redesigned KMind mind mapping plugin for SiYuan. Drag SiYuan documents and blocks directly into your mind maps, with unlimited summary levels, cloze nodes, bidirectional links, and more. Currently in public beta.",
-          "zh_CN": "全新设计的 KMind 思维导图插件，可直接将思源文档和思源块拖入导图，支持无限层级概要、节点挖空、节点双链等能力；当前为公测版。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "KMind Zen Mind Map Plugin",
-          "zh_CN": "KMind Zen 思维导图插件"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "思维导图",
-          "mindmap",
-          "KMind",
-          "KMindZen",
-          "KMind Zen"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-kmind-zen",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/suka233/siyuan-kmind-zen",
-        "version": "0.35.0"
-      },
-      "packageZipAssetId": 509011354,
-      "packageZipSha256": "c26f841f2c3afd1f864d67d78bd8f8d41cd0bcb755d0b1d6ba1f494e948026aa",
-      "size": 9350736,
-      "stars": 4,
-      "updated": "2026-08-10T16:52:38Z",
-      "url": "suka233/siyuan-kmind-zen@c26f841"
     },
     {
       "installSize": 1143908,
@@ -2284,51 +2372,6 @@
       "stars": 51,
       "updated": "2026-08-06T02:59:15Z",
       "url": "IAliceBobI/sy-tomato-plugin@eac4357"
-    },
-    {
-      "installSize": 59378,
-      "openIssues": 0,
-      "package": {
-        "author": "shangwuqiniu",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Show the confirmed local editor, update time, and notebook at the hovered block&#39;s right edge",
-          "zh-CN": "悬停块时在最右侧显示可信的本机提交人、提交时间和所属笔记本"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Block Metadata Info",
-          "zh-CN": "块元信息悬浮显示"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window"
-        ],
-        "keywords": [
-          "块元信息",
-          "修改时间",
-          "提交人",
-          "block metadata",
-          "audit"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-block-meta-info",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/shangwuqinu/siyuan-block-meta-info",
-        "version": "0.1.1"
-      },
-      "packageZipAssetId": 502896121,
-      "packageZipSha256": "4223026f5b30ff7bc4b78625edcb138395cce8a05a023e6235ecfb85dd8c84af",
-      "size": 28806,
-      "stars": 0,
-      "updated": "2026-08-05T17:23:38Z",
-      "url": "shangwuqinu/siyuan-block-meta-info@4223026"
     },
     {
       "installSize": 669048,
@@ -5247,49 +5290,6 @@
       "stars": 0,
       "updated": "2026-07-24T08:15:01Z",
       "url": "alvisliu818/siyuan-virtual-tree@b450ee0"
-    },
-    {
-      "installSize": 992565,
-      "openIssues": 0,
-      "package": {
-        "author": "li.mian",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A personal ledger plugin for SiYuan.",
-          "zh_CN": "一个基于思源笔记的账本插件"
-        },
-        "displayName": {
-          "default": "pledger",
-          "zh_CN": "账本"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/limian"
-          ]
-        },
-        "keywords": [
-          "ledger",
-          "账本"
-        ],
-        "minAppVersion": "3.2.1",
-        "name": "siyuan-pledger",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/double3-org/siyuan-pledger",
-        "version": "0.2.1"
-      },
-      "packageZipAssetId": 487108774,
-      "packageZipSha256": "0b1dae1db8f2d585f51e6e4acb58715fde2496d6d88e580db04488b7e7a6e16e",
-      "size": 459851,
-      "stars": 5,
-      "updated": "2026-07-23T11:23:53Z",
-      "url": "double3-org/siyuan-pledger@0b1dae1"
     },
     {
       "installSize": 476870,
