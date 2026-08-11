@@ -1,6 +1,195 @@
 {
   "repos": [
     {
+      "installSize": 25525292,
+      "openIssues": 11,
+      "package": {
+        "author": "Zuoqiu Yingyi",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A file editing tool integrating &lt;a href=&#39;https://microsoft.github.io/monaco-editor/&#39;&gt;Monaco Editor&lt;/a&gt;.",
+          "zh-CN": "一个集成了 &lt;a href=&#39;https://microsoft.github.io/monaco-editor/&#39;&gt;Monaco Editor&lt;/a&gt; 的文件编辑工具。",
+          "zh-TW": "一個集成了 &lt;a href=&#39;https://microsoft.github.io/monaco-editor/&#39;&gt;Monaco Editor&lt;/a&gt; 的文件編輯工具。"
+        },
+        "displayName": {
+          "default": "Integrated Edit Environment",
+          "zh-CN": "集成编辑环境",
+          "zh-TW": "集成編輯環境"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/zuoqiu",
+            "https://ko-fi.com/zuoqiu"
+          ],
+          "github": "https://github.com/Zuoqiu-Yingyi"
+        },
+        "keywords": [
+          "代码",
+          "代碼",
+          "程式碼",
+          "code",
+          "visual",
+          "studio",
+          "vscode",
+          "monaco",
+          "编辑器",
+          "編輯器",
+          "editor",
+          "vditor",
+          "文件",
+          "資料",
+          "file",
+          "文件夹",
+          "文件夾",
+          "資料夾",
+          "folder",
+          "管理",
+          "manage",
+          "资源管理器",
+          "資源管理器",
+          "explorer",
+          "markdown",
+          "所见即所得",
+          "所見即所得",
+          "wysiwyg",
+          "下载",
+          "下載",
+          "download",
+          "上传",
+          "上傳",
+          "upload"
+        ],
+        "minAppVersion": "3.0.12",
+        "name": "monaco-editor",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md",
+          "zh-TW": "README.zh-CN.md"
+        },
+        "url": "https://github.com/Zuoqiu-Yingyi/siyuan-plugin-monaco-editor",
+        "version": "0.3.0"
+      },
+      "packageZipAssetId": 510316339,
+      "packageZipSha256": "746e9603c887ff167abb8462308269eb9d77bb4e6f613c567a8a377d929b96fa",
+      "size": 6039457,
+      "stars": 22,
+      "updated": "2026-08-11T15:44:40Z",
+      "url": "Zuoqiu-Yingyi/siyuan-plugin-monaco-editor@746e960"
+    },
+    {
+      "installSize": 168710,
+      "openIssues": 0,
+      "package": {
+        "author": "lance",
+        "backends": [
+          "darwin",
+          "windows",
+          "linux"
+        ],
+        "description": {
+          "default": "Sync SiYuan Markdown todos with Dida through the local dida CLI.",
+          "zh-CN": "通过本机 dida CLI 同步思源 Markdown 待办与滴答清单。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Dida Sync",
+          "zh-CN": "滴答同步"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "keywords": [
+          "todo",
+          "sync",
+          "dida",
+          "ticktick"
+        ],
+        "minAppVersion": "3.1.0",
+        "name": "siyuan-dida",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/Cloudquill-Z/siyuan-dida",
+        "version": "1.1.12"
+      },
+      "packageZipAssetId": 510297493,
+      "packageZipSha256": "f68b1fb43dbef0f9652af8b8595691f2a8635ce808941e5fb16abb9728ad9639",
+      "size": 111321,
+      "stars": 0,
+      "updated": "2026-08-11T15:26:25Z",
+      "url": "Cloudquill-Z/siyuan-dida@f68b1fb"
+    },
+    {
+      "installSize": 727661,
+      "openIssues": 0,
+      "package": {
+        "author": "massivebox",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "description": {
+          "default": "Include a whiteboard for freehand drawing anywhere in your documents.",
+          "zh-CN": "在您的文档中添加一个自由绘图白板。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "JS-Draw Whiteboard",
+          "zh-CN": "JS-Draw 白板"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://s.boxo.cc/jsdraw-plugin-donate"
+          ]
+        },
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "plugin",
+          "drawing",
+          "freehand",
+          "tablet",
+          "whiteboard"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-jsdraw-plugin",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README-zh_CN.md"
+        },
+        "url": "https://github.com/massivebox/siyuan-jsdraw-plugin",
+        "version": "0.9.1"
+      },
+      "packageZipAssetId": 510253917,
+      "packageZipSha256": "fc4f5e570736cfcd38f29e96e1d5a90ca62bef646b29e9036df1c5626381a238",
+      "size": 259431,
+      "stars": 5,
+      "updated": "2026-08-11T14:45:44Z",
+      "url": "massivebox/siyuan-jsdraw-plugin@fc4f5e5"
+    },
+    {
       "installSize": 125958,
       "openIssues": 0,
       "package": {
@@ -457,51 +646,6 @@
       "stars": 1,
       "updated": "2026-08-11T04:14:32Z",
       "url": "mixyoung/siyuanmaster@e10da0f"
-    },
-    {
-      "installSize": 162133,
-      "openIssues": 0,
-      "package": {
-        "author": "lance",
-        "backends": [
-          "darwin",
-          "windows",
-          "linux"
-        ],
-        "description": {
-          "default": "Sync SiYuan Markdown todos with Dida through the local dida CLI.",
-          "zh-CN": "通过本机 dida CLI 同步思源 Markdown 待办与滴答清单。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Dida Sync",
-          "zh-CN": "滴答同步"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window"
-        ],
-        "keywords": [
-          "todo",
-          "sync",
-          "dida",
-          "ticktick"
-        ],
-        "minAppVersion": "3.1.0",
-        "name": "siyuan-dida",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/Cloudquill-Z/siyuan-dida",
-        "version": "1.1.11"
-      },
-      "packageZipAssetId": 509596512,
-      "packageZipSha256": "a50b546430c87c26056037a3bd87bb88842880274653f97daf1044458c43abb9",
-      "size": 109574,
-      "stars": 0,
-      "updated": "2026-08-11T03:18:17Z",
-      "url": "Cloudquill-Z/siyuan-dida@a50b546"
     },
     {
       "installSize": 1667466,
@@ -7872,63 +8016,6 @@
       "stars": 18,
       "updated": "2026-06-28T10:09:13Z",
       "url": "YuxinZhaozyx/siyuan-embed-drawio@03afee1"
-    },
-    {
-      "installSize": 694630,
-      "openIssues": 0,
-      "package": {
-        "author": "massivebox",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "description": {
-          "en_US": "Include a whiteboard for freehand drawing anywhere in your documents.",
-          "zh_CN": "在您的文档中添加一个自由绘图白板。"
-        },
-        "displayName": {
-          "en_US": "JS-Draw Whiteboard",
-          "zh_CN": "JS-Draw 白板"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://s.boxo.cc/jsdraw-plugin-donate"
-          ]
-        },
-        "keywords": [
-          "plugin",
-          "drawing",
-          "freehand",
-          "tablet",
-          "whiteboard"
-        ],
-        "minAppVersion": "3.0.12",
-        "name": "siyuan-jsdraw-plugin",
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README-zh_CN.md"
-        },
-        "url": "https://github.com/massivebox/siyuan-jsdraw-plugin",
-        "version": "0.8.0"
-      },
-      "packageZipAssetId": 453242572,
-      "packageZipSha256": "57cd39f9904c3d9ec4c49e0b6584a1f196a7d56c5b99eceb403dae561996c8bb",
-      "size": 250598,
-      "stars": 5,
-      "updated": "2026-06-20T21:23:44Z",
-      "url": "massivebox/siyuan-jsdraw-plugin@57cd39f"
     },
     {
       "installSize": 973711,
@@ -18934,88 +19021,6 @@
       "stars": 4,
       "updated": "2024-05-11T13:48:37Z",
       "url": "shady2k/siyuan-inbox-telegram-plugin@246393c"
-    },
-    {
-      "installSize": 39714486,
-      "openIssues": 11,
-      "package": {
-        "author": "Zuoqiu Yingyi",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A file editing tool integrating <a href=\"https://microsoft.github.io/monaco-editor/\" rel=\"nofollow\">Monaco Editor</a>.",
-          "zh_CHT": "一個集成了 <a href=\"https://microsoft.github.io/monaco-editor/\" rel=\"nofollow\">Monaco Editor</a> 的文件編輯工具。",
-          "zh_CN": "一个集成了 <a href=\"https://microsoft.github.io/monaco-editor/\" rel=\"nofollow\">Monaco Editor</a> 的文件编辑工具。"
-        },
-        "displayName": {
-          "default": "Integrated Edit Environment",
-          "zh_CHT": "集成編輯環境",
-          "zh_CN": "集成编辑环境"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.net/a/zuoqiu",
-            "https://ko-fi.com/zuoqiu"
-          ]
-        },
-        "keywords": [
-          "代码",
-          "代碼",
-          "程式碼",
-          "code",
-          "visual",
-          "studio",
-          "vscode",
-          "monaco",
-          "编辑器",
-          "編輯器",
-          "editor",
-          "vditor",
-          "文件",
-          "資料",
-          "file",
-          "文件夹",
-          "文件夾",
-          "資料夾",
-          "folder",
-          "管理",
-          "manage",
-          "资源管理器",
-          "資源管理器",
-          "explorer",
-          "markdown",
-          "所见即所得",
-          "所見即所得",
-          "wysiwyg",
-          "下载",
-          "下載",
-          "download",
-          "上传",
-          "上傳",
-          "upload"
-        ],
-        "minAppVersion": "3.0.12",
-        "name": "monaco-editor",
-        "readme": {
-          "default": "README.md",
-          "zh_CHT": "README_zh_CN.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/Zuoqiu-Yingyi/siyuan-plugin-monaco-editor",
-        "version": "0.2.5"
-      },
-      "packageZipAssetId": 165793855,
-      "packageZipSha256": "0d52403cfe177d3687dc61b748ccf1eb1f344c9351cc823b7b3356770d11f561",
-      "size": 9214338,
-      "stars": 20,
-      "updated": "2024-05-03T13:31:54Z",
-      "url": "Zuoqiu-Yingyi/siyuan-plugin-monaco-editor@0d52403"
     },
     {
       "installSize": 324344,
