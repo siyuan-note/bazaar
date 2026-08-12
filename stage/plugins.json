@@ -1,6 +1,94 @@
 {
   "repos": [
     {
+      "installSize": 1255675,
+      "openIssues": 0,
+      "package": {
+        "author": "LXiuu",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Switch the current document into a lightweight Markdown source editor.",
+          "zh_CN": "将当前文档切换为轻量 Markdown 源码编辑状态。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Markdown Source Mode",
+          "zh_CN": "Markdown源码模式"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "keywords": [
+          "Markdown",
+          "源码模式",
+          "编辑器",
+          "Source Mode"
+        ],
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-plugin-markdown-edit-mode",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/LXiuu/siyuan-plugin-markdown-edit-mode",
+        "version": "0.1.9"
+      },
+      "packageZipAssetId": 511353599,
+      "packageZipSha256": "307e4e9b89db8c6bb6397a80e65699071c7b0fc5de52f3527ab8986798c3a767",
+      "size": 370858,
+      "stars": 4,
+      "updated": "2026-08-12T09:17:53Z",
+      "url": "LXiuu/siyuan-plugin-markdown-edit-mode@307e4e9"
+    },
+    {
+      "installSize": 144311,
+      "openIssues": 0,
+      "package": {
+        "author": "YOGEMOW",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Encrypt selected block text with a password. Encrypted blocks are marked and require the password to view.",
+          "zh_CN": "用密码加密选中的块文本，加密后自动标注，只有输入密码才能查看明文。"
+        },
+        "displayName": {
+          "default": "Text Encrypt",
+          "zh_CN": "文本加密"
+        },
+        "frontends": [
+          "all"
+        ],
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "encrypt",
+          "加密",
+          "privacy",
+          "安全",
+          "text-encrypt"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-plugin-text-encrypt",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/YOGEMOW/siyuan-plugin-text-encrypt",
+        "version": "0.1.2"
+      },
+      "packageZipAssetId": 511313532,
+      "packageZipSha256": "3619bbb1e6f2a332c2ad15bf004ad1789a06818e181c2df8cd6d5e2175c32879",
+      "size": 122758,
+      "stars": 0,
+      "updated": "2026-08-12T08:39:19Z",
+      "url": "YOGEMOW/siyuan-plugin-text-encrypt@3619bbb"
+    },
+    {
       "installSize": 2474650,
       "openIssues": 0,
       "package": {
@@ -82,50 +170,6 @@
       "stars": 0,
       "updated": "2026-08-12T04:26:57Z",
       "url": "Summer-Stark/siyuan-plugin-quick-access@ef86892"
-    },
-    {
-      "installSize": 136711,
-      "openIssues": 0,
-      "package": {
-        "author": "YOGEMOW",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Encrypt selected block text with a password. Encrypted blocks are marked and require the password to view.",
-          "zh_CN": "用密码加密选中的块文本，加密后自动标注，只有输入密码才能查看明文。"
-        },
-        "displayName": {
-          "default": "Text Encrypt",
-          "zh_CN": "文本加密"
-        },
-        "frontends": [
-          "all"
-        ],
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "encrypt",
-          "加密",
-          "privacy",
-          "安全",
-          "text-encrypt"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-plugin-text-encrypt",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/YOGEMOW/siyuan-plugin-text-encrypt",
-        "version": "0.1.1"
-      },
-      "packageZipAssetId": 510453740,
-      "packageZipSha256": "4637be0dca5b1144dc7640917ff0cad6b6bf7b39ba69a7329e87c741020db76b",
-      "size": 102329,
-      "stars": 0,
-      "updated": "2026-08-12T04:13:52Z",
-      "url": "YOGEMOW/siyuan-plugin-text-encrypt@4637be0"
     },
     {
       "installSize": 885081,
@@ -5678,50 +5722,6 @@
       "stars": 0,
       "updated": "2026-07-22T12:59:54Z",
       "url": "appdev/siyuan-ai-mcp-bridge@413347f"
-    },
-    {
-      "installSize": 1233340,
-      "openIssues": 1,
-      "package": {
-        "author": "LXiuu",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Switch the current document into a lightweight Markdown source editor.",
-          "zh_CN": "将当前文档切换为轻量 Markdown 源码编辑状态。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Markdown Source Mode",
-          "zh_CN": "Markdown源码模式"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window"
-        ],
-        "keywords": [
-          "Markdown",
-          "源码模式",
-          "编辑器",
-          "Source Mode"
-        ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-plugin-markdown-edit-mode",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/LXiuu/siyuan-plugin-markdown-edit-mode",
-        "version": "0.1.8"
-      },
-      "packageZipAssetId": 485924368,
-      "packageZipSha256": "96a77186a8672f7fb82d8293e30908ce9782cd6b01931802e447c10159816f7b",
-      "size": 365820,
-      "stars": 4,
-      "updated": "2026-07-22T12:17:29Z",
-      "url": "LXiuu/siyuan-plugin-markdown-edit-mode@96a7718"
     },
     {
       "installSize": 245156,
