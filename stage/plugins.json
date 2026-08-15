@@ -1,6 +1,116 @@
 {
   "repos": [
     {
+      "installSize": 203469,
+      "openIssues": 0,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android",
+          "harmony"
+        ],
+        "description": {
+          "default": "Use blockref to implement footnote and memo",
+          "zh_CN": "使用思源的块引实现脚注和备注功能"
+        },
+        "displayName": {
+          "default": "FootnoteRef",
+          "zh_CN": "块引脚注"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "keywords": [
+          "脚注",
+          "Footnote",
+          "备注",
+          "Memo"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-blockref-footnote",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-blockref-footnote",
+        "version": "1.6.2"
+      },
+      "packageZipAssetId": 515322081,
+      "packageZipSha256": "4815c9420880f9e2c6aca095f87375c561943b845ea65cd1c400dcc5f1968868",
+      "size": 103481,
+      "stars": 38,
+      "updated": "2026-08-15T04:34:37Z",
+      "url": "Achuan-2/siyuan-plugin-blockref-footnote@4815c94"
+    },
+    {
+      "installSize": 174114,
+      "openIssues": 0,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android"
+        ],
+        "description": {
+          "default": "Simplify the steps of creating, archiving, and sorting child documents in SiYuan",
+          "zh_CN": "简化思源笔记子文档创建、子文档归档、子文档排序等步骤"
+        },
+        "displayName": {
+          "default": "ChildDoc Organizer",
+          "zh_CN": "子文档整理"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://www.yuque.com/achuan-2"
+          ]
+        },
+        "keywords": [
+          "sort",
+          "排序",
+          "块引",
+          "子文档",
+          "整理",
+          "block_ref",
+          "child_doc",
+          "organizer"
+        ],
+        "minAppVersion": "3.1.15",
+        "name": "siyuan-plugin-childdoc-organizer",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-childdoc-organizer",
+        "version": "0.0.9"
+      },
+      "packageZipAssetId": 515318329,
+      "packageZipSha256": "5c3a98cd6ef74b61a1fb52bea9e43a12c3b1fd27b25578805f009a6c6783e04e",
+      "size": 144501,
+      "stars": 6,
+      "updated": "2026-08-15T04:29:28Z",
+      "url": "Achuan-2/siyuan-plugin-childdoc-organizer@5c3a98c"
+    },
+    {
       "installSize": 133708,
       "openIssues": 0,
       "package": {
@@ -7548,62 +7658,6 @@
       "url": "MoonBottle/siyuan-plugin-bullet-journal@cd0dcf6"
     },
     {
-      "installSize": 395870,
-      "openIssues": 1,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "description": {
-          "en_US": "Use blockref to implement footnote and memo",
-          "zh_CN": "使用思源的块引实现脚注和备注功能"
-        },
-        "displayName": {
-          "en_US": "FootnoteRef",
-          "zh_CN": "块引脚注"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://www.yuque.com/achuan-2"
-          ]
-        },
-        "keywords": [
-          "脚注",
-          "Footnote",
-          "备注",
-          "Memo"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-blockref-footnote",
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-blockref-footnote",
-        "version": "1.6.1"
-      },
-      "packageZipAssetId": 467108800,
-      "packageZipSha256": "67e6fb55a9103a3d129da2420c3efc3f59341b4d76028762a1d87924ca7145aa",
-      "size": 253449,
-      "stars": 37,
-      "updated": "2026-07-05T11:35:36Z",
-      "url": "Achuan-2/siyuan-plugin-blockref-footnote@67e6fb5"
-    },
-    {
       "installSize": 144017,
       "openIssues": 4,
       "package": {
@@ -12671,65 +12725,6 @@
       "stars": 0,
       "updated": "2025-12-19T12:37:13Z",
       "url": "hogmoff/siyuan-plugin-ocr-api@d5ff26e"
-    },
-    {
-      "installSize": 547588,
-      "openIssues": 2,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android"
-        ],
-        "description": {
-          "en_US": "Simplify the steps of creating, archiving, and sorting child documents in SiYuan",
-          "zh_CN": "简化思源笔记子文档创建、子文档归档、子文档排序等步骤"
-        },
-        "displayName": {
-          "en_US": "ChildDoc Organizer",
-          "zh_CN": "子文档整理"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://www.yuque.com/achuan-2"
-          ]
-        },
-        "keywords": [
-          "sort",
-          "排序",
-          "块引",
-          "子文档",
-          "整理",
-          "block_ref",
-          "child_doc",
-          "organizer"
-        ],
-        "minAppVersion": "3.1.15",
-        "name": "siyuan-plugin-childdoc-organizer",
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-childdoc-organizer",
-        "version": "0.0.7"
-      },
-      "packageZipAssetId": 329852083,
-      "packageZipSha256": "5fb07e91d3180a86a244f490fa3da2238ec2334b5699742b2539571a980225a3",
-      "size": 416448,
-      "stars": 5,
-      "updated": "2025-12-17T15:53:20Z",
-      "url": "Achuan-2/siyuan-plugin-childdoc-organizer@5fb07e9"
     },
     {
       "installSize": 126612,
