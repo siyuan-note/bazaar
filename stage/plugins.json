@@ -1,6 +1,136 @@
 {
   "repos": [
     {
+      "installSize": 1040539,
+      "openIssues": 1,
+      "package": {
+        "author": "li.mian",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A personal ledger plugin for SiYuan.",
+          "zh_CN": "一个基于思源笔记的账本插件"
+        },
+        "displayName": {
+          "default": "pledger",
+          "zh_CN": "账本"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/limian"
+          ]
+        },
+        "keywords": [
+          "ledger",
+          "账本"
+        ],
+        "minAppVersion": "3.2.1",
+        "name": "siyuan-pledger",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/double3-org/siyuan-pledger",
+        "version": "0.2.3"
+      },
+      "packageZipAssetId": 520592117,
+      "packageZipSha256": "e3029f348e38cd82cabb7d5c9e7fbcfcf03ae05b51daa8eccbaf5b76cb308182",
+      "size": 471017,
+      "stars": 6,
+      "updated": "2026-08-19T08:33:01Z",
+      "url": "double3-org/siyuan-pledger@e3029f3"
+    },
+    {
+      "installSize": 263645,
+      "openIssues": 0,
+      "package": {
+        "author": "Acetab",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Automatically fetch and cache favicons for SiYuan web links, with multiple sources, local monogram fallbacks, and smart compatibility with Link Icon.",
+          "zh-CN": "自动为思源网页链接获取并缓存网站图标，支持多来源、本地字母兜底，并可与「链接图标」插件智能配合。"
+        },
+        "displayName": {
+          "default": "Auto Favicon",
+          "zh-CN": "自动网站图标"
+        },
+        "frontends": [
+          "desktop",
+          "mobile"
+        ],
+        "keywords": [
+          "网站图标",
+          "自动图标",
+          "网页链接",
+          "外链",
+          "favicon",
+          "链接",
+          "link icon",
+          "website icon",
+          "Vibe Coding"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "auto-favicon",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/Acetab/auto-favicon",
+        "version": "0.5.8"
+      },
+      "packageZipAssetId": 520590085,
+      "packageZipSha256": "e923c97549ef11e457d479b3c091c78e7dfcb1e1521ff0ffcfd71beec658985d",
+      "size": 187404,
+      "stars": 0,
+      "updated": "2026-08-19T08:30:42Z",
+      "url": "Acetab/auto-favicon@e923c97"
+    },
+    {
+      "installSize": 1597889,
+      "openIssues": 1,
+      "package": {
+        "author": "Szerelem0617",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "【🔓Permanently open source and free】 One-click index insertion, supports batch data management in attribute view.",
+          "zh_CN": "【🔓永久开源免费】 一键插入目录；创建数据库；批量管理数据。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Index Plugin",
+          "zh_CN": "目录插件"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "index",
+          "目录"
+        ],
+        "minAppVersion": "3.7.3",
+        "name": "siyuan-plugins-index",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/Szerelem0617/siyuan-plugins-index",
+        "version": "1.10.7"
+      },
+      "packageZipAssetId": 520548416,
+      "packageZipSha256": "791854168f84b17e6883bd6ae37a9a0a1cebb3656f38e1593c712902f522444e",
+      "size": 666523,
+      "stars": 43,
+      "updated": "2026-08-19T07:43:31Z",
+      "url": "Szerelem0617/siyuan-plugins-index@7918541"
+    },
+    {
       "installSize": 2018308,
       "openIssues": 0,
       "package": {
@@ -2142,46 +2272,6 @@
       "url": "TCOTC/select-opened-doc@ecc1eaf"
     },
     {
-      "installSize": 1566557,
-      "openIssues": 1,
-      "package": {
-        "author": "Szerelem0617",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "【🔓Permanently open source and free】 One-click index insertion, supports batch data management in attribute view.",
-          "zh_CN": "【🔓永久开源免费】 一键插入目录；创建数据库；批量管理数据。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Index Plugin",
-          "zh_CN": "目录插件"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "index",
-          "目录"
-        ],
-        "minAppVersion": "3.7.3",
-        "name": "siyuan-plugins-index",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/Szerelem0617/siyuan-plugins-index",
-        "version": "1.10.6"
-      },
-      "packageZipAssetId": 514200377,
-      "packageZipSha256": "04a8bacbc77eadb610298f933c33319ecc776c1381ab6768e4bdcaf851362e35",
-      "size": 656784,
-      "stars": 42,
-      "updated": "2026-08-14T09:11:01Z",
-      "url": "Szerelem0617/siyuan-plugins-index@04a8bac"
-    },
-    {
       "installSize": 9966737,
       "openIssues": 2,
       "package": {
@@ -3127,49 +3217,6 @@
       "stars": 1,
       "updated": "2026-08-11T12:47:20Z",
       "url": "Glaube-TY/siyuan-gesture-flow@091f73f"
-    },
-    {
-      "installSize": 1048599,
-      "openIssues": 1,
-      "package": {
-        "author": "li.mian",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A personal ledger plugin for SiYuan.",
-          "zh_CN": "一个基于思源笔记的账本插件"
-        },
-        "displayName": {
-          "default": "pledger",
-          "zh_CN": "账本"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/limian"
-          ]
-        },
-        "keywords": [
-          "ledger",
-          "账本"
-        ],
-        "minAppVersion": "3.2.1",
-        "name": "siyuan-pledger",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/double3-org/siyuan-pledger",
-        "version": "0.2.2"
-      },
-      "packageZipAssetId": 509894226,
-      "packageZipSha256": "54ea1862d0cb88b78d28c0c0cbfc6917f1cd6be27d673746497d473eb16a1914",
-      "size": 475391,
-      "stars": 6,
-      "updated": "2026-08-11T08:46:27Z",
-      "url": "double3-org/siyuan-pledger@54ea186"
     },
     {
       "installSize": 66476,
@@ -5216,53 +5263,6 @@
       "stars": 0,
       "updated": "2026-07-31T10:46:32Z",
       "url": "Acetab/siyuan-table-merge@baff5f5"
-    },
-    {
-      "installSize": 263827,
-      "openIssues": 0,
-      "package": {
-        "author": "Acetab",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Automatically fetch and cache favicons for SiYuan web links, with multiple sources, local monogram fallbacks, and smart compatibility with Link Icon.",
-          "zh-CN": "自动为思源网页链接获取并缓存网站图标，支持多来源、本地字母兜底，并可与「链接图标」插件智能配合。"
-        },
-        "displayName": {
-          "default": "Auto Favicon",
-          "zh-CN": "自动网站图标"
-        },
-        "frontends": [
-          "desktop",
-          "mobile"
-        ],
-        "keywords": [
-          "网站图标",
-          "自动图标",
-          "网页链接",
-          "外链",
-          "favicon",
-          "链接",
-          "link icon",
-          "website icon",
-          "Vibe Coding"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "auto-favicon",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/Acetab/auto-favicon",
-        "version": "0.5.7"
-      },
-      "packageZipAssetId": 496543323,
-      "packageZipSha256": "4671e5ce60338e7579d8d8625a203dc1621500f1bbf50ea72ef5e31a28cbed51",
-      "size": 187354,
-      "stars": 0,
-      "updated": "2026-07-31T10:06:45Z",
-      "url": "Acetab/auto-favicon@4671e5c"
     },
     {
       "installSize": 374874,
