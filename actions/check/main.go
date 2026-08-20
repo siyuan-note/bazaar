@@ -36,7 +36,7 @@ import (
 1. git diff（PR merge base → head）得到变更文件
 2. 黑名单（stage/**、config/themes-theme-js-allowlist.txt）：写 FlowError，跳过包检查
 3. 白名单（五个 *.txt）：进入下方 Diff / Check；若同时改了白名单以外的文件则 FlowError
-4. deprecated.json：独立进入弃用注册表校验，不访问包仓库 API；与其它文件混改则 FlowError
+4. deprecated.json：独立进入弃用注册表校验，不访问包仓库 API；与其它文件混改则 FlowError。有有效变更时自动改 PR 标题（Deprecate / Restore / Update deprecation）
 5. 命中黑名单时优先失败；无白名单或弃用注册表改动（含纯灰区）时模板展示「无实际变更」，ci-failed
 
 Diff 流程（以 plugins.txt 为例）：
@@ -188,6 +188,9 @@ func main() {
 			logger.Infof("deprecation registry has no actual change relative to bazaar head")
 		} else {
 			logger.Infof("deprecation registry check: types=%d changes=%d issues=%d", len(checkResult.Deprecation.Types), len(checkResult.Deprecation.Changes), len(checkResult.Deprecation.Issues))
+			if title, ok := conventionalDeprecationPRTitle(checkResult.Deprecation); ok {
+				maybeUpdatePRTitle(title)
+			}
 		}
 	case len(whiteFiles) > 0 && len(otherFiles) > 0:
 		// 改了列表文件时不允许再改其它路径（例如 .github/workflows）
