@@ -22,7 +22,7 @@ func TestTypeLabelSyncPlan_AddPlugin(t *testing.T) {
 		{packageType: rules.TypePlugin, diff: repoDiff{New: []string{"alice/foo"}}},
 		{packageType: rules.TypeTheme},
 	}
-	expected := typeLabelSyncPlan(plans)
+	expected := typeLabelSyncPlan(plans, nil)
 	if _, ok := expected["plugin"]; !ok || len(expected) != 1 {
 		t.Fatalf("expected=%v, want {plugin}", expected)
 	}
@@ -34,7 +34,7 @@ func TestTypeLabelSyncPlan_MultipleTypes(t *testing.T) {
 		{packageType: rules.TypeIcon, diff: repoDiff{Deleted: []string{"c/i1"}}},
 		{packageType: rules.TypeTheme},
 	}
-	expected := typeLabelSyncPlan(plans)
+	expected := typeLabelSyncPlan(plans, nil)
 	if len(expected) != 2 {
 		t.Fatalf("expected=%v, want plugin+icon", expected)
 	}
@@ -51,7 +51,7 @@ func TestTypeLabelSyncPlan_ParseErrorLabeled(t *testing.T) {
 		{packageType: rules.TypePlugin, diff: repoDiff{New: []string{"a/p1"}}},
 		{packageType: rules.TypeTheme, parseError: "bad"},
 	}
-	expected := typeLabelSyncPlan(plans)
+	expected := typeLabelSyncPlan(plans, nil)
 	if len(expected) != 2 {
 		t.Fatalf("expected=%v, want plugin+theme", expected)
 	}
@@ -68,7 +68,7 @@ func TestTypeLabelSyncPlan_NoChange(t *testing.T) {
 		{packageType: rules.TypePlugin},
 		{packageType: rules.TypeTheme},
 	}
-	expected := typeLabelSyncPlan(plans)
+	expected := typeLabelSyncPlan(plans, nil)
 	if len(expected) != 0 {
 		t.Fatalf("expected=%v, want empty", expected)
 	}
@@ -85,9 +85,25 @@ func TestTypeLabelSyncPlan_MaintainerChange(t *testing.T) {
 			},
 		},
 	}
-	expected := typeLabelSyncPlan(plans)
+	expected := typeLabelSyncPlan(plans, nil)
 	if _, ok := expected["widget"]; !ok || len(expected) != 1 {
 		t.Fatalf("expected=%v, want {widget}", expected)
+	}
+}
+
+func TestTypeLabelSyncPlan_DeprecationRegistry(t *testing.T) {
+	result := &CheckResult{Deprecation: &DeprecationCheck{
+		Types: []rules.PackageType{rules.TypePlugin, rules.TypeWidget},
+	}}
+	expected := typeLabelSyncPlan(nil, result)
+	if len(expected) != 2 {
+		t.Fatalf("expected=%v, want plugin+widget", expected)
+	}
+	if _, ok := expected["plugin"]; !ok {
+		t.Fatalf("missing plugin in %v", expected)
+	}
+	if _, ok := expected["widget"]; !ok {
+		t.Fatalf("missing widget in %v", expected)
 	}
 }
 
@@ -138,6 +154,21 @@ func TestCheckResultCIPassed(t *testing.T) {
 	}) {
 		t.Fatal("package Issues should fail")
 	}
+	if !checkResultCIPassed(&CheckResult{Deprecation: &DeprecationCheck{
+		Types: []rules.PackageType{rules.TypePlugin},
+		Changes: []DeprecationChange{{
+			PackageType: rules.TypePlugin,
+			OwnerRepo:   "a/b",
+			Action:      deprecationActionAdd,
+		}},
+	}}) {
+		t.Fatal("clean deprecation-registry change should pass")
+	}
+	if checkResultCIPassed(&CheckResult{Deprecation: &DeprecationCheck{
+		Issues: []rules.Issue{{MessageZh: "x"}},
+	}}) {
+		t.Fatal("deprecation-registry Issues should fail")
+	}
 	if !checkResultCIPassed(&CheckResult{
 		Plugins:        []PackageCheck{{RepoInfo: RepoInfo{Path: "a/b"}}},
 		PluginsDeleted: []string{"c/d"},
@@ -179,6 +210,9 @@ func TestIsNoActualChange(t *testing.T) {
 	}
 	if isNoActualChange(&CheckResult{PluginsDeleted: []string{"c/d"}}) {
 		t.Fatal("deletion is not no actual change")
+	}
+	if isNoActualChange(&CheckResult{Deprecation: &DeprecationCheck{}}) {
+		t.Fatal("deprecation-registry check is not no actual change")
 	}
 }
 

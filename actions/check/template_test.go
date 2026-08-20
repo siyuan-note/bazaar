@@ -136,6 +136,62 @@ func TestCheckResultTemplate_FlowError(t *testing.T) {
 	}
 }
 
+func TestCheckResultTemplate_DeprecationRegistry(t *testing.T) {
+	tmpl, err := parseCheckResultTemplate(context.Background())
+	if err != nil {
+		t.Fatal(err)
+	}
+	sample := CheckResult{Deprecation: &DeprecationCheck{
+		Types: []rules.PackageType{rules.TypePlugin},
+		Changes: []DeprecationChange{{
+			PackageType: rules.TypePlugin,
+			OwnerRepo:   "old/plugin",
+			Action:      deprecationActionAdd,
+		}},
+	}}
+	var buf bytes.Buffer
+	if err := tmpl.Execute(&buf, sample); err != nil {
+		t.Fatal(err)
+	}
+	out := buf.String()
+	for _, want := range []string{
+		"弃用注册表 / Deprecation Registry",
+		"`plugins / old/plugin`：新增 / Add",
+		"自动校验通过",
+		"maintainers still need to review",
+	} {
+		if !strings.Contains(out, want) {
+			t.Fatalf("output missing %q\n%s", want, out)
+		}
+	}
+	if strings.Contains(out, "无实际变更") {
+		t.Fatalf("no-change message must not appear for a deprecation change\n%s", out)
+	}
+}
+
+func TestCheckResultTemplate_DeprecationRegistryIssues(t *testing.T) {
+	tmpl, err := parseCheckResultTemplate(context.Background())
+	if err != nil {
+		t.Fatal(err)
+	}
+	sample := CheckResult{Deprecation: &DeprecationCheck{
+		Issues: []rules.Issue{{MessageZh: "替代包无效", MessageEn: "Invalid alternative"}},
+	}}
+	var buf bytes.Buffer
+	if err := tmpl.Execute(&buf, sample); err != nil {
+		t.Fatal(err)
+	}
+	out := buf.String()
+	for _, want := range []string{"替代包无效", "Invalid alternative", "[01]"} {
+		if !strings.Contains(out, want) {
+			t.Fatalf("output missing %q\n%s", want, out)
+		}
+	}
+	if strings.Contains(out, "自动校验通过") {
+		t.Fatalf("pass message must not appear when issues exist\n%s", out)
+	}
+}
+
 func TestCheckResultTemplate_BlacklistFlowError(t *testing.T) {
 	tmpl, err := parseCheckResultTemplate(context.Background())
 	if err != nil {

@@ -28,6 +28,9 @@ type CheckResult struct {
 	Templates []PackageCheck
 	Widgets   []PackageCheck
 
+	// Deprecation 为 deprecated.json 的独立校验结果；nil 表示相对当前 main 无有效元数据变更
+	Deprecation *DeprecationCheck
+
 	// ParseError 包列表 TXT 读取或格式校验错误，非空时在 PR 评论中优先展示
 	ParseError string
 
@@ -39,6 +42,20 @@ type CheckResult struct {
 	IconsDeleted     []string
 	TemplatesDeleted []string
 	WidgetsDeleted   []string
+}
+
+// DeprecationCheck 是弃用注册表变更与校验结果。
+type DeprecationCheck struct {
+	Types   []rules.PackageType
+	Changes []DeprecationChange
+	Issues  []rules.Issue
+}
+
+// DeprecationChange 是单个源包的弃用注册表增删改。
+type DeprecationChange struct {
+	PackageType rules.PackageType
+	OwnerRepo   string
+	Action      string
 }
 
 // appendCheck 将单仓检查结果写入对应类型分组。

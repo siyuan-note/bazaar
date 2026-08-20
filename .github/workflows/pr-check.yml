@@ -28,6 +28,7 @@ on:
       - icons.txt
       - templates.txt
       - widgets.txt
+      - deprecated.json
       # 黑名单路径：用于触发检查（命中后由 Go 以 FlowError 失败，不跑包检查）
       - config/themes-theme-js-allowlist.txt
       - stage/**
@@ -165,7 +166,7 @@ jobs:
           echo "sha=$merge_base_sha" >> $GITHUB_OUTPUT
 
       # 签出 PR 的 head 提交（PR 分支当前提交）
-      # checkout@v7 默认拒绝在 pull_request_target 中签出 fork PR 代码；此处仅将列表文件当数据读取，不执行 PR 代码
+      # checkout@v7 默认拒绝在 pull_request_target 中签出 fork PR 代码；此处仅将列表文件与 deprecated.json 当数据读取，不执行 PR 代码
       # REF https://github.com/marketplace/actions/checkout#checkout-multiple-repos-nested
       # REF https://github.com/marketplace/actions/checkout#checkout-pull-request-head-commit-instead-of-merge-commit
       # REF https://gh.io/securely-using-pull_request_target

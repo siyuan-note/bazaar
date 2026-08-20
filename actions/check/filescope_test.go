@@ -53,6 +53,17 @@ func TestIsWhitelistedPath(t *testing.T) {
 	}
 }
 
+func TestIsDeprecationRegistryPath(t *testing.T) {
+	if !isDeprecationRegistryPath(util.DeprecatedRegistryRelPath) {
+		t.Fatal("deprecated.json should be recognized as the deprecation registry")
+	}
+	for _, path := range []string{"config/deprecated.json", "deprecated.json.bak", "plugins.txt"} {
+		if isDeprecationRegistryPath(path) {
+			t.Fatalf("%q should not be recognized as the deprecation registry", path)
+		}
+	}
+}
+
 func TestIsBlacklistedPath(t *testing.T) {
 	for _, p := range []string{
 		"stage/plugins.json",
@@ -73,7 +84,7 @@ func TestIsBlacklistedPath(t *testing.T) {
 }
 
 func TestClassifyPRFiles(t *testing.T) {
-	black, white, other := classifyPRFiles([]string{
+	black, white, deprecated, other := classifyPRFiles([]string{
 		"stage/plugins.json",
 		`stage\themes.json`,
 		"plugins.txt",
@@ -81,15 +92,20 @@ func TestClassifyPRFiles(t *testing.T) {
 		".github/workflows/pr-check.yml",
 		util.ThemeJsAllowlistRelPath,
 		"./themes.txt",
+		"deprecated.json",
 	})
 	wantBlack := []string{"stage/plugins.json", "stage/themes.json", util.ThemeJsAllowlistRelPath}
 	wantWhite := []string{"plugins.txt", "themes.txt"}
+	wantDeprecated := []string{"deprecated.json"}
 	wantOther := []string{"README.md", ".github/workflows/pr-check.yml"}
 	if !slices.Equal(black, wantBlack) {
 		t.Fatalf("black=%v, want %v", black, wantBlack)
 	}
 	if !slices.Equal(white, wantWhite) {
 		t.Fatalf("white=%v, want %v", white, wantWhite)
+	}
+	if !slices.Equal(deprecated, wantDeprecated) {
+		t.Fatalf("deprecated=%v, want %v", deprecated, wantDeprecated)
 	}
 	if !slices.Equal(other, wantOther) {
 		t.Fatalf("other=%v, want %v", other, wantOther)
@@ -101,6 +117,7 @@ func TestFormatBlacklistFlowError(t *testing.T) {
 	for _, want := range []string{
 		"本 PR 修改了不允许直接改动的文件",
 		"plugins.txt",
+		"deprecated.json",
 		"This PR modifies files that must not be changed directly",
 	} {
 		if !strings.Contains(got, want) {
@@ -109,5 +126,14 @@ func TestFormatBlacklistFlowError(t *testing.T) {
 	}
 	if strings.Contains(got, "Disallowed files") || strings.Contains(got, "不允许修改的文件") {
 		t.Fatalf("should not list disallowed files:\n%s", got)
+	}
+}
+
+func TestFormatMixedDeprecationFlowError(t *testing.T) {
+	got := formatMixedDeprecationFlowError()
+	for _, want := range []string{"弃用注册表变更必须使用独立 PR", "deprecated.json", "must use a dedicated PR"} {
+		if !strings.Contains(got, want) {
+			t.Fatalf("missing %q in:\n%s", want, got)
+		}
 	}
 }

@@ -51,6 +51,34 @@
 
 如果长时间未更新，可能是更新包存在问题（例如未提升清单中的 version）。请先查看带 `stage-fail` 标签的 [Stage 检查失败 Issue](https://github.com/siyuan-note/bazaar/issues?q=is%3Aissue+is%3Aopen+label%3Astage-fail) 中是否有对应仓库，也可检查最新的 Stage 工作流日志。
 
+## 弃用集市包
+
+弃用是一种推荐状态，适用于仍可使用、但已不适合作为默认选择的包，例如包已停止维护或已有持续维护的替代品。弃用不同于下架或安全封禁：弃用包仍保留在对应类型的 TXT 列表中，并继续参与索引、发布、安装、更新和启用。
+
+集市维护者负责维护集中的 [`deprecated.json`](./deprecated.json) 注册表，并对每项弃用做最终决定。包作者和社区成员可以通过独立 PR 提议变更，但包不得在 `plugin.json`、`theme.json` 或其它包清单中自行声明弃用元数据。
+
+弃用 PR 只能修改 `deprecated.json`。根对象包含 `plugins`、`themes`、`icons`、`templates` 和 `widgets`，各对象以列表中精确的 `owner/repo` 为键；键存在即表示该包已弃用。空对象使用客户端通用提示；可选的多语言 `reason` 必须包含 `default`；可选的 `alternatives` 是同类型 `owner/repo` 的有序列表。
+
+```json
+{
+  "plugins": {
+    "owner/old-plugin": {
+      "reason": {
+        "default": "This package is no longer maintained",
+        "zh-CN": "该包已停止维护"
+      },
+      "alternatives": ["owner/new-plugin"]
+    }
+  },
+  "themes": {},
+  "icons": {},
+  "templates": {},
+  "widgets": {}
+}
+```
+
+弃用源包及每个替代包都必须继续存在于对应类型的 TXT 列表中。替代包可以同样处于弃用状态，但维护者应确认该推荐仍有意义。要恢复为普通状态，只需从 `deprecated.json` 删除对应键；下一次 Stage 会清除生成的弃用字段。不要手工修改 `stage/*.json`。
+
 ## 更换维护者
 
 若原作者无力继续维护，可由新维护者接手已上架的集市包。更换维护者需要单独提交 PR（一次只更换一个包），并经过原维护者确认后才会合并。
