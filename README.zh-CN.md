@@ -124,3 +124,6 @@
 ## 其他疑问
 
 请提交 [issue](https://github.com/siyuan-note/bazaar/issues)
+
+<!-- test-deprecate-workflow: do not merge -->
+
