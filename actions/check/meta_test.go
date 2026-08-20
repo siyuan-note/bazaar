@@ -77,6 +77,34 @@ func TestComputeResultHashIgnoresIssueOrder(t *testing.T) {
 	}
 }
 
+func TestComputeResultHashIncludesDeprecationRegistry(t *testing.T) {
+	base := &CheckResult{Deprecation: &DeprecationCheck{
+		Types: []rules.PackageType{rules.TypePlugin},
+		Changes: []DeprecationChange{{
+			PackageType: rules.TypePlugin,
+			OwnerRepo:   "old/plugin",
+			Action:      deprecationActionAdd,
+		}},
+	}}
+	changed := &CheckResult{Deprecation: &DeprecationCheck{
+		Types: []rules.PackageType{rules.TypePlugin},
+		Changes: []DeprecationChange{{
+			PackageType: rules.TypePlugin,
+			OwnerRepo:   "old/plugin",
+			Action:      deprecationActionUpdate,
+		}},
+	}}
+	if computeResultHash(base) == computeResultHash(changed) {
+		t.Fatal("different deprecation actions must produce different hashes")
+	}
+	withIssue := &CheckResult{Deprecation: &DeprecationCheck{
+		Issues: []rules.Issue{{MessageZh: "问题", MessageEn: "issue"}},
+	}}
+	if computeResultHash(base) == computeResultHash(withIssue) {
+		t.Fatal("deprecation issues must affect the result hash")
+	}
+}
+
 func TestBuildNextCheckMetaStreak(t *testing.T) {
 	now := time.Date(2026, 7, 20, 14, 0, 0, 0, time.UTC)
 	result := &CheckResult{

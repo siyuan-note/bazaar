@@ -55,6 +55,12 @@ type Package struct {
 	Funding       *Funding      `json:"funding,omitempty"`
 	Keywords      []string      `json:"keywords,omitempty"`
 
+	// 集市索引生成字段（不允许在包清单中声明）
+
+	Deprecated       bool          `json:"deprecated,omitempty"`
+	DeprecatedReason LocaleStrings `json:"deprecatedReason,omitempty"`
+	Alternatives     []string      `json:"alternatives,omitempty"`
+
 	// 插件和主题共用（plugin.json / theme.json）
 
 	Frontends []string `json:"frontends,omitempty"`
@@ -159,6 +165,9 @@ func SanitizePackage(pkg *Package) {
 	for k, v := range pkg.Description {
 		pkg.Description[k] = html.EscapeString(v)
 	}
+	for k, v := range pkg.DeprecatedReason {
+		pkg.DeprecatedReason[k] = html.EscapeString(v)
+	}
 	if pkg.Funding != nil {
 		pkg.Funding.OpenCollective = html.EscapeString(pkg.Funding.OpenCollective)
 		pkg.Funding.Patreon = html.EscapeString(pkg.Funding.Patreon)
@@ -191,6 +200,8 @@ func PackageForPublicIndex(pkg Package) Package {
 	out.DisplayName = cloneLocaleStrings(pkg.DisplayName)
 	out.Description = cloneLocaleStrings(pkg.Description)
 	out.Readme = cloneLocaleStrings(pkg.Readme)
+	out.DeprecatedReason = cloneLocaleStrings(pkg.DeprecatedReason)
+	out.Alternatives = slices.Clone(pkg.Alternatives)
 	ClearRedundantLocales(&out)
 	return out
 }
@@ -213,6 +224,7 @@ func ClearRedundantLocales(pkg *Package) {
 	clearRedundantLocaleStrings(pkg.DisplayName)
 	clearRedundantLocaleStrings(pkg.Description)
 	clearRedundantLocaleStrings(pkg.Readme)
+	clearRedundantLocaleStrings(pkg.DeprecatedReason)
 }
 
 func clearRedundantLocaleStrings(m LocaleStrings) {

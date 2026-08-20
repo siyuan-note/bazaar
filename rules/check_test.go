@@ -246,6 +246,9 @@ func TestManifestKeysByPackageType(t *testing.T) {
 		{TypeIcon, "frontends", "frontends"},
 		{TypeTemplate, "kernels", "kernels"},
 		{TypeWidget, "modes", "modes"},
+		{TypePlugin, "deprecated", "deprecated"},
+		{TypeTheme, "deprecatedReason", "deprecatedReason"},
+		{TypeWidget, "alternatives", "alternatives"},
 	}
 	for _, tc := range cases {
 		m := map[string]any{tc.extra: true}

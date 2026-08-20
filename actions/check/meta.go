@@ -180,11 +180,18 @@ func computeResultHash(r *CheckResult) string {
 		ZipSHA256         string   `json:"zip_sha256,omitempty"`
 		Issues            []string `json:"issues,omitempty"`
 	}
+	type deprecationHash struct {
+		Type   string `json:"type"`
+		Path   string `json:"path"`
+		Action string `json:"action"`
+	}
 	payload := struct {
-		ParseError string    `json:"parse_error,omitempty"`
-		FlowError  string    `json:"flow_error,omitempty"`
-		Packages   []pkgHash `json:"packages,omitempty"`
-		Deleted    []string  `json:"deleted,omitempty"`
+		ParseError        string            `json:"parse_error,omitempty"`
+		FlowError         string            `json:"flow_error,omitempty"`
+		Packages          []pkgHash         `json:"packages,omitempty"`
+		Deleted           []string          `json:"deleted,omitempty"`
+		Deprecation       []deprecationHash `json:"deprecation,omitempty"`
+		DeprecationIssues []string          `json:"deprecation_issues,omitempty"`
 	}{
 		ParseError: r.ParseError,
 		FlowError:  r.FlowError,
@@ -224,6 +231,22 @@ func computeResultHash(r *CheckResult) string {
 	appendDel(rules.TypeIcon, r.IconsDeleted)
 	appendDel(rules.TypeTemplate, r.TemplatesDeleted)
 	appendDel(rules.TypeWidget, r.WidgetsDeleted)
+	if r.Deprecation != nil {
+		for _, change := range r.Deprecation.Changes {
+			payload.Deprecation = append(payload.Deprecation, deprecationHash{
+				Type:   change.PackageType.String(),
+				Path:   change.OwnerRepo,
+				Action: change.Action,
+			})
+		}
+		for _, issue := range r.Deprecation.Issues {
+			payload.DeprecationIssues = append(payload.DeprecationIssues, issue.MessageZh, issue.MessageEn)
+		}
+		slices.SortFunc(payload.Deprecation, func(a, b deprecationHash) int {
+			return strings.Compare(a.Type+"\x00"+a.Path+"\x00"+a.Action, b.Type+"\x00"+b.Path+"\x00"+b.Action)
+		})
+		slices.Sort(payload.DeprecationIssues)
+	}
 
 	b, err := json.Marshal(payload)
 	if err != nil {

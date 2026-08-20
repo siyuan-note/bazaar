@@ -36,7 +36,8 @@ import (
 1. git diff（PR merge base → head）得到变更文件
 2. 黑名单（stage/**、config/themes-theme-js-allowlist.txt）：写 FlowError，跳过包检查
 3. 白名单（五个 *.txt）：进入下方 Diff / Check；若同时改了白名单以外的文件则 FlowError
-4. 同改黑+白：优先黑名单；无白名单改动（含纯灰区）：不跑包检查（模板「无实际变更」，ci-failed）
+4. deprecated.json：独立进入弃用注册表校验，不访问包仓库 API；与其它文件混改则 FlowError。有有效变更时自动改 PR 标题（Deprecate / Restore / Update deprecation）
+5. 命中黑名单时优先失败；无白名单或弃用注册表改动（含纯灰区）时模板展示「无实际变更」，ci-failed
 
 Diff 流程（以 plugins.txt 为例）：
 1. 签出 bazaar head（主分支最新）：读 plugins.txt，得到 bazaar head 的 owner/repo 集合，用于过滤
@@ -170,14 +171,27 @@ func main() {
 	if err != nil {
 		logger.Fatalf("list PR changed files failed: %s", err)
 	}
-	blackFiles, whiteFiles, otherFiles := classifyPRFiles(changedFiles)
-	logger.Infof("PR path scope: changed=%d black=%d white=%d other=%d", len(changedFiles), len(blackFiles), len(whiteFiles), len(otherFiles))
+	blackFiles, whiteFiles, deprecatedFiles, otherFiles := classifyPRFiles(changedFiles)
+	logger.Infof("PR path scope: changed=%d black=%d white=%d deprecated=%d other=%d", len(changedFiles), len(blackFiles), len(whiteFiles), len(deprecatedFiles), len(otherFiles))
 
 	switch {
 	case len(blackFiles) > 0:
 		// 黑名单优先：固定 FlowError，跳过包列表 diff 与包检查
 		checkResult.FlowError = formatBlacklistFlowError()
 		logger.Errorf("blacklisted path changes: %s", strings.Join(blackFiles, ", "))
+	case len(deprecatedFiles) > 0 && (len(whiteFiles) > 0 || len(otherFiles) > 0):
+		checkResult.FlowError = formatMixedDeprecationFlowError()
+		logger.Errorf("deprecation registry change mixed with other paths")
+	case len(deprecatedFiles) > 0:
+		checkResult.Deprecation = checkDeprecationRegistry()
+		if checkResult.Deprecation == nil {
+			logger.Infof("deprecation registry has no actual change relative to bazaar head")
+		} else {
+			logger.Infof("deprecation registry check: types=%d changes=%d issues=%d", len(checkResult.Deprecation.Types), len(checkResult.Deprecation.Changes), len(checkResult.Deprecation.Issues))
+			if title, ok := conventionalDeprecationPRTitle(checkResult.Deprecation); ok {
+				maybeUpdatePRTitle(title)
+			}
+		}
 	case len(whiteFiles) > 0 && len(otherFiles) > 0:
 		// 改了列表文件时不允许再改其它路径（例如 .github/workflows）
 		checkResult.FlowError = formatBlacklistFlowError()
@@ -232,8 +246,8 @@ func main() {
 			}
 		}
 	default:
-		// 无白名单改动（且未命中黑名单）：不跑包检查，模板展示「无实际变更」，ci-failed
-		logger.Infof("no whitelisted list file changes; skip package checks")
+		// 无包列表或弃用注册表改动（且未命中黑名单）：不跑包检查，模板展示「无实际变更」，ci-failed
+		logger.Infof("no whitelisted package-list or deprecation-registry changes; skip package checks")
 	}
 
 	// 无实际变更且 PR 已合并/关闭：多为解冲突后立刻合并，检查相对最新 main 滤空；跳过评论与标签，避免误打 ci-failed

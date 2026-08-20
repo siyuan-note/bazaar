@@ -36,13 +36,18 @@ func isWhitelistedPath(p string) bool {
 	return false
 }
 
+// isDeprecationRegistryPath 判断是否为维护者集中管理的弃用注册表。
+func isDeprecationRegistryPath(p string) bool {
+	return p == util.DeprecatedRegistryRelPath
+}
+
 // isBlacklistedPath 判断是否为社区不可直接改动的路径（stage 索引、theme.js allowlist）。p 须已 normalize。
 func isBlacklistedPath(p string) bool {
 	return p == util.ThemeJsAllowlistRelPath || p == "stage" || strings.HasPrefix(p, "stage/")
 }
 
-// classifyPRFiles 将本 PR 变更路径分为黑名单、白名单与灰区；黑名单优先于白名单。
-func classifyPRFiles(paths []string) (black, white, other []string) {
+// classifyPRFiles 将本 PR 变更路径分为黑名单、包列表、弃用注册表与灰区；黑名单优先。
+func classifyPRFiles(paths []string) (black, white, deprecated, other []string) {
 	for _, raw := range paths {
 		p := normalizeRepoRelPath(raw)
 		if p == "" {
@@ -53,17 +58,25 @@ func classifyPRFiles(paths []string) (black, white, other []string) {
 			black = append(black, p)
 		case isWhitelistedPath(p):
 			white = append(white, p)
+		case isDeprecationRegistryPath(p):
+			deprecated = append(deprecated, p)
 		default:
 			other = append(other, p)
 		}
 	}
-	return black, white, other
+	return black, white, deprecated, other
 }
 
 // formatBlacklistFlowError 返回命中黑名单、或白名单与其它文件混改时的固定双语 FlowError 正文。
 func formatBlacklistFlowError() string {
-	return "本 PR 修改了不允许直接改动的文件。集市包列表更新请只编辑仓库根目录的五个列表文件（`plugins.txt` / `themes.txt` / `icons.txt` / `templates.txt` / `widgets.txt`），每行一个 `owner/repo`，然后推送到本 PR。\n\n" +
-		"This PR modifies files that must not be changed directly. To update the bazaar package list, edit only the five list files at the repo root (`plugins.txt` / `themes.txt` / `icons.txt` / `templates.txt` / `widgets.txt`), one `owner/repo` per line, then push to this PR.\n"
+	return "本 PR 修改了不允许直接改动的文件。集市包列表更新请只编辑仓库根目录的五个列表文件（`plugins.txt` / `themes.txt` / `icons.txt` / `templates.txt` / `widgets.txt`）；弃用元数据更新请仅编辑 `deprecated.json`。\n\n" +
+		"This PR modifies files that must not be changed directly. For package-list updates, edit only the five root list files (`plugins.txt` / `themes.txt` / `icons.txt` / `templates.txt` / `widgets.txt`); for deprecation metadata, edit only `deprecated.json`.\n"
+}
+
+// formatMixedDeprecationFlowError 返回弃用注册表与其它文件混改时的固定双语 FlowError。
+func formatMixedDeprecationFlowError() string {
+	return "弃用注册表变更必须使用独立 PR，只能修改仓库根目录的 `deprecated.json`。请将包列表或其它文件变更拆分到另一 PR。\n\n" +
+		"A deprecation-registry change must use a dedicated PR that modifies only the root `deprecated.json`. Move package-list or other file changes to a separate PR.\n"
 }
 
 // gitRevParseHEAD 返回 dir 工作区内 HEAD 的完整 SHA。
