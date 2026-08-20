@@ -31,16 +31,11 @@ Please fix the matching `.txt` file at the repo root so each line is one `owner/
 {{- if .Deprecation }}
 
 ### 弃用注册表 / Deprecation Registry
+{{- if .Deprecation.Changes }}
 
-  {{- if .Deprecation.Changes }}
-本 PR 对 `deprecated.json` 做出以下有效变更：
-
-This PR makes the following effective changes to `deprecated.json`:
-
-    {{- range .Deprecation.Changes }}
-- `{{ .PackageType.Plural }} / {{ .OwnerRepo }}`：{{ .ActionLabel }}
-    {{- end }}
-  {{- end }}
+{{ range .Deprecation.Changes }}- [`{{ .OwnerRepo }}`](https://github.com/{{ .OwnerRepo }})（{{ .PackageType.Plural }}）：{{ .ActionLabel }}
+{{ end }}
+{{- end }}
 
   {{- if .Deprecation.Issues }}
 

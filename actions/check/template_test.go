@@ -154,13 +154,14 @@ func TestCheckResultTemplate_DeprecationRegistry(t *testing.T) {
 		t.Fatal(err)
 	}
 	out := buf.String()
+	normalized := strings.ReplaceAll(out, "\r\n", "\n")
 	for _, want := range []string{
 		"弃用注册表 / Deprecation Registry",
-		"`plugins / old/plugin`：新增 / Add",
+		"### 弃用注册表 / Deprecation Registry\n\n- [`old/plugin`](https://github.com/old/plugin)（plugins）：新增 / Add",
 		"自动校验通过",
 		"maintainers still need to review",
 	} {
-		if !strings.Contains(out, want) {
+		if !strings.Contains(normalized, want) {
 			t.Fatalf("output missing %q\n%s", want, out)
 		}
 	}
