@@ -1,6 +1,113 @@
 {
   "repos": [
     {
+      "installSize": 2587006,
+      "openIssues": 1,
+      "package": {
+        "author": "Dilyar",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Manage physical items, memberships, and prepaid benefits in one place, with lifecycle tracking, daily cost, depreciation, expiry badges, wishlist and reports. Link assets bidirectionally with SiYuan block references, open product cards directly from references, and keep related notes together with tags, maintenance and usage records, Markdown export, multi-currency display, and cover cropping.",
+          "zh-CN": "在一处管理实物、会员和预付权益，覆盖生命周期、日均成本、折旧、到期徽章、种草与报表；支持与思源笔记块引用双向关联、直接从引用打开产品卡，并集中查看关联笔记、标签、维保与使用记录，同时提供 Markdown 导出、多币种显示与封面裁切。"
+        },
+        "displayName": {
+          "default": "Asset Management",
+          "zh-CN": "资产管理"
+        },
+        "frontends": [
+          "all"
+        ],
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "asset",
+          "资产管理",
+          "tracker",
+          "inventory",
+          "折旧"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "siyuan-plugin-asset-management",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/DilyarEziz/siyuan-plugin-asset-management",
+        "version": "2.6.0"
+      },
+      "packageZipAssetId": 523554068,
+      "packageZipSha256": "1595c76b3d6059f43ad5fc90845c9373fa0df27c2ce05cc8d84e1946380f8568",
+      "size": 770556,
+      "stars": 5,
+      "updated": "2026-08-21T09:48:10Z",
+      "url": "DilyarEziz/siyuan-plugin-asset-management@1595c76"
+    },
+    {
+      "installSize": 985692,
+      "openIssues": 0,
+      "package": {
+        "author": "ccriss",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "description": {
+          "default": "A GTD task management plugin inspired by Things, for SiYuan Note",
+          "zh-CN": "灵感来自 Things 的 GTD 任务管理插件"
+        },
+        "displayName": {
+          "default": "Things",
+          "zh-CN": "Things 任务管理"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "funding": {
+          "custom": [
+            "https://github.com/chengslog/siyuan-things/blob/main/README.md#支持项目"
+          ]
+        },
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "keywords": [
+          "things",
+          "task",
+          "gtd",
+          "todo",
+          "任务管理",
+          "待办事项",
+          "人工智能",
+          "AI assistant"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-things",
+        "readme": {
+          "default": "README.md",
+          "en": "README.en.md"
+        },
+        "url": "https://github.com/chengslog/siyuan-things",
+        "version": "0.2.11"
+      },
+      "packageZipAssetId": 523535434,
+      "packageZipSha256": "f82000a0f8315983381b98e6e8f168370e450a2f7d85e4c8e7524785a21d2cb8",
+      "size": 538324,
+      "stars": 2,
+      "updated": "2026-08-21T09:38:49Z",
+      "url": "chengslog/siyuan-things@f82000a"
+    },
+    {
       "installSize": 2361422,
       "openIssues": 0,
       "package": {
@@ -235,68 +342,6 @@
       "stars": 51,
       "updated": "2026-08-21T05:56:32Z",
       "url": "IAliceBobI/sy-tomato-plugin@24b4cfe"
-    },
-    {
-      "installSize": 982082,
-      "openIssues": 0,
-      "package": {
-        "author": "ccriss",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker"
-        ],
-        "description": {
-          "default": "A GTD task management plugin inspired by Things, for SiYuan Note",
-          "zh-CN": "灵感来自 Things 的 GTD 任务管理插件"
-        },
-        "displayName": {
-          "default": "Things",
-          "zh-CN": "Things 任务管理"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile"
-        ],
-        "funding": {
-          "custom": [
-            "https://github.com/chengslog/siyuan-things/blob/main/README.md#支持项目"
-          ]
-        },
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker"
-        ],
-        "keywords": [
-          "things",
-          "task",
-          "gtd",
-          "todo",
-          "任务管理",
-          "待办事项",
-          "人工智能",
-          "AI assistant"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-things",
-        "readme": {
-          "default": "README.md",
-          "en": "README.en.md"
-        },
-        "url": "https://github.com/chengslog/siyuan-things",
-        "version": "0.2.10"
-      },
-      "packageZipAssetId": 523271185,
-      "packageZipSha256": "62a4fa0cf7ccae0c9668a5f0d2975a34b21d08f23f23f97746b7220ce21fc500",
-      "size": 537792,
-      "stars": 2,
-      "updated": "2026-08-21T05:19:01Z",
-      "url": "chengslog/siyuan-things@62a4fa0"
     },
     {
       "installSize": 1186616,
@@ -1763,48 +1808,6 @@
       "stars": 14,
       "updated": "2026-08-17T12:53:57Z",
       "url": "hqweay/siyuan-hqweay-go@45f80af"
-    },
-    {
-      "installSize": 2191024,
-      "openIssues": 1,
-      "package": {
-        "author": "Dilyar",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Manage physical items, memberships, and prepaid benefits in one place, with lifecycle tracking, daily cost, depreciation, expiry badges, wishlist and reports. Link assets bidirectionally with SiYuan block references, open product cards directly from references, and keep related notes together with tags, maintenance and usage records, Markdown export, multi-currency display, and cover cropping.",
-          "zh-CN": "在一处管理实物、会员和预付权益，覆盖生命周期、日均成本、折旧、到期徽章、种草与报表；支持与思源笔记块引用双向关联、直接从引用打开产品卡，并集中查看关联笔记、标签、维保与使用记录，同时提供 Markdown 导出、多币种显示与封面裁切。"
-        },
-        "displayName": {
-          "default": "Asset Management",
-          "zh-CN": "资产管理"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "asset",
-          "资产管理",
-          "tracker",
-          "inventory",
-          "折旧"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "siyuan-plugin-asset-management",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/DilyarEziz/siyuan-plugin-asset-management",
-        "version": "2.5.0"
-      },
-      "packageZipAssetId": 518034658,
-      "packageZipSha256": "dd0f2b3c1e34c76d438c41049da4f73a0290d64b6300da98ae65479095ebd8b1",
-      "size": 682713,
-      "stars": 5,
-      "updated": "2026-08-17T11:37:49Z",
-      "url": "DilyarEziz/siyuan-plugin-asset-management@dd0f2b3"
     },
     {
       "installSize": 10254085,
