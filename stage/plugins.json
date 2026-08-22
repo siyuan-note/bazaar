@@ -1,6 +1,129 @@
 {
   "repos": [
     {
+      "installSize": 1639248,
+      "openIssues": 1,
+      "package": {
+        "author": "Szerelem0617",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "【🔓Permanently open source and free】 One-click index insertion, supports batch data management in attribute view.",
+          "zh_CN": "【🔓永久开源免费】 一键插入目录；创建数据库；批量管理数据。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Index Plugin",
+          "zh_CN": "目录插件"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "index",
+          "目录"
+        ],
+        "minAppVersion": "3.7.3",
+        "name": "siyuan-plugins-index",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/Szerelem0617/siyuan-plugins-index",
+        "version": "1.10.8"
+      },
+      "packageZipAssetId": 525192395,
+      "packageZipSha256": "5f72a59a0e559c15e30220353c3a169be9a8fd2b33afaa6fa483f246e0fc4a96",
+      "size": 677848,
+      "stars": 43,
+      "updated": "2026-08-22T15:57:00Z",
+      "url": "Szerelem0617/siyuan-plugins-index@5f72a59"
+    },
+    {
+      "installSize": 22025,
+      "openIssues": 0,
+      "package": {
+        "author": "Jeffrey Chen",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Add a fullscreen button to the document breadcrumb, support configuring editor fullscreen and window fullscreen separately",
+          "zh-CN": "在文档面包屑上添加全屏按钮，支持分别配置编辑器全屏和窗口全屏"
+        },
+        "displayName": {
+          "default": "Breadcrumb Quick Fullscreen",
+          "zh-CN": "面包屑快捷全屏"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://mytemos.com/"
+          ]
+        },
+        "minAppVersion": "3.8.2-alpha.3",
+        "name": "fullscreen",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/TCOTC/fullscreen",
+        "version": "1.0.1"
+      },
+      "packageZipAssetId": 525164042,
+      "packageZipSha256": "74b274eb8e983309bdfe5afa71f6e18cf5172fa96426be8570b6f1b1ff69d272",
+      "size": 8058,
+      "stars": 1,
+      "updated": "2026-08-22T15:23:51Z",
+      "url": "TCOTC/fullscreen@74b274e"
+    },
+    {
+      "installSize": 362915,
+      "openIssues": 0,
+      "package": {
+        "author": "Jeffrey Chen",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Reload the window, open plugin-related directories, and toggle developer tools (uses vConsole on mobile).",
+          "zh-CN": "支持重载窗口、打开插件相关目录、切换开发者工具（移动端使用 vConsole）。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "DevTools",
+          "zh-CN": "开发者工具"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://mytemos.com/"
+          ]
+        },
+        "minAppVersion": "3.8.2-alpha.3",
+        "name": "devtools",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/TCOTC/devtools",
+        "version": "1.0.1"
+      },
+      "packageZipAssetId": 525158932,
+      "packageZipSha256": "875ec6be30249c0785cd0c5aacd1292403a172f7bc4e396b231daf180fc26b52",
+      "size": 117540,
+      "stars": 1,
+      "updated": "2026-08-22T15:17:44Z",
+      "url": "TCOTC/devtools@875ec6b"
+    },
+    {
       "installSize": 27946,
       "openIssues": 1,
       "package": {
@@ -178,89 +301,6 @@
       "stars": 7,
       "updated": "2026-08-22T08:03:00Z",
       "url": "loonghfut/siyuan-database-display@e38dd15"
-    },
-    {
-      "installSize": 362945,
-      "openIssues": 1,
-      "package": {
-        "author": "Jeffrey Chen",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Reload the window, open plugin-related directories, and toggle developer tools (uses vConsole on mobile).",
-          "zh-CN": "支持重载窗口、打开插件相关目录、切换开发者工具（移动端使用 vConsole）。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "DevTools",
-          "zh-CN": "开发者工具"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://mytemos.com/"
-          ]
-        },
-        "minAppVersion": "3.7.0",
-        "name": "devtools",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/TCOTC/devtools",
-        "version": "1.0.0"
-      },
-      "packageZipAssetId": 524771699,
-      "packageZipSha256": "aed7f13bf9f10ac8ca3664e00c7ac5829f12e9c74861b7186660d548ecc8db82",
-      "size": 117542,
-      "stars": 1,
-      "updated": "2026-08-22T07:03:58Z",
-      "url": "TCOTC/devtools@aed7f13"
-    },
-    {
-      "installSize": 23329,
-      "openIssues": 1,
-      "package": {
-        "author": "Jeffrey Chen",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Add a fullscreen button to the document breadcrumb, support configuring editor fullscreen and window fullscreen separately",
-          "zh-CN": "在文档面包屑上添加全屏按钮，支持分别配置编辑器全屏和窗口全屏"
-        },
-        "displayName": {
-          "default": "Breadcrumb Quick Fullscreen",
-          "zh-CN": "面包屑快捷全屏"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://mytemos.com/"
-          ]
-        },
-        "minAppVersion": "3.8.2-alpha.2",
-        "name": "fullscreen",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/TCOTC/fullscreen",
-        "version": "1.0.0"
-      },
-      "packageZipAssetId": 524695679,
-      "packageZipSha256": "37f3866299e6fbbe9bc84fccc6e4a2400846d439c51d551804cf83516d6a716c",
-      "size": 8512,
-      "stars": 0,
-      "updated": "2026-08-22T05:24:54Z",
-      "url": "TCOTC/fullscreen@37f3866"
     },
     {
       "installSize": 261972,
@@ -1741,46 +1781,6 @@
       "stars": 0,
       "updated": "2026-08-19T08:30:42Z",
       "url": "Acetab/auto-favicon@e923c97"
-    },
-    {
-      "installSize": 1597889,
-      "openIssues": 1,
-      "package": {
-        "author": "Szerelem0617",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "【🔓Permanently open source and free】 One-click index insertion, supports batch data management in attribute view.",
-          "zh_CN": "【🔓永久开源免费】 一键插入目录；创建数据库；批量管理数据。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Index Plugin",
-          "zh_CN": "目录插件"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "index",
-          "目录"
-        ],
-        "minAppVersion": "3.7.3",
-        "name": "siyuan-plugins-index",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/Szerelem0617/siyuan-plugins-index",
-        "version": "1.10.7"
-      },
-      "packageZipAssetId": 520548416,
-      "packageZipSha256": "791854168f84b17e6883bd6ae37a9a0a1cebb3656f38e1593c712902f522444e",
-      "size": 666523,
-      "stars": 43,
-      "updated": "2026-08-19T07:43:31Z",
-      "url": "Szerelem0617/siyuan-plugins-index@7918541"
     },
     {
       "installSize": 100795,
