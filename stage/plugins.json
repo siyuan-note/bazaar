@@ -1,6 +1,102 @@
 {
   "repos": [
     {
+      "installSize": 688507,
+      "openIssues": 63,
+      "package": {
+        "author": "terwer",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "Import md, epub, docx, html, etc. into Siyuan notes. Currently supported formats: .md, .epub, .docx, .html, .opml.",
+          "zh_CN": "将 md, epub, docx, html 等格式的文件导入到思源笔记。目前支持的格式：.md, .epub, .docx, .html, .opml。"
+        },
+        "displayName": {
+          "default": "Importer",
+          "zh_CN": "导入工具"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/terwer"
+          ]
+        },
+        "minAppVersion": "2.9.2",
+        "name": "siyuan-importer",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/terwer/siyuan-plugin-importer",
+        "version": "1.10.0"
+      },
+      "packageZipAssetId": 527195123,
+      "packageZipSha256": "015bb9b8cb9a417e583ae51b597e38543a36c1d4564d2cd9839b90ec23fb7678",
+      "size": 681753,
+      "stars": 51,
+      "updated": "2026-08-24T06:34:21Z",
+      "url": "terwer/siyuan-plugin-importer@015bb9b"
+    },
+    {
+      "installSize": 10564772,
+      "openIssues": 0,
+      "package": {
+        "author": "yakoye",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "Drawnix whiteboards and mind maps integrated with SiYuan docks, tabs, document links, and local persistence.",
+          "zh-CN": "将 Drawnix 白板与脑图集成到思源，支持 Dock、标签页、文档关联与本地持久化。"
+        },
+        "displayName": {
+          "default": "Drawnix Whiteboard &amp; Mind Map",
+          "zh-CN": "Drawnix 白板-脑图"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/gocoffee"
+          ]
+        },
+        "keywords": [
+          "whiteboard",
+          "mind map",
+          "drawing",
+          "drawnix",
+          "白板",
+          "脑图",
+          "思维导图"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-drawnix-mind",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/yakoye/siyuan-drawnix-mind",
+        "version": "0.1.27"
+      },
+      "packageZipAssetId": 527142401,
+      "packageZipSha256": "da39aa5737261e5a89d42783b5bc147fb26475db7589f3413923ca9df7620381",
+      "size": 2228125,
+      "stars": 0,
+      "updated": "2026-08-24T05:38:36Z",
+      "url": "yakoye/siyuan-drawnix-mind@da39aa5"
+    },
+    {
       "installSize": 986720,
       "openIssues": 0,
       "package": {
@@ -2476,54 +2572,6 @@
       "url": "hqweay/siyuan-hqweay-go@45f80af"
     },
     {
-      "installSize": 10254085,
-      "openIssues": 0,
-      "package": {
-        "author": "yakoye",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Drawnix whiteboards and mind maps integrated with SiYuan docks, tabs, document links, and local persistence.",
-          "zh-CN": "将 Drawnix 白板与脑图集成到思源，支持 Dock、标签页、文档关联与本地持久化。"
-        },
-        "displayName": {
-          "default": "Drawnix Whiteboard &amp; Mind Map",
-          "zh-CN": "Drawnix 白板-脑图"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window"
-        ],
-        "keywords": [
-          "whiteboard",
-          "mind map",
-          "drawing",
-          "drawnix",
-          "白板",
-          "脑图",
-          "思维导图"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-drawnix-mind",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/yakoye/siyuan-drawnix-mind",
-        "version": "0.1.26"
-      },
-      "packageZipAssetId": 517840538,
-      "packageZipSha256": "e9408208594d86f7de5b079adebb0ae894415441ad44d9473b484c56adb106f9",
-      "size": 2014626,
-      "stars": 0,
-      "updated": "2026-08-17T10:49:05Z",
-      "url": "yakoye/siyuan-drawnix-mind@e940820"
-    },
-    {
       "installSize": 110544,
       "openIssues": 2,
       "package": {
@@ -4866,49 +4914,6 @@
       "stars": 3,
       "updated": "2026-08-10T05:22:26Z",
       "url": "sonicpic/siyuan-autotag@a653335"
-    },
-    {
-      "installSize": 686837,
-      "openIssues": 62,
-      "package": {
-        "author": "terwer",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Import md, epub, docx, html, etc. into Siyuan notes. Currently supported formats: .md, .epub, .docx, .html, .opml.",
-          "zh_CN": "将 md, epub, docx, html 等格式的文件导入到思源笔记。目前支持的格式：.md, .epub, .docx, .html, .opml。"
-        },
-        "displayName": {
-          "default": "Importer",
-          "zh_CN": "导入工具"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/terwer"
-          ]
-        },
-        "minAppVersion": "2.9.2",
-        "name": "siyuan-importer",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/terwer/siyuan-plugin-importer",
-        "version": "1.9.1"
-      },
-      "packageZipAssetId": 508206949,
-      "packageZipSha256": "3b2b009355b6c609636a82422bc42e0ac6b82f44888d0e988a4038c84c2f7e9c",
-      "size": 680083,
-      "stars": 50,
-      "updated": "2026-08-10T03:02:38Z",
-      "url": "terwer/siyuan-plugin-importer@3b2b009"
     },
     {
       "installSize": 662263,
