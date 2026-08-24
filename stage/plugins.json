@@ -1,6 +1,111 @@
 {
   "repos": [
     {
+      "installSize": 991115,
+      "openIssues": 0,
+      "package": {
+        "author": "ccriss",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "description": {
+          "default": "A GTD task management plugin inspired by Things, for SiYuan Note",
+          "zh-CN": "灵感来自 Things 的 GTD 任务管理插件"
+        },
+        "displayName": {
+          "default": "Things",
+          "zh-CN": "Things 任务管理"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "funding": {
+          "custom": [
+            "https://github.com/chengslog/siyuan-things/blob/main/README.md#支持项目"
+          ]
+        },
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "keywords": [
+          "things",
+          "task",
+          "gtd",
+          "todo",
+          "任务管理",
+          "待办事项",
+          "人工智能",
+          "AI assistant"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-things",
+        "readme": {
+          "default": "README.md",
+          "en": "README.en.md"
+        },
+        "url": "https://github.com/chengslog/siyuan-things",
+        "version": "0.2.13"
+      },
+      "packageZipAssetId": 527327925,
+      "packageZipSha256": "8dedcf541818a67ffc41646f980a3ec94c0de1b05fa8d8f604864547986337df",
+      "size": 540027,
+      "stars": 3,
+      "updated": "2026-08-24T08:43:03Z",
+      "url": "chengslog/siyuan-things@8dedcf5"
+    },
+    {
+      "installSize": 689506,
+      "openIssues": 62,
+      "package": {
+        "author": "terwer",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "Import md, epub, docx, html, etc. into Siyuan notes. Currently supported formats: .md, .epub, .docx, .html, .opml.",
+          "zh_CN": "将 md, epub, docx, html 等格式的文件导入到思源笔记。目前支持的格式：.md, .epub, .docx, .html, .opml。"
+        },
+        "displayName": {
+          "default": "Importer",
+          "zh_CN": "导入工具"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/terwer"
+          ]
+        },
+        "minAppVersion": "2.9.2",
+        "name": "siyuan-importer",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/terwer/siyuan-plugin-importer",
+        "version": "1.11.0"
+      },
+      "packageZipAssetId": 527286069,
+      "packageZipSha256": "c3f642eb77d9fb7d4a3ed98de97e81d887f3ace608aae980876d164544270415",
+      "size": 682752,
+      "stars": 51,
+      "updated": "2026-08-24T08:07:48Z",
+      "url": "terwer/siyuan-plugin-importer@c3f642e"
+    },
+    {
       "installSize": 2856554,
       "openIssues": 0,
       "package": {
@@ -57,49 +162,6 @@
       "url": "verygoodwu/siyuan-cloud-document-suite@75cdd2f"
     },
     {
-      "installSize": 688507,
-      "openIssues": 63,
-      "package": {
-        "author": "terwer",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Import md, epub, docx, html, etc. into Siyuan notes. Currently supported formats: .md, .epub, .docx, .html, .opml.",
-          "zh_CN": "将 md, epub, docx, html 等格式的文件导入到思源笔记。目前支持的格式：.md, .epub, .docx, .html, .opml。"
-        },
-        "displayName": {
-          "default": "Importer",
-          "zh_CN": "导入工具"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/terwer"
-          ]
-        },
-        "minAppVersion": "2.9.2",
-        "name": "siyuan-importer",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/terwer/siyuan-plugin-importer",
-        "version": "1.10.0"
-      },
-      "packageZipAssetId": 527195123,
-      "packageZipSha256": "015bb9b8cb9a417e583ae51b597e38543a36c1d4564d2cd9839b90ec23fb7678",
-      "size": 681753,
-      "stars": 51,
-      "updated": "2026-08-24T06:34:21Z",
-      "url": "terwer/siyuan-plugin-importer@015bb9b"
-    },
-    {
       "installSize": 10564772,
       "openIssues": 0,
       "package": {
@@ -151,68 +213,6 @@
       "stars": 0,
       "updated": "2026-08-24T05:38:36Z",
       "url": "yakoye/siyuan-drawnix-mind@da39aa5"
-    },
-    {
-      "installSize": 986720,
-      "openIssues": 0,
-      "package": {
-        "author": "ccriss",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker"
-        ],
-        "description": {
-          "default": "A GTD task management plugin inspired by Things, for SiYuan Note",
-          "zh-CN": "灵感来自 Things 的 GTD 任务管理插件"
-        },
-        "displayName": {
-          "default": "Things",
-          "zh-CN": "Things 任务管理"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile"
-        ],
-        "funding": {
-          "custom": [
-            "https://github.com/chengslog/siyuan-things/blob/main/README.md#支持项目"
-          ]
-        },
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker"
-        ],
-        "keywords": [
-          "things",
-          "task",
-          "gtd",
-          "todo",
-          "任务管理",
-          "待办事项",
-          "人工智能",
-          "AI assistant"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-things",
-        "readme": {
-          "default": "README.md",
-          "en": "README.en.md"
-        },
-        "url": "https://github.com/chengslog/siyuan-things",
-        "version": "0.2.12"
-      },
-      "packageZipAssetId": 527134272,
-      "packageZipSha256": "03d7bd8666f1437bba8e0e25787c7b003a9465617170c9746aad91d4abebffe8",
-      "size": 538642,
-      "stars": 3,
-      "updated": "2026-08-24T05:27:54Z",
-      "url": "chengslog/siyuan-things@03d7bd8"
     },
     {
       "installSize": 15914966,
