@@ -21,7 +21,7 @@ import (
 
 const (
 	// maxIconPNGBytes 为 icon.png 体积上限（含等于；「20 KB 以内」）。
-	maxIconPNGBytes = 30 * 1024
+	maxIconPNGBytes = 20 * 1024
 	// maxPreviewPNGBytes 为 preview.png 体积上限（含等于；「200 KB 以内」）。
 	maxPreviewPNGBytes = 200 * 1024
 )
