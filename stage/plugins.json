@@ -1,6 +1,118 @@
 {
   "repos": [
     {
+      "installSize": 994616,
+      "openIssues": 0,
+      "package": {
+        "author": "ccriss",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "description": {
+          "default": "A GTD task management plugin inspired by Things, for SiYuan Note",
+          "zh-CN": "灵感来自 Things 的 GTD 任务管理插件"
+        },
+        "displayName": {
+          "default": "Things",
+          "zh-CN": "Things 任务管理"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "funding": {
+          "custom": [
+            "https://github.com/chengslog/siyuan-things/blob/main/README.md#支持项目"
+          ]
+        },
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "keywords": [
+          "things",
+          "task",
+          "gtd",
+          "todo",
+          "任务管理",
+          "待办事项",
+          "人工智能",
+          "AI assistant"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-things",
+        "readme": {
+          "default": "README.md",
+          "en": "README.en.md"
+        },
+        "url": "https://github.com/chengslog/siyuan-things",
+        "version": "0.2.14"
+      },
+      "packageZipAssetId": 528690590,
+      "packageZipSha256": "44c9921a7963e66f3a82c743ceb57c6a3e23c75d5d6e05793d5d267ddc9b560b",
+      "size": 541314,
+      "stars": 3,
+      "updated": "2026-08-25T05:24:05Z",
+      "url": "chengslog/siyuan-things@44c9921"
+    },
+    {
+      "installSize": 2562499,
+      "openIssues": 0,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A dock Tomato Timer for SiYuan.",
+          "zh_CN": "思源底栏番茄钟：支持时间轴视图/任务提醒/日常事务记录/多端状态同步/移动端/数据库联动/块绑定/历史记录/任务管理器联动/移动端原生通知提醒"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Dock Tomato",
+          "zh_CN": "底栏番茄钟"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ]
+        },
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "tomato",
+          "timer",
+          "pomodoro",
+          "dock"
+        ],
+        "minAppVersion": "3.8.1",
+        "name": "siyuan-plugin-docktomato",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-docktomato",
+        "version": "2.2.0"
+      },
+      "packageZipAssetId": 528657078,
+      "packageZipSha256": "52bfbaf30a58205b18c75661f3b0e525d172202da16dbe78ad40a35dec0248d6",
+      "size": 609917,
+      "stars": 8,
+      "updated": "2026-08-25T04:42:55Z",
+      "url": "5kyfkr/siyuan-plugin-docktomato@52bfbaf"
+    },
+    {
       "installSize": 2356290,
       "openIssues": 0,
       "package": {
@@ -550,68 +662,6 @@
       "url": "DilyarEziz/siyuan-plugin-asset-management@d3850f1"
     },
     {
-      "installSize": 991115,
-      "openIssues": 0,
-      "package": {
-        "author": "ccriss",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker"
-        ],
-        "description": {
-          "default": "A GTD task management plugin inspired by Things, for SiYuan Note",
-          "zh-CN": "灵感来自 Things 的 GTD 任务管理插件"
-        },
-        "displayName": {
-          "default": "Things",
-          "zh-CN": "Things 任务管理"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile"
-        ],
-        "funding": {
-          "custom": [
-            "https://github.com/chengslog/siyuan-things/blob/main/README.md#支持项目"
-          ]
-        },
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker"
-        ],
-        "keywords": [
-          "things",
-          "task",
-          "gtd",
-          "todo",
-          "任务管理",
-          "待办事项",
-          "人工智能",
-          "AI assistant"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-things",
-        "readme": {
-          "default": "README.md",
-          "en": "README.en.md"
-        },
-        "url": "https://github.com/chengslog/siyuan-things",
-        "version": "0.2.13"
-      },
-      "packageZipAssetId": 527327925,
-      "packageZipSha256": "8dedcf541818a67ffc41646f980a3ec94c0de1b05fa8d8f604864547986337df",
-      "size": 540027,
-      "stars": 3,
-      "updated": "2026-08-24T08:43:03Z",
-      "url": "chengslog/siyuan-things@8dedcf5"
-    },
-    {
       "installSize": 689506,
       "openIssues": 62,
       "package": {
@@ -801,56 +851,6 @@
       "stars": 35,
       "updated": "2026-08-24T03:50:08Z",
       "url": "5kyfkr/siyuan-plugin-task-horizon@06fd70f"
-    },
-    {
-      "installSize": 2558047,
-      "openIssues": 0,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A dock Tomato Timer for SiYuan.",
-          "zh_CN": "思源底栏番茄钟：支持时间轴视图/任务提醒/日常事务记录/多端状态同步/移动端/数据库联动/块绑定/历史记录/任务管理器联动/移动端原生通知提醒"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Dock Tomato",
-          "zh_CN": "底栏番茄钟"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ]
-        },
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "tomato",
-          "timer",
-          "pomodoro",
-          "dock"
-        ],
-        "minAppVersion": "3.8.1",
-        "name": "siyuan-plugin-docktomato",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-docktomato",
-        "version": "2.1.9"
-      },
-      "packageZipAssetId": 527021307,
-      "packageZipSha256": "a33b1af1bb73f2a54e1c6a43be800d0e98d843e423e2662973fce67401a1f802",
-      "size": 608592,
-      "stars": 8,
-      "updated": "2026-08-24T03:34:23Z",
-      "url": "5kyfkr/siyuan-plugin-docktomato@a33b1af"
     },
     {
       "installSize": 323259,
