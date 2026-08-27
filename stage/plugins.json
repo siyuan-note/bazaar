@@ -1,6 +1,101 @@
 {
   "repos": [
     {
+      "installSize": 338931,
+      "openIssues": 2,
+      "package": {
+        "author": "notesynchelper",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "从微信同步到思源笔记，支持文字、图片、聊天记录、文章"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "笔记同步助手"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "wechat",
+          "template",
+          "企微",
+          "模板",
+          "微信",
+          "速记",
+          "剪藏",
+          "搜集",
+          "日记",
+          "闪念",
+          "memo",
+          "备忘",
+          "公众号",
+          "小红书",
+          "得到"
+        ],
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-notehelper",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/notesynchelper/siyuan-notehelper",
+        "version": "1.8.27"
+      },
+      "packageZipAssetId": 532784464,
+      "packageZipSha256": "e9814bbd88eab5d286d1519cad41960ae06e8f12f810dac10c4dc8c1f32891fc",
+      "size": 155172,
+      "stars": 2,
+      "updated": "2026-08-27T19:41:21Z",
+      "url": "notesynchelper/siyuan-notehelper@e9814bb"
+    },
+    {
+      "installSize": 2618674,
+      "openIssues": 0,
+      "package": {
+        "author": "Dilyar",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Manage physical items, memberships, and prepaid benefits in one place, with lifecycle tracking, daily cost, depreciation, expiry badges, wishlist and reports. Link assets bidirectionally with SiYuan block references, open product cards directly from references, and keep related notes together with tags, maintenance and usage records, Markdown export, multi-currency display, and cover cropping.",
+          "zh-CN": "在一处管理实物、会员和预付权益，覆盖生命周期、日均成本、折旧、到期徽章、种草与报表；支持与思源笔记块引用双向关联、直接从引用打开产品卡，并集中查看关联笔记、标签、维保与使用记录，同时提供 Markdown 导出、多币种显示与封面裁切。"
+        },
+        "displayName": {
+          "default": "Asset Management",
+          "zh-CN": "资产管理"
+        },
+        "frontends": [
+          "all"
+        ],
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "asset",
+          "资产管理",
+          "tracker",
+          "inventory",
+          "折旧"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "siyuan-plugin-asset-management",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/DilyarEziz/siyuan-plugin-asset-management",
+        "version": "2.6.2"
+      },
+      "packageZipAssetId": 532587639,
+      "packageZipSha256": "37aff6b0c601fe7598535b8ed7e1042a213dcae238493538b7c76f368e8634bd",
+      "size": 776955,
+      "stars": 5,
+      "updated": "2026-08-27T16:42:10Z",
+      "url": "DilyarEziz/siyuan-plugin-asset-management@37aff6b"
+    },
+    {
       "installSize": 1955952,
       "openIssues": 0,
       "package": {
@@ -43,6 +138,47 @@
       "stars": 1,
       "updated": "2026-08-27T16:08:59Z",
       "url": "LongDarkroom/siyuan-plugin-reword@1f56c64"
+    },
+    {
+      "installSize": 323405,
+      "openIssues": 0,
+      "package": {
+        "author": "steve",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Advanced database attribute display plugin with field hiding, date formatting, checkbox beautification, and customizable settings. Supports 99% of blocks!",
+          "zh-CN": "数据库属性显示插件，支持字段隐藏、日期格式化、复选框美化和可自定义设置。支持99%的块！"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Database Display",
+          "zh-CN": "数据库属性展示"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "database",
+          "display",
+          "attribute"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "siyuan-database-display",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/loonghfut/siyuan-database-display",
+        "version": "4.4.2"
+      },
+      "packageZipAssetId": 532428354,
+      "packageZipSha256": "762397eb885aae4d0f04ae947d0aa2e3140042e0634216dd5bb762575a0b0fd8",
+      "size": 152096,
+      "stars": 7,
+      "updated": "2026-08-27T14:38:17Z",
+      "url": "loonghfut/siyuan-database-display@762397e"
     },
     {
       "installSize": 2115453,
@@ -307,47 +443,6 @@
       "stars": 4,
       "updated": "2026-08-27T08:52:17Z",
       "url": "chengslog/siyuan-things@168967d"
-    },
-    {
-      "installSize": 339234,
-      "openIssues": 0,
-      "package": {
-        "author": "steve",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Advanced database attribute display plugin with field hiding, date formatting, checkbox beautification, and customizable settings. Supports 99% of blocks!",
-          "zh-CN": "数据库属性显示插件，支持字段隐藏、日期格式化、复选框美化和可自定义设置。支持99%的块！"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Database Display",
-          "zh-CN": "数据库属性展示"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "database",
-          "display",
-          "attribute"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "siyuan-database-display",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/loonghfut/siyuan-database-display",
-        "version": "4.4.0"
-      },
-      "packageZipAssetId": 531986693,
-      "packageZipSha256": "45f39de542d125ed69a5664d285f9898dfde123aa17af1a50153eecc7342d952",
-      "size": 155766,
-      "stars": 7,
-      "updated": "2026-08-27T08:28:32Z",
-      "url": "loonghfut/siyuan-database-display@45f39de"
     },
     {
       "installSize": 14868921,
@@ -1514,101 +1609,6 @@
       "stars": 0,
       "updated": "2026-08-24T10:35:19Z",
       "url": "zhuxiucai/siyuandateprefix@30a323a"
-    },
-    {
-      "installSize": 338931,
-      "openIssues": 2,
-      "package": {
-        "author": "notesynchelper",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "从微信同步到思源笔记，支持文字、图片、聊天记录、文章"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "笔记同步助手"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "wechat",
-          "template",
-          "企微",
-          "模板",
-          "微信",
-          "速记",
-          "剪藏",
-          "搜集",
-          "日记",
-          "闪念",
-          "memo",
-          "备忘",
-          "公众号",
-          "小红书",
-          "得到"
-        ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-notehelper",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/notesynchelper/siyuan-notehelper",
-        "version": "1.8.26"
-      },
-      "packageZipAssetId": 527407588,
-      "packageZipSha256": "d175c8b29d877ed804162732e09df21fbdb83fef0f2bac54a9681446d82031f4",
-      "size": 155172,
-      "stars": 2,
-      "updated": "2026-08-24T09:51:36Z",
-      "url": "notesynchelper/siyuan-notehelper@d175c8b"
-    },
-    {
-      "installSize": 2601424,
-      "openIssues": 0,
-      "package": {
-        "author": "Dilyar",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Manage physical items, memberships, and prepaid benefits in one place, with lifecycle tracking, daily cost, depreciation, expiry badges, wishlist and reports. Link assets bidirectionally with SiYuan block references, open product cards directly from references, and keep related notes together with tags, maintenance and usage records, Markdown export, multi-currency display, and cover cropping.",
-          "zh-CN": "在一处管理实物、会员和预付权益，覆盖生命周期、日均成本、折旧、到期徽章、种草与报表；支持与思源笔记块引用双向关联、直接从引用打开产品卡，并集中查看关联笔记、标签、维保与使用记录，同时提供 Markdown 导出、多币种显示与封面裁切。"
-        },
-        "displayName": {
-          "default": "Asset Management",
-          "zh-CN": "资产管理"
-        },
-        "frontends": [
-          "all"
-        ],
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "asset",
-          "资产管理",
-          "tracker",
-          "inventory",
-          "折旧"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "siyuan-plugin-asset-management",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/DilyarEziz/siyuan-plugin-asset-management",
-        "version": "2.6.1"
-      },
-      "packageZipAssetId": 528606546,
-      "packageZipSha256": "d3850f102e91d17bee5aaf42c76661a8b4077272f1c738f2a230f20b33668554",
-      "size": 773109,
-      "stars": 5,
-      "updated": "2026-08-24T09:38:18Z",
-      "url": "DilyarEziz/siyuan-plugin-asset-management@d3850f1"
     },
     {
       "installSize": 10564772,
