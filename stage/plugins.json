@@ -1,6 +1,158 @@
 {
   "repos": [
     {
+      "installSize": 892878,
+      "openIssues": 0,
+      "package": {
+        "author": "houm01",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A quiet collection of focused tools for SiYuan Note.",
+          "zh-CN": "一组安静、克制、专注的思源笔记实用工具。"
+        },
+        "displayName": {
+          "default": "Stillmark Workbench",
+          "zh-CN": "静痕工作台"
+        },
+        "frontends": [
+          "all"
+        ],
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "静痕",
+          "工作台",
+          "块样式",
+          "stillmark",
+          "workbench",
+          "block style"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "stillmark-workbench",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/houm01/stillmark-workbench",
+        "version": "0.4.7"
+      },
+      "packageZipAssetId": 531595149,
+      "packageZipSha256": "d3163713b6ba46461f2ae2df6b2c9509355ee57215b7d2246954e947e6fd1387",
+      "size": 320799,
+      "stars": 1,
+      "updated": "2026-08-27T01:46:06Z",
+      "url": "houm01/stillmark-workbench@d316371"
+    },
+    {
+      "installSize": 662316,
+      "openIssues": 0,
+      "package": {
+        "author": "gradypark86",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Quickly create a new or go to diary or weekly notes on the calendar panel, with support for periodic note templates",
+          "zh_CN": "在日历面板上快速新建或转到日记与周记，支持周期笔记模板"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Siyuan Calendar Panel",
+          "zh_CN": "思源日历面板"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "calendar",
+          "日历",
+          "日记",
+          "daily",
+          "weekly",
+          "周记"
+        ],
+        "minAppVersion": "2.13.0",
+        "name": "siyuan-plugin-calendar",
+        "readme": {
+          "default": "README_en_US.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/gradypark86/siyuan-plugin-calendar",
+        "version": "0.3.4"
+      },
+      "packageZipAssetId": 531564272,
+      "packageZipSha256": "a33ab0439436682394ac2b96e74bc19e3e5b37a79b681e15f1748c7032c0117d",
+      "size": 286775,
+      "stars": 2,
+      "updated": "2026-08-27T01:17:51Z",
+      "url": "gradypark86/siyuan-plugin-calendar@a33ab04"
+    },
+    {
+      "installSize": 1033924,
+      "openIssues": 1,
+      "package": {
+        "author": "ccriss",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "description": {
+          "default": "A GTD task management plugin inspired by Things, for SiYuan Note",
+          "zh-CN": "灵感来自 Things 的 GTD 任务管理插件"
+        },
+        "displayName": {
+          "default": "Things",
+          "zh-CN": "Things 任务管理"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "funding": {
+          "custom": [
+            "https://github.com/chengslog/siyuan-things/blob/main/README.md#支持项目"
+          ]
+        },
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "keywords": [
+          "things",
+          "task",
+          "gtd",
+          "todo",
+          "任务管理",
+          "待办事项",
+          "人工智能",
+          "AI assistant"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-things",
+        "readme": {
+          "default": "README.md",
+          "en": "README.en.md"
+        },
+        "url": "https://github.com/chengslog/siyuan-things",
+        "version": "0.2.15"
+      },
+      "packageZipAssetId": 531496154,
+      "packageZipSha256": "1f46737d3686cb82c6d834cf633b928c6712fd33459037803c6842ab1187f711",
+      "size": 551784,
+      "stars": 4,
+      "updated": "2026-08-26T23:57:09Z",
+      "url": "chengslog/siyuan-things@1f46737"
+    },
+    {
       "installSize": 563958,
       "openIssues": 4,
       "package": {
@@ -915,68 +1067,6 @@
       "url": "HaoCeans/siyuan-comment@b22cfaf"
     },
     {
-      "installSize": 994616,
-      "openIssues": 0,
-      "package": {
-        "author": "ccriss",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker"
-        ],
-        "description": {
-          "default": "A GTD task management plugin inspired by Things, for SiYuan Note",
-          "zh-CN": "灵感来自 Things 的 GTD 任务管理插件"
-        },
-        "displayName": {
-          "default": "Things",
-          "zh-CN": "Things 任务管理"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile"
-        ],
-        "funding": {
-          "custom": [
-            "https://github.com/chengslog/siyuan-things/blob/main/README.md#支持项目"
-          ]
-        },
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker"
-        ],
-        "keywords": [
-          "things",
-          "task",
-          "gtd",
-          "todo",
-          "任务管理",
-          "待办事项",
-          "人工智能",
-          "AI assistant"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-things",
-        "readme": {
-          "default": "README.md",
-          "en": "README.en.md"
-        },
-        "url": "https://github.com/chengslog/siyuan-things",
-        "version": "0.2.14"
-      },
-      "packageZipAssetId": 528690590,
-      "packageZipSha256": "44c9921a7963e66f3a82c743ceb57c6a3e23c75d5d6e05793d5d267ddc9b560b",
-      "size": 541314,
-      "stars": 3,
-      "updated": "2026-08-25T05:24:05Z",
-      "url": "chengslog/siyuan-things@44c9921"
-    },
-    {
       "installSize": 3477031,
       "openIssues": 4,
       "package": {
@@ -1650,52 +1740,6 @@
       "stars": 0,
       "updated": "2026-08-23T02:30:04Z",
       "url": "famotime/siyuan-query-builder@b19892b"
-    },
-    {
-      "installSize": 889232,
-      "openIssues": 1,
-      "package": {
-        "author": "houm01",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A quiet collection of focused tools for SiYuan Note.",
-          "zh-CN": "一组安静、克制、专注的思源笔记实用工具。"
-        },
-        "displayName": {
-          "default": "Stillmark Workbench",
-          "zh-CN": "静痕工作台"
-        },
-        "frontends": [
-          "all"
-        ],
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "静痕",
-          "工作台",
-          "块样式",
-          "stillmark",
-          "workbench",
-          "block style"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "stillmark-workbench",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/houm01/stillmark-workbench",
-        "version": "0.4.6"
-      },
-      "packageZipAssetId": 525668222,
-      "packageZipSha256": "02560cba2522724089457d2356828aeb2541c2a4b3be479b5cb2db894ae1ffd7",
-      "size": 320224,
-      "stars": 1,
-      "updated": "2026-08-23T01:39:02Z",
-      "url": "houm01/stillmark-workbench@02560cb"
     },
     {
       "installSize": 510849,
@@ -5229,50 +5273,6 @@
       "stars": 3,
       "updated": "2026-08-10T05:22:26Z",
       "url": "sonicpic/siyuan-autotag@a653335"
-    },
-    {
-      "installSize": 662263,
-      "openIssues": 2,
-      "package": {
-        "author": "gradypark86",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Quickly create a new or go to diary or weekly notes on the calendar panel, with support for periodic note templates",
-          "zh_CN": "在日历面板上快速新建或转到日记与周记，支持周期笔记模板"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Siyuan Calendar Panel",
-          "zh_CN": "思源日历面板"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "calendar",
-          "日历",
-          "日记",
-          "daily",
-          "weekly",
-          "周记"
-        ],
-        "minAppVersion": "2.13.0",
-        "name": "siyuan-plugin-calendar",
-        "readme": {
-          "default": "README_en_US.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/gradypark86/siyuan-plugin-calendar",
-        "version": "0.3.3"
-      },
-      "packageZipAssetId": 507589690,
-      "packageZipSha256": "02ec19caf1b7229b50a174a84c8fb5abe186cba1e80f884210e36f3f56a8f26d",
-      "size": 286771,
-      "stars": 2,
-      "updated": "2026-08-09T14:29:30Z",
-      "url": "gradypark86/siyuan-plugin-calendar@02ec19c"
     },
     {
       "installSize": 4209132,
