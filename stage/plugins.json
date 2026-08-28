@@ -1,6 +1,329 @@
 {
   "repos": [
     {
+      "installSize": 669488,
+      "openIssues": 0,
+      "package": {
+        "author": "gradypark86",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Quickly create a new or go to diary or weekly notes on the calendar panel, with support for periodic note templates",
+          "zh_CN": "在日历面板上快速新建或转到日记与周记，支持周期笔记模板"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Siyuan Calendar Panel",
+          "zh_CN": "思源日历面板"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "calendar",
+          "日历",
+          "日记",
+          "daily",
+          "weekly",
+          "周记"
+        ],
+        "minAppVersion": "2.13.0",
+        "name": "siyuan-plugin-calendar",
+        "readme": {
+          "default": "README_en_US.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/gradypark86/siyuan-plugin-calendar",
+        "version": "0.3.7"
+      },
+      "packageZipAssetId": 533559063,
+      "packageZipSha256": "bbce74869ff6ce15b2ea470ec0feea4801a71e15fe29e0345860dac2ebac4f31",
+      "size": 288663,
+      "stars": 2,
+      "updated": "2026-08-28T09:20:24Z",
+      "url": "gradypark86/siyuan-plugin-calendar@bbce748"
+    },
+    {
+      "installSize": 14409668,
+      "openIssues": 10,
+      "package": {
+        "author": "suka233",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A fully redesigned KMind mind mapping plugin for SiYuan. Drag SiYuan documents and blocks directly into your mind maps, with unlimited summary levels, cloze nodes, bidirectional links, and more. Currently in public beta.",
+          "zh_CN": "全新设计的 KMind 思维导图插件，可直接将思源文档和思源块拖入导图，支持无限层级概要、节点挖空、节点双链等能力；当前为公测版。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "KMind Zen Mind Map Plugin",
+          "zh_CN": "KMind Zen 思维导图插件"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "思维导图",
+          "mindmap",
+          "KMind",
+          "KMindZen",
+          "KMind Zen"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-kmind-zen",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/suka233/siyuan-kmind-zen",
+        "version": "0.39.0"
+      },
+      "packageZipAssetId": 533535465,
+      "packageZipSha256": "e3335c45d73b2f727809d640a584e0ff8eabf39797e22bff760912d65f421895",
+      "size": 9445215,
+      "stars": 4,
+      "updated": "2026-08-28T09:01:01Z",
+      "url": "suka233/siyuan-kmind-zen@e3335c4"
+    },
+    {
+      "installSize": 2634900,
+      "openIssues": 0,
+      "package": {
+        "author": "alone-tree",
+        "backends": [
+          "windows",
+          "darwin",
+          "linux"
+        ],
+        "description": {
+          "default": "Lean, fast, and hassle-free SiYuan MCP tool.",
+          "zh-CN": "让 AI Agent 通过 MCP 安全地阅读、搜索和修改你的思源笔记，重点优化长文档、表格、块引用等知识库场景"
+        },
+        "displayName": {
+          "default": "Siyuan Bridge",
+          "zh-CN": "思源桥"
+        },
+        "frontends": [
+          "desktop"
+        ],
+        "keywords": [
+          "siyuan",
+          "mcp",
+          "ai",
+          "knowledge-base"
+        ],
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-bridge",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/alone-tree/siyuan-bridge",
+        "version": "1.8.1"
+      },
+      "packageZipAssetId": 533525221,
+      "packageZipSha256": "b8d385ee11ea2a324fb668da802fc0ba15727c19c373a0a680beec1b8c52cece",
+      "size": 2005331,
+      "stars": 10,
+      "updated": "2026-08-28T08:52:52Z",
+      "url": "alone-tree/siyuan-bridge@b8d385e"
+    },
+    {
+      "installSize": 1067360,
+      "openIssues": 0,
+      "package": {
+        "author": "ccriss",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "description": {
+          "default": "A GTD task management plugin inspired by Things, for SiYuan Note",
+          "zh-CN": "灵感来自 Things 的 GTD 任务管理插件"
+        },
+        "displayName": {
+          "default": "Things",
+          "zh-CN": "Things 任务管理"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "funding": {
+          "custom": [
+            "https://github.com/chengslog/siyuan-things/blob/main/README.md#支持项目"
+          ]
+        },
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "keywords": [
+          "things",
+          "task",
+          "gtd",
+          "todo",
+          "任务管理",
+          "待办事项",
+          "人工智能",
+          "AI assistant"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-things",
+        "readme": {
+          "default": "README.md",
+          "en": "README.en.md"
+        },
+        "url": "https://github.com/chengslog/siyuan-things",
+        "version": "0.5.1"
+      },
+      "packageZipAssetId": 533370977,
+      "packageZipSha256": "9e2289bf2e7b56f1a9e558751a3d3cd118a53acd5fad6b940ef724f0f9727cbf",
+      "size": 563660,
+      "stars": 5,
+      "updated": "2026-08-28T06:27:32Z",
+      "url": "chengslog/siyuan-things@9e2289b"
+    },
+    {
+      "installSize": 14868922,
+      "openIssues": 1,
+      "package": {
+        "author": "Glaube-TY",
+        "backends": [
+          "windows",
+          "linux",
+          "ios",
+          "android",
+          "harmony",
+          "docker",
+          "darwin"
+        ],
+        "description": {
+          "en_US": "Provides personalized homepage layout and rich functional modules, as well as AI knowledge base.",
+          "zh_CN": "提供个性化首页布局和丰富的功能模块以及 AI 知识库功能。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "en_US": "HOME",
+          "zh_CN": "主页"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://glaube-ty.top/da-shang/"
+          ]
+        },
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "keywords": [
+          "homepage",
+          "home",
+          "主页",
+          "首页",
+          "task",
+          "task manager",
+          "任务",
+          "任务管理",
+          "SQL",
+          "sql",
+          "查询",
+          "widget",
+          "widget manager",
+          "挂件",
+          "挂件管理",
+          "组件",
+          "组件管理",
+          "Pomodoro",
+          "Pomodoro timer",
+          "番茄钟",
+          "番茄",
+          "heat map",
+          "热力图",
+          "热搜",
+          "搜索",
+          "AI",
+          "智能助手",
+          "agent",
+          "智能体"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "siyuan-homepage",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/Glaube-TY/siyuan-homepage",
+        "version": "5.0.1"
+      },
+      "packageZipAssetId": 533359866,
+      "packageZipSha256": "132168a7e5991e0250ed2e15c2fa1f8043eb746baef648c3a66e09fac3c95707",
+      "size": 5343263,
+      "stars": 42,
+      "updated": "2026-08-28T06:17:18Z",
+      "url": "Glaube-TY/siyuan-homepage@132168a"
+    },
+    {
+      "installSize": 1981696,
+      "openIssues": 0,
+      "package": {
+        "author": "reword-siyuan",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "RE word: select-to-lookup offline dictionary, hotkey word collection for review, AI deep-reading (study/chat modes), custom offline MDX dictionaries, drag SiYuan doc tabs into the chat as context",
+          "zh-CN": "RE word 词汇助手：选中单词一键查离线词典、框选快捷键自动收词复习、AI 精读（学习/对话模式）、支持自定义离线词典库（MDX），可把思源文档页签拖入对话框作为上下文"
+        },
+        "displayName": {
+          "default": "RE word"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop"
+        ],
+        "keywords": [
+          "vocabulary",
+          "english",
+          "dictionary",
+          "单词",
+          "词汇",
+          "词典",
+          "英语",
+          "复习"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-reword",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/LongDarkroom/siyuan-plugin-reword",
+        "version": "1.1.0"
+      },
+      "packageZipAssetId": 533063729,
+      "packageZipSha256": "66e73e845073d7a0bc0eee6767fa8d0e1570b2868c9448bb72697ee06a88c631",
+      "size": 662826,
+      "stars": 1,
+      "updated": "2026-08-28T00:52:54Z",
+      "url": "LongDarkroom/siyuan-plugin-reword@66e73e8"
+    },
+    {
       "installSize": 338931,
       "openIssues": 2,
       "package": {
@@ -94,50 +417,6 @@
       "stars": 5,
       "updated": "2026-08-27T16:42:10Z",
       "url": "DilyarEziz/siyuan-plugin-asset-management@37aff6b"
-    },
-    {
-      "installSize": 1955952,
-      "openIssues": 0,
-      "package": {
-        "author": "reword-siyuan",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "RE word: select-to-lookup offline dictionary, hotkey word collection for review, AI deep-reading (study/chat modes), custom offline MDX dictionaries, drag SiYuan doc tabs into the chat as context",
-          "zh-CN": "RE word 词汇助手：选中单词一键查离线词典、框选快捷键自动收词复习、AI 精读（学习/对话模式）、支持自定义离线词典库（MDX），可把思源文档页签拖入对话框作为上下文"
-        },
-        "displayName": {
-          "default": "RE word"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop"
-        ],
-        "keywords": [
-          "vocabulary",
-          "english",
-          "dictionary",
-          "单词",
-          "词汇",
-          "词典",
-          "英语",
-          "复习"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-reword",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/LongDarkroom/siyuan-plugin-reword",
-        "version": "1.0.1"
-      },
-      "packageZipAssetId": 531940228,
-      "packageZipSha256": "1f56c6440059eff9aefb12311d47610867854821d9e43de8c2e3537e87c7f370",
-      "size": 654962,
-      "stars": 1,
-      "updated": "2026-08-27T16:08:59Z",
-      "url": "LongDarkroom/siyuan-plugin-reword@1f56c64"
     },
     {
       "installSize": 323405,
@@ -383,155 +662,6 @@
       "url": "royc01/pinch@408a433"
     },
     {
-      "installSize": 1065733,
-      "openIssues": 0,
-      "package": {
-        "author": "ccriss",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker"
-        ],
-        "description": {
-          "default": "A GTD task management plugin inspired by Things, for SiYuan Note",
-          "zh-CN": "灵感来自 Things 的 GTD 任务管理插件"
-        },
-        "displayName": {
-          "default": "Things",
-          "zh-CN": "Things 任务管理"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile"
-        ],
-        "funding": {
-          "custom": [
-            "https://github.com/chengslog/siyuan-things/blob/main/README.md#支持项目"
-          ]
-        },
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker"
-        ],
-        "keywords": [
-          "things",
-          "task",
-          "gtd",
-          "todo",
-          "任务管理",
-          "待办事项",
-          "人工智能",
-          "AI assistant"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-things",
-        "readme": {
-          "default": "README.md",
-          "en": "README.en.md"
-        },
-        "url": "https://github.com/chengslog/siyuan-things",
-        "version": "0.3.0"
-      },
-      "packageZipAssetId": 532017952,
-      "packageZipSha256": "168967d40a1cdd5a57e4ee974acccc258b5c878dec79fef6f08acf3889886705",
-      "size": 561520,
-      "stars": 4,
-      "updated": "2026-08-27T08:52:17Z",
-      "url": "chengslog/siyuan-things@168967d"
-    },
-    {
-      "installSize": 14868921,
-      "openIssues": 1,
-      "package": {
-        "author": "Glaube-TY",
-        "backends": [
-          "windows",
-          "linux",
-          "ios",
-          "android",
-          "harmony",
-          "docker",
-          "darwin"
-        ],
-        "description": {
-          "en_US": "Provides personalized homepage layout and rich functional modules, as well as AI knowledge base.",
-          "zh_CN": "提供个性化首页布局和丰富的功能模块以及 AI 知识库功能。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "en_US": "HOME",
-          "zh_CN": "主页"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://glaube-ty.top/da-shang/"
-          ]
-        },
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker"
-        ],
-        "keywords": [
-          "homepage",
-          "home",
-          "主页",
-          "首页",
-          "task",
-          "task manager",
-          "任务",
-          "任务管理",
-          "SQL",
-          "sql",
-          "查询",
-          "widget",
-          "widget manager",
-          "挂件",
-          "挂件管理",
-          "组件",
-          "组件管理",
-          "Pomodoro",
-          "Pomodoro timer",
-          "番茄钟",
-          "番茄",
-          "heat map",
-          "热力图",
-          "热搜",
-          "搜索",
-          "AI",
-          "智能助手",
-          "agent",
-          "智能体"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "siyuan-homepage",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/Glaube-TY/siyuan-homepage",
-        "version": "5.0.0"
-      },
-      "packageZipAssetId": 531944335,
-      "packageZipSha256": "243851fe94c26ce774f06b44cdf6f1a2522d4b66a8b683021287ce6c2cd9105d",
-      "size": 5343259,
-      "stars": 42,
-      "updated": "2026-08-27T07:53:45Z",
-      "url": "Glaube-TY/siyuan-homepage@243851f"
-    },
-    {
       "installSize": 1118773,
       "openIssues": 0,
       "package": {
@@ -578,49 +708,6 @@
       "stars": 2,
       "updated": "2026-08-27T07:47:40Z",
       "url": "wj1002/plugin-ChronicleX-vite-svelte@6f12bf7"
-    },
-    {
-      "installSize": 2363971,
-      "openIssues": 0,
-      "package": {
-        "author": "alone-tree",
-        "backends": [
-          "windows",
-          "darwin",
-          "linux"
-        ],
-        "description": {
-          "default": "Lean, fast, and hassle-free SiYuan MCP tool.",
-          "zh-CN": "精简、高效、省心的思源笔记 MCP 工具。"
-        },
-        "displayName": {
-          "default": "Siyuan Bridge",
-          "zh-CN": "思源桥"
-        },
-        "frontends": [
-          "desktop"
-        ],
-        "keywords": [
-          "siyuan",
-          "mcp",
-          "ai",
-          "knowledge-base"
-        ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-bridge",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/alone-tree/siyuan-bridge",
-        "version": "1.7.4"
-      },
-      "packageZipAssetId": 531916515,
-      "packageZipSha256": "2af96613f636187801c5c185363d77f61d1fa1883bb68248314e35ab89e277cd",
-      "size": 1772313,
-      "stars": 10,
-      "updated": "2026-08-27T07:28:02Z",
-      "url": "alone-tree/siyuan-bridge@2af9661"
     },
     {
       "installSize": 1897869,
@@ -731,50 +818,6 @@
       "stars": 1,
       "updated": "2026-08-27T01:46:06Z",
       "url": "houm01/stillmark-workbench@d316371"
-    },
-    {
-      "installSize": 662316,
-      "openIssues": 0,
-      "package": {
-        "author": "gradypark86",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Quickly create a new or go to diary or weekly notes on the calendar panel, with support for periodic note templates",
-          "zh_CN": "在日历面板上快速新建或转到日记与周记，支持周期笔记模板"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Siyuan Calendar Panel",
-          "zh_CN": "思源日历面板"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "calendar",
-          "日历",
-          "日记",
-          "daily",
-          "weekly",
-          "周记"
-        ],
-        "minAppVersion": "2.13.0",
-        "name": "siyuan-plugin-calendar",
-        "readme": {
-          "default": "README_en_US.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/gradypark86/siyuan-plugin-calendar",
-        "version": "0.3.4"
-      },
-      "packageZipAssetId": 531564272,
-      "packageZipSha256": "a33ab0439436682394ac2b96e74bc19e3e5b37a79b681e15f1748c7032c0117d",
-      "size": 286775,
-      "stars": 2,
-      "updated": "2026-08-27T01:17:51Z",
-      "url": "gradypark86/siyuan-plugin-calendar@a33ab04"
     },
     {
       "installSize": 563958,
@@ -4260,49 +4303,6 @@
       "stars": 78,
       "updated": "2026-08-12T16:07:55Z",
       "url": "siyuan-note/plugin-sample@d5b5750"
-    },
-    {
-      "installSize": 14195682,
-      "openIssues": 9,
-      "package": {
-        "author": "suka233",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A fully redesigned KMind mind mapping plugin for SiYuan. Drag SiYuan documents and blocks directly into your mind maps, with unlimited summary levels, cloze nodes, bidirectional links, and more. Currently in public beta.",
-          "zh_CN": "全新设计的 KMind 思维导图插件，可直接将思源文档和思源块拖入导图，支持无限层级概要、节点挖空、节点双链等能力；当前为公测版。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "KMind Zen Mind Map Plugin",
-          "zh_CN": "KMind Zen 思维导图插件"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "思维导图",
-          "mindmap",
-          "KMind",
-          "KMindZen",
-          "KMind Zen"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-kmind-zen",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/suka233/siyuan-kmind-zen",
-        "version": "0.38.0"
-      },
-      "packageZipAssetId": 511452595,
-      "packageZipSha256": "7f08d8bf111e725ce49c34067836ca5a8cd9d1ca7bc14a1c5f41581575827b71",
-      "size": 9396391,
-      "stars": 4,
-      "updated": "2026-08-12T10:52:14Z",
-      "url": "suka233/siyuan-kmind-zen@7f08d8b"
     },
     {
       "installSize": 1255675,
