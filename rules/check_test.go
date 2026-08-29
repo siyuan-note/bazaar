@@ -243,6 +243,7 @@ func TestManifestKeysByPackageType(t *testing.T) {
 		{TypePlugin, "modes", "modes"},
 		{TypeTheme, "backends", "backends"},
 		{TypeTheme, "disabledInPublish", "disabledInPublish"},
+		{TypeTheme, "bootAppearances", "bootAppearances"},
 		{TypeIcon, "frontends", "frontends"},
 		{TypeTemplate, "kernels", "kernels"},
 		{TypeWidget, "modes", "modes"},
@@ -265,6 +266,7 @@ func TestManifestKeysByPackageType(t *testing.T) {
 	}{
 		{TypePlugin, "backends"},
 		{TypePlugin, "disabledInPublish"},
+		{TypePlugin, "bootAppearances"},
 		{TypeTheme, "modes"},
 		{TypeTheme, "frontends"},
 		{TypeIcon, "keywords"},
@@ -452,6 +454,7 @@ func TestCheckOptionalTypedFields(t *testing.T) {
   "keywords": ["sample"],
   "backends": ["all"],
   "frontends": ["all"],
+  "bootAppearances": ["sunrise", "night-sky"],
   "disabledInPublish": false`)
 	if r := check(); !r.OK {
 		t.Fatalf("expected OK for valid optional fields, issues=%v", r.Issues)
@@ -503,6 +506,21 @@ func TestCheckOptionalTypedFields(t *testing.T) {
   "kernels": ["all", "linux"]`)
 	if r := check(); r.OK || !hasIssueMsg(r, "kernels") || !hasIssueMsg(r, "all") {
 		t.Fatalf("expected kernels mixing all with others to fail, issues=%v", r.Issues)
+	}
+
+	writePlugin(`,
+  "bootAppearances": "sunrise"`)
+	if r := check(); r.OK || !hasIssueMsg(r, "bootAppearances") {
+		t.Fatalf("expected non-array bootAppearances to fail, issues=%v", r.Issues)
+	}
+
+	writePlugin(`,
+  "bootAppearances": ["Sunrise", "night_sky", "night--sky", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "sunrise", "sunrise"]`)
+	if r := check(); r.OK || !hasIssueMsg(r, "Sunrise") || !hasIssueMsg(r, "night_sky") ||
+		!hasIssueMsg(r, "night--sky") ||
+		!hasIssueMsg(r, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa") ||
+		!hasIssueMsg(r, "重复") {
+		t.Fatalf("expected invalid and duplicate boot appearance IDs to fail, issues=%v", r.Issues)
 	}
 }
 
