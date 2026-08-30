@@ -42,8 +42,14 @@ jobs:
       - name: Check out repo
         uses: actions/checkout@v7
         with:
-          # 增量需 git show before:*.txt 并检查 deprecated.json diff；单 commit push 时 before 一般为 HEAD~1
-          fetch-depth: 2
+          # 增量需 git show before:*.txt 并检查 deprecated.json diff；切到最新 main 后 before 未必是 HEAD~1，需完整历史
+          fetch-depth: 0
+
+      - name: Sync to latest main
+        # 触发事件固定了 github.sha，排队期间 main 可能已前进；基于最新 main 生成索引，避免 git pull --rebase 冲突
+        run: |-
+          git fetch origin main
+          git checkout --detach origin/main
 
       - name: Setup Golang
         uses: actions/setup-go@v7
@@ -64,8 +70,9 @@ jobs:
           git diff --cached --quiet && echo "had_changes=false" >> $GITHUB_OUTPUT || echo "had_changes=true" >> $GITHUB_OUTPUT
           git diff --cached --stat
           git commit -m ":bookmark: Staging" || exit 0
-          git pull --rebase
-          git push
+          # detached HEAD 上无 upstream，显式指定 rebase 目标与推送 ref
+          git pull --rebase origin main
+          git push origin HEAD:main
 
       - name: Index bazaar and report hash
         if: steps.commit_push.outputs.had_changes == 'true'
