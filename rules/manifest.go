@@ -17,6 +17,7 @@ import (
 	"maps"
 	"os"
 	"path/filepath"
+	"regexp"
 	"slices"
 	"strings"
 
@@ -69,6 +70,7 @@ type Package struct {
 
 	Backends          []string `json:"backends,omitempty"`
 	Kernels           []string `json:"kernels,omitempty"`
+	BootAppearances   []string `json:"bootAppearances,omitempty"`
 	DisabledInPublish bool     `json:"disabledInPublish,omitempty"`
 
 	// 主题专用（仅 theme.json；见 kernel/bazaar/package.go Modes）
@@ -84,8 +86,8 @@ var commonManifestKeys = []string{
 }
 
 var allowedManifestKeys = map[PackageType]Set{
-	TypePlugin:   toKeySet(commonManifestKeys, "backends", "frontends", "kernels", "disabledInPublish"), // 插件专用字段见 kernel/bazaar/plugin.go（兼容性与发布禁用判断）。
-	TypeTheme:    toKeySet(commonManifestKeys, "modes", "frontends"),                                    // 主题专用字段：亮色 / 暗色模式和前端兼容性。
+	TypePlugin:   toKeySet(commonManifestKeys, "backends", "frontends", "kernels", "bootAppearances", "disabledInPublish"), // 插件专用字段见 kernel/bazaar/plugin.go（兼容性与发布禁用判断）。
+	TypeTheme:    toKeySet(commonManifestKeys, "modes", "frontends"),                                                       // 主题专用字段：亮色 / 暗色模式和前端兼容性。
 	TypeIcon:     toKeySet(commonManifestKeys),
 	TypeTemplate: toKeySet(commonManifestKeys),
 	TypeWidget:   toKeySet(commonManifestKeys),
@@ -841,6 +843,7 @@ func checkPluginOptionalTypedFields(m map[string]any, owner, repo string) []Issu
 	for _, key := range []string{"backends", "frontends", "kernels"} {
 		issues = append(issues, checkOptionalStringArray(m, key, allowAllMix)...)
 	}
+	issues = append(issues, checkBootAppearances(m)...)
 	if raw, ok := m["disabledInPublish"]; ok {
 		if _, isBool := raw.(bool); !isBool {
 			issues = append(issues, issue(
@@ -848,6 +851,51 @@ func checkPluginOptionalTypedFields(m map[string]any, owner, repo string) []Issu
 				"If you include `disabledInPublish`, it must be a boolean `true` or `false` (not the string `\"true\"`). If you don't need it, please delete the field.",
 			))
 		}
+	}
+	return issues
+}
+
+var bootAppearanceIDPattern = regexp.MustCompile(`^[a-z0-9]+(?:-[a-z0-9]+)*$`)
+
+// checkBootAppearances 校验插件声明的启动页外观 ID。
+func checkBootAppearances(m map[string]any) []Issue {
+	raw, ok := m["bootAppearances"]
+	if !ok {
+		return nil
+	}
+	arr, ok := raw.([]any)
+	if !ok {
+		return []Issue{issue(
+			"若填写 `bootAppearances`，值必须是启动页外观 ID 字符串数组，例如 `[\"sunrise\"]`。不需要时请删除该字段。",
+			"If you include `bootAppearances`, it must be an array of startup appearance ID strings, e.g. `[\"sunrise\"]`. If you don't need it, please delete the field.",
+		)}
+	}
+	var issues []Issue
+	seen := map[string]struct{}{}
+	for i, item := range arr {
+		id, isString := item.(string)
+		if !isString {
+			issues = append(issues, issue(
+				fmt.Sprintf("`bootAppearances[%d]` 必须是字符串。请检查数组元素类型。", i),
+				fmt.Sprintf("`bootAppearances[%d]` must be a string. Please check the array element type.", i),
+			))
+			continue
+		}
+		if 64 < len(id) || !bootAppearanceIDPattern.MatchString(id) {
+			issues = append(issues, issue(
+				fmt.Sprintf("`bootAppearances[%d]` 的值 `%s` 无效。ID 只能包含小写字母、数字和连字符，最长 64 个字符，连字符不能连续，也不能出现在开头或结尾。", i, id),
+				fmt.Sprintf("`bootAppearances[%d]` value `%s` is invalid. IDs may contain only lowercase letters, digits, and hyphens, must be at most 64 characters, and hyphens can't be consecutive or appear at either end.", i, id),
+			))
+			continue
+		}
+		if _, duplicate := seen[id]; duplicate {
+			issues = append(issues, issue(
+				fmt.Sprintf("`bootAppearances` 中重复声明了 ID `%s`。请删除重复项。", id),
+				fmt.Sprintf("`bootAppearances` declares the ID `%s` more than once. Please remove the duplicate.", id),
+			))
+			continue
+		}
+		seen[id] = struct{}{}
 	}
 	return issues
 }
