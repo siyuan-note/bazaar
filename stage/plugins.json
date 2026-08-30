@@ -1,6 +1,101 @@
 {
   "repos": [
     {
+      "installSize": 5096858,
+      "openIssues": 0,
+      "package": {
+        "author": "LongDarkroom",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "RE word: select-to-lookup offline dictionary, hotkey word collection for review, AI deep-reading (study/chat modes), custom offline MDX dictionaries, drag SiYuan doc tabs into the chat as context",
+          "zh-CN": "RE word 词汇助手：选中单词一键查离线词典、框选快捷键自动收词复习、AI 精读（学习/对话模式）、支持自定义离线词典库（MDX），可把思源文档页签拖入对话框作为上下文。💡 使用前请先配置离线词典包，获取方式见 README 词典获取指南"
+        },
+        "displayName": {
+          "default": "RE word"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "mobile",
+          "browser-mobile"
+        ],
+        "keywords": [
+          "vocabulary",
+          "english",
+          "dictionary",
+          "单词",
+          "词汇",
+          "词典",
+          "英语",
+          "复习"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-reword",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/LongDarkroom/siyuan-plugin-reword",
+        "version": "1.4.4"
+      },
+      "packageZipAssetId": 536437078,
+      "packageZipSha256": "61358381679a3a162caab167b6372aaf44a379f951ff08f4436ff39e7367446e",
+      "size": 1472762,
+      "stars": 1,
+      "updated": "2026-08-30T09:58:17Z",
+      "url": "LongDarkroom/siyuan-plugin-reword@6135838"
+    },
+    {
+      "installSize": 197732,
+      "openIssues": 0,
+      "package": {
+        "author": "liao-zh",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A light document navigation bar plugin for SiYuan",
+          "zh-CN": "一个文档导航条插件，在编辑区顶部显示文档路径和相邻文档"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Doc NavBar Light",
+          "zh-CN": "简易文档导航条"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            ""
+          ]
+        },
+        "keywords": [
+          "navigate",
+          "breadcrumb",
+          "导航",
+          "面包屑"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-doc-navbar-light",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/liao-zh/siyuan-doc-navbar-light",
+        "version": "0.8.0"
+      },
+      "packageZipAssetId": 536425018,
+      "packageZipSha256": "21f507157075baa4293c4f8fd702eb83c1f6aae3f864b80602d4f134b4556973",
+      "size": 156704,
+      "stars": 0,
+      "updated": "2026-08-30T09:45:56Z",
+      "url": "liao-zh/siyuan-doc-navbar-light@21f5071"
+    },
+    {
       "installSize": 131934,
       "openIssues": 3,
       "package": {
@@ -261,52 +356,6 @@
       "stars": 0,
       "updated": "2026-08-30T03:07:05Z",
       "url": "sihan-bzwj/siyuan-paste-fixer@e1bbb51"
-    },
-    {
-      "installSize": 5026370,
-      "openIssues": 0,
-      "package": {
-        "author": "LongDarkroom",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "RE word: select-to-lookup offline dictionary, hotkey word collection for review, AI deep-reading (study/chat modes), custom offline MDX dictionaries, drag SiYuan doc tabs into the chat as context",
-          "zh-CN": "RE word 词汇助手：选中单词一键查离线词典、框选快捷键自动收词复习、AI 精读（学习/对话模式）、支持自定义离线词典库（MDX），可把思源文档页签拖入对话框作为上下文。💡 使用前请先配置离线词典包，获取方式见 README 词典获取指南"
-        },
-        "displayName": {
-          "default": "RE word"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "mobile",
-          "browser-mobile"
-        ],
-        "keywords": [
-          "vocabulary",
-          "english",
-          "dictionary",
-          "单词",
-          "词汇",
-          "词典",
-          "英语",
-          "复习"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-reword",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/LongDarkroom/siyuan-plugin-reword",
-        "version": "1.4.3"
-      },
-      "packageZipAssetId": 535990483,
-      "packageZipSha256": "58e45f6cf703b0ef4cac3227b437e7b3a7923d34c7c4e2dfee05d90548e33f76",
-      "size": 1452355,
-      "stars": 1,
-      "updated": "2026-08-30T01:29:46Z",
-      "url": "LongDarkroom/siyuan-plugin-reword@58e45f6"
     },
     {
       "installSize": 2038909,
@@ -5472,55 +5521,6 @@
       "stars": 0,
       "updated": "2026-08-10T06:39:40Z",
       "url": "itdh/siyuan-plugin-key-buddy@7e75f57"
-    },
-    {
-      "installSize": 193472,
-      "openIssues": 1,
-      "package": {
-        "author": "liao-zh",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A light document navigation bar plugin for SiYuan",
-          "zh-CN": "一个文档导航条插件，在编辑区顶部显示文档路径和相邻文档"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Doc NavBar Light",
-          "zh-CN": "简易文档导航条"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            ""
-          ]
-        },
-        "keywords": [
-          "navigate",
-          "breadcrumb",
-          "导航",
-          "面包屑"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-doc-navbar-light",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/liao-zh/siyuan-doc-navbar-light",
-        "version": "0.7.5"
-      },
-      "packageZipAssetId": 508343870,
-      "packageZipSha256": "c818b6ad8ec95a408e2344f1a9ea0e888599d7d05b7a95e0d96347d54acd9ec8",
-      "size": 155538,
-      "stars": 0,
-      "updated": "2026-08-10T05:38:48Z",
-      "url": "liao-zh/siyuan-doc-navbar-light@c818b6a"
     },
     {
       "installSize": 7851602,
