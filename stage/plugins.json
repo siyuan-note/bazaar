@@ -1,6 +1,113 @@
 {
   "repos": [
     {
+      "installSize": 610186,
+      "openIssues": 0,
+      "package": {
+        "author": "DUZSSY",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "android",
+          "ios"
+        ],
+        "description": {
+          "default": "Block-level AI text editing plugin for SiYuan Note. Select text and edit with one click using OpenAI, Ollama, DeepSeek, etc.",
+          "zh_CN": "专注于文本块级 AI 编辑的思源笔记插件。选中文本即可一键润色、翻译、总结，支持OpenAI、Ollama、DeepSeek等多种AI提供商"
+        },
+        "displayName": {
+          "default": "AI Assistant",
+          "zh_CN": "AI助手"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window",
+          "browser-mobile",
+          "mobile"
+        ],
+        "funding": {
+          "custom": [
+            "https://duzssy.github.io/support-page/"
+          ]
+        },
+        "keywords": [
+          "ai",
+          "assistant",
+          "ollama",
+          "openai",
+          "deepseek",
+          "chatgpt",
+          "translation",
+          "polish",
+          "summarize",
+          "text-editing",
+          "block-level",
+          "智能助手",
+          "文本编辑"
+        ],
+        "minAppVersion": "2.8.5",
+        "name": "siyuan-ai-assistant",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/DUZSSY/siyuan-ai-assistant",
+        "version": "0.2.3"
+      },
+      "packageZipAssetId": 537384164,
+      "packageZipSha256": "41bf6d0fd999a6dcdb713fd04057f624fd7bd2bc726db11460a215e1b2100305",
+      "size": 235592,
+      "stars": 4,
+      "updated": "2026-08-31T03:24:17Z",
+      "url": "DUZSSY/siyuan-ai-assistant@41bf6d0"
+    },
+    {
+      "installSize": 370694,
+      "openIssues": 0,
+      "package": {
+        "author": "steve",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Advanced database attribute display plugin with field hiding, date formatting, checkbox beautification, and customizable settings. Supports 99% of blocks!",
+          "zh-CN": "数据库属性显示插件，把思源数据库炼化为超级标签！"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Database Display",
+          "zh-CN": "数据库属性展示"
+        },
+        "frontends": [
+          "all"
+        ],
+        "keywords": [
+          "database",
+          "display",
+          "attribute",
+          "super-tag",
+          "超级标签"
+        ],
+        "minAppVersion": "3.8.2",
+        "name": "siyuan-database-display",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/loonghfut/siyuan-database-display",
+        "version": "5.0.0"
+      },
+      "packageZipAssetId": 537287613,
+      "packageZipSha256": "a2efe3775864ad31515c82eb8feaa5bb506c1f3ca04bdcae3554cae9398554e9",
+      "size": 165691,
+      "stars": 7,
+      "updated": "2026-08-31T01:36:11Z",
+      "url": "loonghfut/siyuan-database-display@a2efe37"
+    },
+    {
       "installSize": 2685683,
       "openIssues": 0,
       "package": {
@@ -1609,47 +1716,6 @@
       "url": "notesynchelper/siyuan-notehelper@e9814bb"
     },
     {
-      "installSize": 323405,
-      "openIssues": 0,
-      "package": {
-        "author": "steve",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Advanced database attribute display plugin with field hiding, date formatting, checkbox beautification, and customizable settings. Supports 99% of blocks!",
-          "zh-CN": "数据库属性显示插件，支持字段隐藏、日期格式化、复选框美化和可自定义设置。支持99%的块！"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Database Display",
-          "zh-CN": "数据库属性展示"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "database",
-          "display",
-          "attribute"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "siyuan-database-display",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/loonghfut/siyuan-database-display",
-        "version": "4.4.2"
-      },
-      "packageZipAssetId": 532428354,
-      "packageZipSha256": "762397eb885aae4d0f04ae947d0aa2e3140042e0634216dd5bb762575a0b0fd8",
-      "size": 152096,
-      "stars": 7,
-      "updated": "2026-08-27T14:38:17Z",
-      "url": "loonghfut/siyuan-database-display@762397e"
-    },
-    {
       "installSize": 19248,
       "openIssues": 0,
       "package": {
@@ -1691,70 +1757,6 @@
       "stars": 1,
       "updated": "2026-08-27T11:22:26Z",
       "url": "TCOTC/scroll-zoom@16834ca"
-    },
-    {
-      "installSize": 608747,
-      "openIssues": 0,
-      "package": {
-        "author": "DUZSSY",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "android",
-          "ios"
-        ],
-        "description": {
-          "default": "Block-level AI text editing plugin for SiYuan Note. Select text and edit with one click using OpenAI, Ollama, DeepSeek, etc.",
-          "zh_CN": "专注于文本块级 AI 编辑的思源笔记插件。选中文本即可一键润色、翻译、总结，支持OpenAI、Ollama、DeepSeek等多种AI提供商"
-        },
-        "displayName": {
-          "default": "AI Assistant",
-          "zh_CN": "AI助手"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window",
-          "browser-mobile",
-          "mobile"
-        ],
-        "funding": {
-          "custom": [
-            "https://duzssy.github.io/support-page/"
-          ]
-        },
-        "keywords": [
-          "ai",
-          "assistant",
-          "ollama",
-          "openai",
-          "deepseek",
-          "chatgpt",
-          "translation",
-          "polish",
-          "summarize",
-          "text-editing",
-          "block-level",
-          "智能助手",
-          "文本编辑"
-        ],
-        "minAppVersion": "2.8.5",
-        "name": "siyuan-ai-assistant",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/DUZSSY/siyuan-ai-assistant",
-        "version": "0.2.2"
-      },
-      "packageZipAssetId": 532078886,
-      "packageZipSha256": "dc2fb8c62baed692ae5f2c509a4404bcbd105b6ba2683fa1dec4739a09f3f27d",
-      "size": 235026,
-      "stars": 4,
-      "updated": "2026-08-27T09:40:06Z",
-      "url": "DUZSSY/siyuan-ai-assistant@dc2fb8c"
     },
     {
       "installSize": 1118773,
