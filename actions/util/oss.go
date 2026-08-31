@@ -48,6 +48,15 @@ func getOSSUploadSem() chan struct{} {
 }
 
 func UploadOSS(ctx context.Context, key string, data []byte) (err error) {
+	return uploadOSS(ctx, key, data, "")
+}
+
+// UploadOSSWithContentType 上传对象并显式设置 MIME 类型。
+func UploadOSSWithContentType(ctx context.Context, key string, data []byte, contentType string) (err error) {
+	return uploadOSS(ctx, key, data, contentType)
+}
+
+func uploadOSS(ctx context.Context, key string, data []byte, contentType string) (err error) {
 	sem := getOSSUploadSem()
 	select {
 	case <-ctx.Done():
@@ -79,14 +88,15 @@ func UploadOSS(ctx context.Context, key string, data []byte) (err error) {
 
 	formUploader := storage.NewFormUploader(&cfg)
 	uploadToken := putPolicy.UploadToken(mac)
+	extra := &storage.PutExtra{MimeType: contentType}
 	if err = formUploader.Put(ctx, nil, uploadToken,
-		key, bytes.NewReader(data), int64(len(data)), &storage.PutExtra{}); err != nil {
+		key, bytes.NewReader(data), int64(len(data)), extra); err != nil {
 		if ctx.Err() != nil {
 			return ctx.Err()
 		}
 		logger.Warnf("upload [%s] failed: %s, retry it", key, err)
 		if err = formUploader.Put(ctx, nil, uploadToken,
-			key, bytes.NewReader(data), int64(len(data)), &storage.PutExtra{}); err != nil {
+			key, bytes.NewReader(data), int64(len(data)), extra); err != nil {
 			logger.Errorf("retry upload [%s] failed: %s", key, err)
 			return err
 		}
