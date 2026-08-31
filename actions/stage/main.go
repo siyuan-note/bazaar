@@ -45,7 +45,7 @@ Stage 流程：
 4. 读取 *s.txt 与既有 stage/*.json；增量时未列入 check 的仓沿用旧条目（不打 API、不写 report），下架随当前列表重建自然消失
 5. 先比 packageZipAssetId：相同则跳过；不同则取 SHA-256（优先 GitHub digest，否则下载 zip 计算）。
    内容未变（新 asset id、同一 SHA-256）则保留旧条目（不回写 asset id）并记 stage-fail，提示开发者「空更新」；
-   内容变了则校验并上传 OSS（package.zip、README、preview、icon、清单 JSON）。url 的 @hash 为 SHA-256 前 7 位
+   内容变了则校验并上传 OSS（package.zip、README、声明的 preview / icon、清单 JSON）。url 的 @hash 为 SHA-256 前 7 位
 6. 按 updated 降序排序后写出 stage/*.json（键序经 marshalSortedIndentedJSON 稳定；新上架用索引时间，更新用 Release 发布时间）
 7. 将本轮失败/成功同步为按仓独立 Issue（标签 stage-fail）：失败 upsert（正文未变则跳过 Edit）；
    成功入库或 asset id 未变跳过（已能正常取到 Release）则先评论说明再关闭；
@@ -344,8 +344,9 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 			// 仅同路径 exactOld：换维护者不得沿用旧 owner/repo@hash 条目
 			if exactOld != nil && exactOld.PackageZipAssetID != 0 && exactOld.PackageZipAssetID == packageZipAssetID {
 				logger.Infof("skip repo [%s], package.zip asset id unchanged [%d]", ownerRepo, packageZipAssetID)
+				kept := cloneStageRepoWithRepoRef(exactOld, releaseInfo.Tag)
 				stageReposMu.Lock()
-				stageRepos = append(stageRepos, exactOld)
+				stageRepos = append(stageRepos, kept)
 				stageReposMu.Unlock()
 				reports.add(stageReport{
 					OwnerRepo:   ownerRepo,
@@ -464,6 +465,7 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 			stageReposMu.Lock()
 			stageRepos = append(stageRepos, &util.StageRepo{
 				URL:               ownerRepo + "@" + hash,
+				RepoRef:           releaseInfo.Tag,
 				Stars:             stars,
 				OpenIssues:        openIssues,
 				Updated:           updated,
@@ -506,6 +508,7 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 	}
 	for i := range staged.Repos {
 		// hash 跳过 / 失败保留的旧条目也可能带有空 funding、旧弃用字段或冗余 locale，写回前一并清理。
+		normalizeLegacyStageImages(&staged.Repos[i])
 		rules.ClearEmptyFunding(&staged.Repos[i].Package)
 		rules.ClearRedundantLocales(&staged.Repos[i].Package)
 	}
@@ -522,6 +525,31 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 
 	logger.Infof("finish stage [%s]", packageType.Plural())
 	return abortedByRateLimit
+}
+
+// cloneStageRepoWithRepoRef 在确认 Release Asset 未变化时同步与该 Release 对应的仓库引用。
+func cloneStageRepoWithRepoRef(repo *util.StageRepo, repoRef string) *util.StageRepo {
+	if repo == nil || repoRef == "" || repo.RepoRef == repoRef {
+		return repo
+	}
+	cloned := *repo
+	cloned.RepoRef = repoRef
+	return &cloned
+}
+
+// normalizeLegacyStageImages 将旧 Stage 条目的固定图片名转为三态字段；显式空字符串表示新版无图配置。
+func normalizeLegacyStageImages(repo *util.StageRepo) {
+	if repo == nil {
+		return
+	}
+	if repo.Package.Icon == nil {
+		legacyIcon := "icon.png"
+		repo.Package.Icon = &legacyIcon
+	}
+	if repo.Package.Preview == nil {
+		legacyPreview := "preview.png"
+		repo.Package.Preview = &legacyPreview
+	}
 }
 
 // backfillUnprocessedStageRepos 在限流中止后，为尚未写入结果的列表仓库补回同路径旧条目，避免 stage JSON 丢仓。
