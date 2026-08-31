@@ -42,7 +42,7 @@ var pipeline = []step{
 	stepOwnerRepo,     // 校验 OwnerRepo 格式，失败则 Halt
 	stepZipPaths,      // 有 ZipData 时检查 zip 内路径分隔符必须为 /；无数据则跳过
 	stepPackageRoot,   // 解析解压目录得到包根 Root，失败则 Halt
-	stepRequiredFiles, // 检查展示文件、清单文件及类型运行时必要文件，可累计报错
+	stepRequiredFiles, // 检查说明文档、清单文件及类型运行时必要文件，可累计报错
 	stepPathNames,     // 递归检查路径与文件名规范
 	stepThemeJS,       // 仅主题：非白名单不得包含 theme.js
 	stepManifest,      // 读取并校验清单字段；读失败只记 Issue、不 Halt
@@ -106,7 +106,7 @@ func stepPackageRoot(c *Context) {
 	c.Root = root
 }
 
-// stepRequiredFiles 检查展示文件、清单文件及类型运行时必要文件。
+// stepRequiredFiles 检查说明文档、清单文件及类型运行时必要文件。
 func stepRequiredFiles(c *Context) {
 	if c.Halted() {
 		return
@@ -162,4 +162,5 @@ func stepManifest(c *Context) {
 		OldVersion:    c.OldVersion,
 		OccupiedNames: c.OccupiedNames,
 	})...)
+	c.Add(normalizePackageImages(manifest, &c.Package, c.Root)...)
 }

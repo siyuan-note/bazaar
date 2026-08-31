@@ -155,16 +155,9 @@ func indexPackage(
 		return
 	}
 
-	// 从解压目录读取清单，以便根据 readme 字段收集要上传的文件
-	pkg = getPackage(packageRoot, packageType)
-	if pkg == nil {
-		logger.Errorf("get package [%s] failed", repoURL)
-		issues = stageInternalIssue(
-			"校验通过后重新读取清单失败。这通常是集市 Stage 流程内部问题，请联系维护者。",
-			"Failed to re-read the package manifest after checks passed. This is usually an internal Stage issue — please contact a maintainer.",
-		)
-		return
-	}
+	// 直接使用规则流水线归一化后的清单，确保可选图片字段与校验结果一致。
+	pkg = &result.Package
+	rules.SanitizePackage(pkg)
 
 	// 校验通过后再上传 package.zip，避免无效包写入 OSS
 	key := "package/" + ownerRepo + "@" + hash
@@ -177,27 +170,13 @@ func indexPackage(
 		return
 	}
 
-	// 收集需要上传到 OSS 的包根目录文件
-	uploadFiles := Set{
-		"README.md":                struct{}{}, // 始终加入，思源将其作为最后回退
-		"preview.png":              struct{}{},
-		"icon.png":                 struct{}{},
-		packageType.ManifestFile(): struct{}{},
-	}
-	if pkg.Readme != nil {
-		for _, readmePath := range pkg.Readme {
-			readmePath = strings.TrimSpace(readmePath) // 跟思源内核逻辑一致，TrimSpace
-			if readmePath == "" {
-				continue
-			}
-			uploadFiles[readmePath] = struct{}{}
-		}
-	}
+	// 收集需要上传到 OSS 的包根目录文件。
+	uploadFiles := packageRootUploadFiles(pkg, packageType.ManifestFile())
 
 	g, ctx := errgroup.WithContext(githubContext)
-	for fileName := range uploadFiles {
+	for fileName, contentType := range uploadFiles {
 		g.Go(func() error {
-			return uploadPackageRootFile(ctx, ownerRepo, hash, packageRoot, fileName)
+			return uploadPackageRootFile(ctx, ownerRepo, hash, packageRoot, fileName, contentType)
 		})
 	}
 	if waitErr := g.Wait(); waitErr != nil {
@@ -210,6 +189,30 @@ func indexPackage(
 	}
 	ok = true
 	return
+}
+
+// packageRootUploadFiles 返回待上传包根文件及其显式 MIME；空 MIME 由对象存储自动识别。
+func packageRootUploadFiles(pkg *rules.Package, manifestFile string) map[string]string {
+	uploadFiles := map[string]string{
+		"README.md":  "", // 始终加入，思源将其作为最后回退
+		manifestFile: "",
+	}
+	if pkg == nil {
+		return uploadFiles
+	}
+	for _, readmePath := range pkg.Readme {
+		readmePath = strings.TrimSpace(readmePath) // 跟思源内核逻辑一致，TrimSpace
+		if readmePath != "" {
+			uploadFiles[readmePath] = ""
+		}
+	}
+	if pkg.Icon != nil && *pkg.Icon != "" {
+		uploadFiles[*pkg.Icon] = rules.ImageMIMEType(*pkg.Icon)
+	}
+	if pkg.Preview != nil && *pkg.Preview != "" {
+		uploadFiles[*pkg.Preview] = rules.ImageMIMEType(*pkg.Preview)
+	}
+	return uploadFiles
 }
 
 // getRepoLatestRelease 获取仓库最新发布的版本；失败时 error 为双语 LocalizedError（可转 Issue）。
@@ -269,25 +272,13 @@ func sizeOfDirectory(path string) (size int64, err error) {
 	return
 }
 
-// getPackage 从解压后的包根目录 unzipRoot 读取该类型的清单 JSON（如 plugin.json），解析为 Package。
-func getPackage(unzipRoot string, packageType rules.PackageType) *rules.Package {
-	jsonPath := filepath.Join(unzipRoot, packageType.ManifestFile())
-	_, pkg, err := rules.ReadPackage(jsonPath)
-	if err != nil {
-		logger.Errorf("read package [%s] failed: %s", jsonPath, err)
-		return nil
-	}
-	rules.SanitizePackage(pkg)
-	return pkg
-}
-
 // uploadPackageRootFile 从包根目录 unzipRoot 读取 fileName 对应文件（大小写敏感）并上传到 OSS；文件不存在时仅记录并跳过。
-func uploadPackageRootFile(ctx context.Context, ownerRepo, hash, unzipRoot, fileName string) error {
+func uploadPackageRootFile(ctx context.Context, ownerRepo, hash, unzipRoot, fileName, contentType string) error {
 	repoURL := util.GitHubRepoURL(ownerRepo)
 	localPath := filepath.Join(unzipRoot, fileName)
 	data, err := os.ReadFile(localPath)
 	if err != nil {
-		// 可选文件（如部分 README、preview.png）可能不存在，仅记录并跳过，不导致整包失败
+		// 防御性兼容旧调用：文件不存在时仅记录并跳过，不导致整包失败。
 		if os.IsNotExist(err) {
 			logger.Errorf("file not found in package [%s], skip upload [%s]", repoURL, fileName)
 			return nil
@@ -302,7 +293,7 @@ func uploadPackageRootFile(ctx context.Context, ownerRepo, hash, unzipRoot, file
 	}
 
 	key := "package/" + ownerRepo + "@" + hash + "/" + fileName
-	if err := util.UploadOSS(ctx, key, data); err != nil {
+	if err := util.UploadOSSWithContentType(ctx, key, data, contentType); err != nil {
 		logger.Errorf("upload package [%s] file [%s] failed: %s", repoURL, fileName, err)
 		return err
 	}

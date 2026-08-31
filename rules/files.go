@@ -19,45 +19,33 @@ import (
 	"strings"
 )
 
-const (
-	// maxIconPNGBytes 为 icon.png 体积上限（含等于；「20 KB 以内」）。
-	maxIconPNGBytes = 20 * 1024
-	// maxPreviewPNGBytes 为 preview.png 体积上限（含等于；「200 KB 以内」）。
-	maxPreviewPNGBytes = 200 * 1024
-)
-
 // requiredFile 描述包根下的一个必要文件及其缺失时的补充说明。
-// maxSize 为字节上限；0 表示不限制。超过（>）则报错。
 type requiredFile struct {
-	name    string
-	hintZh  string
-	hintEn  string
-	maxSize int64
+	name   string
+	hintZh string
+	hintEn string
 }
 
 // requiredFilesFor 返回指定类型在包根下必须存在的文件（文件名大小写敏感）。
 // 模板另有「至少一个非说明文档的 .md」规则，不在此列表中。
 func requiredFilesFor(typ PackageType) []requiredFile {
 	files := []requiredFile{
-		{"icon.png", "这是集市列表里显示的图标。", "It's the icon shown in the bazaar list. ", maxIconPNGBytes},
-		{"preview.png", "这是集市包详情页里显示的预览图。", "It's the preview image on the package detail page. ", maxPreviewPNGBytes},
-		{"README.md", "这是集市包的默认说明文档。", "It's the package's default docs file. ", 0},
+		{"README.md", "这是集市包的默认说明文档。", "It's the package's default docs file. "},
 		{
 			typ.ManifestFile(),
 			fmt.Sprintf("这是 %s 的清单文件。", typ.String()),
 			fmt.Sprintf("It's the %s manifest file. ", typ.String()),
-			0,
 		},
 	}
 	switch typ {
 	case TypePlugin:
-		files = append(files, requiredFile{"index.js", "这是插件的前端入口脚本文件。", "It's the plugin's frontend entry script. ", 0})
+		files = append(files, requiredFile{"index.js", "这是插件的前端入口脚本文件。", "It's the plugin's frontend entry script. "})
 	case TypeTheme:
-		files = append(files, requiredFile{"theme.css", "这是主题的样式入口文件。", "It's the theme stylesheet entry. ", 0})
+		files = append(files, requiredFile{"theme.css", "这是主题的样式入口文件。", "It's the theme stylesheet entry. "})
 	case TypeIcon:
-		files = append(files, requiredFile{"icon.js", "这是图标包的脚本入口文件。", "It's the icon pack script entry. ", 0})
+		files = append(files, requiredFile{"icon.js", "这是图标包的脚本入口文件。", "It's the icon pack script entry. "})
 	case TypeWidget:
-		files = append(files, requiredFile{"index.html", "这是挂件的页面入口文件。", "It's the widget page entry. ", 0})
+		files = append(files, requiredFile{"index.html", "这是挂件的页面入口文件。", "It's the widget page entry. "})
 	}
 	return files
 }
@@ -90,14 +78,6 @@ func checkRequiredFile(root string, f requiredFile) []Issue {
 	if info.IsDir() {
 		return []Issue{issue(fmt.Sprintf("`%s` 目前是一个目录，但集市要求它是普通文件。请放到包根下的同名文件，而不是文件夹。", f.name),
 			fmt.Sprintf("`%s` is currently a directory, but the bazaar expects a regular file. Please put a file with that exact name at the package root, not a folder.", f.name),
-		)}
-	}
-	if f.maxSize > 0 && info.Size() > f.maxSize {
-		return []Issue{issue(
-			fmt.Sprintf("`%s` 文件大小为 %s，超过上限 %s。请压缩或缩小该文件后重新打包，并更新 GitHub Release 中的 `package.zip`。",
-				f.name, formatByteSize(info.Size()), formatByteSize(f.maxSize)),
-			fmt.Sprintf("`%s` is %s, which exceeds the limit of %s. Please compress or shrink the file, repackage it, and update `package.zip` in the GitHub Release.",
-				f.name, formatByteSize(info.Size()), formatByteSize(f.maxSize)),
 		)}
 	}
 	return nil
