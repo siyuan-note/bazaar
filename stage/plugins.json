@@ -1,6 +1,339 @@
 {
   "repos": [
     {
+      "installSize": 5243363,
+      "openIssues": 0,
+      "package": {
+        "author": "LongDarkroom",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "RE word: select-to-lookup offline dictionary, hotkey word collection for review, AI deep-reading (study/chat modes), custom offline MDX dictionaries, drag SiYuan doc tabs into the chat as context",
+          "zh-CN": "RE word 词汇助手：选中单词一键查离线词典、框选快捷键自动收词复习、AI 精读（学习/对话模式）、支持自定义离线词典库（MDX），可把思源文档页签拖入对话框作为上下文。💡 使用前请先配置离线词典包，获取方式见 README 词典获取指南"
+        },
+        "displayName": {
+          "default": "RE word"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "vocabulary",
+          "english",
+          "dictionary",
+          "单词",
+          "词汇",
+          "词典",
+          "英语",
+          "复习"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-reword",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/LongDarkroom/siyuan-plugin-reword",
+        "version": "1.5.1"
+      },
+      "packageZipAssetId": 539143907,
+      "packageZipSha256": "9154c481c7b486c4e9d3f182baa825b6c5630d1ccdba7f2f50e28cd59f4f913e",
+      "repoRef": "v1.5.1",
+      "size": 1511732,
+      "stars": 1,
+      "updated": "2026-09-01T07:02:37Z",
+      "url": "LongDarkroom/siyuan-plugin-reword@9154c48"
+    },
+    {
+      "installSize": 1098295,
+      "openIssues": 0,
+      "package": {
+        "author": "ccriss",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "description": {
+          "default": "A GTD task management plugin inspired by Things, for SiYuan Note",
+          "zh-CN": "灵感来自 Things 的 GTD 任务管理插件"
+        },
+        "displayName": {
+          "default": "Things",
+          "zh-CN": "Things 任务管理"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "funding": {
+          "custom": [
+            "https://github.com/chengslog/siyuan-things/blob/main/README.md#支持项目"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "keywords": [
+          "things",
+          "task",
+          "gtd",
+          "todo",
+          "任务管理",
+          "待办事项",
+          "人工智能",
+          "AI assistant"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-things",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en": "README.en.md"
+        },
+        "url": "https://github.com/chengslog/siyuan-things",
+        "version": "0.6.0"
+      },
+      "packageZipAssetId": 539013837,
+      "packageZipSha256": "f12261cdf7b1b7cbbf920e1ab87f0098497014ad660fc920dd420e54a2fb6ed5",
+      "repoRef": "v0.6.0",
+      "size": 572372,
+      "stars": 5,
+      "updated": "2026-09-01T05:11:28Z",
+      "url": "chengslog/siyuan-things@f12261c"
+    },
+    {
+      "installSize": 322014,
+      "openIssues": 0,
+      "package": {
+        "author": "QMike0",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Optimize the callout block style, and provide features such as quick title editing, collapse/expand, autocomplete menu, type menu, appearance customization, and type management",
+          "zh-CN": "优化callout块样式，并提供标题快速编辑、折叠/展开、补全菜单、类型菜单、外观自定义与类型管理等功能"
+        },
+        "displayName": {
+          "default": "Callout Enhance",
+          "zh-CN": "Callout 增强"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "提示块",
+          "callout",
+          "Callout"
+        ],
+        "minAppVersion": "3.7.3",
+        "name": "siyuan-plugin-callout-enhance",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/QMike0/siyuan-plugin-callout-enhance",
+        "version": "0.3.3"
+      },
+      "packageZipAssetId": 539000226,
+      "packageZipSha256": "9b18a3293ad5f6b7601fd02cff8684d2804ac18226a2d73abd97929b4f17f048",
+      "repoRef": "v0.3.3",
+      "size": 91040,
+      "stars": 3,
+      "updated": "2026-09-01T05:01:13Z",
+      "url": "QMike0/siyuan-plugin-callout-enhance@9b18a32"
+    },
+    {
+      "installSize": 246530,
+      "openIssues": 0,
+      "package": {
+        "author": "sihan-bzwj",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Auto-repair broken LaTeX delimiters and convert MathML to LaTeX when pasting",
+          "zh-CN": "粘贴时自动修复损坏的 LaTeX 公式（AI 聊天文本），并把网页复制的 MathML 转换为可渲染公式"
+        },
+        "displayName": {
+          "default": "Paste LaTeX Fixer",
+          "zh-CN": "粘贴公式修复"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "latex",
+          "mathml",
+          "paste",
+          "公式",
+          "粘贴"
+        ],
+        "minAppVersion": "3.8.2",
+        "name": "paste-fixer",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/sihan-bzwj/siyuan-paste-fixer",
+        "version": "0.2.6"
+      },
+      "packageZipAssetId": 538972198,
+      "packageZipSha256": "fbdbabff15877581cef4582c785b4b3cade2f56507c14c4a5144fdd164b0daf8",
+      "repoRef": "v0.2.6",
+      "size": 190643,
+      "stars": 0,
+      "updated": "2026-09-01T04:38:39Z",
+      "url": "sihan-bzwj/siyuan-paste-fixer@fbdbabf"
+    },
+    {
+      "installSize": 111177,
+      "openIssues": 2,
+      "package": {
+        "author": "Misuzu2027",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Personal-use plugin. Some features may have data or performance issues; bug reports welcome.",
+          "zh-CN": "个人使用插件，部分功能可能有数据或性能问题，支持反馈 bug。"
+        },
+        "displayName": {
+          "default": "Misuzu"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "minAppVersion": "3.0.14",
+        "name": "syplugin-misuzu-custom",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/Misuzu2027/syplugin-misuzu-custom",
+        "version": "0.0.15"
+      },
+      "packageZipAssetId": 538965087,
+      "packageZipSha256": "12a2a29927d39669dcbedb33ab92b1a27272ea66c54aae9e1bfd4010d193ea85",
+      "repoRef": "v0.0.15",
+      "size": 51800,
+      "stars": 0,
+      "updated": "2026-09-01T04:33:10Z",
+      "url": "Misuzu2027/syplugin-misuzu-custom@12a2a29"
+    },
+    {
+      "installSize": 140173,
+      "openIssues": 1,
+      "package": {
+        "author": "Misuzu2027",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "en_US": "Dual-Level Document List",
+          "zh_CN": "二级文档列表"
+        },
+        "displayName": {
+          "en_US": "Dual-Level Document List",
+          "zh_CN": "二级文档列表"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            ""
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "document",
+          "tree",
+          "文档",
+          "搜索"
+        ],
+        "minAppVersion": "3.0.12",
+        "name": "syplugin-dual-doc-list",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/Misuzu2027/syplugin-dual-doc-list",
+        "version": "0.0.36"
+      },
+      "packageZipAssetId": 538965053,
+      "packageZipSha256": "9fcdbbc05c6c7be3166416bb12ca339808092565346ba5e8cbab7296a35b4a05",
+      "repoRef": "v0.0.36",
+      "size": 50843,
+      "stars": 5,
+      "updated": "2026-09-01T04:33:08Z",
+      "url": "Misuzu2027/syplugin-dual-doc-list@9fcdbbc"
+    },
+    {
+      "installSize": 140217,
+      "openIssues": 0,
+      "package": {
+        "author": "YanyingWei1997",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A Chinese-first SiYuan Markdown style with Typora-matched heading typography, LXGW WenKai body text, white paper, capsule tags and an Esther-inspired macOS code panel.",
+          "zh-CN": "中文优先的思源 Markdown 样式：匹配 Typora 的标题字体层级、霞鹜文楷正文、纯白纸面、胶囊 Tag 与 Esther 风格 macOS 代码框。"
+        },
+        "displayName": {
+          "default": "Kami Markdown",
+          "zh-CN": "Kami Markdown 样式"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "Markdown",
+          "Kami",
+          "Typora",
+          "中文排版",
+          "所见即所得",
+          "macOS code block"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-ying-kami-markdown",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/YanyingWei1997/siyuan-plugin-ying-kami-markdown",
+        "version": "0.1.12"
+      },
+      "packageZipAssetId": 538921234,
+      "packageZipSha256": "1041660c66e7630206cd248f65eb77d9d94b492d8cef7711e1dd8a131d012657",
+      "repoRef": "v0.1.12",
+      "size": 97666,
+      "stars": 0,
+      "updated": "2026-09-01T03:58:54Z",
+      "url": "YanyingWei1997/siyuan-plugin-ying-kami-markdown@1041660"
+    },
+    {
       "installSize": 968901,
       "openIssues": 0,
       "package": {
@@ -41,6 +374,160 @@
       "stars": 0,
       "updated": "2026-09-01T03:37:44Z",
       "url": "getcodeQi/siyuan-plugin-advanced-code@c249300"
+    },
+    {
+      "installSize": 2069740,
+      "openIssues": 0,
+      "package": {
+        "author": "LunaNorth",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A lightweight note-taking plugin for SiYuan, inspired by Flomo",
+          "zh_CN": "记录每一个轻闪而过的念头"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Lumina",
+          "zh_CN": "轻语"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://testingcf.jsdelivr.net/gh/LunaNorth/north-img/images/20260519195219305.png"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "碎碎念",
+          "记录",
+          "回顾"
+        ],
+        "minAppVersion": "3.3.3",
+        "name": "siyuan-lumina",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/LunaNorth/siyuan-lumina",
+        "version": "2.3.0"
+      },
+      "packageZipAssetId": 538874992,
+      "packageZipSha256": "93fb93d43b48f3cfd4db9117ade5a780afa432d71a19556404fb89340769cfe7",
+      "repoRef": "v2.3.0",
+      "size": 579749,
+      "stars": 16,
+      "updated": "2026-09-01T03:21:13Z",
+      "url": "LunaNorth/siyuan-lumina@93fb93d"
+    },
+    {
+      "installSize": 674906,
+      "openIssues": 0,
+      "package": {
+        "author": "gradypark86",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Quickly create a new or go to diary or weekly notes on the calendar panel, with support for periodic note templates",
+          "zh_CN": "在日历面板上快速新建或转到日记与周记，支持周期笔记模板"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Siyuan Calendar Panel",
+          "zh_CN": "思源日历面板"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "calendar",
+          "日历",
+          "日记",
+          "daily",
+          "weekly",
+          "周记"
+        ],
+        "minAppVersion": "2.13.0",
+        "name": "siyuan-plugin-calendar",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README_en_US.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/gradypark86/siyuan-plugin-calendar",
+        "version": "0.4.0"
+      },
+      "packageZipAssetId": 538855866,
+      "packageZipSha256": "f301b75eb923a3b337e55d82ef3bc20e5466a56da280933e3213cb1289d9ddc3",
+      "repoRef": "v0.4.0",
+      "size": 293392,
+      "stars": 2,
+      "updated": "2026-09-01T03:03:29Z",
+      "url": "gradypark86/siyuan-plugin-calendar@f301b75"
+    },
+    {
+      "installSize": 3283818,
+      "openIssues": 1,
+      "package": {
+        "author": "verygoodwu",
+        "backends": [
+          "windows",
+          "linux",
+          "docker"
+        ],
+        "description": {
+          "default": "Import, create, edit, preview, and export office documents and mind maps in SiYuan.",
+          "zh-CN": "在思源中导入、创建、编辑、预览和导出办公文档与脑图。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Cloud Document Suite",
+          "zh-CN": "云文档套件"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "windows",
+          "linux",
+          "docker"
+        ],
+        "keywords": [
+          "document",
+          "office",
+          "excel",
+          "word",
+          "pdf",
+          "mindmap",
+          "云文档",
+          "办公套件",
+          "拖放"
+        ],
+        "minAppVersion": "3.7.4",
+        "name": "siyuan-cloud-document-suite",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/verygoodwu/siyuan-cloud-document-suite",
+        "version": "2.0.6"
+      },
+      "packageZipAssetId": 538839055,
+      "packageZipSha256": "62faca5cdb5b7f40709129dbfcfd7de63f1692660852a4d7c84e470660849327",
+      "repoRef": "v2.0.6",
+      "size": 971526,
+      "stars": 0,
+      "updated": "2026-09-01T02:47:10Z",
+      "url": "verygoodwu/siyuan-cloud-document-suite@62faca5"
     },
     {
       "installSize": 560536,
@@ -239,48 +726,6 @@
       "stars": 5,
       "updated": "2026-08-31T16:16:24Z",
       "url": "hqweay/siyuan-panda-navigation@14d7eeb"
-    },
-    {
-      "installSize": 238370,
-      "openIssues": 0,
-      "package": {
-        "author": "sihan-bzwj",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Auto-repair broken LaTeX delimiters and convert MathML to LaTeX when pasting",
-          "zh-CN": "粘贴时自动修复损坏的 LaTeX 公式（AI 聊天文本），并把网页复制的 MathML 转换为可渲染公式"
-        },
-        "displayName": {
-          "default": "Paste LaTeX Fixer",
-          "zh-CN": "粘贴公式修复"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "latex",
-          "mathml",
-          "paste",
-          "公式",
-          "粘贴"
-        ],
-        "minAppVersion": "3.8.2",
-        "name": "paste-fixer",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/sihan-bzwj/siyuan-paste-fixer",
-        "version": "0.2.3"
-      },
-      "packageZipAssetId": 538201089,
-      "packageZipSha256": "9c871dbf5d23a4162493b5f3721d838b7f7e829d5d936098150405e05b2c1fd1",
-      "repoRef": "v0.2.3",
-      "size": 188345,
-      "stars": 0,
-      "updated": "2026-08-31T15:50:56Z",
-      "url": "sihan-bzwj/siyuan-paste-fixer@9c871db"
     },
     {
       "installSize": 2325292,
@@ -1055,63 +1500,6 @@
       "url": "houm01/stillmark-workbench@5ca3094"
     },
     {
-      "installSize": 3264375,
-      "openIssues": 1,
-      "package": {
-        "author": "verygoodwu",
-        "backends": [
-          "windows",
-          "linux",
-          "docker"
-        ],
-        "description": {
-          "default": "Import, create, edit, preview, and export office documents and mind maps in SiYuan.",
-          "zh-CN": "在思源中导入、创建、编辑、预览和导出办公文档与脑图。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Cloud Document Suite",
-          "zh-CN": "云文档套件"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop"
-        ],
-        "kernels": [
-          "windows",
-          "linux",
-          "docker"
-        ],
-        "keywords": [
-          "document",
-          "office",
-          "excel",
-          "word",
-          "pdf",
-          "mindmap",
-          "云文档",
-          "办公套件",
-          "拖放"
-        ],
-        "minAppVersion": "3.7.4",
-        "name": "siyuan-cloud-document-suite",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/verygoodwu/siyuan-cloud-document-suite",
-        "version": "1.9.2"
-      },
-      "packageZipAssetId": 536788810,
-      "packageZipSha256": "747f280a4973764814bdceee24c068ff827dc6afa837aba2ff0821897121f8cc",
-      "repoRef": "v1.9.2",
-      "size": 967435,
-      "stars": 0,
-      "updated": "2026-08-30T16:01:31Z",
-      "url": "verygoodwu/siyuan-cloud-document-suite@747f280"
-    },
-    {
       "installSize": 1564012,
       "openIssues": 2,
       "package": {
@@ -1163,52 +1551,6 @@
       "stars": 1,
       "updated": "2026-08-30T15:32:35Z",
       "url": "MDfox-ChaosZone/siyuan-font-studio@d629f3b"
-    },
-    {
-      "installSize": 2042421,
-      "openIssues": 0,
-      "package": {
-        "author": "LunaNorth",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A lightweight note-taking plugin for SiYuan, inspired by Flomo",
-          "zh_CN": "记录每一个轻闪而过的念头"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Lumina",
-          "zh_CN": "轻语"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://testingcf.jsdelivr.net/gh/LunaNorth/north-img/images/20260519195219305.png"
-          ]
-        },
-        "keywords": [
-          "碎碎念",
-          "记录",
-          "回顾"
-        ],
-        "minAppVersion": "3.3.3",
-        "name": "siyuan-lumina",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/LunaNorth/siyuan-lumina",
-        "version": "2.2.9"
-      },
-      "packageZipAssetId": 536749175,
-      "packageZipSha256": "842fffbc2a34f9927e27b2b4394df8f918efc9351c950677455038804b0c9a51",
-      "repoRef": "v2.2.9",
-      "size": 574167,
-      "stars": 16,
-      "updated": "2026-08-30T15:19:00Z",
-      "url": "LunaNorth/siyuan-lumina@842fffb"
     },
     {
       "installSize": 1388498,
@@ -1373,53 +1715,6 @@
       "stars": 26,
       "updated": "2026-08-30T13:47:55Z",
       "url": "Wetoria/sy-plugin-enhance@8c47e63"
-    },
-    {
-      "installSize": 5096858,
-      "openIssues": 0,
-      "package": {
-        "author": "LongDarkroom",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "RE word: select-to-lookup offline dictionary, hotkey word collection for review, AI deep-reading (study/chat modes), custom offline MDX dictionaries, drag SiYuan doc tabs into the chat as context",
-          "zh-CN": "RE word 词汇助手：选中单词一键查离线词典、框选快捷键自动收词复习、AI 精读（学习/对话模式）、支持自定义离线词典库（MDX），可把思源文档页签拖入对话框作为上下文。💡 使用前请先配置离线词典包，获取方式见 README 词典获取指南"
-        },
-        "displayName": {
-          "default": "RE word"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "mobile",
-          "browser-mobile"
-        ],
-        "keywords": [
-          "vocabulary",
-          "english",
-          "dictionary",
-          "单词",
-          "词汇",
-          "词典",
-          "英语",
-          "复习"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-reword",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/LongDarkroom/siyuan-plugin-reword",
-        "version": "1.4.4"
-      },
-      "packageZipAssetId": 536437078,
-      "packageZipSha256": "61358381679a3a162caab167b6372aaf44a379f951ff08f4436ff39e7367446e",
-      "repoRef": "v1.4.4",
-      "size": 1472762,
-      "stars": 1,
-      "updated": "2026-08-30T09:58:17Z",
-      "url": "LongDarkroom/siyuan-plugin-reword@6135838"
     },
     {
       "installSize": 197732,
@@ -1983,69 +2278,6 @@
       "url": "royc01/pinch@9ef7e6f"
     },
     {
-      "installSize": 1095766,
-      "openIssues": 0,
-      "package": {
-        "author": "ccriss",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker"
-        ],
-        "description": {
-          "default": "A GTD task management plugin inspired by Things, for SiYuan Note",
-          "zh-CN": "灵感来自 Things 的 GTD 任务管理插件"
-        },
-        "displayName": {
-          "default": "Things",
-          "zh-CN": "Things 任务管理"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile"
-        ],
-        "funding": {
-          "custom": [
-            "https://github.com/chengslog/siyuan-things/blob/main/README.md#支持项目"
-          ]
-        },
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker"
-        ],
-        "keywords": [
-          "things",
-          "task",
-          "gtd",
-          "todo",
-          "任务管理",
-          "待办事项",
-          "人工智能",
-          "AI assistant"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-things",
-        "readme": {
-          "default": "README.md",
-          "en": "README.en.md"
-        },
-        "url": "https://github.com/chengslog/siyuan-things",
-        "version": "0.5.4"
-      },
-      "packageZipAssetId": 533985071,
-      "packageZipSha256": "434f2f89b593cf85b79d27e257c069f6661906311c36cc10b7199f2c5803801e",
-      "repoRef": "v0.5.4",
-      "size": 571561,
-      "stars": 5,
-      "updated": "2026-08-28T15:27:54Z",
-      "url": "chengslog/siyuan-things@434f2f8"
-    },
-    {
       "installSize": 1800232,
       "openIssues": 1,
       "package": {
@@ -2084,51 +2316,6 @@
       "stars": 43,
       "updated": "2026-08-28T10:43:38Z",
       "url": "Szerelem0617/siyuan-plugins-index@e37ce99"
-    },
-    {
-      "installSize": 669488,
-      "openIssues": 0,
-      "package": {
-        "author": "gradypark86",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Quickly create a new or go to diary or weekly notes on the calendar panel, with support for periodic note templates",
-          "zh_CN": "在日历面板上快速新建或转到日记与周记，支持周期笔记模板"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Siyuan Calendar Panel",
-          "zh_CN": "思源日历面板"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "calendar",
-          "日历",
-          "日记",
-          "daily",
-          "weekly",
-          "周记"
-        ],
-        "minAppVersion": "2.13.0",
-        "name": "siyuan-plugin-calendar",
-        "readme": {
-          "default": "README_en_US.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/gradypark86/siyuan-plugin-calendar",
-        "version": "0.3.7"
-      },
-      "packageZipAssetId": 533559063,
-      "packageZipSha256": "bbce74869ff6ce15b2ea470ec0feea4801a71e15fe29e0345860dac2ebac4f31",
-      "repoRef": "v0.3.7",
-      "size": 288663,
-      "stars": 2,
-      "updated": "2026-08-28T09:20:24Z",
-      "url": "gradypark86/siyuan-plugin-calendar@bbce748"
     },
     {
       "installSize": 2634900,
@@ -3010,53 +3197,6 @@
       "stars": 2,
       "updated": "2026-08-23T12:53:52Z",
       "url": "lisontowind/siyuan-footnote-jumper@bae9f1e"
-    },
-    {
-      "installSize": 140219,
-      "openIssues": 1,
-      "package": {
-        "author": "Misuzu2027",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "en_US": "Dual-Level Document List",
-          "zh_CN": "二级文档列表"
-        },
-        "displayName": {
-          "en_US": "Dual-Level Document List",
-          "zh_CN": "二级文档列表"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            ""
-          ]
-        },
-        "keywords": [
-          "document",
-          "tree",
-          "文档",
-          "搜索"
-        ],
-        "minAppVersion": "3.0.12",
-        "name": "syplugin-dual-doc-list",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/Misuzu2027/syplugin-dual-doc-list",
-        "version": "0.0.35"
-      },
-      "packageZipAssetId": 525925020,
-      "packageZipSha256": "88ba591fb639bd07618a3ae4f100814e70e29bdf2a39b54790b1106224d0d4e0",
-      "repoRef": "v0.0.35",
-      "size": 50856,
-      "stars": 5,
-      "updated": "2026-08-23T06:40:29Z",
-      "url": "Misuzu2027/syplugin-dual-doc-list@88ba591"
     },
     {
       "installSize": 262385,
@@ -4288,41 +4428,6 @@
       "url": "hqweay/siyuan-hqweay-go@45f80af"
     },
     {
-      "installSize": 110544,
-      "openIssues": 2,
-      "package": {
-        "author": "Misuzu2027",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Personal-use plugin. Some features may have data or performance issues; bug reports welcome.",
-          "zh-CN": "个人使用插件，部分功能可能有数据或性能问题，支持反馈 bug。"
-        },
-        "displayName": {
-          "default": "Misuzu"
-        },
-        "frontends": [
-          "all"
-        ],
-        "minAppVersion": "3.0.14",
-        "name": "syplugin-misuzu-custom",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/Misuzu2027/syplugin-misuzu-custom",
-        "version": "0.0.14"
-      },
-      "packageZipAssetId": 517806443,
-      "packageZipSha256": "ddea648423eadf2e745fb6db5aef2710f98878a11256891ba8d6347683d9f5d5",
-      "repoRef": "v0.0.14",
-      "size": 51643,
-      "stars": 0,
-      "updated": "2026-08-17T08:00:47Z",
-      "url": "Misuzu2027/syplugin-misuzu-custom@ddea648"
-    },
-    {
       "installSize": 286677,
       "openIssues": 1,
       "package": {
@@ -4481,50 +4586,6 @@
       "stars": 5,
       "updated": "2026-08-16T01:32:28Z",
       "url": "lnedpaul/siyuan-rss-reader@6f80b14"
-    },
-    {
-      "installSize": 170550,
-      "openIssues": 0,
-      "package": {
-        "author": "YanyingWei1997",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A Chinese-first SiYuan Markdown style with LXGW WenKai, consistent blue headings, white paper, capsule tags and an Esther-inspired macOS code panel.",
-          "zh-CN": "中文优先的思源 Markdown 样式：霞鹜文楷、统一深蓝标题、纯白纸面、胶囊 Tag 与 Esther 风格 macOS 代码框。"
-        },
-        "displayName": {
-          "default": "YING Kami Markdown",
-          "zh-CN": "YING Kami Markdown 样式"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "Markdown",
-          "Kami",
-          "Typora",
-          "中文排版",
-          "所见即所得",
-          "macOS code block"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-ying-kami-markdown",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/YanyingWei1997/siyuan-plugin-ying-kami-markdown",
-        "version": "0.1.11"
-      },
-      "packageZipAssetId": 516081123,
-      "packageZipSha256": "f481e23d39e7dcee549a4c6947564ab88888e68da75a78b23b51c6de0833a051",
-      "repoRef": "v0.1.11",
-      "size": 121845,
-      "stars": 0,
-      "updated": "2026-08-15T21:21:21Z",
-      "url": "YanyingWei1997/siyuan-plugin-ying-kami-markdown@f481e23"
     },
     {
       "installSize": 45971646,
@@ -7207,47 +7268,6 @@
       "stars": 1,
       "updated": "2026-07-31T01:44:39Z",
       "url": "lovelife88/siyuan-plugin-recent-timeline@fef5cba"
-    },
-    {
-      "installSize": 304171,
-      "openIssues": 0,
-      "package": {
-        "author": "QMike0",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Optimize the callout block style, and provide features such as quick title editing, collapse/expand, autocomplete menu, type menu, appearance customization, and type management",
-          "zh-CN": "优化callout块样式，并提供标题快速编辑、折叠/展开、补全菜单、类型菜单、外观自定义与类型管理等功能"
-        },
-        "displayName": {
-          "default": "Callout Enhance",
-          "zh-CN": "Callout 增强"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "提示块",
-          "callout",
-          "Callout"
-        ],
-        "minAppVersion": "3.7.3",
-        "name": "siyuan-plugin-callout-enhance",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/QMike0/siyuan-plugin-callout-enhance",
-        "version": "0.3.2"
-      },
-      "packageZipAssetId": 495602556,
-      "packageZipSha256": "ece064abb5cad14bc84884f1d8d84a4ef681213a908262270b04c98628c5627e",
-      "repoRef": "v0.3.2",
-      "size": 89750,
-      "stars": 3,
-      "updated": "2026-07-30T16:36:37Z",
-      "url": "QMike0/siyuan-plugin-callout-enhance@ece064a"
     },
     {
       "installSize": 1514378,
