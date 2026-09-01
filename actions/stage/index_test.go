@@ -206,20 +206,4 @@ func TestCloneStageRepoWithRepoRef(t *testing.T) {
 	}
 }
 
-func TestNormalizeLegacyStageImages(t *testing.T) {
-	repo := &util.StageRepo{Package: rules.Package{}}
-	normalizeLegacyStageImages(repo)
-	if repo.Package.Icon == nil || *repo.Package.Icon != "icon.png" {
-		t.Fatalf("legacy icon = %#v, want icon.png", repo.Package.Icon)
-	}
-	if repo.Package.Preview == nil || *repo.Package.Preview != "preview.png" {
-		t.Fatalf("legacy preview = %#v, want preview.png", repo.Package.Preview)
-	}
 
-	empty := ""
-	withoutImages := &util.StageRepo{Package: rules.Package{Icon: &empty, Preview: &empty}}
-	normalizeLegacyStageImages(withoutImages)
-	if *withoutImages.Package.Icon != "" || *withoutImages.Package.Preview != "" {
-		t.Fatalf("explicit empty images must stay empty: icon=%q preview=%q", *withoutImages.Package.Icon, *withoutImages.Package.Preview)
-	}
-}

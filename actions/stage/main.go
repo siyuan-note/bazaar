@@ -508,7 +508,6 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 	}
 	for i := range staged.Repos {
 		// hash 跳过 / 失败保留的旧条目也可能带有空 funding、旧弃用字段或冗余 locale，写回前一并清理。
-		normalizeLegacyStageImages(&staged.Repos[i])
 		rules.ClearEmptyFunding(&staged.Repos[i].Package)
 		rules.ClearRedundantLocales(&staged.Repos[i].Package)
 	}
@@ -535,21 +534,6 @@ func cloneStageRepoWithRepoRef(repo *util.StageRepo, repoRef string) *util.Stage
 	cloned := *repo
 	cloned.RepoRef = repoRef
 	return &cloned
-}
-
-// normalizeLegacyStageImages 将旧 Stage 条目的固定图片名转为三态字段；显式空字符串表示新版无图配置。
-func normalizeLegacyStageImages(repo *util.StageRepo) {
-	if repo == nil {
-		return
-	}
-	if repo.Package.Icon == nil {
-		legacyIcon := "icon.png"
-		repo.Package.Icon = &legacyIcon
-	}
-	if repo.Package.Preview == nil {
-		legacyPreview := "preview.png"
-		repo.Package.Preview = &legacyPreview
-	}
 }
 
 // backfillUnprocessedStageRepos 在限流中止后，为尚未写入结果的列表仓库补回同路径旧条目，避免 stage JSON 丢仓。
