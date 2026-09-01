@@ -148,8 +148,8 @@ func normalizePackageImage(manifest map[string]any, root string, spec packageIma
 			actualEn = actualMIME
 		}
 		return fileName, []Issue{issue(
-			fmt.Sprintf("清单字段 `%s` 声明的图片 `%s` 扩展名对应 `%s`，但文件内容实际格式为 %s。请使用与实际格式一致的扩展名和内容。", spec.field, fileName, expectedMIME, actual),
-			fmt.Sprintf("Image `%s` declared by manifest field `%s` uses extension type `%s`, but its contents are %s. Please make the extension and actual format match.", fileName, spec.field, expectedMIME, actualEn),
+			fmt.Sprintf("清单字段 `%s` 声明的图片 `%s` 扩展名对应 `%s`，但文件内容实际格式为 `%s`。请使用与实际格式一致的扩展名和内容。", spec.field, fileName, expectedMIME, actual),
+			fmt.Sprintf("Image `%s` declared by manifest field `%s` uses extension type `%s`, but its contents are `%s`. Please make the extension and actual format match.", fileName, spec.field, expectedMIME, actualEn),
 		)}
 	}
 	return fileName, nil
