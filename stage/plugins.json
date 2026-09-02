@@ -1,6 +1,200 @@
 {
   "repos": [
     {
+      "installSize": 3954575,
+      "openIssues": 0,
+      "package": {
+        "author": "IAliceBobI",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "🔓 Open source · An all-in-one productivity toolbox for SiYuan: status-bar Pomodoro, AI knowledge-base Q&amp;A, flashcards, sync blocks, block graphs and 19 more — covering time, editing, review and AI.",
+          "zh_CN": "🔓 已开源 · 为思源笔记打造的效率工具箱：状态栏番茄钟、AI 知识库问答、闪卡复习、同步块、块关系图等 24 项功能——时间管理、编辑增强、复习记忆、AI 问答一个插件全覆盖"
+        },
+        "displayName": {
+          "default": "Tomato Toolbox",
+          "zh_CN": "番茄工具箱"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "番茄钟",
+          "番茄",
+          "Pomodoro",
+          "闪卡",
+          "Flashcard",
+          "复习",
+          "Review",
+          "反链",
+          "Backlink",
+          "同步块",
+          "批注",
+          "思维导图",
+          "Mindmap",
+          "AI",
+          "问答",
+          "文档合并"
+        ],
+        "minAppVersion": "3.0.3",
+        "name": "sy-tomato-plugin",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/IAliceBobI/sy-tomato-plugin",
+        "version": "5.4.2"
+      },
+      "packageZipAssetId": 541313966,
+      "packageZipSha256": "701aaafacf467d7b5898078db61f5889c70ce975274a263b250742e05ea5e7e3",
+      "repoRef": "v5.4.2",
+      "size": 1210507,
+      "stars": 51,
+      "updated": "2026-09-02T14:42:24Z",
+      "url": "IAliceBobI/sy-tomato-plugin@701aaaf"
+    },
+    {
+      "installSize": 226841,
+      "openIssues": 0,
+      "package": {
+        "author": "lance",
+        "backends": [
+          "darwin",
+          "windows",
+          "linux"
+        ],
+        "description": {
+          "default": "Sync SiYuan Markdown todos with Dida through the local dida CLI.",
+          "zh-CN": "通过本机 dida CLI 同步思源 Markdown 待办与滴答清单。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Dida Sync",
+          "zh-CN": "滴答同步"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "todo",
+          "sync",
+          "dida",
+          "ticktick"
+        ],
+        "minAppVersion": "3.1.0",
+        "name": "siyuan-dida",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/Cloudquill-Z/siyuan-dida",
+        "version": "1.2.0"
+      },
+      "packageZipAssetId": 541301778,
+      "packageZipSha256": "7220fdab4c0ba5abfb8956bd377402baf80e5468c83b1bd2ebda404d9e2e404e",
+      "repoRef": "v1.2.0",
+      "size": 124535,
+      "stars": 1,
+      "updated": "2026-09-02T14:34:03Z",
+      "url": "Cloudquill-Z/siyuan-dida@7220fda"
+    },
+    {
+      "installSize": 238216,
+      "openIssues": 0,
+      "package": {
+        "author": "OpaqueGlass",
+        "description": {
+          "default": "Add a doc-breadcrumb",
+          "en_US": "Add a document breadcrumb. Add document path information that can be jumped to at the top of the editing area.",
+          "zh_CN": "再添加一个文档面包屑：在编辑区域顶部添加可跳转的文档路径信息导航条"
+        },
+        "displayName": {
+          "default": "fakeDocBreadcrumb",
+          "en_US": "Fake Doc Breadcrumb",
+          "zh_CN": "(伪)文档面包屑"
+        },
+        "funding": {
+          "custom": [
+            "https://wj.qq.com/s2/12395364/b69f/"
+          ]
+        },
+        "icon": "icon.png",
+        "name": "syplugin-fakeDocBreadcrumb",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/OpaqueGlass/syplugin-fakeDocBreadcrumb",
+        "version": "2.0.2"
+      },
+      "packageZipAssetId": 541245311,
+      "packageZipSha256": "47533fe340739c87e12c83e7985324e2270d719e0b64fd90bf971084f09ed9ba",
+      "repoRef": "v2.0.2",
+      "size": 104703,
+      "stars": 9,
+      "updated": "2026-09-02T13:49:52Z",
+      "url": "OpaqueGlass/syplugin-fakeDocBreadcrumb@47533fe"
+    },
+    {
+      "installSize": 3520952,
+      "openIssues": 7,
+      "package": {
+        "author": "Roy",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A habit tracking plugin for SiYuan",
+          "zh_CN": "每一次微小的坚持都值得记录"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Pinch Habit",
+          "zh_CN": "片趣-习惯打卡&amp;任务管理"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/Savor"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "habit",
+          "tracker",
+          "check-in"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "pinch",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/royc01/pinch",
+        "version": "2.6.4"
+      },
+      "packageZipAssetId": 541221749,
+      "packageZipSha256": "fedbda1287e1f922947d3fdc66816bfeea259a45458c18afe4a1e3d43f0b64f8",
+      "repoRef": "v2.6.4",
+      "size": 1381125,
+      "stars": 19,
+      "updated": "2026-09-02T13:31:38Z",
+      "url": "royc01/pinch@fedbda1"
+    },
+    {
       "installSize": 505997,
       "openIssues": 0,
       "package": {
@@ -432,58 +626,6 @@
       "url": "kx1356/siyuan-flashcard-zy@7b7f63d"
     },
     {
-      "installSize": 3511729,
-      "openIssues": 6,
-      "package": {
-        "author": "Roy",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A habit tracking plugin for SiYuan",
-          "zh_CN": "每一次微小的坚持都值得记录"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Pinch Habit",
-          "zh_CN": "片趣-习惯打卡&amp;任务管理"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/Savor"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "habit",
-          "tracker",
-          "check-in"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "pinch",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/royc01/pinch",
-        "version": "2.6.3"
-      },
-      "packageZipAssetId": 540309033,
-      "packageZipSha256": "ed625f2b9eeef2505726501c5bd291d24290c45dac3c0f3e208dd2e501225430",
-      "repoRef": "v2.6.3",
-      "size": 1381748,
-      "stars": 18,
-      "updated": "2026-09-01T15:36:32Z",
-      "url": "royc01/pinch@ed625f2"
-    },
-    {
       "installSize": 428081,
       "openIssues": 0,
       "package": {
@@ -668,62 +810,6 @@
       "stars": 4,
       "updated": "2026-09-01T13:43:20Z",
       "url": "frostime/siyuan-center-width@62f8739"
-    },
-    {
-      "installSize": 3870114,
-      "openIssues": 0,
-      "package": {
-        "author": "IAliceBobI",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "🔓 Open source · An all-in-one productivity toolbox for SiYuan: status-bar Pomodoro, AI knowledge-base Q&amp;A, flashcards, sync blocks, block graphs and 19 more — covering time, editing, review and AI.",
-          "zh_CN": "🔓 已开源 · 为思源笔记打造的效率工具箱：状态栏番茄钟、AI 知识库问答、闪卡复习、同步块、块关系图等 24 项功能——时间管理、编辑增强、复习记忆、AI 问答一个插件全覆盖"
-        },
-        "displayName": {
-          "default": "Tomato Toolbox",
-          "zh_CN": "番茄工具箱"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "番茄钟",
-          "番茄",
-          "Pomodoro",
-          "闪卡",
-          "Flashcard",
-          "复习",
-          "Review",
-          "反链",
-          "Backlink",
-          "同步块",
-          "批注",
-          "思维导图",
-          "Mindmap",
-          "AI",
-          "问答",
-          "文档合并"
-        ],
-        "minAppVersion": "3.0.3",
-        "name": "sy-tomato-plugin",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/IAliceBobI/sy-tomato-plugin",
-        "version": "5.4.0"
-      },
-      "packageZipAssetId": 539587012,
-      "packageZipSha256": "0b7a7b1de9983a42cacc1c39ff195b6dff631e0bf8a3918c7c5fbac00a899a32",
-      "repoRef": "v5.4.0",
-      "size": 1184072,
-      "stars": 51,
-      "updated": "2026-09-01T13:25:37Z",
-      "url": "IAliceBobI/sy-tomato-plugin@0b7a7b1"
     },
     {
       "installSize": 405870,
@@ -2435,42 +2521,6 @@
       "stars": 1,
       "updated": "2026-08-29T23:01:45Z",
       "url": "CongSec/siyuan-plugin-meiday@f595989"
-    },
-    {
-      "installSize": 236734,
-      "openIssues": 1,
-      "package": {
-        "author": "OpaqueGlass",
-        "description": {
-          "default": "Add a doc-breadcrumb",
-          "en_US": "Add a document breadcrumb. Add document path information that can be jumped to at the top of the editing area.",
-          "zh_CN": "再添加一个文档面包屑：在编辑区域顶部添加可跳转的文档路径信息导航条"
-        },
-        "displayName": {
-          "default": "fakeDocBreadcrumb",
-          "en_US": "Fake Doc Breadcrumb",
-          "zh_CN": "(伪)文档面包屑"
-        },
-        "funding": {
-          "custom": [
-            "https://wj.qq.com/s2/12395364/b69f/"
-          ]
-        },
-        "name": "syplugin-fakeDocBreadcrumb",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/OpaqueGlass/syplugin-fakeDocBreadcrumb",
-        "version": "2.0.1"
-      },
-      "packageZipAssetId": 535398269,
-      "packageZipSha256": "7261f17eee7ab11b235d2adf411d134bcdada14a94cd28c99c40a6a31e5b276a",
-      "repoRef": "v2.0.1",
-      "size": 104122,
-      "stars": 9,
-      "updated": "2026-08-29T15:44:49Z",
-      "url": "OpaqueGlass/syplugin-fakeDocBreadcrumb@7261f17"
     },
     {
       "installSize": 399773,
@@ -5783,52 +5833,6 @@
       "stars": 22,
       "updated": "2026-08-11T15:44:40Z",
       "url": "Zuoqiu-Yingyi/siyuan-plugin-monaco-editor@746e960"
-    },
-    {
-      "installSize": 168710,
-      "openIssues": 0,
-      "package": {
-        "author": "lance",
-        "backends": [
-          "darwin",
-          "windows",
-          "linux"
-        ],
-        "description": {
-          "default": "Sync SiYuan Markdown todos with Dida through the local dida CLI.",
-          "zh-CN": "通过本机 dida CLI 同步思源 Markdown 待办与滴答清单。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Dida Sync",
-          "zh-CN": "滴答同步"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window"
-        ],
-        "keywords": [
-          "todo",
-          "sync",
-          "dida",
-          "ticktick"
-        ],
-        "minAppVersion": "3.1.0",
-        "name": "siyuan-dida",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/Cloudquill-Z/siyuan-dida",
-        "version": "1.1.12"
-      },
-      "packageZipAssetId": 510297493,
-      "packageZipSha256": "f68b1fb43dbef0f9652af8b8595691f2a8635ce808941e5fb16abb9728ad9639",
-      "repoRef": "v1.1.12",
-      "size": 111321,
-      "stars": 0,
-      "updated": "2026-08-11T15:26:25Z",
-      "url": "Cloudquill-Z/siyuan-dida@f68b1fb"
     },
     {
       "installSize": 727661,
