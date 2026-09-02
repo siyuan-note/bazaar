@@ -1,6 +1,165 @@
 {
   "repos": [
     {
+      "installSize": 3384431,
+      "openIssues": 1,
+      "package": {
+        "author": "verygoodwu",
+        "backends": [
+          "windows",
+          "linux",
+          "docker"
+        ],
+        "description": {
+          "default": "Create, edit, preview, and export office documents, mind maps, and whiteboards in SiYuan.",
+          "zh-CN": "在思源中创建、编辑、预览和导出办公文档、脑图与白板。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Cloud Document Suite",
+          "zh-CN": "云文档套件"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "windows",
+          "linux",
+          "docker"
+        ],
+        "keywords": [
+          "document",
+          "office",
+          "excel",
+          "word",
+          "pdf",
+          "mindmap",
+          "whiteboard",
+          "云文档",
+          "办公套件",
+          "白板",
+          "拖放"
+        ],
+        "minAppVersion": "3.7.4",
+        "name": "siyuan-cloud-document-suite",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/verygoodwu/siyuan-cloud-document-suite",
+        "version": "2.1.3"
+      },
+      "packageZipAssetId": 540944267,
+      "packageZipSha256": "81d2dad33dabd673ae26ca1aaabe1c29b97fe2661934cfc87a76cc96e5399c55",
+      "repoRef": "v2.1.3",
+      "size": 999311,
+      "stars": 0,
+      "updated": "2026-09-02T09:34:57Z",
+      "url": "verygoodwu/siyuan-cloud-document-suite@81d2dad"
+    },
+    {
+      "installSize": 2634900,
+      "openIssues": 0,
+      "package": {
+        "author": "alone-tree",
+        "backends": [
+          "windows",
+          "darwin",
+          "linux"
+        ],
+        "description": {
+          "default": "Lean, fast, and hassle-free SiYuan MCP tool.",
+          "zh-CN": "让 AI Agent 通过 MCP 安全地阅读、搜索和修改你的思源笔记，重点优化长文档、表格、块引用等知识库场景"
+        },
+        "displayName": {
+          "default": "Siyuan Bridge",
+          "zh-CN": "思源桥"
+        },
+        "frontends": [
+          "desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "siyuan",
+          "mcp",
+          "ai",
+          "knowledge-base"
+        ],
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-bridge",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/alone-tree/siyuan-bridge",
+        "version": "1.8.2"
+      },
+      "packageZipAssetId": 540895662,
+      "packageZipSha256": "2923779c11aa16e96f43c5f0c2fe977b1276a0ca82b45a4488a926b4ecde57cc",
+      "repoRef": "v1.8.2",
+      "size": 2005327,
+      "stars": 10,
+      "updated": "2026-09-02T08:54:42Z",
+      "url": "alone-tree/siyuan-bridge@2923779"
+    },
+    {
+      "installSize": 2372732,
+      "openIssues": 0,
+      "package": {
+        "author": "IAliceBobI",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "✍️ Read-then-rewrite practice on any document: mark &amp; tint, extract &amp; rewrite, compare with the original",
+          "zh_CN": "任意文档的读后仿写练习：批注变色、抽取仿写、对比原文"
+        },
+        "displayName": {
+          "default": "Recite Practice",
+          "zh_CN": "仿写练习"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "仿写",
+          "背诵",
+          "默写",
+          "批注",
+          "判卷",
+          "练习",
+          "写作",
+          "联想",
+          "Recite",
+          "Dictation",
+          "Writing",
+          "AI"
+        ],
+        "minAppVersion": "2.12.6",
+        "name": "sy-recite-plugin",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/IAliceBobI/sy-recite-plugin",
+        "version": "1.2.4"
+      },
+      "packageZipAssetId": 540873804,
+      "packageZipSha256": "e3b4b588ad1f650fa3a14bd27dca371ee7621182e658f5880a6785b69c48be04",
+      "repoRef": "v1.2.4",
+      "size": 644596,
+      "stars": 2,
+      "updated": "2026-09-02T08:36:37Z",
+      "url": "IAliceBobI/sy-recite-plugin@e3b4b58"
+    },
+    {
       "installSize": 2348716,
       "openIssues": 3,
       "package": {
@@ -331,58 +490,6 @@
       "stars": 5,
       "updated": "2026-09-01T15:28:50Z",
       "url": "hqweay/siyuan-panda-navigation@c526511"
-    },
-    {
-      "installSize": 2356778,
-      "openIssues": 0,
-      "package": {
-        "author": "IAliceBobI",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "✍️ Read-then-rewrite practice on any document: mark &amp; tint, extract &amp; rewrite, compare with the original",
-          "zh_CN": "任意文档的读后仿写练习：批注变色、抽取仿写、对比原文"
-        },
-        "displayName": {
-          "default": "Recite Practice",
-          "zh_CN": "仿写练习"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "仿写",
-          "背诵",
-          "默写",
-          "批注",
-          "判卷",
-          "练习",
-          "写作",
-          "联想",
-          "Recite",
-          "Dictation",
-          "Writing",
-          "AI"
-        ],
-        "minAppVersion": "2.12.6",
-        "name": "sy-recite-plugin",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/IAliceBobI/sy-recite-plugin",
-        "version": "1.2.3"
-      },
-      "packageZipAssetId": 539702839,
-      "packageZipSha256": "fc3cda313ba9a92e8bd00fe82cfb8880dcab3f250e2d0f55708246ce6a511778",
-      "repoRef": "v1.2.3",
-      "size": 640222,
-      "stars": 2,
-      "updated": "2026-09-01T14:54:27Z",
-      "url": "IAliceBobI/sy-recite-plugin@fc3cda3"
     },
     {
       "installSize": 1932235,
@@ -1254,65 +1361,6 @@
       "stars": 2,
       "updated": "2026-09-01T03:03:29Z",
       "url": "gradypark86/siyuan-plugin-calendar@f301b75"
-    },
-    {
-      "installSize": 3283818,
-      "openIssues": 1,
-      "package": {
-        "author": "verygoodwu",
-        "backends": [
-          "windows",
-          "linux",
-          "docker"
-        ],
-        "description": {
-          "default": "Import, create, edit, preview, and export office documents and mind maps in SiYuan.",
-          "zh-CN": "在思源中导入、创建、编辑、预览和导出办公文档与脑图。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Cloud Document Suite",
-          "zh-CN": "云文档套件"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "windows",
-          "linux",
-          "docker"
-        ],
-        "keywords": [
-          "document",
-          "office",
-          "excel",
-          "word",
-          "pdf",
-          "mindmap",
-          "云文档",
-          "办公套件",
-          "拖放"
-        ],
-        "minAppVersion": "3.7.4",
-        "name": "siyuan-cloud-document-suite",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/verygoodwu/siyuan-cloud-document-suite",
-        "version": "2.0.6"
-      },
-      "packageZipAssetId": 538839055,
-      "packageZipSha256": "62faca5cdb5b7f40709129dbfcfd7de63f1692660852a4d7c84e470660849327",
-      "repoRef": "v2.0.6",
-      "size": 971526,
-      "stars": 0,
-      "updated": "2026-09-01T02:47:10Z",
-      "url": "verygoodwu/siyuan-cloud-document-suite@62faca5"
     },
     {
       "installSize": 560536,
@@ -2543,50 +2591,6 @@
       "stars": 29,
       "updated": "2026-08-29T04:31:55Z",
       "url": "Glaube-TY/siyuan-douban@1956a21"
-    },
-    {
-      "installSize": 2634900,
-      "openIssues": 0,
-      "package": {
-        "author": "alone-tree",
-        "backends": [
-          "windows",
-          "darwin",
-          "linux"
-        ],
-        "description": {
-          "default": "Lean, fast, and hassle-free SiYuan MCP tool.",
-          "zh-CN": "让 AI Agent 通过 MCP 安全地阅读、搜索和修改你的思源笔记，重点优化长文档、表格、块引用等知识库场景"
-        },
-        "displayName": {
-          "default": "Siyuan Bridge",
-          "zh-CN": "思源桥"
-        },
-        "frontends": [
-          "desktop"
-        ],
-        "keywords": [
-          "siyuan",
-          "mcp",
-          "ai",
-          "knowledge-base"
-        ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-bridge",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/alone-tree/siyuan-bridge",
-        "version": "1.8.1"
-      },
-      "packageZipAssetId": 533525221,
-      "packageZipSha256": "b8d385ee11ea2a324fb668da802fc0ba15727c19c373a0a680beec1b8c52cece",
-      "repoRef": "v1.8.1",
-      "size": 2005331,
-      "stars": 10,
-      "updated": "2026-08-28T08:52:52Z",
-      "url": "alone-tree/siyuan-bridge@b8d385e"
     },
     {
       "installSize": 19248,
