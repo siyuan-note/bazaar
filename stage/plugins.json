@@ -1,6 +1,173 @@
 {
   "repos": [
     {
+      "installSize": 213687,
+      "openIssues": 0,
+      "package": {
+        "author": "fengle992",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Sync Obsidian ZotFlow literature notes into SiYuan with incremental sync. Block IDs are preserved for unchanged content, so flashcards and block refs keep working.",
+          "zh_CN": "把 Obsidian 的 ZotFlow 文献笔记增量同步到思源。未变动内容的块 ID 保持不变，闪卡、块引用与反向链接持续有效。"
+        },
+        "displayName": {
+          "default": "ZotFlow Sync",
+          "zh_CN": "ZotFlow 同步"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-zotflow",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/fengle992/siyuan-zotflow",
+        "version": "0.5.1"
+      },
+      "packageZipAssetId": 542091064,
+      "packageZipSha256": "430509598ece8fa2fc76cf9f425f92d04823500ba834db66b289bcdee56775b0",
+      "repoRef": "v0.5.1",
+      "size": 171238,
+      "stars": 0,
+      "updated": "2026-09-03T02:41:33Z",
+      "url": "fengle992/siyuan-zotflow@4305095"
+    },
+    {
+      "installSize": 9174111,
+      "openIssues": 3,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android",
+          "harmony"
+        ],
+        "description": {
+          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
+          "zh_CN": "一款在思源笔记里实现任务管理功能的插件，为了践行「防弹笔记法」而开发。支持电脑端和移动端系统通知提醒任务执行、日历视图查看行事历、项目管理、四象限面板、番茄钟专注、习惯打卡等功能"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Note Management",
+          "zh_CN": "任务笔记管理"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android",
+          "harmony"
+        ],
+        "keywords": [
+          "reminder",
+          "time",
+          "calendar",
+          "notification",
+          "提醒",
+          "时间",
+          "日历",
+          "通知",
+          "番茄钟",
+          "四象限",
+          "任务管理",
+          "项目管理",
+          "习惯打卡"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-task-note-management",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README_en.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
+        "version": "7.0.15"
+      },
+      "packageZipAssetId": 542008434,
+      "packageZipSha256": "5163b1e29c415cb2df82fa8519bf8feeb611f7e47ad4edf15e243e2aeeaf704b",
+      "repoRef": "v7.0.15",
+      "size": 4312883,
+      "stars": 215,
+      "updated": "2026-09-03T01:12:08Z",
+      "url": "Achuan-2/siyuan-plugin-task-note-management@5163b1e"
+    },
+    {
+      "installSize": 828686,
+      "openIssues": 0,
+      "package": {
+        "author": "congsec",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "MeiDay is a cross-platform (Web, App) task and diary manager that delivers a smoother experience and stronger security.",
+          "zh-CN": "MeiDay 是一款跨端（Web、App）任务与日记管理工具，让记录更流畅，让数据更安全。"
+        },
+        "displayName": {
+          "default": "MeiDay",
+          "zh-CN": "MeiDay（每日任务日记管理）"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "github": "congsec"
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "任务管理",
+          "待办",
+          "在线",
+          "todo",
+          "task",
+          "meiday",
+          "日记",
+          "加密",
+          "隐私"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-plugin-meiday",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en-US": "README.EN.md"
+        },
+        "url": "https://github.com/CongSec/siyuan-plugin-meiday",
+        "version": "0.6.0"
+      },
+      "packageZipAssetId": 541937207,
+      "packageZipSha256": "625bc5649674758eb19c218bed41bce2a80255490b24f110f52f5246e1f1b3c5",
+      "repoRef": "V0.6.0",
+      "size": 415080,
+      "stars": 1,
+      "updated": "2026-09-03T00:08:28Z",
+      "url": "CongSec/siyuan-plugin-meiday@625bc56"
+    },
+    {
       "installSize": 2073037,
       "openIssues": 3,
       "package": {
@@ -47,57 +214,6 @@
       "stars": 16,
       "updated": "2026-09-02T23:01:28Z",
       "url": "LunaNorth/siyuan-lumina@52b8010"
-    },
-    {
-      "installSize": 828632,
-      "openIssues": 0,
-      "package": {
-        "author": "congsec",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A lightweight, privacy-preserving task diary management system with enhanced security",
-          "zh-CN": "在思源笔记中嵌入 MeiDay 任务管理，连接你的后端 https://task.congsec.cn。"
-        },
-        "displayName": {
-          "default": "MeiDay",
-          "zh-CN": "MeiDay（每日任务日记管理）"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "github": "congsec"
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "任务管理",
-          "待办",
-          "todo",
-          "task",
-          "meiday",
-          "日记",
-          "加密",
-          "隐私"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-plugin-meiday",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en-US": "README.EN.md"
-        },
-        "url": "https://github.com/CongSec/siyuan-plugin-meiday",
-        "version": "0.5.0"
-      },
-      "packageZipAssetId": 541587581,
-      "packageZipSha256": "e9a45975ed9a9064c55e4637a62f7bd8ac566f17508477d52c6ed05438b7ba99",
-      "repoRef": "V0.5.0",
-      "size": 415035,
-      "stars": 1,
-      "updated": "2026-09-02T18:28:27Z",
-      "url": "CongSec/siyuan-plugin-meiday@e9a4597"
     },
     {
       "installSize": 6149546,
@@ -450,43 +566,6 @@
       "stars": 19,
       "updated": "2026-09-02T13:31:38Z",
       "url": "royc01/pinch@fedbda1"
-    },
-    {
-      "installSize": 505997,
-      "openIssues": 0,
-      "package": {
-        "author": "fengle992",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Sync Obsidian ZotFlow literature notes into SiYuan with incremental sync. Block IDs are preserved for unchanged content, so flashcards and block refs keep working.",
-          "zh_CN": "把 Obsidian 的 ZotFlow 文献笔记增量同步到思源。未变动内容的块 ID 保持不变，闪卡、块引用与反向链接持续有效。"
-        },
-        "displayName": {
-          "default": "ZotFlow Sync",
-          "zh_CN": "ZotFlow 同步"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-zotflow",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/fengle992/siyuan-zotflow",
-        "version": "0.5.0"
-      },
-      "packageZipAssetId": 541120119,
-      "packageZipSha256": "54d3c8c1f1fe673d663e1fe1344a181a4e81a61633ba50057495bad3cf9ef7a3",
-      "repoRef": "v0.5.0",
-      "size": 464525,
-      "stars": 0,
-      "updated": "2026-09-02T12:34:15Z",
-      "url": "fengle992/siyuan-zotflow@54d3c8c"
     },
     {
       "installSize": 3384431,
@@ -2812,82 +2891,6 @@
       "stars": 22,
       "updated": "2026-08-26T14:42:04Z",
       "url": "OpaqueGlass/syplugin-hierarchyNavigate@d8ebcd1"
-    },
-    {
-      "installSize": 9288065,
-      "openIssues": 4,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "description": {
-          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
-          "zh_CN": "一款在思源笔记里实现任务管理功能的插件，为了践行「防弹笔记法」而开发。支持电脑端和移动端系统通知提醒任务执行、日历视图查看行事历、项目管理、四象限面板、番茄钟专注、习惯打卡等功能"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Note Management",
-          "zh_CN": "任务笔记管理"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ]
-        },
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "keywords": [
-          "reminder",
-          "time",
-          "calendar",
-          "notification",
-          "提醒",
-          "时间",
-          "日历",
-          "通知",
-          "番茄钟",
-          "四象限",
-          "任务管理",
-          "项目管理",
-          "习惯打卡"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-task-note-management",
-        "readme": {
-          "default": "README_en.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
-        "version": "7.0.14"
-      },
-      "packageZipAssetId": 530817967,
-      "packageZipSha256": "892762bf9c45d9a007b7a8b2c87faecc5517416e61f2900d345f99e05df8f6fd",
-      "repoRef": "v7.0.14",
-      "size": 4343406,
-      "stars": 214,
-      "updated": "2026-08-26T13:02:54Z",
-      "url": "Achuan-2/siyuan-plugin-task-note-management@892762b"
     },
     {
       "installSize": 351366,
