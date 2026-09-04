@@ -1,6 +1,108 @@
 {
   "repos": [
     {
+      "installSize": 2605275,
+      "openIssues": 0,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A dock Tomato Timer for SiYuan.",
+          "zh_CN": "思源底栏番茄钟：支持时间轴视图/任务提醒/日常事务记录/多端状态同步/移动端/数据库联动/块绑定/历史记录/任务管理器联动/移动端原生通知提醒"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Dock Tomato",
+          "zh_CN": "底栏番茄钟"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "tomato",
+          "timer",
+          "pomodoro",
+          "dock"
+        ],
+        "minAppVersion": "3.8.1",
+        "name": "siyuan-plugin-docktomato",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-docktomato",
+        "version": "2.2.3"
+      },
+      "packageZipAssetId": 543559290,
+      "packageZipSha256": "f1cce27775a8aea9df16557357985e94488a9b9a58983bbacbb618f04b01a70d",
+      "repoRef": "v2.2.3",
+      "size": 611962,
+      "stars": 8,
+      "updated": "2026-09-04T00:37:06Z",
+      "url": "5kyfkr/siyuan-plugin-docktomato@f1cce27"
+    },
+    {
+      "installSize": 5302411,
+      "openIssues": 1,
+      "package": {
+        "author": "LongDarkroom",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "RE word: select-to-lookup offline dictionary, hotkey word collection for review, AI deep-reading (study/chat modes), custom offline MDX dictionaries, drag SiYuan doc tabs into the chat as context",
+          "zh-CN": "RE word 词汇助手：选中单词一键查离线词典、框选快捷键自动收词复习、AI 精读（学习/对话模式）、支持自定义离线词典库（MDX），可把思源文档页签拖入对话框作为上下文。💡 使用前请先配置离线词典包，获取方式见 README 词典获取指南"
+        },
+        "displayName": {
+          "default": "RE word"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "vocabulary",
+          "english",
+          "dictionary",
+          "单词",
+          "词汇",
+          "词典",
+          "英语",
+          "复习"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-reword",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/LongDarkroom/siyuan-plugin-reword",
+        "version": "1.6.1"
+      },
+      "packageZipAssetId": 543554549,
+      "packageZipSha256": "117e476b1c887ff9ccf39b11c5098beb9c13177c33a5831a86d60514ab13ade1",
+      "repoRef": "v1.6.1",
+      "size": 1529634,
+      "stars": 1,
+      "updated": "2026-09-04T00:32:26Z",
+      "url": "LongDarkroom/siyuan-plugin-reword@117e476"
+    },
+    {
       "installSize": 740122,
       "openIssues": 13,
       "package": {
@@ -886,55 +988,6 @@
       "stars": 13,
       "updated": "2026-09-02T15:33:05Z",
       "url": "QYLexpired/Neo-Plus@83ff432"
-    },
-    {
-      "installSize": 5284527,
-      "openIssues": 1,
-      "package": {
-        "author": "LongDarkroom",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "RE word: select-to-lookup offline dictionary, hotkey word collection for review, AI deep-reading (study/chat modes), custom offline MDX dictionaries, drag SiYuan doc tabs into the chat as context",
-          "zh-CN": "RE word 词汇助手：选中单词一键查离线词典、框选快捷键自动收词复习、AI 精读（学习/对话模式）、支持自定义离线词典库（MDX），可把思源文档页签拖入对话框作为上下文。💡 使用前请先配置离线词典包，获取方式见 README 词典获取指南"
-        },
-        "displayName": {
-          "default": "RE word"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "vocabulary",
-          "english",
-          "dictionary",
-          "单词",
-          "词汇",
-          "词典",
-          "英语",
-          "复习"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-reword",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/LongDarkroom/siyuan-plugin-reword",
-        "version": "1.6.0"
-      },
-      "packageZipAssetId": 541348398,
-      "packageZipSha256": "ce151805c73d8ef54529d7cedb5c4bf0e19fb00ba3e99d3aec0a4511ae57766f",
-      "repoRef": "v1.6.0",
-      "size": 1523446,
-      "stars": 1,
-      "updated": "2026-09-02T15:09:53Z",
-      "url": "LongDarkroom/siyuan-plugin-reword@ce15180"
     },
     {
       "installSize": 226841,
@@ -3059,57 +3112,6 @@
       "stars": 2,
       "updated": "2026-08-26T08:10:02Z",
       "url": "fujingzhai/siyuan-finder-plugin@bd7a769"
-    },
-    {
-      "installSize": 2592601,
-      "openIssues": 0,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A dock Tomato Timer for SiYuan.",
-          "zh_CN": "思源底栏番茄钟：支持时间轴视图/任务提醒/日常事务记录/多端状态同步/移动端/数据库联动/块绑定/历史记录/任务管理器联动/移动端原生通知提醒"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Dock Tomato",
-          "zh_CN": "底栏番茄钟"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ]
-        },
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "tomato",
-          "timer",
-          "pomodoro",
-          "dock"
-        ],
-        "minAppVersion": "3.8.1",
-        "name": "siyuan-plugin-docktomato",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-docktomato",
-        "version": "2.2.2"
-      },
-      "packageZipAssetId": 530214234,
-      "packageZipSha256": "16e6ed7af4a551324b3ecd91b6f4cfd5558e190d7b0a4d61bfe1fc5721d6f36a",
-      "repoRef": "v2.2.2",
-      "size": 609481,
-      "stars": 8,
-      "updated": "2026-08-26T03:42:15Z",
-      "url": "5kyfkr/siyuan-plugin-docktomato@16e6ed7"
     },
     {
       "installSize": 293656,
