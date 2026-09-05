@@ -1,7 +1,56 @@
 {
   "repos": [
     {
-      "installSize": 321468,
+      "installSize": 911338,
+      "openIssues": 0,
+      "package": {
+        "author": "houm01",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A quiet collection of focused tools for SiYuan Note.",
+          "zh-CN": "一组安静、克制、专注的思源笔记实用工具。"
+        },
+        "displayName": {
+          "default": "Stillmark Workbench",
+          "zh-CN": "静痕工作台"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "静痕",
+          "工作台",
+          "块样式",
+          "stillmark",
+          "workbench",
+          "block style"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "stillmark-workbench",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/houm01/stillmark-workbench",
+        "version": "0.4.10"
+      },
+      "packageZipAssetId": 545485527,
+      "packageZipSha256": "236f5c472269477b84a3f9e382c5682cf9550e67d4b6741d016574ce56bca81c",
+      "repoRef": "v0.4.10",
+      "size": 325637,
+      "stars": 1,
+      "updated": "2026-09-05T06:56:40Z",
+      "url": "houm01/stillmark-workbench@236f5c4"
+    },
+    {
+      "installSize": 327983,
       "openIssues": 0,
       "package": {
         "author": "ai68298100",
@@ -41,15 +90,96 @@
           "en-US": "README.en-US.md"
         },
         "url": "https://github.com/ai68298100/siyuan-speed-switch",
-        "version": "0.16.5"
+        "version": "0.16.7"
       },
-      "packageZipAssetId": 545252643,
-      "packageZipSha256": "41ec58022a6ae50afdbeead1d7065930c629621d878ed49637c1360ffdc72143",
-      "repoRef": "v0.16.5",
-      "size": 163198,
+      "packageZipAssetId": 545461996,
+      "packageZipSha256": "a62a690f91485026fe6d73d3f5cfb576cba48e817562cc2830e740932ea9bf1a",
+      "repoRef": "v0.16.7",
+      "size": 165214,
       "stars": 2,
-      "updated": "2026-09-05T02:42:51Z",
-      "url": "ai68298100/siyuan-speed-switch@41ec580"
+      "updated": "2026-09-05T06:30:03Z",
+      "url": "ai68298100/siyuan-speed-switch@a62a690"
+    },
+    {
+      "installSize": 497850,
+      "openIssues": 2,
+      "package": {
+        "author": "LunaNorth",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A SiYuan Note plugin for customizing block appearance with attributes",
+          "zh_CN": "通过属性自定义块样式的思源笔记插件"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Light Decor Note",
+          "zh_CN": "轻饰笔记"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "卡片样式",
+          "属性样式",
+          "笔记美化"
+        ],
+        "minAppVersion": "3.3.3",
+        "name": "siyuan-deco",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/LunaNorth/siyuan-deco",
+        "version": "1.4.3"
+      },
+      "packageZipAssetId": 545311196,
+      "packageZipSha256": "10c37f6a92e81b587713f21d805de1f063d0f756c4f344a572a1e11d443dff85",
+      "repoRef": "v1.4.3",
+      "size": 229175,
+      "stars": 4,
+      "updated": "2026-09-05T03:43:44Z",
+      "url": "LunaNorth/siyuan-deco@10c37f6"
+    },
+    {
+      "installSize": 188073,
+      "openIssues": 1,
+      "package": {
+        "author": "Quincy Zou",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "为思源笔记中的图片提供快速查看、转换、压缩和批量处理能力，缓解你的笔记存储焦虑。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "图片快剪"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "minAppVersion": "2.10.14",
+        "name": "siyuan-image-quickedit",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/famotime/siyuan-image-quickedit",
+        "version": "1.0.8"
+      },
+      "packageZipAssetId": 545281031,
+      "packageZipSha256": "387347c8a57e41f2cf7e6a582c81c851eefe72ab3d64d80b43d450be406c0536",
+      "repoRef": "v1.0.8",
+      "size": 141764,
+      "stars": 1,
+      "updated": "2026-09-05T03:12:03Z",
+      "url": "famotime/siyuan-image-quickedit@387347c"
     },
     {
       "installSize": 241571,
@@ -1876,55 +2006,6 @@
       "stars": 0,
       "updated": "2026-09-01T09:36:18Z",
       "url": "chengslog/siyuan-plugin-immersive-mode@97b1e60"
-    },
-    {
-      "installSize": 910916,
-      "openIssues": 0,
-      "package": {
-        "author": "houm01",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A quiet collection of focused tools for SiYuan Note.",
-          "zh-CN": "一组安静、克制、专注的思源笔记实用工具。"
-        },
-        "displayName": {
-          "default": "Stillmark Workbench",
-          "zh-CN": "静痕工作台"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "静痕",
-          "工作台",
-          "块样式",
-          "stillmark",
-          "workbench",
-          "block style"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "stillmark-workbench",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/houm01/stillmark-workbench",
-        "version": "0.4.9"
-      },
-      "packageZipAssetId": 539256953,
-      "packageZipSha256": "fa7e8c5bab3ec8b8ac7a1e85a09cca750293ce063e9bf21828fe89c53bcb76fb",
-      "repoRef": "v0.4.9",
-      "size": 325502,
-      "stars": 1,
-      "updated": "2026-09-01T08:42:28Z",
-      "url": "houm01/stillmark-workbench@fa7e8c5"
     },
     {
       "installSize": 1098295,
@@ -7262,47 +7343,6 @@
       "url": "alvisliu818/siyuan-plugin-browser@523e0d7"
     },
     {
-      "installSize": 437722,
-      "openIssues": 2,
-      "package": {
-        "author": "LunaNorth",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A SiYuan Note plugin for customizing block appearance with attributes",
-          "zh_CN": "通过属性自定义块样式的思源笔记插件"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Light Decor Note",
-          "zh_CN": "轻饰笔记"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "卡片样式",
-          "属性样式",
-          "笔记美化"
-        ],
-        "minAppVersion": "3.3.3",
-        "name": "siyuan-deco",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/LunaNorth/siyuan-deco",
-        "version": "1.4.2"
-      },
-      "packageZipAssetId": 500129472,
-      "packageZipSha256": "c8b80717efc0361435c2eeeaac31cf3f247682e1d65a0d98037c58c8be80411b",
-      "repoRef": "v1.4.2",
-      "size": 217542,
-      "stars": 5,
-      "updated": "2026-08-03T14:06:32Z",
-      "url": "LunaNorth/siyuan-deco@c8b8071"
-    },
-    {
       "installSize": 131063,
       "openIssues": 1,
       "package": {
@@ -10902,40 +10942,6 @@
       "stars": 57,
       "updated": "2026-06-14T09:52:41Z",
       "url": "zxkmm/siyuan_online_devices_mgr@326c934"
-    },
-    {
-      "installSize": 185103,
-      "openIssues": 1,
-      "package": {
-        "author": "Quincy Zou",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "为思源笔记中的图片提供快速查看、转换、压缩和批量处理能力，缓解你的笔记存储焦虑。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "图片快剪"
-        },
-        "frontends": [
-          "all"
-        ],
-        "minAppVersion": "2.10.14",
-        "name": "siyuan-image-quickedit",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/famotime/siyuan-image-quickedit",
-        "version": "1.0.5"
-      },
-      "packageZipAssetId": 445823985,
-      "packageZipSha256": "7134c417573f1a8b206611a11d551303fd3fcc00753cd8c4d0b8d8c012b18b58",
-      "repoRef": "v1.0.5",
-      "size": 140749,
-      "stars": 1,
-      "updated": "2026-06-12T15:58:29Z",
-      "url": "famotime/siyuan-image-quickedit@7134c41"
     },
     {
       "installSize": 1284234,
