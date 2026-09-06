@@ -36,6 +36,14 @@ func TestClearEmptyFunding(t *testing.T) {
 		}
 	})
 
+	t.Run("empty links slice becomes nil", func(t *testing.T) {
+		pkg := &Package{Funding: &Funding{Links: []FundingLink{}}}
+		ClearEmptyFunding(pkg)
+		if pkg.Funding != nil {
+			t.Fatalf("expected nil funding, got %#v", pkg.Funding)
+		}
+	})
+
 	t.Run("keeps non-empty funding", func(t *testing.T) {
 		pkg := &Package{Funding: &Funding{GitHub: "b3log"}}
 		ClearEmptyFunding(pkg)
@@ -43,6 +51,20 @@ func TestClearEmptyFunding(t *testing.T) {
 			t.Fatalf("expected funding kept, got %#v", pkg.Funding)
 		}
 	})
+}
+
+func TestSanitizeFundingLinks(t *testing.T) {
+	pkg := &Package{Funding: &Funding{Links: []FundingLink{{
+		Label: "Coffee <3",
+		URL:   "https://example.com/sponsor?a=1&b=2",
+	}}}}
+	SanitizePackage(pkg)
+	if got := pkg.Funding.Links[0].Label; got != "Coffee &lt;3" {
+		t.Fatalf("sanitized label = %q", got)
+	}
+	if got := pkg.Funding.Links[0].URL; got != "https://example.com/sponsor?a=1&amp;b=2" {
+		t.Fatalf("sanitized URL = %q", got)
+	}
 }
 
 func TestClearEmptyFundingOmitsEmptyFundingJSON(t *testing.T) {

@@ -64,10 +64,13 @@ func TestFindStageRepo(t *testing.T) {
 }
 
 func TestStageFileForPublicIndex_stripsInternalFields(t *testing.T) {
+	icon := "icon.webp"
+	preview := ""
 	stageFile := StageFile{
 		Repos: []StageRepo{
 			{
 				URL:               "owner/repo@abc1234",
+				RepoRef:           "v1.0.0",
 				Updated:           "2025-01-01T00:00:00Z",
 				Stars:             10,
 				OpenIssues:        1,
@@ -78,6 +81,8 @@ func TestStageFileForPublicIndex_stripsInternalFields(t *testing.T) {
 				Package: rules.Package{
 					Name:      "demo",
 					Version:   "1.0.0",
+					Icon:      &icon,
+					Preview:   &preview,
 					Frontends: []string{"desktop", "browser-desktop"},
 					DisplayName: rules.LocaleStrings{
 						"default": "Demo",
@@ -106,6 +111,10 @@ func TestStageFileForPublicIndex_stripsInternalFields(t *testing.T) {
 	}
 	if !strings.Contains(got, `"url":"owner/repo@abc1234"`) {
 		t.Fatalf("public index missing expected fields: %s", got)
+	}
+	if !strings.Contains(got, `"repoRef":"v1.0.0"`) || !strings.Contains(got, `"icon":"icon.webp"`) ||
+		!strings.Contains(got, `"preview":""`) {
+		t.Fatalf("public index missing resource metadata: %s", got)
 	}
 	if !strings.Contains(got, `"frontends":["desktop","browser-desktop"]`) {
 		t.Fatalf("public index missing theme frontends: %s", got)
