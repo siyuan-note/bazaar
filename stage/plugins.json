@@ -1,6 +1,155 @@
 {
   "repos": [
     {
+      "installSize": 2547445,
+      "openIssues": 0,
+      "package": {
+        "author": "lizhen",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "An AI agent for SiYuan: chat panel with notebook tools (search/read/write), web search, skills, multi-model support and session history.",
+          "zh-CN": "思源笔记智能体：聊天面板 + 笔记工具(搜索/读取/写入)、联网搜索、技能体系、多模型与会话历史。"
+        },
+        "displayName": {
+          "default": "SiYuan Agent"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "agent",
+          "ai",
+          "智能体",
+          "assistant"
+        ],
+        "minAppVersion": "3.8.3",
+        "name": "siyuan-ai-agent",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/Lizhen0628/siyuan-ai-agent",
+        "version": "0.5.0"
+      },
+      "packageZipAssetId": 555171168,
+      "packageZipSha256": "5d484903abbc73cd1c2d874a3ac4cab138005d97b23eed166cc1f8624f510fe0",
+      "repoRef": "v0.5.0",
+      "size": 542480,
+      "stars": 0,
+      "updated": "2026-09-10T14:26:47Z",
+      "url": "Lizhen0628/siyuan-ai-agent@5d48490"
+    },
+    {
+      "installSize": 338931,
+      "openIssues": 2,
+      "package": {
+        "author": "notesynchelper",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "从微信同步到思源笔记，支持文字、图片、聊天记录、文章"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "笔记同步助手"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "wechat",
+          "template",
+          "企微",
+          "模板",
+          "微信",
+          "速记",
+          "剪藏",
+          "搜集",
+          "日记",
+          "闪念",
+          "memo",
+          "备忘",
+          "公众号",
+          "小红书",
+          "得到"
+        ],
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-notehelper",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/notesynchelper/siyuan-notehelper",
+        "version": "1.8.31"
+      },
+      "packageZipAssetId": 555071706,
+      "packageZipSha256": "8002c73dd4bb5a072b549fb8c9ae4b796c694aea670b243b9b1933de2c0cac75",
+      "repoRef": "v1.8.31",
+      "size": 155171,
+      "stars": 2,
+      "updated": "2026-09-10T13:26:08Z",
+      "url": "notesynchelper/siyuan-notehelper@8002c73"
+    },
+    {
+      "installSize": 9559570,
+      "openIssues": 0,
+      "package": {
+        "author": "fu1fan",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Manage native-database paper libraries, import Zotero/PDF metadata, export citations, and translate papers with pdf2zh.",
+          "zh-CN": "使用思源原生数据库管理论文文献库，接收 Zotero/PDF 元数据，导出引用并通过 pdf2zh 翻译论文。"
+        },
+        "displayName": {
+          "default": "Paper Manager",
+          "zh-CN": "论文管理"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "siyuan-plugin",
+          "zotero",
+          "paper",
+          "PDF",
+          "文献",
+          "翻译",
+          "database",
+          "citation",
+          "BibTeX",
+          "Typst",
+          "数据库",
+          "引用"
+        ],
+        "minAppVersion": "3.8.1",
+        "name": "siyuan-paper-manager",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/fu1fan/siyuan-paper-manager",
+        "version": "5.1.0"
+      },
+      "packageZipAssetId": 555038321,
+      "packageZipSha256": "55636784c65a26f5f5e3e0b3228cf09347946a6db1be0e0ddf2abc61632d5c73",
+      "repoRef": "v5.1.0",
+      "size": 3847952,
+      "stars": 2,
+      "updated": "2026-09-10T13:07:14Z",
+      "url": "fu1fan/siyuan-paper-manager@5563678"
+    },
+    {
       "installSize": 102268,
       "openIssues": 0,
       "package": {
@@ -82,50 +231,6 @@
       "stars": 1,
       "updated": "2026-09-10T10:23:48Z",
       "url": "TCOTC/code-recognition@0ceab28"
-    },
-    {
-      "installSize": 2528153,
-      "openIssues": 0,
-      "package": {
-        "author": "lizhen",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "An AI agent for SiYuan: chat panel with notebook tools (search/read/write), web search, skills, multi-model support and session history.",
-          "zh-CN": "思源笔记智能体：聊天面板 + 笔记工具(搜索/读取/写入)、联网搜索、技能体系、多模型与会话历史。"
-        },
-        "displayName": {
-          "default": "SiYuan Agent"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "agent",
-          "ai",
-          "智能体",
-          "assistant"
-        ],
-        "minAppVersion": "3.8.3",
-        "name": "siyuan-ai-agent",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/Lizhen0628/siyuan-ai-agent",
-        "version": "0.4.0"
-      },
-      "packageZipAssetId": 554752544,
-      "packageZipSha256": "ea9e9292a1bd226ba6204df582ca4f55c7946baf8fb536c2fc07aaacf9e4ee04",
-      "repoRef": "v0.4.0",
-      "size": 537369,
-      "stars": 0,
-      "updated": "2026-09-10T10:19:22Z",
-      "url": "Lizhen0628/siyuan-ai-agent@ea9e929"
     },
     {
       "installSize": 27604246,
@@ -1200,58 +1305,6 @@
       "url": "QYLexpired/Neo-Plus@3cb008d"
     },
     {
-      "installSize": 8945956,
-      "openIssues": 0,
-      "package": {
-        "author": "fu1fan",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Manage native-database paper libraries, import Zotero/PDF metadata, export citations, and translate papers with pdf2zh.",
-          "zh-CN": "使用思源原生数据库管理论文文献库，接收 Zotero/PDF 元数据，导出引用并通过 pdf2zh 翻译论文。"
-        },
-        "displayName": {
-          "default": "Paper Manager",
-          "zh-CN": "论文管理"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "siyuan-plugin",
-          "zotero",
-          "paper",
-          "PDF",
-          "文献",
-          "翻译",
-          "database",
-          "citation",
-          "BibTeX",
-          "Typst",
-          "数据库",
-          "引用"
-        ],
-        "minAppVersion": "3.8.1",
-        "name": "siyuan-paper-manager",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/fu1fan/siyuan-paper-manager",
-        "version": "0.4.5"
-      },
-      "packageZipAssetId": 550737291,
-      "packageZipSha256": "2d07eebf0e50e7c04ce7a6660f6ddaca9266e19485de3e20e547506b9316ddd9",
-      "repoRef": "v0.4.5",
-      "size": 3679226,
-      "stars": 1,
-      "updated": "2026-09-08T15:11:39Z",
-      "url": "fu1fan/siyuan-paper-manager@2d07eeb"
-    },
-    {
       "installSize": 689538,
       "openIssues": 4,
       "package": {
@@ -2066,59 +2119,6 @@
       "stars": 42,
       "updated": "2026-09-07T16:22:58Z",
       "url": "Glaube-TY/siyuan-homepage@16c20c4"
-    },
-    {
-      "installSize": 338931,
-      "openIssues": 2,
-      "package": {
-        "author": "notesynchelper",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "从微信同步到思源笔记，支持文字、图片、聊天记录、文章"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "笔记同步助手"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "wechat",
-          "template",
-          "企微",
-          "模板",
-          "微信",
-          "速记",
-          "剪藏",
-          "搜集",
-          "日记",
-          "闪念",
-          "memo",
-          "备忘",
-          "公众号",
-          "小红书",
-          "得到"
-        ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-notehelper",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/notesynchelper/siyuan-notehelper",
-        "version": "1.8.30"
-      },
-      "packageZipAssetId": 548946476,
-      "packageZipSha256": "74f76b2e7061019a1fe1e24b9f54282bb99e1bc70e631df63c4d3a584c5ca88c",
-      "repoRef": "v1.8.30",
-      "size": 155170,
-      "stars": 2,
-      "updated": "2026-09-07T14:54:46Z",
-      "url": "notesynchelper/siyuan-notehelper@74f76b2"
     },
     {
       "installSize": 893048,
