@@ -1,7 +1,177 @@
 {
   "repos": [
     {
-      "installSize": 2547445,
+      "installSize": 685441,
+      "openIssues": 0,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A local-first SiYuan navigation workspace with live tab thumbnails, favorite folders, document card search, cross-plugin quick actions, sidebar mode, fullscreen, and mobile support.",
+          "zh-CN": "本地优先的思源导航工作区，支持页签缩略图、收藏夹、文档卡片搜索、跨插件快捷入口、侧边栏、全屏与手机端。"
+        },
+        "displayName": {
+          "default": "LvSpeed Switch",
+          "zh-CN": "小驴速切"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "页签切换",
+          "tab switch",
+          "标签页",
+          "快捷入口",
+          "speed switch",
+          "lv speed switch",
+          "小驴速切"
+        ],
+        "minAppVersion": "3.1.20",
+        "name": "siyuan-speed-switch",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en-US": "README.en-US.md"
+        },
+        "url": "https://github.com/ai68298100/siyuan-speed-switch",
+        "version": "0.16.16"
+      },
+      "packageZipAssetId": 555448549,
+      "packageZipSha256": "f733dacd1a62cc64d3d06a818f482425c11113f140fdc2cf3b59dacae4ae2c89",
+      "repoRef": "v0.16.16",
+      "size": 266072,
+      "stars": 2,
+      "updated": "2026-09-10T17:13:35Z",
+      "url": "ai68298100/siyuan-speed-switch@f733dac"
+    },
+    {
+      "installSize": 3456346,
+      "openIssues": 9,
+      "package": {
+        "author": "Taihong Yang",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Siyuan sisyphus enables AI Agents to operate your Siyuan with notebook-level permission control, covering most of Siyuan&#39;s functionality. Supports desktop、 docker、 mobile.",
+          "zh_CN": "让 AI Agent 操作你的思源，提供 MCP CLI 两种方式，支持笔记本级权限管控、覆盖SIYUAN绝大部分功能，支持思源的桌面、docker端、移动端。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan sisyphus MCP &amp; CLI &amp; GIT",
+          "zh_CN": "思源 sisyphus MCP &amp; CLI &amp; GIT"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://github.com/yangtaihong59/siyuan-plugins-mcp-sisyphus/blob/main/docs/archive/thank.jpeg"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "AI",
+          "Agent",
+          "MCP"
+        ],
+        "minAppVersion": "2.9.0",
+        "name": "siyuan-plugins-mcp-sisyphus",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/yangtaihong59/siyuan-plugins-mcp-sisyphus",
+        "version": "0.6.7"
+      },
+      "packageZipAssetId": 555388306,
+      "packageZipSha256": "10a3c82f556a6adeb206c527ee1f0cf5d408fa5c73ecdf3e4872678b77970f11",
+      "repoRef": "v0.6.7",
+      "size": 1124013,
+      "stars": 104,
+      "updated": "2026-09-10T16:36:01Z",
+      "url": "yangtaihong59/siyuan-plugins-mcp-sisyphus@10a3c82"
+    },
+    {
+      "installSize": 2043673,
+      "openIssues": 0,
+      "package": {
+        "author": "Glaube-TY",
+        "backends": [
+          "windows",
+          "linux",
+          "ios",
+          "android",
+          "harmony",
+          "docker",
+          "darwin"
+        ],
+        "description": {
+          "en_US": "Obtain Douban book information and add it to the database &amp; synchronize weread notes.",
+          "zh_CN": "豆瓣书籍信息获取并添加到数据库 &amp; 同步微信读书笔记。"
+        },
+        "displayName": {
+          "en_US": "Reading Notes",
+          "zh_CN": "读书笔记"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://glaube-ty.top/da-shang/"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "豆瓣读书",
+          "douban",
+          "书籍",
+          "book",
+          "读书笔记",
+          "笔记",
+          "read",
+          "note",
+          "booknote",
+          "weread",
+          "微信读书",
+          "微信"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "siyuan-douban",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/Glaube-TY/siyuan-douban",
+        "version": "4.3.3"
+      },
+      "packageZipAssetId": 555339004,
+      "packageZipSha256": "e1577d300a8978aa32c84ca936d62bae56d57602d4ff4bbff5069fe6647b9d21",
+      "repoRef": "v4.3.3",
+      "size": 713437,
+      "stars": 29,
+      "updated": "2026-09-10T16:05:20Z",
+      "url": "Glaube-TY/siyuan-douban@e1577d3"
+    },
+    {
+      "installSize": 2552373,
       "openIssues": 0,
       "package": {
         "author": "lizhen",
@@ -34,15 +204,113 @@
           "default": "README.md"
         },
         "url": "https://github.com/Lizhen0628/siyuan-ai-agent",
-        "version": "0.5.0"
+        "version": "0.5.1"
       },
-      "packageZipAssetId": 555171168,
-      "packageZipSha256": "5d484903abbc73cd1c2d874a3ac4cab138005d97b23eed166cc1f8624f510fe0",
-      "repoRef": "v0.5.0",
-      "size": 542480,
+      "packageZipAssetId": 555325055,
+      "packageZipSha256": "5ac2df1f2adb2187e6e417b9a47ace63bf364e79c8fdf96f7c18dd673e54331a",
+      "repoRef": "v0.5.1",
+      "size": 544319,
       "stars": 0,
-      "updated": "2026-09-10T14:26:47Z",
-      "url": "Lizhen0628/siyuan-ai-agent@5d48490"
+      "updated": "2026-09-10T15:57:27Z",
+      "url": "Lizhen0628/siyuan-ai-agent@5ac2df1"
+    },
+    {
+      "installSize": 9582322,
+      "openIssues": 0,
+      "package": {
+        "author": "fu1fan",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Manage native-database paper libraries, import Zotero/PDF metadata, export citations, and translate papers with pdf2zh.",
+          "zh-CN": "使用思源原生数据库管理论文文献库，接收 Zotero/PDF 元数据，导出引用并通过 pdf2zh 翻译论文。"
+        },
+        "displayName": {
+          "default": "Paper Manager",
+          "zh-CN": "论文管理"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "siyuan-plugin",
+          "zotero",
+          "paper",
+          "PDF",
+          "文献",
+          "翻译",
+          "database",
+          "citation",
+          "BibTeX",
+          "Typst",
+          "数据库",
+          "引用"
+        ],
+        "minAppVersion": "3.8.1",
+        "name": "siyuan-paper-manager",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/fu1fan/siyuan-paper-manager",
+        "version": "5.2.0"
+      },
+      "packageZipAssetId": 555322856,
+      "packageZipSha256": "4462fef91e3a173c8a76c2806dd5e6e88bc60bfdaebcfc33cd4e99b9efb55196",
+      "repoRef": "v5.2.0",
+      "size": 3854452,
+      "stars": 2,
+      "updated": "2026-09-10T15:56:21Z",
+      "url": "fu1fan/siyuan-paper-manager@4462fef"
+    },
+    {
+      "installSize": 28752,
+      "openIssues": 1,
+      "package": {
+        "author": "Jeffrey Chen",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Display text and countdown in the top bar",
+          "zh-CN": "在顶栏显示文本、倒计时",
+          "zh-TW": "在頂欄顯示文本、倒計時"
+        },
+        "displayName": {
+          "default": "Top Bar Text",
+          "zh-CN": "顶栏文本",
+          "zh-TW": "頂欄文本"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://mytemos.com/"
+          ]
+        },
+        "icon": "icon.png",
+        "minAppVersion": "3.8.3-alpha.1",
+        "name": "top-bar-text",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md",
+          "zh-TW": "README.zh-TW.md"
+        },
+        "url": "https://github.com/TCOTC/top-bar-text",
+        "version": "1.0.2"
+      },
+      "packageZipAssetId": 555275005,
+      "packageZipSha256": "64bb412ebb3c67de880931f12f2c00d481ae909000f2b87ebbbab306dc671e53",
+      "repoRef": "v1.0.2",
+      "size": 11365,
+      "stars": 1,
+      "updated": "2026-09-10T15:28:36Z",
+      "url": "TCOTC/top-bar-text@64bb412"
     },
     {
       "installSize": 338931,
@@ -96,58 +364,6 @@
       "stars": 2,
       "updated": "2026-09-10T13:26:08Z",
       "url": "notesynchelper/siyuan-notehelper@8002c73"
-    },
-    {
-      "installSize": 9559570,
-      "openIssues": 0,
-      "package": {
-        "author": "fu1fan",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Manage native-database paper libraries, import Zotero/PDF metadata, export citations, and translate papers with pdf2zh.",
-          "zh-CN": "使用思源原生数据库管理论文文献库，接收 Zotero/PDF 元数据，导出引用并通过 pdf2zh 翻译论文。"
-        },
-        "displayName": {
-          "default": "Paper Manager",
-          "zh-CN": "论文管理"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "siyuan-plugin",
-          "zotero",
-          "paper",
-          "PDF",
-          "文献",
-          "翻译",
-          "database",
-          "citation",
-          "BibTeX",
-          "Typst",
-          "数据库",
-          "引用"
-        ],
-        "minAppVersion": "3.8.1",
-        "name": "siyuan-paper-manager",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/fu1fan/siyuan-paper-manager",
-        "version": "5.1.0"
-      },
-      "packageZipAssetId": 555038321,
-      "packageZipSha256": "55636784c65a26f5f5e3e0b3228cf09347946a6db1be0e0ddf2abc61632d5c73",
-      "repoRef": "v5.1.0",
-      "size": 3847952,
-      "stars": 2,
-      "updated": "2026-09-10T13:07:14Z",
-      "url": "fu1fan/siyuan-paper-manager@5563678"
     },
     {
       "installSize": 102268,
@@ -828,55 +1044,6 @@
       "stars": 7,
       "updated": "2026-09-09T11:31:32Z",
       "url": "DilyarEziz/siyuan-plugin-asset-management@ce9dd24"
-    },
-    {
-      "installSize": 3433014,
-      "openIssues": 8,
-      "package": {
-        "author": "Taihong Yang",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Siyuan sisyphus enables AI Agents to operate your Siyuan with notebook-level permission control, covering most of Siyuan&#39;s functionality. Supports desktop、 docker、 mobile.",
-          "zh_CN": "让 AI Agent 操作你的思源，提供 MCP CLI 两种方式，支持笔记本级权限管控、覆盖SIYUAN绝大部分功能，支持思源的桌面、docker端、移动端。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiYuan sisyphus MCP &amp; CLI &amp; GIT",
-          "zh_CN": "思源 sisyphus MCP &amp; CLI &amp; GIT"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://github.com/yangtaihong59/siyuan-plugins-mcp-sisyphus/blob/main/docs/archive/thank.jpeg"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "AI",
-          "Agent",
-          "MCP"
-        ],
-        "minAppVersion": "2.9.0",
-        "name": "siyuan-plugins-mcp-sisyphus",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/yangtaihong59/siyuan-plugins-mcp-sisyphus",
-        "version": "0.6.6"
-      },
-      "packageZipAssetId": 552605067,
-      "packageZipSha256": "524f34521d47964c856725fcd1eb79f5b191d91bfe44cdb8731daebae79e8bb2",
-      "repoRef": "v0.6.6",
-      "size": 1114363,
-      "stars": 104,
-      "updated": "2026-09-09T11:14:57Z",
-      "url": "yangtaihong59/siyuan-plugins-mcp-sisyphus@524f345"
     },
     {
       "installSize": 2632218,
@@ -2228,76 +2395,6 @@
       "url": "moonejue/siyuan-moon-ai@e882a98"
     },
     {
-      "installSize": 2042936,
-      "openIssues": 0,
-      "package": {
-        "author": "Glaube-TY",
-        "backends": [
-          "windows",
-          "linux",
-          "ios",
-          "android",
-          "harmony",
-          "docker",
-          "darwin"
-        ],
-        "description": {
-          "en_US": "Obtain Douban book information and add it to the database &amp; synchronize weread notes.",
-          "zh_CN": "豆瓣书籍信息获取并添加到数据库 &amp; 同步微信读书笔记。"
-        },
-        "displayName": {
-          "en_US": "Reading Notes",
-          "zh_CN": "读书笔记"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://glaube-ty.top/da-shang/"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "豆瓣读书",
-          "douban",
-          "书籍",
-          "book",
-          "读书笔记",
-          "笔记",
-          "read",
-          "note",
-          "booknote",
-          "weread",
-          "微信读书",
-          "微信"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "siyuan-douban",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/Glaube-TY/siyuan-douban",
-        "version": "4.3.2"
-      },
-      "packageZipAssetId": 548674173,
-      "packageZipSha256": "990101698a56c26e7806bc5990d36ad4467e73ee016b838b260ec863eb4eb716",
-      "repoRef": "v4.3.2",
-      "size": 713121,
-      "stars": 29,
-      "updated": "2026-09-07T11:23:11Z",
-      "url": "Glaube-TY/siyuan-douban@9901016"
-    },
-    {
       "installSize": 2214439,
       "openIssues": 2,
       "package": {
@@ -2344,57 +2441,6 @@
       "stars": 16,
       "updated": "2026-09-07T01:47:54Z",
       "url": "LunaNorth/siyuan-lumina@2a6ac93"
-    },
-    {
-      "installSize": 448591,
-      "openIssues": 0,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A local-first SiYuan navigation workspace with live tab thumbnails, favorite folders, document card search, cross-plugin quick actions, sidebar mode, fullscreen, and mobile support.",
-          "zh-CN": "本地优先的思源导航工作区，支持页签缩略图、收藏夹、文档卡片搜索、跨插件快捷入口、侧边栏、全屏与手机端。"
-        },
-        "displayName": {
-          "default": "LvSpeed Switch",
-          "zh-CN": "小驴速切"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "页签切换",
-          "tab switch",
-          "标签页",
-          "快捷入口",
-          "speed switch",
-          "lv speed switch",
-          "小驴速切"
-        ],
-        "minAppVersion": "3.1.20",
-        "name": "siyuan-speed-switch",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en-US": "README.en-US.md"
-        },
-        "url": "https://github.com/ai68298100/siyuan-speed-switch",
-        "version": "0.16.11"
-      },
-      "packageZipAssetId": 547466501,
-      "packageZipSha256": "8cf8712dd4db2691c38faad299ec63138cb3116dd900585b1a2460c8889762f8",
-      "repoRef": "v0.16.11",
-      "size": 199463,
-      "stars": 2,
-      "updated": "2026-09-06T17:27:42Z",
-      "url": "ai68298100/siyuan-speed-switch@8cf8712"
     },
     {
       "installSize": 111482,
@@ -5070,58 +5116,6 @@
       "stars": 1,
       "updated": "2026-08-22T15:17:44Z",
       "url": "TCOTC/devtools@875ec6b"
-    },
-    {
-      "installSize": 27946,
-      "openIssues": 1,
-      "package": {
-        "author": "Jeffrey Chen",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Display text and countdown in the top bar",
-          "zh-CN": "在顶栏显示文本、倒计时",
-          "zh-TW": "在頂欄顯示文本、倒計時"
-        },
-        "displayName": {
-          "default": "Top Bar Text",
-          "zh-CN": "顶栏文本",
-          "zh-TW": "頂欄文本"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://mytemos.com/"
-          ]
-        },
-        "keywords": [
-          "topbar",
-          "顶部栏",
-          "custom",
-          "自定义",
-          "time",
-          "时间"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "top-bar-text",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md",
-          "zh-TW": "README.zh-TW.md"
-        },
-        "url": "https://github.com/TCOTC/top-bar-text",
-        "version": "1.0.1"
-      },
-      "packageZipAssetId": 525111184,
-      "packageZipSha256": "06e34cac06ec9e413449b53d4cd39d96ea08e92cee3b9edf7bdafcb35004fdcf",
-      "repoRef": "v1.0.1",
-      "size": 11252,
-      "stars": 1,
-      "updated": "2026-08-22T14:18:14Z",
-      "url": "TCOTC/top-bar-text@06e34ca"
     },
     {
       "installSize": 2008393,
