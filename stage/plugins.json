@@ -1,6 +1,109 @@
 {
   "repos": [
     {
+      "installSize": 781042,
+      "openIssues": 0,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A local-first SiYuan navigation workspace with live tab thumbnails, favorite folders, document card search, cross-plugin quick actions, sidebar mode, fullscreen, and mobile support.",
+          "zh-CN": "本地优先的思源导航工作区，支持页签缩略图、收藏夹、文档卡片搜索、跨插件快捷入口、侧边栏、全屏与手机端。"
+        },
+        "displayName": {
+          "default": "LvSpeed Switch",
+          "zh-CN": "小驴速切"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "页签切换",
+          "tab switch",
+          "标签页",
+          "快捷入口",
+          "speed switch",
+          "lv speed switch",
+          "小驴速切"
+        ],
+        "minAppVersion": "3.1.20",
+        "name": "siyuan-speed-switch",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en-US": "README.en-US.md"
+        },
+        "url": "https://github.com/ai68298100/siyuan-speed-switch",
+        "version": "0.16.38"
+      },
+      "packageZipAssetId": 559014227,
+      "packageZipSha256": "bfc7baee85733842f8f05160f2d06bafa67c6dc9b14bcfe09f2438342a7507a9",
+      "repoRef": "v0.16.38",
+      "size": 293854,
+      "stars": 2,
+      "updated": "2026-09-12T09:42:27Z",
+      "url": "ai68298100/siyuan-speed-switch@bfc7bae"
+    },
+    {
+      "installSize": 3617415,
+      "openIssues": 5,
+      "package": {
+        "author": "Roy",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A habit tracking plugin for SiYuan",
+          "zh_CN": "每一次微小的坚持都值得记录"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Pinch Habit",
+          "zh_CN": "片趣-习惯打卡&amp;任务管理"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/Savor"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "habit",
+          "tracker",
+          "check-in"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "pinch",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/royc01/pinch",
+        "version": "2.6.8"
+      },
+      "packageZipAssetId": 559010951,
+      "packageZipSha256": "eae004fb8619e6f363d12e94fb94cac4ec28ec7cea6fec9d9c810c133fb6cc66",
+      "repoRef": "v2.6.8",
+      "size": 1403303,
+      "stars": 21,
+      "updated": "2026-09-12T09:38:37Z",
+      "url": "royc01/pinch@eae004f"
+    },
+    {
       "installSize": 55909,
       "openIssues": 0,
       "package": {
@@ -160,57 +263,6 @@
       "stars": 26,
       "updated": "2026-09-12T02:26:21Z",
       "url": "IAliceBobI/sy-progressive-plugin@fadd15a"
-    },
-    {
-      "installSize": 771015,
-      "openIssues": 0,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A local-first SiYuan navigation workspace with live tab thumbnails, favorite folders, document card search, cross-plugin quick actions, sidebar mode, fullscreen, and mobile support.",
-          "zh-CN": "本地优先的思源导航工作区，支持页签缩略图、收藏夹、文档卡片搜索、跨插件快捷入口、侧边栏、全屏与手机端。"
-        },
-        "displayName": {
-          "default": "LvSpeed Switch",
-          "zh-CN": "小驴速切"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "页签切换",
-          "tab switch",
-          "标签页",
-          "快捷入口",
-          "speed switch",
-          "lv speed switch",
-          "小驴速切"
-        ],
-        "minAppVersion": "3.1.20",
-        "name": "siyuan-speed-switch",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en-US": "README.en-US.md"
-        },
-        "url": "https://github.com/ai68298100/siyuan-speed-switch",
-        "version": "0.16.37"
-      },
-      "packageZipAssetId": 558423012,
-      "packageZipSha256": "281f8be1e0bb7c32d532b5cccd3611b4ad2cfbadc265855d9e97bceac433b3a3",
-      "repoRef": "v0.16.37",
-      "size": 291339,
-      "stars": 2,
-      "updated": "2026-09-12T02:05:57Z",
-      "url": "ai68298100/siyuan-speed-switch@281f8be"
     },
     {
       "installSize": 974780,
@@ -1458,58 +1510,6 @@
       "stars": 3,
       "updated": "2026-09-10T10:12:11Z",
       "url": "emptylight370/siyuan-ttf-Alibaba_PuHui_Sans@1657235"
-    },
-    {
-      "installSize": 3606102,
-      "openIssues": 5,
-      "package": {
-        "author": "Roy",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A habit tracking plugin for SiYuan",
-          "zh_CN": "每一次微小的坚持都值得记录"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Pinch Habit",
-          "zh_CN": "片趣-习惯打卡&amp;任务管理"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/Savor"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "habit",
-          "tracker",
-          "check-in"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "pinch",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/royc01/pinch",
-        "version": "2.6.7"
-      },
-      "packageZipAssetId": 553983717,
-      "packageZipSha256": "3aa912db5b8e088cf49293a92c651665524f16a787772fc91b02341a49f06235",
-      "repoRef": "v2.6.7",
-      "size": 1400021,
-      "stars": 21,
-      "updated": "2026-09-10T01:38:42Z",
-      "url": "royc01/pinch@3aa912d"
     },
     {
       "installSize": 8403861,
