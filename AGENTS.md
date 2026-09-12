@@ -1,5 +1,16 @@
 # 维护者流程
 
+## 上架集市包
+
+上架指把作者仓库加入集市清单。作者或维护者都可以提 PR，流程相同。
+
+1. 确认仓库已有 GitHub Release，且附件含 `package.zip`；缺失时 PR Check 必然失败
+2. 从 `main` 拉分支 `add-<type>-<name>`（插件 `add-plugin-<name>`，其他类型同理）
+3. 只改对应的 `plugins.txt` / `themes.txt` / `icons.txt` / `templates.txt` / `widgets.txt`，追加一行 `owner/repo`，保持 LF；一个 PR 只加一个包，不要夹带其他改动
+4. 提交信息 `Add owner/repo`，推送到自己的 fork 后开 PR 到 `siyuan-note/bazaar:main`，标题同为 `Add owner/repo`
+5. PR 正文用 `.github/PULL_REQUEST_TEMPLATE.md` 的内容，末尾附 `仓库：https://github.com/owner/repo`；Windows 上把正文写入 UTF-8 无 BOM 临时文件后用 `--body-file`，勿提交临时文件
+6. 人工审阅通过后合并；Stage 会重建索引，无需手改 `stage/*.json`
+
 ## 弃用集市包
 
 弃用用于仍上架、仍可安装和更新，但已不建议新用户选用的包。它不承担安全封禁或下架职责；需要移除分发时走下方「下架集市包」流程。
