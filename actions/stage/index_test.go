@@ -132,6 +132,43 @@ func TestParseHashFromStageURL(t *testing.T) {
 	}
 }
 
+func TestPackageRootUploadFilesUsesDeclaredImagesAndMIME(t *testing.T) {
+	icon := "brand.webp"
+	preview := "cover.avif"
+	pkg := &rules.Package{
+		Readme:  rules.LocaleStrings{"default": "README.md", "zh-CN": "README_zh_CN.md"},
+		Icon:    &icon,
+		Preview: &preview,
+	}
+	files := packageRootUploadFiles(pkg, "plugin.json")
+	want := map[string]string{
+		"README.md":       "",
+		"README_zh_CN.md": "",
+		"plugin.json":     "",
+		"brand.webp":      "image/webp",
+		"cover.avif":      "image/avif",
+	}
+	if len(files) != len(want) {
+		t.Fatalf("files = %#v, want %#v", files, want)
+	}
+	for name, contentType := range want {
+		if files[name] != contentType {
+			t.Fatalf("files[%q] = %q, want %q", name, files[name], contentType)
+		}
+	}
+	if _, exists := files["icon.png"]; exists {
+		t.Fatal("unselected legacy icon must not be uploaded")
+	}
+}
+
+func TestPackageRootUploadFilesSkipsExplicitlyMissingImages(t *testing.T) {
+	empty := ""
+	files := packageRootUploadFiles(&rules.Package{Icon: &empty, Preview: &empty}, "theme.json")
+	if len(files) != 2 || files["README.md"] != "" || files["theme.json"] != "" {
+		t.Fatalf("unexpected files for package without images: %#v", files)
+	}
+}
+
 func TestBackfillUnprocessedStageRepos(t *testing.T) {
 	processed := &util.StageRepo{URL: "a/one@hash1", Updated: "2026-01-01T00:00:00Z"}
 	oldTwo := &util.StageRepo{URL: "b/two@hash2", Updated: "2026-01-02T00:00:00Z"}
@@ -151,3 +188,22 @@ func TestBackfillUnprocessedStageRepos(t *testing.T) {
 		t.Fatalf("third = %q, want c/three@hash3", got[2].URL)
 	}
 }
+
+func TestCloneStageRepoWithRepoRef(t *testing.T) {
+	original := &util.StageRepo{URL: "owner/repo@hash", RepoRef: "v1.0.0"}
+	updated := cloneStageRepoWithRepoRef(original, "v1.0.1")
+	if updated == original {
+		t.Fatal("changed repoRef should return a clone")
+	}
+	if updated.RepoRef != "v1.0.1" || original.RepoRef != "v1.0.0" {
+		t.Fatalf("unexpected refs: updated=%q original=%q", updated.RepoRef, original.RepoRef)
+	}
+	if got := cloneStageRepoWithRepoRef(original, "v1.0.0"); got != original {
+		t.Fatal("unchanged repoRef should reuse the original entry")
+	}
+	if got := cloneStageRepoWithRepoRef(original, ""); got != original {
+		t.Fatal("empty new repoRef should reuse the original entry")
+	}
+}
+
+

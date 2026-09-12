@@ -36,6 +36,14 @@ func TestClearEmptyFunding(t *testing.T) {
 		}
 	})
 
+	t.Run("empty links slice becomes nil", func(t *testing.T) {
+		pkg := &Package{Funding: &Funding{Links: []FundingLink{}}}
+		ClearEmptyFunding(pkg)
+		if pkg.Funding != nil {
+			t.Fatalf("expected nil funding, got %#v", pkg.Funding)
+		}
+	})
+
 	t.Run("keeps non-empty funding", func(t *testing.T) {
 		pkg := &Package{Funding: &Funding{GitHub: "b3log"}}
 		ClearEmptyFunding(pkg)
@@ -43,6 +51,20 @@ func TestClearEmptyFunding(t *testing.T) {
 			t.Fatalf("expected funding kept, got %#v", pkg.Funding)
 		}
 	})
+}
+
+func TestSanitizeFundingLinks(t *testing.T) {
+	pkg := &Package{Funding: &Funding{Links: []FundingLink{{
+		Label: "Coffee <3",
+		URL:   "https://example.com/sponsor?a=1&b=2",
+	}}}}
+	SanitizePackage(pkg)
+	if got := pkg.Funding.Links[0].Label; got != "Coffee &lt;3" {
+		t.Fatalf("sanitized label = %q", got)
+	}
+	if got := pkg.Funding.Links[0].URL; got != "https://example.com/sponsor?a=1&amp;b=2" {
+		t.Fatalf("sanitized URL = %q", got)
+	}
 }
 
 func TestClearEmptyFundingOmitsEmptyFundingJSON(t *testing.T) {
@@ -84,6 +106,11 @@ func TestClearRedundantLocales(t *testing.T) {
 				"zh-CN":   "README.md",
 				"en":      "README_en_US.md",
 			},
+			DeprecatedReason: LocaleStrings{
+				"default": "已停止维护",
+				"zh-CN":   "已停止维护",
+				"en":      "No longer maintained",
+			},
 		}
 		ClearRedundantLocales(pkg)
 		if _, ok := pkg.DisplayName["zh-CN"]; ok {
@@ -100,6 +127,12 @@ func TestClearRedundantLocales(t *testing.T) {
 		}
 		if pkg.Readme["en"] != "README_en_US.md" {
 			t.Fatalf("expected distinct en readme kept, got %#v", pkg.Readme)
+		}
+		if _, ok := pkg.DeprecatedReason["zh-CN"]; ok {
+			t.Fatalf("expected zh-CN deprecated reason removed, got %#v", pkg.DeprecatedReason)
+		}
+		if pkg.DeprecatedReason["en"] != "No longer maintained" {
+			t.Fatalf("expected distinct en deprecated reason kept, got %#v", pkg.DeprecatedReason)
 		}
 	})
 
@@ -123,6 +156,11 @@ func TestPackageForPublicIndex(t *testing.T) {
 			"zh-CN":   "Demo",
 			"en":      "Demo EN",
 		},
+		DeprecatedReason: LocaleStrings{
+			"default": "Deprecated",
+			"zh-CN":   "Deprecated",
+		},
+		Alternatives: []string{"replacement"},
 	}
 	out := PackageForPublicIndex(src)
 	if _, ok := out.DisplayName["zh-CN"]; ok {
@@ -136,5 +174,13 @@ func TestPackageForPublicIndex(t *testing.T) {
 	}
 	if len(out.Frontends) != 2 || out.Frontends[0] != "desktop" || out.Frontends[1] != "browser-desktop" {
 		t.Fatalf("expected frontends kept in public copy, got %#v", out.Frontends)
+	}
+	if _, ok := out.DeprecatedReason["zh-CN"]; ok {
+		t.Fatalf("expected redundant deprecated reason removed, got %#v", out.DeprecatedReason)
+	}
+	out.DeprecatedReason["default"] = "changed"
+	out.Alternatives[0] = "changed"
+	if src.DeprecatedReason["default"] != "Deprecated" || src.Alternatives[0] != "replacement" {
+		t.Fatal("public copy must not mutate source deprecation metadata")
 	}
 }

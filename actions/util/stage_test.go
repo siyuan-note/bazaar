@@ -64,10 +64,13 @@ func TestFindStageRepo(t *testing.T) {
 }
 
 func TestStageFileForPublicIndex_stripsInternalFields(t *testing.T) {
+	icon := "icon.webp"
+	preview := ""
 	stageFile := StageFile{
 		Repos: []StageRepo{
 			{
 				URL:               "owner/repo@abc1234",
+				RepoRef:           "v1.0.0",
 				Updated:           "2025-01-01T00:00:00Z",
 				Stars:             10,
 				OpenIssues:        1,
@@ -78,12 +81,20 @@ func TestStageFileForPublicIndex_stripsInternalFields(t *testing.T) {
 				Package: rules.Package{
 					Name:      "demo",
 					Version:   "1.0.0",
+					Icon:      &icon,
+					Preview:   &preview,
 					Frontends: []string{"desktop", "browser-desktop"},
 					DisplayName: rules.LocaleStrings{
 						"default": "Demo",
 						"zh-CN":   "Demo",
 						"en":      "Demo EN",
 					},
+					Deprecated: true,
+					DeprecatedReason: rules.LocaleStrings{
+						"default": "Deprecated",
+						"zh-CN":   "Deprecated",
+					},
+					Alternatives: []string{"replacement"},
 				},
 			},
 		},
@@ -101,6 +112,10 @@ func TestStageFileForPublicIndex_stripsInternalFields(t *testing.T) {
 	if !strings.Contains(got, `"url":"owner/repo@abc1234"`) {
 		t.Fatalf("public index missing expected fields: %s", got)
 	}
+	if !strings.Contains(got, `"repoRef":"v1.0.0"`) || !strings.Contains(got, `"icon":"icon.webp"`) ||
+		!strings.Contains(got, `"preview":""`) {
+		t.Fatalf("public index missing resource metadata: %s", got)
+	}
 	if !strings.Contains(got, `"frontends":["desktop","browser-desktop"]`) {
 		t.Fatalf("public index missing theme frontends: %s", got)
 	}
@@ -112,5 +127,14 @@ func TestStageFileForPublicIndex_stripsInternalFields(t *testing.T) {
 	}
 	if public.Repos[0].Package.DisplayName["en"] != "Demo EN" {
 		t.Fatalf("public index should keep distinct locales: %s", got)
+	}
+	if !strings.Contains(got, `"deprecated":true`) || !strings.Contains(got, `"alternatives":["replacement"]`) {
+		t.Fatalf("public index missing deprecation metadata: %s", got)
+	}
+	if _, ok := public.Repos[0].Package.DeprecatedReason["zh-CN"]; ok {
+		t.Fatalf("public index must strip redundant deprecated-reason locale: %s", got)
+	}
+	if _, ok := stageFile.Repos[0].Package.DeprecatedReason["zh-CN"]; !ok {
+		t.Fatal("ForPublicIndex must not mutate source deprecation reason")
 	}
 }

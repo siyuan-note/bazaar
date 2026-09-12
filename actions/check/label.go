@@ -47,14 +47,19 @@ func managedLabelSet() Set {
 	return set
 }
 
-// typeLabelSyncPlan 根据 diff / 解析结果计算应有的类型标签。
-// 有增删，或该类型 TXT 解析失败（便于一眼看到问题类型）时纳入 expected。
-func typeLabelSyncPlan(plans []typeCheckPlan) Set {
+// typeLabelSyncPlan 根据包列表 diff、解析结果与弃用注册表变更计算应有的类型标签。
+// 有增删、该类型 TXT 解析失败或该类型弃用元数据变化时纳入 expected。
+func typeLabelSyncPlan(plans []typeCheckPlan, checkResult *CheckResult) Set {
 	expected := make(Set)
 	for _, plan := range plans {
 		name := plan.packageType.String()
 		if plan.parseError != "" || len(plan.diff.New) > 0 || len(plan.diff.Deleted) > 0 {
 			expected[name] = struct{}{}
+		}
+	}
+	if checkResult != nil && checkResult.Deprecation != nil {
+		for _, packageType := range checkResult.Deprecation.Types {
+			expected[packageType.String()] = struct{}{}
 		}
 	}
 	return expected
@@ -70,6 +75,12 @@ func checkResultCIPassed(r *CheckResult) bool {
 		return false
 	}
 	hasActivity := false
+	if r.Deprecation != nil {
+		hasActivity = true
+		if len(r.Deprecation.Issues) > 0 {
+			return false
+		}
+	}
 	for _, list := range [][]PackageCheck{r.Plugins, r.Themes, r.Icons, r.Templates, r.Widgets} {
 		if len(list) > 0 {
 			hasActivity = true
@@ -95,6 +106,9 @@ func isNoActualChange(r *CheckResult) bool {
 		return true
 	}
 	if r.ParseError != "" || r.FlowError != "" {
+		return false
+	}
+	if r.Deprecation != nil {
 		return false
 	}
 	for _, list := range [][]PackageCheck{r.Plugins, r.Themes, r.Icons, r.Templates, r.Widgets} {
@@ -156,7 +170,7 @@ func syncPRLabels(plans []typeCheckPlan, checkResult *CheckResult) {
 		return
 	}
 
-	expectedTypes := typeLabelSyncPlan(plans)
+	expectedTypes := typeLabelSyncPlan(plans, checkResult)
 	ciPassed := checkResultCIPassed(checkResult)
 	current, err := listPRLabelNames(owner, repo, prNumber)
 	if err != nil {

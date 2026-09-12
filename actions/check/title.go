@@ -70,7 +70,54 @@ func conventionalPRTitle(plans []typeCheckPlan) (title string, ok bool) {
 	}
 }
 
-// formatActionTitle 生成 Add/Delist 标题；非插件类型在动作词后插入类型名。
+// conventionalDeprecationPRTitle 生成弃用注册表 PR 的约定标题。
+// 单一动作且仅 1 个包：Deprecate / Restore / Update deprecation [type] owner/repo（插件省略类型）。
+// 单一动作且多个包：Deprecate / Restore N packages，或 Update N deprecations。
+// 混合动作：Update deprecation registry。无有效变更时 ok=false。
+func conventionalDeprecationPRTitle(check *DeprecationCheck) (title string, ok bool) {
+	if check == nil || len(check.Changes) == 0 {
+		return "", false
+	}
+	action := check.Changes[0].Action
+	for _, change := range check.Changes[1:] {
+		if change.Action != action {
+			return "Update deprecation registry", true
+		}
+	}
+	if len(check.Changes) == 1 {
+		change := check.Changes[0]
+		verb := deprecationTitleAction(change.Action)
+		if verb == "" {
+			return "", false
+		}
+		return formatActionTitle(verb, change.PackageType, change.OwnerRepo), true
+	}
+	switch action {
+	case deprecationActionAdd:
+		return fmt.Sprintf("Deprecate %d packages", len(check.Changes)), true
+	case deprecationActionRemove:
+		return fmt.Sprintf("Restore %d packages", len(check.Changes)), true
+	case deprecationActionUpdate:
+		return fmt.Sprintf("Update %d deprecations", len(check.Changes)), true
+	default:
+		return "", false
+	}
+}
+
+func deprecationTitleAction(action string) string {
+	switch action {
+	case deprecationActionAdd:
+		return "Deprecate"
+	case deprecationActionRemove:
+		return "Restore"
+	case deprecationActionUpdate:
+		return "Update deprecation"
+	default:
+		return ""
+	}
+}
+
+// formatActionTitle 生成 Add / Delist / Deprecate 等标题；非插件类型在动作词后插入类型名。
 func formatActionTitle(action string, typ rules.PackageType, ownerRepo string) string {
 	if typ != rules.TypePlugin {
 		return action + " " + typ.String() + " " + ownerRepo

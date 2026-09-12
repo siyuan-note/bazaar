@@ -51,6 +51,34 @@ Under normal circumstances, the community bazaar repo updates the index and depl
 
 If it has not been updated for a long time, there may be an issue with the update (for example, the metadata version was not bumped). First check whether your repository has an open [Stage check failure issue](https://github.com/siyuan-note/bazaar/issues?q=is%3Aissue+is%3Aopen+label%3Astage-fail) (label `stage-fail`); you can also inspect the latest Stage workflow logs.
 
+## Deprecating a bazaar package
+
+Deprecation is a recommendation state for a package that remains available but is no longer a good default choice, for example because it is no longer maintained or has a maintained successor. It is different from delisting or a security block: a deprecated package stays in its type TXT list and continues to be indexed, released, installed, updated and enabled.
+
+The bazaar maintainers own the central [`deprecated.json`](./deprecated.json) registry and make the final decision on every deprecation. Package authors and community members may propose a change through a dedicated PR, but a package must not declare its own deprecation metadata in `plugin.json`, `theme.json` or another package manifest.
+
+A deprecation PR must modify only `deprecated.json`. The root object contains `plugins`, `themes`, `icons`, `templates` and `widgets`; each object is keyed by the exact listed `owner/repo`. The presence of a key marks that package as deprecated. An empty object uses the generic client message; an optional localized `reason` must include `default`; optional `alternatives` are ordered `owner/repo` values from the same package type.
+
+```json
+{
+  "plugins": {
+    "owner/old-plugin": {
+      "reason": {
+        "default": "This package is no longer maintained",
+        "zh-CN": "该包已停止维护"
+      },
+      "alternatives": ["owner/new-plugin"]
+    }
+  },
+  "themes": {},
+  "icons": {},
+  "templates": {},
+  "widgets": {}
+}
+```
+
+Both the deprecated source and every alternative must remain listed in the corresponding type TXT file. Alternatives may themselves be deprecated, although maintainers should verify that the recommendation is still useful. To restore a package to the normal state, remove its key from `deprecated.json`; the next Stage run clears the generated deprecation fields. Do not edit `stage/*.json` manually.
+
 ## Changing maintainers
 
 If the original author can no longer maintain a listed bazaar package, a new maintainer may take it over. Changing maintainers requires a dedicated PR (one package per PR) and will only be merged after the original maintainer confirms.

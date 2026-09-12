@@ -32,7 +32,7 @@ import (
 )
 
 var (
-	RHYTHEM_TOKEN    = os.Getenv("RHYTHEM_TOKEN") // Rhy 上报 token
+	RHYTHM_TOKEN     = os.Getenv("RHYTHM_TOKEN") // Rhy 上报 token
 	logger           = gulu.Log.NewLogger(os.Stdout)
 	BAZAAR_ROOT_PATH = "." // bazaar 仓库根目录（与 stage 一致，CI 中在 checkout 根目录执行）
 )
@@ -98,7 +98,7 @@ func stageIndex(ctx context.Context, hash string, packageType rules.PackageType)
 func reportHash(ctx context.Context, hash string) {
 	u := "https://rhythm.b3log.org/api/siyuan/bazaar/hash"
 	body, err := json.Marshal(map[string]any{
-		"token": RHYTHEM_TOKEN,
+		"token": RHYTHM_TOKEN,
 		"hash":  hash,
 	})
 	if err != nil {

@@ -15,8 +15,10 @@ import (
 	"fmt"
 	"html"
 	"maps"
+	"net/url"
 	"os"
 	"path/filepath"
+	"regexp"
 	"slices"
 	"strings"
 
@@ -26,14 +28,21 @@ import (
 // LocaleStrings 表示按 locale 键（如 default、zh-CN、en）组织的多语言字符串。
 type LocaleStrings map[string]string
 
+// FundingLink 表示带显示标签的自定义赞助链接。
+type FundingLink struct {
+	Label string `json:"label"`
+	URL   string `json:"url"`
+}
+
 // Funding 表示清单 JSON 中 funding 字段的资助信息。
 // 各子字段均为可选；零值时 omitempty，避免 stage 索引写出空字符串 / 空数组。
 // 若整体无有效内容，写入索引前应调用 ClearEmptyFunding 将指针置 nil，避免写出 "funding": {}。
 type Funding struct {
-	OpenCollective string   `json:"openCollective,omitempty"`
-	Patreon        string   `json:"patreon,omitempty"`
-	GitHub         string   `json:"github,omitempty"`
-	Custom         []string `json:"custom,omitempty"`
+	OpenCollective string        `json:"openCollective,omitempty"`
+	Patreon        string        `json:"patreon,omitempty"`
+	GitHub         string        `json:"github,omitempty"`
+	Custom         []string      `json:"custom,omitempty"`
+	Links          []FundingLink `json:"links,omitempty"`
 }
 
 // Package 集市包清单 JSON 解析后的元数据（plugin.json / theme.json 等）。
@@ -52,8 +61,17 @@ type Package struct {
 	DisplayName   LocaleStrings `json:"displayName,omitempty"`
 	Description   LocaleStrings `json:"description,omitempty"`
 	Readme        LocaleStrings `json:"readme,omitempty"`
-	Funding       *Funding      `json:"funding,omitempty"`
-	Keywords      []string      `json:"keywords,omitempty"`
+	// nil 表示尚未迁移的旧 Stage 条目，非 nil 空字符串表示明确无图。
+	Icon     *string  `json:"icon,omitempty"`
+	Preview  *string  `json:"preview,omitempty"`
+	Funding  *Funding `json:"funding,omitempty"`
+	Keywords []string `json:"keywords,omitempty"`
+
+	// 集市索引生成字段（不允许在包清单中声明）
+
+	Deprecated       bool          `json:"deprecated,omitempty"`
+	DeprecatedReason LocaleStrings `json:"deprecatedReason,omitempty"`
+	Alternatives     []string      `json:"alternatives,omitempty"`
 
 	// 插件和主题共用（plugin.json / theme.json）
 
@@ -63,6 +81,7 @@ type Package struct {
 
 	Backends          []string `json:"backends,omitempty"`
 	Kernels           []string `json:"kernels,omitempty"`
+	BootAppearances   []string `json:"bootAppearances,omitempty"`
 	DisabledInPublish bool     `json:"disabledInPublish,omitempty"`
 
 	// 主题专用（仅 theme.json；见 kernel/bazaar/package.go Modes）
@@ -72,14 +91,14 @@ type Package struct {
 
 var commonManifestKeys = []string{
 	"name", "author", "url", "version",
-	"displayName", "description", "readme",
+	"displayName", "description", "readme", "icon", "preview",
 	"funding", "keywords",
 	"minAppVersion",
 }
 
 var allowedManifestKeys = map[PackageType]Set{
-	TypePlugin:   toKeySet(commonManifestKeys, "backends", "frontends", "kernels", "disabledInPublish"), // 插件专用字段见 kernel/bazaar/plugin.go（兼容性与发布禁用判断）。
-	TypeTheme:    toKeySet(commonManifestKeys, "modes", "frontends"),                                    // 主题专用字段：亮色 / 暗色模式和前端兼容性。
+	TypePlugin:   toKeySet(commonManifestKeys, "backends", "frontends", "kernels", "bootAppearances", "disabledInPublish"), // 插件专用字段见 kernel/bazaar/plugin.go（兼容性与发布禁用判断）。
+	TypeTheme:    toKeySet(commonManifestKeys, "modes", "frontends"),                                                       // 主题专用字段：亮色 / 暗色模式和前端兼容性。
 	TypeIcon:     toKeySet(commonManifestKeys),
 	TypeTemplate: toKeySet(commonManifestKeys),
 	TypeWidget:   toKeySet(commonManifestKeys),
@@ -159,12 +178,19 @@ func SanitizePackage(pkg *Package) {
 	for k, v := range pkg.Description {
 		pkg.Description[k] = html.EscapeString(v)
 	}
+	for k, v := range pkg.DeprecatedReason {
+		pkg.DeprecatedReason[k] = html.EscapeString(v)
+	}
 	if pkg.Funding != nil {
 		pkg.Funding.OpenCollective = html.EscapeString(pkg.Funding.OpenCollective)
 		pkg.Funding.Patreon = html.EscapeString(pkg.Funding.Patreon)
 		pkg.Funding.GitHub = html.EscapeString(pkg.Funding.GitHub)
 		for i, v := range pkg.Funding.Custom {
 			pkg.Funding.Custom[i] = html.EscapeString(v)
+		}
+		for i := range pkg.Funding.Links {
+			pkg.Funding.Links[i].Label = html.EscapeString(pkg.Funding.Links[i].Label)
+			pkg.Funding.Links[i].URL = html.EscapeString(pkg.Funding.Links[i].URL)
 		}
 	}
 	for i, kw := range pkg.Keywords {
@@ -180,7 +206,7 @@ func ClearEmptyFunding(pkg *Package) {
 		return
 	}
 	f := pkg.Funding
-	if f.OpenCollective == "" && f.Patreon == "" && f.GitHub == "" && len(f.Custom) == 0 {
+	if f.OpenCollective == "" && f.Patreon == "" && f.GitHub == "" && len(f.Custom) == 0 && len(f.Links) == 0 {
 		pkg.Funding = nil
 	}
 }
@@ -191,6 +217,8 @@ func PackageForPublicIndex(pkg Package) Package {
 	out.DisplayName = cloneLocaleStrings(pkg.DisplayName)
 	out.Description = cloneLocaleStrings(pkg.Description)
 	out.Readme = cloneLocaleStrings(pkg.Readme)
+	out.DeprecatedReason = cloneLocaleStrings(pkg.DeprecatedReason)
+	out.Alternatives = slices.Clone(pkg.Alternatives)
 	ClearRedundantLocales(&out)
 	return out
 }
@@ -213,6 +241,7 @@ func ClearRedundantLocales(pkg *Package) {
 	clearRedundantLocaleStrings(pkg.DisplayName)
 	clearRedundantLocaleStrings(pkg.Description)
 	clearRedundantLocaleStrings(pkg.Readme)
+	clearRedundantLocaleStrings(pkg.DeprecatedReason)
 }
 
 func clearRedundantLocaleStrings(m LocaleStrings) {
@@ -626,6 +655,7 @@ var allowedFundingKeys = map[string]struct{}{
 	"patreon":        {},
 	"github":         {},
 	"custom":         {},
+	"links":          {},
 }
 
 // checkFunding 校验 funding 字段。
@@ -653,8 +683,8 @@ func checkFunding(m map[string]any, owner, repo string) []Issue {
 	for _, k := range keys {
 		if _, ok := allowedFundingKeys[k]; !ok {
 			issues = append(issues, issue(
-				fmt.Sprintf("`funding` 中出现了预期外的字段 `%s`。仅允许 `openCollective`、`patreon`、`github`、`custom`。", k),
-				fmt.Sprintf("`funding` has an unexpected field `%s`. Only `openCollective`, `patreon`, `github`, and `custom` are allowed.", k),
+				fmt.Sprintf("`funding` 中出现了预期外的字段 `%s`。仅允许 `openCollective`、`patreon`、`github`、`custom`、`links`。", k),
+				fmt.Sprintf("`funding` has an unexpected field `%s`. Only `openCollective`, `patreon`, `github`, `custom`, and `links` are allowed.", k),
 			))
 		}
 	}
@@ -685,6 +715,9 @@ func checkFunding(m map[string]any, owner, repo string) []Issue {
 			))
 		}
 	}
+	allowPlaceholder := isBazaarSampleRepo(owner, repo)
+	issues = append(issues, checkFundingLinks(obj, allowPlaceholder)...)
+
 	customRaw, ok := obj["custom"]
 	if !ok || customRaw == nil {
 		return issues
@@ -696,7 +729,6 @@ func checkFunding(m map[string]any, owner, repo string) []Issue {
 			"`funding.custom` must be an array of strings, e.g. `\"custom\": [\"https://example.com/sponsor\"]`.",
 		))
 	}
-	allowPlaceholder := isBazaarSampleRepo(owner, repo)
 	for i, item := range arr {
 		s, ok := item.(string)
 		if !ok {
@@ -724,6 +756,87 @@ func checkFunding(m map[string]any, owner, repo string) []Issue {
 		}
 	}
 	return issues
+}
+
+var allowedFundingLinkKeys = map[string]struct{}{
+	"label": {},
+	"url":   {},
+}
+
+// checkFundingLinks 校验带标签的自定义赞助链接。链接仅接受 http(s)，避免将危险协议写入公开索引。
+func checkFundingLinks(funding map[string]any, allowPlaceholder bool) []Issue {
+	raw, ok := funding["links"]
+	if !ok || raw == nil {
+		return nil
+	}
+	links, ok := raw.([]any)
+	if !ok {
+		return []Issue{issue(
+			"`funding.links` 必须是对象数组，例如 `[{\"label\": \"Buy me a coffee\", \"url\": \"https://example.com/sponsor\"}]`。",
+			"`funding.links` must be an array of objects, e.g. `[{\"label\": \"Buy me a coffee\", \"url\": \"https://example.com/sponsor\"}]`.",
+		)}
+	}
+
+	var issues []Issue
+	for i, rawLink := range links {
+		link, ok := rawLink.(map[string]any)
+		if !ok {
+			issues = append(issues, issue(
+				fmt.Sprintf("`funding.links[%d]` 必须是包含 `label` 和 `url` 的对象。", i),
+				fmt.Sprintf("`funding.links[%d]` must be an object containing `label` and `url`.", i),
+			))
+			continue
+		}
+
+		keys := make([]string, 0, len(link))
+		for key := range link {
+			keys = append(keys, key)
+		}
+		slices.Sort(keys)
+		for _, key := range keys {
+			if _, allowed := allowedFundingLinkKeys[key]; !allowed {
+				issues = append(issues, issue(
+					fmt.Sprintf("`funding.links[%d]` 中出现了预期外的字段 `%s`。仅允许 `label` 和 `url`。", i, key),
+					fmt.Sprintf("`funding.links[%d]` has an unexpected field `%s`. Only `label` and `url` are allowed.", i, key),
+				))
+			}
+		}
+
+		labelRaw, hasLabel := link["label"]
+		label, labelOK := labelRaw.(string)
+		if !hasLabel || !labelOK || label == "" || strings.TrimSpace(label) != label {
+			issues = append(issues, issue(
+				fmt.Sprintf("`funding.links[%d].label` 必须是无首尾空白的非空字符串。", i),
+				fmt.Sprintf("`funding.links[%d].label` must be a non-empty string without leading or trailing whitespace.", i),
+			))
+		}
+
+		urlRaw, hasURL := link["url"]
+		urlValue, urlOK := urlRaw.(string)
+		if !hasURL || !urlOK || urlValue == "" || strings.TrimSpace(urlValue) != urlValue || !validHTTPFundingURL(urlValue) {
+			issues = append(issues, issue(
+				fmt.Sprintf("`funding.links[%d].url` 必须是无首尾空白的 `https://` 或 `http://` 链接。", i),
+				fmt.Sprintf("`funding.links[%d].url` must be an `https://` or `http://` URL without leading or trailing whitespace.", i),
+			))
+			continue
+		}
+		if !allowPlaceholder && strings.Contains(urlValue, "https://ld246.com/sponsor") {
+			issues = append(issues, issue(
+				fmt.Sprintf("`funding.links[%d].url` 不能包含模板占位链接 `https://ld246.com/sponsor`。请填写真实的赞助地址，或删除该条目。", i),
+				fmt.Sprintf("`funding.links[%d].url` still has the template placeholder link `https://ld246.com/sponsor`. Please replace it with a real funding URL, or delete this entry.", i),
+			))
+		}
+	}
+	return issues
+}
+
+func validHTTPFundingURL(value string) bool {
+	parsed, err := url.Parse(value)
+	if err != nil || parsed.Host == "" {
+		return false
+	}
+	scheme := strings.ToLower(parsed.Scheme)
+	return scheme == "https" || scheme == "http"
 }
 
 // unsafeFundingURI 判断 funding.custom 值是否含有危险或不被思源接受为链接的 URI 协议。
@@ -773,7 +886,7 @@ func unsafeFundingURI(s string) bool {
 
 // checkOptionalTypedFields 按包类型校验可选字段（若存在）的 JSON 类型。
 // 未知字段由 checkUnknownKeys 按 allowedManifestKeys 拒绝；此处只校验当前类型允许的字段。
-// readme / funding 由专用校验函数处理，此处不重复。
+// readme / funding 由专用校验函数处理，icon / preview 由图片规则处理，此处不重复。
 func checkOptionalTypedFields(m map[string]any, in ManifestInput) []Issue {
 	var issues []Issue
 	issues = append(issues, checkCommonOptionalTypedFields(m)...)
@@ -829,6 +942,7 @@ func checkPluginOptionalTypedFields(m map[string]any, owner, repo string) []Issu
 	for _, key := range []string{"backends", "frontends", "kernels"} {
 		issues = append(issues, checkOptionalStringArray(m, key, allowAllMix)...)
 	}
+	issues = append(issues, checkBootAppearances(m)...)
 	if raw, ok := m["disabledInPublish"]; ok {
 		if _, isBool := raw.(bool); !isBool {
 			issues = append(issues, issue(
@@ -836,6 +950,51 @@ func checkPluginOptionalTypedFields(m map[string]any, owner, repo string) []Issu
 				"If you include `disabledInPublish`, it must be a boolean `true` or `false` (not the string `\"true\"`). If you don't need it, please delete the field.",
 			))
 		}
+	}
+	return issues
+}
+
+var bootAppearanceIDPattern = regexp.MustCompile(`^[a-z0-9]+(?:-[a-z0-9]+)*$`)
+
+// checkBootAppearances 校验插件声明的启动页外观 ID。
+func checkBootAppearances(m map[string]any) []Issue {
+	raw, ok := m["bootAppearances"]
+	if !ok {
+		return nil
+	}
+	arr, ok := raw.([]any)
+	if !ok {
+		return []Issue{issue(
+			"若填写 `bootAppearances`，值必须是启动页外观 ID 字符串数组，例如 `[\"sunrise\"]`。不需要时请删除该字段。",
+			"If you include `bootAppearances`, it must be an array of startup appearance ID strings, e.g. `[\"sunrise\"]`. If you don't need it, please delete the field.",
+		)}
+	}
+	var issues []Issue
+	seen := map[string]struct{}{}
+	for i, item := range arr {
+		id, isString := item.(string)
+		if !isString {
+			issues = append(issues, issue(
+				fmt.Sprintf("`bootAppearances[%d]` 必须是字符串。请检查数组元素类型。", i),
+				fmt.Sprintf("`bootAppearances[%d]` must be a string. Please check the array element type.", i),
+			))
+			continue
+		}
+		if 64 < len(id) || !bootAppearanceIDPattern.MatchString(id) {
+			issues = append(issues, issue(
+				fmt.Sprintf("`bootAppearances[%d]` 的值 `%s` 无效。ID 只能包含小写字母、数字和连字符，最长 64 个字符，连字符不能连续，也不能出现在开头或结尾。", i, id),
+				fmt.Sprintf("`bootAppearances[%d]` value `%s` is invalid. IDs may contain only lowercase letters, digits, and hyphens, must be at most 64 characters, and hyphens can't be consecutive or appear at either end.", i, id),
+			))
+			continue
+		}
+		if _, duplicate := seen[id]; duplicate {
+			issues = append(issues, issue(
+				fmt.Sprintf("`bootAppearances` 中重复声明了 ID `%s`。请删除重复项。", id),
+				fmt.Sprintf("`bootAppearances` declares the ID `%s` more than once. Please remove the duplicate.", id),
+			))
+			continue
+		}
+		seen[id] = struct{}{}
 	}
 	return issues
 }

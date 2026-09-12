@@ -32,8 +32,9 @@ const (
 // packageStageJob 某一包类型本轮要执行的 staging。
 // checkRepos == nil 表示对 repos 全量打 API；非 nil 时仅检查集合内路径（可为空，用于纯下架重建）。
 type packageStageJob struct {
-	repos      []string
-	checkRepos Set
+	repos        []string
+	checkRepos   Set
+	registryOnly bool
 }
 
 // stageJobs 本轮要跑的类型 → job；未出现的类型在增量模式下表示列表未变，跳过。
@@ -118,6 +119,19 @@ func countCheckRepos(jobs stageJobs) int {
 	return n
 }
 
+// registryOnlyStageJobs 判断本轮是否只因弃用注册表变化而重建索引。
+func registryOnlyStageJobs(jobs stageJobs) bool {
+	if len(jobs) == 0 {
+		return false
+	}
+	for _, job := range jobs {
+		if !job.registryOnly {
+			return false
+		}
+	}
+	return true
+}
+
 func buildFullStageJobs(reposByType map[rules.PackageType][]string) stageJobs {
 	jobs := make(stageJobs, len(reposByType))
 	for packageType, repos := range reposByType {
@@ -178,7 +192,41 @@ func buildIncrementalStageJobs(ctx context.Context, repoRoot, beforeSHA string, 
 		jobs[packageType] = packageStageJob{repos: afterRepos, checkRepos: check}
 		logger.Infof("incremental [%s]: listed=%d added=%d", packageType.Plural(), len(afterRepos), len(added))
 	}
+	registryChanged, err := gitPathChanged(ctx, repoRoot, beforeSHA, util.DeprecatedRegistryRelPath)
+	if err != nil {
+		return nil, fmt.Errorf("check %s change: %w", util.DeprecatedRegistryRelPath, err)
+	}
+	if registryChanged {
+		for _, packageType := range rules.AllPackageTypes() {
+			if _, exists := jobs[packageType]; exists {
+				continue
+			}
+			jobs[packageType] = packageStageJob{
+				repos:        reposByType[packageType],
+				checkRepos:   make(Set),
+				registryOnly: true,
+			}
+		}
+		logger.Infof("incremental [%s]: rebuild all package types without repository API checks", util.DeprecatedRegistryRelPath)
+	}
 	return jobs, nil
+}
+
+func gitPathChanged(ctx context.Context, repoRoot, beforeSHA, relPath string) (bool, error) {
+	ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
+	defer cancel()
+	cmd := exec.CommandContext(ctx, "git", "-C", repoRoot, "diff", "--name-only", beforeSHA, "--", filepath.ToSlash(relPath))
+	var stdout, stderr bytes.Buffer
+	cmd.Stdout = &stdout
+	cmd.Stderr = &stderr
+	if err := cmd.Run(); err != nil {
+		msg := strings.TrimSpace(stderr.String())
+		if msg == "" {
+			msg = err.Error()
+		}
+		return false, fmt.Errorf("git diff --name-only %s -- %s: %s", beforeSHA, relPath, msg)
+	}
+	return strings.TrimSpace(stdout.String()) != "", nil
 }
 
 func gitCommitReadable(ctx context.Context, repoRoot, sha string) bool {

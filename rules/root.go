@@ -72,8 +72,8 @@ func ResolvePackageRoot(path string) (string, error) {
 	}
 	if len(dirs) > 1 && !hasFile {
 		return "", LocalizedErr(
-			fmt.Sprintf("无法从 `package.zip` 确定包根目录：解压根下有 %d 个并列文件夹，且没有任何文件。请把 `icon.png`、清单文件等必要文件直接放在 zip 根目录，或只保留一层包装文件夹（不要并排放多个无关目录）。", len(dirs)),
-			fmt.Sprintf("Couldn't determine the package root from `package.zip`: there are %d sibling folders under the extraction root and no files. Please put required files like `icon.png` and the manifest directly at the zip root, or keep exactly one wrapping folder — not several top-level directories side by side.", len(dirs)),
+			fmt.Sprintf("无法从 `package.zip` 确定包根目录：解压根下有 %d 个并列文件夹，且没有任何文件。请把 `README.md`、清单文件等必要文件直接放在 zip 根目录，或只保留一层包装文件夹（不要并排放多个无关目录）。", len(dirs)),
+			fmt.Sprintf("Couldn't determine the package root from `package.zip`: there are %d sibling folders under the extraction root and no files. Please put required files like `README.md` and the manifest directly at the zip root, or keep exactly one wrapping folder — not several top-level directories side by side.", len(dirs)),
 			nil,
 		)
 	}

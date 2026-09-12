@@ -38,14 +38,14 @@ import (
 
 /*
 Stage 流程：
-1. 按 STAGE_MODE 决定范围：push → 增量（仅检查本次 *.txt 相对 STAGE_BEFORE_SHA 新增的 owner/repo，且只重建有变更的类型）；
+1. 按 STAGE_MODE 决定范围：push → 增量（检查本次 *.txt 新增的 owner/repo；deprecated.json 变化时不打仓库 API，重建所有类型）；
    schedule / workflow_dispatch → 全量。增量 before 无效或 diff 失败则回退全量。
 2. 并发前串行 GET /repos/{owner}/{repo}：用响应头检查 PAT core 剩余是否够本轮估算量，并锚定 PAT / GITHUB_TOKEN 观测起点（不用 GET /rate_limit；不用 GET /user，以免 GITHUB_TOKEN 403）
 3. 按类型依次执行 performStage；每类开始前重新加载 OccupiedNames，以便上一类本轮新写入的 name 参与后续类型的唯一性检查
 4. 读取 *s.txt 与既有 stage/*.json；增量时未列入 check 的仓沿用旧条目（不打 API、不写 report），下架随当前列表重建自然消失
 5. 先比 packageZipAssetId：相同则跳过；不同则取 SHA-256（优先 GitHub digest，否则下载 zip 计算）。
    内容未变（新 asset id、同一 SHA-256）则保留旧条目（不回写 asset id）并记 stage-fail，提示开发者「空更新」；
-   内容变了则校验并上传 OSS（package.zip、README、preview、icon、清单 JSON）。url 的 @hash 为 SHA-256 前 7 位
+   内容变了则校验并上传 OSS（package.zip、README、声明的 preview / icon、清单 JSON）。url 的 @hash 为 SHA-256 前 7 位
 6. 按 updated 降序排序后写出 stage/*.json（键序经 marshalSortedIndentedJSON 稳定；新上架用索引时间，更新用 Release 发布时间）
 7. 将本轮失败/成功同步为按仓独立 Issue（标签 stage-fail）：失败 upsert（正文未变则跳过 Edit）；
    成功入库或 asset id 未变跳过（已能正常取到 Release）则先评论说明再关闭；
@@ -109,14 +109,21 @@ func main() {
 		logger.Fatalf("create github repo client failed: %s", err)
 	}
 
-	reposByType, err := loadReposByPackageType()
+	reposByType, err := util.LoadReposByPackageType(BAZAAR_ROOT_PATH)
 	if err != nil {
 		logger.Fatalf("parse repos list failed: %s", err)
+	}
+	deprecatedRegistry, err := util.ReadDeprecatedRegistry(filepath.Join(BAZAAR_ROOT_PATH, util.DeprecatedRegistryRelPath))
+	if err != nil {
+		logger.Fatalf("parse deprecation registry failed: %s", err)
+	}
+	for _, issue := range util.ValidateDeprecatedRegistry(deprecatedRegistry, reposByType) {
+		logger.Errorf("deprecation registry warning: %s / %s", issue.MessageZh, issue.MessageEn)
 	}
 
 	jobs, mode := resolveStageJobs(githubContext, BAZAAR_ROOT_PATH, reposByType)
 	if mode == stageModeIncremental && len(jobs) == 0 {
-		logger.Infof("incremental stage: no package list changes; nothing to do")
+		logger.Infof("incremental stage: no package list or deprecation registry changes; nothing to do")
 		logger.Infof("Stage completed")
 		return
 	}
@@ -139,7 +146,7 @@ func main() {
 		if err != nil {
 			logger.Fatalf("load occupied names failed: %s", err)
 		}
-		if performStage(packageType, occupiedNames, job.repos, job.checkRepos, reports) {
+		if performStage(packageType, occupiedNames, job.repos, job.checkRepos, deprecatedRegistry, reports) {
 			abortedByRateLimit = true
 			logger.Errorf("abort remaining package types due to GitHub API rate limit")
 			break
@@ -149,8 +156,12 @@ func main() {
 	// 失败同步为按仓独立 Issue；同步失败不阻断已写出的 stage JSON（仅记日志）。
 	// 限流导致的失败不会进入 reports，故不会误刷 stage-fail Issue。
 	// listed 用完整 *s.txt，避免增量跳过类型 / 限流中止时把未检查仓误判为下架。
-	if err := syncStageFailReports(githubContext, githubRepoClient, reports.snapshot(), ownerRepoListedSet(reposByType)); err != nil {
-		logger.Errorf("sync stage-fail issues failed: %s", err)
+	if registryOnlyStageJobs(jobs) {
+		logger.Infof("skip stage-fail issue sync for deprecation-registry-only rebuild")
+	} else {
+		if err := syncStageFailReports(githubContext, githubRepoClient, reports.snapshot(), ownerRepoListedSet(reposByType)); err != nil {
+			logger.Errorf("sync stage-fail issues failed: %s", err)
+		}
 	}
 
 	logger.Infof("%s", util.FormatRateHeaderObservation("PAT", patRateObs))
@@ -162,18 +173,6 @@ func main() {
 	logger.Infof("Stage completed")
 }
 
-func loadReposByPackageType() (map[rules.PackageType][]string, error) {
-	reposByType := make(map[rules.PackageType][]string, len(rules.AllPackageTypes()))
-	for _, packageType := range rules.AllPackageTypes() {
-		repos, err := util.ParseReposFromTxt(packageType.ReposListFile())
-		if err != nil {
-			return nil, fmt.Errorf("parse %s: %w", packageType.ReposListFile(), err)
-		}
-		reposByType[packageType] = repos
-	}
-	return reposByType, nil
-}
-
 // stageAPIRequestsPerRepo 为每个仓库 staging 时消耗的 GitHub REST API (core) 请求数经验值。
 // 近几轮以 hash skip 为主：仅 GetLatestRelease ≈ 1；全量更新另加 DownloadReleaseAsset + repoStats。
 // 取 1.3 覆盖少量更新与余量（不再解析 tag→commit）。
@@ -182,6 +181,10 @@ const stageAPIRequestsPerRepo = 1.3
 // checkRateLimitBeforeStage 按本轮待 API 检查的仓库数估算请求量；串行 GET 本仓 repos 读取真实 core 响应头做门槛，并锚定观测起点。
 // 不用 GET /rate_limit（其实测 remaining 可能偏高）。探测本身计入 samples，响应头 Remaining 为扣减后值。
 func checkRateLimitBeforeStage(repoCount int) error {
+	if repoCount == 0 {
+		logger.Infof("GitHub API rate limit check skipped: 0 repositories to check")
+		return nil
+	}
 	required := int(math.Ceil(float64(repoCount) * stageAPIRequestsPerRepo))
 	ctx, cancel := context.WithTimeout(githubContext, 10*time.Second)
 	defer cancel()
@@ -201,10 +204,6 @@ func checkRateLimitBeforeStage(repoCount int) error {
 	remaining := rate.Remaining
 	limit := rate.Limit
 	reset := rate.Reset.Unix()
-	if required == 0 {
-		logger.Infof("GitHub API (core via headers) remaining %d / %d, 0 repos to check, OK", remaining, limit)
-		return nil
-	}
 	if remaining < required {
 		return fmt.Errorf("GitHub REST API (core) remaining %d / %d is below required %d for %d repos (~%d requests); reset at %d", remaining, limit, required, repoCount, required, reset)
 	}
@@ -237,7 +236,7 @@ func loadOldStageData(packageType rules.PackageType) (map[string]*util.StageRepo
 
 // performStage 执行单一类型的 staging。若遇 GitHub API 限流返回 true（调用方应中止后续类型）。
 // checkRepos == nil 表示对 reposSlice 全量打 API；非 nil 时仅检查集合内路径，其余沿用同路径旧条目且不写 report。
-func performStage(packageType rules.PackageType, occupiedNames map[string]struct{}, reposSlice []string, checkRepos Set, reports *stageReportCollector) (abortedByRateLimit bool) {
+func performStage(packageType rules.PackageType, occupiedNames map[string]struct{}, reposSlice []string, checkRepos Set, deprecatedRegistry *util.DeprecatedRegistry, reports *stageReportCollector) (abortedByRateLimit bool) {
 	if checkRepos == nil {
 		logger.Infof("start stage [%s] (check all %d)", packageType.Plural(), len(reposSlice))
 	} else {
@@ -345,8 +344,9 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 			// 仅同路径 exactOld：换维护者不得沿用旧 owner/repo@hash 条目
 			if exactOld != nil && exactOld.PackageZipAssetID != 0 && exactOld.PackageZipAssetID == packageZipAssetID {
 				logger.Infof("skip repo [%s], package.zip asset id unchanged [%d]", ownerRepo, packageZipAssetID)
+				kept := cloneStageRepoWithRepoRef(exactOld, releaseInfo.Tag)
 				stageReposMu.Lock()
-				stageRepos = append(stageRepos, exactOld)
+				stageRepos = append(stageRepos, kept)
 				stageReposMu.Unlock()
 				reports.add(stageReport{
 					OwnerRepo:   ownerRepo,
@@ -465,6 +465,7 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 			stageReposMu.Lock()
 			stageRepos = append(stageRepos, &util.StageRepo{
 				URL:               ownerRepo + "@" + hash,
+				RepoRef:           releaseInfo.Tag,
 				Stars:             stars,
 				OpenIssues:        openIssues,
 				Updated:           updated,
@@ -501,7 +502,12 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 	staged := util.StageFile{Repos: make([]util.StageRepo, len(stageRepos))}
 	for i, repo := range stageRepos {
 		staged.Repos[i] = *repo
-		// hash 跳过 / 失败保留的旧条目也可能带有 "funding": {} 或冗余 locale，写回前一并清理。
+	}
+	for _, warning := range util.ApplyDeprecatedRegistry(packageType, staged.Repos, deprecatedRegistry) {
+		logger.Errorf("deprecation registry warning: %s", warning)
+	}
+	for i := range staged.Repos {
+		// hash 跳过 / 失败保留的旧条目也可能带有空 funding、旧弃用字段或冗余 locale，写回前一并清理。
 		rules.ClearEmptyFunding(&staged.Repos[i].Package)
 		rules.ClearRedundantLocales(&staged.Repos[i].Package)
 	}
@@ -518,6 +524,16 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 
 	logger.Infof("finish stage [%s]", packageType.Plural())
 	return abortedByRateLimit
+}
+
+// cloneStageRepoWithRepoRef 在确认 Release Asset 未变化时同步与该 Release 对应的仓库引用。
+func cloneStageRepoWithRepoRef(repo *util.StageRepo, repoRef string) *util.StageRepo {
+	if repo == nil || repoRef == "" || repo.RepoRef == repoRef {
+		return repo
+	}
+	cloned := *repo
+	cloned.RepoRef = repoRef
+	return &cloned
 }
 
 // backfillUnprocessedStageRepos 在限流中止后，为尚未写入结果的列表仓库补回同路径旧条目，避免 stage JSON 丢仓。

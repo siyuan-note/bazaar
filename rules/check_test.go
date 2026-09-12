@@ -42,18 +42,21 @@ func TestCheckPluginOK_PR(t *testing.T) {
 	}
 }
 
-func TestCheckPluginMissingIcon(t *testing.T) {
+func TestCheckPluginAllowsMissingIcon(t *testing.T) {
 	root := filepath.Join("testdata", "plugin_missing_icon")
 	r := Check(Input{
 		PackageRoot: root,
 		OwnerRepo:   "demo/sample-plugin",
 		Type:        TypePlugin,
 	})
-	if r.OK {
-		t.Fatal("expected failure")
+	if !r.OK {
+		t.Fatalf("expected package without icon to pass, issues=%v", r.Issues)
 	}
-	if !hasIssueMsg(r, "缺少必要文件") {
-		t.Fatalf("expected missing required file issue, issues=%v", r.Issues)
+	if r.Package.Icon == nil || *r.Package.Icon != "" {
+		t.Fatalf("expected normalized empty icon, got %#v", r.Package.Icon)
+	}
+	if r.Package.Preview == nil || *r.Package.Preview != "preview.png" {
+		t.Fatalf("expected legacy preview fallback, got %#v", r.Package.Preview)
 	}
 }
 
@@ -243,9 +246,13 @@ func TestManifestKeysByPackageType(t *testing.T) {
 		{TypePlugin, "modes", "modes"},
 		{TypeTheme, "backends", "backends"},
 		{TypeTheme, "disabledInPublish", "disabledInPublish"},
+		{TypeTheme, "bootAppearances", "bootAppearances"},
 		{TypeIcon, "frontends", "frontends"},
 		{TypeTemplate, "kernels", "kernels"},
 		{TypeWidget, "modes", "modes"},
+		{TypePlugin, "deprecated", "deprecated"},
+		{TypeTheme, "deprecatedReason", "deprecatedReason"},
+		{TypeWidget, "alternatives", "alternatives"},
 	}
 	for _, tc := range cases {
 		m := map[string]any{tc.extra: true}
@@ -262,6 +269,7 @@ func TestManifestKeysByPackageType(t *testing.T) {
 	}{
 		{TypePlugin, "backends"},
 		{TypePlugin, "disabledInPublish"},
+		{TypePlugin, "bootAppearances"},
 		{TypeTheme, "modes"},
 		{TypeTheme, "frontends"},
 		{TypeIcon, "keywords"},
@@ -449,6 +457,7 @@ func TestCheckOptionalTypedFields(t *testing.T) {
   "keywords": ["sample"],
   "backends": ["all"],
   "frontends": ["all"],
+  "bootAppearances": ["sunrise", "night-sky"],
   "disabledInPublish": false`)
 	if r := check(); !r.OK {
 		t.Fatalf("expected OK for valid optional fields, issues=%v", r.Issues)
@@ -500,6 +509,21 @@ func TestCheckOptionalTypedFields(t *testing.T) {
   "kernels": ["all", "linux"]`)
 	if r := check(); r.OK || !hasIssueMsg(r, "kernels") || !hasIssueMsg(r, "all") {
 		t.Fatalf("expected kernels mixing all with others to fail, issues=%v", r.Issues)
+	}
+
+	writePlugin(`,
+  "bootAppearances": "sunrise"`)
+	if r := check(); r.OK || !hasIssueMsg(r, "bootAppearances") {
+		t.Fatalf("expected non-array bootAppearances to fail, issues=%v", r.Issues)
+	}
+
+	writePlugin(`,
+  "bootAppearances": ["Sunrise", "night_sky", "night--sky", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "sunrise", "sunrise"]`)
+	if r := check(); r.OK || !hasIssueMsg(r, "Sunrise") || !hasIssueMsg(r, "night_sky") ||
+		!hasIssueMsg(r, "night--sky") ||
+		!hasIssueMsg(r, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa") ||
+		!hasIssueMsg(r, "重复") {
+		t.Fatalf("expected invalid and duplicate boot appearance IDs to fail, issues=%v", r.Issues)
 	}
 }
 
@@ -572,7 +596,7 @@ func TestCheckFunding(t *testing.T) {
 		})
 	}
 
-	writePlugin(`{ "openCollective": "b3log", "patreon": "hongster85", "github": "https://github.com/demo", "custom": ["微信打赏", "https://example.com/sponsor"] }`)
+	writePlugin(`{ "openCollective": "b3log", "patreon": "hongster85", "github": "https://github.com/demo", "custom": ["微信打赏", "https://example.com/sponsor"], "links": [{"label": "Buy me a coffee", "url": "https://example.com/coffee"}] }`)
 	if r := check(); !r.OK {
 		t.Fatalf("expected OK for valid funding fields, issues=%v", r.Issues)
 	}
@@ -605,6 +629,31 @@ func TestCheckFunding(t *testing.T) {
 	writePlugin(`{ "custom": ["mailto:dev@example.com"] }`)
 	if r := check(); !r.OK {
 		t.Fatalf("expected mailto funding.custom to pass, issues=%v", r.Issues)
+	}
+
+	writePlugin(`{ "links": [{"label": "Sponsor", "url": "https://"}] }`)
+	if r := check(); r.OK || !hasIssueMsg(r, "funding.links[0].url") {
+		t.Fatalf("expected funding.links URL without host to fail, issues=%v", r.Issues)
+	}
+
+	writePlugin("{ \"links\": [{\"label\": \"Sponsor\", \"url\": \"https://example.com/\\n\"}] }")
+	if r := check(); r.OK || !hasIssueMsg(r, "funding.links[0].url") {
+		t.Fatalf("expected funding.links URL with control characters to fail, issues=%v", r.Issues)
+	}
+
+	writePlugin(`{ "links": [{"label": "Sponsor", "url": "javascript:alert(1)"}] }`)
+	if r := check(); r.OK || !hasIssueMsg(r, "funding.links[0].url") {
+		t.Fatalf("expected unsafe funding.links URL to fail, issues=%v", r.Issues)
+	}
+
+	writePlugin(`{ "links": [{"label": " ", "url": "https://example.com"}] }`)
+	if r := check(); r.OK || !hasIssueMsg(r, "funding.links[0].label") {
+		t.Fatalf("expected blank funding.links label to fail, issues=%v", r.Issues)
+	}
+
+	writePlugin(`{ "links": [{"label": "Sponsor", "url": "https://example.com", "icon": "x"}] }`)
+	if r := check(); r.OK || !hasIssueMsg(r, "预期外的字段") {
+		t.Fatalf("expected unknown funding.links field to fail, issues=%v", r.Issues)
 	}
 
 	writePlugin(`{ "buyMeACoffee": "demo" }`)
@@ -732,7 +781,16 @@ func copyTree(t *testing.T, src, dst string) {
 
 func writeMinimalPNGs(t *testing.T, dir string) {
 	t.Helper()
-	png := []byte{
+	png := minimalPNGBytes()
+	for _, name := range []string{"icon.png", "preview.png"} {
+		if err := os.WriteFile(filepath.Join(dir, name), png, 0644); err != nil {
+			t.Fatal(err)
+		}
+	}
+}
+
+func minimalPNGBytes() []byte {
+	return []byte{
 		0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A, 0x00, 0x00, 0x00, 0x0D,
 		0x49, 0x48, 0x44, 0x52, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01,
 		0x08, 0x02, 0x00, 0x00, 0x00, 0x90, 0x77, 0x53, 0xDE, 0x00, 0x00, 0x00,
@@ -740,10 +798,5 @@ func writeMinimalPNGs(t *testing.T, dir string) {
 		0x00, 0x00, 0x03, 0x00, 0x01, 0x00, 0x05, 0xFE, 0x02, 0xFE, 0xDC, 0xCC,
 		0x59, 0xE7, 0x00, 0x00, 0x00, 0x00, 0x49, 0x45, 0x4E, 0x44, 0xAE, 0x42,
 		0x60, 0x82,
-	}
-	for _, name := range []string{"icon.png", "preview.png"} {
-		if err := os.WriteFile(filepath.Join(dir, name), png, 0644); err != nil {
-			t.Fatal(err)
-		}
 	}
 }

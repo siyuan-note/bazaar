@@ -27,6 +27,7 @@ type StageFile struct {
 // StageRepo 对应 stage/*.json 中 repos 数组的单项。
 type StageRepo struct {
 	URL               string        `json:"url"`
+	RepoRef           string        `json:"repoRef,omitempty"`
 	Updated           string        `json:"updated"`
 	Stars             int           `json:"stars"`
 	OpenIssues        int           `json:"openIssues"`
@@ -45,6 +46,7 @@ type StageIndexFile struct {
 // StageIndexRepo 对应发布后集市索引 repos 数组的单项。
 type StageIndexRepo struct {
 	URL         string        `json:"url"`
+	RepoRef     string        `json:"repoRef,omitempty"`
 	Updated     string        `json:"updated"`
 	Stars       int           `json:"stars"`
 	OpenIssues  int           `json:"openIssues"`
@@ -60,6 +62,7 @@ func (f StageFile) ForPublicIndex() StageIndexFile {
 	for i, repo := range f.Repos {
 		out.Repos[i] = StageIndexRepo{
 			URL:         repo.URL,
+			RepoRef:     repo.RepoRef,
 			Updated:     repo.Updated,
 			Stars:       repo.Stars,
 			OpenIssues:  repo.OpenIssues,

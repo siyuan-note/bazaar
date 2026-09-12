@@ -28,6 +28,42 @@ Please fix the matching `.txt` file at the repo root so each line is one `owner/
 ---
 {{- end }}
 
+{{- if .Deprecation }}
+
+### 弃用注册表 / Deprecation Registry
+{{- if .Deprecation.Changes }}
+
+{{ range .Deprecation.Changes }}- [`{{ .OwnerRepo }}`](https://github.com/{{ .OwnerRepo }})（{{ .PackageType.Plural }}）：{{ .ActionLabel }}
+{{ end }}
+{{- end }}
+
+  {{- if .Deprecation.Issues }}
+
+检测到以下问题，请修正 `deprecated.json` 后推送新提交：
+
+We found the following issues. Please fix `deprecated.json` and push a new commit:
+
+    {{- $issues := .Deprecation.Issues }}
+    {{- range $j, $issue := $issues }}
+
+[{{ issueIndex $j (len $issues) }}]
+
+{{ $issue.MessageZh }}
+
+{{ $issue.MessageEn }}
+
+---
+    {{- end }}
+  {{- else }}
+
+自动校验通过。弃用状态、原因和替代包仍需由集市维护者审阅确认。
+
+Automated validation passed. Bazaar maintainers still need to review and confirm the deprecation status, reason, and alternatives.
+
+---
+  {{- end }}
+{{- end }}
+
 {{- define "repoCheck" }}
 #### [{{ .RepoInfo.Path }}]({{ .RepoInfo.Home }}){{ if .MaintainerChanged }} (更换维护者 / Change Maintainer){{ end }}
 
@@ -163,9 +199,9 @@ Check passed.
   {{- end }}
 {{- end }}
 
-{{- if and (not .ParseError) (not .FlowError) (not .Plugins) (not .Themes) (not .Icons) (not .Templates) (not .Widgets) (not .PluginsDeleted) (not .ThemesDeleted) (not .IconsDeleted) (not .TemplatesDeleted) (not .WidgetsDeleted) }}
+{{- if and (not .ParseError) (not .FlowError) (not .Deprecation) (not .Plugins) (not .Themes) (not .Icons) (not .Templates) (not .Widgets) (not .PluginsDeleted) (not .ThemesDeleted) (not .IconsDeleted) (not .TemplatesDeleted) (not .WidgetsDeleted) }}
 
-集市包列表无实际变更（或变更已在 main 中），请检查你的提交。
+集市包列表或弃用注册表无实际变更（或变更已在 main 中），请检查你的提交。
 
-There's no actual change to the bazaar package list (or the change is already on main). Please double-check your commit.
+There's no actual change to the bazaar package list or deprecation registry (or the change is already on main). Please double-check your commit.
 {{- end }}

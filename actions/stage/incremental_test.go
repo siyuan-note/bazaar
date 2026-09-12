@@ -190,6 +190,64 @@ func TestBuildIncrementalStageJobs(t *testing.T) {
 	}
 }
 
+func TestBuildIncrementalStageJobsDeprecatedRegistryOnly(t *testing.T) {
+	root := t.TempDir()
+	run := func(args ...string) {
+		t.Helper()
+		cmd := exec.Command("git", append([]string{"-C", root}, args...)...)
+		cmd.Env = append(os.Environ(),
+			"GIT_AUTHOR_NAME=test",
+			"GIT_AUTHOR_EMAIL=test@example.com",
+			"GIT_COMMITTER_NAME=test",
+			"GIT_COMMITTER_EMAIL=test@example.com",
+		)
+		out, err := cmd.CombinedOutput()
+		if err != nil {
+			t.Fatalf("git %v: %v\n%s", args, err, out)
+		}
+	}
+	write := func(name, body string) {
+		t.Helper()
+		if err := os.WriteFile(filepath.Join(root, name), []byte(body), 0o644); err != nil {
+			t.Fatal(err)
+		}
+	}
+	run("init")
+	run("config", "core.autocrlf", "false")
+	for _, packageType := range rules.AllPackageTypes() {
+		write(packageType.ReposListFile(), "keep/"+packageType.String()+"\n")
+	}
+	write(util.DeprecatedRegistryRelPath, `{"plugins":{},"themes":{},"icons":{},"templates":{},"widgets":{}}`)
+	run("add", ".")
+	run("commit", "-m", "base")
+	before := gitRevParse(t, root)
+
+	write(util.DeprecatedRegistryRelPath, `{"plugins":{"keep/plugin":{}},"themes":{},"icons":{},"templates":{},"widgets":{}}`)
+	run("add", ".")
+	run("commit", "-m", "deprecate")
+
+	reposByType, err := util.LoadReposByPackageType(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	jobs, err := buildIncrementalStageJobs(context.Background(), root, before, reposByType)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(jobs) != len(rules.AllPackageTypes()) || !registryOnlyStageJobs(jobs) {
+		t.Fatalf("jobs = %#v, want registry-only jobs for all types", jobs)
+	}
+	for _, packageType := range rules.AllPackageTypes() {
+		job := jobs[packageType]
+		if job.checkRepos == nil || len(job.checkRepos) != 0 || !job.registryOnly {
+			t.Fatalf("job %s = %#v, want empty registry-only check", packageType.Plural(), job)
+		}
+	}
+	if countCheckRepos(jobs) != 0 {
+		t.Fatalf("registry-only jobs must not require repository API checks")
+	}
+}
+
 func TestResolveStageJobs_incrementalUnreadableBeforeFallsBack(t *testing.T) {
 	t.Setenv("STAGE_MODE", stageModeIncremental)
 	t.Setenv("STAGE_BEFORE_SHA", "deadbeefdeadbeefdeadbeefdeadbeefdeadbeef")

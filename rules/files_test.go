@@ -25,9 +25,9 @@ func TestFormatByteSize(t *testing.T) {
 		{0, "0B"},
 		{512, "512B"},
 		{1024, "1.0KB"},
-		{20 * 1024, "20.0KB"},
-		{200 * 1024, "200.0KB"},
-		{20*1024 + 1, "20.0KB"},
+		{64 * 1024, "64.0KB"},
+		{512 * 1024, "512.0KB"},
+		{64*1024 + 1, "64.0KB"},
 		{25000, "24.4KB"},
 		{31232, "30.5KB"},  // 30.5 * 1024
 		{2202009, "2.1MB"}, // ≈ 2.1 * 1024 * 1024
@@ -39,56 +39,11 @@ func TestFormatByteSize(t *testing.T) {
 	}
 }
 
-func TestRequiredFilesIconSizeLimit(t *testing.T) {
-	dir := t.TempDir()
-	writeMinimalPNGs(t, dir)
-	mustWrite(t, filepath.Join(dir, "README.md"), "# demo\n")
-	mustWrite(t, filepath.Join(dir, "plugin.json"), `{"name":"demo"}`)
-	mustWrite(t, filepath.Join(dir, "index.js"), "")
-
-	// 刚好 20 KB：通过
-	mustWriteBytes(t, filepath.Join(dir, "icon.png"), make([]byte, maxIconPNGBytes))
-	if issues := RequiredFiles(dir, TypePlugin); issuesContain(issues, "超过上限") {
-		t.Fatalf("icon at exact limit should pass, issues=%v", issues)
-	}
-
-	// 超过 1 字节：失败
-	mustWriteBytes(t, filepath.Join(dir, "icon.png"), make([]byte, maxIconPNGBytes+1))
-	issues := RequiredFiles(dir, TypePlugin)
-	if !issuesContain(issues, "`icon.png`") || !issuesContain(issues, "超过上限") {
-		t.Fatalf("expected icon size issue, issues=%v", issues)
-	}
-	if !issuesContain(issues, "20.0KB") {
-		t.Fatalf("expected limit wording, issues=%v", issues)
-	}
-}
-
-func TestRequiredFilesPreviewSizeLimit(t *testing.T) {
-	dir := t.TempDir()
-	writeMinimalPNGs(t, dir)
-	mustWrite(t, filepath.Join(dir, "README.md"), "# demo\n")
-	mustWrite(t, filepath.Join(dir, "plugin.json"), `{"name":"demo"}`)
-	mustWrite(t, filepath.Join(dir, "index.js"), "")
-
-	mustWriteBytes(t, filepath.Join(dir, "preview.png"), make([]byte, maxPreviewPNGBytes))
-	if issues := RequiredFiles(dir, TypePlugin); issuesContain(issues, "超过上限") {
-		t.Fatalf("preview at exact limit should pass, issues=%v", issues)
-	}
-
-	mustWriteBytes(t, filepath.Join(dir, "preview.png"), make([]byte, maxPreviewPNGBytes+1))
-	issues := RequiredFiles(dir, TypePlugin)
-	if !issuesContain(issues, "`preview.png`") || !issuesContain(issues, "超过上限") {
-		t.Fatalf("expected preview size issue, issues=%v", issues)
-	}
-	if !issuesContain(issues, "200.0KB") {
-		t.Fatalf("expected limit wording, issues=%v", issues)
-	}
-}
-
 func TestCheckRejectsOversizedIcon(t *testing.T) {
 	dir := t.TempDir()
 	copyTree(t, filepath.Join("testdata", "plugin_ok"), dir)
-	mustWriteBytes(t, filepath.Join(dir, "icon.png"), make([]byte, maxIconPNGBytes+1))
+	data := append(minimalPNGBytes(), make([]byte, maxIconImageBytes+1-len(minimalPNGBytes()))...)
+	mustWriteBytes(t, filepath.Join(dir, "icon.png"), data)
 
 	r := Check(Input{
 		PackageRoot: dir,
@@ -112,17 +67,18 @@ func mustWriteBytes(t *testing.T, path string, data []byte) {
 	}
 }
 
-func TestRequiredFilesSizeMessagesBilingual(t *testing.T) {
+func TestImageSizeMessagesBilingual(t *testing.T) {
 	dir := t.TempDir()
 	writeMinimalPNGs(t, dir)
 	mustWrite(t, filepath.Join(dir, "README.md"), "# demo\n")
-	mustWrite(t, filepath.Join(dir, "plugin.json"), `{"name":"demo"}`)
+	mustWrite(t, filepath.Join(dir, "plugin.json"), `{"name":"demo","author":"demo","url":"https://github.com/demo/demo","version":"1.0.0","readme":{"default":"README.md"}}`)
 	mustWrite(t, filepath.Join(dir, "index.js"), "")
-	mustWriteBytes(t, filepath.Join(dir, "preview.png"), make([]byte, maxPreviewPNGBytes+512))
+	data := append(minimalPNGBytes(), make([]byte, maxPreviewImageBytes+512-len(minimalPNGBytes()))...)
+	mustWriteBytes(t, filepath.Join(dir, "preview.png"), data)
 
-	issues := RequiredFiles(dir, TypePlugin)
+	result := Check(Input{PackageRoot: dir, OwnerRepo: "demo/demo", Type: TypePlugin})
 	var found bool
-	for _, iss := range issues {
+	for _, iss := range result.Issues {
 		if strings.Contains(iss.MessageZh, "preview.png") && strings.Contains(iss.MessageEn, "preview.png") {
 			found = true
 			if !strings.Contains(iss.MessageEn, "exceeds the limit") {
@@ -132,6 +88,6 @@ func TestRequiredFilesSizeMessagesBilingual(t *testing.T) {
 		}
 	}
 	if !found {
-		t.Fatalf("expected bilingual preview size issue, issues=%v", issues)
+		t.Fatalf("expected bilingual preview size issue, issues=%v", result.Issues)
 	}
 }
