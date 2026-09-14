@@ -1,6 +1,208 @@
 {
   "repos": [
     {
+      "installSize": 735414,
+      "openIssues": 1,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A local-first SiYuan navigation workspace with live tab thumbnails, favorite folders, document card search, cross-plugin quick actions, sidebar mode, fullscreen, and mobile support.",
+          "zh-CN": "本地优先的思源导航工作区，支持页签缩略图、收藏夹、文档卡片搜索、跨插件快捷入口、侧边栏、全屏与手机端。"
+        },
+        "displayName": {
+          "default": "LvSpeed Switch",
+          "zh-CN": "小驴速切"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "页签切换",
+          "tab switch",
+          "标签页",
+          "快捷入口",
+          "speed switch",
+          "lv speed switch",
+          "小驴速切"
+        ],
+        "minAppVersion": "3.1.20",
+        "name": "siyuan-speed-switch",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en-US": "README.en-US.md"
+        },
+        "url": "https://github.com/ai68298100/siyuan-speed-switch",
+        "version": "0.16.41"
+      },
+      "packageZipAssetId": 562498435,
+      "packageZipSha256": "4a9e155737f91e7cdef57b69eed9aeb62f9edcb5724c35ccba8783b66b875c4e",
+      "repoRef": "v0.16.41",
+      "size": 264020,
+      "stars": 2,
+      "updated": "2026-09-14T03:39:55Z",
+      "url": "ai68298100/siyuan-speed-switch@4a9e155"
+    },
+    {
+      "installSize": 9879065,
+      "openIssues": 0,
+      "package": {
+        "author": "fu1fan",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Manage native-database paper libraries, import Zotero/PDF metadata, export citations, and translate papers with pdf2zh.",
+          "zh-CN": "使用思源原生数据库管理论文文献库，接收 Zotero/PDF 元数据，导出引用并通过 pdf2zh 翻译论文。"
+        },
+        "displayName": {
+          "default": "Paper Manager",
+          "zh-CN": "论文管理"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "siyuan-plugin",
+          "zotero",
+          "paper",
+          "PDF",
+          "文献",
+          "翻译",
+          "database",
+          "citation",
+          "BibTeX",
+          "Typst",
+          "数据库",
+          "引用"
+        ],
+        "minAppVersion": "3.8.1",
+        "name": "siyuan-paper-manager",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/fu1fan/siyuan-paper-manager",
+        "version": "6.0.0"
+      },
+      "packageZipAssetId": 562480859,
+      "packageZipSha256": "49a5925de2f2fbfc21fb5f1beea17b6a0bc27aa2e3fdd692931f17af2dc3ead0",
+      "repoRef": "v6.0.0",
+      "size": 3945347,
+      "stars": 2,
+      "updated": "2026-09-14T02:50:49Z",
+      "url": "fu1fan/siyuan-paper-manager@49a5925"
+    },
+    {
+      "installSize": 8391962,
+      "openIssues": 0,
+      "package": {
+        "author": "LongDarkroom",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "RE word: select-to-lookup offline dictionary, hotkey word collection for review, AI deep-reading (study/chat modes), custom offline MDX dictionaries, drag SiYuan doc tabs into the chat as context",
+          "zh-CN": "RE word 词汇助手：选中单词一键查离线词典、框选快捷键自动收词复习、AI 精读（学习/对话模式）、支持自定义离线词典库（MDX），可把思源文档页签拖入对话框作为上下文。💡 使用前请先配置离线词典包，获取方式见 README 词典获取指南"
+        },
+        "displayName": {
+          "default": "RE word"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "vocabulary",
+          "english",
+          "dictionary",
+          "单词",
+          "词汇",
+          "词典",
+          "英语",
+          "复习"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-reword",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/LongDarkroom/siyuan-plugin-reword",
+        "version": "1.7.4"
+      },
+      "packageZipAssetId": 562345017,
+      "packageZipSha256": "4530878e4a3a4e301b5566394f59c8e26fd9ad68e5eca2bdeeba2eeaaabb9c7f",
+      "repoRef": "v1.7.4",
+      "size": 3441582,
+      "stars": 1,
+      "updated": "2026-09-14T01:35:06Z",
+      "url": "LongDarkroom/siyuan-plugin-reword@4530878"
+    },
+    {
+      "installSize": 2234601,
+      "openIssues": 1,
+      "package": {
+        "author": "LunaNorth",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A lightweight note-taking plugin for SiYuan, inspired by Flomo",
+          "zh_CN": "记录每一个轻闪而过的念头"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Lumina",
+          "zh_CN": "轻语"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://testingcf.jsdelivr.net/gh/LunaNorth/north-img/images/20260519195219305.png"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "碎碎念",
+          "记录",
+          "回顾"
+        ],
+        "minAppVersion": "3.3.3",
+        "name": "siyuan-lumina",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/LunaNorth/siyuan-lumina",
+        "version": "2.3.9"
+      },
+      "packageZipAssetId": 562242844,
+      "packageZipSha256": "2256aca98dd37efd1bc6193be5ac100a8f4bfd217157a41f8e7e418a742e4d42",
+      "repoRef": "v2.3.9",
+      "size": 623087,
+      "stars": 16,
+      "updated": "2026-09-14T00:56:13Z",
+      "url": "LunaNorth/siyuan-lumina@2256aca"
+    },
+    {
       "installSize": 867680,
       "openIssues": 0,
       "package": {
@@ -131,57 +333,6 @@
       "stars": 0,
       "updated": "2026-09-13T19:42:58Z",
       "url": "shvmsaini/SiYuan-Tag-Styler@d5dc1c6"
-    },
-    {
-      "installSize": 831656,
-      "openIssues": 1,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A local-first SiYuan navigation workspace with live tab thumbnails, favorite folders, document card search, cross-plugin quick actions, sidebar mode, fullscreen, and mobile support.",
-          "zh-CN": "本地优先的思源导航工作区，支持页签缩略图、收藏夹、文档卡片搜索、跨插件快捷入口、侧边栏、全屏与手机端。"
-        },
-        "displayName": {
-          "default": "LvSpeed Switch",
-          "zh-CN": "小驴速切"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "页签切换",
-          "tab switch",
-          "标签页",
-          "快捷入口",
-          "speed switch",
-          "lv speed switch",
-          "小驴速切"
-        ],
-        "minAppVersion": "3.1.20",
-        "name": "siyuan-speed-switch",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en-US": "README.en-US.md"
-        },
-        "url": "https://github.com/ai68298100/siyuan-speed-switch",
-        "version": "0.16.40"
-      },
-      "packageZipAssetId": 561494634,
-      "packageZipSha256": "7c98a3ae861134dae4d68d957e72f6f7ca739f7fd24418b019a137724076ac7d",
-      "repoRef": "v0.16.40",
-      "size": 306028,
-      "stars": 2,
-      "updated": "2026-09-13T16:00:08Z",
-      "url": "ai68298100/siyuan-speed-switch@7c98a3a"
     },
     {
       "installSize": 9207043,
@@ -574,60 +725,6 @@
       "stars": 33,
       "updated": "2026-09-13T09:17:47Z",
       "url": "mm-o/siyuan-sireader@5d74e44"
-    },
-    {
-      "installSize": 9697860,
-      "openIssues": 0,
-      "package": {
-        "author": "fu1fan",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Manage native-database paper libraries, import Zotero/PDF metadata, export citations, and translate papers with pdf2zh.",
-          "zh-CN": "使用思源原生数据库管理论文文献库，接收 Zotero/PDF 元数据，导出引用并通过 pdf2zh 翻译论文。"
-        },
-        "displayName": {
-          "default": "Paper Manager",
-          "zh-CN": "论文管理"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "siyuan-plugin",
-          "zotero",
-          "paper",
-          "PDF",
-          "文献",
-          "翻译",
-          "database",
-          "citation",
-          "BibTeX",
-          "Typst",
-          "数据库",
-          "引用"
-        ],
-        "minAppVersion": "3.8.1",
-        "name": "siyuan-paper-manager",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/fu1fan/siyuan-paper-manager",
-        "version": "5.5.0"
-      },
-      "packageZipAssetId": 560921043,
-      "packageZipSha256": "36fb13bda6d190495acbe7f295ca8bf1f09ff2ce0cafaa0e29dd3f961066f2f5",
-      "repoRef": "v5.5.0",
-      "size": 3891135,
-      "stars": 2,
-      "updated": "2026-09-13T09:16:26Z",
-      "url": "fu1fan/siyuan-paper-manager@36fb13b"
     },
     {
       "installSize": 104631,
@@ -1024,54 +1121,6 @@
       "url": "shuojie819/siyuan-table-to-database@c071640"
     },
     {
-      "installSize": 2233647,
-      "openIssues": 1,
-      "package": {
-        "author": "LunaNorth",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A lightweight note-taking plugin for SiYuan, inspired by Flomo",
-          "zh_CN": "记录每一个轻闪而过的念头"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Lumina",
-          "zh_CN": "轻语"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://testingcf.jsdelivr.net/gh/LunaNorth/north-img/images/20260519195219305.png"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "碎碎念",
-          "记录",
-          "回顾"
-        ],
-        "minAppVersion": "3.3.3",
-        "name": "siyuan-lumina",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/LunaNorth/siyuan-lumina",
-        "version": "2.3.8"
-      },
-      "packageZipAssetId": 559504942,
-      "packageZipSha256": "b17683921f303dacef6ce40d9bdab42a71837d12bd51f9cc4a5f6df2afd4ad1f",
-      "repoRef": "v2.3.8",
-      "size": 622734,
-      "stars": 16,
-      "updated": "2026-09-12T15:42:46Z",
-      "url": "LunaNorth/siyuan-lumina@b176839"
-    },
-    {
       "installSize": 16513,
       "openIssues": 0,
       "package": {
@@ -1353,55 +1402,6 @@
       "stars": 0,
       "updated": "2026-09-11T17:38:49Z",
       "url": "getcodeQi/siyuan-plugin-advanced-code@d41f11b"
-    },
-    {
-      "installSize": 9224032,
-      "openIssues": 1,
-      "package": {
-        "author": "LongDarkroom",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "RE word: select-to-lookup offline dictionary, hotkey word collection for review, AI deep-reading (study/chat modes), custom offline MDX dictionaries, drag SiYuan doc tabs into the chat as context",
-          "zh-CN": "RE word 词汇助手：选中单词一键查离线词典、框选快捷键自动收词复习、AI 精读（学习/对话模式）、支持自定义离线词典库（MDX），可把思源文档页签拖入对话框作为上下文。💡 使用前请先配置离线词典包，获取方式见 README 词典获取指南"
-        },
-        "displayName": {
-          "default": "RE word"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "vocabulary",
-          "english",
-          "dictionary",
-          "单词",
-          "词汇",
-          "词典",
-          "英语",
-          "复习"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-reword",
-        "preview": "",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/LongDarkroom/siyuan-plugin-reword",
-        "version": "1.7.3"
-      },
-      "packageZipAssetId": 557559471,
-      "packageZipSha256": "d5183eed9d88e274c9c6e170bf75e20f8e67c54ee68a26e06fd324bfbd367a47",
-      "repoRef": "v1.7.3",
-      "size": 3644310,
-      "stars": 1,
-      "updated": "2026-09-11T16:03:49Z",
-      "url": "LongDarkroom/siyuan-plugin-reword@d5183ee"
     },
     {
       "installSize": 14954947,
