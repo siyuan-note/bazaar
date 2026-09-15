@@ -1,7 +1,149 @@
 {
   "repos": [
     {
-      "installSize": 16193648,
+      "installSize": 9203609,
+      "openIssues": 1,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android",
+          "harmony"
+        ],
+        "description": {
+          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
+          "zh_CN": "一款在思源笔记里实现任务管理功能的插件，为了践行「防弹笔记法」而开发。支持电脑端和移动端系统通知提醒任务执行、日历视图查看行事历、项目管理、四象限面板、番茄钟专注、习惯打卡等功能"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Note Management",
+          "zh_CN": "任务笔记管理"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android",
+          "harmony"
+        ],
+        "keywords": [
+          "reminder",
+          "time",
+          "calendar",
+          "notification",
+          "提醒",
+          "时间",
+          "日历",
+          "通知",
+          "番茄钟",
+          "四象限",
+          "任务管理",
+          "项目管理",
+          "习惯打卡"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-task-note-management",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README_en.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
+        "version": "7.1.1"
+      },
+      "packageZipAssetId": 564997196,
+      "packageZipSha256": "eb9e73b520fb60ee000498ca41edbb206548e184d35cf3e0f4fd89716bdfebf3",
+      "repoRef": "v7.1.1",
+      "size": 4320669,
+      "stars": 219,
+      "updated": "2026-09-15T05:45:15Z",
+      "url": "Achuan-2/siyuan-plugin-task-note-management@eb9e73b"
+    },
+    {
+      "installSize": 3550691,
+      "openIssues": 1,
+      "package": {
+        "author": "verygoodwu",
+        "backends": [
+          "windows",
+          "linux",
+          "docker"
+        ],
+        "description": {
+          "default": "Create, edit, preview, and export documents, text files, spreadsheets, mind maps, and whiteboards in SiYuan.",
+          "zh-CN": "在思源中创建、编辑、预览和导出文档、纯文本文件、表格、脑图与白板。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Cloud Document Suite",
+          "zh-CN": "云文档套件"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "windows",
+          "linux",
+          "docker"
+        ],
+        "keywords": [
+          "document",
+          "text",
+          "html",
+          "office",
+          "excel",
+          "word",
+          "pdf",
+          "mindmap",
+          "whiteboard",
+          "云文档",
+          "办公套件",
+          "文本编辑器",
+          "白板",
+          "拖放"
+        ],
+        "minAppVersion": "3.7.4",
+        "name": "siyuan-cloud-document-suite",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/verygoodwu/siyuan-cloud-document-suite",
+        "version": "2.1.14"
+      },
+      "packageZipAssetId": 564702063,
+      "packageZipSha256": "72d96c74faad82b5adeb335aa5b041db2f9d4f1cb100f533039af7d7a117a1d2",
+      "repoRef": "v2.1.14",
+      "size": 1047859,
+      "stars": 1,
+      "updated": "2026-09-15T02:30:26Z",
+      "url": "verygoodwu/siyuan-cloud-document-suite@72d96c7"
+    },
+    {
+      "installSize": 16211213,
       "openIssues": 1,
       "package": {
         "author": "5kyfkr",
@@ -41,15 +183,85 @@
           "default": "README.md"
         },
         "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "3.0.3"
+        "version": "3.0.4"
       },
-      "packageZipAssetId": 564255213,
-      "packageZipSha256": "b69078a7feb131c3fdf0f6a140e9e507b568d3a60dc8683b1de3b09d0267c5dd",
-      "repoRef": "v3.0.3",
-      "size": 3326690,
+      "packageZipAssetId": 564676317,
+      "packageZipSha256": "592d7583b9f73bd7603c0946c7b4479bd81cfcc26b025b7580a60c8e930bfa53",
+      "repoRef": "v3.0.4",
+      "size": 3329421,
       "stars": 37,
-      "updated": "2026-09-14T21:23:22Z",
-      "url": "5kyfkr/siyuan-plugin-task-horizon@b69078a"
+      "updated": "2026-09-15T02:10:22Z",
+      "url": "5kyfkr/siyuan-plugin-task-horizon@592d758"
+    },
+    {
+      "installSize": 3591707,
+      "openIssues": 0,
+      "package": {
+        "author": "IAliceBobI",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "🔓 Open source · Finally finish what you read — and what you write: progressive reading digests long-form input day by day (excerpts, slicing, cloze, flashcards, AI knowledge maps), progressive writing queues your material into finished drafts (writing books, structure tree, compile-to-draft). A full loop from reading to writing.",
+          "zh_CN": "🔓 已开源 · 让长文读得完，让作品写得完：渐进阅读消化输入（摘抄、分片、挖空、闪卡、AI 知识地图），渐进写作排队产出（写作书素材入槽、结构树看进度、汇编成稿）——从阅读到写作的完整闭环"
+        },
+        "displayName": {
+          "default": "Progressive Learning",
+          "zh_CN": "渐进学习"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android",
+          "harmony"
+        ],
+        "keywords": [
+          "渐进学习",
+          "渐进阅读",
+          "Progressive Reading",
+          "挖空",
+          "Cloze",
+          "闪卡",
+          "Flashcard",
+          "摘抄",
+          "断句",
+          "Sentence Split",
+          "拼音",
+          "Pinyin",
+          "Daily Card",
+          "渐进写作",
+          "Progressive Writing",
+          "知识地图",
+          "结构树",
+          "写作书",
+          "Knowledge Map",
+          "Structure Tree",
+          "Writing Book"
+        ],
+        "minAppVersion": "2.12.6",
+        "name": "sy-progressive-plugin",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/IAliceBobI/sy-progressive-plugin",
+        "version": "3.13.0"
+      },
+      "packageZipAssetId": 564597244,
+      "packageZipSha256": "3fa3d2933c1a6bc7ca9b482c1b2113744908dcdde30594c89cdbd2e9de31cb2b",
+      "repoRef": "v3.13.0",
+      "size": 978126,
+      "stars": 26,
+      "updated": "2026-09-15T01:15:34Z",
+      "url": "IAliceBobI/sy-progressive-plugin@3fa3d29"
     },
     {
       "installSize": 338931,
@@ -309,76 +521,6 @@
       "stars": 2,
       "updated": "2026-09-14T12:50:00Z",
       "url": "IAliceBobI/sy-recite-plugin@4075967"
-    },
-    {
-      "installSize": 3550733,
-      "openIssues": 0,
-      "package": {
-        "author": "IAliceBobI",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "🔓 Open source · Finally finish what you read — and what you write: progressive reading digests long-form input day by day (excerpts, slicing, cloze, flashcards, AI knowledge maps), progressive writing queues your material into finished drafts (writing books, structure tree, compile-to-draft). A full loop from reading to writing.",
-          "zh_CN": "🔓 已开源 · 让长文读得完，让作品写得完：渐进阅读消化输入（摘抄、分片、挖空、闪卡、AI 知识地图），渐进写作排队产出（写作书素材入槽、结构树看进度、汇编成稿）——从阅读到写作的完整闭环"
-        },
-        "displayName": {
-          "default": "Progressive Learning",
-          "zh_CN": "渐进学习"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "keywords": [
-          "渐进学习",
-          "渐进阅读",
-          "Progressive Reading",
-          "挖空",
-          "Cloze",
-          "闪卡",
-          "Flashcard",
-          "摘抄",
-          "断句",
-          "Sentence Split",
-          "拼音",
-          "Pinyin",
-          "Daily Card",
-          "渐进写作",
-          "Progressive Writing",
-          "知识地图",
-          "结构树",
-          "写作书",
-          "Knowledge Map",
-          "Structure Tree",
-          "Writing Book"
-        ],
-        "minAppVersion": "2.12.6",
-        "name": "sy-progressive-plugin",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/IAliceBobI/sy-progressive-plugin",
-        "version": "3.12.0"
-      },
-      "packageZipAssetId": 563387820,
-      "packageZipSha256": "32ba03636496c5bffb2110934f906c9a8bca4fc72699e1c215e7b21864726a77",
-      "repoRef": "v3.12.0",
-      "size": 967007,
-      "stars": 26,
-      "updated": "2026-09-14T12:49:05Z",
-      "url": "IAliceBobI/sy-progressive-plugin@32ba036"
     },
     {
       "installSize": 326574,
@@ -992,84 +1134,6 @@
       "stars": 0,
       "updated": "2026-09-13T19:42:58Z",
       "url": "shvmsaini/SiYuan-Tag-Styler@d5dc1c6"
-    },
-    {
-      "installSize": 9207043,
-      "openIssues": 1,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "description": {
-          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
-          "zh_CN": "一款在思源笔记里实现任务管理功能的插件，为了践行「防弹笔记法」而开发。支持电脑端和移动端系统通知提醒任务执行、日历视图查看行事历、项目管理、四象限面板、番茄钟专注、习惯打卡等功能"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Note Management",
-          "zh_CN": "任务笔记管理"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "keywords": [
-          "reminder",
-          "time",
-          "calendar",
-          "notification",
-          "提醒",
-          "时间",
-          "日历",
-          "通知",
-          "番茄钟",
-          "四象限",
-          "任务管理",
-          "项目管理",
-          "习惯打卡"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-task-note-management",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README_en.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
-        "version": "7.1.0"
-      },
-      "packageZipAssetId": 561433696,
-      "packageZipSha256": "efc3d40fabe192dbb09e8e2060ad593f3eb2a51ef2879832e1f2abfa0c64c83e",
-      "repoRef": "v7.1.0",
-      "size": 4321499,
-      "stars": 219,
-      "updated": "2026-09-13T15:32:34Z",
-      "url": "Achuan-2/siyuan-plugin-task-note-management@efc3d40"
     },
     {
       "installSize": 4331742,
@@ -3518,70 +3582,6 @@
       "stars": 0,
       "updated": "2026-09-06T16:01:42Z",
       "url": "GustavMhaler/siyuan-moon-sync@558bc98"
-    },
-    {
-      "installSize": 3547892,
-      "openIssues": 1,
-      "package": {
-        "author": "verygoodwu",
-        "backends": [
-          "windows",
-          "linux",
-          "docker"
-        ],
-        "description": {
-          "default": "Create, edit, preview, and export documents, text files, spreadsheets, mind maps, and whiteboards in SiYuan.",
-          "zh-CN": "在思源中创建、编辑、预览和导出文档、纯文本文件、表格、脑图与白板。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Cloud Document Suite",
-          "zh-CN": "云文档套件"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "windows",
-          "linux",
-          "docker"
-        ],
-        "keywords": [
-          "document",
-          "text",
-          "html",
-          "office",
-          "excel",
-          "word",
-          "pdf",
-          "mindmap",
-          "whiteboard",
-          "云文档",
-          "办公套件",
-          "文本编辑器",
-          "白板",
-          "拖放"
-        ],
-        "minAppVersion": "3.7.4",
-        "name": "siyuan-cloud-document-suite",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/verygoodwu/siyuan-cloud-document-suite",
-        "version": "2.1.13"
-      },
-      "packageZipAssetId": 547158321,
-      "packageZipSha256": "1000aea3ea0f65a993cdcc5c317443606afd240e6dad42f5bdd0e7a70728aa2e",
-      "repoRef": "v2.1.13",
-      "size": 1046773,
-      "stars": 0,
-      "updated": "2026-09-06T12:17:08Z",
-      "url": "verygoodwu/siyuan-cloud-document-suite@1000aea"
     },
     {
       "installSize": 203475,
