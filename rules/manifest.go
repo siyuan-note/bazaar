@@ -97,8 +97,8 @@ var commonManifestKeys = []string{
 }
 
 var allowedManifestKeys = map[PackageType]Set{
-	TypePlugin:   toKeySet(commonManifestKeys, "backends", "frontends", "kernels", "bootAppearances", "disabledInPublish"), // 插件专用字段见 kernel/bazaar/plugin.go（兼容性与发布禁用判断）。
-	TypeTheme:    toKeySet(commonManifestKeys, "modes", "frontends"),                                                       // 主题专用字段：亮色 / 暗色模式和前端兼容性。
+	TypePlugin:   toKeySet(commonManifestKeys, "backends", "frontends", "kernels", "bootAppearances", "disabledInPublish", "publish"), // 插件专用字段见 kernel/bazaar/plugin.go 与 kernel/model/plugin_publish.go（兼容性、发布禁用与实际发布声明）。
+	TypeTheme:    toKeySet(commonManifestKeys, "modes", "frontends"),                                                                  // 主题专用字段：亮色 / 暗色模式和前端兼容性。
 	TypeIcon:     toKeySet(commonManifestKeys),
 	TypeTemplate: toKeySet(commonManifestKeys),
 	TypeWidget:   toKeySet(commonManifestKeys),
@@ -629,24 +629,29 @@ func checkReadme(m map[string]any, packageRoot string) []Issue {
 	return issues
 }
 
-func relFileExistsCaseSensitive(root, rel string) bool {
-	rel = filepath.FromSlash(rel)
-	parts := strings.Split(rel, string(filepath.Separator))
+// relStatCaseSensitive 按大小写敏感逐段查找相对路径，返回目标项的文件信息。
+// 路径中任一段大小写不符或不存在时返回 found == false。
+func relStatCaseSensitive(root, rel string) (os.FileInfo, bool) {
 	cur := root
-	for _, part := range parts {
+	for part := range strings.SplitSeq(filepath.FromSlash(rel), string(filepath.Separator)) {
 		if part == "" || part == "." {
 			continue
 		}
 		if !fileExistsCaseSensitive(cur, part) {
-			return false
+			return nil, false
 		}
 		cur = filepath.Join(cur, part)
 	}
 	info, err := os.Stat(cur)
-	if err != nil || info.IsDir() {
-		return false
+	if err != nil {
+		return nil, false
 	}
-	return true
+	return info, true
+}
+
+func relFileExistsCaseSensitive(root, rel string) bool {
+	info, found := relStatCaseSensitive(root, rel)
+	return found && !info.IsDir()
 }
 
 // allowedFundingKeys 与思源 kernel/bazaar/package.go 的 Funding 结构体一致。
@@ -892,7 +897,7 @@ func checkOptionalTypedFields(m map[string]any, in ManifestInput) []Issue {
 	issues = append(issues, checkCommonOptionalTypedFields(m)...)
 	switch in.Type {
 	case TypePlugin:
-		issues = append(issues, checkPluginOptionalTypedFields(m, in.Owner, in.Repo)...)
+		issues = append(issues, checkPluginOptionalTypedFields(m, in)...)
 	case TypeTheme:
 		issues = append(issues, checkThemeOptionalTypedFields(m)...)
 	}
@@ -935,14 +940,16 @@ func checkCommonOptionalTypedFields(m map[string]any) []Issue {
 }
 
 // checkPluginOptionalTypedFields 校验插件专用可选字段。
-// backends / frontends / kernels（[]string，含 all 互斥；集市开发示例仓库豁免）、disabledInPublish（bool）
-func checkPluginOptionalTypedFields(m map[string]any, owner, repo string) []Issue {
+// backends / frontends / kernels（[]string，含 all 互斥；集市开发示例仓库豁免）、bootAppearances、
+// disabledInPublish（bool）、publish（发布服务资源与公开数据声明）。
+func checkPluginOptionalTypedFields(m map[string]any, in ManifestInput) []Issue {
 	var issues []Issue
-	allowAllMix := isBazaarSampleRepo(owner, repo)
+	allowAllMix := isBazaarSampleRepo(in.Owner, in.Repo)
 	for _, key := range []string{"backends", "frontends", "kernels"} {
 		issues = append(issues, checkOptionalStringArray(m, key, allowAllMix)...)
 	}
 	issues = append(issues, checkBootAppearances(m)...)
+	issues = append(issues, checkPluginPublish(m, in)...)
 	if raw, ok := m["disabledInPublish"]; ok {
 		if _, isBool := raw.(bool); !isBool {
 			issues = append(issues, issue(
@@ -952,6 +959,172 @@ func checkPluginOptionalTypedFields(m map[string]any, owner, repo string) []Issu
 		}
 	}
 	return issues
+}
+
+// 发布声明上限，与思源 kernel/model/plugin_publish.go 的 pluginPublishDeclaration 一致。
+const (
+	maxPublishResources    = 4096
+	maxPublishDataFields   = 128
+	maxPublishFieldNameLen = 128
+)
+
+// checkPluginPublish 校验插件 `publish` 字段（发布服务可访问的额外前端资源与可公开的数据字段）。
+// 规则与思源 kernel/model/plugin_publish.go 的 pluginPublishDeclaration 及
+// kernel/util/publish_file.go 的 IsPublishRelativePath 一致：声明不合法时内核返回 400 且不生成公开快照，
+// 作者在集市检查阶段看不到，故此处提前拦截。
+// index.js、index.css 与 i18n/*.json 是隐式可用的标准入口，无需声明；声明了也不额外报错。
+func checkPluginPublish(m map[string]any, in ManifestInput) []Issue {
+	raw, ok := m["publish"]
+	if !ok || raw == nil {
+		return nil
+	}
+	obj, ok := raw.(map[string]any)
+	if !ok {
+		return []Issue{issue(
+			"清单字段 `publish` 必须是对象，例如 `\"publish\": { \"resources\": [\"images/logo.png\"], \"data\": [\"theme\"] }`。不需要公开额外前端资源或数据时请删除该字段。",
+			"Manifest field `publish` must be an object, e.g. `\"publish\": { \"resources\": [\"images/logo.png\"], \"data\": [\"theme\"] }`. If you don't publish extra frontend resources or data, please delete the field.",
+		)}
+	}
+	var issues []Issue
+	// 按键名排序，避免 map 遍历顺序不稳定导致检查结果 / result_hash 抖动
+	keys := make([]string, 0, len(obj))
+	for k := range obj {
+		keys = append(keys, k)
+	}
+	slices.Sort(keys)
+	for _, k := range keys {
+		if k != "resources" && k != "data" {
+			issues = append(issues, issue(
+				fmt.Sprintf("`publish` 中出现了预期外的字段 `%s`。仅允许 `resources`（额外前端资源文件）和 `data`（可公开的数据字段）。", k),
+				fmt.Sprintf("`publish` has an unexpected field `%s`. Only `resources` (extra frontend resource files) and `data` (publishable data fields) are allowed.", k),
+			))
+		}
+	}
+	issues = append(issues, checkPublishResources(obj["resources"], in.PackageRoot)...)
+	issues = append(issues, checkPublishData(obj["data"])...)
+	return issues
+}
+
+// checkPublishResources 校验 publish.resources：相对包根的完整文件名，且文件须存在于 package.zip。
+func checkPublishResources(raw any, packageRoot string) []Issue {
+	if raw == nil {
+		return nil
+	}
+	arr, ok := raw.([]any)
+	if !ok {
+		return []Issue{issue(
+			"若填写 `publish.resources`，必须是字符串数组，逐项声明相对包根的完整文件名，例如 `\"resources\": [\"images/logo.png\"]`。只使用标准入口的插件请删除该字段。",
+			"If you include `publish.resources`, it must be an array of filenames relative to the package root, e.g. `\"resources\": [\"images/logo.png\"]`. Plugins using only the standard entries should delete the field.",
+		)}
+	}
+	var issues []Issue
+	if len(arr) > maxPublishResources {
+		issues = append(issues, issue(
+			fmt.Sprintf("`publish.resources` 声明了 %d 个文件，超过上限 %d 个。请删除多余项。", len(arr), maxPublishResources),
+			fmt.Sprintf("`publish.resources` declares %d files, above the limit of %d. Please remove the extra entries.", len(arr), maxPublishResources),
+		))
+	}
+	for i, item := range arr {
+		resource, isString := item.(string)
+		if !isString {
+			issues = append(issues, issue(
+				fmt.Sprintf("`publish.resources[%d]` 必须是字符串。请检查数组元素类型。", i),
+				fmt.Sprintf("`publish.resources[%d]` must be a string. Please check the array element types.", i),
+			))
+			continue
+		}
+		if !isPublishRelativePath(resource) {
+			issues = append(issues, issue(
+				fmt.Sprintf("`publish.resources[%d]` 的值 `%s` 不是合法的发布资源路径。请使用相对包根的完整文件名，用 `/` 分隔，不要声明目录、绝对路径、`..`、反斜杠、`:` 或百分号编码，文件名前后不要有空格，也不要以 `.` 结尾。", i, resource),
+				fmt.Sprintf("`publish.resources[%d]` value `%s` isn't a valid publish resource path. Please use a full filename relative to the package root, separated with `/`, without directories, absolute paths, `..`, backslashes, `:`, percent encoding, surrounding spaces, or a trailing dot.", i, resource),
+			))
+			continue
+		}
+		if strings.EqualFold(resource, "plugin.json") || strings.EqualFold(resource, "kernel.js") {
+			issues = append(issues, issue(
+				fmt.Sprintf("`publish.resources[%d]` 声明了 `%s`，但该文件不对外发布。`plugin.json` 与 `kernel.js` 不可声明，请删除该项。", i, resource),
+				fmt.Sprintf("`publish.resources[%d]` declares `%s`, but that file isn't publishable. `plugin.json` and `kernel.js` can't be declared; please remove the entry.", i, resource),
+			))
+			continue
+		}
+		info, found := relStatCaseSensitive(packageRoot, resource)
+		if !found {
+			issues = append(issues, issue(
+				fmt.Sprintf("`publish.resources[%d]` 声明了文件 `%s`，但 `package.zip` 中找不到该文件（路径大小写必须一致）。请把文件打进包内，或修正声明。", i, resource),
+				fmt.Sprintf("`publish.resources[%d]` declares `%s`, but that file isn't in `package.zip` (paths are case-sensitive). Please add the file to the package, or fix the declaration.", i, resource),
+			))
+			continue
+		}
+		if info.IsDir() {
+			issues = append(issues, issue(
+				fmt.Sprintf("`publish.resources[%d]` 声明了 `%s`，但它在 `package.zip` 中是目录。发布资源只能逐个声明文件，请改为声明该目录内的具体文件。", i, resource),
+				fmt.Sprintf("`publish.resources[%d]` declares `%s`, which is a directory in `package.zip`. Publish resources must list individual files; please declare the files inside it instead.", i, resource),
+			))
+		}
+	}
+	return issues
+}
+
+// checkPublishData 校验 publish.data：可公开的数据字段名。
+func checkPublishData(raw any) []Issue {
+	if raw == nil {
+		return nil
+	}
+	arr, ok := raw.([]any)
+	if !ok {
+		return []Issue{issue(
+			"若填写 `publish.data`，必须是字符串数组，逐项声明可公开的数据字段名，例如 `\"data\": [\"theme\", \"showAuthor\"]`。不需要公开数据时请删除该字段。",
+			"If you include `publish.data`, it must be an array of field names, e.g. `\"data\": [\"theme\", \"showAuthor\"]`. If you don't publish any data, please delete the field.",
+		)}
+	}
+	var issues []Issue
+	if len(arr) > maxPublishDataFields {
+		issues = append(issues, issue(
+			fmt.Sprintf("`publish.data` 声明了 %d 个字段，超过上限 %d 个。请删除多余项。", len(arr), maxPublishDataFields),
+			fmt.Sprintf("`publish.data` declares %d fields, above the limit of %d. Please remove the extra entries.", len(arr), maxPublishDataFields),
+		))
+	}
+	for i, item := range arr {
+		field, isString := item.(string)
+		if !isString {
+			issues = append(issues, issue(
+				fmt.Sprintf("`publish.data[%d]` 必须是字符串。请检查数组元素类型。", i),
+				fmt.Sprintf("`publish.data[%d]` must be a string. Please check the array element types.", i),
+			))
+			continue
+		}
+		if len(field) == 0 || len(field) > maxPublishFieldNameLen || !isPublishFieldName(field) {
+			issues = append(issues, issue(
+				fmt.Sprintf("`publish.data[%d]` 的值 `%s` 不是合法的公开数据字段名。字段名只能包含 ASCII 字母、数字、`_` 和 `-`，长度为 1–%d 个字符。", i, field, maxPublishFieldNameLen),
+				fmt.Sprintf("`publish.data[%d]` value `%s` isn't a valid public data field name. Names may contain only ASCII letters, digits, `_`, and `-`, with a length of 1–%d characters.", i, field, maxPublishFieldNameLen),
+			))
+		}
+	}
+	return issues
+}
+
+// isPublishFieldName 与思源 kernel/model/plugin_publish.go 的公开数据字段名字符集校验一致。
+func isPublishFieldName(s string) bool {
+	for _, char := range s {
+		if !(char >= 'a' && char <= 'z' || char >= 'A' && char <= 'Z' || char >= '0' && char <= '9' || char == '_' || char == '-') {
+			return false
+		}
+	}
+	return true
+}
+
+// isPublishRelativePath 与思源 kernel/util/publish_file.go 的 IsPublishRelativePath 一致。
+// 允许 `views/index.html` 这类带子目录的完整文件名，但不允许声明目录本身。
+func isPublishRelativePath(name string) bool {
+	if name == "" || strings.ContainsAny(name, `\:%`) || strings.ContainsRune(name, 0) {
+		return false
+	}
+	for part := range strings.SplitSeq(name, "/") {
+		if part == "" || part == "." || part == ".." || strings.TrimSpace(part) != part || strings.HasSuffix(part, ".") {
+			return false
+		}
+	}
+	return true
 }
 
 var bootAppearanceIDPattern = regexp.MustCompile(`^[a-z0-9]+(?:-[a-z0-9]+)*$`)

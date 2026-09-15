@@ -236,6 +236,98 @@ func TestCheckUnknownKeysStableOrder(t *testing.T) {
 	}
 }
 
+func TestCheckPluginPublish(t *testing.T) {
+	root := t.TempDir()
+	if err := os.MkdirAll(filepath.Join(root, "views"), 0755); err != nil {
+		t.Fatal(err)
+	}
+	for _, name := range []string{"logo.png", "views/index.html", "index.js", "i18n/zh-CN.json"} {
+		if err := os.MkdirAll(filepath.Dir(filepath.Join(root, filepath.FromSlash(name))), 0755); err != nil {
+			t.Fatal(err)
+		}
+		if err := os.WriteFile(filepath.Join(root, filepath.FromSlash(name)), []byte("x"), 0644); err != nil {
+			t.Fatal(err)
+		}
+	}
+	in := ManifestInput{PackageRoot: root, Type: TypePlugin}
+
+	// 未声明、声明为 null 或声明为空对象时，与内核一致地视为无发布声明
+	for _, m := range []map[string]any{{}, {"publish": nil}, {"publish": map[string]any{}}} {
+		if issues := checkPluginPublish(m, in); len(issues) != 0 {
+			t.Fatalf("%v: unexpected issues %v", m, issues)
+		}
+	}
+
+	if issues := checkPluginPublish(map[string]any{"publish": []any{}}, in); !issuesContain(issues, "必须是对象") {
+		t.Fatalf("non-object publish: want type issue, got %v", issues)
+	}
+
+	// 合法声明：带子目录的完整文件名、标准入口以及合法字段名均放行
+	valid := map[string]any{"publish": map[string]any{
+		"resources": []any{"logo.png", "views/index.html", "index.js", "i18n/zh-CN.json"},
+		"data":      []any{"theme", "show-author", "feat_1"},
+	}}
+	if issues := checkPluginPublish(valid, in); len(issues) != 0 {
+		t.Fatalf("valid publish: unexpected issues %v", issues)
+	}
+
+	tooManyFields := make([]any, 0, 129)
+	for range 129 {
+		tooManyFields = append(tooManyFields, "field")
+	}
+
+	cases := []struct {
+		name    string
+		publish map[string]any
+		wantSub string
+	}{
+		{"unknown sub key", map[string]any{"paths": []any{}}, "预期外的字段"},
+		{"resources not array", map[string]any{"resources": "logo.png"}, "必须是字符串数组"},
+		{"resource not string", map[string]any{"resources": []any{1}}, "必须是字符串。"},
+		{"resource parent dir", map[string]any{"resources": []any{"../logo.png"}}, "不是合法的发布资源路径"},
+		{"resource trailing slash", map[string]any{"resources": []any{"views/"}}, "不是合法的发布资源路径"},
+		{"resource blank", map[string]any{"resources": []any{""}}, "不是合法的发布资源路径"},
+		{"resource space", map[string]any{"resources": []any{"logo.png "}}, "不是合法的发布资源路径"},
+		{"resource backslash", map[string]any{"resources": []any{"views\\index.html"}}, "不是合法的发布资源路径"},
+		{"resource trailing dot", map[string]any{"resources": []any{"logo.png."}}, "不是合法的发布资源路径"},
+		{"resource manifest", map[string]any{"resources": []any{"plugin.json"}}, "不可声明"},
+		{"resource kernel", map[string]any{"resources": []any{"KeRnEl.Js"}}, "不可声明"},
+		{"resource missing", map[string]any{"resources": []any{"missing.png"}}, "找不到该文件"},
+		{"resource dir", map[string]any{"resources": []any{"views"}}, "是目录"},
+		{"data not array", map[string]any{"data": "theme"}, "必须是字符串数组"},
+		{"data not string", map[string]any{"data": []any{true}}, "必须是字符串。"},
+		{"data empty name", map[string]any{"data": []any{""}}, "不是合法的公开数据字段名"},
+		{"data space name", map[string]any{"data": []any{"the me"}}, "不是合法的公开数据字段名"},
+		{"data long name", map[string]any{"data": []any{strings.Repeat("a", 129)}}, "不是合法的公开数据字段名"},
+		{"data too many", map[string]any{"data": tooManyFields}, "超过上限"},
+	}
+	for _, tc := range cases {
+		issues := checkPluginPublish(map[string]any{"publish": tc.publish}, in)
+		if !issuesContain(issues, tc.wantSub) {
+			t.Fatalf("%s: want issue containing %q, got %v", tc.name, tc.wantSub, issues)
+		}
+	}
+
+	// 整包检查路径：Check 应把 publish 的问题报出来，而不是当成未知字段拒绝
+	dir := t.TempDir()
+	copyTree(t, filepath.Join("testdata", "plugin_ok"), dir)
+	manifest := `{
+  "name": "sample-plugin",
+  "author": "demo",
+  "url": "https://github.com/demo/sample-plugin",
+  "version": "1.0.0",
+  "readme": { "default": "README.md" },
+  "publish": { "resources": ["missing.png"], "data": ["theme"] }
+}`
+	if err := os.WriteFile(filepath.Join(dir, "plugin.json"), []byte(manifest), 0644); err != nil {
+		t.Fatal(err)
+	}
+	r := Check(Input{PackageRoot: dir, OwnerRepo: "demo/sample-plugin", Type: TypePlugin})
+	if r.OK || !hasIssueMsg(r, "找不到该文件") {
+		t.Fatalf("expected publish resource issue from Check, issues=%v", r.Issues)
+	}
+}
+
 func TestManifestKeysByPackageType(t *testing.T) {
 	// 插件不得带 modes；主题不得带 backends；图标等仅通用字段
 	cases := []struct {
@@ -246,6 +338,7 @@ func TestManifestKeysByPackageType(t *testing.T) {
 		{TypePlugin, "modes", "modes"},
 		{TypeTheme, "backends", "backends"},
 		{TypeTheme, "disabledInPublish", "disabledInPublish"},
+		{TypeTheme, "publish", "publish"},
 		{TypeTheme, "bootAppearances", "bootAppearances"},
 		{TypeIcon, "frontends", "frontends"},
 		{TypeTemplate, "kernels", "kernels"},
@@ -269,6 +362,7 @@ func TestManifestKeysByPackageType(t *testing.T) {
 	}{
 		{TypePlugin, "backends"},
 		{TypePlugin, "disabledInPublish"},
+		{TypePlugin, "publish"},
 		{TypePlugin, "bootAppearances"},
 		{TypeTheme, "modes"},
 		{TypeTheme, "frontends"},

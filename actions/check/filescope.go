@@ -117,7 +117,7 @@ func listPRChangedFiles(ctx context.Context) ([]string, error) {
 		return nil, fmt.Errorf("git diff --name-only %s %s in %s: %w", baseSHA, headSHA, bazaarDir, err)
 	}
 	var paths []string
-	for _, line := range strings.Split(string(out), "\n") {
+	for line := range strings.SplitSeq(string(out), "\n") {
 		if p := normalizeRepoRelPath(line); p != "" {
 			paths = append(paths, p)
 		}
