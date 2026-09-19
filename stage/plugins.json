@@ -1,6 +1,208 @@
 {
   "repos": [
     {
+      "installSize": 16309977,
+      "openIssues": 1,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
+          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Horizon",
+          "zh_CN": "任务管理器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "task",
+          "manager",
+          "filter"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-plugin-task-horizon",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
+        "version": "3.0.6"
+      },
+      "packageZipAssetId": 575142809,
+      "packageZipSha256": "764a04866c262d4bc49dab3ed367cd09ed9487267fab66354d5321017dd22cd0",
+      "repoRef": "v3.0.6",
+      "size": 3351066,
+      "stars": 37,
+      "updated": "2026-09-19T17:02:36Z",
+      "url": "5kyfkr/siyuan-plugin-task-horizon@764a048"
+    },
+    {
+      "installSize": 2680831,
+      "openIssues": 2,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A dock Tomato Timer for SiYuan.",
+          "zh_CN": "思源底栏番茄钟：支持时间轴视图/任务提醒/日常事务记录/多端状态同步/移动端/数据库联动/块绑定/历史记录/任务管理器联动/移动端原生通知提醒"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Dock Tomato",
+          "zh_CN": "底栏番茄钟"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "tomato",
+          "timer",
+          "pomodoro",
+          "dock"
+        ],
+        "minAppVersion": "3.8.1",
+        "name": "siyuan-plugin-docktomato",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-docktomato",
+        "version": "2.2.9"
+      },
+      "packageZipAssetId": 575116563,
+      "packageZipSha256": "b49ad10871ecbbc47ca69d375b51aa325cb1d95ab8c67201b21d19d40c8d6779",
+      "repoRef": "v2.2.9",
+      "size": 630831,
+      "stars": 9,
+      "updated": "2026-09-19T16:46:31Z",
+      "url": "5kyfkr/siyuan-plugin-docktomato@b49ad10"
+    },
+    {
+      "installSize": 218588,
+      "openIssues": 1,
+      "package": {
+        "author": "shijianjs",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Seamlessly use over 200,000 open-source icons from Iconify in SiYuan emoji",
+          "zh_CN": "在思源emoji中，无缝使用Iconify超20万个开源图标"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Siyuan iconify emoji plugin",
+          "zh_CN": "思源 iconify emoji 插件"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            ""
+          ]
+        },
+        "icon": "icon.png",
+        "minAppVersion": "3.2.1",
+        "name": "siyuan-plugin-iconify-emoji",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/shijianjs/siyuan-plugin-iconify-emoji",
+        "version": "1.3.2"
+      },
+      "packageZipAssetId": 575055712,
+      "packageZipSha256": "ff3c78d6f12a8623c00b30daa77a40a3cf7376bbac53ab4d9e180d6cfe6eaa3c",
+      "repoRef": "v1.3.2",
+      "size": 111860,
+      "stars": 3,
+      "updated": "2026-09-19T16:06:39Z",
+      "url": "shijianjs/siyuan-plugin-iconify-emoji@ff3c78d"
+    },
+    {
+      "installSize": 206052,
+      "openIssues": 0,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android",
+          "harmony"
+        ],
+        "description": {
+          "default": "Use blockref to implement footnote and memo",
+          "zh_CN": "使用思源的块引实现脚注和备注功能"
+        },
+        "displayName": {
+          "default": "FootnoteRef",
+          "zh_CN": "块引脚注"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "脚注",
+          "Footnote",
+          "备注",
+          "Memo"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-blockref-footnote",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-blockref-footnote",
+        "version": "1.6.4"
+      },
+      "packageZipAssetId": 575051159,
+      "packageZipSha256": "1616f0bc2540563a03e0e6e86cb06ab80cf86a35ba9acbfa0196114970b53a50",
+      "repoRef": "v1.6.4",
+      "size": 104290,
+      "stars": 38,
+      "updated": "2026-09-19T16:03:42Z",
+      "url": "Achuan-2/siyuan-plugin-blockref-footnote@1616f0b"
+    },
+    {
       "installSize": 104310,
       "openIssues": 0,
       "package": {
@@ -1510,110 +1712,6 @@
       "stars": 4,
       "updated": "2026-09-17T00:47:56Z",
       "url": "LunaNorth/siyuan-deco@66d302a"
-    },
-    {
-      "installSize": 16266688,
-      "openIssues": 1,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
-          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Horizon",
-          "zh_CN": "任务管理器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "task",
-          "manager",
-          "filter"
-        ],
-        "minAppVersion": "3.8.1",
-        "name": "siyuan-plugin-task-horizon",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "3.0.5"
-      },
-      "packageZipAssetId": 568461873,
-      "packageZipSha256": "f792bf962b6a18b65b6460515abcf445e25c09b6bb2d243adb5718f2b41d2c57",
-      "repoRef": "v3.0.5",
-      "size": 3340509,
-      "stars": 37,
-      "updated": "2026-09-16T17:35:12Z",
-      "url": "5kyfkr/siyuan-plugin-task-horizon@f792bf9"
-    },
-    {
-      "installSize": 2678103,
-      "openIssues": 1,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A dock Tomato Timer for SiYuan.",
-          "zh_CN": "思源底栏番茄钟：支持时间轴视图/任务提醒/日常事务记录/多端状态同步/移动端/数据库联动/块绑定/历史记录/任务管理器联动/移动端原生通知提醒"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Dock Tomato",
-          "zh_CN": "底栏番茄钟"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "tomato",
-          "timer",
-          "pomodoro",
-          "dock"
-        ],
-        "minAppVersion": "3.8.1",
-        "name": "siyuan-plugin-docktomato",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-docktomato",
-        "version": "2.2.8"
-      },
-      "packageZipAssetId": 568410615,
-      "packageZipSha256": "4d799dc48661422e1ad757edcceb7ab1a324527297ab23b7b01cabf2eaa6fcec",
-      "repoRef": "v2.2.8",
-      "size": 629915,
-      "stars": 9,
-      "updated": "2026-09-16T17:04:20Z",
-      "url": "5kyfkr/siyuan-plugin-docktomato@4d799dc"
     },
     {
       "installSize": 8117799,
@@ -4324,60 +4422,6 @@
       "stars": 0,
       "updated": "2026-09-06T16:01:42Z",
       "url": "GustavMhaler/siyuan-moon-sync@558bc98"
-    },
-    {
-      "installSize": 203475,
-      "openIssues": 0,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "description": {
-          "default": "Use blockref to implement footnote and memo",
-          "zh_CN": "使用思源的块引实现脚注和备注功能"
-        },
-        "displayName": {
-          "default": "FootnoteRef",
-          "zh_CN": "块引脚注"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "脚注",
-          "Footnote",
-          "备注",
-          "Memo"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-blockref-footnote",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-blockref-footnote",
-        "version": "1.6.3"
-      },
-      "packageZipAssetId": 545962782,
-      "packageZipSha256": "68d956ca828f02107527aee4852eb67ad34ff2192978198b2abb7fa93daf7a81",
-      "repoRef": "v1.6.3",
-      "size": 103480,
-      "stars": 38,
-      "updated": "2026-09-05T15:18:17Z",
-      "url": "Achuan-2/siyuan-plugin-blockref-footnote@68d956c"
     },
     {
       "installSize": 322255,
@@ -14250,48 +14294,6 @@
       "stars": 4,
       "updated": "2026-03-03T05:20:06Z",
       "url": "shijianjs/siyuan-plugin-markmap-view@863bc4a"
-    },
-    {
-      "installSize": 205873,
-      "openIssues": 0,
-      "package": {
-        "author": "shijianjs",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Seamlessly use over 200,000 open-source icons from Iconify in SiYuan emoji",
-          "zh_CN": "在思源emoji中，无缝使用Iconify超20万个开源图标"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Siyuan iconify emoji plugin",
-          "zh_CN": "思源 iconify emoji 插件"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            ""
-          ]
-        },
-        "minAppVersion": "3.2.1",
-        "name": "siyuan-plugin-iconify-emoji",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/shijianjs/siyuan-plugin-iconify-emoji",
-        "version": "1.3.1"
-      },
-      "packageZipAssetId": 365815256,
-      "packageZipSha256": "dbd839143e701f6d2a88b41218e145ecade0f207d2876859043ec0829b543152",
-      "repoRef": "v1.3.1",
-      "size": 107253,
-      "stars": 2,
-      "updated": "2026-03-03T05:19:18Z",
-      "url": "shijianjs/siyuan-plugin-iconify-emoji@dbd8391"
     },
     {
       "installSize": 345085,
