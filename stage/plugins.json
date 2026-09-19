@@ -1,6 +1,112 @@
 {
   "repos": [
     {
+      "installSize": 631027,
+      "openIssues": 0,
+      "package": {
+        "author": "bonebearHsu",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "一款思源笔记插件。双向同步 CalDAV 服务器（Radicale / Nextcloud / Baikal 等）的日历事件与待办任务，提供月/周/日日历视图、任务视图与编辑能力，并可将今日日程插入日记。",
+          "en_US": "Two-way sync calendar events and todos with CalDAV servers (Radicale / Nextcloud / Baikal). Month/Week/Day calendar views, task view, editor and daily note integration."
+        },
+        "displayName": {
+          "default": "CalDAV日历任务",
+          "en_US": "CalDAV Calendar &amp; Tasks"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop",
+          "mobile",
+          "browser-mobile"
+        ],
+        "funding": {
+          "custom": [
+            ""
+          ],
+          "github": "bonebearHsu"
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "caldav",
+          "calendar",
+          "todo",
+          "task",
+          "日历",
+          "任务",
+          "同步",
+          "radicale",
+          "nextcloud",
+          "baikal"
+        ],
+        "minAppVersion": "3.1.0",
+        "name": "siyuan-plugin-caldav-sync",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/bonebearHsu/siyuan-plugin-caldav-sync",
+        "version": "0.1.8"
+      },
+      "packageZipAssetId": 574877929,
+      "packageZipSha256": "6b48754a45295097da713ffb25cfe424f79dbfdcfc04c6be924367d94f06f671",
+      "repoRef": "v0.1.8",
+      "size": 379906,
+      "stars": 0,
+      "updated": "2026-09-19T14:06:38Z",
+      "url": "bonebearHsu/siyuan-plugin-caldav-sync@6b48754"
+    },
+    {
+      "installSize": 447829,
+      "openIssues": 0,
+      "package": {
+        "author": "steve",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Advanced database attribute display plugin with field hiding, date formatting, checkbox beautification, and customizable settings. Supports 99% of blocks!",
+          "zh-CN": "数据库属性显示插件，把思源数据库炼化为超级标签！"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Database Display",
+          "zh-CN": "数据库属性展示"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "database",
+          "display",
+          "attribute",
+          "super-tag",
+          "超级标签"
+        ],
+        "minAppVersion": "3.8.3",
+        "name": "siyuan-database-display",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/loonghfut/siyuan-database-display",
+        "version": "5.2.2"
+      },
+      "packageZipAssetId": 574779147,
+      "packageZipSha256": "9012350c4c95a9c996be784ede72e2d4459cfce6ba45bdee5d3b1ecd1f51140e",
+      "repoRef": "v5.2.2",
+      "size": 191282,
+      "stars": 7,
+      "updated": "2026-09-19T13:01:05Z",
+      "url": "loonghfut/siyuan-database-display@9012350"
+    },
+    {
       "installSize": 1243618,
       "openIssues": 2,
       "package": {
@@ -959,63 +1065,6 @@
       "stars": 21,
       "updated": "2026-09-18T00:09:13Z",
       "url": "royc01/pinch@253d8fa"
-    },
-    {
-      "installSize": 576676,
-      "openIssues": 0,
-      "package": {
-        "author": "bonebearHsu",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "一款思源笔记插件。双向同步 CalDAV 服务器（Radicale / Nextcloud / Baikal 等）的日历事件与待办任务，提供月/周/日日历视图、任务视图与编辑能力，并可将今日日程插入日记。",
-          "en_US": "Two-way sync calendar events and todos with CalDAV servers (Radicale / Nextcloud / Baikal). Month/Week/Day calendar views, task view, editor and daily note integration."
-        },
-        "displayName": {
-          "default": "CalDAV日历任务",
-          "en_US": "CalDAV Calendar &amp; Tasks"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop"
-        ],
-        "funding": {
-          "custom": [
-            ""
-          ],
-          "github": "bonebearHsu"
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "caldav",
-          "calendar",
-          "todo",
-          "task",
-          "日历",
-          "任务",
-          "同步",
-          "radicale",
-          "nextcloud",
-          "baikal"
-        ],
-        "minAppVersion": "3.1.0",
-        "name": "siyuan-plugin-caldav-sync",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/bonebearHsu/siyuan-plugin-caldav-sync",
-        "version": "0.1.6"
-      },
-      "packageZipAssetId": 570694521,
-      "packageZipSha256": "2fc39791261d7fe09edd116aae7c6880bcb8e0f0a61ae7496699a9d5533305eb",
-      "repoRef": "v0.1.6",
-      "size": 361888,
-      "stars": 0,
-      "updated": "2026-09-17T17:04:43Z",
-      "url": "bonebearHsu/siyuan-plugin-caldav-sync@2fc3979"
     },
     {
       "installSize": 924344,
@@ -3846,52 +3895,6 @@
       "stars": 29,
       "updated": "2026-09-08T08:13:33Z",
       "url": "frostime/sy-f-misc@1f32cdc"
-    },
-    {
-      "installSize": 443983,
-      "openIssues": 0,
-      "package": {
-        "author": "steve",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Advanced database attribute display plugin with field hiding, date formatting, checkbox beautification, and customizable settings. Supports 99% of blocks!",
-          "zh-CN": "数据库属性显示插件，把思源数据库炼化为超级标签！"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Database Display",
-          "zh-CN": "数据库属性展示"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "database",
-          "display",
-          "attribute",
-          "super-tag",
-          "超级标签"
-        ],
-        "minAppVersion": "3.8.3",
-        "name": "siyuan-database-display",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/loonghfut/siyuan-database-display",
-        "version": "5.2.1"
-      },
-      "packageZipAssetId": 550110734,
-      "packageZipSha256": "fded1ad969fa5da8ff9c8b11b5de1da2f55249f816bbddf0fdda84670aa699d9",
-      "repoRef": "v5.2.1",
-      "size": 190011,
-      "stars": 7,
-      "updated": "2026-09-08T08:07:25Z",
-      "url": "loonghfut/siyuan-database-display@fded1ad"
     },
     {
       "installSize": 911868,
