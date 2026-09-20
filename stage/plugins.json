@@ -1,6 +1,170 @@
 {
   "repos": [
     {
+      "installSize": 642097,
+      "openIssues": 0,
+      "package": {
+        "author": "bonebearHsu",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "一款思源笔记插件。双向同步 CalDAV 服务器（Radicale / Nextcloud / Baikal 等）的日历事件与待办任务，提供月/周/日日历视图、任务视图与编辑能力，并可将今日日程插入日记。",
+          "en_US": "Two-way sync calendar events and todos with CalDAV servers (Radicale / Nextcloud / Baikal). Month/Week/Day calendar views, task view, editor and daily note integration."
+        },
+        "displayName": {
+          "default": "CalDAV日历任务",
+          "en_US": "CalDAV Calendar &amp; Tasks"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop",
+          "mobile",
+          "browser-mobile"
+        ],
+        "funding": {
+          "custom": [
+            ""
+          ],
+          "github": "bonebearHsu"
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "caldav",
+          "calendar",
+          "todo",
+          "task",
+          "日历",
+          "任务",
+          "同步",
+          "radicale",
+          "nextcloud",
+          "baikal"
+        ],
+        "minAppVersion": "3.1.0",
+        "name": "siyuan-plugin-caldav-sync",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/bonebearHsu/siyuan-plugin-caldav-sync",
+        "version": "0.2.0"
+      },
+      "packageZipAssetId": 576281925,
+      "packageZipSha256": "bad0325a201ce0755d212b0895b810d39878d17014fc70cee876f378613ac3cf",
+      "repoRef": "v0.2.0",
+      "size": 382886,
+      "stars": 1,
+      "updated": "2026-09-20T06:33:59Z",
+      "url": "bonebearHsu/siyuan-plugin-caldav-sync@bad0325"
+    },
+    {
+      "installSize": 16331640,
+      "openIssues": 1,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
+          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Horizon",
+          "zh_CN": "任务管理器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "task",
+          "manager",
+          "filter"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-plugin-task-horizon",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
+        "version": "3.0.7"
+      },
+      "packageZipAssetId": 576128433,
+      "packageZipSha256": "d4b7e4d2533be92b0bc2a27f4e0c3671c6fd750104f7a64ff5ec59e2807effda",
+      "repoRef": "v3.0.7",
+      "size": 3356234,
+      "stars": 37,
+      "updated": "2026-09-20T04:46:48Z",
+      "url": "5kyfkr/siyuan-plugin-task-horizon@d4b7e4d"
+    },
+    {
+      "installSize": 2702883,
+      "openIssues": 1,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A dock Tomato Timer for SiYuan.",
+          "zh_CN": "思源底栏番茄钟：支持时间轴视图/任务提醒/日常事务记录/多端状态同步/移动端/数据库联动/块绑定/历史记录/任务管理器联动/移动端原生通知提醒"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Dock Tomato",
+          "zh_CN": "底栏番茄钟"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "tomato",
+          "timer",
+          "pomodoro",
+          "dock"
+        ],
+        "minAppVersion": "3.8.1",
+        "name": "siyuan-plugin-docktomato",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-docktomato",
+        "version": "2.3.0"
+      },
+      "packageZipAssetId": 576126452,
+      "packageZipSha256": "55a75d979dafca5225b06fd1df59f490df99c71590229a62132efa10d9ac6129",
+      "repoRef": "v2.3.0",
+      "size": 636566,
+      "stars": 9,
+      "updated": "2026-09-20T04:45:22Z",
+      "url": "5kyfkr/siyuan-plugin-docktomato@55a75d9"
+    },
+    {
       "installSize": 72764,
       "openIssues": 0,
       "package": {
@@ -42,6 +206,141 @@
       "stars": 0,
       "updated": "2026-09-20T04:25:31Z",
       "url": "itayvak/siyuan-pagertl@993a1c5"
+    },
+    {
+      "installSize": 3088094,
+      "openIssues": 0,
+      "package": {
+        "author": "IAliceBobI",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "✍️ Read-then-rewrite practice on any document: mark &amp; tint, drill targets with kept context, extract &amp; rewrite, per-item compare, AI grading, flashcard companion",
+          "zh_CN": "任意文档的读后仿写练习：批注变色、练靶保留语境、抽取仿写、单题对照、AI 判卷、闪卡伴侣"
+        },
+        "displayName": {
+          "default": "Recite Practice",
+          "zh_CN": "仿写练习"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android",
+          "harmony"
+        ],
+        "keywords": [
+          "仿写",
+          "背诵",
+          "默写",
+          "批注",
+          "判卷",
+          "练习",
+          "写作",
+          "联想",
+          "复述",
+          "上下文",
+          "对照",
+          "记忆",
+          "Recite",
+          "Dictation",
+          "Writing",
+          "AI"
+        ],
+        "minAppVersion": "2.12.6",
+        "name": "sy-recite-plugin",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/IAliceBobI/sy-recite-plugin",
+        "version": "1.5.5"
+      },
+      "packageZipAssetId": 576062683,
+      "packageZipSha256": "f8aa70000f5ac5e11b06df7e41c795b6ac8e06d49163dc94fcfdc996011c26ef",
+      "repoRef": "v1.5.5",
+      "size": 869369,
+      "stars": 2,
+      "updated": "2026-09-20T03:58:18Z",
+      "url": "IAliceBobI/sy-recite-plugin@f8aa700"
+    },
+    {
+      "installSize": 3697359,
+      "openIssues": 0,
+      "package": {
+        "author": "IAliceBobI",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "🔓 Open source · Finally finish what you read — and what you write: progressive reading digests long-form input day by day (excerpts, slicing, cloze, flashcards, AI knowledge maps), progressive writing queues your material into finished drafts (writing books, structure tree, compile-to-draft). A full loop from reading to writing.",
+          "zh_CN": "🔓 已开源 · 让长文读得完，让作品写得完：渐进阅读消化输入（摘抄、分片、挖空、闪卡、AI 知识地图），渐进写作排队产出（写作书素材入槽、结构树看进度、汇编成稿）——从阅读到写作的完整闭环"
+        },
+        "displayName": {
+          "default": "Progressive Learning",
+          "zh_CN": "渐进学习"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android",
+          "harmony"
+        ],
+        "keywords": [
+          "渐进学习",
+          "渐进阅读",
+          "Progressive Reading",
+          "挖空",
+          "Cloze",
+          "闪卡",
+          "Flashcard",
+          "摘抄",
+          "断句",
+          "Sentence Split",
+          "拼音",
+          "Pinyin",
+          "Daily Card",
+          "渐进写作",
+          "Progressive Writing",
+          "知识地图",
+          "结构树",
+          "写作书",
+          "Knowledge Map",
+          "Structure Tree",
+          "Writing Book"
+        ],
+        "minAppVersion": "2.12.6",
+        "name": "sy-progressive-plugin",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/IAliceBobI/sy-progressive-plugin",
+        "version": "3.20.1"
+      },
+      "packageZipAssetId": 576061788,
+      "packageZipSha256": "b6fdb78c8b02bf3bf26a5d0cb54bdf16d15eb133e0a5ab237336cf10fc805d28",
+      "repoRef": "v3.20.1",
+      "size": 1011596,
+      "stars": 28,
+      "updated": "2026-09-20T03:57:30Z",
+      "url": "IAliceBobI/sy-progressive-plugin@b6fdb78"
     },
     {
       "installSize": 1811889,
@@ -230,110 +529,6 @@
       "url": "ai68298100/siyuan-speed-switch@47b4f51"
     },
     {
-      "installSize": 16309977,
-      "openIssues": 1,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
-          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Horizon",
-          "zh_CN": "任务管理器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "task",
-          "manager",
-          "filter"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-plugin-task-horizon",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "3.0.6"
-      },
-      "packageZipAssetId": 575142809,
-      "packageZipSha256": "764a04866c262d4bc49dab3ed367cd09ed9487267fab66354d5321017dd22cd0",
-      "repoRef": "v3.0.6",
-      "size": 3351066,
-      "stars": 37,
-      "updated": "2026-09-19T17:02:36Z",
-      "url": "5kyfkr/siyuan-plugin-task-horizon@764a048"
-    },
-    {
-      "installSize": 2680831,
-      "openIssues": 2,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A dock Tomato Timer for SiYuan.",
-          "zh_CN": "思源底栏番茄钟：支持时间轴视图/任务提醒/日常事务记录/多端状态同步/移动端/数据库联动/块绑定/历史记录/任务管理器联动/移动端原生通知提醒"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Dock Tomato",
-          "zh_CN": "底栏番茄钟"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "tomato",
-          "timer",
-          "pomodoro",
-          "dock"
-        ],
-        "minAppVersion": "3.8.1",
-        "name": "siyuan-plugin-docktomato",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-docktomato",
-        "version": "2.2.9"
-      },
-      "packageZipAssetId": 575116563,
-      "packageZipSha256": "b49ad10871ecbbc47ca69d375b51aa325cb1d95ab8c67201b21d19d40c8d6779",
-      "repoRef": "v2.2.9",
-      "size": 630831,
-      "stars": 9,
-      "updated": "2026-09-19T16:46:31Z",
-      "url": "5kyfkr/siyuan-plugin-docktomato@b49ad10"
-    },
-    {
       "installSize": 206052,
       "openIssues": 0,
       "package": {
@@ -436,66 +631,6 @@
       "stars": 0,
       "updated": "2026-09-19T15:42:25Z",
       "url": "Ordenfelid/agent-transfer@0b8f50f"
-    },
-    {
-      "installSize": 631027,
-      "openIssues": 0,
-      "package": {
-        "author": "bonebearHsu",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "一款思源笔记插件。双向同步 CalDAV 服务器（Radicale / Nextcloud / Baikal 等）的日历事件与待办任务，提供月/周/日日历视图、任务视图与编辑能力，并可将今日日程插入日记。",
-          "en_US": "Two-way sync calendar events and todos with CalDAV servers (Radicale / Nextcloud / Baikal). Month/Week/Day calendar views, task view, editor and daily note integration."
-        },
-        "displayName": {
-          "default": "CalDAV日历任务",
-          "en_US": "CalDAV Calendar &amp; Tasks"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop",
-          "mobile",
-          "browser-mobile"
-        ],
-        "funding": {
-          "custom": [
-            ""
-          ],
-          "github": "bonebearHsu"
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "caldav",
-          "calendar",
-          "todo",
-          "task",
-          "日历",
-          "任务",
-          "同步",
-          "radicale",
-          "nextcloud",
-          "baikal"
-        ],
-        "minAppVersion": "3.1.0",
-        "name": "siyuan-plugin-caldav-sync",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/bonebearHsu/siyuan-plugin-caldav-sync",
-        "version": "0.1.8"
-      },
-      "packageZipAssetId": 574877929,
-      "packageZipSha256": "6b48754a45295097da713ffb25cfe424f79dbfdcfc04c6be924367d94f06f671",
-      "repoRef": "v0.1.8",
-      "size": 379906,
-      "stars": 0,
-      "updated": "2026-09-19T14:06:38Z",
-      "url": "bonebearHsu/siyuan-plugin-caldav-sync@6b48754"
     },
     {
       "installSize": 447829,
@@ -659,141 +794,6 @@
       "stars": 50,
       "updated": "2026-09-19T08:29:02Z",
       "url": "IAliceBobI/sy-tomato-plugin@4f126ce"
-    },
-    {
-      "installSize": 3078413,
-      "openIssues": 0,
-      "package": {
-        "author": "IAliceBobI",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "✍️ Read-then-rewrite practice on any document: mark &amp; tint, drill targets with kept context, extract &amp; rewrite, per-item compare, AI grading, flashcard companion",
-          "zh_CN": "任意文档的读后仿写练习：批注变色、练靶保留语境、抽取仿写、单题对照、AI 判卷、闪卡伴侣"
-        },
-        "displayName": {
-          "default": "Recite Practice",
-          "zh_CN": "仿写练习"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "keywords": [
-          "仿写",
-          "背诵",
-          "默写",
-          "批注",
-          "判卷",
-          "练习",
-          "写作",
-          "联想",
-          "复述",
-          "上下文",
-          "对照",
-          "记忆",
-          "Recite",
-          "Dictation",
-          "Writing",
-          "AI"
-        ],
-        "minAppVersion": "2.12.6",
-        "name": "sy-recite-plugin",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/IAliceBobI/sy-recite-plugin",
-        "version": "1.5.4"
-      },
-      "packageZipAssetId": 574281472,
-      "packageZipSha256": "42d6a7fad718aa6f727dc72b704358d0c4a3d68dc37fc391b5ba009fbb77f412",
-      "repoRef": "v1.5.4",
-      "size": 866303,
-      "stars": 2,
-      "updated": "2026-09-19T07:07:53Z",
-      "url": "IAliceBobI/sy-recite-plugin@42d6a7f"
-    },
-    {
-      "installSize": 3683463,
-      "openIssues": 0,
-      "package": {
-        "author": "IAliceBobI",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "🔓 Open source · Finally finish what you read — and what you write: progressive reading digests long-form input day by day (excerpts, slicing, cloze, flashcards, AI knowledge maps), progressive writing queues your material into finished drafts (writing books, structure tree, compile-to-draft). A full loop from reading to writing.",
-          "zh_CN": "🔓 已开源 · 让长文读得完，让作品写得完：渐进阅读消化输入（摘抄、分片、挖空、闪卡、AI 知识地图），渐进写作排队产出（写作书素材入槽、结构树看进度、汇编成稿）——从阅读到写作的完整闭环"
-        },
-        "displayName": {
-          "default": "Progressive Learning",
-          "zh_CN": "渐进学习"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "keywords": [
-          "渐进学习",
-          "渐进阅读",
-          "Progressive Reading",
-          "挖空",
-          "Cloze",
-          "闪卡",
-          "Flashcard",
-          "摘抄",
-          "断句",
-          "Sentence Split",
-          "拼音",
-          "Pinyin",
-          "Daily Card",
-          "渐进写作",
-          "Progressive Writing",
-          "知识地图",
-          "结构树",
-          "写作书",
-          "Knowledge Map",
-          "Structure Tree",
-          "Writing Book"
-        ],
-        "minAppVersion": "2.12.6",
-        "name": "sy-progressive-plugin",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/IAliceBobI/sy-progressive-plugin",
-        "version": "3.20.0"
-      },
-      "packageZipAssetId": 574280166,
-      "packageZipSha256": "46af02039672e18d9f1e328faa8030a91992c74d2cf16a3f5e074f5c784669a3",
-      "repoRef": "v3.20.0",
-      "size": 1007133,
-      "stars": 27,
-      "updated": "2026-09-19T07:07:05Z",
-      "url": "IAliceBobI/sy-progressive-plugin@46af020"
     },
     {
       "installSize": 217110,
