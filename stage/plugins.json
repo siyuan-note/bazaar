@@ -1,7 +1,7 @@
 {
   "repos": [
     {
-      "installSize": 1241270,
+      "installSize": 1254187,
       "openIssues": 0,
       "package": {
         "author": "ai68298100",
@@ -41,15 +41,179 @@
           "en-US": "README.en-US.md"
         },
         "url": "https://github.com/ai68298100/siyuan-speed-switch",
-        "version": "0.26.0"
+        "version": "0.28.2"
       },
-      "packageZipAssetId": 577176709,
-      "packageZipSha256": "09388d0d7143392ffc927310a4652d954355f81870d61c1d4228af8a99d96a43",
-      "repoRef": "v0.26.0",
-      "size": 377395,
+      "packageZipAssetId": 577461095,
+      "packageZipSha256": "9ebc3bb8f9da06eeec8be6cd03c517c6886845f7ce1250711276d913c9c85bef",
+      "repoRef": "v0.28.2",
+      "size": 383400,
       "stars": 2,
-      "updated": "2026-09-20T16:49:40Z",
-      "url": "ai68298100/siyuan-speed-switch@09388d0"
+      "updated": "2026-09-20T19:59:07Z",
+      "url": "ai68298100/siyuan-speed-switch@9ebc3bb"
+    },
+    {
+      "installSize": 653938,
+      "openIssues": 0,
+      "package": {
+        "author": "bonebearHsu",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "一款思源笔记插件。双向同步 CalDAV 服务器（Radicale / Nextcloud / Baikal 等）的日历事件与待办任务，提供月/周/日日历视图、任务视图与编辑能力，并可将今日日程插入日记。",
+          "en_US": "Two-way sync calendar events and todos with CalDAV servers (Radicale / Nextcloud / Baikal). Month/Week/Day calendar views, task view, editor and daily note integration."
+        },
+        "displayName": {
+          "default": "CalDAV日历任务",
+          "en_US": "CalDAV Calendar &amp; Tasks"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop",
+          "mobile",
+          "browser-mobile"
+        ],
+        "funding": {
+          "custom": [
+            ""
+          ],
+          "github": "bonebearHsu"
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "caldav",
+          "calendar",
+          "todo",
+          "task",
+          "日历",
+          "任务",
+          "同步",
+          "radicale",
+          "nextcloud",
+          "baikal"
+        ],
+        "minAppVersion": "3.1.0",
+        "name": "siyuan-plugin-caldav-sync",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/bonebearHsu/siyuan-plugin-caldav-sync",
+        "version": "0.2.2"
+      },
+      "packageZipAssetId": 577371277,
+      "packageZipSha256": "615605430637cd434737b582e622274d5e2730094e616882c5298e42220a5959",
+      "repoRef": "v0.2.2",
+      "size": 386621,
+      "stars": 1,
+      "updated": "2026-09-20T18:55:45Z",
+      "url": "bonebearHsu/siyuan-plugin-caldav-sync@6156054"
+    },
+    {
+      "installSize": 16379910,
+      "openIssues": 1,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
+          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Horizon",
+          "zh_CN": "任务管理器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "task",
+          "manager",
+          "filter"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-plugin-task-horizon",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
+        "version": "3.0.8"
+      },
+      "packageZipAssetId": 577369541,
+      "packageZipSha256": "df8063b119d20a51ee77201848e8d3a7f3aa42d8cdc04116b0bff687a64083f7",
+      "repoRef": "v3.0.8",
+      "size": 3366998,
+      "stars": 37,
+      "updated": "2026-09-20T18:55:14Z",
+      "url": "5kyfkr/siyuan-plugin-task-horizon@df8063b"
+    },
+    {
+      "installSize": 2705664,
+      "openIssues": 1,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A dock Tomato Timer for SiYuan.",
+          "zh_CN": "思源底栏番茄钟：支持时间轴视图/任务提醒/日常事务记录/多端状态同步/移动端/数据库联动/块绑定/历史记录/任务管理器联动/移动端原生通知提醒"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Dock Tomato",
+          "zh_CN": "底栏番茄钟"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "tomato",
+          "timer",
+          "pomodoro",
+          "dock"
+        ],
+        "minAppVersion": "3.8.1",
+        "name": "siyuan-plugin-docktomato",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-docktomato",
+        "version": "2.3.1"
+      },
+      "packageZipAssetId": 577337078,
+      "packageZipSha256": "494a33bdf73d1a6e4c065c893fd41944a75a8efb99b903d763112f1c5945751f",
+      "repoRef": "v2.3.1",
+      "size": 637322,
+      "stars": 9,
+      "updated": "2026-09-20T18:33:34Z",
+      "url": "5kyfkr/siyuan-plugin-docktomato@494a33b"
     },
     {
       "installSize": 256212,
@@ -380,170 +544,6 @@
       "stars": 0,
       "updated": "2026-09-20T13:07:51Z",
       "url": "itayvak/siyuan-database-list-view@08783de"
-    },
-    {
-      "installSize": 642097,
-      "openIssues": 0,
-      "package": {
-        "author": "bonebearHsu",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "一款思源笔记插件。双向同步 CalDAV 服务器（Radicale / Nextcloud / Baikal 等）的日历事件与待办任务，提供月/周/日日历视图、任务视图与编辑能力，并可将今日日程插入日记。",
-          "en_US": "Two-way sync calendar events and todos with CalDAV servers (Radicale / Nextcloud / Baikal). Month/Week/Day calendar views, task view, editor and daily note integration."
-        },
-        "displayName": {
-          "default": "CalDAV日历任务",
-          "en_US": "CalDAV Calendar &amp; Tasks"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop",
-          "mobile",
-          "browser-mobile"
-        ],
-        "funding": {
-          "custom": [
-            ""
-          ],
-          "github": "bonebearHsu"
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "caldav",
-          "calendar",
-          "todo",
-          "task",
-          "日历",
-          "任务",
-          "同步",
-          "radicale",
-          "nextcloud",
-          "baikal"
-        ],
-        "minAppVersion": "3.1.0",
-        "name": "siyuan-plugin-caldav-sync",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/bonebearHsu/siyuan-plugin-caldav-sync",
-        "version": "0.2.0"
-      },
-      "packageZipAssetId": 576281925,
-      "packageZipSha256": "bad0325a201ce0755d212b0895b810d39878d17014fc70cee876f378613ac3cf",
-      "repoRef": "v0.2.0",
-      "size": 382886,
-      "stars": 1,
-      "updated": "2026-09-20T06:33:59Z",
-      "url": "bonebearHsu/siyuan-plugin-caldav-sync@bad0325"
-    },
-    {
-      "installSize": 16331640,
-      "openIssues": 1,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
-          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Horizon",
-          "zh_CN": "任务管理器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "task",
-          "manager",
-          "filter"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-plugin-task-horizon",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "3.0.7"
-      },
-      "packageZipAssetId": 576128433,
-      "packageZipSha256": "d4b7e4d2533be92b0bc2a27f4e0c3671c6fd750104f7a64ff5ec59e2807effda",
-      "repoRef": "v3.0.7",
-      "size": 3356234,
-      "stars": 37,
-      "updated": "2026-09-20T04:46:48Z",
-      "url": "5kyfkr/siyuan-plugin-task-horizon@d4b7e4d"
-    },
-    {
-      "installSize": 2702883,
-      "openIssues": 1,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A dock Tomato Timer for SiYuan.",
-          "zh_CN": "思源底栏番茄钟：支持时间轴视图/任务提醒/日常事务记录/多端状态同步/移动端/数据库联动/块绑定/历史记录/任务管理器联动/移动端原生通知提醒"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Dock Tomato",
-          "zh_CN": "底栏番茄钟"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "tomato",
-          "timer",
-          "pomodoro",
-          "dock"
-        ],
-        "minAppVersion": "3.8.1",
-        "name": "siyuan-plugin-docktomato",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-docktomato",
-        "version": "2.3.0"
-      },
-      "packageZipAssetId": 576126452,
-      "packageZipSha256": "55a75d979dafca5225b06fd1df59f490df99c71590229a62132efa10d9ac6129",
-      "repoRef": "v2.3.0",
-      "size": 636566,
-      "stars": 9,
-      "updated": "2026-09-20T04:45:22Z",
-      "url": "5kyfkr/siyuan-plugin-docktomato@55a75d9"
     },
     {
       "installSize": 72764,
