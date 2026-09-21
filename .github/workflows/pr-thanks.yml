@@ -1,0 +1,28 @@
+name: PR Thanks
+
+# PR 合并到 main 后发送感谢评论
+on:
+  pull_request_target:
+    types:
+      - closed
+    branches:
+      - main
+
+jobs:
+  thanks:
+    if: |
+      github.repository_owner == 'siyuan-note' &&
+      github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Comment thank-you
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr comment "${{ github.event.pull_request.number }}" \
+            --repo "${{ github.repository }}" \
+            --body "$(printf '%s\n%s' \
+              '感谢你的贡献，思源有你更精彩！' \
+              'Thank you for your contribution. SiYuan will be more wonderful with you!')"
