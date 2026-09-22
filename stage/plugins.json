@@ -1,6 +1,57 @@
 {
   "repos": [
     {
+      "installSize": 1403859,
+      "openIssues": 0,
+      "package": {
+        "author": "Quincy Zou",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "description": {
+          "default": "Full lifecycle asset management with image vector secondary editing, deduplication, and orphan cleanup.",
+          "zh_CN": "笔记内嵌图片、视频等资源的全生命周期管理，支持图片二次编辑、智能去重与孤儿资源清理。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Assets Manager",
+          "zh_CN": "资源管家"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "icon": "icon.webp",
+        "keywords": [
+          "图像编辑",
+          "资产管理",
+          "清理优化",
+          "去重",
+          "大文件管理",
+          "截图标注"
+        ],
+        "minAppVersion": "2.10.14",
+        "name": "siyuan-assets-manager",
+        "preview": "preview.webp",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/famotime/siyuan-assets-manager",
+        "version": "1.2.2"
+      },
+      "packageZipAssetId": 581540765,
+      "packageZipSha256": "bd2c429949d516bab306369808eb21ea6dcb4485edd6b6ec787625fb7489232c",
+      "repoRef": "v1.2.2",
+      "size": 419013,
+      "stars": 0,
+      "updated": "2026-09-22T14:10:11Z",
+      "url": "famotime/siyuan-assets-manager@bd2c429"
+    },
+    {
       "installSize": 44328,
       "openIssues": 0,
       "package": {
@@ -51,6 +102,54 @@
       "stars": 0,
       "updated": "2026-09-22T10:23:09Z",
       "url": "Ordenfelid/file-tunnel@e9996ee"
+    },
+    {
+      "installSize": 11095522,
+      "openIssues": 0,
+      "package": {
+        "author": "heiney",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Bidirectional WYSIWYG editor for Mermaid code blocks: drag nodes on canvas, edit text, and sync back to native markdown. Powered by Visimer.",
+          "zh-CN": "思源笔记 Mermaid 代码块双向可视化编辑：画布拖拽节点、双击改字，写回原生 Markdown 块，存储零失真。基于 Visimer。"
+        },
+        "displayName": {
+          "default": "Mermaid WYSIWYG Editor",
+          "zh-CN": "Mermaid 双向可视化编辑"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "siyuan",
+          "mermaid",
+          "wysiwyg",
+          "visual-editor",
+          "visimer"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "siyuan-mermaid-wysiwyg-editor",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.en.md",
+          "zh-CN": "README.md"
+        },
+        "url": "https://github.com/heineiy/siyuan-mermaid-wysiwyg-editor",
+        "version": "0.4.0"
+      },
+      "packageZipAssetId": 581224252,
+      "packageZipSha256": "d7630e5be7676333cd749b193727349603f4b7b59a6caeaf01909738685f4284",
+      "repoRef": "v0.4.0",
+      "size": 2764156,
+      "stars": 0,
+      "updated": "2026-09-22T10:06:44Z",
+      "url": "heineiy/siyuan-mermaid-wysiwyg-editor@d7630e5"
     },
     {
       "installSize": 3137770,
@@ -236,57 +335,6 @@
       "stars": 2,
       "updated": "2026-09-22T04:57:38Z",
       "url": "ai68298100/siyuan-speed-switch@c8a0a07"
-    },
-    {
-      "installSize": 1377273,
-      "openIssues": 0,
-      "package": {
-        "author": "Quincy Zou",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker"
-        ],
-        "description": {
-          "default": "Full lifecycle asset management with image vector secondary editing, deduplication, and orphan cleanup.",
-          "zh_CN": "笔记内嵌图片、视频等资源的全生命周期管理，支持图片二次编辑、智能去重与孤儿资源清理。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Assets Manager",
-          "zh_CN": "资源管家"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window"
-        ],
-        "icon": "icon.webp",
-        "keywords": [
-          "图像编辑",
-          "资产管理",
-          "清理优化",
-          "去重",
-          "大文件管理",
-          "截图标注"
-        ],
-        "minAppVersion": "2.10.14",
-        "name": "siyuan-assets-manager",
-        "preview": "preview.webp",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/famotime/siyuan-assets-manager",
-        "version": "1.2.0"
-      },
-      "packageZipAssetId": 579189057,
-      "packageZipSha256": "131ee59199ace341ee5c469062f60acf09f2cd514174236facb5c1124698e90c",
-      "repoRef": "v1.2.0",
-      "size": 413003,
-      "stars": 0,
-      "updated": "2026-09-22T04:01:27Z",
-      "url": "famotime/siyuan-assets-manager@131ee59"
     },
     {
       "installSize": 98704,
@@ -2026,54 +2074,6 @@
       "stars": 1,
       "updated": "2026-09-17T16:54:48Z",
       "url": "CongSec/siyuan-plugin-meiday@7800f8b"
-    },
-    {
-      "installSize": 11203487,
-      "openIssues": 0,
-      "package": {
-        "author": "heiney",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Bidirectional WYSIWYG editor for Mermaid code blocks: drag nodes on canvas, edit text, and sync back to native markdown. Powered by Visimer.",
-          "zh-CN": "思源笔记 Mermaid 代码块双向可视化编辑：画布拖拽节点、双击改字，写回原生 Markdown 块，存储零失真。基于 Visimer。"
-        },
-        "displayName": {
-          "default": "Mermaid WYSIWYG Editor",
-          "zh-CN": "Mermaid 双向可视化编辑"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "siyuan",
-          "mermaid",
-          "wysiwyg",
-          "visual-editor",
-          "visimer"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "siyuan-mermaid-wysiwyg-editor",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.en.md",
-          "zh-CN": "README.md"
-        },
-        "url": "https://github.com/heineiy/siyuan-mermaid-wysiwyg-editor",
-        "version": "0.2.2"
-      },
-      "packageZipAssetId": 570266260,
-      "packageZipSha256": "a60dd0143a18847828083c7498bf9783241ef2c812ae85f55ffb0368aa72fa6b",
-      "repoRef": "v0.2.2",
-      "size": 2802320,
-      "stars": 0,
-      "updated": "2026-09-17T13:22:58Z",
-      "url": "heineiy/siyuan-mermaid-wysiwyg-editor@a60dd01"
     },
     {
       "installSize": 1039312,
