@@ -1,6 +1,278 @@
 {
   "repos": [
     {
+      "installSize": 1347384,
+      "openIssues": 0,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A local-first SiYuan navigation workspace with live tab thumbnails, favorite folders, document card search, cross-plugin quick actions, sidebar mode, fullscreen, and mobile support.",
+          "zh-CN": "本地优先的思源导航工作区，支持页签缩略图、收藏夹、文档卡片搜索、跨插件快捷入口、侧边栏、全屏与手机端。"
+        },
+        "displayName": {
+          "default": "LvSpeed Switch",
+          "zh-CN": "小驴雷切"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "页签切换",
+          "tab switch",
+          "标签页",
+          "快捷入口",
+          "speed switch",
+          "lv speed switch",
+          "小驴雷切"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "siyuan-speed-switch",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en-US": "README.en-US.md"
+        },
+        "url": "https://github.com/ai68298100/siyuan-speed-switch",
+        "version": "0.30.1"
+      },
+      "packageZipAssetId": 580585450,
+      "packageZipSha256": "c8a0a0770f433d35d9de808ee06b8f5c727b2bc4e8097aa5f79205195455f333",
+      "repoRef": "v0.30.1",
+      "size": 410631,
+      "stars": 2,
+      "updated": "2026-09-22T04:57:38Z",
+      "url": "ai68298100/siyuan-speed-switch@c8a0a07"
+    },
+    {
+      "installSize": 1377273,
+      "openIssues": 0,
+      "package": {
+        "author": "Quincy Zou",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "description": {
+          "default": "Full lifecycle asset management with image vector secondary editing, deduplication, and orphan cleanup.",
+          "zh_CN": "笔记内嵌图片、视频等资源的全生命周期管理，支持图片二次编辑、智能去重与孤儿资源清理。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Assets Manager",
+          "zh_CN": "资源管家"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "icon": "icon.webp",
+        "keywords": [
+          "图像编辑",
+          "资产管理",
+          "清理优化",
+          "去重",
+          "大文件管理",
+          "截图标注"
+        ],
+        "minAppVersion": "2.10.14",
+        "name": "siyuan-assets-manager",
+        "preview": "preview.webp",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/famotime/siyuan-assets-manager",
+        "version": "1.2.0"
+      },
+      "packageZipAssetId": 579189057,
+      "packageZipSha256": "131ee59199ace341ee5c469062f60acf09f2cd514174236facb5c1124698e90c",
+      "repoRef": "v1.2.0",
+      "size": 413003,
+      "stars": 0,
+      "updated": "2026-09-22T04:01:27Z",
+      "url": "famotime/siyuan-assets-manager@131ee59"
+    },
+    {
+      "installSize": 98704,
+      "openIssues": 1,
+      "package": {
+        "author": "Vanessa",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker",
+          "all"
+        ],
+        "description": {
+          "default": "This is a plugin development sample",
+          "zh-CN": "这是一个插件开发示例"
+        },
+        "displayName": {
+          "default": "Plugin Sample",
+          "zh-CN": "插件示例"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window",
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://ld246.com/sponsor"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker",
+          "all"
+        ],
+        "keywords": [
+          "开发者参考",
+          "developer reference",
+          "示例插件"
+        ],
+        "minAppVersion": "3.8.5",
+        "name": "plugin-sample",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/siyuan-note/plugin-sample",
+        "version": "0.5.2"
+      },
+      "packageZipAssetId": 580498658,
+      "packageZipSha256": "c5974005fc28221bbeb32d75c8541fb6905a74765c806300afd9dd400b6650ce",
+      "repoRef": "v0.5.2",
+      "size": 38686,
+      "stars": 79,
+      "updated": "2026-09-22T04:00:53Z",
+      "url": "siyuan-note/plugin-sample@c597400"
+    },
+    {
+      "installSize": 1856419,
+      "openIssues": 0,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A flexible habit and check-in workspace for SiYuan.",
+          "zh-CN": "支持分组、模板、统计与扩展集成的思源打卡工作台。"
+        },
+        "displayName": {
+          "default": "Lv Check-in",
+          "zh-CN": "小驴打卡"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "打卡",
+          "习惯",
+          "目标",
+          "小驴打卡",
+          "check-in",
+          "habit"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-checkin",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/ai68298100/siyuan-checkin",
+        "version": "18.0.3"
+      },
+      "packageZipAssetId": 580442370,
+      "packageZipSha256": "69a882c840f4ef500d03e46f9a2c63971cfd7aff766a4f0ba6d6f33083a8fd13",
+      "repoRef": "v18.0.3",
+      "size": 684657,
+      "stars": 1,
+      "updated": "2026-09-22T03:22:15Z",
+      "url": "ai68298100/siyuan-checkin@69a882c"
+    },
+    {
+      "installSize": 16423794,
+      "openIssues": 1,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
+          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Horizon",
+          "zh_CN": "任务管理器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "task",
+          "manager",
+          "filter"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-plugin-task-horizon",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
+        "version": "3.1.0"
+      },
+      "packageZipAssetId": 580401181,
+      "packageZipSha256": "d5a6b8ec334157c4f7a8f7495cc1daa35a424541bd2e723457261fa7a008ff6d",
+      "repoRef": "v3.1.0",
+      "size": 3377133,
+      "stars": 37,
+      "updated": "2026-09-22T02:52:55Z",
+      "url": "5kyfkr/siyuan-plugin-task-horizon@d5a6b8e"
+    },
+    {
       "installSize": 156063,
       "openIssues": 1,
       "package": {
@@ -104,57 +376,6 @@
       "stars": 0,
       "updated": "2026-09-21T18:58:29Z",
       "url": "CherryGS/sy-another-graph@7f28ead"
-    },
-    {
-      "installSize": 1331799,
-      "openIssues": 0,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A local-first SiYuan navigation workspace with live tab thumbnails, favorite folders, document card search, cross-plugin quick actions, sidebar mode, fullscreen, and mobile support.",
-          "zh-CN": "本地优先的思源导航工作区，支持页签缩略图、收藏夹、文档卡片搜索、跨插件快捷入口、侧边栏、全屏与手机端。"
-        },
-        "displayName": {
-          "default": "LvSpeed Switch",
-          "zh-CN": "小驴雷切"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "页签切换",
-          "tab switch",
-          "标签页",
-          "快捷入口",
-          "speed switch",
-          "lv speed switch",
-          "小驴雷切"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "siyuan-speed-switch",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en-US": "README.en-US.md"
-        },
-        "url": "https://github.com/ai68298100/siyuan-speed-switch",
-        "version": "0.30.0"
-      },
-      "packageZipAssetId": 579604538,
-      "packageZipSha256": "f6fba21f32a8800128558894bc766576f7fa8a0cfa325c32c58847c3ff9ad5ca",
-      "repoRef": "v0.30.0",
-      "size": 406358,
-      "stars": 2,
-      "updated": "2026-09-21T18:21:22Z",
-      "url": "ai68298100/siyuan-speed-switch@f6fba21"
     },
     {
       "installSize": 338931,
@@ -668,106 +889,6 @@
       "stars": 0,
       "updated": "2026-09-21T06:12:22Z",
       "url": "zfb517/siyuan-token-stats@cda9d18"
-    },
-    {
-      "installSize": 16388859,
-      "openIssues": 1,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
-          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Horizon",
-          "zh_CN": "任务管理器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "task",
-          "manager",
-          "filter"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-plugin-task-horizon",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "3.0.9"
-      },
-      "packageZipAssetId": 578384725,
-      "packageZipSha256": "9eba5bb6609da961a73c6727bc0e102f3db179710c6eec2fa9a6c164ce338b8a",
-      "repoRef": "v3.0.9",
-      "size": 3369221,
-      "stars": 37,
-      "updated": "2026-09-21T06:07:42Z",
-      "url": "5kyfkr/siyuan-plugin-task-horizon@9eba5bb"
-    },
-    {
-      "installSize": 1826376,
-      "openIssues": 0,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A flexible habit and check-in workspace for SiYuan.",
-          "zh-CN": "支持分组、模板、统计与扩展集成的思源打卡工作台。"
-        },
-        "displayName": {
-          "default": "Lv Check-in",
-          "zh-CN": "小驴打卡"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "打卡",
-          "习惯",
-          "目标",
-          "小驴打卡",
-          "check-in",
-          "habit"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-checkin",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/ai68298100/siyuan-checkin",
-        "version": "18.0.1"
-      },
-      "packageZipAssetId": 578374165,
-      "packageZipSha256": "3393e77004a42f27b244b15598d84c4f906b65879ce86533f9ece160fc9bf698",
-      "repoRef": "v18.0.1",
-      "size": 676415,
-      "stars": 1,
-      "updated": "2026-09-21T06:00:35Z",
-      "url": "ai68298100/siyuan-checkin@3393e77"
     },
     {
       "installSize": 2705664,
@@ -2049,57 +2170,6 @@
       "stars": 1,
       "updated": "2026-09-17T07:10:58Z",
       "url": "TCOTC/Whisper-Plus@a2b0555"
-    },
-    {
-      "installSize": 1244938,
-      "openIssues": 1,
-      "package": {
-        "author": "Quincy Zou",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker"
-        ],
-        "description": {
-          "default": "Full lifecycle asset management with image vector secondary editing, deduplication, and orphan cleanup.",
-          "zh_CN": "笔记内嵌图片、视频等资源的全生命周期管理，支持图片二次编辑、智能去重与孤儿资源清理。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Assets Manager",
-          "zh_CN": "资源管家"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window"
-        ],
-        "icon": "icon.webp",
-        "keywords": [
-          "图像编辑",
-          "资产管理",
-          "清理优化",
-          "去重",
-          "大文件管理",
-          "截图标注"
-        ],
-        "minAppVersion": "2.10.14",
-        "name": "siyuan-assets-manager",
-        "preview": "preview.webp",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/famotime/siyuan-assets-manager",
-        "version": "1.1.0"
-      },
-      "packageZipAssetId": 569454243,
-      "packageZipSha256": "f555d5db55ddeda548b31b21864d07785357e9256d92c1429368d796270caa0e",
-      "repoRef": "v1.1.0",
-      "size": 383243,
-      "stars": 0,
-      "updated": "2026-09-17T04:34:46Z",
-      "url": "famotime/siyuan-assets-manager@f555d5d"
     },
     {
       "installSize": 637721,
@@ -5533,74 +5603,6 @@
       "stars": 0,
       "updated": "2026-09-01T03:58:54Z",
       "url": "YanyingWei1997/siyuan-plugin-ying-kami-markdown@1041660"
-    },
-    {
-      "installSize": 85500,
-      "openIssues": 1,
-      "package": {
-        "author": "Vanessa",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker",
-          "all"
-        ],
-        "description": {
-          "default": "This is a plugin development sample",
-          "zh-CN": "这是一个插件开发示例"
-        },
-        "displayName": {
-          "default": "Plugin Sample",
-          "zh-CN": "插件示例"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window",
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://ld246.com/sponsor"
-          ]
-        },
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker",
-          "all"
-        ],
-        "keywords": [
-          "开发者参考",
-          "developer reference",
-          "示例插件"
-        ],
-        "minAppVersion": "3.8.3",
-        "name": "plugin-sample",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/siyuan-note/plugin-sample",
-        "version": "0.5.1"
-      },
-      "packageZipAssetId": 538260384,
-      "packageZipSha256": "a4c73192b81a3bf8859a2b98c1ba757c2fddd345981d692c8970bcff5b45d773",
-      "repoRef": "v0.5.1",
-      "size": 33917,
-      "stars": 80,
-      "updated": "2026-08-31T16:45:05Z",
-      "url": "siyuan-note/plugin-sample@a4c7319"
     },
     {
       "installSize": 362951,
