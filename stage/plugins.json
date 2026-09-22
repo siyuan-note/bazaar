@@ -1,6 +1,58 @@
 {
   "repos": [
     {
+      "installSize": 44316,
+      "openIssues": 0,
+      "package": {
+        "author": "ordis",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "This plugin lets the SiYuan Agent correctly read binary files returned by MCP servers—images and other base64-encoded content—instead of letting raw base64 flood and blow up the context. It also lets the Agent encode local asset files as base64 into MCP requests, giving the effect of uploading local files.",
+          "zh_CN": "此插件让思源 Agent 能够正确读取 mcp 返回的图片等二进制文件（base64 编码），而不是让 base64 灌进上下文撑爆上下文；也支持 agent 将本地 asset 文件编码为 base64 嵌入 mcp 请求，以实现上传本地文件的效果。"
+        },
+        "displayName": {
+          "default": "File Tunnel",
+          "zh_CN": "文件隧道"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "agent",
+          "mcp",
+          "file",
+          "binary",
+          "asset",
+          "picture",
+          "base64",
+          "附件",
+          "二进制",
+          "图片",
+          "文件",
+          "上传",
+          "下载"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "file-tunnel",
+        "preview": "",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/Ordenfelid/file-tunnel",
+        "version": "0.1.7"
+      },
+      "packageZipAssetId": 580763615,
+      "packageZipSha256": "72c446edfd368acf7e328aa1e4e019a90310d2b55b230fc451cd4d5886f5287a",
+      "repoRef": "v0.1.7",
+      "size": 23833,
+      "stars": 0,
+      "updated": "2026-09-22T09:36:25Z",
+      "url": "Ordenfelid/file-tunnel@72c446e"
+    },
+    {
       "installSize": 1347384,
       "openIssues": 0,
       "package": {
