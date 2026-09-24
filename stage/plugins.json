@@ -1,6 +1,394 @@
 {
   "repos": [
     {
+      "installSize": 695775,
+      "openIssues": 1,
+      "package": {
+        "author": "bonebearHsu",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "一款思源笔记插件。双向同步 CalDAV 服务器（Radicale / Nextcloud / Baikal 等）的日历事件与待办任务，提供月/周/日日历视图、任务视图与编辑能力，并可将今日日程插入日记。",
+          "en_US": "Two-way sync calendar events and todos with CalDAV servers (Radicale / Nextcloud / Baikal). Month/Week/Day calendar views, task view, editor and daily note integration."
+        },
+        "displayName": {
+          "default": "CalDAV日历任务",
+          "en_US": "CalDAV Calendar &amp; Tasks"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop",
+          "mobile",
+          "browser-mobile"
+        ],
+        "funding": {
+          "custom": [
+            ""
+          ],
+          "github": "bonebearHsu"
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "caldav",
+          "calendar",
+          "todo",
+          "task",
+          "日历",
+          "任务",
+          "同步",
+          "radicale",
+          "nextcloud",
+          "baikal"
+        ],
+        "minAppVersion": "3.1.0",
+        "name": "siyuan-plugin-caldav-sync",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en_US": "README_en_US.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/bonebearHsu/siyuan-plugin-caldav-sync",
+        "version": "0.2.9"
+      },
+      "packageZipAssetId": 586483905,
+      "packageZipSha256": "5282a8afc0e3757c669ac32d33e7da8ec91384236ef94ec5e6503b94d16c97e8",
+      "repoRef": "v0.2.9",
+      "size": 420008,
+      "stars": 4,
+      "updated": "2026-09-24T17:45:17Z",
+      "url": "bonebearHsu/siyuan-plugin-caldav-sync@5282a8a"
+    },
+    {
+      "installSize": 3573195,
+      "openIssues": 5,
+      "package": {
+        "author": "mm-o",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker",
+          "darwin"
+        ],
+        "description": {
+          "en_US": "Professional media player for SiYuan Note with multi-platform support, smart note integration, timestamp jumps, loop segments, and extensible script architecture",
+          "zh_CN": "专业的思源笔记媒体播放器插件，集成本地媒体、网盘、BBLL、TTVV、多窗口播放、时间戳、循环片段、媒体助手与可扩展架构。"
+        },
+        "displayName": {
+          "en_US": "SiYuan Media Player",
+          "zh_CN": "思播-思源媒体播放器"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://745201.xyz/pay.jpg"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "media player",
+          "audio",
+          "video",
+          "timestamp",
+          "playlist",
+          "note integration",
+          "extensible",
+          "播放器",
+          "音频",
+          "视频",
+          "时间戳",
+          "播放列表",
+          "笔记集成",
+          "多平台"
+        ],
+        "minAppVersion": "3.0.12",
+        "name": "siyuan-media-player",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/mm-o/siyuan-media-player",
+        "version": "2.0.5"
+      },
+      "packageZipAssetId": 586402842,
+      "packageZipSha256": "ef46557586f818a5f25f9aa11b1e24af6979a8afc965f87f6ba3c0728ce72597",
+      "repoRef": "v2.0.5",
+      "size": 1384224,
+      "stars": 55,
+      "updated": "2026-09-24T16:59:14Z",
+      "url": "mm-o/siyuan-media-player@ef46557"
+    },
+    {
+      "installSize": 2055403,
+      "openIssues": 0,
+      "package": {
+        "author": "Glaube-TY",
+        "backends": [
+          "windows",
+          "linux",
+          "ios",
+          "android",
+          "harmony",
+          "docker",
+          "darwin"
+        ],
+        "description": {
+          "en_US": "Obtain Douban book information and add it to the database &amp; synchronize weread notes.",
+          "zh_CN": "豆瓣书籍信息获取并添加到数据库 &amp; 同步微信读书笔记。"
+        },
+        "displayName": {
+          "en_US": "Reading Notes",
+          "zh_CN": "读书笔记"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://glaube-ty.top/da-shang/"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "豆瓣读书",
+          "douban",
+          "书籍",
+          "book",
+          "读书笔记",
+          "笔记",
+          "read",
+          "note",
+          "booknote",
+          "weread",
+          "微信读书",
+          "微信"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "siyuan-douban",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/Glaube-TY/siyuan-douban",
+        "version": "4.3.4"
+      },
+      "packageZipAssetId": 586311960,
+      "packageZipSha256": "841d7fc3143ad0b1f95daf7468f9979dc36b5cc1e244ebf4651bc640aab12842",
+      "repoRef": "v4.3.4",
+      "size": 717303,
+      "stars": 29,
+      "updated": "2026-09-24T16:05:39Z",
+      "url": "Glaube-TY/siyuan-douban@841d7fc"
+    },
+    {
+      "installSize": 251423,
+      "openIssues": 0,
+      "package": {
+        "author": "OpaqueGlass",
+        "description": {
+          "default": "Add a doc-breadcrumb",
+          "en_US": "Add a document breadcrumb. Add document path information that can be jumped to at the top of the editing area.",
+          "zh_CN": "再添加一个文档面包屑：在编辑区域顶部添加可跳转的文档路径信息导航条"
+        },
+        "displayName": {
+          "default": "fakeDocBreadcrumb",
+          "en_US": "Fake Doc Breadcrumb",
+          "zh_CN": "(伪)文档面包屑"
+        },
+        "funding": {
+          "custom": [
+            "https://wj.qq.com/s2/12395364/b69f/"
+          ]
+        },
+        "icon": "icon.png",
+        "name": "syplugin-fakeDocBreadcrumb",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/OpaqueGlass/syplugin-fakeDocBreadcrumb",
+        "version": "2.1.0"
+      },
+      "packageZipAssetId": 586257474,
+      "packageZipSha256": "f8afd607aa455caed181c5ddd2d76416836dbbc11a4cb2980ade5d995a99ec34",
+      "repoRef": "v2.1.0-r2",
+      "size": 108626,
+      "stars": 9,
+      "updated": "2026-09-24T15:32:43Z",
+      "url": "OpaqueGlass/syplugin-fakeDocBreadcrumb@f8afd60"
+    },
+    {
+      "installSize": 14934543,
+      "openIssues": 2,
+      "package": {
+        "author": "Glaube-TY",
+        "backends": [
+          "windows",
+          "linux",
+          "ios",
+          "android",
+          "harmony",
+          "docker",
+          "darwin"
+        ],
+        "description": {
+          "en_US": "Provides personalized homepage layout and rich functional modules, as well as AI knowledge base.",
+          "zh_CN": "提供个性化首页布局和丰富的功能模块以及 AI 知识库功能。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "en_US": "HOME",
+          "zh_CN": "主页"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://glaube-ty.top/da-shang/"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "keywords": [
+          "homepage",
+          "home",
+          "主页",
+          "首页",
+          "task",
+          "task manager",
+          "任务",
+          "任务管理",
+          "SQL",
+          "sql",
+          "查询",
+          "widget",
+          "widget manager",
+          "挂件",
+          "挂件管理",
+          "组件",
+          "组件管理",
+          "Pomodoro",
+          "Pomodoro timer",
+          "番茄钟",
+          "番茄",
+          "heat map",
+          "热力图",
+          "热搜",
+          "搜索",
+          "AI",
+          "智能助手",
+          "agent",
+          "智能体"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "siyuan-homepage",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/Glaube-TY/siyuan-homepage",
+        "version": "5.1.2"
+      },
+      "packageZipAssetId": 586242410,
+      "packageZipSha256": "e73a10fe051863b98e24196e26c05233272507427e9b6b8472560680b1b269ad",
+      "repoRef": "v5.1.2",
+      "size": 5359699,
+      "stars": 42,
+      "updated": "2026-09-24T15:25:18Z",
+      "url": "Glaube-TY/siyuan-homepage@e73a10f"
+    },
+    {
+      "installSize": 511796,
+      "openIssues": 2,
+      "package": {
+        "author": "notesynchelper",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "从微信同步到思源笔记，支持文字、图片、聊天记录、文章"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "笔记同步助手"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "docker"
+        ],
+        "keywords": [
+          "wechat",
+          "template",
+          "企微",
+          "模板",
+          "微信",
+          "速记",
+          "剪藏",
+          "搜集",
+          "日记",
+          "闪念",
+          "memo",
+          "备忘",
+          "公众号",
+          "小红书",
+          "得到"
+        ],
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-notehelper",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/notesynchelper/siyuan-notehelper",
+        "version": "1.8.37"
+      },
+      "packageZipAssetId": 586091080,
+      "packageZipSha256": "4489b1772c49c22fda2b11abdea53808656e35f22fc71e1c5488995737802d60",
+      "repoRef": "v1.8.37",
+      "size": 205944,
+      "stars": 2,
+      "updated": "2026-09-24T14:06:31Z",
+      "url": "notesynchelper/siyuan-notehelper@4489b17"
+    },
+    {
       "installSize": 909218,
       "openIssues": 0,
       "package": {
@@ -264,62 +652,6 @@
       "stars": 209,
       "updated": "2026-09-24T05:38:20Z",
       "url": "terwer/siyuan-plugin-publisher@eb5aff2"
-    },
-    {
-      "installSize": 511796,
-      "openIssues": 2,
-      "package": {
-        "author": "notesynchelper",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "从微信同步到思源笔记，支持文字、图片、聊天记录、文章"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "笔记同步助手"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "docker"
-        ],
-        "keywords": [
-          "wechat",
-          "template",
-          "企微",
-          "模板",
-          "微信",
-          "速记",
-          "剪藏",
-          "搜集",
-          "日记",
-          "闪念",
-          "memo",
-          "备忘",
-          "公众号",
-          "小红书",
-          "得到"
-        ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-notehelper",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/notesynchelper/siyuan-notehelper",
-        "version": "1.8.36"
-      },
-      "packageZipAssetId": 585099368,
-      "packageZipSha256": "6ef708d8e4d19ad60acd71420f700acf9ab768ea5d8d980e558d79f4d56e4de6",
-      "repoRef": "v1.8.36",
-      "size": 205944,
-      "stars": 2,
-      "updated": "2026-09-24T03:54:43Z",
-      "url": "notesynchelper/siyuan-notehelper@6ef708d"
     },
     {
       "installSize": 3620931,
@@ -718,67 +1050,6 @@
       "stars": 50,
       "updated": "2026-09-23T05:52:06Z",
       "url": "IAliceBobI/sy-tomato-plugin@324e584"
-    },
-    {
-      "installSize": 695040,
-      "openIssues": 0,
-      "package": {
-        "author": "bonebearHsu",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "一款思源笔记插件。双向同步 CalDAV 服务器（Radicale / Nextcloud / Baikal 等）的日历事件与待办任务，提供月/周/日日历视图、任务视图与编辑能力，并可将今日日程插入日记。",
-          "en_US": "Two-way sync calendar events and todos with CalDAV servers (Radicale / Nextcloud / Baikal). Month/Week/Day calendar views, task view, editor and daily note integration."
-        },
-        "displayName": {
-          "default": "CalDAV日历任务",
-          "en_US": "CalDAV Calendar &amp; Tasks"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop",
-          "mobile",
-          "browser-mobile"
-        ],
-        "funding": {
-          "custom": [
-            ""
-          ],
-          "github": "bonebearHsu"
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "caldav",
-          "calendar",
-          "todo",
-          "task",
-          "日历",
-          "任务",
-          "同步",
-          "radicale",
-          "nextcloud",
-          "baikal"
-        ],
-        "minAppVersion": "3.1.0",
-        "name": "siyuan-plugin-caldav-sync",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en_US": "README_en_US.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/bonebearHsu/siyuan-plugin-caldav-sync",
-        "version": "0.2.7"
-      },
-      "packageZipAssetId": 582718895,
-      "packageZipSha256": "e46b117acb137745ebd5369f1f35c3459f286981bcaadfd581afde945397548e",
-      "repoRef": "v0.2.7",
-      "size": 419834,
-      "stars": 2,
-      "updated": "2026-09-23T01:52:25Z",
-      "url": "bonebearHsu/siyuan-plugin-caldav-sync@e46b117"
     },
     {
       "installSize": 2248803,
@@ -2850,96 +3121,6 @@
       "url": "Achuan-2/siyuan-plugin-task-note-management@eb9e73b"
     },
     {
-      "installSize": 14919217,
-      "openIssues": 2,
-      "package": {
-        "author": "Glaube-TY",
-        "backends": [
-          "windows",
-          "linux",
-          "ios",
-          "android",
-          "harmony",
-          "docker",
-          "darwin"
-        ],
-        "description": {
-          "en_US": "Provides personalized homepage layout and rich functional modules, as well as AI knowledge base.",
-          "zh_CN": "提供个性化首页布局和丰富的功能模块以及 AI 知识库功能。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "en_US": "HOME",
-          "zh_CN": "主页"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://glaube-ty.top/da-shang/"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker"
-        ],
-        "keywords": [
-          "homepage",
-          "home",
-          "主页",
-          "首页",
-          "task",
-          "task manager",
-          "任务",
-          "任务管理",
-          "SQL",
-          "sql",
-          "查询",
-          "widget",
-          "widget manager",
-          "挂件",
-          "挂件管理",
-          "组件",
-          "组件管理",
-          "Pomodoro",
-          "Pomodoro timer",
-          "番茄钟",
-          "番茄",
-          "heat map",
-          "热力图",
-          "热搜",
-          "搜索",
-          "AI",
-          "智能助手",
-          "agent",
-          "智能体"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "siyuan-homepage",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/Glaube-TY/siyuan-homepage",
-        "version": "5.1.1"
-      },
-      "packageZipAssetId": 563477261,
-      "packageZipSha256": "68d143fd56205cb2f17206c0265e54e78ed28b69c0f1eb0d722b26b1460820f8",
-      "repoRef": "v5.1.1",
-      "size": 5357111,
-      "stars": 42,
-      "updated": "2026-09-14T13:42:04Z",
-      "url": "Glaube-TY/siyuan-homepage@68d143f"
-    },
-    {
       "installSize": 1567736,
       "openIssues": 0,
       "package": {
@@ -3912,79 +4093,6 @@
       "url": "mm-o/siyuan-cloud@03e01d2"
     },
     {
-      "installSize": 3571809,
-      "openIssues": 5,
-      "package": {
-        "author": "mm-o",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker",
-          "darwin"
-        ],
-        "description": {
-          "en_US": "Professional media player for SiYuan Note with multi-platform support, smart note integration, timestamp jumps, loop segments, and extensible script architecture",
-          "zh_CN": "专业的思源笔记媒体播放器插件，集成本地媒体、网盘、BBLL、TTVV、多窗口播放、时间戳、循环片段、媒体助手与可扩展架构。"
-        },
-        "displayName": {
-          "en_US": "SiYuan Media Player",
-          "zh_CN": "思播-思源媒体播放器"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://745201.xyz/pay.jpg"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "media player",
-          "audio",
-          "video",
-          "timestamp",
-          "playlist",
-          "note integration",
-          "extensible",
-          "播放器",
-          "音频",
-          "视频",
-          "时间戳",
-          "播放列表",
-          "笔记集成",
-          "多平台"
-        ],
-        "minAppVersion": "3.0.12",
-        "name": "siyuan-media-player",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/mm-o/siyuan-media-player",
-        "version": "2.0.4"
-      },
-      "packageZipAssetId": 556593578,
-      "packageZipSha256": "cede41e05f4d03610059a2401514b617d4f63ecaee0c7fd7901f9da86a1793e1",
-      "repoRef": "v2.0.4",
-      "size": 1384113,
-      "stars": 54,
-      "updated": "2026-09-11T05:53:01Z",
-      "url": "mm-o/siyuan-media-player@cede41e"
-    },
-    {
       "installSize": 2701068,
       "openIssues": 0,
       "package": {
@@ -4076,76 +4184,6 @@
       "stars": 104,
       "updated": "2026-09-10T16:36:01Z",
       "url": "yangtaihong59/siyuan-plugins-mcp-sisyphus@10a3c82"
-    },
-    {
-      "installSize": 2043673,
-      "openIssues": 0,
-      "package": {
-        "author": "Glaube-TY",
-        "backends": [
-          "windows",
-          "linux",
-          "ios",
-          "android",
-          "harmony",
-          "docker",
-          "darwin"
-        ],
-        "description": {
-          "en_US": "Obtain Douban book information and add it to the database &amp; synchronize weread notes.",
-          "zh_CN": "豆瓣书籍信息获取并添加到数据库 &amp; 同步微信读书笔记。"
-        },
-        "displayName": {
-          "en_US": "Reading Notes",
-          "zh_CN": "读书笔记"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://glaube-ty.top/da-shang/"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "豆瓣读书",
-          "douban",
-          "书籍",
-          "book",
-          "读书笔记",
-          "笔记",
-          "read",
-          "note",
-          "booknote",
-          "weread",
-          "微信读书",
-          "微信"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "siyuan-douban",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/Glaube-TY/siyuan-douban",
-        "version": "4.3.3"
-      },
-      "packageZipAssetId": 555339004,
-      "packageZipSha256": "e1577d300a8978aa32c84ca936d62bae56d57602d4ff4bbff5069fe6647b9d21",
-      "repoRef": "v4.3.3",
-      "size": 713437,
-      "stars": 29,
-      "updated": "2026-09-10T16:05:20Z",
-      "url": "Glaube-TY/siyuan-douban@e1577d3"
     },
     {
       "installSize": 102268,
@@ -5183,44 +5221,6 @@
       "stars": 1,
       "updated": "2026-09-05T03:12:03Z",
       "url": "famotime/siyuan-image-quickedit@387347c"
-    },
-    {
-      "installSize": 241571,
-      "openIssues": 0,
-      "package": {
-        "author": "OpaqueGlass",
-        "description": {
-          "default": "Add a doc-breadcrumb",
-          "en_US": "Add a document breadcrumb. Add document path information that can be jumped to at the top of the editing area.",
-          "zh_CN": "再添加一个文档面包屑：在编辑区域顶部添加可跳转的文档路径信息导航条"
-        },
-        "displayName": {
-          "default": "fakeDocBreadcrumb",
-          "en_US": "Fake Doc Breadcrumb",
-          "zh_CN": "(伪)文档面包屑"
-        },
-        "funding": {
-          "custom": [
-            "https://wj.qq.com/s2/12395364/b69f/"
-          ]
-        },
-        "icon": "icon.png",
-        "name": "syplugin-fakeDocBreadcrumb",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/OpaqueGlass/syplugin-fakeDocBreadcrumb",
-        "version": "2.0.3"
-      },
-      "packageZipAssetId": 545050453,
-      "packageZipSha256": "4c5102d5ceb8f0de0e9f8b2d98e973ecdd2e313373d28a7e47544032372194b7",
-      "repoRef": "v2.0.3",
-      "size": 106000,
-      "stars": 9,
-      "updated": "2026-09-04T23:30:17Z",
-      "url": "OpaqueGlass/syplugin-fakeDocBreadcrumb@4c5102d"
     },
     {
       "installSize": 740122,
