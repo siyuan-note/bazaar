@@ -238,10 +238,10 @@ func TestCheckUnknownKeysStableOrder(t *testing.T) {
 
 func TestCheckPluginPublish(t *testing.T) {
 	root := t.TempDir()
-	if err := os.MkdirAll(filepath.Join(root, "views"), 0755); err != nil {
-		t.Fatal(err)
-	}
-	for _, name := range []string{"logo.png", "views/index.html", "index.js", "i18n/zh-CN.json"} {
+	for _, name := range []string{
+		"logo.png", "views/index.html", "index.js", "i18n/zh-CN.json",
+		"fonts/main.ttf", "fonts/nested/bold.ttf", "fonts-private/secret.ttf",
+	} {
 		if err := os.MkdirAll(filepath.Dir(filepath.Join(root, filepath.FromSlash(name))), 0755); err != nil {
 			t.Fatal(err)
 		}
@@ -262,9 +262,9 @@ func TestCheckPluginPublish(t *testing.T) {
 		t.Fatalf("non-object publish: want type issue, got %v", issues)
 	}
 
-	// 合法声明：带子目录的完整文件名、标准入口以及合法字段名均放行
+	// 合法声明：带子目录的完整文件名、以 `/` 结尾的目录声明、标准入口以及合法字段名均放行
 	valid := map[string]any{"publish": map[string]any{
-		"resources": []any{"logo.png", "views/index.html", "index.js", "i18n/zh-CN.json"},
+		"resources": []any{"logo.png", "views/index.html", "views/", "fonts/", "index.js", "i18n/zh-CN.json"},
 		"data":      []any{"theme", "show-author", "feat_1"},
 	}}
 	if issues := checkPluginPublish(valid, in); len(issues) != 0 {
@@ -285,7 +285,6 @@ func TestCheckPluginPublish(t *testing.T) {
 		{"resources not array", map[string]any{"resources": "logo.png"}, "必须是字符串数组"},
 		{"resource not string", map[string]any{"resources": []any{1}}, "必须是字符串。"},
 		{"resource parent dir", map[string]any{"resources": []any{"../logo.png"}}, "不是合法的发布资源路径"},
-		{"resource trailing slash", map[string]any{"resources": []any{"views/"}}, "不是合法的发布资源路径"},
 		{"resource blank", map[string]any{"resources": []any{""}}, "不是合法的发布资源路径"},
 		{"resource space", map[string]any{"resources": []any{"logo.png "}}, "不是合法的发布资源路径"},
 		{"resource backslash", map[string]any{"resources": []any{"views\\index.html"}}, "不是合法的发布资源路径"},
@@ -294,6 +293,13 @@ func TestCheckPluginPublish(t *testing.T) {
 		{"resource kernel", map[string]any{"resources": []any{"KeRnEl.Js"}}, "不可声明"},
 		{"resource missing", map[string]any{"resources": []any{"missing.png"}}, "找不到该文件"},
 		{"resource dir", map[string]any{"resources": []any{"views"}}, "是目录"},
+		{"resource dir missing", map[string]any{"resources": []any{"missing/"}}, "找不到该目录"},
+		{"resource dir is file", map[string]any{"resources": []any{"logo.png/"}}, "是文件"},
+		{"resource dir double slash", map[string]any{"resources": []any{"views//"}}, "不是合法的发布资源路径"},
+		{"resource dir root", map[string]any{"resources": []any{"/"}}, "不是合法的发布资源路径"},
+		{"resource dir parent", map[string]any{"resources": []any{"../"}}, "不是合法的发布资源路径"},
+		{"resource dir dotdot", map[string]any{"resources": []any{"fonts/../"}}, "不是合法的发布资源路径"},
+		{"resource dir encoded dotdot", map[string]any{"resources": []any{"fonts/%2e%2e/"}}, "不是合法的发布资源路径"},
 		{"data not array", map[string]any{"data": "theme"}, "必须是字符串数组"},
 		{"data not string", map[string]any{"data": []any{true}}, "必须是字符串。"},
 		{"data empty name", map[string]any{"data": []any{""}}, "不是合法的公开数据字段名"},
@@ -317,14 +323,14 @@ func TestCheckPluginPublish(t *testing.T) {
   "url": "https://github.com/demo/sample-plugin",
   "version": "1.0.0",
   "readme": { "default": "README.md" },
-  "publish": { "resources": ["missing.png"], "data": ["theme"] }
+  "publish": { "resources": ["missing.png", "missing-dir/"], "data": ["theme"] }
 }`
 	if err := os.WriteFile(filepath.Join(dir, "plugin.json"), []byte(manifest), 0644); err != nil {
 		t.Fatal(err)
 	}
 	r := Check(Input{PackageRoot: dir, OwnerRepo: "demo/sample-plugin", Type: TypePlugin})
-	if r.OK || !hasIssueMsg(r, "找不到该文件") {
-		t.Fatalf("expected publish resource issue from Check, issues=%v", r.Issues)
+	if r.OK || !hasIssueMsg(r, "找不到该文件") || !hasIssueMsg(r, "找不到该目录") {
+		t.Fatalf("expected publish resource issues from Check, issues=%v", r.Issues)
 	}
 }
 

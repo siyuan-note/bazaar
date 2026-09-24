@@ -973,6 +973,7 @@ const (
 // kernel/util/publish_file.go 的 IsPublishRelativePath 一致：声明不合法时内核返回 400 且不生成公开快照，
 // 作者在集市检查阶段看不到，故此处提前拦截。
 // index.js、index.css 与 i18n/*.json 是隐式可用的标准入口，无需声明；声明了也不额外报错。
+// resources 支持以 `/` 结尾的目录声明（递归公开该目录及其子目录），单文件声明继续可用。
 func checkPluginPublish(m map[string]any, in ManifestInput) []Issue {
 	raw, ok := m["publish"]
 	if !ok || raw == nil {
@@ -1005,7 +1006,8 @@ func checkPluginPublish(m map[string]any, in ManifestInput) []Issue {
 	return issues
 }
 
-// checkPublishResources 校验 publish.resources：相对包根的完整文件名，且文件须存在于 package.zip。
+// checkPublishResources 校验 publish.resources：相对包根的完整文件名，或以 `/` 结尾的目录声明
+// （目录声明递归公开其中的全部文件），且目标须存在于 package.zip。
 func checkPublishResources(raw any, packageRoot string) []Issue {
 	if raw == nil {
 		return nil
@@ -1013,15 +1015,15 @@ func checkPublishResources(raw any, packageRoot string) []Issue {
 	arr, ok := raw.([]any)
 	if !ok {
 		return []Issue{issue(
-			"若填写 `publish.resources`，必须是字符串数组，逐项声明相对包根的完整文件名，例如 `\"resources\": [\"images/logo.png\"]`。只使用标准入口的插件请删除该字段。",
-			"If you include `publish.resources`, it must be an array of filenames relative to the package root, e.g. `\"resources\": [\"images/logo.png\"]`. Plugins using only the standard entries should delete the field.",
+			"若填写 `publish.resources`，必须是字符串数组，逐项声明相对包根的完整文件名或以 `/` 结尾的目录，例如 `\"resources\": [\"images/logo.png\", \"fonts/\"]`。只使用标准入口的插件请删除该字段。",
+			"If you include `publish.resources`, it must be an array of filenames relative to the package root or of directories ending with `/`, e.g. `\"resources\": [\"images/logo.png\", \"fonts/\"]`. Plugins using only the standard entries should delete the field.",
 		)}
 	}
 	var issues []Issue
 	if len(arr) > maxPublishResources {
 		issues = append(issues, issue(
-			fmt.Sprintf("`publish.resources` 声明了 %d 个文件，超过上限 %d 个。请删除多余项。", len(arr), maxPublishResources),
-			fmt.Sprintf("`publish.resources` declares %d files, above the limit of %d. Please remove the extra entries.", len(arr), maxPublishResources),
+			fmt.Sprintf("`publish.resources` 声明了 %d 项资源，超过上限 %d 项。请删除多余项。", len(arr), maxPublishResources),
+			fmt.Sprintf("`publish.resources` declares %d entries, above the limit of %d. Please remove the extra entries.", len(arr), maxPublishResources),
 		))
 	}
 	for i, item := range arr {
@@ -1033,10 +1035,13 @@ func checkPublishResources(raw any, packageRoot string) []Issue {
 			))
 			continue
 		}
-		if !isPublishRelativePath(resource) {
+		// 与思源内核一致：末尾的单个 `/` 表示目录声明，去掉后再按相对路径校验
+		isDirDeclaration := strings.HasSuffix(resource, "/")
+		path := strings.TrimSuffix(resource, "/")
+		if !isPublishRelativePath(path) {
 			issues = append(issues, issue(
-				fmt.Sprintf("`publish.resources[%d]` 的值 `%s` 不是合法的发布资源路径。请使用相对包根的完整文件名，用 `/` 分隔，不要声明目录、绝对路径、`..`、反斜杠、`:` 或百分号编码，文件名前后不要有空格，也不要以 `.` 结尾。", i, resource),
-				fmt.Sprintf("`publish.resources[%d]` value `%s` isn't a valid publish resource path. Please use a full filename relative to the package root, separated with `/`, without directories, absolute paths, `..`, backslashes, `:`, percent encoding, surrounding spaces, or a trailing dot.", i, resource),
+				fmt.Sprintf("`publish.resources[%d]` 的值 `%s` 不是合法的发布资源路径。请使用相对包根的完整文件名或以 `/` 结尾的目录，用 `/` 分隔，不要使用绝对路径、`..`、反斜杠、`:` 或百分号编码，路径前后不要有空格，也不要以 `.` 结尾。", i, resource),
+				fmt.Sprintf("`publish.resources[%d]` value `%s` isn't a valid publish resource path. Please use a full filename relative to the package root or a directory ending with `/`, separated with `/`, without absolute paths, `..`, backslashes, `:`, percent encoding, surrounding spaces, or a trailing dot.", i, resource),
 			))
 			continue
 		}
@@ -1047,18 +1052,32 @@ func checkPublishResources(raw any, packageRoot string) []Issue {
 			))
 			continue
 		}
-		info, found := relStatCaseSensitive(packageRoot, resource)
+		info, found := relStatCaseSensitive(packageRoot, path)
 		if !found {
+			if isDirDeclaration {
+				issues = append(issues, issue(
+					fmt.Sprintf("`publish.resources[%d]` 声明了目录 `%s`，但 `package.zip` 中找不到该目录（路径大小写必须一致）。请把该目录打进包内，或修正声明。", i, resource),
+					fmt.Sprintf("`publish.resources[%d]` declares the directory `%s`, but that directory isn't in `package.zip` (paths are case-sensitive). Please add the directory to the package, or fix the declaration.", i, resource),
+				))
+			} else {
+				issues = append(issues, issue(
+					fmt.Sprintf("`publish.resources[%d]` 声明了文件 `%s`，但 `package.zip` 中找不到该文件（路径大小写必须一致）。请把文件打进包内，或修正声明。", i, resource),
+					fmt.Sprintf("`publish.resources[%d]` declares `%s`, but that file isn't in `package.zip` (paths are case-sensitive). Please add the file to the package, or fix the declaration.", i, resource),
+				))
+			}
+			continue
+		}
+		if isDirDeclaration && !info.IsDir() {
 			issues = append(issues, issue(
-				fmt.Sprintf("`publish.resources[%d]` 声明了文件 `%s`，但 `package.zip` 中找不到该文件（路径大小写必须一致）。请把文件打进包内，或修正声明。", i, resource),
-				fmt.Sprintf("`publish.resources[%d]` declares `%s`, but that file isn't in `package.zip` (paths are case-sensitive). Please add the file to the package, or fix the declaration.", i, resource),
+				fmt.Sprintf("`publish.resources[%d]` 的 `%s` 以 `/` 结尾，表示声明目录，但它在 `package.zip` 中是文件。请删除末尾的 `/`，或改声明为真正的目录。", i, resource),
+				fmt.Sprintf("`publish.resources[%d]` value `%s` ends with `/` and declares a directory, but it's a file in `package.zip`. Please remove the trailing `/`, or declare an actual directory.", i, resource),
 			))
 			continue
 		}
-		if info.IsDir() {
+		if !isDirDeclaration && info.IsDir() {
 			issues = append(issues, issue(
-				fmt.Sprintf("`publish.resources[%d]` 声明了 `%s`，但它在 `package.zip` 中是目录。发布资源只能逐个声明文件，请改为声明该目录内的具体文件。", i, resource),
-				fmt.Sprintf("`publish.resources[%d]` declares `%s`, which is a directory in `package.zip`. Publish resources must list individual files; please declare the files inside it instead.", i, resource),
+				fmt.Sprintf("`publish.resources[%d]` 声明了 `%s`，但它在 `package.zip` 中是目录。如需递归公开该目录及其子目录，请改声明为 `%s/`；如只需公开其中的部分文件，请逐个声明文件。", i, resource, resource),
+				fmt.Sprintf("`publish.resources[%d]` declares `%s`, which is a directory in `package.zip`. To publish that directory and its subdirectories recursively, declare `%s/` instead; to publish only some of its files, list them individually.", i, resource, resource),
 			))
 		}
 	}
@@ -1114,7 +1133,7 @@ func isPublishFieldName(s string) bool {
 }
 
 // isPublishRelativePath 与思源 kernel/util/publish_file.go 的 IsPublishRelativePath 一致。
-// 允许 `views/index.html` 这类带子目录的完整文件名，但不允许声明目录本身。
+// 允许 `views/index.html` 这类带子目录的完整文件名；目录声明由调用方先去掉末尾的 `/` 再校验。
 func isPublishRelativePath(name string) bool {
 	if name == "" || strings.ContainsAny(name, `\:%`) || strings.ContainsRune(name, 0) {
 		return false
