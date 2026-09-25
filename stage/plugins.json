@@ -1,6 +1,147 @@
 {
   "repos": [
     {
+      "installSize": 709609,
+      "openIssues": 1,
+      "package": {
+        "author": "bonebearHsu",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "一款思源笔记插件。双向同步 CalDAV 服务器（Radicale / Nextcloud / Baikal 等）的日历事件与待办任务，提供月/周/日日历视图、任务视图与编辑能力，并可将今日日程插入日记。",
+          "en_US": "Two-way sync calendar events and todos with CalDAV servers (Radicale / Nextcloud / Baikal). Month/Week/Day calendar views, task view, editor and daily note integration."
+        },
+        "displayName": {
+          "default": "CalDAV日历任务",
+          "en_US": "CalDAV Calendar &amp; Tasks"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop",
+          "mobile",
+          "browser-mobile"
+        ],
+        "funding": {
+          "custom": [
+            ""
+          ],
+          "github": "bonebearHsu"
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "caldav",
+          "calendar",
+          "todo",
+          "task",
+          "日历",
+          "任务",
+          "同步",
+          "radicale",
+          "nextcloud",
+          "baikal"
+        ],
+        "minAppVersion": "3.1.0",
+        "name": "siyuan-plugin-caldav-sync",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en_US": "README_en_US.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/bonebearHsu/siyuan-plugin-caldav-sync",
+        "version": "0.2.12"
+      },
+      "packageZipAssetId": 588090277,
+      "packageZipSha256": "7834f6525100d892f01beb551dce7ae196449efecd9867105e172d0115b542fb",
+      "repoRef": "v0.2.12",
+      "size": 424491,
+      "stars": 4,
+      "updated": "2026-09-25T10:11:38Z",
+      "url": "bonebearHsu/siyuan-plugin-caldav-sync@7834f65"
+    },
+    {
+      "installSize": 281010,
+      "openIssues": 0,
+      "package": {
+        "author": "Quincy Zou",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Unified AI API switch for SiYuan plugins.",
+          "en_US": "Provide unified AI API configurations and profile sharing for other plugins.",
+          "zh_CN": "一键接管 AI 服务 API 配置，多插件无缝调用。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "API Switch",
+          "en_US": "SiYuan API Switch",
+          "zh_CN": "API 旋钮"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "minAppVersion": "2.10.14",
+        "name": "siyuan-api-switch",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/famotime/siyuan-api-switch",
+        "version": "0.9.0"
+      },
+      "packageZipAssetId": 588079164,
+      "packageZipSha256": "3901adef950e3fcce9a8dd91393ee2ebe3848cf07b486d9380c56c0440659088",
+      "repoRef": "v0.9.0",
+      "size": 140985,
+      "stars": 0,
+      "updated": "2026-09-25T10:05:46Z",
+      "url": "famotime/siyuan-api-switch@3901ade"
+    },
+    {
+      "installSize": 221414,
+      "openIssues": 0,
+      "package": {
+        "author": "Quincy Zou",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "为思源笔记中的图片提供快速查看、转换、压缩和批量处理能力，缓解你的笔记存储焦虑。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "图片快剪"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "minAppVersion": "2.10.14",
+        "name": "siyuan-image-quickedit",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/famotime/siyuan-image-quickedit",
+        "version": "1.0.9"
+      },
+      "packageZipAssetId": 588025350,
+      "packageZipSha256": "bc1c0bb39191be5b1d3f910216c26d5b7f9a7b133ed58c1d208225839a4f617d",
+      "repoRef": "v1.0.9",
+      "size": 147821,
+      "stars": 1,
+      "updated": "2026-09-25T09:37:51Z",
+      "url": "famotime/siyuan-image-quickedit@bc1c0bb"
+    },
+    {
       "installSize": 422238,
       "openIssues": 0,
       "package": {
@@ -48,6 +189,197 @@
       "stars": 0,
       "updated": "2026-09-25T07:31:23Z",
       "url": "changqingdata/siyuan-plugin-mindmap@49e59b8"
+    },
+    {
+      "installSize": 3779698,
+      "openIssues": 0,
+      "package": {
+        "author": "IAliceBobI",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "🔓 Open source · Finally finish what you read — and what you write: progressive reading digests long-form input day by day (excerpts, slicing, cloze, flashcards, AI knowledge maps), progressive writing queues your material into finished drafts (writing books, structure tree, compile-to-draft). A full loop from reading to writing.",
+          "zh_CN": "🔓 已开源 · 让长文读得完，让作品写得完：渐进阅读消化输入（摘抄、分片、挖空、闪卡、AI 知识地图），渐进写作排队产出（写作书素材入槽、结构树看进度、汇编成稿）——从阅读到写作的完整闭环"
+        },
+        "displayName": {
+          "default": "Progressive Learning",
+          "zh_CN": "渐进学习"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android",
+          "harmony"
+        ],
+        "keywords": [
+          "渐进学习",
+          "渐进阅读",
+          "Progressive Reading",
+          "挖空",
+          "Cloze",
+          "闪卡",
+          "Flashcard",
+          "摘抄",
+          "断句",
+          "Sentence Split",
+          "拼音",
+          "Pinyin",
+          "Daily Card",
+          "渐进写作",
+          "Progressive Writing",
+          "知识地图",
+          "结构树",
+          "写作书",
+          "Knowledge Map",
+          "Structure Tree",
+          "Writing Book"
+        ],
+        "minAppVersion": "2.12.6",
+        "name": "sy-progressive-plugin",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/IAliceBobI/sy-progressive-plugin",
+        "version": "3.28.1"
+      },
+      "packageZipAssetId": 587774695,
+      "packageZipSha256": "e9b731ac1b4f03efef5ecc18609aafa4ac80227c84457e3111c5fcc1c6db61de",
+      "repoRef": "v3.28.1",
+      "size": 1036358,
+      "stars": 29,
+      "updated": "2026-09-25T07:14:39Z",
+      "url": "IAliceBobI/sy-progressive-plugin@e9b731a"
+    },
+    {
+      "installSize": 4750847,
+      "openIssues": 1,
+      "package": {
+        "author": "IAliceBobI",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "🔓 Open source · The all-in-one productivity toolbox for SiYuan: status-bar Pomodoro, AI Q&amp;A, flashcards, reading points &amp; annotations, float-ball quick capture, sync blocks &amp; mind guides — 40+ features covering time, reading, review and AI.",
+          "zh_CN": "🔓 已开源 · 思源笔记的全能效率工具箱：状态栏番茄钟、AI 知识库问答、闪卡复习、阅读点与批注、悬浮球速记、同步块与思维导线——40+ 项功能，时间、阅读、复习、AI 一个插件全覆盖"
+        },
+        "displayName": {
+          "default": "Tomato Toolbox",
+          "zh_CN": "番茄工具箱"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android",
+          "harmony"
+        ],
+        "keywords": [
+          "番茄钟",
+          "番茄",
+          "Pomodoro",
+          "闪卡",
+          "Flashcard",
+          "复习",
+          "Review",
+          "反链",
+          "Backlink",
+          "同步块",
+          "批注",
+          "思维导图",
+          "Mindmap",
+          "AI",
+          "问答",
+          "文档合并",
+          "悬浮球",
+          "速记",
+          "闪念",
+          "阅读点"
+        ],
+        "minAppVersion": "3.0.3",
+        "name": "sy-tomato-plugin",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/IAliceBobI/sy-tomato-plugin",
+        "version": "5.18.5"
+      },
+      "packageZipAssetId": 587771811,
+      "packageZipSha256": "a8972f2e689809d0bae4b0b52c584d2db00dc08a544eee52a1943c76e7d9b5ef",
+      "repoRef": "v5.18.5",
+      "size": 1464960,
+      "stars": 50,
+      "updated": "2026-09-25T07:13:04Z",
+      "url": "IAliceBobI/sy-tomato-plugin@a8972f2"
+    },
+    {
+      "installSize": 117600,
+      "openIssues": 4,
+      "package": {
+        "author": "wmy2981",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Generate note titles with any OpenAI-compatible chat completions endpoint",
+          "zh-CN": "用任意 OpenAI 兼容的 chat completions 接口为笔记生成标题"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "AI Title",
+          "zh-CN": "AI标题生成"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/wmy2981"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "ai",
+          "title",
+          "deepseek",
+          "生成",
+          "标题",
+          "generate"
+        ],
+        "minAppVersion": "3.8.3",
+        "name": "ai-title-siyuan",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/wmy2981/ai-title-siyuan",
+        "version": "0.2.0"
+      },
+      "packageZipAssetId": 587756447,
+      "packageZipSha256": "8b1de15889171a52d5d2cfe05d13eb055fa752b1356cbbb64cc4cf2d17066a27",
+      "repoRef": "v0.2.0",
+      "size": 60885,
+      "stars": 1,
+      "updated": "2026-09-25T07:03:40Z",
+      "url": "wmy2981/ai-title-siyuan@8b1de15"
     },
     {
       "installSize": 8466793,
@@ -267,67 +599,6 @@
       "stars": 13,
       "updated": "2026-09-24T21:25:18Z",
       "url": "shuojie819/siyuan-floating-toc-plugin@a484091"
-    },
-    {
-      "installSize": 700880,
-      "openIssues": 1,
-      "package": {
-        "author": "bonebearHsu",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "一款思源笔记插件。双向同步 CalDAV 服务器（Radicale / Nextcloud / Baikal 等）的日历事件与待办任务，提供月/周/日日历视图、任务视图与编辑能力，并可将今日日程插入日记。",
-          "en_US": "Two-way sync calendar events and todos with CalDAV servers (Radicale / Nextcloud / Baikal). Month/Week/Day calendar views, task view, editor and daily note integration."
-        },
-        "displayName": {
-          "default": "CalDAV日历任务",
-          "en_US": "CalDAV Calendar &amp; Tasks"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop",
-          "mobile",
-          "browser-mobile"
-        ],
-        "funding": {
-          "custom": [
-            ""
-          ],
-          "github": "bonebearHsu"
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "caldav",
-          "calendar",
-          "todo",
-          "task",
-          "日历",
-          "任务",
-          "同步",
-          "radicale",
-          "nextcloud",
-          "baikal"
-        ],
-        "minAppVersion": "3.1.0",
-        "name": "siyuan-plugin-caldav-sync",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en_US": "README_en_US.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/bonebearHsu/siyuan-plugin-caldav-sync",
-        "version": "0.2.10"
-      },
-      "packageZipAssetId": 586563929,
-      "packageZipSha256": "59d94a71eae66a410e5c2bbefd9b5b0177e580c4858b67c03c3a650a5c899abd",
-      "repoRef": "v0.2.10",
-      "size": 421651,
-      "stars": 4,
-      "updated": "2026-09-24T18:31:47Z",
-      "url": "bonebearHsu/siyuan-plugin-caldav-sync@59d94a7"
     },
     {
       "installSize": 3573195,
@@ -754,76 +1025,6 @@
       "url": "Halory-Ito/siyuan-plugin-wallpaper-engine-bg@51ebdc8"
     },
     {
-      "installSize": 3777533,
-      "openIssues": 0,
-      "package": {
-        "author": "IAliceBobI",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "🔓 Open source · Finally finish what you read — and what you write: progressive reading digests long-form input day by day (excerpts, slicing, cloze, flashcards, AI knowledge maps), progressive writing queues your material into finished drafts (writing books, structure tree, compile-to-draft). A full loop from reading to writing.",
-          "zh_CN": "🔓 已开源 · 让长文读得完，让作品写得完：渐进阅读消化输入（摘抄、分片、挖空、闪卡、AI 知识地图），渐进写作排队产出（写作书素材入槽、结构树看进度、汇编成稿）——从阅读到写作的完整闭环"
-        },
-        "displayName": {
-          "default": "Progressive Learning",
-          "zh_CN": "渐进学习"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "keywords": [
-          "渐进学习",
-          "渐进阅读",
-          "Progressive Reading",
-          "挖空",
-          "Cloze",
-          "闪卡",
-          "Flashcard",
-          "摘抄",
-          "断句",
-          "Sentence Split",
-          "拼音",
-          "Pinyin",
-          "Daily Card",
-          "渐进写作",
-          "Progressive Writing",
-          "知识地图",
-          "结构树",
-          "写作书",
-          "Knowledge Map",
-          "Structure Tree",
-          "Writing Book"
-        ],
-        "minAppVersion": "2.12.6",
-        "name": "sy-progressive-plugin",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/IAliceBobI/sy-progressive-plugin",
-        "version": "3.27.0"
-      },
-      "packageZipAssetId": 585381690,
-      "packageZipSha256": "13fa92e6bf661e8103d3963865e359d7c656c3d836ebd3113159a000d2d30e1a",
-      "repoRef": "v3.27.0",
-      "size": 1035400,
-      "stars": 29,
-      "updated": "2026-09-24T07:15:46Z",
-      "url": "IAliceBobI/sy-progressive-plugin@13fa92e"
-    },
-    {
       "installSize": 2661786,
       "openIssues": 0,
       "package": {
@@ -1076,75 +1277,6 @@
       "stars": 1,
       "updated": "2026-09-23T10:10:22Z",
       "url": "WieAngeal/siyuan-app-portal@6574be2"
-    },
-    {
-      "installSize": 4740383,
-      "openIssues": 1,
-      "package": {
-        "author": "IAliceBobI",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "🔓 Open source · The all-in-one productivity toolbox for SiYuan: status-bar Pomodoro, AI Q&amp;A, flashcards, reading points &amp; annotations, float-ball quick capture, sync blocks &amp; mind guides — 40+ features covering time, reading, review and AI.",
-          "zh_CN": "🔓 已开源 · 思源笔记的全能效率工具箱：状态栏番茄钟、AI 知识库问答、闪卡复习、阅读点与批注、悬浮球速记、同步块与思维导线——40+ 项功能，时间、阅读、复习、AI 一个插件全覆盖"
-        },
-        "displayName": {
-          "default": "Tomato Toolbox",
-          "zh_CN": "番茄工具箱"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "keywords": [
-          "番茄钟",
-          "番茄",
-          "Pomodoro",
-          "闪卡",
-          "Flashcard",
-          "复习",
-          "Review",
-          "反链",
-          "Backlink",
-          "同步块",
-          "批注",
-          "思维导图",
-          "Mindmap",
-          "AI",
-          "问答",
-          "文档合并",
-          "悬浮球",
-          "速记",
-          "闪念",
-          "阅读点"
-        ],
-        "minAppVersion": "3.0.3",
-        "name": "sy-tomato-plugin",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/IAliceBobI/sy-tomato-plugin",
-        "version": "5.18.4"
-      },
-      "packageZipAssetId": 583086158,
-      "packageZipSha256": "324e58435a0a804665cbcfc0924245db9ad610afaf458fb22827308306848a39",
-      "repoRef": "v5.18.4",
-      "size": 1462327,
-      "stars": 50,
-      "updated": "2026-09-23T05:52:06Z",
-      "url": "IAliceBobI/sy-tomato-plugin@324e584"
     },
     {
       "installSize": 2248803,
@@ -3407,58 +3539,6 @@
       "url": "shvmsaini/SiYuan-Tag-Styler@d5dc1c6"
     },
     {
-      "installSize": 104631,
-      "openIssues": 2,
-      "package": {
-        "author": "wmy2981",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Generate note titles with any OpenAI-compatible chat completions endpoint",
-          "zh-CN": "用任意 OpenAI 兼容的 chat completions 接口为笔记生成标题"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "AI Title",
-          "zh-CN": "AI标题生成"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/wmy2981"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "ai",
-          "title",
-          "deepseek",
-          "生成",
-          "标题",
-          "generate"
-        ],
-        "minAppVersion": "3.8.3",
-        "name": "ai-title-siyuan",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/wmy2981/ai-title-siyuan",
-        "version": "0.1.0"
-      },
-      "packageZipAssetId": 560867087,
-      "packageZipSha256": "114cf9374726a8196d6b5ea781e4093a5372870e3448d10e1523d520f0fcc9c9",
-      "repoRef": "v0.1.0",
-      "size": 56853,
-      "stars": 0,
-      "updated": "2026-09-13T09:10:50Z",
-      "url": "wmy2981/ai-title-siyuan@114cf93"
-    },
-    {
       "installSize": 201742,
       "openIssues": 0,
       "package": {
@@ -5232,44 +5312,6 @@
       "stars": 0,
       "updated": "2026-09-05T14:20:56Z",
       "url": "BryceWG/siyuan-upload-pages@684b73d"
-    },
-    {
-      "installSize": 188073,
-      "openIssues": 1,
-      "package": {
-        "author": "Quincy Zou",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "为思源笔记中的图片提供快速查看、转换、压缩和批量处理能力，缓解你的笔记存储焦虑。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "图片快剪"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "minAppVersion": "2.10.14",
-        "name": "siyuan-image-quickedit",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/famotime/siyuan-image-quickedit",
-        "version": "1.0.8"
-      },
-      "packageZipAssetId": 545281031,
-      "packageZipSha256": "387347c8a57e41f2cf7e6a582c81c851eefe72ab3d64d80b43d450be406c0536",
-      "repoRef": "v1.0.8",
-      "size": 141764,
-      "stars": 1,
-      "updated": "2026-09-05T03:12:03Z",
-      "url": "famotime/siyuan-image-quickedit@387347c"
     },
     {
       "installSize": 740122,
@@ -8780,44 +8822,6 @@
       "stars": 1,
       "updated": "2026-08-10T14:27:53Z",
       "url": "macmullanjed-cell/siyuan-plugin-wordflow@f453ab1"
-    },
-    {
-      "installSize": 247199,
-      "openIssues": 0,
-      "package": {
-        "author": "Quincy Zou",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Unified AI API switch for SiYuan plugins.",
-          "en_US": "Provide unified AI API configurations and profile sharing for other plugins.",
-          "zh_CN": "思源笔记 API 旋钮，为本地其他 AI 插件提供一键共享、分发和接管 API 的服务。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "API Switch",
-          "en_US": "SiYuan API Switch",
-          "zh_CN": "API 旋钮"
-        },
-        "frontends": [
-          "all"
-        ],
-        "minAppVersion": "2.10.14",
-        "name": "siyuan-api-switch",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/famotime/siyuan-api-switch",
-        "version": "0.8.0"
-      },
-      "packageZipAssetId": 508773291,
-      "packageZipSha256": "75a2aaa1a466ca372acb051642f0bc618f7a8fa107df2cdf3264bce687bcead7",
-      "repoRef": "v0.8.0",
-      "size": 133220,
-      "stars": 0,
-      "updated": "2026-08-10T13:18:08Z",
-      "url": "famotime/siyuan-api-switch@75a2aaa"
     },
     {
       "installSize": 1000280,
