@@ -1,6 +1,152 @@
 {
   "repos": [
     {
+      "installSize": 14780736,
+      "openIssues": 11,
+      "package": {
+        "author": "suka233",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A fully redesigned KMind mind mapping plugin for SiYuan. Drag SiYuan documents and blocks directly into your mind maps, with unlimited summary levels, cloze nodes, bidirectional links, and more. Currently in public beta.",
+          "zh_CN": "全新设计的 KMind 思维导图插件，可直接将思源文档和思源块拖入导图，支持无限层级概要、节点挖空、节点双链等能力；当前为公测版。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "KMind Zen Mind Map Plugin",
+          "zh_CN": "KMind Zen 思维导图插件"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "思维导图",
+          "mindmap",
+          "KMind",
+          "KMindZen",
+          "KMind Zen"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-kmind-zen",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/suka233/siyuan-kmind-zen",
+        "version": "0.45.0"
+      },
+      "packageZipAssetId": 594314786,
+      "packageZipSha256": "535fce98aa2c1b2b8130a9902e78273884e3912a4d9476804d11b5fe3ae70747",
+      "repoRef": "v0.45.0",
+      "size": 9558015,
+      "stars": 6,
+      "updated": "2026-09-28T02:45:21Z",
+      "url": "suka233/siyuan-kmind-zen@535fce9"
+    },
+    {
+      "installSize": 1801994,
+      "openIssues": 0,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A local-first SiYuan navigation workspace with live tab thumbnails, favorite folders, document card search, cross-plugin quick actions, sidebar mode, fullscreen, and mobile support.",
+          "zh-CN": "本地优先的思源导航工作区，支持页签缩略图、收藏夹、文档卡片搜索、跨插件快捷入口、侧边栏、全屏与手机端。"
+        },
+        "displayName": {
+          "default": "LvSpeed Switch",
+          "zh-CN": "小驴雷切"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "页签切换",
+          "tab switch",
+          "标签页",
+          "快捷入口",
+          "speed switch",
+          "lv speed switch",
+          "小驴雷切"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "siyuan-speed-switch",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en-US": "README.en-US.md"
+        },
+        "url": "https://github.com/ai68298100/siyuan-speed-switch",
+        "version": "0.41.0"
+      },
+      "packageZipAssetId": 594171598,
+      "packageZipSha256": "bdcb617a431dbb39de1f2521073aa557f2cba808fdfa66e186ea79c055dd5eaa",
+      "repoRef": "v0.41.0",
+      "size": 531277,
+      "stars": 2,
+      "updated": "2026-09-28T01:23:24Z",
+      "url": "ai68298100/siyuan-speed-switch@bdcb617"
+    },
+    {
+      "installSize": 2314847,
+      "openIssues": 0,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A flexible habit and check-in workspace for SiYuan.",
+          "zh-CN": "支持分组、模板、统计与扩展集成的思源打卡工作台。"
+        },
+        "displayName": {
+          "default": "Lv Check-in",
+          "zh-CN": "小驴打卡"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "打卡",
+          "习惯",
+          "目标",
+          "小驴打卡",
+          "check-in",
+          "habit"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-checkin",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/ai68298100/siyuan-checkin",
+        "version": "18.9.0"
+      },
+      "packageZipAssetId": 594141856,
+      "packageZipSha256": "f41a74b1f6ac9466edabf2cd6978f8f28c5d388c0d3b3ea5556951288bf7ac4b",
+      "repoRef": "v18.9.0",
+      "size": 797145,
+      "stars": 1,
+      "updated": "2026-09-28T01:04:55Z",
+      "url": "ai68298100/siyuan-checkin@f41a74b"
+    },
+    {
       "installSize": 24041604,
       "openIssues": 11,
       "package": {
@@ -775,106 +921,6 @@
       "stars": 50,
       "updated": "2026-09-27T02:35:53Z",
       "url": "IAliceBobI/sy-tomato-plugin@d3ec497"
-    },
-    {
-      "installSize": 2162822,
-      "openIssues": 0,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A flexible habit and check-in workspace for SiYuan.",
-          "zh-CN": "支持分组、模板、统计与扩展集成的思源打卡工作台。"
-        },
-        "displayName": {
-          "default": "Lv Check-in",
-          "zh-CN": "小驴打卡"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "打卡",
-          "习惯",
-          "目标",
-          "小驴打卡",
-          "check-in",
-          "habit"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-checkin",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/ai68298100/siyuan-checkin",
-        "version": "18.8.0"
-      },
-      "packageZipAssetId": 591817903,
-      "packageZipSha256": "8f0dd239fc6cf12c301ef56c63d60b549f810cc5680272cb16fc279c7ed9e98d",
-      "repoRef": "v18.8.0",
-      "size": 756622,
-      "stars": 1,
-      "updated": "2026-09-27T01:06:24Z",
-      "url": "ai68298100/siyuan-checkin@8f0dd23"
-    },
-    {
-      "installSize": 1700123,
-      "openIssues": 0,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A local-first SiYuan navigation workspace with live tab thumbnails, favorite folders, document card search, cross-plugin quick actions, sidebar mode, fullscreen, and mobile support.",
-          "zh-CN": "本地优先的思源导航工作区，支持页签缩略图、收藏夹、文档卡片搜索、跨插件快捷入口、侧边栏、全屏与手机端。"
-        },
-        "displayName": {
-          "default": "LvSpeed Switch",
-          "zh-CN": "小驴雷切"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "页签切换",
-          "tab switch",
-          "标签页",
-          "快捷入口",
-          "speed switch",
-          "lv speed switch",
-          "小驴雷切"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "siyuan-speed-switch",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en-US": "README.en-US.md"
-        },
-        "url": "https://github.com/ai68298100/siyuan-speed-switch",
-        "version": "0.40.0"
-      },
-      "packageZipAssetId": 591797518,
-      "packageZipSha256": "2ac7e1b93b48498ec39f17f52e5519abb65bd1b4064a475cfc5fca2dbbde0a9a",
-      "repoRef": "v0.40.0",
-      "size": 507704,
-      "stars": 2,
-      "updated": "2026-09-27T00:54:52Z",
-      "url": "ai68298100/siyuan-speed-switch@2ac7e1b"
     },
     {
       "installSize": 16634027,
@@ -3710,52 +3756,6 @@
       "stars": 7,
       "updated": "2026-09-18T10:45:04Z",
       "url": "TCOTC/siyuan-ttf-HarmonyOS_Sans_SC-and-Twemoji@d0ba09f"
-    },
-    {
-      "installSize": 14761235,
-      "openIssues": 10,
-      "package": {
-        "author": "suka233",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A fully redesigned KMind mind mapping plugin for SiYuan. Drag SiYuan documents and blocks directly into your mind maps, with unlimited summary levels, cloze nodes, bidirectional links, and more. Currently in public beta.",
-          "zh_CN": "全新设计的 KMind 思维导图插件，可直接将思源文档和思源块拖入导图，支持无限层级概要、节点挖空、节点双链等能力；当前为公测版。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "KMind Zen Mind Map Plugin",
-          "zh_CN": "KMind Zen 思维导图插件"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "思维导图",
-          "mindmap",
-          "KMind",
-          "KMindZen",
-          "KMind Zen"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-kmind-zen",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/suka233/siyuan-kmind-zen",
-        "version": "0.44.0"
-      },
-      "packageZipAssetId": 571701155,
-      "packageZipSha256": "964827a19cafc1beba178b1e8eb32d053f1de72c9ac30a7dc788ddcddc6b399c",
-      "repoRef": "v0.44.0",
-      "size": 9552034,
-      "stars": 6,
-      "updated": "2026-09-18T03:19:50Z",
-      "url": "suka233/siyuan-kmind-zen@964827a"
     },
     {
       "installSize": 3677640,
