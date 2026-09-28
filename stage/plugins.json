@@ -1,6 +1,122 @@
 {
   "repos": [
     {
+      "installSize": 14782811,
+      "openIssues": 11,
+      "package": {
+        "author": "suka233",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A fully redesigned KMind mind mapping plugin for SiYuan. Drag SiYuan documents and blocks directly into your mind maps, with unlimited summary levels, cloze nodes, bidirectional links, and more. Currently in public beta.",
+          "zh_CN": "全新设计的 KMind 思维导图插件，可直接将思源文档和思源块拖入导图，支持无限层级概要、节点挖空、节点双链等能力；当前为公测版。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "KMind Zen Mind Map Plugin",
+          "zh_CN": "KMind Zen 思维导图插件"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "思维导图",
+          "mindmap",
+          "KMind",
+          "KMindZen",
+          "KMind Zen"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-kmind-zen",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/suka233/siyuan-kmind-zen",
+        "version": "0.46.0"
+      },
+      "packageZipAssetId": 595117972,
+      "packageZipSha256": "20801ab3f417347905aa8939343ab428a0e73ca07bf8dcafb3d6af2ef649c4f4",
+      "repoRef": "v0.46.0",
+      "size": 9558522,
+      "stars": 6,
+      "updated": "2026-09-28T10:18:47Z",
+      "url": "suka233/siyuan-kmind-zen@20801ab"
+    },
+    {
+      "installSize": 3835163,
+      "openIssues": 0,
+      "package": {
+        "author": "IAliceBobI",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "🔓 Open source · Finally finish what you read — and what you write: progressive reading digests long-form input day by day (excerpts, slicing, cloze, flashcards, AI knowledge maps), progressive writing queues your material into finished drafts (writing books, structure tree, compile-to-draft). A full loop from reading to writing.",
+          "zh_CN": "🔓 已开源 · 让长文读得完，让作品写得完：渐进阅读消化输入（摘抄、分片、挖空、闪卡、AI 知识地图），渐进写作排队产出（写作书素材入槽、结构树看进度、汇编成稿）——从阅读到写作的完整闭环"
+        },
+        "displayName": {
+          "default": "Progressive Learning",
+          "zh_CN": "渐进学习"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android",
+          "harmony"
+        ],
+        "keywords": [
+          "渐进学习",
+          "渐进阅读",
+          "Progressive Reading",
+          "挖空",
+          "Cloze",
+          "闪卡",
+          "Flashcard",
+          "摘抄",
+          "断句",
+          "Sentence Split",
+          "拼音",
+          "Pinyin",
+          "Daily Card",
+          "渐进写作",
+          "Progressive Writing",
+          "知识地图",
+          "结构树",
+          "写作书",
+          "Knowledge Map",
+          "Structure Tree",
+          "Writing Book"
+        ],
+        "minAppVersion": "2.12.6",
+        "name": "sy-progressive-plugin",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/IAliceBobI/sy-progressive-plugin",
+        "version": "3.33.0"
+      },
+      "packageZipAssetId": 594967286,
+      "packageZipSha256": "f19c241052afda3546bafb3f2feedd7551ae1b7ba2d5202fa295daac653f0763",
+      "repoRef": "v3.33.0",
+      "size": 1055408,
+      "stars": 29,
+      "updated": "2026-09-28T09:00:47Z",
+      "url": "IAliceBobI/sy-progressive-plugin@f19c241"
+    },
+    {
       "installSize": 1011175,
       "openIssues": 0,
       "package": {
@@ -48,50 +164,119 @@
       "url": "HaoCeans/siyuan-mood@5c0462f"
     },
     {
-      "installSize": 14780736,
-      "openIssues": 11,
+      "installSize": 2679918,
+      "openIssues": 1,
       "package": {
-        "author": "suka233",
+        "author": "alone-tree",
+        "backends": [
+          "windows",
+          "darwin",
+          "linux"
+        ],
+        "description": {
+          "default": "Lean, fast, and hassle-free SiYuan MCP tool.",
+          "zh-CN": "让 AI Agent 通过 MCP 安全地阅读、搜索和修改你的思源笔记，重点优化长文档、表格、块引用等知识库场景"
+        },
+        "displayName": {
+          "default": "Siyuan Bridge",
+          "zh-CN": "思源桥"
+        },
+        "frontends": [
+          "desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "siyuan",
+          "mcp",
+          "ai",
+          "knowledge-base"
+        ],
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-bridge",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/alone-tree/siyuan-bridge",
+        "version": "1.10.1"
+      },
+      "packageZipAssetId": 594856087,
+      "packageZipSha256": "1ec851ec0c4fd9714c9886600d8409d1a153870e2cd6944638c7114963faa5d1",
+      "repoRef": "v1.10.1",
+      "size": 2019262,
+      "stars": 10,
+      "updated": "2026-09-28T08:00:32Z",
+      "url": "alone-tree/siyuan-bridge@1ec851e"
+    },
+    {
+      "installSize": 4818973,
+      "openIssues": 1,
+      "package": {
+        "author": "IAliceBobI",
         "backends": [
           "all"
         ],
         "description": {
-          "default": "A fully redesigned KMind mind mapping plugin for SiYuan. Drag SiYuan documents and blocks directly into your mind maps, with unlimited summary levels, cloze nodes, bidirectional links, and more. Currently in public beta.",
-          "zh_CN": "全新设计的 KMind 思维导图插件，可直接将思源文档和思源块拖入导图，支持无限层级概要、节点挖空、节点双链等能力；当前为公测版。"
+          "default": "🔓 Open source · The all-in-one productivity toolbox for SiYuan: status-bar Pomodoro, AI Q&amp;A, flashcards, reading points &amp; annotations, float-ball quick capture, sync blocks &amp; mind guides — 40+ features covering time, reading, review and AI.",
+          "zh_CN": "🔓 已开源 · 思源笔记的全能效率工具箱：状态栏番茄钟、AI 知识库问答、闪卡复习、阅读点与批注、悬浮球速记、同步块与思维导线——40+ 项功能，时间、阅读、复习、AI 一个插件全覆盖"
         },
-        "disabledInPublish": true,
         "displayName": {
-          "default": "KMind Zen Mind Map Plugin",
-          "zh_CN": "KMind Zen 思维导图插件"
+          "default": "Tomato Toolbox",
+          "zh_CN": "番茄工具箱"
         },
         "frontends": [
           "all"
         ],
         "icon": "icon.png",
-        "keywords": [
-          "思维导图",
-          "mindmap",
-          "KMind",
-          "KMindZen",
-          "KMind Zen"
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android",
+          "harmony"
         ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-kmind-zen",
+        "keywords": [
+          "番茄钟",
+          "番茄",
+          "Pomodoro",
+          "闪卡",
+          "Flashcard",
+          "复习",
+          "Review",
+          "反链",
+          "Backlink",
+          "同步块",
+          "批注",
+          "思维导图",
+          "Mindmap",
+          "AI",
+          "问答",
+          "文档合并",
+          "悬浮球",
+          "速记",
+          "闪念",
+          "阅读点"
+        ],
+        "minAppVersion": "3.0.3",
+        "name": "sy-tomato-plugin",
         "preview": "preview.png",
         "readme": {
           "default": "README.md",
           "zh_CN": "README_zh_CN.md"
         },
-        "url": "https://github.com/suka233/siyuan-kmind-zen",
-        "version": "0.45.0"
+        "url": "https://github.com/IAliceBobI/sy-tomato-plugin",
+        "version": "5.22.0"
       },
-      "packageZipAssetId": 594314786,
-      "packageZipSha256": "535fce98aa2c1b2b8130a9902e78273884e3912a4d9476804d11b5fe3ae70747",
-      "repoRef": "v0.45.0",
-      "size": 9558015,
-      "stars": 6,
-      "updated": "2026-09-28T02:45:21Z",
-      "url": "suka233/siyuan-kmind-zen@535fce9"
+      "packageZipAssetId": 594731770,
+      "packageZipSha256": "4ac10af7ceb6d3f6451021c0b45a5893f7556e7d047d442f101d48ea6c4b6456",
+      "repoRef": "v5.22.0",
+      "size": 1488669,
+      "stars": 50,
+      "updated": "2026-09-28T06:50:34Z",
+      "url": "IAliceBobI/sy-tomato-plugin@4ac10af"
     },
     {
       "installSize": 1801994,
@@ -901,75 +1086,6 @@
       "url": "Achuan-2/siyuan-plugin-copilot@dba6e58"
     },
     {
-      "installSize": 4812488,
-      "openIssues": 1,
-      "package": {
-        "author": "IAliceBobI",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "🔓 Open source · The all-in-one productivity toolbox for SiYuan: status-bar Pomodoro, AI Q&amp;A, flashcards, reading points &amp; annotations, float-ball quick capture, sync blocks &amp; mind guides — 40+ features covering time, reading, review and AI.",
-          "zh_CN": "🔓 已开源 · 思源笔记的全能效率工具箱：状态栏番茄钟、AI 知识库问答、闪卡复习、阅读点与批注、悬浮球速记、同步块与思维导线——40+ 项功能，时间、阅读、复习、AI 一个插件全覆盖"
-        },
-        "displayName": {
-          "default": "Tomato Toolbox",
-          "zh_CN": "番茄工具箱"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "keywords": [
-          "番茄钟",
-          "番茄",
-          "Pomodoro",
-          "闪卡",
-          "Flashcard",
-          "复习",
-          "Review",
-          "反链",
-          "Backlink",
-          "同步块",
-          "批注",
-          "思维导图",
-          "Mindmap",
-          "AI",
-          "问答",
-          "文档合并",
-          "悬浮球",
-          "速记",
-          "闪念",
-          "阅读点"
-        ],
-        "minAppVersion": "3.0.3",
-        "name": "sy-tomato-plugin",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/IAliceBobI/sy-tomato-plugin",
-        "version": "5.21.0"
-      },
-      "packageZipAssetId": 591964495,
-      "packageZipSha256": "d3ec497481a120adcadccb4d06e029325b329f90cfa139cb0e5e1547ab0c6699",
-      "repoRef": "v5.21.0",
-      "size": 1486610,
-      "stars": 50,
-      "updated": "2026-09-27T02:35:53Z",
-      "url": "IAliceBobI/sy-tomato-plugin@d3ec497"
-    },
-    {
       "installSize": 16634027,
       "openIssues": 1,
       "package": {
@@ -1019,76 +1135,6 @@
       "stars": 38,
       "updated": "2026-09-27T00:41:22Z",
       "url": "5kyfkr/siyuan-plugin-task-horizon@90d3b0b"
-    },
-    {
-      "installSize": 3829113,
-      "openIssues": 0,
-      "package": {
-        "author": "IAliceBobI",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "🔓 Open source · Finally finish what you read — and what you write: progressive reading digests long-form input day by day (excerpts, slicing, cloze, flashcards, AI knowledge maps), progressive writing queues your material into finished drafts (writing books, structure tree, compile-to-draft). A full loop from reading to writing.",
-          "zh_CN": "🔓 已开源 · 让长文读得完，让作品写得完：渐进阅读消化输入（摘抄、分片、挖空、闪卡、AI 知识地图），渐进写作排队产出（写作书素材入槽、结构树看进度、汇编成稿）——从阅读到写作的完整闭环"
-        },
-        "displayName": {
-          "default": "Progressive Learning",
-          "zh_CN": "渐进学习"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "keywords": [
-          "渐进学习",
-          "渐进阅读",
-          "Progressive Reading",
-          "挖空",
-          "Cloze",
-          "闪卡",
-          "Flashcard",
-          "摘抄",
-          "断句",
-          "Sentence Split",
-          "拼音",
-          "Pinyin",
-          "Daily Card",
-          "渐进写作",
-          "Progressive Writing",
-          "知识地图",
-          "结构树",
-          "写作书",
-          "Knowledge Map",
-          "Structure Tree",
-          "Writing Book"
-        ],
-        "minAppVersion": "2.12.6",
-        "name": "sy-progressive-plugin",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/IAliceBobI/sy-progressive-plugin",
-        "version": "3.31.0"
-      },
-      "packageZipAssetId": 591770234,
-      "packageZipSha256": "c897cfaed5fb36ea1ae5dfaffeaad9bd171ec6d5f4f29e99d07677fa82f9adf2",
-      "repoRef": "v3.31.0",
-      "size": 1053339,
-      "stars": 29,
-      "updated": "2026-09-27T00:40:20Z",
-      "url": "IAliceBobI/sy-progressive-plugin@c897cfa"
     },
     {
       "installSize": 120531,
@@ -1742,52 +1788,6 @@
       "stars": 9,
       "updated": "2026-09-25T14:38:37Z",
       "url": "HaoCeans/siyuan-toolbar-customizer@87a790f"
-    },
-    {
-      "installSize": 2674681,
-      "openIssues": 3,
-      "package": {
-        "author": "alone-tree",
-        "backends": [
-          "windows",
-          "darwin",
-          "linux"
-        ],
-        "description": {
-          "default": "Lean, fast, and hassle-free SiYuan MCP tool.",
-          "zh-CN": "让 AI Agent 通过 MCP 安全地阅读、搜索和修改你的思源笔记，重点优化长文档、表格、块引用等知识库场景"
-        },
-        "displayName": {
-          "default": "Siyuan Bridge",
-          "zh-CN": "思源桥"
-        },
-        "frontends": [
-          "desktop"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "siyuan",
-          "mcp",
-          "ai",
-          "knowledge-base"
-        ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-bridge",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/alone-tree/siyuan-bridge",
-        "version": "1.10.0"
-      },
-      "packageZipAssetId": 588321303,
-      "packageZipSha256": "066c6ca0bd04eddd85865c3532bfdb41cc8a6e026e54a0563b8e999859901e4c",
-      "repoRef": "v1.10.0",
-      "size": 2017351,
-      "stars": 10,
-      "updated": "2026-09-25T12:31:42Z",
-      "url": "alone-tree/siyuan-bridge@066c6ca"
     },
     {
       "installSize": 3157756,
