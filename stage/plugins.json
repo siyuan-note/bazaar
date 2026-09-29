@@ -1,7 +1,7 @@
 {
   "repos": [
     {
-      "installSize": 177164,
+      "installSize": 209400,
       "openIssues": 0,
       "package": {
         "author": "nealgavin",
@@ -15,8 +15,8 @@
           "harmony"
         ],
         "description": {
-          "default": "Read blocks aloud with multi-engine fallback, works on desktop, mobile, tablet and HarmonyOS",
-          "zh_CN": "多引擎自动降级的文本朗读，支持桌面端、手机、平板与鸿蒙版思源笔记"
+          "default": "Read blocks aloud with a locked voice (Edge TTS), works on desktop, mobile, tablet and HarmonyOS",
+          "zh_CN": "人声稳定的文本朗读（锁定所选声源），支持桌面端、手机、平板与鸿蒙版思源笔记"
         },
         "displayName": {
           "default": "Text To Speech (All Platforms)",
@@ -45,15 +45,103 @@
           "default": "README.md"
         },
         "url": "https://github.com/nealgavin/siyuan-plugin-tts-all",
-        "version": "1.2.4"
+        "version": "1.2.11"
       },
-      "packageZipAssetId": 597588481,
-      "packageZipSha256": "9610745a8908048cec9d553856710935f73e36d5cc84c30b78d61a4fe527018e",
-      "repoRef": "v1.2.4",
-      "size": 93632,
+      "packageZipAssetId": 597964439,
+      "packageZipSha256": "5d005677ecbbf169942c892997de599545050fdd5cc46d1ee83d9273a944ee96",
+      "repoRef": "v1.2.11",
+      "size": 105931,
       "stars": 0,
-      "updated": "2026-09-29T08:06:32Z",
-      "url": "nealgavin/siyuan-plugin-tts-all@9610745"
+      "updated": "2026-09-29T10:45:06Z",
+      "url": "nealgavin/siyuan-plugin-tts-all@5d00567"
+    },
+    {
+      "installSize": 508340,
+      "openIssues": 0,
+      "package": {
+        "author": "itdh",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Key-Buddy: Your smart, local password companion",
+          "zh_CN": "密友：您的智能本地密码管家"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Key-Buddy",
+          "zh_CN": "密友"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "Password Manager",
+          "密码管理器",
+          "kdbx",
+          "KeePass"
+        ],
+        "minAppVersion": "3.7.2",
+        "name": "siyuan-plugin-key-buddy",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/itdh/siyuan-plugin-key-buddy",
+        "version": "0.1.4"
+      },
+      "packageZipAssetId": 597807501,
+      "packageZipSha256": "a9326f9e7166a0a3c9b7164f253fbe76b34d93cee17eb442779b7b867fc6d98c",
+      "repoRef": "v0.1.4",
+      "size": 201947,
+      "stars": 0,
+      "updated": "2026-09-29T09:25:44Z",
+      "url": "itdh/siyuan-plugin-key-buddy@a9326f9"
+    },
+    {
+      "installSize": 762708,
+      "openIssues": 2,
+      "package": {
+        "author": "LunaNorth",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A SiYuan Note plugin for customizing block appearance with attributes",
+          "zh_CN": "通过属性自定义块样式的思源笔记插件"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Light Decor Note",
+          "zh_CN": "轻饰笔记"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "卡片样式",
+          "属性样式",
+          "笔记美化"
+        ],
+        "minAppVersion": "3.3.3",
+        "name": "siyuan-deco",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/LunaNorth/siyuan-deco",
+        "version": "1.5.2"
+      },
+      "packageZipAssetId": 597741787,
+      "packageZipSha256": "36772f2061dd285859779a0d6b93e2d6ecbc7e9a81dd75aee5dbb3ce09edc019",
+      "repoRef": "v1.5.2",
+      "size": 286352,
+      "stars": 4,
+      "updated": "2026-09-29T08:53:55Z",
+      "url": "LunaNorth/siyuan-deco@36772f2"
     },
     {
       "installSize": 92194,
@@ -106,6 +194,155 @@
       "stars": 0,
       "updated": "2026-09-29T08:01:48Z",
       "url": "Xiaozhu1619/siyuan-bitiful-s4-quota@9746ff5"
+    },
+    {
+      "installSize": 2680182,
+      "openIssues": 2,
+      "package": {
+        "author": "alone-tree",
+        "backends": [
+          "windows",
+          "darwin",
+          "linux"
+        ],
+        "description": {
+          "default": "Lean, fast, and hassle-free SiYuan MCP tool.",
+          "zh-CN": "让 AI Agent 通过 MCP 安全地阅读、搜索和修改你的思源笔记，重点优化长文档、表格、块引用等知识库场景"
+        },
+        "displayName": {
+          "default": "Siyuan Bridge",
+          "zh-CN": "思源桥"
+        },
+        "frontends": [
+          "desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "siyuan",
+          "mcp",
+          "ai",
+          "knowledge-base"
+        ],
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-bridge",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/alone-tree/siyuan-bridge",
+        "version": "1.10.2"
+      },
+      "packageZipAssetId": 597590383,
+      "packageZipSha256": "4c586d8b9e56af640c77999230907e31df9272bf594f457a931aa2db75c924be",
+      "repoRef": "v1.10.2",
+      "size": 2019366,
+      "stars": 10,
+      "updated": "2026-09-29T07:36:33Z",
+      "url": "alone-tree/siyuan-bridge@4c586d8"
+    },
+    {
+      "installSize": 16774994,
+      "openIssues": 1,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
+          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Horizon",
+          "zh_CN": "任务管理器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "task",
+          "manager",
+          "filter"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-plugin-task-horizon",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
+        "version": "3.1.3"
+      },
+      "packageZipAssetId": 597520848,
+      "packageZipSha256": "7af567c03b3e69efa17a1d7b66d9b22315c2e912a638b04a6edfc967faeb4187",
+      "repoRef": "v3.1.3",
+      "size": 3454703,
+      "stars": 38,
+      "updated": "2026-09-29T06:58:50Z",
+      "url": "5kyfkr/siyuan-plugin-task-horizon@7af567c"
+    },
+    {
+      "installSize": 130167,
+      "openIssues": 1,
+      "package": {
+        "author": "wmy2981",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Generate note titles with the Chat Completions, Responses or Anthropic Messages API",
+          "zh-CN": "用 Chat Completions、Responses API 或 Anthropic Messages 接口为笔记生成标题"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "AI Title",
+          "zh-CN": "AI标题生成"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/wmy2981"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "ai",
+          "title",
+          "deepseek",
+          "生成",
+          "标题",
+          "generate"
+        ],
+        "minAppVersion": "3.8.3",
+        "name": "ai-title-siyuan",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/wmy2981/ai-title-siyuan",
+        "version": "1.0.1"
+      },
+      "packageZipAssetId": 597403004,
+      "packageZipSha256": "8100036c2924843e1f4b63e03cdf6cc09ebf29b9cb5e94e70681942d978055eb",
+      "repoRef": "v1.0.1",
+      "size": 65264,
+      "stars": 1,
+      "updated": "2026-09-29T05:56:37Z",
+      "url": "wmy2981/ai-title-siyuan@8100036"
     },
     {
       "installSize": 1884864,
@@ -206,49 +443,6 @@
       "stars": 1,
       "updated": "2026-09-29T03:25:19Z",
       "url": "ai68298100/siyuan-checkin@476bd74"
-    },
-    {
-      "installSize": 668187,
-      "openIssues": 2,
-      "package": {
-        "author": "LunaNorth",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A SiYuan Note plugin for customizing block appearance with attributes",
-          "zh_CN": "通过属性自定义块样式的思源笔记插件"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Light Decor Note",
-          "zh_CN": "轻饰笔记"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "卡片样式",
-          "属性样式",
-          "笔记美化"
-        ],
-        "minAppVersion": "3.3.3",
-        "name": "siyuan-deco",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/LunaNorth/siyuan-deco",
-        "version": "1.5.1"
-      },
-      "packageZipAssetId": 597036439,
-      "packageZipSha256": "56bc06bad8cb1b502097217ff6ce1094e92c5fa5a708eec9ff4245d69e3525cd",
-      "repoRef": "v1.5.1",
-      "size": 272473,
-      "stars": 4,
-      "updated": "2026-09-29T02:33:40Z",
-      "url": "LunaNorth/siyuan-deco@56bc06b"
     },
     {
       "installSize": 3189469,
@@ -457,57 +651,6 @@
       "stars": 33,
       "updated": "2026-09-28T18:01:27Z",
       "url": "mm-o/siyuan-sireader@38b9f10"
-    },
-    {
-      "installSize": 16731713,
-      "openIssues": 1,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
-          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Horizon",
-          "zh_CN": "任务管理器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "task",
-          "manager",
-          "filter"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-plugin-task-horizon",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "3.1.2"
-      },
-      "packageZipAssetId": 596022167,
-      "packageZipSha256": "de8c12b0cbff4424939784714ccbec5bc9ab639c820ca6c71741b7e4cf56a244",
-      "repoRef": "v3.1.2",
-      "size": 3445599,
-      "stars": 38,
-      "updated": "2026-09-28T17:48:30Z",
-      "url": "5kyfkr/siyuan-plugin-task-horizon@de8c12b"
     },
     {
       "installSize": 511796,
@@ -1033,52 +1176,6 @@
       "url": "suka233/siyuan-kmind-zen@20801ab"
     },
     {
-      "installSize": 2679918,
-      "openIssues": 1,
-      "package": {
-        "author": "alone-tree",
-        "backends": [
-          "windows",
-          "darwin",
-          "linux"
-        ],
-        "description": {
-          "default": "Lean, fast, and hassle-free SiYuan MCP tool.",
-          "zh-CN": "让 AI Agent 通过 MCP 安全地阅读、搜索和修改你的思源笔记，重点优化长文档、表格、块引用等知识库场景"
-        },
-        "displayName": {
-          "default": "Siyuan Bridge",
-          "zh-CN": "思源桥"
-        },
-        "frontends": [
-          "desktop"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "siyuan",
-          "mcp",
-          "ai",
-          "knowledge-base"
-        ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-bridge",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/alone-tree/siyuan-bridge",
-        "version": "1.10.1"
-      },
-      "packageZipAssetId": 594856087,
-      "packageZipSha256": "1ec851ec0c4fd9714c9886600d8409d1a153870e2cd6944638c7114963faa5d1",
-      "repoRef": "v1.10.1",
-      "size": 2019262,
-      "stars": 10,
-      "updated": "2026-09-28T08:00:32Z",
-      "url": "alone-tree/siyuan-bridge@1ec851e"
-    },
-    {
       "installSize": 1837755,
       "openIssues": 0,
       "package": {
@@ -1312,58 +1409,6 @@
       "stars": 15,
       "updated": "2026-09-27T12:43:51Z",
       "url": "TCOTC/snippets@49d200b"
-    },
-    {
-      "installSize": 129017,
-      "openIssues": 1,
-      "package": {
-        "author": "wmy2981",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Generate note titles with the Chat Completions, Responses or Anthropic Messages API",
-          "zh-CN": "用 Chat Completions、Responses API 或 Anthropic Messages 接口为笔记生成标题"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "AI Title",
-          "zh-CN": "AI标题生成"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/wmy2981"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "ai",
-          "title",
-          "deepseek",
-          "生成",
-          "标题",
-          "generate"
-        ],
-        "minAppVersion": "3.8.3",
-        "name": "ai-title-siyuan",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/wmy2981/ai-title-siyuan",
-        "version": "1.0.0"
-      },
-      "packageZipAssetId": 592561135,
-      "packageZipSha256": "fa4bf589e64bcba31dc81c6faa128792b5d21977d9e4a80350831a42e5964e86",
-      "repoRef": "v1.0.0",
-      "size": 64832,
-      "stars": 1,
-      "updated": "2026-09-27T09:12:44Z",
-      "url": "wmy2981/ai-title-siyuan@fa4bf58"
     },
     {
       "installSize": 899982,
@@ -9718,49 +9763,6 @@
       "stars": 0,
       "updated": "2026-08-10T10:22:59Z",
       "url": "2zzw/siyuan-plugin-viewall@a3fd9f0"
-    },
-    {
-      "installSize": 507626,
-      "openIssues": 0,
-      "package": {
-        "author": "itdh",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Key-Buddy: Your smart, local password companion",
-          "zh_CN": "密友：您的智能本地密码管家"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Key-Buddy",
-          "zh_CN": "密友"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "Password Manager",
-          "密码管理器",
-          "kdbx",
-          "KeePass"
-        ],
-        "minAppVersion": "3.7.2",
-        "name": "siyuan-plugin-key-buddy",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/itdh/siyuan-plugin-key-buddy",
-        "version": "0.1.3"
-      },
-      "packageZipAssetId": 508405733,
-      "packageZipSha256": "7e75f57393bccba70266b235dc94f5e8b93e00913be179fbcc353e9145e48037",
-      "repoRef": "v0.1.3",
-      "size": 201823,
-      "stars": 0,
-      "updated": "2026-08-10T06:39:40Z",
-      "url": "itdh/siyuan-plugin-key-buddy@7e75f57"
     },
     {
       "installSize": 7851602,
