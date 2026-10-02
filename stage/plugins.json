@@ -1,6 +1,110 @@
 {
   "repos": [
     {
+      "installSize": 1038403,
+      "openIssues": 0,
+      "package": {
+        "author": "whale🐋",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "把每天的心情沉淀成一条看得见的曲线。AI 分析师就住在你的思源里，记得你的全部历史——起伏、事件、每条建议的效果，越用越懂你。记录只存在你自己的知识库。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "AI心情分析师"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "心情",
+          "情绪",
+          "AI心情分析师",
+          "情绪记录",
+          "心情问答",
+          "自我觉察",
+          "AI",
+          "心情曲线",
+          "鲸鱼"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-mood",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/HaoCeans/siyuan-mood",
+        "version": "1.0.0"
+      },
+      "packageZipAssetId": 606149759,
+      "packageZipSha256": "b1fde98d9a3f0e85050a587d7e749adab64230dfcce79cca7e4b7eb4d4e62784",
+      "repoRef": "v1.0.0",
+      "size": 716929,
+      "stars": 1,
+      "updated": "2026-10-02T17:44:42Z",
+      "url": "HaoCeans/siyuan-mood@b1fde98"
+    },
+    {
+      "installSize": 163610,
+      "openIssues": 0,
+      "package": {
+        "author": "Misuzu2027",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "description": {
+          "default": "Replace the native image viewer with a floating pin preview, including database images.",
+          "zh_CN": "替代原生图片查看功能，支持文档和数据库图片的悬浮预览"
+        },
+        "displayName": {
+          "default": "Image Pin Preview",
+          "zh_CN": "图片悬浮预览"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "image",
+          "preview",
+          "pin",
+          "float",
+          "图片",
+          "预览",
+          "悬浮"
+        ],
+        "minAppVersion": "3.0.12",
+        "name": "syplugin-image-pin-preview",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/Misuzu2027/syplugin-image-pin-preview",
+        "version": "0.0.11"
+      },
+      "packageZipAssetId": 605991738,
+      "packageZipSha256": "53f15fe9302dcd8201aa85f85175334f83625cfbb380948a30dca6265c90f7bb",
+      "repoRef": "v0.0.11",
+      "size": 78022,
+      "stars": 1,
+      "updated": "2026-10-02T16:18:22Z",
+      "url": "Misuzu2027/syplugin-image-pin-preview@53f15fe"
+    },
+    {
       "installSize": 210706,
       "openIssues": 0,
       "package": {
@@ -44,6 +148,76 @@
       "stars": 0,
       "updated": "2026-10-02T16:13:46Z",
       "url": "wiegi/siyuan-worktime-table@809d626"
+    },
+    {
+      "installSize": 2057597,
+      "openIssues": 1,
+      "package": {
+        "author": "Glaube-TY",
+        "backends": [
+          "windows",
+          "linux",
+          "ios",
+          "android",
+          "harmony",
+          "docker",
+          "darwin"
+        ],
+        "description": {
+          "en_US": "Obtain Douban book information and add it to the database &amp; synchronize weread notes.",
+          "zh_CN": "豆瓣书籍信息获取并添加到数据库 &amp; 同步微信读书笔记。"
+        },
+        "displayName": {
+          "en_US": "Reading Notes",
+          "zh_CN": "读书笔记"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://glaube-ty.top/da-shang/"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "豆瓣读书",
+          "douban",
+          "书籍",
+          "book",
+          "读书笔记",
+          "笔记",
+          "read",
+          "note",
+          "booknote",
+          "weread",
+          "微信读书",
+          "微信"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "siyuan-douban",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/Glaube-TY/siyuan-douban",
+        "version": "4.3.6"
+      },
+      "packageZipAssetId": 605896063,
+      "packageZipSha256": "e4a9338d26b093b626979f91e3f6edb3ddb2031fd78129ba92c82dc3409a0048",
+      "repoRef": "v4.3.6",
+      "size": 718447,
+      "stars": 29,
+      "updated": "2026-10-02T15:28:58Z",
+      "url": "Glaube-TY/siyuan-douban@e4a9338"
     },
     {
       "installSize": 3192605,
@@ -248,123 +422,6 @@
       "stars": 51,
       "updated": "2026-10-02T14:53:25Z",
       "url": "IAliceBobI/sy-tomato-plugin@543533a"
-    },
-    {
-      "installSize": 1024843,
-      "openIssues": 0,
-      "package": {
-        "author": "whale🐋",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "用 10 道只问「此刻」的小题觉察心情：选完给情绪起个名字（情绪标注本身就有调节作用）、勾几项身体信号，剩下的交给思源自带的 AI——一句话说清状态、几个关键词、几条十分钟能做完的小建议。过一两天回来打个勾、写句感受，AI 会告诉你哪条真的有用；也可以记下自己想到的做法。心情曲线、热力图与到期提醒都在，记录只存在你自己的知识库里。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "AI心情管理"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "心情",
-          "情绪",
-          "AI心情管理",
-          "情绪记录",
-          "心情问答",
-          "自我觉察",
-          "AI",
-          "心情曲线",
-          "鲸鱼"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-mood",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/HaoCeans/siyuan-mood",
-        "version": "0.4.0"
-      },
-      "packageZipAssetId": 605821526,
-      "packageZipSha256": "9c851b243c184e9ad6ef641e603704b916a2957f85d734da0090e3fd2961c5f3",
-      "repoRef": "v0.4.0",
-      "size": 712718,
-      "stars": 1,
-      "updated": "2026-10-02T14:50:33Z",
-      "url": "HaoCeans/siyuan-mood@9c851b2"
-    },
-    {
-      "installSize": 2056387,
-      "openIssues": 1,
-      "package": {
-        "author": "Glaube-TY",
-        "backends": [
-          "windows",
-          "linux",
-          "ios",
-          "android",
-          "harmony",
-          "docker",
-          "darwin"
-        ],
-        "description": {
-          "en_US": "Obtain Douban book information and add it to the database &amp; synchronize weread notes.",
-          "zh_CN": "豆瓣书籍信息获取并添加到数据库 &amp; 同步微信读书笔记。"
-        },
-        "displayName": {
-          "en_US": "Reading Notes",
-          "zh_CN": "读书笔记"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://glaube-ty.top/da-shang/"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "豆瓣读书",
-          "douban",
-          "书籍",
-          "book",
-          "读书笔记",
-          "笔记",
-          "read",
-          "note",
-          "booknote",
-          "weread",
-          "微信读书",
-          "微信"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "siyuan-douban",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/Glaube-TY/siyuan-douban",
-        "version": "4.3.5"
-      },
-      "packageZipAssetId": 605790724,
-      "packageZipSha256": "9ed716e7cb574486277a161a633378874f5e80b36a3ad103125314f19b3416cd",
-      "repoRef": "v4.3.5",
-      "size": 717718,
-      "stars": 29,
-      "updated": "2026-10-02T14:35:06Z",
-      "url": "Glaube-TY/siyuan-douban@9ed716e"
     },
     {
       "installSize": 663159,
@@ -4812,63 +4869,6 @@
       "stars": 5,
       "updated": "2026-09-19T01:14:16Z",
       "url": "Han-Orz/zenType@491aa90"
-    },
-    {
-      "installSize": 160606,
-      "openIssues": 0,
-      "package": {
-        "author": "Misuzu2027",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "description": {
-          "default": "Replace the native image viewer with a floating pin preview, including database images.",
-          "zh_CN": "替代原生图片查看功能，支持文档和数据库图片的悬浮预览"
-        },
-        "displayName": {
-          "default": "Image Pin Preview",
-          "zh_CN": "图片悬浮预览"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "image",
-          "preview",
-          "pin",
-          "float",
-          "图片",
-          "预览",
-          "悬浮"
-        ],
-        "minAppVersion": "3.0.12",
-        "name": "syplugin-image-pin-preview",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/Misuzu2027/syplugin-image-pin-preview",
-        "version": "0.0.10"
-      },
-      "packageZipAssetId": 573217515,
-      "packageZipSha256": "653dbbd0575c2c91e9d4064f7ea6b50e9ff01811cc70648f8b39630018cac3a6",
-      "repoRef": "v0.0.10",
-      "size": 77163,
-      "stars": 1,
-      "updated": "2026-09-18T18:37:53Z",
-      "url": "Misuzu2027/syplugin-image-pin-preview@653dbbd"
     },
     {
       "installSize": 221279,
