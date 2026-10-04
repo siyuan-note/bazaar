@@ -1,6 +1,249 @@
 {
   "repos": [
     {
+      "installSize": 980070,
+      "openIssues": 0,
+      "package": {
+        "author": "congsec",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "MeiDay is a cross-platform (Web, App) task and diary manager that delivers a smoother experience and stronger security.",
+          "zh-CN": "MeiDay 是一款跨端（Web、App）任务与日记管理工具，让记录更流畅，让数据更安全。"
+        },
+        "displayName": {
+          "default": "MeiDay",
+          "zh-CN": "MeiDay（每日任务日记管理）"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "github": "congsec"
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "任务管理",
+          "待办",
+          "在线",
+          "todo",
+          "task",
+          "meiday",
+          "日记",
+          "加密",
+          "隐私"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-plugin-meiday",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en-US": "README.EN.md"
+        },
+        "url": "https://github.com/CongSec/siyuan-plugin-meiday",
+        "version": "1.6.0"
+      },
+      "packageZipAssetId": 609681203,
+      "packageZipSha256": "ac809d27a93916656a9596f11aa29cb3b5d4a2b1880da7fac65509b93ae848ff",
+      "repoRef": "V1.6.0",
+      "size": 461444,
+      "stars": 1,
+      "updated": "2026-10-04T11:13:21Z",
+      "url": "CongSec/siyuan-plugin-meiday@ac809d2"
+    },
+    {
+      "installSize": 155423,
+      "openIssues": 0,
+      "package": {
+        "author": "wmy2981",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Generate note titles with the Chat Completions, Responses or Anthropic Messages API",
+          "zh-CN": "用 Chat Completions、Responses API 或 Anthropic Messages 接口为笔记生成标题"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "AI Title",
+          "zh-CN": "AI标题生成"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/wmy2981"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "ai",
+          "title",
+          "deepseek",
+          "生成",
+          "标题",
+          "generate"
+        ],
+        "minAppVersion": "3.8.3",
+        "name": "ai-title-siyuan",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/wmy2981/ai-title-siyuan",
+        "version": "1.0.4"
+      },
+      "packageZipAssetId": 609567516,
+      "packageZipSha256": "4a5dfa25b81cf0339a1b56a981e8889f34ab7ac01aba85f1e6145554c290e422",
+      "repoRef": "v1.0.4",
+      "size": 74032,
+      "stars": 2,
+      "updated": "2026-10-04T09:53:41Z",
+      "url": "wmy2981/ai-title-siyuan@4a5dfa2"
+    },
+    {
+      "installSize": 260524,
+      "openIssues": 4,
+      "package": {
+        "author": "wmy2981",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A batch of independently toggleable desktop and mobile enhancements and optimized styles",
+          "zh-CN": "一批可独立启停的桌面端与移动端增强功能和优化后的样式"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Some Settings",
+          "zh-CN": "一些设置"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/wmy2981"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "settings",
+          "style",
+          "custom",
+          "ui",
+          "enhancement"
+        ],
+        "minAppVersion": "3.8.6-alpha.4",
+        "name": "some-settings-siyuan",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/wmy2981/some-settings-siyuan",
+        "version": "0.2.6"
+      },
+      "packageZipAssetId": 609564935,
+      "packageZipSha256": "94b757b5c496c4e105dad0c8763d84eb092fa98b547bc24eb5a7d0013ee8914b",
+      "repoRef": "v0.2.6",
+      "size": 98135,
+      "stars": 1,
+      "updated": "2026-10-04T09:52:23Z",
+      "url": "wmy2981/some-settings-siyuan@94b757b"
+    },
+    {
+      "installSize": 92797,
+      "openIssues": 0,
+      "package": {
+        "author": "hongdongjie",
+        "backends": [
+          "windows"
+        ],
+        "description": {
+          "default": "Chat with Codex inside SiYuan using your local Codex and MCP configuration. Windows desktop; Chinese UI.",
+          "zh-CN": "在思源侧栏与 Codex 对话，复用本机登录与 MCP，支持模型与思考强度选择、上下文用量和历史对话。仅支持 Windows 桌面端。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Codex Sidebar",
+          "zh-CN": "Codex 侧边栏"
+        },
+        "frontends": [
+          "desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "AI",
+          "Codex",
+          "MCP",
+          "聊天",
+          "笔记问答"
+        ],
+        "minAppVersion": "3.8.6",
+        "name": "siyuan-codex-sidebar",
+        "preview": "",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/hongdongjie/siyuan-codex-sidebar",
+        "version": "0.2.1"
+      },
+      "packageZipAssetId": 609559480,
+      "packageZipSha256": "c6cd4728d1f86b7535a009543008bfb3900366754d2bc514708436bde8cd2fb6",
+      "repoRef": "v0.2.1",
+      "size": 40965,
+      "stars": 0,
+      "updated": "2026-10-04T09:48:45Z",
+      "url": "hongdongjie/siyuan-codex-sidebar@c6cd472"
+    },
+    {
+      "installSize": 1848091,
+      "openIssues": 13,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "SiYuan AI Assistant, supports dragging blocks and tabs to get note context, enabling Q&amp;A and editing based on SiYuan note content",
+          "zh_CN": "思源笔记 AI 助手,支持拖动块、页签获取笔记上下文，实现基于思源笔记内容进行问答和编辑"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan Copilot"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ]
+        },
+        "icon": "icon.png",
+        "minAppVersion": "3.7.2",
+        "name": "siyuan-plugin-copilot",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README_en_US.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-copilot",
+        "version": "2.8.7"
+      },
+      "packageZipAssetId": 609536873,
+      "packageZipSha256": "4d008151981ca18627c39e603c2dbacb6b103367f524cae55268c908f3c5ca60",
+      "repoRef": "v2.8.7",
+      "size": 642319,
+      "stars": 159,
+      "updated": "2026-10-04T09:32:39Z",
+      "url": "Achuan-2/siyuan-plugin-copilot@4d00815"
+    },
+    {
       "installSize": 1812024,
       "openIssues": 2,
       "package": {
@@ -111,51 +354,6 @@
       "stars": 41,
       "updated": "2026-10-04T07:28:43Z",
       "url": "zt8989/siyuan-drawio-plugin@53450f9"
-    },
-    {
-      "installSize": 82628,
-      "openIssues": 0,
-      "package": {
-        "author": "hongdongjie",
-        "backends": [
-          "windows"
-        ],
-        "description": {
-          "default": "Chat with Codex inside SiYuan using your local Codex and MCP configuration. Windows desktop; Chinese UI.",
-          "zh-CN": "在思源侧栏使用 Codex，复用本机登录与 MCP，支持前置提示词、模型选择与历史对话。仅支持 Windows 桌面端。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Codex Sidebar",
-          "zh-CN": "Codex 侧边栏"
-        },
-        "frontends": [
-          "desktop"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "AI",
-          "Codex",
-          "MCP",
-          "聊天",
-          "笔记问答"
-        ],
-        "minAppVersion": "3.8.6",
-        "name": "siyuan-codex-sidebar",
-        "preview": "",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/hongdongjie/siyuan-codex-sidebar",
-        "version": "0.1.0"
-      },
-      "packageZipAssetId": 609341353,
-      "packageZipSha256": "8d7ad2e0ac77b24b53b15e4a44614f3fcc0778fd1622a72492f999cf8345841c",
-      "repoRef": "v0.1.0",
-      "size": 39896,
-      "stars": 0,
-      "updated": "2026-10-04T07:19:46Z",
-      "url": "hongdongjie/siyuan-codex-sidebar@8d7ad2e"
     },
     {
       "installSize": 3847020,
@@ -896,58 +1094,6 @@
       "url": "HaoCeans/siyuan-mood@ff1e848"
     },
     {
-      "installSize": 966114,
-      "openIssues": 0,
-      "package": {
-        "author": "congsec",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "MeiDay is a cross-platform (Web, App) task and diary manager that delivers a smoother experience and stronger security.",
-          "zh-CN": "MeiDay 是一款跨端（Web、App）任务与日记管理工具，让记录更流畅，让数据更安全。"
-        },
-        "displayName": {
-          "default": "MeiDay",
-          "zh-CN": "MeiDay（每日任务日记管理）"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "github": "congsec"
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "任务管理",
-          "待办",
-          "在线",
-          "todo",
-          "task",
-          "meiday",
-          "日记",
-          "加密",
-          "隐私"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-plugin-meiday",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en-US": "README.EN.md"
-        },
-        "url": "https://github.com/CongSec/siyuan-plugin-meiday",
-        "version": "1.5.0"
-      },
-      "packageZipAssetId": 607938153,
-      "packageZipSha256": "9835ade828535620859acad7b6301bc67859b05e2a1342fe899ce8d372eff701",
-      "repoRef": "V1.5.0",
-      "size": 456285,
-      "stars": 1,
-      "updated": "2026-10-03T15:32:30Z",
-      "url": "CongSec/siyuan-plugin-meiday@9835ade"
-    },
-    {
       "installSize": 711889,
       "openIssues": 2,
       "package": {
@@ -1144,57 +1290,6 @@
       "stars": 0,
       "updated": "2026-10-03T09:09:02Z",
       "url": "Disdjj/siyuan-plugin-d2@165d863"
-    },
-    {
-      "installSize": 255678,
-      "openIssues": 4,
-      "package": {
-        "author": "wmy2981",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A batch of independently toggleable desktop and mobile enhancements and optimized styles",
-          "zh-CN": "一批可独立启停的桌面端与移动端增强功能和优化后的样式"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Some Settings",
-          "zh-CN": "一些设置"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/wmy2981"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "settings",
-          "style",
-          "custom",
-          "ui",
-          "enhancement"
-        ],
-        "minAppVersion": "3.8.6-alpha.4",
-        "name": "some-settings-siyuan",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/wmy2981/some-settings-siyuan",
-        "version": "0.2.5"
-      },
-      "packageZipAssetId": 607319915,
-      "packageZipSha256": "c38c48c78186e19ff2ff9904b5e8bc7c6ee6dc4c4250514b6ba0b77df3ff24b6",
-      "repoRef": "v0.2.5",
-      "size": 96535,
-      "stars": 1,
-      "updated": "2026-10-03T06:52:14Z",
-      "url": "wmy2981/some-settings-siyuan@c38c48c"
     },
     {
       "installSize": 317309,
@@ -1673,58 +1768,6 @@
       "stars": 2,
       "updated": "2026-10-02T09:33:46Z",
       "url": "BUGdefender404/pencil-annotation@61a7723"
-    },
-    {
-      "installSize": 138827,
-      "openIssues": 0,
-      "package": {
-        "author": "wmy2981",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Generate note titles with the Chat Completions, Responses or Anthropic Messages API",
-          "zh-CN": "用 Chat Completions、Responses API 或 Anthropic Messages 接口为笔记生成标题"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "AI Title",
-          "zh-CN": "AI标题生成"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/wmy2981"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "ai",
-          "title",
-          "deepseek",
-          "生成",
-          "标题",
-          "generate"
-        ],
-        "minAppVersion": "3.8.3",
-        "name": "ai-title-siyuan",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/wmy2981/ai-title-siyuan",
-        "version": "1.0.3"
-      },
-      "packageZipAssetId": 605184626,
-      "packageZipSha256": "61b2c01782de4d94fa90f0c5c8a40281a75c26b4f60e3f0d54dde58b497fd813",
-      "repoRef": "v1.0.3",
-      "size": 68663,
-      "stars": 2,
-      "updated": "2026-10-02T08:40:40Z",
-      "url": "wmy2981/ai-title-siyuan@61b2c01"
     },
     {
       "installSize": 127005,
@@ -2350,49 +2393,6 @@
       "stars": 0,
       "updated": "2026-09-30T14:09:34Z",
       "url": "Achuan-2/siyuan-plugin-paddleocr@e4e47ec"
-    },
-    {
-      "installSize": 1792284,
-      "openIssues": 12,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "SiYuan AI Assistant, supports dragging blocks and tabs to get note context, enabling Q&amp;A and editing based on SiYuan note content",
-          "zh_CN": "思源笔记 AI 助手,支持拖动块、页签获取笔记上下文，实现基于思源笔记内容进行问答和编辑"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiYuan Copilot"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ]
-        },
-        "icon": "icon.png",
-        "minAppVersion": "3.7.2",
-        "name": "siyuan-plugin-copilot",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README_en_US.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-copilot",
-        "version": "2.8.6"
-      },
-      "packageZipAssetId": 600821356,
-      "packageZipSha256": "ddcad597167a790813d6d0850cfabdf91454f0571a3d6d18144f4f3a90b910c1",
-      "repoRef": "v2.8.6",
-      "size": 625143,
-      "stars": 158,
-      "updated": "2026-09-30T12:00:25Z",
-      "url": "Achuan-2/siyuan-plugin-copilot@ddcad59"
     },
     {
       "installSize": 623278,
