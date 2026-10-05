@@ -1,6 +1,422 @@
 {
   "repos": [
     {
+      "installSize": 948240,
+      "openIssues": 0,
+      "package": {
+        "author": "fu1fan",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "Use your local Codex CLI to chat, reference notes and work with files in SiYuan.",
+          "zh-CN": "在思源侧边栏使用本机 Codex，引用笔记、阅读附件并处理本地项目。"
+        },
+        "displayName": {
+          "default": "SiYuan Codex",
+          "zh-CN": "思源 Codex"
+        },
+        "frontends": [
+          "desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "Codex",
+          "Agent",
+          "MCP",
+          "AI"
+        ],
+        "minAppVersion": "3.8.6",
+        "name": "siyuan-codex",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/fu1fan/siyuan-codex",
+        "version": "0.4.8"
+      },
+      "packageZipAssetId": 611922955,
+      "packageZipSha256": "661064f51e62282c8be15064b766206d3077417be15c86946831d4135cc91080",
+      "repoRef": "v0.4.8",
+      "size": 479325,
+      "stars": 0,
+      "updated": "2026-10-05T08:07:18Z",
+      "url": "fu1fan/siyuan-codex@661064f"
+    },
+    {
+      "installSize": 2826636,
+      "openIssues": 1,
+      "package": {
+        "author": "wmy2981",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "Open and edit the text files referenced by notes in a new tab",
+          "zh-CN": "在新建页签中打开并编辑笔记引用的文本文件"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Editor",
+          "zh-CN": "文本编辑器"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/wmy2981"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "editor",
+          "code",
+          "text",
+          "assets",
+          "编辑",
+          "文本",
+          "代码"
+        ],
+        "minAppVersion": "3.8.3",
+        "name": "editor-siyuan",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/wmy2981/editor-siyuan",
+        "version": "1.1.0"
+      },
+      "packageZipAssetId": 611849406,
+      "packageZipSha256": "401e9ea089d2216c8366e91739ff4bcdd8d9039ee63585db4aa76125b5fcf6e9",
+      "repoRef": "v1.1.0",
+      "size": 847019,
+      "stars": 1,
+      "updated": "2026-10-05T07:32:08Z",
+      "url": "wmy2981/editor-siyuan@401e9ea"
+    },
+    {
+      "installSize": 799080,
+      "openIssues": 0,
+      "package": {
+        "author": "wmy2981",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Insert native SiYuan buttons into documents, with a link or JavaScript action. It is friendly to AI agents.",
+          "zh-CN": "在文档中插入思源原生样式的按钮块，支持链接跳转或 JavaScript 操作。对 AI Agent 操作友好。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Button Block",
+          "zh-CN": "按钮块"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/wmy2981"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "按钮",
+          "button",
+          "自定义块",
+          "custom block",
+          "快捷操作",
+          "JavaScript"
+        ],
+        "minAppVersion": "3.8.6",
+        "name": "button-in-siyuan",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/wmy2981/button-in-siyuan",
+        "version": "0.2.3"
+      },
+      "packageZipAssetId": 611746514,
+      "packageZipSha256": "43db57cd94867e1498aba0c9b00952388bd8981eb968a7e2603073e18754c400",
+      "repoRef": "v0.2.3",
+      "size": 298189,
+      "stars": 1,
+      "updated": "2026-10-05T06:42:16Z",
+      "url": "wmy2981/button-in-siyuan@43db57c"
+    },
+    {
+      "installSize": 24853237,
+      "openIssues": 0,
+      "package": {
+        "author": "Emptylight",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Use Alibaba PuHui Sans as layout font",
+          "zh-CN": "使用阿里巴巴普惠体作为界面字体"
+        },
+        "displayName": {
+          "default": "Alibaba PuHui Sans font",
+          "zh-CN": "阿里巴巴普惠体"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://blog.emptylight.cn/sponsor"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "中文字体",
+          "English Font",
+          "Japanese Font"
+        ],
+        "minAppVersion": "3.8.6-alpha.2",
+        "name": "siyuan-ttf-Alibaba_PuHui_Sans",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/emptylight370/siyuan-ttf-Alibaba_PuHui_Sans",
+        "version": "0.10.1"
+      },
+      "packageZipAssetId": 611582183,
+      "packageZipSha256": "52439d0882521298e7d496ee51f78a02970c5e8ce4205599b7d2b0ac0fee6be6",
+      "repoRef": "0.10.1",
+      "size": 24689788,
+      "stars": 3,
+      "updated": "2026-10-05T05:18:19Z",
+      "url": "emptylight370/siyuan-ttf-Alibaba_PuHui_Sans@52439d0"
+    },
+    {
+      "installSize": 27605168,
+      "openIssues": 0,
+      "package": {
+        "author": "Emptylight",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Use NotoSans as layout font",
+          "zh-CN": "使用NotoSans作为界面字体"
+        },
+        "displayName": {
+          "default": "NotoSans font",
+          "zh-CN": "NotoSans字体"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://blog.emptylight.cn/sponsor"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "中文字体",
+          "English Font",
+          "Japanese Font"
+        ],
+        "minAppVersion": "3.8.6-alpha.2",
+        "name": "siyuan-ttf-Noto_Sans",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/emptylight370/siyuan-ttf-Noto_Sans",
+        "version": "0.5.1"
+      },
+      "packageZipAssetId": 611582055,
+      "packageZipSha256": "46c52facb8d46ec2b3d6345f8793b215f392110e999574973a4cb454361e683e",
+      "repoRef": "0.5.1",
+      "size": 27557050,
+      "stars": 0,
+      "updated": "2026-10-05T05:18:15Z",
+      "url": "emptylight370/siyuan-ttf-Noto_Sans@46c52fa"
+    },
+    {
+      "installSize": 24114392,
+      "openIssues": 5,
+      "package": {
+        "author": "mm-o",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "专业电子书阅读器，支持 EPUB/PDF/MOBI/TXT/在线小说；PDF 支持高亮、墨迹、形状、表单、印章、签名、图片、截图、搜索、打印、导出和回链，并提供标注笔记、词典、翻译、主题与书架管理",
+          "en_US": "Professional eBook reader for EPUB/PDF/MOBI/TXT/online novels. PDFs support highlights, ink, shapes, forms, stamps, signatures, images, screenshots, search, printing, export, and backlinks, with annotation notes, dictionary, translation, themes, and bookshelf management."
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiReader",
+          "zh_CN": "思阅"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://745201.xyz/pay.jpg"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "阅读",
+          "reading",
+          "电子书",
+          "ebook",
+          "pdf",
+          "epub",
+          "mobi",
+          "txt",
+          "azw3",
+          "fb2",
+          "cbz",
+          "sireader",
+          "思阅",
+          "标注",
+          "annotation",
+          "笔记",
+          "note",
+          "书签",
+          "bookmark",
+          "词典",
+          "dictionary",
+          "书源",
+          "book source",
+          "在线小说",
+          "online novel",
+          "主题",
+          "theme"
+        ],
+        "minAppVersion": "2.10.14",
+        "name": "siyuan-sireader",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/mm-o/siyuan-sireader",
+        "version": "2.5.1"
+      },
+      "packageZipAssetId": 611556747,
+      "packageZipSha256": "232aff8da0d2ac7d6eb6013994cb1dee462ea006919dd8ecc34d1090e4bf4465",
+      "repoRef": "v2.5.1",
+      "size": 7676803,
+      "stars": 33,
+      "updated": "2026-10-05T05:04:44Z",
+      "url": "mm-o/siyuan-sireader@232aff8"
+    },
+    {
+      "installSize": 261142,
+      "openIssues": 5,
+      "package": {
+        "author": "wmy2981",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A batch of independently toggleable desktop and mobile enhancements and optimized styles",
+          "zh-CN": "一批可独立启停的桌面端与移动端增强功能和优化后的样式"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Some Settings",
+          "zh-CN": "一些设置"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/wmy2981"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "settings",
+          "style",
+          "custom",
+          "ui",
+          "enhancement"
+        ],
+        "minAppVersion": "3.8.6-alpha.4",
+        "name": "some-settings-siyuan",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/wmy2981/some-settings-siyuan",
+        "version": "0.2.7"
+      },
+      "packageZipAssetId": 611390755,
+      "packageZipSha256": "d8dcf3287ae4f72ca1a04849129e605f42e20ab570cbc6749567873d63446057",
+      "repoRef": "v0.2.7",
+      "size": 98407,
+      "stars": 1,
+      "updated": "2026-10-05T03:41:57Z",
+      "url": "wmy2981/some-settings-siyuan@d8dcf32"
+    },
+    {
+      "installSize": 1812288,
+      "openIssues": 4,
+      "package": {
+        "author": "Szerelem0617",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "【🔓Permanently open source and free】 One-click index insertion, supports batch data management in attribute view.",
+          "zh_CN": "【🔓永久开源免费】 一键插入目录；创建数据库；批量管理数据。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Index Plugin",
+          "zh_CN": "目录插件"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "index",
+          "目录"
+        ],
+        "name": "siyuan-plugins-index",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/Szerelem0617/siyuan-plugins-index",
+        "version": "1.10.13"
+      },
+      "packageZipAssetId": 611358915,
+      "packageZipSha256": "46dbdb727bd46e5637b67a951587085a20f67039f895b7e040c19e2b83185846",
+      "repoRef": "v1.10.13",
+      "size": 723235,
+      "stars": 44,
+      "updated": "2026-10-05T03:23:27Z",
+      "url": "Szerelem0617/siyuan-plugins-index@46dbdb7"
+    },
+    {
       "installSize": 160103,
       "openIssues": 0,
       "package": {
@@ -215,57 +631,6 @@
       "stars": 2,
       "updated": "2026-10-04T09:53:41Z",
       "url": "wmy2981/ai-title-siyuan@4a5dfa2"
-    },
-    {
-      "installSize": 260524,
-      "openIssues": 4,
-      "package": {
-        "author": "wmy2981",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A batch of independently toggleable desktop and mobile enhancements and optimized styles",
-          "zh-CN": "一批可独立启停的桌面端与移动端增强功能和优化后的样式"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Some Settings",
-          "zh-CN": "一些设置"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/wmy2981"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "settings",
-          "style",
-          "custom",
-          "ui",
-          "enhancement"
-        ],
-        "minAppVersion": "3.8.6-alpha.4",
-        "name": "some-settings-siyuan",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/wmy2981/some-settings-siyuan",
-        "version": "0.2.6"
-      },
-      "packageZipAssetId": 609564935,
-      "packageZipSha256": "94b757b5c496c4e105dad0c8763d84eb092fa98b547bc24eb5a7d0013ee8914b",
-      "repoRef": "v0.2.6",
-      "size": 98135,
-      "stars": 1,
-      "updated": "2026-10-04T09:52:23Z",
-      "url": "wmy2981/some-settings-siyuan@94b757b"
     },
     {
       "installSize": 92797,
@@ -766,104 +1131,6 @@
       "stars": 0,
       "updated": "2026-10-04T04:28:17Z",
       "url": "simonshen97/siyuan-plugin-calendar-caldav@efe2375"
-    },
-    {
-      "installSize": 929821,
-      "openIssues": 0,
-      "package": {
-        "author": "fu1fan",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Use your local Codex CLI to chat, reference notes and work with files in SiYuan.",
-          "zh-CN": "在思源侧边栏使用本机 Codex，引用笔记、阅读附件并处理本地项目。"
-        },
-        "displayName": {
-          "default": "SiYuan Codex",
-          "zh-CN": "思源 Codex"
-        },
-        "frontends": [
-          "desktop"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "Codex",
-          "Agent",
-          "MCP",
-          "AI"
-        ],
-        "minAppVersion": "3.8.6",
-        "name": "siyuan-codex",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/fu1fan/siyuan-codex",
-        "version": "0.4.7"
-      },
-      "packageZipAssetId": 609088470,
-      "packageZipSha256": "c9cff163f9e2e6c471bf96cd06618b1766e4f6860f307c01afcaf4890a016406",
-      "repoRef": "v0.4.7",
-      "size": 474676,
-      "stars": 0,
-      "updated": "2026-10-04T04:04:11Z",
-      "url": "fu1fan/siyuan-codex@c9cff16"
-    },
-    {
-      "installSize": 795716,
-      "openIssues": 0,
-      "package": {
-        "author": "wmy2981",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Insert native SiYuan buttons into documents, with a link or JavaScript action. It is friendly to AI agents.",
-          "zh-CN": "在文档中插入思源原生样式的按钮块，支持链接跳转或 JavaScript 操作。对 AI Agent 操作友好。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Button Block",
-          "zh-CN": "按钮块"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/wmy2981"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "按钮",
-          "button",
-          "自定义块",
-          "custom block",
-          "快捷操作",
-          "JavaScript"
-        ],
-        "minAppVersion": "3.8.6",
-        "name": "button-in-siyuan",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/wmy2981/button-in-siyuan",
-        "version": "0.2.2"
-      },
-      "packageZipAssetId": 609084561,
-      "packageZipSha256": "427c5df34d036c57142f2333930a49aceb3f87a81449cb2b928ab123e3736745",
-      "repoRef": "v0.2.2",
-      "size": 297285,
-      "stars": 1,
-      "updated": "2026-10-04T04:00:30Z",
-      "url": "wmy2981/button-in-siyuan@427c5df"
     },
     {
       "installSize": 2710090,
@@ -2754,62 +3021,6 @@
       "url": "royc01/pinch@69d14d6"
     },
     {
-      "installSize": 392091,
-      "openIssues": 1,
-      "package": {
-        "author": "wmy2981",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Open and edit the text files referenced by notes in a new tab",
-          "zh-CN": "在新建页签中打开并编辑笔记引用的文本文件"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Editor",
-          "zh-CN": "文本编辑器"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/wmy2981"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "editor",
-          "code",
-          "text",
-          "assets",
-          "编辑",
-          "文本",
-          "代码"
-        ],
-        "minAppVersion": "3.8.3",
-        "name": "editor-siyuan",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/wmy2981/editor-siyuan",
-        "version": "1.0.2"
-      },
-      "packageZipAssetId": 600045650,
-      "packageZipSha256": "993961f3fc04a9606093ae3665284966627eb7f523adb50805c0f32e982acfa8",
-      "repoRef": "v1.0.2",
-      "size": 138146,
-      "stars": 1,
-      "updated": "2026-09-30T04:37:34Z",
-      "url": "wmy2981/editor-siyuan@993961f"
-    },
-    {
       "installSize": 1952052,
       "openIssues": 0,
       "package": {
@@ -2951,79 +3162,6 @@
       "stars": 7,
       "updated": "2026-09-29T18:11:23Z",
       "url": "frostime/sy-insert-time@5b09086"
-    },
-    {
-      "installSize": 24103728,
-      "openIssues": 3,
-      "package": {
-        "author": "mm-o",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "专业电子书阅读器，支持 EPUB/PDF/MOBI/TXT/在线小说；PDF 支持高亮、墨迹、形状、表单、印章、签名、图片、截图、搜索、打印、导出和回链，并提供标注笔记、词典、翻译、主题与书架管理",
-          "en_US": "Professional eBook reader for EPUB/PDF/MOBI/TXT/online novels. PDFs support highlights, ink, shapes, forms, stamps, signatures, images, screenshots, search, printing, export, and backlinks, with annotation notes, dictionary, translation, themes, and bookshelf management."
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiReader",
-          "zh_CN": "思阅"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://745201.xyz/pay.jpg"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "阅读",
-          "reading",
-          "电子书",
-          "ebook",
-          "pdf",
-          "epub",
-          "mobi",
-          "txt",
-          "azw3",
-          "fb2",
-          "cbz",
-          "sireader",
-          "思阅",
-          "标注",
-          "annotation",
-          "笔记",
-          "note",
-          "书签",
-          "bookmark",
-          "词典",
-          "dictionary",
-          "书源",
-          "book source",
-          "在线小说",
-          "online novel",
-          "主题",
-          "theme"
-        ],
-        "minAppVersion": "2.10.14",
-        "name": "siyuan-sireader",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/mm-o/siyuan-sireader",
-        "version": "2.5.0"
-      },
-      "packageZipAssetId": 598853348,
-      "packageZipSha256": "8fb06dd04e4f3ce8d44fb4ea396e2216abdc2769cc0600ef9110eead7dbd3abc",
-      "repoRef": "v2.5.0",
-      "size": 7673423,
-      "stars": 33,
-      "updated": "2026-09-29T17:58:07Z",
-      "url": "mm-o/siyuan-sireader@8fb06dd"
     },
     {
       "installSize": 2894058,
@@ -5042,48 +5180,6 @@
       "url": "itayvak/siyuan-pagertl@993a1c5"
     },
     {
-      "installSize": 1811889,
-      "openIssues": 4,
-      "package": {
-        "author": "Szerelem0617",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "【🔓Permanently open source and free】 One-click index insertion, supports batch data management in attribute view.",
-          "zh_CN": "【🔓永久开源免费】 一键插入目录；创建数据库；批量管理数据。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Index Plugin",
-          "zh_CN": "目录插件"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "index",
-          "目录"
-        ],
-        "name": "siyuan-plugins-index",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/Szerelem0617/siyuan-plugins-index",
-        "version": "1.10.12"
-      },
-      "packageZipAssetId": 575994916,
-      "packageZipSha256": "9ebe71b58e5ff8f77b4241c8a956b489d76f3fc74215efa32bfd76ba4024baf2",
-      "repoRef": "v1.10.12",
-      "size": 723077,
-      "stars": 43,
-      "updated": "2026-09-20T03:09:56Z",
-      "url": "Szerelem0617/siyuan-plugins-index@9ebe71b"
-    },
-    {
       "installSize": 219158,
       "openIssues": 1,
       "package": {
@@ -6532,102 +6628,6 @@
       "stars": 1,
       "updated": "2026-09-10T10:23:48Z",
       "url": "TCOTC/code-recognition@0ceab28"
-    },
-    {
-      "installSize": 27604246,
-      "openIssues": 1,
-      "package": {
-        "author": "Emptylight",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Use NotoSans as layout font",
-          "zh-CN": "使用NotoSans作为界面字体"
-        },
-        "displayName": {
-          "default": "NotoSans font",
-          "zh-CN": "NotoSans字体"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://blog.emptylight.cn/sponsor"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "中文字体",
-          "English Font",
-          "Japanese Font"
-        ],
-        "minAppVersion": "3.8.3-alpha.2",
-        "name": "siyuan-ttf-Noto_Sans",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/emptylight370/siyuan-ttf-Noto_Sans",
-        "version": "0.4.0"
-      },
-      "packageZipAssetId": 554762008,
-      "packageZipSha256": "f48b2866d137e3a7a5c07ca2ec7034ab7657f2253e94272e262bca327de6c997",
-      "repoRef": "0.4.0",
-      "size": 27556635,
-      "stars": 0,
-      "updated": "2026-09-10T10:12:31Z",
-      "url": "emptylight370/siyuan-ttf-Noto_Sans@f48b286"
-    },
-    {
-      "installSize": 24852314,
-      "openIssues": 1,
-      "package": {
-        "author": "Emptylight",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Use Alibaba PuHui Sans as layout font",
-          "zh-CN": "使用阿里巴巴普惠体作为界面字体"
-        },
-        "displayName": {
-          "default": "Alibaba PuHui Sans font",
-          "zh-CN": "阿里巴巴普惠体"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://blog.emptylight.cn/sponsor"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "中文字体",
-          "English Font",
-          "Japanese Font"
-        ],
-        "minAppVersion": "3.8.3-alpha.2",
-        "name": "siyuan-ttf-Alibaba_PuHui_Sans",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/emptylight370/siyuan-ttf-Alibaba_PuHui_Sans",
-        "version": "0.9.0"
-      },
-      "packageZipAssetId": 554761503,
-      "packageZipSha256": "16572350fd80c3630b415f7c472270f0abd3a46f114231bc618c3a307a1e616e",
-      "repoRef": "0.9.0",
-      "size": 24689340,
-      "stars": 3,
-      "updated": "2026-09-10T10:12:11Z",
-      "url": "emptylight370/siyuan-ttf-Alibaba_PuHui_Sans@1657235"
     },
     {
       "installSize": 339146,
