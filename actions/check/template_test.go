@@ -13,6 +13,7 @@ package main
 import (
 	"bytes"
 	"context"
+	"net/url"
 	"strings"
 	"testing"
 
@@ -73,10 +74,23 @@ func TestCheckResultTemplate(t *testing.T) {
 		"Latest Release: [v0.0.1](https://github.com/siyuan-note/plugin-sample/releases/tag/v0.0.1)",
 		"检测到以下问题，请在修复之后重新打包 `package.zip` 发布新的 Release，并将 Release 标记为 Latest。",
 		"We found the following issues. Please fix them, rebuild `package.zip`, publish a new Release, and mark that Release as Latest.",
+		// 安装入口只在检查通过且取到 Release 的仓库下给出，一行小字号，带上仓库路径、tag 与语种
+		"<sub>[在思源中试用本次 Release](https://siyuan-note.github.io/bazaar/install/?repo=siyuan-note/plugin-sample&tag=v0.0.1&lang=zh-CN)",
+		"[Try this Release in SiYuan](https://siyuan-note.github.io/bazaar/install/?repo=siyuan-note/plugin-sample&tag=v0.0.1&lang=en)</sub>",
 	} {
 		if !strings.Contains(out, want) {
 			t.Fatalf("output missing %q\n%s", want, out)
 		}
+	}
+	// 评论里不出现裸协议链接（GitHub 会剔掉），且入口只给通过的那一个仓库
+	if strings.Contains(out, "siyuan://") {
+		t.Fatalf("check-result comment should not carry a raw siyuan:// link\n%s", out)
+	}
+	if got := strings.Count(out, "siyuan-note.github.io/bazaar/install/"); got != 2 {
+		t.Fatalf("install entry should appear twice (zh + en), only for the passing repo, got %d\n%s", got, out)
+	}
+	if got := strings.Count(out, "<sub>"); got != 1 {
+		t.Fatalf("install entry should stay on one line, got %d sub blocks\n%s", got, out)
 	}
 	if strings.Contains(out, "@") {
 		t.Fatalf("check-result comment should not @ anyone\n%s", out)
@@ -285,6 +299,31 @@ func TestBazaarDocURL(t *testing.T) {
 	want := "https://github.com/siyuan-note/bazaar/blob/" + sha + "/README.md#changing-maintainers"
 	if got != want {
 		t.Fatalf("got %q, want %q", got, want)
+	}
+}
+
+func TestInstallPageURL(t *testing.T) {
+	base := installPageBaseURL
+	if got, want := installPageURL("a/b", "", ""), base+"?repo=a/b"; got != want {
+		t.Fatalf("got %q, want %q", got, want)
+	}
+	if got, want := installPageURL("a/b", "v1.0.0", "zh-CN"), base+"?repo=a/b&tag=v1.0.0&lang=zh-CN"; got != want {
+		t.Fatalf("got %q, want %q", got, want)
+	}
+	// 页面用 URLSearchParams 读取参数；查询串里的裸 `+` 会被解析成空格，必须转义
+	got := installPageURL("a/b", "v1.0.0+build", "en")
+	if want := base + "?repo=a/b&tag=v1.0.0%2Bbuild&lang=en"; got != want {
+		t.Fatalf("got %q, want %q", got, want)
+	}
+	if uri, err := url.Parse(got); err != nil {
+		t.Fatalf("install page url should parse: %v", err)
+	} else {
+		if tag := uri.Query().Get("tag"); tag != "v1.0.0+build" {
+			t.Fatalf("tag should survive the round trip, got %q", tag)
+		}
+		if lang := uri.Query().Get("lang"); lang != "en" {
+			t.Fatalf("lang should survive the round trip, got %q", lang)
+		}
 	}
 }
 

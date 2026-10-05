@@ -15,6 +15,7 @@ import (
 	"context"
 	_ "embed"
 	"fmt"
+	"net/url"
 	"os"
 	"os/signal"
 	"path/filepath"
@@ -109,6 +110,28 @@ func bazaarDocURL(bazaarHeadSHA, file, anchor string) string {
 	return fmt.Sprintf("https://github.com/%s/blob/%s/%s#%s", repo, bazaarHeadSHA, file, anchor)
 }
 
+// installPageBaseURL 是集市「一键安装」跳板页的固定地址（GitHub Pages，见 .github/workflows/pages.yml）。
+//
+// 评论里必须给出 https 链接：GitHub 会剔除非 http(s) / mailto / xmpp 协议的链接目标，直接写
+// `siyuan://` 只会剩下纯文本。页面负责把点击转成协议跳转，并按 `lang` 渲染纯中文或纯英文文案，
+// 页面里的插件名与参数校验见 pages/install/index.html（更换插件时同步修改那里）。
+const installPageBaseURL = "https://siyuan-note.github.io/bazaar/install/"
+
+// installPageURL 生成跳板页链接，仓库路径、tag 与语种作为查询参数。
+//
+// tag 需要转义：查询串里的裸 `+` 会被解析成空格，形如 `v1.0.0+build` 的 tag 会被改坏。
+// repo 不转义（GitHub 的 owner/repo 字符集不含 `&`、`#` 等会破坏查询串的字符）。
+func installPageURL(repo, tag, lang string) string {
+	uri := installPageBaseURL + "?repo=" + repo
+	if tag != "" {
+		uri += "&tag=" + url.QueryEscape(tag)
+	}
+	if lang != "" {
+		uri += "&lang=" + url.QueryEscape(lang)
+	}
+	return uri
+}
+
 func parseCheckResultTemplate(ctx context.Context) (*template.Template, error) {
 	bazaarHeadSHA, err := gitRevParseHEAD(ctx, BAZAAR_HEAD_PATH)
 	if err != nil {
@@ -120,6 +143,7 @@ func parseCheckResultTemplate(ctx context.Context) (*template.Template, error) {
 		"bazaarDocURL": func(file, anchor string) string {
 			return bazaarDocURL(bazaarHeadSHA, file, anchor)
 		},
+		"installPageURL": installPageURL,
 	}).Parse(checkResultTemplateText)
 }
 

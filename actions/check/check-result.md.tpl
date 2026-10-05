@@ -110,6 +110,10 @@ We found the following issues. Please fix them, rebuild `package.zip`, publish a
 检查通过。
 
 Check passed.
+  {{- if .Release.URL }}
+
+<sub>[在思源中试用本次 Release]({{ installPageURL .RepoInfo.Path .Release.Tag "zh-CN" }}) / [Try this Release in SiYuan]({{ installPageURL .RepoInfo.Path .Release.Tag "en" }})</sub>
+  {{- end }}
 
 ---
   {{- end }}
