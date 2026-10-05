@@ -1,6 +1,119 @@
 {
   "repos": [
     {
+      "installSize": 167893,
+      "openIssues": 0,
+      "package": {
+        "author": "Misuzu2027",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "description": {
+          "default": "Replace the native image viewer with a floating pin preview, including database images.",
+          "zh_CN": "替代原生图片查看功能，支持文档和数据库图片的悬浮预览"
+        },
+        "displayName": {
+          "default": "Image Pin Preview",
+          "zh_CN": "图片悬浮预览"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "image",
+          "preview",
+          "pin",
+          "float",
+          "图片",
+          "预览",
+          "悬浮"
+        ],
+        "minAppVersion": "3.0.12",
+        "name": "syplugin-image-pin-preview",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/Misuzu2027/syplugin-image-pin-preview",
+        "version": "0.0.14"
+      },
+      "packageZipAssetId": 613342953,
+      "packageZipSha256": "0275b0c6707481b9369fc7c5efaa37257274d17b2708a395ca5e81c567a0abed",
+      "repoRef": "v0.0.14",
+      "size": 79435,
+      "stars": 1,
+      "updated": "2026-10-05T18:25:02Z",
+      "url": "Misuzu2027/syplugin-image-pin-preview@0275b0c"
+    },
+    {
+      "installSize": 511796,
+      "openIssues": 2,
+      "package": {
+        "author": "notesynchelper",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "从微信同步到思源笔记，支持文字、图片、聊天记录、文章"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "笔记同步助手"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "docker"
+        ],
+        "keywords": [
+          "wechat",
+          "template",
+          "企微",
+          "模板",
+          "微信",
+          "速记",
+          "剪藏",
+          "搜集",
+          "日记",
+          "闪念",
+          "memo",
+          "备忘",
+          "公众号",
+          "小红书",
+          "得到"
+        ],
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-notehelper",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/notesynchelper/siyuan-notehelper",
+        "version": "1.8.40"
+      },
+      "packageZipAssetId": 613310716,
+      "packageZipSha256": "5519d3e728c66978c70205ad8fc570ce61bf2395ba577e5696e3385c374c0756",
+      "repoRef": "v1.8.40",
+      "size": 205944,
+      "stars": 2,
+      "updated": "2026-10-05T18:09:12Z",
+      "url": "notesynchelper/siyuan-notehelper@5519d3e"
+    },
+    {
       "installSize": 133799,
       "openIssues": 3,
       "package": {
@@ -1013,63 +1126,6 @@
       "stars": 44,
       "updated": "2026-10-05T03:23:27Z",
       "url": "Szerelem0617/siyuan-plugins-index@46dbdb7"
-    },
-    {
-      "installSize": 160103,
-      "openIssues": 0,
-      "package": {
-        "author": "Misuzu2027",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "description": {
-          "default": "Replace the native image viewer with a floating pin preview, including database images.",
-          "zh_CN": "替代原生图片查看功能，支持文档和数据库图片的悬浮预览"
-        },
-        "displayName": {
-          "default": "Image Pin Preview",
-          "zh_CN": "图片悬浮预览"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "image",
-          "preview",
-          "pin",
-          "float",
-          "图片",
-          "预览",
-          "悬浮"
-        ],
-        "minAppVersion": "3.0.12",
-        "name": "syplugin-image-pin-preview",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/Misuzu2027/syplugin-image-pin-preview",
-        "version": "0.0.13"
-      },
-      "packageZipAssetId": 610492846,
-      "packageZipSha256": "f30fe441613a4628549d502228a8ecc3f7e712c396e4746d8d8b23ac20ab748a",
-      "repoRef": "v0.0.13",
-      "size": 77432,
-      "stars": 1,
-      "updated": "2026-10-04T19:30:33Z",
-      "url": "Misuzu2027/syplugin-image-pin-preview@f30fe44"
     },
     {
       "installSize": 1537385,
@@ -2583,62 +2639,6 @@
       "stars": 0,
       "updated": "2026-10-02T02:30:18Z",
       "url": "famotime/siyuan-assets-manager@384bb7a"
-    },
-    {
-      "installSize": 511796,
-      "openIssues": 2,
-      "package": {
-        "author": "notesynchelper",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "从微信同步到思源笔记，支持文字、图片、聊天记录、文章"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "笔记同步助手"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "docker"
-        ],
-        "keywords": [
-          "wechat",
-          "template",
-          "企微",
-          "模板",
-          "微信",
-          "速记",
-          "剪藏",
-          "搜集",
-          "日记",
-          "闪念",
-          "memo",
-          "备忘",
-          "公众号",
-          "小红书",
-          "得到"
-        ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-notehelper",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/notesynchelper/siyuan-notehelper",
-        "version": "1.8.39"
-      },
-      "packageZipAssetId": 603624969,
-      "packageZipSha256": "a84773ac2250ad333d0caa267000e9a967552c89808431f8195573cc4ad9fa28",
-      "repoRef": "v1.8.39",
-      "size": 205943,
-      "stars": 2,
-      "updated": "2026-10-01T16:09:23Z",
-      "url": "notesynchelper/siyuan-notehelper@a84773a"
     },
     {
       "installSize": 410363,
