@@ -26,6 +26,22 @@
 
 PR Check 只验证结构与引用关系；检查通过后仍须人工审阅弃用结论、原因及替代包。合并后 Stage 会在不访问包仓库 API 的情况下重建五类索引。
 
+## 巡检已归档仓库
+
+作者归档仓库后不会再发 Release，Stage 的「asset id 未变」快路径与 `deprecated.json` 变更路径都不会再打仓库 API，因此「仓库已归档」不会自动反映到集市里，需要偶尔人工巡检。
+
+1. 在仓库根目录运行 `go run ./actions/audit-archived -out report.md`（需 GitHub 令牌；未设置 `GITHUB_TOKEN` / `PAT` 时回退到 `gh auth token`，已登录 `gh` 即可直接跑）
+2. 查看报告「已归档但未登记弃用」表中的条目，逐个核实是否确已停止维护
+3. 需要弃用时按上方「弃用集市包」流程提独立 PR，只改 `deprecated.json`；`reason` 写明作者已归档仓库并停止维护
+4. 报告中的「仓库不存在」按「下架集市包」流程处理；「清单条目 owner/repo 已过期」只是仓库改名，GitHub 会自动重定向，不影响 PR Check，必要时单独提 PR 修正列表行
+
+注意：
+
+- 归档时间只能取自 GraphQL 的 `Repository.archivedAt`；REST 的 `archived_at` 已被 GitHub 废弃，`go-github` v89 中已无该字段，故脚本必须走 GraphQL
+- GraphQL 把「仓库不存在」与「无权查看（私有）」都返回为 `null`，令牌看不到的私有仓库会被误报为不存在
+- 每个条目约消耗 1 个 GraphQL 配额点，按 80 个一批提交
+- 该脚本不参与任何 CI 工作流，不会自动修改 `deprecated.json`；Windows 上不要用 `> report.md` 重定向，改用 `-out`，否则 PowerShell 会按控制台代码页重编码并损毁中文
+
 ## 下架集市包
 
 维护者主动下架集市包时，**先开 issue，再直接提交到 `main`**。不要开 PR。作者自己提的下架 PR 不走本流程。
