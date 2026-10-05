@@ -14,7 +14,10 @@ package main
 audit-archived 是供维护者偶尔手工运行的巡检工具，不参与任何 CI 工作流。
 
 用途：找出「仍在集市清单中、但仓库已被作者归档且尚未登记弃用」的包，并顺带列出仓库不存在、
-被 GitHub 禁用、以及清单里 owner/repo 已过期（仓库改名）的条目。
+被 GitHub 禁用、清单里 owner/repo 已过期（仓库改名），以及反向的「已登记弃用但仓库已不再归档」。
+
+归档可以被作者取消，取消后作者可能已恢复维护，此时原弃用条目就陈旧了，应复核是否删除。
+归档状态只是当下的一次快照，本工具不记录历史，也不能当作长期结论。
 
 用法（在仓库根目录执行；进度与告警走 stderr，不污染报告）：
 
@@ -74,6 +77,7 @@ type repoState struct {
 	IsArchived    bool
 	ArchivedAt    string
 	IsDisabled    bool
+	PushedAt      string // 最后一次推送时间（UTC），用于判断取消归档后是否已恢复维护
 }
 
 // graphQLRepo 对应 GraphQL 查询中的一个 repository 节点；仓库不存在或无权查看时为 null。
@@ -82,6 +86,7 @@ type graphQLRepo struct {
 	IsArchived    bool    `json:"isArchived"`
 	ArchivedAt    *string `json:"archivedAt"`
 	IsDisabled    bool    `json:"isDisabled"`
+	PushedAt      *string `json:"pushedAt"`
 }
 
 func main() {
@@ -206,7 +211,7 @@ func queryBatch(ctx context.Context, client *github.Client, chunk []listedRepo) 
 			return nil, fmt.Errorf("invalid owner/repo [%s]", item.OwnerRepo)
 		}
 		fmt.Fprintf(&query,
-			"  r%d: repository(owner: %s, name: %s) { nameWithOwner isArchived archivedAt isDisabled }\n",
+			"  r%d: repository(owner: %s, name: %s) { nameWithOwner isArchived archivedAt isDisabled pushedAt }\n",
 			i, strconv.Quote(owner), strconv.Quote(name))
 	}
 	query.WriteString("}")
@@ -249,6 +254,9 @@ func queryBatch(ctx context.Context, client *github.Client, chunk []listedRepo) 
 			if node.ArchivedAt != nil {
 				state.ArchivedAt = *node.ArchivedAt
 			}
+			if node.PushedAt != nil {
+				state.PushedAt = *node.PushedAt
+			}
 		}
 		states = append(states, state)
 	}
@@ -264,7 +272,7 @@ func writeReport(w io.Writer, states []repoState) {
 		return strings.Compare(strings.ToLower(a.OwnerRepo), strings.ToLower(b.OwnerRepo))
 	})
 
-	var archivedNotDeprecated, archivedDeprecated, disabledNotDeprecated, missing, renamed []repoState
+	var archivedNotDeprecated, archivedDeprecated, unarchivedDeprecated, disabledNotDeprecated, missing, renamed []repoState
 	deprecatedCount := 0
 	for _, state := range states {
 		if state.Deprecated {
@@ -282,7 +290,10 @@ func writeReport(w io.Writer, states []repoState) {
 			archivedNotDeprecated = append(archivedNotDeprecated, state)
 		case state.IsArchived && state.Deprecated:
 			archivedDeprecated = append(archivedDeprecated, state)
-		case state.IsDisabled && !state.Deprecated:
+		case state.Deprecated:
+			// 已登记弃用但仓库当前未归档：作者可能已取消归档并恢复维护，条目可能已陈旧。
+			unarchivedDeprecated = append(unarchivedDeprecated, state)
+		case state.IsDisabled:
 			disabledNotDeprecated = append(disabledNotDeprecated, state)
 		}
 	}
@@ -294,6 +305,7 @@ func writeReport(w io.Writer, states []repoState) {
 	fmt.Fprintf(w, "- 仓库可访问：%d\n", len(states)-len(missing))
 	fmt.Fprintf(w, "- 已归档：%d（未登记弃用 %d / 已登记弃用 %d）\n",
 		len(archivedNotDeprecated)+len(archivedDeprecated), len(archivedNotDeprecated), len(archivedDeprecated))
+	fmt.Fprintf(w, "- 已登记弃用但仓库未归档：%d\n", len(unarchivedDeprecated))
 	fmt.Fprintf(w, "- 已禁用且未登记弃用：%d\n", len(disabledNotDeprecated))
 	fmt.Fprintf(w, "- 仓库不存在：%d\n", len(missing))
 	fmt.Fprintf(w, "- 清单条目 owner/repo 已过期（仓库改名）：%d\n", len(renamed))
@@ -303,6 +315,7 @@ func writeReport(w io.Writer, states []repoState) {
 		"需要核实是否确已停止维护；确认后按 AGENTS.md「弃用集市包」流程提独立 PR，只改 `deprecated.json`。")
 	writeArchivedSection(w, "已归档且已登记弃用", archivedDeprecated,
 		"注册表与 GitHub 状态一致，无需处理。")
+	writeUnarchivedSection(w, unarchivedDeprecated)
 	writeArchivedSection(w, "已禁用但未登记弃用", disabledNotDeprecated,
 		"仓库被 GitHub 禁用（多为违反服务条款），建议核实后决定是否弃用或下架。")
 
@@ -349,24 +362,58 @@ func writeArchivedSection(w io.Writer, title string, states []repoState, note st
 	fmt.Fprintln(w, "| --- | --- | --- | --- |")
 	for _, state := range states {
 		fmt.Fprintf(w, "| %s | `%s` | %s | %s |\n",
-			state.PackageType.Plural(), state.OwnerRepo, formatArchivedAt(state.ArchivedAt), stateNote(state))
+			state.PackageType.Plural(), state.OwnerRepo, formatTime(state.ArchivedAt), stateNote(state))
 	}
 	fmt.Fprintln(w)
 }
 
-// stateNote 给归档/禁用条目补一句备注：禁用条目没有归档时间，改名条目给出新名。
-func stateNote(state repoState) string {
-	if state.ArchivedAt == "" {
-		return "已禁用，未归档 / Disabled, not archived"
+// writeUnarchivedSection 输出「已登记弃用但仓库已不再归档」一节。
+// 归档可被作者取消，取消后仓库可能已恢复维护，对应的弃用条目就该复核是否删除。
+// 这一节包含因其它原因（如不兼容新版本）而弃用的包，属正常情况，需要人工看 `reason` 判定。
+func writeUnarchivedSection(w io.Writer, states []repoState) {
+	fmt.Fprintf(w, "## 已登记弃用但仓库未归档（%d）\n\n", len(states))
+	if len(states) == 0 {
+		fmt.Fprintln(w, "无。")
+		fmt.Fprintln(w)
+		return
 	}
-	if state.NameWithOwner != "" && !strings.EqualFold(state.NameWithOwner, state.OwnerRepo) {
-		return "已改名 → `" + state.NameWithOwner + "`"
+	fmt.Fprintln(w, "归档状态可被作者取消，本节列出所有「已登记弃用、但仓库当前未归档」的包。")
+	fmt.Fprintln(w, "因其它原因（如不兼容新版本）而弃用的包出现在这里是正常的；需要处理的是 `reason` 声称")
+	fmt.Fprintln(w, "「作者已归档仓库并停止维护」、而仓库现已恢复且「最后推送」较近的条目——")
+	fmt.Fprintln(w, "应按 AGENTS.md「弃用集市包」流程提独立 PR 删除对应注册表条目。")
+	fmt.Fprintln(w)
+	fmt.Fprintln(w, "| 类型 / Type | 包 / Package | 仓库状态 / Repo state | 最后推送（UTC） / Last push | 备注 / Note |")
+	fmt.Fprintln(w, "| --- | --- | --- | --- | --- |")
+	for _, state := range states {
+		fmt.Fprintf(w, "| %s | `%s` | %s | %s | %s |\n",
+			state.PackageType.Plural(), state.OwnerRepo, repoStateLabel(state), formatTime(state.PushedAt), stateNote(state))
 	}
-	return ""
+	fmt.Fprintln(w)
 }
 
-// formatArchivedAt 把 RFC3339 时间压缩成分钟精度，便于阅读与 diff。
-func formatArchivedAt(raw string) string {
+// repoStateLabel 描述「未归档」条目在 GitHub 上的当前状态。
+func repoStateLabel(state repoState) string {
+	if state.IsDisabled {
+		return "已被禁用 / Disabled"
+	}
+	return "正常 / Active"
+}
+
+// stateNote 补一句备注：仓库改名时给出新名，被 GitHub 禁用时标出。
+// 不能以「无归档时间」推断禁用——未归档的活跃仓库同样没有归档时间。
+func stateNote(state repoState) string {
+	notes := make([]string, 0, 2)
+	if state.NameWithOwner != "" && !strings.EqualFold(state.NameWithOwner, state.OwnerRepo) {
+		notes = append(notes, "已改名 → `"+state.NameWithOwner+"`")
+	}
+	if state.IsDisabled {
+		notes = append(notes, "仓库已被 GitHub 禁用 / Disabled")
+	}
+	return strings.Join(notes, "；")
+}
+
+// formatTime 把 RFC3339 时间压缩成分钟精度，便于阅读与 diff。
+func formatTime(raw string) string {
 	if raw == "" {
 		return "-"
 	}
