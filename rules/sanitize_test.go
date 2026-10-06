@@ -85,6 +85,27 @@ func TestClearEmptyFundingOmitsEmptyFundingJSON(t *testing.T) {
 	}
 }
 
+// TestPackageSettingsWindowJSON 确保 settingsWindow 随 stage 索引落盘，且未声明时不写出零值。
+func TestPackageSettingsWindowJSON(t *testing.T) {
+	pkg := Package{Name: "demo", Author: "a", URL: "https://github.com/a/b", Version: "0.0.1"}
+	data, err := json.Marshal(pkg)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if string(data) != `{"name":"demo","author":"a","url":"https://github.com/a/b","version":"0.0.1"}` {
+		t.Fatalf("zero settingsWindow should be omitted, got %s", data)
+	}
+
+	pkg.SettingsWindow = true
+	data, err = json.Marshal(pkg)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if string(data) != `{"name":"demo","author":"a","url":"https://github.com/a/b","version":"0.0.1","settingsWindow":true}` {
+		t.Fatalf("unexpected json: %s", data)
+	}
+}
+
 func TestClearRedundantLocales(t *testing.T) {
 	t.Run("nil package", func(t *testing.T) {
 		ClearRedundantLocales(nil)
@@ -161,8 +182,16 @@ func TestPackageForPublicIndex(t *testing.T) {
 			"zh-CN":   "Deprecated",
 		},
 		Alternatives: []string{"replacement"},
+		// settingsWindow 不进公开索引，但必须保留在 stage/*.json 明细里
+		SettingsWindow: true,
 	}
 	out := PackageForPublicIndex(src)
+	if out.SettingsWindow {
+		t.Fatalf("expected settingsWindow stripped from the public copy, got %#v", out)
+	}
+	if !src.SettingsWindow {
+		t.Fatal("expected source settingsWindow unchanged")
+	}
 	if _, ok := out.DisplayName["zh-CN"]; ok {
 		t.Fatalf("expected zh-CN removed in public copy, got %#v", out.DisplayName)
 	}

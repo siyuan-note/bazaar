@@ -346,6 +346,7 @@ func TestManifestKeysByPackageType(t *testing.T) {
 		{TypeTheme, "disabledInPublish", "disabledInPublish"},
 		{TypeTheme, "publish", "publish"},
 		{TypeTheme, "bootAppearances", "bootAppearances"},
+		{TypeTheme, "settingsWindow", "settingsWindow"},
 		{TypeIcon, "frontends", "frontends"},
 		{TypeTemplate, "kernels", "kernels"},
 		{TypeWidget, "modes", "modes"},
@@ -370,6 +371,7 @@ func TestManifestKeysByPackageType(t *testing.T) {
 		{TypePlugin, "disabledInPublish"},
 		{TypePlugin, "publish"},
 		{TypePlugin, "bootAppearances"},
+		{TypePlugin, "settingsWindow"},
 		{TypeTheme, "modes"},
 		{TypeTheme, "frontends"},
 		{TypeIcon, "keywords"},
@@ -558,7 +560,8 @@ func TestCheckOptionalTypedFields(t *testing.T) {
   "backends": ["all"],
   "frontends": ["all"],
   "bootAppearances": ["sunrise", "night-sky"],
-  "disabledInPublish": false`)
+  "disabledInPublish": false,
+  "settingsWindow": true`)
 	if r := check(); !r.OK {
 		t.Fatalf("expected OK for valid optional fields, issues=%v", r.Issues)
 	}
@@ -591,6 +594,12 @@ func TestCheckOptionalTypedFields(t *testing.T) {
   "disabledInPublish": "true"`)
 	if r := check(); r.OK || !hasIssueMsg(r, "disabledInPublish") {
 		t.Fatalf("expected non-bool disabledInPublish to fail, issues=%v", r.Issues)
+	}
+
+	writePlugin(`,
+  "settingsWindow": "true"`)
+	if r := check(); r.OK || !hasIssueMsg(r, "settingsWindow") {
+		t.Fatalf("expected non-bool settingsWindow to fail, issues=%v", r.Issues)
 	}
 
 	writePlugin(`,

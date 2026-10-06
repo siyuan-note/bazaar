@@ -84,6 +84,9 @@ type Package struct {
 	BootAppearances   []string `json:"bootAppearances,omitempty"`
 	DisabledInPublish bool     `json:"disabledInPublish,omitempty"`
 
+	// SettingsWindow 声明插件可在独立设置窗口运行，内核 LoadSettingsWindowPetals 只加载声明为 true 的已启用插件。
+	SettingsWindow bool `json:"settingsWindow,omitempty"`
+
 	// 主题专用（仅 theme.json；见 kernel/bazaar/package.go Modes）
 
 	Modes []string `json:"modes,omitempty"`
@@ -97,8 +100,8 @@ var commonManifestKeys = []string{
 }
 
 var allowedManifestKeys = map[PackageType]Set{
-	TypePlugin:   toKeySet(commonManifestKeys, "backends", "frontends", "kernels", "bootAppearances", "disabledInPublish", "publish"), // 插件专用字段见 kernel/bazaar/plugin.go 与 kernel/model/plugin_publish.go（兼容性、发布禁用与实际发布声明）。
-	TypeTheme:    toKeySet(commonManifestKeys, "modes", "frontends"),                                                                  // 主题专用字段：亮色 / 暗色模式和前端兼容性。
+	TypePlugin:   toKeySet(commonManifestKeys, "backends", "frontends", "kernels", "bootAppearances", "disabledInPublish", "settingsWindow", "publish"), // 插件专用字段见 kernel/bazaar/plugin.go、kernel/model/plugin_publish.go（兼容性、发布禁用与实际发布声明）与 kernel/model/plugin.go LoadSettingsWindowPetals（设置窗口运行声明）。
+	TypeTheme:    toKeySet(commonManifestKeys, "modes", "frontends"),                                                                                    // 主题专用字段：亮色 / 暗色模式和前端兼容性。
 	TypeIcon:     toKeySet(commonManifestKeys),
 	TypeTemplate: toKeySet(commonManifestKeys),
 	TypeWidget:   toKeySet(commonManifestKeys),
@@ -219,6 +222,9 @@ func PackageForPublicIndex(pkg Package) Package {
 	out.Readme = cloneLocaleStrings(pkg.Readme)
 	out.DeprecatedReason = cloneLocaleStrings(pkg.DeprecatedReason)
 	out.Alternatives = slices.Clone(pkg.Alternatives)
+	// settingsWindow 跟随内核现状暂不进公开索引（kernel/api/bazaar.go 的 bazaarPackage() 尚未透传该字段），
+	// 只保留在 stage/*.json 明细中；内核开始读取后删除本行即可。
+	out.SettingsWindow = false
 	ClearRedundantLocales(&out)
 	return out
 }
@@ -941,7 +947,7 @@ func checkCommonOptionalTypedFields(m map[string]any) []Issue {
 
 // checkPluginOptionalTypedFields 校验插件专用可选字段。
 // backends / frontends / kernels（[]string，含 all 互斥；集市开发示例仓库豁免）、bootAppearances、
-// disabledInPublish（bool）、publish（发布服务资源与公开数据声明）。
+// disabledInPublish / settingsWindow（bool）、publish（发布服务资源与公开数据声明）。
 func checkPluginOptionalTypedFields(m map[string]any, in ManifestInput) []Issue {
 	var issues []Issue
 	allowAllMix := isBazaarSampleRepo(in.Owner, in.Repo)
@@ -950,12 +956,14 @@ func checkPluginOptionalTypedFields(m map[string]any, in ManifestInput) []Issue 
 	}
 	issues = append(issues, checkBootAppearances(m)...)
 	issues = append(issues, checkPluginPublish(m, in)...)
-	if raw, ok := m["disabledInPublish"]; ok {
-		if _, isBool := raw.(bool); !isBool {
-			issues = append(issues, issue(
-				"若填写 `disabledInPublish`，值必须是布尔值 `true` 或 `false`（不要用字符串 `\"true\"`）。不需要时请删除该字段。",
-				"If you include `disabledInPublish`, it must be a boolean `true` or `false` (not the string `\"true\"`). If you don't need it, please delete the field.",
-			))
+	for _, key := range []string{"disabledInPublish", "settingsWindow"} {
+		if raw, ok := m[key]; ok {
+			if _, isBool := raw.(bool); !isBool {
+				issues = append(issues, issue(
+					fmt.Sprintf("若填写 `%s`，值必须是布尔值 `true` 或 `false`（不要用字符串 `\"true\"`）。不需要时请删除该字段。", key),
+					fmt.Sprintf("If you include `%s`, it must be a boolean `true` or `false` (not the string `\"true\"`). If you don't need it, please delete the field.", key),
+				))
+			}
 		}
 	}
 	return issues
