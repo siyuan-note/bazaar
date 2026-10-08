@@ -1,6 +1,118 @@
 {
   "repos": [
     {
+      "installSize": 2012672,
+      "openIssues": 1,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A local-first SiYuan navigation and work-context platform with a switcher, widget workbench, desktop snippet lab, and floating-ball actions.",
+          "zh-CN": "本地优先的思源导航与工作上下文平台，连接切换器、工作台、桌面片段实验室和悬浮球。"
+        },
+        "displayName": {
+          "default": "LvSpeed Switch",
+          "zh-CN": "小驴雷切"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "页签切换",
+          "tab switch",
+          "标签页",
+          "快捷入口",
+          "speed switch",
+          "lv speed switch",
+          "小驴雷切"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "siyuan-speed-switch",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en-US": "README.en-US.md"
+        },
+        "url": "https://github.com/ai68298100/siyuan-speed-switch",
+        "version": "0.46.2"
+      },
+      "packageZipAssetId": 623199775,
+      "packageZipSha256": "68b1faf05a8a7ede1ca7b45027abfb2ca2cd781fd8da4cd162e82c37b829b422",
+      "repoRef": "v0.46.2",
+      "size": 571695,
+      "stars": 2,
+      "updated": "2026-10-08T22:29:03Z",
+      "url": "ai68298100/siyuan-speed-switch@68b1faf"
+    },
+    {
+      "installSize": 751146,
+      "openIssues": 3,
+      "package": {
+        "author": "vilifetime",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "一款思源笔记插件。双向同步 CalDAV 服务器（Radicale / Nextcloud / Baikal 等）的日历事件与待办任务，提供月/周/日日历视图、任务视图与编辑能力，并可将今日日程插入日记。",
+          "en_US": "Two-way sync calendar events and todos with CalDAV servers (Radicale / Nextcloud / Baikal). Month/Week/Day calendar views, task view, editor and daily note integration."
+        },
+        "displayName": {
+          "default": "CalDAV日历任务",
+          "en_US": "CalDAV Calendar &amp; Tasks"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop",
+          "mobile",
+          "browser-mobile"
+        ],
+        "funding": {
+          "custom": [
+            ""
+          ],
+          "github": "vilifetime"
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "caldav",
+          "calendar",
+          "todo",
+          "task",
+          "日历",
+          "任务",
+          "同步",
+          "radicale",
+          "nextcloud",
+          "baikal"
+        ],
+        "minAppVersion": "3.2.0",
+        "name": "siyuan-plugin-caldav-sync",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en_US": "README_en_US.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/vilifetime/siyuan-plugin-caldav-sync",
+        "version": "0.2.16"
+      },
+      "packageZipAssetId": 622512967,
+      "packageZipSha256": "8c70f5d31502910e3c00d4e3eebebe5cf126c1296ef25ad0004a3612619380e8",
+      "repoRef": "v0.2.16",
+      "size": 438623,
+      "stars": 4,
+      "updated": "2026-10-08T17:28:27Z",
+      "url": "vilifetime/siyuan-plugin-caldav-sync@8c70f5d"
+    },
+    {
       "installSize": 2856230,
       "openIssues": 0,
       "package": {
@@ -759,57 +871,6 @@
       "stars": 21,
       "updated": "2026-10-08T09:22:26Z",
       "url": "royc01/pinch@df967d0"
-    },
-    {
-      "installSize": 1973351,
-      "openIssues": 0,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A local-first SiYuan navigation workspace with live tab thumbnails, favorite folders, document card search, cross-plugin quick actions, sidebar mode, fullscreen, and mobile support.",
-          "zh-CN": "本地优先的思源导航工作区，支持页签缩略图、收藏夹、文档卡片搜索、跨插件快捷入口、侧边栏、全屏与手机端。"
-        },
-        "displayName": {
-          "default": "LvSpeed Switch",
-          "zh-CN": "小驴雷切"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "页签切换",
-          "tab switch",
-          "标签页",
-          "快捷入口",
-          "speed switch",
-          "lv speed switch",
-          "小驴雷切"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "siyuan-speed-switch",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en-US": "README.en-US.md"
-        },
-        "url": "https://github.com/ai68298100/siyuan-speed-switch",
-        "version": "0.45.0"
-      },
-      "packageZipAssetId": 621267569,
-      "packageZipSha256": "5e1f7d8656fe3d7faf4ac425952e609b3a318fe40c4e00c3184c1b80494d26bc",
-      "repoRef": "v0.45.0",
-      "size": 574023,
-      "stars": 2,
-      "updated": "2026-10-08T08:48:40Z",
-      "url": "ai68298100/siyuan-speed-switch@5e1f7d8"
     },
     {
       "installSize": 975611,
@@ -3318,67 +3379,6 @@
       "stars": 1,
       "updated": "2026-10-03T16:19:28Z",
       "url": "HaoCeans/siyuan-mood@ff1e848"
-    },
-    {
-      "installSize": 711889,
-      "openIssues": 2,
-      "package": {
-        "author": "vilifetime",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "一款思源笔记插件。双向同步 CalDAV 服务器（Radicale / Nextcloud / Baikal 等）的日历事件与待办任务，提供月/周/日日历视图、任务视图与编辑能力，并可将今日日程插入日记。",
-          "en_US": "Two-way sync calendar events and todos with CalDAV servers (Radicale / Nextcloud / Baikal). Month/Week/Day calendar views, task view, editor and daily note integration."
-        },
-        "displayName": {
-          "default": "CalDAV日历任务",
-          "en_US": "CalDAV Calendar &amp; Tasks"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop",
-          "mobile",
-          "browser-mobile"
-        ],
-        "funding": {
-          "custom": [
-            ""
-          ],
-          "github": "vilifetime"
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "caldav",
-          "calendar",
-          "todo",
-          "task",
-          "日历",
-          "任务",
-          "同步",
-          "radicale",
-          "nextcloud",
-          "baikal"
-        ],
-        "minAppVersion": "3.2.0",
-        "name": "siyuan-plugin-caldav-sync",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en_US": "README_en_US.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/vilifetime/siyuan-plugin-caldav-sync",
-        "version": "0.2.15"
-      },
-      "packageZipAssetId": 608038920,
-      "packageZipSha256": "7a2706a988dee86f26e40b20b3c0501c5e151b92712c34b9635ca299042f366d",
-      "repoRef": "v0.2.15",
-      "size": 425405,
-      "stars": 4,
-      "updated": "2026-10-03T15:27:40Z",
-      "url": "vilifetime/siyuan-plugin-caldav-sync@7a2706a"
     },
     {
       "installSize": 1781820,
