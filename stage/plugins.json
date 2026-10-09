@@ -1,6 +1,167 @@
 {
   "repos": [
     {
+      "installSize": 1011164,
+      "openIssues": 0,
+      "package": {
+        "author": "congsec",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "MeiDay is a cross-platform (Web, App) task and diary manager that delivers a smoother experience and stronger security.",
+          "zh-CN": "MeiDay 是一款跨端（Web、App）任务与日记管理工具，让记录更流畅，让数据更安全。"
+        },
+        "displayName": {
+          "default": "MeiDay",
+          "zh-CN": "MeiDay（每日任务日记管理）"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "github": "congsec"
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "任务管理",
+          "待办",
+          "在线",
+          "todo",
+          "task",
+          "meiday",
+          "日记",
+          "加密",
+          "隐私"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-plugin-meiday",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en-US": "README.EN.md"
+        },
+        "url": "https://github.com/CongSec/siyuan-plugin-meiday",
+        "version": "1.8.0"
+      },
+      "packageZipAssetId": 625853807,
+      "packageZipSha256": "9d534d7e702eb849e71978bfc744d80be18e666a046f4d2303ea3b1b7483969a",
+      "repoRef": "v1.8.0",
+      "size": 471507,
+      "stars": 4,
+      "updated": "2026-10-09T18:47:23Z",
+      "url": "CongSec/siyuan-plugin-meiday@9d534d7"
+    },
+    {
+      "installSize": 1206459,
+      "openIssues": 0,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Organize SiYuan clippings and imports into a document-attribute reading library with status triage and daily resurfacing. Optional AI enrichment is manual and requires a configured provider.",
+          "zh-CN": "小驴拾遗：把思源剪藏和导入文章整理为基于文档属性的读库，支持状态分拣和每日重浮；AI 富化可选且默认手动，需要配置模型。"
+        },
+        "displayName": {
+          "default": "Lv Glean",
+          "zh-CN": "小驴拾遗"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "剪藏",
+          "稍后读",
+          "阅读管理",
+          "收件箱",
+          "文章库",
+          "读库",
+          "收藏管理",
+          "网页剪藏",
+          "阅读队列",
+          "重浮",
+          "web clipper",
+          "read later",
+          "reading list",
+          "inbox"
+        ],
+        "minAppVersion": "3.8.5",
+        "name": "siyuan-glean",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en-US": "README.en-US.md"
+        },
+        "url": "https://github.com/ai68298100/siyuan-glean",
+        "version": "1.3.2"
+      },
+      "packageZipAssetId": 625680661,
+      "packageZipSha256": "ffc8cf51a06238db1ff243cc0a78e1e8345ff6472f9a2cf320418c6d5172e214",
+      "repoRef": "v1.3.2",
+      "size": 380247,
+      "stars": 1,
+      "updated": "2026-10-09T17:34:34Z",
+      "url": "ai68298100/siyuan-glean@ffc8cf5"
+    },
+    {
+      "installSize": 16979036,
+      "openIssues": 1,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
+          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Horizon",
+          "zh_CN": "任务管理器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "task",
+          "manager",
+          "filter"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-plugin-task-horizon",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
+        "version": "3.1.8"
+      },
+      "packageZipAssetId": 625655074,
+      "packageZipSha256": "18a35892be1a24ccab6208394e916de9e4d29b8fafea6172f46824ae0e8046b9",
+      "repoRef": "v3.1.8",
+      "size": 3463099,
+      "stars": 37,
+      "updated": "2026-10-09T17:24:34Z",
+      "url": "5kyfkr/siyuan-plugin-task-horizon@18a3589"
+    },
+    {
       "installSize": 1693190,
       "openIssues": 0,
       "package": {
@@ -331,64 +492,6 @@
       "url": "ai68298100/siyuan-checkin@5d3a3d3"
     },
     {
-      "installSize": 1198920,
-      "openIssues": 0,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Organize SiYuan clippings and imports into a document-attribute reading library with status triage and daily resurfacing. Optional AI enrichment is manual and requires a configured provider.",
-          "zh-CN": "小驴拾遗：把思源剪藏和导入文章整理为基于文档属性的读库，支持状态分拣和每日重浮；AI 富化可选且默认手动，需要配置模型。"
-        },
-        "displayName": {
-          "default": "Lv Glean",
-          "zh-CN": "小驴拾遗"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "剪藏",
-          "稍后读",
-          "阅读管理",
-          "收件箱",
-          "文章库",
-          "读库",
-          "收藏管理",
-          "网页剪藏",
-          "阅读队列",
-          "重浮",
-          "web clipper",
-          "read later",
-          "reading list",
-          "inbox"
-        ],
-        "minAppVersion": "3.8.5",
-        "name": "siyuan-glean",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en-US": "README.en-US.md"
-        },
-        "url": "https://github.com/ai68298100/siyuan-glean",
-        "version": "1.3.1"
-      },
-      "packageZipAssetId": 624159895,
-      "packageZipSha256": "e7419db06a5e3c293be5a763d118f2a85035d9a3ca1fa46411f5e8310b898c10",
-      "repoRef": "v1.3.1",
-      "size": 377958,
-      "stars": 1,
-      "updated": "2026-10-09T06:51:48Z",
-      "url": "ai68298100/siyuan-glean@e7419db"
-    },
-    {
       "installSize": 24162491,
       "openIssues": 5,
       "package": {
@@ -671,57 +774,6 @@
       "stars": 15,
       "updated": "2026-10-08T16:52:06Z",
       "url": "QYLexpired/Neo-Plus@172fcf0"
-    },
-    {
-      "installSize": 16936242,
-      "openIssues": 1,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
-          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Horizon",
-          "zh_CN": "任务管理器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "task",
-          "manager",
-          "filter"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-plugin-task-horizon",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "3.1.7"
-      },
-      "packageZipAssetId": 622397311,
-      "packageZipSha256": "fd1a17b983fee1f0263f10225050f736d6bcb960475fae297e217d7126ac6bad",
-      "repoRef": "v3.1.7",
-      "size": 3453319,
-      "stars": 37,
-      "updated": "2026-10-08T16:37:02Z",
-      "url": "5kyfkr/siyuan-plugin-task-horizon@fd1a17b"
     },
     {
       "installSize": 511796,
@@ -2521,58 +2573,6 @@
       "stars": 0,
       "updated": "2026-10-05T12:24:13Z",
       "url": "hongdongjie/siyuan-codex-sidebar@2c226fb"
-    },
-    {
-      "installSize": 980466,
-      "openIssues": 0,
-      "package": {
-        "author": "congsec",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "MeiDay is a cross-platform (Web, App) task and diary manager that delivers a smoother experience and stronger security.",
-          "zh-CN": "MeiDay 是一款跨端（Web、App）任务与日记管理工具，让记录更流畅，让数据更安全。"
-        },
-        "displayName": {
-          "default": "MeiDay",
-          "zh-CN": "MeiDay（每日任务日记管理）"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "github": "congsec"
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "任务管理",
-          "待办",
-          "在线",
-          "todo",
-          "task",
-          "meiday",
-          "日记",
-          "加密",
-          "隐私"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-plugin-meiday",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en-US": "README.EN.md"
-        },
-        "url": "https://github.com/CongSec/siyuan-plugin-meiday",
-        "version": "1.7.0"
-      },
-      "packageZipAssetId": 612506886,
-      "packageZipSha256": "d919d8f6560fd5d664df8d4ea599221f7cf29aed752d9da02eeb5b548d5a7674",
-      "repoRef": "v1.7.0",
-      "size": 461686,
-      "stars": 1,
-      "updated": "2026-10-05T12:23:42Z",
-      "url": "CongSec/siyuan-plugin-meiday@d919d8f"
     },
     {
       "installSize": 195878,
