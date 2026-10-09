@@ -14,12 +14,15 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"strings"
 )
 
 // ResolvePackageRoot 确定包根目录。
-// 正常情况下文件应直接在解压根目录；若 path 下恰好有一个子目录且根下没有文件，则将该子目录视为包根
-// （兼容「zip 内多包一层文件夹」的常见打包方式）。
-// 根下多个子目录且无文件时返回错误（无法唯一确定包根）。
+// 判定必须与思源内核 `kernel/bazaar/install.go` 保持一致：解压根下恰好只有一个条目且该条目是目录时，
+// 剥离这层包装目录（兼容「zip 内多包一层文件夹」的常见打包方式）；否则解压根本身就是包根。
+// 内核用 `os.ReadDir` 直接计数、不跳过任何条目，因此这里也不能跳过 macOS 压缩残留，
+// 否则会出现「集市检查通过、客户端安装失败」。
+// 根下多个并列子目录且没有任何文件时返回错误（无法唯一确定包根）。
 func ResolvePackageRoot(path string) (string, error) {
 	if path == "" {
 		return "", LocalizedErr(
@@ -56,19 +59,24 @@ func ResolvePackageRoot(path string) (string, error) {
 	var dirs []string
 	hasFile := false
 	for _, e := range entries {
-		name := e.Name()
-		if name == ".DS_Store" || name == "__MACOSX" {
-			continue
-		}
 		if e.IsDir() {
-			dirs = append(dirs, name)
+			dirs = append(dirs, e.Name())
 			continue
 		}
 		hasFile = true
 	}
 
-	if !hasFile && len(dirs) == 1 {
-		return filepath.Join(path, dirs[0]), nil
+	// 与内核一致：解压根下只有一个子目录时剥离该层。
+	if len(entries) == 1 && entries[0].IsDir() {
+		return filepath.Join(path, entries[0].Name()), nil
+	}
+	// 内核不跳过 macOS 残留，因此这层包装目录不会被剥离；提前给出原因，避免作者只看到「缺少必要文件」。
+	if residue, wrapper, ok := macOSArchiveResidue(entries); ok {
+		return "", LocalizedErr(
+			fmt.Sprintf("无法从 `package.zip` 确定包根目录：解压根下有 macOS 压缩残留（`%s`）和唯一的子目录 `%s`。思源内核按解压根下的实际条目判断包根、不会跳过这些残留，因此不会剥离 `%s` 这层，客户端安装时会找不到清单文件。请删除残留后重新打包（例如使用 `zip -r`，不要直接压缩整个文件夹）。", strings.Join(residue, "`、`"), wrapper, wrapper),
+			fmt.Sprintf("Couldn't determine the package root from `package.zip`: the extraction root has macOS archive residue (`%s`) next to a single subfolder `%s`. The SiYuan kernel determines the package root from the actual entries under the extraction root and doesn't skip this residue, so it won't strip `%s`, and the client will fail to find the manifest. Please remove the residue and repackage (e.g. use `zip -r` instead of compressing the whole folder).", strings.Join(residue, "`, `"), wrapper, wrapper),
+			nil,
+		)
 	}
 	if len(dirs) > 1 && !hasFile {
 		return "", LocalizedErr(
@@ -78,4 +86,33 @@ func ResolvePackageRoot(path string) (string, error) {
 		)
 	}
 	return path, nil
+}
+
+// macOSArchiveResidue 报告会干扰包根判定的 macOS 压缩残留。
+// 仅当剔除残留后解压根恰好只剩一个子目录、且没有任何普通文件时返回 ok，
+// 因为此时作者通常是想多包一层文件夹，而内核按实际条目计数不会剥离，两者结果不一致。
+// residue 为残留条目名，wrapper 为那个唯一的子目录名。
+func macOSArchiveResidue(entries []os.DirEntry) (residue []string, wrapper string, ok bool) {
+	dirs, files := 0, 0
+	for _, e := range entries {
+		if isMacOSArchiveResidue(e.Name()) {
+			residue = append(residue, e.Name())
+			continue
+		}
+		if e.IsDir() {
+			dirs++
+			wrapper = e.Name()
+			continue
+		}
+		files++
+	}
+	if len(residue) == 0 || dirs != 1 || files != 0 {
+		return nil, "", false
+	}
+	return residue, wrapper, true
+}
+
+// isMacOSArchiveResidue 判断名称是否为 macOS 压缩工具（Finder、ditto -c -k 等）写入的残留条目。
+func isMacOSArchiveResidue(name string) bool {
+	return name == ".DS_Store" || name == "__MACOSX"
 }
