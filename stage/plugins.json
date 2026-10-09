@@ -1,52 +1,226 @@
 {
   "repos": [
     {
-      "installSize": 105392,
-      "openIssues": 0,
+      "installSize": 706530,
+      "openIssues": 1,
       "package": {
-        "author": "Talyra42",
+        "author": "anarion80",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android"
+        ],
+        "description": {
+          "default": "A plugin that extracts oembed data from links and creates a Ghost CMS-style cards as bookmarks",
+          "pl_PL": "Wtyczka wyodrębniająca dane oembed z linków i tworząca karty w stylu Ghost CMS jako zakładki",
+          "zh_CN": "一个从链接中提取oembed数据并且创建一个Ghost CMS-style卡片作为书签的插件"
+        },
+        "displayName": {
+          "default": "Oembed and bookmark cards",
+          "pl_PL": "Oembed i karty zakładek",
+          "zh_CN": "Oembed和书签卡片"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://buymeacoffee.com/anarion"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "plugin",
+          "oembed",
+          "siyuan",
+          "twitter",
+          "metadata",
+          "bookmark",
+          "cards",
+          "link"
+        ],
+        "minAppVersion": "3.1.12",
+        "name": "siyuan-oembed",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "pl_PL": "README_pl_PL.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/anarion80/siyuan-oembed",
+        "version": "0.2.1"
+      },
+      "packageZipAssetId": 624435715,
+      "packageZipSha256": "1dc9bcff6d807a28f6982c7f0476184e606e7af2ff439942ce0361cc974b7668",
+      "repoRef": "v0.2.1",
+      "size": 278089,
+      "stars": 7,
+      "updated": "2026-10-09T08:59:18Z",
+      "url": "anarion80/siyuan-oembed@1dc9bcf"
+    },
+    {
+      "installSize": 2036389,
+      "openIssues": 1,
+      "package": {
+        "author": "ai68298100",
         "backends": [
           "all"
         ],
         "description": {
-          "default": "Highlight the specified lines of a code block, using the VitePress style line range syntax",
-          "zh_CN": "按照 VitePress 的行区间语法高亮代码块中指定的行"
+          "default": "A local-first SiYuan navigation and work-context platform with a switcher, widget workbench, desktop snippet lab, and floating-ball actions.",
+          "zh-CN": "本地优先的思源导航与工作上下文平台，连接切换器、工作台、桌面片段实验室和悬浮球。"
         },
         "displayName": {
-          "default": "Line Glow",
-          "zh_CN": "代码块行高亮"
+          "default": "LvSpeed Switch",
+          "zh-CN": "小驴雷切"
         },
         "frontends": [
-          "all"
+          "desktop",
+          "browser-desktop",
+          "desktop-window",
+          "mobile",
+          "browser-mobile"
         ],
         "icon": "icon.png",
         "keywords": [
-          "code",
-          "highlight",
-          "line",
-          "代码块",
-          "行高亮"
+          "页签切换",
+          "tab switch",
+          "标签页",
+          "快捷入口",
+          "speed switch",
+          "lv speed switch",
+          "小驴雷切"
         ],
-        "minAppVersion": "2.10.14",
-        "name": "siyuan-lineglow",
+        "minAppVersion": "3.8.0",
+        "name": "siyuan-speed-switch",
         "preview": "preview.png",
         "readme": {
           "default": "README.md",
-          "zh_CN": "README.zh-CN.md"
+          "en-US": "README.en-US.md"
         },
-        "url": "https://github.com/Talyra42/siyuan-lineglow",
-        "version": "1.1.0"
+        "url": "https://github.com/ai68298100/siyuan-speed-switch",
+        "version": "0.46.6"
       },
-      "packageZipAssetId": 623601024,
-      "packageZipSha256": "73698353acd25cbf034e655033b03673a6e8902c301adfdee25dbc20bcbda3e6",
-      "repoRef": "v1.1.0",
-      "size": 71479,
-      "stars": 0,
-      "updated": "2026-10-09T02:04:20Z",
-      "url": "Talyra42/siyuan-lineglow@7369835"
+      "packageZipAssetId": 624268434,
+      "packageZipSha256": "1a63aa1032840f2c75e689f2184c6bf3ec1fffbc5954eac911d84c2703de5096",
+      "repoRef": "v0.46.6",
+      "size": 576536,
+      "stars": 2,
+      "updated": "2026-10-09T07:38:05Z",
+      "url": "ai68298100/siyuan-speed-switch@1a63aa1"
     },
     {
-      "installSize": 1198037,
+      "installSize": 2607587,
+      "openIssues": 2,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A flexible habit and check-in workspace for SiYuan.",
+          "zh-CN": "支持分组、模板、统计与扩展集成的思源打卡工作台。"
+        },
+        "displayName": {
+          "default": "Lv Check-in",
+          "zh-CN": "小驴打卡"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "打卡",
+          "习惯",
+          "目标",
+          "小驴打卡",
+          "check-in",
+          "habit"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-checkin",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/ai68298100/siyuan-checkin",
+        "version": "18.17.1"
+      },
+      "packageZipAssetId": 624234355,
+      "packageZipSha256": "5d3a3d3ceeb9272f2797b9719672b505473ccafea092c9116cbd9f2068d1a213",
+      "repoRef": "v18.17.1",
+      "size": 871325,
+      "stars": 1,
+      "updated": "2026-10-09T07:27:32Z",
+      "url": "ai68298100/siyuan-checkin@5d3a3d3"
+    },
+    {
+      "installSize": 1680081,
+      "openIssues": 0,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Manage people and relationships in SiYuan: one person, one document, backed by a native database.",
+          "zh-CN": "在思源笔记里管理人脉与人际关系：一人一文档，数据库主干，关系图谱与生日提醒。"
+        },
+        "displayName": {
+          "default": "Lv Contacts",
+          "zh-CN": "小驴人脉"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "人脉",
+          "联系人",
+          "人际关系",
+          "CRM",
+          "通讯录",
+          "生日提醒",
+          "关系图谱",
+          "contacts",
+          "CRM",
+          "people"
+        ],
+        "minAppVersion": "3.8.5",
+        "name": "siyuan-contacts",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en-US": "README.en-US.md"
+        },
+        "url": "https://github.com/ai68298100/siyuan-contacts",
+        "version": "0.5.4"
+      },
+      "packageZipAssetId": 624230707,
+      "packageZipSha256": "0130fbc7eeeab99bbaa127e0a7e58392ba792e523648936d4b69227c9a39b5c3",
+      "repoRef": "v0.5.4",
+      "size": 527779,
+      "stars": 1,
+      "updated": "2026-10-09T07:25:50Z",
+      "url": "ai68298100/siyuan-contacts@0130fbc"
+    },
+    {
+      "installSize": 1198920,
       "openIssues": 0,
       "package": {
         "author": "ai68298100",
@@ -93,66 +267,188 @@
           "en-US": "README.en-US.md"
         },
         "url": "https://github.com/ai68298100/siyuan-glean",
-        "version": "1.3.0"
+        "version": "1.3.1"
       },
-      "packageZipAssetId": 623518543,
-      "packageZipSha256": "70f5d917183bd4b1e25550b89c1ce917e8f175b09b2525a8918789c8feba0e21",
-      "repoRef": "v1.3.0",
-      "size": 377582,
+      "packageZipAssetId": 624159895,
+      "packageZipSha256": "e7419db06a5e3c293be5a763d118f2a85035d9a3ca1fa46411f5e8310b898c10",
+      "repoRef": "v1.3.1",
+      "size": 377958,
       "stars": 1,
-      "updated": "2026-10-09T01:23:11Z",
-      "url": "ai68298100/siyuan-glean@70f5d91"
+      "updated": "2026-10-09T06:51:48Z",
+      "url": "ai68298100/siyuan-glean@e7419db"
     },
     {
-      "installSize": 2021073,
-      "openIssues": 1,
+      "installSize": 24162491,
+      "openIssues": 5,
       "package": {
-        "author": "ai68298100",
+        "author": "mm-o",
         "backends": [
           "all"
         ],
         "description": {
-          "default": "A local-first SiYuan navigation and work-context platform with a switcher, widget workbench, desktop snippet lab, and floating-ball actions.",
-          "zh-CN": "本地优先的思源导航与工作上下文平台，连接切换器、工作台、桌面片段实验室和悬浮球。"
+          "default": "专业电子书阅读器，支持 EPUB/PDF/MOBI/TXT/在线小说；PDF 支持高亮、墨迹、形状、表单、印章、签名、图片、截图、搜索、打印、导出和回链，并提供标注笔记、词典、翻译、主题与书架管理",
+          "en_US": "Professional eBook reader for EPUB/PDF/MOBI/TXT/online novels. PDFs support highlights, ink, shapes, forms, stamps, signatures, images, screenshots, search, printing, export, and backlinks, with annotation notes, dictionary, translation, themes, and bookshelf management."
         },
+        "disabledInPublish": true,
         "displayName": {
-          "default": "LvSpeed Switch",
-          "zh-CN": "小驴雷切"
+          "default": "SiReader",
+          "zh_CN": "思阅"
         },
         "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window",
-          "mobile",
-          "browser-mobile"
+          "all"
         ],
+        "funding": {
+          "custom": [
+            "https://745201.xyz/pay.jpg"
+          ]
+        },
         "icon": "icon.png",
-        "keywords": [
-          "页签切换",
-          "tab switch",
-          "标签页",
-          "快捷入口",
-          "speed switch",
-          "lv speed switch",
-          "小驴雷切"
+        "kernels": [
+          "all"
         ],
-        "minAppVersion": "3.8.0",
-        "name": "siyuan-speed-switch",
+        "keywords": [
+          "阅读",
+          "reading",
+          "电子书",
+          "ebook",
+          "pdf",
+          "epub",
+          "mobi",
+          "txt",
+          "azw3",
+          "fb2",
+          "cbz",
+          "sireader",
+          "思阅",
+          "标注",
+          "annotation",
+          "笔记",
+          "note",
+          "书签",
+          "bookmark",
+          "词典",
+          "dictionary",
+          "书源",
+          "book source",
+          "在线小说",
+          "online novel",
+          "主题",
+          "theme"
+        ],
+        "minAppVersion": "3.6.5",
+        "name": "siyuan-sireader",
         "preview": "preview.png",
         "readme": {
           "default": "README.md",
-          "en-US": "README.en-US.md"
+          "zh_CN": "README_zh_CN.md"
         },
-        "url": "https://github.com/ai68298100/siyuan-speed-switch",
-        "version": "0.46.3"
+        "url": "https://github.com/mm-o/siyuan-sireader",
+        "version": "2.5.3"
       },
-      "packageZipAssetId": 623351351,
-      "packageZipSha256": "14be384b807c26199c62eef0b2feedd66dd4e68b9107f18509fb5a12a9c6d7ea",
-      "repoRef": "v0.46.3",
-      "size": 572858,
-      "stars": 2,
-      "updated": "2026-10-08T23:56:29Z",
-      "url": "ai68298100/siyuan-speed-switch@14be384"
+      "packageZipAssetId": 623989194,
+      "packageZipSha256": "41dec502e5c5328d035447021280074f3ba004b2ba942a995c403e5c3a4cc2ea",
+      "repoRef": "v2.5.3",
+      "size": 7690337,
+      "stars": 33,
+      "updated": "2026-10-09T05:25:09Z",
+      "url": "mm-o/siyuan-sireader@41dec50"
+    },
+    {
+      "installSize": 4419448,
+      "openIssues": 0,
+      "package": {
+        "author": "Roy",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A habit tracking plugin for SiYuan",
+          "zh_CN": "每一次微小的坚持都值得记录"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Pinch Habit",
+          "zh_CN": "片趣-习惯打卡&amp;任务管理"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/Savor"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "habit",
+          "tracker",
+          "check-in"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "pinch",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/royc01/pinch",
+        "version": "2.7.4"
+      },
+      "packageZipAssetId": 623989469,
+      "packageZipSha256": "9abb454d076cb188c3f612bd3d96b205442fcff0b220aa5df96f3601c2b85f52",
+      "repoRef": "v2.7.4",
+      "size": 1618064,
+      "stars": 21,
+      "updated": "2026-10-09T05:23:51Z",
+      "url": "royc01/pinch@9abb454"
+    },
+    {
+      "installSize": 105392,
+      "openIssues": 0,
+      "package": {
+        "author": "Talyra42",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Highlight the specified lines of a code block, using the VitePress style line range syntax",
+          "zh_CN": "按照 VitePress 的行区间语法高亮代码块中指定的行"
+        },
+        "displayName": {
+          "default": "Line Glow",
+          "zh_CN": "代码块行高亮"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "code",
+          "highlight",
+          "line",
+          "代码块",
+          "行高亮"
+        ],
+        "minAppVersion": "2.10.14",
+        "name": "siyuan-lineglow",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/Talyra42/siyuan-lineglow",
+        "version": "1.1.0"
+      },
+      "packageZipAssetId": 623601024,
+      "packageZipSha256": "73698353acd25cbf034e655033b03673a6e8902c301adfdee25dbc20bcbda3e6",
+      "repoRef": "v1.1.0",
+      "size": 71479,
+      "stars": 0,
+      "updated": "2026-10-09T02:04:20Z",
+      "url": "Talyra42/siyuan-lineglow@7369835"
     },
     {
       "installSize": 751146,
@@ -373,60 +669,6 @@
       "url": "notesynchelper/siyuan-notehelper@9b95d2c"
     },
     {
-      "installSize": 1607319,
-      "openIssues": 0,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Manage people and relationships in SiYuan: one person, one document, backed by a native database.",
-          "zh-CN": "在思源笔记里管理人脉与人际关系：一人一文档，数据库主干，关系图谱与生日提醒。"
-        },
-        "displayName": {
-          "default": "Lv Contacts",
-          "zh-CN": "小驴人脉"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "人脉",
-          "联系人",
-          "人际关系",
-          "CRM",
-          "通讯录",
-          "生日提醒",
-          "关系图谱",
-          "contacts",
-          "CRM",
-          "people"
-        ],
-        "minAppVersion": "3.8.5",
-        "name": "siyuan-contacts",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en-US": "README.en-US.md"
-        },
-        "url": "https://github.com/ai68298100/siyuan-contacts",
-        "version": "0.5.2"
-      },
-      "packageZipAssetId": 622302214,
-      "packageZipSha256": "e22258170a2cd618fedb0e0ca6d6dadd32be0c81d2a79124462fe8ba71247c5f",
-      "repoRef": "v0.5.2",
-      "size": 508276,
-      "stars": 1,
-      "updated": "2026-10-08T16:00:58Z",
-      "url": "ai68298100/siyuan-contacts@e222581"
-    },
-    {
       "installSize": 1850166,
       "openIssues": 12,
       "package": {
@@ -468,55 +710,6 @@
       "stars": 160,
       "updated": "2026-10-08T15:55:47Z",
       "url": "Achuan-2/siyuan-plugin-copilot@ff09c17"
-    },
-    {
-      "installSize": 2578936,
-      "openIssues": 2,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A flexible habit and check-in workspace for SiYuan.",
-          "zh-CN": "支持分组、模板、统计与扩展集成的思源打卡工作台。"
-        },
-        "displayName": {
-          "default": "Lv Check-in",
-          "zh-CN": "小驴打卡"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "打卡",
-          "习惯",
-          "目标",
-          "小驴打卡",
-          "check-in",
-          "habit"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-checkin",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/ai68298100/siyuan-checkin",
-        "version": "18.17.0"
-      },
-      "packageZipAssetId": 622137242,
-      "packageZipSha256": "4f82233ae8c1adb15bb23b572eaf1b5df72168c1a172f4b7fb1a998ca82be717",
-      "repoRef": "v18.17.0",
-      "size": 863428,
-      "stars": 1,
-      "updated": "2026-10-08T14:58:20Z",
-      "url": "ai68298100/siyuan-checkin@4f82233"
     },
     {
       "installSize": 531408,
@@ -819,58 +1012,6 @@
       "stars": 0,
       "updated": "2026-10-08T10:17:27Z",
       "url": "CherryGS/sy-another-graph@7e57734"
-    },
-    {
-      "installSize": 4407321,
-      "openIssues": 0,
-      "package": {
-        "author": "Roy",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A habit tracking plugin for SiYuan",
-          "zh_CN": "每一次微小的坚持都值得记录"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Pinch Habit",
-          "zh_CN": "片趣-习惯打卡&amp;任务管理"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/Savor"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "habit",
-          "tracker",
-          "check-in"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "pinch",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/royc01/pinch",
-        "version": "2.7.3"
-      },
-      "packageZipAssetId": 621360925,
-      "packageZipSha256": "df967d09a9d11d919d6b80fae869c8fe1a4295443038eeac8ac9c2b1731e9214",
-      "repoRef": "v2.7.3",
-      "size": 1614181,
-      "stars": 21,
-      "updated": "2026-10-08T09:22:26Z",
-      "url": "royc01/pinch@df967d0"
     },
     {
       "installSize": 975611,
@@ -1389,82 +1530,6 @@
       "stars": 1,
       "updated": "2026-10-07T08:42:06Z",
       "url": "wmy2981/button-in-siyuan@6b9d4e8"
-    },
-    {
-      "installSize": 24119921,
-      "openIssues": 5,
-      "package": {
-        "author": "mm-o",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "专业电子书阅读器，支持 EPUB/PDF/MOBI/TXT/在线小说；PDF 支持高亮、墨迹、形状、表单、印章、签名、图片、截图、搜索、打印、导出和回链，并提供标注笔记、词典、翻译、主题与书架管理",
-          "en_US": "Professional eBook reader for EPUB/PDF/MOBI/TXT/online novels. PDFs support highlights, ink, shapes, forms, stamps, signatures, images, screenshots, search, printing, export, and backlinks, with annotation notes, dictionary, translation, themes, and bookshelf management."
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiReader",
-          "zh_CN": "思阅"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://745201.xyz/pay.jpg"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "阅读",
-          "reading",
-          "电子书",
-          "ebook",
-          "pdf",
-          "epub",
-          "mobi",
-          "txt",
-          "azw3",
-          "fb2",
-          "cbz",
-          "sireader",
-          "思阅",
-          "标注",
-          "annotation",
-          "笔记",
-          "note",
-          "书签",
-          "bookmark",
-          "词典",
-          "dictionary",
-          "书源",
-          "book source",
-          "在线小说",
-          "online novel",
-          "主题",
-          "theme"
-        ],
-        "minAppVersion": "3.6.5",
-        "name": "siyuan-sireader",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/mm-o/siyuan-sireader",
-        "version": "2.5.2"
-      },
-      "packageZipAssetId": 617816127,
-      "packageZipSha256": "03e42f4ab46a9abf33ccb18bf2586a3b55ab66d9a032105d51f14adce3ba8f8a",
-      "repoRef": "v2.5.2",
-      "size": 7679214,
-      "stars": 33,
-      "updated": "2026-10-07T06:33:29Z",
-      "url": "mm-o/siyuan-sireader@03e42f4"
     },
     {
       "installSize": 2401279,
@@ -23783,69 +23848,6 @@
       "stars": 19,
       "updated": "2024-12-02T09:55:32Z",
       "url": "suka233/siyuan-knote@b11c1ab"
-    },
-    {
-      "installSize": 648114,
-      "openIssues": 1,
-      "package": {
-        "author": "anarion80",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android"
-        ],
-        "description": {
-          "default": "A plugin that extracts oembed data from links and creates a Ghost CMS-style cards as bookmarks",
-          "pl_PL": "Wtyczka wyodrębniająca dane oembed z linków i tworząca karty w stylu Ghost CMS jako zakładki",
-          "zh_CN": "一个从链接中提取oembed数据并且创建一个Ghost CMS-style卡片作为书签的插件"
-        },
-        "displayName": {
-          "default": "Oembed and bookmark cards",
-          "pl_PL": "Oembed i karty zakładek",
-          "zh_CN": "Oembed和书签卡片"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://buymeacoffee.com/anarion"
-          ]
-        },
-        "keywords": [
-          "plugin",
-          "oembed",
-          "siyuan",
-          "twitter",
-          "metadata",
-          "bookmark",
-          "cards",
-          "link"
-        ],
-        "minAppVersion": "3.1.12",
-        "name": "siyuan-oembed",
-        "readme": {
-          "default": "README.md",
-          "pl_PL": "README_pl_PL.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/anarion80/siyuan-oembed",
-        "version": "0.1.2"
-      },
-      "packageZipAssetId": 210439336,
-      "packageZipSha256": "d5df7e3e93fc796a3b76a729ed3fa69e015d4432344781658132d9e2f3cd7656",
-      "repoRef": "v0.2.0",
-      "size": 248861,
-      "stars": 7,
-      "updated": "2024-12-02T09:26:46Z",
-      "url": "anarion80/siyuan-oembed@d5df7e3"
     },
     {
       "installSize": 477752,
