@@ -1,6 +1,171 @@
 {
   "repos": [
     {
+      "installSize": 1693190,
+      "openIssues": 0,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Manage people and relationships in SiYuan: one person, one document, backed by a native database.",
+          "zh-CN": "在思源笔记里管理人脉与人际关系：一人一文档，数据库主干，关系图谱与生日提醒。"
+        },
+        "displayName": {
+          "default": "Lv Contacts",
+          "zh-CN": "小驴人脉"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "人脉",
+          "联系人",
+          "人际关系",
+          "CRM",
+          "通讯录",
+          "生日提醒",
+          "关系图谱",
+          "contacts",
+          "CRM",
+          "people"
+        ],
+        "minAppVersion": "3.8.5",
+        "name": "siyuan-contacts",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en-US": "README.en-US.md"
+        },
+        "url": "https://github.com/ai68298100/siyuan-contacts",
+        "version": "0.5.5"
+      },
+      "packageZipAssetId": 625630527,
+      "packageZipSha256": "dd1ae9faabec67981cdf6aaaefa5f0251b92f55e824cf20f81812112fc256326",
+      "repoRef": "v0.5.5",
+      "size": 532080,
+      "stars": 1,
+      "updated": "2026-10-09T17:14:00Z",
+      "url": "ai68298100/siyuan-contacts@dd1ae9f"
+    },
+    {
+      "installSize": 3625273,
+      "openIssues": 1,
+      "package": {
+        "author": "verygoodwu",
+        "backends": [
+          "windows",
+          "linux",
+          "docker",
+          "darwin"
+        ],
+        "description": {
+          "default": "Create, edit, preview, and export documents, text files, spreadsheets, mind maps, and whiteboards in SiYuan.",
+          "zh-CN": "在思源中创建、编辑、预览和导出文档、纯文本文件、表格、脑图与白板。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Cloud Document Suite",
+          "zh-CN": "云文档套件"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "windows",
+          "linux",
+          "docker",
+          "darwin"
+        ],
+        "keywords": [
+          "document",
+          "text",
+          "html",
+          "office",
+          "excel",
+          "word",
+          "pdf",
+          "mindmap",
+          "whiteboard",
+          "云文档",
+          "办公套件",
+          "文本编辑器",
+          "白板",
+          "拖放"
+        ],
+        "minAppVersion": "3.7.4",
+        "name": "siyuan-cloud-document-suite",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/verygoodwu/siyuan-cloud-document-suite",
+        "version": "2.3.1"
+      },
+      "packageZipAssetId": 625351791,
+      "packageZipSha256": "7422d1ce5f8afef5290c7416f3dd5b50c7fa5216564c2b7ce821cc3383edab13",
+      "repoRef": "v2.3.1",
+      "size": 1073929,
+      "stars": 1,
+      "updated": "2026-10-09T15:24:07Z",
+      "url": "verygoodwu/siyuan-cloud-document-suite@7422d1c"
+    },
+    {
+      "installSize": 633216,
+      "openIssues": 0,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Independent floating heading and list outlines, with single-line labels and per-list depth.",
+          "zh-CN": "大纲支持显示列表、页签块层级，支持悬浮大纲"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Outline Enhance",
+          "zh-CN": "大纲增强"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ]
+        },
+        "icon": "icon.png",
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-outline-enhance",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README_en.md",
+          "zh-CN": "README.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-outline-enhance",
+        "version": "0.2.0"
+      },
+      "packageZipAssetId": 624620964,
+      "packageZipSha256": "ae50e1a7aa67f52adb3e700e5fb01d6243dd274009e15bbf272a8a3f11df5008",
+      "repoRef": "v0.2.0",
+      "size": 497526,
+      "stars": 0,
+      "updated": "2026-10-09T10:20:54Z",
+      "url": "Achuan-2/siyuan-plugin-outline-enhance@ae50e1a"
+    },
+    {
       "installSize": 706530,
       "openIssues": 1,
       "package": {
@@ -164,60 +329,6 @@
       "stars": 1,
       "updated": "2026-10-09T07:27:32Z",
       "url": "ai68298100/siyuan-checkin@5d3a3d3"
-    },
-    {
-      "installSize": 1680081,
-      "openIssues": 0,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Manage people and relationships in SiYuan: one person, one document, backed by a native database.",
-          "zh-CN": "在思源笔记里管理人脉与人际关系：一人一文档，数据库主干，关系图谱与生日提醒。"
-        },
-        "displayName": {
-          "default": "Lv Contacts",
-          "zh-CN": "小驴人脉"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "人脉",
-          "联系人",
-          "人际关系",
-          "CRM",
-          "通讯录",
-          "生日提醒",
-          "关系图谱",
-          "contacts",
-          "CRM",
-          "people"
-        ],
-        "minAppVersion": "3.8.5",
-        "name": "siyuan-contacts",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en-US": "README.en-US.md"
-        },
-        "url": "https://github.com/ai68298100/siyuan-contacts",
-        "version": "0.5.4"
-      },
-      "packageZipAssetId": 624230707,
-      "packageZipSha256": "0130fbc7eeeab99bbaa127e0a7e58392ba792e523648936d4b69227c9a39b5c3",
-      "repoRef": "v0.5.4",
-      "size": 527779,
-      "stars": 1,
-      "updated": "2026-10-09T07:25:50Z",
-      "url": "ai68298100/siyuan-contacts@0130fbc"
     },
     {
       "installSize": 1198920,
@@ -4191,50 +4302,6 @@
       "url": "Achuan-2/siyuan-plugin-paddleocr@e4e47ec"
     },
     {
-      "installSize": 623278,
-      "openIssues": 0,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Independent floating heading and list outlines, with single-line labels and per-list depth.",
-          "zh-CN": "大纲支持显示列表、页签块层级，支持悬浮大纲"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Outline Enhance",
-          "zh-CN": "大纲增强"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ]
-        },
-        "icon": "icon.png",
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-outline-enhance",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README_en.md",
-          "zh-CN": "README.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-outline-enhance",
-        "version": "0.1.2"
-      },
-      "packageZipAssetId": 600770596,
-      "packageZipSha256": "2d291982797537bc045f97fbaba42081c97465f6b34668ad0667f18fb459c0a6",
-      "repoRef": "v0.1.2",
-      "size": 494721,
-      "stars": 0,
-      "updated": "2026-09-30T11:43:34Z",
-      "url": "Achuan-2/siyuan-plugin-outline-enhance@2d29198"
-    },
-    {
       "installSize": 2715681,
       "openIssues": 1,
       "package": {
@@ -5450,71 +5517,6 @@
       "stars": 209,
       "updated": "2026-09-24T05:38:20Z",
       "url": "terwer/siyuan-plugin-publisher@eb5aff2"
-    },
-    {
-      "installSize": 3620931,
-      "openIssues": 1,
-      "package": {
-        "author": "verygoodwu",
-        "backends": [
-          "windows",
-          "linux",
-          "docker"
-        ],
-        "description": {
-          "default": "Create, edit, preview, and export documents, text files, spreadsheets, mind maps, and whiteboards in SiYuan.",
-          "zh-CN": "在思源中创建、编辑、预览和导出文档、纯文本文件、表格、脑图与白板。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Cloud Document Suite",
-          "zh-CN": "云文档套件"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "windows",
-          "linux",
-          "docker"
-        ],
-        "keywords": [
-          "document",
-          "text",
-          "html",
-          "office",
-          "excel",
-          "word",
-          "pdf",
-          "mindmap",
-          "whiteboard",
-          "云文档",
-          "办公套件",
-          "文本编辑器",
-          "白板",
-          "拖放"
-        ],
-        "minAppVersion": "3.7.4",
-        "name": "siyuan-cloud-document-suite",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/verygoodwu/siyuan-cloud-document-suite",
-        "version": "2.3.0"
-      },
-      "packageZipAssetId": 585075623,
-      "packageZipSha256": "73829eee8d43d89908a5baba293e34ff54cc84781ed4dc3663be6e65323b00fd",
-      "repoRef": "v2.3.0",
-      "size": 1072151,
-      "stars": 1,
-      "updated": "2026-09-24T03:34:17Z",
-      "url": "verygoodwu/siyuan-cloud-document-suite@73829ee"
     },
     {
       "installSize": 1050965,
