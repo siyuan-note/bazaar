@@ -1,6 +1,342 @@
 {
   "repos": [
     {
+      "installSize": 554850,
+      "openIssues": 1,
+      "package": {
+        "author": "neariot",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Edit SiYuan&#39;s own list blocks as an outline or a mindmap. Nodes ARE native list items — no custom attributes, no private storage, no second copy of your data. Everything stays searchable and fully editable after the plugin is uninstalled.",
+          "zh_CN": "用大纲 / 导图视图编辑思源原生块。节点就是思源列表项本身 —— 不写自定义属性、不用私有存储、不产生第二份数据。卸载插件后文档照常可搜索、可编辑。"
+        },
+        "displayName": {
+          "default": "Native Outline &amp; Mindmap",
+          "zh_CN": "原生大纲导图"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "mindmap",
+          "mind map",
+          "思维导图",
+          "导图",
+          "outline",
+          "大纲",
+          "原生块",
+          "native blocks"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-native-outline-mindmap",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/neariot/siyuan-native-outline-mindmap",
+        "version": "0.1.4"
+      },
+      "packageZipAssetId": 626736423,
+      "packageZipSha256": "5de462e16ddd5f76c97d49c4bcb0c8a7d1d047810f79c0be6210b99986580a23",
+      "repoRef": "v0.1.4",
+      "size": 250507,
+      "stars": 0,
+      "updated": "2026-10-10T02:02:03Z",
+      "url": "neariot/siyuan-native-outline-mindmap@5de462e"
+    },
+    {
+      "installSize": 1493413,
+      "openIssues": 0,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "description": {
+          "default": "A local-first, full-lifecycle flashcard learning platform for SiYuan: capture, understand, create, practice, review, apply, maintain and connect knowledge with AI and the native FSRS scheduler.",
+          "zh-CN": "思源的全域闪卡学习平台：以 AI 辅助知识捕获、理解、制卡、练习、复习、应用、维护和生态联动——正式调度由内核原生 FSRS 负责。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Lv Cards (Beta)",
+          "zh-CN": "小驴闪卡（内测版）"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "keywords": [
+          "flashcard",
+          "闪卡",
+          "FSRS",
+          "spaced repetition",
+          "间隔重复",
+          "Anki",
+          "AI",
+          "Agent",
+          "statistics",
+          "统计",
+          "记忆"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "siyuan-lv-cards",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.en.md",
+          "zh-CN": "README.md"
+        },
+        "url": "https://github.com/ai68298100/siyuan-lv-cards",
+        "version": "0.209.2"
+      },
+      "packageZipAssetId": 626692682,
+      "packageZipSha256": "b5517bad1358cb88fec91ecd360d6cb72a349989ce2a8115daffeb90bc33da54",
+      "repoRef": "v0.209.2",
+      "size": 819048,
+      "stars": 1,
+      "updated": "2026-10-10T01:59:06Z",
+      "url": "ai68298100/siyuan-lv-cards@b5517ba"
+    },
+    {
+      "installSize": 697188,
+      "openIssues": 0,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Save and recall common content (phrases, snippets, code, links, images, assets, block structures) anchored to real SiYuan blocks — with fill-in variables, snippet nesting, AI transforms, template packs, and faithful source references.",
+          "zh-CN": "基于思源文档和块的常用内容快速调用器：常用语、模板、代码、链接、图片、附件与块结构，条目锚定真实思源块。支持插入时变量填充、片段嵌套、AI 整理/变换/语义找、模板包分享，来源可回链、失效可见。"
+        },
+        "displayName": {
+          "default": "LvCommon (Beta)",
+          "zh-CN": "小驴常用（内测版）"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "常用语",
+          "common phrases",
+          "snippet",
+          "snippets",
+          "模板",
+          "template",
+          "templates",
+          "片段",
+          "快速插入",
+          "quick insert",
+          "小驴常用",
+          "小驴常用（内测版）",
+          "xiaolv",
+          "xiaolv-common",
+          "变量",
+          "variables",
+          "文本扩展",
+          "text expander",
+          "AI",
+          "提示词",
+          "prompt",
+          "剪贴板",
+          "clipboard",
+          "模板包",
+          "template pack"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "xiaolv-common",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en-US": "README.en-US.md"
+        },
+        "url": "https://github.com/ai68298100/xiaolv-common",
+        "version": "0.3.8"
+      },
+      "packageZipAssetId": 626537959,
+      "packageZipSha256": "16f0d56a232fee89f7c395586a6a1f85d94b64d5a6e8c8b018559a8e0861a6b5",
+      "repoRef": "v0.3.8",
+      "size": 426861,
+      "stars": 0,
+      "updated": "2026-10-10T01:34:18Z",
+      "url": "ai68298100/xiaolv-common@16f0d56"
+    },
+    {
+      "installSize": 1182258,
+      "openIssues": 0,
+      "package": {
+        "author": "Lisontowind",
+        "backends": [
+          "windows"
+        ],
+        "description": {
+          "default": "Independent Windows quick-note windows with autosave and draft recovery.",
+          "zh-CN": "独立悬浮速记窗口，自动保存到思源，支持本机草稿恢复。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Quick Notes",
+          "zh-CN": "悬浮速记"
+        },
+        "frontends": [
+          "desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "quick notes",
+          "速记",
+          "便签",
+          "悬浮",
+          "Markdown"
+        ],
+        "minAppVersion": "3.8.6",
+        "name": "siyuan-quick-notes",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/lisontowind/siyuan-quick-notes",
+        "version": "0.1.15"
+      },
+      "packageZipAssetId": 626449994,
+      "packageZipSha256": "458cf7a0f32ad302706adf59e4ed7c08f2859ba4e2e4ea432bb06fb5be995d33",
+      "repoRef": "v0.1.15",
+      "size": 771538,
+      "stars": 0,
+      "updated": "2026-10-10T01:30:08Z",
+      "url": "lisontowind/siyuan-quick-notes@458cf7a"
+    },
+    {
+      "installSize": 4438664,
+      "openIssues": 0,
+      "package": {
+        "author": "Roy",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A habit tracking plugin for SiYuan",
+          "zh_CN": "每一次微小的坚持都值得记录"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Pinch Habit",
+          "zh_CN": "片趣-习惯打卡&amp;任务管理"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/Savor"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "habit",
+          "tracker",
+          "check-in"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "pinch",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/royc01/pinch",
+        "version": "2.7.5"
+      },
+      "packageZipAssetId": 626622220,
+      "packageZipSha256": "8fe3abcdd004e80cd006c7c85fd275c3359981beb81bf396df2c75638a0df980",
+      "repoRef": "v2.7.5",
+      "size": 1624653,
+      "stars": 21,
+      "updated": "2026-10-10T00:56:20Z",
+      "url": "royc01/pinch@8fe3abc"
+    },
+    {
+      "installSize": 2050958,
+      "openIssues": 1,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A local-first SiYuan navigation and work-context platform with a switcher, widget workbench, desktop snippet lab, and floating-ball actions.",
+          "zh-CN": "本地优先的思源导航与工作上下文平台，连接切换器、工作台、桌面片段实验室和悬浮球。"
+        },
+        "displayName": {
+          "default": "LvSpeed Switch",
+          "zh-CN": "小驴雷切"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "页签切换",
+          "tab switch",
+          "标签页",
+          "快捷入口",
+          "speed switch",
+          "lv speed switch",
+          "小驴雷切"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "siyuan-speed-switch",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en-US": "README.en-US.md"
+        },
+        "url": "https://github.com/ai68298100/siyuan-speed-switch",
+        "version": "0.46.8"
+      },
+      "packageZipAssetId": 626566420,
+      "packageZipSha256": "ea93d52461163aa3f13c63ebe6de465101648c84499ac88af91e448b2bb7376c",
+      "repoRef": "v0.46.8",
+      "size": 580433,
+      "stars": 2,
+      "updated": "2026-10-10T00:22:26Z",
+      "url": "ai68298100/siyuan-speed-switch@ea93d52"
+    },
+    {
       "installSize": 1011164,
       "openIssues": 0,
       "package": {
@@ -392,57 +728,6 @@
       "url": "anarion80/siyuan-oembed@1dc9bcf"
     },
     {
-      "installSize": 2036389,
-      "openIssues": 1,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A local-first SiYuan navigation and work-context platform with a switcher, widget workbench, desktop snippet lab, and floating-ball actions.",
-          "zh-CN": "本地优先的思源导航与工作上下文平台，连接切换器、工作台、桌面片段实验室和悬浮球。"
-        },
-        "displayName": {
-          "default": "LvSpeed Switch",
-          "zh-CN": "小驴雷切"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "页签切换",
-          "tab switch",
-          "标签页",
-          "快捷入口",
-          "speed switch",
-          "lv speed switch",
-          "小驴雷切"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "siyuan-speed-switch",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en-US": "README.en-US.md"
-        },
-        "url": "https://github.com/ai68298100/siyuan-speed-switch",
-        "version": "0.46.6"
-      },
-      "packageZipAssetId": 624268434,
-      "packageZipSha256": "1a63aa1032840f2c75e689f2184c6bf3ec1fffbc5954eac911d84c2703de5096",
-      "repoRef": "v0.46.6",
-      "size": 576536,
-      "stars": 2,
-      "updated": "2026-10-09T07:38:05Z",
-      "url": "ai68298100/siyuan-speed-switch@1a63aa1"
-    },
-    {
       "installSize": 2607587,
       "openIssues": 2,
       "package": {
@@ -566,58 +851,6 @@
       "stars": 33,
       "updated": "2026-10-09T05:25:09Z",
       "url": "mm-o/siyuan-sireader@41dec50"
-    },
-    {
-      "installSize": 4419448,
-      "openIssues": 0,
-      "package": {
-        "author": "Roy",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A habit tracking plugin for SiYuan",
-          "zh_CN": "每一次微小的坚持都值得记录"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Pinch Habit",
-          "zh_CN": "片趣-习惯打卡&amp;任务管理"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/Savor"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "habit",
-          "tracker",
-          "check-in"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "pinch",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/royc01/pinch",
-        "version": "2.7.4"
-      },
-      "packageZipAssetId": 623989469,
-      "packageZipSha256": "9abb454d076cb188c3f612bd3d96b205442fcff0b220aa5df96f3601c2b85f52",
-      "repoRef": "v2.7.4",
-      "size": 1618064,
-      "stars": 21,
-      "updated": "2026-10-09T05:23:51Z",
-      "url": "royc01/pinch@9abb454"
     },
     {
       "installSize": 105392,
@@ -873,54 +1106,6 @@
       "stars": 160,
       "updated": "2026-10-08T15:55:47Z",
       "url": "Achuan-2/siyuan-plugin-copilot@ff09c17"
-    },
-    {
-      "installSize": 531408,
-      "openIssues": 1,
-      "package": {
-        "author": "neariot",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Edit SiYuan&#39;s own list blocks as an outline or a mindmap. Nodes ARE native list items — no custom attributes, no private storage, no second copy of your data. Everything stays searchable and fully editable after the plugin is uninstalled.",
-          "zh_CN": "用大纲 / 导图视图编辑思源原生块。节点就是思源列表项本身 —— 不写自定义属性、不用私有存储、不产生第二份数据。卸载插件后文档照常可搜索、可编辑。"
-        },
-        "displayName": {
-          "default": "Native Outline &amp; Mindmap",
-          "zh_CN": "原生大纲导图"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "mindmap",
-          "mind map",
-          "思维导图",
-          "导图",
-          "outline",
-          "大纲",
-          "原生块",
-          "native blocks"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-native-outline-mindmap",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/neariot/siyuan-native-outline-mindmap",
-        "version": "0.1.3"
-      },
-      "packageZipAssetId": 622135953,
-      "packageZipSha256": "a6ed66c2a8aa1d1ed6e095a6620bcd8fae1ed1055d206438c77929abca1945d7",
-      "repoRef": "v0.1.3",
-      "size": 244746,
-      "stars": 0,
-      "updated": "2026-10-08T14:57:09Z",
-      "url": "neariot/siyuan-native-outline-mindmap@a6ed66c"
     },
     {
       "installSize": 3850517,
