@@ -1,6 +1,669 @@
 {
   "repos": [
     {
+      "installSize": 2680786,
+      "openIssues": 2,
+      "package": {
+        "author": "alone-tree",
+        "backends": [
+          "windows",
+          "darwin",
+          "linux"
+        ],
+        "description": {
+          "default": "Lean, fast, and hassle-free SiYuan MCP tool.",
+          "zh-CN": "让 AI Agent 通过 MCP 安全地阅读、搜索和修改你的思源笔记，重点优化长文档、表格、块引用等知识库场景"
+        },
+        "displayName": {
+          "default": "Siyuan Bridge",
+          "zh-CN": "思源桥"
+        },
+        "frontends": [
+          "desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "siyuan",
+          "mcp",
+          "ai",
+          "knowledge-base"
+        ],
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-bridge",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/alone-tree/siyuan-bridge",
+        "version": "1.13.0"
+      },
+      "packageZipAssetId": 627499256,
+      "packageZipSha256": "47b3156aea14bb123e6ff9e6fb5ec13834f23e046f28fe66572f080756a4886d",
+      "repoRef": "v1.13.0",
+      "size": 2020561,
+      "stars": 11,
+      "updated": "2026-10-10T09:03:23Z",
+      "url": "alone-tree/siyuan-bridge@47b3156"
+    },
+    {
+      "installSize": 762168,
+      "openIssues": 3,
+      "package": {
+        "author": "vilifetime",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "一款思源笔记插件。双向同步 CalDAV 服务器（Radicale / Nextcloud / Baikal 等）的日历事件与待办任务，提供月/周/日日历视图、任务视图与编辑能力，并可将今日日程插入日记。",
+          "en_US": "Two-way sync calendar events and todos with CalDAV servers (Radicale / Nextcloud / Baikal). Month/Week/Day calendar views, task view, editor and daily note integration."
+        },
+        "displayName": {
+          "default": "CalDAV日历任务",
+          "en_US": "CalDAV Calendar &amp; Tasks"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop",
+          "mobile",
+          "browser-mobile"
+        ],
+        "funding": {
+          "custom": [
+            ""
+          ],
+          "github": "vilifetime"
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "caldav",
+          "calendar",
+          "todo",
+          "task",
+          "日历",
+          "任务",
+          "同步",
+          "radicale",
+          "nextcloud",
+          "baikal"
+        ],
+        "minAppVersion": "3.2.0",
+        "name": "siyuan-plugin-caldav-sync",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en_US": "README_en_US.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/vilifetime/siyuan-plugin-caldav-sync",
+        "version": "0.2.19"
+      },
+      "packageZipAssetId": 627486853,
+      "packageZipSha256": "f6b9302adee05772f0be58b80243507553c5557be909e472f2801e1a9825e2bd",
+      "repoRef": "v0.2.19",
+      "size": 443065,
+      "stars": 4,
+      "updated": "2026-10-10T08:56:17Z",
+      "url": "vilifetime/siyuan-plugin-caldav-sync@f6b9302"
+    },
+    {
+      "installSize": 1194776,
+      "openIssues": 0,
+      "package": {
+        "author": "Lisontowind",
+        "backends": [
+          "windows"
+        ],
+        "description": {
+          "default": "Independent Windows quick-note windows with autosave and draft recovery.",
+          "zh-CN": "独立悬浮速记窗口，自动保存到思源，支持本机草稿恢复。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Quick Notes",
+          "zh-CN": "悬浮速记"
+        },
+        "frontends": [
+          "desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "quick notes",
+          "速记",
+          "便签",
+          "悬浮",
+          "Markdown"
+        ],
+        "minAppVersion": "3.8.6",
+        "name": "siyuan-quick-notes",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/lisontowind/siyuan-quick-notes",
+        "version": "0.1.20"
+      },
+      "packageZipAssetId": 627424093,
+      "packageZipSha256": "5003ab6880d9156f667044a87ce832746cfe0816a49db073d2e0b9b8cd9c9216",
+      "repoRef": "v0.1.20",
+      "size": 775931,
+      "stars": 0,
+      "updated": "2026-10-10T08:25:13Z",
+      "url": "lisontowind/siyuan-quick-notes@5003ab6"
+    },
+    {
+      "installSize": 4466967,
+      "openIssues": 0,
+      "package": {
+        "author": "Roy",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A habit tracking plugin for SiYuan",
+          "zh_CN": "每一次微小的坚持都值得记录"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Pinch Habit",
+          "zh_CN": "片趣-习惯打卡&amp;任务管理"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/Savor"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "habit",
+          "tracker",
+          "check-in"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "pinch",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/royc01/pinch",
+        "version": "2.7.6"
+      },
+      "packageZipAssetId": 627396672,
+      "packageZipSha256": "ddf04379cead430f6484c7d5a53450f13d303c8ca44e85fdb6968a9f1f2669d8",
+      "repoRef": "v2.7.6",
+      "size": 1632269,
+      "stars": 21,
+      "updated": "2026-10-10T08:09:29Z",
+      "url": "royc01/pinch@ddf0437"
+    },
+    {
+      "installSize": 634107,
+      "openIssues": 0,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Independent floating heading and list outlines, with single-line labels and per-list depth.",
+          "zh-CN": "大纲支持显示列表、页签块层级，支持悬浮大纲"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Outline Enhance",
+          "zh-CN": "大纲增强"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://pancake.waffo.ai/store/achuan-2-fdbho4ye/product/PROD_3F7Aa7c2NQlz9KmxcgxjQ7?type=onetime&amp;currency=USD",
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ]
+        },
+        "icon": "icon.png",
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-outline-enhance",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README_en.md",
+          "zh-CN": "README.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-outline-enhance",
+        "version": "0.2.3"
+      },
+      "packageZipAssetId": 627355472,
+      "packageZipSha256": "a1d8ee5e175b75d80af650f8b83172f3bec55d9e3bbecb0b97357facce8bebc3",
+      "repoRef": "v0.2.3",
+      "size": 497997,
+      "stars": 0,
+      "updated": "2026-10-10T07:50:46Z",
+      "url": "Achuan-2/siyuan-plugin-outline-enhance@a1d8ee5"
+    },
+    {
+      "installSize": 2216076,
+      "openIssues": 0,
+      "package": {
+        "author": "Misuzu2027",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "description": {
+          "default": "Replace the native image viewer with a floating pin preview, including database images.",
+          "zh_CN": "替代原生图片查看功能，支持文档和数据库图片的悬浮预览"
+        },
+        "displayName": {
+          "default": "Image Pin Preview",
+          "zh_CN": "图片悬浮预览"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "image",
+          "preview",
+          "pin",
+          "float",
+          "图片",
+          "预览",
+          "悬浮"
+        ],
+        "minAppVersion": "3.0.12",
+        "name": "syplugin-image-pin-preview",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/Misuzu2027/syplugin-image-pin-preview",
+        "version": "0.0.16"
+      },
+      "packageZipAssetId": 627342907,
+      "packageZipSha256": "ec0f2b5ec4da5cc273754ab9258e9f6b25ee1b0d2deef34fb7323ef90ea3f90c",
+      "repoRef": "v0.0.16",
+      "size": 664959,
+      "stars": 1,
+      "updated": "2026-10-10T07:44:13Z",
+      "url": "Misuzu2027/syplugin-image-pin-preview@ec0f2b5"
+    },
+    {
+      "installSize": 2635364,
+      "openIssues": 2,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A flexible habit and check-in workspace for SiYuan.",
+          "zh-CN": "支持分组、模板、统计与扩展集成的思源打卡工作台。"
+        },
+        "displayName": {
+          "default": "Lv Check-in",
+          "zh-CN": "小驴打卡"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "打卡",
+          "习惯",
+          "目标",
+          "小驴打卡",
+          "check-in",
+          "habit"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-checkin",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/ai68298100/siyuan-checkin",
+        "version": "18.17.2"
+      },
+      "packageZipAssetId": 627058754,
+      "packageZipSha256": "5b8a7dcac0718a0e9c2c4a7730e2c46ba065f4a0d9f16b4b089b8b0e2bfec1d0",
+      "repoRef": "v18.17.2",
+      "size": 878365,
+      "stars": 1,
+      "updated": "2026-10-10T05:06:38Z",
+      "url": "ai68298100/siyuan-checkin@5b8a7dc"
+    },
+    {
+      "installSize": 12085,
+      "openIssues": 0,
+      "package": {
+        "author": "bestdonger",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "description": {
+          "default": "Require a modifier key to open links while editing.",
+          "zh-CN": "编辑时单击链接不跳转，按住 ⌘/Ctrl 打开。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Link Click Guard",
+          "zh-CN": "链接防误跳转"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop"
+        ],
+        "icon": "",
+        "keywords": [
+          "链接",
+          "块引用",
+          "防误跳转",
+          "link",
+          "editing"
+        ],
+        "minAppVersion": "3.8.6",
+        "name": "siyuan-link-click-guard",
+        "preview": "",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/bestdonger/siyuan-link-click-guard",
+        "version": "0.1.1"
+      },
+      "packageZipAssetId": 626920039,
+      "packageZipSha256": "c877eb532c9fd4bc602f3671f374a4edff0f9f6650f0d3af0bfd4376be2c1a23",
+      "repoRef": "v0.1.1",
+      "size": 4580,
+      "stars": 0,
+      "updated": "2026-10-10T03:45:38Z",
+      "url": "bestdonger/siyuan-link-click-guard@c877eb5"
+    },
+    {
+      "installSize": 290330,
+      "openIssues": 0,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "description": {
+          "default": "Automatically process when pasting (laxtex formula conversion, ppt, word list paste, etc.), process blocks (merge blocks, split blocks, etc.)",
+          "zh_CN": "粘贴时自动处理（LaTeX公式转换，ppt、word列表粘贴，去除上标、去除链接、去除空格、去除换行），对块进行处理（合并块、拆分块、复制到小红书带emoji、去除上标、去除空格、链接转文本、英文符号转中文符号等）"
+        },
+        "displayName": {
+          "default": "Text Process",
+          "zh_CN": "文本处理"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://pancake.waffo.ai/store/achuan-2-fdbho4ye/product/PROD_3F7Aa7c2NQlz9KmxcgxjQ7?type=onetime&amp;currency=USD",
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "paste",
+          "文本处理",
+          "text process",
+          "合并块",
+          "拆分块",
+          "ppt列表粘贴",
+          "word列表粘贴",
+          "LaTeX公式转换"
+        ],
+        "minAppVersion": "3.0.12",
+        "name": "siyuan-plugin-text-process",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-text-process",
+        "version": "0.6.10"
+      },
+      "packageZipAssetId": 626909844,
+      "packageZipSha256": "2d4c2be6fe45d4d11a9a11e5c709b216e8a3f6b7e8075e20efddb8811ccbc50a",
+      "repoRef": "v0.6.10",
+      "size": 202960,
+      "stars": 38,
+      "updated": "2026-10-10T03:38:47Z",
+      "url": "Achuan-2/siyuan-plugin-text-process@2d4c2be"
+    },
+    {
+      "installSize": 47297846,
+      "openIssues": 0,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Run PP-OCRv6 ONNX locally with separately downloaded models.",
+          "zh_CN": "使用 PaddleOCR PP-OCRv6 ONNX 模型在本机识别图片文字,支持电脑端和移动端"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "PaddleOCR"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://pancake.waffo.ai/store/achuan-2-fdbho4ye/product/PROD_3F7Aa7c2NQlz9KmxcgxjQ7?type=onetime&amp;currency=USD",
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ]
+        },
+        "icon": "icon.png",
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-plugin-paddleocr",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-paddleocr",
+        "version": "0.2.1"
+      },
+      "packageZipAssetId": 626905445,
+      "packageZipSha256": "b67103728387a1729d21e31748cd002d423ba11678dbae0b0879e9ee4df53f74",
+      "repoRef": "v0.2.1",
+      "size": 13878063,
+      "stars": 0,
+      "updated": "2026-10-10T03:36:53Z",
+      "url": "Achuan-2/siyuan-plugin-paddleocr@b671037"
+    },
+    {
+      "installSize": 2647955,
+      "openIssues": 8,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Edit images in SiYuan with crop, shapes, arrows, text, markers and more. Supports re-editing.",
+          "zh_CN": "一款思源笔记图片编辑/标注插件，支持裁剪、旋转图片，支持添加形状、文字、支持添加图片边框、设置图片圆角等功能，最大亮点是已编辑的图片支持再编辑！并支持上传图片自动压缩和编辑图片自动压缩！"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "ImgReEditor"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://pancake.waffo.ai/store/achuan-2-fdbho4ye/product/PROD_3F7Aa7c2NQlz9KmxcgxjQ7?type=onetime&amp;currency=USD",
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ]
+        },
+        "icon": "icon.png",
+        "minAppVersion": "3.0.12",
+        "name": "siyuan-plugin-imgReEditor",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README_en_US.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-imgReEditor",
+        "version": "1.0.1"
+      },
+      "packageZipAssetId": 626901940,
+      "packageZipSha256": "0f4bc051f714b3cb945233cc4392958e53767080fd9991c49246bc00c2fb39f4",
+      "repoRef": "v1.0.1",
+      "size": 1059131,
+      "stars": 22,
+      "updated": "2026-10-10T03:33:50Z",
+      "url": "Achuan-2/siyuan-plugin-imgReEditor@0f4bc05"
+    },
+    {
+      "installSize": 176085,
+      "openIssues": 0,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android"
+        ],
+        "description": {
+          "default": "Simplify the steps of creating, archiving, and sorting child documents in SiYuan",
+          "zh_CN": "简化思源笔记子文档创建、子文档归档、子文档排序等步骤"
+        },
+        "displayName": {
+          "default": "ChildDoc Organizer",
+          "zh_CN": "子文档整理"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://pancake.waffo.ai/store/achuan-2-fdbho4ye/product/PROD_3F7Aa7c2NQlz9KmxcgxjQ7?type=onetime&amp;currency=USD",
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "sort",
+          "排序",
+          "块引",
+          "子文档",
+          "整理",
+          "block_ref",
+          "child_doc",
+          "organizer"
+        ],
+        "minAppVersion": "3.1.15",
+        "name": "siyuan-plugin-childdoc-organizer",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-childdoc-organizer",
+        "version": "0.1.0"
+      },
+      "packageZipAssetId": 626899081,
+      "packageZipSha256": "bcb224eec74300432e9ecdfdc86f7a01cae40255b6375300d0a2d0da2ebb28bc",
+      "repoRef": "v0.1.0",
+      "size": 145323,
+      "stars": 8,
+      "updated": "2026-10-10T03:32:05Z",
+      "url": "Achuan-2/siyuan-plugin-childdoc-organizer@bcb224e"
+    },
+    {
+      "installSize": 1849516,
+      "openIssues": 12,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "SiYuan AI Assistant, supports dragging blocks and tabs to get note context, enabling Q&amp;A and editing based on SiYuan note content",
+          "zh_CN": "思源笔记 AI 助手,支持拖动块、页签获取笔记上下文，实现基于思源笔记内容进行问答和编辑"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan Copilot"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://pancake.waffo.ai/store/achuan-2-fdbho4ye/product/PROD_3F7Aa7c2NQlz9KmxcgxjQ7?type=onetime&amp;currency=USD",
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ]
+        },
+        "icon": "icon.png",
+        "minAppVersion": "3.7.2",
+        "name": "siyuan-plugin-copilot",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README_en_US.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-copilot",
+        "version": "2.8.10"
+      },
+      "packageZipAssetId": 626898107,
+      "packageZipSha256": "095b01b9a1fa5ff3c69ac47556d881dfadc5c514058ae989a086cbafe23cac3a",
+      "repoRef": "v2.8.10",
+      "size": 642693,
+      "stars": 161,
+      "updated": "2026-10-10T03:31:29Z",
+      "url": "Achuan-2/siyuan-plugin-copilot@095b01b"
+    },
+    {
       "installSize": 1212016,
       "openIssues": 2,
       "package": {
@@ -252,103 +915,6 @@
       "stars": 0,
       "updated": "2026-10-10T01:34:18Z",
       "url": "ai68298100/xiaolv-common@16f0d56"
-    },
-    {
-      "installSize": 1182258,
-      "openIssues": 0,
-      "package": {
-        "author": "Lisontowind",
-        "backends": [
-          "windows"
-        ],
-        "description": {
-          "default": "Independent Windows quick-note windows with autosave and draft recovery.",
-          "zh-CN": "独立悬浮速记窗口，自动保存到思源，支持本机草稿恢复。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Quick Notes",
-          "zh-CN": "悬浮速记"
-        },
-        "frontends": [
-          "desktop"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "quick notes",
-          "速记",
-          "便签",
-          "悬浮",
-          "Markdown"
-        ],
-        "minAppVersion": "3.8.6",
-        "name": "siyuan-quick-notes",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/lisontowind/siyuan-quick-notes",
-        "version": "0.1.15"
-      },
-      "packageZipAssetId": 626449994,
-      "packageZipSha256": "458cf7a0f32ad302706adf59e4ed7c08f2859ba4e2e4ea432bb06fb5be995d33",
-      "repoRef": "v0.1.15",
-      "size": 771538,
-      "stars": 0,
-      "updated": "2026-10-10T01:30:08Z",
-      "url": "lisontowind/siyuan-quick-notes@458cf7a"
-    },
-    {
-      "installSize": 4438664,
-      "openIssues": 0,
-      "package": {
-        "author": "Roy",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A habit tracking plugin for SiYuan",
-          "zh_CN": "每一次微小的坚持都值得记录"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Pinch Habit",
-          "zh_CN": "片趣-习惯打卡&amp;任务管理"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/Savor"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "habit",
-          "tracker",
-          "check-in"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "pinch",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/royc01/pinch",
-        "version": "2.7.5"
-      },
-      "packageZipAssetId": 626622220,
-      "packageZipSha256": "8fe3abcdd004e80cd006c7c85fd275c3359981beb81bf396df2c75638a0df980",
-      "repoRef": "v2.7.5",
-      "size": 1624653,
-      "stars": 21,
-      "updated": "2026-10-10T00:56:20Z",
-      "url": "royc01/pinch@8fe3abc"
     },
     {
       "installSize": 2050958,
@@ -684,50 +1250,6 @@
       "url": "verygoodwu/siyuan-cloud-document-suite@7422d1c"
     },
     {
-      "installSize": 633216,
-      "openIssues": 0,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Independent floating heading and list outlines, with single-line labels and per-list depth.",
-          "zh-CN": "大纲支持显示列表、页签块层级，支持悬浮大纲"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Outline Enhance",
-          "zh-CN": "大纲增强"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ]
-        },
-        "icon": "icon.png",
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-outline-enhance",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README_en.md",
-          "zh-CN": "README.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-outline-enhance",
-        "version": "0.2.0"
-      },
-      "packageZipAssetId": 624620964,
-      "packageZipSha256": "ae50e1a7aa67f52adb3e700e5fb01d6243dd274009e15bbf272a8a3f11df5008",
-      "repoRef": "v0.2.0",
-      "size": 497526,
-      "stars": 0,
-      "updated": "2026-10-09T10:20:54Z",
-      "url": "Achuan-2/siyuan-plugin-outline-enhance@ae50e1a"
-    },
-    {
       "installSize": 706530,
       "openIssues": 1,
       "package": {
@@ -791,55 +1313,6 @@
       "stars": 7,
       "updated": "2026-10-09T08:59:18Z",
       "url": "anarion80/siyuan-oembed@1dc9bcf"
-    },
-    {
-      "installSize": 2607587,
-      "openIssues": 2,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A flexible habit and check-in workspace for SiYuan.",
-          "zh-CN": "支持分组、模板、统计与扩展集成的思源打卡工作台。"
-        },
-        "displayName": {
-          "default": "Lv Check-in",
-          "zh-CN": "小驴打卡"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "打卡",
-          "习惯",
-          "目标",
-          "小驴打卡",
-          "check-in",
-          "habit"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-checkin",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/ai68298100/siyuan-checkin",
-        "version": "18.17.1"
-      },
-      "packageZipAssetId": 624234355,
-      "packageZipSha256": "5d3a3d3ceeb9272f2797b9719672b505473ccafea092c9116cbd9f2068d1a213",
-      "repoRef": "v18.17.1",
-      "size": 871325,
-      "stars": 1,
-      "updated": "2026-10-09T07:27:32Z",
-      "url": "ai68298100/siyuan-checkin@5d3a3d3"
     },
     {
       "installSize": 24162491,
@@ -963,67 +1436,6 @@
       "url": "Talyra42/siyuan-lineglow@7369835"
     },
     {
-      "installSize": 751146,
-      "openIssues": 3,
-      "package": {
-        "author": "vilifetime",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "一款思源笔记插件。双向同步 CalDAV 服务器（Radicale / Nextcloud / Baikal 等）的日历事件与待办任务，提供月/周/日日历视图、任务视图与编辑能力，并可将今日日程插入日记。",
-          "en_US": "Two-way sync calendar events and todos with CalDAV servers (Radicale / Nextcloud / Baikal). Month/Week/Day calendar views, task view, editor and daily note integration."
-        },
-        "displayName": {
-          "default": "CalDAV日历任务",
-          "en_US": "CalDAV Calendar &amp; Tasks"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop",
-          "mobile",
-          "browser-mobile"
-        ],
-        "funding": {
-          "custom": [
-            ""
-          ],
-          "github": "vilifetime"
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "caldav",
-          "calendar",
-          "todo",
-          "task",
-          "日历",
-          "任务",
-          "同步",
-          "radicale",
-          "nextcloud",
-          "baikal"
-        ],
-        "minAppVersion": "3.2.0",
-        "name": "siyuan-plugin-caldav-sync",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en_US": "README_en_US.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/vilifetime/siyuan-plugin-caldav-sync",
-        "version": "0.2.16"
-      },
-      "packageZipAssetId": 622512967,
-      "packageZipSha256": "8c70f5d31502910e3c00d4e3eebebe5cf126c1296ef25ad0004a3612619380e8",
-      "repoRef": "v0.2.16",
-      "size": 438623,
-      "stars": 4,
-      "updated": "2026-10-08T17:28:27Z",
-      "url": "vilifetime/siyuan-plugin-caldav-sync@8c70f5d"
-    },
-    {
       "installSize": 2856230,
       "openIssues": 0,
       "package": {
@@ -1130,49 +1542,6 @@
       "url": "notesynchelper/siyuan-notehelper@9b95d2c"
     },
     {
-      "installSize": 1850166,
-      "openIssues": 12,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "SiYuan AI Assistant, supports dragging blocks and tabs to get note context, enabling Q&amp;A and editing based on SiYuan note content",
-          "zh_CN": "思源笔记 AI 助手,支持拖动块、页签获取笔记上下文，实现基于思源笔记内容进行问答和编辑"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiYuan Copilot"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ]
-        },
-        "icon": "icon.png",
-        "minAppVersion": "3.7.2",
-        "name": "siyuan-plugin-copilot",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README_en_US.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-copilot",
-        "version": "2.8.9"
-      },
-      "packageZipAssetId": 622287438,
-      "packageZipSha256": "ff09c17c4d7fa8e3151bff4502f7591487714bb803cace4d508090482f49b324",
-      "repoRef": "v2.8.9",
-      "size": 643037,
-      "stars": 160,
-      "updated": "2026-10-08T15:55:47Z",
-      "url": "Achuan-2/siyuan-plugin-copilot@ff09c17"
-    },
-    {
       "installSize": 3850517,
       "openIssues": 0,
       "package": {
@@ -1241,63 +1610,6 @@
       "stars": 30,
       "updated": "2026-10-08T13:59:35Z",
       "url": "IAliceBobI/sy-progressive-plugin@1c8dc61"
-    },
-    {
-      "installSize": 2213095,
-      "openIssues": 0,
-      "package": {
-        "author": "Misuzu2027",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "description": {
-          "default": "Replace the native image viewer with a floating pin preview, including database images.",
-          "zh_CN": "替代原生图片查看功能，支持文档和数据库图片的悬浮预览"
-        },
-        "displayName": {
-          "default": "Image Pin Preview",
-          "zh_CN": "图片悬浮预览"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "image",
-          "preview",
-          "pin",
-          "float",
-          "图片",
-          "预览",
-          "悬浮"
-        ],
-        "minAppVersion": "3.0.12",
-        "name": "syplugin-image-pin-preview",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/Misuzu2027/syplugin-image-pin-preview",
-        "version": "0.0.15"
-      },
-      "packageZipAssetId": 621977619,
-      "packageZipSha256": "56278c66d4050c8635c8bb758eaa7f64592ba0802799264c6a3b9e903b4f49e7",
-      "repoRef": "v0.0.15",
-      "size": 663907,
-      "stars": 1,
-      "updated": "2026-10-08T13:53:02Z",
-      "url": "Misuzu2027/syplugin-image-pin-preview@56278c6"
     },
     {
       "installSize": 9225640,
@@ -2730,56 +3042,6 @@
       "url": "frostime/siyuan-center-width@b2c599a"
     },
     {
-      "installSize": 11043,
-      "openIssues": 0,
-      "package": {
-        "author": "bestdonger",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker"
-        ],
-        "description": {
-          "default": "Require a modifier key to open links while editing.",
-          "zh-CN": "编辑时单击链接不跳转，按住 ⌘/Ctrl 打开。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Link Click Guard",
-          "zh-CN": "链接防误跳转"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop"
-        ],
-        "icon": "",
-        "keywords": [
-          "链接",
-          "块引用",
-          "防误跳转",
-          "link",
-          "editing"
-        ],
-        "minAppVersion": "3.8.6",
-        "name": "siyuan-link-click-guard",
-        "preview": "",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/bestdonger/siyuan-link-click-guard",
-        "version": "0.1.0"
-      },
-      "packageZipAssetId": 612645805,
-      "packageZipSha256": "40eef8c8cbe243ba5bcba878b7739d88d70c9adfb3ba0b5a7a2245884e2594a8",
-      "repoRef": "v0.1.0",
-      "size": 4141,
-      "stars": 0,
-      "updated": "2026-10-05T13:38:01Z",
-      "url": "bestdonger/siyuan-link-click-guard@40eef8c"
-    },
-    {
       "installSize": 95161,
       "openIssues": 0,
       "package": {
@@ -3589,52 +3851,6 @@
       "url": "simonshen97/siyuan-plugin-calendar-caldav@efe2375"
     },
     {
-      "installSize": 2710090,
-      "openIssues": 2,
-      "package": {
-        "author": "alone-tree",
-        "backends": [
-          "windows",
-          "darwin",
-          "linux"
-        ],
-        "description": {
-          "default": "Lean, fast, and hassle-free SiYuan MCP tool.",
-          "zh-CN": "让 AI Agent 通过 MCP 安全地阅读、搜索和修改你的思源笔记，重点优化长文档、表格、块引用等知识库场景"
-        },
-        "displayName": {
-          "default": "Siyuan Bridge",
-          "zh-CN": "思源桥"
-        },
-        "frontends": [
-          "desktop"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "siyuan",
-          "mcp",
-          "ai",
-          "knowledge-base"
-        ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-bridge",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/alone-tree/siyuan-bridge",
-        "version": "1.11.1"
-      },
-      "packageZipAssetId": 609009157,
-      "packageZipSha256": "71101e8f2c0578f2ae26045d8d50b25d605161b8b966f42cbcdaa3883b0773cf",
-      "repoRef": "v1.11.1",
-      "size": 2027284,
-      "stars": 11,
-      "updated": "2026-10-04T02:57:35Z",
-      "url": "alone-tree/siyuan-bridge@71101e8"
-    },
-    {
       "installSize": 262471,
       "openIssues": 0,
       "package": {
@@ -4425,49 +4641,6 @@
       "url": "gowithmoon/siyuan-plugin-sidebar-hub@8deefb9"
     },
     {
-      "installSize": 2648731,
-      "openIssues": 7,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Edit images in SiYuan with crop, shapes, arrows, text, markers and more. Supports re-editing.",
-          "zh_CN": "一款思源笔记图片编辑/标注插件，支持裁剪、旋转图片，支持添加形状、文字、支持添加图片边框、设置图片圆角等功能，最大亮点是已编辑的图片支持再编辑！并支持上传图片自动压缩和编辑图片自动压缩！"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "ImgReEditor"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ]
-        },
-        "icon": "icon.png",
-        "minAppVersion": "3.0.12",
-        "name": "siyuan-plugin-imgReEditor",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README_en_US.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-imgReEditor",
-        "version": "1.0.0"
-      },
-      "packageZipAssetId": 603102080,
-      "packageZipSha256": "61e660d7186091bcd9db5520c5cdb822db684af411271f40afdb287df6ba61bc",
-      "repoRef": "v1.0.0",
-      "size": 1059445,
-      "stars": 22,
-      "updated": "2026-10-01T11:22:58Z",
-      "url": "Achuan-2/siyuan-plugin-imgReEditor@61e660d"
-    },
-    {
       "installSize": 714901,
       "openIssues": 1,
       "package": {
@@ -4513,43 +4686,6 @@
       "stars": 3,
       "updated": "2026-09-30T14:25:11Z",
       "url": "gradypark86/siyuan-plugin-calendar@18a294a"
-    },
-    {
-      "installSize": 47297582,
-      "openIssues": 0,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Run PP-OCRv6 ONNX locally with separately downloaded models.",
-          "zh_CN": "使用 PaddleOCR PP-OCRv6 ONNX 模型在本机识别图片文字,支持电脑端和移动端"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "PaddleOCR"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-plugin-paddleocr",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-paddleocr",
-        "version": "0.2.0"
-      },
-      "packageZipAssetId": 601072844,
-      "packageZipSha256": "e4e47ecbe08fff087f1f01d17167483c649fb9cede07efd76f26b8a0accc3dd7",
-      "repoRef": "v0.2.0",
-      "size": 13877895,
-      "stars": 0,
-      "updated": "2026-09-30T14:09:34Z",
-      "url": "Achuan-2/siyuan-plugin-paddleocr@e4e47ec"
     },
     {
       "installSize": 2715681,
@@ -10488,67 +10624,6 @@
       "url": "hqweay/siyuan-hqweay-go@45f80af"
     },
     {
-      "installSize": 286677,
-      "openIssues": 1,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "description": {
-          "default": "Automatically process when pasting (laxtex formula conversion, ppt, word list paste, etc.), process blocks (merge blocks, split blocks, etc.)",
-          "zh_CN": "粘贴时自动处理（LaTeX公式转换，ppt、word列表粘贴，去除上标、去除链接、去除空格、去除换行），对块进行处理（合并块、拆分块、复制到小红书带emoji、去除上标、去除空格、链接转文本、英文符号转中文符号等）"
-        },
-        "displayName": {
-          "default": "Text Process",
-          "zh_CN": "文本处理"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ]
-        },
-        "keywords": [
-          "paste",
-          "文本处理",
-          "text process",
-          "合并块",
-          "拆分块",
-          "ppt列表粘贴",
-          "word列表粘贴",
-          "LaTeX公式转换"
-        ],
-        "minAppVersion": "3.0.12",
-        "name": "siyuan-plugin-text-process",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-text-process",
-        "version": "0.6.8"
-      },
-      "packageZipAssetId": 517596088,
-      "packageZipSha256": "606f94064a47288474488ceffab501e9645bdcb6de28b2f807eedb4d8895b02a",
-      "repoRef": "v0.6.8",
-      "size": 201846,
-      "stars": 37,
-      "updated": "2026-08-17T04:04:50Z",
-      "url": "Achuan-2/siyuan-plugin-text-process@606f940"
-    },
-    {
       "installSize": 896241,
       "openIssues": 0,
       "package": {
@@ -10691,66 +10766,6 @@
       "stars": 0,
       "updated": "2026-08-15T16:52:50Z",
       "url": "zhangzhishi1/picture-video-manager@79677b8"
-    },
-    {
-      "installSize": 175888,
-      "openIssues": 0,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android"
-        ],
-        "description": {
-          "default": "Simplify the steps of creating, archiving, and sorting child documents in SiYuan",
-          "zh_CN": "简化思源笔记子文档创建、子文档归档、子文档排序等步骤"
-        },
-        "displayName": {
-          "default": "ChildDoc Organizer",
-          "zh_CN": "子文档整理"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://www.yuque.com/achuan-2"
-          ]
-        },
-        "keywords": [
-          "sort",
-          "排序",
-          "块引",
-          "子文档",
-          "整理",
-          "block_ref",
-          "child_doc",
-          "organizer"
-        ],
-        "minAppVersion": "3.1.15",
-        "name": "siyuan-plugin-childdoc-organizer",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-childdoc-organizer",
-        "version": "0.0.10"
-      },
-      "packageZipAssetId": 515688496,
-      "packageZipSha256": "36e99406f15adcfd91402ffb667b71aeb1a3ff307ddfaebbf92c41d6700eea2a",
-      "repoRef": "v0.0.10",
-      "size": 145151,
-      "stars": 6,
-      "updated": "2026-08-15T12:49:14Z",
-      "url": "Achuan-2/siyuan-plugin-childdoc-organizer@36e9940"
     },
     {
       "installSize": 38337,
