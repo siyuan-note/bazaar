@@ -1,6 +1,182 @@
 {
   "repos": [
     {
+      "installSize": 1856082,
+      "openIssues": 12,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "SiYuan AI Assistant, supports dragging blocks and tabs to get note context, enabling Q&amp;A and editing based on SiYuan note content",
+          "zh_CN": "思源笔记 AI 助手,支持拖动块、页签获取笔记上下文，实现基于思源笔记内容进行问答和编辑"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan Copilot"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://pancake.waffo.ai/store/achuan-2-fdbho4ye/product/PROD_3F7Aa7c2NQlz9KmxcgxjQ7?type=onetime&amp;currency=USD",
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ]
+        },
+        "icon": "icon.png",
+        "minAppVersion": "3.7.2",
+        "name": "siyuan-plugin-copilot",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README_en_US.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-copilot",
+        "version": "2.8.12"
+      },
+      "packageZipAssetId": 628266385,
+      "packageZipSha256": "8c1ef14038fe083104f1dcd788769c7cda43851b3df9caa5d5129e9ab09fe66f",
+      "repoRef": "v2.8.12",
+      "size": 645152,
+      "stars": 162,
+      "updated": "2026-10-10T15:13:00Z",
+      "url": "Achuan-2/siyuan-plugin-copilot@8c1ef14"
+    },
+    {
+      "installSize": 10306672,
+      "openIssues": 1,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
+          "zh_CN": "一款在思源笔记里实现任务管理功能的插件，为了践行「防弹笔记法」而开发。支持电脑端和移动端系统通知提醒任务执行、日历视图查看行事历、项目管理、四象限面板、番茄钟专注、习惯打卡等功能"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Note Management",
+          "zh_CN": "任务笔记管理"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://pancake.waffo.ai/store/achuan-2-fdbho4ye/product/PROD_3F7Aa7c2NQlz9KmxcgxjQ7?type=onetime&amp;currency=USD",
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "reminder",
+          "time",
+          "calendar",
+          "notification",
+          "提醒",
+          "时间",
+          "日历",
+          "通知",
+          "番茄钟",
+          "四象限",
+          "任务管理",
+          "项目管理",
+          "习惯打卡"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-task-note-management",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README_en.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
+        "version": "7.1.4"
+      },
+      "packageZipAssetId": 628262592,
+      "packageZipSha256": "04d273c49a20de09e787d9e418d85c92ec84aeb3ed6ccd04b83dfcc7938c5013",
+      "repoRef": "v7.1.4",
+      "size": 4641598,
+      "stars": 222,
+      "updated": "2026-10-10T15:11:43Z",
+      "url": "Achuan-2/siyuan-plugin-task-note-management@04d273c"
+    },
+    {
+      "installSize": 719230,
+      "openIssues": 0,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Save and recall common content (phrases, snippets, code, links, images, assets, block structures) anchored to real SiYuan blocks — with fill-in variables, snippet nesting, AI transforms, template packs, and faithful source references.",
+          "zh-CN": "基于思源文档和块的常用内容快速调用器：常用语、模板、代码、链接、图片、附件与块结构，条目锚定真实思源块。支持插入时变量填充、片段嵌套、AI 整理/变换/语义找、模板包分享，来源可回链、失效可见。"
+        },
+        "displayName": {
+          "default": "LvCommon (Beta)",
+          "zh-CN": "小驴常用（内测版）"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "常用语",
+          "common phrases",
+          "snippet",
+          "snippets",
+          "模板",
+          "template",
+          "templates",
+          "片段",
+          "快速插入",
+          "quick insert",
+          "小驴常用",
+          "小驴常用（内测版）",
+          "xiaolv",
+          "xiaolv-common",
+          "变量",
+          "variables",
+          "文本扩展",
+          "text expander",
+          "AI",
+          "提示词",
+          "prompt",
+          "剪贴板",
+          "clipboard",
+          "模板包",
+          "template pack"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "xiaolv-common",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en-US": "README.en-US.md"
+        },
+        "url": "https://github.com/ai68298100/xiaolv-common",
+        "version": "0.3.9"
+      },
+      "packageZipAssetId": 628258486,
+      "packageZipSha256": "5db2f1683853442bbde4ac974acaf6e14fb50fd78393db553fe741c61f5f46b4",
+      "repoRef": "v0.3.9",
+      "size": 431474,
+      "stars": 0,
+      "updated": "2026-10-10T14:49:52Z",
+      "url": "ai68298100/xiaolv-common@5db2f16"
+    },
+    {
       "installSize": 216337,
       "openIssues": 0,
       "package": {
@@ -116,6 +292,241 @@
       "stars": 1,
       "updated": "2026-10-10T14:18:02Z",
       "url": "ai68298100/siyuan-exam@bcdd493"
+    },
+    {
+      "installSize": 215924,
+      "openIssues": 10,
+      "package": {
+        "author": "OpaqueGlass",
+        "description": {
+          "default": "Double-click to expand the next level or double-click to open the document.",
+          "zh-CN": "双击展开下一层级，或双击打开文档（测试中功能：对大纲、标签、移动端的单双击处理）",
+          "zh_CN": "双击展开下一层级，或双击打开文档（测试中功能：对大纲、标签、移动端的单双击处理）"
+        },
+        "displayName": {
+          "default": "double click file tree",
+          "zh-CN": "双击文档树",
+          "zh_CN": "双击文档树"
+        },
+        "funding": {
+          "custom": [
+            "https://wj.qq.com/s2/12395364/b69f/"
+          ]
+        },
+        "icon": "icon.png",
+        "name": "syplugin-doubleClickFileTree",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/OpaqueGlass/syplugin-doubleClickFileTree",
+        "version": "1.0.3"
+      },
+      "packageZipAssetId": 628109287,
+      "packageZipSha256": "200ee2bddb5eee86861edecc0e185564cd60f492624e03588096b8e1961267c6",
+      "repoRef": "v1.0.3",
+      "size": 86497,
+      "stars": 6,
+      "updated": "2026-10-10T13:57:13Z",
+      "url": "OpaqueGlass/syplugin-doubleClickFileTree@200ee2b"
+    },
+    {
+      "installSize": 14989487,
+      "openIssues": 2,
+      "package": {
+        "author": "Glaube-TY",
+        "backends": [
+          "windows",
+          "linux",
+          "ios",
+          "android",
+          "harmony",
+          "docker",
+          "darwin"
+        ],
+        "description": {
+          "en_US": "Provides personalized homepage layout and rich functional modules, as well as AI knowledge base.",
+          "zh_CN": "提供个性化首页布局和丰富的功能模块以及 AI 知识库功能。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "en_US": "HOME",
+          "zh_CN": "主页"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://glaube-ty.top/da-shang/"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "keywords": [
+          "homepage",
+          "home",
+          "主页",
+          "首页",
+          "task",
+          "task manager",
+          "任务",
+          "任务管理",
+          "SQL",
+          "sql",
+          "查询",
+          "widget",
+          "widget manager",
+          "挂件",
+          "挂件管理",
+          "组件",
+          "组件管理",
+          "Pomodoro",
+          "Pomodoro timer",
+          "番茄钟",
+          "番茄",
+          "heat map",
+          "热力图",
+          "热搜",
+          "搜索",
+          "AI",
+          "智能助手",
+          "agent",
+          "智能体"
+        ],
+        "minAppVersion": "3.8.6",
+        "name": "siyuan-homepage",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/Glaube-TY/siyuan-homepage",
+        "version": "5.1.7"
+      },
+      "packageZipAssetId": 627947676,
+      "packageZipSha256": "437425da38dd24c9887ef2a8d1ddeef6e6e15a3935072315c1175760bb2e57d5",
+      "repoRef": "v5.1.7",
+      "size": 5375181,
+      "stars": 42,
+      "updated": "2026-10-10T12:41:31Z",
+      "url": "Glaube-TY/siyuan-homepage@437425d"
+    },
+    {
+      "installSize": 2764239,
+      "openIssues": 7,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Edit images in SiYuan with crop, shapes, arrows, text, markers and more. Supports re-editing.",
+          "zh_CN": "一款思源笔记图片编辑/标注插件，支持裁剪、旋转图片，支持添加形状、文字、支持添加图片边框、设置图片圆角等功能，最大亮点是已编辑的图片支持再编辑！并支持上传图片自动压缩和编辑图片自动压缩！"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "ImgReEditor"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://pancake.waffo.ai/store/achuan-2-fdbho4ye/product/PROD_3F7Aa7c2NQlz9KmxcgxjQ7?type=onetime&amp;currency=USD",
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ]
+        },
+        "icon": "icon.png",
+        "minAppVersion": "3.0.12",
+        "name": "siyuan-plugin-imgReEditor",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README_en_US.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-imgReEditor",
+        "version": "1.0.2"
+      },
+      "packageZipAssetId": 627662589,
+      "packageZipSha256": "5ae3e017ac11b182fe2ca496b375abf4f42e30f79280fd7d21c85bca2063e33f",
+      "repoRef": "v1.0.2",
+      "size": 1111740,
+      "stars": 22,
+      "updated": "2026-10-10T10:25:43Z",
+      "url": "Achuan-2/siyuan-plugin-imgReEditor@5ae3e01"
+    },
+    {
+      "installSize": 189291,
+      "openIssues": 1,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android"
+        ],
+        "description": {
+          "default": "Click the top bar button to hide/show the highlighted text",
+          "zh_CN": "点击顶栏按钮，隐藏/显示高亮文字"
+        },
+        "displayName": {
+          "default": "Cloze Review",
+          "zh_CN": "挖空复习"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://pancake.waffo.ai/store/achuan-2-fdbho4ye/product/PROD_3F7Aa7c2NQlz9KmxcgxjQ7?type=onetime&amp;currency=USD",
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "高亮",
+          "Mark",
+          "Highlight",
+          "学习",
+          "记忆",
+          "Learning",
+          "Memory"
+        ],
+        "minAppVersion": "3.0.12",
+        "name": "siyuan-plugin-highlight-cloze",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-highlight-cloze",
+        "version": "0.1.2"
+      },
+      "packageZipAssetId": 627656141,
+      "packageZipSha256": "3f16efc7bcb8ef5b0f1262e5a4d1110508607d658c008bba94fb9441435b7a56",
+      "repoRef": "v0.1.2",
+      "size": 118968,
+      "stars": 8,
+      "updated": "2026-10-10T10:22:30Z",
+      "url": "Achuan-2/siyuan-plugin-highlight-cloze@3f16efc"
     },
     {
       "installSize": 2680786,
@@ -630,50 +1041,6 @@
       "url": "Achuan-2/siyuan-plugin-paddleocr@b671037"
     },
     {
-      "installSize": 2647955,
-      "openIssues": 8,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Edit images in SiYuan with crop, shapes, arrows, text, markers and more. Supports re-editing.",
-          "zh_CN": "一款思源笔记图片编辑/标注插件，支持裁剪、旋转图片，支持添加形状、文字、支持添加图片边框、设置图片圆角等功能，最大亮点是已编辑的图片支持再编辑！并支持上传图片自动压缩和编辑图片自动压缩！"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "ImgReEditor"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://pancake.waffo.ai/store/achuan-2-fdbho4ye/product/PROD_3F7Aa7c2NQlz9KmxcgxjQ7?type=onetime&amp;currency=USD",
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ]
-        },
-        "icon": "icon.png",
-        "minAppVersion": "3.0.12",
-        "name": "siyuan-plugin-imgReEditor",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README_en_US.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-imgReEditor",
-        "version": "1.0.1"
-      },
-      "packageZipAssetId": 626901940,
-      "packageZipSha256": "0f4bc051f714b3cb945233cc4392958e53767080fd9991c49246bc00c2fb39f4",
-      "repoRef": "v1.0.1",
-      "size": 1059131,
-      "stars": 22,
-      "updated": "2026-10-10T03:33:50Z",
-      "url": "Achuan-2/siyuan-plugin-imgReEditor@0f4bc05"
-    },
-    {
       "installSize": 176085,
       "openIssues": 0,
       "package": {
@@ -735,50 +1102,6 @@
       "stars": 8,
       "updated": "2026-10-10T03:32:05Z",
       "url": "Achuan-2/siyuan-plugin-childdoc-organizer@bcb224e"
-    },
-    {
-      "installSize": 1849516,
-      "openIssues": 12,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "SiYuan AI Assistant, supports dragging blocks and tabs to get note context, enabling Q&amp;A and editing based on SiYuan note content",
-          "zh_CN": "思源笔记 AI 助手,支持拖动块、页签获取笔记上下文，实现基于思源笔记内容进行问答和编辑"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiYuan Copilot"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://pancake.waffo.ai/store/achuan-2-fdbho4ye/product/PROD_3F7Aa7c2NQlz9KmxcgxjQ7?type=onetime&amp;currency=USD",
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ]
-        },
-        "icon": "icon.png",
-        "minAppVersion": "3.7.2",
-        "name": "siyuan-plugin-copilot",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README_en_US.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-copilot",
-        "version": "2.8.10"
-      },
-      "packageZipAssetId": 626898107,
-      "packageZipSha256": "095b01b9a1fa5ff3c69ac47556d881dfadc5c514058ae989a086cbafe23cac3a",
-      "repoRef": "v2.8.10",
-      "size": 642693,
-      "stars": 161,
-      "updated": "2026-10-10T03:31:29Z",
-      "url": "Achuan-2/siyuan-plugin-copilot@095b01b"
     },
     {
       "installSize": 1212016,
@@ -963,75 +1286,6 @@
       "stars": 1,
       "updated": "2026-10-10T01:59:06Z",
       "url": "ai68298100/siyuan-lv-cards@b5517ba"
-    },
-    {
-      "installSize": 697188,
-      "openIssues": 0,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Save and recall common content (phrases, snippets, code, links, images, assets, block structures) anchored to real SiYuan blocks — with fill-in variables, snippet nesting, AI transforms, template packs, and faithful source references.",
-          "zh-CN": "基于思源文档和块的常用内容快速调用器：常用语、模板、代码、链接、图片、附件与块结构，条目锚定真实思源块。支持插入时变量填充、片段嵌套、AI 整理/变换/语义找、模板包分享，来源可回链、失效可见。"
-        },
-        "displayName": {
-          "default": "LvCommon (Beta)",
-          "zh-CN": "小驴常用（内测版）"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "常用语",
-          "common phrases",
-          "snippet",
-          "snippets",
-          "模板",
-          "template",
-          "templates",
-          "片段",
-          "快速插入",
-          "quick insert",
-          "小驴常用",
-          "小驴常用（内测版）",
-          "xiaolv",
-          "xiaolv-common",
-          "变量",
-          "variables",
-          "文本扩展",
-          "text expander",
-          "AI",
-          "提示词",
-          "prompt",
-          "剪贴板",
-          "clipboard",
-          "模板包",
-          "template pack"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "xiaolv-common",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en-US": "README.en-US.md"
-        },
-        "url": "https://github.com/ai68298100/xiaolv-common",
-        "version": "0.3.8"
-      },
-      "packageZipAssetId": 626537959,
-      "packageZipSha256": "16f0d56a232fee89f7c395586a6a1f85d94b64d5a6e8c8b018559a8e0861a6b5",
-      "repoRef": "v0.3.8",
-      "size": 426861,
-      "stars": 0,
-      "updated": "2026-10-10T01:34:18Z",
-      "url": "ai68298100/xiaolv-common@16f0d56"
     },
     {
       "installSize": 2050958,
@@ -1729,84 +1983,6 @@
       "url": "IAliceBobI/sy-progressive-plugin@1c8dc61"
     },
     {
-      "installSize": 9225640,
-      "openIssues": 1,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "description": {
-          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
-          "zh_CN": "一款在思源笔记里实现任务管理功能的插件，为了践行「防弹笔记法」而开发。支持电脑端和移动端系统通知提醒任务执行、日历视图查看行事历、项目管理、四象限面板、番茄钟专注、习惯打卡等功能"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Note Management",
-          "zh_CN": "任务笔记管理"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "keywords": [
-          "reminder",
-          "time",
-          "calendar",
-          "notification",
-          "提醒",
-          "时间",
-          "日历",
-          "通知",
-          "番茄钟",
-          "四象限",
-          "任务管理",
-          "项目管理",
-          "习惯打卡"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-task-note-management",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README_en.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
-        "version": "7.1.3"
-      },
-      "packageZipAssetId": 621793468,
-      "packageZipSha256": "987e6f19872302a6310ff48fa3233fd5a1bcec29e811d83da8027af5b43721db",
-      "repoRef": "v7.1.3",
-      "size": 4326402,
-      "stars": 222,
-      "updated": "2026-10-08T12:37:48Z",
-      "url": "Achuan-2/siyuan-plugin-task-note-management@987e6f1"
-    },
-    {
       "installSize": 40136038,
       "openIssues": 0,
       "package": {
@@ -2178,96 +2354,6 @@
       "stars": 0,
       "updated": "2026-10-08T06:22:35Z",
       "url": "yumin-cn/siyuan-plugin-ebook-reader@896e450"
-    },
-    {
-      "installSize": 14902713,
-      "openIssues": 2,
-      "package": {
-        "author": "Glaube-TY",
-        "backends": [
-          "windows",
-          "linux",
-          "ios",
-          "android",
-          "harmony",
-          "docker",
-          "darwin"
-        ],
-        "description": {
-          "en_US": "Provides personalized homepage layout and rich functional modules, as well as AI knowledge base.",
-          "zh_CN": "提供个性化首页布局和丰富的功能模块以及 AI 知识库功能。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "en_US": "HOME",
-          "zh_CN": "主页"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://glaube-ty.top/da-shang/"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker"
-        ],
-        "keywords": [
-          "homepage",
-          "home",
-          "主页",
-          "首页",
-          "task",
-          "task manager",
-          "任务",
-          "任务管理",
-          "SQL",
-          "sql",
-          "查询",
-          "widget",
-          "widget manager",
-          "挂件",
-          "挂件管理",
-          "组件",
-          "组件管理",
-          "Pomodoro",
-          "Pomodoro timer",
-          "番茄钟",
-          "番茄",
-          "heat map",
-          "热力图",
-          "热搜",
-          "搜索",
-          "AI",
-          "智能助手",
-          "agent",
-          "智能体"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "siyuan-homepage",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/Glaube-TY/siyuan-homepage",
-        "version": "5.1.6"
-      },
-      "packageZipAssetId": 620810640,
-      "packageZipSha256": "ea4cc6bedc9d35c3ed811844317f11e3f1a4f3d110fea3d102a22575ec0b5751",
-      "repoRef": "v5.1.6",
-      "size": 5349536,
-      "stars": 42,
-      "updated": "2026-10-08T05:17:21Z",
-      "url": "Glaube-TY/siyuan-homepage@ea4cc6b"
     },
     {
       "installSize": 4773087,
@@ -10622,43 +10708,6 @@
       "url": "Genwaygenway/siyuan-calendar-plus@b3aa2c9"
     },
     {
-      "installSize": 212355,
-      "openIssues": 11,
-      "package": {
-        "author": "OpaqueGlass",
-        "description": {
-          "default": "Double-click to expand the next level or double-click to open the document.",
-          "zh-CN": "双击展开下一层级，或双击打开文档（测试中功能：对大纲、标签、移动端的单双击处理）",
-          "zh_CN": "双击展开下一层级，或双击打开文档（测试中功能：对大纲、标签、移动端的单双击处理）"
-        },
-        "displayName": {
-          "default": "double click file tree",
-          "zh-CN": "双击文档树",
-          "zh_CN": "双击文档树"
-        },
-        "funding": {
-          "custom": [
-            "https://wj.qq.com/s2/12395364/b69f/"
-          ]
-        },
-        "name": "syplugin-doubleClickFileTree",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/OpaqueGlass/syplugin-doubleClickFileTree",
-        "version": "1.0.2"
-      },
-      "packageZipAssetId": 519487426,
-      "packageZipSha256": "09e52fde1dce40a5f5b505e27b25dc945fbb604f39e3f5c6915e1461543205b8",
-      "repoRef": "v1.0.2",
-      "size": 85069,
-      "stars": 6,
-      "updated": "2026-08-18T13:24:55Z",
-      "url": "OpaqueGlass/syplugin-doubleClickFileTree@09e52fd"
-    },
-    {
       "installSize": 986683,
       "openIssues": 0,
       "package": {
@@ -18601,65 +18650,6 @@
       "stars": 1,
       "updated": "2026-01-06T03:31:55Z",
       "url": "vanchKong/layout-plugin@73c0f72"
-    },
-    {
-      "installSize": 189177,
-      "openIssues": 0,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android"
-        ],
-        "description": {
-          "en_US": "Click the top bar button to hide/show the highlighted text",
-          "zh_CN": "点击顶栏按钮，隐藏/显示高亮文字"
-        },
-        "displayName": {
-          "en_US": "Cloze Review",
-          "zh_CN": "挖空复习"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://www.yuque.com/achuan-2"
-          ]
-        },
-        "keywords": [
-          "高亮",
-          "Mark",
-          "Highlight",
-          "学习",
-          "记忆",
-          "Learning",
-          "Memory"
-        ],
-        "minAppVersion": "3.0.12",
-        "name": "siyuan-plugin-highlight-cloze",
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-highlight-cloze",
-        "version": "0.1.1"
-      },
-      "packageZipAssetId": 336403848,
-      "packageZipSha256": "12c21eebe4d7bc5cd4840796a1e54e6f57997dd31d9eac958a00d155b9f4247d",
-      "repoRef": "v0.1.1",
-      "size": 118824,
-      "stars": 7,
-      "updated": "2026-01-05T03:56:49Z",
-      "url": "Achuan-2/siyuan-plugin-highlight-cloze@12c21ee"
     },
     {
       "installSize": 193794,
