@@ -1,62 +1,196 @@
 {
   "repos": [
     {
-      "installSize": 1814731,
-      "openIssues": 2,
+      "installSize": 2856201,
+      "openIssues": 3,
       "package": {
-        "author": "MDfox",
+        "author": "Achuan-2",
         "backends": [
           "all"
         ],
         "description": {
-          "default": "Customize every font element in SiYuan!",
-          "zh-CN": "轻松自定义思源中的所有字体元素！"
+          "default": "Edit images in SiYuan with crop, shapes, arrows, text, markers and more. Supports re-editing.",
+          "zh_CN": "一款思源笔记图片编辑/标注插件，支持裁剪、旋转图片，支持添加形状、文字、支持添加图片边框、设置图片圆角等功能，最大亮点是已编辑的图片支持再编辑！并支持上传图片自动压缩和编辑图片自动压缩！"
         },
         "disabledInPublish": true,
         "displayName": {
-          "default": "SiYuan Font Studio",
-          "zh-CN": "思源字体工坊"
+          "default": "ImgReEditor"
         },
         "frontends": [
           "all"
         ],
         "funding": {
           "custom": [
-            "https://github.com/MDfox-ChaosZone/siyuan-font-studio/blob/main/README.md#支持与赞助"
+            "https://pancake.waffo.ai/store/achuan-2-fdbho4ye/product/PROD_3F7Aa7c2NQlz9KmxcgxjQ7?type=onetime&amp;currency=USD",
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
           ]
         },
         "icon": "icon.png",
-        "keywords": [
-          "字体",
-          "字体管理",
-          "自定义",
-          "字号",
-          "font",
-          "font manager",
-          "typography",
-          "customize",
-          "font size"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "siyuan-font-studio",
-        "preview": "preview.webp",
+        "minAppVersion": "3.0.12",
+        "name": "siyuan-plugin-imgReEditor",
+        "preview": "preview.png",
         "readme": {
-          "default": "README.md",
-          "en": "README.en.md"
+          "default": "README_en_US.md",
+          "zh_CN": "README.md"
         },
-        "url": "https://github.com/MDfox-ChaosZone/siyuan-font-studio",
-        "version": "1.1.1"
+        "url": "https://github.com/Achuan-2/siyuan-plugin-imgReEditor",
+        "version": "1.1.2"
       },
-      "packageZipAssetId": 629627602,
-      "packageZipSha256": "43f41ef0d2559ae0a22f5dc3d790fcf0a5faddf8adaf1417730e56b8e81fa397",
-      "repoRef": "v1.1.1",
-      "size": 1201524,
-      "stars": 1,
-      "updated": "2026-10-11T03:07:36Z",
-      "url": "MDfox-ChaosZone/siyuan-font-studio@43f41ef"
+      "packageZipAssetId": 630372000,
+      "packageZipSha256": "efb1355d0015b1da7e6eb268beb3b70a7847b3461d76dd3cdc9dbfee083daedc",
+      "repoRef": "v1.1.2",
+      "size": 1137448,
+      "stars": 22,
+      "updated": "2026-10-11T09:51:10Z",
+      "url": "Achuan-2/siyuan-plugin-imgReEditor@efb1355"
     },
     {
-      "installSize": 4863943,
+      "installSize": 2050063,
+      "openIssues": 12,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "SiYuan AI Assistant, supports dragging blocks and tabs to get note context, enabling Q&amp;A and editing based on SiYuan note content",
+          "zh_CN": "思源笔记 AI 助手,支持拖动块、页签获取笔记上下文，实现基于思源笔记内容进行问答和编辑"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan Copilot"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://pancake.waffo.ai/store/achuan-2-fdbho4ye/product/PROD_3F7Aa7c2NQlz9KmxcgxjQ7?type=onetime&amp;currency=USD",
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ]
+        },
+        "icon": "icon.png",
+        "minAppVersion": "3.7.2",
+        "name": "siyuan-plugin-copilot",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README_en_US.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-copilot",
+        "version": "2.8.13"
+      },
+      "packageZipAssetId": 630365853,
+      "packageZipSha256": "44d4ea700503e273a7d9957726f09e427197bfb6421bf5475afabd4478156d73",
+      "repoRef": "v2.8.13",
+      "size": 699343,
+      "stars": 163,
+      "updated": "2026-10-11T09:47:38Z",
+      "url": "Achuan-2/siyuan-plugin-copilot@44d4ea7"
+    },
+    {
+      "installSize": 538548,
+      "openIssues": 0,
+      "package": {
+        "author": "neariot",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Edit SiYuan&#39;s own list blocks as an outline or a mindmap. Nodes ARE native list items — no custom attributes, no private storage, no second copy of your data. Everything stays searchable and fully editable after the plugin is uninstalled.",
+          "zh_CN": "用大纲 / 导图视图编辑思源原生块。节点就是思源列表项本身 —— 不写自定义属性、不用私有存储、不产生第二份数据。卸载插件后文档照常可搜索、可编辑。"
+        },
+        "displayName": {
+          "default": "Native Outline &amp; Mindmap",
+          "zh_CN": "原生大纲导图"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "mindmap",
+          "mind map",
+          "思维导图",
+          "导图",
+          "outline",
+          "大纲",
+          "原生块",
+          "native blocks"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-native-outline-mindmap",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/neariot/siyuan-native-outline-mindmap",
+        "version": "0.1.5"
+      },
+      "packageZipAssetId": 630233453,
+      "packageZipSha256": "2bfca27ab6a5493237f76b74167822a1c3e5fd292cd9031cf9f87eecb09af859",
+      "repoRef": "v0.1.5",
+      "size": 244290,
+      "stars": 0,
+      "updated": "2026-10-11T08:37:43Z",
+      "url": "neariot/siyuan-native-outline-mindmap@2bfca27"
+    },
+    {
+      "installSize": 2743962,
+      "openIssues": 1,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A dock Tomato Timer for SiYuan.",
+          "zh_CN": "思源底栏番茄钟：支持时间轴视图/任务提醒/日常事务记录/多端状态同步/移动端/数据库联动/块绑定/历史记录/任务管理器联动/移动端原生通知提醒"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Dock Tomato",
+          "zh_CN": "底栏番茄钟"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "tomato",
+          "timer",
+          "pomodoro",
+          "dock"
+        ],
+        "minAppVersion": "3.8.1",
+        "name": "siyuan-plugin-docktomato",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-docktomato",
+        "version": "2.3.3"
+      },
+      "packageZipAssetId": 630006527,
+      "packageZipSha256": "7e25ba29da356e892185a63657d59f07986891daf87dbfa95a2a08477ee3972f",
+      "repoRef": "v2.3.3",
+      "size": 644305,
+      "stars": 9,
+      "updated": "2026-10-11T06:38:20Z",
+      "url": "5kyfkr/siyuan-plugin-docktomato@7e25ba2"
+    },
+    {
+      "installSize": 4880230,
       "openIssues": 1,
       "package": {
         "author": "IAliceBobI",
@@ -114,15 +248,116 @@
           "zh_CN": "README_zh_CN.md"
         },
         "url": "https://github.com/IAliceBobI/sy-tomato-plugin",
-        "version": "5.24.0"
+        "version": "5.25.0"
       },
-      "packageZipAssetId": 629550429,
-      "packageZipSha256": "59777a977b41c9d3d1c54a7b48ee658d8f089bbbc8351ddf738715392042413a",
-      "repoRef": "v5.24.0",
-      "size": 1502180,
+      "packageZipAssetId": 629939985,
+      "packageZipSha256": "837b2c40a30a33b0915f0e8a62181657836449f2f750aac15a51d07064cb451b",
+      "repoRef": "v5.25.0",
+      "size": 1508104,
       "stars": 51,
-      "updated": "2026-10-11T02:21:14Z",
-      "url": "IAliceBobI/sy-tomato-plugin@59777a9"
+      "updated": "2026-10-11T06:01:52Z",
+      "url": "IAliceBobI/sy-tomato-plugin@837b2c4"
+    },
+    {
+      "installSize": 951906,
+      "openIssues": 0,
+      "package": {
+        "author": "fu1fan",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "Use your local Codex CLI to chat, reference notes and work with files in SiYuan.",
+          "zh-CN": "在思源侧边栏使用本机 Codex，引用笔记、阅读附件并处理本地项目。"
+        },
+        "displayName": {
+          "default": "SiYuan Codex",
+          "zh-CN": "思源 Codex"
+        },
+        "frontends": [
+          "desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "Codex",
+          "Agent",
+          "MCP",
+          "AI"
+        ],
+        "minAppVersion": "3.8.6",
+        "name": "siyuan-codex",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/fu1fan/siyuan-codex",
+        "version": "0.5.1"
+      },
+      "packageZipAssetId": 629802625,
+      "packageZipSha256": "247b4436a32b6217c5f0d9f5b6edb699aa2b2864810bef1993a5b1cd1cc20bbb",
+      "repoRef": "v0.5.1",
+      "size": 481393,
+      "stars": 0,
+      "updated": "2026-10-11T04:47:04Z",
+      "url": "fu1fan/siyuan-codex@247b443"
+    },
+    {
+      "installSize": 1814731,
+      "openIssues": 2,
+      "package": {
+        "author": "MDfox",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Customize every font element in SiYuan!",
+          "zh-CN": "轻松自定义思源中的所有字体元素！"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan Font Studio",
+          "zh-CN": "思源字体工坊"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://github.com/MDfox-ChaosZone/siyuan-font-studio/blob/main/README.md#支持与赞助"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "字体",
+          "字体管理",
+          "自定义",
+          "字号",
+          "font",
+          "font manager",
+          "typography",
+          "customize",
+          "font size"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "siyuan-font-studio",
+        "preview": "preview.webp",
+        "readme": {
+          "default": "README.md",
+          "en": "README.en.md"
+        },
+        "url": "https://github.com/MDfox-ChaosZone/siyuan-font-studio",
+        "version": "1.1.1"
+      },
+      "packageZipAssetId": 629627602,
+      "packageZipSha256": "43f41ef0d2559ae0a22f5dc3d790fcf0a5faddf8adaf1417730e56b8e81fa397",
+      "repoRef": "v1.1.1",
+      "size": 1201524,
+      "stars": 1,
+      "updated": "2026-10-11T03:07:36Z",
+      "url": "MDfox-ChaosZone/siyuan-font-studio@43f41ef"
     },
     {
       "installSize": 2064457,
@@ -743,50 +978,6 @@
       "url": "ai68298100/siyuan-lv-cards@bb8b3cf"
     },
     {
-      "installSize": 1856082,
-      "openIssues": 12,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "SiYuan AI Assistant, supports dragging blocks and tabs to get note context, enabling Q&amp;A and editing based on SiYuan note content",
-          "zh_CN": "思源笔记 AI 助手,支持拖动块、页签获取笔记上下文，实现基于思源笔记内容进行问答和编辑"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiYuan Copilot"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://pancake.waffo.ai/store/achuan-2-fdbho4ye/product/PROD_3F7Aa7c2NQlz9KmxcgxjQ7?type=onetime&amp;currency=USD",
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ]
-        },
-        "icon": "icon.png",
-        "minAppVersion": "3.7.2",
-        "name": "siyuan-plugin-copilot",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README_en_US.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-copilot",
-        "version": "2.8.12"
-      },
-      "packageZipAssetId": 628266385,
-      "packageZipSha256": "8c1ef14038fe083104f1dcd788769c7cda43851b3df9caa5d5129e9ab09fe66f",
-      "repoRef": "v2.8.12",
-      "size": 645152,
-      "stars": 162,
-      "updated": "2026-10-10T15:13:00Z",
-      "url": "Achuan-2/siyuan-plugin-copilot@8c1ef14"
-    },
-    {
       "installSize": 10306672,
       "openIssues": 1,
       "package": {
@@ -1094,50 +1285,6 @@
       "stars": 42,
       "updated": "2026-10-10T12:41:31Z",
       "url": "Glaube-TY/siyuan-homepage@437425d"
-    },
-    {
-      "installSize": 2764239,
-      "openIssues": 7,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Edit images in SiYuan with crop, shapes, arrows, text, markers and more. Supports re-editing.",
-          "zh_CN": "一款思源笔记图片编辑/标注插件，支持裁剪、旋转图片，支持添加形状、文字、支持添加图片边框、设置图片圆角等功能，最大亮点是已编辑的图片支持再编辑！并支持上传图片自动压缩和编辑图片自动压缩！"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "ImgReEditor"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://pancake.waffo.ai/store/achuan-2-fdbho4ye/product/PROD_3F7Aa7c2NQlz9KmxcgxjQ7?type=onetime&amp;currency=USD",
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ]
-        },
-        "icon": "icon.png",
-        "minAppVersion": "3.0.12",
-        "name": "siyuan-plugin-imgReEditor",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README_en_US.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-imgReEditor",
-        "version": "1.0.2"
-      },
-      "packageZipAssetId": 627662589,
-      "packageZipSha256": "5ae3e017ac11b182fe2ca496b375abf4f42e30f79280fd7d21c85bca2063e33f",
-      "repoRef": "v1.0.2",
-      "size": 1111740,
-      "stars": 22,
-      "updated": "2026-10-10T10:25:43Z",
-      "url": "Achuan-2/siyuan-plugin-imgReEditor@5ae3e01"
     },
     {
       "installSize": 189291,
@@ -1665,54 +1812,6 @@
       "stars": 8,
       "updated": "2026-10-10T03:32:05Z",
       "url": "Achuan-2/siyuan-plugin-childdoc-organizer@bcb224e"
-    },
-    {
-      "installSize": 554850,
-      "openIssues": 1,
-      "package": {
-        "author": "neariot",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Edit SiYuan&#39;s own list blocks as an outline or a mindmap. Nodes ARE native list items — no custom attributes, no private storage, no second copy of your data. Everything stays searchable and fully editable after the plugin is uninstalled.",
-          "zh_CN": "用大纲 / 导图视图编辑思源原生块。节点就是思源列表项本身 —— 不写自定义属性、不用私有存储、不产生第二份数据。卸载插件后文档照常可搜索、可编辑。"
-        },
-        "displayName": {
-          "default": "Native Outline &amp; Mindmap",
-          "zh_CN": "原生大纲导图"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "mindmap",
-          "mind map",
-          "思维导图",
-          "导图",
-          "outline",
-          "大纲",
-          "原生块",
-          "native blocks"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-native-outline-mindmap",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/neariot/siyuan-native-outline-mindmap",
-        "version": "0.1.4"
-      },
-      "packageZipAssetId": 626736423,
-      "packageZipSha256": "5de462e16ddd5f76c97d49c4bcb0c8a7d1d047810f79c0be6210b99986580a23",
-      "repoRef": "v0.1.4",
-      "size": 250507,
-      "stars": 0,
-      "updated": "2026-10-10T02:02:03Z",
-      "url": "neariot/siyuan-native-outline-mindmap@5de462e"
     },
     {
       "installSize": 1011164,
@@ -3534,52 +3633,6 @@
       "url": "Yimien/plugin-memos-sync-helper@7210c4b"
     },
     {
-      "installSize": 951856,
-      "openIssues": 0,
-      "package": {
-        "author": "fu1fan",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Use your local Codex CLI to chat, reference notes and work with files in SiYuan.",
-          "zh-CN": "在思源侧边栏使用本机 Codex，引用笔记、阅读附件并处理本地项目。"
-        },
-        "displayName": {
-          "default": "SiYuan Codex",
-          "zh-CN": "思源 Codex"
-        },
-        "frontends": [
-          "desktop"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "Codex",
-          "Agent",
-          "MCP",
-          "AI"
-        ],
-        "minAppVersion": "3.8.6",
-        "name": "siyuan-codex",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/fu1fan/siyuan-codex",
-        "version": "0.5.0"
-      },
-      "packageZipAssetId": 612038372,
-      "packageZipSha256": "4760e0aeae463f6a58fc260d02d446c4ac1f5e10b587487937eadd97feb8b685",
-      "repoRef": "v0.5.0",
-      "size": 481170,
-      "stars": 0,
-      "updated": "2026-10-05T08:58:43Z",
-      "url": "fu1fan/siyuan-codex@4760e0a"
-    },
-    {
       "installSize": 201855,
       "openIssues": 0,
       "package": {
@@ -4889,59 +4942,6 @@
       "stars": 3,
       "updated": "2026-09-30T14:25:11Z",
       "url": "gradypark86/siyuan-plugin-calendar@18a294a"
-    },
-    {
-      "installSize": 2715681,
-      "openIssues": 1,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A dock Tomato Timer for SiYuan.",
-          "zh_CN": "思源底栏番茄钟：支持时间轴视图/任务提醒/日常事务记录/多端状态同步/移动端/数据库联动/块绑定/历史记录/任务管理器联动/移动端原生通知提醒"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Dock Tomato",
-          "zh_CN": "底栏番茄钟"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "tomato",
-          "timer",
-          "pomodoro",
-          "dock"
-        ],
-        "minAppVersion": "3.8.1",
-        "name": "siyuan-plugin-docktomato",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-docktomato",
-        "version": "2.3.2"
-      },
-      "packageZipAssetId": 600386806,
-      "packageZipSha256": "2704f699bfc6d1dba0685f7f25277f198bcbd075623845484ede5c86634ad692",
-      "repoRef": "v2.3.2",
-      "size": 639416,
-      "stars": 9,
-      "updated": "2026-09-30T08:13:55Z",
-      "url": "5kyfkr/siyuan-plugin-docktomato@2704f69"
     },
     {
       "installSize": 770165,
