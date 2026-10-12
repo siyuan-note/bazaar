@@ -1,6 +1,68 @@
 {
   "repos": [
     {
+      "installSize": 599633,
+      "openIssues": 1,
+      "package": {
+        "author": "Glaube-TY",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "description": {
+          "default": "Run tab actions, document actions, or keyboard shortcuts with custom gestures.",
+          "zh-CN": "通过自定义手势执行标签页、文档操作或快捷键。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "GestureFlow",
+          "zh-CN": "手势流"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://glaube-ty.top/da-shang/"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "gesture",
+          "gesture automation",
+          "shortcut",
+          "productivity",
+          "手势",
+          "快捷键",
+          "效率",
+          "gestureflow"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-gesture-flow",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/Glaube-TY/siyuan-gesture-flow",
+        "version": "0.3.3"
+      },
+      "packageZipAssetId": 633936510,
+      "packageZipSha256": "5a9352a9a12c298ef934f4f2d294ba50c8bb568a1b6c7817ebafc6be5afa8263",
+      "repoRef": "v0.3.3",
+      "size": 261890,
+      "stars": 2,
+      "updated": "2026-10-12T13:54:41Z",
+      "url": "Glaube-TY/siyuan-gesture-flow@5a9352a"
+    },
+    {
       "installSize": 54410,
       "openIssues": 0,
       "package": {
@@ -52,6 +114,211 @@
       "url": "d16ug-a1l/siyuan-note-to-drawio@7c6929e"
     },
     {
+      "installSize": 2427352,
+      "openIssues": 4,
+      "package": {
+        "author": "LunaNorth",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A lightweight note-taking plugin for SiYuan, inspired by Flomo",
+          "zh_CN": "记录每一个轻闪而过的念头"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Lumina",
+          "zh_CN": "轻语"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://testingcf.jsdelivr.net/gh/LunaNorth/north-img/images/20260519195219305.png"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "碎碎念",
+          "记录",
+          "回顾"
+        ],
+        "minAppVersion": "3.3.3",
+        "name": "siyuan-lumina",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/LunaNorth/siyuan-lumina",
+        "version": "2.4.6"
+      },
+      "packageZipAssetId": 633916120,
+      "packageZipSha256": "6b3c1d3d8fdde15e422f4cc41f0afcde5a507de09facc2d361db5e00516ebf6d",
+      "repoRef": "2.4.6",
+      "size": 672358,
+      "stars": 18,
+      "updated": "2026-10-12T13:46:17Z",
+      "url": "LunaNorth/siyuan-lumina@6b3c1d3"
+    },
+    {
+      "installSize": 767471,
+      "openIssues": 3,
+      "package": {
+        "author": "vilifetime",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "一款思源笔记插件。双向同步 CalDAV 服务器（Radicale / Nextcloud / Baikal 等）的日历事件与待办任务，提供月/周/日日历视图、任务视图与编辑能力，并可将今日日程插入日记。",
+          "en_US": "Two-way sync calendar events and todos with CalDAV servers (Radicale / Nextcloud / Baikal). Month/Week/Day calendar views, task view, editor and daily note integration."
+        },
+        "displayName": {
+          "default": "CalDAV日历任务",
+          "en_US": "CalDAV Calendar &amp; Tasks"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop",
+          "mobile",
+          "browser-mobile"
+        ],
+        "funding": {
+          "custom": [
+            ""
+          ],
+          "github": "vilifetime"
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "caldav",
+          "calendar",
+          "todo",
+          "task",
+          "日历",
+          "任务",
+          "同步",
+          "radicale",
+          "nextcloud",
+          "baikal"
+        ],
+        "minAppVersion": "3.2.0",
+        "name": "siyuan-plugin-caldav-sync",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en_US": "README_en_US.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/vilifetime/siyuan-plugin-caldav-sync",
+        "version": "0.2.27"
+      },
+      "packageZipAssetId": 633714107,
+      "packageZipSha256": "dc32b48125365eff1f95922ac3d2565977098fe2ea2fa6d94c1acac3a6cee500",
+      "repoRef": "v0.2.27",
+      "size": 444278,
+      "stars": 4,
+      "updated": "2026-10-12T12:22:13Z",
+      "url": "vilifetime/siyuan-plugin-caldav-sync@dc32b48"
+    },
+    {
+      "installSize": 534880,
+      "openIssues": 0,
+      "package": {
+        "author": "neariot",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Edit SiYuan&#39;s own list blocks as an outline or a mindmap. Nodes ARE native list items — no custom attributes, no private storage, no second copy of your data. Everything stays searchable and fully editable after the plugin is uninstalled.",
+          "zh_CN": "用大纲 / 导图视图编辑思源原生块。节点就是思源列表项本身 —— 不写自定义属性、不用私有存储、不产生第二份数据。卸载插件后文档照常可搜索、可编辑。"
+        },
+        "displayName": {
+          "default": "Native Outline &amp; Mindmap",
+          "zh_CN": "原生大纲导图"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "mindmap",
+          "mind map",
+          "思维导图",
+          "导图",
+          "outline",
+          "大纲",
+          "原生块",
+          "native blocks"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-native-outline-mindmap",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/neariot/siyuan-native-outline-mindmap",
+        "version": "0.1.8"
+      },
+      "packageZipAssetId": 633442782,
+      "packageZipSha256": "06eb6bae6d13e5799ae4750170c7ac5200ac3744da80a7e3c4793f0551c6ce13",
+      "repoRef": "v0.1.8",
+      "size": 243825,
+      "stars": 0,
+      "updated": "2026-10-12T10:26:39Z",
+      "url": "neariot/siyuan-native-outline-mindmap@06eb6ba"
+    },
+    {
+      "installSize": 2855934,
+      "openIssues": 0,
+      "package": {
+        "author": "Dilyar",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "🆓 Fully open source, free forever. Asset management plugin: physical items, subscriptions, perpetual licenses, and prepaid benefits — the whole lifecycle in one panel.",
+          "zh-CN": "🆓 完全开源，永久免费。资产管理插件：实物 · 订阅 · 永久授权 · 预付权益，全周期一处管理。"
+        },
+        "displayName": {
+          "default": "Asset Management",
+          "zh-CN": "资产管理"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "asset",
+          "资产管理",
+          "tracker",
+          "inventory",
+          "折旧"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "siyuan-plugin-asset-management",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/DilyarEziz/siyuan-plugin-asset-management",
+        "version": "2.6.8"
+      },
+      "packageZipAssetId": 633406957,
+      "packageZipSha256": "8a1b59fc7823b8dfaf3483c7e5a432964a530174287e8bc94dd14d9cb47dd4ce",
+      "repoRef": "v2.6.8",
+      "size": 834753,
+      "stars": 7,
+      "updated": "2026-10-12T10:09:35Z",
+      "url": "DilyarEziz/siyuan-plugin-asset-management@8a1b59f"
+    },
+    {
       "installSize": 243129,
       "openIssues": 0,
       "package": {
@@ -100,6 +367,64 @@
       "stars": 0,
       "updated": "2026-10-12T09:31:41Z",
       "url": "pisceswb/plugin-calc@af456c6"
+    },
+    {
+      "installSize": 159102,
+      "openIssues": 0,
+      "package": {
+        "author": "游夏",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "description": {
+          "default": "Sync Telegram messages and SiYuan Inbox items into native notes, with short and long content routing.",
+          "zh_CN": "将 Telegram 与思源收集箱内容同步到原生笔记，支持短内容写入与长内容分流。"
+        },
+        "displayName": {
+          "default": "SiYuan Inbox+",
+          "zh_CN": "思源Inbox+"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop"
+        ],
+        "funding": {
+          "custom": [
+            "https://fastly.jsdelivr.net/gh/fujingzhai/siyuan-inbox-plus@main/assets/sponsor-wechat.png",
+            "https://fastly.jsdelivr.net/gh/fujingzhai/siyuan-inbox-plus@main/assets/sponsor-alipay.jpg"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "telegram",
+          "inbox",
+          "shorthand",
+          "plugin",
+          "收集箱",
+          "同步",
+          "导入"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-inbox-plus",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/fujingzhai/siyuan-inbox-plus",
+        "version": "0.2.11"
+      },
+      "packageZipAssetId": 632964182,
+      "packageZipSha256": "933cf24abffc81059d1aafe457922e6f977d1f862d288f4f3fa73e0c55b43da7",
+      "repoRef": "v0.2.11",
+      "size": 89618,
+      "stars": 2,
+      "updated": "2026-10-12T07:00:33Z",
+      "url": "fujingzhai/siyuan-inbox-plus@933cf24"
     },
     {
       "installSize": 24164875,
@@ -352,115 +677,6 @@
       "stars": 5,
       "updated": "2026-10-12T03:10:58Z",
       "url": "mm-o/siyuan-cloud@ba48cbf"
-    },
-    {
-      "installSize": 538482,
-      "openIssues": 0,
-      "package": {
-        "author": "neariot",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Edit SiYuan&#39;s own list blocks as an outline or a mindmap. Nodes ARE native list items — no custom attributes, no private storage, no second copy of your data. Everything stays searchable and fully editable after the plugin is uninstalled.",
-          "zh_CN": "用大纲 / 导图视图编辑思源原生块。节点就是思源列表项本身 —— 不写自定义属性、不用私有存储、不产生第二份数据。卸载插件后文档照常可搜索、可编辑。"
-        },
-        "displayName": {
-          "default": "Native Outline &amp; Mindmap",
-          "zh_CN": "原生大纲导图"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "mindmap",
-          "mind map",
-          "思维导图",
-          "导图",
-          "outline",
-          "大纲",
-          "原生块",
-          "native blocks"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-native-outline-mindmap",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/neariot/siyuan-native-outline-mindmap",
-        "version": "0.1.7"
-      },
-      "packageZipAssetId": 632265540,
-      "packageZipSha256": "f1e96268b69022227fb98b20eca66aa04bada25fd5134bc62a5f25d7e5a83b93",
-      "repoRef": "v0.1.7",
-      "size": 244529,
-      "stars": 0,
-      "updated": "2026-10-12T01:09:33Z",
-      "url": "neariot/siyuan-native-outline-mindmap@f1e9626"
-    },
-    {
-      "installSize": 765604,
-      "openIssues": 3,
-      "package": {
-        "author": "vilifetime",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "一款思源笔记插件。双向同步 CalDAV 服务器（Radicale / Nextcloud / Baikal 等）的日历事件与待办任务，提供月/周/日日历视图、任务视图与编辑能力，并可将今日日程插入日记。",
-          "en_US": "Two-way sync calendar events and todos with CalDAV servers (Radicale / Nextcloud / Baikal). Month/Week/Day calendar views, task view, editor and daily note integration."
-        },
-        "displayName": {
-          "default": "CalDAV日历任务",
-          "en_US": "CalDAV Calendar &amp; Tasks"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop",
-          "mobile",
-          "browser-mobile"
-        ],
-        "funding": {
-          "custom": [
-            ""
-          ],
-          "github": "vilifetime"
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "caldav",
-          "calendar",
-          "todo",
-          "task",
-          "日历",
-          "任务",
-          "同步",
-          "radicale",
-          "nextcloud",
-          "baikal"
-        ],
-        "minAppVersion": "3.2.0",
-        "name": "siyuan-plugin-caldav-sync",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en_US": "README_en_US.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/vilifetime/siyuan-plugin-caldav-sync",
-        "version": "0.2.26"
-      },
-      "packageZipAssetId": 631392538,
-      "packageZipSha256": "071442ad74237c5a53c6903541b0a822554104a66a8e6256477f00e970b37bbc",
-      "repoRef": "v0.2.26",
-      "size": 443814,
-      "stars": 4,
-      "updated": "2026-10-11T17:46:16Z",
-      "url": "vilifetime/siyuan-plugin-caldav-sync@071442a"
     },
     {
       "installSize": 2955200,
@@ -796,6 +1012,69 @@
       "stars": 9,
       "updated": "2026-10-11T06:38:20Z",
       "url": "5kyfkr/siyuan-plugin-docktomato@7e25ba2"
+    },
+    {
+      "installSize": 142729,
+      "openIssues": 9,
+      "package": {
+        "author": "zxkmm",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "android",
+          "ios",
+          "docker",
+          "harmony"
+        ],
+        "description": {
+          "en_US": "(doctree compress) provides up to 12 functions, including flow layout/ indentation adjustment/ hide bubble/ shield button/ font size/ mouse hover, etc., to completely customize your document tree",
+          "zh_CN": "（文档树压缩）提供多达20余项功能，包括 流动布局/ 缩进调节/ 隐藏气泡/ 屏蔽按钮/ 字体大小/ 鼠标悬浮/ 层级竖线/ 分割线/ 等等，完全自定义您的文档树"
+        },
+        "displayName": {
+          "en_US": "doctree modify",
+          "zh_CN": "文档树自定义"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://pipe.b3log.org/blogs/zxkmm/articles/2025/02/08/1738993480704"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "文档树",
+          "压缩",
+          "自定义",
+          "compress",
+          "doctree",
+          "modify",
+          "zxkmm",
+          "文档树压缩",
+          "文档树自定义",
+          "siyuan_doctree_compress"
+        ],
+        "minAppVersion": "2.12.1",
+        "name": "siyuan_doctree_compress",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/zxkmm/siyuan_doctree_compress",
+        "version": "1.0.3"
+      },
+      "packageZipAssetId": 629986165,
+      "packageZipSha256": "35660f67b297a60d25fa1a4ce414cae145ee3574aeb754723db86f519a58d2ca",
+      "repoRef": "v1.0.3",
+      "size": 77354,
+      "stars": 158,
+      "updated": "2026-10-11T06:27:02Z",
+      "url": "zxkmm/siyuan_doctree_compress@35660f6"
     },
     {
       "installSize": 4880230,
@@ -2829,54 +3108,6 @@
       "stars": 1,
       "updated": "2026-10-07T08:42:06Z",
       "url": "wmy2981/button-in-siyuan@6b9d4e8"
-    },
-    {
-      "installSize": 2401279,
-      "openIssues": 1,
-      "package": {
-        "author": "LunaNorth",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A lightweight note-taking plugin for SiYuan, inspired by Flomo",
-          "zh_CN": "记录每一个轻闪而过的念头"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Lumina",
-          "zh_CN": "轻语"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://testingcf.jsdelivr.net/gh/LunaNorth/north-img/images/20260519195219305.png"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "碎碎念",
-          "记录",
-          "回顾"
-        ],
-        "minAppVersion": "3.3.3",
-        "name": "siyuan-lumina",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/LunaNorth/siyuan-lumina",
-        "version": "2.4.5"
-      },
-      "packageZipAssetId": 617767553,
-      "packageZipSha256": "b8332195c056baff81e2c629903b6ee4fd133833e7e75524b5b5d8b223a81724",
-      "repoRef": "v2.4.5",
-      "size": 664595,
-      "stars": 17,
-      "updated": "2026-10-07T06:09:58Z",
-      "url": "LunaNorth/siyuan-lumina@b833219"
     },
     {
       "installSize": 159165,
@@ -5869,54 +6100,6 @@
       "stars": 0,
       "updated": "2026-09-26T14:48:28Z",
       "url": "Fly1018/siyuan-click-counter@6422235"
-    },
-    {
-      "installSize": 5690486,
-      "openIssues": 0,
-      "package": {
-        "author": "Dilyar",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "🆓 Fully open source, free forever. Asset management plugin: physical items, subscriptions, perpetual licenses, and prepaid benefits — the whole lifecycle in one panel.",
-          "zh-CN": "🆓 完全开源，永久免费。资产管理插件：实物 · 订阅 · 永久授权 · 预付权益，全周期一处管理。"
-        },
-        "displayName": {
-          "default": "Asset Management",
-          "zh-CN": "资产管理"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "asset",
-          "资产管理",
-          "tracker",
-          "inventory",
-          "折旧"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "siyuan-plugin-asset-management",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/DilyarEziz/siyuan-plugin-asset-management",
-        "version": "2.6.7"
-      },
-      "packageZipAssetId": 590543457,
-      "packageZipSha256": "f693fbf1f09e03532511e266bc1fe4d172bb6dec27f04bda59ae865c806fd94e",
-      "repoRef": "v2.6.7",
-      "size": 1632403,
-      "stars": 7,
-      "updated": "2026-09-26T11:30:06Z",
-      "url": "DilyarEziz/siyuan-plugin-asset-management@f693fbf"
     },
     {
       "installSize": 4152351,
@@ -11763,66 +11946,6 @@
       "url": "massivebox/siyuan-jsdraw-plugin@fc4f5e5"
     },
     {
-      "installSize": 583512,
-      "openIssues": 0,
-      "package": {
-        "author": "Glaube-TY",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "description": {
-          "default": "Run tab actions, document actions, or keyboard shortcuts with custom gestures.",
-          "zh-CN": "通过自定义手势执行标签页、文档操作或快捷键。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "GestureFlow",
-          "zh-CN": "手势流"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://glaube-ty.top/da-shang/"
-          ]
-        },
-        "keywords": [
-          "gesture",
-          "gesture automation",
-          "shortcut",
-          "productivity",
-          "手势",
-          "快捷键",
-          "效率",
-          "gestureflow"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-gesture-flow",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/Glaube-TY/siyuan-gesture-flow",
-        "version": "0.3.2"
-      },
-      "packageZipAssetId": 510127770,
-      "packageZipSha256": "091f73f8989eca75319620625ad83105bb2b5387f364c69dd9d1d2490936d5e7",
-      "repoRef": "v0.3.2",
-      "size": 255944,
-      "stars": 1,
-      "updated": "2026-08-11T12:47:20Z",
-      "url": "Glaube-TY/siyuan-gesture-flow@091f73f"
-    },
-    {
       "installSize": 66476,
       "openIssues": 0,
       "package": {
@@ -13849,57 +13972,6 @@
       "url": "Zuoqiu-Yingyi/siyuan-plugin-custom-block@a1d3fe5"
     },
     {
-      "installSize": 157362,
-      "openIssues": 0,
-      "package": {
-        "author": "游夏",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Sync Telegram messages and SiYuan Inbox items into native notes, with short and long content routing.",
-          "zh_CN": "将 Telegram 与思源收集箱内容同步到原生笔记，支持短内容写入与长内容分流。"
-        },
-        "displayName": {
-          "default": "SiYuan Inbox+",
-          "zh_CN": "思源Inbox+"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://fastly.jsdelivr.net/gh/fujingzhai/siyuan-inbox-plus@main/assets/sponsor-wechat.png",
-            "https://fastly.jsdelivr.net/gh/fujingzhai/siyuan-inbox-plus@main/assets/sponsor-alipay.jpg"
-          ]
-        },
-        "keywords": [
-          "telegram",
-          "inbox",
-          "shorthand",
-          "plugin",
-          "收集箱",
-          "同步",
-          "导入"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-inbox-plus",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/fujingzhai/siyuan-inbox-plus",
-        "version": "0.2.10"
-      },
-      "packageZipAssetId": 484634611,
-      "packageZipSha256": "aae343c918a06306f089cc1f27efa71f50fc33d570c9ae9417a5d8b9d75b0442",
-      "repoRef": "v0.2.10",
-      "size": 88902,
-      "stars": 2,
-      "updated": "2026-07-21T12:18:34Z",
-      "url": "fujingzhai/siyuan-inbox-plus@aae343c"
-    },
-    {
       "installSize": 495904,
       "openIssues": 0,
       "package": {
@@ -15460,67 +15532,6 @@
       "stars": 3,
       "updated": "2026-06-18T06:22:40Z",
       "url": "zhouhao/siyuan-plugin-day-memo@acfda56"
-    },
-    {
-      "installSize": 142685,
-      "openIssues": 8,
-      "package": {
-        "author": "zxkmm",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "android",
-          "ios",
-          "docker",
-          "harmony"
-        ],
-        "description": {
-          "en_US": "(doctree compress) provides up to 12 functions, including flow layout/ indentation adjustment/ hide bubble/ shield button/ font size/ mouse hover, etc., to completely customize your document tree",
-          "zh_CN": "（文档树压缩）提供多达20余项功能，包括 流动布局/ 缩进调节/ 隐藏气泡/ 屏蔽按钮/ 字体大小/ 鼠标悬浮/ 层级竖线/ 分割线/ 等等，完全自定义您的文档树"
-        },
-        "displayName": {
-          "en_US": "doctree modify",
-          "zh_CN": "文档树自定义"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://pipe.b3log.org/blogs/zxkmm/articles/2025/02/08/1738993480704"
-          ]
-        },
-        "keywords": [
-          "文档树",
-          "压缩",
-          "自定义",
-          "compress",
-          "doctree",
-          "modify",
-          "zxkmm",
-          "文档树压缩",
-          "文档树自定义",
-          "siyuan_doctree_compress"
-        ],
-        "minAppVersion": "2.12.1",
-        "name": "siyuan_doctree_compress",
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/zxkmm/siyuan_doctree_compress",
-        "version": "1.0.0"
-      },
-      "packageZipAssetId": 450908368,
-      "packageZipSha256": "c2488470638b3d356a0831bc1351cc06da4a86c459234801948bae5d73ca17a6",
-      "repoRef": "v1.0.0",
-      "size": 77339,
-      "stars": 162,
-      "updated": "2026-06-18T05:32:38Z",
-      "url": "zxkmm/siyuan_doctree_compress@c248847"
     },
     {
       "installSize": 346774,
