@@ -1,6 +1,164 @@
 {
   "repos": [
     {
+      "installSize": 511796,
+      "openIssues": 2,
+      "package": {
+        "author": "notesynchelper",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "从微信同步到思源笔记，支持文字、图片、聊天记录、文章"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "笔记同步助手"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "docker"
+        ],
+        "keywords": [
+          "wechat",
+          "template",
+          "企微",
+          "模板",
+          "微信",
+          "速记",
+          "剪藏",
+          "搜集",
+          "日记",
+          "闪念",
+          "memo",
+          "备忘",
+          "公众号",
+          "小红书",
+          "得到"
+        ],
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-notehelper",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/notesynchelper/siyuan-notehelper",
+        "version": "1.8.42"
+      },
+      "packageZipAssetId": 634660478,
+      "packageZipSha256": "fbfc5d048f9aca58c045ff75f27f655d249c712e4fec8dd300903fc0dfbd12e6",
+      "repoRef": "v1.8.42",
+      "size": 205945,
+      "stars": 2,
+      "updated": "2026-10-12T18:47:01Z",
+      "url": "notesynchelper/siyuan-notehelper@fbfc5d0"
+    },
+    {
+      "installSize": 2104538,
+      "openIssues": 1,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A local-first SiYuan navigation and work-context platform with a switcher, widget workbench, desktop snippet lab, and floating-ball actions.",
+          "zh-CN": "本地优先的思源导航与工作上下文平台，连接切换器、工作台、桌面片段实验室和悬浮球。"
+        },
+        "displayName": {
+          "default": "LvSpeed Switch",
+          "zh-CN": "小驴雷切"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "页签切换",
+          "tab switch",
+          "标签页",
+          "快捷入口",
+          "speed switch",
+          "lv speed switch",
+          "小驴雷切"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "siyuan-speed-switch",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en-US": "README.en-US.md"
+        },
+        "url": "https://github.com/ai68298100/siyuan-speed-switch",
+        "version": "0.47.1"
+      },
+      "packageZipAssetId": 634638278,
+      "packageZipSha256": "9d14960d14ecc2d2b5838af8c1180e9decebbc413d8061a90991a10957a065f9",
+      "repoRef": "v0.47.1",
+      "size": 589640,
+      "stars": 2,
+      "updated": "2026-10-12T17:46:29Z",
+      "url": "ai68298100/siyuan-speed-switch@9d14960"
+    },
+    {
+      "installSize": 17016282,
+      "openIssues": 1,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
+          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Horizon",
+          "zh_CN": "任务管理器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "task",
+          "manager",
+          "filter"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-plugin-task-horizon",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
+        "version": "3.2.0"
+      },
+      "packageZipAssetId": 634336417,
+      "packageZipSha256": "6338482707033acf2a1b657dadbbd0e34f82fc7c0858c6eef0a54aa70b42b49a",
+      "repoRef": "v3.2.0",
+      "size": 3476785,
+      "stars": 38,
+      "updated": "2026-10-12T16:32:52Z",
+      "url": "5kyfkr/siyuan-plugin-task-horizon@6338482"
+    },
+    {
       "installSize": 599633,
       "openIssues": 1,
       "package": {
@@ -503,57 +661,6 @@
       "url": "mm-o/siyuan-sireader@1d0d732"
     },
     {
-      "installSize": 16983338,
-      "openIssues": 1,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
-          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Horizon",
-          "zh_CN": "任务管理器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "task",
-          "manager",
-          "filter"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-plugin-task-horizon",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "3.1.9"
-      },
-      "packageZipAssetId": 632690595,
-      "packageZipSha256": "af10541d3718c0761ba07cd504053735955fdc0ddd42221c858766f46fa69c85",
-      "repoRef": "v3.1.9",
-      "size": 3467932,
-      "stars": 38,
-      "updated": "2026-10-12T04:46:51Z",
-      "url": "5kyfkr/siyuan-plugin-task-horizon@af10541"
-    },
-    {
       "installSize": 4264527,
       "openIssues": 4,
       "package": {
@@ -721,57 +828,6 @@
       "stars": 22,
       "updated": "2026-10-11T16:35:39Z",
       "url": "Achuan-2/siyuan-plugin-imgReEditor@60b446c"
-    },
-    {
-      "installSize": 2078681,
-      "openIssues": 1,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A local-first SiYuan navigation and work-context platform with a switcher, widget workbench, desktop snippet lab, and floating-ball actions.",
-          "zh-CN": "本地优先的思源导航与工作上下文平台，连接切换器、工作台、桌面片段实验室和悬浮球。"
-        },
-        "displayName": {
-          "default": "LvSpeed Switch",
-          "zh-CN": "小驴雷切"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "页签切换",
-          "tab switch",
-          "标签页",
-          "快捷入口",
-          "speed switch",
-          "lv speed switch",
-          "小驴雷切"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "siyuan-speed-switch",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en-US": "README.en-US.md"
-        },
-        "url": "https://github.com/ai68298100/siyuan-speed-switch",
-        "version": "0.47.0"
-      },
-      "packageZipAssetId": 631035017,
-      "packageZipSha256": "fdc752b86dd82ae569db0776c2591abcc7c08154d7353417840dd7af91286443",
-      "repoRef": "v0.47.0",
-      "size": 588082,
-      "stars": 2,
-      "updated": "2026-10-11T15:04:43Z",
-      "url": "ai68298100/siyuan-speed-switch@fdc752b"
     },
     {
       "installSize": 14991593,
@@ -2714,62 +2770,6 @@
       "stars": 15,
       "updated": "2026-10-08T16:52:06Z",
       "url": "QYLexpired/Neo-Plus@172fcf0"
-    },
-    {
-      "installSize": 511796,
-      "openIssues": 2,
-      "package": {
-        "author": "notesynchelper",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "从微信同步到思源笔记，支持文字、图片、聊天记录、文章"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "笔记同步助手"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "docker"
-        ],
-        "keywords": [
-          "wechat",
-          "template",
-          "企微",
-          "模板",
-          "微信",
-          "速记",
-          "剪藏",
-          "搜集",
-          "日记",
-          "闪念",
-          "memo",
-          "备忘",
-          "公众号",
-          "小红书",
-          "得到"
-        ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-notehelper",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/notesynchelper/siyuan-notehelper",
-        "version": "1.8.41"
-      },
-      "packageZipAssetId": 622333065,
-      "packageZipSha256": "9b95d2ce74f8f661c756eb24d599f044da661904bb0a760b6994fe89694db88d",
-      "repoRef": "v1.8.41",
-      "size": 205944,
-      "stars": 2,
-      "updated": "2026-10-08T16:13:33Z",
-      "url": "notesynchelper/siyuan-notehelper@9b95d2c"
     },
     {
       "installSize": 40136038,
