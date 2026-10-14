@@ -1,6 +1,103 @@
 {
   "repos": [
     {
+      "installSize": 8833,
+      "openIssues": 0,
+      "package": {
+        "author": "moneie",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "Convert unique VoiceNotes [[topic]] markers into native SiYuan document references when pasting.",
+          "zh-CN": "粘贴 VoiceNotes 内容时，将唯一匹配的 [[主题名]] 转换为思源原生文档引用；未找到或重名时保留原文。"
+        },
+        "displayName": {
+          "default": "VoiceNotes Topic Link",
+          "zh-CN": "VoiceNotes 主题双链转换"
+        },
+        "frontends": [
+          "desktop"
+        ],
+        "icon": "",
+        "keywords": [
+          "VoiceNotes",
+          "paste",
+          "document reference",
+          "双链"
+        ],
+        "minAppVersion": "3.8.6",
+        "name": "siyuan-voicenotes-topic-link",
+        "preview": "",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/moneie/siyuan-voicenotes-topic-link",
+        "version": "0.1.4"
+      },
+      "packageZipAssetId": 639572972,
+      "packageZipSha256": "b8ad3a58c9453f6e529b8d1e436824f5297849983b29f074fabfbf461fe33252",
+      "repoRef": "v0.1.4",
+      "size": 3078,
+      "stars": 0,
+      "updated": "2026-10-14T15:23:34Z",
+      "url": "moneie/siyuan-voicenotes-topic-link@b8ad3a5"
+    },
+    {
+      "installSize": 6635458,
+      "openIssues": 0,
+      "package": {
+        "author": "fu1fan",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "Isolated desktop web viewer, readable notes and offline archives.",
+          "zh-CN": "在思源中浏览、阅读和剪藏网页，支持独立会话、正文笔记与离线归档。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan Browser",
+          "zh-CN": "思源浏览器"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "browser",
+          "webview",
+          "web clipper",
+          "reader",
+          "archive",
+          "浏览器",
+          "网页剪藏",
+          "阅读模式"
+        ],
+        "minAppVersion": "3.8.6",
+        "name": "siyuan-browser",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/fu1fan/siyuan-browser",
+        "version": "0.1.1"
+      },
+      "packageZipAssetId": 640348409,
+      "packageZipSha256": "1c629dc7c1ce492d7ec5483db60143f4af6a50cda2457082c8c2987a6f1acab1",
+      "repoRef": "v0.1.1",
+      "size": 3273044,
+      "stars": 0,
+      "updated": "2026-10-14T15:21:35Z",
+      "url": "fu1fan/siyuan-browser@1c629dc"
+    },
+    {
       "installSize": 2640224,
       "openIssues": 2,
       "package": {
