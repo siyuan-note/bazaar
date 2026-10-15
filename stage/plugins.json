@@ -1,50 +1,305 @@
 {
   "repos": [
     {
-      "installSize": 1143823,
-      "openIssues": 0,
+      "installSize": 127050,
+      "openIssues": 11,
       "package": {
-        "author": "LunaNorth",
+        "author": "zxkmm",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "description": {
+          "en_US": "Provide capabilities to create nested folders in doctree",
+          "zh_CN": "让文档树有自然展开的能力，类似于嵌套多层笔记本，就像文件资源管理器中的文件夹一样"
+        },
+        "displayName": {
+          "en_US": "Doctree Fake Subfolder Natural Expand",
+          "zh_CN": "多层笔记本自然展开"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://pipe.b3log.org/blogs/zxkmm/articles/2025/02/08/1738993480704"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "siyuan_doctree_fake_subfolder",
+          "zxkmm",
+          "文档树",
+          "笔记本",
+          "嵌套",
+          "子文档",
+          "展开",
+          "自然"
+        ],
+        "minAppVersion": "3.0.12",
+        "name": "siyuan_doctree_fake_subfolder",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/zxkmm/siyuan_doctree_fake_subfolder",
+        "version": "999999999999999999999999999999999999999999999999999999999999999999999999999999999999.9999999999999999999999999999999999999999.9999999999999999999999999999999999999999999999999"
+      },
+      "packageZipAssetId": 642444386,
+      "packageZipSha256": "5af470cae27713bf27cde48cca28f0b309cfe0d478899386ffe9f3e69dd0f4f9",
+      "repoRef": "v999999999999999999999999999999999999999999999999999999999999999999999999999999999999.9999999999999999999999999999999999999999.9999999999999999999999999999999999999999999999999",
+      "size": 70876,
+      "stars": 65,
+      "updated": "2026-10-15T02:49:54Z",
+      "url": "zxkmm/siyuan_doctree_fake_subfolder@5af470c"
+    },
+    {
+      "installSize": 53143,
+      "openIssues": 3,
+      "package": {
+        "author": "zxkmm",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "description": {
+          "en_US": "SiYuan Mobile Marketplace",
+          "zh_CN": "思源手机版集市"
+        },
+        "displayName": {
+          "en_US": "SiYuan Mobile Marketplace",
+          "zh_CN": "思源手机版集市"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://pipe.b3log.org/blogs/zxkmm/articles/2025/02/08/1738993480704"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "plugin",
+          "marketplace",
+          "集市",
+          "zxkmm"
+        ],
+        "minAppVersion": "3.0.12",
+        "name": "siyuan_mobile_marketplace",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/zxkmm/siyuan_mobile_marketplace",
+        "version": "2.0.1"
+      },
+      "packageZipAssetId": 642416783,
+      "packageZipSha256": "4b97ad616fa5464931a70defc6471f404108388e385850f1bce4a7b7a8376fab",
+      "repoRef": "v2.0.1",
+      "size": 30125,
+      "stars": 28,
+      "updated": "2026-10-15T02:36:46Z",
+      "url": "zxkmm/siyuan_mobile_marketplace@4b97ad6"
+    },
+    {
+      "installSize": 182310,
+      "openIssues": 1,
+      "package": {
+        "author": "zxkmm",
         "backends": [
           "all"
         ],
         "description": {
-          "default": "SiYuan Note · time-tracking visualization plugin",
-          "zh_CN": "思源笔记 · 时间记录可视化插件"
+          "default": "iOS Keep Background plugin for SiYuan",
+          "zh_CN": "思源的 iOS 保持后台插件"
         },
         "disabledInPublish": true,
         "displayName": {
-          "default": "QingTrail",
-          "zh_CN": "轻迹"
+          "default": "iOS Keep Background",
+          "zh_CN": "iOS保持后台"
         },
         "frontends": [
-          "desktop"
+          "desktop",
+          "mobile"
         ],
+        "funding": {
+          "custom": [
+            "https://pipe.b3log.org/blogs/zxkmm/articles/2025/02/08/1738993480704"
+          ]
+        },
         "icon": "icon.png",
         "keywords": [
-          "轻迹",
-          "时间记录",
-          "可视化"
+          "iOS",
+          "保持后台",
+          "serving",
+          "helper",
+          "zxkmm",
+          "保活"
         ],
-        "minAppVersion": "3.3.3",
-        "name": "QingTrail",
+        "minAppVersion": "3.2.1",
+        "name": "siyuan_ios_serving_helper",
         "preview": "preview.png",
         "readme": {
-          "default": "README.md"
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
         },
-        "url": "https://github.com/LunaNorth/QingTrail",
-        "version": "1.1.8"
+        "url": "https://github.com/zxkmm/siyuan_ios_serving_helper",
+        "version": "0.0.6"
       },
-      "packageZipAssetId": 642004415,
-      "packageZipSha256": "d80e60c8253be3f41cc63717385734ad5831d562d682bb460aefb5417c1bbfbd",
-      "repoRef": "v1.1.8",
-      "size": 439397,
-      "stars": 0,
-      "updated": "2026-10-14T23:27:08Z",
-      "url": "LunaNorth/QingTrail@d80e60c"
+      "packageZipAssetId": 642415635,
+      "packageZipSha256": "b0dc715c16895356a10df97726657412e4ff9a142c22aad6c0195ec92efebc96",
+      "repoRef": "v0.0.6",
+      "size": 168664,
+      "stars": 4,
+      "updated": "2026-10-15T02:36:15Z",
+      "url": "zxkmm/siyuan_ios_serving_helper@b0dc715"
     },
     {
-      "installSize": 1557571,
+      "installSize": 104260,
+      "openIssues": 1,
+      "package": {
+        "author": "zxkmm",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "description": {
+          "en_US": "Quickly show and hide notebooks without actually switching workspaces",
+          "zh_CN": "快速的切换笔记本的显示和隐藏而不用真正地切换工作空间"
+        },
+        "displayName": {
+          "en_US": "Smart (Fake) Workspace",
+          "zh_CN": "智能多重工作空间"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://pipe.b3log.org/blogs/zxkmm/articles/2025/02/08/1738993480704"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "工作空间",
+          "Workspace",
+          "笔记本",
+          "Notebook",
+          "切换",
+          "Switch",
+          "隐藏",
+          "Hide"
+        ],
+        "minAppVersion": "3.2.1",
+        "name": "siyuan_fake_workspace",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/zxkmm/siyuan_fake_workspace",
+        "version": "1.0.2"
+      },
+      "packageZipAssetId": 642415074,
+      "packageZipSha256": "4dea95bfc2293d0882edddca850b680a4111067facd1cb82a1dbeac0cdaeb9df",
+      "repoRef": "v1.0.2",
+      "size": 71370,
+      "stars": 11,
+      "updated": "2026-10-15T02:36:00Z",
+      "url": "zxkmm/siyuan_fake_workspace@4dea95b"
+    },
+    {
+      "installSize": 47367,
+      "openIssues": 3,
+      "package": {
+        "author": "zxkmm",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "description": {
+          "en_US": "Add horizontal scrollbar to blocks that exceed the screen width, saving you the trouble of scrolling to the bottom and then scrolling back",
+          "zh_CN": "给超过屏幕宽度和高度的块添加横向滚动条，免去你需要滚动到块的底部才能用滚动条的麻烦"
+        },
+        "displayName": {
+          "en_US": "Block Landscape Scrollbar",
+          "zh_CN": "块级横向滚动条"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://pipe.b3log.org/blogs/zxkmm/articles/2025/02/08/1738993480704"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "plugin",
+          "database",
+          "code block",
+          "scrollbar",
+          "数据库",
+          "代码块",
+          "滚动条"
+        ],
+        "minAppVersion": "3.0.12",
+        "name": "siyuan_database_landscape_scrollbar",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/zxkmm/siyuan_database_landscape_scrollbar",
+        "version": "3.0.2"
+      },
+      "packageZipAssetId": 642414647,
+      "packageZipSha256": "d513edce815f044fb672310938b332c4a98dfe82deff351496e39bf73f503641",
+      "repoRef": "v3.0.2",
+      "size": 22901,
+      "stars": 23,
+      "updated": "2026-10-15T02:35:46Z",
+      "url": "zxkmm/siyuan_database_landscape_scrollbar@d513edc"
+    },
+    {
+      "installSize": 1585709,
       "openIssues": 2,
       "package": {
         "author": "ai68298100",
@@ -98,15 +353,112 @@
           "en": "README.en.md"
         },
         "url": "https://github.com/ai68298100/siyuan-home",
-        "version": "0.5.4"
+        "version": "0.5.6"
       },
-      "packageZipAssetId": 641989509,
-      "packageZipSha256": "8ab5e1096f190e4ea48e59506d95c86bfcbaa93615ecf5862c4cf4963f898c47",
-      "repoRef": "v0.5.4",
-      "size": 572406,
+      "packageZipAssetId": 642070544,
+      "packageZipSha256": "ddce850f77563d0353a8a3300443745b948002a7778e21edcb1f292dca8cd79e",
+      "repoRef": "v0.5.6",
+      "size": 579713,
       "stars": 1,
-      "updated": "2026-10-14T23:20:07Z",
-      "url": "ai68298100/siyuan-home@8ab5e10"
+      "updated": "2026-10-14T23:56:24Z",
+      "url": "ai68298100/siyuan-home@ddce850"
+    },
+    {
+      "installSize": 1882823,
+      "openIssues": 2,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Manage people and relationships in SiYuan: one person, one document, backed by a native database.",
+          "zh-CN": "在思源笔记里管理人脉与人际关系：一人一文档，数据库主干，关系图谱与生日提醒。"
+        },
+        "displayName": {
+          "default": "Lv Contacts",
+          "zh-CN": "小驴人脉"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "人脉",
+          "联系人",
+          "人际关系",
+          "CRM",
+          "通讯录",
+          "生日提醒",
+          "关系图谱",
+          "contacts",
+          "CRM",
+          "people"
+        ],
+        "minAppVersion": "3.8.5",
+        "name": "siyuan-contacts",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en-US": "README.en-US.md"
+        },
+        "url": "https://github.com/ai68298100/siyuan-contacts",
+        "version": "0.5.10"
+      },
+      "packageZipAssetId": 642055184,
+      "packageZipSha256": "1eed20907102bb80bab1205ac33f6424a0f8eb1eb4233dc097f13fec20bd030c",
+      "repoRef": "v0.5.10",
+      "size": 580794,
+      "stars": 1,
+      "updated": "2026-10-14T23:49:14Z",
+      "url": "ai68298100/siyuan-contacts@1eed209"
+    },
+    {
+      "installSize": 1143823,
+      "openIssues": 0,
+      "package": {
+        "author": "LunaNorth",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "SiYuan Note · time-tracking visualization plugin",
+          "zh_CN": "思源笔记 · 时间记录可视化插件"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "QingTrail",
+          "zh_CN": "轻迹"
+        },
+        "frontends": [
+          "desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "轻迹",
+          "时间记录",
+          "可视化"
+        ],
+        "minAppVersion": "3.3.3",
+        "name": "QingTrail",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/LunaNorth/QingTrail",
+        "version": "1.1.8"
+      },
+      "packageZipAssetId": 642004415,
+      "packageZipSha256": "d80e60c8253be3f41cc63717385734ad5831d562d682bb460aefb5417c1bbfbd",
+      "repoRef": "v1.1.8",
+      "size": 439397,
+      "stars": 0,
+      "updated": "2026-10-14T23:27:08Z",
+      "url": "LunaNorth/QingTrail@d80e60c"
     },
     {
       "installSize": 1882313,
@@ -362,60 +714,6 @@
       "stars": 38,
       "updated": "2026-10-14T17:15:21Z",
       "url": "5kyfkr/siyuan-plugin-task-horizon@7730fc0"
-    },
-    {
-      "installSize": 1876492,
-      "openIssues": 1,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Manage people and relationships in SiYuan: one person, one document, backed by a native database.",
-          "zh-CN": "在思源笔记里管理人脉与人际关系：一人一文档，数据库主干，关系图谱与生日提醒。"
-        },
-        "displayName": {
-          "default": "Lv Contacts",
-          "zh-CN": "小驴人脉"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "人脉",
-          "联系人",
-          "人际关系",
-          "CRM",
-          "通讯录",
-          "生日提醒",
-          "关系图谱",
-          "contacts",
-          "CRM",
-          "people"
-        ],
-        "minAppVersion": "3.8.5",
-        "name": "siyuan-contacts",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en-US": "README.en-US.md"
-        },
-        "url": "https://github.com/ai68298100/siyuan-contacts",
-        "version": "0.5.9"
-      },
-      "packageZipAssetId": 641064944,
-      "packageZipSha256": "b515c522f703eb046ec1a2338097fe8f48be43d26bc407a4bc1f010c8b13aa94",
-      "repoRef": "v0.5.9",
-      "size": 579325,
-      "stars": 1,
-      "updated": "2026-10-14T17:10:26Z",
-      "url": "ai68298100/siyuan-contacts@b515c52"
     },
     {
       "installSize": 152872,
@@ -5836,69 +6134,6 @@
       "stars": 2,
       "updated": "2026-10-02T09:33:46Z",
       "url": "BUGdefender404/pencil-annotation@61a7723"
-    },
-    {
-      "installSize": 127005,
-      "openIssues": 11,
-      "package": {
-        "author": "zxkmm",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "description": {
-          "en_US": "Provide capabilities to create nested folders in doctree",
-          "zh_CN": "让文档树有自然展开的能力，类似于嵌套多层笔记本，就像文件资源管理器中的文件夹一样"
-        },
-        "displayName": {
-          "en_US": "Doctree Fake Subfolder Natural Expand",
-          "zh_CN": "多层笔记本自然展开"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://zxkmm.com/donate"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "siyuan_doctree_fake_subfolder",
-          "zxkmm",
-          "文档树",
-          "笔记本",
-          "嵌套",
-          "子文档",
-          "展开",
-          "自然"
-        ],
-        "minAppVersion": "3.0.12",
-        "name": "siyuan_doctree_fake_subfolder",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/zxkmm/siyuan_doctree_fake_subfolder",
-        "version": "999999999999999999999999999999999999999999999999999999999999999999999999999999999999.9999999999999999999999999999999999999999.999999999999999999999999999999999999999999999999"
-      },
-      "packageZipAssetId": 604953534,
-      "packageZipSha256": "5d75bd98c676bee9adfa611a921fe5cc5ae987193d507927b9021da989072ebe",
-      "repoRef": "v999999999999999999999999999999999999999999999999999999999999999999999999999999999999.9999999999999999999999999999999999999999.999999999999999999999999999999999999999999999999",
-      "size": 70834,
-      "stars": 65,
-      "updated": "2026-10-02T06:13:15Z",
-      "url": "zxkmm/siyuan_doctree_fake_subfolder@5d75bd9"
     },
     {
       "installSize": 1449223,
@@ -15114,63 +15349,6 @@
       "url": "famotime/siyuan-power-buttons@73dd496"
     },
     {
-      "installSize": 53071,
-      "openIssues": 2,
-      "package": {
-        "author": "zxkmm",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "description": {
-          "en_US": "SiYuan Mobile Marketplace",
-          "zh_CN": "思源手机版集市"
-        },
-        "displayName": {
-          "en_US": "SiYuan Mobile Marketplace",
-          "zh_CN": "思源手机版集市"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://zxkmm.com/donate"
-          ]
-        },
-        "keywords": [
-          "plugin",
-          "marketplace",
-          "集市",
-          "zxkmm"
-        ],
-        "minAppVersion": "3.0.12",
-        "name": "siyuan_mobile_marketplace",
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/zxkmm/siyuan_mobile_marketplace",
-        "version": "2.0.0"
-      },
-      "packageZipAssetId": 472119422,
-      "packageZipSha256": "61a73fca895c2f5b0482defe80f02b8b45c709dd875d1f3df092bb903b15b8b2",
-      "repoRef": "v2.0.0",
-      "size": 30076,
-      "stars": 26,
-      "updated": "2026-07-10T04:57:41Z",
-      "url": "zxkmm/siyuan_mobile_marketplace@61a73fc"
-    },
-    {
       "installSize": 813662,
       "openIssues": 5,
       "package": {
@@ -16028,64 +16206,6 @@
       "stars": 1,
       "updated": "2026-06-05T08:16:06Z",
       "url": "Handao-dao/siyuan-hd-image-export@5313d0e"
-    },
-    {
-      "installSize": 396885,
-      "openIssues": 2,
-      "package": {
-        "author": "zxkmm",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "description": {
-          "en_US": "Add horizontal scrollbar to blocks that exceed the screen width, saving you the trouble of scrolling to the bottom and then scrolling back",
-          "zh_CN": "给超过屏幕宽度和高度的块添加横向滚动条，免去你需要滚动到块的底部才能用滚动条的麻烦"
-        },
-        "displayName": {
-          "en_US": "Block Landscape Scrollbar",
-          "zh_CN": "块横向滚动条"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://zxkmm.com/donate"
-          ]
-        },
-        "keywords": [
-          "plugin",
-          "database",
-          "code block",
-          "scrollbar",
-          "数据库",
-          "代码块",
-          "滚动条"
-        ],
-        "minAppVersion": "3.0.12",
-        "name": "siyuan_database_landscape_scrollbar",
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/zxkmm/siyuan_database_landscape_scrollbar",
-        "version": "2.0.0"
-      },
-      "packageZipAssetId": 439028292,
-      "packageZipSha256": "81235cec52867bafdb4122f1f9f810f0a6bc627163df026a5f74b27b07fc8180",
-      "repoRef": "v2.0.0",
-      "size": 106769,
-      "stars": 18,
-      "updated": "2026-06-05T06:35:47Z",
-      "url": "zxkmm/siyuan_database_landscape_scrollbar@81235ce"
     },
     {
       "installSize": 253336,
@@ -18197,57 +18317,6 @@
       "stars": 3,
       "updated": "2026-02-02T10:36:40Z",
       "url": "zxbdzh/siyuan-plugin-export-s3-markdown@c072a6a"
-    },
-    {
-      "installSize": 182267,
-      "openIssues": 1,
-      "package": {
-        "author": "zxkmm",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "iOS Keep Background plugin for SiYuan",
-          "zh_CN": "思源的 iOS 保持后台插件"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "iOS Keep Background",
-          "zh_CN": "iOS保持后台"
-        },
-        "frontends": [
-          "desktop",
-          "mobile"
-        ],
-        "funding": {
-          "custom": [
-            "https://zxkmm.com/sponsor"
-          ]
-        },
-        "keywords": [
-          "iOS",
-          "保持后台",
-          "serving",
-          "helper",
-          "zxkmm",
-          "保活"
-        ],
-        "minAppVersion": "3.2.1",
-        "name": "siyuan_ios_serving_helper",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/zxkmm/siyuan_ios_serving_helper",
-        "version": "0.0.5"
-      },
-      "packageZipAssetId": 348195683,
-      "packageZipSha256": "35b38e6029802d2637f07ec479330d7a41554929b74930cde342bec4c4fc0100",
-      "repoRef": "v0.0.5",
-      "size": 168619,
-      "stars": 4,
-      "updated": "2026-01-30T13:13:39Z",
-      "url": "zxkmm/siyuan_ios_serving_helper@35b38e6"
     },
     {
       "installSize": 417528,
@@ -20816,67 +20885,6 @@
       "stars": 0,
       "updated": "2025-09-13T07:39:40Z",
       "url": "frostime/sy-theme-change@20cb978"
-    },
-    {
-      "installSize": 103874,
-      "openIssues": 0,
-      "package": {
-        "author": "zxkmm",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "description": {
-          "en_US": "Quickly show and hide notebooks",
-          "zh_CN": "快速的切换笔记本的显示和隐藏"
-        },
-        "displayName": {
-          "en_US": "Smart (Fake) Workspace",
-          "zh_CN": "智能（假）工作空间"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            ""
-          ]
-        },
-        "keywords": [
-          "工作空间",
-          "Workspace",
-          "笔记本",
-          "Notebook",
-          "切换",
-          "Switch",
-          "隐藏",
-          "Hide"
-        ],
-        "minAppVersion": "3.2.1",
-        "name": "siyuan_fake_workspace",
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/siyuan-note/siyuan_fake_workspace",
-        "version": "1.0.0"
-      },
-      "packageZipAssetId": 291594517,
-      "packageZipSha256": "a98ab87e1a7d50ed7c5e525c31683349dec823f61fa5158371993ff0d8af43af",
-      "repoRef": "v1.0.0",
-      "size": 71213,
-      "stars": 11,
-      "updated": "2025-09-10T03:11:26Z",
-      "url": "zxkmm/siyuan_fake_workspace@a98ab87"
     },
     {
       "installSize": 163503,
