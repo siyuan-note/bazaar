@@ -1,6 +1,232 @@
 {
   "repos": [
     {
+      "installSize": 1724070,
+      "openIssues": 2,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "description": {
+          "default": "Family &amp; life butler: members, assets, education, health, media, travel - local-first, database-powered, with a unified expiry reminder hub.",
+          "zh-CN": "家庭与生活管家：成员档案、资产管理、育儿上学、病历社保、影音书库、出行旅行。台账进数据库、效期进统一提醒中枢，一切按需开启。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Lv Home",
+          "zh-CN": "小驴管家（内测版）"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "keywords": [
+          "family",
+          "家庭",
+          "管家",
+          "资产",
+          "提醒"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "siyuan-home",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en": "README.en.md"
+        },
+        "url": "https://github.com/ai68298100/siyuan-home",
+        "version": "0.5.16"
+      },
+      "packageZipAssetId": 643268924,
+      "packageZipSha256": "b8c3f5c7ef79e917caaaa21ec2e8bdca1d6532dbf1f786082933c379cdab7f5a",
+      "repoRef": "v0.5.16",
+      "size": 615370,
+      "stars": 1,
+      "updated": "2026-10-15T08:47:03Z",
+      "url": "ai68298100/siyuan-home@b8c3f5c"
+    },
+    {
+      "installSize": 365928,
+      "openIssues": 0,
+      "package": {
+        "author": "zfb517",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "android",
+          "ios",
+          "harmony"
+        ],
+        "description": {
+          "default": "Track token consumption for SiYuan&#39;s built-in AI agent and third-party plugins, with per-API-key quota limits, custom alert thresholds, auto-cutoff, and cloud sync support. (Stats are estimates for reference only; please read the README — especially the &#39;Statistics Accuracy &amp; Disclaimer&#39; section — and refer to your API provider&#39;s official billing.)",
+          "zh-CN": "统计思源智能体及第三方插件的 Token 消耗，支持每个 API Key 单独设置限额与自定义提醒阈值，限额自动切断，S3/WebDAV 云同步数据合并。（统计数据为估算、仅供参考；使用前请仔细阅读 README，特别是「统计精度与免责声明」章节，并以 API 供应商官方账单为准）"
+        },
+        "displayName": {
+          "default": "Token Usage Statistics",
+          "zh-CN": "Token 用量统计"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "token",
+          "Token 统计",
+          "用量",
+          "API Key",
+          "限额",
+          "费用",
+          "stats",
+          "quota"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-token-stats",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/zfb517/siyuan-token-stats",
+        "version": "1.6.5"
+      },
+      "packageZipAssetId": 642649285,
+      "packageZipSha256": "5c62be506e06b9e60ce1bebf28e3208e6e5e3be20ec3fd8a0716f7e14145532d",
+      "repoRef": "v1.6.5",
+      "size": 213267,
+      "stars": 0,
+      "updated": "2026-10-15T04:22:41Z",
+      "url": "zfb517/siyuan-token-stats@5c62be5"
+    },
+    {
+      "installSize": 156063,
+      "openIssues": 1,
+      "package": {
+        "author": "zfb517",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "android",
+          "ios",
+          "harmony"
+        ],
+        "description": {
+          "default": "Literal text input + auto-escape *# + rich paste with image download",
+          "zh-CN": "字面文本输入（*#不被渲染）+ 自动转义 + 富文本粘贴自动下载图片"
+        },
+        "displayName": {
+          "default": "Escape",
+          "zh-CN": "转义"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "字面文本",
+          "转义",
+          "富文本粘贴",
+          "公众号",
+          "图片下载",
+          "escape",
+          "paste",
+          "literal"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-literal-text",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/zfb517/siyuan-plugin-literal-text",
+        "version": "2.8.15"
+      },
+      "packageZipAssetId": 642649149,
+      "packageZipSha256": "e8834da0da44b8454f689f81676ddad7af33e3c11b42d9c31699901ff771c929",
+      "repoRef": "v2.8.15",
+      "size": 99643,
+      "stars": 0,
+      "updated": "2026-10-15T04:22:37Z",
+      "url": "zfb517/siyuan-plugin-literal-text@e8834da"
+    },
+    {
+      "installSize": 555491,
+      "openIssues": 0,
+      "package": {
+        "author": "neariot",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Edit SiYuan&#39;s own list blocks as an outline or a mindmap. Nodes ARE native list items — no custom attributes, no private storage, no second copy of your data. Everything stays searchable and fully editable after the plugin is uninstalled.",
+          "zh_CN": "用大纲 / 导图视图编辑思源原生块。节点就是思源列表项本身 —— 不写自定义属性、不用私有存储、不产生第二份数据。卸载插件后文档照常可搜索、可编辑。"
+        },
+        "displayName": {
+          "default": "Native Outline &amp; Mindmap",
+          "zh_CN": "原生大纲导图"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "mindmap",
+          "mind map",
+          "思维导图",
+          "导图",
+          "outline",
+          "大纲",
+          "原生块",
+          "native blocks"
+        ],
+        "minAppVersion": "3.1.14",
+        "name": "siyuan-native-outline-mindmap",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/neariot/siyuan-native-outline-mindmap",
+        "version": "0.2.0"
+      },
+      "packageZipAssetId": 642582554,
+      "packageZipSha256": "a76418be9f017f39d832ad2b4660646d579a7217845de5b8d126e98869f30c70",
+      "repoRef": "v0.2.0",
+      "size": 249633,
+      "stars": 0,
+      "updated": "2026-10-15T03:50:51Z",
+      "url": "neariot/siyuan-native-outline-mindmap@a76418b"
+    },
+    {
       "installSize": 127050,
       "openIssues": 11,
       "package": {
@@ -297,71 +523,6 @@
       "stars": 23,
       "updated": "2026-10-15T02:35:46Z",
       "url": "zxkmm/siyuan_database_landscape_scrollbar@d513edc"
-    },
-    {
-      "installSize": 1585709,
-      "openIssues": 2,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "description": {
-          "default": "Family &amp; life butler: members, assets, education, health, media, travel - local-first, database-powered, with a unified expiry reminder hub.",
-          "zh-CN": "家庭与生活管家：成员档案、资产管理、育儿上学、病历社保、影音书库、出行旅行。台账进数据库、效期进统一提醒中枢，一切按需开启。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Lv Home",
-          "zh-CN": "小驴管家（内测版）"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "keywords": [
-          "family",
-          "家庭",
-          "管家",
-          "资产",
-          "提醒"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "siyuan-home",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en": "README.en.md"
-        },
-        "url": "https://github.com/ai68298100/siyuan-home",
-        "version": "0.5.6"
-      },
-      "packageZipAssetId": 642070544,
-      "packageZipSha256": "ddce850f77563d0353a8a3300443745b948002a7778e21edcb1f292dca8cd79e",
-      "repoRef": "v0.5.6",
-      "size": 579713,
-      "stars": 1,
-      "updated": "2026-10-14T23:56:24Z",
-      "url": "ai68298100/siyuan-home@ddce850"
     },
     {
       "installSize": 1882823,
@@ -2599,54 +2760,6 @@
       "stars": 55,
       "updated": "2026-10-13T03:15:56Z",
       "url": "mm-o/siyuan-media-player@586310c"
-    },
-    {
-      "installSize": 535411,
-      "openIssues": 0,
-      "package": {
-        "author": "neariot",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Edit SiYuan&#39;s own list blocks as an outline or a mindmap. Nodes ARE native list items — no custom attributes, no private storage, no second copy of your data. Everything stays searchable and fully editable after the plugin is uninstalled.",
-          "zh_CN": "用大纲 / 导图视图编辑思源原生块。节点就是思源列表项本身 —— 不写自定义属性、不用私有存储、不产生第二份数据。卸载插件后文档照常可搜索、可编辑。"
-        },
-        "displayName": {
-          "default": "Native Outline &amp; Mindmap",
-          "zh_CN": "原生大纲导图"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "mindmap",
-          "mind map",
-          "思维导图",
-          "导图",
-          "outline",
-          "大纲",
-          "原生块",
-          "native blocks"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-native-outline-mindmap",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/neariot/siyuan-native-outline-mindmap",
-        "version": "0.1.9"
-      },
-      "packageZipAssetId": 635492935,
-      "packageZipSha256": "ba182e7e6d2b72c5ed255d045db0ad3ee71883cb8073fb48ef71673c07dc6e4c",
-      "repoRef": "v0.1.9",
-      "size": 243806,
-      "stars": 0,
-      "updated": "2026-10-13T01:18:30Z",
-      "url": "neariot/siyuan-native-outline-mindmap@ba182e7"
     },
     {
       "installSize": 511796,
@@ -7433,119 +7546,6 @@
       "stars": 79,
       "updated": "2026-09-22T04:00:53Z",
       "url": "siyuan-note/plugin-sample@c597400"
-    },
-    {
-      "installSize": 156063,
-      "openIssues": 1,
-      "package": {
-        "author": "zfb517",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "android",
-          "ios",
-          "harmony"
-        ],
-        "description": {
-          "default": "Literal text input + auto-escape *# + rich paste with image download",
-          "zh-CN": "字面文本输入（*#不被渲染）+ 自动转义 + 富文本粘贴自动下载图片"
-        },
-        "displayName": {
-          "default": "Escape",
-          "zh-CN": "转义"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "字面文本",
-          "转义",
-          "富文本粘贴",
-          "公众号",
-          "图片下载",
-          "escape",
-          "paste",
-          "literal"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-literal-text",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/zfb517/siyuan-plugin-literal-text",
-        "version": "2.8.14"
-      },
-      "packageZipAssetId": 580024866,
-      "packageZipSha256": "90166b75019cbc8baf6da5e40cd9123a33a494440c43b751bd76c133db7751f6",
-      "repoRef": "v2.8.14",
-      "size": 99643,
-      "stars": 0,
-      "updated": "2026-09-21T22:49:32Z",
-      "url": "zfb517/siyuan-plugin-literal-text@90166b7"
-    },
-    {
-      "installSize": 365928,
-      "openIssues": 0,
-      "package": {
-        "author": "zfb517",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "android",
-          "ios",
-          "harmony"
-        ],
-        "description": {
-          "default": "Track token consumption for SiYuan&#39;s built-in AI agent and third-party plugins, with per-API-key quota limits, custom alert thresholds, auto-cutoff, and cloud sync support. (Stats are estimates for reference only; please read the README — especially the &#39;Statistics Accuracy &amp; Disclaimer&#39; section — and refer to your API provider&#39;s official billing.)",
-          "zh-CN": "统计思源智能体及第三方插件的 Token 消耗，支持每个 API Key 单独设置限额与自定义提醒阈值，限额自动切断，S3/WebDAV 云同步数据合并。（统计数据为估算、仅供参考；使用前请仔细阅读 README，特别是「统计精度与免责声明」章节，并以 API 供应商官方账单为准）"
-        },
-        "displayName": {
-          "default": "Token Usage Statistics",
-          "zh-CN": "Token 用量统计"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "token",
-          "Token 统计",
-          "用量",
-          "API Key",
-          "限额",
-          "费用",
-          "stats",
-          "quota"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-token-stats",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/zfb517/siyuan-token-stats",
-        "version": "1.6.4"
-      },
-      "packageZipAssetId": 578391269,
-      "packageZipSha256": "cda9d1823c45b23f3385af657e10822d3cd606fec6434a5fcf3d5532a64cf879",
-      "repoRef": "v1.6.4",
-      "size": 213268,
-      "stars": 0,
-      "updated": "2026-09-21T06:12:22Z",
-      "url": "zfb517/siyuan-token-stats@cda9d18"
     },
     {
       "installSize": 256212,
