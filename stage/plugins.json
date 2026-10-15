@@ -1,7 +1,7 @@
 {
   "repos": [
     {
-      "installSize": 105183,
+      "installSize": 218383,
       "openIssues": 0,
       "package": {
         "author": "verygoodwu",
@@ -9,9 +9,9 @@
           "all"
         ],
         "description": {
-          "default": "Multi-device asset management &amp; bookkeeping: five-group accounts (cash/investment/fixed/valuables/liabilities), transactions, plans (subscriptions, insurance, loans, savings), net-worth snapshots and spending diagnosis reports.",
-          "zh_CN": "多端资产管理与记账：账户五分组（现金流/投资/固定/贵重/负债）、流水、规划（订阅/保单/贷款/储蓄）、每日净资产快照与消费诊断报表。数据保存在思源，随同步多端可用。",
-          "zh_CNT": "多端資產管理與記賬：賬戶五分組、流水、規劃（訂閱/保單/貸款/儲蓄）、每日淨資產快照與消費診斷報表。數據保存在思源，隨同步多端可用。"
+          "default": "Multi-device asset management &amp; bookkeeping: grouped accounts, transactions, plans and daily net-worth snapshots.",
+          "zh_CN": "多端资产管理与记账：账户分组、流水、订阅/保单/贷款/储蓄规划与每日净资产快照。",
+          "zh_CNT": "多端資產管理與記賬：賬戶分組、流水、訂閱/保單/貸款/儲蓄規劃與每日淨資產快照。"
         },
         "displayName": {
           "default": "Asset Steward",
@@ -35,20 +35,20 @@
         ],
         "minAppVersion": "3.7.4",
         "name": "asset-steward",
-        "preview": "",
+        "preview": "preview.png",
         "readme": {
           "default": "README.md"
         },
         "url": "https://github.com/verygoodwu/siyuan-plugin-asset-steward",
-        "version": "1.0.1"
+        "version": "1.0.3"
       },
-      "packageZipAssetId": 642522573,
-      "packageZipSha256": "b87739ddca0cec481dae2f3f4c5f4b121f94cb9004c99109b003e0fe66f9fd1d",
-      "repoRef": "v1.0.1",
-      "size": 43871,
+      "packageZipAssetId": 643409929,
+      "packageZipSha256": "bf6198b7eac20cbc8554c636354fbee1cc66d35bae033548888f75c40201694f",
+      "repoRef": "v1.0.3",
+      "size": 153190,
       "stars": 0,
-      "updated": "2026-10-15T09:06:57Z",
-      "url": "verygoodwu/siyuan-plugin-asset-steward@b87739d"
+      "updated": "2026-10-15T09:48:05Z",
+      "url": "verygoodwu/siyuan-plugin-asset-steward@bf6198b"
     },
     {
       "installSize": 2574676,
@@ -101,6 +101,60 @@
       "stars": 2,
       "updated": "2026-10-15T09:02:55Z",
       "url": "BorisZhangYYY/noosphere-siyuan@a1bc240"
+    },
+    {
+      "installSize": 1883915,
+      "openIssues": 1,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Manage people and relationships in SiYuan: one person, one document, backed by a native database.",
+          "zh-CN": "在思源笔记里管理人脉与人际关系：一人一文档，数据库主干，关系图谱与生日提醒。"
+        },
+        "displayName": {
+          "default": "Lv Contacts",
+          "zh-CN": "小驴人脉"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "人脉",
+          "联系人",
+          "人际关系",
+          "CRM",
+          "通讯录",
+          "生日提醒",
+          "关系图谱",
+          "contacts",
+          "CRM",
+          "people"
+        ],
+        "minAppVersion": "3.8.5",
+        "name": "siyuan-contacts",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en-US": "README.en-US.md"
+        },
+        "url": "https://github.com/ai68298100/siyuan-contacts",
+        "version": "0.5.11"
+      },
+      "packageZipAssetId": 643296226,
+      "packageZipSha256": "74a74877995a66a650cb1b4133d5fd81a4ba4d1dd0e32f6ba550111ea9b88883",
+      "repoRef": "v0.5.11",
+      "size": 581145,
+      "stars": 1,
+      "updated": "2026-10-15T08:57:49Z",
+      "url": "ai68298100/siyuan-contacts@74a7487"
     },
     {
       "installSize": 1724070,
@@ -625,60 +679,6 @@
       "stars": 23,
       "updated": "2026-10-15T02:35:46Z",
       "url": "zxkmm/siyuan_database_landscape_scrollbar@d513edc"
-    },
-    {
-      "installSize": 1882823,
-      "openIssues": 2,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Manage people and relationships in SiYuan: one person, one document, backed by a native database.",
-          "zh-CN": "在思源笔记里管理人脉与人际关系：一人一文档，数据库主干，关系图谱与生日提醒。"
-        },
-        "displayName": {
-          "default": "Lv Contacts",
-          "zh-CN": "小驴人脉"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "人脉",
-          "联系人",
-          "人际关系",
-          "CRM",
-          "通讯录",
-          "生日提醒",
-          "关系图谱",
-          "contacts",
-          "CRM",
-          "people"
-        ],
-        "minAppVersion": "3.8.5",
-        "name": "siyuan-contacts",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en-US": "README.en-US.md"
-        },
-        "url": "https://github.com/ai68298100/siyuan-contacts",
-        "version": "0.5.10"
-      },
-      "packageZipAssetId": 642055184,
-      "packageZipSha256": "1eed20907102bb80bab1205ac33f6424a0f8eb1eb4233dc097f13fec20bd030c",
-      "repoRef": "v0.5.10",
-      "size": 580794,
-      "stars": 1,
-      "updated": "2026-10-14T23:49:14Z",
-      "url": "ai68298100/siyuan-contacts@1eed209"
     },
     {
       "installSize": 1143823,
@@ -19339,6 +19339,12 @@
         "author": "Jeffrey Chen",
         "backends": [
           "all"
+        ],
+        "choices": [
+          {
+            "name": "highlight-search",
+            "packageType": "plugins"
+          }
         ],
         "deprecated": true,
         "deprecatedReason": {
