@@ -20,8 +20,9 @@
 - 根对象固定包含 `plugins` / `themes` / `icons` / `templates` / `widgets`
 - 每项键使用对应 TXT 列表中精确的 `owner/repo`；键存在即表示弃用，空对象表示使用通用原因
 - `reason` 可省略；存在时必须包含非空 `default`，其它键为 locale，内容应简洁、可验证
-- `alternatives` 可省略；存在时仅填写同类型、仍上架的 `owner/repo`，按推荐顺序排列，不得包含自身或重复项
-- 不要在包清单中加入 `deprecated`、`deprecatedReason` 或 `alternatives`，也不要手改 `stage/*.json`
+- `alternatives` 可省略；存在时填写仍上架的 `owner/repo`，可以跨类型（例如挂件指向插件），按推荐顺序排列，不得包含自身或重复项；同一 `owner/repo` 只能属于一个类型列表
+- 不要在包清单中加入 `deprecated`、`deprecatedReason`、`alternatives` 或 `choices`，也不要手改 `stage/*.json`
+- 跨类型替代包依靠 Stage 写出的 `choices`（类型 + 包名）生效：Stage 会同时输出 `alternatives`（仅同类型目标包名，供旧客户端按源包类型跳转，跨类型目标写进去只会查到「未找到集市包」）与 `choices`（全部目标，含类型）；`deprecated.json` 侧始终只写 `alternatives`
 - 恢复普通状态时删除注册表条目（例如作者取消归档并恢复维护）；Stage 会先清空所有旧生成字段再重新覆盖
 
 PR Check 只验证结构与引用关系；检查通过后仍须人工审阅弃用结论、原因及替代包。合并后 Stage 会在不访问包仓库 API 的情况下重建五类索引。

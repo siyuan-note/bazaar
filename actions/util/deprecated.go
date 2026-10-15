@@ -243,7 +243,7 @@ func LoadReposByPackageType(repoRoot string) (map[rules.PackageType][]string, er
 	return reposByType, nil
 }
 
-// ValidateDeprecatedRegistry 校验源包、替代包与多语言原因；所有包均须仍在同类型列表中。
+// ValidateDeprecatedRegistry 校验源包、替代包与多语言原因；源包须在同类列表中，替代包须恰属于一个类型列表。
 func ValidateDeprecatedRegistry(registry *DeprecatedRegistry, reposByType map[rules.PackageType][]string) []rules.Issue {
 	return ValidateDeprecatedRegistryTypes(registry, reposByType, rules.AllPackageTypes())
 }
@@ -252,6 +252,14 @@ func ValidateDeprecatedRegistry(registry *DeprecatedRegistry, reposByType map[ru
 func ValidateDeprecatedRegistryTypes(registry *DeprecatedRegistry, reposByType map[rules.PackageType][]string, packageTypes []rules.PackageType) []rules.Issue {
 	if registry == nil {
 		return []rules.Issue{deprecatedIssue("弃用注册表为空。", "The deprecation registry is empty.")}
+	}
+	// 替代包允许跨类型，故按全部五个列表建立 owner/repo → 所属类型 的反查表；
+	// 与本次只校验的类型无关，必须取全量，否则跨类型替代包会被误判为不存在。
+	typesByOwnerRepo := make(map[string][]rules.PackageType, len(reposByType))
+	for _, packageType := range rules.AllPackageTypes() {
+		for _, ownerRepo := range reposByType[packageType] {
+			typesByOwnerRepo[ownerRepo] = append(typesByOwnerRepo[ownerRepo], packageType)
+		}
 	}
 	var issues []rules.Issue
 	for _, packageType := range packageTypes {
@@ -281,7 +289,7 @@ func ValidateDeprecatedRegistryTypes(registry *DeprecatedRegistry, reposByType m
 				))
 			}
 			issues = append(issues, validateDeprecatedReason(path, entry.Reason)...)
-			issues = append(issues, validateDeprecatedAlternatives(path, source, entry.Alternatives, listed)...)
+			issues = append(issues, validateDeprecatedAlternatives(path, source, entry.Alternatives, typesByOwnerRepo)...)
 		}
 	}
 	return issues
@@ -339,7 +347,10 @@ func validDeprecatedReasonValue(value string) bool {
 	return strings.TrimSpace(value) != "" && value == strings.TrimSpace(value) && strings.IndexFunc(value, unicode.IsControl) < 0 && utf8.RuneCountInString(value) <= maxDeprecatedReasonRunes
 }
 
-func validateDeprecatedAlternatives(path, source string, alternatives []string, listed map[string]struct{}) []rules.Issue {
+// validateDeprecatedAlternatives 校验替代包列表。
+// typesByOwnerRepo 为全量列表中 owner/repo → 所属类型 的反查表：替代包可以跨类型，但必须恰属于一个类型，
+// 否则 Stage 无法确定包名（而客户端也必须知道包类型才能打开）。
+func validateDeprecatedAlternatives(path, source string, alternatives []string, typesByOwnerRepo map[string][]rules.PackageType) []rules.Issue {
 	var issues []rules.Issue
 	if len(alternatives) > maxDeprecatedAlternatives {
 		issues = append(issues, deprecatedIssue(
@@ -352,8 +363,8 @@ func validateDeprecatedAlternatives(path, source string, alternatives []string, 
 		field := fmt.Sprintf("%s.alternatives[%d]", path, index)
 		if alternative != strings.TrimSpace(alternative) || !validOwnerRepo(alternative) {
 			issues = append(issues, deprecatedIssue(
-				fmt.Sprintf("弃用条目 `%s` 必须严格使用同类型包的 `owner/repo` 格式，且不能包含首尾空格。", field),
-				fmt.Sprintf("Deprecation entry `%s` must use the exact `owner/repo` format for a same-type package, without leading or trailing spaces.", field),
+				fmt.Sprintf("弃用条目 `%s` 必须严格使用 `owner/repo` 格式，且不能包含首尾空格。", field),
+				fmt.Sprintf("Deprecation entry `%s` must use the exact `owner/repo` format, without leading or trailing spaces.", field),
 			))
 		}
 		identity := strings.ToLower(strings.TrimSpace(alternative))
@@ -371,10 +382,15 @@ func validateDeprecatedAlternatives(path, source string, alternatives []string, 
 		} else {
 			seen[identity] = struct{}{}
 		}
-		if _, ok := listed[alternative]; !ok {
+		if listed := typesByOwnerRepo[alternative]; len(listed) == 0 {
 			issues = append(issues, deprecatedIssue(
-				fmt.Sprintf("弃用条目 `%s` 指向的替代包不在同类型列表中。", field),
-				fmt.Sprintf("The alternative referenced by deprecation entry `%s` isn't in the same-type package list.", field),
+				fmt.Sprintf("弃用条目 `%s` 指向的替代包不在任何集市包列表中。", field),
+				fmt.Sprintf("The alternative referenced by deprecation entry `%s` isn't in any bazaar package list.", field),
+			))
+		} else if len(listed) > 1 {
+			issues = append(issues, deprecatedIssue(
+				fmt.Sprintf("弃用条目 `%s` 指向的替代包在多个类型列表中重复出现，无法确定其包类型。", field),
+				fmt.Sprintf("The alternative referenced by deprecation entry `%s` appears in multiple package type lists, so its type is ambiguous.", field),
 			))
 		}
 	}
@@ -404,14 +420,48 @@ func ChangedDeprecatedTypes(before, after *DeprecatedRegistry) []rules.PackageTy
 	return changed
 }
 
+// DeprecatedTarget 为一个 owner/repo 解析出的替代包：来源类型与下发给客户端的选项。
+type DeprecatedTarget struct {
+	PackageType rules.PackageType
+	Choice      rules.PackageChoice
+}
+
+// NewDeprecatedTargets 从各类 Stage 条目建立 owner/repo → 替代包 的解析表。
+// 必须传入全部类型的 Stage 数据：替代包可以跨类型，只看本类型会漏掉跨类型目标。
+// 同一 owner/repo 只应属于一个类型（列表唯一性由 rules.Check 保证），重复时保留先出现的类型。
+func NewDeprecatedTargets(reposByType map[rules.PackageType][]StageRepo) map[string]DeprecatedTarget {
+	targets := make(map[string]DeprecatedTarget)
+	for _, packageType := range rules.AllPackageTypes() {
+		repos := reposByType[packageType]
+		for i := range repos {
+			ownerRepo, ok := OwnerRepoFromStageURL(repos[i].URL)
+			if !ok || repos[i].Package.Name == "" {
+				continue
+			}
+			if _, exists := targets[ownerRepo]; exists {
+				continue
+			}
+			targets[ownerRepo] = DeprecatedTarget{
+				PackageType: packageType,
+				Choice:      rules.PackageChoice{PackageType: packageType.Plural(), Name: repos[i].Package.Name},
+			}
+		}
+	}
+	return targets
+}
+
 // ApplyDeprecatedRegistry 先清除全部 Stage 生成字段，再按注册表覆盖当前类型条目。
+// targets 提供跨类型替代包解析（见 NewDeprecatedTargets）。
+// Alternatives 只收同类型目标：旧客户端按源包类型打开替代包，跨类型目标会查不到；
+// Choices 收全部目标（含同类型），是客户端跨类型跳转的依据。
 // 返回的警告表示 Stage 数据不足或注册表语义异常；调用方应记录并继续生成安全的索引。
-func ApplyDeprecatedRegistry(packageType rules.PackageType, repos []StageRepo, registry *DeprecatedRegistry) []string {
+func ApplyDeprecatedRegistry(packageType rules.PackageType, repos []StageRepo, registry *DeprecatedRegistry, targets map[string]DeprecatedTarget) []string {
 	byOwnerRepo := make(map[string]int, len(repos))
 	for i := range repos {
 		repos[i].Package.Deprecated = false
 		repos[i].Package.DeprecatedReason = nil
 		repos[i].Package.Alternatives = nil
+		repos[i].Package.Choices = nil
 		if ownerRepo, ok := OwnerRepoFromStageURL(repos[i].URL); ok {
 			byOwnerRepo[ownerRepo] = i
 		}
@@ -436,6 +486,7 @@ func ApplyDeprecatedRegistry(packageType rules.PackageType, repos []StageRepo, r
 		pkg.DeprecatedReason = sanitizeDeprecatedReason(entry.Reason)
 
 		seen := map[string]struct{}{}
+		choices := make([]rules.PackageChoice, 0, len(entry.Alternatives))
 		for alternativeIndex, alternative := range entry.Alternatives {
 			if alternativeIndex >= maxDeprecatedAlternatives {
 				warnings = append(warnings, fmt.Sprintf("truncate alternatives for deprecated package [%s] at %d entries", source, maxDeprecatedAlternatives))
@@ -456,13 +507,17 @@ func ApplyDeprecatedRegistry(packageType rules.PackageType, repos []StageRepo, r
 				continue
 			}
 			seen[identity] = struct{}{}
-			targetIndex, exists := byOwnerRepo[alternative]
-			if !exists || repos[targetIndex].Package.Name == "" {
+			target, exists := targets[alternative]
+			if !exists {
 				warnings = append(warnings, fmt.Sprintf("ignore missing alternative [%s] for deprecated package [%s]", alternative, source))
 				continue
 			}
-			pkg.Alternatives = append(pkg.Alternatives, repos[targetIndex].Package.Name)
+			choices = append(choices, target.Choice)
+			if target.PackageType == packageType {
+				pkg.Alternatives = append(pkg.Alternatives, target.Choice.Name)
+			}
 		}
+		pkg.Choices = choices
 	}
 	return warnings
 }

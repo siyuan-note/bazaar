@@ -57,7 +57,7 @@ Deprecation is a recommendation state for a package that remains available but i
 
 The bazaar maintainers own the central [`deprecated.json`](./deprecated.json) registry and make the final decision on every deprecation. Package authors and community members may propose a change through a dedicated PR, but a package must not declare its own deprecation metadata in `plugin.json`, `theme.json` or another package manifest.
 
-A deprecation PR must modify only `deprecated.json`. The root object contains `plugins`, `themes`, `icons`, `templates` and `widgets`; each object is keyed by the exact listed `owner/repo`. The presence of a key marks that package as deprecated. An empty object uses the generic client message; an optional localized `reason` must include `default`; optional `alternatives` are ordered `owner/repo` values from the same package type.
+A deprecation PR must modify only `deprecated.json`. The root object contains `plugins`, `themes`, `icons`, `templates` and `widgets`; each object is keyed by the exact listed `owner/repo`. The presence of a key marks that package as deprecated. An empty object uses the generic client message; an optional localized `reason` must include `default`; optional `alternatives` are ordered `owner/repo` values that must each belong to exactly one type list. Alternatives may cross package types, for example a widget pointing at a plugin.
 
 ```json
 {
@@ -77,7 +77,7 @@ A deprecation PR must modify only `deprecated.json`. The root object contains `p
 }
 ```
 
-Both the deprecated source and every alternative must remain listed in the corresponding type TXT file. Alternatives may themselves be deprecated, although maintainers should verify that the recommendation is still useful. To restore a package to the normal state, remove its key from `deprecated.json`; the next Stage run clears the generated deprecation fields. Do not edit `stage/*.json` manually.
+Both the deprecated source and every alternative must remain listed in the corresponding type TXT file, and each alternative must be listed in exactly one type. Alternatives may themselves be deprecated, although maintainers should verify that the recommendation is still useful. Stage then writes two generated fields: `alternatives`, which keeps only same-type targets as package names for clients that open an alternative using the source package type, and `choices`, which carries every target as `{"packageType", "name"}` and is what clients need to jump across package types. To restore a package to the normal state, remove its key from `deprecated.json`; the next Stage run clears the generated deprecation fields. Do not edit `stage/*.json` manually.
 
 ## Changing maintainers
 

@@ -45,6 +45,13 @@ type Funding struct {
 	Links          []FundingLink `json:"links,omitempty"`
 }
 
+// PackageChoice 描述一个替代包及其类型。
+// 由集市索引生成（见 actions/util/deprecated.go 的 ApplyDeprecatedRegistry），供客户端跨类型跳转。
+type PackageChoice struct {
+	PackageType string `json:"packageType"`
+	Name        string `json:"name"`
+}
+
 // Package 集市包清单 JSON 解析后的元数据（plugin.json / theme.json 等）。
 // 字段划分与思源内核 kernel/bazaar/package.go 及 plugin.go 的实际消费一致。
 //
@@ -68,10 +75,14 @@ type Package struct {
 	Keywords []string `json:"keywords,omitempty"`
 
 	// 集市索引生成字段（不允许在包清单中声明）
+	//
+	// Alternatives 只含与源包同类型的替代包：旧客户端按源包类型打开替代包，跨类型目标会查不到。
+	// Choices 是它的结构化形式（额外携带包类型），包含全部目标，跨类型替代包只出现在这里。
 
-	Deprecated       bool          `json:"deprecated,omitempty"`
-	DeprecatedReason LocaleStrings `json:"deprecatedReason,omitempty"`
-	Alternatives     []string      `json:"alternatives,omitempty"`
+	Deprecated       bool            `json:"deprecated,omitempty"`
+	DeprecatedReason LocaleStrings   `json:"deprecatedReason,omitempty"`
+	Alternatives     []string        `json:"alternatives,omitempty"`
+	Choices          []PackageChoice `json:"choices,omitempty"`
 
 	// 插件和主题共用（plugin.json / theme.json）
 
@@ -222,6 +233,7 @@ func PackageForPublicIndex(pkg Package) Package {
 	out.Readme = cloneLocaleStrings(pkg.Readme)
 	out.DeprecatedReason = cloneLocaleStrings(pkg.DeprecatedReason)
 	out.Alternatives = slices.Clone(pkg.Alternatives)
+	out.Choices = slices.Clone(pkg.Choices)
 	// settingsWindow 跟随内核现状暂不进公开索引（kernel/api/bazaar.go 的 bazaarPackage() 尚未透传该字段），
 	// 只保留在 stage/*.json 明细中；内核开始读取后删除本行即可。
 	out.SettingsWindow = false
