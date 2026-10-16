@@ -57,7 +57,7 @@
 
 集市维护者负责维护集中的 [`deprecated.json`](./deprecated.json) 注册表，并对每项弃用做最终决定。包作者和社区成员可以通过独立 PR 提议变更，但包不得在 `plugin.json`、`theme.json` 或其它包清单中自行声明弃用元数据。
 
-弃用 PR 只能修改 `deprecated.json`。根对象包含 `plugins`、`themes`、`icons`、`templates` 和 `widgets`，各对象以列表中精确的 `owner/repo` 为键；键存在即表示该包已弃用。空对象使用客户端通用提示；可选的多语言 `reason` 必须包含 `default`；可选的 `alternatives` 是同类型 `owner/repo` 的有序列表。
+弃用 PR 只能修改 `deprecated.json`。根对象包含 `plugins`、`themes`、`icons`、`templates` 和 `widgets`，各对象以列表中精确的 `owner/repo` 为键；键存在即表示该包已弃用。空对象使用客户端通用提示；可选的多语言 `reason` 必须包含 `default`；可选的 `alternatives` 是有序的 `owner/repo` 列表，每一项都必须恰属于一个类型列表，可以跨类型（例如挂件指向插件）。
 
 ```json
 {
@@ -77,7 +77,7 @@
 }
 ```
 
-弃用源包及每个替代包都必须继续存在于对应类型的 TXT 列表中。替代包可以同样处于弃用状态，但维护者应确认该推荐仍有意义。要恢复为普通状态，只需从 `deprecated.json` 删除对应键；下一次 Stage 会清除生成的弃用字段。不要手工修改 `stage/*.json`。
+弃用源包及每个替代包都必须继续存在于对应类型的 TXT 列表中，且每个替代包只能出现在一个类型列表中。替代包可以同样处于弃用状态，但维护者应确认该推荐仍有意义。Stage 会写出两个生成字段：`alternatives` 只保留同类型目标（包名形式，供按源包类型打开替代包的客户端使用），`choices` 以 `{"packageType", "name"}` 形式携带全部目标，供客户端跨类型跳转。要恢复为普通状态，只需从 `deprecated.json` 删除对应键；下一次 Stage 会清除生成的弃用字段。不要手工修改 `stage/*.json`。
 
 ## 更换维护者
 

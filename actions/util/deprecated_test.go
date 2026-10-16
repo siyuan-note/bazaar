@@ -11,6 +11,7 @@
 package util
 
 import (
+	"reflect"
 	"strings"
 	"testing"
 
@@ -106,6 +107,7 @@ func TestValidateDeprecatedRegistry(t *testing.T) {
 					"new/plugin",
 					"new/plugin",
 					"missing/plugin",
+					"widget/one",
 				},
 			},
 		},
@@ -119,14 +121,45 @@ func TestValidateDeprecatedRegistry(t *testing.T) {
 		rules.TypeTheme:    {},
 		rules.TypeIcon:     {},
 		rules.TypeTemplate: {},
-		rules.TypeWidget:   {},
+		rules.TypeWidget:   {"widget/one"},
 	}
 	issues := ValidateDeprecatedRegistry(registry, repos)
 	joined := issuesText(issues)
-	for _, want := range []string{"必须提供 `default`", "不能为空或仅含空白字符", "源包自身", "重复", "不在同类型列表"} {
+	for _, want := range []string{"必须提供 `default`", "不能为空或仅含空白字符", "源包自身", "重复", "不在任何集市包列表"} {
 		if !strings.Contains(joined, want) {
 			t.Fatalf("issues missing %q: %s", want, joined)
 		}
+	}
+	// 跨类型替代包（widget/one）只在一个类型列表中出现，不得报任何问题。
+	if strings.Contains(joined, "alternatives[4]") {
+		t.Fatalf("cross-type alternative must be accepted: %s", joined)
+	}
+}
+
+// 替代包可以跨类型，但必须恰属于一个类型列表，否则无法确定包类型。
+func TestValidateDeprecatedAlternativesCrossType(t *testing.T) {
+	registry := &DeprecatedRegistry{
+		Plugins: map[string]DeprecatedEntry{
+			"old/plugin": {Alternatives: []string{"widget/one", "dup/two"}},
+		},
+		Themes:    map[string]DeprecatedEntry{},
+		Icons:     map[string]DeprecatedEntry{},
+		Templates: map[string]DeprecatedEntry{},
+		Widgets:   map[string]DeprecatedEntry{},
+	}
+	repos := map[rules.PackageType][]string{
+		rules.TypePlugin:   {"old/plugin"},
+		rules.TypeTheme:    {},
+		rules.TypeIcon:     {"dup/two"},
+		rules.TypeTemplate: {},
+		rules.TypeWidget:   {"widget/one", "dup/two"},
+	}
+	joined := issuesText(ValidateDeprecatedRegistry(registry, repos))
+	if strings.Contains(joined, "alternatives[0]") {
+		t.Fatalf("unambiguous cross-type alternative must be accepted: %s", joined)
+	}
+	if !strings.Contains(joined, "alternatives[1]") || !strings.Contains(joined, "无法确定其包类型") {
+		t.Fatalf("ambiguous alternative must be rejected: %s", joined)
 	}
 }
 
@@ -146,7 +179,7 @@ func TestChangedDeprecatedTypes(t *testing.T) {
 }
 
 func TestApplyDeprecatedRegistry(t *testing.T) {
-	repos := []StageRepo{
+	pluginRepos := []StageRepo{
 		{
 			URL: "old/plugin@aaaaaaa",
 			Package: rules.Package{
@@ -154,6 +187,7 @@ func TestApplyDeprecatedRegistry(t *testing.T) {
 				Deprecated:       true,
 				DeprecatedReason: rules.LocaleStrings{"default": "stale"},
 				Alternatives:     []string{"stale-package"},
+				Choices:          []rules.PackageChoice{{PackageType: "plugins", Name: "stale-package"}},
 			},
 		},
 		{
@@ -163,8 +197,12 @@ func TestApplyDeprecatedRegistry(t *testing.T) {
 				Deprecated:       true,
 				DeprecatedReason: rules.LocaleStrings{"default": "stale"},
 				Alternatives:     []string{"stale-package"},
+				Choices:          []rules.PackageChoice{{PackageType: "plugins", Name: "stale-package"}},
 			},
 		},
+	}
+	widgetRepos := []StageRepo{
+		{URL: "widget/one@ccccccc", Package: rules.Package{Name: "widget-package"}},
 	}
 	registry := &DeprecatedRegistry{
 		Plugins: map[string]DeprecatedEntry{
@@ -173,27 +211,39 @@ func TestApplyDeprecatedRegistry(t *testing.T) {
 					"default": "archived <script>",
 					"zh-CN":   "停止维护",
 				},
-				Alternatives: []string{"old/plugin", " new/plugin ", "new/plugin", "new/plugin", "missing/plugin"},
+				Alternatives: []string{"old/plugin", " new/plugin ", "new/plugin", "new/plugin", "missing/plugin", "widget/one"},
 			},
 			"missing/source": {},
 		},
 	}
-	warnings := ApplyDeprecatedRegistry(rules.TypePlugin, repos, registry)
+	targets := NewDeprecatedTargets(map[rules.PackageType][]StageRepo{
+		rules.TypePlugin: pluginRepos,
+		rules.TypeWidget: widgetRepos,
+	})
+	warnings := ApplyDeprecatedRegistry(rules.TypePlugin, pluginRepos, registry, targets)
 	if len(warnings) == 0 {
 		t.Fatal("expected defensive warnings")
 	}
-	oldPackage := repos[0].Package
+	oldPackage := pluginRepos[0].Package
 	if !oldPackage.Deprecated {
 		t.Fatal("source should be deprecated")
 	}
 	if got := oldPackage.DeprecatedReason["default"]; got != "archived &lt;script&gt;" {
 		t.Fatalf("sanitized reason = %q", got)
 	}
+	// alternatives 只收同类型目标：旧客户端按源包类型打开替代包，跨类型会查不到。
 	if len(oldPackage.Alternatives) != 1 || oldPackage.Alternatives[0] != "new-package" {
 		t.Fatalf("alternatives = %#v", oldPackage.Alternatives)
 	}
-	newPackage := repos[1].Package
-	if newPackage.Deprecated || newPackage.DeprecatedReason != nil || newPackage.Alternatives != nil {
+	wantChoices := []rules.PackageChoice{
+		{PackageType: "plugins", Name: "new-package"},
+		{PackageType: "widgets", Name: "widget-package"},
+	}
+	if !reflect.DeepEqual(oldPackage.Choices, wantChoices) {
+		t.Fatalf("choices = %#v, want %#v", oldPackage.Choices, wantChoices)
+	}
+	newPackage := pluginRepos[1].Package
+	if newPackage.Deprecated || newPackage.DeprecatedReason != nil || newPackage.Alternatives != nil || newPackage.Choices != nil {
 		t.Fatalf("unregistered package retained stale generated fields: %#v", newPackage)
 	}
 }
