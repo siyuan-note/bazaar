@@ -1,6 +1,227 @@
 {
   "repos": [
     {
+      "installSize": 242130,
+      "openIssues": 0,
+      "package": {
+        "author": "lisontowind",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Edit footnotes in a sidebar, locate references, normalize formats and insert with slash commands.",
+          "zh-CN": "侧栏编辑脚注、定位被引段落，支持统一格式、连续编号和斜杠菜单插入。"
+        },
+        "displayName": {
+          "default": "Footnote Jumper",
+          "zh-CN": "脚注跳转"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "footnote",
+          "脚注",
+          "typora",
+          "markdown"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-footnote-jumper",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/lisontowind/siyuan-footnote-jumper",
+        "version": "0.2.9"
+      },
+      "packageZipAssetId": 648110245,
+      "packageZipSha256": "041939603d9c012d2c2fd4c8783fb3b4c74a4e2211178424520357b0281eb385",
+      "repoRef": "v0.2.9",
+      "size": 142590,
+      "stars": 2,
+      "updated": "2026-10-16T17:47:52Z",
+      "url": "lisontowind/siyuan-footnote-jumper@0419396"
+    },
+    {
+      "installSize": 17198319,
+      "openIssues": 1,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
+          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Horizon",
+          "zh_CN": "任务管理器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "task",
+          "manager",
+          "filter"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-plugin-task-horizon",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
+        "version": "3.2.4"
+      },
+      "packageZipAssetId": 647986146,
+      "packageZipSha256": "4cc19a894d1aaa5c6a13134f9ce62486b97c8499f5203e1e62eae0cdba72988f",
+      "repoRef": "v3.2.4",
+      "size": 3520257,
+      "stars": 38,
+      "updated": "2026-10-16T16:59:22Z",
+      "url": "5kyfkr/siyuan-plugin-task-horizon@4cc19a8"
+    },
+    {
+      "installSize": 2794382,
+      "openIssues": 1,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A dock Tomato Timer for SiYuan.",
+          "zh_CN": "思源底栏番茄钟：支持时间轴视图/任务提醒/日常事务记录/多端状态同步/移动端/数据库联动/块绑定/历史记录/任务管理器联动/移动端原生通知提醒"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Dock Tomato",
+          "zh_CN": "底栏番茄钟"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "tomato",
+          "timer",
+          "pomodoro",
+          "dock"
+        ],
+        "minAppVersion": "3.8.1",
+        "name": "siyuan-plugin-docktomato",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-docktomato",
+        "version": "2.3.5"
+      },
+      "packageZipAssetId": 647975432,
+      "packageZipSha256": "29c9cf3a0a733345679fbf9fded742d4b8f5b2e165ba3546ce21abfa0e0a3db8",
+      "repoRef": "v2.3.5",
+      "size": 657130,
+      "stars": 9,
+      "updated": "2026-10-16T16:55:30Z",
+      "url": "5kyfkr/siyuan-plugin-docktomato@29c9cf3"
+    },
+    {
+      "installSize": 1860291,
+      "openIssues": 8,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "description": {
+          "default": "A local-first, full-lifecycle flashcard learning platform for SiYuan: capture, understand, create, practice, review, apply, maintain and connect knowledge with AI and the native FSRS scheduler.",
+          "zh-CN": "思源的全域闪卡学习平台：以 AI 辅助知识捕获、理解、制卡、练习、复习、应用、维护和生态联动——正式调度由内核原生 FSRS 负责。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Lv Cards (Beta)",
+          "zh-CN": "小驴闪卡（内测版）"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "keywords": [
+          "flashcard",
+          "闪卡",
+          "FSRS",
+          "spaced repetition",
+          "间隔重复",
+          "Anki",
+          "AI",
+          "Agent",
+          "statistics",
+          "统计",
+          "记忆"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "siyuan-lv-cards",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.en.md",
+          "zh-CN": "README.md"
+        },
+        "url": "https://github.com/ai68298100/siyuan-lv-cards",
+        "version": "0.210.1"
+      },
+      "packageZipAssetId": 647759355,
+      "packageZipSha256": "4540d7d85e7eecf29fad5838fade643c877d05485139ef503f474d3dfab8e4a6",
+      "repoRef": "v0.210.1",
+      "size": 917512,
+      "stars": 2,
+      "updated": "2026-10-16T15:33:28Z",
+      "url": "ai68298100/siyuan-lv-cards@4540d7d"
+    },
+    {
       "installSize": 2132363,
       "openIssues": 0,
       "package": {
@@ -47,6 +268,71 @@
       "stars": 0,
       "updated": "2026-10-16T15:32:13Z",
       "url": "Halory-Ito/siyuan-plugin-desktop-pet@a771381"
+    },
+    {
+      "installSize": 1780508,
+      "openIssues": 9,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "description": {
+          "default": "Family &amp; life butler: members, assets, education, health, media, travel - local-first, database-powered, with a unified expiry reminder hub.",
+          "zh-CN": "家庭与生活管家：成员档案、资产管理、育儿上学、病历社保、影音书库、出行旅行。台账进数据库、效期进统一提醒中枢，一切按需开启。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Lv Home",
+          "zh-CN": "小驴管家（内测版）"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "keywords": [
+          "family",
+          "家庭",
+          "管家",
+          "资产",
+          "提醒"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "siyuan-home",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en": "README.en.md"
+        },
+        "url": "https://github.com/ai68298100/siyuan-home",
+        "version": "0.5.24"
+      },
+      "packageZipAssetId": 647735905,
+      "packageZipSha256": "61cdf6f999f81c54ba22ee13453711ee57cc688e6da11da7b84be7f8b6dbd12b",
+      "repoRef": "v0.5.24",
+      "size": 628924,
+      "stars": 1,
+      "updated": "2026-10-16T15:24:34Z",
+      "url": "ai68298100/siyuan-home@61cdf6f"
     },
     {
       "installSize": 1537525,
@@ -166,52 +452,6 @@
       "stars": 1,
       "updated": "2026-10-16T13:27:10Z",
       "url": "ai68298100/siyuan-exam@1ca6b07"
-    },
-    {
-      "installSize": 219784,
-      "openIssues": 0,
-      "package": {
-        "author": "lisontowind",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Edit footnotes in a sidebar, locate references, normalize formats and insert with slash commands.",
-          "zh-CN": "侧栏编辑脚注、定位被引段落，支持统一格式、连续编号和斜杠菜单插入。"
-        },
-        "displayName": {
-          "default": "Footnote Jumper",
-          "zh-CN": "脚注跳转"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "footnote",
-          "脚注",
-          "typora",
-          "markdown"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-footnote-jumper",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/lisontowind/siyuan-footnote-jumper",
-        "version": "0.2.7"
-      },
-      "packageZipAssetId": 647149347,
-      "packageZipSha256": "4ae458db49472b0af781e856d4efa697d3bdea517afbb961361089f69cb7c757",
-      "repoRef": "v0.2.7",
-      "size": 136861,
-      "stars": 2,
-      "updated": "2026-10-16T11:40:34Z",
-      "url": "lisontowind/siyuan-footnote-jumper@4ae458d"
     },
     {
       "installSize": 1997303,
@@ -426,71 +666,6 @@
       "stars": 31,
       "updated": "2026-10-16T10:09:54Z",
       "url": "IAliceBobI/sy-progressive-plugin@64c2427"
-    },
-    {
-      "installSize": 1780402,
-      "openIssues": 9,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "description": {
-          "default": "Family &amp; life butler: members, assets, education, health, media, travel - local-first, database-powered, with a unified expiry reminder hub.",
-          "zh-CN": "家庭与生活管家：成员档案、资产管理、育儿上学、病历社保、影音书库、出行旅行。台账进数据库、效期进统一提醒中枢，一切按需开启。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Lv Home",
-          "zh-CN": "小驴管家（内测版）"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "keywords": [
-          "family",
-          "家庭",
-          "管家",
-          "资产",
-          "提醒"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "siyuan-home",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en": "README.en.md"
-        },
-        "url": "https://github.com/ai68298100/siyuan-home",
-        "version": "0.5.23"
-      },
-      "packageZipAssetId": 646900255,
-      "packageZipSha256": "988627ae09a5b476854b568e9681d38814646c62105cb878e947d9b65fe0a7ec",
-      "repoRef": "v0.5.23",
-      "size": 628907,
-      "stars": 1,
-      "updated": "2026-10-16T09:57:33Z",
-      "url": "ai68298100/siyuan-home@988627a"
     },
     {
       "installSize": 2584830,
@@ -974,77 +1149,6 @@
       "url": "ai68298100/siyuan-glean@c1191cb"
     },
     {
-      "installSize": 1794245,
-      "openIssues": 8,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "description": {
-          "default": "A local-first, full-lifecycle flashcard learning platform for SiYuan: capture, understand, create, practice, review, apply, maintain and connect knowledge with AI and the native FSRS scheduler.",
-          "zh-CN": "思源的全域闪卡学习平台：以 AI 辅助知识捕获、理解、制卡、练习、复习、应用、维护和生态联动——正式调度由内核原生 FSRS 负责。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Lv Cards (Beta)",
-          "zh-CN": "小驴闪卡（内测版）"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "keywords": [
-          "flashcard",
-          "闪卡",
-          "FSRS",
-          "spaced repetition",
-          "间隔重复",
-          "Anki",
-          "AI",
-          "Agent",
-          "statistics",
-          "统计",
-          "记忆"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "siyuan-lv-cards",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.en.md",
-          "zh-CN": "README.md"
-        },
-        "url": "https://github.com/ai68298100/siyuan-lv-cards",
-        "version": "0.210.0"
-      },
-      "packageZipAssetId": 645653171,
-      "packageZipSha256": "926026161ca3a0c9bd01954140e178a4163ff66ebcff1f60fedff541c5be8e53",
-      "repoRef": "v0.210.0",
-      "size": 899754,
-      "stars": 1,
-      "updated": "2026-10-16T00:41:56Z",
-      "url": "ai68298100/siyuan-lv-cards@9260261"
-    },
-    {
       "installSize": 2655700,
       "openIssues": 4,
       "package": {
@@ -1257,110 +1361,6 @@
       "stars": 1,
       "updated": "2026-10-15T17:05:27Z",
       "url": "QMike0/siyuan-plugin-page-search@c6b2fa1"
-    },
-    {
-      "installSize": 2757459,
-      "openIssues": 1,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A dock Tomato Timer for SiYuan.",
-          "zh_CN": "思源底栏番茄钟：支持时间轴视图/任务提醒/日常事务记录/多端状态同步/移动端/数据库联动/块绑定/历史记录/任务管理器联动/移动端原生通知提醒"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Dock Tomato",
-          "zh_CN": "底栏番茄钟"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "tomato",
-          "timer",
-          "pomodoro",
-          "dock"
-        ],
-        "minAppVersion": "3.8.1",
-        "name": "siyuan-plugin-docktomato",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-docktomato",
-        "version": "2.3.4"
-      },
-      "packageZipAssetId": 644402103,
-      "packageZipSha256": "b2d566c2954220482a08cea45bd76ddbf17514b8a7f85f28c22fcada475690bc",
-      "repoRef": "v2.3.4",
-      "size": 646917,
-      "stars": 9,
-      "updated": "2026-10-15T16:08:02Z",
-      "url": "5kyfkr/siyuan-plugin-docktomato@b2d566c"
-    },
-    {
-      "installSize": 17178979,
-      "openIssues": 1,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
-          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Horizon",
-          "zh_CN": "任务管理器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "task",
-          "manager",
-          "filter"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-plugin-task-horizon",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "3.2.3"
-      },
-      "packageZipAssetId": 644272294,
-      "packageZipSha256": "c0f29a5143512e86a33e83893f427696b7800240b774c3e224616fca448caf98",
-      "repoRef": "v3.2.3",
-      "size": 3515946,
-      "stars": 38,
-      "updated": "2026-10-15T15:20:18Z",
-      "url": "5kyfkr/siyuan-plugin-task-horizon@c0f29a5"
     },
     {
       "installSize": 511796,
