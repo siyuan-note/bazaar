@@ -1,6 +1,114 @@
 {
   "repos": [
     {
+      "installSize": 2008350,
+      "openIssues": 2,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Manage people and relationships in SiYuan: one person, one document, backed by a native database.",
+          "zh-CN": "在思源笔记里管理人脉与人际关系：一人一文档，数据库主干，关系图谱与生日提醒。"
+        },
+        "displayName": {
+          "default": "Lv Contacts",
+          "zh-CN": "小驴人脉"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "人脉",
+          "联系人",
+          "人际关系",
+          "CRM",
+          "通讯录",
+          "生日提醒",
+          "关系图谱",
+          "contacts",
+          "CRM",
+          "people"
+        ],
+        "minAppVersion": "3.8.5",
+        "name": "siyuan-contacts",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en-US": "README.en-US.md"
+        },
+        "url": "https://github.com/ai68298100/siyuan-contacts",
+        "version": "0.5.18"
+      },
+      "packageZipAssetId": 650983819,
+      "packageZipSha256": "5b93d0de228fb1c41e0311249736130e8deccfe5335a40a7df640b74c1f83cfe",
+      "repoRef": "v0.5.18",
+      "size": 616803,
+      "stars": 1,
+      "updated": "2026-10-17T16:38:15Z",
+      "url": "ai68298100/siyuan-contacts@5b93d0d"
+    },
+    {
+      "installSize": 611856,
+      "openIssues": 0,
+      "package": {
+        "author": "QMike0",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Provide search and replace functionality for most visible text within document pages in SiYuan (with support for undo &amp; redo), along with block-level type control and separate search for inline elements",
+          "zh-CN": "为思源笔记提供文档页面内绝大多数可见文字的搜索、替换功能（支持撤销&amp;重做），并支持块级类型的控制与行内元素的单独搜索"
+        },
+        "displayName": {
+          "default": "In-Page Search &amp; Replace",
+          "zh-CN": "页内搜索替换"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "Ctrl+F",
+          "Ctrl+H",
+          "highlight",
+          "search",
+          "replace",
+          "页内搜索",
+          "搜索",
+          "查询",
+          "查找",
+          "高亮",
+          "替换"
+        ],
+        "minAppVersion": "3.8.6",
+        "name": "siyuan-plugin-page-search-replace",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/QMike0/siyuan-plugin-page-search",
+        "version": "2.0.1"
+      },
+      "packageZipAssetId": 650842019,
+      "packageZipSha256": "f25d537710c1c10c5692cada490174fbd2ecdd180e2e6c9b9021764edc5942d3",
+      "repoRef": "v2.0.1",
+      "size": 189403,
+      "stars": 1,
+      "updated": "2026-10-17T15:39:46Z",
+      "url": "QMike0/siyuan-plugin-page-search@f25d537"
+    },
+    {
       "installSize": 17331353,
       "openIssues": 0,
       "package": {
@@ -431,60 +539,6 @@
       "stars": 7,
       "updated": "2026-10-17T07:10:34Z",
       "url": "shijianjs/siyuan-plugin-markmap-view@4d0bdad"
-    },
-    {
-      "installSize": 1957434,
-      "openIssues": 2,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Manage people and relationships in SiYuan: one person, one document, backed by a native database.",
-          "zh-CN": "在思源笔记里管理人脉与人际关系：一人一文档，数据库主干，关系图谱与生日提醒。"
-        },
-        "displayName": {
-          "default": "Lv Contacts",
-          "zh-CN": "小驴人脉"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "人脉",
-          "联系人",
-          "人际关系",
-          "CRM",
-          "通讯录",
-          "生日提醒",
-          "关系图谱",
-          "contacts",
-          "CRM",
-          "people"
-        ],
-        "minAppVersion": "3.8.5",
-        "name": "siyuan-contacts",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en-US": "README.en-US.md"
-        },
-        "url": "https://github.com/ai68298100/siyuan-contacts",
-        "version": "0.5.17"
-      },
-      "packageZipAssetId": 649715858,
-      "packageZipSha256": "472918deacd8aa985e4a8effb9af3796382aa4336cd546bb59db1e4c7317f11d",
-      "repoRef": "v0.5.17",
-      "size": 601897,
-      "stars": 1,
-      "updated": "2026-10-17T06:08:34Z",
-      "url": "ai68298100/siyuan-contacts@472918d"
     },
     {
       "installSize": 2142727,
@@ -1626,60 +1680,6 @@
       "stars": 0,
       "updated": "2026-10-15T21:08:18Z",
       "url": "FlorianZierer/speech2text-transcription-plugin-siyuan@c7f0dc7"
-    },
-    {
-      "installSize": 602067,
-      "openIssues": 0,
-      "package": {
-        "author": "QMike0",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Provide search and replace functionality for most visible text within document pages in SiYuan (with support for undo &amp; redo), along with block-level type control and separate search for inline elements",
-          "zh-CN": "为思源笔记提供文档页面内绝大多数可见文字的搜索、替换功能（支持撤销&amp;重做），并支持块级类型的控制与行内元素的单独搜索"
-        },
-        "displayName": {
-          "default": "In-Page Search &amp; Replace",
-          "zh-CN": "页内搜索替换"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "Ctrl+F",
-          "Ctrl+H",
-          "highlight",
-          "search",
-          "replace",
-          "页内搜索",
-          "搜索",
-          "查询",
-          "查找",
-          "高亮",
-          "替换"
-        ],
-        "minAppVersion": "3.8.6",
-        "name": "siyuan-plugin-page-search-replace",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/QMike0/siyuan-plugin-page-search",
-        "version": "2.0.0"
-      },
-      "packageZipAssetId": 644558665,
-      "packageZipSha256": "c6b2fa1f723c3fd9b3b78e55aa6792c014e8d4df8cc6f4a49796bc3d2e79966a",
-      "repoRef": "v2.0.0",
-      "size": 186484,
-      "stars": 1,
-      "updated": "2026-10-15T17:05:27Z",
-      "url": "QMike0/siyuan-plugin-page-search@c6b2fa1"
     },
     {
       "installSize": 511796,
