@@ -1,6 +1,234 @@
 {
   "repos": [
     {
+      "installSize": 1957434,
+      "openIssues": 2,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Manage people and relationships in SiYuan: one person, one document, backed by a native database.",
+          "zh-CN": "在思源笔记里管理人脉与人际关系：一人一文档，数据库主干，关系图谱与生日提醒。"
+        },
+        "displayName": {
+          "default": "Lv Contacts",
+          "zh-CN": "小驴人脉"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "人脉",
+          "联系人",
+          "人际关系",
+          "CRM",
+          "通讯录",
+          "生日提醒",
+          "关系图谱",
+          "contacts",
+          "CRM",
+          "people"
+        ],
+        "minAppVersion": "3.8.5",
+        "name": "siyuan-contacts",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en-US": "README.en-US.md"
+        },
+        "url": "https://github.com/ai68298100/siyuan-contacts",
+        "version": "0.5.17"
+      },
+      "packageZipAssetId": 649715858,
+      "packageZipSha256": "472918deacd8aa985e4a8effb9af3796382aa4336cd546bb59db1e4c7317f11d",
+      "repoRef": "v0.5.17",
+      "size": 601897,
+      "stars": 1,
+      "updated": "2026-10-17T06:08:34Z",
+      "url": "ai68298100/siyuan-contacts@472918d"
+    },
+    {
+      "installSize": 2142727,
+      "openIssues": 1,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A local-first SiYuan navigation and work-context platform with a switcher, widget workbench, desktop snippet lab, and floating-ball actions.",
+          "zh-CN": "本地优先的思源导航与工作上下文平台，连接切换器、工作台、桌面片段实验室和悬浮球。"
+        },
+        "displayName": {
+          "default": "LvSpeed Switch",
+          "zh-CN": "小驴雷切"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "页签切换",
+          "tab switch",
+          "标签页",
+          "快捷入口",
+          "speed switch",
+          "lv speed switch",
+          "小驴雷切",
+          "工作台",
+          "workbench",
+          "代码片段",
+          "snippet studio"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "siyuan-speed-switch",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en-US": "README.en-US.md"
+        },
+        "url": "https://github.com/ai68298100/siyuan-speed-switch",
+        "version": "0.47.5"
+      },
+      "packageZipAssetId": 649660943,
+      "packageZipSha256": "74255348edf6da2f87b779835436f4a1fe5fc85588f0cd161f5703caa3f088b4",
+      "repoRef": "v0.47.5",
+      "size": 591166,
+      "stars": 2,
+      "updated": "2026-10-17T05:38:31Z",
+      "url": "ai68298100/siyuan-speed-switch@7425534"
+    },
+    {
+      "installSize": 2273607,
+      "openIssues": 0,
+      "package": {
+        "author": "Halory-Ito",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A customizable desktop pet inside SiYuan, compatible with hatch-pet (pet.json + spritesheet.webp) pet packs.",
+          "zh-CN": "思源笔记里的可定制桌宠，兼容 hatch-pet（pet.json + spritesheet.webp）宠物包格式。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Desktop Pet",
+          "zh-CN": "桌宠"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "桌宠",
+          "desktop pet",
+          "hatch-pet",
+          "精灵图",
+          "sprite",
+          "看板娘"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-plugin-desktop-pet",
+        "preview": "",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/Halory-Ito/siyuan-plugin-desktop-pet",
+        "version": "0.6.0"
+      },
+      "packageZipAssetId": 649275633,
+      "packageZipSha256": "976148812ab79235b56ebb78c12fa7d2e28eb1ee043410e2a6b3990104f25168",
+      "repoRef": "v0.6.0",
+      "size": 2167777,
+      "stars": 0,
+      "updated": "2026-10-17T02:20:08Z",
+      "url": "Halory-Ito/siyuan-plugin-desktop-pet@9761488"
+    },
+    {
+      "installSize": 1904015,
+      "openIssues": 2,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "description": {
+          "default": "A local-first, full-lifecycle flashcard learning platform for SiYuan: capture, understand, create, practice, review, apply, maintain and connect knowledge with AI and the native FSRS scheduler.",
+          "zh-CN": "思源的全域闪卡学习平台：以 AI 辅助知识捕获、理解、制卡、练习、复习、应用、维护和生态联动——正式调度由内核原生 FSRS 负责。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Lv Cards (Beta)",
+          "zh-CN": "小驴闪卡（内测版）"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "keywords": [
+          "flashcard",
+          "闪卡",
+          "FSRS",
+          "spaced repetition",
+          "间隔重复",
+          "Anki",
+          "AI",
+          "Agent",
+          "statistics",
+          "统计",
+          "记忆"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "siyuan-lv-cards",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.en.md",
+          "zh-CN": "README.md"
+        },
+        "url": "https://github.com/ai68298100/siyuan-lv-cards",
+        "version": "0.210.2"
+      },
+      "packageZipAssetId": 649753998,
+      "packageZipSha256": "b31bc567b5a46f291ec1be2076278f833fde24ce286735326d48527cbe52e8b5",
+      "repoRef": "v0.210.2",
+      "size": 924947,
+      "stars": 2,
+      "updated": "2026-10-17T01:49:46Z",
+      "url": "ai68298100/siyuan-lv-cards@b31bc56"
+    },
+    {
       "installSize": 242130,
       "openIssues": 0,
       "package": {
@@ -149,125 +377,6 @@
       "stars": 9,
       "updated": "2026-10-16T16:55:30Z",
       "url": "5kyfkr/siyuan-plugin-docktomato@29c9cf3"
-    },
-    {
-      "installSize": 1860291,
-      "openIssues": 8,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "description": {
-          "default": "A local-first, full-lifecycle flashcard learning platform for SiYuan: capture, understand, create, practice, review, apply, maintain and connect knowledge with AI and the native FSRS scheduler.",
-          "zh-CN": "思源的全域闪卡学习平台：以 AI 辅助知识捕获、理解、制卡、练习、复习、应用、维护和生态联动——正式调度由内核原生 FSRS 负责。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Lv Cards (Beta)",
-          "zh-CN": "小驴闪卡（内测版）"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "keywords": [
-          "flashcard",
-          "闪卡",
-          "FSRS",
-          "spaced repetition",
-          "间隔重复",
-          "Anki",
-          "AI",
-          "Agent",
-          "statistics",
-          "统计",
-          "记忆"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "siyuan-lv-cards",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.en.md",
-          "zh-CN": "README.md"
-        },
-        "url": "https://github.com/ai68298100/siyuan-lv-cards",
-        "version": "0.210.1"
-      },
-      "packageZipAssetId": 647759355,
-      "packageZipSha256": "4540d7d85e7eecf29fad5838fade643c877d05485139ef503f474d3dfab8e4a6",
-      "repoRef": "v0.210.1",
-      "size": 917512,
-      "stars": 2,
-      "updated": "2026-10-16T15:33:28Z",
-      "url": "ai68298100/siyuan-lv-cards@4540d7d"
-    },
-    {
-      "installSize": 2132363,
-      "openIssues": 0,
-      "package": {
-        "author": "Halory-Ito",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A customizable desktop pet inside SiYuan, compatible with hatch-pet (pet.json + spritesheet.webp) pet packs.",
-          "zh-CN": "思源笔记里的可定制桌宠，兼容 hatch-pet（pet.json + spritesheet.webp）宠物包格式。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Desktop Pet",
-          "zh-CN": "桌宠"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "桌宠",
-          "desktop pet",
-          "hatch-pet",
-          "精灵图",
-          "sprite",
-          "看板娘"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-plugin-desktop-pet",
-        "preview": "",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/Halory-Ito/siyuan-plugin-desktop-pet",
-        "version": "0.5.0"
-      },
-      "packageZipAssetId": 647093444,
-      "packageZipSha256": "a7713819c52c2761f23b4aa61686eba9acb9fc117035af09cf6f7688c4d4473b",
-      "repoRef": "v0.5.0",
-      "size": 2063781,
-      "stars": 0,
-      "updated": "2026-10-16T15:32:13Z",
-      "url": "Halory-Ito/siyuan-plugin-desktop-pet@a771381"
     },
     {
       "installSize": 1780508,
@@ -720,57 +829,6 @@
       "url": "BorisZhangYYY/noosphere-siyuan@f853685"
     },
     {
-      "installSize": 2137779,
-      "openIssues": 2,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A local-first SiYuan navigation and work-context platform with a switcher, widget workbench, desktop snippet lab, and floating-ball actions.",
-          "zh-CN": "本地优先的思源导航与工作上下文平台，连接切换器、工作台、桌面片段实验室和悬浮球。"
-        },
-        "displayName": {
-          "default": "LvSpeed Switch",
-          "zh-CN": "小驴雷切"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "页签切换",
-          "tab switch",
-          "标签页",
-          "快捷入口",
-          "speed switch",
-          "lv speed switch",
-          "小驴雷切"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "siyuan-speed-switch",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en-US": "README.en-US.md"
-        },
-        "url": "https://github.com/ai68298100/siyuan-speed-switch",
-        "version": "0.47.3"
-      },
-      "packageZipAssetId": 646544259,
-      "packageZipSha256": "6651b473cc405a1dbbe3a7ee9eae6eee590c3d4948d55107881db663882c2dae",
-      "repoRef": "v0.47.3",
-      "size": 590757,
-      "stars": 2,
-      "updated": "2026-10-16T07:35:08Z",
-      "url": "ai68298100/siyuan-speed-switch@6651b47"
-    },
-    {
       "installSize": 101439268,
       "openIssues": 0,
       "package": {
@@ -1196,60 +1254,6 @@
       "stars": 1,
       "updated": "2026-10-16T00:05:58Z",
       "url": "ai68298100/siyuan-checkin@2423592"
-    },
-    {
-      "installSize": 1887599,
-      "openIssues": 3,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Manage people and relationships in SiYuan: one person, one document, backed by a native database.",
-          "zh-CN": "在思源笔记里管理人脉与人际关系：一人一文档，数据库主干，关系图谱与生日提醒。"
-        },
-        "displayName": {
-          "default": "Lv Contacts",
-          "zh-CN": "小驴人脉"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "人脉",
-          "联系人",
-          "人际关系",
-          "CRM",
-          "通讯录",
-          "生日提醒",
-          "关系图谱",
-          "contacts",
-          "CRM",
-          "people"
-        ],
-        "minAppVersion": "3.8.5",
-        "name": "siyuan-contacts",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en-US": "README.en-US.md"
-        },
-        "url": "https://github.com/ai68298100/siyuan-contacts",
-        "version": "0.5.16"
-      },
-      "packageZipAssetId": 645345242,
-      "packageZipSha256": "91c2d4bece34509a2a72468a7d097af4d1bd566ceadfcb2a392fc4331cd731b8",
-      "repoRef": "v0.5.16",
-      "size": 582401,
-      "stars": 1,
-      "updated": "2026-10-15T22:20:43Z",
-      "url": "ai68298100/siyuan-contacts@91c2d4b"
     },
     {
       "installSize": 196941,
