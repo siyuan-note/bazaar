@@ -1,6 +1,650 @@
 {
   "repos": [
     {
+      "installSize": 113789,
+      "openIssues": 1,
+      "package": {
+        "author": "wmy2981",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Show bazaar package release notes, repository CHANGELOG and commit history in SiYuan, and confirm package updates through them.",
+          "zh-CN": "在思源里查看集市包的发行说明、仓库 CHANGELOG 与提交记录，并用更新日志弹窗确认集市包更新"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Bazaar Changelog",
+          "zh-CN": "集市更新日志"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/wmy2981"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "更新日志",
+          "changelog",
+          "发行说明",
+          "release notes",
+          "集市",
+          "bazaar"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "bazaar-changelog",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/wmy2981/bazaar-changelog",
+        "version": "1.1.1"
+      },
+      "packageZipAssetId": 653171976,
+      "packageZipSha256": "51c4e6a7cae578bbc3a0998de571d0da0b612a0bdfb9d768ec30c6c8b24cff75",
+      "repoRef": "v1.1.1",
+      "size": 59965,
+      "stars": 1,
+      "updated": "2026-10-18T10:15:55Z",
+      "url": "wmy2981/bazaar-changelog@51c4e6a"
+    },
+    {
+      "installSize": 314357,
+      "openIssues": 0,
+      "package": {
+        "author": "Quincy Zou",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Unified AI API switch for SiYuan plugins.",
+          "en_US": "Provide unified AI API configurations and profile sharing for other plugins.",
+          "zh_CN": "一键接管 AI 服务 API 配置，多插件无缝调用。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "API Switch",
+          "en_US": "SiYuan API Switch",
+          "zh_CN": "API 旋钮"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "minAppVersion": "2.10.14",
+        "name": "siyuan-api-switch",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/famotime/siyuan-api-switch",
+        "version": "0.9.5"
+      },
+      "packageZipAssetId": 653170832,
+      "packageZipSha256": "1668305afc9c24225934139da4059dc5035bad111aeb020fa0faa564c7abef9d",
+      "repoRef": "v0.9.5",
+      "size": 151508,
+      "stars": 0,
+      "updated": "2026-10-18T10:15:25Z",
+      "url": "famotime/siyuan-api-switch@1668305"
+    },
+    {
+      "installSize": 253800,
+      "openIssues": 1,
+      "package": {
+        "author": "OpaqueGlass",
+        "description": {
+          "default": "Add a doc-breadcrumb",
+          "en_US": "Add a document breadcrumb. Add document path information that can be jumped to at the top of the editing area.",
+          "zh_CN": "再添加一个文档面包屑：在编辑区域顶部添加可跳转的文档路径信息导航条"
+        },
+        "displayName": {
+          "default": "fakeDocBreadcrumb",
+          "en_US": "Fake Doc Breadcrumb",
+          "zh_CN": "(伪)文档面包屑"
+        },
+        "funding": {
+          "custom": [
+            "https://wj.qq.com/s2/12395364/b69f/"
+          ]
+        },
+        "icon": "icon.png",
+        "name": "syplugin-fakeDocBreadcrumb",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/OpaqueGlass/syplugin-fakeDocBreadcrumb",
+        "version": "2.2.0"
+      },
+      "packageZipAssetId": 653169120,
+      "packageZipSha256": "6fd5184e3196a3bb31e97878d9f28c0c09d8a671e65f9161dad6fcc92fd21926",
+      "repoRef": "v2.2.0",
+      "size": 109621,
+      "stars": 9,
+      "updated": "2026-10-18T10:14:36Z",
+      "url": "OpaqueGlass/syplugin-fakeDocBreadcrumb@6fd5184"
+    },
+    {
+      "installSize": 894617,
+      "openIssues": 0,
+      "package": {
+        "author": "Lisontowind",
+        "backends": [
+          "windows",
+          "darwin",
+          "linux"
+        ],
+        "description": {
+          "default": "Floating Markdown notes for Windows, macOS, and Linux with image previews, SiYuan autosave, and local draft recovery.",
+          "zh-CN": "快捷键唤起悬浮便签，支持 Markdown、截图粘贴与图片预览，自动保存到思源，可恢复本机草稿。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Quick Notes",
+          "zh-CN": "悬浮速记"
+        },
+        "frontends": [
+          "desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "quick notes",
+          "速记",
+          "便签",
+          "悬浮",
+          "Markdown"
+        ],
+        "minAppVersion": "3.8.6",
+        "name": "siyuan-quick-notes",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README_en_US.md",
+          "zh-CN": "README.md"
+        },
+        "url": "https://github.com/lisontowind/siyuan-quick-notes",
+        "version": "0.1.27"
+      },
+      "packageZipAssetId": 653072624,
+      "packageZipSha256": "2a29899213eb3877ad8b6cbe6a76a91d72dfe4376d8c7f678dc517589a7dc2fa",
+      "repoRef": "v0.1.27",
+      "size": 423293,
+      "stars": 1,
+      "updated": "2026-10-18T09:32:09Z",
+      "url": "lisontowind/siyuan-quick-notes@2a29899"
+    },
+    {
+      "installSize": 325720,
+      "openIssues": 0,
+      "package": {
+        "author": "lisontowind",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Edit footnotes in a sidebar, locate references, normalize formats and insert with slash commands.",
+          "zh-CN": "侧栏编辑脚注、定位被引段落，支持统一格式、连续编号和斜杠菜单插入。"
+        },
+        "displayName": {
+          "default": "Footnote Jumper",
+          "zh-CN": "脚注跳转"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "footnote",
+          "脚注",
+          "typora",
+          "markdown"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-footnote-jumper",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README_en_US.md",
+          "zh-CN": "README.md"
+        },
+        "url": "https://github.com/lisontowind/siyuan-footnote-jumper",
+        "version": "0.2.12"
+      },
+      "packageZipAssetId": 653058571,
+      "packageZipSha256": "e60513ff47c9868a9fdceddfd46e34dff5781b7c9188b3db99d1fab41953f0ea",
+      "repoRef": "v0.2.12",
+      "size": 165522,
+      "stars": 2,
+      "updated": "2026-10-18T09:24:00Z",
+      "url": "lisontowind/siyuan-footnote-jumper@e60513f"
+    },
+    {
+      "installSize": 1998294,
+      "openIssues": 0,
+      "package": {
+        "author": "Lisontowind",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "Offline image compression with per-image settings, quick compression, attachment totals and simplified image filenames.",
+          "zh-CN": "本地离线压缩图片，支持逐图配置、快捷压缩、附件大小统计与图片名称简化，同步更新共享引用。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Image Compression",
+          "zh-CN": "图片压缩"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "image",
+          "compression",
+          "图片压缩",
+          "附件重命名"
+        ],
+        "minAppVersion": "3.8.5",
+        "name": "sy-imgcompression",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/lisontowind/sy-imgcompression",
+        "version": "0.1.2"
+      },
+      "packageZipAssetId": 653007782,
+      "packageZipSha256": "f703261e4965ddf4d9217af95c0e47112036ca057491871326fca17785f88dcd",
+      "repoRef": "0.1.2",
+      "size": 841040,
+      "stars": 0,
+      "updated": "2026-10-18T09:01:24Z",
+      "url": "lisontowind/sy-imgcompression@f703261"
+    },
+    {
+      "installSize": 642907,
+      "openIssues": 0,
+      "package": {
+        "author": "QMike0",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Provide search and replace functionality for most visible text within document pages in SiYuan (with support for undo &amp; redo), along with block-level type control and separate search for inline elements",
+          "zh-CN": "为思源笔记提供文档页面内绝大多数可见文字的搜索、替换功能（支持撤销&amp;重做），并支持块级类型的控制与行内元素的单独搜索"
+        },
+        "displayName": {
+          "default": "In-Page Search &amp; Replace",
+          "zh-CN": "页内搜索替换"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "Ctrl+F",
+          "Ctrl+H",
+          "highlight",
+          "search",
+          "replace",
+          "页内搜索",
+          "搜索",
+          "查询",
+          "查找",
+          "高亮",
+          "替换"
+        ],
+        "minAppVersion": "3.8.6",
+        "name": "siyuan-plugin-page-search-replace",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/QMike0/siyuan-plugin-page-search",
+        "version": "2.0.2"
+      },
+      "packageZipAssetId": 652814497,
+      "packageZipSha256": "ea1645ad1333098e472759c2e2d4ecb6e85960f715ac8ca818e0afd3b77db2d9",
+      "repoRef": "v2.0.2",
+      "size": 198390,
+      "stars": 1,
+      "updated": "2026-10-18T07:33:15Z",
+      "url": "QMike0/siyuan-plugin-page-search@ea1645a"
+    },
+    {
+      "installSize": 854363,
+      "openIssues": 1,
+      "package": {
+        "author": "wmy2981",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Insert native SiYuan buttons into documents, with a link or JavaScript action. It is friendly to AI agents.",
+          "zh-CN": "在文档中插入思源原生样式的按钮块，支持链接跳转或 JavaScript 操作。对 AI Agent 操作友好。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Button Block",
+          "zh-CN": "按钮块"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/wmy2981"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "按钮",
+          "button",
+          "自定义块",
+          "custom block",
+          "快捷操作",
+          "JavaScript"
+        ],
+        "minAppVersion": "3.8.6",
+        "name": "button-in-siyuan",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/wmy2981/button-in-siyuan",
+        "version": "0.3.0"
+      },
+      "packageZipAssetId": 652693622,
+      "packageZipSha256": "0562fd8c94cd9d39b76d608a10dd3a6e86a4b48d7aacb62447322ed11b3ecbf3",
+      "repoRef": "v0.3.0",
+      "size": 313620,
+      "stars": 1,
+      "updated": "2026-10-18T06:31:59Z",
+      "url": "wmy2981/button-in-siyuan@0562fd8"
+    },
+    {
+      "installSize": 163788,
+      "openIssues": 0,
+      "package": {
+        "author": "wmy2981",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Generate note titles with the Chat Completions, Responses, Anthropic Messages or Gemini Interactions API",
+          "zh-CN": "用 Chat Completions、Responses API、Anthropic Messages 或 Gemini Interactions 接口为笔记生成标题"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "AI Title",
+          "zh-CN": "AI 标题生成"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/wmy2981"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "ai",
+          "title",
+          "deepseek",
+          "生成",
+          "标题",
+          "generate"
+        ],
+        "minAppVersion": "3.8.3",
+        "name": "ai-title-siyuan",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/wmy2981/ai-title-siyuan",
+        "version": "1.1.0"
+      },
+      "packageZipAssetId": 652602963,
+      "packageZipSha256": "b0b3f58722b51a7a190387a67dc5f7936c5b164f51487e612bdf8f2042a53f48",
+      "repoRef": "v1.1.0",
+      "size": 76244,
+      "stars": 3,
+      "updated": "2026-10-18T05:42:37Z",
+      "url": "wmy2981/ai-title-siyuan@b0b3f58"
+    },
+    {
+      "installSize": 1032246,
+      "openIssues": 0,
+      "package": {
+        "author": "congsec",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "MeiDay is a cross-platform (Web, App) task and diary manager that delivers a smoother experience and stronger security.",
+          "zh-CN": "MeiDay 是一款跨端（Web、App）任务与日记管理工具，让记录更流畅，让数据更安全。"
+        },
+        "displayName": {
+          "default": "MeiDay",
+          "zh-CN": "MeiDay（每日任务日记管理）"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "github": "congsec"
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "任务管理",
+          "待办",
+          "在线",
+          "todo",
+          "task",
+          "meiday",
+          "日记",
+          "加密",
+          "隐私"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-plugin-meiday",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en-US": "README.EN.md"
+        },
+        "url": "https://github.com/CongSec/siyuan-plugin-meiday",
+        "version": "1.9.0"
+      },
+      "packageZipAssetId": 652655140,
+      "packageZipSha256": "a7849bf751cf7bc9a8c59370640b67a67501afe88cf7055a914fa4d8a2c1c13a",
+      "repoRef": "v1.9.0",
+      "size": 476516,
+      "stars": 4,
+      "updated": "2026-10-18T05:41:49Z",
+      "url": "CongSec/siyuan-plugin-meiday@a7849bf"
+    },
+    {
+      "installSize": 146008,
+      "openIssues": 0,
+      "package": {
+        "author": "wmy2981",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Ships the OpenCode Go provider, a stable per-conversation x-opencode-session header and the rolling / weekly / monthly usage",
+          "zh-CN": "内置 OpenCode Go 提供商，发送逐会话稳定的 x-opencode-session 请求头，并展示 5 小时 / 周 / 月用量"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "OpenCode Go"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/wmy2981"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "opencode",
+          "opencode-go",
+          "ai",
+          "provider",
+          "usage",
+          "人工智能",
+          "用量"
+        ],
+        "minAppVersion": "3.8.5",
+        "name": "opencode-go-siyuan",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/wmy2981/opencode-go-siyuan",
+        "version": "1.1.0"
+      },
+      "packageZipAssetId": 652596411,
+      "packageZipSha256": "a016124096885f1b9d126f48a6641d6dd0cf4f3f1953e8326da7fd6680d113af",
+      "repoRef": "v1.1.0",
+      "size": 70344,
+      "stars": 1,
+      "updated": "2026-10-18T05:38:50Z",
+      "url": "wmy2981/opencode-go-siyuan@a016124"
+    },
+    {
+      "installSize": 2832229,
+      "openIssues": 0,
+      "package": {
+        "author": "wmy2981",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Open and edit the text files referenced by notes in a new tab",
+          "zh-CN": "在新建页签中打开并编辑笔记引用的文本文件"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Editor",
+          "zh-CN": "文本编辑器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/wmy2981"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "editor",
+          "code",
+          "text",
+          "assets",
+          "编辑",
+          "文本",
+          "代码"
+        ],
+        "minAppVersion": "3.8.3",
+        "name": "editor-siyuan",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/wmy2981/editor-siyuan",
+        "version": "1.2.0"
+      },
+      "packageZipAssetId": 652594308,
+      "packageZipSha256": "8535ce9f8d00534a59f78fae705bd32c51fa21b1d860b1299e3989cb08fec009",
+      "repoRef": "v1.2.0",
+      "size": 848355,
+      "stars": 1,
+      "updated": "2026-10-18T05:37:43Z",
+      "url": "wmy2981/editor-siyuan@8535ce9"
+    },
+    {
+      "installSize": 293981,
+      "openIssues": 1,
+      "package": {
+        "author": "wmy2981",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A batch of independently toggleable desktop and mobile enhancements and optimized styles",
+          "zh-CN": "一批可独立启停的桌面端与移动端增强功能和优化后的样式"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Some Settings",
+          "zh-CN": "一些设置"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/wmy2981"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "settings",
+          "style",
+          "custom",
+          "ui",
+          "enhancement"
+        ],
+        "minAppVersion": "3.8.6-alpha.4",
+        "name": "some-settings-siyuan",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/wmy2981/some-settings-siyuan",
+        "version": "0.2.9"
+      },
+      "packageZipAssetId": 652590590,
+      "packageZipSha256": "5f1664051e0a0f08dbc6a96477771cc30650587149140c205797b3ebe8bfba32",
+      "repoRef": "v0.2.9",
+      "size": 108264,
+      "stars": 1,
+      "updated": "2026-10-18T05:35:32Z",
+      "url": "wmy2981/some-settings-siyuan@5f16640"
+    },
+    {
       "installSize": 6667891,
       "openIssues": 1,
       "package": {
@@ -348,60 +992,6 @@
       "url": "ai68298100/siyuan-contacts@5b93d0d"
     },
     {
-      "installSize": 611856,
-      "openIssues": 0,
-      "package": {
-        "author": "QMike0",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Provide search and replace functionality for most visible text within document pages in SiYuan (with support for undo &amp; redo), along with block-level type control and separate search for inline elements",
-          "zh-CN": "为思源笔记提供文档页面内绝大多数可见文字的搜索、替换功能（支持撤销&amp;重做），并支持块级类型的控制与行内元素的单独搜索"
-        },
-        "displayName": {
-          "default": "In-Page Search &amp; Replace",
-          "zh-CN": "页内搜索替换"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "Ctrl+F",
-          "Ctrl+H",
-          "highlight",
-          "search",
-          "replace",
-          "页内搜索",
-          "搜索",
-          "查询",
-          "查找",
-          "高亮",
-          "替换"
-        ],
-        "minAppVersion": "3.8.6",
-        "name": "siyuan-plugin-page-search-replace",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/QMike0/siyuan-plugin-page-search",
-        "version": "2.0.1"
-      },
-      "packageZipAssetId": 650842019,
-      "packageZipSha256": "f25d537710c1c10c5692cada490174fbd2ecdd180e2e6c9b9021764edc5942d3",
-      "repoRef": "v2.0.1",
-      "size": 189403,
-      "stars": 1,
-      "updated": "2026-10-17T15:39:46Z",
-      "url": "QMike0/siyuan-plugin-page-search@f25d537"
-    },
-    {
       "installSize": 17331353,
       "openIssues": 0,
       "package": {
@@ -694,52 +1284,6 @@
       "stars": 2,
       "updated": "2026-10-17T12:22:25Z",
       "url": "ai68298100/siyuan-lv-cards@245c76a"
-    },
-    {
-      "installSize": 293369,
-      "openIssues": 0,
-      "package": {
-        "author": "lisontowind",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Edit footnotes in a sidebar, locate references, normalize formats and insert with slash commands.",
-          "zh-CN": "侧栏编辑脚注、定位被引段落，支持统一格式、连续编号和斜杠菜单插入。"
-        },
-        "displayName": {
-          "default": "Footnote Jumper",
-          "zh-CN": "脚注跳转"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "footnote",
-          "脚注",
-          "typora",
-          "markdown"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-footnote-jumper",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/lisontowind/siyuan-footnote-jumper",
-        "version": "0.2.10"
-      },
-      "packageZipAssetId": 650198071,
-      "packageZipSha256": "9732d64ba901b1e548eb418f45816ef34bce2f9f5ff66eb09343436a5260c484",
-      "repoRef": "v0.2.10",
-      "size": 155499,
-      "stars": 2,
-      "updated": "2026-10-17T10:35:51Z",
-      "url": "lisontowind/siyuan-footnote-jumper@9732d64"
     },
     {
       "installSize": 227920,
@@ -1223,99 +1767,6 @@
       "stars": 1,
       "updated": "2026-10-16T13:27:10Z",
       "url": "ai68298100/siyuan-exam@1ca6b07"
-    },
-    {
-      "installSize": 1997303,
-      "openIssues": 0,
-      "package": {
-        "author": "Lisontowind",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Offline image compression with per-image settings, quick compression, attachment totals and simplified image filenames.",
-          "zh-CN": "本地离线压缩图片，支持逐图配置、快捷压缩、附件大小统计与图片名称简化，同步更新共享引用。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Image Compression",
-          "zh-CN": "图片压缩"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "image",
-          "compression",
-          "图片压缩",
-          "附件重命名"
-        ],
-        "minAppVersion": "3.8.5",
-        "name": "sy-imgcompression",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/lisontowind/sy-imgcompression",
-        "version": "0.1.1"
-      },
-      "packageZipAssetId": 647148075,
-      "packageZipSha256": "4027946cbdb7d3f0f99293a258b6ef034348c4bbaf9dd74acb7fe93e0584c4e5",
-      "repoRef": "0.1.1",
-      "size": 840685,
-      "stars": 0,
-      "updated": "2026-10-16T11:40:28Z",
-      "url": "lisontowind/sy-imgcompression@4027946"
-    },
-    {
-      "installSize": 832505,
-      "openIssues": 0,
-      "package": {
-        "author": "Lisontowind",
-        "backends": [
-          "windows"
-        ],
-        "description": {
-          "default": "Floating Markdown notes for Windows with image previews, SiYuan autosave, and local draft recovery.",
-          "zh-CN": "快捷键唤起悬浮便签，支持 Markdown、截图粘贴与图片预览，自动保存到思源，可恢复本机草稿。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Quick Notes",
-          "zh-CN": "悬浮速记"
-        },
-        "frontends": [
-          "desktop"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "quick notes",
-          "速记",
-          "便签",
-          "悬浮",
-          "Markdown"
-        ],
-        "minAppVersion": "3.8.6",
-        "name": "siyuan-quick-notes",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/lisontowind/siyuan-quick-notes",
-        "version": "0.1.24"
-      },
-      "packageZipAssetId": 647146862,
-      "packageZipSha256": "fecd20fb3c47965d8c4ad14d5eec6d62d27aba3c24cf1ce89971dc5f062f5017",
-      "repoRef": "v0.1.24",
-      "size": 396924,
-      "stars": 1,
-      "updated": "2026-10-16T11:39:27Z",
-      "url": "lisontowind/siyuan-quick-notes@fecd20f"
     },
     {
       "installSize": 2499500,
@@ -3150,58 +3601,6 @@
       "stars": 15,
       "updated": "2026-10-14T03:24:21Z",
       "url": "QYLexpired/Neo-Plus@c828e35"
-    },
-    {
-      "installSize": 1017371,
-      "openIssues": 0,
-      "package": {
-        "author": "congsec",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "MeiDay is a cross-platform (Web, App) task and diary manager that delivers a smoother experience and stronger security.",
-          "zh-CN": "MeiDay 是一款跨端（Web、App）任务与日记管理工具，让记录更流畅，让数据更安全。"
-        },
-        "displayName": {
-          "default": "MeiDay",
-          "zh-CN": "MeiDay（每日任务日记管理）"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "github": "congsec"
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "任务管理",
-          "待办",
-          "在线",
-          "todo",
-          "task",
-          "meiday",
-          "日记",
-          "加密",
-          "隐私"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-plugin-meiday",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en-US": "README.EN.md"
-        },
-        "url": "https://github.com/CongSec/siyuan-plugin-meiday",
-        "version": "1.8.2"
-      },
-      "packageZipAssetId": 637751329,
-      "packageZipSha256": "f88611543f8d4ad59f1defda3188e7568ce9688aad5cca1b1506dd3fcc8c777c",
-      "repoRef": "v1.8.2",
-      "size": 473294,
-      "stars": 4,
-      "updated": "2026-10-13T17:29:47Z",
-      "url": "CongSec/siyuan-plugin-meiday@f886115"
     },
     {
       "installSize": 3262339,
@@ -5228,58 +5627,6 @@
       "url": "yangtaihong59/siyuan-plugins-mcp-sisyphus@d7ce1b7"
     },
     {
-      "installSize": 804118,
-      "openIssues": 0,
-      "package": {
-        "author": "wmy2981",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Insert native SiYuan buttons into documents, with a link or JavaScript action. It is friendly to AI agents.",
-          "zh-CN": "在文档中插入思源原生样式的按钮块，支持链接跳转或 JavaScript 操作。对 AI Agent 操作友好。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Button Block",
-          "zh-CN": "按钮块"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/wmy2981"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "按钮",
-          "button",
-          "自定义块",
-          "custom block",
-          "快捷操作",
-          "JavaScript"
-        ],
-        "minAppVersion": "3.8.6",
-        "name": "button-in-siyuan",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/wmy2981/button-in-siyuan",
-        "version": "0.2.5"
-      },
-      "packageZipAssetId": 618104558,
-      "packageZipSha256": "6b9d4e8105455e17a88f3f132fb878fafa0abb27cf808baaaf3169265c907371",
-      "repoRef": "v0.2.5",
-      "size": 299690,
-      "stars": 1,
-      "updated": "2026-10-07T08:42:06Z",
-      "url": "wmy2981/button-in-siyuan@6b9d4e8"
-    },
-    {
       "installSize": 159165,
       "openIssues": 0,
       "package": {
@@ -5491,164 +5838,6 @@
       "stars": 0,
       "updated": "2026-10-06T15:59:57Z",
       "url": "blacknet76/siyuan-child-gallery@12bf5f3"
-    },
-    {
-      "installSize": 82703,
-      "openIssues": 0,
-      "package": {
-        "author": "wmy2981",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Show bazaar package release notes and repository CHANGELOG in SiYuan, and confirm package updates through them. Already support independent settings windows.",
-          "zh-CN": "在思源里查看集市包的发行说明与仓库 CHANGELOG，并用更新日志弹窗确认集市包更新。已适配独立设置窗口"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Bazaar Changelog",
-          "zh-CN": "集市更新日志"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/wmy2981"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "更新日志",
-          "changelog",
-          "发行说明",
-          "release notes",
-          "集市",
-          "bazaar"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "bazaar-changelog",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/wmy2981/bazaar-changelog",
-        "version": "1.0.1"
-      },
-      "packageZipAssetId": 615504460,
-      "packageZipSha256": "b56bf1e9315dab57a6e5e768faf4c7f7c2e81da6f84c40607f1bd219075b5d18",
-      "repoRef": "v1.0.1",
-      "size": 49216,
-      "stars": 1,
-      "updated": "2026-10-06T12:48:21Z",
-      "url": "wmy2981/bazaar-changelog@b56bf1e"
-    },
-    {
-      "installSize": 261168,
-      "openIssues": 5,
-      "package": {
-        "author": "wmy2981",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A batch of independently toggleable desktop and mobile enhancements and optimized styles",
-          "zh-CN": "一批可独立启停的桌面端与移动端增强功能和优化后的样式"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Some Settings",
-          "zh-CN": "一些设置"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/wmy2981"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "settings",
-          "style",
-          "custom",
-          "ui",
-          "enhancement"
-        ],
-        "minAppVersion": "3.8.6-alpha.4",
-        "name": "some-settings-siyuan",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/wmy2981/some-settings-siyuan",
-        "version": "0.2.8"
-      },
-      "packageZipAssetId": 615504158,
-      "packageZipSha256": "30780cf9c6c401800f16ba18f7b93c1ec7e64f29896a3b2adeea1cac825708c2",
-      "repoRef": "v0.2.8",
-      "size": 98417,
-      "stars": 1,
-      "updated": "2026-10-06T12:48:11Z",
-      "url": "wmy2981/some-settings-siyuan@30780cf"
-    },
-    {
-      "installSize": 133502,
-      "openIssues": 0,
-      "package": {
-        "author": "wmy2981",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Ships the OpenCode Go provider, a stable per-conversation x-opencode-session header and the rolling / weekly / monthly usage",
-          "zh-CN": "内置 OpenCode Go 提供商，发送逐会话稳定的 x-opencode-session 请求头，并展示 5 小时 / 周 / 月用量"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "OpenCode Go"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/wmy2981"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "opencode",
-          "opencode-go",
-          "ai",
-          "provider",
-          "usage",
-          "人工智能",
-          "用量"
-        ],
-        "minAppVersion": "3.8.5",
-        "name": "opencode-go-siyuan",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/wmy2981/opencode-go-siyuan",
-        "version": "1.0.6"
-      },
-      "packageZipAssetId": 615503712,
-      "packageZipSha256": "40e325f69acc890aa5a624cca9d26307262376c0c94a41ff2707fb0eff660462",
-      "repoRef": "v1.0.6",
-      "size": 66355,
-      "stars": 1,
-      "updated": "2026-10-06T12:47:59Z",
-      "url": "wmy2981/opencode-go-siyuan@40e325f"
     },
     {
       "installSize": 594850,
@@ -6177,62 +6366,6 @@
       "url": "wmy2981/ref-crumbs-siyuan@20363fa"
     },
     {
-      "installSize": 2826636,
-      "openIssues": 1,
-      "package": {
-        "author": "wmy2981",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Open and edit the text files referenced by notes in a new tab",
-          "zh-CN": "在新建页签中打开并编辑笔记引用的文本文件"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Editor",
-          "zh-CN": "文本编辑器"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/wmy2981"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "editor",
-          "code",
-          "text",
-          "assets",
-          "编辑",
-          "文本",
-          "代码"
-        ],
-        "minAppVersion": "3.8.3",
-        "name": "editor-siyuan",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/wmy2981/editor-siyuan",
-        "version": "1.1.0"
-      },
-      "packageZipAssetId": 611849406,
-      "packageZipSha256": "401e9ea089d2216c8366e91739ff4bcdd8d9039ee63585db4aa76125b5fcf6e9",
-      "repoRef": "v1.1.0",
-      "size": 847019,
-      "stars": 1,
-      "updated": "2026-10-05T07:32:08Z",
-      "url": "wmy2981/editor-siyuan@401e9ea"
-    },
-    {
       "installSize": 1812288,
       "openIssues": 4,
       "package": {
@@ -6273,58 +6406,6 @@
       "stars": 44,
       "updated": "2026-10-05T03:23:27Z",
       "url": "Szerelem0617/siyuan-plugins-index@46dbdb7"
-    },
-    {
-      "installSize": 155423,
-      "openIssues": 0,
-      "package": {
-        "author": "wmy2981",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Generate note titles with the Chat Completions, Responses or Anthropic Messages API",
-          "zh-CN": "用 Chat Completions、Responses API 或 Anthropic Messages 接口为笔记生成标题"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "AI Title",
-          "zh-CN": "AI标题生成"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/wmy2981"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "ai",
-          "title",
-          "deepseek",
-          "生成",
-          "标题",
-          "generate"
-        ],
-        "minAppVersion": "3.8.3",
-        "name": "ai-title-siyuan",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/wmy2981/ai-title-siyuan",
-        "version": "1.0.4"
-      },
-      "packageZipAssetId": 609567516,
-      "packageZipSha256": "4a5dfa25b81cf0339a1b56a981e8889f34ab7ac01aba85f1e6145554c290e422",
-      "repoRef": "v1.0.4",
-      "size": 74032,
-      "stars": 2,
-      "updated": "2026-10-04T09:53:41Z",
-      "url": "wmy2981/ai-title-siyuan@4a5dfa2"
     },
     {
       "installSize": 287996,
@@ -7749,48 +7830,6 @@
       "url": "Fly1018/siyuan-click-counter@6422235"
     },
     {
-      "installSize": 281010,
-      "openIssues": 0,
-      "package": {
-        "author": "Quincy Zou",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Unified AI API switch for SiYuan plugins.",
-          "en_US": "Provide unified AI API configurations and profile sharing for other plugins.",
-          "zh_CN": "一键接管 AI 服务 API 配置，多插件无缝调用。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "API Switch",
-          "en_US": "SiYuan API Switch",
-          "zh_CN": "API 旋钮"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "minAppVersion": "2.10.14",
-        "name": "siyuan-api-switch",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/famotime/siyuan-api-switch",
-        "version": "0.9.0"
-      },
-      "packageZipAssetId": 588079164,
-      "packageZipSha256": "3901adef950e3fcce9a8dd91393ee2ebe3848cf07b486d9380c56c0440659088",
-      "repoRef": "v0.9.0",
-      "size": 140985,
-      "stars": 0,
-      "updated": "2026-09-25T10:05:46Z",
-      "url": "famotime/siyuan-api-switch@3901ade"
-    },
-    {
       "installSize": 221414,
       "openIssues": 0,
       "package": {
@@ -7873,44 +7912,6 @@
       "stars": 13,
       "updated": "2026-09-24T21:25:18Z",
       "url": "shuojie819/siyuan-floating-toc-plugin@a484091"
-    },
-    {
-      "installSize": 251423,
-      "openIssues": 0,
-      "package": {
-        "author": "OpaqueGlass",
-        "description": {
-          "default": "Add a doc-breadcrumb",
-          "en_US": "Add a document breadcrumb. Add document path information that can be jumped to at the top of the editing area.",
-          "zh_CN": "再添加一个文档面包屑：在编辑区域顶部添加可跳转的文档路径信息导航条"
-        },
-        "displayName": {
-          "default": "fakeDocBreadcrumb",
-          "en_US": "Fake Doc Breadcrumb",
-          "zh_CN": "(伪)文档面包屑"
-        },
-        "funding": {
-          "custom": [
-            "https://wj.qq.com/s2/12395364/b69f/"
-          ]
-        },
-        "icon": "icon.png",
-        "name": "syplugin-fakeDocBreadcrumb",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/OpaqueGlass/syplugin-fakeDocBreadcrumb",
-        "version": "2.1.0"
-      },
-      "packageZipAssetId": 586257474,
-      "packageZipSha256": "f8afd607aa455caed181c5ddd2d76416836dbbc11a4cb2980ade5d995a99ec34",
-      "repoRef": "v2.1.0-r2",
-      "size": 108626,
-      "stars": 9,
-      "updated": "2026-09-24T15:32:43Z",
-      "url": "OpaqueGlass/syplugin-fakeDocBreadcrumb@f8afd60"
     },
     {
       "installSize": 259511,
