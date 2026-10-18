@@ -20,11 +20,30 @@
 - 根对象固定包含 `plugins` / `themes` / `icons` / `templates` / `widgets`
 - 每项键使用对应 TXT 列表中精确的 `owner/repo`；键存在即表示弃用，空对象表示使用通用原因
 - `reason` 可省略；存在时必须包含非空 `default`，其它键为 locale，内容应简洁、可验证
-- `alternatives` 可省略；存在时仅填写同类型、仍上架的 `owner/repo`，按推荐顺序排列，不得包含自身或重复项
-- 不要在包清单中加入 `deprecated`、`deprecatedReason` 或 `alternatives`，也不要手改 `stage/*.json`
-- 恢复普通状态时删除注册表条目；Stage 会先清空所有旧生成字段再重新覆盖
+- `alternatives` 可省略；存在时填写仍上架的 `owner/repo`，可以跨类型（例如挂件指向插件），按推荐顺序排列，不得包含自身或重复项；同一 `owner/repo` 只能属于一个类型列表
+- 不要在包清单中加入 `deprecated`、`deprecatedReason`、`alternatives` 或 `choices`，也不要手改 `stage/*.json`
+- 跨类型替代包依靠 Stage 写出的 `choices`（类型 + 包名）生效：Stage 会同时输出 `alternatives`（仅同类型目标包名，供旧客户端按源包类型跳转，跨类型目标写进去只会查到「未找到集市包」）与 `choices`（全部目标，含类型）；`deprecated.json` 侧始终只写 `alternatives`
+- 恢复普通状态时删除注册表条目（例如作者取消归档并恢复维护）；Stage 会先清空所有旧生成字段再重新覆盖
 
 PR Check 只验证结构与引用关系；检查通过后仍须人工审阅弃用结论、原因及替代包。合并后 Stage 会在不访问包仓库 API 的情况下重建五类索引。
+
+## 巡检已归档仓库
+
+作者归档仓库后不会再发 Release，Stage 的「asset id 未变」快路径与 `deprecated.json` 变更路径都不会再打仓库 API，因此「仓库已归档」不会自动反映到集市里，需要偶尔人工巡检。
+
+1. 在仓库根目录运行 `go run ./actions/audit-archived -out report.md`（需 GitHub 令牌；未设置 `GITHUB_TOKEN` / `PAT` 时回退到 `gh auth token`，已登录 `gh` 即可直接跑）
+2. 查看报告「已归档但未登记弃用」表中的条目，逐个核实是否确已停止维护
+3. 需要弃用时按上方「弃用集市包」流程提独立 PR，只改 `deprecated.json`；`reason` 写明作者已归档仓库并停止维护
+4. 查看报告「已登记弃用但仓库未归档」表：归档可被作者取消，取消后作者可能已恢复维护，此时原弃用条目已陈旧，应按「弃用集市包」流程提独立 PR 删除该条目；表中「最后推送」时间可辅助判断是否已恢复维护
+5. 报告中的「仓库不存在」按「下架集市包」流程处理；「清单条目 owner/repo 已过期」只是仓库改名，GitHub 会自动重定向，不影响 PR Check，必要时单独提 PR 修正列表行
+
+注意：
+
+- 归档状态可增可减，本工具只是**当下的一次快照**，不记录历史，也不能当作长期结论
+- 归档时间只能取自 GraphQL 的 `Repository.archivedAt`；REST 的 `archived_at` 已被 GitHub 废弃，`go-github` v89 中已无该字段，故脚本必须走 GraphQL
+- GraphQL 把「仓库不存在」与「无权查看（私有）」都返回为 `null`，令牌看不到的私有仓库会被误报为不存在
+- 每个条目约消耗 1 个 GraphQL 配额点，按 80 个一批提交
+- 该脚本不参与任何 CI 工作流，不会自动修改 `deprecated.json`；Windows 上不要用 `> report.md` 重定向，改用 `-out`，否则 PowerShell 会按控制台代码页重编码并损毁中文
 
 ## 下架集市包
 

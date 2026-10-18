@@ -95,6 +95,7 @@ func TestStageFileForPublicIndex_stripsInternalFields(t *testing.T) {
 						"zh-CN":   "Deprecated",
 					},
 					Alternatives: []string{"replacement"},
+					Choices:      []rules.PackageChoice{{PackageType: "plugins", Name: "replacement"}},
 				},
 			},
 		},
@@ -130,6 +131,9 @@ func TestStageFileForPublicIndex_stripsInternalFields(t *testing.T) {
 	}
 	if !strings.Contains(got, `"deprecated":true`) || !strings.Contains(got, `"alternatives":["replacement"]`) {
 		t.Fatalf("public index missing deprecation metadata: %s", got)
+	}
+	if !strings.Contains(got, `"choices":[{"packageType":"plugins","name":"replacement"}]`) {
+		t.Fatalf("public index missing typed choices: %s", got)
 	}
 	if _, ok := public.Repos[0].Package.DeprecatedReason["zh-CN"]; ok {
 		t.Fatalf("public index must strip redundant deprecated-reason locale: %s", got)

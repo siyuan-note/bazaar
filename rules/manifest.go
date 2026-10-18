@@ -45,6 +45,13 @@ type Funding struct {
 	Links          []FundingLink `json:"links,omitempty"`
 }
 
+// PackageChoice 描述一个替代包及其类型。
+// 由集市索引生成（见 actions/util/deprecated.go 的 ApplyDeprecatedRegistry），供客户端跨类型跳转。
+type PackageChoice struct {
+	PackageType string `json:"packageType"`
+	Name        string `json:"name"`
+}
+
 // Package 集市包清单 JSON 解析后的元数据（plugin.json / theme.json 等）。
 // 字段划分与思源内核 kernel/bazaar/package.go 及 plugin.go 的实际消费一致。
 //
@@ -68,10 +75,14 @@ type Package struct {
 	Keywords []string `json:"keywords,omitempty"`
 
 	// 集市索引生成字段（不允许在包清单中声明）
+	//
+	// Alternatives 只含与源包同类型的替代包：旧客户端按源包类型打开替代包，跨类型目标会查不到。
+	// Choices 是它的结构化形式（额外携带包类型），包含全部目标，跨类型替代包只出现在这里。
 
-	Deprecated       bool          `json:"deprecated,omitempty"`
-	DeprecatedReason LocaleStrings `json:"deprecatedReason,omitempty"`
-	Alternatives     []string      `json:"alternatives,omitempty"`
+	Deprecated       bool            `json:"deprecated,omitempty"`
+	DeprecatedReason LocaleStrings   `json:"deprecatedReason,omitempty"`
+	Alternatives     []string        `json:"alternatives,omitempty"`
+	Choices          []PackageChoice `json:"choices,omitempty"`
 
 	// 插件和主题共用（plugin.json / theme.json）
 
@@ -83,6 +94,9 @@ type Package struct {
 	Kernels           []string `json:"kernels,omitempty"`
 	BootAppearances   []string `json:"bootAppearances,omitempty"`
 	DisabledInPublish bool     `json:"disabledInPublish,omitempty"`
+
+	// SettingsWindow 声明插件可在独立设置窗口运行，内核 LoadSettingsWindowPetals 只加载声明为 true 的已启用插件。
+	SettingsWindow bool `json:"settingsWindow,omitempty"`
 
 	// 主题专用（仅 theme.json；见 kernel/bazaar/package.go Modes）
 
@@ -97,8 +111,8 @@ var commonManifestKeys = []string{
 }
 
 var allowedManifestKeys = map[PackageType]Set{
-	TypePlugin:   toKeySet(commonManifestKeys, "backends", "frontends", "kernels", "bootAppearances", "disabledInPublish", "publish"), // 插件专用字段见 kernel/bazaar/plugin.go 与 kernel/model/plugin_publish.go（兼容性、发布禁用与实际发布声明）。
-	TypeTheme:    toKeySet(commonManifestKeys, "modes", "frontends"),                                                                  // 主题专用字段：亮色 / 暗色模式和前端兼容性。
+	TypePlugin:   toKeySet(commonManifestKeys, "backends", "frontends", "kernels", "bootAppearances", "disabledInPublish", "settingsWindow", "publish"), // 插件专用字段见 kernel/bazaar/plugin.go、kernel/model/plugin_publish.go（兼容性、发布禁用与实际发布声明）与 kernel/model/plugin.go LoadSettingsWindowPetals（设置窗口运行声明）。
+	TypeTheme:    toKeySet(commonManifestKeys, "modes", "frontends"),                                                                                    // 主题专用字段：亮色 / 暗色模式和前端兼容性。
 	TypeIcon:     toKeySet(commonManifestKeys),
 	TypeTemplate: toKeySet(commonManifestKeys),
 	TypeWidget:   toKeySet(commonManifestKeys),
@@ -219,6 +233,10 @@ func PackageForPublicIndex(pkg Package) Package {
 	out.Readme = cloneLocaleStrings(pkg.Readme)
 	out.DeprecatedReason = cloneLocaleStrings(pkg.DeprecatedReason)
 	out.Alternatives = slices.Clone(pkg.Alternatives)
+	out.Choices = slices.Clone(pkg.Choices)
+	// settingsWindow 跟随内核现状暂不进公开索引（kernel/api/bazaar.go 的 bazaarPackage() 尚未透传该字段），
+	// 只保留在 stage/*.json 明细中；内核开始读取后删除本行即可。
+	out.SettingsWindow = false
 	ClearRedundantLocales(&out)
 	return out
 }
@@ -941,7 +959,7 @@ func checkCommonOptionalTypedFields(m map[string]any) []Issue {
 
 // checkPluginOptionalTypedFields 校验插件专用可选字段。
 // backends / frontends / kernels（[]string，含 all 互斥；集市开发示例仓库豁免）、bootAppearances、
-// disabledInPublish（bool）、publish（发布服务资源与公开数据声明）。
+// disabledInPublish / settingsWindow（bool）、publish（发布服务资源与公开数据声明）。
 func checkPluginOptionalTypedFields(m map[string]any, in ManifestInput) []Issue {
 	var issues []Issue
 	allowAllMix := isBazaarSampleRepo(in.Owner, in.Repo)
@@ -950,12 +968,14 @@ func checkPluginOptionalTypedFields(m map[string]any, in ManifestInput) []Issue 
 	}
 	issues = append(issues, checkBootAppearances(m)...)
 	issues = append(issues, checkPluginPublish(m, in)...)
-	if raw, ok := m["disabledInPublish"]; ok {
-		if _, isBool := raw.(bool); !isBool {
-			issues = append(issues, issue(
-				"若填写 `disabledInPublish`，值必须是布尔值 `true` 或 `false`（不要用字符串 `\"true\"`）。不需要时请删除该字段。",
-				"If you include `disabledInPublish`, it must be a boolean `true` or `false` (not the string `\"true\"`). If you don't need it, please delete the field.",
-			))
+	for _, key := range []string{"disabledInPublish", "settingsWindow"} {
+		if raw, ok := m[key]; ok {
+			if _, isBool := raw.(bool); !isBool {
+				issues = append(issues, issue(
+					fmt.Sprintf("若填写 `%s`，值必须是布尔值 `true` 或 `false`（不要用字符串 `\"true\"`）。不需要时请删除该字段。", key),
+					fmt.Sprintf("If you include `%s`, it must be a boolean `true` or `false` (not the string `\"true\"`). If you don't need it, please delete the field.", key),
+				))
+			}
 		}
 	}
 	return issues
@@ -973,6 +993,7 @@ const (
 // kernel/util/publish_file.go 的 IsPublishRelativePath 一致：声明不合法时内核返回 400 且不生成公开快照，
 // 作者在集市检查阶段看不到，故此处提前拦截。
 // index.js、index.css 与 i18n/*.json 是隐式可用的标准入口，无需声明；声明了也不额外报错。
+// resources 支持以 `/` 结尾的目录声明（递归公开该目录及其子目录），单文件声明继续可用。
 func checkPluginPublish(m map[string]any, in ManifestInput) []Issue {
 	raw, ok := m["publish"]
 	if !ok || raw == nil {
@@ -1005,7 +1026,8 @@ func checkPluginPublish(m map[string]any, in ManifestInput) []Issue {
 	return issues
 }
 
-// checkPublishResources 校验 publish.resources：相对包根的完整文件名，且文件须存在于 package.zip。
+// checkPublishResources 校验 publish.resources：相对包根的完整文件名，或以 `/` 结尾的目录声明
+// （目录声明递归公开其中的全部文件），且目标须存在于 package.zip。
 func checkPublishResources(raw any, packageRoot string) []Issue {
 	if raw == nil {
 		return nil
@@ -1013,15 +1035,15 @@ func checkPublishResources(raw any, packageRoot string) []Issue {
 	arr, ok := raw.([]any)
 	if !ok {
 		return []Issue{issue(
-			"若填写 `publish.resources`，必须是字符串数组，逐项声明相对包根的完整文件名，例如 `\"resources\": [\"images/logo.png\"]`。只使用标准入口的插件请删除该字段。",
-			"If you include `publish.resources`, it must be an array of filenames relative to the package root, e.g. `\"resources\": [\"images/logo.png\"]`. Plugins using only the standard entries should delete the field.",
+			"若填写 `publish.resources`，必须是字符串数组，逐项声明相对包根的完整文件名或以 `/` 结尾的目录，例如 `\"resources\": [\"images/logo.png\", \"fonts/\"]`。只使用标准入口的插件请删除该字段。",
+			"If you include `publish.resources`, it must be an array of filenames relative to the package root or of directories ending with `/`, e.g. `\"resources\": [\"images/logo.png\", \"fonts/\"]`. Plugins using only the standard entries should delete the field.",
 		)}
 	}
 	var issues []Issue
 	if len(arr) > maxPublishResources {
 		issues = append(issues, issue(
-			fmt.Sprintf("`publish.resources` 声明了 %d 个文件，超过上限 %d 个。请删除多余项。", len(arr), maxPublishResources),
-			fmt.Sprintf("`publish.resources` declares %d files, above the limit of %d. Please remove the extra entries.", len(arr), maxPublishResources),
+			fmt.Sprintf("`publish.resources` 声明了 %d 项资源，超过上限 %d 项。请删除多余项。", len(arr), maxPublishResources),
+			fmt.Sprintf("`publish.resources` declares %d entries, above the limit of %d. Please remove the extra entries.", len(arr), maxPublishResources),
 		))
 	}
 	for i, item := range arr {
@@ -1033,10 +1055,13 @@ func checkPublishResources(raw any, packageRoot string) []Issue {
 			))
 			continue
 		}
-		if !isPublishRelativePath(resource) {
+		// 与思源内核一致：末尾的单个 `/` 表示目录声明，去掉后再按相对路径校验
+		isDirDeclaration := strings.HasSuffix(resource, "/")
+		path := strings.TrimSuffix(resource, "/")
+		if !isPublishRelativePath(path) {
 			issues = append(issues, issue(
-				fmt.Sprintf("`publish.resources[%d]` 的值 `%s` 不是合法的发布资源路径。请使用相对包根的完整文件名，用 `/` 分隔，不要声明目录、绝对路径、`..`、反斜杠、`:` 或百分号编码，文件名前后不要有空格，也不要以 `.` 结尾。", i, resource),
-				fmt.Sprintf("`publish.resources[%d]` value `%s` isn't a valid publish resource path. Please use a full filename relative to the package root, separated with `/`, without directories, absolute paths, `..`, backslashes, `:`, percent encoding, surrounding spaces, or a trailing dot.", i, resource),
+				fmt.Sprintf("`publish.resources[%d]` 的值 `%s` 不是合法的发布资源路径。请使用相对包根的完整文件名或以 `/` 结尾的目录，用 `/` 分隔，不要使用绝对路径、`..`、反斜杠、`:` 或百分号编码，路径前后不要有空格，也不要以 `.` 结尾。", i, resource),
+				fmt.Sprintf("`publish.resources[%d]` value `%s` isn't a valid publish resource path. Please use a full filename relative to the package root or a directory ending with `/`, separated with `/`, without absolute paths, `..`, backslashes, `:`, percent encoding, surrounding spaces, or a trailing dot.", i, resource),
 			))
 			continue
 		}
@@ -1047,18 +1072,32 @@ func checkPublishResources(raw any, packageRoot string) []Issue {
 			))
 			continue
 		}
-		info, found := relStatCaseSensitive(packageRoot, resource)
+		info, found := relStatCaseSensitive(packageRoot, path)
 		if !found {
+			if isDirDeclaration {
+				issues = append(issues, issue(
+					fmt.Sprintf("`publish.resources[%d]` 声明了目录 `%s`，但 `package.zip` 中找不到该目录（路径大小写必须一致）。请把该目录打进包内，或修正声明。", i, resource),
+					fmt.Sprintf("`publish.resources[%d]` declares the directory `%s`, but that directory isn't in `package.zip` (paths are case-sensitive). Please add the directory to the package, or fix the declaration.", i, resource),
+				))
+			} else {
+				issues = append(issues, issue(
+					fmt.Sprintf("`publish.resources[%d]` 声明了文件 `%s`，但 `package.zip` 中找不到该文件（路径大小写必须一致）。请把文件打进包内，或修正声明。", i, resource),
+					fmt.Sprintf("`publish.resources[%d]` declares `%s`, but that file isn't in `package.zip` (paths are case-sensitive). Please add the file to the package, or fix the declaration.", i, resource),
+				))
+			}
+			continue
+		}
+		if isDirDeclaration && !info.IsDir() {
 			issues = append(issues, issue(
-				fmt.Sprintf("`publish.resources[%d]` 声明了文件 `%s`，但 `package.zip` 中找不到该文件（路径大小写必须一致）。请把文件打进包内，或修正声明。", i, resource),
-				fmt.Sprintf("`publish.resources[%d]` declares `%s`, but that file isn't in `package.zip` (paths are case-sensitive). Please add the file to the package, or fix the declaration.", i, resource),
+				fmt.Sprintf("`publish.resources[%d]` 的 `%s` 以 `/` 结尾，表示声明目录，但它在 `package.zip` 中是文件。请删除末尾的 `/`，或改声明为真正的目录。", i, resource),
+				fmt.Sprintf("`publish.resources[%d]` value `%s` ends with `/` and declares a directory, but it's a file in `package.zip`. Please remove the trailing `/`, or declare an actual directory.", i, resource),
 			))
 			continue
 		}
-		if info.IsDir() {
+		if !isDirDeclaration && info.IsDir() {
 			issues = append(issues, issue(
-				fmt.Sprintf("`publish.resources[%d]` 声明了 `%s`，但它在 `package.zip` 中是目录。发布资源只能逐个声明文件，请改为声明该目录内的具体文件。", i, resource),
-				fmt.Sprintf("`publish.resources[%d]` declares `%s`, which is a directory in `package.zip`. Publish resources must list individual files; please declare the files inside it instead.", i, resource),
+				fmt.Sprintf("`publish.resources[%d]` 声明了 `%s`，但它在 `package.zip` 中是目录。如需递归公开该目录及其子目录，请改声明为 `%s/`；如只需公开其中的部分文件，请逐个声明文件。", i, resource, resource),
+				fmt.Sprintf("`publish.resources[%d]` declares `%s`, which is a directory in `package.zip`. To publish that directory and its subdirectories recursively, declare `%s/` instead; to publish only some of its files, list them individually.", i, resource, resource),
 			))
 		}
 	}
@@ -1114,7 +1153,7 @@ func isPublishFieldName(s string) bool {
 }
 
 // isPublishRelativePath 与思源 kernel/util/publish_file.go 的 IsPublishRelativePath 一致。
-// 允许 `views/index.html` 这类带子目录的完整文件名，但不允许声明目录本身。
+// 允许 `views/index.html` 这类带子目录的完整文件名；目录声明由调用方先去掉末尾的 `/` 再校验。
 func isPublishRelativePath(name string) bool {
 	if name == "" || strings.ContainsAny(name, `\:%`) || strings.ContainsRune(name, 0) {
 		return false
