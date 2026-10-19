@@ -1,6 +1,484 @@
 {
   "repos": [
     {
+      "installSize": 4771527,
+      "openIssues": 5,
+      "package": {
+        "author": "Taihong Yang",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Siyuan sisyphus enables AI Agents to operate your Siyuan with notebook-level permission control, covering most of Siyuan&#39;s functionality. Supports desktop、 docker、 mobile.",
+          "zh_CN": "让 AI Agent 操作你的思源，提供 MCP CLI 两种方式，支持笔记本级权限管控、覆盖SIYUAN绝大部分功能，支持思源的桌面、docker端、移动端。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan sisyphus MCP &amp; CLI &amp; GIT",
+          "zh_CN": "思源 sisyphus MCP &amp; CLI &amp; GIT"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://github.com/yangtaihong59/siyuan-plugins-mcp-sisyphus/blob/main/docs/archive/thank.jpeg"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "AI",
+          "Agent",
+          "MCP"
+        ],
+        "minAppVersion": "2.9.0",
+        "name": "siyuan-plugins-mcp-sisyphus",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/yangtaihong59/siyuan-plugins-mcp-sisyphus",
+        "version": "0.6.13"
+      },
+      "packageZipAssetId": 657118225,
+      "packageZipSha256": "013340acd1a6de27297278ab69c5cc05d315dafbfb0c599acb8e5b2426070440",
+      "repoRef": "v0.6.13",
+      "size": 1496548,
+      "stars": 117,
+      "updated": "2026-10-19T18:45:35Z",
+      "url": "yangtaihong59/siyuan-plugins-mcp-sisyphus@013340a"
+    },
+    {
+      "installSize": 1204926,
+      "openIssues": 1,
+      "package": {
+        "author": "Lisontowind",
+        "backends": [
+          "windows",
+          "darwin",
+          "linux"
+        ],
+        "description": {
+          "default": "Floating notes with Markdown live rendering, image previews, plugin-local saving and optional SiYuan autosync, and a pinnable recent-notes window.",
+          "zh-CN": "快捷键唤起悬浮便签，默认 Markdown 即时渲染，支持图片，默认保存在插件中，手动保存到思源后自动同步，可在独立置顶窗口找回最近速记和本机草稿。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Quick Notes",
+          "zh-CN": "悬浮速记"
+        },
+        "frontends": [
+          "desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "quick notes",
+          "速记",
+          "便签",
+          "悬浮",
+          "Markdown"
+        ],
+        "minAppVersion": "3.8.6",
+        "name": "siyuan-quick-notes",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README_en_US.md",
+          "zh-CN": "README.md"
+        },
+        "url": "https://github.com/lisontowind/siyuan-quick-notes",
+        "version": "0.1.28"
+      },
+      "packageZipAssetId": 657024669,
+      "packageZipSha256": "58eef84dc434a6ccc652f139854c8e6cd148f49a9185c0a37d4ce9dba31bb785",
+      "repoRef": "v0.1.28",
+      "size": 519642,
+      "stars": 1,
+      "updated": "2026-10-19T18:05:55Z",
+      "url": "lisontowind/siyuan-quick-notes@58eef84"
+    },
+    {
+      "installSize": 17290857,
+      "openIssues": 1,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
+          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Horizon",
+          "zh_CN": "任务管理器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "task",
+          "manager",
+          "filter"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-plugin-task-horizon",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
+        "version": "3.2.5"
+      },
+      "packageZipAssetId": 656939397,
+      "packageZipSha256": "e08220c26afe15f40b16ff99bbb1db2fb554a88edb7c101218ddc0743d339bac",
+      "repoRef": "v3.2.5",
+      "size": 3543211,
+      "stars": 38,
+      "updated": "2026-10-19T17:30:00Z",
+      "url": "5kyfkr/siyuan-plugin-task-horizon@e08220c"
+    },
+    {
+      "installSize": 2798431,
+      "openIssues": 1,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A dock Tomato Timer for SiYuan.",
+          "zh_CN": "思源底栏番茄钟：支持时间轴视图/任务提醒/日常事务记录/多端状态同步/移动端/数据库联动/块绑定/历史记录/任务管理器联动/移动端原生通知提醒"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Dock Tomato",
+          "zh_CN": "底栏番茄钟"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "tomato",
+          "timer",
+          "pomodoro",
+          "dock"
+        ],
+        "minAppVersion": "3.8.1",
+        "name": "siyuan-plugin-docktomato",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-docktomato",
+        "version": "2.3.6"
+      },
+      "packageZipAssetId": 656780264,
+      "packageZipSha256": "00a6cbf81e4b650650223507f341530eb24bc154430afe51e20f7e0df3085f61",
+      "repoRef": "v2.3.6",
+      "size": 658877,
+      "stars": 9,
+      "updated": "2026-10-19T16:24:02Z",
+      "url": "5kyfkr/siyuan-plugin-docktomato@00a6cbf"
+    },
+    {
+      "installSize": 2677955,
+      "openIssues": 0,
+      "package": {
+        "author": "mirlous",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Real-time encrypt documents + all assets (images/videos/PDF/xlsx, any format) into a self-developed single-file vault (.sydb); zero plaintext (in-memory injection). Unlimited size, Argon2id KDF (OWASP-first) for new vaults, TOTP two-factor unlock, tamper/ransomware monitor, burn-after-reading one-time share, auto update check, OCR full-text image search (tesseract, CDN model), TF-IDF semantic auto-sharding, mobile read/write (PIN session), auto/incremental backup, WebDAV two-way sync, dedup, folder zip import, central vault directory, in-vault recycle bin, restore-on-remove, orphan recovery, password hints, recovery key (forgot-password recovery), weak-password detection, sensitive-info alert, revision history rollback, audit log, device-bound activation code (anti code-sharing). Paid license (WeChat nglzhy), 7-day trial.",
+          "zh_CN": "把选中的文档及全部附件（图片/视频/PDF/xlsx 任意格式）实时加密进一个自研单文件数据库（.sydb），工作区零明文（内存注入显示）。容量无上限；新建库默认 Argon2id 加密（OWASP 首选 KDF）、TOTP 双因素解锁、防勒索/防篡改监控、阅后即焚一次性分享、自动更新检查、OCR 图片全文搜索（tesseract，模型走 CDN 不占插件体积）、TF-IDF 语义智能分库、移动端读写（6 位访问码会话）、自动/增量备份、WebDAV 双向同步、资产去重、文件夹整包入库、集中分库目录、库内回收站、移出自动还原、孤儿找回、密码提示、恢复密钥（忘记密码可找回）、弱密码检测、敏感信息提醒、版本历史回滚、审计日志、设备绑定激活码（防一码多用）。付费授权（微信 nglzhy），7 天试用。"
+        },
+        "displayName": {
+          "default": "Secret Database",
+          "zh_CN": "密库"
+        },
+        "frontends": [
+          "desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "加密",
+          "数据库",
+          "密",
+          "单文件",
+          "回收站",
+          "totp",
+          "ocr",
+          "encryption",
+          "database",
+          "vault",
+          "secret",
+          "recycle"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-edb",
+        "preview": "",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/mirlous/siyuan-edb",
+        "version": "1.6.45"
+      },
+      "packageZipAssetId": 656795851,
+      "packageZipSha256": "42c64b8f291b0a64a273a59cde51d63297dd562314aeec201aa1795f194e420e",
+      "repoRef": "v1.6.45",
+      "size": 921717,
+      "stars": 0,
+      "updated": "2026-10-19T16:22:27Z",
+      "url": "mirlous/siyuan-edb@42c64b8"
+    },
+    {
+      "installSize": 511796,
+      "openIssues": 2,
+      "package": {
+        "author": "notesynchelper",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "从微信同步到思源笔记，支持文字、图片、聊天记录、文章"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "笔记同步助手"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "docker"
+        ],
+        "keywords": [
+          "wechat",
+          "template",
+          "企微",
+          "模板",
+          "微信",
+          "速记",
+          "剪藏",
+          "搜集",
+          "日记",
+          "闪念",
+          "memo",
+          "备忘",
+          "公众号",
+          "小红书",
+          "得到"
+        ],
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-notehelper",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/notesynchelper/siyuan-notehelper",
+        "version": "1.8.44"
+      },
+      "packageZipAssetId": 656770561,
+      "packageZipSha256": "5d558e9dd643fda7ce9266f30174a116c52818e74c99f0aede140b9763566e9e",
+      "repoRef": "v1.8.44",
+      "size": 205945,
+      "stars": 2,
+      "updated": "2026-10-19T16:19:22Z",
+      "url": "notesynchelper/siyuan-notehelper@5d558e9"
+    },
+    {
+      "installSize": 170047,
+      "openIssues": 0,
+      "package": {
+        "author": "Fly1018",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "android",
+          "ios",
+          "harmony"
+        ],
+        "description": {
+          "default": "Generate or refresh a clickable table of contents at the top of the current document.",
+          "zh-CN": "在当前文档开头生成或刷新可点击跳转的文内目录。",
+          "zh_CN": "在当前文档开头生成或刷新可点击跳转的文内目录。"
+        },
+        "displayName": {
+          "default": "Document TOC",
+          "zh-CN": "文内目录",
+          "zh_CN": "文内目录"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "toc",
+          "outline",
+          "table of contents",
+          "目录",
+          "大纲"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-doc-toc",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md",
+          "zh_CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/Fly1018/siyuan-doc-toc",
+        "version": "1.0.2"
+      },
+      "packageZipAssetId": 656573598,
+      "packageZipSha256": "6f06ee69ba00b151dd2fd630e974060e2de7fa9b3757ec73c46789aeebdddb92",
+      "repoRef": "v1.0.2",
+      "size": 113338,
+      "stars": 0,
+      "updated": "2026-10-19T14:54:03Z",
+      "url": "Fly1018/siyuan-doc-toc@6f06ee6"
+    },
+    {
+      "installSize": 2843508,
+      "openIssues": 0,
+      "package": {
+        "author": "QYL",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A companion plugin for the Neo theme",
+          "zh-CN": "Neo主题的配套插件",
+          "zh-TW": "Neo主題的配套插件"
+        },
+        "displayName": {
+          "default": "Neo+"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://icnmjy02sv9g.feishu.cn/wiki/FekNwrtB7ia1WckYelRckwzZnig?from=from_copylink"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "Apple",
+          "macOS",
+          "Cupertino"
+        ],
+        "minAppVersion": "3.8.8-beta.1",
+        "name": "Neo-Plus",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md",
+          "zh-TW": "README.zh-TW.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/QYLexpired/Neo-Plus",
+        "version": "1.7.3"
+      },
+      "packageZipAssetId": 656281881,
+      "packageZipSha256": "0bf517fbcface0c4b4d316f2c208b6af80af3c1872d79e9bc8540b42fb7f32e1",
+      "repoRef": "v1.7.3",
+      "size": 1278728,
+      "stars": 15,
+      "updated": "2026-10-19T12:56:31Z",
+      "url": "QYLexpired/Neo-Plus@0bf517f"
+    },
+    {
+      "installSize": 1286390,
+      "openIssues": 0,
+      "package": {
+        "author": "Quincy Zou",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "android",
+          "ios",
+          "harmony"
+        ],
+        "description": {
+          "default": "源时记：思源笔记全自动时间追踪与深度工作专注分析看板。智能识别文档切换，精准剥离闲置挂机，支持日/周/月多维日历透视、可视化图表与一键 AI 总结复盘。",
+          "en_US": "Automatic time tracking and deep work analytics for SiYuan with smart idle filtering, calendar dashboard, and AI review."
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "源时记",
+          "en_US": "Time Spent Dashboard"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.webp",
+        "keywords": [
+          "time-tracking",
+          "focus",
+          "dashboard",
+          "calendar",
+          "analytics",
+          "ai-review",
+          "productivity",
+          "时间统计",
+          "专注看板",
+          "深度工作"
+        ],
+        "minAppVersion": "3.7.3",
+        "name": "siyuan-time-spent",
+        "preview": "preview.webp",
+        "readme": {
+          "default": "README.md",
+          "en_US": "README_en_US.md"
+        },
+        "url": "https://github.com/famotime/siyuan-time-spent",
+        "version": "0.9.2"
+      },
+      "packageZipAssetId": 656240996,
+      "packageZipSha256": "d5ad41397b72951708cb61609db95cbfe2057922ecc7572df208668a447a8cab",
+      "repoRef": "v0.9.2",
+      "size": 442836,
+      "stars": 0,
+      "updated": "2026-10-19T12:39:42Z",
+      "url": "famotime/siyuan-time-spent@d5ad413"
+    },
+    {
       "installSize": 1145495,
       "openIssues": 0,
       "package": {
@@ -125,62 +603,6 @@
       "url": "wave789/siyuan-minimap@2875601"
     },
     {
-      "installSize": 169817,
-      "openIssues": 0,
-      "package": {
-        "author": "Fly1018",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "android",
-          "ios",
-          "harmony"
-        ],
-        "description": {
-          "default": "Generate or refresh a clickable table of contents at the top of the current document.",
-          "zh-CN": "在当前文档开头生成或刷新可点击跳转的文档目录。",
-          "zh_CN": "在当前文档开头生成或刷新可点击跳转的文档目录。"
-        },
-        "displayName": {
-          "default": "Document TOC",
-          "zh-CN": "文档目录生成器",
-          "zh_CN": "文档目录生成器"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "toc",
-          "outline",
-          "table of contents",
-          "目录",
-          "大纲"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-doc-toc",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md",
-          "zh_CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/Fly1018/siyuan-doc-toc",
-        "version": "1.0.0"
-      },
-      "packageZipAssetId": 655181301,
-      "packageZipSha256": "f85d15e2dadedcf158aea353ce34565bf6b9ff349d5f3c5d383f3118c9bdeeab",
-      "repoRef": "v1.0.0",
-      "size": 113251,
-      "stars": 0,
-      "updated": "2026-10-19T10:42:44Z",
-      "url": "Fly1018/siyuan-doc-toc@f85d15e"
-    },
-    {
       "installSize": 61937144,
       "openIssues": 2,
       "package": {
@@ -236,58 +658,6 @@
       "stars": 41,
       "updated": "2026-10-19T09:40:33Z",
       "url": "zt8989/siyuan-drawio-plugin@1a2a25a"
-    },
-    {
-      "installSize": 4751105,
-      "openIssues": 7,
-      "package": {
-        "author": "Taihong Yang",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Siyuan sisyphus enables AI Agents to operate your Siyuan with notebook-level permission control, covering most of Siyuan&#39;s functionality. Supports desktop、 docker、 mobile.",
-          "zh_CN": "让 AI Agent 操作你的思源，提供 MCP CLI 两种方式，支持笔记本级权限管控、覆盖SIYUAN绝大部分功能，支持思源的桌面、docker端、移动端。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiYuan sisyphus MCP &amp; CLI &amp; GIT",
-          "zh_CN": "思源 sisyphus MCP &amp; CLI &amp; GIT"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://github.com/yangtaihong59/siyuan-plugins-mcp-sisyphus/blob/main/docs/archive/thank.jpeg"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "AI",
-          "Agent",
-          "MCP"
-        ],
-        "minAppVersion": "2.9.0",
-        "name": "siyuan-plugins-mcp-sisyphus",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/yangtaihong59/siyuan-plugins-mcp-sisyphus",
-        "version": "0.6.11"
-      },
-      "packageZipAssetId": 655806455,
-      "packageZipSha256": "01f81d8050ea074b1ae593b111dbd157c09af1b9fca1c02dbef9be1a72edc2ee",
-      "repoRef": "v0.6.11",
-      "size": 1489824,
-      "stars": 117,
-      "updated": "2026-10-19T09:21:29Z",
-      "url": "yangtaihong59/siyuan-plugins-mcp-sisyphus@01f81d8"
     },
     {
       "installSize": 1043577,
@@ -1243,54 +1613,6 @@
       "stars": 9,
       "updated": "2026-10-18T10:14:36Z",
       "url": "OpaqueGlass/syplugin-fakeDocBreadcrumb@6fd5184"
-    },
-    {
-      "installSize": 894617,
-      "openIssues": 0,
-      "package": {
-        "author": "Lisontowind",
-        "backends": [
-          "windows",
-          "darwin",
-          "linux"
-        ],
-        "description": {
-          "default": "Floating Markdown notes for Windows, macOS, and Linux with image previews, SiYuan autosave, and local draft recovery.",
-          "zh-CN": "快捷键唤起悬浮便签，支持 Markdown、截图粘贴与图片预览，自动保存到思源，可恢复本机草稿。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Quick Notes",
-          "zh-CN": "悬浮速记"
-        },
-        "frontends": [
-          "desktop"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "quick notes",
-          "速记",
-          "便签",
-          "悬浮",
-          "Markdown"
-        ],
-        "minAppVersion": "3.8.6",
-        "name": "siyuan-quick-notes",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README_en_US.md",
-          "zh-CN": "README.md"
-        },
-        "url": "https://github.com/lisontowind/siyuan-quick-notes",
-        "version": "0.1.27"
-      },
-      "packageZipAssetId": 653072624,
-      "packageZipSha256": "2a29899213eb3877ad8b6cbe6a76a91d72dfe4376d8c7f678dc517589a7dc2fa",
-      "repoRef": "v0.1.27",
-      "size": 423293,
-      "stars": 1,
-      "updated": "2026-10-18T09:32:09Z",
-      "url": "lisontowind/siyuan-quick-notes@2a29899"
     },
     {
       "installSize": 325720,
@@ -2309,110 +2631,6 @@
       "url": "Halory-Ito/siyuan-plugin-desktop-pet@9761488"
     },
     {
-      "installSize": 17198319,
-      "openIssues": 1,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
-          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Horizon",
-          "zh_CN": "任务管理器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "task",
-          "manager",
-          "filter"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-plugin-task-horizon",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "3.2.4"
-      },
-      "packageZipAssetId": 647986146,
-      "packageZipSha256": "4cc19a894d1aaa5c6a13134f9ce62486b97c8499f5203e1e62eae0cdba72988f",
-      "repoRef": "v3.2.4",
-      "size": 3520257,
-      "stars": 38,
-      "updated": "2026-10-16T16:59:22Z",
-      "url": "5kyfkr/siyuan-plugin-task-horizon@4cc19a8"
-    },
-    {
-      "installSize": 2794382,
-      "openIssues": 1,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A dock Tomato Timer for SiYuan.",
-          "zh_CN": "思源底栏番茄钟：支持时间轴视图/任务提醒/日常事务记录/多端状态同步/移动端/数据库联动/块绑定/历史记录/任务管理器联动/移动端原生通知提醒"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Dock Tomato",
-          "zh_CN": "底栏番茄钟"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "tomato",
-          "timer",
-          "pomodoro",
-          "dock"
-        ],
-        "minAppVersion": "3.8.1",
-        "name": "siyuan-plugin-docktomato",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-docktomato",
-        "version": "2.3.5"
-      },
-      "packageZipAssetId": 647975432,
-      "packageZipSha256": "29c9cf3a0a733345679fbf9fded742d4b8f5b2e165ba3546ce21abfa0e0a3db8",
-      "repoRef": "v2.3.5",
-      "size": 657130,
-      "stars": 9,
-      "updated": "2026-10-16T16:55:30Z",
-      "url": "5kyfkr/siyuan-plugin-docktomato@29c9cf3"
-    },
-    {
       "installSize": 1537525,
       "openIssues": 0,
       "package": {
@@ -2466,57 +2684,6 @@
       "stars": 16,
       "updated": "2026-10-16T13:46:51Z",
       "url": "TCOTC/snippets@22a5354"
-    },
-    {
-      "installSize": 2499500,
-      "openIssues": 0,
-      "package": {
-        "author": "mirlous",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Real-time encrypt documents + all assets (images/videos/PDF/xlsx, any format) into a self-developed single-file vault (.sydb); zero plaintext (in-memory injection). Unlimited size, Argon2id KDF (OWASP-first) for new vaults, TOTP two-factor unlock, tamper/ransomware monitor, burn-after-reading one-time share, auto update check, OCR full-text image search (tesseract, CDN model), TF-IDF semantic auto-sharding, mobile read/write (PIN session), auto/incremental backup, WebDAV two-way sync, dedup, folder zip import, central vault directory, in-vault recycle bin, restore-on-remove, orphan recovery, password hints, recovery key (forgot-password recovery), weak-password detection, sensitive-info alert, revision history rollback, audit log, device-bound activation code (anti code-sharing). Paid license (WeChat nglzhy), 7-day trial.",
-          "zh_CN": "把选中的文档及全部附件（图片/视频/PDF/xlsx 任意格式）实时加密进一个自研单文件数据库（.sydb），工作区零明文（内存注入显示）。容量无上限；新建库默认 Argon2id 加密（OWASP 首选 KDF）、TOTP 双因素解锁、防勒索/防篡改监控、阅后即焚一次性分享、自动更新检查、OCR 图片全文搜索（tesseract，模型走 CDN 不占插件体积）、TF-IDF 语义智能分库、移动端读写（6 位访问码会话）、自动/增量备份、WebDAV 双向同步、资产去重、文件夹整包入库、集中分库目录、库内回收站、移出自动还原、孤儿找回、密码提示、恢复密钥（忘记密码可找回）、弱密码检测、敏感信息提醒、版本历史回滚、审计日志、设备绑定激活码（防一码多用）。付费授权（微信 nglzhy），7 天试用。"
-        },
-        "displayName": {
-          "default": "Secret Database",
-          "zh_CN": "密库"
-        },
-        "frontends": [
-          "desktop"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "加密",
-          "数据库",
-          "密",
-          "单文件",
-          "回收站",
-          "totp",
-          "ocr",
-          "encryption",
-          "database",
-          "vault",
-          "secret",
-          "recycle"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-edb",
-        "preview": "",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/mirlous/siyuan-edb",
-        "version": "1.5.2"
-      },
-      "packageZipAssetId": 647104181,
-      "packageZipSha256": "b9465c4dffd5160ba6372ec69137b0d9b66f5a13623204b7bcd2a8bf221395ab",
-      "repoRef": "v1.5.2",
-      "size": 846708,
-      "stars": 0,
-      "updated": "2026-10-16T11:21:42Z",
-      "url": "mirlous/siyuan-edb@b9465c4"
     },
     {
       "installSize": 3882281,
@@ -2839,62 +3006,6 @@
       "stars": 0,
       "updated": "2026-10-15T21:08:18Z",
       "url": "FlorianZierer/speech2text-transcription-plugin-siyuan@c7f0dc7"
-    },
-    {
-      "installSize": 511796,
-      "openIssues": 2,
-      "package": {
-        "author": "notesynchelper",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "从微信同步到思源笔记，支持文字、图片、聊天记录、文章"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "笔记同步助手"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "docker"
-        ],
-        "keywords": [
-          "wechat",
-          "template",
-          "企微",
-          "模板",
-          "微信",
-          "速记",
-          "剪藏",
-          "搜集",
-          "日记",
-          "闪念",
-          "memo",
-          "备忘",
-          "公众号",
-          "小红书",
-          "得到"
-        ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-notehelper",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/notesynchelper/siyuan-notehelper",
-        "version": "1.8.43"
-      },
-      "packageZipAssetId": 644053547,
-      "packageZipSha256": "01dea6c203aa24217e9110d04883c184bda40a36460be0add6408abca8135249",
-      "repoRef": "v1.8.43",
-      "size": 205944,
-      "stars": 2,
-      "updated": "2026-10-15T14:02:53Z",
-      "url": "notesynchelper/siyuan-notehelper@01dea6c"
     },
     {
       "installSize": 852459,
@@ -3928,56 +4039,6 @@
       "url": "vilifetime/siyuan-plugin-caldav-sync@924ca33"
     },
     {
-      "installSize": 2852819,
-      "openIssues": 0,
-      "package": {
-        "author": "QYL",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A companion plugin for the Neo theme",
-          "zh-CN": "Neo主题的配套插件",
-          "zh-TW": "Neo主題的配套插件"
-        },
-        "displayName": {
-          "default": "Neo+"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://icnmjy02sv9g.feishu.cn/wiki/FekNwrtB7ia1WckYelRckwzZnig?from=from_copylink"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "Apple",
-          "macOS",
-          "Cupertino"
-        ],
-        "minAppVersion": "3.8.5",
-        "name": "Neo-Plus",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md",
-          "zh-TW": "README.zh-TW.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/QYLexpired/Neo-Plus",
-        "version": "1.7.2"
-      },
-      "packageZipAssetId": 639078427,
-      "packageZipSha256": "c828e35e2b855df43705672185ab025e4311384a210d6361682f06d2dc914ada",
-      "repoRef": "v1.7.2",
-      "size": 1278446,
-      "stars": 15,
-      "updated": "2026-10-14T03:24:21Z",
-      "url": "QYLexpired/Neo-Plus@c828e35"
-    },
-    {
       "installSize": 3262339,
       "openIssues": 0,
       "package": {
@@ -4076,64 +4137,6 @@
       "stars": 0,
       "updated": "2026-10-13T14:03:59Z",
       "url": "famotime/siyuan-postman@29e2e14"
-    },
-    {
-      "installSize": 1220020,
-      "openIssues": 1,
-      "package": {
-        "author": "Quincy Zou",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker"
-        ],
-        "description": {
-          "default": "源时记：思源笔记全自动时间追踪与深度工作专注分析看板。智能识别文档切换，精准剥离闲置挂机，支持日/周/月多维日历透视、可视化图表与一键 AI 总结复盘。",
-          "en_US": "Automatic time tracking and deep work analytics for SiYuan with smart idle filtering, calendar dashboard, and AI review."
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "源时记",
-          "en_US": "Time Spent Dashboard"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.webp",
-        "keywords": [
-          "time-tracking",
-          "focus",
-          "dashboard",
-          "calendar",
-          "analytics",
-          "ai-review",
-          "productivity",
-          "时间统计",
-          "专注看板",
-          "深度工作"
-        ],
-        "minAppVersion": "3.7.3",
-        "name": "siyuan-time-spent",
-        "preview": "preview.webp",
-        "readme": {
-          "default": "README.md",
-          "en_US": "README_en_US.md"
-        },
-        "url": "https://github.com/famotime/siyuan-time-spent",
-        "version": "0.9.1"
-      },
-      "packageZipAssetId": 637143660,
-      "packageZipSha256": "d38a323a6eaf73fd2a2698f19c66fd885ab2957c5368eecdb4b96836b8f86009",
-      "repoRef": "v0.9.1",
-      "size": 425707,
-      "stars": 0,
-      "updated": "2026-10-13T13:36:29Z",
-      "url": "famotime/siyuan-time-spent@d38a323"
     },
     {
       "installSize": 1039097,
