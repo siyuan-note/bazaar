@@ -1,6 +1,386 @@
 {
   "repos": [
     {
+      "installSize": 824480,
+      "openIssues": 3,
+      "package": {
+        "author": "vilifetime",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "一款思源笔记插件。双向同步 CalDAV 服务器（Radicale / Nextcloud / Baikal 等）的日历事件与待办任务，提供月/周/日日历视图、任务视图与编辑能力，并可将今日日程插入日记。",
+          "en_US": "Two-way sync calendar events and todos with CalDAV servers (Radicale / Nextcloud / Baikal). Month/Week/Day calendar views, task view, editor and daily note integration."
+        },
+        "displayName": {
+          "default": "CalDAV日历任务",
+          "en_US": "CalDAV Calendar &amp; Tasks"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop",
+          "mobile",
+          "browser-mobile"
+        ],
+        "funding": {
+          "custom": [
+            ""
+          ],
+          "github": "vilifetime"
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "caldav",
+          "calendar",
+          "todo",
+          "task",
+          "日历",
+          "任务",
+          "同步",
+          "radicale",
+          "nextcloud",
+          "baikal"
+        ],
+        "minAppVersion": "3.2.0",
+        "name": "siyuan-plugin-caldav-sync",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en_US": "README_en_US.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/vilifetime/siyuan-plugin-caldav-sync",
+        "version": "0.2.29"
+      },
+      "packageZipAssetId": 660091543,
+      "packageZipSha256": "1adaf592ce79d0647dbb999b04d35021a853ba39894b975f1d90ed627f8db72e",
+      "repoRef": "v0.2.29",
+      "size": 460786,
+      "stars": 4,
+      "updated": "2026-10-20T18:12:27Z",
+      "url": "vilifetime/siyuan-plugin-caldav-sync@1adaf59"
+    },
+    {
+      "installSize": 17306679,
+      "openIssues": 1,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
+          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Horizon",
+          "zh_CN": "任务管理器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "task",
+          "manager",
+          "filter"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-plugin-task-horizon",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
+        "version": "3.2.6"
+      },
+      "packageZipAssetId": 660047189,
+      "packageZipSha256": "f46c40c23d20b1b654f75e97a0d73ef915309142e94c8b97af244eba4185d7c1",
+      "repoRef": "v3.2.6",
+      "size": 3546461,
+      "stars": 38,
+      "updated": "2026-10-20T17:52:45Z",
+      "url": "5kyfkr/siyuan-plugin-task-horizon@f46c40c"
+    },
+    {
+      "installSize": 15002027,
+      "openIssues": 1,
+      "package": {
+        "author": "Jeffrey Chen",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Use LXGW WenKai and Twemoji in SiYuan",
+          "zh-CN": "在思源笔记中使用霞鹜文楷和 Twemoji"
+        },
+        "displayName": {
+          "default": "LXGW WenKai &amp; Twemoji",
+          "zh-CN": "霞鹜文楷 &amp; Twemoji"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://mytemos.com/"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "font",
+          "字体",
+          "Twitter Emoji",
+          "表情包",
+          "表情符号",
+          "图标",
+          "icon"
+        ],
+        "minAppVersion": "3.8.3",
+        "name": "siyuan-ttf-LXGWWenKaiGB-and-Twemoji",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/TCOTC/siyuan-ttf-LXGWWenKaiGB-and-Twemoji",
+        "version": "2.3.1"
+      },
+      "packageZipAssetId": 660039276,
+      "packageZipSha256": "21500cf421f1e3cc9e80dedefbec84af682fcc0fceabed4829e7f51cacb0dfdf",
+      "repoRef": "v2.3.1",
+      "size": 14967296,
+      "stars": 5,
+      "updated": "2026-10-20T17:48:45Z",
+      "url": "TCOTC/siyuan-ttf-LXGWWenKaiGB-and-Twemoji@21500cf"
+    },
+    {
+      "installSize": 1039148,
+      "openIssues": 0,
+      "package": {
+        "author": "Jeffrey Chen",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Use OpenMoji in SiYuan",
+          "zh-CN": "在思源笔记中使用 OpenMoji"
+        },
+        "displayName": {
+          "default": "OpenMoji emoji",
+          "zh-CN": "OpenMoji 表情符号"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://mytemos.com/"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "emoji",
+          "表情包",
+          "图标",
+          "icon"
+        ],
+        "minAppVersion": "3.8.3",
+        "name": "siyuan-plugin-openmoji-emoji",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/TCOTC/siyuan-plugin-openmoji-emoji",
+        "version": "1.1.1"
+      },
+      "packageZipAssetId": 660039023,
+      "packageZipSha256": "fcf417588522409061b6c541a6f5ecf1907f265e24c7c5353dd0c40c9066d3a7",
+      "repoRef": "v1.1.1",
+      "size": 1015834,
+      "stars": 1,
+      "updated": "2026-10-20T17:48:37Z",
+      "url": "TCOTC/siyuan-plugin-openmoji-emoji@fcf4175"
+    },
+    {
+      "installSize": 12450249,
+      "openIssues": 0,
+      "package": {
+        "author": "Jeffrey Chen",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Use HarmonyOS Sans and Twemoji in SiYuan",
+          "zh-CN": "在思源笔记中使用鸿蒙黑体和 Twemoji"
+        },
+        "displayName": {
+          "default": "HarmonyOS Sans &amp; Twemoji",
+          "zh-CN": "鸿蒙黑体 &amp; Twemoji"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://mytemos.com/"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "font",
+          "Twitter Emoji",
+          "鸿蒙字体",
+          "表情包",
+          "表情符号",
+          "图标",
+          "icon"
+        ],
+        "minAppVersion": "3.8.3",
+        "name": "siyuan-ttf-HarmonyOS_Sans_SC-and-Twemoji",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/TCOTC/siyuan-ttf-HarmonyOS_Sans_SC-and-Twemoji",
+        "version": "2.3.1"
+      },
+      "packageZipAssetId": 660038809,
+      "packageZipSha256": "53872b2be50de2032ae997ce601b2c2639655a7094a799a9e53bb56397760f30",
+      "repoRef": "v2.3.1",
+      "size": 12269514,
+      "stars": 7,
+      "updated": "2026-10-20T17:48:32Z",
+      "url": "TCOTC/siyuan-ttf-HarmonyOS_Sans_SC-and-Twemoji@53872b2"
+    },
+    {
+      "installSize": 261551,
+      "openIssues": 0,
+      "package": {
+        "author": "Taihong Yang",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Chat with a local DeepSeek Harness agent in SiYuan, with streaming, note references and an optional Web panel.",
+          "zh_CN": "在思源侧栏使用本机 DeepSeek Harness：流式对话、模型选择与笔记引用，保留原有 Web 网页面板。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan DeepSeek Harness"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "AI",
+          "DeepSeek",
+          "Harness",
+          "Agent",
+          "MCP",
+          "Web",
+          "sidebar"
+        ],
+        "minAppVersion": "3.1.0",
+        "name": "siyuan-plugins-ai-cli-bridge",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/yangtaihong59/siyuan-plugins-ai-cli-bridge",
+        "version": "0.2.1"
+      },
+      "packageZipAssetId": 659955783,
+      "packageZipSha256": "a962ce381caeafe71099e8b5e0ee90c3dec5a5efd4e2680777dcfea5087e48a3",
+      "repoRef": "v0.2.1",
+      "size": 254551,
+      "stars": 7,
+      "updated": "2026-10-20T17:04:19Z",
+      "url": "yangtaihong59/siyuan-plugins-ai-cli-bridge@a962ce3"
+    },
+    {
+      "installSize": 1855232,
+      "openIssues": 9,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "description": {
+          "default": "Family &amp; life butler: members, assets, education, health, media, travel - local-first, database-powered, with a unified expiry reminder hub.",
+          "zh-CN": "家庭与生活管家：成员档案、资产管理、育儿上学、病历社保、影音书库、出行旅行。台账进数据库、效期进统一提醒中枢，一切按需开启。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Lv Home",
+          "zh-CN": "小驴管家（内测版）"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "keywords": [
+          "family",
+          "家庭",
+          "管家",
+          "资产",
+          "提醒"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "siyuan-home",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en": "README.en.md"
+        },
+        "url": "https://github.com/ai68298100/siyuan-home",
+        "version": "0.5.27"
+      },
+      "packageZipAssetId": 659898851,
+      "packageZipSha256": "8af323f0750a8dae68b0e7f58cf6d3e977a4911188786657674d70de16a4120a",
+      "repoRef": "v0.5.27",
+      "size": 635437,
+      "stars": 1,
+      "updated": "2026-10-20T16:46:27Z",
+      "url": "ai68298100/siyuan-home@8af323f"
+    },
+    {
       "installSize": 433582,
       "openIssues": 0,
       "package": {
@@ -45,6 +425,107 @@
       "stars": 0,
       "updated": "2026-10-20T16:19:38Z",
       "url": "2032797085-blip/siyuan-notebook-groups@a33ddbf"
+    },
+    {
+      "installSize": 84507,
+      "openIssues": 0,
+      "package": {
+        "author": "Xino Ni",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Inline LLM next-sentence suggestions shown as ghost text after punctuation. Press Tab to accept.",
+          "zh-CN": "在标点后实时以灰色幽灵文字提示 LLM 预测的下一句，按 Tab 采纳。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Ghost Writer",
+          "zh-CN": "写稿助手"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "AI",
+          "LLM",
+          "写作",
+          "续写",
+          "自动补全",
+          "autocomplete",
+          "copilot",
+          "ghost text"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-plugin-ghostwriter",
+        "preview": "",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/XinoAssassin/siyuan-plugin-ghostwriter",
+        "version": "0.2.0"
+      },
+      "packageZipAssetId": 659709367,
+      "packageZipSha256": "cefe37733884a8c5aef49c63db71c45dc1143f013df256c226f4f9f11b92eda7",
+      "repoRef": "0.2.0",
+      "size": 34744,
+      "stars": 0,
+      "updated": "2026-10-20T15:30:16Z",
+      "url": "XinoAssassin/siyuan-plugin-ghostwriter@cefe377"
+    },
+    {
+      "installSize": 2843510,
+      "openIssues": 0,
+      "package": {
+        "author": "QYL",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A companion plugin for the Neo theme",
+          "zh-CN": "Neo主题的配套插件",
+          "zh-TW": "Neo主題的配套插件"
+        },
+        "displayName": {
+          "default": "Neo+"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://icnmjy02sv9g.feishu.cn/wiki/FekNwrtB7ia1WckYelRckwzZnig?from=from_copylink"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "Apple",
+          "macOS",
+          "Cupertino"
+        ],
+        "minAppVersion": "3.8.8",
+        "name": "Neo-Plus",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md",
+          "zh-TW": "README.zh-TW.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/QYLexpired/Neo-Plus",
+        "version": "1.7.4"
+      },
+      "packageZipAssetId": 659419253,
+      "packageZipSha256": "b721346de38c4a6899872fe927319d334c5e9f1587563ee831284338f9257602",
+      "repoRef": "v1.7.4",
+      "size": 1278713,
+      "stars": 15,
+      "updated": "2026-10-20T13:33:46Z",
+      "url": "QYLexpired/Neo-Plus@b721346"
     },
     {
       "installSize": 31977562,
@@ -258,55 +739,55 @@
       "url": "Glaube-TY/siyuan-homepage@57f5fbc"
     },
     {
-      "installSize": 68633,
+      "installSize": 2843342,
       "openIssues": 0,
       "package": {
-        "author": "Xino Ni",
+        "author": "mirlous",
         "backends": [
           "all"
         ],
         "description": {
-          "default": "Inline LLM next-sentence suggestions shown as ghost text after punctuation. Press Tab to accept.",
-          "zh-CN": "在标点后实时以灰色幽灵文字提示 LLM 预测的下一句，按 Tab 采纳。"
+          "default": "Real-time encrypt documents + all assets (images/videos/PDF/xlsx, any format) into a self-developed single-file vault (.sydb); zero plaintext (in-memory injection). Unlimited size, Argon2id KDF (OWASP-first) for new vaults, TOTP two-factor unlock, tamper/ransomware monitor, burn-after-reading one-time share, auto update check, OCR full-text image search (tesseract, CDN model), TF-IDF semantic auto-sharding, mobile read/write (PIN session), auto/incremental backup, WebDAV two-way sync, dedup, folder zip import, central vault directory, in-vault recycle bin, restore-on-remove, orphan recovery, password hints, recovery key (forgot-password recovery), weak-password detection, sensitive-info alert, revision history rollback, audit log, device-bound activation code (anti code-sharing). Paid license (WeChat nglzhy), 7-day trial.",
+          "zh_CN": "把选中的文档及全部附件（图片/视频/PDF/xlsx 任意格式）实时加密进一个自研单文件数据库（.sydb），工作区零明文（内存注入显示）。容量无上限；新建库默认 Argon2id 加密（OWASP 首选 KDF）、TOTP 双因素解锁、防勒索/防篡改监控、阅后即焚一次性分享、自动更新检查、OCR 图片全文搜索（tesseract，模型走 CDN 不占插件体积）、TF-IDF 语义智能分库、移动端读写（6 位访问码会话）、自动/增量备份、WebDAV 双向同步、资产去重、文件夹整包入库、集中分库目录、库内回收站、移出自动还原、孤儿找回、密码提示、恢复密钥（忘记密码可找回）、弱密码检测、敏感信息提醒、版本历史回滚、审计日志、设备绑定激活码（防一码多用）。付费授权（微信 nglzhy），7 天试用。"
         },
-        "disabledInPublish": true,
         "displayName": {
-          "default": "Ghost Writer",
-          "zh-CN": "写稿助手"
+          "default": "Secret Database",
+          "zh_CN": "密库"
         },
         "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop"
+          "desktop"
         ],
         "icon": "icon.png",
         "keywords": [
-          "AI",
-          "LLM",
-          "写作",
-          "续写",
-          "自动补全",
-          "autocomplete",
-          "copilot",
-          "ghost text"
+          "加密",
+          "数据库",
+          "密",
+          "单文件",
+          "回收站",
+          "totp",
+          "ocr",
+          "encryption",
+          "database",
+          "vault",
+          "secret",
+          "recycle"
         ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-plugin-ghostwriter",
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-edb",
         "preview": "",
         "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
+          "default": "README.md"
         },
-        "url": "https://github.com/XinoAssassin/siyuan-plugin-ghostwriter",
-        "version": "0.1.0"
+        "url": "https://github.com/mirlous/siyuan-edb",
+        "version": "1.6.56"
       },
-      "packageZipAssetId": 658794764,
-      "packageZipSha256": "9066e85c44f503e0f33b8ee4a6c5a3f6150877a7a209040d6cedcc5807058e0d",
-      "repoRef": "0.1.0",
-      "size": 29862,
+      "packageZipAssetId": 659424556,
+      "packageZipSha256": "b2976a94f79ed720aae399d1b54972805a95c681394f371a26b45616201fb624",
+      "repoRef": "v1.6.56",
+      "size": 1017620,
       "stars": 0,
-      "updated": "2026-10-20T11:39:17Z",
-      "url": "XinoAssassin/siyuan-plugin-ghostwriter@9066e85"
+      "updated": "2026-10-20T12:41:20Z",
+      "url": "mirlous/siyuan-edb@b2976a9"
     },
     {
       "installSize": 61965063,
@@ -364,57 +845,6 @@
       "stars": 41,
       "updated": "2026-10-20T09:12:38Z",
       "url": "zt8989/siyuan-drawio-plugin@00648e1"
-    },
-    {
-      "installSize": 2720998,
-      "openIssues": 0,
-      "package": {
-        "author": "mirlous",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Real-time encrypt documents + all assets (images/videos/PDF/xlsx, any format) into a self-developed single-file vault (.sydb); zero plaintext (in-memory injection). Unlimited size, Argon2id KDF (OWASP-first) for new vaults, TOTP two-factor unlock, tamper/ransomware monitor, burn-after-reading one-time share, auto update check, OCR full-text image search (tesseract, CDN model), TF-IDF semantic auto-sharding, mobile read/write (PIN session), auto/incremental backup, WebDAV two-way sync, dedup, folder zip import, central vault directory, in-vault recycle bin, restore-on-remove, orphan recovery, password hints, recovery key (forgot-password recovery), weak-password detection, sensitive-info alert, revision history rollback, audit log, device-bound activation code (anti code-sharing). Paid license (WeChat nglzhy), 7-day trial.",
-          "zh_CN": "把选中的文档及全部附件（图片/视频/PDF/xlsx 任意格式）实时加密进一个自研单文件数据库（.sydb），工作区零明文（内存注入显示）。容量无上限；新建库默认 Argon2id 加密（OWASP 首选 KDF）、TOTP 双因素解锁、防勒索/防篡改监控、阅后即焚一次性分享、自动更新检查、OCR 图片全文搜索（tesseract，模型走 CDN 不占插件体积）、TF-IDF 语义智能分库、移动端读写（6 位访问码会话）、自动/增量备份、WebDAV 双向同步、资产去重、文件夹整包入库、集中分库目录、库内回收站、移出自动还原、孤儿找回、密码提示、恢复密钥（忘记密码可找回）、弱密码检测、敏感信息提醒、版本历史回滚、审计日志、设备绑定激活码（防一码多用）。付费授权（微信 nglzhy），7 天试用。"
-        },
-        "displayName": {
-          "default": "Secret Database",
-          "zh_CN": "密库"
-        },
-        "frontends": [
-          "desktop"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "加密",
-          "数据库",
-          "密",
-          "单文件",
-          "回收站",
-          "totp",
-          "ocr",
-          "encryption",
-          "database",
-          "vault",
-          "secret",
-          "recycle"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-edb",
-        "preview": "",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/mirlous/siyuan-edb",
-        "version": "1.6.54"
-      },
-      "packageZipAssetId": 658527841,
-      "packageZipSha256": "d7ec5a95cc3aef939d7f4d1e14376b506bc1804cee9b54315de90340cdee0325",
-      "repoRef": "v1.6.54",
-      "size": 933724,
-      "stars": 0,
-      "updated": "2026-10-20T06:53:16Z",
-      "url": "mirlous/siyuan-edb@d7ec5a9"
     },
     {
       "installSize": 209393,
@@ -590,71 +1020,6 @@
       "stars": 1,
       "updated": "2026-10-20T03:26:22Z",
       "url": "ai68298100/siyuan-checkin@64f4e4d"
-    },
-    {
-      "installSize": 1781931,
-      "openIssues": 9,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "description": {
-          "default": "Family &amp; life butler: members, assets, education, health, media, travel - local-first, database-powered, with a unified expiry reminder hub.",
-          "zh-CN": "家庭与生活管家：成员档案、资产管理、育儿上学、病历社保、影音书库、出行旅行。台账进数据库、效期进统一提醒中枢，一切按需开启。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Lv Home",
-          "zh-CN": "小驴管家（内测版）"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "keywords": [
-          "family",
-          "家庭",
-          "管家",
-          "资产",
-          "提醒"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "siyuan-home",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en": "README.en.md"
-        },
-        "url": "https://github.com/ai68298100/siyuan-home",
-        "version": "0.5.26"
-      },
-      "packageZipAssetId": 658115577,
-      "packageZipSha256": "e7cb67c8e9a15fd67712af0a86aa1eabc0119a68c71cea7dde5f1b253fb3f44f",
-      "repoRef": "v0.5.26",
-      "size": 634125,
-      "stars": 1,
-      "updated": "2026-10-20T03:08:35Z",
-      "url": "ai68298100/siyuan-home@e7cb67c"
     },
     {
       "installSize": 191416,
@@ -1007,57 +1372,6 @@
       "url": "yangtaihong59/siyuan-plugins-mcp-sisyphus@013340a"
     },
     {
-      "installSize": 17290857,
-      "openIssues": 1,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
-          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Horizon",
-          "zh_CN": "任务管理器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "task",
-          "manager",
-          "filter"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-plugin-task-horizon",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "3.2.5"
-      },
-      "packageZipAssetId": 656939397,
-      "packageZipSha256": "e08220c26afe15f40b16ff99bbb1db2fb554a88edb7c101218ddc0743d339bac",
-      "repoRef": "v3.2.5",
-      "size": 3543211,
-      "stars": 38,
-      "updated": "2026-10-19T17:30:00Z",
-      "url": "5kyfkr/siyuan-plugin-task-horizon@e08220c"
-    },
-    {
       "installSize": 2798431,
       "openIssues": 1,
       "package": {
@@ -1221,56 +1535,6 @@
       "stars": 0,
       "updated": "2026-10-19T14:54:03Z",
       "url": "Fly1018/siyuan-doc-toc@6f06ee6"
-    },
-    {
-      "installSize": 2843508,
-      "openIssues": 0,
-      "package": {
-        "author": "QYL",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A companion plugin for the Neo theme",
-          "zh-CN": "Neo主题的配套插件",
-          "zh-TW": "Neo主題的配套插件"
-        },
-        "displayName": {
-          "default": "Neo+"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://icnmjy02sv9g.feishu.cn/wiki/FekNwrtB7ia1WckYelRckwzZnig?from=from_copylink"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "Apple",
-          "macOS",
-          "Cupertino"
-        ],
-        "minAppVersion": "3.8.8-beta.1",
-        "name": "Neo-Plus",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md",
-          "zh-TW": "README.zh-TW.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/QYLexpired/Neo-Plus",
-        "version": "1.7.3"
-      },
-      "packageZipAssetId": 656281881,
-      "packageZipSha256": "0bf517fbcface0c4b4d316f2c208b6af80af3c1872d79e9bc8540b42fb7f32e1",
-      "repoRef": "v1.7.3",
-      "size": 1278728,
-      "stars": 15,
-      "updated": "2026-10-19T12:56:31Z",
-      "url": "QYLexpired/Neo-Plus@0bf517f"
     },
     {
       "installSize": 1286390,
@@ -4369,67 +4633,6 @@
       "url": "verygoodwu/siyuan-cloud-document-suite@dbb248d"
     },
     {
-      "installSize": 785157,
-      "openIssues": 3,
-      "package": {
-        "author": "vilifetime",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "一款思源笔记插件。双向同步 CalDAV 服务器（Radicale / Nextcloud / Baikal 等）的日历事件与待办任务，提供月/周/日日历视图、任务视图与编辑能力，并可将今日日程插入日记。",
-          "en_US": "Two-way sync calendar events and todos with CalDAV servers (Radicale / Nextcloud / Baikal). Month/Week/Day calendar views, task view, editor and daily note integration."
-        },
-        "displayName": {
-          "default": "CalDAV日历任务",
-          "en_US": "CalDAV Calendar &amp; Tasks"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop",
-          "mobile",
-          "browser-mobile"
-        ],
-        "funding": {
-          "custom": [
-            ""
-          ],
-          "github": "vilifetime"
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "caldav",
-          "calendar",
-          "todo",
-          "task",
-          "日历",
-          "任务",
-          "同步",
-          "radicale",
-          "nextcloud",
-          "baikal"
-        ],
-        "minAppVersion": "3.2.0",
-        "name": "siyuan-plugin-caldav-sync",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en_US": "README_en_US.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/vilifetime/siyuan-plugin-caldav-sync",
-        "version": "0.2.28"
-      },
-      "packageZipAssetId": 639432091,
-      "packageZipSha256": "924ca33ba9ca9388de4cad850e6eaf15226b3db9224af63cc379d489e6094b49",
-      "repoRef": "v0.2.28",
-      "size": 449579,
-      "stars": 4,
-      "updated": "2026-10-14T06:10:09Z",
-      "url": "vilifetime/siyuan-plugin-caldav-sync@924ca33"
-    },
-    {
       "installSize": 3262339,
       "openIssues": 0,
       "package": {
@@ -4528,162 +4731,6 @@
       "stars": 0,
       "updated": "2026-10-13T14:03:59Z",
       "url": "famotime/siyuan-postman@29e2e14"
-    },
-    {
-      "installSize": 1039097,
-      "openIssues": 0,
-      "package": {
-        "author": "Jeffrey Chen",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Use OpenMoji in SiYuan",
-          "zh-CN": "在思源笔记中使用 OpenMoji"
-        },
-        "displayName": {
-          "default": "OpenMoji emoji",
-          "zh-CN": "OpenMoji 表情符号"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://mytemos.com/"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "emoji",
-          "表情包",
-          "图标",
-          "icon"
-        ],
-        "minAppVersion": "3.8.3",
-        "name": "siyuan-plugin-openmoji-emoji",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/TCOTC/siyuan-plugin-openmoji-emoji",
-        "version": "1.1.0"
-      },
-      "packageZipAssetId": 637123252,
-      "packageZipSha256": "89724b84ee38c6f3742c1547cddfef0282078dc9d3fdb6fbf018e7dd07fe81bc",
-      "repoRef": "v1.1.0",
-      "size": 1015825,
-      "stars": 1,
-      "updated": "2026-10-13T13:29:01Z",
-      "url": "TCOTC/siyuan-plugin-openmoji-emoji@89724b8"
-    },
-    {
-      "installSize": 12450102,
-      "openIssues": 0,
-      "package": {
-        "author": "Jeffrey Chen",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Use HarmonyOS Sans and Twemoji in SiYuan",
-          "zh-CN": "在思源笔记中使用鸿蒙黑体和 Twemoji"
-        },
-        "displayName": {
-          "default": "HarmonyOS Sans &amp; Twemoji",
-          "zh-CN": "鸿蒙黑体 &amp; Twemoji"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://mytemos.com/"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "font",
-          "Twitter Emoji",
-          "鸿蒙字体",
-          "表情包",
-          "表情符号",
-          "图标",
-          "icon"
-        ],
-        "minAppVersion": "3.8.3",
-        "name": "siyuan-ttf-HarmonyOS_Sans_SC-and-Twemoji",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/TCOTC/siyuan-ttf-HarmonyOS_Sans_SC-and-Twemoji",
-        "version": "2.3.0"
-      },
-      "packageZipAssetId": 637122898,
-      "packageZipSha256": "cf8d9e1cd5314222c42b739155f54f1878e6c88195f126eaddb9d034b756c6c8",
-      "repoRef": "v2.3.0",
-      "size": 12269477,
-      "stars": 7,
-      "updated": "2026-10-13T13:28:52Z",
-      "url": "TCOTC/siyuan-ttf-HarmonyOS_Sans_SC-and-Twemoji@cf8d9e1"
-    },
-    {
-      "installSize": 15001880,
-      "openIssues": 1,
-      "package": {
-        "author": "Jeffrey Chen",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Use LXGW WenKai and Twemoji in SiYuan",
-          "zh-CN": "在思源笔记中使用霞鹜文楷和 Twemoji"
-        },
-        "displayName": {
-          "default": "LXGW WenKai &amp; Twemoji",
-          "zh-CN": "霞鹜文楷 &amp; Twemoji"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://mytemos.com/"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "font",
-          "字体",
-          "Twitter Emoji",
-          "表情包",
-          "表情符号",
-          "图标",
-          "icon"
-        ],
-        "minAppVersion": "3.8.3",
-        "name": "siyuan-ttf-LXGWWenKaiGB-and-Twemoji",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/TCOTC/siyuan-ttf-LXGWWenKaiGB-and-Twemoji",
-        "version": "2.3.0"
-      },
-      "packageZipAssetId": 637122607,
-      "packageZipSha256": "a135d716693228062f43c59e623ff653d417a28bf69f74115fbc8003af0bbde5",
-      "repoRef": "v2.3.0",
-      "size": 14967258,
-      "stars": 5,
-      "updated": "2026-10-13T13:28:46Z",
-      "url": "TCOTC/siyuan-ttf-LXGWWenKaiGB-and-Twemoji@a135d71"
     },
     {
       "installSize": 4206399,
@@ -17862,51 +17909,6 @@
       "stars": 4,
       "updated": "2026-04-11T03:25:44Z",
       "url": "zongqir/siyuan-custom-callout@6be897a"
-    },
-    {
-      "installSize": 235350,
-      "openIssues": 0,
-      "package": {
-        "author": "Taihong Yang",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Embed any AI Agent web page or other web tool into SiYuan as a sidebar panel. Drag blocks from SiYuan to pass IDs into web inputs. MCP pairing is optional.",
-          "zh_CN": "将任意 AI Agent 网页嵌入思源侧边栏；支持拖拽思源块到网页输入框传递块 ID；搭配 MCP 可按需选择。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "AI CLI Bridge",
-          "zh_CN": "AI Cli Bridge"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "AI",
-          "Agent",
-          "CLI",
-          "sidebar",
-          "dock",
-          "integration"
-        ],
-        "minAppVersion": "2.9.0",
-        "name": "siyuan-plugins-ai-cli-bridge",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/yangtaihong59/siyuan-plugins-ai-cli-bridge",
-        "version": "0.1.9"
-      },
-      "packageZipAssetId": 391424837,
-      "packageZipSha256": "c014f0a91cceeae75fdba64daddda9aa9bd2148f33e076ca350976c82b3eb2a5",
-      "repoRef": "v0.1.9",
-      "size": 211958,
-      "stars": 1,
-      "updated": "2026-04-08T08:17:40Z",
-      "url": "yangtaihong59/siyuan-plugins-ai-cli-bridge@c014f0a"
     },
     {
       "installSize": 290039,
