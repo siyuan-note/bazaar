@@ -374,9 +374,16 @@ func appendGitHubOutput(name, value string) {
 	}
 }
 
-// parseReposFromRootTxt 从集市包列表 TXT（每行一个 owner/repo）解析出路径列表、路径集合和 name->owner 映射
-func parseReposFromRootTxt(filePath string) (paths []string, pathSet Set, nameToOwner map[string]string, err error) {
-	repos, err := util.ParseReposFromTxt(filePath)
+// parseReposFromRootTxt 从集市包列表 TXT（每行一个 owner/repo）解析出路径列表、路径集合和 name->owner 映射。
+// strict 为 true 时把中间空行视为错误，只对本 PR 自己的列表副本启用；
+// bazaar 主分支与合并基点都是既有内容，贡献者无从修改，一律宽松解析。
+func parseReposFromRootTxt(filePath string, strict bool) (paths []string, pathSet Set, nameToOwner map[string]string, err error) {
+	var repos []string
+	if strict {
+		repos, err = util.ParseReposFromTxtStrict(filePath)
+	} else {
+		repos, err = util.ParseReposFromTxt(filePath)
+	}
 	if err != nil {
 		return
 	}
@@ -407,19 +414,19 @@ func prepareTypeCheckPlan(packageType rules.PackageType) typeCheckPlan {
 	plan := typeCheckPlan{packageType: packageType}
 
 	// 加载三个版本的集市包列表：bazaar head（用于过滤）、PR base、PR head（用于 diff）
-	_, bazaarHeadRepoSet, _, err := parseReposFromRootTxt(bazaarHeadReposPath)
+	_, bazaarHeadRepoSet, _, err := parseReposFromRootTxt(bazaarHeadReposPath, false)
 	if err != nil {
 		plan.parseError = newListParseError(repoListTxtName, ListSourceBazaarHead, err)
 		logger.Errorf("load bazaar head repos [%s] failed: %s, skip this type", bazaarHeadReposPath, err)
 		return plan
 	}
-	basePaths, baseSet, baseNameToOwner, err := parseReposFromRootTxt(prBaseReposPath)
+	basePaths, baseSet, baseNameToOwner, err := parseReposFromRootTxt(prBaseReposPath, false)
 	if err != nil {
 		plan.parseError = newListParseError(repoListTxtName, ListSourcePRBase, err)
 		logger.Errorf("load PR base repos [%s] failed: %s, skip this type", prBaseReposPath, err)
 		return plan
 	}
-	headPaths, headSet, _, err := parseReposFromRootTxt(prHeadReposPath)
+	headPaths, headSet, _, err := parseReposFromRootTxt(prHeadReposPath, true)
 	if err != nil {
 		plan.parseError = newListParseError(repoListTxtName, ListSourcePRHead, err)
 		logger.Errorf("load PR head repos [%s] failed: %s, skip this type", prHeadReposPath, err)
