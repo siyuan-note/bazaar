@@ -185,17 +185,33 @@ func computeResultHash(r *CheckResult) string {
 		Path   string `json:"path"`
 		Action string `json:"action"`
 	}
+	type parseErrorHash struct {
+		File   string `json:"file"`
+		Source string `json:"source"`
+		Zh     string `json:"zh"`
+		En     string `json:"en"`
+	}
 	payload := struct {
-		ParseError        string            `json:"parse_error,omitempty"`
+		ParseErrors       []parseErrorHash  `json:"parse_errors,omitempty"`
 		FlowError         string            `json:"flow_error,omitempty"`
 		Packages          []pkgHash         `json:"packages,omitempty"`
 		Deleted           []string          `json:"deleted,omitempty"`
 		Deprecation       []deprecationHash `json:"deprecation,omitempty"`
 		DeprecationIssues []string          `json:"deprecation_issues,omitempty"`
 	}{
-		ParseError: r.ParseError,
-		FlowError:  r.FlowError,
+		FlowError: r.FlowError,
 	}
+	for _, pe := range r.ParseError {
+		payload.ParseErrors = append(payload.ParseErrors, parseErrorHash{
+			File:   pe.File,
+			Source: pe.Source.Key(),
+			Zh:     pe.Issue.MessageZh,
+			En:     pe.Issue.MessageEn,
+		})
+	}
+	slices.SortFunc(payload.ParseErrors, func(a, b parseErrorHash) int {
+		return strings.Compare(a.File+"\x00"+a.Source+"\x00"+a.Zh, b.File+"\x00"+b.Source+"\x00"+b.Zh)
+	})
 	appendPkgs := func(typ rules.PackageType, list []PackageCheck) {
 		for _, pc := range list {
 			issues := make([]string, 0, len(pc.Issues)*2)
