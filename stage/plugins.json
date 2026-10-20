@@ -1,6 +1,297 @@
 {
   "repos": [
     {
+      "installSize": 2720998,
+      "openIssues": 0,
+      "package": {
+        "author": "mirlous",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Real-time encrypt documents + all assets (images/videos/PDF/xlsx, any format) into a self-developed single-file vault (.sydb); zero plaintext (in-memory injection). Unlimited size, Argon2id KDF (OWASP-first) for new vaults, TOTP two-factor unlock, tamper/ransomware monitor, burn-after-reading one-time share, auto update check, OCR full-text image search (tesseract, CDN model), TF-IDF semantic auto-sharding, mobile read/write (PIN session), auto/incremental backup, WebDAV two-way sync, dedup, folder zip import, central vault directory, in-vault recycle bin, restore-on-remove, orphan recovery, password hints, recovery key (forgot-password recovery), weak-password detection, sensitive-info alert, revision history rollback, audit log, device-bound activation code (anti code-sharing). Paid license (WeChat nglzhy), 7-day trial.",
+          "zh_CN": "把选中的文档及全部附件（图片/视频/PDF/xlsx 任意格式）实时加密进一个自研单文件数据库（.sydb），工作区零明文（内存注入显示）。容量无上限；新建库默认 Argon2id 加密（OWASP 首选 KDF）、TOTP 双因素解锁、防勒索/防篡改监控、阅后即焚一次性分享、自动更新检查、OCR 图片全文搜索（tesseract，模型走 CDN 不占插件体积）、TF-IDF 语义智能分库、移动端读写（6 位访问码会话）、自动/增量备份、WebDAV 双向同步、资产去重、文件夹整包入库、集中分库目录、库内回收站、移出自动还原、孤儿找回、密码提示、恢复密钥（忘记密码可找回）、弱密码检测、敏感信息提醒、版本历史回滚、审计日志、设备绑定激活码（防一码多用）。付费授权（微信 nglzhy），7 天试用。"
+        },
+        "displayName": {
+          "default": "Secret Database",
+          "zh_CN": "密库"
+        },
+        "frontends": [
+          "desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "加密",
+          "数据库",
+          "密",
+          "单文件",
+          "回收站",
+          "totp",
+          "ocr",
+          "encryption",
+          "database",
+          "vault",
+          "secret",
+          "recycle"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-edb",
+        "preview": "",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/mirlous/siyuan-edb",
+        "version": "1.6.54"
+      },
+      "packageZipAssetId": 658527841,
+      "packageZipSha256": "d7ec5a95cc3aef939d7f4d1e14376b506bc1804cee9b54315de90340cdee0325",
+      "repoRef": "v1.6.54",
+      "size": 933724,
+      "stars": 0,
+      "updated": "2026-10-20T06:53:16Z",
+      "url": "mirlous/siyuan-edb@d7ec5a9"
+    },
+    {
+      "installSize": 209393,
+      "openIssues": 3,
+      "package": {
+        "author": "nealgavin",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "android",
+          "ios",
+          "harmony"
+        ],
+        "description": {
+          "default": "Read blocks aloud with a locked voice (Edge TTS), works on desktop, mobile, tablet and HarmonyOS",
+          "zh_CN": "人声稳定的文本朗读（锁定所选声源），支持桌面端、手机、平板与鸿蒙版思源笔记"
+        },
+        "displayName": {
+          "default": "Text To Speech (All Platforms)",
+          "zh_CN": "文本朗读（全平台）"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "朗读",
+          "语音",
+          "TTS",
+          "text to speech",
+          "鸿蒙",
+          "HarmonyOS"
+        ],
+        "minAppVersion": "3.1.28",
+        "name": "siyuan-plugin-tts-all",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/nealgavin/siyuan-plugin-tts-all",
+        "version": "1.2.12"
+      },
+      "packageZipAssetId": 658356612,
+      "packageZipSha256": "7c25ab4452a2d1d412f8da7632467f453cdc495e657edecd91c567ecd0b5100f",
+      "repoRef": "v1.2.12",
+      "size": 105943,
+      "stars": 1,
+      "updated": "2026-10-20T05:21:48Z",
+      "url": "nealgavin/siyuan-plugin-tts-all@7c25ab4"
+    },
+    {
+      "installSize": 2094479,
+      "openIssues": 3,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "description": {
+          "default": "A local-first, full-lifecycle flashcard learning platform for SiYuan: capture, understand, create, practice, review, apply, maintain and connect knowledge with AI and the native FSRS scheduler.",
+          "zh-CN": "思源的全域闪卡学习平台：以 AI 辅助知识捕获、理解、制卡、练习、复习、应用、维护和生态联动——正式调度由内核原生 FSRS 负责。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Lv Cards (Beta)",
+          "zh-CN": "小驴闪卡（内测版）"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "keywords": [
+          "flashcard",
+          "闪卡",
+          "FSRS",
+          "spaced repetition",
+          "间隔重复",
+          "Anki",
+          "AI",
+          "Agent",
+          "statistics",
+          "统计",
+          "记忆"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "siyuan-lv-cards",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.en.md",
+          "zh-CN": "README.md"
+        },
+        "url": "https://github.com/ai68298100/siyuan-lv-cards",
+        "version": "0.210.6"
+      },
+      "packageZipAssetId": 658147893,
+      "packageZipSha256": "432ba02174fe86dd1179cefa90ecc997ced39c3aa2c8a02196015f92a5a68142",
+      "repoRef": "v0.210.6",
+      "size": 989259,
+      "stars": 2,
+      "updated": "2026-10-20T03:26:57Z",
+      "url": "ai68298100/siyuan-lv-cards@432ba02"
+    },
+    {
+      "installSize": 2697970,
+      "openIssues": 4,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A flexible habit and check-in workspace for SiYuan.",
+          "zh-CN": "支持分组、模板、统计与扩展集成的思源打卡工作台。"
+        },
+        "displayName": {
+          "default": "Lv Check-in",
+          "zh-CN": "小驴打卡"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "打卡",
+          "习惯",
+          "目标",
+          "小驴打卡",
+          "check-in",
+          "habit"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-checkin",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/ai68298100/siyuan-checkin",
+        "version": "18.19.0"
+      },
+      "packageZipAssetId": 658146859,
+      "packageZipSha256": "64f4e4d56f3ca5f5234e4fb3988509021eda0f48eb5cf2f468954ed1d77bfd1e",
+      "repoRef": "v18.19.0",
+      "size": 893301,
+      "stars": 1,
+      "updated": "2026-10-20T03:26:22Z",
+      "url": "ai68298100/siyuan-checkin@64f4e4d"
+    },
+    {
+      "installSize": 1781931,
+      "openIssues": 9,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "description": {
+          "default": "Family &amp; life butler: members, assets, education, health, media, travel - local-first, database-powered, with a unified expiry reminder hub.",
+          "zh-CN": "家庭与生活管家：成员档案、资产管理、育儿上学、病历社保、影音书库、出行旅行。台账进数据库、效期进统一提醒中枢，一切按需开启。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Lv Home",
+          "zh-CN": "小驴管家（内测版）"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "keywords": [
+          "family",
+          "家庭",
+          "管家",
+          "资产",
+          "提醒"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "siyuan-home",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en": "README.en.md"
+        },
+        "url": "https://github.com/ai68298100/siyuan-home",
+        "version": "0.5.26"
+      },
+      "packageZipAssetId": 658115577,
+      "packageZipSha256": "e7cb67c8e9a15fd67712af0a86aa1eabc0119a68c71cea7dde5f1b253fb3f44f",
+      "repoRef": "v0.5.26",
+      "size": 634125,
+      "stars": 1,
+      "updated": "2026-10-20T03:08:35Z",
+      "url": "ai68298100/siyuan-home@e7cb67c"
+    },
+    {
       "installSize": 191416,
       "openIssues": 0,
       "package": {
@@ -53,6 +344,76 @@
       "stars": 0,
       "updated": "2026-10-20T03:00:52Z",
       "url": "Fly1018/batch-markdown-export@316e767"
+    },
+    {
+      "installSize": 3891060,
+      "openIssues": 0,
+      "package": {
+        "author": "IAliceBobI",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "🔓 Open source · Finally finish what you read — and what you write: progressive reading digests long-form input day by day (excerpts, slicing, cloze, flashcards, AI knowledge maps), progressive writing queues your material into finished drafts (writing books, structure tree, compile-to-draft). A full loop from reading to writing.",
+          "zh_CN": "🔓 已开源 · 让长文读得完，让作品写得完：渐进阅读消化输入（摘抄、分片、挖空、闪卡、AI 知识地图），渐进写作排队产出（写作书素材入槽、结构树看进度、汇编成稿）——从阅读到写作的完整闭环"
+        },
+        "displayName": {
+          "default": "Progressive Learning",
+          "zh_CN": "渐进学习"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android",
+          "harmony"
+        ],
+        "keywords": [
+          "渐进学习",
+          "渐进阅读",
+          "Progressive Reading",
+          "挖空",
+          "Cloze",
+          "闪卡",
+          "Flashcard",
+          "摘抄",
+          "断句",
+          "Sentence Split",
+          "拼音",
+          "Pinyin",
+          "Daily Card",
+          "渐进写作",
+          "Progressive Writing",
+          "知识地图",
+          "结构树",
+          "写作书",
+          "Knowledge Map",
+          "Structure Tree",
+          "Writing Book"
+        ],
+        "minAppVersion": "2.12.6",
+        "name": "sy-progressive-plugin",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/IAliceBobI/sy-progressive-plugin",
+        "version": "3.37.7"
+      },
+      "packageZipAssetId": 658066545,
+      "packageZipSha256": "59453e006f890b11e77f8c2372169fbaadabe0ea1351a2f48476d1f4d8b93917",
+      "repoRef": "v3.37.7",
+      "size": 1073175,
+      "stars": 31,
+      "updated": "2026-10-20T02:40:17Z",
+      "url": "IAliceBobI/sy-progressive-plugin@59453e0"
     },
     {
       "installSize": 1220476,
@@ -383,57 +744,6 @@
       "stars": 9,
       "updated": "2026-10-19T16:24:02Z",
       "url": "5kyfkr/siyuan-plugin-docktomato@00a6cbf"
-    },
-    {
-      "installSize": 2677955,
-      "openIssues": 0,
-      "package": {
-        "author": "mirlous",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Real-time encrypt documents + all assets (images/videos/PDF/xlsx, any format) into a self-developed single-file vault (.sydb); zero plaintext (in-memory injection). Unlimited size, Argon2id KDF (OWASP-first) for new vaults, TOTP two-factor unlock, tamper/ransomware monitor, burn-after-reading one-time share, auto update check, OCR full-text image search (tesseract, CDN model), TF-IDF semantic auto-sharding, mobile read/write (PIN session), auto/incremental backup, WebDAV two-way sync, dedup, folder zip import, central vault directory, in-vault recycle bin, restore-on-remove, orphan recovery, password hints, recovery key (forgot-password recovery), weak-password detection, sensitive-info alert, revision history rollback, audit log, device-bound activation code (anti code-sharing). Paid license (WeChat nglzhy), 7-day trial.",
-          "zh_CN": "把选中的文档及全部附件（图片/视频/PDF/xlsx 任意格式）实时加密进一个自研单文件数据库（.sydb），工作区零明文（内存注入显示）。容量无上限；新建库默认 Argon2id 加密（OWASP 首选 KDF）、TOTP 双因素解锁、防勒索/防篡改监控、阅后即焚一次性分享、自动更新检查、OCR 图片全文搜索（tesseract，模型走 CDN 不占插件体积）、TF-IDF 语义智能分库、移动端读写（6 位访问码会话）、自动/增量备份、WebDAV 双向同步、资产去重、文件夹整包入库、集中分库目录、库内回收站、移出自动还原、孤儿找回、密码提示、恢复密钥（忘记密码可找回）、弱密码检测、敏感信息提醒、版本历史回滚、审计日志、设备绑定激活码（防一码多用）。付费授权（微信 nglzhy），7 天试用。"
-        },
-        "displayName": {
-          "default": "Secret Database",
-          "zh_CN": "密库"
-        },
-        "frontends": [
-          "desktop"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "加密",
-          "数据库",
-          "密",
-          "单文件",
-          "回收站",
-          "totp",
-          "ocr",
-          "encryption",
-          "database",
-          "vault",
-          "secret",
-          "recycle"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-edb",
-        "preview": "",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/mirlous/siyuan-edb",
-        "version": "1.6.45"
-      },
-      "packageZipAssetId": 656795851,
-      "packageZipSha256": "42c64b8f291b0a64a273a59cde51d63297dd562314aeec201aa1795f194e420e",
-      "repoRef": "v1.6.45",
-      "size": 921717,
-      "stars": 0,
-      "updated": "2026-10-19T16:22:27Z",
-      "url": "mirlous/siyuan-edb@42c64b8"
     },
     {
       "installSize": 511796,
@@ -883,55 +1193,6 @@
       "url": "Misuzu2027/syplugin-backlink-panel@95de3ee"
     },
     {
-      "installSize": 2665477,
-      "openIssues": 4,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A flexible habit and check-in workspace for SiYuan.",
-          "zh-CN": "支持分组、模板、统计与扩展集成的思源打卡工作台。"
-        },
-        "displayName": {
-          "default": "Lv Check-in",
-          "zh-CN": "小驴打卡"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "打卡",
-          "习惯",
-          "目标",
-          "小驴打卡",
-          "check-in",
-          "habit"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-checkin",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/ai68298100/siyuan-checkin",
-        "version": "18.18.0"
-      },
-      "packageZipAssetId": 655510506,
-      "packageZipSha256": "fdba59c634d797f7ea34d194a402c13847192d3b328a7d7712e1c235e03d8f11",
-      "repoRef": "v18.18.0",
-      "size": 885486,
-      "stars": 1,
-      "updated": "2026-10-19T07:05:31Z",
-      "url": "ai68298100/siyuan-checkin@fdba59c"
-    },
-    {
       "installSize": 424194,
       "openIssues": 0,
       "package": {
@@ -1038,77 +1299,6 @@
       "stars": 1,
       "updated": "2026-10-19T03:34:46Z",
       "url": "ai68298100/siyuan-glean@0c7b2fd"
-    },
-    {
-      "installSize": 1973392,
-      "openIssues": 3,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "description": {
-          "default": "A local-first, full-lifecycle flashcard learning platform for SiYuan: capture, understand, create, practice, review, apply, maintain and connect knowledge with AI and the native FSRS scheduler.",
-          "zh-CN": "思源的全域闪卡学习平台：以 AI 辅助知识捕获、理解、制卡、练习、复习、应用、维护和生态联动——正式调度由内核原生 FSRS 负责。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Lv Cards (Beta)",
-          "zh-CN": "小驴闪卡（内测版）"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "keywords": [
-          "flashcard",
-          "闪卡",
-          "FSRS",
-          "spaced repetition",
-          "间隔重复",
-          "Anki",
-          "AI",
-          "Agent",
-          "statistics",
-          "统计",
-          "记忆"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "siyuan-lv-cards",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.en.md",
-          "zh-CN": "README.md"
-        },
-        "url": "https://github.com/ai68298100/siyuan-lv-cards",
-        "version": "0.210.5"
-      },
-      "packageZipAssetId": 655105010,
-      "packageZipSha256": "f04073a8a00b68157ad632cc9cf0486a92ddd09e1982203d894e5ae70ea15ddd",
-      "repoRef": "v0.210.5",
-      "size": 948185,
-      "stars": 2,
-      "updated": "2026-10-19T03:13:58Z",
-      "url": "ai68298100/siyuan-lv-cards@f04073a"
     },
     {
       "installSize": 2050834,
@@ -1218,71 +1408,6 @@
       "stars": 2,
       "updated": "2026-10-19T01:06:05Z",
       "url": "ai68298100/siyuan-speed-switch@2eb123f"
-    },
-    {
-      "installSize": 1703222,
-      "openIssues": 9,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "description": {
-          "default": "Family &amp; life butler: members, assets, education, health, media, travel - local-first, database-powered, with a unified expiry reminder hub.",
-          "zh-CN": "家庭与生活管家：成员档案、资产管理、育儿上学、病历社保、影音书库、出行旅行。台账进数据库、效期进统一提醒中枢，一切按需开启。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Lv Home",
-          "zh-CN": "小驴管家（内测版）"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "keywords": [
-          "family",
-          "家庭",
-          "管家",
-          "资产",
-          "提醒"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "siyuan-home",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en": "README.en.md"
-        },
-        "url": "https://github.com/ai68298100/siyuan-home",
-        "version": "0.5.25"
-      },
-      "packageZipAssetId": 654889641,
-      "packageZipSha256": "282e523836a382379c46ce024559797a030a193d75eaa37b4fe0ebfbe9bce37d",
-      "repoRef": "v0.5.25",
-      "size": 607204,
-      "stars": 1,
-      "updated": "2026-10-19T01:03:12Z",
-      "url": "ai68298100/siyuan-home@282e523"
     },
     {
       "installSize": 1090388,
@@ -2802,76 +2927,6 @@
       "stars": 16,
       "updated": "2026-10-16T13:46:51Z",
       "url": "TCOTC/snippets@22a5354"
-    },
-    {
-      "installSize": 3882281,
-      "openIssues": 0,
-      "package": {
-        "author": "IAliceBobI",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "🔓 Open source · Finally finish what you read — and what you write: progressive reading digests long-form input day by day (excerpts, slicing, cloze, flashcards, AI knowledge maps), progressive writing queues your material into finished drafts (writing books, structure tree, compile-to-draft). A full loop from reading to writing.",
-          "zh_CN": "🔓 已开源 · 让长文读得完，让作品写得完：渐进阅读消化输入（摘抄、分片、挖空、闪卡、AI 知识地图），渐进写作排队产出（写作书素材入槽、结构树看进度、汇编成稿）——从阅读到写作的完整闭环"
-        },
-        "displayName": {
-          "default": "Progressive Learning",
-          "zh_CN": "渐进学习"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "keywords": [
-          "渐进学习",
-          "渐进阅读",
-          "Progressive Reading",
-          "挖空",
-          "Cloze",
-          "闪卡",
-          "Flashcard",
-          "摘抄",
-          "断句",
-          "Sentence Split",
-          "拼音",
-          "Pinyin",
-          "Daily Card",
-          "渐进写作",
-          "Progressive Writing",
-          "知识地图",
-          "结构树",
-          "写作书",
-          "Knowledge Map",
-          "Structure Tree",
-          "Writing Book"
-        ],
-        "minAppVersion": "2.12.6",
-        "name": "sy-progressive-plugin",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/IAliceBobI/sy-progressive-plugin",
-        "version": "3.37.5"
-      },
-      "packageZipAssetId": 646933059,
-      "packageZipSha256": "64c24278561a81ab962ed1381e003dd139aee6e9becc892070a4653c4e0723eb",
-      "repoRef": "v3.37.5",
-      "size": 1070378,
-      "stars": 31,
-      "updated": "2026-10-16T10:09:54Z",
-      "url": "IAliceBobI/sy-progressive-plugin@64c2427"
     },
     {
       "installSize": 2584830,
@@ -7652,61 +7707,6 @@
       "stars": 7,
       "updated": "2026-09-29T18:11:23Z",
       "url": "frostime/sy-insert-time@5b09086"
-    },
-    {
-      "installSize": 209400,
-      "openIssues": 0,
-      "package": {
-        "author": "nealgavin",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "android",
-          "ios",
-          "harmony"
-        ],
-        "description": {
-          "default": "Read blocks aloud with a locked voice (Edge TTS), works on desktop, mobile, tablet and HarmonyOS",
-          "zh_CN": "人声稳定的文本朗读（锁定所选声源），支持桌面端、手机、平板与鸿蒙版思源笔记"
-        },
-        "displayName": {
-          "default": "Text To Speech (All Platforms)",
-          "zh_CN": "文本朗读（全平台）"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "朗读",
-          "语音",
-          "TTS",
-          "text to speech",
-          "鸿蒙",
-          "HarmonyOS"
-        ],
-        "minAppVersion": "3.1.28",
-        "name": "siyuan-plugin-tts-all",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/nealgavin/siyuan-plugin-tts-all",
-        "version": "1.2.11"
-      },
-      "packageZipAssetId": 597964439,
-      "packageZipSha256": "5d005677ecbbf169942c892997de599545050fdd5cc46d1ee83d9273a944ee96",
-      "repoRef": "v1.2.11",
-      "size": 105931,
-      "stars": 0,
-      "updated": "2026-09-29T10:45:06Z",
-      "url": "nealgavin/siyuan-plugin-tts-all@5d00567"
     },
     {
       "installSize": 508340,
