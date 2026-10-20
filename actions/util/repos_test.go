@@ -11,8 +11,11 @@
 package util
 
 import (
+	"fmt"
 	"strings"
 	"testing"
+
+	"github.com/siyuan-note/bazaar/rules"
 )
 
 func TestParseReposFromBytes(t *testing.T) {
@@ -43,5 +46,44 @@ func TestParseReposFromBytes_CRLF(t *testing.T) {
 	}
 	if len(repos) != 2 {
 		t.Fatalf("len=%d", len(repos))
+	}
+}
+
+func TestParseReposFromBytes_BlankLines(t *testing.T) {
+	t.Parallel()
+
+	// 末尾单个空行允许（默认情况的兜底）
+	repos, err := ParseReposFromBytes("plugins.txt", []byte("alice/foo\nbob/bar\n\n"))
+	if err != nil {
+		t.Fatalf("trailing blank line should be allowed: %v", err)
+	}
+	if len(repos) != 2 || repos[0] != "alice/foo" || repos[1] != "bob/bar" {
+		t.Fatalf("repos=%v", repos)
+	}
+
+	cases := []struct {
+		name string
+		data string
+		line int
+	}{
+		{"middle blank line", "alice/foo\n\nbob/bar\n", 2},
+		{"leading blank line", "\nalice/foo\n", 1},
+		{"two trailing blank lines", "alice/foo\n\n\n", 2},
+		{"whitespace-only line", "alice/foo\n \nbob/bar\n", 2},
+		{"CRLF middle blank line", "alice/foo\r\n\r\nbob/bar\r\n", 2},
+	}
+	for _, c := range cases {
+		_, err = ParseReposFromBytes("plugins.txt", []byte(c.data))
+		if err == nil {
+			t.Fatalf("%s: want error", c.name)
+		}
+		zh, en := rules.LocalizedMessages(err)
+		want := fmt.Sprintf("第 %d 行", c.line)
+		if !strings.Contains(zh, want) {
+			t.Fatalf("%s: zh=%q should contain %q", c.name, zh, want)
+		}
+		if !strings.Contains(en, fmt.Sprintf("line %d", c.line)) {
+			t.Fatalf("%s: en=%q should mention line %d", c.name, en, c.line)
+		}
 	}
 }

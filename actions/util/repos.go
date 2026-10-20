@@ -24,8 +24,9 @@ import (
 // ThemeJsAllowlistRelPath 为仓库根目录下「允许包含 theme.js」的主题列表相对路径。
 const ThemeJsAllowlistRelPath = "config/themes-theme-js-allowlist.txt"
 
-// ParseReposFromTxt 从 TXT 文件解析包列表：按行分割、过滤空行，校验每行为合法 owner/repo，返回 []string。
+// ParseReposFromTxt 从 TXT 文件解析包列表：按行分割，校验每行为合法 owner/repo，返回 []string。
 // 不做 TrimSpace，行首尾或 owner/repo 内含空格均视为解析错误。兼容多种换行符（\n、\r\n、\r）。
+// 空行只允许出现在文件末尾且最多一行，中间出现空行（或只含空格的行）视为解析错误。
 func ParseReposFromTxt(filePath string) (repos []string, err error) {
 	fileLabel := filepath.Base(filePath)
 	data, err := os.ReadFile(filePath)
@@ -43,13 +44,30 @@ func ParseReposFromTxt(filePath string) (repos []string, err error) {
 // fileLabel 用于错误文案（通常为文件名，如 plugins.txt）。
 func ParseReposFromBytes(fileLabel string, data []byte) (repos []string, err error) {
 	scanner := bufio.NewScanner(strings.NewReader(string(data)))
-	repos = make([]string, 0)
-	lineNum := 0
+	lines := make([]string, 0)
 	for scanner.Scan() {
-		lineNum++
-		line := scanner.Text()
+		lines = append(lines, scanner.Text())
+	}
+	if err = scanner.Err(); err != nil {
+		return nil, rules.LocalizedErr(
+			fmt.Sprintf("读取 `%s` 失败：%v。请确认文件编码与换行正常后重新提交。", fileLabel, err),
+			fmt.Sprintf("Failed to read `%s`: %v. Please make sure the file encoding and line endings are fine, then submit again.", fileLabel, err),
+			err,
+		)
+	}
+
+	repos = make([]string, 0, len(lines))
+	for i, line := range lines {
+		lineNum := i + 1
+		// 文件末尾允许一个空行（形如 "a\n\n"），中间的空行与只含空格的行一律拒绝
 		if line == "" {
-			continue
+			if i == len(lines)-1 {
+				continue
+			}
+			return nil, emptyLineError(fileLabel, lineNum)
+		}
+		if strings.TrimSpace(line) == "" {
+			return nil, emptyLineError(fileLabel, lineNum)
 		}
 		if line != strings.TrimSpace(line) {
 			return nil, rules.LocalizedErr(
@@ -83,12 +101,14 @@ func ParseReposFromBytes(fileLabel string, data []byte) (repos []string, err err
 		}
 		repos = append(repos, owner+"/"+repo)
 	}
-	if err = scanner.Err(); err != nil {
-		return nil, rules.LocalizedErr(
-			fmt.Sprintf("读取 `%s` 失败：%v。请确认文件编码与换行正常后重新提交。", fileLabel, err),
-			fmt.Sprintf("Failed to read `%s`: %v. Please make sure the file encoding and line endings are fine, then submit again.", fileLabel, err),
-			err,
-		)
-	}
 	return repos, nil
+}
+
+// emptyLineError 生成「列表文件中间出现空行」的双语错误。
+func emptyLineError(fileLabel string, lineNum int) error {
+	return rules.LocalizedErr(
+		fmt.Sprintf("`%s` 第 %d 行不能为空行或只含空格。空行只允许出现在文件末尾，且最多一行；请删除该行后重新提交。", fileLabel, lineNum),
+		fmt.Sprintf("`%s` line %d must not be empty or contain only spaces. A blank line is allowed only at the end of the file, at most one; please remove this line and submit again.", fileLabel, lineNum),
+		nil,
+	)
 }
