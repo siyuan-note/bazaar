@@ -1,6 +1,166 @@
 {
   "repos": [
     {
+      "installSize": 2120214,
+      "openIssues": 0,
+      "package": {
+        "author": "Glaube-TY",
+        "backends": [
+          "windows",
+          "linux",
+          "ios",
+          "android",
+          "harmony",
+          "docker",
+          "darwin"
+        ],
+        "description": {
+          "en_US": "Obtain Douban book information and add it to the database &amp; synchronize weread notes.",
+          "zh_CN": "豆瓣书籍信息获取并添加到数据库 &amp; 同步微信读书笔记。"
+        },
+        "displayName": {
+          "en_US": "Reading Notes",
+          "zh_CN": "读书笔记"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://glaube-ty.top/da-shang/"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "豆瓣读书",
+          "douban",
+          "书籍",
+          "book",
+          "读书笔记",
+          "笔记",
+          "read",
+          "note",
+          "booknote",
+          "weread",
+          "微信读书",
+          "微信"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "siyuan-douban",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/Glaube-TY/siyuan-douban",
+        "version": "4.3.9"
+      },
+      "packageZipAssetId": 659366653,
+      "packageZipSha256": "411277b46906f1c5aae325cd27a15cf2eeb6239ea92551c7a273a6d9fc124e98",
+      "repoRef": "v4.3.9",
+      "size": 738691,
+      "stars": 30,
+      "updated": "2026-10-20T13:09:57Z",
+      "url": "Glaube-TY/siyuan-douban@411277b"
+    },
+    {
+      "installSize": 15039677,
+      "openIssues": 2,
+      "package": {
+        "author": "Glaube-TY",
+        "backends": [
+          "windows",
+          "linux",
+          "ios",
+          "android",
+          "harmony",
+          "docker",
+          "darwin"
+        ],
+        "description": {
+          "en_US": "Provides personalized homepage layout and rich functional modules, as well as AI knowledge base.",
+          "zh_CN": "提供个性化首页布局和丰富的功能模块以及 AI 知识库功能。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "en_US": "HOME",
+          "zh_CN": "主页"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://glaube-ty.top/da-shang/"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "keywords": [
+          "homepage",
+          "home",
+          "主页",
+          "首页",
+          "task",
+          "task manager",
+          "任务",
+          "任务管理",
+          "SQL",
+          "sql",
+          "查询",
+          "widget",
+          "widget manager",
+          "挂件",
+          "挂件管理",
+          "组件",
+          "组件管理",
+          "Pomodoro",
+          "Pomodoro timer",
+          "番茄钟",
+          "番茄",
+          "heat map",
+          "热力图",
+          "热搜",
+          "搜索",
+          "AI",
+          "智能助手",
+          "agent",
+          "智能体"
+        ],
+        "minAppVersion": "3.8.6",
+        "name": "siyuan-homepage",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/Glaube-TY/siyuan-homepage",
+        "version": "5.1.11"
+      },
+      "packageZipAssetId": 659366562,
+      "packageZipSha256": "57f5fbc6fdaf7b0a8c6b71ebc2df042e872a2f300914aefc9a43eecbf52a92a2",
+      "repoRef": "v5.1.11",
+      "size": 5392591,
+      "stars": 42,
+      "updated": "2026-10-20T13:09:55Z",
+      "url": "Glaube-TY/siyuan-homepage@57f5fbc"
+    },
+    {
       "installSize": 68633,
       "openIssues": 0,
       "package": {
@@ -50,6 +210,63 @@
       "stars": 0,
       "updated": "2026-10-20T11:39:17Z",
       "url": "XinoAssassin/siyuan-plugin-ghostwriter@9066e85"
+    },
+    {
+      "installSize": 61965063,
+      "openIssues": 2,
+      "package": {
+        "author": "cowboy",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android",
+          "harmony"
+        ],
+        "description": {
+          "en_US": "Draw.io integrated as a plugin into Siyuan",
+          "zh_CN": "Draw.io以插件形式集成到思源中"
+        },
+        "displayName": {
+          "en_US": "Siyuan Draw.io Plugin",
+          "zh_CN": "思源Draw.io插件"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            ""
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "plugin",
+          "drawio"
+        ],
+        "minAppVersion": "3.0.12",
+        "name": "siyuan-drawio-plugin",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/zt8989/siyuan-drawio-plugin",
+        "version": "1.0.48"
+      },
+      "packageZipAssetId": 658825328,
+      "packageZipSha256": "00648e11b4276e5b5779020a8fda0c7c22f40b624b7b1e14c04df017d958e75a",
+      "repoRef": "v1.0.48",
+      "size": 29124204,
+      "stars": 41,
+      "updated": "2026-10-20T09:12:38Z",
+      "url": "zt8989/siyuan-drawio-plugin@00648e1"
     },
     {
       "installSize": 2720998,
@@ -1142,63 +1359,6 @@
       "stars": 0,
       "updated": "2026-10-19T10:52:52Z",
       "url": "wave789/siyuan-minimap@2875601"
-    },
-    {
-      "installSize": 61937144,
-      "openIssues": 2,
-      "package": {
-        "author": "cowboy",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "description": {
-          "en_US": "Draw.io integrated as a plugin into Siyuan",
-          "zh_CN": "Draw.io以插件形式集成到思源中"
-        },
-        "displayName": {
-          "en_US": "Siyuan Draw.io Plugin",
-          "zh_CN": "思源Draw.io插件"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            ""
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "plugin",
-          "drawio"
-        ],
-        "minAppVersion": "3.0.12",
-        "name": "siyuan-drawio-plugin",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/zt8989/siyuan-drawio-plugin",
-        "version": "1.0.47"
-      },
-      "packageZipAssetId": 655847928,
-      "packageZipSha256": "1a2a25aa5c27702cdc176dd6a1a45ad155fa716c14c8d9f5cb9e5b89ac7eab5b",
-      "repoRef": "v1.0.47",
-      "size": 29114828,
-      "stars": 41,
-      "updated": "2026-10-19T09:40:33Z",
-      "url": "zt8989/siyuan-drawio-plugin@1a2a25a"
     },
     {
       "installSize": 1043577,
@@ -3030,96 +3190,6 @@
       "stars": 2,
       "updated": "2026-10-16T09:51:43Z",
       "url": "BorisZhangYYY/noosphere-siyuan@f853685"
-    },
-    {
-      "installSize": 15011222,
-      "openIssues": 2,
-      "package": {
-        "author": "Glaube-TY",
-        "backends": [
-          "windows",
-          "linux",
-          "ios",
-          "android",
-          "harmony",
-          "docker",
-          "darwin"
-        ],
-        "description": {
-          "en_US": "Provides personalized homepage layout and rich functional modules, as well as AI knowledge base.",
-          "zh_CN": "提供个性化首页布局和丰富的功能模块以及 AI 知识库功能。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "en_US": "HOME",
-          "zh_CN": "主页"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://glaube-ty.top/da-shang/"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker"
-        ],
-        "keywords": [
-          "homepage",
-          "home",
-          "主页",
-          "首页",
-          "task",
-          "task manager",
-          "任务",
-          "任务管理",
-          "SQL",
-          "sql",
-          "查询",
-          "widget",
-          "widget manager",
-          "挂件",
-          "挂件管理",
-          "组件",
-          "组件管理",
-          "Pomodoro",
-          "Pomodoro timer",
-          "番茄钟",
-          "番茄",
-          "heat map",
-          "热力图",
-          "热搜",
-          "搜索",
-          "AI",
-          "智能助手",
-          "agent",
-          "智能体"
-        ],
-        "minAppVersion": "3.8.6",
-        "name": "siyuan-homepage",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/Glaube-TY/siyuan-homepage",
-        "version": "5.1.10"
-      },
-      "packageZipAssetId": 646063177,
-      "packageZipSha256": "d98b88d75f91127db5a3b6e051bbb42890e2931b342135e4a80a331cd20097e5",
-      "repoRef": "v5.1.10",
-      "size": 5382948,
-      "stars": 43,
-      "updated": "2026-10-16T03:55:48Z",
-      "url": "Glaube-TY/siyuan-homepage@d98b88d"
     },
     {
       "installSize": 69002,
@@ -5326,76 +5396,6 @@
       "stars": 158,
       "updated": "2026-10-11T06:27:02Z",
       "url": "zxkmm/siyuan_doctree_compress@35660f6"
-    },
-    {
-      "installSize": 2064457,
-      "openIssues": 1,
-      "package": {
-        "author": "Glaube-TY",
-        "backends": [
-          "windows",
-          "linux",
-          "ios",
-          "android",
-          "harmony",
-          "docker",
-          "darwin"
-        ],
-        "description": {
-          "en_US": "Obtain Douban book information and add it to the database &amp; synchronize weread notes.",
-          "zh_CN": "豆瓣书籍信息获取并添加到数据库 &amp; 同步微信读书笔记。"
-        },
-        "displayName": {
-          "en_US": "Reading Notes",
-          "zh_CN": "读书笔记"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://glaube-ty.top/da-shang/"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "豆瓣读书",
-          "douban",
-          "书籍",
-          "book",
-          "读书笔记",
-          "笔记",
-          "read",
-          "note",
-          "booknote",
-          "weread",
-          "微信读书",
-          "微信"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "siyuan-douban",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/Glaube-TY/siyuan-douban",
-        "version": "4.3.8"
-      },
-      "packageZipAssetId": 629541789,
-      "packageZipSha256": "53ef8b1731b835f7da53d67816e1f01b00b561c8ad2de7abde3abcdcfa841319",
-      "repoRef": "v4.3.8",
-      "size": 720393,
-      "stars": 30,
-      "updated": "2026-10-11T02:16:18Z",
-      "url": "Glaube-TY/siyuan-douban@53ef8b1"
     },
     {
       "installSize": 10306672,
