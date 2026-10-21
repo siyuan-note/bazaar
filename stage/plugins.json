@@ -1,6 +1,473 @@
 {
   "repos": [
     {
+      "installSize": 456267,
+      "openIssues": 0,
+      "package": {
+        "author": "2032797085-blip",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Group and reorder SiYuan notebooks directly in the native desktop and mobile document tree.",
+          "zh-CN": "在思源桌面与移动端原生文档树中为笔记本分组，支持拖拽排序和快速新建笔记本。"
+        },
+        "displayName": {
+          "default": "Notebook Groups",
+          "zh-CN": "笔记本分组管理"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "思源笔记",
+          "笔记本管理",
+          "笔记本分组"
+        ],
+        "minAppVersion": "3.8.5",
+        "name": "siyuan-notebook-groups",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.en.md",
+          "zh-CN": "README.md"
+        },
+        "url": "https://github.com/2032797085-blip/siyuan-notebook-groups",
+        "version": "0.2.0"
+      },
+      "packageZipAssetId": 663301915,
+      "packageZipSha256": "7b9b76e796b2ac1b6f9ed9d403bdc7ba2f6abe1c367a80755168b8c39b99a95b",
+      "repoRef": "v0.2.0",
+      "size": 408340,
+      "stars": 0,
+      "updated": "2026-10-21T17:41:24Z",
+      "url": "2032797085-blip/siyuan-notebook-groups@7b9b76e"
+    },
+    {
+      "installSize": 2260292,
+      "openIssues": 1,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A local-first SiYuan navigation and work-context platform with a switcher, widget workbench, desktop snippet lab, and floating-ball actions.",
+          "zh-CN": "本地优先的思源导航与工作上下文平台，连接切换器、工作台、桌面片段实验室和悬浮球。"
+        },
+        "displayName": {
+          "default": "LvSpeed Switch",
+          "zh-CN": "小驴雷切"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "页签切换",
+          "tab switch",
+          "标签页",
+          "快捷入口",
+          "speed switch",
+          "lv speed switch",
+          "小驴雷切",
+          "工作台",
+          "workbench",
+          "代码片段",
+          "snippet studio"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "siyuan-speed-switch",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en-US": "README.en-US.md"
+        },
+        "url": "https://github.com/ai68298100/siyuan-speed-switch",
+        "version": "0.48.1"
+      },
+      "packageZipAssetId": 663200161,
+      "packageZipSha256": "2af6945da8afa5e0d95ee29e9d5502a4d8dc02751e2813820aacfa9d57f2c3b8",
+      "repoRef": "v0.48.1",
+      "size": 616535,
+      "stars": 2,
+      "updated": "2026-10-21T17:00:12Z",
+      "url": "ai68298100/siyuan-speed-switch@2af6945"
+    },
+    {
+      "installSize": 17470123,
+      "openIssues": 1,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
+          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Horizon",
+          "zh_CN": "任务管理器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "task",
+          "manager",
+          "filter"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-plugin-task-horizon",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
+        "version": "3.2.7"
+      },
+      "packageZipAssetId": 663169326,
+      "packageZipSha256": "d0e995abb1ee92fec896400b485b10cb10194461669124aef9b24b035af04f4f",
+      "repoRef": "v3.2.7",
+      "size": 3597622,
+      "stars": 38,
+      "updated": "2026-10-21T16:48:43Z",
+      "url": "5kyfkr/siyuan-plugin-task-horizon@d0e995a"
+    },
+    {
+      "installSize": 2809320,
+      "openIssues": 1,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A dock Tomato Timer for SiYuan.",
+          "zh_CN": "思源底栏番茄钟：支持时间轴视图/任务提醒/日常事务记录/多端状态同步/移动端/数据库联动/块绑定/历史记录/任务管理器联动/移动端原生通知提醒"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Dock Tomato",
+          "zh_CN": "底栏番茄钟"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "tomato",
+          "timer",
+          "pomodoro",
+          "dock"
+        ],
+        "minAppVersion": "3.8.1",
+        "name": "siyuan-plugin-docktomato",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-docktomato",
+        "version": "2.3.7"
+      },
+      "packageZipAssetId": 663162520,
+      "packageZipSha256": "37a8c6d573306d581667cdb5f07a44a936ed1f46f5f1c2b2eea012f5b29ac8f6",
+      "repoRef": "v2.3.7",
+      "size": 660987,
+      "stars": 9,
+      "updated": "2026-10-21T16:46:01Z",
+      "url": "5kyfkr/siyuan-plugin-docktomato@37a8c6d"
+    },
+    {
+      "installSize": 4278814,
+      "openIssues": 2,
+      "package": {
+        "author": "mm-o",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker",
+          "darwin"
+        ],
+        "description": {
+          "en_US": "Professional media player for SiYuan Note with multi-platform support, smart note integration, timestamp jumps, loop segments, and extensible script architecture",
+          "zh_CN": "专业的思源笔记媒体播放器插件，集成本地媒体、网盘、BBLL、TTVV、多窗口播放、时间戳、循环片段、媒体助手与可扩展架构。"
+        },
+        "displayName": {
+          "en_US": "SiYuan Media Player",
+          "zh_CN": "思播-思源媒体播放器"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://745201.xyz/pay.jpg"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "media player",
+          "audio",
+          "video",
+          "timestamp",
+          "playlist",
+          "note integration",
+          "extensible",
+          "播放器",
+          "音频",
+          "视频",
+          "时间戳",
+          "播放列表",
+          "笔记集成",
+          "多平台"
+        ],
+        "minAppVersion": "3.0.12",
+        "name": "siyuan-media-player",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/mm-o/siyuan-media-player",
+        "version": "2.1.0"
+      },
+      "packageZipAssetId": 663066499,
+      "packageZipSha256": "896e3113b003ce223184618442f1e1ca631b90ef8dea249ba9deabcc30c9dfca",
+      "repoRef": "v2.1.0",
+      "size": 1565643,
+      "stars": 54,
+      "updated": "2026-10-21T16:13:08Z",
+      "url": "mm-o/siyuan-media-player@896e311"
+    },
+    {
+      "installSize": 24193275,
+      "openIssues": 1,
+      "package": {
+        "author": "mm-o",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "专业电子书阅读器，支持 EPUB/PDF/MOBI/TXT/在线小说；PDF 支持高亮、墨迹、形状、表单、印章、签名、图片、截图、搜索、打印、导出和回链，并提供标注笔记、词典、翻译、主题与书架管理",
+          "en_US": "Professional eBook reader for EPUB/PDF/MOBI/TXT/online novels. PDFs support highlights, ink, shapes, forms, stamps, signatures, images, screenshots, search, printing, export, and backlinks, with annotation notes, dictionary, translation, themes, and bookshelf management."
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiReader",
+          "zh_CN": "思阅"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://745201.xyz/pay.jpg"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "阅读",
+          "reading",
+          "电子书",
+          "ebook",
+          "pdf",
+          "epub",
+          "mobi",
+          "txt",
+          "azw3",
+          "fb2",
+          "cbz",
+          "sireader",
+          "思阅",
+          "标注",
+          "annotation",
+          "笔记",
+          "note",
+          "书签",
+          "bookmark",
+          "词典",
+          "dictionary",
+          "书源",
+          "book source",
+          "在线小说",
+          "online novel",
+          "主题",
+          "theme"
+        ],
+        "minAppVersion": "3.6.5",
+        "name": "siyuan-sireader",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/mm-o/siyuan-sireader",
+        "version": "2.5.7"
+      },
+      "packageZipAssetId": 663061371,
+      "packageZipSha256": "4c0573440fb4d59b584c4493df9db09cb60f1de09cfc8495f147580985400fef",
+      "repoRef": "v2.5.7",
+      "size": 7701778,
+      "stars": 32,
+      "updated": "2026-10-21T16:11:28Z",
+      "url": "mm-o/siyuan-sireader@4c05734"
+    },
+    {
+      "installSize": 6677909,
+      "openIssues": 1,
+      "package": {
+        "author": "whale🐋",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Quick note on app switch, click automation, quick access to built-in features, date templates, mobile shortcuts. Supports both mobile and desktop! Replace Quicker, FV, Notion automation within SiYuan!",
+          "zh-CN": "一键记事，手机端全流程解决方案。操作一步到位，重塑思源笔记移动端体验。自启动一键记事、一键按钮直达、定制化工具栏按钮、自动化模拟点击、手机快捷键使用、手写模板插入、思源内置功能选择等。手机端、电脑端均支持。可在思源内基本替换Quicker、FV悬浮球、notion自动化、宏命令等。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan Mobile Enhancer",
+          "zh-CN": "思源手机端增强"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "toolbar",
+          "customization",
+          "mobile",
+          "automation",
+          "buttons",
+          "工具栏",
+          "自定义",
+          "手机端",
+          "手机端增强",
+          "移动端",
+          "移动端增强",
+          "模拟点击",
+          "自动化",
+          "按钮",
+          "鲸鱼",
+          "工具箱",
+          "鲸鱼工具箱",
+          "一键记事",
+          "快速记事"
+        ],
+        "minAppVersion": "3.8.6",
+        "name": "siyuan-toolbar-customizer",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/HaoCeans/siyuan-toolbar-customizer",
+        "version": "3.9.5"
+      },
+      "packageZipAssetId": 662950842,
+      "packageZipSha256": "dc4130dcfb9d9e70594a3f83648096f8b3f947e25be27b113eb6b300b84e5be6",
+      "repoRef": "v3.9.5",
+      "size": 2200616,
+      "stars": 9,
+      "updated": "2026-10-21T15:24:11Z",
+      "url": "HaoCeans/siyuan-toolbar-customizer@dc4130d"
+    },
+    {
+      "installSize": 2862862,
+      "openIssues": 0,
+      "package": {
+        "author": "mirlous",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Real-time encrypt documents + all assets (images/videos/PDF/xlsx, any format) into a self-developed single-file vault (.sydb); zero plaintext (in-memory injection). Unlimited size, Argon2id KDF (OWASP-first) for new vaults, TOTP two-factor unlock, tamper/ransomware monitor, burn-after-reading one-time share, auto update check, OCR full-text image search (tesseract, CDN model), TF-IDF semantic auto-sharding, mobile read/write (PIN session), auto/incremental backup, WebDAV two-way sync, dedup, folder zip import, central vault directory, in-vault recycle bin, restore-on-remove, orphan recovery, password hints, recovery key (forgot-password recovery), weak-password detection, sensitive-info alert, revision history rollback, audit log, device-bound activation code (anti code-sharing). Paid license (WeChat nglzhy), 7-day trial.",
+          "zh_CN": "把选中的文档及全部附件（图片/视频/PDF/xlsx 任意格式）实时加密进一个自研单文件数据库（.sydb），工作区零明文（内存注入显示）。容量无上限；新建库默认 Argon2id 加密（OWASP 首选 KDF）、TOTP 双因素解锁、防勒索/防篡改监控、阅后即焚一次性分享、自动更新检查、OCR 图片全文搜索（tesseract，模型走 CDN 不占插件体积）、TF-IDF 语义智能分库、移动端读写（6 位访问码会话）、自动/增量备份、WebDAV 双向同步、资产去重、文件夹整包入库、集中分库目录、库内回收站、移出自动还原、孤儿找回、密码提示、恢复密钥（忘记密码可找回）、弱密码检测、敏感信息提醒、版本历史回滚、审计日志、设备绑定激活码（防一码多用）。付费授权（微信 nglzhy），7 天试用。"
+        },
+        "displayName": {
+          "default": "Secret Database",
+          "zh_CN": "密库"
+        },
+        "frontends": [
+          "desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "加密",
+          "数据库",
+          "密",
+          "单文件",
+          "回收站",
+          "totp",
+          "ocr",
+          "encryption",
+          "database",
+          "vault",
+          "secret",
+          "recycle"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-edb",
+        "preview": "",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/mirlous/siyuan-edb",
+        "version": "1.6.65"
+      },
+      "packageZipAssetId": 662885831,
+      "packageZipSha256": "0581f43a42f47d24f13d6f4aee8cb5fcf65a7da19d3b4baa40e949d9fbd7efb7",
+      "repoRef": "v1.6.65",
+      "size": 1024028,
+      "stars": 0,
+      "updated": "2026-10-21T15:09:02Z",
+      "url": "mirlous/siyuan-edb@0581f43"
+    },
+    {
       "installSize": 86061,
       "openIssues": 0,
       "package": {
@@ -46,6 +513,165 @@
       "stars": 0,
       "updated": "2026-10-21T14:57:44Z",
       "url": "clock-05/siyuan-latex-paste@8be7562"
+    },
+    {
+      "installSize": 15041503,
+      "openIssues": 3,
+      "package": {
+        "author": "Glaube-TY",
+        "backends": [
+          "windows",
+          "linux",
+          "ios",
+          "android",
+          "harmony",
+          "docker",
+          "darwin"
+        ],
+        "description": {
+          "en_US": "Provides personalized homepage layout and rich functional modules, as well as AI knowledge base.",
+          "zh_CN": "提供个性化首页布局和丰富的功能模块以及 AI 知识库功能。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "en_US": "HOME",
+          "zh_CN": "主页"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://glaube-ty.top/da-shang/"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "keywords": [
+          "homepage",
+          "home",
+          "主页",
+          "首页",
+          "task",
+          "task manager",
+          "任务",
+          "任务管理",
+          "SQL",
+          "sql",
+          "查询",
+          "widget",
+          "widget manager",
+          "挂件",
+          "挂件管理",
+          "组件",
+          "组件管理",
+          "Pomodoro",
+          "Pomodoro timer",
+          "番茄钟",
+          "番茄",
+          "heat map",
+          "热力图",
+          "热搜",
+          "搜索",
+          "AI",
+          "智能助手",
+          "agent",
+          "智能体"
+        ],
+        "minAppVersion": "3.8.6",
+        "name": "siyuan-homepage",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/Glaube-TY/siyuan-homepage",
+        "version": "5.1.12"
+      },
+      "packageZipAssetId": 662846691,
+      "packageZipSha256": "3828b5991598de619b8f0238c5db502e5cb31e0cef62e934ca3192d4fbc614f9",
+      "repoRef": "v5.1.12",
+      "size": 5392398,
+      "stars": 42,
+      "updated": "2026-10-21T14:55:16Z",
+      "url": "Glaube-TY/siyuan-homepage@3828b59"
+    },
+    {
+      "installSize": 1240834,
+      "openIssues": 1,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Save and recall common content (phrases, snippets, code, links, images, assets, block structures) anchored to real SiYuan blocks — with fill-in variables, snippet nesting, AI transforms, template packs, and faithful source references.",
+          "zh-CN": "基于思源文档和块的常用内容快速调用器：常用语、模板、代码、链接、图片、附件与块结构，条目锚定真实思源块。支持插入时变量填充、片段嵌套、AI 整理/变换/语义找、模板包分享，来源可回链、失效可见。"
+        },
+        "displayName": {
+          "default": "LvCommon (Beta)",
+          "zh-CN": "小驴常用（内测版）"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "常用语",
+          "common phrases",
+          "snippet",
+          "snippets",
+          "模板",
+          "template",
+          "templates",
+          "片段",
+          "快速插入",
+          "quick insert",
+          "小驴常用",
+          "小驴常用（内测版）",
+          "xiaolv",
+          "xiaolv-common",
+          "变量",
+          "variables",
+          "文本扩展",
+          "text expander",
+          "AI",
+          "提示词",
+          "prompt",
+          "剪贴板",
+          "clipboard",
+          "模板包",
+          "template pack"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "xiaolv-common",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en-US": "README.en-US.md"
+        },
+        "url": "https://github.com/ai68298100/xiaolv-common",
+        "version": "0.6.0"
+      },
+      "packageZipAssetId": 662673552,
+      "packageZipSha256": "aa96badeefa96f64512d035cc15162ee72335c14cc2563d4f3d976a74842dc82",
+      "repoRef": "v0.6.0",
+      "size": 555673,
+      "stars": 1,
+      "updated": "2026-10-21T13:53:25Z",
+      "url": "ai68298100/xiaolv-common@aa96bad"
     },
     {
       "installSize": 118391,
@@ -320,6 +946,58 @@
       "url": "LongDarkroom/siyuan-excali-studio@a6a78c1"
     },
     {
+      "installSize": 74780,
+      "openIssues": 0,
+      "package": {
+        "author": "frostime",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios"
+        ],
+        "description": {
+          "en_US": "Quickly open SiYuan directories in the local file system",
+          "zh_CN": "快速在本地文件系统中打开思源中的某些目录"
+        },
+        "displayName": {
+          "en_US": "Open Directory",
+          "zh_CN": "打开目录"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            ""
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "plugin",
+          "sample",
+          "插件样例"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "sy-open-dir",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/frostime/sy-open-dir",
+        "version": "0.5.0"
+      },
+      "packageZipAssetId": 662602552,
+      "packageZipSha256": "d95809842124a90654196f48aceb0d54b37e3d8cea1b60f6c7182c0b3c673cb1",
+      "repoRef": "v0.5.0",
+      "size": 59089,
+      "stars": 0,
+      "updated": "2026-10-21T10:23:24Z",
+      "url": "frostime/sy-open-dir@d958098"
+    },
+    {
       "installSize": 524087,
       "openIssues": 0,
       "package": {
@@ -554,57 +1232,6 @@
       "url": "ai68298100/siyuan-lv-cards@e641f2f"
     },
     {
-      "installSize": 2847325,
-      "openIssues": 0,
-      "package": {
-        "author": "mirlous",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Real-time encrypt documents + all assets (images/videos/PDF/xlsx, any format) into a self-developed single-file vault (.sydb); zero plaintext (in-memory injection). Unlimited size, Argon2id KDF (OWASP-first) for new vaults, TOTP two-factor unlock, tamper/ransomware monitor, burn-after-reading one-time share, auto update check, OCR full-text image search (tesseract, CDN model), TF-IDF semantic auto-sharding, mobile read/write (PIN session), auto/incremental backup, WebDAV two-way sync, dedup, folder zip import, central vault directory, in-vault recycle bin, restore-on-remove, orphan recovery, password hints, recovery key (forgot-password recovery), weak-password detection, sensitive-info alert, revision history rollback, audit log, device-bound activation code (anti code-sharing). Paid license (WeChat nglzhy), 7-day trial.",
-          "zh_CN": "把选中的文档及全部附件（图片/视频/PDF/xlsx 任意格式）实时加密进一个自研单文件数据库（.sydb），工作区零明文（内存注入显示）。容量无上限；新建库默认 Argon2id 加密（OWASP 首选 KDF）、TOTP 双因素解锁、防勒索/防篡改监控、阅后即焚一次性分享、自动更新检查、OCR 图片全文搜索（tesseract，模型走 CDN 不占插件体积）、TF-IDF 语义智能分库、移动端读写（6 位访问码会话）、自动/增量备份、WebDAV 双向同步、资产去重、文件夹整包入库、集中分库目录、库内回收站、移出自动还原、孤儿找回、密码提示、恢复密钥（忘记密码可找回）、弱密码检测、敏感信息提醒、版本历史回滚、审计日志、设备绑定激活码（防一码多用）。付费授权（微信 nglzhy），7 天试用。"
-        },
-        "displayName": {
-          "default": "Secret Database",
-          "zh_CN": "密库"
-        },
-        "frontends": [
-          "desktop"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "加密",
-          "数据库",
-          "密",
-          "单文件",
-          "回收站",
-          "totp",
-          "ocr",
-          "encryption",
-          "database",
-          "vault",
-          "secret",
-          "recycle"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-edb",
-        "preview": "",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/mirlous/siyuan-edb",
-        "version": "1.6.62"
-      },
-      "packageZipAssetId": 661467579,
-      "packageZipSha256": "e9705b2046cc044f16f8c5c942625e58ec052b87333c35188fa8da03875c11bf",
-      "repoRef": "v1.6.62",
-      "size": 1019295,
-      "stars": 0,
-      "updated": "2026-10-21T05:31:51Z",
-      "url": "mirlous/siyuan-edb@e9705b2"
-    },
-    {
       "installSize": 1058650,
       "openIssues": 0,
       "package": {
@@ -655,61 +1282,6 @@
       "stars": 4,
       "updated": "2026-10-21T05:26:00Z",
       "url": "CongSec/siyuan-plugin-meiday@eeb6d12"
-    },
-    {
-      "installSize": 2231381,
-      "openIssues": 1,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A local-first SiYuan navigation and work-context platform with a switcher, widget workbench, desktop snippet lab, and floating-ball actions.",
-          "zh-CN": "本地优先的思源导航与工作上下文平台，连接切换器、工作台、桌面片段实验室和悬浮球。"
-        },
-        "displayName": {
-          "default": "LvSpeed Switch",
-          "zh-CN": "小驴雷切"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "页签切换",
-          "tab switch",
-          "标签页",
-          "快捷入口",
-          "speed switch",
-          "lv speed switch",
-          "小驴雷切",
-          "工作台",
-          "workbench",
-          "代码片段",
-          "snippet studio"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "siyuan-speed-switch",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en-US": "README.en-US.md"
-        },
-        "url": "https://github.com/ai68298100/siyuan-speed-switch",
-        "version": "0.48.0"
-      },
-      "packageZipAssetId": 661427275,
-      "packageZipSha256": "0e0a6652e0560b2976ddf3ab11256cc115a57481be250d18ab909d62a6937a4c",
-      "repoRef": "v0.48.0",
-      "size": 610299,
-      "stars": 2,
-      "updated": "2026-10-21T05:11:50Z",
-      "url": "ai68298100/siyuan-speed-switch@0e0a665"
     },
     {
       "installSize": 46229,
@@ -934,57 +1506,6 @@
       "url": "vilifetime/siyuan-plugin-caldav-sync@1adaf59"
     },
     {
-      "installSize": 17306679,
-      "openIssues": 1,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
-          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Horizon",
-          "zh_CN": "任务管理器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "task",
-          "manager",
-          "filter"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-plugin-task-horizon",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "3.2.6"
-      },
-      "packageZipAssetId": 660047189,
-      "packageZipSha256": "f46c40c23d20b1b654f75e97a0d73ef915309142e94c8b97af244eba4185d7c1",
-      "repoRef": "v3.2.6",
-      "size": 3546461,
-      "stars": 38,
-      "updated": "2026-10-20T17:52:45Z",
-      "url": "5kyfkr/siyuan-plugin-task-horizon@f46c40c"
-    },
-    {
       "installSize": 15002027,
       "openIssues": 1,
       "package": {
@@ -1188,52 +1709,6 @@
       "url": "yangtaihong59/siyuan-plugins-ai-cli-bridge@a962ce3"
     },
     {
-      "installSize": 433582,
-      "openIssues": 0,
-      "package": {
-        "author": "2032797085-blip",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Organize and manage SiYuan notebooks in groups.",
-          "zh-CN": "集中管理思源笔记本，支持分组查看与快速切换。"
-        },
-        "displayName": {
-          "default": "Notebook Groups",
-          "zh-CN": "笔记本分组管理"
-        },
-        "frontends": [
-          "desktop"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "思源笔记",
-          "笔记本管理",
-          "笔记本分组"
-        ],
-        "minAppVersion": "3.8.5",
-        "name": "siyuan-notebook-groups",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.en.md",
-          "zh-CN": "README.md"
-        },
-        "url": "https://github.com/2032797085-blip/siyuan-notebook-groups",
-        "version": "0.1.1"
-      },
-      "packageZipAssetId": 659731482,
-      "packageZipSha256": "a33ddbfd228b720e3f9c71a69554986cd898503e87012ec27a240f648fd931cb",
-      "repoRef": "v0.1.1",
-      "size": 403945,
-      "stars": 0,
-      "updated": "2026-10-20T16:19:38Z",
-      "url": "2032797085-blip/siyuan-notebook-groups@a33ddbf"
-    },
-    {
       "installSize": 84507,
       "openIssues": 0,
       "package": {
@@ -1353,96 +1828,6 @@
       "stars": 30,
       "updated": "2026-10-20T13:09:57Z",
       "url": "Glaube-TY/siyuan-douban@411277b"
-    },
-    {
-      "installSize": 15039677,
-      "openIssues": 2,
-      "package": {
-        "author": "Glaube-TY",
-        "backends": [
-          "windows",
-          "linux",
-          "ios",
-          "android",
-          "harmony",
-          "docker",
-          "darwin"
-        ],
-        "description": {
-          "en_US": "Provides personalized homepage layout and rich functional modules, as well as AI knowledge base.",
-          "zh_CN": "提供个性化首页布局和丰富的功能模块以及 AI 知识库功能。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "en_US": "HOME",
-          "zh_CN": "主页"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://glaube-ty.top/da-shang/"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker"
-        ],
-        "keywords": [
-          "homepage",
-          "home",
-          "主页",
-          "首页",
-          "task",
-          "task manager",
-          "任务",
-          "任务管理",
-          "SQL",
-          "sql",
-          "查询",
-          "widget",
-          "widget manager",
-          "挂件",
-          "挂件管理",
-          "组件",
-          "组件管理",
-          "Pomodoro",
-          "Pomodoro timer",
-          "番茄钟",
-          "番茄",
-          "heat map",
-          "热力图",
-          "热搜",
-          "搜索",
-          "AI",
-          "智能助手",
-          "agent",
-          "智能体"
-        ],
-        "minAppVersion": "3.8.6",
-        "name": "siyuan-homepage",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/Glaube-TY/siyuan-homepage",
-        "version": "5.1.11"
-      },
-      "packageZipAssetId": 659366562,
-      "packageZipSha256": "57f5fbc6fdaf7b0a8c6b71ebc2df042e872a2f300914aefc9a43eecbf52a92a2",
-      "repoRef": "v5.1.11",
-      "size": 5392591,
-      "stars": 42,
-      "updated": "2026-10-20T13:09:55Z",
-      "url": "Glaube-TY/siyuan-homepage@57f5fbc"
     },
     {
       "installSize": 61965063,
@@ -1956,59 +2341,6 @@
       "url": "yangtaihong59/siyuan-plugins-mcp-sisyphus@013340a"
     },
     {
-      "installSize": 2798431,
-      "openIssues": 1,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A dock Tomato Timer for SiYuan.",
-          "zh_CN": "思源底栏番茄钟：支持时间轴视图/任务提醒/日常事务记录/多端状态同步/移动端/数据库联动/块绑定/历史记录/任务管理器联动/移动端原生通知提醒"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Dock Tomato",
-          "zh_CN": "底栏番茄钟"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "tomato",
-          "timer",
-          "pomodoro",
-          "dock"
-        ],
-        "minAppVersion": "3.8.1",
-        "name": "siyuan-plugin-docktomato",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-docktomato",
-        "version": "2.3.6"
-      },
-      "packageZipAssetId": 656780264,
-      "packageZipSha256": "00a6cbf81e4b650650223507f341530eb24bc154430afe51e20f7e0df3085f61",
-      "repoRef": "v2.3.6",
-      "size": 658877,
-      "stars": 9,
-      "updated": "2026-10-19T16:24:02Z",
-      "url": "5kyfkr/siyuan-plugin-docktomato@00a6cbf"
-    },
-    {
       "installSize": 511796,
       "openIssues": 2,
       "package": {
@@ -2455,75 +2787,6 @@
       "stars": 1,
       "updated": "2026-10-19T03:34:46Z",
       "url": "ai68298100/siyuan-glean@0c7b2fd"
-    },
-    {
-      "installSize": 1090388,
-      "openIssues": 1,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Save and recall common content (phrases, snippets, code, links, images, assets, block structures) anchored to real SiYuan blocks — with fill-in variables, snippet nesting, AI transforms, template packs, and faithful source references.",
-          "zh-CN": "基于思源文档和块的常用内容快速调用器：常用语、模板、代码、链接、图片、附件与块结构，条目锚定真实思源块。支持插入时变量填充、片段嵌套、AI 整理/变换/语义找、模板包分享，来源可回链、失效可见。"
-        },
-        "displayName": {
-          "default": "LvCommon (Beta)",
-          "zh-CN": "小驴常用（内测版）"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "常用语",
-          "common phrases",
-          "snippet",
-          "snippets",
-          "模板",
-          "template",
-          "templates",
-          "片段",
-          "快速插入",
-          "quick insert",
-          "小驴常用",
-          "小驴常用（内测版）",
-          "xiaolv",
-          "xiaolv-common",
-          "变量",
-          "variables",
-          "文本扩展",
-          "text expander",
-          "AI",
-          "提示词",
-          "prompt",
-          "剪贴板",
-          "clipboard",
-          "模板包",
-          "template pack"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "xiaolv-common",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en-US": "README.en-US.md"
-        },
-        "url": "https://github.com/ai68298100/xiaolv-common",
-        "version": "0.5.0"
-      },
-      "packageZipAssetId": 654886801,
-      "packageZipSha256": "87fc197eae80660703159d7abf8b7cd366ad4b5442a18497a6944863cd865b14",
-      "repoRef": "v0.5.0",
-      "size": 513344,
-      "stars": 1,
-      "updated": "2026-10-19T01:01:19Z",
-      "url": "ai68298100/xiaolv-common@87fc197"
     },
     {
       "installSize": 1895773,
@@ -3324,66 +3587,6 @@
       "stars": 1,
       "updated": "2026-10-18T05:35:32Z",
       "url": "wmy2981/some-settings-siyuan@5f16640"
-    },
-    {
-      "installSize": 6667891,
-      "openIssues": 1,
-      "package": {
-        "author": "whale🐋",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Quick note on app switch, click automation, quick access to built-in features, date templates, mobile shortcuts. Supports both mobile and desktop! Replace Quicker, FV, Notion automation within SiYuan!",
-          "zh-CN": "一键记事，手机端全流程解决方案。操作一步到位，重塑思源笔记移动端体验。自启动一键记事、一键按钮直达、定制化工具栏按钮、自动化模拟点击、手机快捷键使用、手写模板插入、思源内置功能选择等。手机端、电脑端均支持。可在思源内基本替换Quicker、FV悬浮球、notion自动化、宏命令等。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiYuan Mobile Enhancer",
-          "zh-CN": "思源手机端增强"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "toolbar",
-          "customization",
-          "mobile",
-          "automation",
-          "buttons",
-          "工具栏",
-          "自定义",
-          "手机端",
-          "手机端增强",
-          "移动端",
-          "移动端增强",
-          "模拟点击",
-          "自动化",
-          "按钮",
-          "鲸鱼",
-          "工具箱",
-          "鲸鱼工具箱",
-          "一键记事",
-          "快速记事"
-        ],
-        "minAppVersion": "3.8.6",
-        "name": "siyuan-toolbar-customizer",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/HaoCeans/siyuan-toolbar-customizer",
-        "version": "3.9.4"
-      },
-      "packageZipAssetId": 652516552,
-      "packageZipSha256": "0b2a9c111dae4ce77c6370f30f9472982d5a008a51f143b4ddd303a4b003810a",
-      "repoRef": "v3.9.4",
-      "size": 2197476,
-      "stars": 9,
-      "updated": "2026-10-18T04:54:19Z",
-      "url": "HaoCeans/siyuan-toolbar-customizer@0b2a9c1"
     },
     {
       "installSize": 2491768,
@@ -4651,82 +4854,6 @@
       "url": "fu1fan/siyuan-browser@1c629dc"
     },
     {
-      "installSize": 24167841,
-      "openIssues": 3,
-      "package": {
-        "author": "mm-o",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "专业电子书阅读器，支持 EPUB/PDF/MOBI/TXT/在线小说；PDF 支持高亮、墨迹、形状、表单、印章、签名、图片、截图、搜索、打印、导出和回链，并提供标注笔记、词典、翻译、主题与书架管理",
-          "en_US": "Professional eBook reader for EPUB/PDF/MOBI/TXT/online novels. PDFs support highlights, ink, shapes, forms, stamps, signatures, images, screenshots, search, printing, export, and backlinks, with annotation notes, dictionary, translation, themes, and bookshelf management."
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiReader",
-          "zh_CN": "思阅"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://745201.xyz/pay.jpg"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "阅读",
-          "reading",
-          "电子书",
-          "ebook",
-          "pdf",
-          "epub",
-          "mobi",
-          "txt",
-          "azw3",
-          "fb2",
-          "cbz",
-          "sireader",
-          "思阅",
-          "标注",
-          "annotation",
-          "笔记",
-          "note",
-          "书签",
-          "bookmark",
-          "词典",
-          "dictionary",
-          "书源",
-          "book source",
-          "在线小说",
-          "online novel",
-          "主题",
-          "theme"
-        ],
-        "minAppVersion": "3.6.5",
-        "name": "siyuan-sireader",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/mm-o/siyuan-sireader",
-        "version": "2.5.6"
-      },
-      "packageZipAssetId": 640686414,
-      "packageZipSha256": "a1c4fe81724d2587884fcbe5e4c7e835c14dcab64cb67a96357a747b72cd4059",
-      "repoRef": "v2.5.6",
-      "size": 7691928,
-      "stars": 33,
-      "updated": "2026-10-14T14:48:09Z",
-      "url": "mm-o/siyuan-sireader@a1c4fe8"
-    },
-    {
       "installSize": 961286,
       "openIssues": 0,
       "package": {
@@ -5179,79 +5306,6 @@
       "stars": 4,
       "updated": "2026-10-13T03:25:41Z",
       "url": "LunaNorth/siyuan-deco@b2d2b66"
-    },
-    {
-      "installSize": 4265903,
-      "openIssues": 4,
-      "package": {
-        "author": "mm-o",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker",
-          "darwin"
-        ],
-        "description": {
-          "en_US": "Professional media player for SiYuan Note with multi-platform support, smart note integration, timestamp jumps, loop segments, and extensible script architecture",
-          "zh_CN": "专业的思源笔记媒体播放器插件，集成本地媒体、网盘、BBLL、TTVV、多窗口播放、时间戳、循环片段、媒体助手与可扩展架构。"
-        },
-        "displayName": {
-          "en_US": "SiYuan Media Player",
-          "zh_CN": "思播-思源媒体播放器"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://745201.xyz/pay.jpg"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "media player",
-          "audio",
-          "video",
-          "timestamp",
-          "playlist",
-          "note integration",
-          "extensible",
-          "播放器",
-          "音频",
-          "视频",
-          "时间戳",
-          "播放列表",
-          "笔记集成",
-          "多平台"
-        ],
-        "minAppVersion": "3.0.12",
-        "name": "siyuan-media-player",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/mm-o/siyuan-media-player",
-        "version": "2.0.9"
-      },
-      "packageZipAssetId": 635736743,
-      "packageZipSha256": "586310c1e2b90cc346c25c431e49cdc2b3c2bc49e11dc3acdde3d58b059b2d25",
-      "repoRef": "v2.0.9",
-      "size": 1561346,
-      "stars": 55,
-      "updated": "2026-10-13T03:15:56Z",
-      "url": "mm-o/siyuan-media-player@586310c"
     },
     {
       "installSize": 599633,
@@ -21892,56 +21946,6 @@
       "stars": 2,
       "updated": "2025-09-20T10:10:54Z",
       "url": "hausen1012/siyuan-plugin-pic-bed-manager@86dab48"
-    },
-    {
-      "installSize": 73966,
-      "openIssues": 0,
-      "package": {
-        "author": "frostime",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios"
-        ],
-        "description": {
-          "en_US": "Quickly open SiYuan directories in the local file system",
-          "zh_CN": "快速在本地文件系统中打开思源中的某些目录"
-        },
-        "displayName": {
-          "en_US": "Open Directory",
-          "zh_CN": "打开目录"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            ""
-          ]
-        },
-        "keywords": [
-          "plugin",
-          "sample",
-          "插件样例"
-        ],
-        "minAppVersion": "3.0.12",
-        "name": "sy-open-dir",
-        "readme": {
-          "en_US": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/frostime/sy-open-dir",
-        "version": "0.4.0"
-      },
-      "packageZipAssetId": 292786477,
-      "packageZipSha256": "935b9bc63c964e1539d85832460e5a311d886da97fe4c4a615013ddd43f92bcd",
-      "repoRef": "v0.4.0",
-      "size": 58634,
-      "stars": 0,
-      "updated": "2025-09-13T07:46:05Z",
-      "url": "frostime/sy-open-dir@935b9bc"
     },
     {
       "installSize": 88537,
