@@ -10,12 +10,16 @@
 {{- if .ParseError }}
 
 ### 包列表解析错误 / Package list parse error
+{{- range .ParseError }}
 
-{{ .ParseError }}
+#### `{{ .File }}` — {{ .Source.Title }}
 
-请修复仓库根目录下对应的 `.txt` 文件，确保每行包含一个 `owner/repo`，然后推送新提交。
+{{ .Issue.MessageZh }}
 
-Please fix the matching `.txt` file at the repo root so each line is one `owner/repo`, then push a new commit.
+{{ .Issue.MessageEn }}
+
+{{ .Source.Hint }}
+{{ end }}
 
 ---
 {{- end }}

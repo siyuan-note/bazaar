@@ -6,7 +6,7 @@
 
 1. 确认仓库已有 GitHub Release，且附件含 `package.zip`；缺失时 PR Check 必然失败
 2. 从 `main` 拉分支 `add-<type>-<name>`（插件 `add-plugin-<name>`，其他类型同理）
-3. 只改对应的 `plugins.txt` / `themes.txt` / `icons.txt` / `templates.txt` / `widgets.txt`，追加一行 `owner/repo`，保持 LF；一个 PR 只加一个包，不要夹带其他改动
+3. 只改对应的 `plugins.txt` / `themes.txt` / `icons.txt` / `templates.txt` / `widgets.txt`，追加一行 `owner/repo`，保持 LF（不要把新行与旧行隔开：空行只允许出现在文件末尾且最多一行）；一个 PR 只加一个包，不要夹带其他改动
 4. 提交信息 `Add owner/repo`，推送到自己的 fork 后开 PR 到 `siyuan-note/bazaar:main`，标题同为 `Add owner/repo`
 5. PR 正文用 `.github/PULL_REQUEST_TEMPLATE.md` 的内容，末尾附 `仓库：https://github.com/owner/repo`；Windows 上把正文写入 UTF-8 无 BOM 临时文件后用 `--body-file`，勿提交临时文件
 6. 人工审阅通过后合并；Stage 会重建索引，无需手改 `stage/*.json`

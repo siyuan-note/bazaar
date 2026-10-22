@@ -152,7 +152,7 @@ type typeCheckPlan struct {
 	packageType     rules.PackageType
 	diff            repoDiff
 	themeJsAllowSet Set
-	parseError      string
+	parseError      *ListParseError
 }
 
 func main() {
@@ -221,8 +221,6 @@ func main() {
 		checkResult.FlowError = formatBlacklistFlowError()
 		logger.Errorf("whitelist changes mixed with other paths: %s", strings.Join(otherFiles, ", "))
 	case len(whiteFiles) > 0:
-		var parseErrorBuilder strings.Builder
-
 		// 第一阶段：各类型并行算 diff（不下载、不跑 Pkg Check）
 		packageTypes := rules.AllPackageTypes()
 		plans = make([]typeCheckPlan, len(packageTypes))
@@ -235,8 +233,8 @@ func main() {
 		planWg.Wait()
 
 		for _, plan := range plans {
-			if plan.parseError != "" {
-				parseErrorBuilder.WriteString(plan.parseError)
+			if plan.parseError != nil {
+				checkResult.ParseError = append(checkResult.ParseError, *plan.parseError)
 				continue
 			}
 			// 将本 PR 的删除列表写入检查结果（流程失败时模板不展示）
@@ -244,7 +242,6 @@ func main() {
 				panic("main: invalid package type")
 			}
 		}
-		checkResult.ParseError = parseErrorBuilder.String()
 
 		// 流程规则：仅允许纯新增 1 个 / 更换维护者 / 纯下架
 		if flowErr := validatePRListChangeFlow(plans); flowErr != "" {
@@ -263,7 +260,7 @@ func main() {
 
 			// 流程通过后最多只有一个类型含新增，顺序检查即可
 			for _, plan := range plans {
-				if plan.parseError != "" || len(plan.diff.New) == 0 {
+				if plan.parseError != nil || len(plan.diff.New) == 0 {
 					continue
 				}
 				runTypePackageChecks(plan, checkResult, occupiedNames)
@@ -377,9 +374,16 @@ func appendGitHubOutput(name, value string) {
 	}
 }
 
-// parseReposFromRootTxt 从集市包列表 TXT（每行一个 owner/repo）解析出路径列表、路径集合和 name->owner 映射
-func parseReposFromRootTxt(filePath string) (paths []string, pathSet Set, nameToOwner map[string]string, err error) {
-	repos, err := util.ParseReposFromTxt(filePath)
+// parseReposFromRootTxt 从集市包列表 TXT（每行一个 owner/repo）解析出路径列表、路径集合和 name->owner 映射。
+// strict 为 true 时把中间空行视为错误，只对本 PR 自己的列表副本启用；
+// bazaar 主分支与合并基点都是既有内容，贡献者无从修改，一律宽松解析。
+func parseReposFromRootTxt(filePath string, strict bool) (paths []string, pathSet Set, nameToOwner map[string]string, err error) {
+	var repos []string
+	if strict {
+		repos, err = util.ParseReposFromTxtStrict(filePath)
+	} else {
+		repos, err = util.ParseReposFromTxt(filePath)
+	}
 	if err != nil {
 		return
 	}
@@ -410,21 +414,21 @@ func prepareTypeCheckPlan(packageType rules.PackageType) typeCheckPlan {
 	plan := typeCheckPlan{packageType: packageType}
 
 	// 加载三个版本的集市包列表：bazaar head（用于过滤）、PR base、PR head（用于 diff）
-	_, bazaarHeadRepoSet, _, err := parseReposFromRootTxt(bazaarHeadReposPath)
+	_, bazaarHeadRepoSet, _, err := parseReposFromRootTxt(bazaarHeadReposPath, false)
 	if err != nil {
-		plan.parseError = formatParseErrorLabel(fmt.Sprintf("%s bazaar head", repoListTxtName), err)
+		plan.parseError = newListParseError(repoListTxtName, ListSourceBazaarHead, err)
 		logger.Errorf("load bazaar head repos [%s] failed: %s, skip this type", bazaarHeadReposPath, err)
 		return plan
 	}
-	basePaths, baseSet, baseNameToOwner, err := parseReposFromRootTxt(prBaseReposPath)
+	basePaths, baseSet, baseNameToOwner, err := parseReposFromRootTxt(prBaseReposPath, false)
 	if err != nil {
-		plan.parseError = formatParseErrorLabel(fmt.Sprintf("%s PR base", repoListTxtName), err)
+		plan.parseError = newListParseError(repoListTxtName, ListSourcePRBase, err)
 		logger.Errorf("load PR base repos [%s] failed: %s, skip this type", prBaseReposPath, err)
 		return plan
 	}
-	headPaths, headSet, _, err := parseReposFromRootTxt(prHeadReposPath)
+	headPaths, headSet, _, err := parseReposFromRootTxt(prHeadReposPath, true)
 	if err != nil {
-		plan.parseError = formatParseErrorLabel(fmt.Sprintf("%s PR head", repoListTxtName), err)
+		plan.parseError = newListParseError(repoListTxtName, ListSourcePRHead, err)
 		logger.Errorf("load PR head repos [%s] failed: %s, skip this type", prHeadReposPath, err)
 		return plan
 	}
@@ -434,7 +438,7 @@ func prepareTypeCheckPlan(packageType rules.PackageType) typeCheckPlan {
 		ap := filepath.Join(BAZAAR_HEAD_PATH, util.ThemeJsAllowlistRelPath)
 		paths, errAllow := util.ParseReposFromTxt(ap)
 		if errAllow != nil {
-			plan.parseError = formatParseErrorLabel(fmt.Sprintf("%s bazaar head", util.ThemeJsAllowlistRelPath), errAllow)
+			plan.parseError = newListParseError(util.ThemeJsAllowlistRelPath, ListSourceBazaarHead, errAllow)
 			logger.Errorf("load theme.js allowlist [%s] failed: %s, skip this type", ap, errAllow)
 			return plan
 		}
@@ -449,9 +453,15 @@ func prepareTypeCheckPlan(packageType rules.PackageType) typeCheckPlan {
 	return plan
 }
 
-func formatParseErrorLabel(label string, err error) string {
+// newListParseError 把列表文件解析错误与其来源（哪一份副本）绑在一起，
+// 供评论按「这份副本由谁维护」分别给出提示。
+func newListParseError(file string, source ListSource, err error) *ListParseError {
 	zh, en := rules.LocalizedMessages(err)
-	return fmt.Sprintf("[%s]\n\n%s\n\n%s\n\n", label, zh, en)
+	return &ListParseError{
+		File:   file,
+		Source: source,
+		Issue:  rules.Issue{MessageZh: zh, MessageEn: en},
+	}
 }
 
 // runTypePackageChecks 对本类型新增/换维护者仓库执行 Latest Release → package.zip → rules.Check。

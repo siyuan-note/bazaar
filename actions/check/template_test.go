@@ -110,6 +110,55 @@ func TestCheckResultTemplate(t *testing.T) {
 	}
 }
 
+func TestCheckResultTemplate_ParseError(t *testing.T) {
+	tmpl, err := parseCheckResultTemplate(context.Background())
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	sample := CheckResult{ParseError: []ListParseError{
+		{
+			File:   "plugins.txt",
+			Source: ListSourcePRHead,
+			Issue:  rules.Issue{MessageZh: "`plugins.txt` 第 102 行不能为空行", MessageEn: "`plugins.txt` line 102 must not be empty"},
+		},
+		{
+			File:   "themes.txt",
+			Source: ListSourceBazaarHead,
+			Issue:  rules.Issue{MessageZh: "`themes.txt` 第 3 行格式无效", MessageEn: "`themes.txt` line 3 has an invalid format"},
+		},
+	}}
+
+	var buf bytes.Buffer
+	if err := tmpl.Execute(&buf, sample); err != nil {
+		t.Fatal(err)
+	}
+	out := strings.ReplaceAll(buf.String(), "\r\n", "\n")
+	for _, want := range []string{
+		"### 包列表解析错误 / Package list parse error",
+		// 本 PR 的副本：说明归贡献者修，并给出改法
+		"#### `plugins.txt` — 本 PR 的提交 / this PR's commit",
+		"`plugins.txt` 第 102 行不能为空行",
+		"Fix this file in the PR (one `owner/repo` per line, no extra blank lines), then push a new commit.",
+		// bazaar 主分支的副本：明确与本 PR 无关，指引等维护者
+		"#### `themes.txt` — bazaar 主分支最新版本 / latest bazaar main",
+		"这不是本 PR 引入的问题：这份副本由 bazaar 维护者维护。",
+		"This is not caused by this PR: bazaar maintainers own this copy.",
+		"add the `Check` label to rerun the check.",
+	} {
+		if !strings.Contains(out, want) {
+			t.Fatalf("output missing %q\n%s", want, out)
+		}
+	}
+	// 不能再把责任推给「仓库根目录下对应的 .txt」：bazaar head 那份贡献者改不了
+	if strings.Contains(out, "请修复仓库根目录下对应的 `.txt` 文件") {
+		t.Fatalf("generic fix hint should be replaced by per-source hints\n%s", out)
+	}
+	if strings.Contains(out, "@") {
+		t.Fatalf("check-result comment should not @ anyone\n%s", out)
+	}
+}
+
 func TestCheckResultTemplate_FlowError(t *testing.T) {
 	tmpl, err := parseCheckResultTemplate(context.Background())
 	if err != nil {

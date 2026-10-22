@@ -25,7 +25,7 @@ var flowErrorTemplate = template.Must(template.New("flow-error.md.tpl").Parse(fl
 // flowRepoGroup 流程错误模板中按列表文件分组的仓库。
 type flowRepoGroup struct {
 	ListFile string
-	Repos     string
+	Repos    string
 }
 
 // repoDiff 单类型列表相对 PR base / bazaar head 过滤后的增删结果。
@@ -109,7 +109,7 @@ func validatePRListChangeFlow(plans []typeCheckPlan) string {
 	totalNew := 0
 	var pureDeleted []string
 	for _, plan := range plans {
-		if plan.parseError != "" {
+		if plan.parseError != nil {
 			continue
 		}
 		totalNew += len(plan.diff.New)
@@ -133,10 +133,10 @@ func validatePRListChangeFlow(plans []typeCheckPlan) string {
 // total 为添加或更换维护者的合计数量（须 > 1）。
 func formatOnePackageLimitError(total int, plans []typeCheckPlan) string {
 	return executeFlowError("onePackageLimit", struct {
-		Total   int
+		Total    int
 		NewRepos []flowRepoGroup
 	}{
-		Total:   total,
+		Total:    total,
 		NewRepos: collectNewRepoGroups(plans),
 	})
 }
@@ -155,12 +155,12 @@ func formatMixedAddDelistError(plans []typeCheckPlan) string {
 func collectNewRepoGroups(plans []typeCheckPlan) []flowRepoGroup {
 	groups := make([]flowRepoGroup, 0)
 	for _, plan := range plans {
-		if plan.parseError != "" || len(plan.diff.New) == 0 {
+		if plan.parseError != nil || len(plan.diff.New) == 0 {
 			continue
 		}
 		groups = append(groups, flowRepoGroup{
 			ListFile: plan.packageType.ReposListFile(),
-			Repos:     strings.Join(plan.diff.New, ", "),
+			Repos:    strings.Join(plan.diff.New, ", "),
 		})
 	}
 	return groups
@@ -169,7 +169,7 @@ func collectNewRepoGroups(plans []typeCheckPlan) []flowRepoGroup {
 func collectPureDeletedGroups(plans []typeCheckPlan) []flowRepoGroup {
 	groups := make([]flowRepoGroup, 0)
 	for _, plan := range plans {
-		if plan.parseError != "" {
+		if plan.parseError != nil {
 			continue
 		}
 		var paths []string
@@ -184,7 +184,7 @@ func collectPureDeletedGroups(plans []typeCheckPlan) []flowRepoGroup {
 		}
 		groups = append(groups, flowRepoGroup{
 			ListFile: plan.packageType.ReposListFile(),
-			Repos:     strings.Join(paths, ", "),
+			Repos:    strings.Join(paths, ", "),
 		})
 	}
 	return groups

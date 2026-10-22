@@ -13,6 +13,7 @@ package rules
 import (
 	"os"
 	"path/filepath"
+	"strings"
 	"testing"
 )
 
@@ -105,6 +106,35 @@ func TestNormalizePackageImagesLegacyFallbackAndOptional(t *testing.T) {
 	}
 	if emptyPkg.Icon == nil || *emptyPkg.Icon != "" || emptyPkg.Preview == nil || *emptyPkg.Preview != "" {
 		t.Fatalf("missing images must normalize to explicit empty values: icon=%#v preview=%#v", emptyPkg.Icon, emptyPkg.Preview)
+	}
+}
+
+// 清单未声明 icon、仅靠包根 icon.png 兜底时，报错不得声称「清单字段 icon 声明」了该图片（bazaar#2363）。
+func TestNormalizePackageImagesLegacyFallbackMessages(t *testing.T) {
+	dir := t.TempDir()
+	data := append(minimalPNGBytes(), make([]byte, maxIconImageBytes+1-len(minimalPNGBytes()))...)
+	if err := os.WriteFile(filepath.Join(dir, "icon.png"), data, 0644); err != nil {
+		t.Fatal(err)
+	}
+	issues := normalizePackageImages(map[string]any{}, &Package{}, dir)
+	if len(issues) != 1 {
+		t.Fatalf("expected exactly one legacy icon issue, got %v", issues)
+	}
+	iss := issues[0]
+	if !strings.Contains(iss.MessageZh, "包根的图标文件") || !strings.Contains(iss.MessageZh, "超过上限") {
+		t.Fatalf("zh message should attribute the package-root file, got %q", iss.MessageZh)
+	}
+	if strings.Contains(iss.MessageZh, "清单字段 `icon` 声明") {
+		t.Fatalf("zh message must not claim the manifest declares icon, got %q", iss.MessageZh)
+	}
+	if strings.Contains(iss.MessageZh, "未声明") || strings.Contains(iss.MessageEn, "doesn't declare") {
+		t.Fatalf("message should not contrast manifest declaration with the package-root file, got zh=%q en=%q", iss.MessageZh, iss.MessageEn)
+	}
+	if !strings.Contains(iss.MessageEn, "icon file `icon.png` at the package root") || !strings.Contains(iss.MessageEn, "exceeds the limit") {
+		t.Fatalf("en message should attribute the package-root file, got %q", iss.MessageEn)
+	}
+	if strings.Contains(iss.MessageEn, "declared by manifest field") {
+		t.Fatalf("en message must not claim the manifest declares icon, got %q", iss.MessageEn)
 	}
 }
 

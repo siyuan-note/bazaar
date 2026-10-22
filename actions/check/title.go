@@ -37,7 +37,7 @@ func conventionalPRTitle(plans []typeCheckPlan) (title string, ok bool) {
 	var removedType rules.PackageType
 	removedCount := 0
 	for _, plan := range plans {
-		if plan.parseError != "" {
+		if plan.parseError != nil {
 			return "", false
 		}
 		if len(plan.diff.New) > 0 {
