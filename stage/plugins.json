@@ -1,6 +1,350 @@
 {
   "repos": [
     {
+      "installSize": 17748475,
+      "openIssues": 1,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
+          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Horizon",
+          "zh_CN": "任务管理器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "task",
+          "manager",
+          "filter"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-plugin-task-horizon",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
+        "version": "3.3.0"
+      },
+      "packageZipAssetId": 672806950,
+      "packageZipSha256": "7d368fe4a10472551c73c1b1a1d7fc30361ca68d8c933cc6dacf87fc4c0408a2",
+      "repoRef": "v3.3.0",
+      "size": 3658525,
+      "stars": 38,
+      "updated": "2026-10-24T16:57:56Z",
+      "url": "5kyfkr/siyuan-plugin-task-horizon@7d368fe"
+    },
+    {
+      "installSize": 2439990,
+      "openIssues": 1,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Manage people and relationships in SiYuan: one person, one document, backed by a native database.",
+          "zh-CN": "在思源笔记里管理人脉与人际关系：一人一文档，数据库主干，关系图谱与生日提醒。"
+        },
+        "displayName": {
+          "default": "Lv Contacts",
+          "zh-CN": "小驴人脉"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "小驴",
+          "小驴人脉",
+          "xiaolv",
+          "lv",
+          "人脉",
+          "联系人",
+          "人际关系",
+          "CRM",
+          "通讯录",
+          "生日提醒",
+          "关系图谱",
+          "contacts",
+          "people"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-contacts",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en-US": "README.en-US.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/ai68298100/siyuan-contacts",
+        "version": "0.5.45"
+      },
+      "packageZipAssetId": 672799105,
+      "packageZipSha256": "217773e0ccec453912bc1bc389f75f4b79f465d06df0ce7cab87fbcabf6fc6d6",
+      "repoRef": "v0.5.45",
+      "size": 773647,
+      "stars": 1,
+      "updated": "2026-10-24T16:54:04Z",
+      "url": "ai68298100/siyuan-contacts@217773e"
+    },
+    {
+      "installSize": 2115863,
+      "openIssues": 8,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "description": {
+          "default": "Family &amp; life butler: members, assets, education, health, media, travel - local-first, database-powered, with a unified expiry reminder hub.",
+          "zh-CN": "家庭与生活管家：成员档案、资产管理、育儿上学、病历社保、影音书库、出行旅行。台账进数据库、效期进统一提醒中枢，一切按需开启。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Lv Home",
+          "zh-CN": "小驴管家（内测版）"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "keywords": [
+          "小驴",
+          "小驴管家",
+          "xiaolv",
+          "lv",
+          "family",
+          "家庭",
+          "管家",
+          "资产",
+          "提醒"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-home",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en": "README.en.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/ai68298100/siyuan-home",
+        "version": "0.5.59"
+      },
+      "packageZipAssetId": 672754920,
+      "packageZipSha256": "d83d398406edfc8f060c8b81388cb3a525e4550ee85e073a11a1cc660af9d90b",
+      "repoRef": "v0.5.59",
+      "size": 741783,
+      "stars": 1,
+      "updated": "2026-10-24T16:32:54Z",
+      "url": "ai68298100/siyuan-home@d83d398"
+    },
+    {
+      "installSize": 3325380,
+      "openIssues": 0,
+      "package": {
+        "author": "mirlous",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Free tier forever (up to 10 documents, 1 vault): real-time encrypt selected documents + all assets (images/videos/PDF/xlsx, any format) into a self-developed single-file vault (.sydb); zero plaintext (in-memory injection); unlimited size; Argon2id KDF (OWASP-first) for new vaults. Free tier includes lock/hide with body mask, recovery key (forgot-password recovery), auto/incremental backup, dedup, in-vault recycle bin, restore-on-remove, orphan recovery, password hints, weak-password detection, sensitive-info alert, revision history rollback, audit log, device-bound activation code. Paid unlocks: unlimited documents &amp; vaults, WebDAV two-way sync, mobile read/write (PIN session), TOTP two-factor unlock, tamper/ransomware monitor, burn-after-reading one-time share, OCR full-text image search (tesseract, CDN model), TF-IDF semantic auto-sharding, folder zip import, central vault directory, auto update check. 14-day full trial. Paid license (WeChat nglzhy).",
+          "zh_CN": "🆓 免费版永久可用（最多 10 篇文档、1 个密库）：把选中的文档及全部附件（图片/视频/PDF/xlsx 任意格式）实时加密进一个自研单文件数据库（.sydb），工作区零明文（内存注入显示），容量无上限，新建库默认 Argon2id 加密（OWASP 首选 KDF）。免费版含：锁定隐藏与正文遮罩、恢复密钥（忘记密码可找回）、自动/增量备份、资产去重、库内回收站、移出自动还原、孤儿找回、密码提示、弱密码检测、敏感信息提醒、版本历史回滚、审计日志、设备绑定激活码（防一码多用）。⭐ 付费版解锁：无限文档与无限密库、WebDAV 双向同步、移动端读写（6 位访问码会话）、TOTP 双因素解锁、防勒索/防篡改监控、阅后即焚一次性分享、OCR 图片全文搜索（tesseract，模型走 CDN 不占插件体积）、TF-IDF 语义智能分库、文件夹整包入库、集中分库目录、自动更新检查。14 天全功能体验；付费授权（微信 nglzhy）。"
+        },
+        "displayName": {
+          "default": "Secret Database",
+          "zh_CN": "密库"
+        },
+        "frontends": [
+          "desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "加密",
+          "数据库",
+          "密",
+          "单文件",
+          "回收站",
+          "totp",
+          "ocr",
+          "encryption",
+          "database",
+          "vault",
+          "secret",
+          "recycle"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-edb",
+        "preview": "",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/mirlous/siyuan-edb",
+        "version": "2.0.6"
+      },
+      "packageZipAssetId": 672744800,
+      "packageZipSha256": "f013e773139fbdd90f8d44a10fc14ce3ffe303461d2729059ea1884d6611fa57",
+      "repoRef": "v2.0.6",
+      "size": 1291829,
+      "stars": 0,
+      "updated": "2026-10-24T16:28:23Z",
+      "url": "mirlous/siyuan-edb@f013e77"
+    },
+    {
+      "installSize": 32132759,
+      "openIssues": 3,
+      "package": {
+        "author": "LongDarkroom",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A self-hosted Excalidraw whiteboard for SiYuan. Hand-drawn canvas with offline fonts, SiYuan theme sync, and SVG export that embeds the editable scene.",
+          "zh-CN": "思源笔记的自建 Excalidraw 白板：手绘风画布、离线字体、跟随思源主题，导出的 SVG 内嵌可再次编辑的 scene。"
+        },
+        "displayName": {
+          "default": "Excali Studio",
+          "zh-CN": "Excali 白板"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "excalidraw",
+          "whiteboard",
+          "svg",
+          "白板",
+          "手绘",
+          "画图"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "siyuan-excali-studio",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/LongDarkroom/siyuan-excali-studio",
+        "version": "0.3.1"
+      },
+      "packageZipAssetId": 672483169,
+      "packageZipSha256": "fa5232464a2d9a2f52d7a70ed0bd8cb2a54337fba88da5f376cc2743e9e2b0d5",
+      "repoRef": "v0.3.1",
+      "size": 25827106,
+      "stars": 0,
+      "updated": "2026-10-24T14:33:05Z",
+      "url": "LongDarkroom/siyuan-excali-studio@fa52324"
+    },
+    {
+      "installSize": 1715389,
+      "openIssues": 1,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Organize SiYuan clippings and imports into a document-attribute reading library with status triage and daily resurfacing. Optional AI enrichment is manual and requires a configured provider.",
+          "zh-CN": "小驴拾遗：把思源剪藏和导入文章整理为基于文档属性的读库，支持状态分拣和每日重浮；AI 富化可选且默认手动，需要配置模型。"
+        },
+        "displayName": {
+          "default": "Lv Glean",
+          "zh-CN": "小驴拾遗"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "小驴",
+          "小驴拾遗",
+          "xiaolv",
+          "lv",
+          "剪藏",
+          "稍后读",
+          "阅读管理",
+          "收件箱",
+          "文章库",
+          "读库",
+          "收藏管理",
+          "网页剪藏",
+          "阅读队列",
+          "重浮",
+          "web clipper",
+          "read later",
+          "reading list",
+          "inbox"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-glean",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en-US": "README.en-US.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/ai68298100/siyuan-glean",
+        "version": "1.3.21"
+      },
+      "packageZipAssetId": 672414249,
+      "packageZipSha256": "33d980d439e83962087be2ecba1893666b7377607a68b5a15225e787ecdee70d",
+      "repoRef": "v1.3.21",
+      "size": 543172,
+      "stars": 1,
+      "updated": "2026-10-24T14:03:08Z",
+      "url": "ai68298100/siyuan-glean@33d980d"
+    },
+    {
       "installSize": 1389576,
       "openIssues": 1,
       "package": {
@@ -71,120 +415,6 @@
       "stars": 1,
       "updated": "2026-10-24T13:00:06Z",
       "url": "ai68298100/xiaolv-common@d2bebb3"
-    },
-    {
-      "installSize": 3308676,
-      "openIssues": 0,
-      "package": {
-        "author": "mirlous",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Real-time encrypt documents + all assets (images/videos/PDF/xlsx, any format) into a self-developed single-file vault (.sydb); zero plaintext (in-memory injection). Unlimited size, Argon2id KDF (OWASP-first) for new vaults, TOTP two-factor unlock, tamper/ransomware monitor, burn-after-reading one-time share, auto update check, OCR full-text image search (tesseract, CDN model), TF-IDF semantic auto-sharding, mobile read/write (PIN session), auto/incremental backup, WebDAV two-way sync, dedup, folder zip import, central vault directory, in-vault recycle bin, restore-on-remove, orphan recovery, password hints, recovery key (forgot-password recovery), weak-password detection, sensitive-info alert, revision history rollback, audit log, device-bound activation code (anti code-sharing). Paid license (WeChat nglzhy), 7-day trial.",
-          "zh_CN": "把选中的文档及全部附件（图片/视频/PDF/xlsx 任意格式）实时加密进一个自研单文件数据库（.sydb），工作区零明文（内存注入显示）。容量无上限；新建库默认 Argon2id 加密（OWASP 首选 KDF）、TOTP 双因素解锁、防勒索/防篡改监控、阅后即焚一次性分享、自动更新检查、OCR 图片全文搜索（tesseract，模型走 CDN 不占插件体积）、TF-IDF 语义智能分库、移动端读写（6 位访问码会话）、自动/增量备份、WebDAV 双向同步、资产去重、文件夹整包入库、集中分库目录、库内回收站、移出自动还原、孤儿找回、密码提示、恢复密钥（忘记密码可找回）、弱密码检测、敏感信息提醒、版本历史回滚、审计日志、设备绑定激活码（防一码多用）。付费授权（微信 nglzhy），7 天试用。"
-        },
-        "displayName": {
-          "default": "Secret Database",
-          "zh_CN": "密库"
-        },
-        "frontends": [
-          "desktop"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "加密",
-          "数据库",
-          "密",
-          "单文件",
-          "回收站",
-          "totp",
-          "ocr",
-          "encryption",
-          "database",
-          "vault",
-          "secret",
-          "recycle"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-edb",
-        "preview": "",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/mirlous/siyuan-edb",
-        "version": "2.0.0"
-      },
-      "packageZipAssetId": 672257626,
-      "packageZipSha256": "c89a2798ac8fae7023ff32beefa76fc509817233c464a67cb6af863540277dcc",
-      "repoRef": "v2.0.0",
-      "size": 1285268,
-      "stars": 0,
-      "updated": "2026-10-24T12:50:10Z",
-      "url": "mirlous/siyuan-edb@c89a279"
-    },
-    {
-      "installSize": 1707260,
-      "openIssues": 1,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Organize SiYuan clippings and imports into a document-attribute reading library with status triage and daily resurfacing. Optional AI enrichment is manual and requires a configured provider.",
-          "zh-CN": "小驴拾遗：把思源剪藏和导入文章整理为基于文档属性的读库，支持状态分拣和每日重浮；AI 富化可选且默认手动，需要配置模型。"
-        },
-        "displayName": {
-          "default": "Lv Glean",
-          "zh-CN": "小驴拾遗"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "小驴",
-          "小驴拾遗",
-          "xiaolv",
-          "lv",
-          "剪藏",
-          "稍后读",
-          "阅读管理",
-          "收件箱",
-          "文章库",
-          "读库",
-          "收藏管理",
-          "网页剪藏",
-          "阅读队列",
-          "重浮",
-          "web clipper",
-          "read later",
-          "reading list",
-          "inbox"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-glean",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en-US": "README.en-US.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/ai68298100/siyuan-glean",
-        "version": "1.3.18"
-      },
-      "packageZipAssetId": 672240389,
-      "packageZipSha256": "06ab4d9a8e96bf6da6e77f48d77c67c5e12207b9459207913801f6c144d12959",
-      "repoRef": "v1.3.18",
-      "size": 541310,
-      "stars": 1,
-      "updated": "2026-10-24T12:42:15Z",
-      "url": "ai68298100/siyuan-glean@06ab4d9"
     },
     {
       "installSize": 737455,
@@ -1135,134 +1365,6 @@
       "url": "LunaNorth/siyuan-lumina@a26b4a1"
     },
     {
-      "installSize": 2432040,
-      "openIssues": 1,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Manage people and relationships in SiYuan: one person, one document, backed by a native database.",
-          "zh-CN": "在思源笔记里管理人脉与人际关系：一人一文档，数据库主干，关系图谱与生日提醒。"
-        },
-        "displayName": {
-          "default": "Lv Contacts",
-          "zh-CN": "小驴人脉"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "小驴",
-          "小驴人脉",
-          "xiaolv",
-          "lv",
-          "人脉",
-          "联系人",
-          "人际关系",
-          "CRM",
-          "通讯录",
-          "生日提醒",
-          "关系图谱",
-          "contacts",
-          "people"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-contacts",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en-US": "README.en-US.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/ai68298100/siyuan-contacts",
-        "version": "0.5.42"
-      },
-      "packageZipAssetId": 669493523,
-      "packageZipSha256": "eae89e958d1c08d3fb3a4201ec276bd26765ec177916a845c3d3becda0b905bc",
-      "repoRef": "v0.5.42",
-      "size": 771583,
-      "stars": 1,
-      "updated": "2026-10-23T15:10:40Z",
-      "url": "ai68298100/siyuan-contacts@eae89e9"
-    },
-    {
-      "installSize": 2111514,
-      "openIssues": 8,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "description": {
-          "default": "Family &amp; life butler: members, assets, education, health, media, travel - local-first, database-powered, with a unified expiry reminder hub.",
-          "zh-CN": "家庭与生活管家：成员档案、资产管理、育儿上学、病历社保、影音书库、出行旅行。台账进数据库、效期进统一提醒中枢，一切按需开启。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Lv Home",
-          "zh-CN": "小驴管家（内测版）"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "keywords": [
-          "小驴",
-          "小驴管家",
-          "xiaolv",
-          "lv",
-          "family",
-          "家庭",
-          "管家",
-          "资产",
-          "提醒"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-home",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en": "README.en.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/ai68298100/siyuan-home",
-        "version": "0.5.56"
-      },
-      "packageZipAssetId": 669474466,
-      "packageZipSha256": "464cc7ddc94eb5cd1326e17120410529a0f26a98ac6053f4f3b3c53186103950",
-      "repoRef": "v0.5.56",
-      "size": 740173,
-      "stars": 1,
-      "updated": "2026-10-23T15:03:34Z",
-      "url": "ai68298100/siyuan-home@464cc7d"
-    },
-    {
       "installSize": 2057378,
       "openIssues": 13,
       "package": {
@@ -1525,57 +1627,6 @@
       "stars": 51,
       "updated": "2026-10-23T01:21:53Z",
       "url": "IAliceBobI/sy-tomato-plugin@5b2a468"
-    },
-    {
-      "installSize": 17485667,
-      "openIssues": 1,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
-          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Horizon",
-          "zh_CN": "任务管理器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "task",
-          "manager",
-          "filter"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-plugin-task-horizon",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "3.2.9"
-      },
-      "packageZipAssetId": 667502118,
-      "packageZipSha256": "8100cbe1c8f48ff1d972ba234cce92d233f1a6d3607ba9c32082984a0e132f12",
-      "repoRef": "v3.2.9",
-      "size": 3601886,
-      "stars": 38,
-      "updated": "2026-10-23T00:27:38Z",
-      "url": "5kyfkr/siyuan-plugin-task-horizon@8100cbe"
     },
     {
       "installSize": 4099289,
@@ -1847,57 +1898,6 @@
       "stars": 7,
       "updated": "2026-10-22T10:23:33Z",
       "url": "yangtaihong59/siyuan-plugins-ai-cli-bridge@b668ee6"
-    },
-    {
-      "installSize": 32130135,
-      "openIssues": 0,
-      "package": {
-        "author": "LongDarkroom",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A self-hosted Excalidraw whiteboard for SiYuan. Hand-drawn canvas with offline fonts, SiYuan theme sync, and SVG export that embeds the editable scene.",
-          "zh-CN": "思源笔记的自建 Excalidraw 白板：手绘风画布、离线字体、跟随思源主题，导出的 SVG 内嵌可再次编辑的 scene。"
-        },
-        "displayName": {
-          "default": "Excali Studio",
-          "zh-CN": "Excali 白板"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "excalidraw",
-          "whiteboard",
-          "svg",
-          "白板",
-          "手绘",
-          "画图"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "siyuan-excali-studio",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/LongDarkroom/siyuan-excali-studio",
-        "version": "0.3.0"
-      },
-      "packageZipAssetId": 665406302,
-      "packageZipSha256": "94e56163a6a0f53219e7cb6d3f62351159bcada5dfe3f16d4c2480af36755c0c",
-      "repoRef": "v0.3.0",
-      "size": 25825978,
-      "stars": 0,
-      "updated": "2026-10-22T09:54:01Z",
-      "url": "LongDarkroom/siyuan-excali-studio@94e5616"
     },
     {
       "installSize": 599849,
