@@ -1,6 +1,348 @@
 {
   "repos": [
     {
+      "installSize": 1389576,
+      "openIssues": 1,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Save and recall common content (phrases, snippets, code, links, images, assets, block structures) anchored to real SiYuan blocks — with fill-in variables, snippet nesting, AI transforms, template packs, and faithful source references.",
+          "zh-CN": "基于思源文档和块的常用内容快速调用器：常用语、模板、代码、链接、图片、附件与块结构，条目锚定真实思源块。支持插入时变量填充、片段嵌套、AI 整理/变换/语义找、模板包分享，来源可回链、失效可见。"
+        },
+        "displayName": {
+          "default": "Lv Common (Beta)",
+          "zh-CN": "小驴常用（内测版）"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "lv",
+          "小驴",
+          "常用语",
+          "common phrases",
+          "snippet",
+          "snippets",
+          "模板",
+          "template",
+          "templates",
+          "片段",
+          "快速插入",
+          "quick insert",
+          "小驴常用",
+          "小驴常用（内测版）",
+          "xiaolv",
+          "xiaolv-common",
+          "变量",
+          "variables",
+          "文本扩展",
+          "text expander",
+          "AI",
+          "提示词",
+          "prompt",
+          "剪贴板",
+          "clipboard",
+          "模板包",
+          "template pack"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "xiaolv-common",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en-US": "README.en-US.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/ai68298100/xiaolv-common",
+        "version": "0.7.3"
+      },
+      "packageZipAssetId": 672278391,
+      "packageZipSha256": "d2bebb3893735b7496e9453add0da964b45eaf5bb75577d1eb2679e68b3c4bc2",
+      "repoRef": "v0.7.3",
+      "size": 607306,
+      "stars": 1,
+      "updated": "2026-10-24T13:00:06Z",
+      "url": "ai68298100/xiaolv-common@d2bebb3"
+    },
+    {
+      "installSize": 3308676,
+      "openIssues": 0,
+      "package": {
+        "author": "mirlous",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Real-time encrypt documents + all assets (images/videos/PDF/xlsx, any format) into a self-developed single-file vault (.sydb); zero plaintext (in-memory injection). Unlimited size, Argon2id KDF (OWASP-first) for new vaults, TOTP two-factor unlock, tamper/ransomware monitor, burn-after-reading one-time share, auto update check, OCR full-text image search (tesseract, CDN model), TF-IDF semantic auto-sharding, mobile read/write (PIN session), auto/incremental backup, WebDAV two-way sync, dedup, folder zip import, central vault directory, in-vault recycle bin, restore-on-remove, orphan recovery, password hints, recovery key (forgot-password recovery), weak-password detection, sensitive-info alert, revision history rollback, audit log, device-bound activation code (anti code-sharing). Paid license (WeChat nglzhy), 7-day trial.",
+          "zh_CN": "把选中的文档及全部附件（图片/视频/PDF/xlsx 任意格式）实时加密进一个自研单文件数据库（.sydb），工作区零明文（内存注入显示）。容量无上限；新建库默认 Argon2id 加密（OWASP 首选 KDF）、TOTP 双因素解锁、防勒索/防篡改监控、阅后即焚一次性分享、自动更新检查、OCR 图片全文搜索（tesseract，模型走 CDN 不占插件体积）、TF-IDF 语义智能分库、移动端读写（6 位访问码会话）、自动/增量备份、WebDAV 双向同步、资产去重、文件夹整包入库、集中分库目录、库内回收站、移出自动还原、孤儿找回、密码提示、恢复密钥（忘记密码可找回）、弱密码检测、敏感信息提醒、版本历史回滚、审计日志、设备绑定激活码（防一码多用）。付费授权（微信 nglzhy），7 天试用。"
+        },
+        "displayName": {
+          "default": "Secret Database",
+          "zh_CN": "密库"
+        },
+        "frontends": [
+          "desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "加密",
+          "数据库",
+          "密",
+          "单文件",
+          "回收站",
+          "totp",
+          "ocr",
+          "encryption",
+          "database",
+          "vault",
+          "secret",
+          "recycle"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-edb",
+        "preview": "",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/mirlous/siyuan-edb",
+        "version": "2.0.0"
+      },
+      "packageZipAssetId": 672257626,
+      "packageZipSha256": "c89a2798ac8fae7023ff32beefa76fc509817233c464a67cb6af863540277dcc",
+      "repoRef": "v2.0.0",
+      "size": 1285268,
+      "stars": 0,
+      "updated": "2026-10-24T12:50:10Z",
+      "url": "mirlous/siyuan-edb@c89a279"
+    },
+    {
+      "installSize": 1707260,
+      "openIssues": 1,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Organize SiYuan clippings and imports into a document-attribute reading library with status triage and daily resurfacing. Optional AI enrichment is manual and requires a configured provider.",
+          "zh-CN": "小驴拾遗：把思源剪藏和导入文章整理为基于文档属性的读库，支持状态分拣和每日重浮；AI 富化可选且默认手动，需要配置模型。"
+        },
+        "displayName": {
+          "default": "Lv Glean",
+          "zh-CN": "小驴拾遗"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "小驴",
+          "小驴拾遗",
+          "xiaolv",
+          "lv",
+          "剪藏",
+          "稍后读",
+          "阅读管理",
+          "收件箱",
+          "文章库",
+          "读库",
+          "收藏管理",
+          "网页剪藏",
+          "阅读队列",
+          "重浮",
+          "web clipper",
+          "read later",
+          "reading list",
+          "inbox"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-glean",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en-US": "README.en-US.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/ai68298100/siyuan-glean",
+        "version": "1.3.18"
+      },
+      "packageZipAssetId": 672240389,
+      "packageZipSha256": "06ab4d9a8e96bf6da6e77f48d77c67c5e12207b9459207913801f6c144d12959",
+      "repoRef": "v1.3.18",
+      "size": 541310,
+      "stars": 1,
+      "updated": "2026-10-24T12:42:15Z",
+      "url": "ai68298100/siyuan-glean@06ab4d9"
+    },
+    {
+      "installSize": 737455,
+      "openIssues": 3,
+      "package": {
+        "author": "Yimien",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "en_US": "Sync Memos data to SiYuan",
+          "zh_CN": "将 Memos 的数据同步至思源笔记中"
+        },
+        "displayName": {
+          "en_US": "Memos Sync Assistant",
+          "zh_CN": "Memos 同步助手"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "Memos",
+          "同步",
+          "Sync"
+        ],
+        "minAppVersion": "3.0.12",
+        "name": "plugin-memos-sync-helper",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/Yimien/plugin-memos-sync-helper",
+        "version": "0.2.35"
+      },
+      "packageZipAssetId": 672073926,
+      "packageZipSha256": "86112c1a4d095ba35967affdcf5951064240b5a0a394dc6d728c53ca516de77b",
+      "repoRef": "v0.2.35",
+      "size": 546000,
+      "stars": 22,
+      "updated": "2026-10-24T11:19:08Z",
+      "url": "Yimien/plugin-memos-sync-helper@86112c1"
+    },
+    {
+      "installSize": 7378715,
+      "openIssues": 0,
+      "package": {
+        "author": "LongDarkroom",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "RE Reader: a standalone EPUB/PDF reader for SiYuan. Shelf, PDF &amp; EPUB rendering, word lookup with offline MDX dictionaries, AI translation, bilingual parallel reading, ink annotations, reading stats and TTS — Readest-style reading experience.",
+          "zh-CN": "RE 阅读器：思源笔记的独立 EPUB/PDF 阅读器。书架管理、PDF 与 EPUB 渲染、离线 MDX 词典划词查词、AI 译文与双语对照、本地墨迹批注、阅读时长统计与朗读（TTS），对标 Readest 阅读体验。批注数据本地独立存储，无需依赖其他插件；与「RE word」主插件配合可获得词库收藏与 AI 精读等增强能力。"
+        },
+        "displayName": {
+          "default": "RE Reader",
+          "zh-CN": "RE 阅读器"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "reader",
+          "epub",
+          "pdf",
+          "dictionary",
+          "阅读器",
+          "电子书",
+          "词典",
+          "划词",
+          "双语",
+          "墨迹"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-reader",
+        "preview": "preview.webp",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/LongDarkroom/siyuan-plugin-reader",
+        "version": "0.1.1"
+      },
+      "packageZipAssetId": 672036491,
+      "packageZipSha256": "cf3dc05c811cdb3fc0edc9199d4225e329945327281a8619450043d02a990fb0",
+      "repoRef": "v0.1.1",
+      "size": 3597408,
+      "stars": 0,
+      "updated": "2026-10-24T11:01:48Z",
+      "url": "LongDarkroom/siyuan-plugin-reader@cf3dc05"
+    },
+    {
+      "installSize": 17615145,
+      "openIssues": 0,
+      "package": {
+        "author": "5pyd3r1",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Unofficial English version of Task Horizon, the task manager for SiYuan by 5kyfkr — the same features as the original plugin with an English UI.",
+          "zh_CN": "任务管理器（非官方英文版）：5kyfkr 为思源笔记开发的任务管理插件，功能与原版一致，界面为英文。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Horizon (English)",
+          "zh_CN": "任务管理器（英文版）"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "task",
+          "manager",
+          "filter",
+          "task horizon",
+          "english",
+          "tasks",
+          "todo",
+          "kanban",
+          "calendar",
+          "pomodoro",
+          "focus",
+          "timeline",
+          "whiteboard"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-plugin-task-horizon-en",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/5pyd3r1/siyuan-plugin-task-horizon-en",
+        "version": "3.2.9-en.1"
+      },
+      "packageZipAssetId": 671989334,
+      "packageZipSha256": "7491267b66b21c70515d192287136e0da20105e4f0f4bdf63bf9569677d4e463",
+      "repoRef": "v3.2.9-en.1",
+      "size": 3519443,
+      "stars": 0,
+      "updated": "2026-10-24T10:40:13Z",
+      "url": "5pyd3r1/siyuan-plugin-task-horizon-en@7491267"
+    },
+    {
       "installSize": 150085,
       "openIssues": 0,
       "package": {
@@ -42,6 +384,58 @@
       "stars": 0,
       "updated": "2026-10-24T09:29:47Z",
       "url": "spring-admin/siyuan-plugin-feishu-todo-sync@54d9fe6"
+    },
+    {
+      "installSize": 2674095,
+      "openIssues": 1,
+      "package": {
+        "author": "BorisZhangYYY",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "description": {
+          "default": "Capture web articles, optionally review with AI, edit with the native block editor, and save text, sources and images in SiYuan.",
+          "zh-CN": "网页采集、可选 AI 审阅与原生编辑，保存正文、来源和图片到思源笔记"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "ZhiLiu for SiYuan",
+          "zh-CN": "知流"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "web clipper",
+          "网页剪藏",
+          "微信公众号",
+          "Firecrawl",
+          "AI 审阅",
+          "图片本地化"
+        ],
+        "minAppVersion": "3.8.6",
+        "name": "noosphere-siyuan",
+        "preview": "",
+        "readme": {
+          "default": "docs/README.en.md",
+          "zh-CN": "README.md"
+        },
+        "url": "https://github.com/BorisZhangYYY/noosphere-siyuan",
+        "version": "0.2.0"
+      },
+      "packageZipAssetId": 671742178,
+      "packageZipSha256": "6210c202e0dfcf98349aec2d043bd589a432d90ee07536626ea10a4f57597b79",
+      "repoRef": "v0.2.0",
+      "size": 2401259,
+      "stars": 3,
+      "updated": "2026-10-24T08:45:01Z",
+      "url": "BorisZhangYYY/noosphere-siyuan@6210c20"
     },
     {
       "installSize": 649114,
@@ -140,141 +534,6 @@
       "stars": 3,
       "updated": "2026-10-24T07:15:23Z",
       "url": "CongSec/MeiDay@98b7315"
-    },
-    {
-      "installSize": 1695903,
-      "openIssues": 1,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Organize SiYuan clippings and imports into a document-attribute reading library with status triage and daily resurfacing. Optional AI enrichment is manual and requires a configured provider.",
-          "zh-CN": "小驴拾遗：把思源剪藏和导入文章整理为基于文档属性的读库，支持状态分拣和每日重浮；AI 富化可选且默认手动，需要配置模型。"
-        },
-        "displayName": {
-          "default": "Lv Glean",
-          "zh-CN": "小驴拾遗"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "小驴",
-          "小驴拾遗",
-          "xiaolv",
-          "lv",
-          "剪藏",
-          "稍后读",
-          "阅读管理",
-          "收件箱",
-          "文章库",
-          "读库",
-          "收藏管理",
-          "网页剪藏",
-          "阅读队列",
-          "重浮",
-          "web clipper",
-          "read later",
-          "reading list",
-          "inbox"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-glean",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en-US": "README.en-US.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/ai68298100/siyuan-glean",
-        "version": "1.3.14"
-      },
-      "packageZipAssetId": 671547127,
-      "packageZipSha256": "358021ff1a1abb2f498169596b3234d3721eac22b8dc2dcb049ee02ff0c2a3a0",
-      "repoRef": "v1.3.14",
-      "size": 538309,
-      "stars": 1,
-      "updated": "2026-10-24T07:03:55Z",
-      "url": "ai68298100/siyuan-glean@358021f"
-    },
-    {
-      "installSize": 1372617,
-      "openIssues": 1,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Save and recall common content (phrases, snippets, code, links, images, assets, block structures) anchored to real SiYuan blocks — with fill-in variables, snippet nesting, AI transforms, template packs, and faithful source references.",
-          "zh-CN": "基于思源文档和块的常用内容快速调用器：常用语、模板、代码、链接、图片、附件与块结构，条目锚定真实思源块。支持插入时变量填充、片段嵌套、AI 整理/变换/语义找、模板包分享，来源可回链、失效可见。"
-        },
-        "displayName": {
-          "default": "Lv Common (Beta)",
-          "zh-CN": "小驴常用（内测版）"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "lv",
-          "小驴",
-          "常用语",
-          "common phrases",
-          "snippet",
-          "snippets",
-          "模板",
-          "template",
-          "templates",
-          "片段",
-          "快速插入",
-          "quick insert",
-          "小驴常用",
-          "小驴常用（内测版）",
-          "xiaolv",
-          "xiaolv-common",
-          "变量",
-          "variables",
-          "文本扩展",
-          "text expander",
-          "AI",
-          "提示词",
-          "prompt",
-          "剪贴板",
-          "clipboard",
-          "模板包",
-          "template pack"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "xiaolv-common",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en-US": "README.en-US.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/ai68298100/xiaolv-common",
-        "version": "0.6.8"
-      },
-      "packageZipAssetId": 671544665,
-      "packageZipSha256": "8eec05c575367707ae4894c1b981a6f2a04b656518e7355261be98e1f8fad347",
-      "repoRef": "v0.6.8",
-      "size": 602093,
-      "stars": 1,
-      "updated": "2026-10-24T07:02:13Z",
-      "url": "ai68298100/xiaolv-common@8eec05c"
     },
     {
       "installSize": 853797,
@@ -540,57 +799,6 @@
       "url": "Misuzu2027/syplugin-image-pin-preview@ae3282f"
     },
     {
-      "installSize": 3291785,
-      "openIssues": 0,
-      "package": {
-        "author": "mirlous",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Real-time encrypt documents + all assets (images/videos/PDF/xlsx, any format) into a self-developed single-file vault (.sydb); zero plaintext (in-memory injection). Unlimited size, Argon2id KDF (OWASP-first) for new vaults, TOTP two-factor unlock, tamper/ransomware monitor, burn-after-reading one-time share, auto update check, OCR full-text image search (tesseract, CDN model), TF-IDF semantic auto-sharding, mobile read/write (PIN session), auto/incremental backup, WebDAV two-way sync, dedup, folder zip import, central vault directory, in-vault recycle bin, restore-on-remove, orphan recovery, password hints, recovery key (forgot-password recovery), weak-password detection, sensitive-info alert, revision history rollback, audit log, device-bound activation code (anti code-sharing). Paid license (WeChat nglzhy), 7-day trial.",
-          "zh_CN": "把选中的文档及全部附件（图片/视频/PDF/xlsx 任意格式）实时加密进一个自研单文件数据库（.sydb），工作区零明文（内存注入显示）。容量无上限；新建库默认 Argon2id 加密（OWASP 首选 KDF）、TOTP 双因素解锁、防勒索/防篡改监控、阅后即焚一次性分享、自动更新检查、OCR 图片全文搜索（tesseract，模型走 CDN 不占插件体积）、TF-IDF 语义智能分库、移动端读写（6 位访问码会话）、自动/增量备份、WebDAV 双向同步、资产去重、文件夹整包入库、集中分库目录、库内回收站、移出自动还原、孤儿找回、密码提示、恢复密钥（忘记密码可找回）、弱密码检测、敏感信息提醒、版本历史回滚、审计日志、设备绑定激活码（防一码多用）。付费授权（微信 nglzhy），7 天试用。"
-        },
-        "displayName": {
-          "default": "Secret Database",
-          "zh_CN": "密库"
-        },
-        "frontends": [
-          "desktop"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "加密",
-          "数据库",
-          "密",
-          "单文件",
-          "回收站",
-          "totp",
-          "ocr",
-          "encryption",
-          "database",
-          "vault",
-          "secret",
-          "recycle"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-edb",
-        "preview": "",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/mirlous/siyuan-edb",
-        "version": "1.9.1"
-      },
-      "packageZipAssetId": 671458672,
-      "packageZipSha256": "278beaa22a911871864d375ca5d71216ddb39608793f8480bb830ecf1e640900",
-      "repoRef": "v1.9.1",
-      "size": 1278836,
-      "stars": 0,
-      "updated": "2026-10-24T06:16:14Z",
-      "url": "mirlous/siyuan-edb@278beaa"
-    },
-    {
       "installSize": 179920,
       "openIssues": 0,
       "package": {
@@ -694,58 +902,6 @@
       "stars": 0,
       "updated": "2026-10-24T06:10:22Z",
       "url": "JeffeyChou/siyuan-laser-pointer@654ee75"
-    },
-    {
-      "installSize": 6614576,
-      "openIssues": 0,
-      "package": {
-        "author": "LongDarkroom",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "RE Reader: a standalone EPUB/PDF reader for SiYuan. Shelf, PDF &amp; EPUB rendering, word lookup with offline MDX dictionaries, AI translation, bilingual parallel reading, ink annotations, reading stats and TTS — Readest-style reading experience.",
-          "zh-CN": "RE 阅读器：思源笔记的独立 EPUB/PDF 阅读器。书架管理、PDF 与 EPUB 渲染、离线 MDX 词典划词查词、AI 译文与双语对照、本地墨迹批注、阅读时长统计与朗读（TTS），对标 Readest 阅读体验。批注数据本地独立存储，无需依赖其他插件；与「RE word」主插件配合可获得词库收藏与 AI 精读等增强能力。"
-        },
-        "displayName": {
-          "default": "RE Reader",
-          "zh-CN": "RE 阅读器"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "reader",
-          "epub",
-          "pdf",
-          "dictionary",
-          "阅读器",
-          "电子书",
-          "词典",
-          "划词",
-          "双语",
-          "墨迹"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-reader",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/LongDarkroom/siyuan-plugin-reader",
-        "version": "0.1.0"
-      },
-      "packageZipAssetId": 670917445,
-      "packageZipSha256": "5b33ecb72d5ec082aea8b627ef0f3c507ab35fb51015d0c677f81ee6f9da7acd",
-      "repoRef": "v0.1.0",
-      "size": 2853173,
-      "stars": 0,
-      "updated": "2026-10-24T06:07:08Z",
-      "url": "LongDarkroom/siyuan-plugin-reader@5b33ecb"
     },
     {
       "installSize": 10331301,
@@ -1490,68 +1646,6 @@
       "stars": 32,
       "updated": "2026-10-23T00:22:21Z",
       "url": "IAliceBobI/sy-progressive-plugin@0ff027b"
-    },
-    {
-      "installSize": 17604117,
-      "openIssues": 0,
-      "package": {
-        "author": "5pyd3r1",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Unofficial English version of Task Horizon, the task manager for SiYuan by 5kyfkr — the same features as the original plugin with an English UI.",
-          "zh_CN": "任务管理器（非官方英文版）：5kyfkr 为思源笔记开发的任务管理插件，功能与原版一致，界面为英文。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Horizon (English)",
-          "zh_CN": "任务管理器（英文版）"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "task",
-          "manager",
-          "filter",
-          "task horizon",
-          "english",
-          "tasks",
-          "todo",
-          "kanban",
-          "calendar",
-          "pomodoro",
-          "focus",
-          "timeline",
-          "whiteboard"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-plugin-task-horizon-en",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/5pyd3r1/siyuan-plugin-task-horizon-en",
-        "version": "3.2.8-en.1"
-      },
-      "packageZipAssetId": 666515096,
-      "packageZipSha256": "399952c4aac8f9fe56885c23b42ae235e94602220db19f6a2410982676687ef8",
-      "repoRef": "v3.2.8-en.1",
-      "size": 3517157,
-      "stars": 0,
-      "updated": "2026-10-22T17:09:36Z",
-      "url": "5pyd3r1/siyuan-plugin-task-horizon-en@399952c"
     },
     {
       "installSize": 2841734,
@@ -4763,58 +4857,6 @@
       "url": "TCOTC/snippets@22a5354"
     },
     {
-      "installSize": 2584830,
-      "openIssues": 0,
-      "package": {
-        "author": "BorisZhangYYY",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker"
-        ],
-        "description": {
-          "default": "Capture web articles, optionally review with AI, edit with the native block editor, and save text, sources and images in SiYuan.",
-          "zh-CN": "网页采集、可选 AI 审阅与原生编辑，保存正文、来源和图片到思源笔记"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "ZhiLiu for SiYuan",
-          "zh-CN": "知流"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "web clipper",
-          "网页剪藏",
-          "微信公众号",
-          "Firecrawl",
-          "AI 审阅",
-          "图片本地化"
-        ],
-        "minAppVersion": "3.8.6",
-        "name": "noosphere-siyuan",
-        "preview": "",
-        "readme": {
-          "default": "docs/README.en.md",
-          "zh-CN": "README.md"
-        },
-        "url": "https://github.com/BorisZhangYYY/noosphere-siyuan",
-        "version": "0.1.5"
-      },
-      "packageZipAssetId": 646886106,
-      "packageZipSha256": "f853685ca5a40d6b04a9cce357788549f57cb569a13ccdd527130b8235aa3469",
-      "repoRef": "v0.1.5",
-      "size": 2370522,
-      "stars": 2,
-      "updated": "2026-10-16T09:51:43Z",
-      "url": "BorisZhangYYY/noosphere-siyuan@f853685"
-    },
-    {
       "installSize": 69002,
       "openIssues": 3,
       "package": {
@@ -7700,48 +7742,6 @@
       "stars": 3,
       "updated": "2026-10-05T10:10:34Z",
       "url": "emptylight370/siyuan-ttf-Alibaba_PuHui_Sans@6b85530"
-    },
-    {
-      "installSize": 719868,
-      "openIssues": 6,
-      "package": {
-        "author": "Yimien",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "en_US": "Sync Memos data to SiYuan",
-          "zh_CN": "将 Memos 的数据同步至思源笔记中"
-        },
-        "displayName": {
-          "en_US": "Memos Sync Assistant",
-          "zh_CN": "Memos 同步助手"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "Memos",
-          "同步",
-          "Sync"
-        ],
-        "minAppVersion": "3.0.12",
-        "name": "plugin-memos-sync-helper",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/Yimien/plugin-memos-sync-helper",
-        "version": "0.2.20"
-      },
-      "packageZipAssetId": 612113856,
-      "packageZipSha256": "7210c4b5b97cec092d7d9e8bd0f1b81eb747f5a7ed9a331a496e98b69db2a585",
-      "repoRef": "v0.2.20",
-      "size": 540857,
-      "stars": 22,
-      "updated": "2026-10-05T09:32:32Z",
-      "url": "Yimien/plugin-memos-sync-helper@7210c4b"
     },
     {
       "installSize": 1812288,
