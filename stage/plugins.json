@@ -1,7 +1,60 @@
 {
   "repos": [
     {
-      "installSize": 404074,
+      "installSize": 375182,
+      "openIssues": 1,
+      "package": {
+        "author": "Laniakea Kamasylvia",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "android",
+          "ios",
+          "harmony"
+        ],
+        "description": {
+          "default": "Save online content to your SiYuan workspace, utilize embedded template engine and organize your reading list to your needs. Preserve the web with ReadItLater.",
+          "zh-CN": "将网页内容保存为思源笔记,利用内置模板引擎按需整理你的阅读列表。Preserve the web with ReadItLater."
+        },
+        "displayName": {
+          "default": "ReadItLater",
+          "zh-CN": "稍后读"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "read-it-later",
+          "clipping",
+          "web-clipper"
+        ],
+        "minAppVersion": "3.2.0",
+        "name": "siyuan-read-it-later",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/kamasylvia/SiYuan-ReadItLater",
+        "version": "0.11.5"
+      },
+      "packageZipAssetId": 675530926,
+      "packageZipSha256": "6101931a8d1f6b11d835503e29f8e9299258e3e7d8bf6ece08660a8c330a0b71",
+      "repoRef": "v0.11.5",
+      "size": 185675,
+      "stars": 0,
+      "updated": "2026-10-25T16:28:52Z",
+      "url": "kamasylvia/SiYuan-ReadItLater@6101931"
+    },
+    {
+      "installSize": 404418,
       "openIssues": 0,
       "package": {
         "author": "clock-05",
@@ -11,8 +64,8 @@
           "darwin"
         ],
         "description": {
-          "default": "Drag Markdown files, whole folders or ZIP archives from your file manager onto SiYuan&#39;s document tree: the folder structure becomes documents, images and attachments are uploaded and linked, name conflicts can be replaced or appended, and any import can be undone for 30 seconds.",
-          "zh-CN": "从资源管理器把 md、整个文件夹或 zip 拖到文档树，松手就是一篇篇文档，层级原样还原。图片与附件自动上传并改写链接，同名冲突可选覆盖或追加，整批导入 30 秒内可撤销。"
+          "default": "Drag Markdown files, folders or ZIP archives onto the document tree to create documents, with images and attachments uploaded automatically. A result card appears afterwards, offering undo, retry of failed items, and the import log. The code was written entirely by AI; the author tested it.",
+          "zh-CN": "把 md 文件、文件夹或 zip 拖到文档树，生成对应文档，图片与附件自动上传。导入结束后弹出结果卡片，可撤销、重试失败项、打开日志。代码由 AI 全部完成，作者负责测试。"
         },
         "disabledInPublish": true,
         "displayName": {
@@ -42,15 +95,15 @@
           "zh-CN": "README.zh-CN.md"
         },
         "url": "https://github.com/clock-05/siyuan-drag-import",
-        "version": "1.0.0"
+        "version": "1.0.1"
       },
-      "packageZipAssetId": 675403456,
-      "packageZipSha256": "094ba171e3f5ff94e12c69ea73da22bed550d8c6dd0ac80e32d1974f7925a57f",
-      "repoRef": "v1.0.0",
-      "size": 319571,
+      "packageZipAssetId": 675438823,
+      "packageZipSha256": "5113f2d154f2249a38762a0a99abc3dea04847d76a3d015b2fc17109357d0e87",
+      "repoRef": "v1.0.1",
+      "size": 319747,
       "stars": 0,
-      "updated": "2026-10-25T15:39:37Z",
-      "url": "clock-05/siyuan-drag-import@094ba17"
+      "updated": "2026-10-25T15:51:51Z",
+      "url": "clock-05/siyuan-drag-import@5113f2d"
     },
     {
       "installSize": 3410388,
@@ -1614,59 +1667,6 @@
       "stars": 1,
       "updated": "2026-10-25T01:15:22Z",
       "url": "ai68298100/siyuan-checkin@de2073b"
-    },
-    {
-      "installSize": 368719,
-      "openIssues": 2,
-      "package": {
-        "author": "Laniakea Kamasylvia",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "android",
-          "ios",
-          "harmony"
-        ],
-        "description": {
-          "default": "Save online content to your SiYuan workspace, utilize embedded template engine and organize your reading list to your needs. Preserve the web with ReadItLater.",
-          "zh-CN": "将网页内容保存为思源笔记,利用内置模板引擎按需整理你的阅读列表。Preserve the web with ReadItLater."
-        },
-        "displayName": {
-          "default": "ReadItLater",
-          "zh-CN": "稍后读"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "read-it-later",
-          "clipping",
-          "web-clipper"
-        ],
-        "minAppVersion": "3.2.0",
-        "name": "siyuan-read-it-later",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/kamasylvia/SiYuan-ReadItLater",
-        "version": "0.11.4"
-      },
-      "packageZipAssetId": 673020393,
-      "packageZipSha256": "2cc9b6722a071fc720589d5adc3a6983691736c677546166344a54387c8e17ca",
-      "repoRef": "v0.11.4",
-      "size": 180056,
-      "stars": 0,
-      "updated": "2026-10-24T18:52:59Z",
-      "url": "kamasylvia/SiYuan-ReadItLater@2cc9b67"
     },
     {
       "installSize": 17615145,
