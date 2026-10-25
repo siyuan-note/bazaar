@@ -1,6 +1,488 @@
 {
   "repos": [
     {
+      "installSize": 3410388,
+      "openIssues": 0,
+      "package": {
+        "author": "mirlous",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Free tier forever (up to 10 documents, 1 vault): real-time encrypt selected documents + all assets (images/videos/PDF/xlsx, any format) into a self-developed single-file vault (.sydb); zero plaintext (in-memory injection); unlimited size; Argon2id KDF (OWASP-first) for new vaults. Free tier includes lock/hide with body mask, recovery key (forgot-password recovery), auto/incremental backup, dedup, in-vault recycle bin, restore-on-remove, orphan recovery, password hints, weak-password detection, sensitive-info alert, revision history rollback, audit log, device-bound activation code. Paid unlocks: unlimited documents &amp; vaults, WebDAV two-way sync, mobile read/write (PIN session), TOTP two-factor unlock, tamper/ransomware monitor, burn-after-reading one-time share, OCR full-text image search (tesseract, CDN model), TF-IDF semantic auto-sharding, folder zip import, central vault directory, auto update check. 14-day full trial. Paid license (WeChat nglzhy).",
+          "zh_CN": "🆓 免费版永久可用（最多 10 篇文档、1 个密库）：把选中的文档及全部附件（图片/视频/PDF/xlsx 任意格式）实时加密进一个自研单文件数据库（.sydb），工作区零明文（内存注入显示），容量无上限，新建库默认 Argon2id 加密（OWASP 首选 KDF）。免费版含：锁定隐藏与正文遮罩、恢复密钥（忘记密码可找回）、自动/增量备份、资产去重、库内回收站、移出自动还原、孤儿找回、密码提示、弱密码检测、敏感信息提醒、版本历史回滚、审计日志、设备绑定激活码（防一码多用）。⭐ 付费版解锁：无限文档与无限密库、WebDAV 双向同步、移动端读写（6 位访问码会话）、TOTP 双因素解锁、防勒索/防篡改监控、阅后即焚一次性分享、OCR 图片全文搜索（tesseract，模型走 CDN 不占插件体积）、TF-IDF 语义智能分库、文件夹整包入库、集中分库目录、自动更新检查。14 天全功能体验；付费授权（微信 nglzhy）。"
+        },
+        "displayName": {
+          "default": "Secret Database",
+          "zh_CN": "密库"
+        },
+        "frontends": [
+          "desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "加密",
+          "数据库",
+          "密",
+          "单文件",
+          "回收站",
+          "totp",
+          "ocr",
+          "encryption",
+          "database",
+          "vault",
+          "secret",
+          "recycle"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-edb",
+        "preview": "",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/mirlous/siyuan-edb",
+        "version": "2.2.0"
+      },
+      "packageZipAssetId": 675268268,
+      "packageZipSha256": "f4d583f92e42f616666076b7df25181aa15d6c08159429b51edc613fbefd36f3",
+      "repoRef": "v2.2.0",
+      "size": 1321861,
+      "stars": 0,
+      "updated": "2026-10-25T14:35:01Z",
+      "url": "mirlous/siyuan-edb@f4d583f"
+    },
+    {
+      "installSize": 2820912,
+      "openIssues": 0,
+      "package": {
+        "author": "QYL",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A companion plugin for the Neo theme",
+          "zh-CN": "Neo主题的配套插件",
+          "zh-TW": "Neo主題的配套插件"
+        },
+        "displayName": {
+          "default": "Neo+"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://icnmjy02sv9g.feishu.cn/wiki/FekNwrtB7ia1WckYelRckwzZnig?from=from_copylink"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "Apple",
+          "macOS",
+          "Cupertino"
+        ],
+        "minAppVersion": "3.8.8",
+        "name": "Neo-Plus",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md",
+          "zh-TW": "README.zh-TW.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/QYLexpired/Neo-Plus",
+        "version": "1.8.0"
+      },
+      "packageZipAssetId": 675177582,
+      "packageZipSha256": "48dfa0c2ec3ca78bb15b3a218fc15765bac9c0a05b38ba88efccba9d270d1667",
+      "repoRef": "v1.8.0",
+      "size": 1276961,
+      "stars": 15,
+      "updated": "2026-10-25T13:54:20Z",
+      "url": "QYLexpired/Neo-Plus@48dfa0c"
+    },
+    {
+      "installSize": 2535197,
+      "openIssues": 5,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "description": {
+          "default": "Local-first learning, question bank, and exam workspace in SiYuan: language acquisition (Cantonese/English), flashcards, practice, mock exams, wrongbook, teacher worksheets, and reviewable AI assistance.",
+          "zh-CN": "本地研学与全真备考中枢：支持粤语与外语研学、读书制卡、刷题、全真模考、错题靶向攻坚、教师双栏试卷印刷与 FSRS 记忆复习——知识长在你的知识库里。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Lv Study (Beta)",
+          "zh-CN": "小驴学习（原小驴考试）"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "小驴",
+          "小驴学习",
+          "小驴考试",
+          "xiaolv",
+          "lv",
+          "study",
+          "exam",
+          "learning",
+          "cantonese",
+          "粤语",
+          "quiz",
+          "flashcard",
+          "spaced-repetition",
+          "wrongbook",
+          "题库",
+          "试卷",
+          "教研",
+          "备考",
+          "刷题",
+          "背题",
+          "模考",
+          "错题本",
+          "闪卡",
+          "考试",
+          "AI"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-exam",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en_US": "README.en-US.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/ai68298100/siyuan-exam",
+        "version": "0.11.51"
+      },
+      "packageZipAssetId": 675148811,
+      "packageZipSha256": "c30017e42fc9c8d3d785723ea105d3c67fddb908e1290c6fa7c7dd1854b81fcf",
+      "repoRef": "v0.11.51",
+      "size": 1043212,
+      "stars": 1,
+      "updated": "2026-10-25T13:42:10Z",
+      "url": "ai68298100/siyuan-exam@c30017e"
+    },
+    {
+      "installSize": 2043994,
+      "openIssues": 0,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "description": {
+          "default": "A local-first, full-lifecycle flashcard learning platform for SiYuan: capture, understand, create, practice, review, apply, maintain and connect knowledge with AI and the native FSRS scheduler.",
+          "zh-CN": "思源的全域闪卡学习平台：以 AI 辅助知识捕获、理解、制卡、练习、复习、应用、维护和生态联动——正式调度由内核原生 FSRS 负责。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Lv Cards (Beta)",
+          "zh-CN": "小驴闪卡（内测版）"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "keywords": [
+          "小驴",
+          "小驴闪卡",
+          "xiaolv",
+          "lv",
+          "flashcard",
+          "闪卡",
+          "FSRS",
+          "spaced repetition",
+          "间隔重复",
+          "Anki",
+          "AI",
+          "Agent",
+          "statistics",
+          "统计",
+          "记忆"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-lv-cards",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.en.md",
+          "zh-CN": "README.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/ai68298100/siyuan-lv-cards",
+        "version": "0.210.57"
+      },
+      "packageZipAssetId": 675081525,
+      "packageZipSha256": "b43e03e1a57f05e8e9f76a718c83e622d6d01079b353acc4bd26bd3f8e0b7019",
+      "repoRef": "v0.210.57",
+      "size": 759251,
+      "stars": 2,
+      "updated": "2026-10-25T13:12:12Z",
+      "url": "ai68298100/siyuan-lv-cards@b43e03e"
+    },
+    {
+      "installSize": 1396444,
+      "openIssues": 1,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Save and recall common content (phrases, snippets, code, links, images, assets, block structures) anchored to real SiYuan blocks — with fill-in variables, snippet nesting, AI transforms, template packs, and faithful source references.",
+          "zh-CN": "基于思源文档和块的常用内容快速调用器：常用语、模板、代码、链接、图片、附件与块结构，条目锚定真实思源块。支持插入时变量填充、片段嵌套、AI 整理/变换/语义找、模板包分享，来源可回链、失效可见。"
+        },
+        "displayName": {
+          "default": "Lv Common (Beta)",
+          "zh-CN": "小驴常用（内测版）"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "lv",
+          "小驴",
+          "常用语",
+          "common phrases",
+          "snippet",
+          "snippets",
+          "模板",
+          "template",
+          "templates",
+          "片段",
+          "快速插入",
+          "quick insert",
+          "小驴常用",
+          "小驴常用（内测版）",
+          "xiaolv",
+          "xiaolv-common",
+          "变量",
+          "variables",
+          "文本扩展",
+          "text expander",
+          "AI",
+          "提示词",
+          "prompt",
+          "剪贴板",
+          "clipboard",
+          "模板包",
+          "template pack"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "xiaolv-common",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en-US": "README.en-US.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/ai68298100/xiaolv-common",
+        "version": "0.7.8"
+      },
+      "packageZipAssetId": 675071067,
+      "packageZipSha256": "28f634c0eec4768f391e6cbe6218124c985f79c6df384cb50f96d04f66e4d08f",
+      "repoRef": "v0.7.8",
+      "size": 609745,
+      "stars": 1,
+      "updated": "2026-10-25T13:07:33Z",
+      "url": "ai68298100/xiaolv-common@28f634c"
+    },
+    {
+      "installSize": 15267499,
+      "openIssues": 3,
+      "package": {
+        "author": "Glaube-TY",
+        "backends": [
+          "windows",
+          "linux",
+          "ios",
+          "android",
+          "harmony",
+          "docker",
+          "darwin"
+        ],
+        "description": {
+          "en_US": "Provides personalized homepage layout and rich functional modules, as well as AI knowledge base.",
+          "zh_CN": "提供个性化首页布局和丰富的功能模块以及 AI 知识库功能。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "en_US": "HOME",
+          "zh_CN": "主页"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://glaube-ty.top/da-shang/"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "keywords": [
+          "homepage",
+          "home",
+          "主页",
+          "首页",
+          "task",
+          "task manager",
+          "任务",
+          "任务管理",
+          "SQL",
+          "sql",
+          "查询",
+          "widget",
+          "widget manager",
+          "挂件",
+          "挂件管理",
+          "组件",
+          "组件管理",
+          "Pomodoro",
+          "Pomodoro timer",
+          "番茄钟",
+          "番茄",
+          "heat map",
+          "热力图",
+          "热搜",
+          "搜索",
+          "AI",
+          "智能助手",
+          "agent",
+          "智能体"
+        ],
+        "minAppVersion": "3.8.6",
+        "name": "siyuan-homepage",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/Glaube-TY/siyuan-homepage",
+        "version": "5.1.14"
+      },
+      "packageZipAssetId": 674975845,
+      "packageZipSha256": "c4e18bfe060f46e294277358ac36b8c2ebe6098cc90566d9e3e915a0fe80f8aa",
+      "repoRef": "v5.1.14",
+      "size": 5453430,
+      "stars": 42,
+      "updated": "2026-10-25T12:20:52Z",
+      "url": "Glaube-TY/siyuan-homepage@c4e18bf"
+    },
+    {
+      "installSize": 8619940,
+      "openIssues": 0,
+      "package": {
+        "author": "Ray Zhang",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "android",
+          "ios",
+          "harmony",
+          "docker"
+        ],
+        "description": {
+          "default": "Draw and edit professional analog schematics inside SiYuan",
+          "zh-CN": "在思源笔记中绘制、编辑专业模拟电路原理图"
+        },
+        "displayName": {
+          "default": "Analog Canvas",
+          "zh-CN": "Analog Canvas 电路图"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "android",
+          "ios",
+          "harmony",
+          "docker"
+        ],
+        "keywords": [
+          "analog",
+          "circuit",
+          "schematic",
+          "electronics",
+          "spice",
+          "电路图",
+          "模拟电路"
+        ],
+        "minAppVersion": "3.1.0",
+        "name": "siyuan-analog-canvas",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/BUGdefender404/siyuan-analog-canvas",
+        "version": "0.2.2"
+      },
+      "packageZipAssetId": 674902393,
+      "packageZipSha256": "cc760e9df2c6561cfbedda437cff2d65edefa8f690b84a532c6f22b815aa016f",
+      "repoRef": "v0.2.2",
+      "size": 3224278,
+      "stars": 0,
+      "updated": "2026-10-25T11:45:38Z",
+      "url": "BUGdefender404/siyuan-analog-canvas@cc760e9"
+    },
+    {
       "installSize": 11350338,
       "openIssues": 0,
       "package": {
@@ -43,6 +525,120 @@
       "stars": 0,
       "updated": "2026-10-25T11:33:26Z",
       "url": "Chen017/siyuan-plugin-misans@d96def1"
+    },
+    {
+      "installSize": 10331913,
+      "openIssues": 1,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
+          "zh_CN": "一款在思源笔记里实现任务管理功能的插件，为了践行「防弹笔记法」而开发。支持电脑端和移动端系统通知提醒任务执行、日历视图查看行事历、项目管理、四象限面板、番茄钟专注、习惯打卡等功能"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Note Management",
+          "zh_CN": "任务笔记管理"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://pancake.waffo.ai/store/achuan-2-fdbho4ye/product/PROD_3F7Aa7c2NQlz9KmxcgxjQ7?type=onetime&amp;currency=USD",
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "reminder",
+          "time",
+          "calendar",
+          "notification",
+          "提醒",
+          "时间",
+          "日历",
+          "通知",
+          "番茄钟",
+          "四象限",
+          "任务管理",
+          "项目管理",
+          "习惯打卡"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-task-note-management",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README_en.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
+        "version": "7.1.6"
+      },
+      "packageZipAssetId": 674847124,
+      "packageZipSha256": "cc9de15ae3e34133202195569715d07ff2763f78b960ec96245855cf31d20b14",
+      "repoRef": "v7.1.6",
+      "size": 4648798,
+      "stars": 225,
+      "updated": "2026-10-25T11:21:00Z",
+      "url": "Achuan-2/siyuan-plugin-task-note-management@cc9de15"
+    },
+    {
+      "installSize": 31730325,
+      "openIssues": 0,
+      "package": {
+        "author": "LongDarkroom",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A self-hosted Excalidraw whiteboard for SiYuan. Hand-drawn canvas with offline fonts, SiYuan theme sync, and SVG export that embeds the editable scene.",
+          "zh-CN": "思源笔记的自建 Excalidraw 白板：手绘风画布、离线字体、跟随思源主题，导出的 SVG 内嵌可再次编辑的 scene。"
+        },
+        "displayName": {
+          "default": "Excali Studio",
+          "zh-CN": "Excali 白板"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "excalidraw",
+          "whiteboard",
+          "svg",
+          "白板",
+          "手绘",
+          "画图"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "siyuan-excali-studio",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/LongDarkroom/siyuan-excali-studio",
+        "version": "0.5.1"
+      },
+      "packageZipAssetId": 674793454,
+      "packageZipSha256": "ef86297554d6f4c53c4f92be0395c9e779f30c1231dd77005cf54eb37964516e",
+      "repoRef": "v0.5.1",
+      "size": 25714362,
+      "stars": 1,
+      "updated": "2026-10-25T10:52:35Z",
+      "url": "LongDarkroom/siyuan-excali-studio@ef86297"
     },
     {
       "installSize": 2469969,
@@ -166,57 +762,6 @@
       "url": "ai68298100/siyuan-glean@44811da"
     },
     {
-      "installSize": 3382185,
-      "openIssues": 0,
-      "package": {
-        "author": "mirlous",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Free tier forever (up to 10 documents, 1 vault): real-time encrypt selected documents + all assets (images/videos/PDF/xlsx, any format) into a self-developed single-file vault (.sydb); zero plaintext (in-memory injection); unlimited size; Argon2id KDF (OWASP-first) for new vaults. Free tier includes lock/hide with body mask, recovery key (forgot-password recovery), auto/incremental backup, dedup, in-vault recycle bin, restore-on-remove, orphan recovery, password hints, weak-password detection, sensitive-info alert, revision history rollback, audit log, device-bound activation code. Paid unlocks: unlimited documents &amp; vaults, WebDAV two-way sync, mobile read/write (PIN session), TOTP two-factor unlock, tamper/ransomware monitor, burn-after-reading one-time share, OCR full-text image search (tesseract, CDN model), TF-IDF semantic auto-sharding, folder zip import, central vault directory, auto update check. 14-day full trial. Paid license (WeChat nglzhy).",
-          "zh_CN": "🆓 免费版永久可用（最多 10 篇文档、1 个密库）：把选中的文档及全部附件（图片/视频/PDF/xlsx 任意格式）实时加密进一个自研单文件数据库（.sydb），工作区零明文（内存注入显示），容量无上限，新建库默认 Argon2id 加密（OWASP 首选 KDF）。免费版含：锁定隐藏与正文遮罩、恢复密钥（忘记密码可找回）、自动/增量备份、资产去重、库内回收站、移出自动还原、孤儿找回、密码提示、弱密码检测、敏感信息提醒、版本历史回滚、审计日志、设备绑定激活码（防一码多用）。⭐ 付费版解锁：无限文档与无限密库、WebDAV 双向同步、移动端读写（6 位访问码会话）、TOTP 双因素解锁、防勒索/防篡改监控、阅后即焚一次性分享、OCR 图片全文搜索（tesseract，模型走 CDN 不占插件体积）、TF-IDF 语义智能分库、文件夹整包入库、集中分库目录、自动更新检查。14 天全功能体验；付费授权（微信 nglzhy）。"
-        },
-        "displayName": {
-          "default": "Secret Database",
-          "zh_CN": "密库"
-        },
-        "frontends": [
-          "desktop"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "加密",
-          "数据库",
-          "密",
-          "单文件",
-          "回收站",
-          "totp",
-          "ocr",
-          "encryption",
-          "database",
-          "vault",
-          "secret",
-          "recycle"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-edb",
-        "preview": "",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/mirlous/siyuan-edb",
-        "version": "2.1.6"
-      },
-      "packageZipAssetId": 674747891,
-      "packageZipSha256": "dba791b35a798ead3407f9b29fa924973f1d3452055b476af8d05c14c918da6d",
-      "repoRef": "v2.1.6",
-      "size": 1312438,
-      "stars": 0,
-      "updated": "2026-10-25T10:28:45Z",
-      "url": "mirlous/siyuan-edb@dba791b"
-    },
-    {
       "installSize": 2121710,
       "openIssues": 8,
       "package": {
@@ -285,75 +830,6 @@
       "stars": 1,
       "updated": "2026-10-25T10:26:07Z",
       "url": "ai68298100/siyuan-home@b790955"
-    },
-    {
-      "installSize": 2515479,
-      "openIssues": 5,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "description": {
-          "default": "Local-first exam question bank in SiYuan: import (Excel/CSV/TSV/GIFT/Aiken/native package), practice, recite, mock exam, wrongbook, FSRS flashcards, and reviewable AI assistance. Your question bank lives in your knowledge base.",
-          "zh-CN": "本地题库学习工作台：导入 Excel/CSV/TSV/GIFT/Aiken/思源原生包，刷题、背诵、模考、错题本、FSRS 闪卡与可审核的 AI 辅助——题库长在你的知识库里。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Lv Exam (Beta)",
-          "zh-CN": "小驴考试（内测版）"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "小驴",
-          "小驴考试",
-          "xiaolv",
-          "lv",
-          "exam",
-          "quiz",
-          "flashcard",
-          "spaced-repetition",
-          "wrongbook",
-          "题库",
-          "刷题",
-          "背题",
-          "模考",
-          "错题本",
-          "闪卡",
-          "考试",
-          "AI"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-exam",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en_US": "README.en-US.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/ai68298100/siyuan-exam",
-        "version": "0.11.44"
-      },
-      "packageZipAssetId": 674727739,
-      "packageZipSha256": "929e0b1ad622684c499468ce8815ed1d154b1fc3a1f68e186d34c04ade2a0229",
-      "repoRef": "v0.11.44",
-      "size": 1037063,
-      "stars": 1,
-      "updated": "2026-10-25T10:18:30Z",
-      "url": "ai68298100/siyuan-exam@929e0b1"
     },
     {
       "installSize": 4320724,
@@ -427,57 +903,6 @@
       "stars": 54,
       "updated": "2026-10-25T09:37:23Z",
       "url": "mm-o/siyuan-media-player@9deed71"
-    },
-    {
-      "installSize": 31726315,
-      "openIssues": 1,
-      "package": {
-        "author": "LongDarkroom",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A self-hosted Excalidraw whiteboard for SiYuan. Hand-drawn canvas with offline fonts, SiYuan theme sync, and SVG export that embeds the editable scene.",
-          "zh-CN": "思源笔记的自建 Excalidraw 白板：手绘风画布、离线字体、跟随思源主题，导出的 SVG 内嵌可再次编辑的 scene。"
-        },
-        "displayName": {
-          "default": "Excali Studio",
-          "zh-CN": "Excali 白板"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "excalidraw",
-          "whiteboard",
-          "svg",
-          "白板",
-          "手绘",
-          "画图"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "siyuan-excali-studio",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/LongDarkroom/siyuan-excali-studio",
-        "version": "0.5.0"
-      },
-      "packageZipAssetId": 674524756,
-      "packageZipSha256": "cb88cafa9454e510ae767da2028311b609bbfefe925972d236b4fc2b0ebaee27",
-      "repoRef": "v0.5.0",
-      "size": 25713186,
-      "stars": 0,
-      "updated": "2026-10-25T08:38:55Z",
-      "url": "LongDarkroom/siyuan-excali-studio@cb88caf"
     },
     {
       "installSize": 343129,
@@ -623,82 +1048,6 @@
       "stars": 5,
       "updated": "2026-10-25T07:38:23Z",
       "url": "gradypark86/siyuan-plugin-calendar@2c99f00"
-    },
-    {
-      "installSize": 2140687,
-      "openIssues": 0,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "description": {
-          "default": "A local-first, full-lifecycle flashcard learning platform for SiYuan: capture, understand, create, practice, review, apply, maintain and connect knowledge with AI and the native FSRS scheduler.",
-          "zh-CN": "思源的全域闪卡学习平台：以 AI 辅助知识捕获、理解、制卡、练习、复习、应用、维护和生态联动——正式调度由内核原生 FSRS 负责。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Lv Cards (Beta)",
-          "zh-CN": "小驴闪卡（内测版）"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "keywords": [
-          "小驴",
-          "小驴闪卡",
-          "xiaolv",
-          "lv",
-          "flashcard",
-          "闪卡",
-          "FSRS",
-          "spaced repetition",
-          "间隔重复",
-          "Anki",
-          "AI",
-          "Agent",
-          "statistics",
-          "统计",
-          "记忆"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-lv-cards",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.en.md",
-          "zh-CN": "README.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/ai68298100/siyuan-lv-cards",
-        "version": "0.210.53"
-      },
-      "packageZipAssetId": 674386930,
-      "packageZipSha256": "c8f56a751d42c8772ef2caa40b72a885cb37a0d9160fb088599dc100299d8709",
-      "repoRef": "v0.210.53",
-      "size": 767092,
-      "stars": 2,
-      "updated": "2026-10-25T07:27:58Z",
-      "url": "ai68298100/siyuan-lv-cards@c8f56a7"
     },
     {
       "installSize": 17798875,
@@ -1268,78 +1617,6 @@
       "url": "kamasylvia/SiYuan-ReadItLater@2cc9b67"
     },
     {
-      "installSize": 1391036,
-      "openIssues": 1,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Save and recall common content (phrases, snippets, code, links, images, assets, block structures) anchored to real SiYuan blocks — with fill-in variables, snippet nesting, AI transforms, template packs, and faithful source references.",
-          "zh-CN": "基于思源文档和块的常用内容快速调用器：常用语、模板、代码、链接、图片、附件与块结构，条目锚定真实思源块。支持插入时变量填充、片段嵌套、AI 整理/变换/语义找、模板包分享，来源可回链、失效可见。"
-        },
-        "displayName": {
-          "default": "Lv Common (Beta)",
-          "zh-CN": "小驴常用（内测版）"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "lv",
-          "小驴",
-          "常用语",
-          "common phrases",
-          "snippet",
-          "snippets",
-          "模板",
-          "template",
-          "templates",
-          "片段",
-          "快速插入",
-          "quick insert",
-          "小驴常用",
-          "小驴常用（内测版）",
-          "xiaolv",
-          "xiaolv-common",
-          "变量",
-          "variables",
-          "文本扩展",
-          "text expander",
-          "AI",
-          "提示词",
-          "prompt",
-          "剪贴板",
-          "clipboard",
-          "模板包",
-          "template pack"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "xiaolv-common",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en-US": "README.en-US.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/ai68298100/xiaolv-common",
-        "version": "0.7.4"
-      },
-      "packageZipAssetId": 672928400,
-      "packageZipSha256": "1ac2a36d446ad058dfb34027f4685acac9195f2c770b0f7fd9d91bd4c91a8f64",
-      "repoRef": "v0.7.4",
-      "size": 607946,
-      "stars": 1,
-      "updated": "2026-10-24T17:58:20Z",
-      "url": "ai68298100/xiaolv-common@1ac2a36"
-    },
-    {
       "installSize": 17615145,
       "openIssues": 0,
       "package": {
@@ -1818,135 +2095,6 @@
       "url": "JeffeyChou/siyuan-laser-pointer@654ee75"
     },
     {
-      "installSize": 10331301,
-      "openIssues": 1,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
-          "zh_CN": "一款在思源笔记里实现任务管理功能的插件，为了践行「防弹笔记法」而开发。支持电脑端和移动端系统通知提醒任务执行、日历视图查看行事历、项目管理、四象限面板、番茄钟专注、习惯打卡等功能"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Note Management",
-          "zh_CN": "任务笔记管理"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://pancake.waffo.ai/store/achuan-2-fdbho4ye/product/PROD_3F7Aa7c2NQlz9KmxcgxjQ7?type=onetime&amp;currency=USD",
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "reminder",
-          "time",
-          "calendar",
-          "notification",
-          "提醒",
-          "时间",
-          "日历",
-          "通知",
-          "番茄钟",
-          "四象限",
-          "任务管理",
-          "项目管理",
-          "习惯打卡"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-task-note-management",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README_en.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
-        "version": "7.1.5"
-      },
-      "packageZipAssetId": 671255979,
-      "packageZipSha256": "c270625ec4676d604d02b69bc539a7b4b4d191e3283c5eb85e267c49a77e33bc",
-      "repoRef": "v7.1.5",
-      "size": 4648708,
-      "stars": 224,
-      "updated": "2026-10-24T04:29:09Z",
-      "url": "Achuan-2/siyuan-plugin-task-note-management@c270625"
-    },
-    {
-      "installSize": 8618301,
-      "openIssues": 0,
-      "package": {
-        "author": "Ray Zhang",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "android",
-          "ios",
-          "harmony",
-          "docker"
-        ],
-        "description": {
-          "default": "Draw and edit professional analog schematics inside SiYuan",
-          "zh-CN": "在思源笔记中绘制、编辑专业模拟电路原理图"
-        },
-        "displayName": {
-          "default": "Analog Canvas",
-          "zh-CN": "Analog Canvas 电路图"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "android",
-          "ios",
-          "harmony",
-          "docker"
-        ],
-        "keywords": [
-          "analog",
-          "circuit",
-          "schematic",
-          "electronics",
-          "spice",
-          "电路图",
-          "模拟电路"
-        ],
-        "minAppVersion": "3.1.0",
-        "name": "siyuan-analog-canvas",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/BUGdefender404/siyuan-analog-canvas",
-        "version": "0.2.1"
-      },
-      "packageZipAssetId": 671181268,
-      "packageZipSha256": "004573a652c856c129567bb368cbe1bcfb5813be15b082f26c492828d54dba8a",
-      "repoRef": "v0.2.1",
-      "size": 3223667,
-      "stars": 0,
-      "updated": "2026-10-24T03:44:51Z",
-      "url": "BUGdefender404/siyuan-analog-canvas@004573a"
-    },
-    {
       "installSize": 2512145,
       "openIssues": 1,
       "package": {
@@ -2329,56 +2477,6 @@
       "url": "IAliceBobI/sy-progressive-plugin@0ff027b"
     },
     {
-      "installSize": 2841734,
-      "openIssues": 0,
-      "package": {
-        "author": "QYL",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A companion plugin for the Neo theme",
-          "zh-CN": "Neo主题的配套插件",
-          "zh-TW": "Neo主題的配套插件"
-        },
-        "displayName": {
-          "default": "Neo+"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://icnmjy02sv9g.feishu.cn/wiki/FekNwrtB7ia1WckYelRckwzZnig?from=from_copylink"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "Apple",
-          "macOS",
-          "Cupertino"
-        ],
-        "minAppVersion": "3.8.8",
-        "name": "Neo-Plus",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md",
-          "zh-TW": "README.zh-TW.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/QYLexpired/Neo-Plus",
-        "version": "1.7.6"
-      },
-      "packageZipAssetId": 666294406,
-      "packageZipSha256": "94113dcbfc8b91c77de66cfe73b7fcfb695445779ac29c355af7bf254c645503",
-      "repoRef": "v1.7.6",
-      "size": 1275695,
-      "stars": 15,
-      "updated": "2026-10-22T15:40:55Z",
-      "url": "QYLexpired/Neo-Plus@94113dc"
-    },
-    {
       "installSize": 511796,
       "openIssues": 2,
       "package": {
@@ -2733,96 +2831,6 @@
       "stars": 2,
       "updated": "2026-10-22T05:04:35Z",
       "url": "ai68298100/siyuan-speed-switch@950bbb1"
-    },
-    {
-      "installSize": 15041750,
-      "openIssues": 2,
-      "package": {
-        "author": "Glaube-TY",
-        "backends": [
-          "windows",
-          "linux",
-          "ios",
-          "android",
-          "harmony",
-          "docker",
-          "darwin"
-        ],
-        "description": {
-          "en_US": "Provides personalized homepage layout and rich functional modules, as well as AI knowledge base.",
-          "zh_CN": "提供个性化首页布局和丰富的功能模块以及 AI 知识库功能。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "en_US": "HOME",
-          "zh_CN": "主页"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://glaube-ty.top/da-shang/"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker"
-        ],
-        "keywords": [
-          "homepage",
-          "home",
-          "主页",
-          "首页",
-          "task",
-          "task manager",
-          "任务",
-          "任务管理",
-          "SQL",
-          "sql",
-          "查询",
-          "widget",
-          "widget manager",
-          "挂件",
-          "挂件管理",
-          "组件",
-          "组件管理",
-          "Pomodoro",
-          "Pomodoro timer",
-          "番茄钟",
-          "番茄",
-          "heat map",
-          "热力图",
-          "热搜",
-          "搜索",
-          "AI",
-          "智能助手",
-          "agent",
-          "智能体"
-        ],
-        "minAppVersion": "3.8.6",
-        "name": "siyuan-homepage",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/Glaube-TY/siyuan-homepage",
-        "version": "5.1.13"
-      },
-      "packageZipAssetId": 664553338,
-      "packageZipSha256": "64646c232c6dbbb4e2f1bd6ed0fa45eb76ec7e6f2ab38c2435d1280e0f9ac18d",
-      "repoRef": "v5.1.13",
-      "size": 5392424,
-      "stars": 42,
-      "updated": "2026-10-22T03:30:13Z",
-      "url": "Glaube-TY/siyuan-homepage@64646c2"
     },
     {
       "installSize": 92735,
