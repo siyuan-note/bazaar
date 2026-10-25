@@ -16,6 +16,8 @@
 
 若你已开发好插件、主题、图标、模板、挂件，并希望将其加入思源社区集市，请按以下步骤提交集市包：
 
+**授权要求**：提交者须是该集市包作者，或已获得作者授权——同意思源社区集市收录该包、展示其清单与说明文档，并缓存和分发 `package.zip`；该包使用的许可证须允许再分发。
+
 1. **Fork 本仓库**
 
    在 GitHub 上 Fork 本仓库 [siyuan-note/bazaar](https://github.com/siyuan-note/bazaar)。如果已经 Fork 过了，需要先同步最新代码。
@@ -31,7 +33,7 @@
 
 3. **提交 PR**
 
-   提交更改并创建 Pull Request 到本仓库的 `main` 分支。
+   提交更改并创建 Pull Request 到本仓库的 `main` 分支。PR 正文请按仓库的 Pull Request 模板逐项确认。
 
 4. **等待检查与合并**
 
