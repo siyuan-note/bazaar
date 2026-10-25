@@ -1,8 +1,66 @@
 {
   "repos": [
     {
-      "installSize": 2047483,
-      "openIssues": 0,
+      "installSize": 2479115,
+      "openIssues": 1,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Manage people and relationships in SiYuan: one person, one document, backed by a native database.",
+          "zh-CN": "在思源笔记里管理人脉与人际关系：一人一文档，数据库主干，关系图谱与生日提醒。"
+        },
+        "displayName": {
+          "default": "Lv Contacts",
+          "zh-CN": "小驴人脉"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "小驴",
+          "小驴人脉",
+          "xiaolv",
+          "lv",
+          "人脉",
+          "联系人",
+          "人际关系",
+          "CRM",
+          "通讯录",
+          "生日提醒",
+          "关系图谱",
+          "contacts",
+          "people"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-contacts",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en-US": "README.en-US.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/ai68298100/siyuan-contacts",
+        "version": "0.5.61"
+      },
+      "packageZipAssetId": 676354761,
+      "packageZipSha256": "324429d74b73cad4a5a98f181c1e533d65515e0e4eb572424de91119ba5a98dd",
+      "repoRef": "v0.5.61",
+      "size": 782772,
+      "stars": 1,
+      "updated": "2026-10-25T22:58:04Z",
+      "url": "ai68298100/siyuan-contacts@324429d"
+    },
+    {
+      "installSize": 2131494,
+      "openIssues": 8,
       "package": {
         "author": "ai68298100",
         "backends": [
@@ -15,13 +73,13 @@
           "docker"
         ],
         "description": {
-          "default": "A local-first, full-lifecycle flashcard learning platform for SiYuan: capture, understand, create, practice, review, apply, maintain and connect knowledge with AI and the native FSRS scheduler.",
-          "zh-CN": "思源的全域闪卡学习平台：以 AI 辅助知识捕获、理解、制卡、练习、复习、应用、维护和生态联动——正式调度由内核原生 FSRS 负责。"
+          "default": "Family &amp; life butler: members, assets, education, health, media, travel - local-first, database-powered, with a unified expiry reminder hub.",
+          "zh-CN": "家庭与生活管家：成员档案、资产管理、育儿上学、病历社保、影音书库、出行旅行。台账进数据库、效期进统一提醒中枢，一切按需开启。"
         },
         "disabledInPublish": true,
         "displayName": {
-          "default": "Lv Cards (Beta)",
-          "zh-CN": "小驴闪卡（内测版）"
+          "default": "Lv Home",
+          "zh-CN": "小驴管家（内测版）"
         },
         "frontends": [
           "desktop",
@@ -42,42 +100,36 @@
         ],
         "keywords": [
           "小驴",
-          "小驴闪卡",
+          "小驴管家",
           "xiaolv",
           "lv",
-          "flashcard",
-          "闪卡",
-          "FSRS",
-          "spaced repetition",
-          "间隔重复",
-          "Anki",
-          "AI",
-          "Agent",
-          "statistics",
-          "统计",
-          "记忆"
+          "family",
+          "家庭",
+          "管家",
+          "资产",
+          "提醒"
         ],
         "minAppVersion": "3.8.4",
-        "name": "siyuan-lv-cards",
+        "name": "siyuan-home",
         "preview": "preview.png",
         "readme": {
-          "default": "README.en.md",
-          "zh-CN": "README.md"
+          "default": "README.md",
+          "en": "README.en.md"
         },
         "settingsWindow": true,
-        "url": "https://github.com/ai68298100/siyuan-lv-cards",
-        "version": "0.210.59"
+        "url": "https://github.com/ai68298100/siyuan-home",
+        "version": "0.5.80"
       },
-      "packageZipAssetId": 676148743,
-      "packageZipSha256": "30321ad456780a20e8a3254aa4b1681a11c666fe2194374e04274ec034fc20cc",
-      "repoRef": "v0.210.59",
-      "size": 760112,
-      "stars": 2,
-      "updated": "2026-10-25T21:17:26Z",
-      "url": "ai68298100/siyuan-lv-cards@30321ad"
+      "packageZipAssetId": 676347817,
+      "packageZipSha256": "a8df819796745483990e4bf7b9cf5b124b3a7a10475d0de999328e2a44962b67",
+      "repoRef": "v0.5.80",
+      "size": 746255,
+      "stars": 1,
+      "updated": "2026-10-25T22:54:18Z",
+      "url": "ai68298100/siyuan-home@a8df819"
     },
     {
-      "installSize": 2536288,
+      "installSize": 2539188,
       "openIssues": 5,
       "package": {
         "author": "ai68298100",
@@ -143,18 +195,94 @@
         },
         "settingsWindow": true,
         "url": "https://github.com/ai68298100/siyuan-exam",
-        "version": "0.11.52"
+        "version": "0.11.57"
       },
-      "packageZipAssetId": 676077103,
-      "packageZipSha256": "a8dfb66f11ce1e6d270f0c92b706fd6b42129f7796adb950eed0659c7dd8a743",
-      "repoRef": "v0.11.52",
-      "size": 1043409,
+      "packageZipAssetId": 676346932,
+      "packageZipSha256": "e0cddfb4b3516609ebba305228fca3023b3fbbbda6a687ac13088b4ba1859ce4",
+      "repoRef": "v0.11.57",
+      "size": 1044635,
       "stars": 1,
-      "updated": "2026-10-25T20:42:59Z",
-      "url": "ai68298100/siyuan-exam@a8dfb66"
+      "updated": "2026-10-25T22:53:42Z",
+      "url": "ai68298100/siyuan-exam@e0cddfb"
     },
     {
-      "installSize": 1397769,
+      "installSize": 2058461,
+      "openIssues": 0,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "description": {
+          "default": "A local-first, full-lifecycle flashcard learning platform for SiYuan: capture, understand, create, practice, review, apply, maintain and connect knowledge with AI and the native FSRS scheduler.",
+          "zh-CN": "思源的全域闪卡学习平台：以 AI 辅助知识捕获、理解、制卡、练习、复习、应用、维护和生态联动——正式调度由内核原生 FSRS 负责。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Lv Cards (Beta)",
+          "zh-CN": "小驴闪卡（内测版）"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "keywords": [
+          "小驴",
+          "小驴闪卡",
+          "xiaolv",
+          "lv",
+          "flashcard",
+          "闪卡",
+          "FSRS",
+          "spaced repetition",
+          "间隔重复",
+          "Anki",
+          "AI",
+          "Agent",
+          "statistics",
+          "统计",
+          "记忆"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-lv-cards",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.en.md",
+          "zh-CN": "README.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/ai68298100/siyuan-lv-cards",
+        "version": "0.210.64"
+      },
+      "packageZipAssetId": 676344857,
+      "packageZipSha256": "be1529fe956a2b85454a4ed3392610228a0bd49986bda1c0dd7f6bc27e3ea8e2",
+      "repoRef": "v0.210.64",
+      "size": 763088,
+      "stars": 2,
+      "updated": "2026-10-25T22:52:48Z",
+      "url": "ai68298100/siyuan-lv-cards@be1529f"
+    },
+    {
+      "installSize": 1399279,
       "openIssues": 1,
       "package": {
         "author": "ai68298100",
@@ -215,15 +343,15 @@
         },
         "settingsWindow": true,
         "url": "https://github.com/ai68298100/xiaolv-common",
-        "version": "0.7.9"
+        "version": "0.8.0"
       },
-      "packageZipAssetId": 676064586,
-      "packageZipSha256": "bc318d14ff7ca4397ebefa839968947c54b6bd629244c689e1b987739911dfb7",
-      "repoRef": "v0.7.9",
-      "size": 610164,
+      "packageZipAssetId": 676163915,
+      "packageZipSha256": "404b5462b24e07c03a803e6c631573b5fe24ad0a936d319753ce8f1b8a9e4534",
+      "repoRef": "v0.8.0",
+      "size": 610738,
       "stars": 1,
-      "updated": "2026-10-25T20:37:29Z",
-      "url": "ai68298100/xiaolv-common@bc318d1"
+      "updated": "2026-10-25T21:24:39Z",
+      "url": "ai68298100/xiaolv-common@404b546"
     },
     {
       "installSize": 602759,
@@ -794,64 +922,6 @@
       "url": "LongDarkroom/siyuan-excali-studio@ef86297"
     },
     {
-      "installSize": 2469969,
-      "openIssues": 1,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Manage people and relationships in SiYuan: one person, one document, backed by a native database.",
-          "zh-CN": "在思源笔记里管理人脉与人际关系：一人一文档，数据库主干，关系图谱与生日提醒。"
-        },
-        "displayName": {
-          "default": "Lv Contacts",
-          "zh-CN": "小驴人脉"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "小驴",
-          "小驴人脉",
-          "xiaolv",
-          "lv",
-          "人脉",
-          "联系人",
-          "人际关系",
-          "CRM",
-          "通讯录",
-          "生日提醒",
-          "关系图谱",
-          "contacts",
-          "people"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-contacts",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en-US": "README.en-US.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/ai68298100/siyuan-contacts",
-        "version": "0.5.59"
-      },
-      "packageZipAssetId": 674759743,
-      "packageZipSha256": "75e110983e8ce694de4a9e3291886f03ddad42201762b4bb1c8381559c495fe8",
-      "repoRef": "v0.5.59",
-      "size": 781831,
-      "stars": 1,
-      "updated": "2026-10-25T10:34:53Z",
-      "url": "ai68298100/siyuan-contacts@75e1109"
-    },
-    {
       "installSize": 1734685,
       "openIssues": 1,
       "package": {
@@ -913,76 +983,6 @@
       "stars": 1,
       "updated": "2026-10-25T10:33:08Z",
       "url": "ai68298100/siyuan-glean@44811da"
-    },
-    {
-      "installSize": 2121710,
-      "openIssues": 8,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "description": {
-          "default": "Family &amp; life butler: members, assets, education, health, media, travel - local-first, database-powered, with a unified expiry reminder hub.",
-          "zh-CN": "家庭与生活管家：成员档案、资产管理、育儿上学、病历社保、影音书库、出行旅行。台账进数据库、效期进统一提醒中枢，一切按需开启。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Lv Home",
-          "zh-CN": "小驴管家（内测版）"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "keywords": [
-          "小驴",
-          "小驴管家",
-          "xiaolv",
-          "lv",
-          "family",
-          "家庭",
-          "管家",
-          "资产",
-          "提醒"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-home",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en": "README.en.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/ai68298100/siyuan-home",
-        "version": "0.5.76"
-      },
-      "packageZipAssetId": 674742442,
-      "packageZipSha256": "b79095533fa9ab74f301be3542a5b158942a89a044f545f723399ffb0c4511d3",
-      "repoRef": "v0.5.76",
-      "size": 744825,
-      "stars": 1,
-      "updated": "2026-10-25T10:26:07Z",
-      "url": "ai68298100/siyuan-home@b790955"
     },
     {
       "installSize": 4320724,
