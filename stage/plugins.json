@@ -1,149 +1,80 @@
 {
   "repos": [
     {
-      "installSize": 148403,
-      "openIssues": 0,
+      "installSize": 1404649,
+      "openIssues": 1,
       "package": {
-        "author": "1146850833@qq.com",
+        "author": "ai68298100",
         "backends": [
           "all"
         ],
         "description": {
-          "default": "A standalone todo board in a SiYuan tab: tasks with status flow, groups and tags, archive by year, batch operations, history import and a 7-day summary.",
-          "zh-CN": "独立任务看板（页签内）：待办状态流转、分组与标签、按年归档、批量操作、历史清单导入、近7天汇总，可一键生成并跳转思源文档。",
-          "zh_CN": "独立任务看板（页签内）：待办状态流转、分组与标签、按年归档、批量操作、历史清单导入、近7天汇总，可一键生成并跳转思源文档。"
+          "default": "Save and recall common content (phrases, snippets, code, links, images, assets, block structures) anchored to real SiYuan blocks — with fill-in variables, snippet nesting, AI transforms, template packs, and faithful source references.",
+          "zh-CN": "基于思源文档和块的常用内容快速调用器：常用语、模板、代码、链接、图片、附件与块结构，条目锚定真实思源块。支持插入时变量填充、片段嵌套、AI 整理/变换/语义找、模板包分享，来源可回链、失效可见。"
         },
         "displayName": {
-          "default": "Buleks Todo",
-          "zh-CN": "Blueks代办",
-          "zh_CN": "Blueks代办"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "todo",
-          "task",
-          "kanban",
-          "待办",
-          "任务",
-          "看板",
-          "需求"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "buleks-todo",
-        "preview": "",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/lfl-karl-el/buleks-todo",
-        "version": "0.5.5"
-      },
-      "packageZipAssetId": 678252957,
-      "packageZipSha256": "e7b2d9e2924369882dfdd6674b97252631b937d6569e865013028195297c2b41",
-      "repoRef": "v0.5.5",
-      "size": 38318,
-      "stars": 0,
-      "updated": "2026-10-26T13:50:23Z",
-      "url": "lfl-karl-el/buleks-todo@e7b2d9e"
-    },
-    {
-      "installSize": 84985,
-      "openIssues": 0,
-      "package": {
-        "author": "FlowMorph",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Threaded comments on text, blocks and documents, shown in a sidebar dock.",
-          "zh-CN": "在文字、块和文档上开评论串，可回复、可标记解决，显示在侧栏面板。"
-        },
-        "displayName": {
-          "default": "Comments",
-          "zh-CN": "评论"
+          "default": "Lv Common (Beta)",
+          "zh-CN": "小驴常用（内测版）"
         },
         "frontends": [
           "desktop",
+          "browser-desktop",
           "desktop-window",
-          "browser-desktop"
+          "mobile",
+          "browser-mobile"
         ],
         "icon": "icon.png",
         "keywords": [
-          "评论",
-          "批注",
-          "讨论",
-          "comment",
-          "annotation",
-          "Notion"
+          "lv",
+          "小驴",
+          "常用语",
+          "common phrases",
+          "snippet",
+          "snippets",
+          "模板",
+          "template",
+          "templates",
+          "片段",
+          "快速插入",
+          "quick insert",
+          "小驴常用",
+          "小驴常用（内测版）",
+          "xiaolv",
+          "xiaolv-common",
+          "变量",
+          "variables",
+          "文本扩展",
+          "text expander",
+          "AI",
+          "提示词",
+          "prompt",
+          "剪贴板",
+          "clipboard",
+          "模板包",
+          "template pack"
         ],
-        "minAppVersion": "3.8.7",
-        "name": "siyuan-comments",
-        "preview": "",
-        "readme": {
-          "default": "README_en.md",
-          "zh-CN": "README.md"
-        },
-        "url": "https://github.com/FlowMorph/siyuan-comments",
-        "version": "0.1.1"
-      },
-      "packageZipAssetId": 677976691,
-      "packageZipSha256": "78c714b7a44572b5ff068937954caec55e91153197ec7c7816d25b5f6b715dac",
-      "repoRef": "v0.1.1",
-      "size": 24922,
-      "stars": 0,
-      "updated": "2026-10-26T13:37:31Z",
-      "url": "FlowMorph/siyuan-comments@78c714b"
-    },
-    {
-      "installSize": 10466262,
-      "openIssues": 1,
-      "package": {
-        "author": "Yuxin Zhao",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "「Embed Series」Create editable SVG Image with LaTeX TikZ",
-          "zh_CN": "「嵌入式系列」使用LaTeX TikZ创建可编辑的高质量矢量图"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "「Embed Series」TikZ",
-          "zh_CN": "「嵌入式系列」TikZ"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://yuxinzhao.net/sponsor/"
-          ]
-        },
-        "icon": "icon.png",
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-embed-tikz",
+        "minAppVersion": "3.8.4",
+        "name": "xiaolv-common",
         "preview": "preview.png",
         "readme": {
           "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
+          "en-US": "README.en-US.md"
         },
-        "url": "https://github.com/YuxinZhaozyx/siyuan-embed-tikz",
-        "version": "0.11.0"
+        "settingsWindow": true,
+        "url": "https://github.com/ai68298100/xiaolv-common",
+        "version": "0.8.1"
       },
-      "packageZipAssetId": 677686919,
-      "packageZipSha256": "033c20f4bb1239bd0a7b9b813a1f9fd5c5a83f286b88f68c78d480e01300917a",
-      "repoRef": "v0.11.0",
-      "size": 9133019,
-      "stars": 11,
-      "updated": "2026-10-26T09:39:49Z",
-      "url": "YuxinZhaozyx/siyuan-embed-tikz@033c20f"
+      "packageZipAssetId": 678738025,
+      "packageZipSha256": "c5f4da83a67219c69b93d83111ce2f2a960ec5390c7a0f0acfc2757cf7b69ef0",
+      "repoRef": "v0.8.1",
+      "size": 612442,
+      "stars": 1,
+      "updated": "2026-10-26T16:24:31Z",
+      "url": "ai68298100/xiaolv-common@c5f4da8"
     },
     {
-      "installSize": 2568852,
-      "openIssues": 5,
+      "installSize": 2632694,
+      "openIssues": 0,
       "package": {
         "author": "ai68298100",
         "backends": [
@@ -208,18 +139,18 @@
         },
         "settingsWindow": true,
         "url": "https://github.com/ai68298100/siyuan-exam",
-        "version": "0.11.72"
+        "version": "0.11.84"
       },
-      "packageZipAssetId": 677630357,
-      "packageZipSha256": "6ca8c82e968998a316b8040148a57d12c93538e334a8de4fd295574060b36173",
-      "repoRef": "v0.11.72",
-      "size": 1052671,
+      "packageZipAssetId": 678737696,
+      "packageZipSha256": "e09d1b9e919969fa8946c89aa5152631652cc84235c6bb1ac401d52154d7aa80",
+      "repoRef": "v0.11.84",
+      "size": 1071886,
       "stars": 1,
-      "updated": "2026-10-26T09:16:49Z",
-      "url": "ai68298100/siyuan-exam@6ca8c82"
+      "updated": "2026-10-26T16:24:21Z",
+      "url": "ai68298100/siyuan-exam@e09d1b9"
     },
     {
-      "installSize": 2039469,
+      "installSize": 2074303,
       "openIssues": 0,
       "package": {
         "author": "ai68298100",
@@ -284,18 +215,18 @@
         },
         "settingsWindow": true,
         "url": "https://github.com/ai68298100/siyuan-lv-cards",
-        "version": "0.210.72"
+        "version": "0.210.84"
       },
-      "packageZipAssetId": 677626302,
-      "packageZipSha256": "cf0b2899c8520c89854477267632a54c5cb48e62ff3f728f38d0ca82acfc6792",
-      "repoRef": "v0.210.72",
-      "size": 751507,
+      "packageZipAssetId": 678717637,
+      "packageZipSha256": "ff32406fe990f971ab2e019febbffd4e1320a0263bb3faf8fb18187a0bc5bbeb",
+      "repoRef": "v0.210.84",
+      "size": 760005,
       "stars": 2,
-      "updated": "2026-10-26T09:15:06Z",
-      "url": "ai68298100/siyuan-lv-cards@cf0b289"
+      "updated": "2026-10-26T16:17:36Z",
+      "url": "ai68298100/siyuan-lv-cards@ff32406"
     },
     {
-      "installSize": 2141007,
+      "installSize": 2146363,
       "openIssues": 8,
       "package": {
         "author": "ai68298100",
@@ -354,19 +285,19 @@
         },
         "settingsWindow": true,
         "url": "https://github.com/ai68298100/siyuan-home",
-        "version": "0.5.98"
+        "version": "0.5.107"
       },
-      "packageZipAssetId": 677616889,
-      "packageZipSha256": "abf1bf3f1c47d5c796ceae1fbbcac174200ba8ef75729e6afc01ff1cc2284e22",
-      "repoRef": "v0.5.98",
-      "size": 748825,
+      "packageZipAssetId": 678706379,
+      "packageZipSha256": "2074817513536fcffa56f47a14a4bc387ffbf8201647b440c407fb5f959f7b07",
+      "repoRef": "v0.5.107",
+      "size": 750987,
       "stars": 1,
-      "updated": "2026-10-26T09:11:12Z",
-      "url": "ai68298100/siyuan-home@abf1bf3"
+      "updated": "2026-10-26T16:13:20Z",
+      "url": "ai68298100/siyuan-home@2074817"
     },
     {
-      "installSize": 2488903,
-      "openIssues": 1,
+      "installSize": 2502377,
+      "openIssues": 2,
       "package": {
         "author": "ai68298100",
         "backends": [
@@ -412,15 +343,662 @@
         },
         "settingsWindow": true,
         "url": "https://github.com/ai68298100/siyuan-contacts",
-        "version": "0.5.77"
+        "version": "0.5.85"
       },
-      "packageZipAssetId": 677615884,
-      "packageZipSha256": "7d9ec0fe62b2b57561ab9bb7ca3d6859cfcea67c02042c6cb03a2c3637bc6c3e",
-      "repoRef": "v0.5.77",
-      "size": 784574,
+      "packageZipAssetId": 678692803,
+      "packageZipSha256": "c93bdce04987bcabf312566ce4d91a238fd262c63df42a2bb9c015e48122ad55",
+      "repoRef": "v0.5.85",
+      "size": 788663,
       "stars": 1,
-      "updated": "2026-10-26T09:10:46Z",
-      "url": "ai68298100/siyuan-contacts@7d9ec0f"
+      "updated": "2026-10-26T16:08:06Z",
+      "url": "ai68298100/siyuan-contacts@c93bdce"
+    },
+    {
+      "installSize": 511796,
+      "openIssues": 2,
+      "package": {
+        "author": "notesynchelper",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "从微信同步到思源笔记，支持文字、图片、聊天记录、文章"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "笔记同步助手"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "docker"
+        ],
+        "keywords": [
+          "wechat",
+          "template",
+          "企微",
+          "模板",
+          "微信",
+          "速记",
+          "剪藏",
+          "搜集",
+          "日记",
+          "闪念",
+          "memo",
+          "备忘",
+          "公众号",
+          "小红书",
+          "得到"
+        ],
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-notehelper",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/notesynchelper/siyuan-notehelper",
+        "version": "1.8.46"
+      },
+      "packageZipAssetId": 678663985,
+      "packageZipSha256": "4632df2049fa59a08e82ad8a55226891ba1e9d014a211c3bd6a0fe15090e0479",
+      "repoRef": "v1.8.46",
+      "size": 205945,
+      "stars": 2,
+      "updated": "2026-10-26T15:58:10Z",
+      "url": "notesynchelper/siyuan-notehelper@4632df2"
+    },
+    {
+      "installSize": 402029,
+      "openIssues": 0,
+      "package": {
+        "author": "clock-05 &amp; DeepSeek",
+        "backends": [
+          "windows"
+        ],
+        "description": {
+          "default": "Supports dragging Markdown files and folders directly from your file manager onto SiYuan&#39;s document tree.",
+          "zh-CN": "支持直接把markdown文件/文件夹从系统文件夹里拖拽到思源文档树上。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Drag Import",
+          "zh-CN": "拖拽导入"
+        },
+        "frontends": [
+          "desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "import",
+          "drag",
+          "markdown",
+          "folder",
+          "zip",
+          "obsidian",
+          "迁移",
+          "拖拽",
+          "导入"
+        ],
+        "minAppVersion": "3.1.0",
+        "name": "siyuan-drag-import",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/clock-05/siyuan-drag-import",
+        "version": "1.0.3"
+      },
+      "packageZipAssetId": 678498588,
+      "packageZipSha256": "971e2da809f599cdc927d4067f90b97fb7eb143b1dc3127709f1b1352f774555",
+      "repoRef": "v1.0.3",
+      "size": 317712,
+      "stars": 0,
+      "updated": "2026-10-26T14:59:59Z",
+      "url": "clock-05/siyuan-drag-import@971e2da"
+    },
+    {
+      "installSize": 148403,
+      "openIssues": 0,
+      "package": {
+        "author": "1146850833@qq.com",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A standalone todo board in a SiYuan tab: tasks with status flow, groups and tags, archive by year, batch operations, history import and a 7-day summary.",
+          "zh-CN": "独立任务看板（页签内）：待办状态流转、分组与标签、按年归档、批量操作、历史清单导入、近7天汇总，可一键生成并跳转思源文档。",
+          "zh_CN": "独立任务看板（页签内）：待办状态流转、分组与标签、按年归档、批量操作、历史清单导入、近7天汇总，可一键生成并跳转思源文档。"
+        },
+        "displayName": {
+          "default": "Buleks Todo",
+          "zh-CN": "Blueks代办",
+          "zh_CN": "Blueks代办"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "todo",
+          "task",
+          "kanban",
+          "待办",
+          "任务",
+          "看板",
+          "需求"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "buleks-todo",
+        "preview": "",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/lfl-karl-el/buleks-todo",
+        "version": "0.5.5"
+      },
+      "packageZipAssetId": 678252957,
+      "packageZipSha256": "e7b2d9e2924369882dfdd6674b97252631b937d6569e865013028195297c2b41",
+      "repoRef": "v0.5.5",
+      "size": 38318,
+      "stars": 0,
+      "updated": "2026-10-26T13:50:23Z",
+      "url": "lfl-karl-el/buleks-todo@e7b2d9e"
+    },
+    {
+      "installSize": 62547,
+      "openIssues": 0,
+      "package": {
+        "author": "clock-05, DeepSeek",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Math formulas, both ways: paste them in and they become native SiYuan formulas, copy them out and they become Markdown.",
+          "zh-CN": "数学公式的双向转换：粘进来变成思源公式，复制出去还原成 Markdown。"
+        },
+        "displayName": {
+          "default": "Math Formula Paste",
+          "zh-CN": "数学公式粘贴"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "LaTeX",
+          "math",
+          "formula",
+          "paste",
+          "公式",
+          "粘贴",
+          "数学"
+        ],
+        "minAppVersion": "3.1.0",
+        "name": "siyuan-latex-paste",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/clock-05/siyuan-latex-paste",
+        "version": "1.0.0"
+      },
+      "packageZipAssetId": 678280470,
+      "packageZipSha256": "994d5e76064866db124ae50450829707329804d642618f93db7ab4efb2ab6bbc",
+      "repoRef": "v1.0.0",
+      "size": 28505,
+      "stars": 0,
+      "updated": "2026-10-26T13:38:08Z",
+      "url": "clock-05/siyuan-latex-paste@994d5e7"
+    },
+    {
+      "installSize": 84985,
+      "openIssues": 0,
+      "package": {
+        "author": "FlowMorph",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Threaded comments on text, blocks and documents, shown in a sidebar dock.",
+          "zh-CN": "在文字、块和文档上开评论串，可回复、可标记解决，显示在侧栏面板。"
+        },
+        "displayName": {
+          "default": "Comments",
+          "zh-CN": "评论"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "评论",
+          "批注",
+          "讨论",
+          "comment",
+          "annotation",
+          "Notion"
+        ],
+        "minAppVersion": "3.8.7",
+        "name": "siyuan-comments",
+        "preview": "",
+        "readme": {
+          "default": "README_en.md",
+          "zh-CN": "README.md"
+        },
+        "url": "https://github.com/FlowMorph/siyuan-comments",
+        "version": "0.1.1"
+      },
+      "packageZipAssetId": 677976691,
+      "packageZipSha256": "78c714b7a44572b5ff068937954caec55e91153197ec7c7816d25b5f6b715dac",
+      "repoRef": "v0.1.1",
+      "size": 24922,
+      "stars": 0,
+      "updated": "2026-10-26T13:37:31Z",
+      "url": "FlowMorph/siyuan-comments@78c714b"
+    },
+    {
+      "installSize": 2821292,
+      "openIssues": 0,
+      "package": {
+        "author": "QYL",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A companion plugin for the Neo theme",
+          "zh-CN": "Neo主题的配套插件",
+          "zh-TW": "Neo主題的配套插件"
+        },
+        "displayName": {
+          "default": "Neo+"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://icnmjy02sv9g.feishu.cn/wiki/FekNwrtB7ia1WckYelRckwzZnig?from=from_copylink"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "Apple",
+          "macOS",
+          "Cupertino"
+        ],
+        "minAppVersion": "3.8.8",
+        "name": "Neo-Plus",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md",
+          "zh-TW": "README.zh-TW.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/QYLexpired/Neo-Plus",
+        "version": "1.8.1"
+      },
+      "packageZipAssetId": 678217027,
+      "packageZipSha256": "a8b93337718e131ba2be140b1ba799ced11cdb3e069048edb517c0810f70c60e",
+      "repoRef": "v1.8.1",
+      "size": 1277087,
+      "stars": 15,
+      "updated": "2026-10-26T13:14:43Z",
+      "url": "QYLexpired/Neo-Plus@a8b9333"
+    },
+    {
+      "installSize": 7445699,
+      "openIssues": 0,
+      "package": {
+        "author": "LongDarkroom",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "RE Reader: a standalone EPUB/PDF reader for SiYuan. Shelf, PDF &amp; EPUB rendering, word lookup with offline MDX dictionaries, machine translation, bilingual parallel reading, ink annotations, reading stats and TTS — Readest-style reading experience.",
+          "zh-CN": "RE 阅读器：思源笔记的独立 EPUB/PDF 阅读器。书架管理、PDF 与 EPUB 渲染、离线 MDX 词典划词查词、机器翻译与双语对照、本地墨迹批注、阅读时长统计与朗读（TTS），对标 Readest 阅读体验。批注数据本地独立存储，无需依赖其他插件；与「RE word」主插件配合可获得词库收藏与 AI 精读等增强能力。"
+        },
+        "displayName": {
+          "default": "RE Reader",
+          "zh-CN": "RE 阅读器"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "reader",
+          "epub",
+          "pdf",
+          "dictionary",
+          "阅读器",
+          "电子书",
+          "词典",
+          "划词",
+          "双语",
+          "墨迹"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-reader",
+        "preview": "preview.webp",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/LongDarkroom/siyuan-plugin-reader",
+        "version": "0.3.0"
+      },
+      "packageZipAssetId": 678153545,
+      "packageZipSha256": "4f1e66371871415832e39d0b73feb9d6278b20299f5ebdfd16f661f576f1b844",
+      "repoRef": "v0.3.0",
+      "size": 3623390,
+      "stars": 1,
+      "updated": "2026-10-26T12:50:07Z",
+      "url": "LongDarkroom/siyuan-plugin-reader@4f1e663"
+    },
+    {
+      "installSize": 15269014,
+      "openIssues": 3,
+      "package": {
+        "author": "Glaube-TY",
+        "backends": [
+          "windows",
+          "linux",
+          "ios",
+          "android",
+          "harmony",
+          "docker",
+          "darwin"
+        ],
+        "description": {
+          "en_US": "Provides personalized homepage layout and rich functional modules, as well as AI knowledge base.",
+          "zh_CN": "提供个性化首页布局和丰富的功能模块以及 AI 知识库功能。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "en_US": "HOME",
+          "zh_CN": "主页"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://glaube-ty.top/da-shang/"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "keywords": [
+          "homepage",
+          "home",
+          "主页",
+          "首页",
+          "task",
+          "task manager",
+          "任务",
+          "任务管理",
+          "SQL",
+          "sql",
+          "查询",
+          "widget",
+          "widget manager",
+          "挂件",
+          "挂件管理",
+          "组件",
+          "组件管理",
+          "Pomodoro",
+          "Pomodoro timer",
+          "番茄钟",
+          "番茄",
+          "heat map",
+          "热力图",
+          "热搜",
+          "搜索",
+          "AI",
+          "智能助手",
+          "agent",
+          "智能体"
+        ],
+        "minAppVersion": "3.8.6",
+        "name": "siyuan-homepage",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/Glaube-TY/siyuan-homepage",
+        "version": "5.1.15"
+      },
+      "packageZipAssetId": 678069873,
+      "packageZipSha256": "2454c290176e518ca5475d82fa5d086bc7b21bb98b9e8a4ff34ac0ec020c80ec",
+      "repoRef": "v5.1.15",
+      "size": 5453915,
+      "stars": 42,
+      "updated": "2026-10-26T12:15:36Z",
+      "url": "Glaube-TY/siyuan-homepage@2454c29"
+    },
+    {
+      "installSize": 689083,
+      "openIssues": 2,
+      "package": {
+        "author": "QMike0",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Provide search and replace functionality for most visible text within document pages in SiYuan (with support for undo &amp; redo), along with block-level type control and separate search for inline elements",
+          "zh-CN": "为思源笔记提供文档页面内绝大多数可见文字的搜索、替换功能（支持撤销&amp;重做），并支持块级类型的控制与行内元素的单独搜索"
+        },
+        "displayName": {
+          "default": "In-Page Search &amp; Replace",
+          "zh-CN": "页内搜索替换"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "Ctrl+F",
+          "Ctrl+H",
+          "highlight",
+          "search",
+          "replace",
+          "页内搜索",
+          "搜索",
+          "查询",
+          "查找",
+          "高亮",
+          "替换"
+        ],
+        "minAppVersion": "3.8.6",
+        "name": "siyuan-plugin-page-search-replace",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/QMike0/siyuan-plugin-page-search",
+        "version": "2.1.1"
+      },
+      "packageZipAssetId": 677980951,
+      "packageZipSha256": "6f0e92a46f8e3c278c46a917302261f44e11d70738ecc1e02e1762d7d62a967c",
+      "repoRef": "v2.1.1",
+      "size": 213272,
+      "stars": 1,
+      "updated": "2026-10-26T11:38:09Z",
+      "url": "QMike0/siyuan-plugin-page-search@6f0e92a"
+    },
+    {
+      "installSize": 1366731,
+      "openIssues": 1,
+      "package": {
+        "author": "mm-o",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A cloud-drive aggregation manager for SiYuan: mount 25+ cloud drives and disks, preview 300+ formats, work with SiYuan Reader/Media Player, share online, insert file links, and use cloud files as image/video beds without filling your workspace.",
+          "zh_CN": "思源网盘聚合管理器：支持 25+ 网盘和磁盘挂载、300+ 文件格式预览，联动思阅和思播，在线分享、文件链接插入文档、图床/视频文件床一站完成，让远程文件随时可用，思源空间 0 负担。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Cloud Drive Manager",
+          "zh_CN": "思盘-思源文件与网盘管理器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "思盘",
+          "cloud drive",
+          "file manager",
+          "openlist",
+          "media",
+          "s3",
+          "kernel plugin",
+          "webdav"
+        ],
+        "minAppVersion": "3.6.5",
+        "name": "siyuan-cloud",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/mm-o/siyuan-cloud",
+        "version": "0.8.0"
+      },
+      "packageZipAssetId": 677843563,
+      "packageZipSha256": "06fbb98a04178254f0774c9db8bea119cb70a35ad50fc166ecdcd90a15a0d330",
+      "repoRef": "v0.8.0",
+      "size": 458522,
+      "stars": 5,
+      "updated": "2026-10-26T10:42:55Z",
+      "url": "mm-o/siyuan-cloud@06fbb98"
+    },
+    {
+      "installSize": 2834882,
+      "openIssues": 4,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A flexible habit and check-in workspace for SiYuan.",
+          "zh-CN": "支持分组、模板、统计与扩展集成的思源打卡工作台。",
+          "zh_CN": "支持分组、模板、统计与扩展集成的思源打卡工作台。"
+        },
+        "displayName": {
+          "default": "Lv Check-in",
+          "zh-CN": "小驴打卡",
+          "zh_CN": "小驴打卡"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "小驴",
+          "小驴打卡",
+          "xiaolv",
+          "lv",
+          "打卡",
+          "习惯",
+          "目标",
+          "check-in",
+          "habit"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-checkin",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/ai68298100/siyuan-checkin",
+        "version": "18.29.0"
+      },
+      "packageZipAssetId": 677719899,
+      "packageZipSha256": "74b09378d0319f304a60e1bd31889ea46ef4eeb023f267483fa0b6cc373d20c2",
+      "repoRef": "v18.29.0",
+      "size": 963721,
+      "stars": 1,
+      "updated": "2026-10-26T09:52:36Z",
+      "url": "ai68298100/siyuan-checkin@74b0937"
+    },
+    {
+      "installSize": 10466262,
+      "openIssues": 1,
+      "package": {
+        "author": "Yuxin Zhao",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "「Embed Series」Create editable SVG Image with LaTeX TikZ",
+          "zh_CN": "「嵌入式系列」使用LaTeX TikZ创建可编辑的高质量矢量图"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "「Embed Series」TikZ",
+          "zh_CN": "「嵌入式系列」TikZ"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://yuxinzhao.net/sponsor/"
+          ]
+        },
+        "icon": "icon.png",
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-embed-tikz",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/YuxinZhaozyx/siyuan-embed-tikz",
+        "version": "0.11.0"
+      },
+      "packageZipAssetId": 677686919,
+      "packageZipSha256": "033c20f4bb1239bd0a7b9b813a1f9fd5c5a83f286b88f68c78d480e01300917a",
+      "repoRef": "v0.11.0",
+      "size": 9133019,
+      "stars": 11,
+      "updated": "2026-10-26T09:39:49Z",
+      "url": "YuxinZhaozyx/siyuan-embed-tikz@033c20f"
     },
     {
       "installSize": 3442222,
@@ -625,110 +1203,6 @@
       "url": "xingqingwen/siyuan-plugin-zettel@87206aa"
     },
     {
-      "installSize": 403993,
-      "openIssues": 0,
-      "package": {
-        "author": "clock-05 &amp; deepseek",
-        "backends": [
-          "windows"
-        ],
-        "description": {
-          "default": "Supports dragging Markdown files and folders directly from your file manager onto SiYuan&#39;s document tree.",
-          "zh-CN": "支持直接把markdown文件/文件夹从系统文件夹里拖拽到思源文档树上。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Drag Import",
-          "zh-CN": "拖拽导入"
-        },
-        "frontends": [
-          "desktop"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "import",
-          "drag",
-          "markdown",
-          "folder",
-          "zip",
-          "obsidian",
-          "迁移",
-          "拖拽",
-          "导入"
-        ],
-        "minAppVersion": "3.1.0",
-        "name": "siyuan-drag-import",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/clock-05/siyuan-drag-import",
-        "version": "1.0.2"
-      },
-      "packageZipAssetId": 677159696,
-      "packageZipSha256": "37d84972f0b973f88c522581aabc09d9df5cdb0cf1d819335fe2615d3ce6a127",
-      "repoRef": "v1.0.2",
-      "size": 318359,
-      "stars": 0,
-      "updated": "2026-10-26T05:46:31Z",
-      "url": "clock-05/siyuan-drag-import@37d8497"
-    },
-    {
-      "installSize": 689053,
-      "openIssues": 2,
-      "package": {
-        "author": "QMike0",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Provide search and replace functionality for most visible text within document pages in SiYuan (with support for undo &amp; redo), along with block-level type control and separate search for inline elements",
-          "zh-CN": "为思源笔记提供文档页面内绝大多数可见文字的搜索、替换功能（支持撤销&amp;重做），并支持块级类型的控制与行内元素的单独搜索"
-        },
-        "displayName": {
-          "default": "In-Page Search &amp; Replace",
-          "zh-CN": "页内搜索替换"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "Ctrl+F",
-          "Ctrl+H",
-          "highlight",
-          "search",
-          "replace",
-          "页内搜索",
-          "搜索",
-          "查询",
-          "查找",
-          "高亮",
-          "替换"
-        ],
-        "minAppVersion": "3.8.6",
-        "name": "siyuan-plugin-page-search-replace",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/QMike0/siyuan-plugin-page-search",
-        "version": "2.1.0"
-      },
-      "packageZipAssetId": 677107502,
-      "packageZipSha256": "a92b3f9543b73b2cbaa4e880ededad11f4e9f8bd573a115a67116506ce931908",
-      "repoRef": "v2.1.0",
-      "size": 213265,
-      "stars": 1,
-      "updated": "2026-10-26T05:18:14Z",
-      "url": "QMike0/siyuan-plugin-page-search@a92b3f9"
-    },
-    {
       "installSize": 1061832,
       "openIssues": 0,
       "package": {
@@ -883,78 +1357,6 @@
       "url": "kamasylvia/SiYuan-ReadItLater@17f518c"
     },
     {
-      "installSize": 1399279,
-      "openIssues": 1,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Save and recall common content (phrases, snippets, code, links, images, assets, block structures) anchored to real SiYuan blocks — with fill-in variables, snippet nesting, AI transforms, template packs, and faithful source references.",
-          "zh-CN": "基于思源文档和块的常用内容快速调用器：常用语、模板、代码、链接、图片、附件与块结构，条目锚定真实思源块。支持插入时变量填充、片段嵌套、AI 整理/变换/语义找、模板包分享，来源可回链、失效可见。"
-        },
-        "displayName": {
-          "default": "Lv Common (Beta)",
-          "zh-CN": "小驴常用（内测版）"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "lv",
-          "小驴",
-          "常用语",
-          "common phrases",
-          "snippet",
-          "snippets",
-          "模板",
-          "template",
-          "templates",
-          "片段",
-          "快速插入",
-          "quick insert",
-          "小驴常用",
-          "小驴常用（内测版）",
-          "xiaolv",
-          "xiaolv-common",
-          "变量",
-          "variables",
-          "文本扩展",
-          "text expander",
-          "AI",
-          "提示词",
-          "prompt",
-          "剪贴板",
-          "clipboard",
-          "模板包",
-          "template pack"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "xiaolv-common",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en-US": "README.en-US.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/ai68298100/xiaolv-common",
-        "version": "0.8.0"
-      },
-      "packageZipAssetId": 676163915,
-      "packageZipSha256": "404b5462b24e07c03a803e6c631573b5fe24ad0a936d319753ce8f1b8a9e4534",
-      "repoRef": "v0.8.0",
-      "size": 610738,
-      "stars": 1,
-      "updated": "2026-10-25T21:24:39Z",
-      "url": "ai68298100/xiaolv-common@404b546"
-    },
-    {
       "installSize": 602759,
       "openIssues": 0,
       "package": {
@@ -1001,146 +1403,6 @@
       "stars": 0,
       "updated": "2026-10-25T17:50:26Z",
       "url": "2032797085-blip/siyuan-notebook-groups@812b911"
-    },
-    {
-      "installSize": 2820912,
-      "openIssues": 0,
-      "package": {
-        "author": "QYL",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A companion plugin for the Neo theme",
-          "zh-CN": "Neo主题的配套插件",
-          "zh-TW": "Neo主題的配套插件"
-        },
-        "displayName": {
-          "default": "Neo+"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://icnmjy02sv9g.feishu.cn/wiki/FekNwrtB7ia1WckYelRckwzZnig?from=from_copylink"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "Apple",
-          "macOS",
-          "Cupertino"
-        ],
-        "minAppVersion": "3.8.8",
-        "name": "Neo-Plus",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md",
-          "zh-TW": "README.zh-TW.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/QYLexpired/Neo-Plus",
-        "version": "1.8.0"
-      },
-      "packageZipAssetId": 675177582,
-      "packageZipSha256": "48dfa0c2ec3ca78bb15b3a218fc15765bac9c0a05b38ba88efccba9d270d1667",
-      "repoRef": "v1.8.0",
-      "size": 1276961,
-      "stars": 15,
-      "updated": "2026-10-25T13:54:20Z",
-      "url": "QYLexpired/Neo-Plus@48dfa0c"
-    },
-    {
-      "installSize": 15267499,
-      "openIssues": 3,
-      "package": {
-        "author": "Glaube-TY",
-        "backends": [
-          "windows",
-          "linux",
-          "ios",
-          "android",
-          "harmony",
-          "docker",
-          "darwin"
-        ],
-        "description": {
-          "en_US": "Provides personalized homepage layout and rich functional modules, as well as AI knowledge base.",
-          "zh_CN": "提供个性化首页布局和丰富的功能模块以及 AI 知识库功能。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "en_US": "HOME",
-          "zh_CN": "主页"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://glaube-ty.top/da-shang/"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker"
-        ],
-        "keywords": [
-          "homepage",
-          "home",
-          "主页",
-          "首页",
-          "task",
-          "task manager",
-          "任务",
-          "任务管理",
-          "SQL",
-          "sql",
-          "查询",
-          "widget",
-          "widget manager",
-          "挂件",
-          "挂件管理",
-          "组件",
-          "组件管理",
-          "Pomodoro",
-          "Pomodoro timer",
-          "番茄钟",
-          "番茄",
-          "heat map",
-          "热力图",
-          "热搜",
-          "搜索",
-          "AI",
-          "智能助手",
-          "agent",
-          "智能体"
-        ],
-        "minAppVersion": "3.8.6",
-        "name": "siyuan-homepage",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/Glaube-TY/siyuan-homepage",
-        "version": "5.1.14"
-      },
-      "packageZipAssetId": 674975845,
-      "packageZipSha256": "c4e18bfe060f46e294277358ac36b8c2ebe6098cc90566d9e3e915a0fe80f8aa",
-      "repoRef": "v5.1.14",
-      "size": 5453430,
-      "stars": 42,
-      "updated": "2026-10-25T12:20:52Z",
-      "url": "Glaube-TY/siyuan-homepage@c4e18bf"
     },
     {
       "installSize": 8619940,
@@ -2056,112 +2318,6 @@
       "url": "wmy2981/opencode-go-siyuan@a5cdf3f"
     },
     {
-      "installSize": 7406671,
-      "openIssues": 0,
-      "package": {
-        "author": "LongDarkroom",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "RE Reader: a standalone EPUB/PDF reader for SiYuan. Shelf, PDF &amp; EPUB rendering, word lookup with offline MDX dictionaries, AI translation, bilingual parallel reading, ink annotations, reading stats and TTS — Readest-style reading experience.",
-          "zh-CN": "RE 阅读器：思源笔记的独立 EPUB/PDF 阅读器。书架管理、PDF 与 EPUB 渲染、离线 MDX 词典划词查词、AI 译文与双语对照、本地墨迹批注、阅读时长统计与朗读（TTS），对标 Readest 阅读体验。批注数据本地独立存储，无需依赖其他插件；与「RE word」主插件配合可获得词库收藏与 AI 精读等增强能力。"
-        },
-        "displayName": {
-          "default": "RE Reader",
-          "zh-CN": "RE 阅读器"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "reader",
-          "epub",
-          "pdf",
-          "dictionary",
-          "阅读器",
-          "电子书",
-          "词典",
-          "划词",
-          "双语",
-          "墨迹"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-reader",
-        "preview": "preview.webp",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/LongDarkroom/siyuan-plugin-reader",
-        "version": "0.2.1"
-      },
-      "packageZipAssetId": 673769843,
-      "packageZipSha256": "e3ab6ec9bfc745c606d8ae487a5da29e0b93476ecb77cdd02c782daf80cb822d",
-      "repoRef": "v0.2.1",
-      "size": 3610410,
-      "stars": 0,
-      "updated": "2026-10-25T01:19:13Z",
-      "url": "LongDarkroom/siyuan-plugin-reader@e3ab6ec"
-    },
-    {
-      "installSize": 2834658,
-      "openIssues": 4,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A flexible habit and check-in workspace for SiYuan.",
-          "zh-CN": "支持分组、模板、统计与扩展集成的思源打卡工作台。"
-        },
-        "displayName": {
-          "default": "Lv Check-in",
-          "zh-CN": "小驴打卡",
-          "zh_CN": "小驴打卡"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "小驴",
-          "小驴打卡",
-          "xiaolv",
-          "lv",
-          "打卡",
-          "习惯",
-          "目标",
-          "check-in",
-          "habit"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-checkin",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/ai68298100/siyuan-checkin",
-        "version": "18.28.0"
-      },
-      "packageZipAssetId": 673763600,
-      "packageZipSha256": "de2073b931171b6d31000b084c5926779d93c5af518e77300cc4f52be953cb93",
-      "repoRef": "v18.28.0",
-      "size": 963736,
-      "stars": 1,
-      "updated": "2026-10-25T01:15:22Z",
-      "url": "ai68298100/siyuan-checkin@de2073b"
-    },
-    {
       "installSize": 17615145,
       "openIssues": 0,
       "package": {
@@ -2908,62 +3064,6 @@
       "url": "IAliceBobI/sy-progressive-plugin@0ff027b"
     },
     {
-      "installSize": 511796,
-      "openIssues": 2,
-      "package": {
-        "author": "notesynchelper",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "从微信同步到思源笔记，支持文字、图片、聊天记录、文章"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "笔记同步助手"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "docker"
-        ],
-        "keywords": [
-          "wechat",
-          "template",
-          "企微",
-          "模板",
-          "微信",
-          "速记",
-          "剪藏",
-          "搜集",
-          "日记",
-          "闪念",
-          "memo",
-          "备忘",
-          "公众号",
-          "小红书",
-          "得到"
-        ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-notehelper",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/notesynchelper/siyuan-notehelper",
-        "version": "1.8.45"
-      },
-      "packageZipAssetId": 666105428,
-      "packageZipSha256": "248b95991d4814f4508d2b1301d4f5f73c3c1c846bc5a4ae96455d04097df56a",
-      "repoRef": "v1.8.45",
-      "size": 205945,
-      "stars": 2,
-      "updated": "2026-10-22T14:26:06Z",
-      "url": "notesynchelper/siyuan-notehelper@248b959"
-    },
-    {
       "installSize": 151446,
       "openIssues": 0,
       "package": {
@@ -3404,53 +3504,6 @@
       "stars": 9,
       "updated": "2026-10-21T15:24:11Z",
       "url": "HaoCeans/siyuan-toolbar-customizer@dc4130d"
-    },
-    {
-      "installSize": 86061,
-      "openIssues": 0,
-      "package": {
-        "author": "clock-05",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Paste text containing LaTeX and get real SiYuan math formulas: \\( ... \\), \\[ ... \\] and LaTeX environments are converted automatically.",
-          "zh-CN": "粘贴含 LaTeX 的内容时自动转成思源公式：\\( … \\)、\\[ … \\]、equation/align 等环境都会被识别。"
-        },
-        "displayName": {
-          "default": "LaTeX Math Paste",
-          "zh-CN": "LaTeX 公式粘贴"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "LaTeX",
-          "math",
-          "formula",
-          "paste",
-          "公式",
-          "粘贴",
-          "数学"
-        ],
-        "minAppVersion": "3.1.0",
-        "name": "siyuan-latex-paste",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/clock-05/siyuan-latex-paste",
-        "version": "0.2.12"
-      },
-      "packageZipAssetId": 662799409,
-      "packageZipSha256": "8be7562495a296df9a97fd40c67751e98b7da4d258bdbeea7dc49179f72a27e4",
-      "repoRef": "v0.2.12",
-      "size": 38892,
-      "stars": 0,
-      "updated": "2026-10-21T14:57:44Z",
-      "url": "clock-05/siyuan-latex-paste@8be7562"
     },
     {
       "installSize": 74780,
@@ -6752,58 +6805,6 @@
       "stars": 2,
       "updated": "2026-10-12T07:00:33Z",
       "url": "fujingzhai/siyuan-inbox-plus@933cf24"
-    },
-    {
-      "installSize": 1361528,
-      "openIssues": 1,
-      "package": {
-        "author": "mm-o",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A cloud-drive aggregation manager for SiYuan: mount 25+ cloud drives and disks, preview 300+ formats, work with SiYuan Reader/Media Player, share online, insert file links, and use cloud files as image/video beds without filling your workspace.",
-          "zh_CN": "思源网盘聚合管理器：支持 25+ 网盘和磁盘挂载、300+ 文件格式预览，联动思阅和思播，在线分享、文件链接插入文档、图床/视频文件床一站完成，让远程文件随时可用，思源空间 0 负担。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Cloud Drive Manager",
-          "zh_CN": "思盘"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "思盘",
-          "cloud drive",
-          "file manager",
-          "openlist",
-          "media",
-          "s3",
-          "kernel plugin",
-          "webdav"
-        ],
-        "minAppVersion": "3.6.5",
-        "name": "siyuan-cloud",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/mm-o/siyuan-cloud",
-        "version": "0.7.4"
-      },
-      "packageZipAssetId": 632506520,
-      "packageZipSha256": "ba48cbff0c956ec75ae4d80ac9f38da23d2dbf7e90bc8572a4f67b50eb8e1d47",
-      "repoRef": "v0.7.4",
-      "size": 456805,
-      "stars": 5,
-      "updated": "2026-10-12T03:10:58Z",
-      "url": "mm-o/siyuan-cloud@ba48cbf"
     },
     {
       "installSize": 2955200,
