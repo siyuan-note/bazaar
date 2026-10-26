@@ -16,6 +16,8 @@
 
 If you have developed a plugin, theme, icon, template or widget and want to list it in the SiYuan community bazaar, follow these steps:
 
+**Authorization requirement**: The submitter must be the package author, or have the author's authorization, to list the package in the SiYuan community bazaar, display its metadata and documentation, and cache and distribute `package.zip`; the license used by the package must permit redistribution.
+
 1. **Fork this repository**
 
    Fork [siyuan-note/bazaar](https://github.com/siyuan-note/bazaar) on GitHub. If you have already forked, sync with the latest main branch first.
@@ -31,7 +33,7 @@ If you have developed a plugin, theme, icon, template or widget and want to list
 
 3. **Open a PR**
 
-   Commit your changes and open a Pull Request to the `main` branch of this repo.
+   Commit your changes and open a Pull Request to the `main` branch of this repo. Follow the repository's Pull Request template in the PR body.
 
 4. **Wait for review and merge**
 
