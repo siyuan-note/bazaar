@@ -50,79 +50,111 @@
       "url": "cyIyd/simofat@bf99b5e"
     },
     {
-      "installSize": 1404649,
-      "openIssues": 1,
+      "installSize": 1068478,
+      "openIssues": 0,
       "package": {
-        "author": "ai68298100",
+        "author": "congsec",
         "backends": [
           "all"
         ],
         "description": {
-          "default": "Save and recall common content (phrases, snippets, code, links, images, assets, block structures) anchored to real SiYuan blocks — with fill-in variables, snippet nesting, AI transforms, template packs, and faithful source references.",
-          "zh-CN": "基于思源文档和块的常用内容快速调用器：常用语、模板、代码、链接、图片、附件与块结构，条目锚定真实思源块。支持插入时变量填充、片段嵌套、AI 整理/变换/语义找、模板包分享，来源可回链、失效可见。"
+          "default": "MeiDay is a cross-platform (Web, App) task and diary manager that delivers a smoother experience and stronger security.",
+          "zh-CN": "MeiDay 是一款跨端（Web、App）任务与日记管理工具，让记录更流畅，让数据更安全。"
         },
+        "disabledInPublish": true,
         "displayName": {
-          "default": "Lv Common (Beta)",
-          "zh-CN": "小驴常用（内测版）"
+          "default": "MeiDay",
+          "zh-CN": "MeiDay（每日任务日记管理）"
         },
         "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window",
-          "mobile",
-          "browser-mobile"
+          "all"
         ],
+        "funding": {
+          "github": "congsec"
+        },
         "icon": "icon.png",
         "keywords": [
-          "lv",
-          "小驴",
-          "常用语",
-          "common phrases",
-          "snippet",
-          "snippets",
-          "模板",
-          "template",
-          "templates",
-          "片段",
-          "快速插入",
-          "quick insert",
-          "小驴常用",
-          "小驴常用（内测版）",
-          "xiaolv",
-          "xiaolv-common",
-          "变量",
-          "variables",
-          "文本扩展",
-          "text expander",
-          "AI",
-          "提示词",
-          "prompt",
-          "剪贴板",
-          "clipboard",
-          "模板包",
-          "template pack"
+          "任务管理",
+          "待办",
+          "在线",
+          "todo",
+          "task",
+          "meiday",
+          "日记",
+          "加密",
+          "隐私"
         ],
-        "minAppVersion": "3.8.4",
-        "name": "xiaolv-common",
+        "minAppVersion": "3.0.0",
+        "name": "MeiDay",
         "preview": "preview.png",
         "readme": {
           "default": "README.md",
-          "en-US": "README.en-US.md"
+          "en-US": "README.EN.md"
         },
-        "settingsWindow": true,
-        "url": "https://github.com/ai68298100/xiaolv-common",
-        "version": "0.8.1"
+        "url": "https://github.com/CongSec/MeiDay",
+        "version": "1.9.6"
       },
-      "packageZipAssetId": 678738025,
-      "packageZipSha256": "c5f4da83a67219c69b93d83111ce2f2a960ec5390c7a0f0acfc2757cf7b69ef0",
-      "repoRef": "v0.8.1",
-      "size": 612442,
-      "stars": 1,
-      "updated": "2026-10-26T16:24:31Z",
-      "url": "ai68298100/xiaolv-common@c5f4da8"
+      "packageZipAssetId": 679016718,
+      "packageZipSha256": "61b2ca740280acbea1e502151095741063bca195865428293d43f778b76f0cd3",
+      "repoRef": "v1.9.6",
+      "size": 486930,
+      "stars": 3,
+      "updated": "2026-10-26T18:06:38Z",
+      "url": "CongSec/MeiDay@61b2ca7"
     },
     {
-      "installSize": 2632694,
+      "installSize": 17927524,
+      "openIssues": 1,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
+          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Horizon",
+          "zh_CN": "任务管理器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "task",
+          "manager",
+          "filter"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-plugin-task-horizon",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
+        "version": "3.3.2"
+      },
+      "packageZipAssetId": 678898019,
+      "packageZipSha256": "6b14687d6bc1bb624d471ddd1d73c79aa40d17af1a91bbe6b25e1761f3eee6ed",
+      "repoRef": "v3.3.2",
+      "size": 3700456,
+      "stars": 38,
+      "updated": "2026-10-26T17:23:21Z",
+      "url": "5kyfkr/siyuan-plugin-task-horizon@6b14687"
+    },
+    {
+      "installSize": 2640405,
       "openIssues": 0,
       "package": {
         "author": "ai68298100",
@@ -188,18 +220,76 @@
         },
         "settingsWindow": true,
         "url": "https://github.com/ai68298100/siyuan-exam",
-        "version": "0.11.84"
+        "version": "0.11.85"
       },
-      "packageZipAssetId": 678737696,
-      "packageZipSha256": "e09d1b9e919969fa8946c89aa5152631652cc84235c6bb1ac401d52154d7aa80",
-      "repoRef": "v0.11.84",
-      "size": 1071886,
+      "packageZipAssetId": 678826930,
+      "packageZipSha256": "781615748fd6c412e70820529ab311e1a028642fe9b731cd6425dccb06292364",
+      "repoRef": "v0.11.85",
+      "size": 1073900,
       "stars": 1,
-      "updated": "2026-10-26T16:24:21Z",
-      "url": "ai68298100/siyuan-exam@e09d1b9"
+      "updated": "2026-10-26T16:56:57Z",
+      "url": "ai68298100/siyuan-exam@7816157"
     },
     {
-      "installSize": 2074303,
+      "installSize": 2503934,
+      "openIssues": 1,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Manage people and relationships in SiYuan: one person, one document, backed by a native database.",
+          "zh-CN": "在思源笔记里管理人脉与人际关系：一人一文档，数据库主干，关系图谱与生日提醒。"
+        },
+        "displayName": {
+          "default": "Lv Contacts",
+          "zh-CN": "小驴人脉"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "小驴",
+          "小驴人脉",
+          "xiaolv",
+          "lv",
+          "人脉",
+          "联系人",
+          "人际关系",
+          "CRM",
+          "通讯录",
+          "生日提醒",
+          "关系图谱",
+          "contacts",
+          "people"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-contacts",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en-US": "README.en-US.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/ai68298100/siyuan-contacts",
+        "version": "0.5.87"
+      },
+      "packageZipAssetId": 678826704,
+      "packageZipSha256": "c65219b977d22cae2a643ab4f8eb84d8f1b0ee06bdfd5b88e78c7aa50dfa1072",
+      "repoRef": "v0.5.87",
+      "size": 788961,
+      "stars": 1,
+      "updated": "2026-10-26T16:56:54Z",
+      "url": "ai68298100/siyuan-contacts@c65219b"
+    },
+    {
+      "installSize": 2075815,
       "openIssues": 0,
       "package": {
         "author": "ai68298100",
@@ -264,18 +354,200 @@
         },
         "settingsWindow": true,
         "url": "https://github.com/ai68298100/siyuan-lv-cards",
-        "version": "0.210.84"
+        "version": "0.210.85"
       },
-      "packageZipAssetId": 678717637,
-      "packageZipSha256": "ff32406fe990f971ab2e019febbffd4e1320a0263bb3faf8fb18187a0bc5bbeb",
-      "repoRef": "v0.210.84",
-      "size": 760005,
+      "packageZipAssetId": 678823056,
+      "packageZipSha256": "af8399177377aee455302d751130b7cab34a82a3335730f106e5e8fdd98eedef",
+      "repoRef": "v0.210.85",
+      "size": 760270,
       "stars": 2,
-      "updated": "2026-10-26T16:17:36Z",
-      "url": "ai68298100/siyuan-lv-cards@ff32406"
+      "updated": "2026-10-26T16:55:22Z",
+      "url": "ai68298100/siyuan-lv-cards@af83991"
     },
     {
-      "installSize": 2146363,
+      "installSize": 1409347,
+      "openIssues": 1,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Save and recall common content (phrases, snippets, code, links, images, assets, block structures) anchored to real SiYuan blocks — with fill-in variables, snippet nesting, AI transforms, template packs, and faithful source references.",
+          "zh-CN": "基于思源文档和块的常用内容快速调用器：常用语、模板、代码、链接、图片、附件与块结构，条目锚定真实思源块。支持插入时变量填充、片段嵌套、AI 整理/变换/语义找、模板包分享，来源可回链、失效可见。"
+        },
+        "displayName": {
+          "default": "Lv Common (Beta)",
+          "zh-CN": "小驴常用（内测版）"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "lv",
+          "小驴",
+          "常用语",
+          "common phrases",
+          "snippet",
+          "snippets",
+          "模板",
+          "template",
+          "templates",
+          "片段",
+          "快速插入",
+          "quick insert",
+          "小驴常用",
+          "小驴常用（内测版）",
+          "xiaolv",
+          "xiaolv-common",
+          "变量",
+          "variables",
+          "文本扩展",
+          "text expander",
+          "AI",
+          "提示词",
+          "prompt",
+          "剪贴板",
+          "clipboard",
+          "模板包",
+          "template pack"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "xiaolv-common",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en-US": "README.en-US.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/ai68298100/xiaolv-common",
+        "version": "0.8.2"
+      },
+      "packageZipAssetId": 678822336,
+      "packageZipSha256": "568c7bd5113b33f6cdf611623ccb72ec38a122fc7c1e44e396236405086f3c71",
+      "repoRef": "v0.8.2",
+      "size": 613701,
+      "stars": 1,
+      "updated": "2026-10-26T16:55:06Z",
+      "url": "ai68298100/xiaolv-common@568c7bd"
+    },
+    {
+      "installSize": 1745296,
+      "openIssues": 1,
+      "package": {
+        "author": "ai68298100",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Organize SiYuan clippings and imports into a document-attribute reading library with status triage and daily resurfacing. Optional AI enrichment is manual and requires a configured provider.",
+          "zh-CN": "小驴拾遗：把思源剪藏和导入文章整理为基于文档属性的读库，支持状态分拣和每日重浮；AI 富化可选且默认手动，需要配置模型。"
+        },
+        "displayName": {
+          "default": "Lv Glean",
+          "zh-CN": "小驴拾遗"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "小驴",
+          "小驴拾遗",
+          "xiaolv",
+          "lv",
+          "剪藏",
+          "稍后读",
+          "阅读管理",
+          "收件箱",
+          "文章库",
+          "读库",
+          "收藏管理",
+          "网页剪藏",
+          "阅读队列",
+          "重浮",
+          "web clipper",
+          "read later",
+          "reading list",
+          "inbox"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-glean",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en-US": "README.en-US.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/ai68298100/siyuan-glean",
+        "version": "1.3.28"
+      },
+      "packageZipAssetId": 678806591,
+      "packageZipSha256": "d99a5927922b5bfb18abc6f8169834992db80e6d2833e6d9c989dbac76599805",
+      "repoRef": "v1.3.28",
+      "size": 551729,
+      "stars": 1,
+      "updated": "2026-10-26T16:48:57Z",
+      "url": "ai68298100/siyuan-glean@d99a592"
+    },
+    {
+      "installSize": 352777,
+      "openIssues": 0,
+      "package": {
+        "author": "Taihong Yang",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Local DeepSeek Harness in SiYuan: workspaces, file and image attachments, session archives, streaming and note references.",
+          "zh_CN": "在思源侧栏使用本机 DeepSeek Harness：多工作区、文件与图片附件、会话归档、流式对话及笔记引用，保留 Web 面板。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan DeepSeek Harness"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "AI",
+          "DeepSeek",
+          "Harness",
+          "Agent",
+          "MCP",
+          "Web",
+          "sidebar"
+        ],
+        "minAppVersion": "3.1.0",
+        "name": "siyuan-plugins-ai-cli-bridge",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/yangtaihong59/siyuan-plugins-ai-cli-bridge",
+        "version": "0.3.0"
+      },
+      "packageZipAssetId": 678764919,
+      "packageZipSha256": "c3ec111341fbc484a9a2d3acd719030f98000273256e266053d3304c0b1a6e05",
+      "repoRef": "v0.3.0",
+      "size": 345777,
+      "stars": 7,
+      "updated": "2026-10-26T16:33:25Z",
+      "url": "yangtaihong59/siyuan-plugins-ai-cli-bridge@c3ec111"
+    },
+    {
+      "installSize": 2146638,
       "openIssues": 8,
       "package": {
         "author": "ai68298100",
@@ -334,73 +606,15 @@
         },
         "settingsWindow": true,
         "url": "https://github.com/ai68298100/siyuan-home",
-        "version": "0.5.107"
+        "version": "0.5.108"
       },
-      "packageZipAssetId": 678706379,
-      "packageZipSha256": "2074817513536fcffa56f47a14a4bc387ffbf8201647b440c407fb5f959f7b07",
-      "repoRef": "v0.5.107",
-      "size": 750987,
+      "packageZipAssetId": 678759420,
+      "packageZipSha256": "7343e08c1a5bdb002a4a2f5f3061f5f27ad3dafd739035a0ab46b0d303ddcb09",
+      "repoRef": "v0.5.108",
+      "size": 751040,
       "stars": 1,
-      "updated": "2026-10-26T16:13:20Z",
-      "url": "ai68298100/siyuan-home@2074817"
-    },
-    {
-      "installSize": 2502377,
-      "openIssues": 2,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Manage people and relationships in SiYuan: one person, one document, backed by a native database.",
-          "zh-CN": "在思源笔记里管理人脉与人际关系：一人一文档，数据库主干，关系图谱与生日提醒。"
-        },
-        "displayName": {
-          "default": "Lv Contacts",
-          "zh-CN": "小驴人脉"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "小驴",
-          "小驴人脉",
-          "xiaolv",
-          "lv",
-          "人脉",
-          "联系人",
-          "人际关系",
-          "CRM",
-          "通讯录",
-          "生日提醒",
-          "关系图谱",
-          "contacts",
-          "people"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-contacts",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en-US": "README.en-US.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/ai68298100/siyuan-contacts",
-        "version": "0.5.85"
-      },
-      "packageZipAssetId": 678692803,
-      "packageZipSha256": "c93bdce04987bcabf312566ce4d91a238fd262c63df42a2bb9c015e48122ad55",
-      "repoRef": "v0.5.85",
-      "size": 788663,
-      "stars": 1,
-      "updated": "2026-10-26T16:08:06Z",
-      "url": "ai68298100/siyuan-contacts@c93bdce"
+      "updated": "2026-10-26T16:31:29Z",
+      "url": "ai68298100/siyuan-home@7343e08"
     },
     {
       "installSize": 511796,
@@ -1252,59 +1466,6 @@
       "url": "xingqingwen/siyuan-plugin-zettel@87206aa"
     },
     {
-      "installSize": 1061832,
-      "openIssues": 0,
-      "package": {
-        "author": "congsec",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "MeiDay is a cross-platform (Web, App) task and diary manager that delivers a smoother experience and stronger security.",
-          "zh-CN": "MeiDay 是一款跨端（Web、App）任务与日记管理工具，让记录更流畅，让数据更安全。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "MeiDay",
-          "zh-CN": "MeiDay（每日任务日记管理）"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "github": "congsec"
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "任务管理",
-          "待办",
-          "在线",
-          "todo",
-          "task",
-          "meiday",
-          "日记",
-          "加密",
-          "隐私"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "MeiDay",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en-US": "README.EN.md"
-        },
-        "url": "https://github.com/CongSec/MeiDay",
-        "version": "1.9.5"
-      },
-      "packageZipAssetId": 677079053,
-      "packageZipSha256": "7f37cfa80bdf1ca219a2be99c98601270fe23e0c0bc16dd95e837e507f61dca2",
-      "repoRef": "v1.9.5",
-      "size": 484734,
-      "stars": 3,
-      "updated": "2026-10-26T05:05:07Z",
-      "url": "CongSec/MeiDay@7f37cfa"
-    },
-    {
       "installSize": 10968976,
       "openIssues": 0,
       "package": {
@@ -1678,69 +1839,6 @@
       "url": "LongDarkroom/siyuan-excali-studio@ef86297"
     },
     {
-      "installSize": 1734685,
-      "openIssues": 1,
-      "package": {
-        "author": "ai68298100",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Organize SiYuan clippings and imports into a document-attribute reading library with status triage and daily resurfacing. Optional AI enrichment is manual and requires a configured provider.",
-          "zh-CN": "小驴拾遗：把思源剪藏和导入文章整理为基于文档属性的读库，支持状态分拣和每日重浮；AI 富化可选且默认手动，需要配置模型。"
-        },
-        "displayName": {
-          "default": "Lv Glean",
-          "zh-CN": "小驴拾遗"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "小驴",
-          "小驴拾遗",
-          "xiaolv",
-          "lv",
-          "剪藏",
-          "稍后读",
-          "阅读管理",
-          "收件箱",
-          "文章库",
-          "读库",
-          "收藏管理",
-          "网页剪藏",
-          "阅读队列",
-          "重浮",
-          "web clipper",
-          "read later",
-          "reading list",
-          "inbox"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-glean",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en-US": "README.en-US.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/ai68298100/siyuan-glean",
-        "version": "1.3.26"
-      },
-      "packageZipAssetId": 674756877,
-      "packageZipSha256": "44811da7749902d389949fb8b724962e600005970151077d39814017b46f1e81",
-      "repoRef": "v1.3.26",
-      "size": 548955,
-      "stars": 1,
-      "updated": "2026-10-25T10:33:08Z",
-      "url": "ai68298100/siyuan-glean@44811da"
-    },
-    {
       "installSize": 4320724,
       "openIssues": 2,
       "package": {
@@ -1957,57 +2055,6 @@
       "stars": 5,
       "updated": "2026-10-25T07:38:23Z",
       "url": "gradypark86/siyuan-plugin-calendar@2c99f00"
-    },
-    {
-      "installSize": 17798875,
-      "openIssues": 1,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
-          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Horizon",
-          "zh_CN": "任务管理器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "task",
-          "manager",
-          "filter"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-plugin-task-horizon",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "3.3.1"
-      },
-      "packageZipAssetId": 674362064,
-      "packageZipSha256": "9ecfe70c02372c3f727ddc4430b6c8c0802482421e73e5e299a97dde79c28a6a",
-      "repoRef": "v3.3.1",
-      "size": 3670674,
-      "stars": 38,
-      "updated": "2026-10-25T07:14:49Z",
-      "url": "5kyfkr/siyuan-plugin-task-horizon@9ecfe70"
     },
     {
       "installSize": 2810605,
@@ -3159,53 +3206,6 @@
       "stars": 0,
       "updated": "2026-10-22T11:05:32Z",
       "url": "wave789/siyuan-translation@fc24589"
-    },
-    {
-      "installSize": 276314,
-      "openIssues": 0,
-      "package": {
-        "author": "Taihong Yang",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Chat with a local DeepSeek Harness agent in SiYuan, with streaming, note references and an optional Web panel.",
-          "zh_CN": "在思源侧栏使用本机 DeepSeek Harness：流式对话、模型选择与笔记引用，保留原有 Web 网页面板。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiYuan DeepSeek Harness"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "AI",
-          "DeepSeek",
-          "Harness",
-          "Agent",
-          "MCP",
-          "Web",
-          "sidebar"
-        ],
-        "minAppVersion": "3.1.0",
-        "name": "siyuan-plugins-ai-cli-bridge",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/yangtaihong59/siyuan-plugins-ai-cli-bridge",
-        "version": "0.2.2"
-      },
-      "packageZipAssetId": 665482589,
-      "packageZipSha256": "b668ee600839f86e16ccb2039258a76c13c6498906253def6d910225dd10bfa3",
-      "repoRef": "v0.2.2",
-      "size": 269314,
-      "stars": 7,
-      "updated": "2026-10-22T10:23:33Z",
-      "url": "yangtaihong59/siyuan-plugins-ai-cli-bridge@b668ee6"
     },
     {
       "installSize": 510657,
