@@ -1,6 +1,165 @@
 {
   "repos": [
     {
+      "installSize": 17990031,
+      "openIssues": 0,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
+          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Horizon",
+          "zh_CN": "任务管理器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "task",
+          "manager",
+          "filter"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-plugin-task-horizon",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
+        "version": "3.3.5"
+      },
+      "packageZipAssetId": 689173036,
+      "packageZipSha256": "b55c17fc940024d7c866f16973183a99e227d9800826fa89b6cb58a2df03b175",
+      "repoRef": "v3.3.5",
+      "size": 3716399,
+      "stars": 37,
+      "updated": "2026-10-29T16:30:13Z",
+      "url": "5kyfkr/siyuan-plugin-task-horizon@b55c17f"
+    },
+    {
+      "installSize": 520811,
+      "openIssues": 2,
+      "package": {
+        "author": "notesynchelper",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "从微信同步到思源笔记，支持文字、图片、聊天记录、文章"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "笔记同步助手"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "docker"
+        ],
+        "keywords": [
+          "wechat",
+          "template",
+          "企微",
+          "模板",
+          "微信",
+          "速记",
+          "剪藏",
+          "搜集",
+          "日记",
+          "闪念",
+          "memo",
+          "备忘",
+          "公众号",
+          "小红书",
+          "得到"
+        ],
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-notehelper",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/notesynchelper/siyuan-notehelper",
+        "version": "1.8.48"
+      },
+      "packageZipAssetId": 689075728,
+      "packageZipSha256": "97df960234a9031d240aa07c445e6faf9b48f9b33bfc44c3100aff27d021a4a0",
+      "repoRef": "v1.8.48",
+      "size": 209033,
+      "stars": 2,
+      "updated": "2026-10-29T15:56:43Z",
+      "url": "notesynchelper/siyuan-notehelper@97df960"
+    },
+    {
+      "installSize": 5466227,
+      "openIssues": 4,
+      "package": {
+        "author": "Taihong Yang",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Siyuan sisyphus enables AI Agents to operate your Siyuan with notebook-level permission control, covering most of Siyuan&#39;s functionality. Supports desktop、 docker、 mobile.",
+          "zh_CN": "让 AI Agent 操作你的思源，提供 MCP CLI 两种方式，支持笔记本级权限管控、覆盖SIYUAN绝大部分功能，支持思源的桌面、docker端、移动端。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan sisyphus MCP &amp; CLI &amp; GIT",
+          "zh_CN": "思源 sisyphus MCP &amp; CLI &amp; GIT"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://github.com/yangtaihong59/siyuan-plugins-mcp-sisyphus/blob/main/docs/archive/thank.jpeg"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "AI",
+          "Agent",
+          "MCP"
+        ],
+        "minAppVersion": "2.9.0",
+        "name": "siyuan-plugins-mcp-sisyphus",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/yangtaihong59/siyuan-plugins-mcp-sisyphus",
+        "version": "0.7.0"
+      },
+      "packageZipAssetId": 688955394,
+      "packageZipSha256": "d01e2f975624b6c4a8dfa5df0357c3e6741bd152dd254772e749f82ddb9f5092",
+      "repoRef": "v0.7.0",
+      "size": 2283730,
+      "stars": 119,
+      "updated": "2026-10-29T15:15:12Z",
+      "url": "yangtaihong59/siyuan-plugins-mcp-sisyphus@d01e2f9"
+    },
+    {
       "installSize": 10337501,
       "openIssues": 1,
       "package": {
@@ -463,57 +622,6 @@
       "stars": 1,
       "updated": "2026-10-28T17:30:49Z",
       "url": "QMike0/siyuan-plugin-page-search@3bdfcbe"
-    },
-    {
-      "installSize": 17970165,
-      "openIssues": 0,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Aggregate tasks across documents with rule-based filters, grouping/sorting, configurable columns, and a quickbar editor for SiYuan.",
-          "zh_CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Horizon",
-          "zh_CN": "任务管理器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "task",
-          "manager",
-          "filter"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-plugin-task-horizon",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "3.3.4"
-      },
-      "packageZipAssetId": 685609048,
-      "packageZipSha256": "3204d3f5cd18b098ebf38a18930990c60aa0bb8314131b54c70f1b61d80ad3b3",
-      "repoRef": "v3.3.4",
-      "size": 3711292,
-      "stars": 37,
-      "updated": "2026-10-28T16:27:31Z",
-      "url": "5kyfkr/siyuan-plugin-task-horizon@3204d3f"
     },
     {
       "installSize": 3250388,
@@ -2204,62 +2312,6 @@
       "stars": 7,
       "updated": "2026-10-26T16:33:25Z",
       "url": "yangtaihong59/siyuan-plugins-ai-cli-bridge@c3ec111"
-    },
-    {
-      "installSize": 511796,
-      "openIssues": 2,
-      "package": {
-        "author": "notesynchelper",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "从微信同步到思源笔记，支持文字、图片、聊天记录、文章"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "笔记同步助手"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "docker"
-        ],
-        "keywords": [
-          "wechat",
-          "template",
-          "企微",
-          "模板",
-          "微信",
-          "速记",
-          "剪藏",
-          "搜集",
-          "日记",
-          "闪念",
-          "memo",
-          "备忘",
-          "公众号",
-          "小红书",
-          "得到"
-        ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-notehelper",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/notesynchelper/siyuan-notehelper",
-        "version": "1.8.46"
-      },
-      "packageZipAssetId": 678663985,
-      "packageZipSha256": "4632df2049fa59a08e82ad8a55226891ba1e9d014a211c3bd6a0fe15090e0479",
-      "repoRef": "v1.8.46",
-      "size": 205945,
-      "stars": 2,
-      "updated": "2026-10-26T15:58:10Z",
-      "url": "notesynchelper/siyuan-notehelper@4632df2"
     },
     {
       "installSize": 84985,
@@ -5013,58 +5065,6 @@
       "stars": 5,
       "updated": "2026-10-19T22:46:05Z",
       "url": "massivebox/siyuan-jsdraw-plugin@ffa2235"
-    },
-    {
-      "installSize": 4771527,
-      "openIssues": 5,
-      "package": {
-        "author": "Taihong Yang",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Siyuan sisyphus enables AI Agents to operate your Siyuan with notebook-level permission control, covering most of Siyuan&#39;s functionality. Supports desktop、 docker、 mobile.",
-          "zh_CN": "让 AI Agent 操作你的思源，提供 MCP CLI 两种方式，支持笔记本级权限管控、覆盖SIYUAN绝大部分功能，支持思源的桌面、docker端、移动端。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiYuan sisyphus MCP &amp; CLI &amp; GIT",
-          "zh_CN": "思源 sisyphus MCP &amp; CLI &amp; GIT"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://github.com/yangtaihong59/siyuan-plugins-mcp-sisyphus/blob/main/docs/archive/thank.jpeg"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "AI",
-          "Agent",
-          "MCP"
-        ],
-        "minAppVersion": "2.9.0",
-        "name": "siyuan-plugins-mcp-sisyphus",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/yangtaihong59/siyuan-plugins-mcp-sisyphus",
-        "version": "0.6.13"
-      },
-      "packageZipAssetId": 657118225,
-      "packageZipSha256": "013340acd1a6de27297278ab69c5cc05d315dafbfb0c599acb8e5b2426070440",
-      "repoRef": "v0.6.13",
-      "size": 1496548,
-      "stars": 117,
-      "updated": "2026-10-19T18:45:35Z",
-      "url": "yangtaihong59/siyuan-plugins-mcp-sisyphus@013340a"
     },
     {
       "installSize": 170047,
