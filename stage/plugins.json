@@ -1,6 +1,187 @@
 {
   "repos": [
     {
+      "installSize": 10337501,
+      "openIssues": 1,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
+          "zh_CN": "一款在思源笔记里实现任务管理功能的插件，为了践行「防弹笔记法」而开发。支持电脑端和移动端系统通知提醒任务执行、日历视图查看行事历、项目管理、四象限面板、番茄钟专注、习惯打卡等功能"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Note Management",
+          "zh_CN": "任务笔记管理"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://pancake.waffo.ai/store/achuan-2-fdbho4ye/product/PROD_3F7Aa7c2NQlz9KmxcgxjQ7?type=onetime&amp;currency=USD",
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "reminder",
+          "time",
+          "calendar",
+          "notification",
+          "提醒",
+          "时间",
+          "日历",
+          "通知",
+          "番茄钟",
+          "四象限",
+          "任务管理",
+          "项目管理",
+          "习惯打卡"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-task-note-management",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README_en.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
+        "version": "7.1.7"
+      },
+      "packageZipAssetId": 688889897,
+      "packageZipSha256": "3bf4a6b473bd70c439be9190018cb61ccd9f2b2aee79143c899e6b3d9a62a207",
+      "repoRef": "v7.1.7",
+      "size": 4650350,
+      "stars": 226,
+      "updated": "2026-10-29T14:53:27Z",
+      "url": "Achuan-2/siyuan-plugin-task-note-management@3bf4a6b"
+    },
+    {
+      "installSize": 3586032,
+      "openIssues": 0,
+      "package": {
+        "author": "verygoodwu",
+        "backends": [
+          "windows",
+          "linux",
+          "docker",
+          "darwin"
+        ],
+        "description": {
+          "default": "Create, edit, preview, and export documents, text files, spreadsheets, mind maps, and whiteboards in SiYuan.",
+          "zh-CN": "在思源中创建、编辑、预览和导出文档、纯文本文件、表格、脑图与白板。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Cloud Document Suite",
+          "zh-CN": "云文档套件"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "windows",
+          "linux",
+          "docker",
+          "darwin"
+        ],
+        "keywords": [
+          "document",
+          "text",
+          "html",
+          "office",
+          "excel",
+          "word",
+          "pdf",
+          "mindmap",
+          "whiteboard",
+          "云文档",
+          "办公套件",
+          "文本编辑器",
+          "白板",
+          "拖放"
+        ],
+        "minAppVersion": "3.7.4",
+        "name": "siyuan-cloud-document-suite",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/verygoodwu/siyuan-cloud-document-suite",
+        "version": "2.3.5"
+      },
+      "packageZipAssetId": 688430209,
+      "packageZipSha256": "ef671e82c32b963723e4e4c066f3b460ba7cc2d08e3eabc96c3ae5b7cb76496f",
+      "repoRef": "v2.3.5",
+      "size": 1056895,
+      "stars": 1,
+      "updated": "2026-10-29T12:02:29Z",
+      "url": "verygoodwu/siyuan-cloud-document-suite@ef671e8"
+    },
+    {
+      "installSize": 3841639,
+      "openIssues": 0,
+      "package": {
+        "author": "mirlous",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Free tier forever (up to 10 documents, 1 vault): real-time encrypt selected documents + all assets (images/videos/PDF/xlsx, any format) into a self-developed single-file vault (.sydb); zero plaintext (in-memory injection); unlimited size; Argon2id KDF (OWASP-first) for new vaults. Free tier includes lock/hide with body mask, recovery key (forgot-password recovery), auto/incremental backup, dedup, in-vault recycle bin, restore-on-remove, orphan recovery, password hints, weak-password detection, sensitive-info alert, revision history rollback, audit log, device-bound activation code. Paid unlocks: unlimited documents &amp; vaults, WebDAV two-way sync, mobile read/write (PIN session), TOTP two-factor unlock, tamper/ransomware monitor, burn-after-reading one-time share, OCR full-text image search (tesseract, CDN model), TF-IDF semantic auto-sharding, folder zip import, central vault directory, auto update check. 14-day full trial. Paid license (WeChat nglzhy).",
+          "zh_CN": "🆓 免费版永久可用（最多 10 篇文档、1 个密库）：把选中的文档及全部附件（图片/视频/PDF/xlsx 任意格式）实时加密进一个自研单文件数据库（.sydb），工作区零明文（内存注入显示），容量无上限，新建库默认 Argon2id 加密（OWASP 首选 KDF）。免费版含：锁定隐藏与正文遮罩、恢复密钥（忘记密码可找回）、自动/增量备份、资产去重、库内回收站、移出自动还原、孤儿找回、密码提示、弱密码检测、敏感信息提醒、版本历史回滚、审计日志、设备绑定激活码（防一码多用）。⭐ 付费版解锁：无限文档与无限密库、WebDAV 双向同步、移动端读写（6 位访问码会话）、TOTP 双因素解锁、防勒索/防篡改监控、阅后即焚一次性分享、OCR 图片全文搜索（tesseract，模型走 CDN 不占插件体积）、TF-IDF 语义智能分库、文件夹整包入库、集中分库目录、自动更新检查。14 天全功能体验；付费授权（微信 nglzhy）。"
+        },
+        "displayName": {
+          "default": "Secret Database",
+          "zh_CN": "密库"
+        },
+        "frontends": [
+          "desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "加密",
+          "数据库",
+          "密",
+          "单文件",
+          "回收站",
+          "totp",
+          "ocr",
+          "encryption",
+          "database",
+          "vault",
+          "secret",
+          "recycle"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-edb",
+        "preview": "",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/mirlous/siyuan-edb",
+        "version": "2.2.20"
+      },
+      "packageZipAssetId": 687897517,
+      "packageZipSha256": "8bc8a3e0c789f26466504fa41d36e6a2bf20e2735fe9e915927491a47726b13d",
+      "repoRef": "v2.2.20",
+      "size": 1559714,
+      "stars": 0,
+      "updated": "2026-10-29T08:37:53Z",
+      "url": "mirlous/siyuan-edb@8bc8a3e"
+    },
+    {
       "installSize": 890106,
       "openIssues": 0,
       "package": {
@@ -861,57 +1042,6 @@
       "url": "IAliceBobI/sy-tomato-plugin@0cad5e7"
     },
     {
-      "installSize": 3800677,
-      "openIssues": 0,
-      "package": {
-        "author": "mirlous",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Free tier forever (up to 10 documents, 1 vault): real-time encrypt selected documents + all assets (images/videos/PDF/xlsx, any format) into a self-developed single-file vault (.sydb); zero plaintext (in-memory injection); unlimited size; Argon2id KDF (OWASP-first) for new vaults. Free tier includes lock/hide with body mask, recovery key (forgot-password recovery), auto/incremental backup, dedup, in-vault recycle bin, restore-on-remove, orphan recovery, password hints, weak-password detection, sensitive-info alert, revision history rollback, audit log, device-bound activation code. Paid unlocks: unlimited documents &amp; vaults, WebDAV two-way sync, mobile read/write (PIN session), TOTP two-factor unlock, tamper/ransomware monitor, burn-after-reading one-time share, OCR full-text image search (tesseract, CDN model), TF-IDF semantic auto-sharding, folder zip import, central vault directory, auto update check. 14-day full trial. Paid license (WeChat nglzhy).",
-          "zh_CN": "🆓 免费版永久可用（最多 10 篇文档、1 个密库）：把选中的文档及全部附件（图片/视频/PDF/xlsx 任意格式）实时加密进一个自研单文件数据库（.sydb），工作区零明文（内存注入显示），容量无上限，新建库默认 Argon2id 加密（OWASP 首选 KDF）。免费版含：锁定隐藏与正文遮罩、恢复密钥（忘记密码可找回）、自动/增量备份、资产去重、库内回收站、移出自动还原、孤儿找回、密码提示、弱密码检测、敏感信息提醒、版本历史回滚、审计日志、设备绑定激活码（防一码多用）。⭐ 付费版解锁：无限文档与无限密库、WebDAV 双向同步、移动端读写（6 位访问码会话）、TOTP 双因素解锁、防勒索/防篡改监控、阅后即焚一次性分享、OCR 图片全文搜索（tesseract，模型走 CDN 不占插件体积）、TF-IDF 语义智能分库、文件夹整包入库、集中分库目录、自动更新检查。14 天全功能体验；付费授权（微信 nglzhy）。"
-        },
-        "displayName": {
-          "default": "Secret Database",
-          "zh_CN": "密库"
-        },
-        "frontends": [
-          "desktop"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "加密",
-          "数据库",
-          "密",
-          "单文件",
-          "回收站",
-          "totp",
-          "ocr",
-          "encryption",
-          "database",
-          "vault",
-          "secret",
-          "recycle"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-edb",
-        "preview": "",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/mirlous/siyuan-edb",
-        "version": "2.2.17"
-      },
-      "packageZipAssetId": 684236386,
-      "packageZipSha256": "296c7bbbdbad0fb29d2425cafbd4fe06b178f51ebbe86cd2a7d29e9a69a8eec7",
-      "repoRef": "v2.2.17",
-      "size": 1543865,
-      "stars": 0,
-      "updated": "2026-10-28T07:44:58Z",
-      "url": "mirlous/siyuan-edb@296c7bb"
-    },
-    {
       "installSize": 1497593,
       "openIssues": 0,
       "package": {
@@ -1356,73 +1486,6 @@
       "stars": 1,
       "updated": "2026-10-27T15:55:21Z",
       "url": "ai68298100/siyuan-glean@3d7fa15"
-    },
-    {
-      "installSize": 3585641,
-      "openIssues": 0,
-      "package": {
-        "author": "verygoodwu",
-        "backends": [
-          "windows",
-          "linux",
-          "docker",
-          "darwin"
-        ],
-        "description": {
-          "default": "Create, edit, preview, and export documents, text files, spreadsheets, mind maps, and whiteboards in SiYuan.",
-          "zh-CN": "在思源中创建、编辑、预览和导出文档、纯文本文件、表格、脑图与白板。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Cloud Document Suite",
-          "zh-CN": "云文档套件"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "windows",
-          "linux",
-          "docker",
-          "darwin"
-        ],
-        "keywords": [
-          "document",
-          "text",
-          "html",
-          "office",
-          "excel",
-          "word",
-          "pdf",
-          "mindmap",
-          "whiteboard",
-          "云文档",
-          "办公套件",
-          "文本编辑器",
-          "白板",
-          "拖放"
-        ],
-        "minAppVersion": "3.7.4",
-        "name": "siyuan-cloud-document-suite",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/verygoodwu/siyuan-cloud-document-suite",
-        "version": "2.3.4"
-      },
-      "packageZipAssetId": 682065883,
-      "packageZipSha256": "39c2cb615dbb6294b2d4de75bc81cb9b2ba9e9657273f37b6715eb8e6ea5e7fe",
-      "repoRef": "v2.3.4",
-      "size": 1056773,
-      "stars": 1,
-      "updated": "2026-10-27T15:49:33Z",
-      "url": "verygoodwu/siyuan-cloud-document-suite@39c2cb6"
     },
     {
       "installSize": 1045778,
@@ -2792,69 +2855,6 @@
       "stars": 0,
       "updated": "2026-10-25T11:33:26Z",
       "url": "Chen017/siyuan-plugin-misans@d96def1"
-    },
-    {
-      "installSize": 10331913,
-      "openIssues": 1,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
-          "zh_CN": "一款在思源笔记里实现任务管理功能的插件，为了践行「防弹笔记法」而开发。支持电脑端和移动端系统通知提醒任务执行、日历视图查看行事历、项目管理、四象限面板、番茄钟专注、习惯打卡等功能"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Note Management",
-          "zh_CN": "任务笔记管理"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://pancake.waffo.ai/store/achuan-2-fdbho4ye/product/PROD_3F7Aa7c2NQlz9KmxcgxjQ7?type=onetime&amp;currency=USD",
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "reminder",
-          "time",
-          "calendar",
-          "notification",
-          "提醒",
-          "时间",
-          "日历",
-          "通知",
-          "番茄钟",
-          "四象限",
-          "任务管理",
-          "项目管理",
-          "习惯打卡"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-task-note-management",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README_en.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
-        "version": "7.1.6"
-      },
-      "packageZipAssetId": 674847124,
-      "packageZipSha256": "cc9de15ae3e34133202195569715d07ff2763f78b960ec96245855cf31d20b14",
-      "repoRef": "v7.1.6",
-      "size": 4648798,
-      "stars": 225,
-      "updated": "2026-10-25T11:21:00Z",
-      "url": "Achuan-2/siyuan-plugin-task-note-management@cc9de15"
     },
     {
       "installSize": 4320724,
