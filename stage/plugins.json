@@ -1,6 +1,117 @@
 {
   "repos": [
     {
+      "installSize": 523113,
+      "openIssues": 2,
+      "package": {
+        "author": "notesynchelper",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "从微信同步到思源笔记，支持文字、图片、聊天记录、文章"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "笔记同步助手"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "docker"
+        ],
+        "keywords": [
+          "wechat",
+          "template",
+          "企微",
+          "模板",
+          "微信",
+          "速记",
+          "剪藏",
+          "搜集",
+          "日记",
+          "闪念",
+          "memo",
+          "备忘",
+          "公众号",
+          "小红书",
+          "得到"
+        ],
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-notehelper",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/notesynchelper/siyuan-notehelper",
+        "version": "1.8.49"
+      },
+      "packageZipAssetId": 690851653,
+      "packageZipSha256": "8e6eb64ebe7dbdf663657ff60ca03fdfa96c7c1873fc087fbc87496f41153162",
+      "repoRef": "v1.8.49",
+      "size": 209564,
+      "stars": 2,
+      "updated": "2026-10-30T03:56:01Z",
+      "url": "notesynchelper/siyuan-notehelper@8e6eb64"
+    },
+    {
+      "installSize": 3350612,
+      "openIssues": 0,
+      "package": {
+        "author": "yyk",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "description": {
+          "default": "基于可自定义大模型服务商的思源自学课程插件：资料导入、知识点拆解、学习计划、题库刷题、错题复盘、知识图谱、学习报告",
+          "en-US": "A self-study course plugin based on customizable LLM providers: material import, knowledge points, study plans, quizzes, reviews, knowledge graph and reports"
+        },
+        "displayName": {
+          "default": "AI 智能学习",
+          "en-US": "AI Study"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "AI",
+          "学习",
+          "课程",
+          "刷题",
+          "知识图谱",
+          "study",
+          "quiz",
+          "knowledge-graph"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "AIstudy",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/YYK0402/AIstudy",
+        "version": "0.3.0"
+      },
+      "packageZipAssetId": 690621334,
+      "packageZipSha256": "ebee3c84cd6ce8798c52521be40122773b4ae1e34cad7ce46ddfec4aeb9ec37e",
+      "repoRef": "v0.3.0",
+      "size": 1124638,
+      "stars": 0,
+      "updated": "2026-10-30T02:12:01Z",
+      "url": "YYK0402/AIstudy@ebee3c8"
+    },
+    {
       "installSize": 17990031,
       "openIssues": 0,
       "package": {
@@ -50,62 +161,6 @@
       "stars": 37,
       "updated": "2026-10-29T16:30:13Z",
       "url": "5kyfkr/siyuan-plugin-task-horizon@b55c17f"
-    },
-    {
-      "installSize": 520811,
-      "openIssues": 2,
-      "package": {
-        "author": "notesynchelper",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "从微信同步到思源笔记，支持文字、图片、聊天记录、文章"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "笔记同步助手"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "docker"
-        ],
-        "keywords": [
-          "wechat",
-          "template",
-          "企微",
-          "模板",
-          "微信",
-          "速记",
-          "剪藏",
-          "搜集",
-          "日记",
-          "闪念",
-          "memo",
-          "备忘",
-          "公众号",
-          "小红书",
-          "得到"
-        ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-notehelper",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/notesynchelper/siyuan-notehelper",
-        "version": "1.8.48"
-      },
-      "packageZipAssetId": 689075728,
-      "packageZipSha256": "97df960234a9031d240aa07c445e6faf9b48f9b33bfc44c3100aff27d021a4a0",
-      "repoRef": "v1.8.48",
-      "size": 209033,
-      "stars": 2,
-      "updated": "2026-10-29T15:56:43Z",
-      "url": "notesynchelper/siyuan-notehelper@97df960"
     },
     {
       "installSize": 5466227,
@@ -622,61 +677,6 @@
       "stars": 1,
       "updated": "2026-10-28T17:30:49Z",
       "url": "QMike0/siyuan-plugin-page-search@3bdfcbe"
-    },
-    {
-      "installSize": 3250388,
-      "openIssues": 0,
-      "package": {
-        "author": "yyk",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker"
-        ],
-        "description": {
-          "default": "基于可自定义大模型服务商的思源自学课程插件：资料导入、知识点拆解、学习计划、题库刷题、错题复盘、知识图谱、学习报告",
-          "en-US": "A self-study course plugin based on customizable LLM providers: material import, knowledge points, study plans, quizzes, reviews, knowledge graph and reports"
-        },
-        "displayName": {
-          "default": "AI 智能学习",
-          "en-US": "AI Study"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "AI",
-          "学习",
-          "课程",
-          "刷题",
-          "知识图谱",
-          "study",
-          "quiz",
-          "knowledge-graph"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "AIstudy",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/YYK0402/AIstudy",
-        "version": "0.2.0"
-      },
-      "packageZipAssetId": 685113478,
-      "packageZipSha256": "35029aca882fe3f4791496469839b2240583449cfbdeadeb0ae1f94341ae4a55",
-      "repoRef": "v0.2.0",
-      "size": 1040438,
-      "stars": 0,
-      "updated": "2026-10-28T15:33:25Z",
-      "url": "YYK0402/AIstudy@35029ac"
     },
     {
       "installSize": 15274648,
