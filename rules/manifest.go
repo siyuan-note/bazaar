@@ -320,6 +320,23 @@ func isBazaarSampleRepo(owner, repo string) bool {
 	return ok
 }
 
+// formatKeyZh / formatKeyEn 把 JSON 键名格式化为报错里可读的片段，嵌入「预期外的字段 %s」。
+// 空键不能写成一对空反引号：这里空的是**键名**（字段名），不是字段值。
+// 字段值为空的情形另有一套文案（「当前为空或仅含空白字符」），两者不要混用。
+func formatKeyZh(key string) string {
+	if key == "" {
+		return "（名称为空，键为 `\"\"`）"
+	}
+	return fmt.Sprintf("`%s`", key)
+}
+
+func formatKeyEn(key string) string {
+	if key == "" {
+		return "(its name is empty, key `\"\"`)"
+	}
+	return fmt.Sprintf("`%s`", key)
+}
+
 func checkUnknownKeys(m map[string]any, typ PackageType) []Issue {
 	var issues []Issue
 	allowed := allowedManifestKeys[typ]
@@ -332,8 +349,8 @@ func checkUnknownKeys(m map[string]any, typ PackageType) []Issue {
 	for _, k := range keys {
 		if _, ok := allowed[k]; !ok {
 			issues = append(issues, issue(
-				fmt.Sprintf("`%s` 中出现了预期外的字段 `%s`。请删除该字段（保留未知字段会妨碍思源日后扩展同名字段）。若确有自定义需求，请先在[思源仓库](https://github.com/siyuan-note/siyuan)提 issue 讨论。", typ.ManifestFile(), k),
-				fmt.Sprintf("`%s` has an unexpected field `%s`. Please delete it — keeping unknown fields would block SiYuan from adding the same field later. If you really need something custom, please open an issue in the [SiYuan repository](https://github.com/siyuan-note/siyuan) first so we can discuss it.", typ.ManifestFile(), k),
+				fmt.Sprintf("`%s` 中出现了预期外的字段 %s。请删除该字段（保留未知字段会妨碍思源日后扩展同名字段）。若确有自定义需求，请先在[思源仓库](https://github.com/siyuan-note/siyuan)提 issue 讨论。", typ.ManifestFile(), formatKeyZh(k)),
+				fmt.Sprintf("`%s` has an unexpected field %s. Please delete it — keeping unknown fields would block SiYuan from adding the same field later. If you really need something custom, please open an issue in the [SiYuan repository](https://github.com/siyuan-note/siyuan) first so we can discuss it.", typ.ManifestFile(), formatKeyEn(k)),
 			))
 		}
 	}
@@ -359,6 +376,13 @@ func checkName(m map[string]any, in ManifestInput) []Issue {
 		return []Issue{issue(
 			"清单字段 `name` 不能为空。请填写非空字符串。",
 			"Manifest field `name` can't be empty. Please fill in a non-empty string.",
+		)}
+	}
+	// 空值与纯空白都要单独说明：把 ` ` 原样塞进反引号，作者看不出检查器读到了什么。
+	if strings.TrimSpace(name) == "" {
+		return []Issue{issue(
+			"清单字段 `name` 当前只包含空白字符，不能作为包名。请填写非空的可打印 ASCII 名称。",
+			"Manifest field `name` contains only whitespace, so it can't be used as a package name. Please fill in a non-empty printable ASCII name.",
 		)}
 	}
 
@@ -518,6 +542,12 @@ func checkURL(m map[string]any, owner, repo string) []Issue {
 		)}
 	}
 	if !strings.EqualFold(u, want) {
+		if strings.TrimSpace(u) == "" {
+			return []Issue{issue(
+				fmt.Sprintf("清单字段 `url` 当前为空或仅含空白字符，请改成 `%s`。", want),
+				fmt.Sprintf("Manifest field `url` is empty or whitespace-only. Please change it to `%s`.", want),
+			)}
+		}
 		return []Issue{issue(
 			fmt.Sprintf("清单字段 `url` 当前为 `%s`，请改成 `%s`。", u, want),
 			fmt.Sprintf("Manifest field `url` is currently `%s`. Please change it to `%s`.", u, want),
@@ -541,10 +571,16 @@ func checkVersion(m map[string]any, oldVersion string) []Issue {
 			"Manifest field `version` must be a string, e.g. `1.0.0`.",
 		)}
 	}
-	if strings.TrimSpace(ver) != ver || ver == "" {
+	if strings.TrimSpace(ver) == "" {
 		return []Issue{issue(
-			fmt.Sprintf("清单字段 `version` 的值 `%s` 无效：不能为空，也不能有前后空格。请改成干净的语义化版本，如 `1.0.0`。", ver),
-			fmt.Sprintf("Manifest field `version` value `%s` is invalid: it can't be empty or have leading/trailing spaces. Please use a clean semver like `1.0.0`.", ver),
+			"清单字段 `version` 当前为空或仅含空白字符。请填写语义化版本，如 `1.0.0`。",
+			"Manifest field `version` is empty or whitespace-only. Please fill in a semantic version like `1.0.0`.",
+		)}
+	}
+	if strings.TrimSpace(ver) != ver {
+		return []Issue{issue(
+			fmt.Sprintf("清单字段 `version` 的值 `%s` 首尾不能有空格。请改成干净的语义化版本，如 `1.0.0`。", ver),
+			fmt.Sprintf("Manifest field `version` value `%s` can't have leading or trailing spaces. Please use a clean semver like `1.0.0`.", ver),
 		)}
 	}
 	if ver[0] == 'v' || ver[0] == 'V' {
@@ -706,8 +742,8 @@ func checkFunding(m map[string]any, owner, repo string) []Issue {
 	for _, k := range keys {
 		if _, ok := allowedFundingKeys[k]; !ok {
 			issues = append(issues, issue(
-				fmt.Sprintf("`funding` 中出现了预期外的字段 `%s`。仅允许 `openCollective`、`patreon`、`github`、`custom`、`links`。", k),
-				fmt.Sprintf("`funding` has an unexpected field `%s`. Only `openCollective`, `patreon`, `github`, `custom`, and `links` are allowed.", k),
+				fmt.Sprintf("`funding` 中出现了预期外的字段 %s。仅允许 `openCollective`、`patreon`、`github`、`custom`、`links`。", formatKeyZh(k)),
+				fmt.Sprintf("`funding` has an unexpected field %s. Only `openCollective`, `patreon`, `github`, `custom`, and `links` are allowed.", formatKeyEn(k)),
 			))
 		}
 	}
@@ -819,8 +855,8 @@ func checkFundingLinks(funding map[string]any, allowPlaceholder bool) []Issue {
 		for _, key := range keys {
 			if _, allowed := allowedFundingLinkKeys[key]; !allowed {
 				issues = append(issues, issue(
-					fmt.Sprintf("`funding.links[%d]` 中出现了预期外的字段 `%s`。仅允许 `label` 和 `url`。", i, key),
-					fmt.Sprintf("`funding.links[%d]` has an unexpected field `%s`. Only `label` and `url` are allowed.", i, key),
+					fmt.Sprintf("`funding.links[%d]` 中出现了预期外的字段 %s。仅允许 `label` 和 `url`。", i, formatKeyZh(key)),
+					fmt.Sprintf("`funding.links[%d]` has an unexpected field %s. Only `label` and `url` are allowed.", i, formatKeyEn(key)),
 				))
 			}
 		}
@@ -933,10 +969,15 @@ func checkCommonOptionalTypedFields(m map[string]any) []Issue {
 				"若填写 `minAppVersion`，值必须是字符串，例如 `\"minAppVersion\": \"3.7.0\"`。不需要时请删除该字段。",
 				"If you include `minAppVersion`, it must be a string, e.g. `\"minAppVersion\": \"3.7.0\"`. If you don't need it, please delete the field.",
 			))
-		} else if strings.TrimSpace(s) != s || s == "" {
+		} else if strings.TrimSpace(s) == "" {
 			issues = append(issues, issue(
-				fmt.Sprintf("清单字段 `minAppVersion` 的值 `%s` 无效：不能为空，也不能有前后空格。请改成干净的语义化版本，如 `3.7.0`；不需要时请删除该字段。", s),
-				fmt.Sprintf("Manifest field `minAppVersion` value `%s` is invalid: it can't be empty or have leading/trailing spaces. Please use a clean semver like `3.7.0`, or delete the field.", s),
+				"清单字段 `minAppVersion` 当前为空或仅含空白字符。请填写语义化版本，如 `3.7.0`；不需要时请删除该字段。",
+				"Manifest field `minAppVersion` is empty or whitespace-only. Please fill in a semantic version like `3.7.0`, or delete the field.",
+			))
+		} else if strings.TrimSpace(s) != s {
+			issues = append(issues, issue(
+				fmt.Sprintf("清单字段 `minAppVersion` 的值 `%s` 首尾不能有空格。请改成干净的语义化版本，如 `3.7.0`；不需要时请删除该字段。", s),
+				fmt.Sprintf("Manifest field `minAppVersion` value `%s` can't have leading or trailing spaces. Please use a clean semver like `3.7.0`, or delete the field.", s),
 			))
 		} else if s[0] == 'v' || s[0] == 'V' {
 			issues = append(issues, issue(
@@ -1016,8 +1057,8 @@ func checkPluginPublish(m map[string]any, in ManifestInput) []Issue {
 	for _, k := range keys {
 		if k != "resources" && k != "data" {
 			issues = append(issues, issue(
-				fmt.Sprintf("`publish` 中出现了预期外的字段 `%s`。仅允许 `resources`（额外前端资源文件）和 `data`（可公开的数据字段）。", k),
-				fmt.Sprintf("`publish` has an unexpected field `%s`. Only `resources` (extra frontend resource files) and `data` (publishable data fields) are allowed.", k),
+				fmt.Sprintf("`publish` 中出现了预期外的字段 %s。仅允许 `resources`（额外前端资源文件）和 `data`（可公开的数据字段）。", formatKeyZh(k)),
+				fmt.Sprintf("`publish` has an unexpected field %s. Only `resources` (extra frontend resource files) and `data` (publishable data fields) are allowed.", formatKeyEn(k)),
 			))
 		}
 	}
@@ -1052,6 +1093,13 @@ func checkPublishResources(raw any, packageRoot string) []Issue {
 			issues = append(issues, issue(
 				fmt.Sprintf("`publish.resources[%d]` 必须是字符串。请检查数组元素类型。", i),
 				fmt.Sprintf("`publish.resources[%d]` must be a string. Please check the array element types.", i),
+			))
+			continue
+		}
+		if strings.TrimSpace(resource) == "" {
+			issues = append(issues, issue(
+				fmt.Sprintf("`publish.resources[%d]` 当前为空或仅含空白字符，不是合法的发布资源路径。请填写相对包根的完整文件名或以 `/` 结尾的目录，或删除该数组项。", i),
+				fmt.Sprintf("`publish.resources[%d]` is empty or whitespace-only, which isn't a valid publish resource path. Please fill in a full filename relative to the package root or a directory ending with `/`, or remove this array entry.", i),
 			))
 			continue
 		}
@@ -1132,7 +1180,14 @@ func checkPublishData(raw any) []Issue {
 			))
 			continue
 		}
-		if len(field) == 0 || len(field) > maxPublishFieldNameLen || !isPublishFieldName(field) {
+		if strings.TrimSpace(field) == "" {
+			issues = append(issues, issue(
+				fmt.Sprintf("`publish.data[%d]` 当前为空或仅含空白字符，不是合法的公开数据字段名。请填写长度为 1–%d 个字符的字段名，或删除该数组项。", i, maxPublishFieldNameLen),
+				fmt.Sprintf("`publish.data[%d]` is empty or whitespace-only, which isn't a valid public data field name. Please fill in a name of 1–%d characters, or remove this array entry.", i, maxPublishFieldNameLen),
+			))
+			continue
+		}
+		if len(field) > maxPublishFieldNameLen || !isPublishFieldName(field) {
 			issues = append(issues, issue(
 				fmt.Sprintf("`publish.data[%d]` 的值 `%s` 不是合法的公开数据字段名。字段名只能包含 ASCII 字母、数字、`_` 和 `-`，长度为 1–%d 个字符。", i, field, maxPublishFieldNameLen),
 				fmt.Sprintf("`publish.data[%d]` value `%s` isn't a valid public data field name. Names may contain only ASCII letters, digits, `_`, and `-`, with a length of 1–%d characters.", i, field, maxPublishFieldNameLen),
@@ -1189,6 +1244,13 @@ func checkBootAppearances(m map[string]any) []Issue {
 			issues = append(issues, issue(
 				fmt.Sprintf("`bootAppearances[%d]` 必须是字符串。请检查数组元素类型。", i),
 				fmt.Sprintf("`bootAppearances[%d]` must be a string. Please check the array element type.", i),
+			))
+			continue
+		}
+		if strings.TrimSpace(id) == "" {
+			issues = append(issues, issue(
+				fmt.Sprintf("`bootAppearances[%d]` 当前为空或仅含空白字符，不是有效的启动页外观 ID。ID 只能包含小写字母、数字和连字符，最长 64 个字符。", i),
+				fmt.Sprintf("`bootAppearances[%d]` is empty or whitespace-only, which isn't a valid startup appearance ID. IDs may contain only lowercase letters, digits, and hyphens, and must be at most 64 characters.", i),
 			))
 			continue
 		}

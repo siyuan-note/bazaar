@@ -313,7 +313,12 @@ func validateDeprecatedReason(path string, reason rules.LocaleStrings) []rules.I
 	slices.Sort(locales)
 	for _, locale := range locales {
 		value := reason[locale]
-		if !validDeprecatedLocale(locale) {
+		if strings.TrimSpace(locale) == "" {
+			issues = append(issues, deprecatedIssue(
+				fmt.Sprintf("弃用条目 `%s.reason` 包含名称为空或仅含空白字符的语言键；语言键不能为空、含空白或超过 64 字节。", path),
+				fmt.Sprintf("Deprecation entry `%s.reason` has a locale key that's empty or whitespace-only; locale keys can't be empty, contain whitespace, or exceed 64 bytes.", path),
+			))
+		} else if !validDeprecatedLocale(locale) {
 			issues = append(issues, deprecatedIssue(
 				fmt.Sprintf("弃用条目 `%s.reason` 包含无效语言键 `%s`；语言键不能为空、含空白或超过 64 字节。", path, locale),
 				fmt.Sprintf("Deprecation entry `%s.reason` has an invalid locale key `%s`; locale keys can't be empty, contain whitespace, or exceed 64 bytes.", path, locale),

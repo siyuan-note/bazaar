@@ -101,7 +101,7 @@ func TestValidateDeprecatedRegistry(t *testing.T) {
 	registry := &DeprecatedRegistry{
 		Plugins: map[string]DeprecatedEntry{
 			"old/plugin": {
-				Reason: rules.LocaleStrings{"zh-CN": "   "},
+				Reason: rules.LocaleStrings{"": "已停止维护", "zh-CN": "   "},
 				Alternatives: []string{
 					"old/plugin",
 					"new/plugin",
@@ -125,7 +125,7 @@ func TestValidateDeprecatedRegistry(t *testing.T) {
 	}
 	issues := ValidateDeprecatedRegistry(registry, repos)
 	joined := issuesText(issues)
-	for _, want := range []string{"必须提供 `default`", "不能为空或仅含空白字符", "源包自身", "重复", "不在任何集市包列表"} {
+	for _, want := range []string{"必须提供 `default`", "不能为空或仅含空白字符", "名称为空或仅含空白字符的语言键", "源包自身", "重复", "不在任何集市包列表"} {
 		if !strings.Contains(joined, want) {
 			t.Fatalf("issues missing %q: %s", want, joined)
 		}
