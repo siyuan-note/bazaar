@@ -1,45 +1,110 @@
 {
   "repos": [
     {
-      "installSize": 820877,
+      "installSize": 382569,
       "openIssues": 0,
       "package": {
-        "author": "xuzhilei26",
+        "author": "Laniakea Kamasylvia",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "android",
+          "ios",
+          "harmony"
+        ],
+        "description": {
+          "default": "Save online content to your SiYuan workspace, utilize embedded template engine and organize your reading list to your needs. Preserve the web with ReadItLater.",
+          "zh-CN": "将网页内容保存为思源笔记,利用内置模板引擎按需整理你的阅读列表。Preserve the web with ReadItLater."
+        },
+        "displayName": {
+          "default": "ReadItLater",
+          "zh-CN": "稍后读"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "read-it-later",
+          "clipping",
+          "web-clipper"
+        ],
+        "minAppVersion": "3.2.0",
+        "name": "siyuan-read-it-later",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/kamasylvia/SiYuan-ReadItLater",
+        "version": "0.11.10"
+      },
+      "packageZipAssetId": 694641395,
+      "packageZipSha256": "66e9e5d533fae1f128f32039df10bbe0f2bb038c7776d6419313146f044715d4",
+      "repoRef": "v0.11.10",
+      "size": 188068,
+      "stars": 0,
+      "updated": "2026-10-31T06:59:16Z",
+      "url": "kamasylvia/SiYuan-ReadItLater@66e9e5d"
+    },
+    {
+      "installSize": 1192598,
+      "openIssues": 0,
+      "package": {
+        "author": "svchord",
         "backends": [
           "all"
         ],
         "description": {
-          "default": "Annotate images in SiYuan with rectangles, arrows and text, and keep annotations re-editable.",
-          "zh_CN": "在思源笔记里直接给图片加矩形、箭头、文字标注；保存后仍可再次打开继续编辑。"
+          "default": "Quickly create or open daily notes from a calendar panel",
+          "zh-CN": "日历面板上快速新建或转到日记"
         },
         "disabledInPublish": true,
         "displayName": {
-          "default": "AnnoMark",
-          "zh_CN": "AnnoMark 图片标注"
+          "default": "Calendar Panel",
+          "zh-CN": "日历面板"
         },
         "frontends": [
           "all"
         ],
+        "funding": {
+          "custom": [
+            "https://afdian.net/a/sevenchord"
+          ]
+        },
         "icon": "icon.png",
-        "minAppVersion": "3.1.0",
-        "name": "siyuan-plugin-anno-mark",
+        "keywords": [
+          "calendar",
+          "日历",
+          "日记",
+          "daily"
+        ],
+        "minAppVersion": "3.8.5",
+        "name": "arco-calendar",
         "preview": "preview.png",
         "readme": {
-          "default": "README.md"
+          "default": "README_en_US.md",
+          "zh-CN": "README.md"
         },
-        "url": "https://github.com/xuzhilei26/siyuan-plugin-anno-mark",
-        "version": "1.0.0"
+        "url": "https://github.com/svchord/siyuan-arco-calendar",
+        "version": "2.2.2"
       },
-      "packageZipAssetId": 693748983,
-      "packageZipSha256": "63a27e221984801fb87d156fcf68af73ffd8898c573b6df13cf8fdf4c55c7230",
-      "repoRef": "v1.0.0",
-      "size": 413387,
-      "stars": 0,
-      "updated": "2026-10-31T01:03:15Z",
-      "url": "xuzhilei26/siyuan-plugin-anno-mark@63a27e2"
+      "packageZipAssetId": 694637411,
+      "packageZipSha256": "235e938279afb855c4a6c849f40cf5fe3259c76a7c3d228b6d7af863268a26a6",
+      "repoRef": "siyuan-arco-calendar-v2.2.2",
+      "size": 527127,
+      "stars": 18,
+      "updated": "2026-10-31T06:56:52Z",
+      "url": "svchord/siyuan-arco-calendar@235e938"
     },
     {
-      "installSize": 3388096,
+      "installSize": 3386722,
       "openIssues": 1,
       "package": {
         "author": "yyk",
@@ -87,15 +152,116 @@
           "default": "README.md"
         },
         "url": "https://github.com/YYK0402/AIstudy",
-        "version": "0.4.1"
+        "version": "0.4.2"
       },
-      "packageZipAssetId": 693931211,
-      "packageZipSha256": "88f73b222edf1b31f36814d80060776a7f110d80b6162a14ffb4593ec181407f",
-      "repoRef": "v0.4.1",
-      "size": 1137383,
+      "packageZipAssetId": 694430564,
+      "packageZipSha256": "2cdd4736fe21feebc4dd587e1fe1c1b0500819853bf2523c35cd8595fe673dc3",
+      "repoRef": "v0.4.2",
+      "size": 1137801,
       "stars": 2,
-      "updated": "2026-10-31T00:58:18Z",
-      "url": "YYK0402/AIstudy@88f73b2"
+      "updated": "2026-10-31T05:08:48Z",
+      "url": "YYK0402/AIstudy@2cdd473"
+    },
+    {
+      "installSize": 10370950,
+      "openIssues": 2,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
+          "zh_CN": "一款在思源笔记里实现任务管理功能的插件，为了践行「防弹笔记法」而开发。支持电脑端和移动端系统通知提醒任务执行、日历视图查看行事历、项目管理、四象限面板、番茄钟专注、习惯打卡等功能"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Note Management",
+          "zh_CN": "任务笔记管理"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://pancake.waffo.ai/store/achuan-2-fdbho4ye/product/PROD_3F7Aa7c2NQlz9KmxcgxjQ7?type=onetime&amp;currency=USD",
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "reminder",
+          "time",
+          "calendar",
+          "notification",
+          "提醒",
+          "时间",
+          "日历",
+          "通知",
+          "番茄钟",
+          "四象限",
+          "任务管理",
+          "项目管理",
+          "习惯打卡"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-task-note-management",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README_en.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
+        "version": "7.1.8"
+      },
+      "packageZipAssetId": 694354846,
+      "packageZipSha256": "47f93ac69c5c4d526228ef28b6190a0bb9ee2a1a45e0fde889ed0679da87da75",
+      "repoRef": "v7.1.8",
+      "size": 4659929,
+      "stars": 227,
+      "updated": "2026-10-31T04:28:11Z",
+      "url": "Achuan-2/siyuan-plugin-task-note-management@47f93ac"
+    },
+    {
+      "installSize": 820877,
+      "openIssues": 0,
+      "package": {
+        "author": "xuzhilei26",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Annotate images in SiYuan with rectangles, arrows and text, and keep annotations re-editable.",
+          "zh_CN": "在思源笔记里直接给图片加矩形、箭头、文字标注；保存后仍可再次打开继续编辑。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "AnnoMark",
+          "zh_CN": "AnnoMark 图片标注"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "minAppVersion": "3.1.0",
+        "name": "siyuan-plugin-anno-mark",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/xuzhilei26/siyuan-plugin-anno-mark",
+        "version": "1.0.0"
+      },
+      "packageZipAssetId": 693748983,
+      "packageZipSha256": "63a27e221984801fb87d156fcf68af73ffd8898c573b6df13cf8fdf4c55c7230",
+      "repoRef": "v1.0.0",
+      "size": 413387,
+      "stars": 0,
+      "updated": "2026-10-31T01:03:15Z",
+      "url": "xuzhilei26/siyuan-plugin-anno-mark@63a27e2"
     },
     {
       "installSize": 868057,
@@ -825,69 +991,6 @@
       "stars": 119,
       "updated": "2026-10-29T15:15:12Z",
       "url": "yangtaihong59/siyuan-plugins-mcp-sisyphus@d01e2f9"
-    },
-    {
-      "installSize": 10337501,
-      "openIssues": 1,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
-          "zh_CN": "一款在思源笔记里实现任务管理功能的插件，为了践行「防弹笔记法」而开发。支持电脑端和移动端系统通知提醒任务执行、日历视图查看行事历、项目管理、四象限面板、番茄钟专注、习惯打卡等功能"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Note Management",
-          "zh_CN": "任务笔记管理"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://pancake.waffo.ai/store/achuan-2-fdbho4ye/product/PROD_3F7Aa7c2NQlz9KmxcgxjQ7?type=onetime&amp;currency=USD",
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "reminder",
-          "time",
-          "calendar",
-          "notification",
-          "提醒",
-          "时间",
-          "日历",
-          "通知",
-          "番茄钟",
-          "四象限",
-          "任务管理",
-          "项目管理",
-          "习惯打卡"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-task-note-management",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README_en.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
-        "version": "7.1.7"
-      },
-      "packageZipAssetId": 688889897,
-      "packageZipSha256": "3bf4a6b473bd70c439be9190018cb61ccd9f2b2aee79143c899e6b3d9a62a207",
-      "repoRef": "v7.1.7",
-      "size": 4650350,
-      "stars": 226,
-      "updated": "2026-10-29T14:53:27Z",
-      "url": "Achuan-2/siyuan-plugin-task-note-management@3bf4a6b"
     },
     {
       "installSize": 3586032,
@@ -3146,59 +3249,6 @@
       "stars": 0,
       "updated": "2026-10-26T02:51:14Z",
       "url": "heineiy/siyuan-mermaid-wysiwyg-editor@7b423c2"
-    },
-    {
-      "installSize": 381056,
-      "openIssues": 0,
-      "package": {
-        "author": "Laniakea Kamasylvia",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "android",
-          "ios",
-          "harmony"
-        ],
-        "description": {
-          "default": "Save online content to your SiYuan workspace, utilize embedded template engine and organize your reading list to your needs. Preserve the web with ReadItLater.",
-          "zh-CN": "将网页内容保存为思源笔记,利用内置模板引擎按需整理你的阅读列表。Preserve the web with ReadItLater."
-        },
-        "displayName": {
-          "default": "ReadItLater",
-          "zh-CN": "稍后读"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "read-it-later",
-          "clipping",
-          "web-clipper"
-        ],
-        "minAppVersion": "3.2.0",
-        "name": "siyuan-read-it-later",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/kamasylvia/SiYuan-ReadItLater",
-        "version": "0.11.6"
-      },
-      "packageZipAssetId": 676544562,
-      "packageZipSha256": "17f518c6821e0a4042912e885e8f28cf33a0bf5e787ee0747c609a51cfb3ea45",
-      "repoRef": "v0.11.6",
-      "size": 187682,
-      "stars": 0,
-      "updated": "2026-10-26T00:38:04Z",
-      "url": "kamasylvia/SiYuan-ReadItLater@17f518c"
     },
     {
       "installSize": 602759,
@@ -28077,53 +28127,6 @@
       "stars": 1,
       "updated": "2024-04-16T02:12:00Z",
       "url": "zuoez02/siyuan-plugin-keymap@431450d"
-    },
-    {
-      "installSize": 667729,
-      "openIssues": 17,
-      "package": {
-        "author": "svchord",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "en_US": "Quickly create a new or go to diary on the calendar panel",
-          "zh_CN": "日历面板上快速新建或转到日记"
-        },
-        "displayName": {
-          "en_US": "Calendar Panel",
-          "zh_CN": "日历面板"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.net/a/sevenchord"
-          ]
-        },
-        "keywords": [
-          "calendar",
-          "日历",
-          "日记",
-          "daily"
-        ],
-        "minAppVersion": "2.11.1",
-        "name": "arco-calendar",
-        "readme": {
-          "en_US": "README_en_US.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/svchord/siyuan-arco-calendar",
-        "version": "1.5.0"
-      },
-      "packageZipAssetId": 161769517,
-      "packageZipSha256": "bccd5f7ed5d38ab1cc8c455aae2c38cdef66b842f496ff63cb62281b450e595f",
-      "repoRef": "v1.5.0",
-      "size": 268817,
-      "stars": 16,
-      "updated": "2024-04-12T15:24:47Z",
-      "url": "svchord/siyuan-arco-calendar@bccd5f7"
     },
     {
       "installSize": 216140,
