@@ -1,6 +1,58 @@
 {
   "repos": [
     {
+      "installSize": 99209,
+      "openIssues": 0,
+      "package": {
+        "author": "陈涛涛 (Taotao Chen)",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Auto-number figures, tables and equations, then refresh cross-references automatically about 1.5s after you stop typing. Captions are centered with a faint tint. Equation blocks are updated in place on data-content only, so formulas are never wiped; empty equations are skipped and the run is paused while a formula editor is focused. Dead references become red struck-through text. Slash command /xref inserts a live block reference; custom hotkeys supported.",
+          "zh-CN": "自动重排图、表、公式编号并同步刷新交叉引用；写完题注停手约 1.5 秒自动生效。图/表题注自动居中并加一层浅底色（深浅可调）。公式只改 data-content 上的编号，不重建块，公式正文绝不会丢；空公式不编号。正在输入公式时整轮跳过。指向已删块的失效引用会转成红色删除线文本。编辑器内输入 /xref 插入引用。支持自定义快捷键（默认 Ctrl+Alt+R 插入引用、Ctrl+Alt+N 重排编号），设置面板里按键即可录制。长文档不再受 SQL 64 行上限影响，采集只走 2 次请求。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Figure &amp; Equation Xref",
+          "zh-CN": "图表公式交叉引用"
+        },
+        "frontends": [
+          "desktop",
+          "mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "交叉引用",
+          "图表编号",
+          "公式编号",
+          "题注",
+          "numbering",
+          "cross-reference",
+          "figure",
+          "table",
+          "equation",
+          "caption"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-xref",
+        "preview": "",
+        "readme": {
+          "default": "README_en.md",
+          "zh-CN": "README.md"
+        },
+        "url": "https://github.com/taotaochen86/siyuan-xref",
+        "version": "0.9.0"
+      },
+      "packageZipAssetId": 694943117,
+      "packageZipSha256": "70343ec44ca04d592534db4dfab2ea723e3612b05e0806d6672fdd198b807bb2",
+      "repoRef": "v0.9.0",
+      "size": 35447,
+      "stars": 0,
+      "updated": "2026-10-31T10:56:11Z",
+      "url": "taotaochen86/siyuan-xref@70343ec"
+    },
+    {
       "installSize": 382569,
       "openIssues": 0,
       "package": {
