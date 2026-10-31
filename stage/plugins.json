@@ -49,7 +49,59 @@
       "url": "wave789/siyuan-general-outline@81514a2"
     },
     {
-      "installSize": 136229,
+      "installSize": 113142,
+      "openIssues": 0,
+      "package": {
+        "author": "陈涛涛 (Taotao Chen)",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Auto-number figures, tables and equations, then refresh cross-references automatically about 1.5s after you stop typing. Captions are centered with a faint tint. Equation blocks are updated in place on data-content only, so formulas are never wiped; empty equations are skipped and the run is paused while a formula or code editor is focused and retried automatically right after. Dead references become red struck-through text. Slash command /xref inserts a live block reference; custom hotkeys supported.",
+          "zh-CN": "自动重排图、表、公式编号并同步刷新交叉引用；写完题注停手约 1.5 秒自动生效。图/表题注自动居中并加一层浅底色（深浅可调）。公式只改 data-content 上的编号，不重建块，公式正文绝不会丢；空公式不编号。正在输入公式或代码时整轮跳过并自动补一轮重试，不会一次被打断就再也不排。指向已删块的失效引用会转成红色删除线文本。编辑器内输入 /xref 插入引用。支持自定义快捷键（默认 Ctrl+Alt+R 插入引用、Ctrl+Alt+N 重排编号），设置面板里按键即可录制。长文档不再受 SQL 64 行上限影响，采集只走 2 次请求。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Figure &amp; Equation Xref",
+          "zh-CN": "图表公式交叉引用"
+        },
+        "frontends": [
+          "desktop",
+          "mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "交叉引用",
+          "图表编号",
+          "公式编号",
+          "题注",
+          "numbering",
+          "cross-reference",
+          "figure",
+          "table",
+          "equation",
+          "caption"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-xref",
+        "preview": "",
+        "readme": {
+          "default": "README_en.md",
+          "zh-CN": "README.md"
+        },
+        "url": "https://github.com/taotaochen86/siyuan-xref",
+        "version": "0.9.1"
+      },
+      "packageZipAssetId": 695591556,
+      "packageZipSha256": "ba5bcba061cdd7372f45aa996f878ae9197b2c96b623fac2d5782aeb159c61a1",
+      "repoRef": "v0.9.1",
+      "size": 40784,
+      "stars": 1,
+      "updated": "2026-10-31T14:26:39Z",
+      "url": "taotaochen86/siyuan-xref@ba5bcba"
+    },
+    {
+      "installSize": 146856,
       "openIssues": 0,
       "package": {
         "author": "陈涛涛 (Taotao Chen)",
@@ -84,70 +136,169 @@
         "name": "siyuan-plugin-zotero-cite",
         "preview": "",
         "readme": {
-          "default": "README.md"
+          "default": "README_en.md",
+          "zh_CN": "README.md"
         },
         "url": "https://github.com/taotaochen86/siyuan-plugin-zotero-cite",
-        "version": "1.2.11"
+        "version": "1.2.13"
       },
-      "packageZipAssetId": 695474092,
-      "packageZipSha256": "63cfaca18dcd40dbe4f6700879a6a7b9bea23b853304995da507b30647a98dcd",
-      "repoRef": "v1.2.11",
-      "size": 49579,
-      "stars": 0,
-      "updated": "2026-10-31T13:42:36Z",
-      "url": "taotaochen86/siyuan-plugin-zotero-cite@63cfaca"
+      "packageZipAssetId": 695631974,
+      "packageZipSha256": "c3cbe345766ad478561e24d688692a2f47a512bd9a355ef6da21697b5414af00",
+      "repoRef": "v1.2.13",
+      "size": 54379,
+      "stars": 1,
+      "updated": "2026-10-31T13:53:32Z",
+      "url": "taotaochen86/siyuan-plugin-zotero-cite@c3cbe34"
     },
     {
-      "installSize": 99209,
+      "installSize": 6732642,
+      "openIssues": 2,
+      "package": {
+        "author": "fu1fan",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "Isolated desktop web viewer, readable notes and offline archives.",
+          "zh-CN": "在思源中浏览、阅读和剪藏网页，支持独立会话、正文笔记与离线归档。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan Browser",
+          "zh-CN": "思源浏览器"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "browser",
+          "webview",
+          "web clipper",
+          "reader",
+          "archive",
+          "浏览器",
+          "网页剪藏",
+          "阅读模式"
+        ],
+        "minAppVersion": "3.8.6",
+        "name": "siyuan-browser",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/fu1fan/siyuan-browser",
+        "version": "0.1.4"
+      },
+      "packageZipAssetId": 695382250,
+      "packageZipSha256": "eeb3f216507fe3863764bc2cfc2ae4546199f6dfa4b9e5088051bdf8a1db24bc",
+      "repoRef": "v0.1.4",
+      "size": 3324198,
+      "stars": 1,
+      "updated": "2026-10-31T12:52:10Z",
+      "url": "fu1fan/siyuan-browser@eeb3f21"
+    },
+    {
+      "installSize": 27605032,
       "openIssues": 0,
       "package": {
-        "author": "陈涛涛 (Taotao Chen)",
+        "author": "Emptylight",
         "backends": [
           "all"
         ],
         "description": {
-          "default": "Auto-number figures, tables and equations, then refresh cross-references automatically about 1.5s after you stop typing. Captions are centered with a faint tint. Equation blocks are updated in place on data-content only, so formulas are never wiped; empty equations are skipped and the run is paused while a formula editor is focused. Dead references become red struck-through text. Slash command /xref inserts a live block reference; custom hotkeys supported.",
-          "zh-CN": "自动重排图、表、公式编号并同步刷新交叉引用；写完题注停手约 1.5 秒自动生效。图/表题注自动居中并加一层浅底色（深浅可调）。公式只改 data-content 上的编号，不重建块，公式正文绝不会丢；空公式不编号。正在输入公式时整轮跳过。指向已删块的失效引用会转成红色删除线文本。编辑器内输入 /xref 插入引用。支持自定义快捷键（默认 Ctrl+Alt+R 插入引用、Ctrl+Alt+N 重排编号），设置面板里按键即可录制。长文档不再受 SQL 64 行上限影响，采集只走 2 次请求。"
+          "default": "Use NotoSans as layout font",
+          "zh-CN": "使用NotoSans作为界面字体"
         },
-        "disabledInPublish": true,
         "displayName": {
-          "default": "Figure &amp; Equation Xref",
-          "zh-CN": "图表公式交叉引用"
+          "default": "NotoSans font",
+          "zh-CN": "NotoSans字体"
         },
         "frontends": [
-          "desktop",
-          "mobile"
+          "all"
         ],
+        "funding": {
+          "custom": [
+            "https://blog.emptylight.cn/sponsor"
+          ]
+        },
         "icon": "icon.png",
         "keywords": [
-          "交叉引用",
-          "图表编号",
-          "公式编号",
-          "题注",
-          "numbering",
-          "cross-reference",
-          "figure",
-          "table",
-          "equation",
-          "caption"
+          "中文字体",
+          "English Font",
+          "Japanese Font"
         ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-xref",
-        "preview": "",
+        "minAppVersion": "3.8.7",
+        "name": "siyuan-ttf-Noto_Sans",
+        "preview": "preview.png",
         "readme": {
-          "default": "README_en.md",
-          "zh-CN": "README.md"
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
         },
-        "url": "https://github.com/taotaochen86/siyuan-xref",
-        "version": "0.9.0"
+        "settingsWindow": true,
+        "url": "https://github.com/emptylight370/siyuan-ttf-Noto_Sans",
+        "version": "0.5.3"
       },
-      "packageZipAssetId": 694943117,
-      "packageZipSha256": "70343ec44ca04d592534db4dfab2ea723e3612b05e0806d6672fdd198b807bb2",
-      "repoRef": "v0.9.0",
-      "size": 35447,
+      "packageZipAssetId": 695215665,
+      "packageZipSha256": "818931c6a16e37eec3ae205b1be55ea5706d70af05dde375f19fadb075a33eb7",
+      "repoRef": "0.5.3",
+      "size": 27556956,
       "stars": 0,
-      "updated": "2026-10-31T10:56:11Z",
-      "url": "taotaochen86/siyuan-xref@70343ec"
+      "updated": "2026-10-31T11:35:06Z",
+      "url": "emptylight370/siyuan-ttf-Noto_Sans@818931c"
+    },
+    {
+      "installSize": 24852892,
+      "openIssues": 0,
+      "package": {
+        "author": "Emptylight",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Use Alibaba PuHui Sans as layout font",
+          "zh-CN": "使用阿里巴巴普惠体作为界面字体"
+        },
+        "displayName": {
+          "default": "Alibaba PuHui Sans font",
+          "zh-CN": "阿里巴巴普惠体"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://blog.emptylight.cn/sponsor"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "中文字体",
+          "English Font",
+          "Japanese Font"
+        ],
+        "minAppVersion": "3.8.7",
+        "name": "siyuan-ttf-Alibaba_PuHui_Sans",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/emptylight370/siyuan-ttf-Alibaba_PuHui_Sans",
+        "version": "0.10.3"
+      },
+      "packageZipAssetId": 695215458,
+      "packageZipSha256": "356769d7c765d4735f8947a4fdbd6fd09cda67768c029d99bfd447f0347c6173",
+      "repoRef": "0.10.3",
+      "size": 24689613,
+      "stars": 3,
+      "updated": "2026-10-31T11:35:01Z",
+      "url": "emptylight370/siyuan-ttf-Alibaba_PuHui_Sans@356769d"
     },
     {
       "installSize": 382569,
@@ -4562,58 +4713,6 @@
       "stars": 0,
       "updated": "2026-10-22T08:25:26Z",
       "url": "LunaNorth/QingZhou@0bb8000"
-    },
-    {
-      "installSize": 6665220,
-      "openIssues": 1,
-      "package": {
-        "author": "fu1fan",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Isolated desktop web viewer, readable notes and offline archives.",
-          "zh-CN": "在思源中浏览、阅读和剪藏网页，支持独立会话、正文笔记与离线归档。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiYuan Browser",
-          "zh-CN": "思源浏览器"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "browser",
-          "webview",
-          "web clipper",
-          "reader",
-          "archive",
-          "浏览器",
-          "网页剪藏",
-          "阅读模式"
-        ],
-        "minAppVersion": "3.8.6",
-        "name": "siyuan-browser",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/fu1fan/siyuan-browser",
-        "version": "0.1.2"
-      },
-      "packageZipAssetId": 664906807,
-      "packageZipSha256": "55ad8949382f2bb690ca247441cda4002b1bc6f451670668e62c65971d1defae",
-      "repoRef": "v0.1.2",
-      "size": 3303142,
-      "stars": 0,
-      "updated": "2026-10-22T06:30:30Z",
-      "url": "fu1fan/siyuan-browser@55ad894"
     },
     {
       "installSize": 2261976,
@@ -9073,102 +9172,6 @@
       "stars": 0,
       "updated": "2026-10-05T10:19:39Z",
       "url": "Xfl-A/siyuan-underline-enhancement@0f41853"
-    },
-    {
-      "installSize": 27605158,
-      "openIssues": 0,
-      "package": {
-        "author": "Emptylight",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Use NotoSans as layout font",
-          "zh-CN": "使用NotoSans作为界面字体"
-        },
-        "displayName": {
-          "default": "NotoSans font",
-          "zh-CN": "NotoSans字体"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://blog.emptylight.cn/sponsor"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "中文字体",
-          "English Font",
-          "Japanese Font"
-        ],
-        "minAppVersion": "3.8.6-alpha.2",
-        "name": "siyuan-ttf-Noto_Sans",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/emptylight370/siyuan-ttf-Noto_Sans",
-        "version": "0.5.2"
-      },
-      "packageZipAssetId": 612200391,
-      "packageZipSha256": "54f1d5af86a5065a1467cec9df9d39448ee4c3bd0fb66583daf3bc067d632d9b",
-      "repoRef": "0.5.2",
-      "size": 27557050,
-      "stars": 0,
-      "updated": "2026-10-05T10:11:02Z",
-      "url": "emptylight370/siyuan-ttf-Noto_Sans@54f1d5a"
-    },
-    {
-      "installSize": 24853263,
-      "openIssues": 0,
-      "package": {
-        "author": "Emptylight",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Use Alibaba PuHui Sans as layout font",
-          "zh-CN": "使用阿里巴巴普惠体作为界面字体"
-        },
-        "displayName": {
-          "default": "Alibaba PuHui Sans font",
-          "zh-CN": "阿里巴巴普惠体"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://blog.emptylight.cn/sponsor"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "中文字体",
-          "English Font",
-          "Japanese Font"
-        ],
-        "minAppVersion": "3.8.6-alpha.2",
-        "name": "siyuan-ttf-Alibaba_PuHui_Sans",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/emptylight370/siyuan-ttf-Alibaba_PuHui_Sans",
-        "version": "0.10.2"
-      },
-      "packageZipAssetId": 612199486,
-      "packageZipSha256": "6b855309920fb4c5ca0c252f9dc37db5526b66fe6219d8a8d368caa8a5f68c1e",
-      "repoRef": "0.10.2",
-      "size": 24689807,
-      "stars": 3,
-      "updated": "2026-10-05T10:10:34Z",
-      "url": "emptylight370/siyuan-ttf-Alibaba_PuHui_Sans@6b85530"
     },
     {
       "installSize": 1812288,
