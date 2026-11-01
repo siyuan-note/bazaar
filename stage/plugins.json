@@ -1,7 +1,152 @@
 {
   "repos": [
     {
-      "installSize": 144309,
+      "installSize": 375298,
+      "openIssues": 0,
+      "package": {
+        "author": "Mangteng1994",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "对比思源文档或复制文段，逐字审阅新增和删除。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "文档Diff"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "diff",
+          "对比",
+          "文档",
+          "修订"
+        ],
+        "minAppVersion": "3.8.9",
+        "name": "siyuan_diff",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/Mangteng1994/siyuan_diff",
+        "version": "0.2.1"
+      },
+      "packageZipAssetId": 697214965,
+      "packageZipSha256": "1077e3b7a00fd1095ecac575d9f93c333fc7f965547b5faa992de2504dbdf8a6",
+      "repoRef": "v0.2.1",
+      "size": 324785,
+      "stars": 0,
+      "updated": "2026-11-01T03:30:40Z",
+      "url": "Mangteng1994/siyuan_diff@1077e3b"
+    },
+    {
+      "installSize": 203454,
+      "openIssues": 0,
+      "package": {
+        "author": "wmy2981",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Show heading breadcrumbs (h2-h6) of each block in the block reference search list and the search panel",
+          "zh-CN": "在块引用搜索列表和搜索面板中显示每个块的标题层级面包屑（h2-h6）"
+        },
+        "displayName": {
+          "default": "Ref Crumbs",
+          "zh-CN": "引用面包屑"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/wmy2981"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "面包屑",
+          "breadcrumb",
+          "标题层级",
+          "heading",
+          "块引用",
+          "block ref"
+        ],
+        "minAppVersion": "3.6.0",
+        "name": "ref-crumbs-siyuan",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/wmy2981/ref-crumbs-siyuan",
+        "version": "1.0.4"
+      },
+      "packageZipAssetId": 697174715,
+      "packageZipSha256": "af3bf49792f3681e02bf0bd9f7bfb3fcbb70799b900c98768eb63bb1b0d7d273",
+      "repoRef": "v1.0.4",
+      "size": 177642,
+      "stars": 2,
+      "updated": "2026-11-01T03:08:31Z",
+      "url": "wmy2981/ref-crumbs-siyuan@af3bf49"
+    },
+    {
+      "installSize": 153164,
+      "openIssues": 0,
+      "package": {
+        "author": "陈涛涛 (Taotao Chen)",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "Insert Zotero citations into SiYuan via the Zotero debug bridge. Text follows the CSL style exactly; right-click a citation to switch format, edit its references, or change the document style.",
+          "zh_CN": "通过 Zotero debug bridge 在思源里插入文献引用。正文文本严格按 CSL 样式输出；右键引用可改形态、编辑该处文献（可增可删）、切换全局 CSL 样式；文末自动生成参考文献表，点击引用跳回 Zotero。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Zotero Cite",
+          "zh_CN": "Zotero 文献引用"
+        },
+        "frontends": [
+          "desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "zotero",
+          "citation",
+          "reference",
+          "csl",
+          "bibliography",
+          "文献",
+          "参考文献"
+        ],
+        "minAppVersion": "3.1.0",
+        "name": "siyuan-plugin-zotero-cite",
+        "preview": "",
+        "readme": {
+          "default": "README_en.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/taotaochen86/siyuan-plugin-zotero-cite",
+        "version": "1.2.16"
+      },
+      "packageZipAssetId": 697124875,
+      "packageZipSha256": "c28596d7c952d425b1428427b3b34a62b09ad7bd2179e386831c3bafaf48c249",
+      "repoRef": "v1.2.16",
+      "size": 56069,
+      "stars": 1,
+      "updated": "2026-11-01T02:40:32Z",
+      "url": "taotaochen86/siyuan-plugin-zotero-cite@c28596d"
+    },
+    {
+      "installSize": 235672,
       "openIssues": 0,
       "package": {
         "author": "陈涛涛 (Taotao Chen)",
@@ -9,10 +154,9 @@
           "all"
         ],
         "description": {
-          "default": "Auto-number figures, tables and equations, then refresh cross-references about 1.5s after you stop typing. Captions are centered with a faint tint. Equation blocks are updated in place on data-content only, so formulas are never wiped. Deleted a figure or table by mistake? Ctrl+Alt+Z rebuilds the deleted blocks with their original block IDs, so every cross-reference reconnects on its own (dead references are no longer painted red or burnt to text by default). Built-in undo stack (Ctrl+Alt+Z / Ctrl+Alt+Y, 10 runs by default, survives restart) because SiYuan&#39;s own Ctrl+Z does not capture API writes. Slash command /xref inserts a live block reference; custom hotkeys supported.",
-          "zh-CN": "自动重排图、表、公式编号并同步刷新交叉引用；写完题注停手约 1.5 秒自动生效。图/表题注自动居中并加一层浅底色（深浅可调）。公式只改 data-content 上的编号，不重建块，公式正文绝不会丢；空公式不编号。正在输入公式或代码时整轮跳过并自动补一轮重试，不会一次被打断就再也不排。误删图/表后按 Ctrl+Alt+Z，插件会把删掉的块按原块 ID 重建回来，指向它的交叉引用自动接上（默认不再把死链涂红或转成文本）。插件自带撤销栈，Ctrl+Alt+Z 撤回上一轮重排、Ctrl+Alt+Y 重做，默认保留 10 轮、跨重启有效。编辑器内输入 /xref 插入引用。支持自定义快捷键。"
+          "default": "Number figures, tables and equations automatically and keep every cross-reference in sync. Right-click a paragraph and choose Set as figure caption / Set as table caption — applied in about 0.6s, no attribute typing; right-click an image or a table and the caption paragraph is created in the right place (below a figure, above a table), never inside the image or table block; right-clicking inside a table cell offers no caption menu at all. Clear caption removes the attribute, the auto block name, the tint and the leading number in one click, and shifts the following numbers up. Equations are updated in place on data-content only, so a formula body can never be wiped; empty equations are never numbered. Text auto-detection can be switched off, so an ordinary sentence starting with 图 3 is no longer mistaken for a caption. Typing pauses trigger a silent renumber in 1.5-3s. Deleted a figure by mistake? Ctrl+Alt+Z rebuilds the block with its original ID and the references reconnect by themselves (dead references are left untouched by default). Built-in undo stack (Ctrl+Alt+Z / Ctrl+Alt+Y, 10 runs, survives restart) because SiYuan&#39;s own Ctrl+Z cannot undo API writes. Slash command /xref inserts a live block reference; all four hotkeys are rebindable.",
+          "zh-CN": "自动重排图、表、公式编号并同步刷新交叉引用；写完题注停手 1.5～3 秒自动生效。右键段落选「设为图题注 / 设为表题注」，不用记 custom-xref 属性，0.6 秒出号；右键图片或表格，题注段落会建在正确的位置（图题在下、表题在上），绝不写进图片块或表格块内部；表格单元格内侧右键不出现任何题注菜单。「取消图表题注」一次清干净：属性、自动块名、底色、段首编号一并去掉，后面的编号自动顺延。公式只改 data-content 上的编号，不重建块，公式正文绝不会丢；空公式不编号。「文字自动识别」可关，关掉后正文里顺口写「图 3 中可以看出」不会被误编号。图/表题注自动居中并加一层浅底色（深浅可调）。误删图/表后按 Ctrl+Alt+Z，插件会把删掉的块按原块 ID 重建回来，指向它的交叉引用自动接上（默认不再把死链涂红或转成文本）。插件自带撤销栈，Ctrl+Alt+Z 撤回上一轮重排、Ctrl+Alt+Y 重做，默认保留 10 轮、跨重启有效。编辑器内输入 /xref 插入引用；四个快捷键都能自定义。"
         },
-        "disabledInPublish": true,
         "displayName": {
           "default": "Figure &amp; Equation Xref",
           "zh-CN": "图表公式交叉引用"
@@ -51,15 +195,179 @@
           "zh-CN": "README.md"
         },
         "url": "https://github.com/taotaochen86/siyuan-xref",
-        "version": "1.0.2"
+        "version": "1.0.3"
       },
-      "packageZipAssetId": 696628314,
-      "packageZipSha256": "25d28c3402d142858aa241223225f97915e42a0c9572bc8332cbf0bf1d63d937",
-      "repoRef": "v1.0.2",
-      "size": 51503,
+      "packageZipAssetId": 697120037,
+      "packageZipSha256": "58f2423d9d180defef5ce3121bd4150535b5813984af70cff1151b0439394e3f",
+      "repoRef": "v1.0.3",
+      "size": 82039,
       "stars": 1,
-      "updated": "2026-10-31T22:20:54Z",
-      "url": "taotaochen86/siyuan-xref@25d28c3"
+      "updated": "2026-11-01T02:37:35Z",
+      "url": "taotaochen86/siyuan-xref@58f2423"
+    },
+    {
+      "installSize": 160535,
+      "openIssues": 0,
+      "package": {
+        "author": "wmy2981",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Show bazaar package release notes, repository CHANGELOG and commit history in SiYuan, and confirm package updates through them.",
+          "zh-CN": "在思源里查看集市包的发行说明、仓库 CHANGELOG 与提交记录，并用更新日志弹窗确认集市包更新"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Bazaar Changelog",
+          "zh-CN": "集市更新日志"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/wmy2981"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "更新日志",
+          "changelog",
+          "发行说明",
+          "release notes",
+          "集市",
+          "bazaar"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "bazaar-changelog",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/wmy2981/bazaar-changelog",
+        "version": "1.2.1"
+      },
+      "packageZipAssetId": 697093617,
+      "packageZipSha256": "031f68280b5f4a7c5e4d473fe9a122ae1ca588e02b05cebada24a2c5c93092c2",
+      "repoRef": "v1.2.1",
+      "size": 75907,
+      "stars": 2,
+      "updated": "2026-11-01T02:24:32Z",
+      "url": "wmy2981/bazaar-changelog@031f682"
+    },
+    {
+      "installSize": 148620,
+      "openIssues": 1,
+      "package": {
+        "author": "wmy2981",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Generate note titles with the Chat Completions, Responses, Anthropic Messages or Gemini Interactions API",
+          "zh-CN": "用 Chat Completions、Responses API、Anthropic Messages 或 Gemini Interactions 接口为笔记生成标题"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "AI Title",
+          "zh-CN": "AI 标题生成"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/wmy2981"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "ai",
+          "title",
+          "deepseek",
+          "生成",
+          "标题",
+          "generate"
+        ],
+        "minAppVersion": "3.8.3",
+        "name": "ai-title-siyuan",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/wmy2981/ai-title-siyuan",
+        "version": "1.2.1"
+      },
+      "packageZipAssetId": 697085748,
+      "packageZipSha256": "52c45d2cf4f448af3235ae3c8483d14903f6c21ccaf8f81a66175d49b9da1b4c",
+      "repoRef": "v1.2.1",
+      "size": 69386,
+      "stars": 4,
+      "updated": "2026-11-01T02:19:58Z",
+      "url": "wmy2981/ai-title-siyuan@52c45d2"
+    },
+    {
+      "installSize": 5734458,
+      "openIssues": 1,
+      "package": {
+        "author": "yyk",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android"
+        ],
+        "description": {
+          "default": "基于可自定义大模型服务商的思源自学课程插件：资料导入、知识点拆解、学习计划、题库刷题、错题复盘、知识图谱、学习报告",
+          "en-US": "A self-study course plugin based on customizable LLM providers: material import, knowledge points, study plans, quizzes, reviews, knowledge graph and reports"
+        },
+        "displayName": {
+          "default": "AI 智能学习",
+          "en-US": "AI Study"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "AI",
+          "学习",
+          "课程",
+          "刷题",
+          "知识图谱",
+          "study",
+          "quiz",
+          "knowledge-graph"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "AIstudy",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README-siyuan.md"
+        },
+        "url": "https://github.com/YYK0402/AIstudy",
+        "version": "0.4.3"
+      },
+      "packageZipAssetId": 697100827,
+      "packageZipSha256": "567c2155690b3b56648dbb65d4779de26b3579b57ce81210f3ee867f3a12dc5f",
+      "repoRef": "v0.4.3",
+      "size": 3438528,
+      "stars": 2,
+      "updated": "2026-11-01T01:54:19Z",
+      "url": "YYK0402/AIstudy@567c215"
     },
     {
       "installSize": 368331,
@@ -213,56 +521,6 @@
       "stars": 0,
       "updated": "2026-10-31T14:33:35Z",
       "url": "wave789/siyuan-general-outline@81514a2"
-    },
-    {
-      "installSize": 146856,
-      "openIssues": 0,
-      "package": {
-        "author": "陈涛涛 (Taotao Chen)",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Insert Zotero citations into SiYuan via the Zotero debug bridge. Text follows the CSL style exactly; right-click a citation to switch format, edit its references, or change the document style.",
-          "zh_CN": "通过 Zotero debug bridge 在思源里插入文献引用。正文文本严格按 CSL 样式输出；右键引用可改形态、编辑该处文献（可增可删）、切换全局 CSL 样式；文末自动生成参考文献表，点击引用跳回 Zotero。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Zotero Cite",
-          "zh_CN": "Zotero 文献引用"
-        },
-        "frontends": [
-          "desktop"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "zotero",
-          "citation",
-          "reference",
-          "csl",
-          "bibliography",
-          "文献",
-          "参考文献"
-        ],
-        "minAppVersion": "3.1.0",
-        "name": "siyuan-plugin-zotero-cite",
-        "preview": "",
-        "readme": {
-          "default": "README_en.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/taotaochen86/siyuan-plugin-zotero-cite",
-        "version": "1.2.13"
-      },
-      "packageZipAssetId": 695631974,
-      "packageZipSha256": "c3cbe345766ad478561e24d688692a2f47a512bd9a355ef6da21697b5414af00",
-      "repoRef": "v1.2.13",
-      "size": 54379,
-      "stars": 1,
-      "updated": "2026-10-31T13:53:32Z",
-      "url": "taotaochen86/siyuan-plugin-zotero-cite@c3cbe34"
     },
     {
       "installSize": 6732642,
@@ -516,65 +774,6 @@
       "stars": 18,
       "updated": "2026-10-31T06:56:52Z",
       "url": "svchord/siyuan-arco-calendar@235e938"
-    },
-    {
-      "installSize": 3386722,
-      "openIssues": 1,
-      "package": {
-        "author": "yyk",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android"
-        ],
-        "description": {
-          "default": "基于可自定义大模型服务商的思源自学课程插件：资料导入、知识点拆解、学习计划、题库刷题、错题复盘、知识图谱、学习报告",
-          "en-US": "A self-study course plugin based on customizable LLM providers: material import, knowledge points, study plans, quizzes, reviews, knowledge graph and reports"
-        },
-        "displayName": {
-          "default": "AI 智能学习",
-          "en-US": "AI Study"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "AI",
-          "学习",
-          "课程",
-          "刷题",
-          "知识图谱",
-          "study",
-          "quiz",
-          "knowledge-graph"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "AIstudy",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/YYK0402/AIstudy",
-        "version": "0.4.2"
-      },
-      "packageZipAssetId": 694430564,
-      "packageZipSha256": "2cdd4736fe21feebc4dd587e1fe1c1b0500819853bf2523c35cd8595fe673dc3",
-      "repoRef": "v0.4.2",
-      "size": 1137801,
-      "stars": 2,
-      "updated": "2026-10-31T05:08:48Z",
-      "url": "YYK0402/AIstudy@2cdd473"
     },
     {
       "installSize": 10370950,
@@ -4041,162 +4240,6 @@
       "url": "gradypark86/siyuan-plugin-calendar@2c99f00"
     },
     {
-      "installSize": 202835,
-      "openIssues": 0,
-      "package": {
-        "author": "wmy2981",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Show heading breadcrumbs (h2-h6) of each block in the block reference search list and the search panel",
-          "zh-CN": "在块引用搜索列表和搜索面板中显示每个块的标题层级面包屑（h2-h6）"
-        },
-        "displayName": {
-          "default": "Ref Crumbs",
-          "zh-CN": "引用面包屑"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/wmy2981"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "面包屑",
-          "breadcrumb",
-          "标题层级",
-          "heading",
-          "块引用",
-          "block ref"
-        ],
-        "minAppVersion": "3.6.0",
-        "name": "ref-crumbs-siyuan",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/wmy2981/ref-crumbs-siyuan",
-        "version": "1.0.3"
-      },
-      "packageZipAssetId": 674057187,
-      "packageZipSha256": "405debf5c397c9a437e5dc80aabe8bb0be408db69e6286f3eae6790fe88524fd",
-      "repoRef": "v1.0.3",
-      "size": 177348,
-      "stars": 1,
-      "updated": "2026-10-25T04:11:52Z",
-      "url": "wmy2981/ref-crumbs-siyuan@405debf"
-    },
-    {
-      "installSize": 159947,
-      "openIssues": 0,
-      "package": {
-        "author": "wmy2981",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Show bazaar package release notes, repository CHANGELOG and commit history in SiYuan, and confirm package updates through them.",
-          "zh-CN": "在思源里查看集市包的发行说明、仓库 CHANGELOG 与提交记录，并用更新日志弹窗确认集市包更新"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Bazaar Changelog",
-          "zh-CN": "集市更新日志"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/wmy2981"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "更新日志",
-          "changelog",
-          "发行说明",
-          "release notes",
-          "集市",
-          "bazaar"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "bazaar-changelog",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/wmy2981/bazaar-changelog",
-        "version": "1.2.0"
-      },
-      "packageZipAssetId": 674016751,
-      "packageZipSha256": "c78dfb02552141a236b53c2a4b5163fb91b50f61c1cd2cba0063780b00e5506a",
-      "repoRef": "v1.2.0",
-      "size": 75637,
-      "stars": 1,
-      "updated": "2026-10-25T03:48:36Z",
-      "url": "wmy2981/bazaar-changelog@c78dfb0"
-    },
-    {
-      "installSize": 144144,
-      "openIssues": 2,
-      "package": {
-        "author": "wmy2981",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Generate note titles with the Chat Completions, Responses, Anthropic Messages or Gemini Interactions API",
-          "zh-CN": "用 Chat Completions、Responses API、Anthropic Messages 或 Gemini Interactions 接口为笔记生成标题"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "AI Title",
-          "zh-CN": "AI 标题生成"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/wmy2981"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "ai",
-          "title",
-          "deepseek",
-          "生成",
-          "标题",
-          "generate"
-        ],
-        "minAppVersion": "3.8.3",
-        "name": "ai-title-siyuan",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/wmy2981/ai-title-siyuan",
-        "version": "1.1.1"
-      },
-      "packageZipAssetId": 673908556,
-      "packageZipSha256": "34f7dcec39f3c71765d072ff06f62964ece1284e2e0959a62993749c54dc9f3d",
-      "repoRef": "v1.1.1",
-      "size": 67481,
-      "stars": 3,
-      "updated": "2026-10-25T02:42:40Z",
-      "url": "wmy2981/ai-title-siyuan@34f7dce"
-    },
-    {
       "installSize": 136881,
       "openIssues": 1,
       "package": {
@@ -4979,50 +5022,6 @@
       "stars": 0,
       "updated": "2026-10-21T08:29:06Z",
       "url": "Reagan1947/siyuan-folder@761a2ea"
-    },
-    {
-      "installSize": 46229,
-      "openIssues": 0,
-      "package": {
-        "author": "Mangteng1994",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "对比思源文档或复制文段，逐字审阅新增和删除。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "文档Diff"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop"
-        ],
-        "icon": "",
-        "keywords": [
-          "diff",
-          "对比",
-          "文档",
-          "修订"
-        ],
-        "minAppVersion": "3.0.12",
-        "name": "siyuan_diff",
-        "preview": "",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/Mangteng1994/siyuan_diff",
-        "version": "0.1.1"
-      },
-      "packageZipAssetId": 661244344,
-      "packageZipSha256": "b52f7b1c016fca9a87e9b149068042440d41b57a529591475f7a6673b7e87f48",
-      "repoRef": "v0.1.1",
-      "size": 15420,
-      "stars": 0,
-      "updated": "2026-10-21T03:55:35Z",
-      "url": "Mangteng1994/siyuan_diff@b52f7b1"
     },
     {
       "installSize": 569667,
