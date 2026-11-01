@@ -1,6 +1,231 @@
 {
   "repos": [
     {
+      "installSize": 1192422,
+      "openIssues": 0,
+      "package": {
+        "author": "svchord",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Quickly create or open daily notes from a calendar panel",
+          "zh-CN": "日历面板上快速新建或转到日记"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Calendar Panel",
+          "zh-CN": "日历面板"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.net/a/sevenchord"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "calendar",
+          "日历",
+          "日记",
+          "daily"
+        ],
+        "minAppVersion": "3.8.5",
+        "name": "arco-calendar",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README_en_US.md",
+          "zh-CN": "README.md"
+        },
+        "url": "https://github.com/svchord/siyuan-arco-calendar",
+        "version": "2.2.3"
+      },
+      "packageZipAssetId": 698106774,
+      "packageZipSha256": "960e7af7ea6a1559784c880ffe56f74d3a134cf3a3a886f2278fd10a71fa5399",
+      "repoRef": "v2.2.3",
+      "size": 527070,
+      "stars": 18,
+      "updated": "2026-11-01T11:13:01Z",
+      "url": "svchord/siyuan-arco-calendar@960e7af"
+    },
+    {
+      "installSize": 5734612,
+      "openIssues": 1,
+      "package": {
+        "author": "yyk",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android"
+        ],
+        "description": {
+          "default": "基于可自定义大模型服务商的思源自学课程插件：资料导入、知识点拆解、学习计划、题库刷题、错题复盘、知识图谱、学习报告",
+          "en-US": "A self-study course plugin based on customizable LLM providers: material import, knowledge points, study plans, quizzes, reviews, knowledge graph and reports"
+        },
+        "displayName": {
+          "default": "AI 智能学习",
+          "en-US": "AI Study"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "AI",
+          "学习",
+          "课程",
+          "刷题",
+          "知识图谱",
+          "study",
+          "quiz",
+          "knowledge-graph"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "AIstudy",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README-siyuan.md"
+        },
+        "url": "https://github.com/YYK0402/AIstudy",
+        "version": "0.4.4"
+      },
+      "packageZipAssetId": 697738195,
+      "packageZipSha256": "b848b90efd30a8d48cef1d896c2053a3535c9286ff7ca3e84f1554661d0fc655",
+      "repoRef": "v0.4.4",
+      "size": 3438603,
+      "stars": 2,
+      "updated": "2026-11-01T09:17:59Z",
+      "url": "YYK0402/AIstudy@b848b90"
+    },
+    {
+      "installSize": 381471,
+      "openIssues": 0,
+      "package": {
+        "author": "陈涛涛 (Taotao Chen)",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Number figures, tables and equations automatically and keep every cross-reference in sync. Right-click a paragraph and choose Set as figure caption / Set as table caption — applied in about 0.6s, no attribute typing. Right-click an image or a table and the caption paragraph is created in the right place (below a figure, above a table), never inside the image or table block; right-clicking inside a table cell offers no caption menu. Clear caption removes the attribute, the auto block name, the tint and the leading number in one click, shifts the following numbers up, and stays reliable even when a renumber round is running (it queues instead of silently giving up). Equations are updated in place on data-content only, so a formula body can never be wiped; empty equations are never numbered. Text auto-detection can be switched off, so an ordinary sentence starting with 图 3 is no longer mistaken for a caption. Typing pauses trigger a silent renumber in 1.5-3s. Deleted a figure by mistake? Ctrl+Alt+Z rebuilds the block with its original ID and the references reconnect by themselves (dead references are left untouched by default). Built-in undo stack (Ctrl+Alt+Z / Ctrl+Alt+Y, 10 runs, survives restart) because SiYuan&#39;s own Ctrl+Z cannot undo API writes. A cross-reference is inserted while writing, never from the block menu of an ordinary paragraph: slash /xref or Ctrl+Alt+R puts it at the caret. Right-clicking text inside a block (table cells included) offers it too, at the caret, while the block-icon menu stays free of it. All four hotkeys are rebindable. The whole interface ships in 10 languages and follows SiYuan&#39;s own language setting — Simplified Chinese, Traditional Chinese, English, Japanese, Korean, German, French, Spanish, Russian and Brazilian Portuguese; the remaining SiYuan languages fall back to English. Menus, messages, the settings panel, command names and the default labels are all localised (Figure / Abb. / рис. / 図 / 그림 …). Captions already in the document are still recognised when you switch languages: the leading 「图 3」/「Figure 3」/「Abb. 6」/「Рис. 9」/「표 5」 prefix is detected in all ten languages, so switching the interface language never causes double numbering or a prefix that cannot be stripped. In the cross-reference picker an equation is rendered as the formula itself (no raw $$ y=1-sin(x) \\tag{2-1} $$ source), reusing SiYuan&#39;s own MathJax or KaTeX and falling back to monospace source if neither is available. The picker also filters by kind (All / Figure / Table / Eq, each with a count) and by the heading a caption belongs to — with dozens of captions, pick Table or one section first and choose from the handful left. The heading list follows the outline with H1/H2 indentation, choosing a chapter includes its sub-sections, and the filters stack with the search box.",
+          "zh-CN": "自动重排图、表、公式编号并同步刷新交叉引用；写完题注停手 1.5～3 秒自动生效。右键段落选「设为图题注 / 设为表题注」，不用记 custom-xref 属性，0.6 秒出号。右键图片或表格，题注段落会建在正确的位置（图题在下、表题在上），绝不写进图片块或表格块内部；表格单元格内侧不出现题注菜单。「取消图表题注」一次清干净：属性、自动块名、底色、段首编号一并去掉，后面的编号自动顺延；即使正好撞上自动重排也照做不误（排队等它收工，不再弹「请稍候」了事），取消后 30 秒内自动轮也不会把编号写回来。公式只改 data-content 上的编号，不重建块，公式正文绝不会丢；空公式不编号。「文字自动识别」可关，关掉后正文里顺口写「图 3 中可以看出」不会被误编号。图/表题注自动居中并加一层浅底色（深浅可调）。误删图/表后按 Ctrl+Alt+Z，插件会把删掉的块按原块 ID 重建回来，指向它的交叉引用自动接上（默认不再把死链涂红或转成文本）。插件自带撤销栈，Ctrl+Alt+Z 撤回上一轮重排、Ctrl+Alt+Y 重做，默认保留 10 轮、跨重启有效。插入交叉引用只在写正文时用：斜杠 /xref、或 Ctrl+Alt+R，插在当前光标处；在正文文字上右键（含表格单元格内的文字）也直接给这一项，插的同样是光标处，块标菜单里不占地方。四个快捷键都能自定义。界面内置 10 种语言，自动跟随思源的语言设置：简体中文、繁体中文、英文、日文、韩文、德文、法文、西班牙文、俄文、巴西葡萄牙文，思源其余语言一律退英文。菜单、提示、设置面板、命令名、编号标签默认值全部本地化（图 / 圖 / Figure / 図 / 그림 / Abb. / Рис. …）。换语言后老题注照样认：段首的「图 3」「Figure 3」「Abb. 6」「Рис. 9」「표 5」在 10 种语言下都能识别，切换界面语言不会造成重复编号或前缀剥不掉。插入交叉引用面板里，公式直接渲染成公式本身（不再显示 $$ y=1-sin(x) \\tag{2-1} $$ 这种源码），渲染器自动用思源自带的 MathJax / KaTeX，加载不到就退回等宽源码。交叉引用面板顶部可以按类型（全部 / 图 / 表 / 式，带条数）和所属标题筛选——图表公式几十上百条时，先点「表」或选一节，再从那几条里挑；标题下拉按 H1/H2 缩进显示大纲，选中一章会连它的子节一起算进来，筛选结果和搜索词可以叠加。"
+        },
+        "displayName": {
+          "default": "Figure &amp; Equation Xref",
+          "zh-CN": "图表公式交叉引用"
+        },
+        "frontends": [
+          "desktop",
+          "mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "交叉引用",
+          "图表编号",
+          "公式编号",
+          "题注",
+          "numbering",
+          "cross-reference",
+          "figure",
+          "table",
+          "equation",
+          "caption",
+          "撤销",
+          "重做",
+          "undo",
+          "redo",
+          "失效引用",
+          "恢复",
+          "重建",
+          "recover",
+          "rebuild",
+          "多语言",
+          "繁中",
+          "i18n",
+          "multilingual",
+          "日本語",
+          "Deutsch"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-xref",
+        "preview": "",
+        "readme": {
+          "default": "README_en.md",
+          "zh-CN": "README.md"
+        },
+        "url": "https://github.com/taotaochen86/siyuan-xref",
+        "version": "1.0.9"
+      },
+      "packageZipAssetId": 697734554,
+      "packageZipSha256": "d6b36daf21fa5b6528050679fdf1bc6d1495446ef334b1ac28d91ee3ed9c50d5",
+      "repoRef": "v1.0.9",
+      "size": 126645,
+      "stars": 1,
+      "updated": "2026-11-01T09:15:57Z",
+      "url": "taotaochen86/siyuan-xref@d6b36da"
+    },
+    {
+      "installSize": 176969,
+      "openIssues": 0,
+      "package": {
+        "author": "陈涛涛 (Taotao Chen)",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "Insert Zotero citations into SiYuan via the Zotero debug bridge. Text follows the CSL style exactly; right-click a citation to switch format, edit its references, or change the document style.",
+          "zh_CN": "通过 Zotero debug bridge 在思源里插入文献引用。正文文本严格按 CSL 样式输出；右键引用可改形态、编辑该处文献（可增可删）、切换全局 CSL 样式；文末自动生成参考文献表，点击引用跳回 Zotero。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Zotero Cite",
+          "zh_CN": "Zotero 文献引用"
+        },
+        "frontends": [
+          "desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "zotero",
+          "citation",
+          "reference",
+          "csl",
+          "bibliography",
+          "文献",
+          "参考文献"
+        ],
+        "minAppVersion": "3.1.0",
+        "name": "siyuan-plugin-zotero-cite",
+        "preview": "",
+        "readme": {
+          "default": "README_en.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/taotaochen86/siyuan-plugin-zotero-cite",
+        "version": "1.2.25"
+      },
+      "packageZipAssetId": 697828334,
+      "packageZipSha256": "c991fe526d45289732d6b74e1d4472cf81fcd01703e3ad2aead0572b6bb4ad10",
+      "repoRef": "v1.2.25",
+      "size": 63833,
+      "stars": 1,
+      "updated": "2026-11-01T09:04:59Z",
+      "url": "taotaochen86/siyuan-plugin-zotero-cite@c991fe5"
+    },
+    {
       "installSize": 704266,
       "openIssues": 0,
       "package": {
@@ -52,6 +277,111 @@
       "stars": 0,
       "updated": "2026-11-01T06:02:17Z",
       "url": "wave789/siyuan-TODO@0d05187"
+    },
+    {
+      "installSize": 131522,
+      "openIssues": 1,
+      "package": {
+        "author": "wmy2981",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Ships the OpenCode Go provider, a stable per-conversation x-opencode-session header and the rolling / weekly / monthly usage",
+          "zh-CN": "内置 OpenCode Go 提供商，发送逐会话稳定的 x-opencode-session 请求头，并展示 5 小时 / 周 / 月用量"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "OpenCode Go"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/wmy2981"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "opencode",
+          "opencode-go",
+          "ai",
+          "provider",
+          "usage",
+          "人工智能",
+          "用量"
+        ],
+        "minAppVersion": "3.8.5",
+        "name": "opencode-go-siyuan",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/wmy2981/opencode-go-siyuan",
+        "version": "1.1.2"
+      },
+      "packageZipAssetId": 697473309,
+      "packageZipSha256": "f194aea88cd5ea3f686f471eb99994cf471f5359ca295e9895f9dcd739fa36f0",
+      "repoRef": "v1.1.2",
+      "size": 64740,
+      "stars": 2,
+      "updated": "2026-11-01T05:58:16Z",
+      "url": "wmy2981/opencode-go-siyuan@f194aea"
+    },
+    {
+      "installSize": 284858,
+      "openIssues": 0,
+      "package": {
+        "author": "wmy2981",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A batch of independently toggleable desktop and mobile enhancements and optimized styles",
+          "zh-CN": "一批可独立启停的桌面端与移动端增强功能和优化后的样式"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Some Settings",
+          "zh-CN": "一些设置"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/wmy2981"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "settings",
+          "style",
+          "custom",
+          "ui",
+          "enhancement"
+        ],
+        "minAppVersion": "3.8.6-alpha.4",
+        "name": "some-settings-siyuan",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/wmy2981/some-settings-siyuan",
+        "version": "0.2.10"
+      },
+      "packageZipAssetId": 697460080,
+      "packageZipSha256": "9aa2518006b0a02e64433c65b52dd579b2635595e8be93f04e753feec32b2411",
+      "repoRef": "v0.2.10",
+      "size": 104375,
+      "stars": 2,
+      "updated": "2026-11-01T05:50:17Z",
+      "url": "wmy2981/some-settings-siyuan@9aa2518"
     },
     {
       "installSize": 397540,
@@ -108,6 +438,111 @@
       "stars": 0,
       "updated": "2026-11-01T05:29:18Z",
       "url": "wave789/siyuan-search@736d366"
+    },
+    {
+      "installSize": 846490,
+      "openIssues": 6,
+      "package": {
+        "author": "wmy2981",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Insert native SiYuan buttons into documents, with a link or JavaScript action. It is friendly to AI agents.",
+          "zh-CN": "在文档中插入思源原生样式的按钮块，支持链接跳转或 JavaScript 操作。对 AI Agent 操作友好。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Button Block",
+          "zh-CN": "按钮块"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/wmy2981"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "按钮",
+          "button",
+          "自定义块",
+          "custom block",
+          "快捷操作",
+          "JavaScript"
+        ],
+        "minAppVersion": "3.8.6",
+        "name": "button-in-siyuan",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/wmy2981/button-in-siyuan",
+        "version": "0.3.1"
+      },
+      "packageZipAssetId": 697337451,
+      "packageZipSha256": "75c830516f4d79d9197ff8ccf8d19324ddd7496710f7654ff865d682a9dcc409",
+      "repoRef": "v0.3.1",
+      "size": 310583,
+      "stars": 2,
+      "updated": "2026-11-01T04:40:13Z",
+      "url": "wmy2981/button-in-siyuan@75c8305"
+    },
+    {
+      "installSize": 2881387,
+      "openIssues": 1,
+      "package": {
+        "author": "wmy2981",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Open and edit the text files referenced by notes in a new tab",
+          "zh-CN": "在新建页签中打开并编辑笔记引用的文本文件"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Editor",
+          "zh-CN": "文本编辑器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/wmy2981"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "editor",
+          "code",
+          "text",
+          "assets",
+          "编辑",
+          "文本",
+          "代码"
+        ],
+        "minAppVersion": "3.8.3",
+        "name": "editor-siyuan",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/wmy2981/editor-siyuan",
+        "version": "1.3.2"
+      },
+      "packageZipAssetId": 697311305,
+      "packageZipSha256": "747a15d0243c23942d8d58f7830983c33d21f2509a03fa8659b60ed4bf993dbc",
+      "repoRef": "v1.3.2",
+      "size": 862635,
+      "stars": 2,
+      "updated": "2026-11-01T04:25:19Z",
+      "url": "wmy2981/editor-siyuan@747a15d"
     },
     {
       "installSize": 375298,
@@ -203,116 +638,6 @@
       "stars": 2,
       "updated": "2026-11-01T03:08:31Z",
       "url": "wmy2981/ref-crumbs-siyuan@af3bf49"
-    },
-    {
-      "installSize": 153164,
-      "openIssues": 0,
-      "package": {
-        "author": "陈涛涛 (Taotao Chen)",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Insert Zotero citations into SiYuan via the Zotero debug bridge. Text follows the CSL style exactly; right-click a citation to switch format, edit its references, or change the document style.",
-          "zh_CN": "通过 Zotero debug bridge 在思源里插入文献引用。正文文本严格按 CSL 样式输出；右键引用可改形态、编辑该处文献（可增可删）、切换全局 CSL 样式；文末自动生成参考文献表，点击引用跳回 Zotero。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Zotero Cite",
-          "zh_CN": "Zotero 文献引用"
-        },
-        "frontends": [
-          "desktop"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "zotero",
-          "citation",
-          "reference",
-          "csl",
-          "bibliography",
-          "文献",
-          "参考文献"
-        ],
-        "minAppVersion": "3.1.0",
-        "name": "siyuan-plugin-zotero-cite",
-        "preview": "",
-        "readme": {
-          "default": "README_en.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/taotaochen86/siyuan-plugin-zotero-cite",
-        "version": "1.2.16"
-      },
-      "packageZipAssetId": 697124875,
-      "packageZipSha256": "c28596d7c952d425b1428427b3b34a62b09ad7bd2179e386831c3bafaf48c249",
-      "repoRef": "v1.2.16",
-      "size": 56069,
-      "stars": 1,
-      "updated": "2026-11-01T02:40:32Z",
-      "url": "taotaochen86/siyuan-plugin-zotero-cite@c28596d"
-    },
-    {
-      "installSize": 235672,
-      "openIssues": 0,
-      "package": {
-        "author": "陈涛涛 (Taotao Chen)",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Number figures, tables and equations automatically and keep every cross-reference in sync. Right-click a paragraph and choose Set as figure caption / Set as table caption — applied in about 0.6s, no attribute typing; right-click an image or a table and the caption paragraph is created in the right place (below a figure, above a table), never inside the image or table block; right-clicking inside a table cell offers no caption menu at all. Clear caption removes the attribute, the auto block name, the tint and the leading number in one click, and shifts the following numbers up. Equations are updated in place on data-content only, so a formula body can never be wiped; empty equations are never numbered. Text auto-detection can be switched off, so an ordinary sentence starting with 图 3 is no longer mistaken for a caption. Typing pauses trigger a silent renumber in 1.5-3s. Deleted a figure by mistake? Ctrl+Alt+Z rebuilds the block with its original ID and the references reconnect by themselves (dead references are left untouched by default). Built-in undo stack (Ctrl+Alt+Z / Ctrl+Alt+Y, 10 runs, survives restart) because SiYuan&#39;s own Ctrl+Z cannot undo API writes. Slash command /xref inserts a live block reference; all four hotkeys are rebindable.",
-          "zh-CN": "自动重排图、表、公式编号并同步刷新交叉引用；写完题注停手 1.5～3 秒自动生效。右键段落选「设为图题注 / 设为表题注」，不用记 custom-xref 属性，0.6 秒出号；右键图片或表格，题注段落会建在正确的位置（图题在下、表题在上），绝不写进图片块或表格块内部；表格单元格内侧右键不出现任何题注菜单。「取消图表题注」一次清干净：属性、自动块名、底色、段首编号一并去掉，后面的编号自动顺延。公式只改 data-content 上的编号，不重建块，公式正文绝不会丢；空公式不编号。「文字自动识别」可关，关掉后正文里顺口写「图 3 中可以看出」不会被误编号。图/表题注自动居中并加一层浅底色（深浅可调）。误删图/表后按 Ctrl+Alt+Z，插件会把删掉的块按原块 ID 重建回来，指向它的交叉引用自动接上（默认不再把死链涂红或转成文本）。插件自带撤销栈，Ctrl+Alt+Z 撤回上一轮重排、Ctrl+Alt+Y 重做，默认保留 10 轮、跨重启有效。编辑器内输入 /xref 插入引用；四个快捷键都能自定义。"
-        },
-        "displayName": {
-          "default": "Figure &amp; Equation Xref",
-          "zh-CN": "图表公式交叉引用"
-        },
-        "frontends": [
-          "desktop",
-          "mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "交叉引用",
-          "图表编号",
-          "公式编号",
-          "题注",
-          "numbering",
-          "cross-reference",
-          "figure",
-          "table",
-          "equation",
-          "caption",
-          "撤销",
-          "重做",
-          "undo",
-          "redo",
-          "失效引用",
-          "恢复",
-          "重建",
-          "recover",
-          "rebuild"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-xref",
-        "preview": "",
-        "readme": {
-          "default": "README_en.md",
-          "zh-CN": "README.md"
-        },
-        "url": "https://github.com/taotaochen86/siyuan-xref",
-        "version": "1.0.3"
-      },
-      "packageZipAssetId": 697120037,
-      "packageZipSha256": "58f2423d9d180defef5ce3121bd4150535b5813984af70cff1151b0439394e3f",
-      "repoRef": "v1.0.3",
-      "size": 82039,
-      "stars": 1,
-      "updated": "2026-11-01T02:37:35Z",
-      "url": "taotaochen86/siyuan-xref@58f2423"
     },
     {
       "installSize": 160535,
@@ -420,65 +745,6 @@
       "url": "wmy2981/ai-title-siyuan@52c45d2"
     },
     {
-      "installSize": 5734458,
-      "openIssues": 1,
-      "package": {
-        "author": "yyk",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android"
-        ],
-        "description": {
-          "default": "基于可自定义大模型服务商的思源自学课程插件：资料导入、知识点拆解、学习计划、题库刷题、错题复盘、知识图谱、学习报告",
-          "en-US": "A self-study course plugin based on customizable LLM providers: material import, knowledge points, study plans, quizzes, reviews, knowledge graph and reports"
-        },
-        "displayName": {
-          "default": "AI 智能学习",
-          "en-US": "AI Study"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "AI",
-          "学习",
-          "课程",
-          "刷题",
-          "知识图谱",
-          "study",
-          "quiz",
-          "knowledge-graph"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "AIstudy",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README-siyuan.md"
-        },
-        "url": "https://github.com/YYK0402/AIstudy",
-        "version": "0.4.3"
-      },
-      "packageZipAssetId": 697100827,
-      "packageZipSha256": "567c2155690b3b56648dbb65d4779de26b3579b57ce81210f3ee867f3a12dc5f",
-      "repoRef": "v0.4.3",
-      "size": 3438528,
-      "stars": 2,
-      "updated": "2026-11-01T01:54:19Z",
-      "url": "YYK0402/AIstudy@567c215"
-    },
-    {
       "installSize": 368331,
       "openIssues": 9,
       "package": {
@@ -529,59 +795,6 @@
       "stars": 20,
       "updated": "2026-10-31T16:24:38Z",
       "url": "frostime/sy-bookmark-plus@fc410ec"
-    },
-    {
-      "installSize": 2869363,
-      "openIssues": 1,
-      "package": {
-        "author": "wmy2981",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Open and edit the text files referenced by notes in a new tab",
-          "zh-CN": "在新建页签中打开并编辑笔记引用的文本文件"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Editor",
-          "zh-CN": "文本编辑器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/wmy2981"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "editor",
-          "code",
-          "text",
-          "assets",
-          "编辑",
-          "文本",
-          "代码"
-        ],
-        "minAppVersion": "3.8.3",
-        "name": "editor-siyuan",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/wmy2981/editor-siyuan",
-        "version": "1.3.1"
-      },
-      "packageZipAssetId": 695713494,
-      "packageZipSha256": "24bc79c562f79957726d95eab3abe2e883a6b7f512e9d34997ec3b126d7f95ae",
-      "repoRef": "v1.3.1",
-      "size": 859547,
-      "stars": 2,
-      "updated": "2026-10-31T15:19:17Z",
-      "url": "wmy2981/editor-siyuan@24bc79c"
     },
     {
       "installSize": 257391,
@@ -833,56 +1046,6 @@
       "stars": 0,
       "updated": "2026-10-31T06:59:16Z",
       "url": "kamasylvia/SiYuan-ReadItLater@66e9e5d"
-    },
-    {
-      "installSize": 1192598,
-      "openIssues": 0,
-      "package": {
-        "author": "svchord",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Quickly create or open daily notes from a calendar panel",
-          "zh-CN": "日历面板上快速新建或转到日记"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Calendar Panel",
-          "zh-CN": "日历面板"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.net/a/sevenchord"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "calendar",
-          "日历",
-          "日记",
-          "daily"
-        ],
-        "minAppVersion": "3.8.5",
-        "name": "arco-calendar",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README_en_US.md",
-          "zh-CN": "README.md"
-        },
-        "url": "https://github.com/svchord/siyuan-arco-calendar",
-        "version": "2.2.2"
-      },
-      "packageZipAssetId": 694637411,
-      "packageZipSha256": "235e938279afb855c4a6c849f40cf5fe3259c76a7c3d228b6d7af863268a26a6",
-      "repoRef": "siyuan-arco-calendar-v2.2.2",
-      "size": 527127,
-      "stars": 18,
-      "updated": "2026-10-31T06:56:52Z",
-      "url": "svchord/siyuan-arco-calendar@235e938"
     },
     {
       "installSize": 10370950,
@@ -4349,59 +4512,6 @@
       "url": "gradypark86/siyuan-plugin-calendar@2c99f00"
     },
     {
-      "installSize": 136881,
-      "openIssues": 1,
-      "package": {
-        "author": "wmy2981",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Ships the OpenCode Go provider, a stable per-conversation x-opencode-session header and the rolling / weekly / monthly usage",
-          "zh-CN": "内置 OpenCode Go 提供商，发送逐会话稳定的 x-opencode-session 请求头，并展示 5 小时 / 周 / 月用量"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "OpenCode Go"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/wmy2981"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "opencode",
-          "opencode-go",
-          "ai",
-          "provider",
-          "usage",
-          "人工智能",
-          "用量"
-        ],
-        "minAppVersion": "3.8.5",
-        "name": "opencode-go-siyuan",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/wmy2981/opencode-go-siyuan",
-        "version": "1.1.1"
-      },
-      "packageZipAssetId": 673868302,
-      "packageZipSha256": "a5cdf3f1e3837ffc1c3149eee601f23b12628e505c2cd78fc407ff5fc0488474",
-      "repoRef": "v1.1.1",
-      "size": 66642,
-      "stars": 1,
-      "updated": "2026-10-25T02:18:06Z",
-      "url": "wmy2981/opencode-go-siyuan@a5cdf3f"
-    },
-    {
       "installSize": 649114,
       "openIssues": 0,
       "package": {
@@ -6197,110 +6307,6 @@
       "stars": 0,
       "updated": "2026-10-18T09:01:24Z",
       "url": "lisontowind/sy-imgcompression@f703261"
-    },
-    {
-      "installSize": 854363,
-      "openIssues": 1,
-      "package": {
-        "author": "wmy2981",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Insert native SiYuan buttons into documents, with a link or JavaScript action. It is friendly to AI agents.",
-          "zh-CN": "在文档中插入思源原生样式的按钮块，支持链接跳转或 JavaScript 操作。对 AI Agent 操作友好。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Button Block",
-          "zh-CN": "按钮块"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/wmy2981"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "按钮",
-          "button",
-          "自定义块",
-          "custom block",
-          "快捷操作",
-          "JavaScript"
-        ],
-        "minAppVersion": "3.8.6",
-        "name": "button-in-siyuan",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/wmy2981/button-in-siyuan",
-        "version": "0.3.0"
-      },
-      "packageZipAssetId": 652693622,
-      "packageZipSha256": "0562fd8c94cd9d39b76d608a10dd3a6e86a4b48d7aacb62447322ed11b3ecbf3",
-      "repoRef": "v0.3.0",
-      "size": 313620,
-      "stars": 1,
-      "updated": "2026-10-18T06:31:59Z",
-      "url": "wmy2981/button-in-siyuan@0562fd8"
-    },
-    {
-      "installSize": 293981,
-      "openIssues": 1,
-      "package": {
-        "author": "wmy2981",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A batch of independently toggleable desktop and mobile enhancements and optimized styles",
-          "zh-CN": "一批可独立启停的桌面端与移动端增强功能和优化后的样式"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Some Settings",
-          "zh-CN": "一些设置"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/wmy2981"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "settings",
-          "style",
-          "custom",
-          "ui",
-          "enhancement"
-        ],
-        "minAppVersion": "3.8.6-alpha.4",
-        "name": "some-settings-siyuan",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/wmy2981/some-settings-siyuan",
-        "version": "0.2.9"
-      },
-      "packageZipAssetId": 652590590,
-      "packageZipSha256": "5f1664051e0a0f08dbc6a96477771cc30650587149140c205797b3ebe8bfba32",
-      "repoRef": "v0.2.9",
-      "size": 108264,
-      "stars": 1,
-      "updated": "2026-10-18T05:35:32Z",
-      "url": "wmy2981/some-settings-siyuan@5f16640"
     },
     {
       "installSize": 286334,
