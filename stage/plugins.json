@@ -1,6 +1,196 @@
 {
   "repos": [
     {
+      "installSize": 355044,
+      "openIssues": 0,
+      "package": {
+        "author": "游夏",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "A Finder-style column browser for navigating and organizing SiYuan notebooks and documents, with a document preview at the right.",
+          "zh_CN": "思源笔记的分栏文件浏览器：以列视图方式浏览、整理笔记本与文档，右端附当前文档的预览面板。"
+        },
+        "displayName": {
+          "default": "Finder",
+          "zh_CN": "访达"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop"
+        ],
+        "funding": {
+          "custom": [
+            "https://fastly.jsdelivr.net/gh/fujingzhai/siyuan-finder-plugin@main/assets/sponsor-wechat.png",
+            "https://fastly.jsdelivr.net/gh/fujingzhai/siyuan-finder-plugin@main/assets/sponsor-alipay.jpg"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "finder",
+          "访达",
+          "分栏",
+          "columns",
+          "文件浏览",
+          "导航",
+          "navigation",
+          "文档树",
+          "排序",
+          "sort",
+          "预览",
+          "preview",
+          "搜索",
+          "search",
+          "标签",
+          "tags"
+        ],
+        "minAppVersion": "3.6.0",
+        "name": "siyuan-finder-plugin",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/fujingzhai/siyuan-finder-plugin",
+        "version": "0.9.19"
+      },
+      "packageZipAssetId": 699024851,
+      "packageZipSha256": "998c3032360c06625181ddf1c7beb6d54b9f979b27deff605533dfed76b983dd",
+      "repoRef": "v0.9.19",
+      "size": 216786,
+      "stars": 2,
+      "updated": "2026-11-01T17:36:41Z",
+      "url": "fujingzhai/siyuan-finder-plugin@998c303"
+    },
+    {
+      "installSize": 5816836,
+      "openIssues": 1,
+      "package": {
+        "author": "yyk",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android"
+        ],
+        "description": {
+          "default": "基于可自定义大模型服务商的思源自学课程插件：资料导入、知识点拆解、学习计划、题库刷题、错题复盘、知识图谱、学习报告",
+          "en-US": "A self-study course plugin based on customizable LLM providers: material import, knowledge points, study plans, quizzes, reviews, knowledge graph and reports"
+        },
+        "displayName": {
+          "default": "AI 智能学习",
+          "en-US": "AI Study"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "AI",
+          "学习",
+          "课程",
+          "刷题",
+          "知识图谱",
+          "study",
+          "quiz",
+          "knowledge-graph"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "AIstudy",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README-siyuan.md"
+        },
+        "url": "https://github.com/YYK0402/AIstudy",
+        "version": "0.4.6"
+      },
+      "packageZipAssetId": 698640167,
+      "packageZipSha256": "80cc5e298aa0f39e47026bd6ebe8a017eb389335e67ce126a0023a454623bb1e",
+      "repoRef": "v0.4.6",
+      "size": 3511107,
+      "stars": 2,
+      "updated": "2026-11-01T14:45:32Z",
+      "url": "YYK0402/AIstudy@80cc5e2"
+    },
+    {
+      "installSize": 376747,
+      "openIssues": 0,
+      "package": {
+        "author": "陈涛涛 (Taotao Chen)",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Auto-number figures, tables and equations and keep cross-references in sync. Right-click a paragraph to set a caption (figure below, table above) and clear it in one go; equations only have their number touched. Filter the picker by kind and section. Interface in 10 languages.",
+          "zh-CN": "自动为图、表、公式编号并同步交叉引用。右键段落设为题注（图题在下、表题在上），取消一次清净；公式只改编号不动正文。面板可按类型与章节筛选，界面支持 10 种语言。"
+        },
+        "displayName": {
+          "default": "Figure &amp; Equation Xref",
+          "zh-CN": "图表公式交叉引用"
+        },
+        "frontends": [
+          "desktop",
+          "mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "交叉引用",
+          "图表编号",
+          "公式编号",
+          "题注",
+          "numbering",
+          "cross-reference",
+          "figure",
+          "table",
+          "equation",
+          "caption",
+          "撤销",
+          "重做",
+          "undo",
+          "redo",
+          "失效引用",
+          "恢复",
+          "重建",
+          "recover",
+          "rebuild",
+          "多语言",
+          "繁中",
+          "i18n",
+          "multilingual",
+          "日本語",
+          "Deutsch"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-xref",
+        "preview": "",
+        "readme": {
+          "default": "README_en.md",
+          "zh-CN": "README.md"
+        },
+        "url": "https://github.com/taotaochen86/siyuan-xref",
+        "version": "1.0.10"
+      },
+      "packageZipAssetId": 698447274,
+      "packageZipSha256": "7b8c2f8055aaa47d98039566bf6f96b7ae55de04c26db189e21fee7846b48dbc",
+      "repoRef": "v1.0.10",
+      "size": 124189,
+      "stars": 1,
+      "updated": "2026-11-01T13:37:24Z",
+      "url": "taotaochen86/siyuan-xref@7b8c2f8"
+    },
+    {
       "installSize": 1192422,
       "openIssues": 0,
       "package": {
@@ -49,131 +239,6 @@
       "stars": 18,
       "updated": "2026-11-01T11:13:01Z",
       "url": "svchord/siyuan-arco-calendar@960e7af"
-    },
-    {
-      "installSize": 5734612,
-      "openIssues": 1,
-      "package": {
-        "author": "yyk",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android"
-        ],
-        "description": {
-          "default": "基于可自定义大模型服务商的思源自学课程插件：资料导入、知识点拆解、学习计划、题库刷题、错题复盘、知识图谱、学习报告",
-          "en-US": "A self-study course plugin based on customizable LLM providers: material import, knowledge points, study plans, quizzes, reviews, knowledge graph and reports"
-        },
-        "displayName": {
-          "default": "AI 智能学习",
-          "en-US": "AI Study"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "AI",
-          "学习",
-          "课程",
-          "刷题",
-          "知识图谱",
-          "study",
-          "quiz",
-          "knowledge-graph"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "AIstudy",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README-siyuan.md"
-        },
-        "url": "https://github.com/YYK0402/AIstudy",
-        "version": "0.4.4"
-      },
-      "packageZipAssetId": 697738195,
-      "packageZipSha256": "b848b90efd30a8d48cef1d896c2053a3535c9286ff7ca3e84f1554661d0fc655",
-      "repoRef": "v0.4.4",
-      "size": 3438603,
-      "stars": 2,
-      "updated": "2026-11-01T09:17:59Z",
-      "url": "YYK0402/AIstudy@b848b90"
-    },
-    {
-      "installSize": 381471,
-      "openIssues": 0,
-      "package": {
-        "author": "陈涛涛 (Taotao Chen)",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Number figures, tables and equations automatically and keep every cross-reference in sync. Right-click a paragraph and choose Set as figure caption / Set as table caption — applied in about 0.6s, no attribute typing. Right-click an image or a table and the caption paragraph is created in the right place (below a figure, above a table), never inside the image or table block; right-clicking inside a table cell offers no caption menu. Clear caption removes the attribute, the auto block name, the tint and the leading number in one click, shifts the following numbers up, and stays reliable even when a renumber round is running (it queues instead of silently giving up). Equations are updated in place on data-content only, so a formula body can never be wiped; empty equations are never numbered. Text auto-detection can be switched off, so an ordinary sentence starting with 图 3 is no longer mistaken for a caption. Typing pauses trigger a silent renumber in 1.5-3s. Deleted a figure by mistake? Ctrl+Alt+Z rebuilds the block with its original ID and the references reconnect by themselves (dead references are left untouched by default). Built-in undo stack (Ctrl+Alt+Z / Ctrl+Alt+Y, 10 runs, survives restart) because SiYuan&#39;s own Ctrl+Z cannot undo API writes. A cross-reference is inserted while writing, never from the block menu of an ordinary paragraph: slash /xref or Ctrl+Alt+R puts it at the caret. Right-clicking text inside a block (table cells included) offers it too, at the caret, while the block-icon menu stays free of it. All four hotkeys are rebindable. The whole interface ships in 10 languages and follows SiYuan&#39;s own language setting — Simplified Chinese, Traditional Chinese, English, Japanese, Korean, German, French, Spanish, Russian and Brazilian Portuguese; the remaining SiYuan languages fall back to English. Menus, messages, the settings panel, command names and the default labels are all localised (Figure / Abb. / рис. / 図 / 그림 …). Captions already in the document are still recognised when you switch languages: the leading 「图 3」/「Figure 3」/「Abb. 6」/「Рис. 9」/「표 5」 prefix is detected in all ten languages, so switching the interface language never causes double numbering or a prefix that cannot be stripped. In the cross-reference picker an equation is rendered as the formula itself (no raw $$ y=1-sin(x) \\tag{2-1} $$ source), reusing SiYuan&#39;s own MathJax or KaTeX and falling back to monospace source if neither is available. The picker also filters by kind (All / Figure / Table / Eq, each with a count) and by the heading a caption belongs to — with dozens of captions, pick Table or one section first and choose from the handful left. The heading list follows the outline with H1/H2 indentation, choosing a chapter includes its sub-sections, and the filters stack with the search box.",
-          "zh-CN": "自动重排图、表、公式编号并同步刷新交叉引用；写完题注停手 1.5～3 秒自动生效。右键段落选「设为图题注 / 设为表题注」，不用记 custom-xref 属性，0.6 秒出号。右键图片或表格，题注段落会建在正确的位置（图题在下、表题在上），绝不写进图片块或表格块内部；表格单元格内侧不出现题注菜单。「取消图表题注」一次清干净：属性、自动块名、底色、段首编号一并去掉，后面的编号自动顺延；即使正好撞上自动重排也照做不误（排队等它收工，不再弹「请稍候」了事），取消后 30 秒内自动轮也不会把编号写回来。公式只改 data-content 上的编号，不重建块，公式正文绝不会丢；空公式不编号。「文字自动识别」可关，关掉后正文里顺口写「图 3 中可以看出」不会被误编号。图/表题注自动居中并加一层浅底色（深浅可调）。误删图/表后按 Ctrl+Alt+Z，插件会把删掉的块按原块 ID 重建回来，指向它的交叉引用自动接上（默认不再把死链涂红或转成文本）。插件自带撤销栈，Ctrl+Alt+Z 撤回上一轮重排、Ctrl+Alt+Y 重做，默认保留 10 轮、跨重启有效。插入交叉引用只在写正文时用：斜杠 /xref、或 Ctrl+Alt+R，插在当前光标处；在正文文字上右键（含表格单元格内的文字）也直接给这一项，插的同样是光标处，块标菜单里不占地方。四个快捷键都能自定义。界面内置 10 种语言，自动跟随思源的语言设置：简体中文、繁体中文、英文、日文、韩文、德文、法文、西班牙文、俄文、巴西葡萄牙文，思源其余语言一律退英文。菜单、提示、设置面板、命令名、编号标签默认值全部本地化（图 / 圖 / Figure / 図 / 그림 / Abb. / Рис. …）。换语言后老题注照样认：段首的「图 3」「Figure 3」「Abb. 6」「Рис. 9」「표 5」在 10 种语言下都能识别，切换界面语言不会造成重复编号或前缀剥不掉。插入交叉引用面板里，公式直接渲染成公式本身（不再显示 $$ y=1-sin(x) \\tag{2-1} $$ 这种源码），渲染器自动用思源自带的 MathJax / KaTeX，加载不到就退回等宽源码。交叉引用面板顶部可以按类型（全部 / 图 / 表 / 式，带条数）和所属标题筛选——图表公式几十上百条时，先点「表」或选一节，再从那几条里挑；标题下拉按 H1/H2 缩进显示大纲，选中一章会连它的子节一起算进来，筛选结果和搜索词可以叠加。"
-        },
-        "displayName": {
-          "default": "Figure &amp; Equation Xref",
-          "zh-CN": "图表公式交叉引用"
-        },
-        "frontends": [
-          "desktop",
-          "mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "交叉引用",
-          "图表编号",
-          "公式编号",
-          "题注",
-          "numbering",
-          "cross-reference",
-          "figure",
-          "table",
-          "equation",
-          "caption",
-          "撤销",
-          "重做",
-          "undo",
-          "redo",
-          "失效引用",
-          "恢复",
-          "重建",
-          "recover",
-          "rebuild",
-          "多语言",
-          "繁中",
-          "i18n",
-          "multilingual",
-          "日本語",
-          "Deutsch"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-xref",
-        "preview": "",
-        "readme": {
-          "default": "README_en.md",
-          "zh-CN": "README.md"
-        },
-        "url": "https://github.com/taotaochen86/siyuan-xref",
-        "version": "1.0.9"
-      },
-      "packageZipAssetId": 697734554,
-      "packageZipSha256": "d6b36daf21fa5b6528050679fdf1bc6d1495446ef334b1ac28d91ee3ed9c50d5",
-      "repoRef": "v1.0.9",
-      "size": 126645,
-      "stars": 1,
-      "updated": "2026-11-01T09:15:57Z",
-      "url": "taotaochen86/siyuan-xref@d6b36da"
     },
     {
       "installSize": 176969,
@@ -13580,69 +13645,6 @@
       "stars": 2,
       "updated": "2026-08-27T07:47:40Z",
       "url": "wj1002/plugin-ChronicleX-vite-svelte@6f12bf7"
-    },
-    {
-      "installSize": 351366,
-      "openIssues": 0,
-      "package": {
-        "author": "游夏",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "A Finder-style column browser for navigating and organizing SiYuan notebooks and documents, with a document preview at the right.",
-          "zh_CN": "思源笔记的分栏文件浏览器：以列视图方式浏览、整理笔记本与文档，右端附当前文档的预览面板。"
-        },
-        "displayName": {
-          "default": "Finder",
-          "zh_CN": "访达"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop"
-        ],
-        "funding": {
-          "custom": [
-            "https://fastly.jsdelivr.net/gh/fujingzhai/siyuan-finder-plugin@main/assets/sponsor-wechat.png",
-            "https://fastly.jsdelivr.net/gh/fujingzhai/siyuan-finder-plugin@main/assets/sponsor-alipay.jpg"
-          ]
-        },
-        "keywords": [
-          "finder",
-          "访达",
-          "分栏",
-          "columns",
-          "文件浏览",
-          "导航",
-          "navigation",
-          "文档树",
-          "排序",
-          "sort",
-          "预览",
-          "preview",
-          "搜索",
-          "search",
-          "标签",
-          "tags"
-        ],
-        "minAppVersion": "3.6.0",
-        "name": "siyuan-finder-plugin",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/fujingzhai/siyuan-finder-plugin",
-        "version": "0.9.18"
-      },
-      "packageZipAssetId": 530493056,
-      "packageZipSha256": "bd7a769ab72036919dbe40b25529b1e9ffe3694b9b8f832ae4de267835039fed",
-      "repoRef": "v0.9.18",
-      "size": 215795,
-      "stars": 2,
-      "updated": "2026-08-26T08:10:02Z",
-      "url": "fujingzhai/siyuan-finder-plugin@bd7a769"
     },
     {
       "installSize": 293656,
