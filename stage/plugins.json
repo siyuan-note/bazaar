@@ -1,54 +1,112 @@
 {
   "repos": [
     {
-      "installSize": 118848,
+      "installSize": 1070713,
       "openIssues": 0,
       "package": {
-        "author": "Worklog Calendar Contributors",
+        "author": "congsec",
         "backends": [
           "all"
         ],
         "description": {
-          "default": "A worklog calendar with stable templates and a live task overview.",
-          "zh-CN": "在月历中记录完成事项，并自动汇集未完成待办。"
+          "default": "MeiDay is a cross-platform (Web, App) task and diary manager that delivers a smoother experience and stronger security.",
+          "zh-CN": "MeiDay 是一款跨端（Web、App）任务与日记管理工具，让记录更流畅，让数据更安全。"
         },
         "disabledInPublish": true,
         "displayName": {
-          "default": "Worklog Calendar",
-          "zh-CN": "工作日志月历"
+          "default": "MeiDay",
+          "zh-CN": "MeiDay（每日任务日记管理）"
         },
         "frontends": [
           "all"
         ],
+        "funding": {
+          "github": "congsec"
+        },
         "icon": "icon.png",
         "keywords": [
-          "calendar",
-          "daily note",
-          "worklog",
+          "任务管理",
+          "待办",
+          "在线",
+          "todo",
+          "task",
+          "meiday",
           "日记",
-          "工作日志",
-          "月历"
+          "加密",
+          "隐私"
         ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-worklog-calendar",
+        "minAppVersion": "3.0.0",
+        "name": "MeiDay",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en-US": "README.EN.md"
+        },
+        "url": "https://github.com/CongSec/MeiDay",
+        "version": "1.9.7"
+      },
+      "packageZipAssetId": 702677544,
+      "packageZipSha256": "7a9c3c4c76a61350459880a7d4e85c3e95da8023ce39f38e708bc50a4671581e",
+      "repoRef": "v1.9.7",
+      "size": 487476,
+      "stars": 3,
+      "updated": "2026-11-02T18:03:17Z",
+      "url": "CongSec/MeiDay@7a9c3c4"
+    },
+    {
+      "installSize": 19623634,
+      "openIssues": 0,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Manage SiYuan tasks across documents with checklist, table, timeline, Kanban, calendar and whiteboard views, an AI assistant, quick editing and focus statistics.",
+          "zh-CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Horizon",
+          "zh-CN": "任务管理器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "task",
+          "manager",
+          "filter"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-plugin-task-horizon",
         "preview": "preview.png",
         "readme": {
           "default": "README.md",
           "zh-CN": "README.zh-CN.md"
         },
-        "url": "https://github.com/vejomikakero/siyuan-worklog-calendar",
-        "version": "0.3.5"
+        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
+        "version": "3.3.9"
       },
-      "packageZipAssetId": 701013335,
-      "packageZipSha256": "4c04f566c7a9f3563be5bd2bbb32d13a7bc4b6d2b0b1c24fe5f1610cb443cfa4",
-      "repoRef": "v0.3.5",
-      "size": 82507,
-      "stars": 0,
-      "updated": "2026-11-02T08:14:38Z",
-      "url": "vejomikakero/siyuan-worklog-calendar@4c04f56"
+      "packageZipAssetId": 702252292,
+      "packageZipSha256": "773514becddbdaa3405dcc663886a4679c01e41d372392cba7c47b2dda2f42f6",
+      "repoRef": "v3.3.9",
+      "size": 4069492,
+      "stars": 38,
+      "updated": "2026-11-02T15:42:51Z",
+      "url": "5kyfkr/siyuan-plugin-task-horizon@773514b"
     },
     {
-      "installSize": 5833680,
+      "installSize": 5773569,
       "openIssues": 1,
       "package": {
         "author": "yyk",
@@ -96,15 +154,421 @@
           "default": "README-siyuan.md"
         },
         "url": "https://github.com/YYK0402/AIstudy",
-        "version": "0.5.1"
+        "version": "0.5.2"
       },
-      "packageZipAssetId": 701000397,
-      "packageZipSha256": "07c0d4b3c335a0b2c6516a71263949d2872ed157974c2d7e65be692b34cc2507",
-      "repoRef": "v0.5.1",
-      "size": 3522048,
+      "packageZipAssetId": 702137763,
+      "packageZipSha256": "9791262d46e55fbe7f75c33ed2ed3d3c5d83aa5a5b3f967831ae0c9b79963f44",
+      "repoRef": "v0.5.2",
+      "size": 3454981,
       "stars": 2,
-      "updated": "2026-11-02T08:09:44Z",
-      "url": "YYK0402/AIstudy@07c0d4b"
+      "updated": "2026-11-02T15:05:47Z",
+      "url": "YYK0402/AIstudy@9791262"
+    },
+    {
+      "installSize": 4512635,
+      "openIssues": 2,
+      "package": {
+        "author": "mm-o",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker",
+          "darwin"
+        ],
+        "description": {
+          "en_US": "Professional media player for SiYuan Note with multi-platform support, smart note integration, timestamp jumps, loop segments, and extensible script architecture",
+          "zh_CN": "专业的思源笔记媒体播放器插件，集成本地媒体、网盘、BBLL、TTVV、多窗口播放、时间戳、循环片段、媒体助手与可扩展架构。"
+        },
+        "displayName": {
+          "en_US": "SiYuan Media Player",
+          "zh_CN": "思播-思源媒体播放器"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://745201.xyz/pay.jpg"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "media player",
+          "audio",
+          "video",
+          "timestamp",
+          "playlist",
+          "note integration",
+          "extensible",
+          "播放器",
+          "音频",
+          "视频",
+          "时间戳",
+          "播放列表",
+          "笔记集成",
+          "多平台"
+        ],
+        "minAppVersion": "3.8.3",
+        "name": "siyuan-media-player",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/mm-o/siyuan-media-player",
+        "version": "2.3.0"
+      },
+      "packageZipAssetId": 702040636,
+      "packageZipSha256": "13b9de7e4a6d54dd01ae56203c8248b520fc3d581d8a41c8976626efdc7490d5",
+      "repoRef": "v2.3.0",
+      "size": 1636002,
+      "stars": 54,
+      "updated": "2026-11-02T14:33:16Z",
+      "url": "mm-o/siyuan-media-player@13b9de7"
+    },
+    {
+      "installSize": 35485984,
+      "openIssues": 1,
+      "package": {
+        "author": "mm-o",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "专业电子书阅读器，支持 EPUB/PDF/MOBI/TXT/在线小说；PDF 支持高亮、墨迹、形状、表单、印章、签名、图片、截图、搜索、打印、导出和回链，并提供标注笔记、词典、翻译、主题与书架管理",
+          "en_US": "Professional eBook reader for EPUB/PDF/MOBI/TXT/online novels. PDFs support highlights, ink, shapes, forms, stamps, signatures, images, screenshots, search, printing, export, and backlinks, with annotation notes, dictionary, translation, themes, and bookshelf management."
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiReader",
+          "zh_CN": "思阅-思源 EPUB/PDF 阅读器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://745201.xyz/pay.jpg"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "阅读",
+          "reading",
+          "电子书",
+          "ebook",
+          "pdf",
+          "epub",
+          "mobi",
+          "txt",
+          "azw3",
+          "fb2",
+          "cbz",
+          "sireader",
+          "思阅",
+          "标注",
+          "annotation",
+          "笔记",
+          "note",
+          "书签",
+          "bookmark",
+          "词典",
+          "dictionary",
+          "书源",
+          "book source",
+          "在线小说",
+          "online novel",
+          "主题",
+          "theme"
+        ],
+        "minAppVersion": "3.6.5",
+        "name": "siyuan-sireader",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/mm-o/siyuan-sireader",
+        "version": "2.6.0"
+      },
+      "packageZipAssetId": 702007775,
+      "packageZipSha256": "498911006ed74048142c74ceb2d4ad98519735a132f17bc296b1b59e49524355",
+      "repoRef": "v2.6.0",
+      "size": 12654393,
+      "stars": 32,
+      "updated": "2026-11-02T14:21:41Z",
+      "url": "mm-o/siyuan-sireader@4989110"
+    },
+    {
+      "installSize": 426486,
+      "openIssues": 0,
+      "package": {
+        "author": "ccztao",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Mankeep — relationships, dated organization history, birthdays and notes in SiYuan: one person, one document, backed by a native database.",
+          "zh_CN": "Mankeep：在思源笔记里管理联系人、关系、组织经历、生日与备注；一人一文档，原生数据库作主干。"
+        },
+        "displayName": {
+          "default": "Mankeep人脉"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "Mankeep",
+          "人脉",
+          "联系人",
+          "通讯录",
+          "CRM",
+          "生日",
+          "关系"
+        ],
+        "minAppVersion": "3.8.5",
+        "name": "siyuan-mankeep",
+        "preview": "preview.jpg",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/ccztao/siyuan-mankeep",
+        "version": "0.38.5"
+      },
+      "packageZipAssetId": 701949664,
+      "packageZipSha256": "733b6917d1c1a3b1d3e958d9897530ac70445696ed62c968384369728c530a2a",
+      "repoRef": "v0.38.5",
+      "size": 169054,
+      "stars": 1,
+      "updated": "2026-11-02T14:03:30Z",
+      "url": "ccztao/siyuan-mankeep@733b691"
+    },
+    {
+      "installSize": 398870,
+      "openIssues": 0,
+      "package": {
+        "author": "wave789",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "description": {
+          "default": "PyCharm-style find and replace in documents and workspaces, with case, whole word and regular expressions.",
+          "zh-CN": "像 PyCharm 一样查找与替换笔记：页内及全局替换、大小写、整词、正则和替换撤销。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "IDE Search",
+          "zh-CN": "IDE 搜索"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://github.com/wave789/siyuan-search/blob/main/assets/wechat-reward.png"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "search",
+          "find",
+          "regex",
+          "搜索",
+          "正则",
+          "PyCharm"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "siyuan-search",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/wave789/siyuan-search",
+        "version": "1.5.3"
+      },
+      "packageZipAssetId": 701933370,
+      "packageZipSha256": "84262f65fcf8b59416ec8522e9c353fcfe5dd4b12a036229da02f83cf7e34c83",
+      "repoRef": "1.5.3",
+      "size": 264941,
+      "stars": 0,
+      "updated": "2026-11-02T13:56:24Z",
+      "url": "wave789/siyuan-search@84262f6"
+    },
+    {
+      "installSize": 2060249,
+      "openIssues": 13,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "SiYuan AI Assistant, supports dragging blocks and tabs to get note context, enabling Q&amp;A and editing based on SiYuan note content",
+          "zh_CN": "思源笔记 AI 助手,支持拖动块、页签获取笔记上下文，实现基于思源笔记内容进行问答和编辑"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan Copilot"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://pancake.waffo.ai/store/achuan-2-fdbho4ye/product/PROD_3F7Aa7c2NQlz9KmxcgxjQ7?type=onetime&amp;currency=USD",
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ]
+        },
+        "icon": "icon.png",
+        "minAppVersion": "3.7.2",
+        "name": "siyuan-plugin-copilot",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README_en_US.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-copilot",
+        "version": "2.8.15"
+      },
+      "packageZipAssetId": 701335143,
+      "packageZipSha256": "3b3bc387c57963797f4078dcc194ab0a3534669270151ae2619284845590ffc8",
+      "repoRef": "v2.8.15",
+      "size": 701751,
+      "stars": 162,
+      "updated": "2026-11-02T10:18:33Z",
+      "url": "Achuan-2/siyuan-plugin-copilot@3b3bc38"
+    },
+    {
+      "installSize": 1511535,
+      "openIssues": 3,
+      "package": {
+        "author": "vilifetime",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "一款思源笔记插件。双向同步 CalDAV 服务器（Radicale / Nextcloud / Baikal 等）的日历事件与待办任务，提供月/周/日日历视图、任务视图与编辑能力，并可将今日日程插入日记。",
+          "en_US": "Two-way sync calendar events and todos with CalDAV servers (Radicale / Nextcloud / Baikal). Month/Week/Day calendar views, task view, editor and daily note integration."
+        },
+        "displayName": {
+          "default": "CalDAV日历任务",
+          "en_US": "CalDAV Calendar &amp; Tasks"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop",
+          "mobile",
+          "browser-mobile"
+        ],
+        "funding": {
+          "custom": [
+            ""
+          ],
+          "github": "vilifetime"
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "caldav",
+          "calendar",
+          "todo",
+          "task",
+          "日历",
+          "任务",
+          "同步",
+          "radicale",
+          "nextcloud",
+          "baikal"
+        ],
+        "minAppVersion": "3.2.0",
+        "name": "siyuan-plugin-caldav-sync",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en_US": "README_en_US.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/vilifetime/siyuan-plugin-caldav-sync",
+        "version": "0.2.35"
+      },
+      "packageZipAssetId": 701306417,
+      "packageZipSha256": "7fd9868a4dd1dbc156755cdc9c14d41661d2b50478a9b55b1397961369059b06",
+      "repoRef": "v0.2.35",
+      "size": 633222,
+      "stars": 4,
+      "updated": "2026-11-02T10:07:09Z",
+      "url": "vilifetime/siyuan-plugin-caldav-sync@7fd9868"
+    },
+    {
+      "installSize": 118848,
+      "openIssues": 0,
+      "package": {
+        "author": "Worklog Calendar Contributors",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A worklog calendar with stable templates and a live task overview.",
+          "zh-CN": "在月历中记录完成事项，并自动汇集未完成待办。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Worklog Calendar",
+          "zh-CN": "工作日志月历"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "calendar",
+          "daily note",
+          "worklog",
+          "日记",
+          "工作日志",
+          "月历"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-worklog-calendar",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/vejomikakero/siyuan-worklog-calendar",
+        "version": "0.3.5"
+      },
+      "packageZipAssetId": 701013335,
+      "packageZipSha256": "4c04f566c7a9f3563be5bd2bbb32d13a7bc4b6d2b0b1c24fe5f1610cb443cfa4",
+      "repoRef": "v0.3.5",
+      "size": 82507,
+      "stars": 0,
+      "updated": "2026-11-02T08:14:38Z",
+      "url": "vejomikakero/siyuan-worklog-calendar@4c04f56"
     },
     {
       "installSize": 1204718,
@@ -155,107 +619,6 @@
       "stars": 18,
       "updated": "2026-11-02T05:16:47Z",
       "url": "svchord/siyuan-arco-calendar@f7f2a57"
-    },
-    {
-      "installSize": 19618289,
-      "openIssues": 0,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Manage SiYuan tasks across documents with checklist, table, timeline, Kanban, calendar and whiteboard views, an AI assistant, quick editing and focus statistics.",
-          "zh-CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Horizon",
-          "zh-CN": "任务管理器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "task",
-          "manager",
-          "filter"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-plugin-task-horizon",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "3.3.8"
-      },
-      "packageZipAssetId": 700303217,
-      "packageZipSha256": "563a64fab0b07ee703302c97a26222a01ddc33bb91ae5e47209bb3720bcaa2fa",
-      "repoRef": "v3.3.8",
-      "size": 4068457,
-      "stars": 38,
-      "updated": "2026-11-02T02:54:40Z",
-      "url": "5kyfkr/siyuan-plugin-task-horizon@563a64f"
-    },
-    {
-      "installSize": 427210,
-      "openIssues": 0,
-      "package": {
-        "author": "ccztao",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Mankeep — relationships, dated organization history, birthdays and notes in SiYuan: one person, one document, backed by a native database.",
-          "zh_CN": "Mankeep：在思源笔记里管理联系人、关系、组织经历、生日与备注；一人一文档，原生数据库作主干。"
-        },
-        "displayName": {
-          "default": "Mankeep人脉"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "Mankeep",
-          "人脉",
-          "联系人",
-          "通讯录",
-          "CRM",
-          "生日",
-          "关系"
-        ],
-        "minAppVersion": "3.8.5",
-        "name": "siyuan-mankeep",
-        "preview": "preview.jpg",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/ccztao/siyuan-mankeep",
-        "version": "0.38.3"
-      },
-      "packageZipAssetId": 698583652,
-      "packageZipSha256": "3ff17ba4284638ec24f403580bc22cf7716ac2a6d4b0d612047f0b6e807b4d06",
-      "repoRef": "v0.38.3",
-      "size": 173334,
-      "stars": 0,
-      "updated": "2026-11-02T01:20:11Z",
-      "url": "ccztao/siyuan-mankeep@3ff17ba"
     },
     {
       "installSize": 355044,
@@ -595,62 +958,6 @@
       "stars": 2,
       "updated": "2026-11-01T05:50:17Z",
       "url": "wmy2981/some-settings-siyuan@9aa2518"
-    },
-    {
-      "installSize": 397540,
-      "openIssues": 0,
-      "package": {
-        "author": "wave789",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker"
-        ],
-        "description": {
-          "default": "PyCharm-style find and replace in documents and workspaces, with case, whole word and regular expressions.",
-          "zh-CN": "像 PyCharm 一样查找与替换笔记：页内及全局替换、大小写、整词、正则和替换撤销。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "IDE Search",
-          "zh-CN": "IDE 搜索"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://github.com/wave789/siyuan-search/blob/main/assets/wechat-reward.png"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "search",
-          "find",
-          "regex",
-          "搜索",
-          "正则",
-          "PyCharm"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "siyuan-search",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/wave789/siyuan-search",
-        "version": "1.5.2"
-      },
-      "packageZipAssetId": 695730287,
-      "packageZipSha256": "736d3669f98f5385af35ad2bc15089a9b88fb8ca23a973d7c802f0237bf4b3f2",
-      "repoRef": "1.5.2",
-      "size": 264390,
-      "stars": 0,
-      "updated": "2026-11-01T05:29:18Z",
-      "url": "wave789/siyuan-search@736d366"
     },
     {
       "installSize": 846490,
@@ -1701,67 +2008,6 @@
       "url": "IAliceBobI/sy-progressive-plugin@6122fab"
     },
     {
-      "installSize": 1481450,
-      "openIssues": 3,
-      "package": {
-        "author": "vilifetime",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "一款思源笔记插件。双向同步 CalDAV 服务器（Radicale / Nextcloud / Baikal 等）的日历事件与待办任务，提供月/周/日日历视图、任务视图与编辑能力，并可将今日日程插入日记。",
-          "en_US": "Two-way sync calendar events and todos with CalDAV servers (Radicale / Nextcloud / Baikal). Month/Week/Day calendar views, task view, editor and daily note integration."
-        },
-        "displayName": {
-          "default": "CalDAV日历任务",
-          "en_US": "CalDAV Calendar &amp; Tasks"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop",
-          "mobile",
-          "browser-mobile"
-        ],
-        "funding": {
-          "custom": [
-            ""
-          ],
-          "github": "vilifetime"
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "caldav",
-          "calendar",
-          "todo",
-          "task",
-          "日历",
-          "任务",
-          "同步",
-          "radicale",
-          "nextcloud",
-          "baikal"
-        ],
-        "minAppVersion": "3.2.0",
-        "name": "siyuan-plugin-caldav-sync",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en_US": "README_en_US.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/vilifetime/siyuan-plugin-caldav-sync",
-        "version": "0.2.34"
-      },
-      "packageZipAssetId": 692388577,
-      "packageZipSha256": "4b6d716d959971386191586c6833c94e539839369e47f9afe89f64e6c8ccc9d4",
-      "repoRef": "v0.2.34",
-      "size": 624807,
-      "stars": 4,
-      "updated": "2026-10-30T14:37:03Z",
-      "url": "vilifetime/siyuan-plugin-caldav-sync@4b6d716"
-    },
-    {
       "installSize": 6688030,
       "openIssues": 1,
       "package": {
@@ -2193,82 +2439,6 @@
       "stars": 0,
       "updated": "2026-10-29T08:27:48Z",
       "url": "ZhenRRongGuo/siyuan-algorithm2e@17d1abc"
-    },
-    {
-      "installSize": 24196466,
-      "openIssues": 1,
-      "package": {
-        "author": "mm-o",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "专业电子书阅读器，支持 EPUB/PDF/MOBI/TXT/在线小说；PDF 支持高亮、墨迹、形状、表单、印章、签名、图片、截图、搜索、打印、导出和回链，并提供标注笔记、词典、翻译、主题与书架管理",
-          "en_US": "Professional eBook reader for EPUB/PDF/MOBI/TXT/online novels. PDFs support highlights, ink, shapes, forms, stamps, signatures, images, screenshots, search, printing, export, and backlinks, with annotation notes, dictionary, translation, themes, and bookshelf management."
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiReader",
-          "zh_CN": "思阅-思源 EPUB/PDF 阅读器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://745201.xyz/pay.jpg"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "阅读",
-          "reading",
-          "电子书",
-          "ebook",
-          "pdf",
-          "epub",
-          "mobi",
-          "txt",
-          "azw3",
-          "fb2",
-          "cbz",
-          "sireader",
-          "思阅",
-          "标注",
-          "annotation",
-          "笔记",
-          "note",
-          "书签",
-          "bookmark",
-          "词典",
-          "dictionary",
-          "书源",
-          "book source",
-          "在线小说",
-          "online novel",
-          "主题",
-          "theme"
-        ],
-        "minAppVersion": "3.6.5",
-        "name": "siyuan-sireader",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/mm-o/siyuan-sireader",
-        "version": "2.5.8"
-      },
-      "packageZipAssetId": 687420324,
-      "packageZipSha256": "efc7d1355ecbbc1c1b12483f3c05c37b2eb2ef2790275c2b4a13170406a07d21",
-      "repoRef": "v2.5.8",
-      "size": 7702325,
-      "stars": 32,
-      "updated": "2026-10-29T05:04:22Z",
-      "url": "mm-o/siyuan-sireader@efc7d13"
     },
     {
       "installSize": 875497,
@@ -3801,59 +3971,6 @@
       "url": "cyIyd/simofat@bf99b5e"
     },
     {
-      "installSize": 1068478,
-      "openIssues": 0,
-      "package": {
-        "author": "congsec",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "MeiDay is a cross-platform (Web, App) task and diary manager that delivers a smoother experience and stronger security.",
-          "zh-CN": "MeiDay 是一款跨端（Web、App）任务与日记管理工具，让记录更流畅，让数据更安全。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "MeiDay",
-          "zh-CN": "MeiDay（每日任务日记管理）"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "github": "congsec"
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "任务管理",
-          "待办",
-          "在线",
-          "todo",
-          "task",
-          "meiday",
-          "日记",
-          "加密",
-          "隐私"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "MeiDay",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en-US": "README.EN.md"
-        },
-        "url": "https://github.com/CongSec/MeiDay",
-        "version": "1.9.6"
-      },
-      "packageZipAssetId": 679016718,
-      "packageZipSha256": "61b2ca740280acbea1e502151095741063bca195865428293d43f778b76f0cd3",
-      "repoRef": "v1.9.6",
-      "size": 486930,
-      "stars": 3,
-      "updated": "2026-10-26T18:06:38Z",
-      "url": "CongSec/MeiDay@61b2ca7"
-    },
-    {
       "installSize": 352777,
       "openIssues": 0,
       "package": {
@@ -4393,79 +4510,6 @@
       "url": "Chen017/siyuan-plugin-misans@d96def1"
     },
     {
-      "installSize": 4320724,
-      "openIssues": 2,
-      "package": {
-        "author": "mm-o",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker",
-          "darwin"
-        ],
-        "description": {
-          "en_US": "Professional media player for SiYuan Note with multi-platform support, smart note integration, timestamp jumps, loop segments, and extensible script architecture",
-          "zh_CN": "专业的思源笔记媒体播放器插件，集成本地媒体、网盘、BBLL、TTVV、多窗口播放、时间戳、循环片段、媒体助手与可扩展架构。"
-        },
-        "displayName": {
-          "en_US": "SiYuan Media Player",
-          "zh_CN": "思播-思源媒体播放器"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://745201.xyz/pay.jpg"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "media player",
-          "audio",
-          "video",
-          "timestamp",
-          "playlist",
-          "note integration",
-          "extensible",
-          "播放器",
-          "音频",
-          "视频",
-          "时间戳",
-          "播放列表",
-          "笔记集成",
-          "多平台"
-        ],
-        "minAppVersion": "3.8.3",
-        "name": "siyuan-media-player",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/mm-o/siyuan-media-player",
-        "version": "2.2.0"
-      },
-      "packageZipAssetId": 674639454,
-      "packageZipSha256": "9deed71a2c5b2b4b3a9bde4704a2660b02810660a613cfca177e2be97d4690ae",
-      "repoRef": "v2.2.0",
-      "size": 1579101,
-      "stars": 54,
-      "updated": "2026-10-25T09:37:23Z",
-      "url": "mm-o/siyuan-media-player@9deed71"
-    },
-    {
       "installSize": 343129,
       "openIssues": 0,
       "package": {
@@ -4907,50 +4951,6 @@
       "stars": 18,
       "updated": "2026-10-24T00:44:56Z",
       "url": "LunaNorth/siyuan-lumina@a26b4a1"
-    },
-    {
-      "installSize": 2057378,
-      "openIssues": 13,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "SiYuan AI Assistant, supports dragging blocks and tabs to get note context, enabling Q&amp;A and editing based on SiYuan note content",
-          "zh_CN": "思源笔记 AI 助手,支持拖动块、页签获取笔记上下文，实现基于思源笔记内容进行问答和编辑"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiYuan Copilot"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://pancake.waffo.ai/store/achuan-2-fdbho4ye/product/PROD_3F7Aa7c2NQlz9KmxcgxjQ7?type=onetime&amp;currency=USD",
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ]
-        },
-        "icon": "icon.png",
-        "minAppVersion": "3.7.2",
-        "name": "siyuan-plugin-copilot",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README_en_US.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-copilot",
-        "version": "2.8.14"
-      },
-      "packageZipAssetId": 669434988,
-      "packageZipSha256": "93ceb161e36dd99b41637d410b83c7d05363115dc8c4640a41889211937199af",
-      "repoRef": "v2.8.14",
-      "size": 701527,
-      "stars": 162,
-      "updated": "2026-10-23T14:49:46Z",
-      "url": "Achuan-2/siyuan-plugin-copilot@93ceb16"
     },
     {
       "installSize": 565821,
