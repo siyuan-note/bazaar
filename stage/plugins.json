@@ -1,6 +1,124 @@
 {
   "repos": [
     {
+      "installSize": 19673018,
+      "openIssues": 0,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Manage SiYuan tasks across documents with checklist, table, timeline, Kanban, calendar and whiteboard views, an AI assistant, quick editing and focus statistics.",
+          "zh-CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Horizon",
+          "zh-CN": "任务管理器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "task",
+          "manager",
+          "filter"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-plugin-task-horizon",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
+        "version": "3.4.0"
+      },
+      "packageZipAssetId": 706388928,
+      "packageZipSha256": "7dad6e28859a0812a491553165589fcf831c142103e78e442324430c338a2c59",
+      "repoRef": "v3.4.0",
+      "size": 4081167,
+      "stars": 38,
+      "updated": "2026-11-03T17:01:19Z",
+      "url": "5kyfkr/siyuan-plugin-task-horizon@7dad6e2"
+    },
+    {
+      "installSize": 807628,
+      "openIssues": 0,
+      "package": {
+        "author": "ttChen",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Auto-number figures, tables and equations and keep cross-references in sync. Right-click a paragraph to set a caption (figure below, table above) and clear it in one go; equations only have their number touched. Filter the picker by kind and section. Interface in 10 languages.",
+          "zh-CN": "自动为图、表、公式编号并同步交叉引用。右键段落设为题注（图题在下、表题在上），取消一次清净；公式只改编号不动正文。面板可按类型与章节筛选，界面支持 10 种语言。"
+        },
+        "displayName": {
+          "default": "Figure &amp; Equation Xref",
+          "zh-CN": "图表公式交叉引用"
+        },
+        "frontends": [
+          "desktop",
+          "mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "交叉引用",
+          "图表编号",
+          "公式编号",
+          "题注",
+          "numbering",
+          "cross-reference",
+          "figure",
+          "table",
+          "equation",
+          "caption",
+          "撤销",
+          "重做",
+          "undo",
+          "redo",
+          "失效引用",
+          "恢复",
+          "重建",
+          "recover",
+          "rebuild",
+          "多语言",
+          "繁中",
+          "i18n",
+          "multilingual",
+          "日本語",
+          "Deutsch"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-xref",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README_en.md",
+          "zh-CN": "README.md"
+        },
+        "url": "https://github.com/taotaochen86/siyuan-xref",
+        "version": "1.0.11"
+      },
+      "packageZipAssetId": 706348825,
+      "packageZipSha256": "e52026e7a7afd9204300b40fea953e2ca39f9de44cac0c0b62d9f17bc593d982",
+      "repoRef": "v1.0.11",
+      "size": 522826,
+      "stars": 1,
+      "updated": "2026-11-03T16:49:01Z",
+      "url": "taotaochen86/siyuan-xref@e52026e"
+    },
+    {
       "installSize": 85451,
       "openIssues": 0,
       "package": {
@@ -100,6 +218,159 @@
       "stars": 0,
       "updated": "2026-11-03T16:09:35Z",
       "url": "taotaochen86/siyuan-plugin-attachment-kit@e88177d"
+    },
+    {
+      "installSize": 355061,
+      "openIssues": 0,
+      "package": {
+        "author": "Taihong Yang",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Local DeepSeek Harness in SiYuan: workspaces, file and image attachments, session archives, streaming and note references.",
+          "zh_CN": "在思源侧栏使用本机 DeepSeek Harness：多工作区、文件与图片附件、会话归档、流式对话及笔记引用，保留 Web 面板。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan DeepSeek Harness"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "AI",
+          "DeepSeek",
+          "Harness",
+          "Agent",
+          "MCP",
+          "Web",
+          "sidebar"
+        ],
+        "minAppVersion": "3.1.0",
+        "name": "siyuan-plugins-ai-cli-bridge",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/yangtaihong59/siyuan-plugins-ai-cli-bridge",
+        "version": "0.3.1"
+      },
+      "packageZipAssetId": 705827760,
+      "packageZipSha256": "46f958638a7b82990f7b5e7c34e859b5589bfa3286263c5ddc5e6ef563e97102",
+      "repoRef": "v0.3.1",
+      "size": 348061,
+      "stars": 7,
+      "updated": "2026-11-03T14:06:18Z",
+      "url": "yangtaihong59/siyuan-plugins-ai-cli-bridge@46f9586"
+    },
+    {
+      "installSize": 745066,
+      "openIssues": 1,
+      "package": {
+        "author": "QMike0",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Provide search and replace functionality for most visible text within document pages in SiYuan (with support for undo &amp; redo), along with block-level type control and separate search for inline elements",
+          "zh-CN": "为思源笔记提供文档页面内绝大多数可见文字的搜索、替换功能（支持撤销&amp;重做），并支持块级类型的控制与行内元素的单独搜索"
+        },
+        "displayName": {
+          "default": "In-Page Search &amp; Replace",
+          "zh-CN": "页内搜索替换"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "Ctrl+F",
+          "Ctrl+H",
+          "highlight",
+          "search",
+          "replace",
+          "页内搜索",
+          "搜索",
+          "查询",
+          "查找",
+          "高亮",
+          "替换"
+        ],
+        "minAppVersion": "3.8.8",
+        "name": "siyuan-plugin-page-search-replace",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/QMike0/siyuan-plugin-page-search",
+        "version": "2.1.3"
+      },
+      "packageZipAssetId": 705532617,
+      "packageZipSha256": "02869c63148888b7d7eaa6fac7c036ba7121df016ce55be1f5775004c71c375c",
+      "repoRef": "v2.1.3",
+      "size": 230422,
+      "stars": 1,
+      "updated": "2026-11-03T12:28:55Z",
+      "url": "QMike0/siyuan-plugin-page-search@02869c6"
+    },
+    {
+      "installSize": 1336120,
+      "openIssues": 0,
+      "package": {
+        "author": "BorisZhangYYY",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "description": {
+          "default": "Capture web articles, optionally review with AI, edit with the native block editor, and save text, sources and images in SiYuan.",
+          "zh-CN": "网页采集、可选 AI 审阅与原生编辑，保存正文、来源和图片到思源笔记"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "ZhiLiu for SiYuan",
+          "zh-CN": "知流"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "web clipper",
+          "网页剪藏",
+          "微信公众号",
+          "Firecrawl",
+          "AI 审阅",
+          "图片本地化"
+        ],
+        "minAppVersion": "3.8.6",
+        "name": "noosphere-siyuan",
+        "preview": "",
+        "readme": {
+          "default": "docs/README.en.md",
+          "zh-CN": "README.md"
+        },
+        "url": "https://github.com/BorisZhangYYY/noosphere-siyuan",
+        "version": "0.2.2"
+      },
+      "packageZipAssetId": 705034140,
+      "packageZipSha256": "621ea3c5ad93625b603795a72b6aaaaa168fd403467317e013cc700e0988d98c",
+      "repoRef": "v0.2.2",
+      "size": 940626,
+      "stars": 3,
+      "updated": "2026-11-03T09:28:45Z",
+      "url": "BorisZhangYYY/noosphere-siyuan@621ea3c"
     },
     {
       "installSize": 140153,
@@ -1050,58 +1321,6 @@
       "url": "CongSec/MeiDay@7a9c3c4"
     },
     {
-      "installSize": 19623634,
-      "openIssues": 0,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Manage SiYuan tasks across documents with checklist, table, timeline, Kanban, calendar and whiteboard views, an AI assistant, quick editing and focus statistics.",
-          "zh-CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Horizon",
-          "zh-CN": "任务管理器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "task",
-          "manager",
-          "filter"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-plugin-task-horizon",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "3.3.9"
-      },
-      "packageZipAssetId": 702252292,
-      "packageZipSha256": "773514becddbdaa3405dcc663886a4679c01e41d372392cba7c47b2dda2f42f6",
-      "repoRef": "v3.3.9",
-      "size": 4069492,
-      "stars": 38,
-      "updated": "2026-11-02T15:42:51Z",
-      "url": "5kyfkr/siyuan-plugin-task-horizon@773514b"
-    },
-    {
       "installSize": 4512635,
       "openIssues": 2,
       "package": {
@@ -1451,72 +1670,6 @@
       "stars": 2,
       "updated": "2026-11-01T17:36:41Z",
       "url": "fujingzhai/siyuan-finder-plugin@998c303"
-    },
-    {
-      "installSize": 376747,
-      "openIssues": 0,
-      "package": {
-        "author": "陈涛涛 (Taotao Chen)",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Auto-number figures, tables and equations and keep cross-references in sync. Right-click a paragraph to set a caption (figure below, table above) and clear it in one go; equations only have their number touched. Filter the picker by kind and section. Interface in 10 languages.",
-          "zh-CN": "自动为图、表、公式编号并同步交叉引用。右键段落设为题注（图题在下、表题在上），取消一次清净；公式只改编号不动正文。面板可按类型与章节筛选，界面支持 10 种语言。"
-        },
-        "displayName": {
-          "default": "Figure &amp; Equation Xref",
-          "zh-CN": "图表公式交叉引用"
-        },
-        "frontends": [
-          "desktop",
-          "mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "交叉引用",
-          "图表编号",
-          "公式编号",
-          "题注",
-          "numbering",
-          "cross-reference",
-          "figure",
-          "table",
-          "equation",
-          "caption",
-          "撤销",
-          "重做",
-          "undo",
-          "redo",
-          "失效引用",
-          "恢复",
-          "重建",
-          "recover",
-          "rebuild",
-          "多语言",
-          "繁中",
-          "i18n",
-          "multilingual",
-          "日本語",
-          "Deutsch"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-xref",
-        "preview": "",
-        "readme": {
-          "default": "README_en.md",
-          "zh-CN": "README.md"
-        },
-        "url": "https://github.com/taotaochen86/siyuan-xref",
-        "version": "1.0.10"
-      },
-      "packageZipAssetId": 698447274,
-      "packageZipSha256": "7b8c2f8055aaa47d98039566bf6f96b7ae55de04c26db189e21fee7846b48dbc",
-      "repoRef": "v1.0.10",
-      "size": 124189,
-      "stars": 1,
-      "updated": "2026-11-01T13:37:24Z",
-      "url": "taotaochen86/siyuan-xref@7b8c2f8"
     },
     {
       "installSize": 176969,
@@ -3017,60 +3170,6 @@
       "url": "MDfox-ChaosZone/siyuan-font-studio@e3f3059"
     },
     {
-      "installSize": 714518,
-      "openIssues": 2,
-      "package": {
-        "author": "QMike0",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Provide search and replace functionality for most visible text within document pages in SiYuan (with support for undo &amp; redo), along with block-level type control and separate search for inline elements",
-          "zh-CN": "为思源笔记提供文档页面内绝大多数可见文字的搜索、替换功能（支持撤销&amp;重做），并支持块级类型的控制与行内元素的单独搜索"
-        },
-        "displayName": {
-          "default": "In-Page Search &amp; Replace",
-          "zh-CN": "页内搜索替换"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "Ctrl+F",
-          "Ctrl+H",
-          "highlight",
-          "search",
-          "replace",
-          "页内搜索",
-          "搜索",
-          "查询",
-          "查找",
-          "高亮",
-          "替换"
-        ],
-        "minAppVersion": "3.8.8",
-        "name": "siyuan-plugin-page-search-replace",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/QMike0/siyuan-plugin-page-search",
-        "version": "2.1.2"
-      },
-      "packageZipAssetId": 685783452,
-      "packageZipSha256": "3bdfcbead3c361c0be373bbdc9a450cb637ecd567880d8d8c1b988a8b74da6dd",
-      "repoRef": "v2.1.2",
-      "size": 220627,
-      "stars": 1,
-      "updated": "2026-10-28T17:30:49Z",
-      "url": "QMike0/siyuan-plugin-page-search@3bdfcbe"
-    },
-    {
       "installSize": 1282523,
       "openIssues": 1,
       "package": {
@@ -4101,58 +4200,6 @@
       "url": "ai68298100/siyuan-exam@51cb694"
     },
     {
-      "installSize": 1331357,
-      "openIssues": 1,
-      "package": {
-        "author": "BorisZhangYYY",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker"
-        ],
-        "description": {
-          "default": "Capture web articles, optionally review with AI, edit with the native block editor, and save text, sources and images in SiYuan.",
-          "zh-CN": "网页采集、可选 AI 审阅与原生编辑，保存正文、来源和图片到思源笔记"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "ZhiLiu for SiYuan",
-          "zh-CN": "知流"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "web clipper",
-          "网页剪藏",
-          "微信公众号",
-          "Firecrawl",
-          "AI 审阅",
-          "图片本地化"
-        ],
-        "minAppVersion": "3.8.6",
-        "name": "noosphere-siyuan",
-        "preview": "",
-        "readme": {
-          "default": "docs/README.en.md",
-          "zh-CN": "README.md"
-        },
-        "url": "https://github.com/BorisZhangYYY/noosphere-siyuan",
-        "version": "0.2.1"
-      },
-      "packageZipAssetId": 681484619,
-      "packageZipSha256": "e5328c0bc0e4fc21b7392e8c4865b1747665d8cf4679d1dcb290ee4d69180a9a",
-      "repoRef": "v0.2.1",
-      "size": 938861,
-      "stars": 3,
-      "updated": "2026-10-27T12:07:19Z",
-      "url": "BorisZhangYYY/noosphere-siyuan@e5328c0"
-    },
-    {
       "installSize": 740474,
       "openIssues": 1,
       "package": {
@@ -4333,53 +4380,6 @@
       "stars": 0,
       "updated": "2026-10-26T20:34:12Z",
       "url": "cyIyd/simofat@bf99b5e"
-    },
-    {
-      "installSize": 352777,
-      "openIssues": 0,
-      "package": {
-        "author": "Taihong Yang",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Local DeepSeek Harness in SiYuan: workspaces, file and image attachments, session archives, streaming and note references.",
-          "zh_CN": "在思源侧栏使用本机 DeepSeek Harness：多工作区、文件与图片附件、会话归档、流式对话及笔记引用，保留 Web 面板。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiYuan DeepSeek Harness"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "AI",
-          "DeepSeek",
-          "Harness",
-          "Agent",
-          "MCP",
-          "Web",
-          "sidebar"
-        ],
-        "minAppVersion": "3.1.0",
-        "name": "siyuan-plugins-ai-cli-bridge",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/yangtaihong59/siyuan-plugins-ai-cli-bridge",
-        "version": "0.3.0"
-      },
-      "packageZipAssetId": 678764919,
-      "packageZipSha256": "c3ec111341fbc484a9a2d3acd719030f98000273256e266053d3304c0b1a6e05",
-      "repoRef": "v0.3.0",
-      "size": 345777,
-      "stars": 7,
-      "updated": "2026-10-26T16:33:25Z",
-      "url": "yangtaihong59/siyuan-plugins-ai-cli-bridge@c3ec111"
     },
     {
       "installSize": 84985,
