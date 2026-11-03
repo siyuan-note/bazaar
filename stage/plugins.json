@@ -1,6 +1,59 @@
 {
   "repos": [
     {
+      "installSize": 766825,
+      "openIssues": 0,
+      "package": {
+        "author": "ttChen",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "One menu behind a top-bar icon, both chores scoped to the current document: rename the attachments of the current document to match their anchor texts (the SiYuan timestamp-random suffix is kept, and any link elsewhere that points at the same file follows along so nothing breaks), or export every attachment and image of the current document into a randomly named temp folder, numbered 001- in document order and opened automatically when done.",
+          "zh_CN": "顶栏图标弹出菜单，两件事都只作用于当前文档：① 按锚文本把当前文档里的附件改成锚文本里的名字（保留思源的时间戳-随机码；别的文档若引用了同一文件，链接自动跟着不走空）；② 一键把当前文档的全部附件和图片按正文顺序编号 001- 导出到随机命名的临时文件夹，导完自动打开。"
+        },
+        "displayName": {
+          "default": "Attachment Butler",
+          "zh_CN": "文档附件管家"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "附件",
+          "附件管家",
+          "文档附件管家",
+          "锚文本",
+          "重命名",
+          "附件名",
+          "导出附件",
+          "导出图片",
+          "attachment",
+          "anchor",
+          "export"
+        ],
+        "minAppVersion": "3.1.0",
+        "name": "siyuan-plugin-attachment-kit",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/taotaochen86/siyuan-plugin-attachment-kit",
+        "version": "0.6.5"
+      },
+      "packageZipAssetId": 706049057,
+      "packageZipSha256": "e88177d9c56e4e4df4b9c8aef4bb3de5e5abf0e83db93d4047b10b6f83899a56",
+      "repoRef": "v0.6.5",
+      "size": 676550,
+      "stars": 0,
+      "updated": "2026-11-03T16:09:35Z",
+      "url": "taotaochen86/siyuan-plugin-attachment-kit@e88177d"
+    },
+    {
       "installSize": 140153,
       "openIssues": 0,
       "package": {
