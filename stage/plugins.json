@@ -1,6 +1,53 @@
 {
   "repos": [
     {
+      "installSize": 42943,
+      "openIssues": 0,
+      "package": {
+        "author": "langdon",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "给任意文字加复制按钮：点一下直接复制，或者悬停出按钮。",
+          "en_US": "Put a copy button on any text: click to copy, or hover to reveal the button."
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "一键复制",
+          "en_US": "One-Click Copy"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop",
+          "mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "复制",
+          "copy",
+          "clipboard",
+          "一键复制"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-copy-mark",
+        "preview": "",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/unmime/siyuan-copy-mark",
+        "version": "1.0.1"
+      },
+      "packageZipAssetId": 710266194,
+      "packageZipSha256": "cbc3614f9b2ff5bb96e959cc7e0b13fa63761fb94a2d293de557ef611f168481",
+      "repoRef": "v1.0.1",
+      "size": 16013,
+      "stars": 0,
+      "updated": "2026-11-04T17:10:45Z",
+      "url": "unmime/siyuan-copy-mark@cbc3614"
+    },
+    {
       "installSize": 463920,
       "openIssues": 0,
       "package": {
@@ -46,50 +93,229 @@
       "url": "yueyangcode/siyuan-note-companion@52fbf21"
     },
     {
-      "installSize": 19654,
+      "installSize": 1678802,
+      "openIssues": 3,
+      "package": {
+        "author": "vilifetime",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "一款思源笔记插件。双向同步 CalDAV 服务器（Radicale / Nextcloud / Baikal 等）的日历事件与待办任务，提供月/周/日日历视图、任务视图与编辑能力，并可将今日日程插入日记。",
+          "en_US": "Two-way sync calendar events and todos with CalDAV servers (Radicale / Nextcloud / Baikal). Month/Week/Day calendar views, task view, editor and daily note integration."
+        },
+        "displayName": {
+          "default": "CalDAV日历任务",
+          "en_US": "CalDAV Calendar &amp; Tasks"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop",
+          "mobile",
+          "browser-mobile"
+        ],
+        "funding": {
+          "custom": [
+            ""
+          ],
+          "github": "vilifetime"
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "caldav",
+          "calendar",
+          "todo",
+          "task",
+          "日历",
+          "任务",
+          "同步",
+          "radicale",
+          "nextcloud",
+          "baikal"
+        ],
+        "minAppVersion": "3.2.0",
+        "name": "siyuan-plugin-caldav-sync",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en_US": "README_en_US.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/vilifetime/siyuan-plugin-caldav-sync",
+        "version": "0.2.36"
+      },
+      "packageZipAssetId": 709931924,
+      "packageZipSha256": "97a70ae1d5553a4f1ab610c9a69db8991cbfd8c208e5375cd80be2215c0c8cdc",
+      "repoRef": "v0.2.36",
+      "size": 682404,
+      "stars": 4,
+      "updated": "2026-11-04T15:11:54Z",
+      "url": "vilifetime/siyuan-plugin-caldav-sync@97a70ae"
+    },
+    {
+      "installSize": 1073258,
       "openIssues": 0,
       "package": {
-        "author": "Cindy",
+        "author": "ttChen",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "Insert Zotero citations into SiYuan via the Zotero debug bridge. Text follows the CSL style exactly; right-click a citation to switch format, edit its references, or change the document style.",
+          "zh_CN": "通过 Zotero debug bridge 在思源里插入文献引用。正文文本严格按 CSL 样式输出；右键引用可改形态、编辑该处文献（可增可删）、切换全局 CSL 样式；文末自动生成参考文献表，点击引用跳回 Zotero。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Zotero Cite",
+          "zh_CN": "Zotero 文献引用"
+        },
+        "frontends": [
+          "desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "zotero",
+          "citation",
+          "reference",
+          "csl",
+          "bibliography",
+          "文献",
+          "参考文献"
+        ],
+        "minAppVersion": "3.1.0",
+        "name": "siyuan-plugin-zotero-cite",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README_en.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/taotaochen86/siyuan-plugin-zotero-cite",
+        "version": "1.2.34"
+      },
+      "packageZipAssetId": 709922341,
+      "packageZipSha256": "8b8ab111db2585d5fa389e0a6b15bb69a44af503ed8b8926eee6942f57177a2d",
+      "repoRef": "v1.2.34",
+      "size": 874334,
+      "stars": 1,
+      "updated": "2026-11-04T15:09:00Z",
+      "url": "taotaochen86/siyuan-plugin-zotero-cite@8b8ab11"
+    },
+    {
+      "installSize": 5843877,
+      "openIssues": 1,
+      "package": {
+        "author": "yyk",
         "backends": [
           "windows",
           "linux",
           "darwin",
           "docker",
-          "android",
-          "ios"
+          "ios",
+          "android"
         ],
         "description": {
-          "default": "一键在当前笔记头部生成子笔记列表，可选显示二级子孙笔记。"
+          "default": "基于可自定义大模型服务商的思源自学课程插件：资料导入、知识点拆解、学习计划、题库刷题、错题复盘、知识图谱、学习报告",
+          "en-US": "A self-study course plugin based on customizable LLM providers: material import, knowledge points, study plans, quizzes, reviews, knowledge graph and reports"
         },
-        "disabledInPublish": true,
         "displayName": {
-          "default": "子笔记索引"
+          "default": "AI 智能学习",
+          "en-US": "AI Study"
         },
         "frontends": [
           "desktop",
+          "browser-desktop",
           "desktop-window",
-          "mobile"
+          "mobile",
+          "browser-mobile"
         ],
-        "icon": "",
-        "minAppVersion": "2.8.0",
-        "name": "siyuan-subnote-index",
-        "preview": "",
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "AI",
+          "学习",
+          "课程",
+          "刷题",
+          "知识图谱",
+          "study",
+          "quiz",
+          "knowledge-graph"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "AIstudy",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README-siyuan.md"
+        },
+        "url": "https://github.com/YYK0402/AIstudy",
+        "version": "0.5.4"
+      },
+      "packageZipAssetId": 709703971,
+      "packageZipSha256": "215873a1820ef8828800705c093af27eb076b47d4086885bb620252a436cb245",
+      "repoRef": "v0.5.4",
+      "size": 3488264,
+      "stars": 2,
+      "updated": "2026-11-04T13:57:32Z",
+      "url": "YYK0402/AIstudy@215873a"
+    },
+    {
+      "installSize": 721782,
+      "openIssues": 0,
+      "package": {
+        "author": "ccztao",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Mankeep — relationships, dated organization history, birthdays and notes in SiYuan: one person, one document, backed by a native database.",
+          "zh_CN": "Mankeep：在思源笔记里管理联系人、关系、组织经历、生日与备注；一人一文档，原生数据库作主干。"
+        },
+        "displayName": {
+          "default": "Mankeep人脉"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "Mankeep",
+          "人脉",
+          "联系人",
+          "通讯录",
+          "CRM",
+          "生日",
+          "关系"
+        ],
+        "minAppVersion": "3.8.5",
+        "name": "siyuan-mankeep",
+        "preview": "preview.jpg",
         "readme": {
           "default": "README.md"
         },
-        "url": "https://github.com/rushplayer/siyuan-subnote-index",
-        "version": "0.1.1"
+        "url": "https://github.com/ccztao/siyuan-mankeep",
+        "version": "0.40.1"
       },
-      "packageZipAssetId": 709254853,
-      "packageZipSha256": "5063f636d60df8b47459432b2968763e83478bbbee2cee5f1dc734aae6b66826",
-      "repoRef": "v0.1.1",
-      "size": 5602,
-      "stars": 0,
-      "updated": "2026-11-04T11:38:58Z",
-      "url": "rushplayer/siyuan-subnote-index@5063f63"
+      "packageZipAssetId": 709580569,
+      "packageZipSha256": "6499626078edbb099c1bd5a98aa472caf8c42bc26d09397fdbaed34cfabe91e1",
+      "repoRef": "0.40.1",
+      "size": 313914,
+      "stars": 1,
+      "updated": "2026-11-04T13:22:20Z",
+      "url": "ccztao/siyuan-mankeep@6499626"
     },
     {
-      "installSize": 1044943,
+      "installSize": 1045385,
       "openIssues": 0,
       "package": {
         "author": "ShiShiBits",
@@ -139,15 +365,111 @@
           "zh-CN": "README.zh-CN.md"
         },
         "url": "https://github.com/ShiShiBits1/siyuan-workbench",
-        "version": "1.10.1"
+        "version": "1.10.2"
       },
-      "packageZipAssetId": 709056722,
-      "packageZipSha256": "0fac4033a66103f0ea73e2e3f8e5986c747eecaf3cd71c621e4faf85944cf008",
-      "repoRef": "v1.10.1",
-      "size": 588993,
+      "packageZipAssetId": 709488948,
+      "packageZipSha256": "c6bc827fcf19c7945aed4515b7f220b72688cc1894adda43edc9ffec7ecf86ae",
+      "repoRef": "v1.10.2",
+      "size": 589174,
       "stars": 0,
-      "updated": "2026-11-04T10:11:15Z",
-      "url": "ShiShiBits1/siyuan-workbench@0fac403"
+      "updated": "2026-11-04T12:48:24Z",
+      "url": "ShiShiBits1/siyuan-workbench@c6bc827"
+    },
+    {
+      "installSize": 1071584,
+      "openIssues": 0,
+      "package": {
+        "author": "congsec",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "MeiDay is a cross-platform (Web, App) task and diary manager that delivers a smoother experience and stronger security.",
+          "zh-CN": "MeiDay 是一款跨端（Web、App）任务与日记管理工具，让记录更流畅，让数据更安全。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "MeiDay",
+          "zh-CN": "MeiDay（每日任务日记管理）"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "github": "congsec"
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "任务管理",
+          "待办",
+          "在线",
+          "todo",
+          "task",
+          "meiday",
+          "日记",
+          "加密",
+          "隐私"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "MeiDay",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en-US": "README.EN.md"
+        },
+        "url": "https://github.com/CongSec/MeiDay",
+        "version": "1.9.8"
+      },
+      "packageZipAssetId": 709277665,
+      "packageZipSha256": "89e6d13263aaac93c8361f7a89c43cd18c27f525ae61c5fa07e4fc795e7e2f31",
+      "repoRef": "v1.9.8",
+      "size": 487802,
+      "stars": 3,
+      "updated": "2026-11-04T11:39:15Z",
+      "url": "CongSec/MeiDay@89e6d13"
+    },
+    {
+      "installSize": 19654,
+      "openIssues": 0,
+      "package": {
+        "author": "Cindy",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "android",
+          "ios"
+        ],
+        "description": {
+          "default": "一键在当前笔记头部生成子笔记列表，可选显示二级子孙笔记。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "子笔记索引"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "mobile"
+        ],
+        "icon": "",
+        "minAppVersion": "2.8.0",
+        "name": "siyuan-subnote-index",
+        "preview": "",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/rushplayer/siyuan-subnote-index",
+        "version": "0.1.1"
+      },
+      "packageZipAssetId": 709254853,
+      "packageZipSha256": "5063f636d60df8b47459432b2968763e83478bbbee2cee5f1dc734aae6b66826",
+      "repoRef": "v0.1.1",
+      "size": 5602,
+      "stars": 0,
+      "updated": "2026-11-04T11:38:58Z",
+      "url": "rushplayer/siyuan-subnote-index@5063f63"
     },
     {
       "installSize": 2062548,
@@ -248,53 +570,6 @@
       "stars": 0,
       "updated": "2026-11-04T09:08:32Z",
       "url": "unmime/siyuan-plugin-dashboard-icons@8e3e999"
-    },
-    {
-      "installSize": 39864,
-      "openIssues": 0,
-      "package": {
-        "author": "langdon",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "给任意文字加复制按钮：点一下直接复制，或者悬停出按钮。",
-          "en_US": "Put a copy button on any text: click to copy, or hover to reveal the button."
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "一键复制",
-          "en_US": "One-Click Copy"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop",
-          "mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "复制",
-          "copy",
-          "clipboard",
-          "一键复制"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-copy-mark",
-        "preview": "",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/unmime/siyuan-copy-mark",
-        "version": "1.0.0"
-      },
-      "packageZipAssetId": 708150088,
-      "packageZipSha256": "f56fb8531464d7dfb42ababb24d60a2f0f492ca19ba02de502b941268f440129",
-      "repoRef": "v1.0.0",
-      "size": 14619,
-      "stars": 0,
-      "updated": "2026-11-04T09:05:55Z",
-      "url": "unmime/siyuan-copy-mark@f56fb85"
     },
     {
       "installSize": 44195849,
@@ -666,56 +941,6 @@
       "stars": 0,
       "updated": "2026-11-04T00:11:26Z",
       "url": "lfl-karl-el/buleks-todo@c0d9685"
-    },
-    {
-      "installSize": 1201832,
-      "openIssues": 0,
-      "package": {
-        "author": "ttChen",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Insert Zotero citations into SiYuan via the Zotero debug bridge. Text follows the CSL style exactly; right-click a citation to switch format, edit its references, or change the document style.",
-          "zh_CN": "通过 Zotero debug bridge 在思源里插入文献引用。正文文本严格按 CSL 样式输出；右键引用可改形态、编辑该处文献（可增可删）、切换全局 CSL 样式；文末自动生成参考文献表，点击引用跳回 Zotero。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Zotero Cite",
-          "zh_CN": "Zotero 文献引用"
-        },
-        "frontends": [
-          "desktop"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "zotero",
-          "citation",
-          "reference",
-          "csl",
-          "bibliography",
-          "文献",
-          "参考文献"
-        ],
-        "minAppVersion": "3.1.0",
-        "name": "siyuan-plugin-zotero-cite",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README_en.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/taotaochen86/siyuan-plugin-zotero-cite",
-        "version": "1.2.30"
-      },
-      "packageZipAssetId": 707532994,
-      "packageZipSha256": "c4a7bd47fe8bedb2a5d7ce9e83d66e3aba9fad10ab2b6bbd0992432c1ded30a2",
-      "repoRef": "v1.2.30",
-      "size": 1024680,
-      "stars": 1,
-      "updated": "2026-11-03T23:50:16Z",
-      "url": "taotaochen86/siyuan-plugin-zotero-cite@c4a7bd4"
     },
     {
       "installSize": 74384,
@@ -1345,65 +1570,6 @@
       "stars": 0,
       "updated": "2026-11-03T08:22:36Z",
       "url": "370958248/personal-knowledge-atlas@78ffd15"
-    },
-    {
-      "installSize": 5779107,
-      "openIssues": 1,
-      "package": {
-        "author": "yyk",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android"
-        ],
-        "description": {
-          "default": "基于可自定义大模型服务商的思源自学课程插件：资料导入、知识点拆解、学习计划、题库刷题、错题复盘、知识图谱、学习报告",
-          "en-US": "A self-study course plugin based on customizable LLM providers: material import, knowledge points, study plans, quizzes, reviews, knowledge graph and reports"
-        },
-        "displayName": {
-          "default": "AI 智能学习",
-          "en-US": "AI Study"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "AI",
-          "学习",
-          "课程",
-          "刷题",
-          "知识图谱",
-          "study",
-          "quiz",
-          "knowledge-graph"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "AIstudy",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README-siyuan.md"
-        },
-        "url": "https://github.com/YYK0402/AIstudy",
-        "version": "0.5.3"
-      },
-      "packageZipAssetId": 704653672,
-      "packageZipSha256": "781023cd135285fab2bccbc95ef6b6707a6401e5ea8560ecd38c6e4af5cd2655",
-      "repoRef": "v0.5.3",
-      "size": 3460091,
-      "stars": 2,
-      "updated": "2026-11-03T07:00:47Z",
-      "url": "YYK0402/AIstudy@781023c"
     },
     {
       "installSize": 35485967,
@@ -2038,59 +2204,6 @@
       "url": "Glaube-TY/siyuan-homepage@81b9385"
     },
     {
-      "installSize": 1070713,
-      "openIssues": 0,
-      "package": {
-        "author": "congsec",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "MeiDay is a cross-platform (Web, App) task and diary manager that delivers a smoother experience and stronger security.",
-          "zh-CN": "MeiDay 是一款跨端（Web、App）任务与日记管理工具，让记录更流畅，让数据更安全。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "MeiDay",
-          "zh-CN": "MeiDay（每日任务日记管理）"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "github": "congsec"
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "任务管理",
-          "待办",
-          "在线",
-          "todo",
-          "task",
-          "meiday",
-          "日记",
-          "加密",
-          "隐私"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "MeiDay",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en-US": "README.EN.md"
-        },
-        "url": "https://github.com/CongSec/MeiDay",
-        "version": "1.9.7"
-      },
-      "packageZipAssetId": 702677544,
-      "packageZipSha256": "7a9c3c4c76a61350459880a7d4e85c3e95da8023ce39f38e708bc50a4671581e",
-      "repoRef": "v1.9.7",
-      "size": 487476,
-      "stars": 3,
-      "updated": "2026-11-02T18:03:17Z",
-      "url": "CongSec/MeiDay@7a9c3c4"
-    },
-    {
       "installSize": 4512635,
       "openIssues": 2,
       "package": {
@@ -2164,55 +2277,6 @@
       "url": "mm-o/siyuan-media-player@13b9de7"
     },
     {
-      "installSize": 426486,
-      "openIssues": 0,
-      "package": {
-        "author": "ccztao",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Mankeep — relationships, dated organization history, birthdays and notes in SiYuan: one person, one document, backed by a native database.",
-          "zh_CN": "Mankeep：在思源笔记里管理联系人、关系、组织经历、生日与备注；一人一文档，原生数据库作主干。"
-        },
-        "displayName": {
-          "default": "Mankeep人脉"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "Mankeep",
-          "人脉",
-          "联系人",
-          "通讯录",
-          "CRM",
-          "生日",
-          "关系"
-        ],
-        "minAppVersion": "3.8.5",
-        "name": "siyuan-mankeep",
-        "preview": "preview.jpg",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/ccztao/siyuan-mankeep",
-        "version": "0.38.5"
-      },
-      "packageZipAssetId": 701949664,
-      "packageZipSha256": "733b6917d1c1a3b1d3e958d9897530ac70445696ed62c968384369728c530a2a",
-      "repoRef": "v0.38.5",
-      "size": 169054,
-      "stars": 1,
-      "updated": "2026-11-02T14:03:30Z",
-      "url": "ccztao/siyuan-mankeep@733b691"
-    },
-    {
       "installSize": 398870,
       "openIssues": 0,
       "package": {
@@ -2267,67 +2331,6 @@
       "stars": 0,
       "updated": "2026-11-02T13:56:24Z",
       "url": "wave789/siyuan-search@84262f6"
-    },
-    {
-      "installSize": 1511535,
-      "openIssues": 3,
-      "package": {
-        "author": "vilifetime",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "一款思源笔记插件。双向同步 CalDAV 服务器（Radicale / Nextcloud / Baikal 等）的日历事件与待办任务，提供月/周/日日历视图、任务视图与编辑能力，并可将今日日程插入日记。",
-          "en_US": "Two-way sync calendar events and todos with CalDAV servers (Radicale / Nextcloud / Baikal). Month/Week/Day calendar views, task view, editor and daily note integration."
-        },
-        "displayName": {
-          "default": "CalDAV日历任务",
-          "en_US": "CalDAV Calendar &amp; Tasks"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop",
-          "mobile",
-          "browser-mobile"
-        ],
-        "funding": {
-          "custom": [
-            ""
-          ],
-          "github": "vilifetime"
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "caldav",
-          "calendar",
-          "todo",
-          "task",
-          "日历",
-          "任务",
-          "同步",
-          "radicale",
-          "nextcloud",
-          "baikal"
-        ],
-        "minAppVersion": "3.2.0",
-        "name": "siyuan-plugin-caldav-sync",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en_US": "README_en_US.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/vilifetime/siyuan-plugin-caldav-sync",
-        "version": "0.2.35"
-      },
-      "packageZipAssetId": 701306417,
-      "packageZipSha256": "7fd9868a4dd1dbc156755cdc9c14d41661d2b50478a9b55b1397961369059b06",
-      "repoRef": "v0.2.35",
-      "size": 633222,
-      "stars": 4,
-      "updated": "2026-11-02T10:07:09Z",
-      "url": "vilifetime/siyuan-plugin-caldav-sync@7fd9868"
     },
     {
       "installSize": 118848,
