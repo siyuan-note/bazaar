@@ -1,6 +1,254 @@
 {
   "repos": [
     {
+      "installSize": 1228496,
+      "openIssues": 0,
+      "package": {
+        "author": "Lisontowind",
+        "backends": [
+          "windows",
+          "darwin",
+          "linux"
+        ],
+        "description": {
+          "default": "Floating notes with Markdown live rendering, image previews, plugin-local saving and optional SiYuan autosync, and a pinnable recent-notes window.",
+          "zh-CN": "快捷键唤起悬浮便签，默认 Markdown 即时渲染，支持图片，可选择默认保存到思源并自动同步，也可保存在插件草稿中，可在独立置顶窗口找回最近速记和本机草稿。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Quick Notes",
+          "zh-CN": "悬浮速记"
+        },
+        "frontends": [
+          "desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "quick notes",
+          "速记",
+          "便签",
+          "悬浮",
+          "Markdown"
+        ],
+        "minAppVersion": "3.8.6",
+        "name": "siyuan-quick-notes",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README_en_US.md",
+          "zh-CN": "README.md"
+        },
+        "url": "https://github.com/lisontowind/siyuan-quick-notes",
+        "version": "0.1.30"
+      },
+      "packageZipAssetId": 707714372,
+      "packageZipSha256": "c89ea0019979e495b7c0f25c6d20ec61b95dc3f90c81e546aa6089c1abe14de3",
+      "repoRef": "v0.1.30",
+      "size": 530064,
+      "stars": 1,
+      "updated": "2026-11-04T01:00:13Z",
+      "url": "lisontowind/siyuan-quick-notes@c89ea00"
+    },
+    {
+      "installSize": 332504,
+      "openIssues": 0,
+      "package": {
+        "author": "lisontowind",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Edit footnotes in a sidebar, locate references, normalize formats and insert with slash commands.",
+          "zh-CN": "侧栏编辑脚注、定位被引段落，支持统一格式、连续编号和斜杠菜单插入。"
+        },
+        "displayName": {
+          "default": "Footnote Jumper",
+          "zh-CN": "脚注跳转"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "footnote",
+          "脚注",
+          "typora",
+          "markdown"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-footnote-jumper",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README_en_US.md",
+          "zh-CN": "README.md"
+        },
+        "url": "https://github.com/lisontowind/siyuan-footnote-jumper",
+        "version": "0.2.13"
+      },
+      "packageZipAssetId": 707696198,
+      "packageZipSha256": "c645137ceb1b974cab8cd9c353b87e3123e761c0eab6cf3304d99eefc57ef38a",
+      "repoRef": "v0.2.13",
+      "size": 167854,
+      "stars": 2,
+      "updated": "2026-11-04T00:57:07Z",
+      "url": "lisontowind/siyuan-footnote-jumper@c645137"
+    },
+    {
+      "installSize": 2003461,
+      "openIssues": 1,
+      "package": {
+        "author": "Lisontowind",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "Offline image compression with per-image settings, quick compression, attachment totals and simplified image filenames.",
+          "zh-CN": "本地离线压缩图片，支持逐图配置、快捷压缩、附件大小统计与图片名称简化，同步更新共享引用。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Image Compression",
+          "zh-CN": "图片压缩"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "image",
+          "compression",
+          "图片压缩",
+          "附件重命名"
+        ],
+        "minAppVersion": "3.8.5",
+        "name": "sy-imgcompression",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/lisontowind/sy-imgcompression",
+        "version": "0.1.3"
+      },
+      "packageZipAssetId": 707694094,
+      "packageZipSha256": "6a1292e6c134bf83a3160639316588bf22af8432102d96337de28d8c44296bf7",
+      "repoRef": "0.1.3",
+      "size": 842750,
+      "stars": 1,
+      "updated": "2026-11-04T00:52:38Z",
+      "url": "lisontowind/sy-imgcompression@6a1292e"
+    },
+    {
+      "installSize": 181933,
+      "openIssues": 1,
+      "package": {
+        "author": "lfl-karl-el",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android",
+          "harmony"
+        ],
+        "description": {
+          "default": "A standalone todo board: create tasks, move them through statuses, organize by feature groups and tags, with a 7-day completion summary on top.",
+          "zh_CN": "独立任务看板：新增待办、状态流转、按功能分组与标签查看，首页近7天完成汇总，可一键生成/跳转思源文档。"
+        },
+        "displayName": {
+          "default": "Buleks Todo",
+          "zh_CN": "Blueks代办"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "todo",
+          "task",
+          "timeline",
+          "待办",
+          "任务",
+          "需求"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "buleks-todo",
+        "preview": "",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/lfl-karl-el/buleks-todo",
+        "version": "0.5.8"
+      },
+      "packageZipAssetId": 707589584,
+      "packageZipSha256": "c0d968555bfab4584e3624e45f1a0f5fb9718b9ff4bee3ed7ff1da84954270ed",
+      "repoRef": "0.5.8",
+      "size": 46312,
+      "stars": 0,
+      "updated": "2026-11-04T00:11:26Z",
+      "url": "lfl-karl-el/buleks-todo@c0d9685"
+    },
+    {
+      "installSize": 1201832,
+      "openIssues": 0,
+      "package": {
+        "author": "ttChen",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "Insert Zotero citations into SiYuan via the Zotero debug bridge. Text follows the CSL style exactly; right-click a citation to switch format, edit its references, or change the document style.",
+          "zh_CN": "通过 Zotero debug bridge 在思源里插入文献引用。正文文本严格按 CSL 样式输出；右键引用可改形态、编辑该处文献（可增可删）、切换全局 CSL 样式；文末自动生成参考文献表，点击引用跳回 Zotero。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Zotero Cite",
+          "zh_CN": "Zotero 文献引用"
+        },
+        "frontends": [
+          "desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "zotero",
+          "citation",
+          "reference",
+          "csl",
+          "bibliography",
+          "文献",
+          "参考文献"
+        ],
+        "minAppVersion": "3.1.0",
+        "name": "siyuan-plugin-zotero-cite",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README_en.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/taotaochen86/siyuan-plugin-zotero-cite",
+        "version": "1.2.30"
+      },
+      "packageZipAssetId": 707532994,
+      "packageZipSha256": "c4a7bd47fe8bedb2a5d7ce9e83d66e3aba9fad10ab2b6bbd0992432c1ded30a2",
+      "repoRef": "v1.2.30",
+      "size": 1024680,
+      "stars": 1,
+      "updated": "2026-11-03T23:50:16Z",
+      "url": "taotaochen86/siyuan-plugin-zotero-cite@c4a7bd4"
+    },
+    {
       "installSize": 74384,
       "openIssues": 1,
       "package": {
@@ -1828,56 +2076,6 @@
       "stars": 2,
       "updated": "2026-11-01T17:36:41Z",
       "url": "fujingzhai/siyuan-finder-plugin@998c303"
-    },
-    {
-      "installSize": 176969,
-      "openIssues": 0,
-      "package": {
-        "author": "陈涛涛 (Taotao Chen)",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Insert Zotero citations into SiYuan via the Zotero debug bridge. Text follows the CSL style exactly; right-click a citation to switch format, edit its references, or change the document style.",
-          "zh_CN": "通过 Zotero debug bridge 在思源里插入文献引用。正文文本严格按 CSL 样式输出；右键引用可改形态、编辑该处文献（可增可删）、切换全局 CSL 样式；文末自动生成参考文献表，点击引用跳回 Zotero。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Zotero Cite",
-          "zh_CN": "Zotero 文献引用"
-        },
-        "frontends": [
-          "desktop"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "zotero",
-          "citation",
-          "reference",
-          "csl",
-          "bibliography",
-          "文献",
-          "参考文献"
-        ],
-        "minAppVersion": "3.1.0",
-        "name": "siyuan-plugin-zotero-cite",
-        "preview": "",
-        "readme": {
-          "default": "README_en.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/taotaochen86/siyuan-plugin-zotero-cite",
-        "version": "1.2.25"
-      },
-      "packageZipAssetId": 697828334,
-      "packageZipSha256": "c991fe526d45289732d6b74e1d4472cf81fcd01703e3ad2aead0572b6bb4ad10",
-      "repoRef": "v1.2.25",
-      "size": 63833,
-      "stars": 1,
-      "updated": "2026-11-01T09:04:59Z",
-      "url": "taotaochen86/siyuan-plugin-zotero-cite@c991fe5"
     },
     {
       "installSize": 704266,
@@ -4442,55 +4640,6 @@
       "url": "QYLexpired/Asri-enhance@50bfc6a"
     },
     {
-      "installSize": 156123,
-      "openIssues": 0,
-      "package": {
-        "author": "lfl-karl-el",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A standalone todo board in a SiYuan tab: tasks with status flow, groups and tags, archive by year, batch operations, history import and a 7-day summary.",
-          "zh-CN": "独立任务看板（页签内）：待办状态流转、分组与标签、按年归档、批量操作、历史清单导入、近7天汇总，可一键生成并跳转思源文档。",
-          "zh_CN": "独立任务看板（页签内）：待办状态流转、分组与标签、按年归档、批量操作、历史清单导入、近7天汇总，可一键生成并跳转思源文档。"
-        },
-        "displayName": {
-          "default": "Buleks Todo",
-          "zh-CN": "Blueks代办",
-          "zh_CN": "Blueks代办"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "todo",
-          "task",
-          "kanban",
-          "待办",
-          "任务",
-          "看板",
-          "需求"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "buleks-todo",
-        "preview": "",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/lfl-karl-el/buleks-todo",
-        "version": "0.5.6"
-      },
-      "packageZipAssetId": 679960555,
-      "packageZipSha256": "5707d12b1a9b02b31269853d120f47730d9b6bda282c0f087551f437045cf818",
-      "repoRef": "v0.5.6",
-      "size": 41179,
-      "stars": 0,
-      "updated": "2026-10-27T00:38:36Z",
-      "url": "lfl-karl-el/buleks-todo@5707d12"
-    },
-    {
       "installSize": 533442,
       "openIssues": 0,
       "package": {
@@ -6355,54 +6504,6 @@
       "url": "Fly1018/batch-markdown-export@316e767"
     },
     {
-      "installSize": 1220476,
-      "openIssues": 0,
-      "package": {
-        "author": "Lisontowind",
-        "backends": [
-          "windows",
-          "darwin",
-          "linux"
-        ],
-        "description": {
-          "default": "Floating notes with Markdown live rendering, image previews, plugin-local saving and optional SiYuan autosync, and a pinnable recent-notes window.",
-          "zh-CN": "快捷键唤起悬浮便签，默认 Markdown 即时渲染，支持图片，可选择默认保存到思源并自动同步，也可保存在插件草稿中，可在独立置顶窗口找回最近速记和本机草稿。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Quick Notes",
-          "zh-CN": "悬浮速记"
-        },
-        "frontends": [
-          "desktop"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "quick notes",
-          "速记",
-          "便签",
-          "悬浮",
-          "Markdown"
-        ],
-        "minAppVersion": "3.8.6",
-        "name": "siyuan-quick-notes",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README_en_US.md",
-          "zh-CN": "README.md"
-        },
-        "url": "https://github.com/lisontowind/siyuan-quick-notes",
-        "version": "0.1.29"
-      },
-      "packageZipAssetId": 657748992,
-      "packageZipSha256": "5d21ee230b71adb72e63e611e11a6faaf4b6c771420dcf6e88acb422ed64bb41",
-      "repoRef": "v0.1.29",
-      "size": 525623,
-      "stars": 1,
-      "updated": "2026-10-19T23:46:28Z",
-      "url": "lisontowind/siyuan-quick-notes@5d21ee2"
-    },
-    {
       "installSize": 3381660,
       "openIssues": 0,
       "package": {
@@ -6833,101 +6934,6 @@
       "stars": 9,
       "updated": "2026-10-18T10:14:36Z",
       "url": "OpaqueGlass/syplugin-fakeDocBreadcrumb@6fd5184"
-    },
-    {
-      "installSize": 325720,
-      "openIssues": 0,
-      "package": {
-        "author": "lisontowind",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Edit footnotes in a sidebar, locate references, normalize formats and insert with slash commands.",
-          "zh-CN": "侧栏编辑脚注、定位被引段落，支持统一格式、连续编号和斜杠菜单插入。"
-        },
-        "displayName": {
-          "default": "Footnote Jumper",
-          "zh-CN": "脚注跳转"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "footnote",
-          "脚注",
-          "typora",
-          "markdown"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-footnote-jumper",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README_en_US.md",
-          "zh-CN": "README.md"
-        },
-        "url": "https://github.com/lisontowind/siyuan-footnote-jumper",
-        "version": "0.2.12"
-      },
-      "packageZipAssetId": 653058571,
-      "packageZipSha256": "e60513ff47c9868a9fdceddfd46e34dff5781b7c9188b3db99d1fab41953f0ea",
-      "repoRef": "v0.2.12",
-      "size": 165522,
-      "stars": 2,
-      "updated": "2026-10-18T09:24:00Z",
-      "url": "lisontowind/siyuan-footnote-jumper@e60513f"
-    },
-    {
-      "installSize": 1998294,
-      "openIssues": 0,
-      "package": {
-        "author": "Lisontowind",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Offline image compression with per-image settings, quick compression, attachment totals and simplified image filenames.",
-          "zh-CN": "本地离线压缩图片，支持逐图配置、快捷压缩、附件大小统计与图片名称简化，同步更新共享引用。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Image Compression",
-          "zh-CN": "图片压缩"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "image",
-          "compression",
-          "图片压缩",
-          "附件重命名"
-        ],
-        "minAppVersion": "3.8.5",
-        "name": "sy-imgcompression",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/lisontowind/sy-imgcompression",
-        "version": "0.1.2"
-      },
-      "packageZipAssetId": 653007782,
-      "packageZipSha256": "f703261e4965ddf4d9217af95c0e47112036ca057491871326fca17785f88dcd",
-      "repoRef": "0.1.2",
-      "size": 841040,
-      "stars": 0,
-      "updated": "2026-10-18T09:01:24Z",
-      "url": "lisontowind/sy-imgcompression@f703261"
     },
     {
       "installSize": 286334,
