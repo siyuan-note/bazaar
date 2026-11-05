@@ -1,6 +1,112 @@
 {
   "repos": [
     {
+      "installSize": 131331,
+      "openIssues": 1,
+      "package": {
+        "author": "Jeffrey Chen",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Visually display the distribution of notes throughout the year, with heatmap and calendar layouts.",
+          "ja": "年間のノート分布をヒートマップとカレンダーで視覚的に表示します",
+          "zh-CN": "直观展示全年笔记分布，支持热力图与日历两种形式",
+          "zh-TW": "直觀展示全年筆記分佈，支援熱力圖與日曆兩種形式"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Document Activity Stats",
+          "ja": "ドキュメント活動統計",
+          "zh-CN": "文档活跃统计",
+          "zh-TW": "文檔活躍統計"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://mytemos.com/"
+          ]
+        },
+        "icon": "icon.png",
+        "minAppVersion": "3.7.0",
+        "name": "heatmap",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "ja": "README.ja.md",
+          "zh-CN": "README.zh-CN.md",
+          "zh-TW": "README.zh-TW.md"
+        },
+        "url": "https://github.com/TCOTC/heatmap",
+        "version": "1.1.4"
+      },
+      "packageZipAssetId": 714968047,
+      "packageZipSha256": "155a44a4e4edfd99c5191c30b8e4349640f3f0d11cd8f4a206f7e411a7abc346",
+      "repoRef": "v1.1.4",
+      "size": 41457,
+      "stars": 2,
+      "updated": "2026-11-05T22:00:52Z",
+      "url": "TCOTC/heatmap@155a44a"
+    },
+    {
+      "installSize": 533928,
+      "openIssues": 2,
+      "package": {
+        "author": "notesynchelper",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "从微信同步到思源笔记，支持文字、图片、聊天记录、文章"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "笔记同步助手"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "docker"
+        ],
+        "keywords": [
+          "wechat",
+          "template",
+          "企微",
+          "模板",
+          "微信",
+          "速记",
+          "剪藏",
+          "搜集",
+          "日记",
+          "闪念",
+          "memo",
+          "备忘",
+          "公众号",
+          "小红书",
+          "得到"
+        ],
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-notehelper",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/notesynchelper/siyuan-notehelper",
+        "version": "1.8.52"
+      },
+      "packageZipAssetId": 714167294,
+      "packageZipSha256": "bddec6e990aaf069f97ae52c81fb259d1f49c22f8afa5d180ebb67b2a038fa58",
+      "repoRef": "v1.8.52",
+      "size": 212979,
+      "stars": 2,
+      "updated": "2026-11-05T17:12:33Z",
+      "url": "notesynchelper/siyuan-notehelper@bddec6e"
+    },
+    {
       "installSize": 315403,
       "openIssues": 0,
       "package": {
@@ -2255,62 +2361,6 @@
       "stars": 51,
       "updated": "2026-11-03T04:42:32Z",
       "url": "IAliceBobI/sy-tomato-plugin@6dad51a"
-    },
-    {
-      "installSize": 533928,
-      "openIssues": 2,
-      "package": {
-        "author": "notesynchelper",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "从微信同步到思源笔记，支持文字、图片、聊天记录、文章"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "笔记同步助手"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "docker"
-        ],
-        "keywords": [
-          "wechat",
-          "template",
-          "企微",
-          "模板",
-          "微信",
-          "速记",
-          "剪藏",
-          "搜集",
-          "日记",
-          "闪念",
-          "memo",
-          "备忘",
-          "公众号",
-          "小红书",
-          "得到"
-        ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-notehelper",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/notesynchelper/siyuan-notehelper",
-        "version": "1.8.51"
-      },
-      "packageZipAssetId": 704162427,
-      "packageZipSha256": "2d0d16dd6aeee5098dda068577d11b99b205e2b1eab563b9f159fe4a01b6ccf4",
-      "repoRef": "v1.8.51",
-      "size": 212978,
-      "stars": 2,
-      "updated": "2026-11-03T03:43:51Z",
-      "url": "notesynchelper/siyuan-notehelper@2d0d16d"
     },
     {
       "installSize": 402423,
@@ -17030,54 +17080,6 @@
       "stars": 3,
       "updated": "2026-08-04T10:51:50Z",
       "url": "FEUAZUR/notion-importer@48c51ba"
-    },
-    {
-      "installSize": 131063,
-      "openIssues": 1,
-      "package": {
-        "author": "Jeffrey Chen",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Visually display the distribution of notes throughout the year, with heatmap and calendar layouts.",
-          "ja": "年間のノート分布をヒートマップとカレンダーで視覚的に表示します",
-          "zh-CN": "直观展示全年笔记分布，支持热力图与日历两种形式",
-          "zh-TW": "直觀展示全年筆記分佈，支援熱力圖與日曆兩種形式"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Document Activity Stats",
-          "ja": "ドキュメント活動統計",
-          "zh-CN": "文档活跃统计",
-          "zh-TW": "文檔活躍統計"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://mytemos.com/"
-          ]
-        },
-        "minAppVersion": "3.7.0",
-        "name": "heatmap",
-        "readme": {
-          "default": "README.md",
-          "ja": "README.ja.md",
-          "zh-CN": "README.zh-CN.md",
-          "zh-TW": "README.zh-TW.md"
-        },
-        "url": "https://github.com/TCOTC/heatmap",
-        "version": "1.1.3"
-      },
-      "packageZipAssetId": 499537036,
-      "packageZipSha256": "da56890304dc54e5a08a199d5d446b2d3522861449e7c8d6b3b8148bd0cc50b9",
-      "repoRef": "v1.1.3",
-      "size": 41378,
-      "stars": 2,
-      "updated": "2026-08-03T03:04:52Z",
-      "url": "TCOTC/heatmap@da56890"
     },
     {
       "installSize": 144915,
