@@ -1,7 +1,52 @@
 {
   "repos": [
     {
-      "installSize": 2150471,
+      "installSize": 315403,
+      "openIssues": 0,
+      "package": {
+        "author": "sihan-bzwj",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Auto-repair broken LaTeX delimiters and convert MathML to LaTeX when pasting",
+          "zh-CN": "粘贴时自动修复损坏的 LaTeX 公式（AI 聊天文本），并把网页复制的 MathML 转换为可渲染公式"
+        },
+        "displayName": {
+          "default": "Paste LaTeX Fixer",
+          "zh-CN": "粘贴公式修复"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "latex",
+          "mathml",
+          "paste",
+          "公式",
+          "粘贴"
+        ],
+        "minAppVersion": "3.8.2",
+        "name": "paste-fixer",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.en.md",
+          "zh-CN": "README.md"
+        },
+        "url": "https://github.com/sihan-bzwj/siyuan-paste-fixer",
+        "version": "0.3.0"
+      },
+      "packageZipAssetId": 713896721,
+      "packageZipSha256": "fbd92b08b85b749f1477f8323391f8f949e63413da80ef75d66377da61b20ad7",
+      "repoRef": "v0.3.0",
+      "size": 216302,
+      "stars": 1,
+      "updated": "2026-11-05T15:39:48Z",
+      "url": "sihan-bzwj/siyuan-paste-fixer@fbd92b0"
+    },
+    {
+      "installSize": 2154099,
       "openIssues": 13,
       "package": {
         "author": "Achuan-2",
@@ -34,15 +79,236 @@
           "zh_CN": "README.md"
         },
         "url": "https://github.com/Achuan-2/siyuan-plugin-copilot",
-        "version": "2.8.19"
+        "version": "2.8.20"
       },
-      "packageZipAssetId": 711985664,
-      "packageZipSha256": "c0f33ad22a7b19b7c6ac997418e7ce53f040bc888cd149f285ea3d22d1e68c42",
-      "repoRef": "v2.8.19",
-      "size": 728840,
+      "packageZipAssetId": 713755495,
+      "packageZipSha256": "85636e49d8497e3cc84eaf86570b55fa762f07ea877d01053416f0e17e69f39b",
+      "repoRef": "v2.8.20",
+      "size": 729752,
       "stars": 162,
-      "updated": "2026-11-05T03:59:06Z",
-      "url": "Achuan-2/siyuan-plugin-copilot@c0f33ad"
+      "updated": "2026-11-05T14:53:21Z",
+      "url": "Achuan-2/siyuan-plugin-copilot@85636e4"
+    },
+    {
+      "installSize": 8241790,
+      "openIssues": 1,
+      "package": {
+        "author": "LongDarkroom",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "RE Reader: a standalone EPUB/PDF reader for SiYuan. Shelf, PDF &amp; EPUB rendering, word lookup with offline MDX dictionaries, machine translation, bilingual parallel reading, ink annotations, reading stats and TTS — plus an AI reading assistant that reads the current chapter, cites passages and saves answers as notes. Readest-style reading experience.",
+          "zh-CN": "RE 阅读器：思源笔记的独立 EPUB/PDF 阅读器。书架管理、PDF 与 EPUB 渲染、离线 MDX 词典划词查词、机器翻译与双语对照、本地墨迹批注、阅读时长统计与朗读（TTS），并内置 AI 阅读助手：按章节提问、引用回跳、一键存为思源笔记。批注、进度与设置全部本地独立存储。"
+        },
+        "displayName": {
+          "default": "RE Reader",
+          "zh-CN": "RE 阅读器"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "reader",
+          "epub",
+          "pdf",
+          "dictionary",
+          "阅读器",
+          "电子书",
+          "词典",
+          "划词",
+          "双语",
+          "墨迹"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-reader",
+        "preview": "preview.webp",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/LongDarkroom/siyuan-plugin-reader",
+        "version": "0.5.4"
+      },
+      "packageZipAssetId": 713730180,
+      "packageZipSha256": "9c3dbeb17740326764ffe3796cd807b71160ecea67848daf1eea1d6546efbab6",
+      "repoRef": "v0.5.4",
+      "size": 4105346,
+      "stars": 1,
+      "updated": "2026-11-05T14:43:37Z",
+      "url": "LongDarkroom/siyuan-plugin-reader@9c3dbeb"
+    },
+    {
+      "installSize": 1045733,
+      "openIssues": 8,
+      "package": {
+        "author": "Misuzu2027",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Filterable backlink panel with dock, document bottom panel, and tab views.",
+          "zh-CN": "支持过滤的反链面板，提供侧栏、文档底部与页签分栏显示。"
+        },
+        "displayName": {
+          "default": "Filterable Backlink Panel",
+          "zh-CN": "反链过滤面板"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "dock",
+          "backlink",
+          "反链"
+        ],
+        "minAppVersion": "3.1.4",
+        "name": "syplugin-backlink-panel",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/Misuzu2027/syplugin-backlink-panel",
+        "version": "0.0.39"
+      },
+      "packageZipAssetId": 713653982,
+      "packageZipSha256": "719adb6ca1203c65dbf3f176ec7b65c91a4e68c73a16d295901a3ccc1d557021",
+      "repoRef": "v0.0.39",
+      "size": 785488,
+      "stars": 13,
+      "updated": "2026-11-05T14:17:37Z",
+      "url": "Misuzu2027/syplugin-backlink-panel@719adb6"
+    },
+    {
+      "installSize": 5977382,
+      "openIssues": 1,
+      "package": {
+        "author": "yyk",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android"
+        ],
+        "description": {
+          "default": "基于可自定义大模型服务商的思源自学课程插件：资料导入、知识点拆解、学习计划、题库刷题、错题复盘、知识图谱、学习报告",
+          "en-US": "A self-study course plugin based on customizable LLM providers: material import, knowledge points, study plans, quizzes, reviews, knowledge graph and reports"
+        },
+        "displayName": {
+          "default": "AI 智能学习",
+          "en-US": "AI Study"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "AI",
+          "学习",
+          "课程",
+          "刷题",
+          "知识图谱",
+          "study",
+          "quiz",
+          "knowledge-graph"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "AIstudy",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README-siyuan.md"
+        },
+        "url": "https://github.com/YYK0402/AIstudy",
+        "version": "0.5.7"
+      },
+      "packageZipAssetId": 713513920,
+      "packageZipSha256": "319ae00499f039924ee7d3fc4940ef070297c47a33981882d67f08ca7c00516d",
+      "repoRef": "v0.5.7",
+      "size": 3618883,
+      "stars": 2,
+      "updated": "2026-11-05T13:29:40Z",
+      "url": "YYK0402/AIstudy@319ae00"
+    },
+    {
+      "installSize": 1694169,
+      "openIssues": 2,
+      "package": {
+        "author": "vilifetime",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "一款思源笔记插件。双向同步 CalDAV 服务器（Radicale / Nextcloud / Baikal 等）的日历事件与待办任务，提供月/周/日日历视图、任务视图与编辑能力，并可将今日日程插入日记。",
+          "en_US": "Two-way sync calendar events and todos with CalDAV servers (Radicale / Nextcloud / Baikal). Month/Week/Day calendar views, task view, editor and daily note integration."
+        },
+        "displayName": {
+          "default": "CalDAV日历任务",
+          "en_US": "CalDAV Calendar &amp; Tasks"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop",
+          "mobile",
+          "browser-mobile"
+        ],
+        "funding": {
+          "custom": [
+            ""
+          ],
+          "github": "vilifetime"
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "caldav",
+          "calendar",
+          "todo",
+          "task",
+          "日历",
+          "任务",
+          "同步",
+          "radicale",
+          "nextcloud",
+          "baikal"
+        ],
+        "minAppVersion": "3.2.0",
+        "name": "siyuan-plugin-caldav-sync",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en_US": "README_en_US.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/vilifetime/siyuan-plugin-caldav-sync",
+        "version": "0.2.37"
+      },
+      "packageZipAssetId": 713205426,
+      "packageZipSha256": "828d2d502674e011704e43134c19040a7200ae51e9712876648eca00ab4b4194",
+      "repoRef": "v0.2.37",
+      "size": 687433,
+      "stars": 4,
+      "updated": "2026-11-05T11:40:37Z",
+      "url": "vilifetime/siyuan-plugin-caldav-sync@828d2d5"
     },
     {
       "installSize": 10481057,
@@ -203,65 +469,6 @@
       "url": "yueyangcode/siyuan-note-companion@2b32dda"
     },
     {
-      "installSize": 5973098,
-      "openIssues": 1,
-      "package": {
-        "author": "yyk",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android"
-        ],
-        "description": {
-          "default": "基于可自定义大模型服务商的思源自学课程插件：资料导入、知识点拆解、学习计划、题库刷题、错题复盘、知识图谱、学习报告",
-          "en-US": "A self-study course plugin based on customizable LLM providers: material import, knowledge points, study plans, quizzes, reviews, knowledge graph and reports"
-        },
-        "displayName": {
-          "default": "AI 智能学习",
-          "en-US": "AI Study"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "AI",
-          "学习",
-          "课程",
-          "刷题",
-          "知识图谱",
-          "study",
-          "quiz",
-          "knowledge-graph"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "AIstudy",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README-siyuan.md"
-        },
-        "url": "https://github.com/YYK0402/AIstudy",
-        "version": "0.5.5"
-      },
-      "packageZipAssetId": 711761241,
-      "packageZipSha256": "5fca997edaff1d5dae03393dc3eaa82a7decfa25c3b3b1598884b7089432e7f4",
-      "repoRef": "v0.5.5",
-      "size": 3616267,
-      "stars": 2,
-      "updated": "2026-11-05T02:29:39Z",
-      "url": "YYK0402/AIstudy@5fca997"
-    },
-    {
       "installSize": 19752688,
       "openIssues": 0,
       "package": {
@@ -359,61 +566,6 @@
       "stars": 0,
       "updated": "2026-11-05T01:58:20Z",
       "url": "unmime/siyuan-copy-mark@6d86d27"
-    },
-    {
-      "installSize": 7510777,
-      "openIssues": 0,
-      "package": {
-        "author": "LongDarkroom",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "RE Reader: a standalone EPUB/PDF reader for SiYuan. Shelf, PDF &amp; EPUB rendering, word lookup with offline MDX dictionaries, machine translation, bilingual parallel reading, ink annotations, reading stats and TTS — Readest-style reading experience.",
-          "zh-CN": "RE 阅读器：思源笔记的独立 EPUB/PDF 阅读器。书架管理、PDF 与 EPUB 渲染、离线 MDX 词典划词查词、机器翻译与双语对照、本地墨迹批注、阅读时长统计与朗读（TTS），对标 Readest 阅读体验。批注数据本地独立存储，无需依赖其他插件；与「RE word」主插件配合可获得词库收藏与 AI 精读等增强能力。"
-        },
-        "displayName": {
-          "default": "RE Reader",
-          "zh-CN": "RE 阅读器"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "reader",
-          "epub",
-          "pdf",
-          "dictionary",
-          "阅读器",
-          "电子书",
-          "词典",
-          "划词",
-          "双语",
-          "墨迹"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-reader",
-        "preview": "preview.webp",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/LongDarkroom/siyuan-plugin-reader",
-        "version": "0.4.0"
-      },
-      "packageZipAssetId": 711396224,
-      "packageZipSha256": "79cce29403dbc425a5db306d602c6674a89f3a84b9faf84bb906f863b439b65b",
-      "repoRef": "v0.4.0",
-      "size": 3661448,
-      "stars": 1,
-      "updated": "2026-11-05T00:01:29Z",
-      "url": "LongDarkroom/siyuan-plugin-reader@79cce29"
     },
     {
       "installSize": 1031039,
@@ -582,70 +734,6 @@
       "stars": 0,
       "updated": "2026-11-04T21:21:52Z",
       "url": "unmime/siyuan-plugin-dashboard-icons@9f7ac0f"
-    },
-    {
-      "installSize": 1678802,
-      "openIssues": 3,
-      "package": {
-        "author": "vilifetime",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "一款思源笔记插件。双向同步 CalDAV 服务器（Radicale / Nextcloud / Baikal 等）的日历事件与待办任务，提供月/周/日日历视图、任务视图与编辑能力，并可将今日日程插入日记。",
-          "en_US": "Two-way sync calendar events and todos with CalDAV servers (Radicale / Nextcloud / Baikal). Month/Week/Day calendar views, task view, editor and daily note integration."
-        },
-        "displayName": {
-          "default": "CalDAV日历任务",
-          "en_US": "CalDAV Calendar &amp; Tasks"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop",
-          "mobile",
-          "browser-mobile"
-        ],
-        "funding": {
-          "custom": [
-            ""
-          ],
-          "github": "vilifetime"
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "caldav",
-          "calendar",
-          "todo",
-          "task",
-          "日历",
-          "任务",
-          "同步",
-          "radicale",
-          "nextcloud",
-          "baikal"
-        ],
-        "minAppVersion": "3.2.0",
-        "name": "siyuan-plugin-caldav-sync",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en_US": "README_en_US.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/vilifetime/siyuan-plugin-caldav-sync",
-        "version": "0.2.36"
-      },
-      "packageZipAssetId": 709931924,
-      "packageZipSha256": "97a70ae1d5553a4f1ab610c9a69db8991cbfd8c208e5375cd80be2215c0c8cdc",
-      "repoRef": "v0.2.36",
-      "size": 682404,
-      "stars": 4,
-      "updated": "2026-11-04T15:11:54Z",
-      "url": "vilifetime/siyuan-plugin-caldav-sync@97a70ae"
     },
     {
       "installSize": 1073258,
@@ -4699,49 +4787,6 @@
       "stars": 1,
       "updated": "2026-10-27T15:55:21Z",
       "url": "ai68298100/siyuan-glean@3d7fa15"
-    },
-    {
-      "installSize": 1045778,
-      "openIssues": 8,
-      "package": {
-        "author": "Misuzu2027",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Filterable backlink panel with dock, document bottom panel, and tab views.",
-          "zh-CN": "支持过滤的反链面板，提供侧栏、文档底部与页签分栏显示。"
-        },
-        "displayName": {
-          "default": "Filterable Backlink Panel",
-          "zh-CN": "反链过滤面板"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "dock",
-          "backlink",
-          "反链"
-        ],
-        "minAppVersion": "3.1.4",
-        "name": "syplugin-backlink-panel",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/Misuzu2027/syplugin-backlink-panel",
-        "version": "0.0.38"
-      },
-      "packageZipAssetId": 681799536,
-      "packageZipSha256": "dc4b9c3fb20a783905e17f1d7df0602b47a0b4650ae533a6e00cec0a088dc098",
-      "repoRef": "v0.0.38",
-      "size": 785490,
-      "stars": 13,
-      "updated": "2026-10-27T14:15:16Z",
-      "url": "Misuzu2027/syplugin-backlink-panel@dc4b9c3"
     },
     {
       "installSize": 62554,
@@ -9683,50 +9728,6 @@
       "stars": 2,
       "updated": "2026-10-08T07:21:54Z",
       "url": "TCOTC/install-package@a1019df"
-    },
-    {
-      "installSize": 270464,
-      "openIssues": 0,
-      "package": {
-        "author": "sihan-bzwj",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Auto-repair broken LaTeX delimiters and convert MathML to LaTeX when pasting",
-          "zh-CN": "粘贴时自动修复损坏的 LaTeX 公式（AI 聊天文本），并把网页复制的 MathML 转换为可渲染公式"
-        },
-        "displayName": {
-          "default": "Paste LaTeX Fixer",
-          "zh-CN": "粘贴公式修复"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "latex",
-          "mathml",
-          "paste",
-          "公式",
-          "粘贴"
-        ],
-        "minAppVersion": "3.8.2",
-        "name": "paste-fixer",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/sihan-bzwj/siyuan-paste-fixer",
-        "version": "0.2.10"
-      },
-      "packageZipAssetId": 621036305,
-      "packageZipSha256": "cb793a05ece7b922d58ce549a96963462a599a843a2ffd640c60b93be369b8d8",
-      "repoRef": "v0.2.10",
-      "size": 199880,
-      "stars": 0,
-      "updated": "2026-10-08T07:03:43Z",
-      "url": "sihan-bzwj/siyuan-paste-fixer@cb793a0"
     },
     {
       "installSize": 812068,
