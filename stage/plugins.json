@@ -1,6 +1,61 @@
 {
   "repos": [
     {
+      "installSize": 7510777,
+      "openIssues": 0,
+      "package": {
+        "author": "LongDarkroom",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "RE Reader: a standalone EPUB/PDF reader for SiYuan. Shelf, PDF &amp; EPUB rendering, word lookup with offline MDX dictionaries, machine translation, bilingual parallel reading, ink annotations, reading stats and TTS — Readest-style reading experience.",
+          "zh-CN": "RE 阅读器：思源笔记的独立 EPUB/PDF 阅读器。书架管理、PDF 与 EPUB 渲染、离线 MDX 词典划词查词、机器翻译与双语对照、本地墨迹批注、阅读时长统计与朗读（TTS），对标 Readest 阅读体验。批注数据本地独立存储，无需依赖其他插件；与「RE word」主插件配合可获得词库收藏与 AI 精读等增强能力。"
+        },
+        "displayName": {
+          "default": "RE Reader",
+          "zh-CN": "RE 阅读器"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "reader",
+          "epub",
+          "pdf",
+          "dictionary",
+          "阅读器",
+          "电子书",
+          "词典",
+          "划词",
+          "双语",
+          "墨迹"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-reader",
+        "preview": "preview.webp",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/LongDarkroom/siyuan-plugin-reader",
+        "version": "0.4.0"
+      },
+      "packageZipAssetId": 711396224,
+      "packageZipSha256": "79cce29403dbc425a5db306d602c6674a89f3a84b9faf84bb906f863b439b65b",
+      "repoRef": "v0.4.0",
+      "size": 3661448,
+      "stars": 1,
+      "updated": "2026-11-05T00:01:29Z",
+      "url": "LongDarkroom/siyuan-plugin-reader@79cce29"
+    },
+    {
       "installSize": 1031039,
       "openIssues": 0,
       "package": {
@@ -58,6 +113,159 @@
       "stars": 0,
       "updated": "2026-11-04T23:09:51Z",
       "url": "unmime/siyuan-plugin-LLM-icons@c94ae2e"
+    },
+    {
+      "installSize": 552120,
+      "openIssues": 0,
+      "package": {
+        "author": "unmime",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Search App Store app icons and insert them into your document, or set them as the document icon",
+          "zh-CN": "搜索 App Store 应用图标，一键插入正文或设为文档图标",
+          "zh_CN": "搜索 App Store 应用图标，一键插入正文或设为文档图标"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "App Store Icon",
+          "zh-CN": "App Store 图标",
+          "zh_CN": "App Store 图标"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "图标",
+          "icon",
+          "app store",
+          "应用图标",
+          "emoji"
+        ],
+        "minAppVersion": "3.5.0",
+        "name": "siyuan-plugin-appstore-icon",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/unmime/siyuan-plugin-appstore-icon",
+        "version": "0.2.2"
+      },
+      "packageZipAssetId": 710984767,
+      "packageZipSha256": "c9a3c4c9b8b55f611f25a94cfbe7cda18665d935e72192ee84c1d897ac652801",
+      "repoRef": "v0.2.2",
+      "size": 510191,
+      "stars": 0,
+      "updated": "2026-11-04T21:23:06Z",
+      "url": "unmime/siyuan-plugin-appstore-icon@c9a3c4c"
+    },
+    {
+      "installSize": 522640,
+      "openIssues": 0,
+      "package": {
+        "author": "unmime",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Search 3400+ self-hosted service icons and drop one into your document or use it as the document icon",
+          "zh-CN": "搜索 3400+ 自托管服务图标，插进正文或设为文档图标",
+          "zh_CN": "搜索 3400+ 自托管服务图标，插进正文或设为文档图标"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Dashboard Icons",
+          "zh-CN": "Dashboard 图标",
+          "zh_CN": "Dashboard 图标"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "图标",
+          "icon",
+          "dashboard icons",
+          "self-hosted",
+          "nas",
+          "docker",
+          "应用图标",
+          "logo"
+        ],
+        "minAppVersion": "3.5.0",
+        "name": "siyuan-plugin-dashboard-icons",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/unmime/siyuan-plugin-dashboard-icons",
+        "version": "0.1.2"
+      },
+      "packageZipAssetId": 710981354,
+      "packageZipSha256": "9f7ac0f6acda533e3e104c828f67d3f03ac53ace8164a482df9246b1a83d9d38",
+      "repoRef": "v0.1.2",
+      "size": 167691,
+      "stars": 0,
+      "updated": "2026-11-04T21:21:52Z",
+      "url": "unmime/siyuan-plugin-dashboard-icons@9f7ac0f"
+    },
+    {
+      "installSize": 2109856,
+      "openIssues": 13,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "SiYuan AI Assistant, supports dragging blocks and tabs to get note context, enabling Q&amp;A and editing based on SiYuan note content",
+          "zh_CN": "思源笔记 AI 助手,支持拖动块、页签获取笔记上下文，实现基于思源笔记内容进行问答和编辑"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan Copilot"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://pancake.waffo.ai/store/achuan-2-fdbho4ye/product/PROD_3F7Aa7c2NQlz9KmxcgxjQ7?type=onetime&amp;currency=USD",
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ]
+        },
+        "icon": "icon.png",
+        "minAppVersion": "3.7.2",
+        "name": "siyuan-plugin-copilot",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README_en_US.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-copilot",
+        "version": "2.8.18"
+      },
+      "packageZipAssetId": 710482806,
+      "packageZipSha256": "bf064e2b39be0c2fb2a9c0548089bc1f77ca7cb9187bff579882d48946412ac3",
+      "repoRef": "v2.8.18",
+      "size": 716713,
+      "stars": 162,
+      "updated": "2026-11-04T18:27:10Z",
+      "url": "Achuan-2/siyuan-plugin-copilot@bf064e2"
     },
     {
       "installSize": 42943,
@@ -531,106 +739,6 @@
       "url": "rushplayer/siyuan-subnote-index@5063f63"
     },
     {
-      "installSize": 2062548,
-      "openIssues": 13,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "SiYuan AI Assistant, supports dragging blocks and tabs to get note context, enabling Q&amp;A and editing based on SiYuan note content",
-          "zh_CN": "思源笔记 AI 助手,支持拖动块、页签获取笔记上下文，实现基于思源笔记内容进行问答和编辑"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiYuan Copilot"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://pancake.waffo.ai/store/achuan-2-fdbho4ye/product/PROD_3F7Aa7c2NQlz9KmxcgxjQ7?type=onetime&amp;currency=USD",
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ]
-        },
-        "icon": "icon.png",
-        "minAppVersion": "3.7.2",
-        "name": "siyuan-plugin-copilot",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README_en_US.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-copilot",
-        "version": "2.8.17"
-      },
-      "packageZipAssetId": 709056640,
-      "packageZipSha256": "bec60212b0239232c432eef41491300accff3c4fe1bc97543af87bd50cbc7b82",
-      "repoRef": "v2.8.17",
-      "size": 702210,
-      "stars": 162,
-      "updated": "2026-11-04T10:07:08Z",
-      "url": "Achuan-2/siyuan-plugin-copilot@bec6021"
-    },
-    {
-      "installSize": 513795,
-      "openIssues": 0,
-      "package": {
-        "author": "unmime",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Search 3400+ self-hosted service icons and drop one into your document or use it as the document icon",
-          "zh-CN": "搜索 3400+ 自托管服务图标，插进正文或设为文档图标",
-          "zh_CN": "搜索 3400+ 自托管服务图标，插进正文或设为文档图标"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Dashboard Icons",
-          "zh-CN": "Dashboard 图标",
-          "zh_CN": "Dashboard 图标"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "图标",
-          "icon",
-          "dashboard icons",
-          "self-hosted",
-          "nas",
-          "docker",
-          "应用图标",
-          "logo"
-        ],
-        "minAppVersion": "3.5.0",
-        "name": "siyuan-plugin-dashboard-icons",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/unmime/siyuan-plugin-dashboard-icons",
-        "version": "0.1.1"
-      },
-      "packageZipAssetId": 707324367,
-      "packageZipSha256": "8e3e9991f577834ba0d2cd07104ae17886ae23684002a7c118fb0d92542e41e7",
-      "repoRef": "v0.1.1",
-      "size": 165677,
-      "stars": 0,
-      "updated": "2026-11-04T09:08:32Z",
-      "url": "unmime/siyuan-plugin-dashboard-icons@8e3e999"
-    },
-    {
       "installSize": 44195849,
       "openIssues": 20,
       "package": {
@@ -1052,59 +1160,6 @@
       "stars": 8,
       "updated": "2026-11-03T18:51:02Z",
       "url": "frostime/sy-insert-time@abe694b"
-    },
-    {
-      "installSize": 539317,
-      "openIssues": 0,
-      "package": {
-        "author": "unmime",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Search App Store app icons and insert them into your document, or set them as the document icon",
-          "zh-CN": "搜索 App Store 应用图标，一键插入正文或设为文档图标",
-          "zh_CN": "搜索 App Store 应用图标，一键插入正文或设为文档图标"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "App Store Icon",
-          "zh-CN": "App Store 图标",
-          "zh_CN": "App Store 图标"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "图标",
-          "icon",
-          "app store",
-          "应用图标",
-          "emoji"
-        ],
-        "minAppVersion": "3.5.0",
-        "name": "siyuan-plugin-appstore-icon",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/unmime/siyuan-plugin-appstore-icon",
-        "version": "0.2.1"
-      },
-      "packageZipAssetId": 706415722,
-      "packageZipSha256": "25fbe8104144438ad34265bfca0cdcbd9c8639c53e504ae3a1a5913209433786",
-      "repoRef": "v0.2.1",
-      "size": 506495,
-      "stars": 0,
-      "updated": "2026-11-03T17:49:13Z",
-      "url": "unmime/siyuan-plugin-appstore-icon@25fbe81"
     },
     {
       "installSize": 2343249,
@@ -5098,58 +5153,6 @@
       "stars": 0,
       "updated": "2026-10-26T13:37:31Z",
       "url": "FlowMorph/siyuan-comments@78c714b"
-    },
-    {
-      "installSize": 7445699,
-      "openIssues": 0,
-      "package": {
-        "author": "LongDarkroom",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "RE Reader: a standalone EPUB/PDF reader for SiYuan. Shelf, PDF &amp; EPUB rendering, word lookup with offline MDX dictionaries, machine translation, bilingual parallel reading, ink annotations, reading stats and TTS — Readest-style reading experience.",
-          "zh-CN": "RE 阅读器：思源笔记的独立 EPUB/PDF 阅读器。书架管理、PDF 与 EPUB 渲染、离线 MDX 词典划词查词、机器翻译与双语对照、本地墨迹批注、阅读时长统计与朗读（TTS），对标 Readest 阅读体验。批注数据本地独立存储，无需依赖其他插件；与「RE word」主插件配合可获得词库收藏与 AI 精读等增强能力。"
-        },
-        "displayName": {
-          "default": "RE Reader",
-          "zh-CN": "RE 阅读器"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "reader",
-          "epub",
-          "pdf",
-          "dictionary",
-          "阅读器",
-          "电子书",
-          "词典",
-          "划词",
-          "双语",
-          "墨迹"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-reader",
-        "preview": "preview.webp",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/LongDarkroom/siyuan-plugin-reader",
-        "version": "0.3.0"
-      },
-      "packageZipAssetId": 678153545,
-      "packageZipSha256": "4f1e66371871415832e39d0b73feb9d6278b20299f5ebdfd16f661f576f1b844",
-      "repoRef": "v0.3.0",
-      "size": 3623390,
-      "stars": 1,
-      "updated": "2026-10-26T12:50:07Z",
-      "url": "LongDarkroom/siyuan-plugin-reader@4f1e663"
     },
     {
       "installSize": 1366731,
