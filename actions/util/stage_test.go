@@ -71,6 +71,7 @@ func TestStageFileForPublicIndex_stripsInternalFields(t *testing.T) {
 			{
 				URL:               "owner/repo@abc1234",
 				RepoRef:           "v1.0.0",
+				Created:           "2024-01-01T00:00:00Z",
 				Updated:           "2025-01-01T00:00:00Z",
 				Stars:             10,
 				OpenIssues:        1,
@@ -116,6 +117,9 @@ func TestStageFileForPublicIndex_stripsInternalFields(t *testing.T) {
 	if !strings.Contains(got, `"repoRef":"v1.0.0"`) || !strings.Contains(got, `"icon":"icon.webp"`) ||
 		!strings.Contains(got, `"preview":""`) {
 		t.Fatalf("public index missing resource metadata: %s", got)
+	}
+	if !strings.Contains(got, `"created":"2024-01-01T00:00:00Z"`) {
+		t.Fatalf("public index missing created: %s", got)
 	}
 	if !strings.Contains(got, `"frontends":["desktop","browser-desktop"]`) {
 		t.Fatalf("public index missing theme frontends: %s", got)

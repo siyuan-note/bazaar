@@ -11,10 +11,8 @@
 package main
 
 import (
-	"bytes"
 	"cmp"
 	"context"
-	"encoding/json"
 	"errors"
 	"fmt"
 	"math"
@@ -46,7 +44,8 @@ Stage 流程：
 5. 先比 packageZipAssetId：相同则跳过；不同则取 SHA-256（优先 GitHub digest，否则下载 zip 计算）。
    内容未变（新 asset id、同一 SHA-256）则保留旧条目（不回写 asset id）并记 stage-fail，提示开发者「空更新」；
    内容变了则校验并上传 OSS（package.zip、README、声明的 preview / icon、清单 JSON）。url 的 @hash 为 SHA-256 前 7 位
-6. 按 updated 降序排序后写出 stage/*.json（键序经 marshalSortedIndentedJSON 稳定；新上架用索引时间，更新用 Release 发布时间）；
+6. 按 updated 降序排序后写出 stage/*.json（键序经 util.MarshalSortedIndentedJSON 稳定；新上架用索引时间，更新用 Release 发布时间）；
+   created（首次进入集市时间）仅新上架时取索引时间，其余路径继承旧条目；
    全部类型写完后统一应用 deprecated.json（替代包可跨类型，需读其它类型 Stage 解析包名，见 applyDeprecatedRegistry）
 7. 将本轮失败/成功同步为按仓独立 Issue（标签 stage-fail）：失败 upsert（正文未变则跳过 Edit）；
    成功入库或 asset id 未变跳过（已能正常取到 Release）则先评论说明再关闭；
@@ -300,7 +299,8 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 	for _, ownerRepo := range reposSlice {
 		g.Go(func() error {
 			repoURL := util.GitHubRepoURL(ownerRepo)
-			exactOld, checkOldName, checkOldVersion := resolveStageCheckLegacy(ownerRepo, oldStageData, oldStageByRepoName, listedRepos)
+			legacy := resolveStageCheckLegacy(ownerRepo, oldStageData, oldStageByRepoName, listedRepos)
+			exactOld, checkOldName, checkOldVersion := legacy.exact, legacy.name, legacy.version
 
 			if !shouldCheck(ownerRepo, checkRepos) {
 				if exactOld != nil {
@@ -343,11 +343,6 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 				return nil
 			}
 			packageZipAssetID := releaseInfo.PackageZipAssetID
-			// 新上架（无旧清单可继承）用 Stage 索引时间；已有包更新仍用 Release 发布时间。
-			updated := releaseInfo.Published
-			if checkOldName == "" {
-				updated = time.Now().UTC().Format(time.RFC3339)
-			}
 
 			// 快路径：asset id 未变则跳过（无需看 SHA-256）
 			// 仅同路径 exactOld：换维护者不得沿用旧 owner/repo@hash 条目
@@ -471,12 +466,25 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 				return nil
 			}
 
+			// 已确认要写入新条目，此时才计算两个时间：
+			// created 为首次进入集市时间，updated 为最近一次发布的时间。
+			// 新上架（无旧条目可继承）两者都取本轮索引时间；已有包（含换维护者）继承旧条目的 created，
+			// updated 用 Release 发布时间。created 写入后不再变化。
+			now := time.Now().UTC().Format(time.RFC3339)
+			created, updated := now, releaseInfo.Published
+			if legacy.inherit != nil {
+				created = legacy.inherit.Created
+			} else {
+				updated = now
+			}
+
 			stageReposMu.Lock()
 			stageRepos = append(stageRepos, &util.StageRepo{
 				URL:               ownerRepo + "@" + hash,
 				RepoRef:           releaseInfo.Tag,
 				Stars:             stars,
 				OpenIssues:        openIssues,
+				Created:           created,
 				Updated:           updated,
 				Size:              size,
 				InstallSize:       installSize,
@@ -519,7 +527,7 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 		rules.ClearRedundantLocales(&staged.Repos[i].Package)
 	}
 
-	data, err := marshalSortedIndentedJSON(staged)
+	data, err := util.MarshalSortedIndentedJSON(staged)
 	if err != nil {
 		logger.Fatalf("marshal stage [%s] failed: %s", packageType.StageJSONFile(), err)
 	}
@@ -598,34 +606,4 @@ func repoStats(ownerRepo string) (stars, openIssues int, ok bool, err error) {
 	openIssues = repo.GetOpenIssuesCount()
 	ok = true
 	return
-}
-
-// marshalSortedIndentedJSON 序列化为键序稳定、带缩进的 JSON。
-// v 可为 struct，或原始 JSON 字节（[]byte）；struct 会先经 json.Marshal / Unmarshal 转为 JSON 树（map[string]any），
-// 再按字典序输出键。先输出紧凑 JSON，再用 json.Indent 缩进，避免 json.MarshalIndent 对嵌套 any 的缩进错乱。
-// SetEscapeHTML(false) 避免将 & 等字符转为 \uXXXX。
-func marshalSortedIndentedJSON(v any) ([]byte, error) {
-	data, ok := v.([]byte)
-	if !ok {
-		var err error
-		data, err = json.Marshal(v)
-		if err != nil {
-			return nil, err
-		}
-	}
-	var tree any
-	if err := json.Unmarshal(data, &tree); err != nil {
-		return nil, err
-	}
-	var compact bytes.Buffer
-	enc := json.NewEncoder(&compact)
-	enc.SetEscapeHTML(false)
-	if err := enc.Encode(tree); err != nil {
-		return nil, err
-	}
-	var buf bytes.Buffer
-	if err := json.Indent(&buf, bytes.TrimSpace(compact.Bytes()), "", "  "); err != nil {
-		return nil, err
-	}
-	return buf.Bytes(), nil
 }
