@@ -1,8 +1,59 @@
 {
   "repos": [
     {
+      "created": "2026-11-03T16:13:14Z",
+      "installSize": 105208,
+      "openIssues": 0,
+      "package": {
+        "author": "370958248",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "按笔记本或文档目录排除本设备后续同步，支持确定排除、重置、取消和明确的保存状态。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "指定同步范围"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "同步",
+          "笔记本",
+          "同步范围",
+          "排除同步",
+          "本地保留",
+          "sync",
+          "syncignore",
+          "文档目录",
+          "子文档"
+        ],
+        "minAppVersion": "3.8.9",
+        "name": "notebook-sync-scope",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/370958248/notebook-sync-scope",
+        "version": "0.2.1"
+      },
+      "packageZipAssetId": 718036611,
+      "packageZipSha256": "9d4cb4e5ed3febfae66aadee703d31a4d3215ff96525f047d8ea963be6422566",
+      "repoRef": "0.2.1",
+      "size": 77937,
+      "stars": 0,
+      "updated": "2026-11-06T17:57:27Z",
+      "url": "370958248/notebook-sync-scope@9d4cb4e"
+    },
+    {
       "created": "2026-11-04T10:11:22Z",
-      "installSize": 1109905,
+      "installSize": 1112255,
       "openIssues": 0,
       "package": {
         "author": "ShiShiBits",
@@ -52,15 +103,162 @@
           "zh-CN": "README.zh-CN.md"
         },
         "url": "https://github.com/ShiShiBits1/siyuan-workbench",
-        "version": "1.12.0"
+        "version": "1.12.1"
       },
-      "packageZipAssetId": 716915784,
-      "packageZipSha256": "3f71f73d2587c879b48405dd99fe3ecea91422d005129534681722f1bbf18cd5",
-      "repoRef": "v1.12.0",
-      "size": 607694,
+      "packageZipAssetId": 717857820,
+      "packageZipSha256": "6783aaebfa6f3ca47f50e160e48e573a4bccd3b16fd7abecc86d9adcbde9f064",
+      "repoRef": "v1.12.1",
+      "size": 608484,
       "stars": 0,
-      "updated": "2026-11-06T11:20:35Z",
-      "url": "ShiShiBits1/siyuan-workbench@3f71f73"
+      "updated": "2026-11-06T16:56:51Z",
+      "url": "ShiShiBits1/siyuan-workbench@6783aae"
+    },
+    {
+      "created": "2026-10-31T13:42:39Z",
+      "installSize": 1078228,
+      "openIssues": 0,
+      "package": {
+        "author": "ttChen",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "Insert Zotero citations into SiYuan through ZBridge (a drop-in replacement for the Zotero Debug Bridge). Text follows the CSL style exactly; right-click a citation to switch format, edit its references, or change the document style.",
+          "zh_CN": "通过 ZBridge（可直接替代 Zotero Debug Bridge）在思源里插入文献引用。正文文本严格按 CSL 样式输出；右键引用可改形态、编辑该处文献（可增可删）、切换全局 CSL 样式；文末自动生成参考文献表，点击引用跳回 Zotero。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Zotero Cite",
+          "zh_CN": "Zotero 文献引用"
+        },
+        "frontends": [
+          "desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "zotero",
+          "citation",
+          "reference",
+          "csl",
+          "bibliography",
+          "文献",
+          "参考文献"
+        ],
+        "minAppVersion": "3.1.0",
+        "name": "siyuan-plugin-zotero-cite",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README_en.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/taotaochen86/siyuan-plugin-zotero-cite",
+        "version": "1.2.35"
+      },
+      "packageZipAssetId": 717660373,
+      "packageZipSha256": "98a1d0b2affb425495d2863773a498f480c55b70b2d3832c5f3d17f06ca0c3ec",
+      "repoRef": "v1.2.35",
+      "size": 876188,
+      "stars": 1,
+      "updated": "2026-11-06T15:50:12Z",
+      "url": "taotaochen86/siyuan-plugin-zotero-cite@98a1d0b"
+    },
+    {
+      "created": "2026-11-02T01:20:16Z",
+      "installSize": 911691,
+      "openIssues": 0,
+      "package": {
+        "author": "ccztao",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Mankeep — relationships, dated organization history, birthdays and notes in SiYuan: one person, one document, backed by a native database.",
+          "zh_CN": "Mankeep：在思源笔记里管理联系人、关系、组织经历、生日与备注；一人一文档，原生数据库作主干。"
+        },
+        "displayName": {
+          "default": "Mankeep人脉"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "Mankeep",
+          "人脉",
+          "联系人",
+          "通讯录",
+          "CRM",
+          "生日",
+          "关系"
+        ],
+        "minAppVersion": "3.8.5",
+        "name": "siyuan-mankeep",
+        "preview": "preview.jpg",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/ccztao/siyuan-mankeep",
+        "version": "0.49.1"
+      },
+      "packageZipAssetId": 717374945,
+      "packageZipSha256": "359886d830afdb74b30a9ac2648c86a8aeba3f964249092c70d3ad2fdec3ca46",
+      "repoRef": "0.49.1",
+      "size": 372783,
+      "stars": 1,
+      "updated": "2026-11-06T14:10:04Z",
+      "url": "ccztao/siyuan-mankeep@359886d"
+    },
+    {
+      "created": "2026-11-06T10:54:51Z",
+      "installSize": 2161266,
+      "openIssues": 0,
+      "package": {
+        "author": "jiangeeeeee",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "android",
+          "ios",
+          "harmony"
+        ],
+        "description": {
+          "default": "Let ideas flow in ink. Pressure-sensitive writing, note annotations, and a freeform whiteboard.",
+          "zh_CN": "落笔有形，思绪有迹。压感手写、正文批注与自由白板。"
+        },
+        "displayName": {
+          "default": "源生笔迹"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-native-handwriting",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/jiangeeeeee/siyuan-native-handwriting",
+        "version": "0.14.5"
+      },
+      "packageZipAssetId": 717057831,
+      "packageZipSha256": "21c23aad523d32214fd9b3048b12a0640ba0be705674de22085a99228f1dcd31",
+      "repoRef": "v0.14.5",
+      "size": 510100,
+      "stars": 0,
+      "updated": "2026-11-06T12:13:36Z",
+      "url": "jiangeeeeee/siyuan-native-handwriting@21c23aa"
     },
     {
       "created": "2026-11-06T11:11:31Z",
@@ -158,52 +356,6 @@
       "stars": 2,
       "updated": "2026-11-06T11:05:13Z",
       "url": "Solathis/siyuan-recallgen@0a025d8"
-    },
-    {
-      "created": "2026-11-06T10:54:51Z",
-      "installSize": 2149385,
-      "openIssues": 0,
-      "package": {
-        "author": "jiangeeeeee",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "android",
-          "ios",
-          "harmony"
-        ],
-        "description": {
-          "default": "Let ideas flow in ink. Pressure-sensitive writing, note annotations, and a freeform whiteboard.",
-          "zh_CN": "落笔有形，思绪有迹。压感手写、正文批注与自由白板。"
-        },
-        "displayName": {
-          "default": "源生笔迹"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-native-handwriting",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/jiangeeeeee/siyuan-native-handwriting",
-        "version": "0.14.4"
-      },
-      "packageZipAssetId": 716310807,
-      "packageZipSha256": "60a02638169d1a64617b17bc9c7dfbee45b61463182bc53da883144e451c4c19",
-      "repoRef": "v0.14.4",
-      "size": 506755,
-      "stars": 0,
-      "updated": "2026-11-06T10:54:46Z",
-      "url": "jiangeeeeee/siyuan-native-handwriting@60a0263"
     },
     {
       "created": "2026-08-20T15:13:37Z",
@@ -1401,107 +1553,6 @@
       "url": "unmime/siyuan-plugin-dashboard-icons@9f7ac0f"
     },
     {
-      "created": "2026-10-31T13:42:39Z",
-      "installSize": 1073258,
-      "openIssues": 0,
-      "package": {
-        "author": "ttChen",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Insert Zotero citations into SiYuan via the Zotero debug bridge. Text follows the CSL style exactly; right-click a citation to switch format, edit its references, or change the document style.",
-          "zh_CN": "通过 Zotero debug bridge 在思源里插入文献引用。正文文本严格按 CSL 样式输出；右键引用可改形态、编辑该处文献（可增可删）、切换全局 CSL 样式；文末自动生成参考文献表，点击引用跳回 Zotero。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Zotero Cite",
-          "zh_CN": "Zotero 文献引用"
-        },
-        "frontends": [
-          "desktop"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "zotero",
-          "citation",
-          "reference",
-          "csl",
-          "bibliography",
-          "文献",
-          "参考文献"
-        ],
-        "minAppVersion": "3.1.0",
-        "name": "siyuan-plugin-zotero-cite",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README_en.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/taotaochen86/siyuan-plugin-zotero-cite",
-        "version": "1.2.34"
-      },
-      "packageZipAssetId": 709922341,
-      "packageZipSha256": "8b8ab111db2585d5fa389e0a6b15bb69a44af503ed8b8926eee6942f57177a2d",
-      "repoRef": "v1.2.34",
-      "size": 874334,
-      "stars": 1,
-      "updated": "2026-11-04T15:09:00Z",
-      "url": "taotaochen86/siyuan-plugin-zotero-cite@8b8ab11"
-    },
-    {
-      "created": "2026-11-02T01:20:16Z",
-      "installSize": 721782,
-      "openIssues": 0,
-      "package": {
-        "author": "ccztao",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Mankeep — relationships, dated organization history, birthdays and notes in SiYuan: one person, one document, backed by a native database.",
-          "zh_CN": "Mankeep：在思源笔记里管理联系人、关系、组织经历、生日与备注；一人一文档，原生数据库作主干。"
-        },
-        "displayName": {
-          "default": "Mankeep人脉"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "Mankeep",
-          "人脉",
-          "联系人",
-          "通讯录",
-          "CRM",
-          "生日",
-          "关系"
-        ],
-        "minAppVersion": "3.8.5",
-        "name": "siyuan-mankeep",
-        "preview": "preview.jpg",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/ccztao/siyuan-mankeep",
-        "version": "0.40.1"
-      },
-      "packageZipAssetId": 709580569,
-      "packageZipSha256": "6499626078edbb099c1bd5a98aa472caf8c42bc26d09397fdbaed34cfabe91e1",
-      "repoRef": "0.40.1",
-      "size": 313914,
-      "stars": 1,
-      "updated": "2026-11-04T13:22:20Z",
-      "url": "ccztao/siyuan-mankeep@6499626"
-    },
-    {
       "created": "2026-10-24T07:15:28Z",
       "installSize": 1071584,
       "openIssues": 0,
@@ -2086,55 +2137,6 @@
       "stars": 1,
       "updated": "2026-11-03T16:49:01Z",
       "url": "taotaochen86/siyuan-xref@e52026e"
-    },
-    {
-      "created": "2026-11-03T16:13:14Z",
-      "installSize": 85451,
-      "openIssues": 0,
-      "package": {
-        "author": "370958248",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "按笔记本排除本设备的后续同步及数据快照，支持规则预览、备份与撤回。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "指定同步范围"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "同步",
-          "笔记本",
-          "同步范围",
-          "排除同步",
-          "本地保留",
-          "sync",
-          "syncignore"
-        ],
-        "minAppVersion": "3.8.9",
-        "name": "notebook-sync-scope",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/370958248/notebook-sync-scope",
-        "version": "0.1.1"
-      },
-      "packageZipAssetId": 706154586,
-      "packageZipSha256": "3e7e7bad887ba6ca368b427ea19b2d7df3db18c376035ac4138f3fb8f98bb9d1",
-      "repoRef": "0.1.1",
-      "size": 64890,
-      "stars": 0,
-      "updated": "2026-11-03T16:13:09Z",
-      "url": "370958248/notebook-sync-scope@3e7e7ba"
     },
     {
       "created": "2026-11-03T16:09:40Z",
