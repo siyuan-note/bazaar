@@ -28,6 +28,7 @@ type StageFile struct {
 type StageRepo struct {
 	URL               string        `json:"url"`
 	RepoRef           string        `json:"repoRef,omitempty"`
+	Created           string        `json:"created"` // 首次进入集市的时间（RFC3339）；写入后不再改变，与 updated（最近一次发布）不同
 	Updated           string        `json:"updated"`
 	Stars             int           `json:"stars"`
 	OpenIssues        int           `json:"openIssues"`
@@ -47,6 +48,7 @@ type StageIndexFile struct {
 type StageIndexRepo struct {
 	URL         string        `json:"url"`
 	RepoRef     string        `json:"repoRef,omitempty"`
+	Created     string        `json:"created"`
 	Updated     string        `json:"updated"`
 	Stars       int           `json:"stars"`
 	OpenIssues  int           `json:"openIssues"`
@@ -63,6 +65,7 @@ func (f StageFile) ForPublicIndex() StageIndexFile {
 		out.Repos[i] = StageIndexRepo{
 			URL:         repo.URL,
 			RepoRef:     repo.RepoRef,
+			Created:     repo.Created,
 			Updated:     repo.Updated,
 			Stars:       repo.Stars,
 			OpenIssues:  repo.OpenIssues,
