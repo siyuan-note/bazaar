@@ -55,7 +55,7 @@ func applyDeprecatedRegistry(root string, stagedTypes []rules.PackageType, regis
 			rules.ClearEmptyFunding(&repos[i].Package)
 			rules.ClearRedundantLocales(&repos[i].Package)
 		}
-		data, err := marshalSortedIndentedJSON(util.StageFile{Repos: repos})
+		data, err := util.MarshalSortedIndentedJSON(util.StageFile{Repos: repos})
 		if err != nil {
 			return fmt.Errorf("marshal stage [%s]: %w", packageType.StageJSONFile(), err)
 		}
