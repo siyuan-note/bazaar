@@ -45,6 +45,116 @@
       "url": "lsqingfeng/siyuan-ai-studio@ad7b1f9"
     },
     {
+      "created": "2026-08-20T15:13:37Z",
+      "installSize": 1370871,
+      "openIssues": 1,
+      "package": {
+        "author": "ccriss",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "android",
+          "ios",
+          "harmony",
+          "docker"
+        ],
+        "description": {
+          "default": "A GTD task management plugin inspired by Things, for SiYuan Note",
+          "zh-CN": "灵感来自 Things 的 GTD 任务管理插件"
+        },
+        "displayName": {
+          "default": "Things",
+          "zh-CN": "Things 任务管理"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "android",
+          "ios",
+          "harmony",
+          "docker"
+        ],
+        "keywords": [
+          "things",
+          "task",
+          "gtd",
+          "todo",
+          "任务管理",
+          "待办事项",
+          "人工智能",
+          "AI assistant"
+        ],
+        "minAppVersion": "3.8.8",
+        "name": "siyuan-things",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en": "README.en.md"
+        },
+        "url": "https://github.com/chengslog/siyuan-things",
+        "version": "0.11.3"
+      },
+      "packageZipAssetId": 720364932,
+      "packageZipSha256": "7ff5533d6e05b0b7b51b0172ed5ba8a34b0c0591cb541289b2cd2e20a601d5d5",
+      "repoRef": "v0.11.3",
+      "size": 605893,
+      "stars": 5,
+      "updated": "2026-11-07T10:27:08Z",
+      "url": "chengslog/siyuan-things@7ff5533"
+    },
+    {
+      "created": "2026-11-07T07:20:52Z",
+      "installSize": 731986,
+      "openIssues": 0,
+      "package": {
+        "author": "chings-yan",
+        "backends": [
+          "windows"
+        ],
+        "description": {
+          "default": "Bring Hermes collaboration into SiYuan by linking documents, conversations, and tasks in one workspace. Requires Hermes to be installed first.",
+          "zh-CN": "让 Hermes 融入思源，把文档、对话和任务串成一个工作空间。使用前需先安装 Hermes。"
+        },
+        "displayName": {
+          "default": "Hermes Note Assistant",
+          "zh-CN": "Hermes 笔记助手"
+        },
+        "frontends": [
+          "desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "AI",
+          "context",
+          "collaboration"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-ai-collab",
+        "preview": "",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/chings-yan/siyuan-ai-work",
+        "version": "0.3.28"
+      },
+      "packageZipAssetId": 720347166,
+      "packageZipSha256": "5b71616e86274b2ba6125c5eb953a24f4582f37c7d3295c40f7111d84fb5b7d9",
+      "repoRef": "v0.3.28",
+      "size": 195252,
+      "stars": 0,
+      "updated": "2026-11-07T10:20:27Z",
+      "url": "chings-yan/siyuan-ai-work@5b71616"
+    },
+    {
       "created": "2026-11-07T10:19:07Z",
       "installSize": 97283,
       "openIssues": 0,
@@ -147,47 +257,147 @@
       "url": "famotime/siyuan-task-list@679fe0a"
     },
     {
-      "created": "2026-11-07T07:20:52Z",
-      "installSize": 756809,
+      "created": "2025-12-25T06:51:43Z",
+      "installSize": 344551,
       "openIssues": 0,
       "package": {
-        "author": "chings-yan",
+        "author": "取舍",
         "backends": [
-          "windows"
+          "all"
         ],
         "description": {
-          "default": "Chat with Hermes in SiYuan, find and quote notes, and build a workspace by linking documents with the task plugin.",
-          "zh-CN": "在思源里与 Hermes 对话，查找和引用笔记，同时关联文档与任务插件，打造工作空间。"
+          "default": "Lock notebooks and docs with password or gesture, plus idle auto-lock.",
+          "zh_CN": "支持文档/笔记本加锁（密码/手势）与无操作自动锁屏。"
         },
         "displayName": {
-          "default": "Hermes Note Assistant",
-          "zh-CN": "Hermes 笔记助手"
+          "default": "SiYuan Lock",
+          "zh_CN": "隐私保护"
         },
         "frontends": [
-          "desktop"
+          "all"
         ],
-        "icon": "",
+        "icon": "icon.png",
         "keywords": [
-          "AI",
-          "context",
-          "collaboration"
+          "加锁",
+          "手势",
+          "锁屏"
         ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-ai-collab",
-        "preview": "",
+        "minAppVersion": "2.9.0",
+        "name": "siyuan-plugin-lock",
+        "preview": "preview.png",
         "readme": {
-          "default": "README.md"
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
         },
-        "url": "https://github.com/chings-yan/siyuan-ai-work",
-        "version": "0.3.26"
+        "url": "https://github.com/b8l8u8e8/siyuan-plugin-lock",
+        "version": "0.3.9"
       },
-      "packageZipAssetId": 719940383,
-      "packageZipSha256": "adb4c7a52a26ee8e8469b924ac4a3aa654ddb6996de05222f3399e077773b267",
-      "repoRef": "v0.3.26",
-      "size": 200116,
-      "stars": 0,
-      "updated": "2026-11-07T07:20:52Z",
-      "url": "chings-yan/siyuan-ai-work@adb4c7a"
+      "packageZipAssetId": 720238648,
+      "packageZipSha256": "50c6a6eaba8615c2d2783170003b31c01eb6dcbbb60bb33adf3665313be791a9",
+      "repoRef": "v0.3.9",
+      "size": 172508,
+      "stars": 15,
+      "updated": "2026-11-07T09:32:16Z",
+      "url": "b8l8u8e8/siyuan-plugin-lock@50c6a6e"
+    },
+    {
+      "created": "2026-02-25T14:53:20Z",
+      "installSize": 251554,
+      "openIssues": 0,
+      "package": {
+        "author": "取舍",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Emoji Market brings a massive icon library to SiYuan Notes, allowing you to search, replace document icons, or insert emojis directly from the emoji panel.",
+          "zh_CN": "表情市场为思源笔记提供海量图标，在表情面板中即可搜索替换文档图标或插入表情。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Emoji Market",
+          "zh_CN": "表情市场"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "图标",
+          "表情"
+        ],
+        "minAppVersion": "2.9.0",
+        "name": "siyuan-plugin-emoji-market",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/b8l8u8e8/siyuan-plugin-emoji-market",
+        "version": "0.2.3"
+      },
+      "packageZipAssetId": 720195963,
+      "packageZipSha256": "299360a1098e6f4ff1c79336e1bc8ac5d93a25431813be083320c49464016765",
+      "repoRef": "v0.2.3",
+      "size": 117587,
+      "stars": 10,
+      "updated": "2026-11-07T09:12:39Z",
+      "url": "b8l8u8e8/siyuan-plugin-emoji-market@299360a"
+    },
+    {
+      "created": "2024-01-13T03:28:08Z",
+      "installSize": 586808,
+      "openIssues": 1,
+      "package": {
+        "author": "makediff",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Sync all your highlights to SiYuan easily and automatically",
+          "zh_CN": "同步网页划线高亮、批注、笔记和剪藏到思源，搭建属于自己的知识库"
+        },
+        "displayName": {
+          "default": "WuCai Highlights",
+          "zh_CN": "五彩"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://wucainote.com"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "五彩",
+          "wucai",
+          "highlight",
+          "网页划线",
+          "网页笔记",
+          "网页批注",
+          "网页剪藏",
+          "网页高亮",
+          "高亮批注"
+        ],
+        "minAppVersion": "2.12.1",
+        "name": "siyuan-wucai",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/makediff/siyuan-wucai",
+        "version": "26.11.7"
+      },
+      "packageZipAssetId": 720086842,
+      "packageZipSha256": "bdf441227619c0c2672d7056c7a036b8ea473f4db16c8535b11c16015cfc0861",
+      "repoRef": "26.11.7",
+      "size": 445478,
+      "stars": 6,
+      "updated": "2026-11-07T08:20:29Z",
+      "url": "makediff/siyuan-wucai@bdf4412"
     },
     {
       "created": "2026-11-07T07:11:17Z",
@@ -863,73 +1073,6 @@
       "stars": 2,
       "updated": "2026-11-06T11:05:13Z",
       "url": "Solathis/siyuan-recallgen@0a025d8"
-    },
-    {
-      "created": "2026-08-20T15:13:37Z",
-      "installSize": 1285958,
-      "openIssues": 1,
-      "package": {
-        "author": "ccriss",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "android",
-          "ios",
-          "harmony",
-          "docker"
-        ],
-        "description": {
-          "default": "A GTD task management plugin inspired by Things, for SiYuan Note",
-          "zh-CN": "灵感来自 Things 的 GTD 任务管理插件"
-        },
-        "displayName": {
-          "default": "Things",
-          "zh-CN": "Things 任务管理"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "android",
-          "ios",
-          "harmony",
-          "docker"
-        ],
-        "keywords": [
-          "things",
-          "task",
-          "gtd",
-          "todo",
-          "任务管理",
-          "待办事项",
-          "人工智能",
-          "AI assistant"
-        ],
-        "minAppVersion": "3.8.8",
-        "name": "siyuan-things",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en": "README.en.md"
-        },
-        "url": "https://github.com/chengslog/siyuan-things",
-        "version": "0.7.1"
-      },
-      "packageZipAssetId": 716264448,
-      "packageZipSha256": "39364c082acc02c066a971da4c51809d71fb288f97dbeb0c232d79b53b963454",
-      "repoRef": "v0.7.1",
-      "size": 577631,
-      "stars": 5,
-      "updated": "2026-11-06T07:10:25Z",
-      "url": "chengslog/siyuan-things@39364c0"
     },
     {
       "created": "2026-09-25T14:09:20Z",
@@ -19584,48 +19727,6 @@
       "url": "frostime/sy-titled-link@b8b812c"
     },
     {
-      "created": "2025-12-25T06:51:43Z",
-      "installSize": 344541,
-      "openIssues": 0,
-      "package": {
-        "author": "取舍",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Lock notebooks and docs with password or gesture, plus idle auto-lock.",
-          "zh_CN": "支持文档/笔记本加锁（密码/手势）与无操作自动锁屏。"
-        },
-        "displayName": {
-          "default": "SiYuan Lock",
-          "zh_CN": "隐私保护"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "加锁",
-          "手势",
-          "锁屏"
-        ],
-        "minAppVersion": "2.9.0",
-        "name": "siyuan-plugin-lock",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/b8l8u8e8/siyuan-plugin-lock",
-        "version": "0.3.8"
-      },
-      "packageZipAssetId": 474281150,
-      "packageZipSha256": "40e25f9f4dc8808ad881d85d8dc6477fb6d45b6bb91f1991d77527fa29436430",
-      "repoRef": "v0.3.8",
-      "size": 172214,
-      "stars": 15,
-      "updated": "2026-07-12T09:44:13Z",
-      "url": "b8l8u8e8/siyuan-plugin-lock@40e25f9"
-    },
-    {
       "created": "2026-01-04T10:40:09Z",
       "installSize": 771583,
       "openIssues": 3,
@@ -20995,48 +21096,6 @@
       "url": "aluluvip/siyuan-alioss-image-uploader@c655281"
     },
     {
-      "created": "2026-02-25T14:53:20Z",
-      "installSize": 248450,
-      "openIssues": 0,
-      "package": {
-        "author": "取舍",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Emoji Market brings a massive icon library to SiYuan Notes, allowing you to search, replace document icons, or insert emojis directly from the emoji panel.",
-          "zh_CN": "表情市场为思源笔记提供海量图标，在表情面板中即可搜索替换文档图标或插入表情。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Emoji Market",
-          "zh_CN": "表情市场"
-        },
-        "frontends": [
-          "all"
-        ],
-        "keywords": [
-          "图标",
-          "表情"
-        ],
-        "minAppVersion": "2.9.0",
-        "name": "siyuan-plugin-emoji-market",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/b8l8u8e8/siyuan-plugin-emoji-market",
-        "version": "0.2.2"
-      },
-      "packageZipAssetId": 409206875,
-      "packageZipSha256": "a7a5ca6ed4b437cc6ae7186bad3e7fdfc2d97bd1cbd4c0007789c303cf33f4ed",
-      "repoRef": "v0.2.2",
-      "size": 116738,
-      "stars": 9,
-      "updated": "2026-04-30T16:42:08Z",
-      "url": "b8l8u8e8/siyuan-plugin-emoji-market@a7a5ca6"
-    },
-    {
       "created": "2025-11-10T06:56:10Z",
       "installSize": 55901,
       "openIssues": 0,
@@ -21681,59 +21740,6 @@
       "stars": 1,
       "updated": "2026-03-28T13:59:01Z",
       "url": "mingming-cn/siyuan-note-partition@0c827b1"
-    },
-    {
-      "created": "2024-01-13T03:28:08Z",
-      "installSize": 517676,
-      "openIssues": 1,
-      "package": {
-        "author": "makediff",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Sync all your highlights to SiYuan easily and automatically",
-          "zh_CN": "同步网页划线高亮、批注、笔记和剪藏到思源，搭建属于自己的知识库"
-        },
-        "displayName": {
-          "default": "WuCai Highlights",
-          "zh_CN": "五彩"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://www.dotalk.cn/product/wucai"
-          ]
-        },
-        "keywords": [
-          "五彩",
-          "wucai",
-          "highlight",
-          "网页划线",
-          "网页笔记",
-          "网页批注",
-          "网页剪藏",
-          "网页高亮",
-          "高亮批注"
-        ],
-        "minAppVersion": "2.12.1",
-        "name": "siyuan-wucai",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/makediff/siyuan-wucai",
-        "version": "26.3.22"
-      },
-      "packageZipAssetId": 378950176,
-      "packageZipSha256": "dc251f6e00a7deb2299b005a95b3977c55b06cdf32b10026eebdcfa59799886e",
-      "repoRef": "26.3.22",
-      "size": 375236,
-      "stars": 6,
-      "updated": "2026-03-22T05:59:08Z",
-      "url": "makediff/siyuan-wucai@dc251f6"
     },
     {
       "created": "2026-03-01T06:02:21Z",
