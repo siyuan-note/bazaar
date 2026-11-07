@@ -1,6 +1,269 @@
 {
   "repos": [
     {
+      "created": "2026-11-07T07:11:17Z",
+      "installSize": 2316661,
+      "openIssues": 0,
+      "package": {
+        "author": "Jhpz",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Enhance the online editing experience for multiple people at SiYuan",
+          "zh-CN": "提升思源多人在线编辑体验"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Chord",
+          "zh-CN": "和弦"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/mrjhpz"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "协作",
+          "在线编辑",
+          "共享光标",
+          "collaboration",
+          "online editing",
+          "share cursor"
+        ],
+        "minAppVersion": "3.8.9",
+        "name": "siyuan-plugin-chord",
+        "preview": "",
+        "readme": {
+          "default": "README.en.md",
+          "zh-CN": "README.md"
+        },
+        "url": "https://github.com/JHPZ/siyuan-plugin-chord",
+        "version": "1.0.0"
+      },
+      "packageZipAssetId": 719926779,
+      "packageZipSha256": "d71fd3576a6a126006fd4e531988b64b19ef284dabee762ccf8eb60ee46cc518",
+      "repoRef": "v1.0.0",
+      "size": 1968824,
+      "stars": 0,
+      "updated": "2026-11-07T07:11:17Z",
+      "url": "JHPZ/siyuan-plugin-chord@d71fd35"
+    },
+    {
+      "created": "2026-11-07T04:20:09Z",
+      "installSize": 95223,
+      "openIssues": 0,
+      "package": {
+        "author": "370958248",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "在思源自带全局关系图中隐藏指定笔记本或文档分支，保留原文与真实引用。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "全局关系过滤"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "全局关系图",
+          "关系图过滤",
+          "隐藏笔记本",
+          "隐藏分支",
+          "原生关系图",
+          "graph",
+          "filter"
+        ],
+        "minAppVersion": "3.8.9",
+        "name": "native-graph-filter",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/370958248/native-graph-filter",
+        "version": "0.2.0"
+      },
+      "packageZipAssetId": 718335781,
+      "packageZipSha256": "5b931425ebc14098bfb99e57f5f41830dd3e7066854ca24162c326e459946a7c",
+      "repoRef": "0.2.0",
+      "size": 63309,
+      "stars": 0,
+      "updated": "2026-11-07T04:20:09Z",
+      "url": "370958248/native-graph-filter@5b93142"
+    },
+    {
+      "created": "2026-10-16T08:11:32Z",
+      "installSize": 2007863,
+      "openIssues": 0,
+      "package": {
+        "author": "Lisontowind",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "Offline image compression with per-image settings, quick compression, attachment totals and simplified image filenames.",
+          "zh-CN": "本地离线压缩图片，支持逐图配置、快捷压缩、附件大小统计与图片名称简化，同步更新共享引用。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Image Compression",
+          "zh-CN": "图片压缩"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "image",
+          "compression",
+          "图片压缩",
+          "附件重命名"
+        ],
+        "minAppVersion": "3.8.5",
+        "name": "sy-imgcompression",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/lisontowind/sy-imgcompression",
+        "version": "0.1.4"
+      },
+      "packageZipAssetId": 719507379,
+      "packageZipSha256": "3a751ebec9206b61ce4037ba44bf11766f09ab663d4e479d032ad8b3b91e16ea",
+      "repoRef": "0.1.4",
+      "size": 844073,
+      "stars": 2,
+      "updated": "2026-11-07T03:45:49Z",
+      "url": "lisontowind/sy-imgcompression@3a751eb"
+    },
+    {
+      "created": "2026-10-31T13:42:39Z",
+      "installSize": 1113530,
+      "openIssues": 0,
+      "package": {
+        "author": "ttChen",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "Insert Zotero citations into SiYuan through ZBridge (a drop-in replacement for the Zotero Debug Bridge). Text follows the CSL style exactly; right-click a citation to switch format, edit its references, or change the document style.",
+          "zh_CN": "通过 ZBridge（可直接替代 Zotero Debug Bridge）在思源里插入文献引用。正文文本严格按 CSL 样式输出；右键引用可改形态、编辑该处文献（可增可删）、切换全局 CSL 样式；文末自动生成参考文献表，点击引用跳回 Zotero。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Zotero Cite",
+          "zh_CN": "Zotero 文献引用"
+        },
+        "frontends": [
+          "desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "zotero",
+          "citation",
+          "reference",
+          "csl",
+          "bibliography",
+          "文献",
+          "参考文献"
+        ],
+        "minAppVersion": "3.1.0",
+        "name": "siyuan-plugin-zotero-cite",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README_en.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/taotaochen86/siyuan-plugin-zotero-cite",
+        "version": "1.2.37"
+      },
+      "packageZipAssetId": 719335986,
+      "packageZipSha256": "86da761e5d2f6c9f87253687750efa454c5ba3d430d7cc1824c289a05905d3db",
+      "repoRef": "v1.2.37",
+      "size": 888349,
+      "stars": 1,
+      "updated": "2026-11-07T02:25:35Z",
+      "url": "taotaochen86/siyuan-plugin-zotero-cite@86da761"
+    },
+    {
+      "created": "2026-10-24T06:07:15Z",
+      "installSize": 8444737,
+      "openIssues": 1,
+      "package": {
+        "author": "LongDarkroom",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "RE Reader: a standalone EPUB/PDF reader for SiYuan. Shelf, PDF &amp; EPUB rendering, word lookup with offline MDX dictionaries, machine translation, bilingual parallel reading, ink annotations, reading stats and TTS — plus an AI reading assistant that reads the current chapter, cites passages and saves answers as notes. Readest-style reading experience.",
+          "zh-CN": "RE 阅读器：思源笔记的独立 EPUB/PDF 阅读器。书架管理、PDF 与 EPUB 渲染、离线 MDX 词典划词查词、机器翻译与双语对照、本地墨迹批注、阅读时长统计与朗读（TTS），并内置 AI 阅读助手：按章节提问、引用回跳、一键存为思源笔记。批注、进度与设置全部本地独立存储。"
+        },
+        "displayName": {
+          "default": "RE Reader",
+          "zh-CN": "RE 阅读器"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "reader",
+          "epub",
+          "pdf",
+          "dictionary",
+          "阅读器",
+          "电子书",
+          "词典",
+          "划词",
+          "双语",
+          "墨迹"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-reader",
+        "preview": "preview.webp",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/LongDarkroom/siyuan-plugin-reader",
+        "version": "0.6.0"
+      },
+      "packageZipAssetId": 719069528,
+      "packageZipSha256": "ed563e214457d65ae09a186f4e889dded066bd91df61e214db63b82e270c2566",
+      "repoRef": "v0.6.0",
+      "size": 4162166,
+      "stars": 2,
+      "updated": "2026-11-07T00:25:37Z",
+      "url": "LongDarkroom/siyuan-plugin-reader@ed563e2"
+    },
+    {
       "created": "2026-11-03T07:56:24Z",
       "installSize": 231600,
       "openIssues": 0,
@@ -218,57 +481,6 @@
       "stars": 0,
       "updated": "2026-11-06T16:56:51Z",
       "url": "ShiShiBits1/siyuan-workbench@6783aae"
-    },
-    {
-      "created": "2026-10-31T13:42:39Z",
-      "installSize": 1078228,
-      "openIssues": 0,
-      "package": {
-        "author": "ttChen",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Insert Zotero citations into SiYuan through ZBridge (a drop-in replacement for the Zotero Debug Bridge). Text follows the CSL style exactly; right-click a citation to switch format, edit its references, or change the document style.",
-          "zh_CN": "通过 ZBridge（可直接替代 Zotero Debug Bridge）在思源里插入文献引用。正文文本严格按 CSL 样式输出；右键引用可改形态、编辑该处文献（可增可删）、切换全局 CSL 样式；文末自动生成参考文献表，点击引用跳回 Zotero。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Zotero Cite",
-          "zh_CN": "Zotero 文献引用"
-        },
-        "frontends": [
-          "desktop"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "zotero",
-          "citation",
-          "reference",
-          "csl",
-          "bibliography",
-          "文献",
-          "参考文献"
-        ],
-        "minAppVersion": "3.1.0",
-        "name": "siyuan-plugin-zotero-cite",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README_en.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/taotaochen86/siyuan-plugin-zotero-cite",
-        "version": "1.2.35"
-      },
-      "packageZipAssetId": 717660373,
-      "packageZipSha256": "98a1d0b2affb425495d2863773a498f480c55b70b2d3832c5f3d17f06ca0c3ec",
-      "repoRef": "v1.2.35",
-      "size": 876188,
-      "stars": 1,
-      "updated": "2026-11-06T15:50:12Z",
-      "url": "taotaochen86/siyuan-plugin-zotero-cite@98a1d0b"
     },
     {
       "created": "2026-11-02T01:20:16Z",
@@ -865,62 +1077,6 @@
       "stars": 4,
       "updated": "2026-11-06T05:00:21Z",
       "url": "vilifetime/siyuan-plugin-caldav-sync@74393c2"
-    },
-    {
-      "created": "2026-10-24T06:07:15Z",
-      "installSize": 8257943,
-      "openIssues": 1,
-      "package": {
-        "author": "LongDarkroom",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "RE Reader: a standalone EPUB/PDF reader for SiYuan. Shelf, PDF &amp; EPUB rendering, word lookup with offline MDX dictionaries, machine translation, bilingual parallel reading, ink annotations, reading stats and TTS — plus an AI reading assistant that reads the current chapter, cites passages and saves answers as notes. Readest-style reading experience.",
-          "zh-CN": "RE 阅读器：思源笔记的独立 EPUB/PDF 阅读器。书架管理、PDF 与 EPUB 渲染、离线 MDX 词典划词查词、机器翻译与双语对照、本地墨迹批注、阅读时长统计与朗读（TTS），并内置 AI 阅读助手：按章节提问、引用回跳、一键存为思源笔记。批注、进度与设置全部本地独立存储。"
-        },
-        "displayName": {
-          "default": "RE Reader",
-          "zh-CN": "RE 阅读器"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "reader",
-          "epub",
-          "pdf",
-          "dictionary",
-          "阅读器",
-          "电子书",
-          "词典",
-          "划词",
-          "双语",
-          "墨迹"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-reader",
-        "preview": "preview.webp",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/LongDarkroom/siyuan-plugin-reader",
-        "version": "0.5.5"
-      },
-      "packageZipAssetId": 715935538,
-      "packageZipSha256": "f98e01b9f738d2d829c1d44f0c845ae8e35675b5b396e9b0c0f2133e06a4ebac",
-      "repoRef": "v0.5.5",
-      "size": 4110438,
-      "stars": 1,
-      "updated": "2026-11-06T04:44:51Z",
-      "url": "LongDarkroom/siyuan-plugin-reader@f98e01b"
     },
     {
       "created": "2026-07-31T15:32:35Z",
@@ -1964,55 +2120,6 @@
       "stars": 2,
       "updated": "2026-11-04T00:57:07Z",
       "url": "lisontowind/siyuan-footnote-jumper@c645137"
-    },
-    {
-      "created": "2026-10-16T08:11:32Z",
-      "installSize": 2003461,
-      "openIssues": 1,
-      "package": {
-        "author": "Lisontowind",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Offline image compression with per-image settings, quick compression, attachment totals and simplified image filenames.",
-          "zh-CN": "本地离线压缩图片，支持逐图配置、快捷压缩、附件大小统计与图片名称简化，同步更新共享引用。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Image Compression",
-          "zh-CN": "图片压缩"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "image",
-          "compression",
-          "图片压缩",
-          "附件重命名"
-        ],
-        "minAppVersion": "3.8.5",
-        "name": "sy-imgcompression",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/lisontowind/sy-imgcompression",
-        "version": "0.1.3"
-      },
-      "packageZipAssetId": 707694094,
-      "packageZipSha256": "6a1292e6c134bf83a3160639316588bf22af8432102d96337de28d8c44296bf7",
-      "repoRef": "0.1.3",
-      "size": 842750,
-      "stars": 1,
-      "updated": "2026-11-04T00:52:38Z",
-      "url": "lisontowind/sy-imgcompression@6a1292e"
     },
     {
       "created": "2026-10-26T13:50:28Z",
