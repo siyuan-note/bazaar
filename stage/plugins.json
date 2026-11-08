@@ -1,6 +1,56 @@
 {
   "repos": [
     {
+      "created": "2024-12-13T12:05:06Z",
+      "installSize": 2456455,
+      "openIssues": 14,
+      "package": {
+        "author": "steve",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "schedule management, docker sync awareness, ai sidebar",
+          "zh-CN": "互联日程管理（基于数据库日历视图）支持ics，滴答清单双向联动, docker同步感知, ai侧边栏, 资源压缩, WPS联动, （SQL，数据库）聚合可视化, 随机题头图背景图。（白板已独立为ST白板插件）"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "STtools"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://pic.imgdb.cn/item/6751b929d0e0a243d4de55a7.png"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "tools",
+          "schedule",
+          "calendar",
+          "st"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-steve-tools",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/loonghfut/siyuan-steve-tools",
+        "version": "0.56.0"
+      },
+      "packageZipAssetId": 723248956,
+      "packageZipSha256": "a37f5fcce356a93d7c4f1b5a66f0762f2b98b6cf6e7125bb6d4e70fd7200576e",
+      "repoRef": "v0.56.0",
+      "size": 907228,
+      "stars": 82,
+      "updated": "2026-11-08T07:32:02Z",
+      "url": "loonghfut/siyuan-steve-tools@a37f5fc"
+    },
+    {
       "created": "2026-11-08T07:10:15Z",
       "installSize": 63440,
       "openIssues": 2,
@@ -55,6 +105,262 @@
       "stars": 0,
       "updated": "2026-11-08T07:10:15Z",
       "url": "wmy2981/edit-ignore-files-siyuan@32e7112"
+    },
+    {
+      "created": "2026-08-10T13:18:12Z",
+      "installSize": 377856,
+      "openIssues": 0,
+      "package": {
+        "author": "Quincy Zou",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Unified AI API switch for SiYuan plugins.",
+          "en_US": "Provide unified AI API configurations and profile sharing for other plugins.",
+          "zh_CN": "一键接管 AI 服务 API 配置，多插件无缝调用。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "API Switch",
+          "en_US": "SiYuan API Switch",
+          "zh_CN": "API 旋钮"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "minAppVersion": "2.10.14",
+        "name": "siyuan-api-switch",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/famotime/siyuan-api-switch",
+        "version": "1.0.0"
+      },
+      "packageZipAssetId": 722689159,
+      "packageZipSha256": "0b393eacb39e5465ee3a3bdd53612334dad9545c27f2381ef62b2fb26bfc2196",
+      "repoRef": "v1.0.0",
+      "size": 169694,
+      "stars": 0,
+      "updated": "2026-11-08T02:52:21Z",
+      "url": "famotime/siyuan-api-switch@0b393ea"
+    },
+    {
+      "created": "2026-09-27T12:39:41Z",
+      "installSize": 3188291,
+      "openIssues": 1,
+      "package": {
+        "author": "wmy2981",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Open and edit the text files referenced by notes in a new tab",
+          "zh-CN": "在新建页签中打开并编辑笔记引用的文本文件"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Editor",
+          "zh-CN": "文本编辑器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/wmy2981"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "editor",
+          "code",
+          "text",
+          "assets",
+          "编辑",
+          "文本",
+          "代码"
+        ],
+        "minAppVersion": "3.8.3",
+        "name": "editor-siyuan",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/wmy2981/editor-siyuan",
+        "version": "1.3.3"
+      },
+      "packageZipAssetId": 722681034,
+      "packageZipSha256": "a84227f8d126b70a21a25d96581a48b1bf9a681380b97c3c7746e57455c5273c",
+      "repoRef": "v1.3.3",
+      "size": 961195,
+      "stars": 2,
+      "updated": "2026-11-08T02:47:46Z",
+      "url": "wmy2981/editor-siyuan@a84227f"
+    },
+    {
+      "created": "2026-10-01T13:41:59Z",
+      "installSize": 972709,
+      "openIssues": 4,
+      "package": {
+        "author": "wmy2981",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Insert native SiYuan buttons into documents, with a link, a SiYuan command, an agent prompt or a JavaScript action. It is friendly to AI agents.",
+          "zh-CN": "在文档中插入思源原生样式的按钮块，支持链接跳转、思源命令、智能体提示词或 JavaScript 操作。对 AI Agent 操作友好。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Button Block",
+          "zh-CN": "按钮块"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/wmy2981"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "按钮",
+          "button",
+          "自定义块",
+          "custom block",
+          "快捷操作",
+          "JavaScript"
+        ],
+        "minAppVersion": "3.8.6",
+        "name": "button-in-siyuan",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/wmy2981/button-in-siyuan",
+        "version": "0.4.0"
+      },
+      "packageZipAssetId": 722602973,
+      "packageZipSha256": "4d558cad402d18d00b8188b4fe837952b2a6128d8beafda585100cfb76ffa9a4",
+      "repoRef": "v0.4.0",
+      "size": 357326,
+      "stars": 2,
+      "updated": "2026-11-08T02:12:07Z",
+      "url": "wmy2981/button-in-siyuan@4d558ca"
+    },
+    {
+      "created": "2026-09-26T07:04:34Z",
+      "installSize": 288091,
+      "openIssues": 0,
+      "package": {
+        "author": "wmy2981",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A batch of independently toggleable desktop and mobile enhancements and optimized styles",
+          "zh-CN": "一批可独立启停的桌面端与移动端增强功能和优化后的样式"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Some Settings",
+          "zh-CN": "一些设置"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/wmy2981"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "settings",
+          "style",
+          "custom",
+          "ui",
+          "enhancement"
+        ],
+        "minAppVersion": "3.8.6-alpha.4",
+        "name": "some-settings-siyuan",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/wmy2981/some-settings-siyuan",
+        "version": "1.0.0"
+      },
+      "packageZipAssetId": 722554457,
+      "packageZipSha256": "9f2438ee4ce4125d3b96518438cdd647752db96df0cb7124e056b0e729d940e6",
+      "repoRef": "v1.0.0",
+      "size": 104819,
+      "stars": 2,
+      "updated": "2026-11-08T01:47:36Z",
+      "url": "wmy2981/some-settings-siyuan@9f2438e"
+    },
+    {
+      "created": "2026-09-13T09:10:53Z",
+      "installSize": 155387,
+      "openIssues": 1,
+      "package": {
+        "author": "wmy2981",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Generate note titles with the Chat Completions, Responses, Anthropic Messages or Gemini Interactions API",
+          "zh-CN": "用 Chat Completions、Responses API、Anthropic Messages 或 Gemini Interactions 接口为笔记生成标题"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "AI Title",
+          "zh-CN": "AI 标题生成"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/wmy2981"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "ai",
+          "title",
+          "deepseek",
+          "生成",
+          "标题",
+          "generate"
+        ],
+        "minAppVersion": "3.8.3",
+        "name": "ai-title-siyuan",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/wmy2981/ai-title-siyuan",
+        "version": "1.3.0"
+      },
+      "packageZipAssetId": 722533615,
+      "packageZipSha256": "51b13d13f21f1e73cf4a0c17bcddf587d706001fab17d2fc8ad71f318d394cab",
+      "repoRef": "v1.3.0",
+      "size": 71584,
+      "stars": 4,
+      "updated": "2026-11-08T01:37:36Z",
+      "url": "wmy2981/ai-title-siyuan@51b13d1"
     },
     {
       "created": "2026-11-07T16:40:37Z",
@@ -4074,166 +4380,6 @@
       "url": "wmy2981/opencode-go-siyuan@f194aea"
     },
     {
-      "created": "2026-09-26T07:04:34Z",
-      "installSize": 284858,
-      "openIssues": 0,
-      "package": {
-        "author": "wmy2981",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A batch of independently toggleable desktop and mobile enhancements and optimized styles",
-          "zh-CN": "一批可独立启停的桌面端与移动端增强功能和优化后的样式"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Some Settings",
-          "zh-CN": "一些设置"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/wmy2981"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "settings",
-          "style",
-          "custom",
-          "ui",
-          "enhancement"
-        ],
-        "minAppVersion": "3.8.6-alpha.4",
-        "name": "some-settings-siyuan",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/wmy2981/some-settings-siyuan",
-        "version": "0.2.10"
-      },
-      "packageZipAssetId": 697460080,
-      "packageZipSha256": "9aa2518006b0a02e64433c65b52dd579b2635595e8be93f04e753feec32b2411",
-      "repoRef": "v0.2.10",
-      "size": 104375,
-      "stars": 2,
-      "updated": "2026-11-01T05:50:17Z",
-      "url": "wmy2981/some-settings-siyuan@9aa2518"
-    },
-    {
-      "created": "2026-10-01T13:41:59Z",
-      "installSize": 846490,
-      "openIssues": 6,
-      "package": {
-        "author": "wmy2981",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Insert native SiYuan buttons into documents, with a link or JavaScript action. It is friendly to AI agents.",
-          "zh-CN": "在文档中插入思源原生样式的按钮块，支持链接跳转或 JavaScript 操作。对 AI Agent 操作友好。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Button Block",
-          "zh-CN": "按钮块"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/wmy2981"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "按钮",
-          "button",
-          "自定义块",
-          "custom block",
-          "快捷操作",
-          "JavaScript"
-        ],
-        "minAppVersion": "3.8.6",
-        "name": "button-in-siyuan",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/wmy2981/button-in-siyuan",
-        "version": "0.3.1"
-      },
-      "packageZipAssetId": 697337451,
-      "packageZipSha256": "75c830516f4d79d9197ff8ccf8d19324ddd7496710f7654ff865d682a9dcc409",
-      "repoRef": "v0.3.1",
-      "size": 310583,
-      "stars": 2,
-      "updated": "2026-11-01T04:40:13Z",
-      "url": "wmy2981/button-in-siyuan@75c8305"
-    },
-    {
-      "created": "2026-09-27T12:39:41Z",
-      "installSize": 2881387,
-      "openIssues": 1,
-      "package": {
-        "author": "wmy2981",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Open and edit the text files referenced by notes in a new tab",
-          "zh-CN": "在新建页签中打开并编辑笔记引用的文本文件"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Editor",
-          "zh-CN": "文本编辑器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/wmy2981"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "editor",
-          "code",
-          "text",
-          "assets",
-          "编辑",
-          "文本",
-          "代码"
-        ],
-        "minAppVersion": "3.8.3",
-        "name": "editor-siyuan",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/wmy2981/editor-siyuan",
-        "version": "1.3.2"
-      },
-      "packageZipAssetId": 697311305,
-      "packageZipSha256": "747a15d0243c23942d8d58f7830983c33d21f2509a03fa8659b60ed4bf993dbc",
-      "repoRef": "v1.3.2",
-      "size": 862635,
-      "stars": 2,
-      "updated": "2026-11-01T04:25:19Z",
-      "url": "wmy2981/editor-siyuan@747a15d"
-    },
-    {
       "created": "2026-10-21T03:55:39Z",
       "installSize": 375298,
       "openIssues": 0,
@@ -4329,59 +4475,6 @@
       "stars": 2,
       "updated": "2026-11-01T03:08:31Z",
       "url": "wmy2981/ref-crumbs-siyuan@af3bf49"
-    },
-    {
-      "created": "2026-09-13T09:10:53Z",
-      "installSize": 148620,
-      "openIssues": 1,
-      "package": {
-        "author": "wmy2981",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Generate note titles with the Chat Completions, Responses, Anthropic Messages or Gemini Interactions API",
-          "zh-CN": "用 Chat Completions、Responses API、Anthropic Messages 或 Gemini Interactions 接口为笔记生成标题"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "AI Title",
-          "zh-CN": "AI 标题生成"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/wmy2981"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "ai",
-          "title",
-          "deepseek",
-          "生成",
-          "标题",
-          "generate"
-        ],
-        "minAppVersion": "3.8.3",
-        "name": "ai-title-siyuan",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/wmy2981/ai-title-siyuan",
-        "version": "1.2.1"
-      },
-      "packageZipAssetId": 697085748,
-      "packageZipSha256": "52c45d2cf4f448af3235ae3c8483d14903f6c21ccaf8f81a66175d49b9da1b4c",
-      "repoRef": "v1.2.1",
-      "size": 69386,
-      "stars": 4,
-      "updated": "2026-11-01T02:19:58Z",
-      "url": "wmy2981/ai-title-siyuan@52c45d2"
     },
     {
       "created": "2024-07-09T01:09:12Z",
@@ -8447,49 +8540,6 @@
       "stars": 72,
       "updated": "2026-10-18T10:25:06Z",
       "url": "WingDr/siyuan-plugin-citation@ea0ae7d"
-    },
-    {
-      "created": "2026-08-10T13:18:12Z",
-      "installSize": 314357,
-      "openIssues": 0,
-      "package": {
-        "author": "Quincy Zou",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Unified AI API switch for SiYuan plugins.",
-          "en_US": "Provide unified AI API configurations and profile sharing for other plugins.",
-          "zh_CN": "一键接管 AI 服务 API 配置，多插件无缝调用。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "API Switch",
-          "en_US": "SiYuan API Switch",
-          "zh_CN": "API 旋钮"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "minAppVersion": "2.10.14",
-        "name": "siyuan-api-switch",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/famotime/siyuan-api-switch",
-        "version": "0.9.5"
-      },
-      "packageZipAssetId": 653170832,
-      "packageZipSha256": "1668305afc9c24225934139da4059dc5035bad111aeb020fa0faa564c7abef9d",
-      "repoRef": "v0.9.5",
-      "size": 151508,
-      "stars": 0,
-      "updated": "2026-10-18T10:15:25Z",
-      "url": "famotime/siyuan-api-switch@1668305"
     },
     {
       "created": "2023-05-27T01:34:39Z",
@@ -17103,54 +17153,6 @@
       "stars": 1,
       "updated": "2026-08-14T09:18:02Z",
       "url": "TCOTC/select-opened-doc@ecc1eaf"
-    },
-    {
-      "created": "2024-12-13T12:05:06Z",
-      "installSize": 5252818,
-      "openIssues": 14,
-      "package": {
-        "author": "steve",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "schedule management, docker sync awareness, ai sidebar",
-          "zh-CN": "[白板已接入思源智能体（已独立）]互联日程管理（基于数据库日历视图）支持ics，滴答清单双向联动, docker同步感知, ai侧边栏, 资源压缩, 白板（已独立为ST白板）, WPS联动, （SQL，数据库）聚合可视化, 随机题头图背景图。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "STtools"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://pic.imgdb.cn/item/6751b929d0e0a243d4de55a7.png"
-          ]
-        },
-        "keywords": [
-          "tools",
-          "schedule",
-          "calendar",
-          "st"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-steve-tools",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/loonghfut/siyuan-steve-tools",
-        "version": "0.54.0"
-      },
-      "packageZipAssetId": 514125278,
-      "packageZipSha256": "42a8bc670cd7f98bce68f9e253b8e067ae668774f1f7fc7c980d70318cb56ad6",
-      "repoRef": "v0.54.0",
-      "size": 2643505,
-      "stars": 81,
-      "updated": "2026-08-14T07:58:21Z",
-      "url": "loonghfut/siyuan-steve-tools@42a8bc6"
     },
     {
       "created": "2024-10-27T13:35:44Z",
