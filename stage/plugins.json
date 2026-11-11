@@ -1,6 +1,508 @@
 {
   "repos": [
     {
+      "created": "2026-08-30T05:27:57Z",
+      "installSize": 265820,
+      "openIssues": 0,
+      "package": {
+        "author": "Jeffrey Chen",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A companion plugin for the Whisper theme, providing color schemes and feature toggles.",
+          "ja": "囁きテーマの付属プラグインで、配色スキームと機能スイッチを提供します。",
+          "zh-CN": "浅吟主题的配套插件，提供配色方案、功能开关。",
+          "zh-TW": "淺吟主題的配套外掛，提供配色方案、功能開關。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Whisper+",
+          "ja": "囁き+",
+          "zh-CN": "浅吟+",
+          "zh-TW": "淺吟+"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "links": [
+            {
+              "label": "个人网站",
+              "url": "https://mytemos.com/"
+            },
+            {
+              "label": "爱发电",
+              "url": "https://afdian.com/a/JeffreyChen"
+            }
+          ]
+        },
+        "icon": "icon.png",
+        "minAppVersion": "3.8.10-alpha.1",
+        "name": "Whisper-Plus",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "ja": "README.ja.md",
+          "zh-CN": "README.zh-CN.md",
+          "zh-TW": "README.zh-TW.md"
+        },
+        "url": "https://github.com/TCOTC/Whisper-Plus",
+        "version": "1.0.4"
+      },
+      "packageZipAssetId": 735809838,
+      "packageZipSha256": "2303d810f28609af2ec540f3628bbdee0987d544bb3f84ab3eb2086b1cecac88",
+      "repoRef": "v1.0.4",
+      "size": 229223,
+      "stars": 1,
+      "updated": "2026-11-11T14:29:59Z",
+      "url": "TCOTC/Whisper-Plus@2303d81"
+    },
+    {
+      "created": "2026-11-09T10:26:54Z",
+      "installSize": 399042,
+      "openIssues": 0,
+      "package": {
+        "author": "ttChen",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "Auto-number SiYuan child documents and body headings, plus built-in document merge/split. Set a scope once; renumber on create/delete/drag/rename. Custom seven-level document-tree templates, exclusions and undo. Split/merge strips existing numbers and renumbers only affected documents; plugin numbers live in block attributes, isolated from your text. Tree-numbering events never touch body headings; body numbering only affects the current document. Titles only — IDs, body and backlinks untouched.",
+          "zh_CN": "给文档树的子文档标题和文档内标题块一套联动编号，并内置文档合并与拆分。右键设好范围后新建、删除、拖动、改名自动重排；文档树七级模板可自定义，支持排除、撤销。拆合前统一剔除编号、拆合后只给相关文档补编号；插件编号写入块属性，与用户正文严格隔离。树编号事件不碰正文，正文编号只作用当前文档。只改标题，文档 ID、正文与反链不动。"
+        },
+        "displayName": {
+          "default": "tree-doc numbering",
+          "zh_CN": "树文联动编号"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "子文档",
+          "编号",
+          "文档树",
+          "第1部",
+          "第1章",
+          "第1.1节",
+          "parentN",
+          "按上上级重排",
+          "笔记本",
+          "排除",
+          "自定义排序",
+          "自定义格式",
+          "层级",
+          "计数方式",
+          "正文标题编号",
+          "Ctrl+Alt",
+          "savedoc",
+          "自动化",
+          "numbering",
+          "document tree",
+          "文档合并",
+          "文档拆分",
+          "树文拆合管理",
+          "编号隔离",
+          "批量写入"
+        ],
+        "minAppVersion": "3.8.9",
+        "name": "tree-doc-numbering",
+        "preview": "",
+        "readme": {
+          "default": "README_en.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/taotaochen86/tree-doc-numbering",
+        "version": "1.2.2"
+      },
+      "packageZipAssetId": 735809498,
+      "packageZipSha256": "8523dab818db82ddc5fdf419027c4e81e9b4d63f452e46a104d13898bae4fcc0",
+      "repoRef": "v1.2.2",
+      "size": 130244,
+      "stars": 0,
+      "updated": "2026-11-11T14:29:48Z",
+      "url": "taotaochen86/tree-doc-numbering@8523dab"
+    },
+    {
+      "created": "2023-11-17T00:43:06Z",
+      "installSize": 4108101,
+      "openIssues": 0,
+      "package": {
+        "author": "IAliceBobI",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "🔓 Open source · Finally finish what you read — and what you write: progressive reading digests long-form input day by day (excerpts, slicing, cloze, flashcards, AI knowledge maps), progressive writing queues your material into finished drafts (writing books, structure tree, compile-to-draft). A full loop from reading to writing.",
+          "zh_CN": "🔓 已开源 · 让长文读得完，让作品写得完：渐进阅读消化输入（摘抄、分片、挖空、闪卡、AI 知识地图），渐进写作排队产出（写作书素材入槽、结构树看进度、汇编成稿）——从阅读到写作的完整闭环"
+        },
+        "displayName": {
+          "default": "Progressive Learning",
+          "zh_CN": "渐进学习"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android",
+          "harmony"
+        ],
+        "keywords": [
+          "渐进学习",
+          "渐进阅读",
+          "Progressive Reading",
+          "挖空",
+          "Cloze",
+          "闪卡",
+          "Flashcard",
+          "摘抄",
+          "断句",
+          "Sentence Split",
+          "拼音",
+          "Pinyin",
+          "Daily Card",
+          "渐进写作",
+          "Progressive Writing",
+          "知识地图",
+          "结构树",
+          "写作书",
+          "Knowledge Map",
+          "Structure Tree",
+          "Writing Book"
+        ],
+        "minAppVersion": "2.12.6",
+        "name": "sy-progressive-plugin",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/IAliceBobI/sy-progressive-plugin",
+        "version": "3.38.3"
+      },
+      "packageZipAssetId": 735702393,
+      "packageZipSha256": "c399b9358d3d035c202d0ab5e35150167e83576990e64b099fdea8088026dd70",
+      "repoRef": "v3.38.3",
+      "size": 1150165,
+      "stars": 32,
+      "updated": "2026-11-11T13:53:12Z",
+      "url": "IAliceBobI/sy-progressive-plugin@c399b93"
+    },
+    {
+      "created": "2026-10-20T13:24:48Z",
+      "installSize": 33331370,
+      "openIssues": 0,
+      "package": {
+        "author": "LongDarkroom",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A hand-drawn whiteboard and presenter for SiYuan: native Excalidraw, one-line AI drawing, frames as slides, re-editable SVG.",
+          "zh-CN": "思源里的手绘白板与演示工具：Excalidraw 原生画布、AI 一句话成图、画框即幻灯片，SVG 内嵌可再编辑。"
+        },
+        "displayName": {
+          "default": "Excali Studio",
+          "zh-CN": "Excali 白板"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "excalidraw",
+          "whiteboard",
+          "svg",
+          "白板",
+          "手绘",
+          "画图",
+          "演示",
+          "AI 绘图",
+          "presentation"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "siyuan-excali-studio",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/LongDarkroom/siyuan-excali-studio",
+        "version": "0.9.5"
+      },
+      "packageZipAssetId": 735699864,
+      "packageZipSha256": "3acce5402f7e95a661fcd8b8064ba11fcea59bab8f94608385cfeb4c6c343b3c",
+      "repoRef": "v0.9.5",
+      "size": 26950984,
+      "stars": 1,
+      "updated": "2026-11-11T13:52:08Z",
+      "url": "LongDarkroom/siyuan-excali-studio@3acce54"
+    },
+    {
+      "created": "2026-08-16T10:36:42Z",
+      "installSize": 953341,
+      "openIssues": 0,
+      "package": {
+        "author": "zhangzhishi1",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "Track daily income and expenses with custom categories, stats, moods, images and Daily Note integration.",
+          "zh_CN": "记录每日收支，支持自定义分类、统计、心情、图片与 Daily Note 关联。"
+        },
+        "displayName": {
+          "default": "Money Manager",
+          "zh_CN": "记账"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "money",
+          "account",
+          "记账",
+          "收支",
+          "bookkeeping"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "moneymanager",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/zhangzhishi1/siyuan-money-manager",
+        "version": "1.0.2"
+      },
+      "packageZipAssetId": 735652969,
+      "packageZipSha256": "d4f19a822de5767f1760e3c223ddae21be497108959f2d96fd7884168812cbd4",
+      "repoRef": "v1.0.2",
+      "size": 372865,
+      "stars": 0,
+      "updated": "2026-11-11T13:36:42Z",
+      "url": "zhangzhishi1/siyuan-money-manager@d4f19a8"
+    },
+    {
+      "created": "2026-11-10T08:49:03Z",
+      "installSize": 331743,
+      "openIssues": 0,
+      "package": {
+        "author": "PZL",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "Browse your Zotero 10+ library in SiYuan, create paper notes, and sync notes back to Zotero.",
+          "zh-CN": "在思源中浏览 Zotero 10+ 文库，创建论文笔记，并将笔记回传到 Zotero。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Zotero Notes",
+          "zh-CN": "Zotero 笔记"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "plugin",
+          "zotero",
+          "literature",
+          "notes",
+          "文献",
+          "笔记",
+          "kikit-generated"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-zotero-notes",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/bnoij/siyuan-plugin-zotero-notes",
+        "version": "0.4.0"
+      },
+      "packageZipAssetId": 735651963,
+      "packageZipSha256": "5e9d01bcc2286a365a8dc7313286c755040e4ada3a803624c167d309644c1052",
+      "repoRef": "v0.4.0",
+      "size": 324543,
+      "stars": 0,
+      "updated": "2026-11-11T13:36:21Z",
+      "url": "bnoij/siyuan-plugin-zotero-notes@5e9d01b"
+    },
+    {
+      "created": "2026-11-02T01:20:16Z",
+      "installSize": 911691,
+      "openIssues": 0,
+      "package": {
+        "author": "ccztao",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Mankeep — relationships, dated organization history, birthdays and notes in SiYuan: one person, one document, backed by a native database.",
+          "zh_CN": "Mankeep：在思源笔记里管理联系人、关系、组织经历、生日与备注；一人一文档，原生数据库作主干。"
+        },
+        "displayName": {
+          "default": "Mankeep人脉"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "Mankeep",
+          "人脉",
+          "联系人",
+          "通讯录",
+          "CRM",
+          "生日",
+          "关系"
+        ],
+        "minAppVersion": "3.8.5",
+        "name": "siyuan-mankeep",
+        "preview": "preview.jpg",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/ccztao/siyuan-mankeep",
+        "version": "0.49.2"
+      },
+      "packageZipAssetId": 735541707,
+      "packageZipSha256": "e5e0c990a06ccb3c99f2d2b1b7217315bc0780220f55555818c9007da0f7d2a0",
+      "repoRef": "0.49.2",
+      "size": 372785,
+      "stars": 1,
+      "updated": "2026-11-11T12:59:59Z",
+      "url": "ccztao/siyuan-mankeep@e5e0c99"
+    },
+    {
+      "created": "2026-08-14T14:15:18Z",
+      "installSize": 511227,
+      "openIssues": 0,
+      "package": {
+        "author": "booknote",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "A personal library plugin with ISBN lookup, source files, reading progress, and updatable SiYuan note cards.",
+          "zh_CN": "管理书库、阅读进度与笔记；高级版支持 ISBN 检索、源文件与思源文档卡片联动。"
+        },
+        "displayName": {
+          "default": "Book Manager",
+          "zh_CN": "书籍管理"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "book",
+          "reading",
+          "library",
+          "书籍",
+          "阅读",
+          "书单"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-book-manager",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/zhangzhishi1/siyuan-plugin-book-manager",
+        "version": "0.1.5"
+      },
+      "packageZipAssetId": 735538702,
+      "packageZipSha256": "202af6d082d52beff4cc45704e6f860d221d2cb784e1d195601ff3c1f26aeb8f",
+      "repoRef": "v0.1.5",
+      "size": 306095,
+      "stars": 0,
+      "updated": "2026-11-11T12:58:22Z",
+      "url": "zhangzhishi1/siyuan-plugin-book-manager@202af6d"
+    },
+    {
+      "created": "2026-08-15T13:46:37Z",
+      "installSize": 45972946,
+      "openIssues": 0,
+      "package": {
+        "author": "zhangzhishi1",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "Manage images and videos with link/import modes, multiple views, auto date &amp; tags, Markdown notes and one-click copy.",
+          "zh_CN": "以链接/导入两种模式管理图片与视频，支持多视图、自动日期与标签、Markdown 说明与一键复制。"
+        },
+        "displayName": {
+          "default": "Image &amp; Video Manager",
+          "zh_CN": "图片与视频管理"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "image",
+          "video",
+          "media",
+          "gallery",
+          "manager"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "picturevideomanager",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/zhangzhishi1/picture-video-manager",
+        "version": "1.0.41"
+      },
+      "packageZipAssetId": 735464874,
+      "packageZipSha256": "f79964d09d1084ce54678d6bef5266ffd2bf37ff918cd4a8f761c4db5310a8d2",
+      "repoRef": "v1.0.41",
+      "size": 19528835,
+      "stars": 0,
+      "updated": "2026-11-11T12:33:36Z",
+      "url": "zhangzhishi1/picture-video-manager@f79964d"
+    },
+    {
       "created": "2026-11-11T11:27:56Z",
       "installSize": 194436,
       "openIssues": 0,
@@ -167,6 +669,51 @@
       "stars": 1,
       "updated": "2026-11-11T10:03:40Z",
       "url": "fu1fan/siyuan-browser@a7ce7a6"
+    },
+    {
+      "created": "2026-07-20T16:48:30Z",
+      "installSize": 332200,
+      "openIssues": 0,
+      "package": {
+        "author": "QMike0",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Optimize the callout block style, and provide features such as quick title editing, collapse/expand, autocomplete menu, type menu, appearance customization, and type management",
+          "zh-CN": "优化callout块样式，并提供标题快速编辑、折叠/展开、补全菜单、类型菜单、外观自定义与类型管理等功能"
+        },
+        "displayName": {
+          "default": "Callout Enhance",
+          "zh-CN": "Callout 增强"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "提示块",
+          "callout",
+          "Callout"
+        ],
+        "minAppVersion": "3.8.7",
+        "name": "siyuan-plugin-callout-enhance",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/QMike0/siyuan-plugin-callout-enhance",
+        "version": "0.3.7"
+      },
+      "packageZipAssetId": 735276377,
+      "packageZipSha256": "3d7ae01761efcc16c605214f85169d547311c8394646021f0621ec432ab563e9",
+      "repoRef": "v0.3.7",
+      "size": 90976,
+      "stars": 3,
+      "updated": "2026-11-11T08:43:03Z",
+      "url": "QMike0/siyuan-plugin-callout-enhance@3d7ae01"
     },
     {
       "created": "2024-03-05T16:19:53Z",
@@ -793,117 +1340,65 @@
       "url": "JHPZ/siyuan-plugin-chord@a87d732"
     },
     {
-      "created": "2026-10-20T13:24:48Z",
-      "installSize": 33328583,
+      "created": "2026-01-18T03:23:07Z",
+      "installSize": 6735262,
       "openIssues": 1,
       "package": {
-        "author": "LongDarkroom",
+        "author": "whale🐋",
         "backends": [
           "all"
         ],
         "description": {
-          "default": "A hand-drawn whiteboard and presenter for SiYuan: native Excalidraw, one-line AI drawing, frames as slides, re-editable SVG.",
-          "zh-CN": "思源里的手绘白板与演示工具：Excalidraw 原生画布、AI 一句话成图、画框即幻灯片，SVG 内嵌可再编辑。"
-        },
-        "displayName": {
-          "default": "Excali Studio",
-          "zh-CN": "Excali 白板"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "excalidraw",
-          "whiteboard",
-          "svg",
-          "白板",
-          "手绘",
-          "画图",
-          "演示",
-          "AI 绘图",
-          "presentation"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "siyuan-excali-studio",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/LongDarkroom/siyuan-excali-studio",
-        "version": "0.9.4"
-      },
-      "packageZipAssetId": 733527574,
-      "packageZipSha256": "dea4a0730623fc0d705bba966366c4f12158ec6261e2839f417f42fc179ac04b",
-      "repoRef": "v0.9.4",
-      "size": 26951410,
-      "stars": 1,
-      "updated": "2026-11-11T00:34:58Z",
-      "url": "LongDarkroom/siyuan-excali-studio@dea4a07"
-    },
-    {
-      "created": "2026-08-30T05:27:57Z",
-      "installSize": 264901,
-      "openIssues": 0,
-      "package": {
-        "author": "Jeffrey Chen",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A companion plugin for the Whisper theme, providing color schemes and feature toggles.",
-          "ja": "囁きテーマの付属プラグインで、配色スキームと機能スイッチを提供します。",
-          "zh-CN": "浅吟主题的配套插件，提供配色方案、功能开关。",
-          "zh-TW": "淺吟主題的配套外掛，提供配色方案、功能開關。"
+          "default": "Quick note on app switch, click automation, quick access to built-in features, date templates, mobile shortcuts. Supports both mobile and desktop! Replace Quicker, FV, Notion automation within SiYuan!",
+          "zh-CN": "一键记事，手机端全流程解决方案。操作一步到位，重塑思源笔记移动端体验。自启动一键记事、一键按钮直达、定制化工具栏按钮、自动化模拟点击、手机快捷键使用、手写模板插入、思源内置功能选择等。手机端、电脑端均支持。可在思源内基本替换Quicker、FV悬浮球、notion自动化、宏命令等。"
         },
         "disabledInPublish": true,
         "displayName": {
-          "default": "Whisper+",
-          "ja": "囁き+",
-          "zh-CN": "浅吟+",
-          "zh-TW": "淺吟+"
+          "default": "SiYuan Mobile Enhancer",
+          "zh-CN": "思源手机端增强"
         },
         "frontends": [
           "all"
         ],
-        "funding": {
-          "links": [
-            {
-              "label": "个人网站",
-              "url": "https://mytemos.com/"
-            },
-            {
-              "label": "爱发电",
-              "url": "https://afdian.com/a/JeffreyChen"
-            }
-          ]
-        },
         "icon": "icon.png",
-        "minAppVersion": "3.8.10-alpha.1",
-        "name": "Whisper-Plus",
+        "keywords": [
+          "toolbar",
+          "customization",
+          "mobile",
+          "automation",
+          "buttons",
+          "工具栏",
+          "自定义",
+          "手机端",
+          "手机端增强",
+          "移动端",
+          "移动端增强",
+          "模拟点击",
+          "自动化",
+          "按钮",
+          "鲸鱼",
+          "工具箱",
+          "鲸鱼工具箱",
+          "一键记事",
+          "快速记事"
+        ],
+        "minAppVersion": "3.8.10",
+        "name": "siyuan-toolbar-customizer",
         "preview": "preview.png",
         "readme": {
           "default": "README.md",
-          "ja": "README.ja.md",
-          "zh-CN": "README.zh-CN.md",
-          "zh-TW": "README.zh-TW.md"
+          "zh-CN": "README_zh_CN.md"
         },
-        "url": "https://github.com/TCOTC/Whisper-Plus",
-        "version": "1.0.3"
+        "url": "https://github.com/HaoCeans/siyuan-toolbar-customizer",
+        "version": "3.9.8"
       },
-      "packageZipAssetId": 732356965,
-      "packageZipSha256": "8ca6f7263f7cb36f9d5f318179587b5c9dfe6d96726400bf0847fb3d943f0fe3",
-      "repoRef": "v1.0.3",
-      "size": 228951,
-      "stars": 1,
-      "updated": "2026-11-10T17:42:11Z",
-      "url": "TCOTC/Whisper-Plus@8ca6f72"
+      "packageZipAssetId": 736168137,
+      "packageZipSha256": "ab78ee6d9b204210fb4f10649dddae41b59128e9d0180d3bf6e0e480b13861fc",
+      "repoRef": "v3.9.8",
+      "size": 2219290,
+      "stars": 9,
+      "updated": "2026-11-10T22:05:34Z",
+      "url": "HaoCeans/siyuan-toolbar-customizer@ab78ee6"
     },
     {
       "created": "2026-10-07T05:01:39Z",
@@ -1250,56 +1745,53 @@
       "url": "chenrongchaogiveme/siyuan-quickadd@2e4855a"
     },
     {
-      "created": "2026-11-10T08:49:03Z",
-      "installSize": 210259,
-      "openIssues": 0,
+      "created": "2026-07-25T10:32:59Z",
+      "installSize": 2892675,
+      "openIssues": 2,
       "package": {
-        "author": "PZL",
+        "author": "Dilyar",
         "backends": [
-          "windows",
-          "linux",
-          "darwin"
+          "all"
         ],
         "description": {
-          "default": "Browse your Zotero 10+ library in SiYuan, create paper notes, and sync notes back to Zotero.",
-          "zh-CN": "在思源中浏览 Zotero 10+ 文库，创建论文笔记，并将笔记回传到 Zotero。"
+          "default": "🆓 Fully open source, free forever. Asset management plugin: physical items, subscriptions, perpetual licenses, and prepaid benefits — the whole lifecycle in one panel.",
+          "zh-CN": "🆓 完全开源，永久免费。资产管理插件：实物 · 订阅 · 永久授权 · 预付权益，全周期一处管理。"
         },
-        "disabledInPublish": true,
         "displayName": {
-          "default": "Zotero Notes",
-          "zh-CN": "Zotero 笔记"
+          "default": "Asset Management",
+          "zh-CN": "资产管理"
         },
         "frontends": [
-          "desktop",
-          "desktop-window"
+          "all"
         ],
         "icon": "icon.png",
-        "keywords": [
-          "plugin",
-          "zotero",
-          "literature",
-          "notes",
-          "文献",
-          "笔记",
-          "kikit-generated"
+        "kernels": [
+          "all"
         ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-zotero-notes",
+        "keywords": [
+          "asset",
+          "资产管理",
+          "tracker",
+          "inventory",
+          "折旧"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "siyuan-plugin-asset-management",
         "preview": "preview.png",
         "readme": {
           "default": "README.md",
           "zh-CN": "README_zh_CN.md"
         },
-        "url": "https://github.com/bnoij/siyuan-plugin-zotero-notes",
-        "version": "0.1.2"
+        "url": "https://github.com/DilyarEziz/siyuan-plugin-asset-management",
+        "version": "2.7.0"
       },
-      "packageZipAssetId": 720857342,
-      "packageZipSha256": "c3b5d189dbee5ab8f174e1243322298ae1d84970e18811b0e11b9b954d11b1ef",
-      "repoRef": "v0.1.2",
-      "size": 203059,
-      "stars": 0,
-      "updated": "2026-11-10T08:49:03Z",
-      "url": "bnoij/siyuan-plugin-zotero-notes@c3b5d18"
+      "packageZipAssetId": 735769551,
+      "packageZipSha256": "8df93833cb0ded2b645618402c14b9ad13de766eaea82c707baeb952e85afe4f",
+      "repoRef": "v2.7.0",
+      "size": 843280,
+      "stars": 7,
+      "updated": "2026-11-10T10:13:32Z",
+      "url": "DilyarEziz/siyuan-plugin-asset-management@8df9383"
     },
     {
       "created": "2026-01-25T14:47:14Z",
@@ -1425,67 +1917,6 @@
       "url": "IAliceBobI/sy-tomato-plugin@c22de6d"
     },
     {
-      "created": "2026-01-18T03:23:07Z",
-      "installSize": 6705557,
-      "openIssues": 1,
-      "package": {
-        "author": "whale🐋",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Quick note on app switch, click automation, quick access to built-in features, date templates, mobile shortcuts. Supports both mobile and desktop! Replace Quicker, FV, Notion automation within SiYuan!",
-          "zh-CN": "一键记事，手机端全流程解决方案。操作一步到位，重塑思源笔记移动端体验。自启动一键记事、一键按钮直达、定制化工具栏按钮、自动化模拟点击、手机快捷键使用、手写模板插入、思源内置功能选择等。手机端、电脑端均支持。可在思源内基本替换Quicker、FV悬浮球、notion自动化、宏命令等。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiYuan Mobile Enhancer",
-          "zh-CN": "思源手机端增强"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "toolbar",
-          "customization",
-          "mobile",
-          "automation",
-          "buttons",
-          "工具栏",
-          "自定义",
-          "手机端",
-          "手机端增强",
-          "移动端",
-          "移动端增强",
-          "模拟点击",
-          "自动化",
-          "按钮",
-          "鲸鱼",
-          "工具箱",
-          "鲸鱼工具箱",
-          "一键记事",
-          "快速记事"
-        ],
-        "minAppVersion": "3.8.10",
-        "name": "siyuan-toolbar-customizer",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/HaoCeans/siyuan-toolbar-customizer",
-        "version": "3.9.7"
-      },
-      "packageZipAssetId": 730344272,
-      "packageZipSha256": "3ff10ae281d08318d0445a0a63cf797fe8a1396786fc26ef28e36ad665696dfc",
-      "repoRef": "v3.9.7",
-      "size": 2209106,
-      "stars": 9,
-      "updated": "2026-11-10T06:16:40Z",
-      "url": "HaoCeans/siyuan-toolbar-customizer@3ff10ae"
-    },
-    {
       "created": "2025-11-03T22:13:05Z",
       "installSize": 2183672,
       "openIssues": 13,
@@ -1575,75 +2006,6 @@
       "stars": 0,
       "updated": "2026-11-10T05:47:17Z",
       "url": "Achuan-2/siyuan-plugin-outline-enhance@de22e85"
-    },
-    {
-      "created": "2026-11-09T10:26:54Z",
-      "installSize": 391120,
-      "openIssues": 0,
-      "package": {
-        "author": "ttChen",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Auto-number SiYuan child documents and body headings, plus built-in document merge/split. Set a scope once; renumber on create/delete/drag/rename. Custom five-level templates, exclusions and undo. Split/merge strips existing numbers and renumbers only affected documents; plugin numbers live in block attributes, isolated from your text. Tree-numbering events never touch body headings; body numbering only affects the current document. Titles only — IDs, body and backlinks untouched.",
-          "zh_CN": "给文档树的子文档标题和文档内标题块一套联动编号，并内置文档合并与拆分。右键设好范围后新建、删除、拖动、改名自动重排；五级模板可自定义，支持排除、撤销。拆合前统一剔除编号、拆合后只给相关文档补编号；插件编号写入块属性，与用户正文严格隔离。树编号事件不碰正文，正文编号只作用当前文档。只改标题，文档 ID、正文与反链不动。"
-        },
-        "displayName": {
-          "default": "tree-doc numbering",
-          "zh_CN": "树文联动编号"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "子文档",
-          "编号",
-          "文档树",
-          "第1部",
-          "第1章",
-          "第1.1节",
-          "parentN",
-          "按上上级重排",
-          "笔记本",
-          "排除",
-          "自定义排序",
-          "自定义格式",
-          "层级",
-          "计数方式",
-          "正文标题编号",
-          "Ctrl+Alt",
-          "savedoc",
-          "自动化",
-          "numbering",
-          "document tree",
-          "文档合并",
-          "文档拆分",
-          "树文拆合管理",
-          "编号隔离",
-          "批量写入"
-        ],
-        "minAppVersion": "3.8.9",
-        "name": "tree-doc-numbering",
-        "preview": "",
-        "readme": {
-          "default": "README_en.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/taotaochen86/tree-doc-numbering",
-        "version": "1.1.1"
-      },
-      "packageZipAssetId": 730105126,
-      "packageZipSha256": "28c06f5d8e53fb9bb9648faa63f35f4a09adf63273e7330d20b38d029177407b",
-      "repoRef": "v1.1.1",
-      "size": 127760,
-      "stars": 0,
-      "updated": "2026-11-10T04:22:10Z",
-      "url": "taotaochen86/tree-doc-numbering@28c06f5"
     },
     {
       "created": "2026-05-17T04:53:38Z",
@@ -5290,56 +5652,6 @@
       "url": "frostime/sy-f-misc@80023c1"
     },
     {
-      "created": "2026-11-02T01:20:16Z",
-      "installSize": 911691,
-      "openIssues": 0,
-      "package": {
-        "author": "ccztao",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Mankeep — relationships, dated organization history, birthdays and notes in SiYuan: one person, one document, backed by a native database.",
-          "zh_CN": "Mankeep：在思源笔记里管理联系人、关系、组织经历、生日与备注；一人一文档，原生数据库作主干。"
-        },
-        "displayName": {
-          "default": "Mankeep人脉"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "Mankeep",
-          "人脉",
-          "联系人",
-          "通讯录",
-          "CRM",
-          "生日",
-          "关系"
-        ],
-        "minAppVersion": "3.8.5",
-        "name": "siyuan-mankeep",
-        "preview": "preview.jpg",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/ccztao/siyuan-mankeep",
-        "version": "0.49.1"
-      },
-      "packageZipAssetId": 717374945,
-      "packageZipSha256": "359886d830afdb74b30a9ac2648c86a8aeba3f964249092c70d3ad2fdec3ca46",
-      "repoRef": "0.49.1",
-      "size": 372783,
-      "stars": 1,
-      "updated": "2026-11-06T14:10:04Z",
-      "url": "ccztao/siyuan-mankeep@359886d"
-    },
-    {
       "created": "2026-09-25T14:09:20Z",
       "installSize": 4423839,
       "openIssues": 0,
@@ -5468,77 +5780,6 @@
       "stars": 2,
       "updated": "2026-11-06T05:51:14Z",
       "url": "IAliceBobI/sy-recite-plugin@e53ef24"
-    },
-    {
-      "created": "2023-11-17T00:43:06Z",
-      "installSize": 4114729,
-      "openIssues": 0,
-      "package": {
-        "author": "IAliceBobI",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "🔓 Open source · Finally finish what you read — and what you write: progressive reading digests long-form input day by day (excerpts, slicing, cloze, flashcards, AI knowledge maps), progressive writing queues your material into finished drafts (writing books, structure tree, compile-to-draft). A full loop from reading to writing.",
-          "zh_CN": "🔓 已开源 · 让长文读得完，让作品写得完：渐进阅读消化输入（摘抄、分片、挖空、闪卡、AI 知识地图），渐进写作排队产出（写作书素材入槽、结构树看进度、汇编成稿）——从阅读到写作的完整闭环"
-        },
-        "displayName": {
-          "default": "Progressive Learning",
-          "zh_CN": "渐进学习"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "keywords": [
-          "渐进学习",
-          "渐进阅读",
-          "Progressive Reading",
-          "挖空",
-          "Cloze",
-          "闪卡",
-          "Flashcard",
-          "摘抄",
-          "断句",
-          "Sentence Split",
-          "拼音",
-          "Pinyin",
-          "Daily Card",
-          "渐进写作",
-          "Progressive Writing",
-          "知识地图",
-          "结构树",
-          "写作书",
-          "Knowledge Map",
-          "Structure Tree",
-          "Writing Book"
-        ],
-        "minAppVersion": "2.12.6",
-        "name": "sy-progressive-plugin",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/IAliceBobI/sy-progressive-plugin",
-        "version": "3.38.2"
-      },
-      "packageZipAssetId": 716068531,
-      "packageZipSha256": "e529ec00b00bd19da6aef5b54cded7d4738583f885061a4a1f1345c4960c7913",
-      "repoRef": "v3.38.2",
-      "size": 1152381,
-      "stars": 32,
-      "updated": "2026-11-06T05:46:29Z",
-      "url": "IAliceBobI/sy-progressive-plugin@e529ec0"
     },
     {
       "created": "2026-07-31T15:32:35Z",
@@ -8108,50 +8349,6 @@
       "stars": 11,
       "updated": "2026-10-26T09:39:49Z",
       "url": "YuxinZhaozyx/siyuan-embed-tikz@033c20f"
-    },
-    {
-      "created": "2026-07-20T16:48:30Z",
-      "installSize": 331072,
-      "openIssues": 0,
-      "package": {
-        "author": "QMike0",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Optimize the callout block style, and provide features such as quick title editing, collapse/expand, autocomplete menu, type menu, appearance customization, and type management",
-          "zh-CN": "优化callout块样式，并提供标题快速编辑、折叠/展开、补全菜单、类型菜单、外观自定义与类型管理等功能"
-        },
-        "displayName": {
-          "default": "Callout Enhance",
-          "zh-CN": "Callout 增强"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "提示块",
-          "callout",
-          "Callout"
-        ],
-        "minAppVersion": "3.8.2",
-        "name": "siyuan-plugin-callout-enhance",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/QMike0/siyuan-plugin-callout-enhance",
-        "version": "0.3.6"
-      },
-      "packageZipAssetId": 677399307,
-      "packageZipSha256": "9239519e8853ec3e038ed2b959a02abbcbc3ea597148605a1930a94a3fc83c9a",
-      "repoRef": "v0.3.6",
-      "size": 90546,
-      "stars": 3,
-      "updated": "2026-10-26T07:42:57Z",
-      "url": "QMike0/siyuan-plugin-callout-enhance@9239519"
     },
     {
       "created": "2026-10-26T07:00:15Z",
@@ -11273,55 +11470,6 @@
       "stars": 0,
       "updated": "2026-10-12T13:52:42Z",
       "url": "d16ug-a1l/siyuan-note-to-drawio@7c6929e"
-    },
-    {
-      "created": "2026-07-25T10:32:59Z",
-      "installSize": 2855934,
-      "openIssues": 0,
-      "package": {
-        "author": "Dilyar",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "🆓 Fully open source, free forever. Asset management plugin: physical items, subscriptions, perpetual licenses, and prepaid benefits — the whole lifecycle in one panel.",
-          "zh-CN": "🆓 完全开源，永久免费。资产管理插件：实物 · 订阅 · 永久授权 · 预付权益，全周期一处管理。"
-        },
-        "displayName": {
-          "default": "Asset Management",
-          "zh-CN": "资产管理"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "asset",
-          "资产管理",
-          "tracker",
-          "inventory",
-          "折旧"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "siyuan-plugin-asset-management",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/DilyarEziz/siyuan-plugin-asset-management",
-        "version": "2.6.8"
-      },
-      "packageZipAssetId": 633406957,
-      "packageZipSha256": "8a1b59fc7823b8dfaf3483c7e5a432964a530174287e8bc94dd14d9cb47dd4ce",
-      "repoRef": "v2.6.8",
-      "size": 834753,
-      "stars": 7,
-      "updated": "2026-10-12T10:09:35Z",
-      "url": "DilyarEziz/siyuan-plugin-asset-management@8a1b59f"
     },
     {
       "created": "2026-10-12T09:31:53Z",
@@ -17686,53 +17834,6 @@
       "url": "hqweay/siyuan-hqweay-go@45f80af"
     },
     {
-      "created": "2026-08-16T10:36:42Z",
-      "installSize": 896241,
-      "openIssues": 0,
-      "package": {
-        "author": "zhangzhishi1",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Track daily income and expenses with custom categories, stats, moods, images and Daily Note integration.",
-          "zh_CN": "记录每日收支，支持自定义分类、统计、心情、图片与 Daily Note 关联。"
-        },
-        "displayName": {
-          "default": "Money Manager",
-          "zh_CN": "记账"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window"
-        ],
-        "keywords": [
-          "money",
-          "account",
-          "记账",
-          "收支",
-          "bookkeeping"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "moneymanager",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/zhangzhishi1/siyuan-money-manager",
-        "version": "1.0.0"
-      },
-      "packageZipAssetId": 516668109,
-      "packageZipSha256": "2b5c078eab3204e2309fbca608569077d39c4210344355a2402b2eab29664e30",
-      "repoRef": "v1.0.0",
-      "size": 307530,
-      "stars": 0,
-      "updated": "2026-08-16T10:36:37Z",
-      "url": "zhangzhishi1/siyuan-money-manager@2b5c078"
-    },
-    {
       "created": "2026-05-07T04:42:52Z",
       "installSize": 327583,
       "openIssues": 3,
@@ -17785,100 +17886,6 @@
       "stars": 5,
       "updated": "2026-08-16T01:32:28Z",
       "url": "lnedpaul/siyuan-rss-reader@6f80b14"
-    },
-    {
-      "created": "2026-08-15T13:46:37Z",
-      "installSize": 45971646,
-      "openIssues": 0,
-      "package": {
-        "author": "zhangzhishi1",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Manage images and videos with link/import modes, multiple views, auto date &amp; tags, Markdown notes and one-click copy.",
-          "zh_CN": "以链接/导入两种模式管理图片与视频，支持多视图、自动日期与标签、Markdown 说明与一键复制。"
-        },
-        "displayName": {
-          "default": "Image &amp; Video Manager",
-          "zh_CN": "图片与视频管理"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window"
-        ],
-        "keywords": [
-          "image",
-          "video",
-          "media",
-          "gallery",
-          "manager"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "picturevideomanager",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/zhangzhishi1/picture-video-manager",
-        "version": "1.0.40"
-      },
-      "packageZipAssetId": 515882719,
-      "packageZipSha256": "79677b8d90f2805f99954fa05321423c3ca7d28473e0cf72526ea34dd68bb4d8",
-      "repoRef": "v1.0.40",
-      "size": 19527132,
-      "stars": 0,
-      "updated": "2026-08-15T16:52:50Z",
-      "url": "zhangzhishi1/picture-video-manager@79677b8"
-    },
-    {
-      "created": "2026-08-14T14:15:18Z",
-      "installSize": 402764,
-      "openIssues": 0,
-      "package": {
-        "author": "booknote",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "A paid personal-library plugin with ISBN lookup, source files, reading progress, and updatable SiYuan note cards.",
-          "zh_CN": "付费个人书库插件，支持 ISBN 检索、源文件、阅读进度和可更新的思源笔记卡片。"
-        },
-        "displayName": {
-          "default": "Book Manager",
-          "zh_CN": "书籍管理"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window"
-        ],
-        "keywords": [
-          "book",
-          "reading",
-          "library",
-          "书籍",
-          "阅读",
-          "书单"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-book-manager",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/zhangzhishi1/siyuan-plugin-book-manager",
-        "version": "0.1.3"
-      },
-      "packageZipAssetId": 515420892,
-      "packageZipSha256": "6f0025c0807ed7033b4d202ad69d70bf10ea8483f3a0c445bac21ae6a120078d",
-      "repoRef": "v0.1.3",
-      "size": 222469,
-      "stars": 0,
-      "updated": "2026-08-15T06:48:02Z",
-      "url": "zhangzhishi1/siyuan-plugin-book-manager@6f0025c"
     },
     {
       "created": "2024-10-10T06:44:00Z",
