@@ -1,6 +1,470 @@
 {
   "repos": [
     {
+      "created": "2025-11-24T02:47:39Z",
+      "installSize": 533928,
+      "openIssues": 2,
+      "package": {
+        "author": "notesynchelper",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "从微信同步到思源笔记，支持文字、图片、聊天记录、文章"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "笔记同步助手"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "docker"
+        ],
+        "keywords": [
+          "wechat",
+          "template",
+          "企微",
+          "模板",
+          "微信",
+          "速记",
+          "剪藏",
+          "搜集",
+          "日记",
+          "闪念",
+          "memo",
+          "备忘",
+          "公众号",
+          "小红书",
+          "得到"
+        ],
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-notehelper",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/notesynchelper/siyuan-notehelper",
+        "version": "1.8.54"
+      },
+      "packageZipAssetId": 740394332,
+      "packageZipSha256": "87cdd1d32b98f9f2ac0d04787faef0466d2ce7f62991c45287a19f70dd1b6bbf",
+      "repoRef": "v1.8.54",
+      "size": 212979,
+      "stars": 2,
+      "updated": "2026-11-12T17:26:37Z",
+      "url": "notesynchelper/siyuan-notehelper@87cdd1d"
+    },
+    {
+      "created": "2026-10-24T06:07:15Z",
+      "installSize": 9302450,
+      "openIssues": 1,
+      "package": {
+        "author": "LongDarkroom",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A standalone EPUB/PDF reader for SiYuan: shelf and progress, immersive typography, highlights and offline dictionaries, bilingual reading, TTS, and an AI reading assistant that cites passages and saves answers as notes — all stored locally.",
+          "zh-CN": "思源里的独立 EPUB/PDF 阅读器：书架与进度、沉浸排版、六色高亮与离线词典、腾讯机翻双语对照、四引擎朗读，还有一个能按页/章提问、引用回跳、存成思源笔记的 AI 阅读助手。批注、进度与设置全部本地存储。"
+        },
+        "displayName": {
+          "default": "RE Reader",
+          "zh-CN": "RE 阅读器"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "mobile",
+          "browser-mobile"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/3435d"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "reader",
+          "epub",
+          "pdf",
+          "mobi",
+          "azw3",
+          "dictionary",
+          "tts",
+          "bilingual",
+          "阅读器",
+          "电子书",
+          "词典",
+          "划词",
+          "双语",
+          "朗读",
+          "批注",
+          "AI 阅读助手"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-reader",
+        "preview": "preview.jpg",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/LongDarkroom/siyuan-plugin-reader",
+        "version": "0.6.7"
+      },
+      "packageZipAssetId": 740024811,
+      "packageZipSha256": "9e73e5a767b144b48f5118e717e1a50f5b70bdfef3719437dcfdc7264121114b",
+      "repoRef": "v0.6.7",
+      "size": 4949082,
+      "stars": 2,
+      "updated": "2026-11-12T15:36:46Z",
+      "url": "LongDarkroom/siyuan-plugin-reader@9e73e5a"
+    },
+    {
+      "created": "2026-02-08T18:58:44Z",
+      "installSize": 20046658,
+      "openIssues": 0,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Manage SiYuan tasks across documents with checklist, table, timeline, Kanban, calendar and whiteboard views, an AI assistant, quick editing and focus statistics.",
+          "zh-CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Horizon",
+          "zh-CN": "任务管理器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "task",
+          "manager",
+          "filter"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-plugin-task-horizon",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
+        "version": "3.4.6"
+      },
+      "packageZipAssetId": 739957065,
+      "packageZipSha256": "d4f0e1a0414210bfa2aa308c9b5fbae4a2947461e5d7a567c29f1f1a87229ab9",
+      "repoRef": "v3.4.6",
+      "size": 4154067,
+      "stars": 38,
+      "updated": "2026-11-12T15:17:10Z",
+      "url": "5kyfkr/siyuan-plugin-task-horizon@d4f0e1a"
+    },
+    {
+      "created": "2026-01-18T03:23:07Z",
+      "installSize": 6749891,
+      "openIssues": 1,
+      "package": {
+        "author": "whale🐋",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Quick note on app switch, click automation, quick access to built-in features, date templates, mobile shortcuts. Supports both mobile and desktop! Replace Quicker, FV, Notion automation within SiYuan!",
+          "zh-CN": "一键记事，手机端全流程解决方案。操作一步到位，重塑思源笔记移动端体验。自启动一键记事、一键按钮直达、定制化工具栏按钮、自动化模拟点击、手机快捷键使用、手写模板插入、思源内置功能选择等。手机端、电脑端均支持。可在思源内基本替换Quicker、FV悬浮球、notion自动化、宏命令等。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan Mobile Enhancer",
+          "zh-CN": "思源手机端增强"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "toolbar",
+          "customization",
+          "mobile",
+          "automation",
+          "buttons",
+          "工具栏",
+          "自定义",
+          "手机端",
+          "手机端增强",
+          "移动端",
+          "移动端增强",
+          "模拟点击",
+          "自动化",
+          "按钮",
+          "鲸鱼",
+          "工具箱",
+          "鲸鱼工具箱",
+          "一键记事",
+          "快速记事"
+        ],
+        "minAppVersion": "3.8.10",
+        "name": "siyuan-toolbar-customizer",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/HaoCeans/siyuan-toolbar-customizer",
+        "version": "3.9.9"
+      },
+      "packageZipAssetId": 739916008,
+      "packageZipSha256": "2f651f3fac7e4149a977e0811421e399f9e1b0235060d82c88279e006202396c",
+      "repoRef": "v3.9.9",
+      "size": 2223842,
+      "stars": 9,
+      "updated": "2026-11-12T15:05:34Z",
+      "url": "HaoCeans/siyuan-toolbar-customizer@2f651f3"
+    },
+    {
+      "created": "2024-12-13T12:05:06Z",
+      "installSize": 2477792,
+      "openIssues": 14,
+      "package": {
+        "author": "steve",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "schedule management, docker sync awareness, ai sidebar",
+          "zh-CN": "互联日程管理（基于数据库日历视图）支持ics，滴答清单双向联动, docker同步感知, ai侧边栏, 资源压缩, WPS联动, （SQL，数据库）聚合可视化, 随机题头图背景图。（白板已独立为ST白板插件）"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "STtools"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://pic.imgdb.cn/item/6751b929d0e0a243d4de55a7.png"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "tools",
+          "schedule",
+          "calendar",
+          "st"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-steve-tools",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/loonghfut/siyuan-steve-tools",
+        "version": "0.57.0"
+      },
+      "packageZipAssetId": 739691317,
+      "packageZipSha256": "b2a1089a0445c698058c3c042c56eb8fd3251446f112a3eb01901e3f5245898b",
+      "repoRef": "v0.57.0",
+      "size": 913992,
+      "stars": 82,
+      "updated": "2026-11-12T13:58:09Z",
+      "url": "loonghfut/siyuan-steve-tools@b2a1089"
+    },
+    {
+      "created": "2026-11-09T10:26:54Z",
+      "installSize": 401323,
+      "openIssues": 0,
+      "package": {
+        "author": "ttChen",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "Auto-number SiYuan child documents and body headings, plus built-in document merge/split. Set a scope once; renumber on create/delete/drag/rename. Custom seven-level document-tree templates, exclusions and undo. Split/merge strips existing numbers and renumbers only affected documents; plugin numbers live in block attributes, isolated from your text. Tree-numbering events never touch body headings; body numbering only affects the current document. Titles only — IDs, body and backlinks untouched.",
+          "zh_CN": "给文档树的子文档标题和文档内标题块一套联动编号，并内置文档合并与拆分。右键设好范围后新建、删除、拖动、改名自动重排；文档树七级模板可自定义，支持排除、撤销。拆合前统一剔除编号、拆合后只给相关文档补编号；插件编号写入块属性，与用户正文严格隔离。树编号事件不碰正文，正文编号只作用当前文档。只改标题，文档 ID、正文与反链不动。"
+        },
+        "displayName": {
+          "default": "tree-doc numbering",
+          "zh_CN": "树文联动编号"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "子文档",
+          "编号",
+          "文档树",
+          "第1部",
+          "第1章",
+          "第1.1节",
+          "parentN",
+          "按上上级重排",
+          "笔记本",
+          "排除",
+          "自定义排序",
+          "自定义格式",
+          "层级",
+          "计数方式",
+          "正文标题编号",
+          "Ctrl+Alt",
+          "savedoc",
+          "自动化",
+          "numbering",
+          "document tree",
+          "文档合并",
+          "文档拆分",
+          "树文拆合管理",
+          "编号隔离",
+          "批量写入"
+        ],
+        "minAppVersion": "3.8.9",
+        "name": "tree-doc-numbering",
+        "preview": "",
+        "readme": {
+          "default": "README_en.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/taotaochen86/tree-doc-numbering",
+        "version": "1.2.3"
+      },
+      "packageZipAssetId": 739561280,
+      "packageZipSha256": "84ed4d602de68334b8c81509b6622219d970bffa0dbe68c7b4d61e0b5cfffa89",
+      "repoRef": "v1.2.3",
+      "size": 131202,
+      "stars": 0,
+      "updated": "2026-11-12T13:17:48Z",
+      "url": "taotaochen86/tree-doc-numbering@84ed4d6"
+    },
+    {
+      "created": "2026-10-20T13:24:48Z",
+      "installSize": 33403860,
+      "openIssues": 0,
+      "package": {
+        "author": "LongDarkroom",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A hand-drawn whiteboard and presenter for SiYuan: native Excalidraw, one-line AI drawing, frames as slides, re-editable SVG.",
+          "zh-CN": "思源里的手绘白板与演示工具：Excalidraw 原生画布、AI 一句话成图、画框即幻灯片，SVG 内嵌可再编辑。"
+        },
+        "displayName": {
+          "default": "Excali Studio",
+          "zh-CN": "Excali 白板"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/3435d"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "excalidraw",
+          "whiteboard",
+          "svg",
+          "白板",
+          "手绘",
+          "画图",
+          "演示",
+          "AI 绘图",
+          "presentation"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "siyuan-excali-studio",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/LongDarkroom/siyuan-excali-studio",
+        "version": "0.9.7"
+      },
+      "packageZipAssetId": 739341142,
+      "packageZipSha256": "91e8d3291fc3b2a85677aa571254d8997f5c85fc2bc0154b7c78d904bb6e6a2e",
+      "repoRef": "v0.9.7",
+      "size": 26978867,
+      "stars": 1,
+      "updated": "2026-11-12T10:16:20Z",
+      "url": "LongDarkroom/siyuan-excali-studio@91e8d32"
+    },
+    {
+      "created": "2026-07-21T12:20:35Z",
+      "installSize": 2765161,
+      "openIssues": 0,
+      "package": {
+        "author": "alone-tree",
+        "backends": [
+          "windows",
+          "darwin",
+          "linux"
+        ],
+        "description": {
+          "default": "Lean, fast, and hassle-free SiYuan MCP tool.",
+          "zh-CN": "让 AI Agent 通过 MCP 安全地阅读、搜索和修改你的思源笔记，重点优化长文档、表格、块引用等知识库场景"
+        },
+        "displayName": {
+          "default": "Siyuan Bridge",
+          "zh-CN": "思源桥"
+        },
+        "frontends": [
+          "desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "siyuan",
+          "mcp",
+          "ai",
+          "knowledge-base"
+        ],
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-bridge",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/alone-tree/siyuan-bridge",
+        "version": "1.14.0"
+      },
+      "packageZipAssetId": 738857746,
+      "packageZipSha256": "bb18f85555dc113e1f244c3f34c4ec2cd1ce1898303042305c1430a390df2007",
+      "repoRef": "v1.14.0",
+      "size": 2045305,
+      "stars": 10,
+      "updated": "2026-11-12T09:26:09Z",
+      "url": "alone-tree/siyuan-bridge@bb18f85"
+    },
+    {
       "created": "2025-04-28T16:54:46Z",
       "installSize": 2135594,
       "openIssues": 0,
@@ -70,68 +534,6 @@
       "stars": 30,
       "updated": "2026-11-12T08:35:45Z",
       "url": "Glaube-TY/siyuan-douban@4571831"
-    },
-    {
-      "created": "2026-10-24T06:07:15Z",
-      "installSize": 9251011,
-      "openIssues": 1,
-      "package": {
-        "author": "LongDarkroom",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A standalone EPUB/PDF reader for SiYuan: shelf and progress, immersive typography, highlights and offline dictionaries, bilingual reading, TTS, and an AI reading assistant that cites passages and saves answers as notes — all stored locally.",
-          "zh-CN": "思源里的独立 EPUB/PDF 阅读器：书架与进度、沉浸排版、六色高亮与离线词典、腾讯机翻双语对照、四引擎朗读，还有一个能按页/章提问、引用回跳、存成思源笔记的 AI 阅读助手。批注、进度与设置全部本地存储。"
-        },
-        "displayName": {
-          "default": "RE Reader",
-          "zh-CN": "RE 阅读器"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "reader",
-          "epub",
-          "pdf",
-          "mobi",
-          "azw3",
-          "dictionary",
-          "tts",
-          "bilingual",
-          "阅读器",
-          "电子书",
-          "词典",
-          "划词",
-          "双语",
-          "朗读",
-          "批注",
-          "AI 阅读助手"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-reader",
-        "preview": "preview.jpg",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/LongDarkroom/siyuan-plugin-reader",
-        "version": "0.6.5"
-      },
-      "packageZipAssetId": 738631469,
-      "packageZipSha256": "79c620091b3233c316bbd1b4cbb41c09f15750d67a331a1d3c34cd9bd7ddb025",
-      "repoRef": "v0.6.5",
-      "size": 4935891,
-      "stars": 2,
-      "updated": "2026-11-12T08:10:20Z",
-      "url": "LongDarkroom/siyuan-plugin-reader@79c6200"
     },
     {
       "created": "2026-11-10T08:49:03Z",
@@ -237,61 +639,6 @@
       "stars": 1,
       "updated": "2026-11-12T07:53:32Z",
       "url": "fu1fan/siyuan-browser@fc25c01"
-    },
-    {
-      "created": "2026-10-20T13:24:48Z",
-      "installSize": 33403074,
-      "openIssues": 0,
-      "package": {
-        "author": "LongDarkroom",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A hand-drawn whiteboard and presenter for SiYuan: native Excalidraw, one-line AI drawing, frames as slides, re-editable SVG.",
-          "zh-CN": "思源里的手绘白板与演示工具：Excalidraw 原生画布、AI 一句话成图、画框即幻灯片，SVG 内嵌可再编辑。"
-        },
-        "displayName": {
-          "default": "Excali Studio",
-          "zh-CN": "Excali 白板"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "excalidraw",
-          "whiteboard",
-          "svg",
-          "白板",
-          "手绘",
-          "画图",
-          "演示",
-          "AI 绘图",
-          "presentation"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "siyuan-excali-studio",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/LongDarkroom/siyuan-excali-studio",
-        "version": "0.9.6"
-      },
-      "packageZipAssetId": 738257619,
-      "packageZipSha256": "84b5e30e49b3c29066de89323c2b406f05517f26710f8d8e20dc213d4bea9992",
-      "repoRef": "v0.9.6",
-      "size": 26978488,
-      "stars": 1,
-      "updated": "2026-11-12T05:50:47Z",
-      "url": "LongDarkroom/siyuan-excali-studio@84b5e30"
     },
     {
       "created": "2026-05-31T08:33:55Z",
@@ -1180,75 +1527,6 @@
       "url": "TCOTC/Whisper-Plus@2303d81"
     },
     {
-      "created": "2026-11-09T10:26:54Z",
-      "installSize": 399042,
-      "openIssues": 0,
-      "package": {
-        "author": "ttChen",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Auto-number SiYuan child documents and body headings, plus built-in document merge/split. Set a scope once; renumber on create/delete/drag/rename. Custom seven-level document-tree templates, exclusions and undo. Split/merge strips existing numbers and renumbers only affected documents; plugin numbers live in block attributes, isolated from your text. Tree-numbering events never touch body headings; body numbering only affects the current document. Titles only — IDs, body and backlinks untouched.",
-          "zh_CN": "给文档树的子文档标题和文档内标题块一套联动编号，并内置文档合并与拆分。右键设好范围后新建、删除、拖动、改名自动重排；文档树七级模板可自定义，支持排除、撤销。拆合前统一剔除编号、拆合后只给相关文档补编号；插件编号写入块属性，与用户正文严格隔离。树编号事件不碰正文，正文编号只作用当前文档。只改标题，文档 ID、正文与反链不动。"
-        },
-        "displayName": {
-          "default": "tree-doc numbering",
-          "zh_CN": "树文联动编号"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "子文档",
-          "编号",
-          "文档树",
-          "第1部",
-          "第1章",
-          "第1.1节",
-          "parentN",
-          "按上上级重排",
-          "笔记本",
-          "排除",
-          "自定义排序",
-          "自定义格式",
-          "层级",
-          "计数方式",
-          "正文标题编号",
-          "Ctrl+Alt",
-          "savedoc",
-          "自动化",
-          "numbering",
-          "document tree",
-          "文档合并",
-          "文档拆分",
-          "树文拆合管理",
-          "编号隔离",
-          "批量写入"
-        ],
-        "minAppVersion": "3.8.9",
-        "name": "tree-doc-numbering",
-        "preview": "",
-        "readme": {
-          "default": "README_en.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/taotaochen86/tree-doc-numbering",
-        "version": "1.2.2"
-      },
-      "packageZipAssetId": 735809498,
-      "packageZipSha256": "8523dab818db82ddc5fdf419027c4e81e9b4d63f452e46a104d13898bae4fcc0",
-      "repoRef": "v1.2.2",
-      "size": 130244,
-      "stars": 0,
-      "updated": "2026-11-11T14:29:48Z",
-      "url": "taotaochen86/tree-doc-numbering@8523dab"
-    },
-    {
       "created": "2023-11-17T00:43:06Z",
       "installSize": 4108101,
       "openIssues": 0,
@@ -1806,59 +2084,6 @@
       "url": "QMike0/siyuan-plugin-page-search@12e1ea4"
     },
     {
-      "created": "2026-02-08T18:58:44Z",
-      "installSize": 20054921,
-      "openIssues": 0,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Manage SiYuan tasks across documents with checklist, table, timeline, Kanban, calendar and whiteboard views, an AI assistant, quick editing and focus statistics.",
-          "zh-CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Horizon",
-          "zh-CN": "任务管理器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "task",
-          "manager",
-          "filter"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-plugin-task-horizon",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "3.4.5"
-      },
-      "packageZipAssetId": 734095816,
-      "packageZipSha256": "fc7ca11df1e29ef9095a8aeee4a3d1ae0f76da1dd34711842e6c28f87a34a9b9",
-      "repoRef": "v3.4.5",
-      "size": 4154978,
-      "stars": 38,
-      "updated": "2026-11-11T04:17:16Z",
-      "url": "5kyfkr/siyuan-plugin-task-horizon@fc7ca11"
-    },
-    {
       "created": "2026-11-11T03:35:05Z",
       "installSize": 1146607,
       "openIssues": 0,
@@ -2251,67 +2476,6 @@
       "stars": 0,
       "updated": "2026-11-11T01:37:01Z",
       "url": "JHPZ/siyuan-plugin-chord@a87d732"
-    },
-    {
-      "created": "2026-01-18T03:23:07Z",
-      "installSize": 6735262,
-      "openIssues": 1,
-      "package": {
-        "author": "whale🐋",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Quick note on app switch, click automation, quick access to built-in features, date templates, mobile shortcuts. Supports both mobile and desktop! Replace Quicker, FV, Notion automation within SiYuan!",
-          "zh-CN": "一键记事，手机端全流程解决方案。操作一步到位，重塑思源笔记移动端体验。自启动一键记事、一键按钮直达、定制化工具栏按钮、自动化模拟点击、手机快捷键使用、手写模板插入、思源内置功能选择等。手机端、电脑端均支持。可在思源内基本替换Quicker、FV悬浮球、notion自动化、宏命令等。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiYuan Mobile Enhancer",
-          "zh-CN": "思源手机端增强"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "toolbar",
-          "customization",
-          "mobile",
-          "automation",
-          "buttons",
-          "工具栏",
-          "自定义",
-          "手机端",
-          "手机端增强",
-          "移动端",
-          "移动端增强",
-          "模拟点击",
-          "自动化",
-          "按钮",
-          "鲸鱼",
-          "工具箱",
-          "鲸鱼工具箱",
-          "一键记事",
-          "快速记事"
-        ],
-        "minAppVersion": "3.8.10",
-        "name": "siyuan-toolbar-customizer",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/HaoCeans/siyuan-toolbar-customizer",
-        "version": "3.9.8"
-      },
-      "packageZipAssetId": 736168137,
-      "packageZipSha256": "ab78ee6d9b204210fb4f10649dddae41b59128e9d0180d3bf6e0e480b13861fc",
-      "repoRef": "v3.9.8",
-      "size": 2219290,
-      "stars": 9,
-      "updated": "2026-11-10T22:05:34Z",
-      "url": "HaoCeans/siyuan-toolbar-customizer@ab78ee6"
     },
     {
       "created": "2026-10-07T05:01:39Z",
@@ -3193,63 +3357,6 @@
       "url": "dudull852/mist-enhancer@a9d34a4"
     },
     {
-      "created": "2025-11-24T02:47:39Z",
-      "installSize": 533928,
-      "openIssues": 2,
-      "package": {
-        "author": "notesynchelper",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "从微信同步到思源笔记，支持文字、图片、聊天记录、文章"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "笔记同步助手"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "docker"
-        ],
-        "keywords": [
-          "wechat",
-          "template",
-          "企微",
-          "模板",
-          "微信",
-          "速记",
-          "剪藏",
-          "搜集",
-          "日记",
-          "闪念",
-          "memo",
-          "备忘",
-          "公众号",
-          "小红书",
-          "得到"
-        ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-notehelper",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/notesynchelper/siyuan-notehelper",
-        "version": "1.8.53"
-      },
-      "packageZipAssetId": 728722905,
-      "packageZipSha256": "a597d28076c19dda05c1fd6ab78d53e0dde96d2d804d4d52ba426b611621fff9",
-      "repoRef": "v1.8.53",
-      "size": 212978,
-      "stars": 2,
-      "updated": "2026-11-09T19:37:58Z",
-      "url": "notesynchelper/siyuan-notehelper@a597d28"
-    },
-    {
       "created": "2026-09-26T07:04:34Z",
       "installSize": 289985,
       "openIssues": 0,
@@ -3731,53 +3838,6 @@
       "stars": 42,
       "updated": "2026-11-09T09:33:09Z",
       "url": "Glaube-TY/siyuan-homepage@5e509ed"
-    },
-    {
-      "created": "2026-07-21T12:20:35Z",
-      "installSize": 2687125,
-      "openIssues": 0,
-      "package": {
-        "author": "alone-tree",
-        "backends": [
-          "windows",
-          "darwin",
-          "linux"
-        ],
-        "description": {
-          "default": "Lean, fast, and hassle-free SiYuan MCP tool.",
-          "zh-CN": "让 AI Agent 通过 MCP 安全地阅读、搜索和修改你的思源笔记，重点优化长文档、表格、块引用等知识库场景"
-        },
-        "displayName": {
-          "default": "Siyuan Bridge",
-          "zh-CN": "思源桥"
-        },
-        "frontends": [
-          "desktop"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "siyuan",
-          "mcp",
-          "ai",
-          "knowledge-base"
-        ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-bridge",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/alone-tree/siyuan-bridge",
-        "version": "1.13.1"
-      },
-      "packageZipAssetId": 726607067,
-      "packageZipSha256": "8d8442525562d071fbdb07b7cee2658211bab71920dba77a7e87c53b5a47e305",
-      "repoRef": "v1.13.1",
-      "size": 2022806,
-      "stars": 10,
-      "updated": "2026-11-09T07:25:36Z",
-      "url": "alone-tree/siyuan-bridge@8d84425"
     },
     {
       "created": "2026-11-09T07:14:01Z",
@@ -4688,56 +4748,6 @@
       "stars": 0,
       "updated": "2026-11-08T09:23:13Z",
       "url": "onemonet/siyuan-dodo@16e8c74"
-    },
-    {
-      "created": "2024-12-13T12:05:06Z",
-      "installSize": 2456455,
-      "openIssues": 14,
-      "package": {
-        "author": "steve",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "schedule management, docker sync awareness, ai sidebar",
-          "zh-CN": "互联日程管理（基于数据库日历视图）支持ics，滴答清单双向联动, docker同步感知, ai侧边栏, 资源压缩, WPS联动, （SQL，数据库）聚合可视化, 随机题头图背景图。（白板已独立为ST白板插件）"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "STtools"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://pic.imgdb.cn/item/6751b929d0e0a243d4de55a7.png"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "tools",
-          "schedule",
-          "calendar",
-          "st"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-steve-tools",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/loonghfut/siyuan-steve-tools",
-        "version": "0.56.0"
-      },
-      "packageZipAssetId": 723248956,
-      "packageZipSha256": "a37f5fcce356a93d7c4f1b5a66f0762f2b98b6cf6e7125bb6d4e70fd7200576e",
-      "repoRef": "v0.56.0",
-      "size": 907228,
-      "stars": 82,
-      "updated": "2026-11-08T07:32:02Z",
-      "url": "loonghfut/siyuan-steve-tools@a37f5fc"
     },
     {
       "created": "2026-11-08T07:10:15Z",
