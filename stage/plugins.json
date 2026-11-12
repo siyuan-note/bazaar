@@ -1,6 +1,1078 @@
 {
   "repos": [
     {
+      "created": "2025-04-28T16:54:46Z",
+      "installSize": 2135594,
+      "openIssues": 0,
+      "package": {
+        "author": "Glaube-TY",
+        "backends": [
+          "windows",
+          "linux",
+          "ios",
+          "android",
+          "harmony",
+          "docker",
+          "darwin"
+        ],
+        "description": {
+          "en_US": "Obtain Douban book information and add it to the database &amp; synchronize weread notes.",
+          "zh_CN": "豆瓣书籍信息获取并添加到数据库 &amp; 同步微信读书笔记。"
+        },
+        "displayName": {
+          "en_US": "Reading Notes",
+          "zh_CN": "读书笔记"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://glaube-ty.top/da-shang/"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "豆瓣读书",
+          "douban",
+          "书籍",
+          "book",
+          "读书笔记",
+          "笔记",
+          "read",
+          "note",
+          "booknote",
+          "weread",
+          "微信读书",
+          "微信"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "siyuan-douban",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/Glaube-TY/siyuan-douban",
+        "version": "4.3.10"
+      },
+      "packageZipAssetId": 738708215,
+      "packageZipSha256": "45718313e3bd2de75277e8aebbd3d62aa4054f3c43454fb3f64a1cf686b79821",
+      "repoRef": "v4.3.10",
+      "size": 743036,
+      "stars": 30,
+      "updated": "2026-11-12T08:35:45Z",
+      "url": "Glaube-TY/siyuan-douban@4571831"
+    },
+    {
+      "created": "2026-10-24T06:07:15Z",
+      "installSize": 9251011,
+      "openIssues": 1,
+      "package": {
+        "author": "LongDarkroom",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A standalone EPUB/PDF reader for SiYuan: shelf and progress, immersive typography, highlights and offline dictionaries, bilingual reading, TTS, and an AI reading assistant that cites passages and saves answers as notes — all stored locally.",
+          "zh-CN": "思源里的独立 EPUB/PDF 阅读器：书架与进度、沉浸排版、六色高亮与离线词典、腾讯机翻双语对照、四引擎朗读，还有一个能按页/章提问、引用回跳、存成思源笔记的 AI 阅读助手。批注、进度与设置全部本地存储。"
+        },
+        "displayName": {
+          "default": "RE Reader",
+          "zh-CN": "RE 阅读器"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "reader",
+          "epub",
+          "pdf",
+          "mobi",
+          "azw3",
+          "dictionary",
+          "tts",
+          "bilingual",
+          "阅读器",
+          "电子书",
+          "词典",
+          "划词",
+          "双语",
+          "朗读",
+          "批注",
+          "AI 阅读助手"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-reader",
+        "preview": "preview.jpg",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/LongDarkroom/siyuan-plugin-reader",
+        "version": "0.6.5"
+      },
+      "packageZipAssetId": 738631469,
+      "packageZipSha256": "79c620091b3233c316bbd1b4cbb41c09f15750d67a331a1d3c34cd9bd7ddb025",
+      "repoRef": "v0.6.5",
+      "size": 4935891,
+      "stars": 2,
+      "updated": "2026-11-12T08:10:20Z",
+      "url": "LongDarkroom/siyuan-plugin-reader@79c6200"
+    },
+    {
+      "created": "2026-11-10T08:49:03Z",
+      "installSize": 368613,
+      "openIssues": 0,
+      "package": {
+        "author": "PZL",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "Browse your Zotero 10+ library in SiYuan, create paper notes, and sync notes back to Zotero.",
+          "zh-CN": "在思源中浏览 Zotero 10+ 文库，创建论文笔记，并将笔记回传到 Zotero。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Zotero Notes",
+          "zh-CN": "Zotero 笔记"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "plugin",
+          "zotero",
+          "literature",
+          "notes",
+          "文献",
+          "笔记",
+          "kikit-generated"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-zotero-notes",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/bnoij/siyuan-plugin-zotero-notes",
+        "version": "0.5.0"
+      },
+      "packageZipAssetId": 738587234,
+      "packageZipSha256": "5585115a45f4085a21633ae8061e88ac696b21824478c9a3cf3fe91544ff424b",
+      "repoRef": "v0.5.0",
+      "size": 361413,
+      "stars": 0,
+      "updated": "2026-11-12T07:56:02Z",
+      "url": "bnoij/siyuan-plugin-zotero-notes@5585115"
+    },
+    {
+      "created": "2026-10-14T15:21:41Z",
+      "installSize": 6828310,
+      "openIssues": 1,
+      "package": {
+        "author": "fu1fan",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "Isolated desktop web viewer, readable notes and offline archives.",
+          "zh-CN": "在思源中浏览、阅读和剪藏网页，支持独立会话、正文笔记与离线归档。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan Browser",
+          "zh-CN": "思源浏览器"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "browser",
+          "webview",
+          "web clipper",
+          "reader",
+          "archive",
+          "浏览器",
+          "网页剪藏",
+          "阅读模式"
+        ],
+        "minAppVersion": "3.8.6",
+        "name": "siyuan-browser",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/fu1fan/siyuan-browser",
+        "version": "0.1.6"
+      },
+      "packageZipAssetId": 738579803,
+      "packageZipSha256": "fc25c013d6d2d774ccc6d9ea71c8cc78591d190d7a3f85584f1c95b3ee921c43",
+      "repoRef": "v0.1.6",
+      "size": 3352777,
+      "stars": 1,
+      "updated": "2026-11-12T07:53:32Z",
+      "url": "fu1fan/siyuan-browser@fc25c01"
+    },
+    {
+      "created": "2026-10-20T13:24:48Z",
+      "installSize": 33403074,
+      "openIssues": 0,
+      "package": {
+        "author": "LongDarkroom",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A hand-drawn whiteboard and presenter for SiYuan: native Excalidraw, one-line AI drawing, frames as slides, re-editable SVG.",
+          "zh-CN": "思源里的手绘白板与演示工具：Excalidraw 原生画布、AI 一句话成图、画框即幻灯片，SVG 内嵌可再编辑。"
+        },
+        "displayName": {
+          "default": "Excali Studio",
+          "zh-CN": "Excali 白板"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "excalidraw",
+          "whiteboard",
+          "svg",
+          "白板",
+          "手绘",
+          "画图",
+          "演示",
+          "AI 绘图",
+          "presentation"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "siyuan-excali-studio",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/LongDarkroom/siyuan-excali-studio",
+        "version": "0.9.6"
+      },
+      "packageZipAssetId": 738257619,
+      "packageZipSha256": "84b5e30e49b3c29066de89323c2b406f05517f26710f8d8e20dc213d4bea9992",
+      "repoRef": "v0.9.6",
+      "size": 26978488,
+      "stars": 1,
+      "updated": "2026-11-12T05:50:47Z",
+      "url": "LongDarkroom/siyuan-excali-studio@84b5e30"
+    },
+    {
+      "created": "2026-05-31T08:33:55Z",
+      "installSize": 1369343,
+      "openIssues": 1,
+      "package": {
+        "author": "mm-o",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A cloud-drive aggregation manager for SiYuan: mount 25+ cloud drives and disks, preview 300+ formats, work with SiYuan Reader/Media Player, share online, insert file links, and use cloud files as image/video beds without filling your workspace.",
+          "zh_CN": "思源网盘聚合管理器：支持 25+ 网盘和磁盘挂载、300+ 文件格式预览，联动思阅和思播，在线分享、文件链接插入文档、图床/视频文件床一站完成，让远程文件随时可用，思源空间 0 负担。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Cloud Drive Manager",
+          "zh_CN": "思盘-思源文件与网盘管理器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "思盘",
+          "cloud drive",
+          "file manager",
+          "openlist",
+          "media",
+          "s3",
+          "kernel plugin",
+          "webdav"
+        ],
+        "minAppVersion": "3.6.5",
+        "name": "siyuan-cloud",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/mm-o/siyuan-cloud",
+        "version": "0.8.1"
+      },
+      "packageZipAssetId": 738182275,
+      "packageZipSha256": "ced825ad5c28bb3828271466791ae147926d56e49b41f00b2e6c9453b8f5bd00",
+      "repoRef": "v0.8.1",
+      "size": 459728,
+      "stars": 5,
+      "updated": "2026-11-12T05:18:57Z",
+      "url": "mm-o/siyuan-cloud@ced825a"
+    },
+    {
+      "created": "2025-01-19T15:19:54Z",
+      "installSize": 4537357,
+      "openIssues": 5,
+      "package": {
+        "author": "mm-o",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker",
+          "darwin"
+        ],
+        "description": {
+          "en_US": "Professional media player for SiYuan Note with multi-platform support, smart note integration, timestamp jumps, loop segments, and extensible script architecture",
+          "zh_CN": "专业的思源笔记媒体播放器插件，集成本地媒体、网盘、BBLL、TTVV、多窗口播放、时间戳、循环片段、媒体助手与可扩展架构。"
+        },
+        "displayName": {
+          "en_US": "SiYuan Media Player",
+          "zh_CN": "思播-思源媒体播放器"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://745201.xyz/pay.jpg"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "media player",
+          "audio",
+          "video",
+          "timestamp",
+          "playlist",
+          "note integration",
+          "extensible",
+          "播放器",
+          "音频",
+          "视频",
+          "时间戳",
+          "播放列表",
+          "笔记集成",
+          "多平台"
+        ],
+        "minAppVersion": "3.8.3",
+        "name": "siyuan-media-player",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/mm-o/siyuan-media-player",
+        "version": "2.3.5"
+      },
+      "packageZipAssetId": 738170756,
+      "packageZipSha256": "ce2ce5dcc32ab5a853b90c38bd952bd7cc865056b4ba610f76f162f1f08b30a1",
+      "repoRef": "v2.3.5",
+      "size": 1644451,
+      "stars": 54,
+      "updated": "2026-11-12T05:13:52Z",
+      "url": "mm-o/siyuan-media-player@ce2ce5d"
+    },
+    {
+      "created": "2025-11-26T14:43:52Z",
+      "installSize": 47301807,
+      "openIssues": 4,
+      "package": {
+        "author": "mm-o",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "专业电子书阅读器，支持 EPUB/PDF/MOBI/TXT/在线小说；PDF 支持高亮、墨迹、形状、表单、印章、签名、图片、截图、搜索、打印、导出和回链，并提供标注笔记、词典、翻译、主题与书架管理",
+          "en_US": "Professional eBook reader for EPUB/PDF/MOBI/TXT/online novels. PDFs support highlights, ink, shapes, forms, stamps, signatures, images, screenshots, search, printing, export, and backlinks, with annotation notes, dictionary, translation, themes, and bookshelf management."
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiReader",
+          "zh_CN": "思阅-思源 EPUB/PDF 阅读器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://745201.xyz/pay.jpg"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "阅读",
+          "reading",
+          "电子书",
+          "ebook",
+          "pdf",
+          "epub",
+          "mobi",
+          "txt",
+          "azw3",
+          "fb2",
+          "cbz",
+          "sireader",
+          "思阅",
+          "标注",
+          "annotation",
+          "笔记",
+          "note",
+          "书签",
+          "bookmark",
+          "词典",
+          "dictionary",
+          "书源",
+          "book source",
+          "在线小说",
+          "online novel",
+          "主题",
+          "theme"
+        ],
+        "minAppVersion": "3.6.5",
+        "name": "siyuan-sireader",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/mm-o/siyuan-sireader",
+        "version": "2.7.0"
+      },
+      "packageZipAssetId": 738150975,
+      "packageZipSha256": "a85ff9fc03e094a13a531badd9687fd8d95d6c85fdb3cd802a3a7c886419cd8c",
+      "repoRef": "v2.7.0",
+      "size": 17302913,
+      "stars": 32,
+      "updated": "2026-11-12T05:05:58Z",
+      "url": "mm-o/siyuan-sireader@a85ff9f"
+    },
+    {
+      "created": "2026-08-15T13:46:37Z",
+      "installSize": 45971041,
+      "openIssues": 0,
+      "package": {
+        "author": "zhangzhishi1",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "Manage linked, imported and local images and videos with multiple views, folders, custom tags, ratings, notes and one-click Markdown copy.",
+          "zh_CN": "集中管理外链、导入和本地引用的图片与视频，支持多视图、文件夹分类、自定义标签、评分、说明与一键复制到笔记。"
+        },
+        "displayName": {
+          "default": "Image &amp; Video Manager",
+          "zh_CN": "图片与视频管理"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "image",
+          "video",
+          "media",
+          "gallery",
+          "manager"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "picturevideomanager",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/zhangzhishi1/picture-video-manager",
+        "version": "1.0.42"
+      },
+      "packageZipAssetId": 738110541,
+      "packageZipSha256": "7d43058817db6e28a57998b01e295874259f3a48183147313ddcb39fe58afc22",
+      "repoRef": "v1.0.42",
+      "size": 19527730,
+      "stars": 0,
+      "updated": "2026-11-12T04:49:44Z",
+      "url": "zhangzhishi1/picture-video-manager@7d43058"
+    },
+    {
+      "created": "2026-09-30T07:55:46Z",
+      "installSize": 2441370,
+      "openIssues": 0,
+      "package": {
+        "author": "xiaolv-suite",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Organize SiYuan clippings and imports into a document-attribute reading library with status triage and daily resurfacing. Optional AI enrichment is manual and requires a configured provider.",
+          "zh-CN": "小驴拾遗：把思源剪藏和导入文章整理为基于文档属性的读库，支持状态分拣和每日重浮；AI 富化可选且默认手动，需要配置模型。"
+        },
+        "displayName": {
+          "default": "Lv Glean",
+          "zh-CN": "小驴拾遗"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "小驴",
+          "小驴拾遗",
+          "xiaolv",
+          "lv",
+          "剪藏",
+          "稍后读",
+          "阅读管理",
+          "收件箱",
+          "文章库",
+          "读库",
+          "收藏管理",
+          "网页剪藏",
+          "阅读队列",
+          "重浮",
+          "web clipper",
+          "read later",
+          "reading list",
+          "inbox"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-glean",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en-US": "README.en-US.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/xiaolv-suite/siyuan-glean",
+        "version": "1.4.7"
+      },
+      "packageZipAssetId": 738067336,
+      "packageZipSha256": "c6d04627ea237e267f2bf7793e4f4e91615635957c824ca8a51fefa9a993e3b9",
+      "repoRef": "v1.4.7",
+      "size": 704671,
+      "stars": 0,
+      "updated": "2026-11-12T04:32:25Z",
+      "url": "xiaolv-suite/siyuan-glean@c6d0462"
+    },
+    {
+      "created": "2026-09-16T16:58:03Z",
+      "installSize": 3355557,
+      "openIssues": 0,
+      "package": {
+        "author": "xiaolv-suite",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A flexible habit and check-in workspace for SiYuan.",
+          "zh-CN": "支持分组、模板、统计与扩展集成的思源打卡工作台。",
+          "zh_CN": "支持分组、模板、统计与扩展集成的思源打卡工作台。"
+        },
+        "displayName": {
+          "default": "Lv Check-in",
+          "zh-CN": "小驴打卡",
+          "zh_CN": "小驴打卡"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "小驴",
+          "小驴打卡",
+          "xiaolv",
+          "lv",
+          "打卡",
+          "习惯",
+          "目标",
+          "check-in",
+          "habit"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-checkin",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en_US": "README_en.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/xiaolv-suite/siyuan-checkin",
+        "version": "18.46.1"
+      },
+      "packageZipAssetId": 738064618,
+      "packageZipSha256": "cdb8b347028061a7aeed69eb1b624c6915fe305a79660fc3d5c8e540917b68bb",
+      "repoRef": "v18.46.1",
+      "size": 1157468,
+      "stars": 0,
+      "updated": "2026-11-12T04:31:15Z",
+      "url": "xiaolv-suite/siyuan-checkin@cdb8b34"
+    },
+    {
+      "created": "2026-10-10T02:49:57Z",
+      "installSize": 2638898,
+      "openIssues": 0,
+      "package": {
+        "author": "xiaolv-suite",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "description": {
+          "default": "Family &amp; life butler: members, assets, education, health, media, travel - local-first, database-powered, with a unified expiry reminder hub.",
+          "zh-CN": "家庭与生活管家：成员档案、资产管理、育儿上学、病历社保、影音书库、出行旅行。台账进数据库、效期进统一提醒中枢，一切按需开启。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Lv Home",
+          "zh-CN": "小驴管家（内测版）"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "keywords": [
+          "小驴",
+          "小驴管家",
+          "xiaolv",
+          "lv",
+          "family",
+          "家庭",
+          "管家",
+          "资产",
+          "提醒"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-home",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en": "README.en.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/xiaolv-suite/siyuan-home",
+        "version": "0.5.195"
+      },
+      "packageZipAssetId": 738062415,
+      "packageZipSha256": "060b52d355fd09cf85f4a8c5e049d19646dc3d0721a446296ec15e231f8c3cf6",
+      "repoRef": "v0.5.195",
+      "size": 886828,
+      "stars": 0,
+      "updated": "2026-11-12T04:30:25Z",
+      "url": "xiaolv-suite/siyuan-home@060b52d"
+    },
+    {
+      "created": "2026-10-10T01:59:12Z",
+      "installSize": 3141709,
+      "openIssues": 0,
+      "package": {
+        "author": "xiaolv-suite",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "description": {
+          "default": "A local-first, full-lifecycle flashcard learning platform for SiYuan: capture, understand, create, practice, review, apply, maintain and connect knowledge with AI and the native FSRS scheduler.",
+          "zh-CN": "思源的全域闪卡学习平台：以 AI 辅助知识捕获、理解、制卡、练习、复习、应用、维护和生态联动——正式调度由内核原生 FSRS 负责。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Lv Cards (Beta)",
+          "zh-CN": "小驴闪卡（内测版）"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "keywords": [
+          "小驴",
+          "小驴闪卡",
+          "xiaolv",
+          "lv",
+          "flashcard",
+          "闪卡",
+          "FSRS",
+          "spaced repetition",
+          "间隔重复",
+          "Anki",
+          "AI",
+          "Agent",
+          "statistics",
+          "统计",
+          "记忆"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-lv-cards",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.en.md",
+          "zh-CN": "README.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/xiaolv-suite/siyuan-lv-cards",
+        "version": "0.233.2"
+      },
+      "packageZipAssetId": 737983870,
+      "packageZipSha256": "fd74e57f9c17a9d4a2010c4393e855cbc607f9e08194d169d8a433dfe330ea60",
+      "repoRef": "v0.233.2",
+      "size": 1038792,
+      "stars": 0,
+      "updated": "2026-11-12T03:58:00Z",
+      "url": "xiaolv-suite/siyuan-lv-cards@fd74e57"
+    },
+    {
+      "created": "2026-10-10T14:18:12Z",
+      "installSize": 3425246,
+      "openIssues": 0,
+      "package": {
+        "author": "xiaolv-suite",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "description": {
+          "default": "Local-first question bank and exam prep workspace in SiYuan: import &amp; manual authoring, independent active-recall practice, wrongbook remediation, timed mock exams, A4 paper printing, FSRS flashcards, and reviewable AI assistance.",
+          "zh-CN": "思源笔记本地题库与备考工作台：试题导入与录入、独立主动回忆刷题、错题靶向消灭、限时全真模考、A4 双栏印卷、FSRS 闪卡联动与可复核 AI 辅助——题目就是原生思源块。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Lv Exam (Beta)",
+          "zh-CN": "小驴考试"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "小驴",
+          "小驴考试",
+          "xiaolv",
+          "lv",
+          "exam",
+          "quiz",
+          "flashcard",
+          "spaced-repetition",
+          "wrongbook",
+          "题库",
+          "试卷",
+          "备考",
+          "刷题",
+          "背题",
+          "模考",
+          "错题本",
+          "闪卡",
+          "考试",
+          "AI"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-exam",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en_US": "README.en-US.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/xiaolv-suite/siyuan-exam",
+        "version": "0.15.2"
+      },
+      "packageZipAssetId": 737983853,
+      "packageZipSha256": "53beeeb3b7beb6dd6920fffe337f65959d1677f80a8354cf2c56aa8cdf5bc779",
+      "repoRef": "v0.15.2",
+      "size": 1308094,
+      "stars": 0,
+      "updated": "2026-11-12T03:57:59Z",
+      "url": "xiaolv-suite/siyuan-exam@53beeeb"
+    },
+    {
+      "created": "2026-09-30T07:59:26Z",
+      "installSize": 3450568,
+      "openIssues": 0,
+      "package": {
+        "author": "xiaolv-suite",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Manage people and relationships in SiYuan: one person, one document, backed by a native database.",
+          "zh-CN": "在思源笔记里管理人脉与人际关系：一人一文档，数据库主干，关系图谱与生日提醒。"
+        },
+        "displayName": {
+          "default": "Lv Contacts",
+          "zh-CN": "小驴人脉"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "小驴",
+          "小驴人脉",
+          "xiaolv",
+          "lv",
+          "人脉",
+          "联系人",
+          "人际关系",
+          "CRM",
+          "通讯录",
+          "生日提醒",
+          "关系图谱",
+          "contacts",
+          "people"
+        ],
+        "minAppVersion": "3.8.5",
+        "name": "siyuan-contacts",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en-US": "README.en-US.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/xiaolv-suite/siyuan-contacts",
+        "version": "0.7.10"
+      },
+      "packageZipAssetId": 737982701,
+      "packageZipSha256": "4a703533b7b6b41002d1c29afbb3c1e60ce0d7e99641d52f0913c23f2d062571",
+      "repoRef": "v0.7.10",
+      "size": 1026121,
+      "stars": 0,
+      "updated": "2026-11-12T03:57:25Z",
+      "url": "xiaolv-suite/siyuan-contacts@4a70353"
+    },
+    {
+      "created": "2026-10-10T01:34:23Z",
+      "installSize": 2439061,
+      "openIssues": 0,
+      "package": {
+        "author": "xiaolv-suite",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Save and recall common content (phrases, snippets, code, links, images, assets, block structures) anchored to real SiYuan blocks — with fill-in variables, snippet nesting, AI transforms, template packs, and faithful source references.",
+          "zh-CN": "基于思源文档和块的常用内容快速调用器：常用语、模板、代码、链接、图片、附件与块结构，条目锚定真实思源块。支持插入时变量填充、片段嵌套、AI 整理/变换/语义找、模板包分享，来源可回链、失效可见。"
+        },
+        "displayName": {
+          "default": "Lv Common (Beta)",
+          "zh-CN": "小驴常用（内测版）"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "lv",
+          "小驴",
+          "常用语",
+          "common phrases",
+          "snippet",
+          "snippets",
+          "模板",
+          "template",
+          "templates",
+          "片段",
+          "快速插入",
+          "quick insert",
+          "小驴常用",
+          "小驴常用（内测版）",
+          "xiaolv",
+          "xiaolv-common",
+          "变量",
+          "variables",
+          "文本扩展",
+          "text expander",
+          "AI",
+          "提示词",
+          "prompt",
+          "剪贴板",
+          "clipboard",
+          "模板包",
+          "template pack"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "xiaolv-common",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "en-US": "README.en-US.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/xiaolv-suite/xiaolv-common",
+        "version": "0.10.85"
+      },
+      "packageZipAssetId": 737982532,
+      "packageZipSha256": "70e6c3f197a136a1a176672e22b55578c6e11a6aab7345851b13eea20f3ec1b1",
+      "repoRef": "v0.10.85",
+      "size": 836902,
+      "stars": 0,
+      "updated": "2026-11-12T03:57:21Z",
+      "url": "xiaolv-suite/xiaolv-common@70e6c3f"
+    },
+    {
+      "created": "2026-10-20T11:39:21Z",
+      "installSize": 107603,
+      "openIssues": 0,
+      "package": {
+        "author": "Xino Ni",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Inline LLM next-sentence suggestions shown as ghost text after punctuation. Press Tab to accept, or tap on mobile.",
+          "zh-CN": "在标点后实时以灰色幽灵文字提示 LLM 预测的下一句，按 Tab 采纳；手机上点按采纳。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Ghost Writer",
+          "zh-CN": "写稿助手"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "AI",
+          "LLM",
+          "写作",
+          "续写",
+          "自动补全",
+          "autocomplete",
+          "copilot",
+          "ghost text"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-plugin-ghostwriter",
+        "preview": "",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/XinoAssassin/siyuan-plugin-ghostwriter",
+        "version": "0.3.0"
+      },
+      "packageZipAssetId": 737633972,
+      "packageZipSha256": "896f746d07ed2fa634e960684ad8e103ea3b37a2f63f7036f30dfce58c73e4d9",
+      "repoRef": "0.3.0",
+      "size": 41525,
+      "stars": 0,
+      "updated": "2026-11-12T01:44:17Z",
+      "url": "XinoAssassin/siyuan-plugin-ghostwriter@896f746"
+    },
+    {
       "created": "2026-04-25T19:19:41Z",
       "installSize": 2517213,
       "openIssues": 1,
@@ -248,61 +1320,6 @@
       "url": "IAliceBobI/sy-progressive-plugin@c399b93"
     },
     {
-      "created": "2026-10-20T13:24:48Z",
-      "installSize": 33331370,
-      "openIssues": 0,
-      "package": {
-        "author": "LongDarkroom",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A hand-drawn whiteboard and presenter for SiYuan: native Excalidraw, one-line AI drawing, frames as slides, re-editable SVG.",
-          "zh-CN": "思源里的手绘白板与演示工具：Excalidraw 原生画布、AI 一句话成图、画框即幻灯片，SVG 内嵌可再编辑。"
-        },
-        "displayName": {
-          "default": "Excali Studio",
-          "zh-CN": "Excali 白板"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "excalidraw",
-          "whiteboard",
-          "svg",
-          "白板",
-          "手绘",
-          "画图",
-          "演示",
-          "AI 绘图",
-          "presentation"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "siyuan-excali-studio",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/LongDarkroom/siyuan-excali-studio",
-        "version": "0.9.5"
-      },
-      "packageZipAssetId": 735699864,
-      "packageZipSha256": "3acce5402f7e95a661fcd8b8064ba11fcea59bab8f94608385cfeb4c6c343b3c",
-      "repoRef": "v0.9.5",
-      "size": 26950984,
-      "stars": 1,
-      "updated": "2026-11-11T13:52:08Z",
-      "url": "LongDarkroom/siyuan-excali-studio@3acce54"
-    },
-    {
       "created": "2026-08-16T10:36:42Z",
       "installSize": 953341,
       "openIssues": 0,
@@ -350,58 +1367,6 @@
       "stars": 0,
       "updated": "2026-11-11T13:36:42Z",
       "url": "zhangzhishi1/siyuan-money-manager@d4f19a8"
-    },
-    {
-      "created": "2026-11-10T08:49:03Z",
-      "installSize": 331743,
-      "openIssues": 0,
-      "package": {
-        "author": "PZL",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Browse your Zotero 10+ library in SiYuan, create paper notes, and sync notes back to Zotero.",
-          "zh-CN": "在思源中浏览 Zotero 10+ 文库，创建论文笔记，并将笔记回传到 Zotero。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Zotero Notes",
-          "zh-CN": "Zotero 笔记"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "plugin",
-          "zotero",
-          "literature",
-          "notes",
-          "文献",
-          "笔记",
-          "kikit-generated"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-zotero-notes",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/bnoij/siyuan-plugin-zotero-notes",
-        "version": "0.4.0"
-      },
-      "packageZipAssetId": 735651963,
-      "packageZipSha256": "5e9d01bcc2286a365a8dc7313286c755040e4ada3a803624c167d309644c1052",
-      "repoRef": "v0.4.0",
-      "size": 324543,
-      "stars": 0,
-      "updated": "2026-11-11T13:36:21Z",
-      "url": "bnoij/siyuan-plugin-zotero-notes@5e9d01b"
     },
     {
       "created": "2026-11-02T01:20:16Z",
@@ -502,54 +1467,6 @@
       "stars": 0,
       "updated": "2026-11-11T12:58:22Z",
       "url": "zhangzhishi1/siyuan-plugin-book-manager@202af6d"
-    },
-    {
-      "created": "2026-08-15T13:46:37Z",
-      "installSize": 45972946,
-      "openIssues": 0,
-      "package": {
-        "author": "zhangzhishi1",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Manage images and videos with link/import modes, multiple views, auto date &amp; tags, Markdown notes and one-click copy.",
-          "zh_CN": "以链接/导入两种模式管理图片与视频，支持多视图、自动日期与标签、Markdown 说明与一键复制。"
-        },
-        "displayName": {
-          "default": "Image &amp; Video Manager",
-          "zh_CN": "图片与视频管理"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "image",
-          "video",
-          "media",
-          "gallery",
-          "manager"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "picturevideomanager",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/zhangzhishi1/picture-video-manager",
-        "version": "1.0.41"
-      },
-      "packageZipAssetId": 735464874,
-      "packageZipSha256": "f79964d09d1084ce54678d6bef5266ffd2bf37ff918cd4a8f761c4db5310a8d2",
-      "repoRef": "v1.0.41",
-      "size": 19528835,
-      "stars": 0,
-      "updated": "2026-11-11T12:33:36Z",
-      "url": "zhangzhishi1/picture-video-manager@f79964d"
     },
     {
       "created": "2026-11-11T11:27:56Z",
@@ -665,59 +1582,6 @@
       "stars": 0,
       "updated": "2026-11-11T11:23:12Z",
       "url": "verygoodwu/cloud-docs-home@b3fa727"
-    },
-    {
-      "created": "2026-10-14T15:21:41Z",
-      "installSize": 6812340,
-      "openIssues": 1,
-      "package": {
-        "author": "fu1fan",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Isolated desktop web viewer, readable notes and offline archives.",
-          "zh-CN": "在思源中浏览、阅读和剪藏网页，支持独立会话、正文笔记与离线归档。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiYuan Browser",
-          "zh-CN": "思源浏览器"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "browser",
-          "webview",
-          "web clipper",
-          "reader",
-          "archive",
-          "浏览器",
-          "网页剪藏",
-          "阅读模式"
-        ],
-        "minAppVersion": "3.8.6",
-        "name": "siyuan-browser",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/fu1fan/siyuan-browser",
-        "version": "0.1.5"
-      },
-      "packageZipAssetId": 735018625,
-      "packageZipSha256": "a7ce7a6f7b9740f0fe0ba99ce7f03a23948e7ea8e189f3b7667d5aa14d688ec0",
-      "repoRef": "v0.1.5",
-      "size": 3348405,
-      "stars": 1,
-      "updated": "2026-11-11T10:03:40Z",
-      "url": "fu1fan/siyuan-browser@a7ce7a6"
     },
     {
       "created": "2026-07-20T16:48:30Z",
@@ -2106,479 +2970,6 @@
       "stars": 15,
       "updated": "2026-11-10T03:42:53Z",
       "url": "QYLexpired/Neo-Plus@4f6d8a6"
-    },
-    {
-      "created": "2026-09-30T07:59:26Z",
-      "installSize": 3447723,
-      "openIssues": 2,
-      "package": {
-        "author": "xiaolv-suite",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Manage people and relationships in SiYuan: one person, one document, backed by a native database.",
-          "zh-CN": "在思源笔记里管理人脉与人际关系：一人一文档，数据库主干，关系图谱与生日提醒。"
-        },
-        "displayName": {
-          "default": "Lv Contacts",
-          "zh-CN": "小驴人脉"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "小驴",
-          "小驴人脉",
-          "xiaolv",
-          "lv",
-          "人脉",
-          "联系人",
-          "人际关系",
-          "CRM",
-          "通讯录",
-          "生日提醒",
-          "关系图谱",
-          "contacts",
-          "people"
-        ],
-        "minAppVersion": "3.8.5",
-        "name": "siyuan-contacts",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en-US": "README.en-US.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/xiaolv-suite/siyuan-contacts",
-        "version": "0.7.9"
-      },
-      "packageZipAssetId": 729983335,
-      "packageZipSha256": "82257c198f2185e29efcf7541b720b18c051ab8f94c71e69b757c1db7dbed2ee",
-      "repoRef": "v0.7.9",
-      "size": 1034232,
-      "stars": 0,
-      "updated": "2026-11-10T03:40:38Z",
-      "url": "xiaolv-suite/siyuan-contacts@82257c1"
-    },
-    {
-      "created": "2026-10-10T14:18:12Z",
-      "installSize": 3384381,
-      "openIssues": 7,
-      "package": {
-        "author": "xiaolv-suite",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "description": {
-          "default": "Local-first question bank and exam prep workspace in SiYuan: import &amp; manual authoring, independent active-recall practice, wrongbook remediation, timed mock exams, A4 paper printing, FSRS flashcards, and reviewable AI assistance.",
-          "zh-CN": "思源笔记本地题库与备考工作台：试题导入与录入、独立主动回忆刷题、错题靶向消灭、限时全真模考、A4 双栏印卷、FSRS 闪卡联动与可复核 AI 辅助——题目就是原生思源块。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Lv Exam (Beta)",
-          "zh-CN": "小驴考试"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "小驴",
-          "小驴考试",
-          "xiaolv",
-          "lv",
-          "exam",
-          "quiz",
-          "flashcard",
-          "spaced-repetition",
-          "wrongbook",
-          "题库",
-          "试卷",
-          "备考",
-          "刷题",
-          "背题",
-          "模考",
-          "错题本",
-          "闪卡",
-          "考试",
-          "AI"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-exam",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en_US": "README.en-US.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/xiaolv-suite/siyuan-exam",
-        "version": "0.15.1"
-      },
-      "packageZipAssetId": 729982516,
-      "packageZipSha256": "19e4593b9e356670509bd2ec91b773f390255fea26f6067221fe407ef64cd55b",
-      "repoRef": "v0.15.1",
-      "size": 1300992,
-      "stars": 0,
-      "updated": "2026-11-10T03:40:15Z",
-      "url": "xiaolv-suite/siyuan-exam@19e4593"
-    },
-    {
-      "created": "2026-10-10T01:59:12Z",
-      "installSize": 3042405,
-      "openIssues": 6,
-      "package": {
-        "author": "xiaolv-suite",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "description": {
-          "default": "A local-first, full-lifecycle flashcard learning platform for SiYuan: capture, understand, create, practice, review, apply, maintain and connect knowledge with AI and the native FSRS scheduler.",
-          "zh-CN": "思源的全域闪卡学习平台：以 AI 辅助知识捕获、理解、制卡、练习、复习、应用、维护和生态联动——正式调度由内核原生 FSRS 负责。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Lv Cards (Beta)",
-          "zh-CN": "小驴闪卡（内测版）"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "keywords": [
-          "小驴",
-          "小驴闪卡",
-          "xiaolv",
-          "lv",
-          "flashcard",
-          "闪卡",
-          "FSRS",
-          "spaced repetition",
-          "间隔重复",
-          "Anki",
-          "AI",
-          "Agent",
-          "statistics",
-          "统计",
-          "记忆"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-lv-cards",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.en.md",
-          "zh-CN": "README.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/xiaolv-suite/siyuan-lv-cards",
-        "version": "0.233.1"
-      },
-      "packageZipAssetId": 729981710,
-      "packageZipSha256": "5073e1b2c17424acc6dc21fd69879918d6f9492c5dccf59354ad53f5617bc398",
-      "repoRef": "v0.233.1",
-      "size": 1014250,
-      "stars": 0,
-      "updated": "2026-11-10T03:39:52Z",
-      "url": "xiaolv-suite/siyuan-lv-cards@5073e1b"
-    },
-    {
-      "created": "2026-09-30T07:55:46Z",
-      "installSize": 2406321,
-      "openIssues": 2,
-      "package": {
-        "author": "xiaolv-suite",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Organize SiYuan clippings and imports into a document-attribute reading library with status triage and daily resurfacing. Optional AI enrichment is manual and requires a configured provider.",
-          "zh-CN": "小驴拾遗：把思源剪藏和导入文章整理为基于文档属性的读库，支持状态分拣和每日重浮；AI 富化可选且默认手动，需要配置模型。"
-        },
-        "displayName": {
-          "default": "Lv Glean",
-          "zh-CN": "小驴拾遗"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "小驴",
-          "小驴拾遗",
-          "xiaolv",
-          "lv",
-          "剪藏",
-          "稍后读",
-          "阅读管理",
-          "收件箱",
-          "文章库",
-          "读库",
-          "收藏管理",
-          "网页剪藏",
-          "阅读队列",
-          "重浮",
-          "web clipper",
-          "read later",
-          "reading list",
-          "inbox"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-glean",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en-US": "README.en-US.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/xiaolv-suite/siyuan-glean",
-        "version": "1.4.6"
-      },
-      "packageZipAssetId": 729981433,
-      "packageZipSha256": "61402294ce138571497154acd02cee8fbd2a5a977b89441cc3ba3cde7844b165",
-      "repoRef": "v1.4.6",
-      "size": 699770,
-      "stars": 0,
-      "updated": "2026-11-10T03:39:43Z",
-      "url": "xiaolv-suite/siyuan-glean@6140229"
-    },
-    {
-      "created": "2026-10-10T02:49:57Z",
-      "installSize": 2583730,
-      "openIssues": 8,
-      "package": {
-        "author": "xiaolv-suite",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "description": {
-          "default": "Family &amp; life butler: members, assets, education, health, media, travel - local-first, database-powered, with a unified expiry reminder hub.",
-          "zh-CN": "家庭与生活管家：成员档案、资产管理、育儿上学、病历社保、影音书库、出行旅行。台账进数据库、效期进统一提醒中枢，一切按需开启。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Lv Home",
-          "zh-CN": "小驴管家（内测版）"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "keywords": [
-          "小驴",
-          "小驴管家",
-          "xiaolv",
-          "lv",
-          "family",
-          "家庭",
-          "管家",
-          "资产",
-          "提醒"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-home",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en": "README.en.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/xiaolv-suite/siyuan-home",
-        "version": "0.5.194"
-      },
-      "packageZipAssetId": 729981144,
-      "packageZipSha256": "6ac6c5143679f23d3f400f74e27d28cf9356a890361e075c4d69295846612b09",
-      "repoRef": "v0.5.194",
-      "size": 858477,
-      "stars": 0,
-      "updated": "2026-11-10T03:39:34Z",
-      "url": "xiaolv-suite/siyuan-home@6ac6c51"
-    },
-    {
-      "created": "2026-09-16T16:58:03Z",
-      "installSize": 3311370,
-      "openIssues": 0,
-      "package": {
-        "author": "xiaolv-suite",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A flexible habit and check-in workspace for SiYuan.",
-          "zh-CN": "支持分组、模板、统计与扩展集成的思源打卡工作台。",
-          "zh_CN": "支持分组、模板、统计与扩展集成的思源打卡工作台。"
-        },
-        "displayName": {
-          "default": "Lv Check-in",
-          "zh-CN": "小驴打卡",
-          "zh_CN": "小驴打卡"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "小驴",
-          "小驴打卡",
-          "xiaolv",
-          "lv",
-          "打卡",
-          "习惯",
-          "目标",
-          "check-in",
-          "habit"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-checkin",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en_US": "README_en.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/xiaolv-suite/siyuan-checkin",
-        "version": "18.46.0"
-      },
-      "packageZipAssetId": 729980570,
-      "packageZipSha256": "ace88aee308ffff3ef94845c218411e9557f0beb80aed7d197aa93ec1b644d4a",
-      "repoRef": "v18.46.0",
-      "size": 1146996,
-      "stars": 0,
-      "updated": "2026-11-10T03:39:16Z",
-      "url": "xiaolv-suite/siyuan-checkin@ace88ae"
-    },
-    {
-      "created": "2026-10-10T01:34:23Z",
-      "installSize": 2414015,
-      "openIssues": 0,
-      "package": {
-        "author": "xiaolv-suite",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Save and recall common content (phrases, snippets, code, links, images, assets, block structures) anchored to real SiYuan blocks — with fill-in variables, snippet nesting, AI transforms, template packs, and faithful source references.",
-          "zh-CN": "基于思源文档和块的常用内容快速调用器：常用语、模板、代码、链接、图片、附件与块结构，条目锚定真实思源块。支持插入时变量填充、片段嵌套、AI 整理/变换/语义找、模板包分享，来源可回链、失效可见。"
-        },
-        "displayName": {
-          "default": "Lv Common (Beta)",
-          "zh-CN": "小驴常用（内测版）"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "lv",
-          "小驴",
-          "常用语",
-          "common phrases",
-          "snippet",
-          "snippets",
-          "模板",
-          "template",
-          "templates",
-          "片段",
-          "快速插入",
-          "quick insert",
-          "小驴常用",
-          "小驴常用（内测版）",
-          "xiaolv",
-          "xiaolv-common",
-          "变量",
-          "variables",
-          "文本扩展",
-          "text expander",
-          "AI",
-          "提示词",
-          "prompt",
-          "剪贴板",
-          "clipboard",
-          "模板包",
-          "template pack"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "xiaolv-common",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "en-US": "README.en-US.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/xiaolv-suite/xiaolv-common",
-        "version": "0.10.84"
-      },
-      "packageZipAssetId": 729979888,
-      "packageZipSha256": "55b4f162653bbe3be641cb25bb8274d8f229bd47a5815248b397fbbaa1449f5f",
-      "repoRef": "v0.10.84",
-      "size": 837881,
-      "stars": 0,
-      "updated": "2026-11-10T03:38:53Z",
-      "url": "xiaolv-suite/xiaolv-common@55b4f16"
     },
     {
       "created": "2026-09-04T04:34:58Z",
@@ -4938,62 +5329,6 @@
       "url": "unmime/siyuan-plugin-game-covers@acd2c0a"
     },
     {
-      "created": "2026-10-24T06:07:15Z",
-      "installSize": 8446746,
-      "openIssues": 1,
-      "package": {
-        "author": "LongDarkroom",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "RE Reader: a standalone EPUB/PDF reader for SiYuan. Shelf, PDF &amp; EPUB rendering, word lookup with offline MDX dictionaries, machine translation, bilingual parallel reading, ink annotations, reading stats and TTS — plus an AI reading assistant that reads the current chapter, cites passages and saves answers as notes. Readest-style reading experience.",
-          "zh-CN": "RE 阅读器：思源笔记的独立 EPUB/PDF 阅读器。书架管理、PDF 与 EPUB 渲染、离线 MDX 词典划词查词、机器翻译与双语对照、本地墨迹批注、阅读时长统计与朗读（TTS），并内置 AI 阅读助手：按章节提问、引用回跳、一键存为思源笔记。批注、进度与设置全部本地独立存储。"
-        },
-        "displayName": {
-          "default": "RE Reader",
-          "zh-CN": "RE 阅读器"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "reader",
-          "epub",
-          "pdf",
-          "dictionary",
-          "阅读器",
-          "电子书",
-          "词典",
-          "划词",
-          "双语",
-          "墨迹"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-reader",
-        "preview": "preview.webp",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/LongDarkroom/siyuan-plugin-reader",
-        "version": "0.6.1"
-      },
-      "packageZipAssetId": 720950958,
-      "packageZipSha256": "b90853154aefe586e986db3f5ce9e937d4866746c79d445f178d6c3e28fcd11b",
-      "repoRef": "v0.6.1",
-      "size": 4162686,
-      "stars": 2,
-      "updated": "2026-11-07T14:37:44Z",
-      "url": "LongDarkroom/siyuan-plugin-reader@b908531"
-    },
-    {
       "created": "2026-11-07T13:53:08Z",
       "installSize": 106299,
       "openIssues": 0,
@@ -6583,83 +6918,6 @@
       "url": "Coshining/Siyuan-more-code-block-info@032f668"
     },
     {
-      "created": "2025-11-26T14:43:52Z",
-      "installSize": 35485967,
-      "openIssues": 1,
-      "package": {
-        "author": "mm-o",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "专业电子书阅读器，支持 EPUB/PDF/MOBI/TXT/在线小说；PDF 支持高亮、墨迹、形状、表单、印章、签名、图片、截图、搜索、打印、导出和回链，并提供标注笔记、词典、翻译、主题与书架管理",
-          "en_US": "Professional eBook reader for EPUB/PDF/MOBI/TXT/online novels. PDFs support highlights, ink, shapes, forms, stamps, signatures, images, screenshots, search, printing, export, and backlinks, with annotation notes, dictionary, translation, themes, and bookshelf management."
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiReader",
-          "zh_CN": "思阅-思源 EPUB/PDF 阅读器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://745201.xyz/pay.jpg"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "阅读",
-          "reading",
-          "电子书",
-          "ebook",
-          "pdf",
-          "epub",
-          "mobi",
-          "txt",
-          "azw3",
-          "fb2",
-          "cbz",
-          "sireader",
-          "思阅",
-          "标注",
-          "annotation",
-          "笔记",
-          "note",
-          "书签",
-          "bookmark",
-          "词典",
-          "dictionary",
-          "书源",
-          "book source",
-          "在线小说",
-          "online novel",
-          "主题",
-          "theme"
-        ],
-        "minAppVersion": "3.6.5",
-        "name": "siyuan-sireader",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/mm-o/siyuan-sireader",
-        "version": "2.6.1"
-      },
-      "packageZipAssetId": 704553815,
-      "packageZipSha256": "afd05c61de8f305b0409bcc167af5e4fc9c409fbf6d41673ca50214503adc594",
-      "repoRef": "v2.6.1",
-      "size": 12654091,
-      "stars": 32,
-      "updated": "2026-11-03T06:20:54Z",
-      "url": "mm-o/siyuan-sireader@afd05c6"
-    },
-    {
       "created": "2023-05-28T00:06:30Z",
       "installSize": 1375655,
       "openIssues": 0,
@@ -6803,80 +7061,6 @@
       "stars": 0,
       "updated": "2026-11-03T02:33:07Z",
       "url": "kamasylvia/SiYuan-ReadItLater@0f55e33"
-    },
-    {
-      "created": "2025-01-19T15:19:54Z",
-      "installSize": 4512635,
-      "openIssues": 2,
-      "package": {
-        "author": "mm-o",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker",
-          "darwin"
-        ],
-        "description": {
-          "en_US": "Professional media player for SiYuan Note with multi-platform support, smart note integration, timestamp jumps, loop segments, and extensible script architecture",
-          "zh_CN": "专业的思源笔记媒体播放器插件，集成本地媒体、网盘、BBLL、TTVV、多窗口播放、时间戳、循环片段、媒体助手与可扩展架构。"
-        },
-        "displayName": {
-          "en_US": "SiYuan Media Player",
-          "zh_CN": "思播-思源媒体播放器"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://745201.xyz/pay.jpg"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "media player",
-          "audio",
-          "video",
-          "timestamp",
-          "playlist",
-          "note integration",
-          "extensible",
-          "播放器",
-          "音频",
-          "视频",
-          "时间戳",
-          "播放列表",
-          "笔记集成",
-          "多平台"
-        ],
-        "minAppVersion": "3.8.3",
-        "name": "siyuan-media-player",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/mm-o/siyuan-media-player",
-        "version": "2.3.0"
-      },
-      "packageZipAssetId": 702040636,
-      "packageZipSha256": "13b9de7e4a6d54dd01ae56203c8248b520fc3d581d8a41c8976626efdc7490d5",
-      "repoRef": "v2.3.0",
-      "size": 1636002,
-      "stars": 54,
-      "updated": "2026-11-02T14:33:16Z",
-      "url": "mm-o/siyuan-media-player@13b9de7"
     },
     {
       "created": "2026-11-01T05:29:22Z",
@@ -8302,59 +8486,6 @@
       "url": "FlowMorph/siyuan-comments@78c714b"
     },
     {
-      "created": "2026-05-31T08:33:55Z",
-      "installSize": 1366731,
-      "openIssues": 1,
-      "package": {
-        "author": "mm-o",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A cloud-drive aggregation manager for SiYuan: mount 25+ cloud drives and disks, preview 300+ formats, work with SiYuan Reader/Media Player, share online, insert file links, and use cloud files as image/video beds without filling your workspace.",
-          "zh_CN": "思源网盘聚合管理器：支持 25+ 网盘和磁盘挂载、300+ 文件格式预览，联动思阅和思播，在线分享、文件链接插入文档、图床/视频文件床一站完成，让远程文件随时可用，思源空间 0 负担。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Cloud Drive Manager",
-          "zh_CN": "思盘-思源文件与网盘管理器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "思盘",
-          "cloud drive",
-          "file manager",
-          "openlist",
-          "media",
-          "s3",
-          "kernel plugin",
-          "webdav"
-        ],
-        "minAppVersion": "3.6.5",
-        "name": "siyuan-cloud",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/mm-o/siyuan-cloud",
-        "version": "0.8.0"
-      },
-      "packageZipAssetId": 677843563,
-      "packageZipSha256": "06fbb98a04178254f0774c9db8bea119cb70a35ad50fc166ecdcd90a15a0d330",
-      "repoRef": "v0.8.0",
-      "size": 458522,
-      "stars": 5,
-      "updated": "2026-10-26T10:42:55Z",
-      "url": "mm-o/siyuan-cloud@06fbb98"
-    },
-    {
       "created": "2025-11-04T04:50:11Z",
       "installSize": 10466262,
       "openIssues": 1,
@@ -9454,129 +9585,6 @@
       "stars": 1,
       "updated": "2026-10-20T17:48:37Z",
       "url": "TCOTC/siyuan-plugin-openmoji-emoji@fcf4175"
-    },
-    {
-      "created": "2026-10-20T11:39:21Z",
-      "installSize": 84507,
-      "openIssues": 0,
-      "package": {
-        "author": "Xino Ni",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Inline LLM next-sentence suggestions shown as ghost text after punctuation. Press Tab to accept.",
-          "zh-CN": "在标点后实时以灰色幽灵文字提示 LLM 预测的下一句，按 Tab 采纳。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Ghost Writer",
-          "zh-CN": "写稿助手"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "AI",
-          "LLM",
-          "写作",
-          "续写",
-          "自动补全",
-          "autocomplete",
-          "copilot",
-          "ghost text"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-plugin-ghostwriter",
-        "preview": "",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/XinoAssassin/siyuan-plugin-ghostwriter",
-        "version": "0.2.0"
-      },
-      "packageZipAssetId": 659709367,
-      "packageZipSha256": "cefe37733884a8c5aef49c63db71c45dc1143f013df256c226f4f9f11b92eda7",
-      "repoRef": "0.2.0",
-      "size": 34744,
-      "stars": 0,
-      "updated": "2026-10-20T15:30:16Z",
-      "url": "XinoAssassin/siyuan-plugin-ghostwriter@cefe377"
-    },
-    {
-      "created": "2025-04-28T16:54:46Z",
-      "installSize": 2120214,
-      "openIssues": 0,
-      "package": {
-        "author": "Glaube-TY",
-        "backends": [
-          "windows",
-          "linux",
-          "ios",
-          "android",
-          "harmony",
-          "docker",
-          "darwin"
-        ],
-        "description": {
-          "en_US": "Obtain Douban book information and add it to the database &amp; synchronize weread notes.",
-          "zh_CN": "豆瓣书籍信息获取并添加到数据库 &amp; 同步微信读书笔记。"
-        },
-        "displayName": {
-          "en_US": "Reading Notes",
-          "zh_CN": "读书笔记"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://glaube-ty.top/da-shang/"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "豆瓣读书",
-          "douban",
-          "书籍",
-          "book",
-          "读书笔记",
-          "笔记",
-          "read",
-          "note",
-          "booknote",
-          "weread",
-          "微信读书",
-          "微信"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "siyuan-douban",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/Glaube-TY/siyuan-douban",
-        "version": "4.3.9"
-      },
-      "packageZipAssetId": 659366653,
-      "packageZipSha256": "411277b46906f1c5aae325cd27a15cf2eeb6239ea92551c7a273a6d9fc124e98",
-      "repoRef": "v4.3.9",
-      "size": 738691,
-      "stars": 30,
-      "updated": "2026-10-20T13:09:57Z",
-      "url": "Glaube-TY/siyuan-douban@411277b"
     },
     {
       "created": "2024-10-29T05:20:25Z",
