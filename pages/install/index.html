@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    <!-- 页面只用自身的样式与脚本，不加载任何外部资源 -->
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+    <title data-i18n="title"></title>
+    <style>
+        :root {
+            color-scheme: light dark;
+            --sub: color-mix(in srgb, currentColor 58%, transparent);
+            --line: color-mix(in srgb, currentColor 18%, transparent);
+            --fill: color-mix(in srgb, currentColor 7%, transparent);
+            --brand: #3575f0;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: grid;
+            /* 让「内容整体」在容器里居中：place-items 依赖隐式行被拉伸到容器高度，
+               容器偏矮（如画布 iframe）或浏览器实现不同时会退化成顶部对齐 */
+            place-content: center;
+            justify-items: center;
+            padding: 24px;
+            box-sizing: border-box;
+            font: 14px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+        }
+
+        main {
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0 0 4px;
+            font-size: 19px;
+            font-weight: 600;
+            word-break: break-all;
+        }
+
+        .tag {
+            display: inline-block;
+            font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+            font-size: 12px;
+            color: var(--sub);
+        }
+
+        /* 无 tag 时隐藏整行，标题下不留空行；写成属性选择器才能盖过上方的 display */
+        .tag[hidden] {
+            display: none;
+        }
+
+        .primary {
+            width: 100%;
+            margin-top: 20px;
+            padding: 12px 20px;
+            border: 0;
+            border-radius: 8px;
+            background: var(--brand);
+            color: #fff;
+            font: inherit;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .primary:hover {
+            background: color-mix(in srgb, var(--brand) 88%, #000);
+        }
+
+        .primary:disabled {
+            cursor: default;
+            opacity: 0.5;
+        }
+
+        .uri {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin-top: 12px;
+            padding: 8px 8px 8px 12px;
+            border-radius: 8px;
+            background: var(--fill);
+            text-align: left;
+        }
+
+        .uri code {
+            flex: 1;
+            min-width: 0;
+            font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+            font-size: 11px;
+            word-break: break-all;
+            color: var(--sub);
+        }
+
+        .ghost {
+            flex: 0 0 auto;
+            padding: 4px 10px;
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            background: transparent;
+            color: inherit;
+            font: inherit;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .ghost:hover:not(:disabled) {
+            border-color: currentColor;
+        }
+
+        .ghost:disabled {
+            cursor: default;
+            opacity: 0.5;
+        }
+
+        .steps {
+            margin: 45px 0 0;
+            padding: 22px 0 0;
+            border-top: 1px solid var(--line);
+            text-align: left;
+        }
+
+        .steps ol {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            counter-reset: step;
+        }
+
+        .steps li {
+            position: relative;
+            padding-left: 26px;
+            font-size: 12px;
+            counter-increment: step;
+        }
+
+        .steps li + li {
+            margin-top: 10px;
+        }
+
+        .steps li::before {
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 2px;
+            width: 17px;
+            height: 17px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: color-mix(in srgb, var(--brand) 14%, transparent);
+            color: var(--brand);
+            font-size: 10px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1 id="repo"></h1>
+        <span class="tag" id="tag"></span>
+        <button class="primary" id="open" data-i18n="open" type="button"></button>
+        <div class="uri">
+            <code id="uri"></code>
+            <button class="ghost" id="copy" data-i18n="copy" type="button"></button>
+        </div>
+        <div class="steps">
+            <ol data-i18n-steps></ol>
+        </div>
+    </main>
+    <script>
+        // 文案由脚本按语种渲染，HTML 里不放文案：同一份页面既能给出纯中文也能给出纯英文，
+        // 不需要维护两套 markup。语种由 PR Check 评论里的 `?lang=` 决定
+        (function () {
+            var REPO_PATTERN = /^[A-Za-z0-9._-]+\/[A-Za-z0-9._-]+$/;
+            var TAG_PATTERN = /^(?!.*\.\.)[A-Za-z0-9._+/-]+$/;
+            var PLUGIN_NAME = "install-package";
+
+            /** 已登记的语种；新增语言时在这里加一份文案（步骤数量也可与其它语种不同） */
+            var TEXT = {
+                "zh-CN": {
+                    title: "在思源中安装",
+                    open: "在思源中安装",
+                    copy: "复制",
+                    copied: "已复制",
+                    invalid: "链接参数无效",
+                    invalidHint: "请确认链接形如 ?repo=owner/repo&tag=v1.0.0",
+                    steps: [
+                        "安装并启用 " + PLUGIN_NAME + " 插件",
+                        "保持思源正在运行",
+                        "点击上方按钮，在打开的安装界面中确认安装",
+                    ],
+                },
+                en: {
+                    title: "Install in SiYuan",
+                    open: "Install in SiYuan",
+                    copy: "Copy",
+                    copied: "Copied",
+                    invalid: "Invalid parameters",
+                    invalidHint: "Expected the form ?repo=owner/repo&tag=v1.0.0",
+                    steps: [
+                        "Install and enable the " + PLUGIN_NAME + " plugin",
+                        "Keep SiYuan running",
+                        "Click the button above, then confirm the installation in the panel",
+                    ],
+                },
+            };
+
+            var params = new URLSearchParams(location.search);
+
+            /**
+             * 语种：`?lang=` 以 zh… / en… 开头即采纳，否则跟随浏览器语言
+             *
+             * 常见的 `zh-CN` / `zh-Hans` / `en-US` 等写法都由前缀覆盖，不必逐个登记；
+             * 未登记的取值（如 `fr`）不猜测，直接回退到浏览器语言
+             */
+            function resolveLang() {
+                var raw = (params.get("lang") || "").trim().toLowerCase();
+                if (raw.indexOf("zh") === 0) {
+                    return "zh-CN";
+                }
+                if (raw.indexOf("en") === 0) {
+                    return "en";
+                }
+                var nav = (navigator.language || "").toLowerCase();
+                return nav.indexOf("zh") === 0 ? "zh-CN" : "en";
+            }
+
+            var lang = resolveLang();
+            var text = TEXT[lang];
+            document.documentElement.lang = lang;
+
+            /** 填充静态文案 */
+            document.querySelectorAll("[data-i18n]").forEach(function (el) {
+                var value = text[el.dataset.i18n];
+                if (typeof value === "string") {
+                    el.textContent = value;
+                }
+            });
+
+            /** 生成步骤列表（数量与内容都由文案表决定，HTML 里不放占位文本） */
+            document.querySelectorAll("[data-i18n-steps]").forEach(function (host) {
+                host.textContent = "";
+                text.steps.forEach(function (step) {
+                    var li = document.createElement("li");
+                    li.textContent = step;
+                    host.appendChild(li);
+                });
+            });
+
+            // 参数由外部链接决定，因此两个都按白名单校验，避免本页被当成开放跳板使用
+            var repo = (params.get("repo") || "").trim();
+            var tag = (params.get("tag") || "").trim();
+            var repoOk = REPO_PATTERN.test(repo);
+            var tagOk = tag === "" || TAG_PATTERN.test(tag);
+            var uri = repoOk && tagOk
+                ? "siyuan://plugins/" + PLUGIN_NAME + "/install?repo=" + repo + (tag ? "&tag=" + encodeURIComponent(tag) : "")
+                : "";
+
+            function fill(selector, value) {
+                var el = document.querySelector(selector);
+                if (el) {
+                    el.textContent = value;
+                }
+            }
+
+            /** 目标版本：缺 tag 时整块隐藏，避免标题下留一行空白 */
+            function fillTag(value) {
+                var el = document.getElementById("tag");
+                if (!el) {
+                    return;
+                }
+                el.textContent = value;
+                el.hidden = value === "";
+            }
+
+            if (uri === "") {
+                fill("#repo", text.invalid);
+                fill("#uri", text.invalidHint);
+                // 参数无效时也没有版本可显示，一并隐藏，避免标题下多出一行空行
+                fillTag("");
+                document.querySelectorAll("button").forEach(function (button) {
+                    button.disabled = true;
+                });
+                return;
+            }
+
+            fill("#repo", repo);
+            fillTag(tag);
+            fill("#uri", uri);
+
+            // 手动入口：自动跳转被拦时（或用户先看完页面）可点击这里
+            document.getElementById("open").addEventListener("click", function () {
+                location.href = uri;
+            });
+
+            var copyEl = document.getElementById("copy");
+            // 「复制」与「已复制」两个状态的文本宽度不同（中文差 14px），点一下就变宽会把左侧链接挤窄。
+            // 先逐一换上两个文案量出较宽的那个，再把它固定为 min-width，切换时宽度不再变化
+            reserveWidth(copyEl, [text.copy, text.copied]);
+            copyEl.addEventListener("click", function () {
+                var done = function () {
+                    copyEl.textContent = text.copied;
+                    window.setTimeout(function () {
+                        copyEl.textContent = text.copy;
+                    }, 1500);
+                };
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText(uri).then(done, selectUri);
+                } else {
+                    selectUri();
+                }
+            });
+
+            /** 把元素宽度固定为若干候选文案里最宽的那个（需要元素已在文档中参与布局） */
+            function reserveWidth(el, texts) {
+                var original = el.textContent;
+                var widest = 0;
+                texts.forEach(function (value) {
+                    el.textContent = value;
+                    widest = Math.max(widest, el.getBoundingClientRect().width);
+                });
+                el.textContent = original;
+                if (widest > 0) {
+                    el.style.minWidth = Math.ceil(widest) + "px";
+                }
+            }
+
+            /** 剪贴板不可用时退化为选中文本，由用户自行复制 */
+            function selectUri() {
+                var target = document.getElementById("uri");
+                var range = document.createRange();
+                range.selectNodeContents(target);
+                var selection = window.getSelection();
+                selection.removeAllRanges();
+                selection.addRange(range);
+            }
+
+            // 打开页面即自动跳转，省掉一次点击（桌面端实测可直接拉起思源）。
+            // 放在最后：先把界面与兜底入口都就绪，万一跳转被环境拦下，页面仍是完整可用的
+            location.href = uri;
+        })();
+    </script>
+</body>
+
+</html>

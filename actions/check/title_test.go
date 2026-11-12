@@ -89,7 +89,7 @@ func TestConventionalPRTitle_MultipleRepos(t *testing.T) {
 func TestConventionalPRTitle_ParseError(t *testing.T) {
 	plans := []typeCheckPlan{
 		{packageType: rules.TypePlugin, diff: repoDiff{New: []string{"a/p1"}}},
-		{packageType: rules.TypeTheme, parseError: "bad"},
+		{packageType: rules.TypeTheme, parseError: &ListParseError{File: "themes.txt", Source: ListSourcePRHead}},
 	}
 	if title, ok := conventionalPRTitle(plans); ok {
 		t.Fatalf("expected ok=false on parseError, got title=%q", title)

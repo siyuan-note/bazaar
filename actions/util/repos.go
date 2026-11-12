@@ -24,9 +24,20 @@ import (
 // ThemeJsAllowlistRelPath 为仓库根目录下「允许包含 theme.js」的主题列表相对路径。
 const ThemeJsAllowlistRelPath = "config/themes-theme-js-allowlist.txt"
 
-// ParseReposFromTxt 从 TXT 文件解析包列表：按行分割、过滤空行，校验每行为合法 owner/repo，返回 []string。
+// ParseReposFromTxt 从 TXT 文件解析包列表：按行分割、跳过空行，校验每行为合法 owner/repo，返回 []string。
 // 不做 TrimSpace，行首尾或 owner/repo 内含空格均视为解析错误。兼容多种换行符（\n、\r\n、\r）。
+// 空行是否允许不在本函数把关：Stage / 弃用校验用宽松语义，PR Check 用 ParseReposFromTxtStrict。
 func ParseReposFromTxt(filePath string) (repos []string, err error) {
+	return parseReposFromFile(filePath, false)
+}
+
+// ParseReposFromTxtStrict 与 ParseReposFromTxt 相同，但额外要求空行只能出现在文件末尾且最多一行。
+// 仅供 PR Check 校验本 PR 提交的列表文件：Stage 读的是 main 上的既有内容，不应因一处多余空行整轮失败。
+func ParseReposFromTxtStrict(filePath string) (repos []string, err error) {
+	return parseReposFromFile(filePath, true)
+}
+
+func parseReposFromFile(filePath string, strict bool) (repos []string, err error) {
 	fileLabel := filepath.Base(filePath)
 	data, err := os.ReadFile(filePath)
 	if err != nil {
@@ -36,20 +47,48 @@ func ParseReposFromTxt(filePath string) (repos []string, err error) {
 			err,
 		)
 	}
-	return ParseReposFromBytes(fileLabel, data)
+	return ParseReposFromBytesWithMode(fileLabel, data, strict)
 }
 
-// ParseReposFromBytes 从 TXT 内容解析包列表，规则与 ParseReposFromTxt 相同。
+// ParseReposFromBytes 从 TXT 内容解析包列表，规则与 ParseReposFromTxt 相同（跳过空行）。
 // fileLabel 用于错误文案（通常为文件名，如 plugins.txt）。
 func ParseReposFromBytes(fileLabel string, data []byte) (repos []string, err error) {
+	return ParseReposFromBytesWithMode(fileLabel, data, false)
+}
+
+// ParseReposFromBytesStrict 从 TXT 内容解析包列表，额外要求空行只能出现在文件末尾且最多一行。
+func ParseReposFromBytesStrict(fileLabel string, data []byte) (repos []string, err error) {
+	return ParseReposFromBytesWithMode(fileLabel, data, true)
+}
+
+// ParseReposFromBytesWithMode 按 strict 决定是否把中间空行视为错误。
+// strict 只用于 PR Check：它要提示作者改掉多余空行，而 Stage 读的是 main 上的既有内容。
+func ParseReposFromBytesWithMode(fileLabel string, data []byte, strict bool) (repos []string, err error) {
 	scanner := bufio.NewScanner(strings.NewReader(string(data)))
-	repos = make([]string, 0)
-	lineNum := 0
+	lines := make([]string, 0)
 	for scanner.Scan() {
-		lineNum++
-		line := scanner.Text()
-		if line == "" {
-			continue
+		lines = append(lines, scanner.Text())
+	}
+	if err = scanner.Err(); err != nil {
+		return nil, rules.LocalizedErr(
+			fmt.Sprintf("读取 `%s` 失败：%v。请确认文件编码与换行正常后重新提交。", fileLabel, err),
+			fmt.Sprintf("Failed to read `%s`: %v. Please make sure the file encoding and line endings are fine, then submit again.", fileLabel, err),
+			err,
+		)
+	}
+
+	repos = make([]string, 0, len(lines))
+	for i, line := range lines {
+		lineNum := i + 1
+		// 空行：宽松模式跳过；严格模式只允许出现在文件末尾且最多一行（形如 "a\n\n"）
+		if line == "" || strings.TrimSpace(line) == "" {
+			if !strict {
+				continue
+			}
+			if line == "" && i == len(lines)-1 {
+				continue
+			}
+			return nil, emptyLineError(fileLabel, lineNum)
 		}
 		if line != strings.TrimSpace(line) {
 			return nil, rules.LocalizedErr(
@@ -83,12 +122,14 @@ func ParseReposFromBytes(fileLabel string, data []byte) (repos []string, err err
 		}
 		repos = append(repos, owner+"/"+repo)
 	}
-	if err = scanner.Err(); err != nil {
-		return nil, rules.LocalizedErr(
-			fmt.Sprintf("读取 `%s` 失败：%v。请确认文件编码与换行正常后重新提交。", fileLabel, err),
-			fmt.Sprintf("Failed to read `%s`: %v. Please make sure the file encoding and line endings are fine, then submit again.", fileLabel, err),
-			err,
-		)
-	}
 	return repos, nil
+}
+
+// emptyLineError 生成「列表文件中间出现空行」的双语错误。
+func emptyLineError(fileLabel string, lineNum int) error {
+	return rules.LocalizedErr(
+		fmt.Sprintf("`%s` 第 %d 行不能为空行或只含空格。空行只允许出现在文件末尾，且最多一行；请删除该行后重新提交。", fileLabel, lineNum),
+		fmt.Sprintf("`%s` line %d must not be empty or contain only spaces. A blank line is allowed only at the end of the file, at most one; please remove this line and submit again.", fileLabel, lineNum),
+		nil,
+	)
 }

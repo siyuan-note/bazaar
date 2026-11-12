@@ -71,6 +71,7 @@ func TestStageFileForPublicIndex_stripsInternalFields(t *testing.T) {
 			{
 				URL:               "owner/repo@abc1234",
 				RepoRef:           "v1.0.0",
+				Created:           "2024-01-01T00:00:00Z",
 				Updated:           "2025-01-01T00:00:00Z",
 				Stars:             10,
 				OpenIssues:        1,
@@ -95,6 +96,7 @@ func TestStageFileForPublicIndex_stripsInternalFields(t *testing.T) {
 						"zh-CN":   "Deprecated",
 					},
 					Alternatives: []string{"replacement"},
+					Choices:      []rules.PackageChoice{{PackageType: "plugins", Name: "replacement"}},
 				},
 			},
 		},
@@ -116,6 +118,9 @@ func TestStageFileForPublicIndex_stripsInternalFields(t *testing.T) {
 		!strings.Contains(got, `"preview":""`) {
 		t.Fatalf("public index missing resource metadata: %s", got)
 	}
+	if !strings.Contains(got, `"created":"2024-01-01T00:00:00Z"`) {
+		t.Fatalf("public index missing created: %s", got)
+	}
 	if !strings.Contains(got, `"frontends":["desktop","browser-desktop"]`) {
 		t.Fatalf("public index missing theme frontends: %s", got)
 	}
@@ -130,6 +135,9 @@ func TestStageFileForPublicIndex_stripsInternalFields(t *testing.T) {
 	}
 	if !strings.Contains(got, `"deprecated":true`) || !strings.Contains(got, `"alternatives":["replacement"]`) {
 		t.Fatalf("public index missing deprecation metadata: %s", got)
+	}
+	if !strings.Contains(got, `"choices":[{"packageType":"plugins","name":"replacement"}]`) {
+		t.Fatalf("public index missing typed choices: %s", got)
 	}
 	if _, ok := public.Repos[0].Package.DeprecatedReason["zh-CN"]; ok {
 		t.Fatalf("public index must strip redundant deprecated-reason locale: %s", got)

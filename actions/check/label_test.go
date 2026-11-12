@@ -49,7 +49,7 @@ func TestTypeLabelSyncPlan_MultipleTypes(t *testing.T) {
 func TestTypeLabelSyncPlan_ParseErrorLabeled(t *testing.T) {
 	plans := []typeCheckPlan{
 		{packageType: rules.TypePlugin, diff: repoDiff{New: []string{"a/p1"}}},
-		{packageType: rules.TypeTheme, parseError: "bad"},
+		{packageType: rules.TypeTheme, parseError: &ListParseError{File: "themes.txt", Source: ListSourcePRHead}},
 	}
 	expected := typeLabelSyncPlan(plans, nil)
 	if len(expected) != 2 {
@@ -143,7 +143,7 @@ func TestCheckResultCIPassed(t *testing.T) {
 	if checkResultCIPassed(&CheckResult{}) {
 		t.Fatal("empty result (no list activity) should fail")
 	}
-	if checkResultCIPassed(&CheckResult{ParseError: "bad"}) {
+	if checkResultCIPassed(&CheckResult{ParseError: []ListParseError{{}}}) {
 		t.Fatal("ParseError should fail")
 	}
 	if checkResultCIPassed(&CheckResult{FlowError: "limit"}) {
@@ -192,7 +192,7 @@ func TestIsNoActualChange(t *testing.T) {
 	if !isNoActualChange(&CheckResult{}) {
 		t.Fatal("empty result should be no actual change")
 	}
-	if isNoActualChange(&CheckResult{ParseError: "bad"}) {
+	if isNoActualChange(&CheckResult{ParseError: []ListParseError{{}}}) {
 		t.Fatal("ParseError is not no actual change")
 	}
 	if isNoActualChange(&CheckResult{FlowError: "limit"}) {

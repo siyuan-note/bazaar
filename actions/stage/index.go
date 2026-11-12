@@ -41,35 +41,44 @@ func indexOldStageByRepoName(oldStageData map[string]*util.StageRepo) map[string
 	return byName
 }
 
-// resolveStageCheckLegacy 决定 rules.Check 使用的旧 name/version，以及失败时可否保留的同路径旧条目。
-// - 同路径命中：返回 exactOld，并带 OldName+OldVersion（常规更新）
-// - 换维护者（同 GitHub 仓库名，且旧 owner/repo 已不在列表）：同样带 OldName+OldVersion（视同更新须升版），exactOld 为 nil（不得写回旧 URL）
+// stageLegacy 描述 rules.Check、created/updated 计算所需的旧条目信息。
+type stageLegacy struct {
+	exact   *util.StageRepo // 同路径旧条目：hash 跳过 / 失败保留可复用；换维护者时为 nil
+	inherit *util.StageRepo // 可继承元数据的旧条目（同路径或换维护者前身）；纯新包为 nil
+	name    string
+	version string
+}
+
+// resolveStageCheckLegacy 决定 rules.Check 使用的旧 name/version、created 继承来源，以及失败时可否保留的同路径旧条目。
+// - 同路径命中：exact 与 inherit 均为该条目，带 OldName+OldVersion（常规更新）
+// - 换维护者（同 GitHub 仓库名，且旧 owner/repo 已不在列表）：inherit 为前身条目，带 OldName+OldVersion（视同更新须升版），exact 为 nil（不得写回旧 URL）
+// - 纯新包：三者均为空
 func resolveStageCheckLegacy(
 	ownerRepo string,
 	oldStageData map[string]*util.StageRepo,
 	oldByRepoName map[string]*util.StageRepo,
 	listed Set,
-) (exactOld *util.StageRepo, oldName, oldVersion string) {
+) stageLegacy {
 	if o, ok := oldStageData[ownerRepo]; ok {
-		return o, o.Package.Name, o.Package.Version
+		return stageLegacy{exact: o, inherit: o, name: o.Package.Name, version: o.Package.Version}
 	}
 	_, repoName, ok := strings.Cut(ownerRepo, "/")
 	if !ok || repoName == "" {
-		return nil, "", ""
+		return stageLegacy{}
 	}
 	legacy := oldByRepoName[repoName]
 	if legacy == nil {
-		return nil, "", ""
+		return stageLegacy{}
 	}
 	legacyKey, ok := util.OwnerRepoFromStageURL(legacy.URL)
 	if !ok || legacyKey == "" {
-		return nil, "", ""
+		return stageLegacy{}
 	}
 	if _, stillListed := listed[legacyKey]; stillListed {
 		// 旧路径仍在列表：不是换维护者，按纯新包处理（唯一性校验会拦住重名）
-		return nil, "", ""
+		return stageLegacy{}
 	}
-	return nil, legacy.Package.Name, legacy.Package.Version
+	return stageLegacy{inherit: legacy, name: legacy.Package.Name, version: legacy.Package.Version}
 }
 
 // indexPackage 校验并上传包，返回的 pkg 为解析后的清单元数据。

@@ -27,12 +27,14 @@ const (
 type packageImageSpec struct {
 	field      string
 	legacyName string
+	label      string
+	labelEn    string
 	maxSize    int64
 }
 
 var packageImageSpecs = []packageImageSpec{
-	{field: "icon", legacyName: "icon.png", maxSize: maxIconImageBytes},
-	{field: "preview", legacyName: "preview.png", maxSize: maxPreviewImageBytes},
+	{field: "icon", legacyName: "icon.png", label: "图标文件", labelEn: "icon file", maxSize: maxIconImageBytes},
+	{field: "preview", legacyName: "preview.png", label: "预览图文件", labelEn: "preview image file", maxSize: maxPreviewImageBytes},
 }
 
 var imageMIMEByExtension = map[string]string{
@@ -44,7 +46,7 @@ var imageMIMEByExtension = map[string]string{
 }
 
 // normalizePackageImages 校验并归一化清单中的图标和预览图。
-// 缺少字段时探测传统 PNG 文件；归一化后 nil 只保留给尚未迁移的旧 Stage 条目。
+// 缺少字段时探测包根同名 PNG 文件；归一化后 nil 只保留给尚未迁移的旧 Stage 条目。
 func normalizePackageImages(manifest map[string]any, pkg *Package, root string) []Issue {
 	if pkg == nil {
 		return nil
@@ -78,8 +80,8 @@ func normalizePackageImage(manifest map[string]any, root string, spec packageIma
 		fileName = value
 		if fileName == "" || strings.TrimSpace(fileName) != fileName {
 			return "", []Issue{issue(
-				fmt.Sprintf("清单字段 `%s` 必须是无首尾空白的非空文件名；不需要图片时请删除该字段和传统文件 `%s`。", spec.field, spec.legacyName),
-				fmt.Sprintf("Manifest field `%s` must be a non-empty filename without leading or trailing whitespace. If no image is needed, remove the field and the legacy file `%s`.", spec.field, spec.legacyName),
+				fmt.Sprintf("清单字段 `%s` 必须是无首尾空白的非空文件名；不需要图片时请删除该字段和包根的 `%s`。", spec.field, spec.legacyName),
+				fmt.Sprintf("Manifest field `%s` must be a non-empty filename without leading or trailing whitespace. If no image is needed, remove the field and the `%s` file at the package root.", spec.field, spec.legacyName),
 			)}
 		}
 		if filepath.IsAbs(fileName) || fileName == "." || fileName == ".." || strings.ContainsAny(fileName, `/\`) {
@@ -101,42 +103,46 @@ func normalizePackageImage(manifest map[string]any, root string, spec packageIma
 		)}
 	}
 
+	// 清单未声明该字段、仅校验包根同名文件时，消息不能写成「清单字段 icon 声明」，
+	// 否则作者会被告知一个自己从未写过的声明（见 bazaar#2363）。
+	zhSubject, enSubject := imageSubject(spec, fileName, declared)
+
 	path := filepath.Join(root, fileName)
 	info, err := os.Stat(path)
 	if err != nil {
 		return fileName, []Issue{issue(
-			fmt.Sprintf("无法读取清单字段 `%s` 声明的图片 `%s`：%v。", spec.field, fileName, err),
-			fmt.Sprintf("Couldn't inspect image `%s` declared by manifest field `%s`: %v.", fileName, spec.field, err),
+			fmt.Sprintf("无法读取%s：%v。", zhSubject, err),
+			fmt.Sprintf("Failed to inspect %s: %v.", enSubject, err),
 		)}
 	}
 	if info.IsDir() {
 		return fileName, []Issue{issue(
-			fmt.Sprintf("清单字段 `%s` 声明的 `%s` 是目录，必须改为普通图片文件。", spec.field, fileName),
-			fmt.Sprintf("`%s` declared by manifest field `%s` is a directory; it must be a regular image file.", fileName, spec.field),
+			fmt.Sprintf("%s是目录，必须改为普通图片文件。", zhSubject),
+			fmt.Sprintf("%s is a directory; it must be a regular image file.", enSubject),
 		)}
 	}
 
 	expectedMIME := ImageMIMEType(fileName)
 	if expectedMIME == "" {
 		return fileName, []Issue{issue(
-			fmt.Sprintf("清单字段 `%s` 声明的图片 `%s` 格式不受支持。仅支持 PNG、JPEG、WebP 和 AVIF，不支持 SVG。", spec.field, fileName),
-			fmt.Sprintf("Image `%s` declared by manifest field `%s` has an unsupported format. Only PNG, JPEG, WebP, and AVIF are supported; SVG isn't supported.", fileName, spec.field),
+			fmt.Sprintf("%s格式不受支持。仅支持 PNG、JPEG、WebP 和 AVIF，不支持 SVG。", zhSubject),
+			fmt.Sprintf("%s has an unsupported format. Only PNG, JPEG, WebP, and AVIF are supported; SVG isn't supported.", enSubject),
 		)}
 	}
 	if info.Size() > spec.maxSize {
 		return fileName, []Issue{issue(
-			fmt.Sprintf("清单字段 `%s` 声明的图片 `%s` 文件大小为 %s，超过上限 %s。请压缩或缩小该文件后重新打包，并更新 GitHub Release 中的 `package.zip`。",
-				spec.field, fileName, formatByteSize(info.Size()), formatByteSize(spec.maxSize)),
-			fmt.Sprintf("Image `%s` declared by manifest field `%s` is %s, which exceeds the limit of %s. Please compress or shrink the file, repackage it, and update `package.zip` in the GitHub Release.",
-				fileName, spec.field, formatByteSize(info.Size()), formatByteSize(spec.maxSize)),
+			fmt.Sprintf("%s大小为 %s，超过上限 %s。请压缩或缩小该文件后重新打包，并更新 GitHub Release 中的 `package.zip`。",
+				zhSubject, formatByteSize(info.Size()), formatByteSize(spec.maxSize)),
+			fmt.Sprintf("%s is %s, which exceeds the limit of %s. Please compress or shrink the file, repackage it, and update `package.zip` in the GitHub Release.",
+				enSubject, formatByteSize(info.Size()), formatByteSize(spec.maxSize)),
 		)}
 	}
 
 	data, err := os.ReadFile(path)
 	if err != nil {
 		return fileName, []Issue{issue(
-			fmt.Sprintf("无法读取清单字段 `%s` 声明的图片 `%s`：%v。", spec.field, fileName, err),
-			fmt.Sprintf("Couldn't read image `%s` declared by manifest field `%s`: %v.", fileName, spec.field, err),
+			fmt.Sprintf("无法读取%s：%v。", zhSubject, err),
+			fmt.Sprintf("Failed to read %s: %v.", enSubject, err),
 		)}
 	}
 	actualMIME := detectImageMIMEType(data)
@@ -148,11 +154,23 @@ func normalizePackageImage(manifest map[string]any, root string, spec packageIma
 			actualEn = actualMIME
 		}
 		return fileName, []Issue{issue(
-			fmt.Sprintf("清单字段 `%s` 声明的图片 `%s` 扩展名对应 `%s`，但文件内容实际格式为 `%s`。请使用与实际格式一致的扩展名和内容。", spec.field, fileName, expectedMIME, actual),
-			fmt.Sprintf("Image `%s` declared by manifest field `%s` uses extension type `%s`, but its contents are `%s`. Please make the extension and actual format match.", fileName, spec.field, expectedMIME, actualEn),
+			fmt.Sprintf("%s扩展名对应 `%s`，但文件内容实际格式为 `%s`。请使用与实际格式一致的扩展名和内容。", zhSubject, expectedMIME, actual),
+			fmt.Sprintf("%s uses extension type `%s`, but its contents are `%s`. Please make the extension and actual format match.", enSubject, expectedMIME, actualEn),
 		)}
 	}
 	return fileName, nil
+}
+
+// imageSubject 返回报错中指向待校验图片的主语。
+// 清单显式声明了字段时指出该声明；否则只说包根文件名，不强调字段与文件两种来源的差别，
+// 两者都是受支持的使用方式。
+func imageSubject(spec packageImageSpec, fileName string, declared bool) (zh, en string) {
+	if declared {
+		return fmt.Sprintf("清单字段 `%s` 声明的图片 `%s`", spec.field, fileName),
+			fmt.Sprintf("Image `%s` declared by manifest field `%s`", fileName, spec.field)
+	}
+	return fmt.Sprintf("包根的%s `%s`", spec.label, fileName),
+		fmt.Sprintf("%s `%s` at the package root", spec.labelEn, fileName)
 }
 
 // ImageMIMEType 根据支持的图片扩展名返回上传所需的 MIME；不支持时返回空字符串。

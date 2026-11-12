@@ -53,7 +53,7 @@ func typeLabelSyncPlan(plans []typeCheckPlan, checkResult *CheckResult) Set {
 	expected := make(Set)
 	for _, plan := range plans {
 		name := plan.packageType.String()
-		if plan.parseError != "" || len(plan.diff.New) > 0 || len(plan.diff.Deleted) > 0 {
+		if plan.parseError != nil || len(plan.diff.New) > 0 || len(plan.diff.Deleted) > 0 {
 			expected[name] = struct{}{}
 		}
 	}
@@ -71,7 +71,7 @@ func checkResultCIPassed(r *CheckResult) bool {
 	if r == nil {
 		return false
 	}
-	if r.ParseError != "" || r.FlowError != "" {
+	if len(r.ParseError) > 0 || r.FlowError != "" {
 		return false
 	}
 	hasActivity := false
@@ -105,7 +105,7 @@ func isNoActualChange(r *CheckResult) bool {
 	if r == nil {
 		return true
 	}
-	if r.ParseError != "" || r.FlowError != "" {
+	if len(r.ParseError) > 0 || r.FlowError != "" {
 		return false
 	}
 	if r.Deprecation != nil {

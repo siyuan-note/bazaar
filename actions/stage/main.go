@@ -11,10 +11,8 @@
 package main
 
 import (
-	"bytes"
 	"cmp"
 	"context"
-	"encoding/json"
 	"errors"
 	"fmt"
 	"math"
@@ -46,7 +44,9 @@ Stage 流程：
 5. 先比 packageZipAssetId：相同则跳过；不同则取 SHA-256（优先 GitHub digest，否则下载 zip 计算）。
    内容未变（新 asset id、同一 SHA-256）则保留旧条目（不回写 asset id）并记 stage-fail，提示开发者「空更新」；
    内容变了则校验并上传 OSS（package.zip、README、声明的 preview / icon、清单 JSON）。url 的 @hash 为 SHA-256 前 7 位
-6. 按 updated 降序排序后写出 stage/*.json（键序经 marshalSortedIndentedJSON 稳定；新上架用索引时间，更新用 Release 发布时间）
+6. 按 updated 降序排序后写出 stage/*.json（键序经 util.MarshalSortedIndentedJSON 稳定；新上架用索引时间，更新用 Release 发布时间）；
+   created（首次进入集市时间）仅新上架时取索引时间，其余路径继承旧条目；
+   全部类型写完后统一应用 deprecated.json（替代包可跨类型，需读其它类型 Stage 解析包名，见 applyDeprecatedRegistry）
 7. 将本轮失败/成功同步为按仓独立 Issue（标签 stage-fail）：失败 upsert（正文未变则跳过 Edit）；
    成功入库或 asset id 未变跳过（已能正常取到 Release）则先评论说明再关闭；
    已不在任一 *s.txt 的仓（下架 / 换维护者旧仓）按 delisted 关闭（对照完整列表，非本轮 reports）
@@ -136,6 +136,7 @@ func main() {
 	// 仅对新上架的包进行检查
 	reports := &stageReportCollector{}
 	var abortedByRateLimit bool
+	var stagedTypes []rules.PackageType
 	for _, packageType := range rules.AllPackageTypes() {
 		job, ok := jobs[packageType]
 		if !ok {
@@ -146,11 +147,18 @@ func main() {
 		if err != nil {
 			logger.Fatalf("load occupied names failed: %s", err)
 		}
-		if performStage(packageType, occupiedNames, job.repos, job.checkRepos, deprecatedRegistry, reports) {
+		if performStage(packageType, occupiedNames, job.repos, job.checkRepos, reports) {
 			abortedByRateLimit = true
 			logger.Errorf("abort remaining package types due to GitHub API rate limit")
 			break
 		}
+		stagedTypes = append(stagedTypes, packageType)
+	}
+
+	// 弃用元数据在全部类型写盘后统一应用：替代包可跨类型，需要读其它类型 Stage 才能解析出包名。
+	// 失败时中止（不提交半成品索引），与写 stage JSON 失败同样视为致命。
+	if err := applyDeprecatedRegistry(BAZAAR_ROOT_PATH, stagedTypes, deprecatedRegistry); err != nil {
+		logger.Fatalf("apply deprecation registry failed: %s", err)
 	}
 
 	// 失败同步为按仓独立 Issue；同步失败不阻断已写出的 stage JSON（仅记日志）。
@@ -236,7 +244,7 @@ func loadOldStageData(packageType rules.PackageType) (map[string]*util.StageRepo
 
 // performStage 执行单一类型的 staging。若遇 GitHub API 限流返回 true（调用方应中止后续类型）。
 // checkRepos == nil 表示对 reposSlice 全量打 API；非 nil 时仅检查集合内路径，其余沿用同路径旧条目且不写 report。
-func performStage(packageType rules.PackageType, occupiedNames map[string]struct{}, reposSlice []string, checkRepos Set, deprecatedRegistry *util.DeprecatedRegistry, reports *stageReportCollector) (abortedByRateLimit bool) {
+func performStage(packageType rules.PackageType, occupiedNames map[string]struct{}, reposSlice []string, checkRepos Set, reports *stageReportCollector) (abortedByRateLimit bool) {
 	if checkRepos == nil {
 		logger.Infof("start stage [%s] (check all %d)", packageType.Plural(), len(reposSlice))
 	} else {
@@ -291,7 +299,8 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 	for _, ownerRepo := range reposSlice {
 		g.Go(func() error {
 			repoURL := util.GitHubRepoURL(ownerRepo)
-			exactOld, checkOldName, checkOldVersion := resolveStageCheckLegacy(ownerRepo, oldStageData, oldStageByRepoName, listedRepos)
+			legacy := resolveStageCheckLegacy(ownerRepo, oldStageData, oldStageByRepoName, listedRepos)
+			exactOld, checkOldName, checkOldVersion := legacy.exact, legacy.name, legacy.version
 
 			if !shouldCheck(ownerRepo, checkRepos) {
 				if exactOld != nil {
@@ -334,11 +343,6 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 				return nil
 			}
 			packageZipAssetID := releaseInfo.PackageZipAssetID
-			// 新上架（无旧清单可继承）用 Stage 索引时间；已有包更新仍用 Release 发布时间。
-			updated := releaseInfo.Published
-			if checkOldName == "" {
-				updated = time.Now().UTC().Format(time.RFC3339)
-			}
 
 			// 快路径：asset id 未变则跳过（无需看 SHA-256）
 			// 仅同路径 exactOld：换维护者不得沿用旧 owner/repo@hash 条目
@@ -462,12 +466,25 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 				return nil
 			}
 
+			// 已确认要写入新条目，此时才计算两个时间：
+			// created 为首次进入集市时间，updated 为最近一次发布的时间。
+			// 新上架（无旧条目可继承）两者都取本轮索引时间；已有包（含换维护者）继承旧条目的 created，
+			// updated 用 Release 发布时间。created 写入后不再变化。
+			now := time.Now().UTC().Format(time.RFC3339)
+			created, updated := now, releaseInfo.Published
+			if legacy.inherit != nil {
+				created = legacy.inherit.Created
+			} else {
+				updated = now
+			}
+
 			stageReposMu.Lock()
 			stageRepos = append(stageRepos, &util.StageRepo{
 				URL:               ownerRepo + "@" + hash,
 				RepoRef:           releaseInfo.Tag,
 				Stars:             stars,
 				OpenIssues:        openIssues,
+				Created:           created,
 				Updated:           updated,
 				Size:              size,
 				InstallSize:       installSize,
@@ -503,16 +520,14 @@ func performStage(packageType rules.PackageType, occupiedNames map[string]struct
 	for i, repo := range stageRepos {
 		staged.Repos[i] = *repo
 	}
-	for _, warning := range util.ApplyDeprecatedRegistry(packageType, staged.Repos, deprecatedRegistry) {
-		logger.Errorf("deprecation registry warning: %s", warning)
-	}
 	for i := range staged.Repos {
-		// hash 跳过 / 失败保留的旧条目也可能带有空 funding、旧弃用字段或冗余 locale，写回前一并清理。
+		// hash 跳过 / 失败保留的旧条目可能带有空 funding 或冗余 locale，写回前一并清理。
+		// 弃用字段不在此处应用：替代包可跨类型，须待全部类型写盘后统一处理（见 applyDeprecatedRegistry）。
 		rules.ClearEmptyFunding(&staged.Repos[i].Package)
 		rules.ClearRedundantLocales(&staged.Repos[i].Package)
 	}
 
-	data, err := marshalSortedIndentedJSON(staged)
+	data, err := util.MarshalSortedIndentedJSON(staged)
 	if err != nil {
 		logger.Fatalf("marshal stage [%s] failed: %s", packageType.StageJSONFile(), err)
 	}
@@ -591,34 +606,4 @@ func repoStats(ownerRepo string) (stars, openIssues int, ok bool, err error) {
 	openIssues = repo.GetOpenIssuesCount()
 	ok = true
 	return
-}
-
-// marshalSortedIndentedJSON 序列化为键序稳定、带缩进的 JSON。
-// v 可为 struct，或原始 JSON 字节（[]byte）；struct 会先经 json.Marshal / Unmarshal 转为 JSON 树（map[string]any），
-// 再按字典序输出键。先输出紧凑 JSON，再用 json.Indent 缩进，避免 json.MarshalIndent 对嵌套 any 的缩进错乱。
-// SetEscapeHTML(false) 避免将 & 等字符转为 \uXXXX。
-func marshalSortedIndentedJSON(v any) ([]byte, error) {
-	data, ok := v.([]byte)
-	if !ok {
-		var err error
-		data, err = json.Marshal(v)
-		if err != nil {
-			return nil, err
-		}
-	}
-	var tree any
-	if err := json.Unmarshal(data, &tree); err != nil {
-		return nil, err
-	}
-	var compact bytes.Buffer
-	enc := json.NewEncoder(&compact)
-	enc.SetEscapeHTML(false)
-	if err := enc.Encode(tree); err != nil {
-		return nil, err
-	}
-	var buf bytes.Buffer
-	if err := json.Indent(&buf, bytes.TrimSpace(compact.Bytes()), "", "  "); err != nil {
-		return nil, err
-	}
-	return buf.Bytes(), nil
 }

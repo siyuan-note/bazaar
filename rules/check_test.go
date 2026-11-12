@@ -286,6 +286,8 @@ func TestCheckPluginPublish(t *testing.T) {
 		{"resource not string", map[string]any{"resources": []any{1}}, "必须是字符串。"},
 		{"resource parent dir", map[string]any{"resources": []any{"../logo.png"}}, "不是合法的发布资源路径"},
 		{"resource blank", map[string]any{"resources": []any{""}}, "不是合法的发布资源路径"},
+		{"resource blank wording", map[string]any{"resources": []any{""}}, "当前为空"},
+		{"resource whitespace", map[string]any{"resources": []any{"   "}}, "当前为空"},
 		{"resource space", map[string]any{"resources": []any{"logo.png "}}, "不是合法的发布资源路径"},
 		{"resource backslash", map[string]any{"resources": []any{"views\\index.html"}}, "不是合法的发布资源路径"},
 		{"resource trailing dot", map[string]any{"resources": []any{"logo.png."}}, "不是合法的发布资源路径"},
@@ -303,6 +305,8 @@ func TestCheckPluginPublish(t *testing.T) {
 		{"data not array", map[string]any{"data": "theme"}, "必须是字符串数组"},
 		{"data not string", map[string]any{"data": []any{true}}, "必须是字符串。"},
 		{"data empty name", map[string]any{"data": []any{""}}, "不是合法的公开数据字段名"},
+		{"data empty wording", map[string]any{"data": []any{""}}, "当前为空"},
+		{"data whitespace name", map[string]any{"data": []any{"   "}}, "当前为空"},
 		{"data space name", map[string]any{"data": []any{"the me"}}, "不是合法的公开数据字段名"},
 		{"data long name", map[string]any{"data": []any{strings.Repeat("a", 129)}}, "不是合法的公开数据字段名"},
 		{"data too many", map[string]any{"data": tooManyFields}, "超过上限"},
@@ -346,12 +350,14 @@ func TestManifestKeysByPackageType(t *testing.T) {
 		{TypeTheme, "disabledInPublish", "disabledInPublish"},
 		{TypeTheme, "publish", "publish"},
 		{TypeTheme, "bootAppearances", "bootAppearances"},
+		{TypeTheme, "settingsWindow", "settingsWindow"},
 		{TypeIcon, "frontends", "frontends"},
 		{TypeTemplate, "kernels", "kernels"},
 		{TypeWidget, "modes", "modes"},
 		{TypePlugin, "deprecated", "deprecated"},
 		{TypeTheme, "deprecatedReason", "deprecatedReason"},
 		{TypeWidget, "alternatives", "alternatives"},
+		{TypePlugin, "choices", "choices"},
 	}
 	for _, tc := range cases {
 		m := map[string]any{tc.extra: true}
@@ -370,6 +376,7 @@ func TestManifestKeysByPackageType(t *testing.T) {
 		{TypePlugin, "disabledInPublish"},
 		{TypePlugin, "publish"},
 		{TypePlugin, "bootAppearances"},
+		{TypePlugin, "settingsWindow"},
 		{TypeTheme, "modes"},
 		{TypeTheme, "frontends"},
 		{TypeIcon, "keywords"},
@@ -431,6 +438,78 @@ func TestCheckURL(t *testing.T) {
 	})
 	if r.OK || !hasIssueMsg(r, "url") {
 		t.Fatalf("expected manifest/url, issues=%v", r.Issues)
+	}
+}
+
+// 空值与纯空白值必须单独说明，不能渲染成一对空反引号（作者无法从中看出检查器读到了什么）。
+func TestCheckEmptyManifestValues(t *testing.T) {
+	dir := t.TempDir()
+	copyTree(t, filepath.Join("testdata", "plugin_ok"), dir)
+	checkManifest := func(content string) *Result {
+		t.Helper()
+		if err := os.WriteFile(filepath.Join(dir, "plugin.json"), []byte(content), 0644); err != nil {
+			t.Fatal(err)
+		}
+		return Check(Input{
+			PackageRoot: dir,
+			OwnerRepo:   "demo/sample-plugin",
+			Type:        TypePlugin,
+		})
+	}
+
+	cases := []struct {
+		name    string
+		content string
+		wantSub string
+	}{
+		{
+			"empty url",
+			`{"name":"sample-plugin","author":"demo","url":"","version":"1.0.0","readme":{"default":"README.md"}}`,
+			"`url` 当前为空",
+		},
+		{
+			"whitespace url",
+			`{"name":"sample-plugin","author":"demo","url":"   ","version":"1.0.0","readme":{"default":"README.md"}}`,
+			"`url` 当前为空",
+		},
+		{
+			"empty version",
+			`{"name":"sample-plugin","author":"demo","url":"https://github.com/demo/sample-plugin","version":"","readme":{"default":"README.md"}}`,
+			"`version` 当前为空",
+		},
+		{
+			"empty minAppVersion",
+			`{"name":"sample-plugin","author":"demo","url":"https://github.com/demo/sample-plugin","version":"1.0.0","readme":{"default":"README.md"},"minAppVersion":""}`,
+			"`minAppVersion` 当前为空",
+		},
+		{
+			"empty boot appearance",
+			`{"name":"sample-plugin","author":"demo","url":"https://github.com/demo/sample-plugin","version":"1.0.0","readme":{"default":"README.md"},"bootAppearances":[""]}`,
+			"`bootAppearances[0]` 当前为空",
+		},
+		{
+			"whitespace name",
+			`{"name":"  ","author":"demo","url":"https://github.com/demo/sample-plugin","version":"1.0.0","readme":{"default":"README.md"}}`,
+			"`name` 当前只包含空白字符",
+		},
+		{
+			"empty unexpected field name",
+			`{"name":"sample-plugin","author":"demo","url":"https://github.com/demo/sample-plugin","version":"1.0.0","readme":{"default":"README.md"},"":1}`,
+			"名称为空",
+		},
+	}
+	for _, tc := range cases {
+		t.Run(tc.name, func(t *testing.T) {
+			r := checkManifest(tc.content)
+			if r.OK || !hasIssueMsg(r, tc.wantSub) {
+				t.Fatalf("want issue containing %q, got %v", tc.wantSub, r.Issues)
+			}
+			for _, is := range r.Issues {
+				if strings.Contains(is.MessageZh, "``") || strings.Contains(is.MessageEn, "``") {
+					t.Fatalf("message has an empty value placeholder: %q / %q", is.MessageZh, is.MessageEn)
+				}
+			}
+		})
 	}
 }
 
@@ -558,7 +637,8 @@ func TestCheckOptionalTypedFields(t *testing.T) {
   "backends": ["all"],
   "frontends": ["all"],
   "bootAppearances": ["sunrise", "night-sky"],
-  "disabledInPublish": false`)
+  "disabledInPublish": false,
+  "settingsWindow": true`)
 	if r := check(); !r.OK {
 		t.Fatalf("expected OK for valid optional fields, issues=%v", r.Issues)
 	}
@@ -591,6 +671,12 @@ func TestCheckOptionalTypedFields(t *testing.T) {
   "disabledInPublish": "true"`)
 	if r := check(); r.OK || !hasIssueMsg(r, "disabledInPublish") {
 		t.Fatalf("expected non-bool disabledInPublish to fail, issues=%v", r.Issues)
+	}
+
+	writePlugin(`,
+  "settingsWindow": "true"`)
+	if r := check(); r.OK || !hasIssueMsg(r, "settingsWindow") {
+		t.Fatalf("expected non-bool settingsWindow to fail, issues=%v", r.Issues)
 	}
 
 	writePlugin(`,

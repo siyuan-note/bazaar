@@ -1,0 +1,53 @@
+name: Pages
+
+# 集市包的「一键安装」跳板页：PR Check 评论里给出 https 链接，页面再把点击转成
+# `siyuan://plugins/<包名>/install?...`（浏览器只在用户手势中允许跳转外部协议，
+# 因此必须由页面上的按钮触发，不能依赖 302 或自动跳转）。
+#
+# 只发布 pages/ 目录：站点根不放 index，访问 `https://siyuan-note.github.io/bazaar/` 会返回
+# 404（不提供自定义 404 页，用 GitHub 默认的那份），仓库其它内容与 README 都不会出现在站点上。
+#
+# 首次部署前需由维护者在仓库 Settings - Pages 将 Source 选为 GitHub Actions；
+# `actions/configure-pages` 的 `enablement` 需要 PAT（GITHUB_TOKEN 不够），这里不引入该依赖。
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - pages/**
+      - .github/workflows/pages.yml
+  workflow_dispatch:
+
+# 同一时刻只跑一次发布；排队中的旧提交不必再发布
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v7
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v6
+
+      # 目录名不能是隐藏目录（如 .github/pages），upload-pages-artifact 默认会跳过隐藏文件
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: pages
+
+      - name: Deploy to GitHub Pages
+        id: deploy
+        uses: actions/deploy-pages@v5

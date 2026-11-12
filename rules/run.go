@@ -41,11 +41,13 @@ func Run(c *Context) {
 var pipeline = []step{
 	stepOwnerRepo,     // 校验 OwnerRepo 格式，失败则 Halt
 	stepZipPaths,      // 有 ZipData 时检查 zip 内路径分隔符必须为 /；无数据则跳过
+	stepZipEntryTypes, // 有 ZipData 时检查 zip 内条目类型（拒绝符号链接等）；无数据则跳过
 	stepPackageRoot,   // 解析解压目录得到包根 Root，失败则 Halt
 	stepRequiredFiles, // 检查说明文档、清单文件及类型运行时必要文件，可累计报错
 	stepPathNames,     // 递归检查路径与文件名规范
 	stepThemeJS,       // 仅主题：非白名单不得包含 theme.js
 	stepManifest,      // 读取并校验清单字段；读失败只记 Issue、不 Halt
+	stepSyncIgnored,   // 检查包内条目是否命中思源数据同步的忽略规则；需 stepManifest 提供的 name
 }
 
 // stepOwnerRepo 校验 OwnerRepo 格式（owner/repo）。
@@ -90,6 +92,15 @@ func stepZipPaths(c *Context) {
 		return
 	}
 	c.Add(ZipPaths(c.ZipData)...)
+}
+
+// stepZipEntryTypes 检查原始 package.zip 内条目类型（拒绝符号链接、FIFO 等无法跨平台解压的条目）。
+// 不依赖解压根；缺少 ZipData 时跳过（例如单测只传目录）。
+func stepZipEntryTypes(c *Context) {
+	if c.Halted() || len(c.ZipData) == 0 {
+		return
+	}
+	c.Add(ZipEntryTypes(c.ZipData)...)
 }
 
 // stepPackageRoot 解析解压目录得到真实包根（可能剥掉单独一层包装目录），写入 c.Root。
@@ -163,4 +174,18 @@ func stepManifest(c *Context) {
 		OccupiedNames: c.OccupiedNames,
 	})...)
 	c.Add(normalizePackageImages(manifest, &c.Package, c.Root)...)
+}
+
+// stepSyncIgnored 检查包内条目是否命中思源数据同步的忽略规则。
+// 需要清单 name 才能还原安装目录相对 data 的路径，因此排在 stepManifest 之后；
+// 清单读失败时 c.Package 为零值，退化为只按包内相对路径判定。
+func stepSyncIgnored(c *Context) {
+	if c.Halted() {
+		return
+	}
+	installRelPath := "/" + c.Type.Plural()
+	if c.Package.Name != "" {
+		installRelPath += "/" + c.Package.Name
+	}
+	c.Add(SyncIgnoredEntries(c.Root, installRelPath)...)
 }
