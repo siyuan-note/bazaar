@@ -1,6 +1,154 @@
 {
   "repos": [
     {
+      "created": "2026-11-14T15:22:56Z",
+      "installSize": 12978198,
+      "openIssues": 0,
+      "package": {
+        "author": "jiangeeeeee",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Audio, timed transcripts and linked annotations in native blocks.",
+          "zh-CN": "将录音、时间戳转写和双链批注保存在原生语音块中。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan Voice Notes",
+          "zh-CN": "思源语音 Voice Notes"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "",
+        "keywords": [
+          "audio",
+          "transcript",
+          "语音",
+          "字幕"
+        ],
+        "minAppVersion": "3.8.9",
+        "name": "siyuan-voice-notes",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/jiangeeeeee/siyuan-voice-notes",
+        "version": "0.8.2"
+      },
+      "packageZipAssetId": 746457949,
+      "packageZipSha256": "38074bb2e0de1829f44fd90043bb5aea29d28bf154a7722bb6fe93921e40c7bf",
+      "repoRef": "v0.8.2",
+      "size": 12299978,
+      "stars": 0,
+      "updated": "2026-11-14T15:22:56Z",
+      "url": "jiangeeeeee/siyuan-voice-notes@38074bb"
+    },
+    {
+      "created": "2026-11-04T09:06:00Z",
+      "installSize": 48010,
+      "openIssues": 0,
+      "package": {
+        "author": "unmime",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "给任意文字加复制按钮：点一下直接复制，或者悬停出按钮。行内代码也可开启点击即复制。",
+          "en_US": "Put a copy button on any text: click to copy, or hover to reveal it. Inline code can also copy on click."
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "一键复制",
+          "en_US": "One-Click Copy"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop",
+          "mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "复制",
+          "copy",
+          "clipboard",
+          "一键复制"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-copy-mark",
+        "preview": "",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/unmime/siyuan-copy-mark",
+        "version": "1.0.3"
+      },
+      "packageZipAssetId": 746727918,
+      "packageZipSha256": "6ce0665e8f982d60d054b469533d55ed7bcff7bacd0be742523ac6f4221e5619",
+      "repoRef": "v1.0.3",
+      "size": 17490,
+      "stars": 0,
+      "updated": "2026-11-14T07:43:46Z",
+      "url": "unmime/siyuan-copy-mark@6ce0665"
+    },
+    {
+      "created": "2026-10-16T08:11:32Z",
+      "installSize": 2054719,
+      "openIssues": 0,
+      "package": {
+        "author": "Lisontowind",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "Offline in-place image compression, verified backups, task recovery and cleanup, per-image settings and image renaming.",
+          "zh-CN": "本地离线原位压缩图片，保留原格式，支持备份恢复与历史清理、逐图配置、快捷压缩和图片重命名。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Image Compression",
+          "zh-CN": "图片压缩"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "image",
+          "compression",
+          "图片压缩",
+          "附件重命名"
+        ],
+        "minAppVersion": "3.8.5",
+        "name": "sy-imgcompression",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/lisontowind/sy-imgcompression",
+        "version": "0.1.8"
+      },
+      "packageZipAssetId": 746384473,
+      "packageZipSha256": "1239e9ef4d9f96e2d9304d23d9340e6f6b8efab9c6c66177fad21610d73f4982",
+      "repoRef": "0.1.8",
+      "size": 858394,
+      "stars": 2,
+      "updated": "2026-11-14T05:14:17Z",
+      "url": "lisontowind/sy-imgcompression@1239e9e"
+    },
+    {
       "created": "2026-10-28T15:33:34Z",
       "installSize": 3639585,
       "openIssues": 1,
@@ -462,55 +610,6 @@
       "stars": 42,
       "updated": "2026-11-13T07:52:13Z",
       "url": "Glaube-TY/siyuan-homepage@bf1b1b1"
-    },
-    {
-      "created": "2026-10-16T08:11:32Z",
-      "installSize": 2032442,
-      "openIssues": 1,
-      "package": {
-        "author": "Lisontowind",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Offline image compression with per-image settings, quick compression, attachment totals and simplified image filenames.",
-          "zh-CN": "本地离线压缩图片，支持逐图配置、快捷压缩、附件大小统计与图片名称简化，同步更新共享引用。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Image Compression",
-          "zh-CN": "图片压缩"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "image",
-          "compression",
-          "图片压缩",
-          "附件重命名"
-        ],
-        "minAppVersion": "3.8.5",
-        "name": "sy-imgcompression",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/lisontowind/sy-imgcompression",
-        "version": "0.1.7"
-      },
-      "packageZipAssetId": 742782540,
-      "packageZipSha256": "903be8dfa1968c6c5695ba508a7add8fc3658f9576965a0e901548c423a65d61",
-      "repoRef": "0.1.7",
-      "size": 851642,
-      "stars": 2,
-      "updated": "2026-11-13T07:52:00Z",
-      "url": "lisontowind/sy-imgcompression@903be8d"
     },
     {
       "created": "2024-12-13T12:05:06Z",
@@ -6415,54 +6514,6 @@
       "stars": 0,
       "updated": "2026-11-05T02:37:13Z",
       "url": "yueyangcode/siyuan-note-companion@2b32dda"
-    },
-    {
-      "created": "2026-11-04T09:06:00Z",
-      "installSize": 42942,
-      "openIssues": 0,
-      "package": {
-        "author": "unmime",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "给任意文字加复制按钮：点一下直接复制，或者悬停出按钮。",
-          "en_US": "Put a copy button on any text: click to copy, or hover to reveal the button."
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "一键复制",
-          "en_US": "One-Click Copy"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop",
-          "mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "复制",
-          "copy",
-          "clipboard",
-          "一键复制"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-copy-mark",
-        "preview": "",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/unmime/siyuan-copy-mark",
-        "version": "1.0.2"
-      },
-      "packageZipAssetId": 711682471,
-      "packageZipSha256": "6d86d27c4e05c49193bbad1825d4965bc0c250ca7c0512c14d49088ecc6dbac2",
-      "repoRef": "v1.0.2",
-      "size": 16010,
-      "stars": 0,
-      "updated": "2026-11-05T01:58:20Z",
-      "url": "unmime/siyuan-copy-mark@6d86d27"
     },
     {
       "created": "2026-11-04T23:09:56Z",
