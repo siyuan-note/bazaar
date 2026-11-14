@@ -1,6 +1,60 @@
 {
   "repos": [
     {
+      "created": "2026-11-14T15:24:06Z",
+      "installSize": 1097063,
+      "openIssues": 0,
+      "package": {
+        "author": "Lisontowind",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Review highlights by heading, annotate continuously, combine filters and preview batch style changes.",
+          "zh-CN": "按章节回顾文档标注，支持连续划选、组合筛选与批量改样式，点击卡片跳转原文。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Annotation Outline",
+          "zh-CN": "标注大纲"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "标注",
+          "高亮",
+          "大纲",
+          "连续标注",
+          "阅读",
+          "批量样式",
+          "highlight",
+          "outline",
+          "annotation",
+          "reading"
+        ],
+        "minAppVersion": "3.2.0",
+        "name": "sy-annotation",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.en.md",
+          "zh-CN": "README.md"
+        },
+        "url": "https://github.com/lisontowind/sy-annotation",
+        "version": "0.4.0"
+      },
+      "packageZipAssetId": 748601765,
+      "packageZipSha256": "645b336096dcf080ad8552f366bcd7170032fcb92622b2cd7acbf3c23b0e486d",
+      "repoRef": "0.4.0",
+      "size": 423133,
+      "stars": 0,
+      "updated": "2026-11-14T19:53:25Z",
+      "url": "lisontowind/sy-annotation@645b336"
+    },
+    {
       "created": "2026-11-14T19:01:11Z",
       "installSize": 592760,
       "openIssues": 0,
@@ -46,6 +100,60 @@
       "stars": 0,
       "updated": "2026-11-14T19:01:11Z",
       "url": "Clymer-git/siyuan-plugin-BlockBar@b65f6ca"
+    },
+    {
+      "created": "2023-06-15T02:07:15Z",
+      "installSize": 6270100,
+      "openIssues": 40,
+      "package": {
+        "author": "terwer",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "android",
+          "ios",
+          "harmony"
+        ],
+        "description": {
+          "default": "Your favorite PicGo image bed is still available in Siyuan Notes, wuhu~",
+          "zh_CN": "您喜爱的 PicGo 图床，在思源笔记依然可用，没想到吧~"
+        },
+        "displayName": {
+          "default": "PicGo picbed",
+          "zh_CN": "PicGo图床"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.net/a/terwer"
+          ]
+        },
+        "icon": "icon.png",
+        "minAppVersion": "2.9.0",
+        "name": "siyuan-plugin-picgo",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/terwer/siyuan-plugin-picgo",
+        "version": "3.1.0"
+      },
+      "packageZipAssetId": 748334457,
+      "packageZipSha256": "c8c0f0372b32c6363c37fd7c1dbc9355f587a0901a1ffd9710276284eb197b5f",
+      "repoRef": "siyuan-plugin-picgo-v3.1.0",
+      "size": 6237428,
+      "stars": 39,
+      "updated": "2026-11-14T18:07:24Z",
+      "url": "terwer/siyuan-plugin-picgo@c8c0f03"
     },
     {
       "created": "2026-11-14T18:05:05Z",
@@ -106,7 +214,7 @@
     },
     {
       "created": "2026-11-14T17:20:27Z",
-      "installSize": 1135229,
+      "installSize": 1135227,
       "openIssues": 0,
       "package": {
         "author": "Clymer-git",
@@ -149,15 +257,68 @@
           "default": "README.md"
         },
         "url": "https://github.com/Clymer-git/siyuan-plugin-annotate",
-        "version": "0.26.11"
+        "version": "1.0.0"
       },
-      "packageZipAssetId": 748199961,
-      "packageZipSha256": "99dda1e65e3599b4e853d39a9a36e9d0c7043a4d9601b911ff9a562a2c9b9dd0",
-      "repoRef": "v0.26.11",
-      "size": 694171,
+      "packageZipAssetId": 748228668,
+      "packageZipSha256": "c19df485c24a9807c76a4c4729322b23162c7c5cf2a15786d982ee6b09e00feb",
+      "repoRef": "v1.0.0",
+      "size": 694166,
       "stars": 0,
-      "updated": "2026-11-14T17:20:27Z",
-      "url": "Clymer-git/siyuan-plugin-annotate@99dda1e"
+      "updated": "2026-11-14T17:26:47Z",
+      "url": "Clymer-git/siyuan-plugin-annotate@c19df48"
+    },
+    {
+      "created": "2023-07-31T13:22:08Z",
+      "installSize": 17820832,
+      "openIssues": 91,
+      "package": {
+        "author": "terwer",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "android",
+          "ios"
+        ],
+        "description": {
+          "default": "Publish articles from siyuan-note to 30+ platforms.Free and open source.",
+          "zh_CN": "将思源笔记的文章发布到30+平台，开源、免费。"
+        },
+        "displayName": {
+          "default": "Publisher",
+          "zh_CN": "发布工具"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/terwer"
+          ]
+        },
+        "icon": "icon.png",
+        "minAppVersion": "2.9.0",
+        "name": "siyuan-plugin-publisher",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/terwer/siyuan-plugin-publisher",
+        "version": "2.2.1"
+      },
+      "packageZipAssetId": 748184150,
+      "packageZipSha256": "777bd069fc270bc71bee3f9b9a64fb736d88103c3463385d1800580c2573ba4d",
+      "repoRef": "siyuan-plugin-publisher-v2.2.1",
+      "size": 17790272,
+      "stars": 211,
+      "updated": "2026-11-14T17:09:19Z",
+      "url": "terwer/siyuan-plugin-publisher@777bd06"
     },
     {
       "created": "2026-11-14T16:53:07Z",
@@ -199,6 +360,122 @@
       "stars": 0,
       "updated": "2026-11-14T16:53:07Z",
       "url": "jiangeeeeee/siyuan-image-label@e8edb73"
+    },
+    {
+      "created": "2025-10-02T19:29:12Z",
+      "installSize": 230796,
+      "openIssues": 0,
+      "package": {
+        "author": "Jeffrey Chen",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Install any version from GitHub links — faster, and no marketplace wait. Marketplace PRs work too, covering plugins, themes, icons, widgets and templates; list local packages to toggle or batch-check updates, and view repo summaries, releases and install history.",
+          "zh-CN": "不等集市上架，用 GitHub 链接装任意版本集市包，比官方集市更快一步。也支持从集市 PR 直接安装；涵盖插件、主题、图标、挂件、模板五类包，能集中列出本地包一键启停、批量查更新，还可查看仓库摘要、Release 信息与安装历史。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Marketplace Package Manager",
+          "zh-CN": "集市包管理器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "links": [
+            {
+              "label": "个人网站",
+              "url": "https://mytemos.com/"
+            },
+            {
+              "label": "爱发电",
+              "url": "https://afdian.com/a/JeffreyChen"
+            }
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "开发者工具",
+          "developer tool"
+        ],
+        "minAppVersion": "3.8.10-alpha.4",
+        "name": "install-package",
+        "preview": "preview.webp",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/TCOTC/install-package",
+        "version": "1.0.5"
+      },
+      "packageZipAssetId": 748118183,
+      "packageZipSha256": "e624b95bcfd89656421a1b58947862e19412b4a5a6d06dc9159200641aa11301",
+      "repoRef": "v1.0.5",
+      "size": 95392,
+      "stars": 2,
+      "updated": "2026-11-14T16:45:48Z",
+      "url": "TCOTC/install-package@e624b95"
+    },
+    {
+      "created": "2026-10-28T15:33:34Z",
+      "installSize": 3694908,
+      "openIssues": 1,
+      "package": {
+        "author": "yyk",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android"
+        ],
+        "description": {
+          "default": "基于可自定义大模型服务商的思源自学课程插件：资料导入、知识点拆解、学习计划、题库刷题、错题复盘、知识图谱、学习报告",
+          "en-US": "A self-study course plugin based on customizable LLM providers: material import, knowledge points, study plans, quizzes, reviews, knowledge graph and reports"
+        },
+        "displayName": {
+          "default": "AI 智能学习",
+          "en-US": "AI Study"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "AI",
+          "学习",
+          "课程",
+          "刷题",
+          "知识图谱",
+          "study",
+          "quiz",
+          "knowledge-graph"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "AIstudy",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README-siyuan.md"
+        },
+        "url": "https://github.com/YYK0402/AIstudy",
+        "version": "0.5.13"
+      },
+      "packageZipAssetId": 748077617,
+      "packageZipSha256": "7a88e37b89cd003813bdaddba8291c08b949f92206e85ee60fdfcb79b69c15f6",
+      "repoRef": "v0.5.13",
+      "size": 1268579,
+      "stars": 2,
+      "updated": "2026-11-14T16:30:58Z",
+      "url": "YYK0402/AIstudy@7a88e37"
     },
     {
       "created": "2026-11-14T15:24:57Z",
@@ -248,60 +525,6 @@
       "stars": 0,
       "updated": "2026-11-14T15:24:57Z",
       "url": "Rajahn/siyuan-outliner@4f49b35"
-    },
-    {
-      "created": "2026-11-14T15:24:06Z",
-      "installSize": 984589,
-      "openIssues": 0,
-      "package": {
-        "author": "Lisontowind",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Review highlights by heading, annotate continuously, combine filters and preview batch style changes.",
-          "zh-CN": "按章节回顾文档标注，支持连续划选、组合筛选与批量改样式，点击卡片跳转原文。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Annotation Outline",
-          "zh-CN": "标注大纲"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "标注",
-          "高亮",
-          "大纲",
-          "连续标注",
-          "阅读",
-          "批量样式",
-          "highlight",
-          "outline",
-          "annotation",
-          "reading"
-        ],
-        "minAppVersion": "3.2.0",
-        "name": "sy-annotation",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.en.md",
-          "zh-CN": "README.md"
-        },
-        "url": "https://github.com/lisontowind/sy-annotation",
-        "version": "0.3.9"
-      },
-      "packageZipAssetId": 746659038,
-      "packageZipSha256": "cc34ee319e264d8faaf65edcac02e4d49f19b79c32c23422be3d76f37a4330a4",
-      "repoRef": "0.3.9",
-      "size": 396346,
-      "stars": 0,
-      "updated": "2026-11-14T15:24:06Z",
-      "url": "lisontowind/sy-annotation@cc34ee3"
     },
     {
       "created": "2026-11-14T15:22:56Z",
@@ -556,66 +779,6 @@
       "stars": 53,
       "updated": "2026-11-14T11:19:59Z",
       "url": "IAliceBobI/sy-tomato-plugin@3ec6d5a"
-    },
-    {
-      "created": "2026-10-28T15:33:34Z",
-      "installSize": 3682658,
-      "openIssues": 1,
-      "package": {
-        "author": "yyk",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android"
-        ],
-        "description": {
-          "default": "基于可自定义大模型服务商的思源自学课程插件：资料导入、知识点拆解、学习计划、题库刷题、错题复盘、知识图谱、学习报告",
-          "en-US": "A self-study course plugin based on customizable LLM providers: material import, knowledge points, study plans, quizzes, reviews, knowledge graph and reports"
-        },
-        "displayName": {
-          "default": "AI 智能学习",
-          "en-US": "AI Study"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window",
-          "mobile",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "AI",
-          "学习",
-          "课程",
-          "刷题",
-          "知识图谱",
-          "study",
-          "quiz",
-          "knowledge-graph"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "AIstudy",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README-siyuan.md"
-        },
-        "url": "https://github.com/YYK0402/AIstudy",
-        "version": "0.5.12"
-      },
-      "packageZipAssetId": 747089916,
-      "packageZipSha256": "d029690b230b75af5e68c744f94e9c77690f3b95990a36eecb9aba41592ef8a9",
-      "repoRef": "v0.5.12",
-      "size": 1264496,
-      "stars": 2,
-      "updated": "2026-11-14T10:14:39Z",
-      "url": "YYK0402/AIstudy@d029690"
     },
     {
       "created": "2026-11-04T09:06:00Z",
@@ -5250,55 +5413,6 @@
       "stars": 1,
       "updated": "2026-11-08T10:11:01Z",
       "url": "TCOTC/select-opened-doc@9ce1a04"
-    },
-    {
-      "created": "2025-10-02T19:29:12Z",
-      "installSize": 470969,
-      "openIssues": 0,
-      "package": {
-        "author": "Jeffrey Chen",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Install any version from GitHub links — faster, and no marketplace wait. Marketplace PRs work too, covering plugins, themes, icons, widgets and templates; list local packages to toggle or batch-check updates, and view repo summaries, releases and install history.",
-          "zh-CN": "不等集市上架，用 GitHub 链接装任意版本集市包，比官方集市更快一步。也支持从集市 PR 直接安装；涵盖插件、主题、图标、挂件、模板五类包，能集中列出本地包一键启停、批量查更新，还可查看仓库摘要、Release 信息与安装历史。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Marketplace Package Manager",
-          "zh-CN": "集市包管理器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://mytemos.com/"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "开发者工具",
-          "developer tool"
-        ],
-        "minAppVersion": "3.8.10-alpha.4",
-        "name": "install-package",
-        "preview": "preview.webp",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/TCOTC/install-package",
-        "version": "1.0.4"
-      },
-      "packageZipAssetId": 723558238,
-      "packageZipSha256": "98bf9905919b249fa6e401eb603ac6ea27331219db6e0a65a2704001778b5a1d",
-      "repoRef": "v1.0.4",
-      "size": 167623,
-      "stars": 2,
-      "updated": "2026-11-08T10:04:48Z",
-      "url": "TCOTC/install-package@98bf990"
     },
     {
       "created": "2026-08-20T15:13:37Z",
@@ -11583,113 +11697,6 @@
       "stars": 0,
       "updated": "2026-10-13T14:03:59Z",
       "url": "famotime/siyuan-postman@29e2e14"
-    },
-    {
-      "created": "2023-07-31T13:22:08Z",
-      "installSize": 17819106,
-      "openIssues": 92,
-      "package": {
-        "author": "terwer",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "android",
-          "ios"
-        ],
-        "description": {
-          "default": "Publish articles from siyuan-note to 30+ platforms.Free and open source.",
-          "zh_CN": "将思源笔记的文章发布到30+平台，开源、免费。"
-        },
-        "displayName": {
-          "default": "Publisher",
-          "zh_CN": "发布工具"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/terwer"
-          ]
-        },
-        "icon": "icon.png",
-        "minAppVersion": "2.9.0",
-        "name": "siyuan-plugin-publisher",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/terwer/siyuan-plugin-publisher",
-        "version": "2.2.0"
-      },
-      "packageZipAssetId": 636491777,
-      "packageZipSha256": "4bde29d7bcaddd36c5831ff0764a31fdd36ee3dfc87785b4995dd5bfca87d04c",
-      "repoRef": "siyuan-plugin-publisher-v2.2.0",
-      "size": 17788546,
-      "stars": 209,
-      "updated": "2026-10-13T09:07:10Z",
-      "url": "terwer/siyuan-plugin-publisher@4bde29d"
-    },
-    {
-      "created": "2023-06-15T02:07:15Z",
-      "installSize": 6239396,
-      "openIssues": 82,
-      "package": {
-        "author": "terwer",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "android",
-          "ios",
-          "harmony"
-        ],
-        "description": {
-          "default": "Your favorite PicGo image bed is still available in Siyuan Notes, wuhu~",
-          "zh_CN": "您喜爱的 PicGo 图床，在思源笔记依然可用，没想到吧~"
-        },
-        "displayName": {
-          "default": "PicGo picbed",
-          "zh_CN": "PicGo图床"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.net/a/terwer"
-          ]
-        },
-        "icon": "icon.png",
-        "minAppVersion": "2.9.0",
-        "name": "siyuan-plugin-picgo",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/terwer/siyuan-plugin-picgo",
-        "version": "3.0.5"
-      },
-      "packageZipAssetId": 636377270,
-      "packageZipSha256": "65618699a54622d442e090a85c33e938f93668bf47a1c274e06f638bfcf6e213",
-      "repoRef": "siyuan-plugin-picgo-v3.0.5",
-      "size": 6206134,
-      "stars": 38,
-      "updated": "2026-10-13T08:19:23Z",
-      "url": "terwer/siyuan-plugin-picgo@6561869"
     },
     {
       "created": "2026-02-14T08:32:58Z",
