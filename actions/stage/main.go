@@ -46,7 +46,7 @@ Stage 流程：
    内容变了则校验并上传 OSS（package.zip、README、声明的 preview / icon、清单 JSON）。url 的 @hash 为 SHA-256 前 7 位
 6. 按 updated 降序排序后写出 stage/*.json（键序经 util.MarshalSortedIndentedJSON 稳定；新上架用索引时间，更新用 Release 发布时间）；
    created（首次进入集市时间）仅新上架时取索引时间，其余路径继承旧条目；
-   全部类型写完后统一应用 deprecated.json（替代包可跨类型，需读其它类型 Stage 解析包名，见 applyDeprecatedRegistry）
+   全部类型写完后统一应用 deprecated.json（替代包可跨类型，需读其他类型 Stage 解析包名，见 applyDeprecatedRegistry）
 7. 将本轮失败/成功同步为按仓独立 Issue（标签 stage-fail）：失败 upsert（正文未变则跳过 Edit）；
    成功入库或 asset id 未变跳过（已能正常取到 Release）则先评论说明再关闭；
    已不在任一 *s.txt 的仓（下架 / 换维护者旧仓）按 delisted 关闭（对照完整列表，非本轮 reports）
@@ -155,7 +155,7 @@ func main() {
 		stagedTypes = append(stagedTypes, packageType)
 	}
 
-	// 弃用元数据在全部类型写盘后统一应用：替代包可跨类型，需要读其它类型 Stage 才能解析出包名。
+	// 弃用元数据在全部类型写盘后统一应用：替代包可跨类型，需要读其他类型 Stage 才能解析出包名。
 	// 失败时中止（不提交半成品索引），与写 stage JSON 失败同样视为致命。
 	if err := applyDeprecatedRegistry(BAZAAR_ROOT_PATH, stagedTypes, deprecatedRegistry); err != nil {
 		logger.Fatalf("apply deprecation registry failed: %s", err)

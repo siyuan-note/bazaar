@@ -248,7 +248,7 @@ func ValidateDeprecatedRegistry(registry *DeprecatedRegistry, reposByType map[ru
 	return ValidateDeprecatedRegistryTypes(registry, reposByType, rules.AllPackageTypes())
 }
 
-// ValidateDeprecatedRegistryTypes 只校验指定包类型，供 PR Check 避免被其它类型的既有防御性警告阻断。
+// ValidateDeprecatedRegistryTypes 只校验指定包类型，供 PR Check 避免被其他类型的既有防御性警告阻断。
 func ValidateDeprecatedRegistryTypes(registry *DeprecatedRegistry, reposByType map[rules.PackageType][]string, packageTypes []rules.PackageType) []rules.Issue {
 	if registry == nil {
 		return []rules.Issue{deprecatedIssue("弃用注册表为空。", "The deprecation registry is empty.")}

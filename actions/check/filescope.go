@@ -67,15 +67,15 @@ func classifyPRFiles(paths []string) (black, white, deprecated, other []string) 
 	return black, white, deprecated, other
 }
 
-// formatBlacklistFlowError 返回命中黑名单、或白名单与其它文件混改时的固定双语 FlowError 正文。
+// formatBlacklistFlowError 返回命中黑名单、或白名单与其他文件混改时的固定双语 FlowError 正文。
 func formatBlacklistFlowError() string {
 	return "本 PR 修改了不允许直接改动的文件。集市包列表更新请只编辑仓库根目录的五个列表文件（`plugins.txt` / `themes.txt` / `icons.txt` / `templates.txt` / `widgets.txt`）；弃用元数据更新请仅编辑 `deprecated.json`。\n\n" +
 		"This PR modifies files that must not be changed directly. For package-list updates, edit only the five root list files (`plugins.txt` / `themes.txt` / `icons.txt` / `templates.txt` / `widgets.txt`); for deprecation metadata, edit only `deprecated.json`.\n"
 }
 
-// formatMixedDeprecationFlowError 返回弃用注册表与其它文件混改时的固定双语 FlowError。
+// formatMixedDeprecationFlowError 返回弃用注册表与其他文件混改时的固定双语 FlowError。
 func formatMixedDeprecationFlowError() string {
-	return "弃用注册表变更必须使用独立 PR，只能修改仓库根目录的 `deprecated.json`。请将包列表或其它文件变更拆分到另一 PR。\n\n" +
+	return "弃用注册表变更必须使用独立 PR，只能修改仓库根目录的 `deprecated.json`。请将包列表或其他文件变更拆分到另一 PR。\n\n" +
 		"A deprecation-registry change must use a dedicated PR that modifies only the root `deprecated.json`. Move package-list or other file changes to a separate PR.\n"
 }
 

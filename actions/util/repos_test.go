@@ -70,7 +70,7 @@ func TestParseReposFromBytes_BlankLinesLenient(t *testing.T) {
 	}
 }
 
-// 严格模式（仅 PR Check）：末尾允许一个空行，其它位置的空行与纯空白行报错。
+// 严格模式（仅 PR Check）：末尾允许一个空行，其他位置的空行与纯空白行报错。
 func TestParseReposFromBytes_BlankLinesStrict(t *testing.T) {
 	t.Parallel()
 
