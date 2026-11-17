@@ -27,7 +27,7 @@
    根目录下按类型有五个包列表文件：`plugins.txt`、`themes.txt`、`icons.txt`、`templates.txt`、`widgets.txt`。
    在**对应类型**的文件中新增一行，格式为：`owner/repo`（owner 是指 GitHub 用户名或组织名，repo 是指集市包仓库名）。
 
-   - 每行一个 `owner/repo`，不要有多余逗号或空行。
+   - 每行一个 `owner/repo`，不要有多余逗号或空行，同一 `owner/repo` 不要重复出现。
    - 示例：`siyuan-note/plugin-sample`。
    - 每个 PR 仅允许以下之一：仅添加 1 个新包；更换维护者（添加 1 个新 `owner/repo` 并删除同类型、同 GitHub 仓库名的旧 `owner/repo`）；或仅下架一个或多个包。不要把添加/更换与无关下架混在同一个 PR。
 

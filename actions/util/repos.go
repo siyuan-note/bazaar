@@ -26,12 +26,14 @@ const ThemeJsAllowlistRelPath = "config/themes-theme-js-allowlist.txt"
 
 // ParseReposFromTxt 从 TXT 文件解析包列表：按行分割、跳过空行，校验每行为合法 owner/repo，返回 []string。
 // 不做 TrimSpace，行首尾或 owner/repo 内含空格均视为解析错误。兼容多种换行符（\n、\r\n、\r）。
-// 空行是否允许不在本函数把关：Stage / 弃用校验用宽松语义，PR Check 用 ParseReposFromTxtStrict。
+// 空行与重复 owner/repo 是否允许不在本函数把关：Stage / 弃用校验 / 巡检用宽松语义
+// （跳过空行、重复项保留首次出现并记警告），PR Check 用 ParseReposFromTxtStrict。
 func ParseReposFromTxt(filePath string) (repos []string, err error) {
 	return parseReposFromFile(filePath, false)
 }
 
-// ParseReposFromTxtStrict 与 ParseReposFromTxt 相同，但额外要求空行只能出现在文件末尾且最多一行。
+// ParseReposFromTxtStrict 与 ParseReposFromTxt 相同，但额外要求空行只能出现在文件末尾且最多一行，
+// 且同一个 owner/repo 只能出现一次。
 // 仅供 PR Check 校验本 PR 提交的列表文件：Stage 读的是 main 上的既有内容，不应因一处多余空行整轮失败。
 func ParseReposFromTxtStrict(filePath string) (repos []string, err error) {
 	return parseReposFromFile(filePath, true)
@@ -56,13 +58,15 @@ func ParseReposFromBytes(fileLabel string, data []byte) (repos []string, err err
 	return ParseReposFromBytesWithMode(fileLabel, data, false)
 }
 
-// ParseReposFromBytesStrict 从 TXT 内容解析包列表，额外要求空行只能出现在文件末尾且最多一行。
+// ParseReposFromBytesStrict 从 TXT 内容解析包列表，额外要求空行只能出现在文件末尾且最多一行，
+// 且同一个 owner/repo 只能出现一次。
 func ParseReposFromBytesStrict(fileLabel string, data []byte) (repos []string, err error) {
 	return ParseReposFromBytesWithMode(fileLabel, data, true)
 }
 
-// ParseReposFromBytesWithMode 按 strict 决定是否把中间空行视为错误。
-// strict 只用于 PR Check：它要提示作者改掉多余空行，而 Stage 读的是 main 上的既有内容。
+// ParseReposFromBytesWithMode 按 strict 决定是否把中间空行与重复 owner/repo 视为错误。
+// strict 只用于 PR Check：它要提示作者改掉多余空行与重复行，而 Stage 读的是 main 上的既有内容。
+// 宽松模式下重复项保留首次出现，避免 stage 索引出现两个指向同一仓库的条目。
 func ParseReposFromBytesWithMode(fileLabel string, data []byte, strict bool) (repos []string, err error) {
 	scanner := bufio.NewScanner(strings.NewReader(string(data)))
 	lines := make([]string, 0)
@@ -78,6 +82,9 @@ func ParseReposFromBytesWithMode(fileLabel string, data []byte, strict bool) (re
 	}
 
 	repos = make([]string, 0, len(lines))
+	// 同一 owner/repo 只允许出现一次：重复行会让 stage 索引出现两个指向同一仓库的条目，
+	// 也会让「一个 PR 只能添加一个包」的计数与包名唯一性检查互相打架。
+	firstLineByRepo := make(map[string]int, len(lines))
 	for i, line := range lines {
 		lineNum := i + 1
 		// 空行：宽松模式跳过；严格模式只允许出现在文件末尾且最多一行（形如 "a\n\n"）
@@ -120,7 +127,18 @@ func ParseReposFromBytesWithMode(fileLabel string, data []byte, strict bool) (re
 				nil,
 			)
 		}
-		repos = append(repos, owner+"/"+repo)
+		repoPath := owner + "/" + repo
+		// 判定键统一转小写：GitHub 的 owner/repo 不区分大小写，大小写不同的两条指向的是同一个仓库。
+		key := strings.ToLower(repoPath)
+		if firstLine, duplicated := firstLineByRepo[key]; duplicated {
+			if strict {
+				return nil, duplicateLineError(fileLabel, lineNum, firstLine, repoPath)
+			}
+			logger.Warnf("%s line %d repeats line %d (%s); ignoring the duplicate", fileLabel, lineNum, firstLine, repoPath)
+			continue
+		}
+		firstLineByRepo[key] = lineNum
+		repos = append(repos, repoPath)
 	}
 	return repos, nil
 }
@@ -130,6 +148,15 @@ func emptyLineError(fileLabel string, lineNum int) error {
 	return rules.LocalizedErr(
 		fmt.Sprintf("`%s` 第 %d 行不能为空行或只含空格。空行只允许出现在文件末尾，且最多一行；请删除该行后重新提交。", fileLabel, lineNum),
 		fmt.Sprintf("`%s` line %d must not be empty or contain only spaces. A blank line is allowed only at the end of the file, at most one; please remove this line and submit again.", fileLabel, lineNum),
+		nil,
+	)
+}
+
+// duplicateLineError 生成「列表文件出现重复 owner/repo」的双语错误，指出重复行与其首次出现的行号。
+func duplicateLineError(fileLabel string, lineNum, firstLine int, repoPath string) error {
+	return rules.LocalizedErr(
+		fmt.Sprintf("`%s` 第 %d 行的 `%s` 与第 %d 行重复。每个 `owner/repo` 在文件中只能出现一次；请删除重复行后重新提交。", fileLabel, lineNum, repoPath, firstLine),
+		fmt.Sprintf("`%s` line %d repeats `%s` from line %d. Each `owner/repo` may appear only once in the file; please remove the duplicate line and submit again.", fileLabel, lineNum, repoPath, firstLine),
 		nil,
 	)
 }

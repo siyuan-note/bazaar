@@ -163,6 +163,30 @@ func TestValidateDeprecatedAlternativesCrossType(t *testing.T) {
 	}
 }
 
+// 同一类型列表里重复出现的 owner/repo 不应被当成「出现在多个类型列表」。
+func TestValidateDeprecatedAlternativesDuplicateWithinOneType(t *testing.T) {
+	registry := &DeprecatedRegistry{
+		Plugins: map[string]DeprecatedEntry{
+			"old/plugin": {Alternatives: []string{"new/plugin"}},
+		},
+		Themes:    map[string]DeprecatedEntry{},
+		Icons:     map[string]DeprecatedEntry{},
+		Templates: map[string]DeprecatedEntry{},
+		Widgets:   map[string]DeprecatedEntry{},
+	}
+	repos := map[rules.PackageType][]string{
+		rules.TypePlugin:   {"old/plugin", "new/plugin", "new/plugin"},
+		rules.TypeTheme:    {},
+		rules.TypeIcon:     {},
+		rules.TypeTemplate: {},
+		rules.TypeWidget:   {},
+	}
+	joined := issuesText(ValidateDeprecatedRegistry(registry, repos))
+	if strings.Contains(joined, "alternatives[0]") {
+		t.Fatalf("a repeated line within one type list is not an ambiguous type: %s", joined)
+	}
+}
+
 func TestChangedDeprecatedTypes(t *testing.T) {
 	before, err := ParseDeprecatedRegistry("deprecated.json", []byte(validDeprecatedRegistryJSON))
 	if err != nil {

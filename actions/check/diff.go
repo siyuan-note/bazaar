@@ -38,6 +38,8 @@ type repoDiff struct {
 // computeRepoDiff 按 base/head diff 并过滤：
 // 新增 = head 有而 base 无且不在 bazaar head（多为解决冲突时从 bazaar head 合并来的）；
 // 删除 = base 有而 head 无且仍在 bazaar head（确属本 PR 删除）。
+// 两侧结果都按路径去重：同一仓库在列表里写了两遍时，若不去重，它会既被重复下载，
+// 又会在包名唯一性检查里与自己在同一轮 PR Check 内冲突。
 func computeRepoDiff(
 	headPaths []string,
 	basePaths []string,
@@ -47,20 +49,32 @@ func computeRepoDiff(
 	baseNameToOwner map[string]string,
 ) repoDiff {
 	newRepos := make([]string, 0)
+	seenNew := make(Set, len(headPaths))
 	for _, path := range headPaths {
 		_, inBase := baseSet[path]
 		_, inBazaarHead := bazaarHeadSet[path]
-		if !inBase && !inBazaarHead {
-			newRepos = append(newRepos, path)
+		if inBase || inBazaarHead {
+			continue
 		}
+		if _, duplicated := seenNew[path]; duplicated {
+			continue
+		}
+		seenNew[path] = struct{}{}
+		newRepos = append(newRepos, path)
 	}
 	deletedRepos := make([]string, 0)
+	seenDeleted := make(Set, len(basePaths))
 	for _, path := range basePaths {
 		_, inHead := headSet[path]
 		_, inBazaarHead := bazaarHeadSet[path]
-		if !inHead && inBazaarHead {
-			deletedRepos = append(deletedRepos, path)
+		if inHead || !inBazaarHead {
+			continue
 		}
+		if _, duplicated := seenDeleted[path]; duplicated {
+			continue
+		}
+		seenDeleted[path] = struct{}{}
+		deletedRepos = append(deletedRepos, path)
 	}
 
 	// 更换维护者：同 GitHub 仓库名、不同 owner，且旧 owner/repo 已从列表删除。
