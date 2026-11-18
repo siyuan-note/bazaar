@@ -2,7 +2,7 @@
   "repos": [
     {
       "created": "2026-11-18T15:25:40Z",
-      "installSize": 950075,
+      "installSize": 957525,
       "openIssues": 0,
       "package": {
         "author": "mnyon",
@@ -39,15 +39,507 @@
           "zh-CN": "README.zh-CN.md"
         },
         "url": "https://github.com/mnyon/gamifyforsiyuan",
-        "version": "0.1.4"
+        "version": "0.1.6"
       },
-      "packageZipAssetId": 763871677,
-      "packageZipSha256": "dfc8f229037c22f75fa802582a6241906a71988f5f350745baac7d65ffde7548",
-      "repoRef": "v0.1.4",
-      "size": 943453,
+      "packageZipAssetId": 764242762,
+      "packageZipSha256": "34d307ba76ce8b8aacd3067141070f7c86ea4a48cd2a91a318a49fbd3ccece1b",
+      "repoRef": "v0.1.6",
+      "size": 950903,
       "stars": 0,
-      "updated": "2026-11-18T15:25:40Z",
-      "url": "mnyon/gamifyforsiyuan@dfc8f22"
+      "updated": "2026-11-18T17:07:58Z",
+      "url": "mnyon/gamifyforsiyuan@34d307b"
+    },
+    {
+      "created": "2026-11-14T17:20:27Z",
+      "installSize": 1235115,
+      "openIssues": 0,
+      "package": {
+        "author": "Clymer-git",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "在思源笔记里给图片画箭头、序号、文字、形状、马赛克与模糊，还能旋转、翻转、裁剪；保存后覆盖原图，一张 PNG 既是成品也是可继续编辑的工程，不产生多余资源。",
+          "en": "Annotate and crop images right inside SiYuan — saving overwrites the same PNG with the artwork and editable data embedded, so the image stays re-editable and no extra assets pile up."
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "勾画阁·猫抓"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "mobile"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "图片",
+          "标注",
+          "箭头",
+          "马赛克",
+          "裁剪",
+          "annotate",
+          "image",
+          "png",
+          "annotation",
+          "crop"
+        ],
+        "minAppVersion": "3.0.12",
+        "name": "siyuan-plugin-annotate",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/Clymer-git/siyuan-plugin-annotate",
+        "version": "1.2.0"
+      },
+      "packageZipAssetId": 764096086,
+      "packageZipSha256": "1c46a40dbb82996396fd82ad4bfe72dd017411a0ce1a813e541695bbdd068d77",
+      "repoRef": "v1.2.0",
+      "size": 723900,
+      "stars": 0,
+      "updated": "2026-11-18T16:20:58Z",
+      "url": "Clymer-git/siyuan-plugin-annotate@1c46a40"
+    },
+    {
+      "created": "2026-11-18T07:54:24Z",
+      "installSize": 136410,
+      "openIssues": 0,
+      "package": {
+        "author": "mnyon",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Discover connections between your notes. Normal uninstall keeps graph data for reinstallation; deleting plugin storage removes it. Export a backup first. Original notes are unaffected.",
+          "zh-CN": "让笔记片段彼此照见，连接想法，留下思考。普通卸载保留图谱与设置，重新安装可继续使用；手动清理插件数据目录会删除记录。建议卸载前导出备份，笔记原文不受影响。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "PairSentence"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "关联",
+          "随机漫游",
+          "思考图谱"
+        ],
+        "minAppVersion": "3.8.5",
+        "name": "pairsentence",
+        "preview": "",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/mnyon/pairsentence",
+        "version": "0.1.15"
+      },
+      "packageZipAssetId": 763977598,
+      "packageZipSha256": "90590dcc64c4f262208cc84ad1c7a8d3a90bee3c604f0af95683ab47bc2883de",
+      "repoRef": "v0.1.15",
+      "size": 133228,
+      "stars": 0,
+      "updated": "2026-11-18T15:49:31Z",
+      "url": "mnyon/pairsentence@90590dc"
+    },
+    {
+      "created": "2026-02-08T18:58:44Z",
+      "installSize": 20174388,
+      "openIssues": 0,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Manage SiYuan tasks across documents with checklist, table, timeline, Kanban, calendar and whiteboard views, an AI assistant, quick editing and focus statistics.",
+          "zh-CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Horizon",
+          "zh-CN": "任务管理器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "task",
+          "manager",
+          "filter"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-plugin-task-horizon",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
+        "version": "3.5.0"
+      },
+      "packageZipAssetId": 763892652,
+      "packageZipSha256": "b98d00b6d5d404a7601b14f5a3f8260bb57dae110925b61b6492df62c3e2cc6c",
+      "repoRef": "v3.5.0",
+      "size": 4184830,
+      "stars": 38,
+      "updated": "2026-11-18T15:22:27Z",
+      "url": "5kyfkr/siyuan-plugin-task-horizon@b98d00b"
+    },
+    {
+      "created": "2026-01-18T23:53:59Z",
+      "installSize": 2997803,
+      "openIssues": 0,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Pomodoro timer and focus stopwatch for SiYuan, with a timeline, task reminders, background audio, focus statistics, and device synchronization.",
+          "zh-CN": "思源底栏番茄钟：支持时间轴视图/任务提醒/日常事务记录/多端状态同步/移动端/数据库联动/块绑定/历史记录/任务管理器联动/移动端原生通知提醒"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Dock Tomato",
+          "zh-CN": "底栏番茄钟"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "tomato",
+          "timer",
+          "pomodoro",
+          "dock"
+        ],
+        "minAppVersion": "3.8.1",
+        "name": "siyuan-plugin-docktomato",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-docktomato",
+        "version": "2.4.2"
+      },
+      "packageZipAssetId": 763879561,
+      "packageZipSha256": "8316855b7b4c1bccd4f7a7f767ba5c7dae8df63383b669a7f2594cd921c2b0a0",
+      "repoRef": "v2.4.2",
+      "size": 700588,
+      "stars": 8,
+      "updated": "2026-11-18T15:18:42Z",
+      "url": "5kyfkr/siyuan-plugin-docktomato@8316855"
+    },
+    {
+      "created": "2026-11-14T15:22:56Z",
+      "installSize": 320409314,
+      "openIssues": 0,
+      "package": {
+        "author": "Voice Notes contributors",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Record, annotate and replay audio in notes, with local transcription and speaker models.",
+          "zh-CN": "正文录音、时间标记、原音回听与逐字稿整理，附本地转写及发言人模型。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan Voice Notes Full",
+          "zh-CN": "思源语音 Full"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "",
+        "keywords": [
+          "audio",
+          "transcript",
+          "语音",
+          "字幕"
+        ],
+        "minAppVersion": "3.8.9",
+        "name": "siyuan-voice-notes",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/jiangeeeeee/siyuan-voice-notes",
+        "version": "0.8.4"
+      },
+      "packageZipAssetId": 763835420,
+      "packageZipSha256": "04585cdee16262dd313662a87e58257e14f5c831a378ff39e533e3cb1b3a2448",
+      "repoRef": "v0.8.4",
+      "size": 220299730,
+      "stars": 0,
+      "updated": "2026-11-18T15:07:08Z",
+      "url": "jiangeeeeee/siyuan-voice-notes@04585cd"
+    },
+    {
+      "created": "2026-11-15T09:20:05Z",
+      "installSize": 11427979,
+      "openIssues": 0,
+      "package": {
+        "author": "Voice Notes contributors",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Audio recording, timed markers, subtitles and linked notes without recognition models.",
+          "zh-CN": "轻量录音、时间标记、字幕整理与原音回听，不含识别模型。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan Voice Notes Lite",
+          "zh-CN": "思源语音 Lite"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "",
+        "keywords": [
+          "audio",
+          "transcript",
+          "语音",
+          "字幕"
+        ],
+        "minAppVersion": "3.8.9",
+        "name": "siyuan-voice-notes-lite",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/jiangeeeeee/siyuan-voice-notes-lite",
+        "version": "0.8.4"
+      },
+      "packageZipAssetId": 763827768,
+      "packageZipSha256": "2d49d8a610523f0c753db0d9a6c47e6d3c388a4d7553c215dfd10f89c6fc86a7",
+      "repoRef": "v0.8.4",
+      "size": 10619656,
+      "stars": 0,
+      "updated": "2026-11-18T15:04:15Z",
+      "url": "jiangeeeeee/siyuan-voice-notes-lite@2d49d8a"
+    },
+    {
+      "created": "2025-01-19T15:19:54Z",
+      "installSize": 4541731,
+      "openIssues": 5,
+      "package": {
+        "author": "mm-o",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker",
+          "darwin"
+        ],
+        "description": {
+          "en_US": "Professional media player for SiYuan Note with multi-platform support, smart note integration, timestamp jumps, loop segments, and extensible script architecture",
+          "zh_CN": "专业的思源笔记媒体播放器插件，集成本地媒体、网盘、BBLL、TTVV、多窗口播放、时间戳、循环片段、媒体助手与可扩展架构。"
+        },
+        "displayName": {
+          "en_US": "SiYuan Media Player",
+          "zh_CN": "思播-思源媒体播放器"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://745201.xyz/pay.jpg"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "media player",
+          "audio",
+          "video",
+          "timestamp",
+          "playlist",
+          "note integration",
+          "extensible",
+          "播放器",
+          "音频",
+          "视频",
+          "时间戳",
+          "播放列表",
+          "笔记集成",
+          "多平台"
+        ],
+        "minAppVersion": "3.8.3",
+        "name": "siyuan-media-player",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/mm-o/siyuan-media-player",
+        "version": "2.3.7"
+      },
+      "packageZipAssetId": 763826186,
+      "packageZipSha256": "31a22bc571e65d250e481c7ec5766410b11d870a45320105e829ffef78248834",
+      "repoRef": "v2.3.7",
+      "size": 1646151,
+      "stars": 54,
+      "updated": "2026-11-18T15:02:39Z",
+      "url": "mm-o/siyuan-media-player@31a22bc"
+    },
+    {
+      "created": "2026-10-20T13:24:48Z",
+      "installSize": 33441904,
+      "openIssues": 0,
+      "package": {
+        "author": "LongDarkroom",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A hand-drawn whiteboard and presenter for SiYuan: native Excalidraw, one-line AI drawing, frames as slides, re-editable SVG.",
+          "zh-CN": "思源里的手绘白板与演示工具：Excalidraw 原生画布、AI 一句话成图、画框即幻灯片，SVG 内嵌可再编辑。"
+        },
+        "displayName": {
+          "default": "Excali Studio",
+          "zh-CN": "Excali 白板"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/3435d"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "excalidraw",
+          "whiteboard",
+          "svg",
+          "白板",
+          "手绘",
+          "画图",
+          "演示",
+          "AI 绘图",
+          "presentation"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "siyuan-excali-studio",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/LongDarkroom/siyuan-excali-studio",
+        "version": "0.10.0"
+      },
+      "packageZipAssetId": 763597176,
+      "packageZipSha256": "fe61110963eacd71e896870467752464b24e566f0388537831b52de7b75a55a3",
+      "repoRef": "v0.10.0",
+      "size": 26989592,
+      "stars": 1,
+      "updated": "2026-11-18T13:54:06Z",
+      "url": "LongDarkroom/siyuan-excali-studio@fe61110"
+    },
+    {
+      "created": "2026-11-06T10:54:51Z",
+      "installSize": 1334443,
+      "openIssues": 0,
+      "package": {
+        "author": "jiangeeeeee",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "android",
+          "ios",
+          "harmony"
+        ],
+        "description": {
+          "default": "Let ideas flow in ink. Pressure-sensitive writing, note annotations, and a freeform whiteboard.",
+          "zh_CN": "落笔有形，思绪有迹。压感手写、正文批注与自由白板。"
+        },
+        "displayName": {
+          "default": "源生笔迹"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-native-handwriting",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/jiangeeeeee/siyuan-native-handwriting",
+        "version": "0.14.14"
+      },
+      "packageZipAssetId": 763596678,
+      "packageZipSha256": "2235a01d49379ddc09c9b5464f36a0115a18e8ace19fc5f98e79b3270ddabc04",
+      "repoRef": "v0.14.14",
+      "size": 430988,
+      "stars": 1,
+      "updated": "2026-11-18T11:38:08Z",
+      "url": "jiangeeeeee/siyuan-native-handwriting@2235a01"
     },
     {
       "created": "2026-11-18T08:09:41Z",
@@ -398,54 +890,6 @@
       "url": "terwer/siyuan-plugin-publisher@41cff2b"
     },
     {
-      "created": "2026-11-18T07:54:24Z",
-      "installSize": 138625,
-      "openIssues": 0,
-      "package": {
-        "author": "mnyon",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Discover connections between your notes. Normal uninstall keeps graph data for reinstallation; deleting plugin storage removes it. Export a backup first. Original notes are unaffected.",
-          "zh-CN": "让笔记片段彼此照见，连接想法，留下思考。普通卸载保留图谱与设置，重新安装可继续使用；手动清理插件数据目录会删除记录。建议卸载前导出备份，笔记原文不受影响。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "PairSentence"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "关联",
-          "随机漫游",
-          "思考图谱"
-        ],
-        "minAppVersion": "3.8.5",
-        "name": "pairsentence",
-        "preview": "",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/mnyon/pairsentence",
-        "version": "0.1.14"
-      },
-      "packageZipAssetId": 762122807,
-      "packageZipSha256": "46b411a230d6715af8307d9e5691ea06e332e93ca9ba286b65d9280f4081fa73",
-      "repoRef": "v0.1.14",
-      "size": 135443,
-      "stars": 0,
-      "updated": "2026-11-18T07:54:24Z",
-      "url": "mnyon/pairsentence@46b411a"
-    },
-    {
       "created": "2026-11-18T07:47:59Z",
       "installSize": 103021,
       "openIssues": 0,
@@ -545,113 +989,6 @@
       "stars": 0,
       "updated": "2026-11-18T07:43:16Z",
       "url": "verygoodwu/cloud-docs-home@a5fcf66"
-    },
-    {
-      "created": "2026-02-08T18:58:44Z",
-      "installSize": 20162614,
-      "openIssues": 0,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Manage SiYuan tasks across documents with checklist, table, timeline, Kanban, calendar and whiteboard views, an AI assistant, quick editing and focus statistics.",
-          "zh-CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Horizon",
-          "zh-CN": "任务管理器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "task",
-          "manager",
-          "filter"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-plugin-task-horizon",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "3.4.9"
-      },
-      "packageZipAssetId": 762236395,
-      "packageZipSha256": "d8c9e82fd5b429c44266b28fbc295c68b5404f341da376d0460c69110473ea6c",
-      "repoRef": "v3.4.9",
-      "size": 4181519,
-      "stars": 38,
-      "updated": "2026-11-18T06:37:12Z",
-      "url": "5kyfkr/siyuan-plugin-task-horizon@d8c9e82"
-    },
-    {
-      "created": "2026-01-18T23:53:59Z",
-      "installSize": 2997365,
-      "openIssues": 0,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Pomodoro timer and focus stopwatch for SiYuan, with a timeline, task reminders, background audio, focus statistics, and device synchronization.",
-          "zh-CN": "思源底栏番茄钟：支持时间轴视图/任务提醒/日常事务记录/多端状态同步/移动端/数据库联动/块绑定/历史记录/任务管理器联动/移动端原生通知提醒"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Dock Tomato",
-          "zh-CN": "底栏番茄钟"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "tomato",
-          "timer",
-          "pomodoro",
-          "dock"
-        ],
-        "minAppVersion": "3.8.1",
-        "name": "siyuan-plugin-docktomato",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-docktomato",
-        "version": "2.4.1"
-      },
-      "packageZipAssetId": 762217720,
-      "packageZipSha256": "b034783c6877ee46b32b04c4008374c233d8ca00ce93eda52dd6ea709f6d6eed",
-      "repoRef": "v2.4.1",
-      "size": 700462,
-      "stars": 8,
-      "updated": "2026-11-18T06:30:45Z",
-      "url": "5kyfkr/siyuan-plugin-docktomato@b034783"
     },
     {
       "created": "2026-11-16T14:52:44Z",
@@ -903,66 +1240,6 @@
       "stars": 2,
       "updated": "2026-11-18T04:36:33Z",
       "url": "LongDarkroom/siyuan-plugin-reader@a78a9be"
-    },
-    {
-      "created": "2026-10-20T13:24:48Z",
-      "installSize": 33410504,
-      "openIssues": 0,
-      "package": {
-        "author": "LongDarkroom",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A hand-drawn whiteboard and presenter for SiYuan: native Excalidraw, one-line AI drawing, frames as slides, re-editable SVG.",
-          "zh-CN": "思源里的手绘白板与演示工具：Excalidraw 原生画布、AI 一句话成图、画框即幻灯片，SVG 内嵌可再编辑。"
-        },
-        "displayName": {
-          "default": "Excali Studio",
-          "zh-CN": "Excali 白板"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/3435d"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "excalidraw",
-          "whiteboard",
-          "svg",
-          "白板",
-          "手绘",
-          "画图",
-          "演示",
-          "AI 绘图",
-          "presentation"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "siyuan-excali-studio",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/LongDarkroom/siyuan-excali-studio",
-        "version": "0.9.8"
-      },
-      "packageZipAssetId": 761903630,
-      "packageZipSha256": "814fbae4168fea0da5f1b66bd4eb13e5486909c1878bc920c8147b49da537028",
-      "repoRef": "v0.9.8",
-      "size": 26981173,
-      "stars": 1,
-      "updated": "2026-11-18T04:31:56Z",
-      "url": "LongDarkroom/siyuan-excali-studio@814fbae"
     },
     {
       "created": "2026-11-15T10:31:38Z",
@@ -1524,52 +1801,6 @@
       "url": "ccztao/siyuan-mankeep@06673b8"
     },
     {
-      "created": "2026-11-06T10:54:51Z",
-      "installSize": 1328231,
-      "openIssues": 0,
-      "package": {
-        "author": "jiangeeeeee",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "android",
-          "ios",
-          "harmony"
-        ],
-        "description": {
-          "default": "Let ideas flow in ink. Pressure-sensitive writing, note annotations, and a freeform whiteboard.",
-          "zh_CN": "落笔有形，思绪有迹。压感手写、正文批注与自由白板。"
-        },
-        "displayName": {
-          "default": "源生笔迹"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-native-handwriting",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/jiangeeeeee/siyuan-native-handwriting",
-        "version": "0.14.13"
-      },
-      "packageZipAssetId": 759466005,
-      "packageZipSha256": "77758c919b80c9e5659fb1a6cb92d9310ff69ead7b2299e82c48248b195cb12e",
-      "repoRef": "v0.14.13",
-      "size": 429028,
-      "stars": 1,
-      "updated": "2026-11-17T14:54:37Z",
-      "url": "jiangeeeeee/siyuan-native-handwriting@77758c9"
-    },
-    {
       "created": "2026-11-01T05:29:22Z",
       "installSize": 405905,
       "openIssues": 0,
@@ -1750,80 +1981,6 @@
       "stars": 0,
       "updated": "2026-11-17T11:08:34Z",
       "url": "lsqingfeng/siyuan-cardcraft@5779b8f"
-    },
-    {
-      "created": "2025-01-19T15:19:54Z",
-      "installSize": 4539048,
-      "openIssues": 5,
-      "package": {
-        "author": "mm-o",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker",
-          "darwin"
-        ],
-        "description": {
-          "en_US": "Professional media player for SiYuan Note with multi-platform support, smart note integration, timestamp jumps, loop segments, and extensible script architecture",
-          "zh_CN": "专业的思源笔记媒体播放器插件，集成本地媒体、网盘、BBLL、TTVV、多窗口播放、时间戳、循环片段、媒体助手与可扩展架构。"
-        },
-        "displayName": {
-          "en_US": "SiYuan Media Player",
-          "zh_CN": "思播-思源媒体播放器"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://745201.xyz/pay.jpg"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "media player",
-          "audio",
-          "video",
-          "timestamp",
-          "playlist",
-          "note integration",
-          "extensible",
-          "播放器",
-          "音频",
-          "视频",
-          "时间戳",
-          "播放列表",
-          "笔记集成",
-          "多平台"
-        ],
-        "minAppVersion": "3.8.3",
-        "name": "siyuan-media-player",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/mm-o/siyuan-media-player",
-        "version": "2.3.6"
-      },
-      "packageZipAssetId": 758674534,
-      "packageZipSha256": "3615ea59c4d38d70c5481ce85dd17a43383871d4277105ba91c46e559cc1de4b",
-      "repoRef": "v2.3.6",
-      "size": 1645220,
-      "stars": 54,
-      "updated": "2026-11-17T10:51:38Z",
-      "url": "mm-o/siyuan-media-player@3615ea5"
     },
     {
       "created": "2026-05-31T08:33:55Z",
@@ -2719,61 +2876,6 @@
       "url": "taotaochen86/tree-doc-numbering@3134b1e"
     },
     {
-      "created": "2026-11-14T17:20:27Z",
-      "installSize": 1182075,
-      "openIssues": 0,
-      "package": {
-        "author": "Clymer-git",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "在思源笔记里给图片画箭头、序号、文字、形状、马赛克与模糊，还能旋转、翻转、裁剪；保存后覆盖原图，一张 PNG 既是成品也是可继续编辑的工程，不产生多余资源。",
-          "en": "Annotate and crop images right inside SiYuan — saving overwrites the same PNG with the artwork and editable data embedded, so the image stays re-editable and no extra assets pile up."
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "勾画阁·猫抓"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "mobile"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "图片",
-          "标注",
-          "箭头",
-          "马赛克",
-          "裁剪",
-          "annotate",
-          "image",
-          "png",
-          "annotation",
-          "crop"
-        ],
-        "minAppVersion": "3.0.12",
-        "name": "siyuan-plugin-annotate",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/Clymer-git/siyuan-plugin-annotate",
-        "version": "1.1.0"
-      },
-      "packageZipAssetId": 756922214,
-      "packageZipSha256": "ab436b8829901bf26da6830e12653f8776561053cec0d2e6b4606558b4439113",
-      "repoRef": "v1.1.0",
-      "size": 709064,
-      "stars": 0,
-      "updated": "2026-11-16T22:17:46Z",
-      "url": "Clymer-git/siyuan-plugin-annotate@ab436b8"
-    },
-    {
       "created": "2025-11-24T02:47:39Z",
       "installSize": 533928,
       "openIssues": 2,
@@ -3544,108 +3646,6 @@
       "stars": 0,
       "updated": "2026-11-15T10:06:47Z",
       "url": "mashulai84-max/heading-master@39dd6e3"
-    },
-    {
-      "created": "2026-11-15T09:20:05Z",
-      "installSize": 11134731,
-      "openIssues": 0,
-      "package": {
-        "author": "Voice Notes contributors",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Audio recording, timed markers, subtitles and linked notes without recognition models.",
-          "zh-CN": "轻量录音、时间标记、字幕整理与原音回听，不含识别模型。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiYuan Voice Notes Lite",
-          "zh-CN": "思源语音 Lite"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "",
-        "keywords": [
-          "audio",
-          "transcript",
-          "语音",
-          "字幕"
-        ],
-        "minAppVersion": "3.8.9",
-        "name": "siyuan-voice-notes-lite",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/jiangeeeeee/siyuan-voice-notes-lite",
-        "version": "0.8.3"
-      },
-      "packageZipAssetId": 750451125,
-      "packageZipSha256": "3074bd90da588b192a959b2558e4f7521aa992af73a954f2c6f9c57295721d6d",
-      "repoRef": "v0.8.3",
-      "size": 10527094,
-      "stars": 0,
-      "updated": "2026-11-15T09:20:05Z",
-      "url": "jiangeeeeee/siyuan-voice-notes-lite@3074bd9"
-    },
-    {
-      "created": "2026-11-14T15:22:56Z",
-      "installSize": 320116426,
-      "openIssues": 0,
-      "package": {
-        "author": "Voice Notes contributors",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Record, annotate and replay audio in notes, with local transcription and speaker models.",
-          "zh-CN": "正文录音、时间标记、原音回听与逐字稿整理，附本地转写及发言人模型。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiYuan Voice Notes Full",
-          "zh-CN": "思源语音 Full"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "",
-        "keywords": [
-          "audio",
-          "transcript",
-          "语音",
-          "字幕"
-        ],
-        "minAppVersion": "3.8.9",
-        "name": "siyuan-voice-notes",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/jiangeeeeee/siyuan-voice-notes",
-        "version": "0.8.3"
-      },
-      "packageZipAssetId": 753031747,
-      "packageZipSha256": "ecadd335dc006221ab7ca3c5f53e2ac331a13ae558e04035d9588be417104380",
-      "repoRef": "v0.8.3",
-      "size": 220207232,
-      "stars": 0,
-      "updated": "2026-11-15T09:17:43Z",
-      "url": "jiangeeeeee/siyuan-voice-notes@ecadd33"
     },
     {
       "created": "2023-11-09T13:54:16Z",
