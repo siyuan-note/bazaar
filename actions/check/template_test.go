@@ -139,7 +139,7 @@ func TestCheckResultTemplate_ParseError(t *testing.T) {
 		// 本 PR 的副本：说明归贡献者修，并给出改法
 		"#### `plugins.txt` — 本 PR 的提交 / this PR's commit",
 		"`plugins.txt` 第 102 行不能为空行",
-		"Fix this file in the PR (one `owner/repo` per line, no extra blank lines), then push a new commit.",
+		"Fix this file in the PR (one `owner/repo` per line, with no extra blank lines or repeated entries), then push a new commit.",
 		// bazaar 主分支的副本：明确与本 PR 无关，指引等维护者
 		"#### `themes.txt` — bazaar 主分支最新版本 / latest bazaar main",
 		"这不是本 PR 引入的问题：这份副本由 bazaar 维护者维护。",

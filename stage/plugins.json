@@ -1,6 +1,1074 @@
 {
   "repos": [
     {
+      "created": "2026-11-18T09:11:34Z",
+      "installSize": 440116,
+      "openIssues": 0,
+      "package": {
+        "author": "Gt841",
+        "backends": [
+          "darwin",
+          "windows"
+        ],
+        "description": {
+          "en_US": "Cross-platform SiYuan client for TodooCard 528x792 e-paper cards, powered by the pure-Python todoocard-general-core.",
+          "zh_CN": "基于纯 Python 通用核心，在思源中跨 macOS / Windows 配对并给土豆片墨水屏传图。"
+        },
+        "displayName": {
+          "en_US": "TodooCard General",
+          "zh_CN": "土豆片通用"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "todoocard",
+          "eink",
+          "bluetooth",
+          "墨水屏",
+          "传图",
+          "windows",
+          "macos",
+          "跨平台"
+        ],
+        "minAppVersion": "3.0.1",
+        "name": "plugin-todoocard-general",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/Gt841/plugin-todoocard-general",
+        "version": "0.1.4"
+      },
+      "packageZipAssetId": 762585339,
+      "packageZipSha256": "4d922614b31e7f1294057231448142a47e70fb67793361ba5bd80fb21f4618c1",
+      "repoRef": "v0.1.4",
+      "size": 292399,
+      "stars": 0,
+      "updated": "2026-11-18T09:11:34Z",
+      "url": "Gt841/plugin-todoocard-general@4d92261"
+    },
+    {
+      "created": "2026-11-18T08:09:41Z",
+      "installSize": 214702,
+      "openIssues": 0,
+      "package": {
+        "author": "lamp3721",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Tint doc-tree rows per notebook (one color per notebook) and color the tag panel. Text and icons untouched.",
+          "zh-CN": "按笔记本一色给文档树行染底（块状连续、块间留缝），标签面板按标签名染色；文字与图标一律不动。"
+        },
+        "displayName": {
+          "default": "Colorful Doc Tree",
+          "zh-CN": "彩色文档树"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "文档树",
+          "彩色",
+          "笔记本",
+          "doc tree",
+          "color"
+        ],
+        "minAppVersion": "3.7.1",
+        "name": "colorful-doc-tree",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/lamp3721/colorful-doc-tree",
+        "version": "0.2.6"
+      },
+      "packageZipAssetId": 762432648,
+      "packageZipSha256": "60baf28f42d10242db56380e064216e1b3f6cbace2b0d05cec976d3ddd2774bc",
+      "repoRef": "v0.2.6",
+      "size": 170458,
+      "stars": 0,
+      "updated": "2026-11-18T08:09:41Z",
+      "url": "lamp3721/colorful-doc-tree@60baf28"
+    },
+    {
+      "created": "2026-11-18T07:54:24Z",
+      "installSize": 138625,
+      "openIssues": 0,
+      "package": {
+        "author": "mnyon",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Discover connections between your notes. Normal uninstall keeps graph data for reinstallation; deleting plugin storage removes it. Export a backup first. Original notes are unaffected.",
+          "zh-CN": "让笔记片段彼此照见，连接想法，留下思考。普通卸载保留图谱与设置，重新安装可继续使用；手动清理插件数据目录会删除记录。建议卸载前导出备份，笔记原文不受影响。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "PairSentence"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "关联",
+          "随机漫游",
+          "思考图谱"
+        ],
+        "minAppVersion": "3.8.5",
+        "name": "pairsentence",
+        "preview": "",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/mnyon/pairsentence",
+        "version": "0.1.14"
+      },
+      "packageZipAssetId": 762122807,
+      "packageZipSha256": "46b411a230d6715af8307d9e5691ea06e332e93ca9ba286b65d9280f4081fa73",
+      "repoRef": "v0.1.14",
+      "size": 135443,
+      "stars": 0,
+      "updated": "2026-11-18T07:54:24Z",
+      "url": "mnyon/pairsentence@46b411a"
+    },
+    {
+      "created": "2026-11-18T07:47:59Z",
+      "installSize": 103021,
+      "openIssues": 0,
+      "package": {
+        "author": "rushplayer",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "android",
+          "ios",
+          "harmony"
+        ],
+        "description": {
+          "default": "还你一个正常的搜索。标题正文一起搜，结果按篇展示，点中就到原文。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "顺手搜索",
+          "en": "Easy Search"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "icon": "",
+        "keywords": [
+          "搜索",
+          "全局搜索",
+          "篇内查找",
+          "search",
+          "find"
+        ],
+        "name": "siyuan-easy-search",
+        "preview": "",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/rushplayer/siyuan-easy-search",
+        "version": "0.1.14"
+      },
+      "packageZipAssetId": 761520557,
+      "packageZipSha256": "b6bed2302dcd628dfb13793fc26e16aa38547b2e827e7fad86b8a4e966cd343d",
+      "repoRef": "v0.1.14",
+      "size": 24931,
+      "stars": 0,
+      "updated": "2026-11-18T07:47:59Z",
+      "url": "rushplayer/siyuan-easy-search@b6bed23"
+    },
+    {
+      "created": "2026-11-03T02:56:17Z",
+      "installSize": 342188,
+      "openIssues": 0,
+      "package": {
+        "author": "dudull",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Visual settings for the Mist theme: per-region colours and opacity, background image, floating-panel glass and pop animation, fonts, sizes and weights, table width fitting, doc-tree icons, global contrast. Works only while the Mist theme is active and unloads itself on theme switch.",
+          "zh-CN": "为「薄雾」主题提供可视化设置：分区颜色与透明度、背景图、浮动面板玻璃与弹出动画、字体字号与字重、表格宽度自适应、文档树图标、全局对比度。仅在薄雾主题下生效，切换主题自动停用。"
+        },
+        "displayName": {
+          "default": "Mist Settings",
+          "zh-CN": "薄雾设置"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "mobile",
+          "browser-desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "mist",
+          "薄雾",
+          "theme settings",
+          "主题设置",
+          "opacity",
+          "透明度",
+          "background",
+          "背景图",
+          "font",
+          "字体",
+          "icon",
+          "图标",
+          "contrast",
+          "对比度",
+          "floating panel",
+          "浮动面板",
+          "glass",
+          "玻璃",
+          "table",
+          "表格",
+          "weight",
+          "字重",
+          "font weight"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "mist-enhancer",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/dudull852/mist-enhancer",
+        "version": "0.2.37"
+      },
+      "packageZipAssetId": 761231232,
+      "packageZipSha256": "f06cd6c9a31e42cf7324c2ed5417bbec38b80dffd331d792c46d80927e50b9fb",
+      "repoRef": "0.2.37",
+      "size": 161687,
+      "stars": 0,
+      "updated": "2026-11-18T00:33:47Z",
+      "url": "dudull852/mist-enhancer@f06cd6c"
+    },
+    {
+      "created": "2026-09-26T07:04:34Z",
+      "installSize": 555894,
+      "openIssues": 0,
+      "package": {
+        "author": "wmy2981",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A batch of independently toggleable desktop and mobile enhancements and optimized styles",
+          "zh-CN": "一批可独立启停的桌面端与移动端增强功能和优化后的样式",
+          "zh-TW": "一批可獨立啟停的桌面端與行動端增強功能和最佳化後的樣式"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Some Settings",
+          "zh-CN": "一些设置",
+          "zh-TW": "一些設定"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/wmy2981"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "settings",
+          "style",
+          "custom",
+          "ui",
+          "enhancement"
+        ],
+        "minAppVersion": "3.8.6-alpha.4",
+        "name": "some-settings-siyuan",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md",
+          "zh-TW": "README.zh-TW.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/wmy2981/some-settings-siyuan",
+        "version": "1.1.4"
+      },
+      "packageZipAssetId": 759767332,
+      "packageZipSha256": "6367efeed08f12f1a7a8b2de4186a380b17d5a471b12441bdad4fe9e6374e3f6",
+      "repoRef": "v1.1.4",
+      "size": 185305,
+      "stars": 2,
+      "updated": "2026-11-17T16:22:52Z",
+      "url": "wmy2981/some-settings-siyuan@6367efe"
+    },
+    {
+      "created": "2026-11-17T16:02:58Z",
+      "installSize": 271029,
+      "openIssues": 0,
+      "package": {
+        "author": "ttChen",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "Export a SiYuan document tree to a standardized .docx inside the browser: built-in Heading styles with source numbering kept as static text, three-line tables, captions as SEQ fields, cross-references as REF fields, Zotero citations and bibliography as fields, images truly embedded, empty tables preserved, one page per document.",
+          "zh_CN": "把思源文档树导出为规范 .docx（纯前端完成）：内置 Heading 标题样式、编号保留思源原文、三线表、题注 SEQ 域、交叉引用 REF 域、Zotero 引用与书目域、图片真嵌入、空表完整保留、每篇文档另起一页。"
+        },
+        "displayName": {
+          "default": "Export Word",
+          "zh_CN": "导出规范Word"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "export",
+          "word",
+          "docx",
+          "三线表",
+          "题注",
+          "交叉引用",
+          "zotero",
+          "参考文献",
+          "导出"
+        ],
+        "minAppVersion": "3.1.0",
+        "name": "siyuan-docx-export",
+        "preview": "",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/taotaochen86/siyuan-docx-export",
+        "version": "0.3.6"
+      },
+      "packageZipAssetId": 759658055,
+      "packageZipSha256": "740d96d74f6be57eba29bf52a002bdd4c3ea029f61a5634eacdfdcba6f383350",
+      "repoRef": "v0.3.6",
+      "size": 105440,
+      "stars": 0,
+      "updated": "2026-11-17T16:02:58Z",
+      "url": "taotaochen86/siyuan-docx-export@740d96d"
+    },
+    {
+      "created": "2026-11-15T10:31:38Z",
+      "installSize": 248927,
+      "openIssues": 1,
+      "package": {
+        "author": "wmy2981",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "View storage, object count, traffic and request usage of object storage buckets in SiYuan.",
+          "zh-CN": "在思源中查看对象存储桶的存储量、对象数、流量与请求数。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "S3 Bucket Usage",
+          "zh-CN": "S3 桶用量"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/wmy2981"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "s3",
+          "bucket",
+          "usage",
+          "object storage",
+          "oss",
+          "cos",
+          "obs",
+          "tos",
+          "qiniu",
+          "minio",
+          "r2",
+          "aws",
+          "存储用量",
+          "桶用量",
+          "对象存储",
+          "存储容量",
+          "云存储"
+        ],
+        "minAppVersion": "3.1.20",
+        "name": "s3-usage-siyuan",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/wmy2981/s3-usage-siyuan",
+        "version": "1.0.1"
+      },
+      "packageZipAssetId": 759686632,
+      "packageZipSha256": "39355554ad95f2ac07f2e17942ac4520e5a15761a9183a8afd50405d7930831c",
+      "repoRef": "v1.0.1",
+      "size": 102841,
+      "stars": 1,
+      "updated": "2026-11-17T15:59:58Z",
+      "url": "wmy2981/s3-usage-siyuan@3935555"
+    },
+    {
+      "created": "2023-06-15T02:07:15Z",
+      "installSize": 5979007,
+      "openIssues": 38,
+      "package": {
+        "author": "terwer",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "android",
+          "ios",
+          "harmony"
+        ],
+        "description": {
+          "default": "Your favorite PicGo image bed is still available in Siyuan Notes, wuhu~",
+          "zh_CN": "您喜爱的 PicGo 图床，在思源笔记依然可用，没想到吧~"
+        },
+        "displayName": {
+          "default": "PicGo picbed",
+          "zh_CN": "PicGo图床"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.net/a/terwer"
+          ]
+        },
+        "icon": "icon.png",
+        "minAppVersion": "2.9.0",
+        "name": "siyuan-plugin-picgo",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/terwer/siyuan-plugin-picgo",
+        "version": "3.1.3"
+      },
+      "packageZipAssetId": 759660708,
+      "packageZipSha256": "b44e92a9f6324448f51f939147915cf91d7fca43b8737914728113dee6ee10cd",
+      "repoRef": "siyuan-plugin-picgo-v3.1.3",
+      "size": 5945745,
+      "stars": 40,
+      "updated": "2026-11-17T15:50:59Z",
+      "url": "terwer/siyuan-plugin-picgo@b44e92a"
+    },
+    {
+      "created": "2026-09-12T10:39:00Z",
+      "installSize": 76922,
+      "openIssues": 0,
+      "package": {
+        "author": "YanDuJiang",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Display a clock tab with current time, date, weekday and Chinese lunar date. All frontends supported, colors follow SiYuan theme. This project was generated with AI assistance.",
+          "zh-CN": "以标签页显示时钟：大号当前时间、日期与星期、农历（干支生肖）。全端适配，配色跟随思源主题。本项目由 AI 生成。"
+        },
+        "displayName": {
+          "default": "SiYuan Clock Plugin",
+          "zh-CN": "时钟"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "clock",
+          "时钟",
+          "农历",
+          "lunar",
+          "时间"
+        ],
+        "minAppVersion": "3.8.5",
+        "name": "siyuan-clock",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/alexremi666/siyuan-clock",
+        "version": "1.5.0"
+      },
+      "packageZipAssetId": 759550406,
+      "packageZipSha256": "651fd5eb04c12fbf6baf56936805a5abf75c1f95ac2a1e99c340c6140d0bccbe",
+      "repoRef": "v1.5.0",
+      "size": 51830,
+      "stars": 1,
+      "updated": "2026-11-17T15:19:55Z",
+      "url": "alexremi666/siyuan-clock@651fd5e"
+    },
+    {
+      "created": "2026-11-02T01:20:16Z",
+      "installSize": 924686,
+      "openIssues": 0,
+      "package": {
+        "author": "ccztao",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Mankeep — relationships, dated organization history, birthdays and notes in SiYuan: one person, one document, backed by a native database.",
+          "zh_CN": "Mankeep：在思源笔记里管理联系人、关系、组织经历、生日与备注；一人一文档，原生数据库作主干。"
+        },
+        "displayName": {
+          "default": "Mankeep人脉"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "Mankeep",
+          "人脉",
+          "联系人",
+          "通讯录",
+          "CRM",
+          "生日",
+          "关系"
+        ],
+        "minAppVersion": "3.8.5",
+        "name": "siyuan-mankeep",
+        "preview": "preview.jpg",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/ccztao/siyuan-mankeep",
+        "version": "0.52.4"
+      },
+      "packageZipAssetId": 759485188,
+      "packageZipSha256": "06673b80d26da7313e6927b4e9ce8e93debc99e44bb80bdb99c6138c3d853115",
+      "repoRef": "0.52.4",
+      "size": 376730,
+      "stars": 2,
+      "updated": "2026-11-17T15:00:35Z",
+      "url": "ccztao/siyuan-mankeep@06673b8"
+    },
+    {
+      "created": "2026-11-06T10:54:51Z",
+      "installSize": 1328231,
+      "openIssues": 0,
+      "package": {
+        "author": "jiangeeeeee",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "android",
+          "ios",
+          "harmony"
+        ],
+        "description": {
+          "default": "Let ideas flow in ink. Pressure-sensitive writing, note annotations, and a freeform whiteboard.",
+          "zh_CN": "落笔有形，思绪有迹。压感手写、正文批注与自由白板。"
+        },
+        "displayName": {
+          "default": "源生笔迹"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-native-handwriting",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/jiangeeeeee/siyuan-native-handwriting",
+        "version": "0.14.13"
+      },
+      "packageZipAssetId": 759466005,
+      "packageZipSha256": "77758c919b80c9e5659fb1a6cb92d9310ff69ead7b2299e82c48248b195cb12e",
+      "repoRef": "v0.14.13",
+      "size": 429028,
+      "stars": 1,
+      "updated": "2026-11-17T14:54:37Z",
+      "url": "jiangeeeeee/siyuan-native-handwriting@77758c9"
+    },
+    {
+      "created": "2026-11-01T05:29:22Z",
+      "installSize": 405905,
+      "openIssues": 0,
+      "package": {
+        "author": "wave789",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "description": {
+          "default": "PyCharm-style find and replace in documents and workspaces, with case, whole word and regular expressions.",
+          "zh-CN": "像 PyCharm 一样查找与替换笔记：页内及全局替换、大小写、整词、正则和替换撤销。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "IDE Search",
+          "zh-CN": "IDE 搜索"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://github.com/wave789/siyuan-search/blob/main/assets/wechat-reward.png"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "search",
+          "find",
+          "regex",
+          "搜索",
+          "正则",
+          "PyCharm"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "siyuan-search",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/wave789/siyuan-search",
+        "version": "1.5.6"
+      },
+      "packageZipAssetId": 759258583,
+      "packageZipSha256": "51343c8278a53ebc423b4e591bae15f6b8c8c7196ee7d3fb75830b5cb41843f9",
+      "repoRef": "1.5.6",
+      "size": 267882,
+      "stars": 0,
+      "updated": "2026-11-17T13:53:17Z",
+      "url": "wave789/siyuan-search@51343c8"
+    },
+    {
+      "created": "2026-10-16T08:11:32Z",
+      "installSize": 2072413,
+      "openIssues": 0,
+      "package": {
+        "author": "Lisontowind",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "Offline original-format or WebP compression, in-place or scoped copies, verified recovery, quick settings and image renaming.",
+          "zh-CN": "本地离线原格式或 WebP 压缩，支持原位覆盖、仅当前文档或全库另存、恢复与历史清理、逐图配置和图片重命名。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Image Compression",
+          "zh-CN": "图片压缩"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "image",
+          "compression",
+          "图片压缩",
+          "附件重命名"
+        ],
+        "minAppVersion": "3.8.5",
+        "name": "sy-imgcompression",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/lisontowind/sy-imgcompression",
+        "version": "0.1.9"
+      },
+      "packageZipAssetId": 758871359,
+      "packageZipSha256": "91bd34a42a94e8d90fd59c457de652ef36941ff4e2a2b579c3eaa09ddfbec782",
+      "repoRef": "0.1.9",
+      "size": 863458,
+      "stars": 2,
+      "updated": "2026-11-17T11:56:30Z",
+      "url": "lisontowind/sy-imgcompression@91bd34a"
+    },
+    {
+      "created": "2026-11-11T11:27:56Z",
+      "installSize": 391023,
+      "openIssues": 0,
+      "package": {
+        "author": "lsqingfeng",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "Zero-Python multi-platform publisher for SiYuan Note. Direct WeChat Official Account draft API push (AppID/AppSecret) + browser session dispatch to Zhihu, Juejin, CSDN, Toutiao, Bilibili &amp; Feishu.",
+          "zh_CN": "思源笔记多平台矩阵一键分发套件。支持微信公众号官方草稿箱 API 直连推送 (AppID/AppSecret)，并安全复用浏览器登录态一键打入知乎、稀土掘金、CSDN、今日头条、B站专栏与飞书文档。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Metrix: Multi-Platform Matrix Publisher",
+          "zh_CN": "Metrix 自媒体矩阵一键分发"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/item/e617d03cddba11f1bb3552540025c377"
+          ],
+          "links": [
+            {
+              "label": "爱发电 · 升级 Metrix 终身专业版",
+              "url": "https://afdian.com/item/e617d03cddba11f1bb3552540025c377"
+            }
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "publish",
+          "matrix",
+          "zhihu",
+          "juejin",
+          "csdn",
+          "toutiao",
+          "bilibili",
+          "wechat",
+          "publisher"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-metrix",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/lsqingfeng/siyuan-metrix",
+        "version": "2.1.3"
+      },
+      "packageZipAssetId": 758748615,
+      "packageZipSha256": "32be336c45b361442578f0dee8e7dcadf6d0bdf5f77bbce40da25ce50c7b357f",
+      "repoRef": "v2.1.3",
+      "size": 263953,
+      "stars": 0,
+      "updated": "2026-11-17T11:16:28Z",
+      "url": "lsqingfeng/siyuan-metrix@32be336"
+    },
+    {
+      "created": "2026-11-15T06:58:38Z",
+      "installSize": 276674,
+      "openIssues": 0,
+      "package": {
+        "author": "lsqingfeng",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "Turn SiYuan notes &amp; blocks into magazine-grade Xiaohongshu multi-card suites, Moments quote posters, article covers &amp; WeChat rich-text in one click, with 12 bespoke themes and optional AI distillation.",
+          "zh_CN": "一键将思源笔记与选中块转化为杂志级小红书多图套卡、朋友圈金句海报、封面头图与公众号内联排版，内置 12 套高定视觉主题与可选 AI 智能提纯。"
+        },
+        "displayName": {
+          "default": "CardCraft Visual Card Studio",
+          "zh_CN": "思源映卡 CardCraft"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/item/79927f0ee0b011f1a7a152540025c377"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "card",
+          "xiaohongshu",
+          "poster",
+          "markdown",
+          "wechat",
+          "cover",
+          "小红书",
+          "知识卡片",
+          "海报生成",
+          "公众号排版",
+          "思源映卡"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-cardcraft",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/lsqingfeng/siyuan-cardcraft",
+        "version": "1.0.1"
+      },
+      "packageZipAssetId": 758724336,
+      "packageZipSha256": "5779b8ff4d62aeab795a511a1f238ceceee1a052843ad7f6458293dd0b910ea8",
+      "repoRef": "v1.0.1",
+      "size": 130637,
+      "stars": 0,
+      "updated": "2026-11-17T11:08:34Z",
+      "url": "lsqingfeng/siyuan-cardcraft@5779b8f"
+    },
+    {
+      "created": "2025-01-19T15:19:54Z",
+      "installSize": 4539048,
+      "openIssues": 5,
+      "package": {
+        "author": "mm-o",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker",
+          "darwin"
+        ],
+        "description": {
+          "en_US": "Professional media player for SiYuan Note with multi-platform support, smart note integration, timestamp jumps, loop segments, and extensible script architecture",
+          "zh_CN": "专业的思源笔记媒体播放器插件，集成本地媒体、网盘、BBLL、TTVV、多窗口播放、时间戳、循环片段、媒体助手与可扩展架构。"
+        },
+        "displayName": {
+          "en_US": "SiYuan Media Player",
+          "zh_CN": "思播-思源媒体播放器"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://745201.xyz/pay.jpg"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "media player",
+          "audio",
+          "video",
+          "timestamp",
+          "playlist",
+          "note integration",
+          "extensible",
+          "播放器",
+          "音频",
+          "视频",
+          "时间戳",
+          "播放列表",
+          "笔记集成",
+          "多平台"
+        ],
+        "minAppVersion": "3.8.3",
+        "name": "siyuan-media-player",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/mm-o/siyuan-media-player",
+        "version": "2.3.6"
+      },
+      "packageZipAssetId": 758674534,
+      "packageZipSha256": "3615ea59c4d38d70c5481ce85dd17a43383871d4277105ba91c46e559cc1de4b",
+      "repoRef": "v2.3.6",
+      "size": 1645220,
+      "stars": 54,
+      "updated": "2026-11-17T10:51:38Z",
+      "url": "mm-o/siyuan-media-player@3615ea5"
+    },
+    {
+      "created": "2026-05-31T08:33:55Z",
+      "installSize": 1377097,
+      "openIssues": 2,
+      "package": {
+        "author": "mm-o",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A cloud-drive aggregation manager for SiYuan: mount 25+ cloud drives and disks, preview 300+ formats, work with SiYuan Reader/Media Player, share online, insert file links, and use cloud files as image/video beds without filling your workspace.",
+          "zh_CN": "思源网盘聚合管理器：支持 25+ 网盘和磁盘挂载、300+ 文件格式预览，联动思阅和思播，在线分享、文件链接插入文档、图床/视频文件床一站完成，让远程文件随时可用，思源空间 0 负担。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Cloud Drive Manager",
+          "zh_CN": "思盘-思源文件与网盘管理器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "思盘",
+          "cloud drive",
+          "file manager",
+          "openlist",
+          "media",
+          "s3",
+          "kernel plugin",
+          "webdav"
+        ],
+        "minAppVersion": "3.6.5",
+        "name": "siyuan-cloud",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/mm-o/siyuan-cloud",
+        "version": "0.8.6"
+      },
+      "packageZipAssetId": 758664873,
+      "packageZipSha256": "704735cbcf7028b6f5564cba4f4290d3d304fe64dfe8290498671eb92692da90",
+      "repoRef": "v0.8.6",
+      "size": 462776,
+      "stars": 5,
+      "updated": "2026-11-17T10:48:32Z",
+      "url": "mm-o/siyuan-cloud@704735c"
+    },
+    {
+      "created": "2025-11-26T14:43:52Z",
+      "installSize": 47400593,
+      "openIssues": 5,
+      "package": {
+        "author": "mm-o",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "专业电子书阅读器，支持 EPUB/PDF/MOBI/TXT/在线小说；PDF 支持高亮、墨迹、形状、表单、印章、签名、图片、截图、搜索、打印、导出和回链，并提供标注笔记、词典、翻译、主题与书架管理",
+          "en_US": "Professional eBook reader for EPUB/PDF/MOBI/TXT/online novels. PDFs support highlights, ink, shapes, forms, stamps, signatures, images, screenshots, search, printing, export, and backlinks, with annotation notes, dictionary, translation, themes, and bookshelf management."
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiReader",
+          "zh_CN": "思阅-思源 EPUB/PDF 阅读器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://745201.xyz/pay.jpg"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "阅读",
+          "reading",
+          "电子书",
+          "ebook",
+          "pdf",
+          "epub",
+          "mobi",
+          "txt",
+          "azw3",
+          "fb2",
+          "cbz",
+          "sireader",
+          "思阅",
+          "标注",
+          "annotation",
+          "笔记",
+          "note",
+          "书签",
+          "bookmark",
+          "词典",
+          "dictionary",
+          "书源",
+          "book source",
+          "在线小说",
+          "online novel",
+          "主题",
+          "theme"
+        ],
+        "minAppVersion": "3.6.5",
+        "name": "siyuan-sireader",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/mm-o/siyuan-sireader",
+        "version": "2.8.0"
+      },
+      "packageZipAssetId": 758626748,
+      "packageZipSha256": "fff448e83c68ba0dcf9bc28c21905082974e52751b726892cf2d08c7b8a6fe6a",
+      "repoRef": "v2.8.0",
+      "size": 17337081,
+      "stars": 32,
+      "updated": "2026-11-17T10:35:52Z",
+      "url": "mm-o/siyuan-sireader@fff448e"
+    },
+    {
       "created": "2023-12-24T01:26:16Z",
       "installSize": 325284,
       "openIssues": 5,
@@ -881,136 +1949,6 @@
       "url": "Glaube-TY/siyuan-homepage@059851c"
     },
     {
-      "created": "2026-05-31T08:33:55Z",
-      "installSize": 1375622,
-      "openIssues": 2,
-      "package": {
-        "author": "mm-o",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A cloud-drive aggregation manager for SiYuan: mount 25+ cloud drives and disks, preview 300+ formats, work with SiYuan Reader/Media Player, share online, insert file links, and use cloud files as image/video beds without filling your workspace.",
-          "zh_CN": "思源网盘聚合管理器：支持 25+ 网盘和磁盘挂载、300+ 文件格式预览，联动思阅和思播，在线分享、文件链接插入文档、图床/视频文件床一站完成，让远程文件随时可用，思源空间 0 负担。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Cloud Drive Manager",
-          "zh_CN": "思盘-思源文件与网盘管理器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "思盘",
-          "cloud drive",
-          "file manager",
-          "openlist",
-          "media",
-          "s3",
-          "kernel plugin",
-          "webdav"
-        ],
-        "minAppVersion": "3.6.5",
-        "name": "siyuan-cloud",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/mm-o/siyuan-cloud",
-        "version": "0.8.5"
-      },
-      "packageZipAssetId": 757915273,
-      "packageZipSha256": "a7160a7176c9794ef8f91ddf75c203525f65b35a12b31b0b03d5bb8766621efb",
-      "repoRef": "v0.8.5",
-      "size": 462273,
-      "stars": 5,
-      "updated": "2026-11-17T06:28:14Z",
-      "url": "mm-o/siyuan-cloud@a7160a7"
-    },
-    {
-      "created": "2025-11-26T14:43:52Z",
-      "installSize": 47392178,
-      "openIssues": 4,
-      "package": {
-        "author": "mm-o",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "专业电子书阅读器，支持 EPUB/PDF/MOBI/TXT/在线小说；PDF 支持高亮、墨迹、形状、表单、印章、签名、图片、截图、搜索、打印、导出和回链，并提供标注笔记、词典、翻译、主题与书架管理",
-          "en_US": "Professional eBook reader for EPUB/PDF/MOBI/TXT/online novels. PDFs support highlights, ink, shapes, forms, stamps, signatures, images, screenshots, search, printing, export, and backlinks, with annotation notes, dictionary, translation, themes, and bookshelf management."
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiReader",
-          "zh_CN": "思阅-思源 EPUB/PDF 阅读器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://745201.xyz/pay.jpg"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "阅读",
-          "reading",
-          "电子书",
-          "ebook",
-          "pdf",
-          "epub",
-          "mobi",
-          "txt",
-          "azw3",
-          "fb2",
-          "cbz",
-          "sireader",
-          "思阅",
-          "标注",
-          "annotation",
-          "笔记",
-          "note",
-          "书签",
-          "bookmark",
-          "词典",
-          "dictionary",
-          "书源",
-          "book source",
-          "在线小说",
-          "online novel",
-          "主题",
-          "theme"
-        ],
-        "minAppVersion": "3.6.5",
-        "name": "siyuan-sireader",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/mm-o/siyuan-sireader",
-        "version": "2.7.3"
-      },
-      "packageZipAssetId": 757913163,
-      "packageZipSha256": "5cd90ce11e0f7c6a69beac3b0d367bc3577af711dc7e08ea6781b6d0480e3a18",
-      "repoRef": "v2.7.3",
-      "size": 17333988,
-      "stars": 32,
-      "updated": "2026-11-17T06:27:27Z",
-      "url": "mm-o/siyuan-sireader@5cd90ce"
-    },
-    {
       "created": "2026-11-09T10:26:54Z",
       "installSize": 419968,
       "openIssues": 0,
@@ -1151,62 +2089,6 @@
       "url": "Glaube-TY/siyuan-douban@3c73a66"
     },
     {
-      "created": "2026-09-26T07:04:34Z",
-      "installSize": 555416,
-      "openIssues": 0,
-      "package": {
-        "author": "wmy2981",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A batch of independently toggleable desktop and mobile enhancements and optimized styles",
-          "zh-CN": "一批可独立启停的桌面端与移动端增强功能和优化后的样式",
-          "zh-TW": "一批可獨立啟停的桌面端與行動端增強功能和最佳化後的樣式"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Some Settings",
-          "zh-CN": "一些设置",
-          "zh-TW": "一些設定"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/wmy2981"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "settings",
-          "style",
-          "custom",
-          "ui",
-          "enhancement"
-        ],
-        "minAppVersion": "3.8.6-alpha.4",
-        "name": "some-settings-siyuan",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md",
-          "zh-TW": "README.zh-TW.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/wmy2981/some-settings-siyuan",
-        "version": "1.1.3"
-      },
-      "packageZipAssetId": 757622283,
-      "packageZipSha256": "a6b17eaee708c0c4e829e93b381c18f513365640793b8cfadbfb21c25bfc892d",
-      "repoRef": "v1.1.3",
-      "size": 185213,
-      "stars": 2,
-      "updated": "2026-11-17T04:29:51Z",
-      "url": "wmy2981/some-settings-siyuan@a6b17ea"
-    },
-    {
       "created": "2026-11-14T17:20:27Z",
       "installSize": 1182075,
       "openIssues": 0,
@@ -1319,124 +2201,6 @@
       "url": "notesynchelper/siyuan-notehelper@7226b1c"
     },
     {
-      "created": "2023-06-15T02:07:15Z",
-      "installSize": 5928140,
-      "openIssues": 50,
-      "package": {
-        "author": "terwer",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "android",
-          "ios",
-          "harmony"
-        ],
-        "description": {
-          "default": "Your favorite PicGo image bed is still available in Siyuan Notes, wuhu~",
-          "zh_CN": "您喜爱的 PicGo 图床，在思源笔记依然可用，没想到吧~"
-        },
-        "displayName": {
-          "default": "PicGo picbed",
-          "zh_CN": "PicGo图床"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.net/a/terwer"
-          ]
-        },
-        "icon": "icon.png",
-        "minAppVersion": "2.9.0",
-        "name": "siyuan-plugin-picgo",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/terwer/siyuan-plugin-picgo",
-        "version": "3.1.2"
-      },
-      "packageZipAssetId": 755841586,
-      "packageZipSha256": "bc3ddf46ca95f2c5a8b7a15e7288e726f887cd495cb36d92fdb276f952734b05",
-      "repoRef": "siyuan-plugin-picgo-v3.1.2",
-      "size": 5895094,
-      "stars": 40,
-      "updated": "2026-11-16T17:50:25Z",
-      "url": "terwer/siyuan-plugin-picgo@bc3ddf4"
-    },
-    {
-      "created": "2026-11-15T10:31:38Z",
-      "installSize": 242921,
-      "openIssues": 0,
-      "package": {
-        "author": "wmy2981",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "View storage, object count, traffic and request usage of object storage buckets in SiYuan.",
-          "zh-CN": "在思源中查看对象存储桶的存储量、对象数、流量与请求数。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "S3 Bucket Usage",
-          "zh-CN": "S3 桶用量"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/wmy2981"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "s3",
-          "bucket",
-          "usage",
-          "object storage",
-          "oss",
-          "cos",
-          "obs",
-          "tos",
-          "qiniu",
-          "minio",
-          "r2",
-          "aws",
-          "存储用量",
-          "桶用量",
-          "对象存储",
-          "存储容量",
-          "云存储"
-        ],
-        "minAppVersion": "3.1.20",
-        "name": "s3-usage-siyuan",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/wmy2981/s3-usage-siyuan",
-        "version": "1.0.0"
-      },
-      "packageZipAssetId": 755433872,
-      "packageZipSha256": "0f188912a2ca85b7d1ad854622e814a13876a4842195ceace5bc319ae97cf251",
-      "repoRef": "v1.0.0",
-      "size": 101074,
-      "stars": 1,
-      "updated": "2026-11-16T15:49:21Z",
-      "url": "wmy2981/s3-usage-siyuan@0f18891"
-    },
-    {
       "created": "2026-07-20T12:24:07Z",
       "installSize": 522069,
       "openIssues": 0,
@@ -1487,52 +2251,6 @@
       "stars": 0,
       "updated": "2026-11-16T14:55:27Z",
       "url": "famotime/siyuan-property-manager@add749f"
-    },
-    {
-      "created": "2026-11-06T10:54:51Z",
-      "installSize": 1322879,
-      "openIssues": 0,
-      "package": {
-        "author": "jiangeeeeee",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "android",
-          "ios",
-          "harmony"
-        ],
-        "description": {
-          "default": "Let ideas flow in ink. Pressure-sensitive writing, note annotations, and a freeform whiteboard.",
-          "zh_CN": "落笔有形，思绪有迹。压感手写、正文批注与自由白板。"
-        },
-        "displayName": {
-          "default": "源生笔迹"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-native-handwriting",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/jiangeeeeee/siyuan-native-handwriting",
-        "version": "0.14.12"
-      },
-      "packageZipAssetId": 754829476,
-      "packageZipSha256": "1fae565ec703f792f005a7ba4c3e8a2b17e0fa55400486b2825f2c0f2ea00fb3",
-      "repoRef": "v0.14.12",
-      "size": 427519,
-      "stars": 1,
-      "updated": "2026-11-16T12:46:49Z",
-      "url": "jiangeeeeee/siyuan-native-handwriting@1fae565"
     },
     {
       "created": "2026-11-16T06:35:14Z",
@@ -2527,134 +3245,6 @@
       "url": "jiangeeeeee/siyuan-voice-notes@ecadd33"
     },
     {
-      "created": "2026-11-11T11:27:56Z",
-      "installSize": 235380,
-      "openIssues": 0,
-      "package": {
-        "author": "lsqingfeng",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Zero-Python multi-platform publisher for SiYuan Note. Direct WeChat Official Account draft API push (AppID/AppSecret) + browser session dispatch to Zhihu, Juejin, CSDN, Toutiao, Bilibili &amp; Feishu.",
-          "zh-CN": "思源笔记多平台矩阵一键分发套件。支持微信公众号官方草稿箱 API 直连推送 (AppID/AppSecret)，并安全复用浏览器登录态一键打入知乎、稀土掘金、CSDN、今日头条、B站专栏与飞书文档。",
-          "zh_CN": "思源笔记多平台矩阵一键分发套件。支持微信公众号官方草稿箱 API 直连推送 (AppID/AppSecret)，并安全复用浏览器登录态一键打入知乎、稀土掘金、CSDN、今日头条、B站专栏与飞书文档。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Metrix: Multi-Platform Matrix Publisher",
-          "zh-CN": "Metrix 自媒体矩阵一键分发",
-          "zh_CN": "Metrix 自媒体矩阵一键分发"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/item/e617d03cddba11f1bb3552540025c377"
-          ],
-          "links": [
-            {
-              "label": "爱发电 · 升级 Metrix 终身专业版",
-              "url": "https://afdian.com/item/e617d03cddba11f1bb3552540025c377"
-            }
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "publish",
-          "matrix",
-          "zhihu",
-          "juejin",
-          "csdn",
-          "toutiao",
-          "bilibili",
-          "wechat",
-          "publisher"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-metrix",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md",
-          "zh_CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/lsqingfeng/siyuan-metrix",
-        "version": "2.1.2"
-      },
-      "packageZipAssetId": 750319255,
-      "packageZipSha256": "f6f33b6cff1abbdf2dbaa6ff855d942dad46042226769a5ab867f8ac13129712",
-      "repoRef": "v2.1.2",
-      "size": 111727,
-      "stars": 0,
-      "updated": "2026-11-15T08:17:15Z",
-      "url": "lsqingfeng/siyuan-metrix@f6f33b6"
-    },
-    {
-      "created": "2026-11-15T06:58:38Z",
-      "installSize": 273984,
-      "openIssues": 0,
-      "package": {
-        "author": "lsqingfeng",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Turn SiYuan notes &amp; blocks into magazine-grade Xiaohongshu multi-card suites, Moments quote posters, article covers &amp; WeChat rich-text in one click, with 12 bespoke themes and optional AI distillation.",
-          "zh_CN": "一键将思源笔记与选中块转化为杂志级小红书多图套卡、朋友圈金句海报、封面头图与公众号内联排版，内置 12 套高定视觉主题与可选 AI 智能提纯。"
-        },
-        "displayName": {
-          "default": "CardCraft Visual Card Studio",
-          "zh_CN": "思源映卡 CardCraft"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/item/79927f0ee0b011f1a7a152540025c377"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "card",
-          "xiaohongshu",
-          "poster",
-          "markdown",
-          "wechat",
-          "cover",
-          "小红书",
-          "知识卡片",
-          "海报生成",
-          "公众号排版",
-          "思源映卡"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-cardcraft",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/lsqingfeng/siyuan-cardcraft",
-        "version": "1.0.0"
-      },
-      "packageZipAssetId": 749918205,
-      "packageZipSha256": "9bd5ed92db5904aef3135946936a4eec09efd0790fe7bdd98588c524f752a314",
-      "repoRef": "v1.0.0",
-      "size": 129604,
-      "stars": 0,
-      "updated": "2026-11-15T06:58:38Z",
-      "url": "lsqingfeng/siyuan-cardcraft@9bd5ed9"
-    },
-    {
       "created": "2023-11-09T13:54:16Z",
       "installSize": 4919260,
       "openIssues": 0,
@@ -2770,56 +3360,6 @@
       "stars": 52,
       "updated": "2026-11-15T02:58:41Z",
       "url": "terwer/siyuan-plugin-importer@d8ce506"
-    },
-    {
-      "created": "2026-11-02T01:20:16Z",
-      "installSize": 924127,
-      "openIssues": 0,
-      "package": {
-        "author": "ccztao",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Mankeep — relationships, dated organization history, birthdays and notes in SiYuan: one person, one document, backed by a native database.",
-          "zh_CN": "Mankeep：在思源笔记里管理联系人、关系、组织经历、生日与备注；一人一文档，原生数据库作主干。"
-        },
-        "displayName": {
-          "default": "Mankeep人脉"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "Mankeep",
-          "人脉",
-          "联系人",
-          "通讯录",
-          "CRM",
-          "生日",
-          "关系"
-        ],
-        "minAppVersion": "3.8.5",
-        "name": "siyuan-mankeep",
-        "preview": "preview.jpg",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/ccztao/siyuan-mankeep",
-        "version": "0.52.3"
-      },
-      "packageZipAssetId": 749580831,
-      "packageZipSha256": "ae47e730b3a8f3f382a6a61b0df25cd70139be51c4dc812c9f599cbe89ae6093",
-      "repoRef": "0.52.3",
-      "size": 376577,
-      "stars": 1,
-      "updated": "2026-11-15T02:41:01Z",
-      "url": "ccztao/siyuan-mankeep@ae47e73"
     },
     {
       "created": "2026-11-14T16:53:07Z",
@@ -3256,55 +3796,6 @@
       "stars": 229,
       "updated": "2026-11-14T14:06:14Z",
       "url": "Achuan-2/siyuan-plugin-task-note-management@bfb0520"
-    },
-    {
-      "created": "2026-10-16T08:11:32Z",
-      "installSize": 2054719,
-      "openIssues": 0,
-      "package": {
-        "author": "Lisontowind",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Offline in-place image compression, verified backups, task recovery and cleanup, per-image settings and image renaming.",
-          "zh-CN": "本地离线原位压缩图片，保留原格式，支持备份恢复与历史清理、逐图配置、快捷压缩和图片重命名。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Image Compression",
-          "zh-CN": "图片压缩"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "image",
-          "compression",
-          "图片压缩",
-          "附件重命名"
-        ],
-        "minAppVersion": "3.8.5",
-        "name": "sy-imgcompression",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/lisontowind/sy-imgcompression",
-        "version": "0.1.8"
-      },
-      "packageZipAssetId": 746384473,
-      "packageZipSha256": "1239e9ef4d9f96e2d9304d23d9340e6f6b8efab9c6c66177fad21610d73f4982",
-      "repoRef": "0.1.8",
-      "size": 858394,
-      "stars": 2,
-      "updated": "2026-11-14T05:14:17Z",
-      "url": "lisontowind/sy-imgcompression@1239e9e"
     },
     {
       "created": "2024-08-28T03:59:58Z",
@@ -3777,80 +4268,6 @@
       "stars": 1,
       "updated": "2026-11-12T07:53:32Z",
       "url": "fu1fan/siyuan-browser@fc25c01"
-    },
-    {
-      "created": "2025-01-19T15:19:54Z",
-      "installSize": 4537357,
-      "openIssues": 5,
-      "package": {
-        "author": "mm-o",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker",
-          "darwin"
-        ],
-        "description": {
-          "en_US": "Professional media player for SiYuan Note with multi-platform support, smart note integration, timestamp jumps, loop segments, and extensible script architecture",
-          "zh_CN": "专业的思源笔记媒体播放器插件，集成本地媒体、网盘、BBLL、TTVV、多窗口播放、时间戳、循环片段、媒体助手与可扩展架构。"
-        },
-        "displayName": {
-          "en_US": "SiYuan Media Player",
-          "zh_CN": "思播-思源媒体播放器"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://745201.xyz/pay.jpg"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "media player",
-          "audio",
-          "video",
-          "timestamp",
-          "playlist",
-          "note integration",
-          "extensible",
-          "播放器",
-          "音频",
-          "视频",
-          "时间戳",
-          "播放列表",
-          "笔记集成",
-          "多平台"
-        ],
-        "minAppVersion": "3.8.3",
-        "name": "siyuan-media-player",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/mm-o/siyuan-media-player",
-        "version": "2.3.5"
-      },
-      "packageZipAssetId": 738170756,
-      "packageZipSha256": "ce2ce5dcc32ab5a853b90c38bd952bd7cc865056b4ba610f76f162f1f08b30a1",
-      "repoRef": "v2.3.5",
-      "size": 1644451,
-      "stars": 54,
-      "updated": "2026-11-12T05:13:52Z",
-      "url": "mm-o/siyuan-media-player@ce2ce5d"
     },
     {
       "created": "2026-08-15T13:46:37Z",
@@ -5145,73 +5562,6 @@
       "stars": 0,
       "updated": "2026-11-10T01:52:09Z",
       "url": "We-Sky/siyuan-auto-card-link@3650d92"
-    },
-    {
-      "created": "2026-11-03T02:56:17Z",
-      "installSize": 339877,
-      "openIssues": 0,
-      "package": {
-        "author": "dudull",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Visual settings for the Mist theme: per-region colours and opacity, background image, floating-panel glass and pop animation, fonts, sizes and weights, table width fitting, doc-tree icons, global contrast. Works only while the Mist theme is active and unloads itself on theme switch.",
-          "zh-CN": "为「薄雾」主题提供可视化设置：分区颜色与透明度、背景图、浮动面板玻璃与弹出动画、字体字号与字重、表格宽度自适应、文档树图标、全局对比度。仅在薄雾主题下生效，切换主题自动停用。"
-        },
-        "displayName": {
-          "default": "Mist Settings",
-          "zh-CN": "薄雾设置"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "mobile",
-          "browser-desktop"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "mist",
-          "薄雾",
-          "theme settings",
-          "主题设置",
-          "opacity",
-          "透明度",
-          "background",
-          "背景图",
-          "font",
-          "字体",
-          "icon",
-          "图标",
-          "contrast",
-          "对比度",
-          "floating panel",
-          "浮动面板",
-          "glass",
-          "玻璃",
-          "table",
-          "表格",
-          "weight",
-          "字重",
-          "font weight"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "mist-enhancer",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/dudull852/mist-enhancer",
-        "version": "0.2.34"
-      },
-      "packageZipAssetId": 729549433,
-      "packageZipSha256": "a9d34a4211ff2e17fba41cbc4b91fa5127012dc580ceedfe30ec2f09c3a10803",
-      "repoRef": "0.2.34",
-      "size": 160792,
-      "stars": 0,
-      "updated": "2026-11-10T00:41:26Z",
-      "url": "dudull852/mist-enhancer@a9d34a4"
     },
     {
       "created": "2026-10-05T10:17:54Z",
@@ -8315,63 +8665,6 @@
       "stars": 0,
       "updated": "2026-11-03T02:33:07Z",
       "url": "kamasylvia/SiYuan-ReadItLater@0f55e33"
-    },
-    {
-      "created": "2026-11-01T05:29:22Z",
-      "installSize": 398870,
-      "openIssues": 0,
-      "package": {
-        "author": "wave789",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker"
-        ],
-        "description": {
-          "default": "PyCharm-style find and replace in documents and workspaces, with case, whole word and regular expressions.",
-          "zh-CN": "像 PyCharm 一样查找与替换笔记：页内及全局替换、大小写、整词、正则和替换撤销。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "IDE Search",
-          "zh-CN": "IDE 搜索"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://github.com/wave789/siyuan-search/blob/main/assets/wechat-reward.png"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "search",
-          "find",
-          "regex",
-          "搜索",
-          "正则",
-          "PyCharm"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "siyuan-search",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/wave789/siyuan-search",
-        "version": "1.5.3"
-      },
-      "packageZipAssetId": 701933370,
-      "packageZipSha256": "84262f65fcf8b59416ec8522e9c353fcfe5dd4b12a036229da02f83cf7e34c83",
-      "repoRef": "1.5.3",
-      "size": 264941,
-      "stars": 0,
-      "updated": "2026-11-02T13:56:24Z",
-      "url": "wave789/siyuan-search@84262f6"
     },
     {
       "created": "2026-08-31T12:24:51Z",
@@ -15738,52 +16031,6 @@
       "stars": 1,
       "updated": "2026-09-12T10:42:20Z",
       "url": "TCOTC/temp-edit@3bf6754"
-    },
-    {
-      "created": "2026-09-12T10:39:00Z",
-      "installSize": 75842,
-      "openIssues": 0,
-      "package": {
-        "author": "YanDujiang",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Display a clock tab with current time, date, weekday and Chinese lunar date. All frontends supported, colors follow SiYuan theme. This project was generated with AI assistance.",
-          "zh-CN": "以标签页显示时钟：大号当前时间、日期与星期、农历（干支生肖）。全端适配，配色跟随思源主题。本项目由 AI 生成。"
-        },
-        "displayName": {
-          "default": "SiYuan Clock Plugin",
-          "zh-CN": "时钟"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "clock",
-          "时钟",
-          "农历",
-          "lunar",
-          "时间"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-clock",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/alexremi666/siyuan-clock",
-        "version": "1.4.5"
-      },
-      "packageZipAssetId": 558855335,
-      "packageZipSha256": "91482be941ad4a7f7057b70c69c81a8e6b49c27530f3f9f3375b90a14e60b21e",
-      "repoRef": "v1.4.5",
-      "size": 51349,
-      "stars": 1,
-      "updated": "2026-09-12T10:38:55Z",
-      "url": "alexremi666/siyuan-clock@91482be"
     },
     {
       "created": "2026-09-12T06:01:25Z",

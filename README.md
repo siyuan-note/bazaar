@@ -27,7 +27,7 @@ If you have developed a plugin, theme, icon, template or widget and want to list
    In the repo root there are five list files: `plugins.txt`, `themes.txt`, `icons.txt`, `templates.txt`, `widgets.txt`.
    Add one line to the file that matches your package type. Format: `owner/repo` (owner is your GitHub username or org name, repo is the bazaar package repository name).
 
-   - One `owner/repo` per line, with no extra commas or empty lines.
+   - One `owner/repo` per line, with no extra commas, empty lines, or repeated entries.
    - Example: `siyuan-note/plugin-sample`.
    - Each PR may only be one of: add exactly 1 new package; change maintainer (add 1 new `owner/repo` and delete the old `owner/repo` with the same type and same GitHub repository name); or delist one or more packages only. Do not mix adding/changing with unrelated delistings in the same PR.
 

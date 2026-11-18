@@ -399,6 +399,25 @@ func TestCheckThemeOptionalTypedFields(t *testing.T) {
 		t.Fatalf("expected valid theme fields, got %v", issues)
 	}
 
+	// 内核 LoadThemes 与集市亮 / 暗筛选都只认 light / dark，自定义配色不应写进 modes
+	if issues := checkThemeOptionalTypedFields(map[string]any{
+		"modes": []any{"light", "dark", "green"},
+	}); !issuesContain(issues, "modes[2]") || !issuesContain(issues, "不是支持的外观模式") {
+		t.Fatalf("expected unknown theme mode, got %v", issues)
+	}
+
+	if issues := checkThemeOptionalTypedFields(map[string]any{
+		"modes": []any{"Dark"},
+	}); !issuesContain(issues, "modes[0]") || !issuesContain(issues, "是否想写 `dark`") {
+		t.Fatalf("expected case-different theme mode to fail with suggestion, got %v", issues)
+	}
+
+	if issues := checkThemeOptionalTypedFields(map[string]any{
+		"frontends": []any{"desktop", "windows"},
+	}); !issuesContain(issues, "frontends[1]") || !issuesContain(issues, "不是支持的前端标识") {
+		t.Fatalf("expected unknown theme frontend id, got %v", issues)
+	}
+
 	if issues := checkThemeOptionalTypedFields(map[string]any{
 		"frontends": "desktop",
 	}); !issuesContain(issues, "frontends") {
@@ -695,6 +714,56 @@ func TestCheckOptionalTypedFields(t *testing.T) {
   "kernels": ["all", "linux"]`)
 	if r := check(); r.OK || !hasIssueMsg(r, "kernels") || !hasIssueMsg(r, "all") {
 		t.Fatalf("expected kernels mixing all with others to fail, issues=%v", r.Issues)
+	}
+
+	// 平台标识写错时内核不报错，只让插件在对应环境下静默不加载，必须由集市检查拦下并给出改法
+	writePlugin(`,
+  "backends": ["darwin", "win32"]`)
+	if r := check(); r.OK || !hasIssueMsg(r, "win32") || !hasIssueMsg(r, "是否想写 `windows`") {
+		t.Fatalf("expected unknown backend id to fail with suggestion, issues=%v", r.Issues)
+	}
+
+	writePlugin(`,
+  "backends": ["Windows"]`)
+	if r := check(); r.OK || !hasIssueMsg(r, "backends[0]") || !hasIssueMsg(r, "是否想写 `windows`") {
+		t.Fatalf("expected case-different backend id to fail with suggestion, issues=%v", r.Issues)
+	}
+
+	writePlugin(`,
+  "backends": ["ipad"]`)
+	if r := check(); r.OK || !hasIssueMsg(r, "backends[0]") || !hasIssueMsg(r, "是否想写 `ios`") {
+		t.Fatalf("expected ipad alias to suggest ios, issues=%v", r.Issues)
+	}
+
+	writePlugin(`,
+  "backends": ["iphone"]`)
+	if r := check(); r.OK || !hasIssueMsg(r, "backends[0]") || !hasIssueMsg(r, "是否想写 `ios`") {
+		t.Fatalf("expected iphone alias to suggest ios, issues=%v", r.Issues)
+	}
+
+	// win32 的提示来自公共前缀规则（与 windows 共享 win），不依赖别名表
+	writePlugin(`,
+  "backends": ["macos"]`)
+	if r := check(); r.OK || !hasIssueMsg(r, "backends[0]") || !hasIssueMsg(r, "是否想写 `darwin`") {
+		t.Fatalf("expected macos alias to suggest darwin, issues=%v", r.Issues)
+	}
+
+	writePlugin(`,
+  "frontends": ["desktop", "desktop-windw"]`)
+	if r := check(); r.OK || !hasIssueMsg(r, "desktop-windw") || !hasIssueMsg(r, "是否想写 `desktop-window`") {
+		t.Fatalf("expected unknown frontend id to fail with suggestion, issues=%v", r.Issues)
+	}
+
+	writePlugin(`,
+  "frontends": ["docker"]`)
+	if r := check(); r.OK || !hasIssueMsg(r, "frontends[0]") || !hasIssueMsg(r, "`browser-mobile`") {
+		t.Fatalf("expected unknown frontend id to list supported values, issues=%v", r.Issues)
+	}
+
+	writePlugin(`,
+  "kernels": ["linux", ""]`)
+	if r := check(); r.OK || !hasIssueMsg(r, "kernels[1]") || !hasIssueMsg(r, "空或仅含空白字符") {
+		t.Fatalf("expected empty kernel id to fail, issues=%v", r.Issues)
 	}
 
 	writePlugin(`,
