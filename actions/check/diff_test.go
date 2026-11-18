@@ -94,6 +94,25 @@ func TestComputeRepoDiff_SameRepoNameWithoutDeletingOldIsNotMaintainerChange(t *
 	}
 }
 
+// 列表里同一 owner/repo 写了两遍时，diff 结果只保留一份：
+// 否则同一仓库会被重复下载，并在同一轮检查里因包名与自身冲突而报「名称已被占用」。
+func TestComputeRepoDiff_DeduplicatesRepeatedPaths(t *testing.T) {
+	basePaths := []string{"alice/keep", "alice/old", "alice/old"}
+	headPaths := []string{"alice/keep", "carol/new", "carol/new"}
+	baseSet := Set{"alice/keep": {}, "alice/old": {}}
+	headSet := Set{"alice/keep": {}, "carol/new": {}}
+	bazaarHead := Set{"alice/keep": {}, "alice/old": {}}
+
+	d := computeRepoDiff(headPaths, basePaths, baseSet, headSet, bazaarHead, nil)
+
+	if len(d.New) != 1 || d.New[0] != "carol/new" {
+		t.Fatalf("New = %v, want [carol/new]", d.New)
+	}
+	if len(d.Deleted) != 1 || d.Deleted[0] != "alice/old" {
+		t.Fatalf("Deleted = %v, want [alice/old]", d.Deleted)
+	}
+}
+
 func TestFormatOnePackageLimitError(t *testing.T) {
 	plans := []typeCheckPlan{
 		{packageType: rules.TypePlugin, diff: repoDiff{New: []string{"a/p1", "b/p2"}}},

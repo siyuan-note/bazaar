@@ -72,7 +72,7 @@ func writeStageRepoFixtures(t *testing.T, root string, reposByType map[rules.Pac
 		t.Fatal(err)
 	}
 	for packageType, repos := range reposByType {
-		data, err := marshalSortedIndentedJSON(util.StageFile{Repos: repos})
+		data, err := util.MarshalSortedIndentedJSON(util.StageFile{Repos: repos})
 		if err != nil {
 			t.Fatal(err)
 		}

@@ -70,7 +70,7 @@ func TestParseReposFromBytes_BlankLinesLenient(t *testing.T) {
 	}
 }
 
-// 严格模式（仅 PR Check）：末尾允许一个空行，其它位置的空行与纯空白行报错。
+// 严格模式（仅 PR Check）：末尾允许一个空行，其他位置的空行与纯空白行报错。
 func TestParseReposFromBytes_BlankLinesStrict(t *testing.T) {
 	t.Parallel()
 
@@ -106,5 +106,55 @@ func TestParseReposFromBytes_BlankLinesStrict(t *testing.T) {
 		if !strings.Contains(en, fmt.Sprintf("line %d", c.line)) {
 			t.Fatalf("%s: en=%q should mention line %d", c.name, en, c.line)
 		}
+	}
+}
+
+// 重复 owner/repo：严格模式报错并指出重复行与首次出现的行号；宽松模式保留首次出现。
+func TestParseReposFromBytes_Duplicates(t *testing.T) {
+	t.Parallel()
+
+	duplicated := []byte("alice/foo\nbob/bar\nalice/foo\n")
+
+	_, err := ParseReposFromBytesStrict("plugins.txt", duplicated)
+	if err == nil {
+		t.Fatal("strict parse should reject a repeated owner/repo")
+	}
+	zh, en := rules.LocalizedMessages(err)
+	for _, want := range []string{"第 3 行", "第 1 行", "alice/foo"} {
+		if !strings.Contains(zh, want) {
+			t.Fatalf("zh=%q should contain %q", zh, want)
+		}
+	}
+	for _, want := range []string{"line 3", "line 1", "alice/foo"} {
+		if !strings.Contains(en, want) {
+			t.Fatalf("en=%q should contain %q", en, want)
+		}
+	}
+
+	// 宽松模式（Stage / 弃用校验 / 巡检）：去重后保留首次出现的顺序，不报错
+	repos, err := ParseReposFromBytes("plugins.txt", duplicated)
+	if err != nil {
+		t.Fatalf("lenient parse should succeed: %v", err)
+	}
+	if len(repos) != 2 || repos[0] != "alice/foo" || repos[1] != "bob/bar" {
+		t.Fatalf("repos=%v", repos)
+	}
+}
+
+// GitHub 的 owner/repo 不区分大小写：大小写不同也是同一个仓库，同样按重复处理。
+func TestParseReposFromBytes_DuplicatesCaseInsensitive(t *testing.T) {
+	t.Parallel()
+
+	_, err := ParseReposFromBytesStrict("plugins.txt", []byte("Alice/Foo\nalice/foo\n"))
+	if err == nil {
+		t.Fatal("strict parse should treat owner/repo case-insensitively")
+	}
+
+	repos, err := ParseReposFromBytes("plugins.txt", []byte("Alice/Foo\nalice/foo\n"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(repos) != 1 || repos[0] != "Alice/Foo" {
+		t.Fatalf("repos=%v, want the first occurrence only", repos)
 	}
 }

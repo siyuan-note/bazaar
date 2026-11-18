@@ -137,17 +137,17 @@ func syncIgnoredIssue(kind syncIgnoredKind, entries []string) Issue {
 	switch kind {
 	case syncIgnoredDotEntry:
 		return issue(
-			fmt.Sprintf("`package.zip` 内有 %d 个以 `.` 开头的条目，例如 %s。思源的数据同步会忽略点开头的文件和目录（`data/.siyuan` 目录除外），这些条目在其它设备上不会存在，界面和插件行为会不一致。请从 `package.zip` 中删除本地开发残留（如 `.git`、`.github`、`.vscode`、`.gitignore`、`.DS_Store`），或把需要随包分发的文件改成不以 `.` 开头的名字。", count, examplesZh),
+			fmt.Sprintf("`package.zip` 内有 %d 个以 `.` 开头的条目，例如 %s。思源的数据同步会忽略点开头的文件和目录（`data/.siyuan` 目录除外），这些条目在其他设备上不会存在，界面和插件行为会不一致。请从 `package.zip` 中删除本地开发残留（如 `.git`、`.github`、`.vscode`、`.gitignore`、`.DS_Store`），或把需要随包分发的文件改成不以 `.` 开头的名字。", count, examplesZh),
 			fmt.Sprintf("`package.zip` has %d entries whose names start with `.`, e.g. %s. SiYuan's data sync ignores dot-prefixed files and folders (except the `data/.siyuan` folder), so these entries won't exist on other devices and the UI or plugin behavior will diverge. Please remove local development leftovers (such as `.git`, `.github`, `.vscode`, `.gitignore`, `.DS_Store`) from `package.zip`, or rename files you do want to ship so they don't start with `.`.", count, examplesEn),
 		)
 	case syncIgnoredTempFile:
 		return issue(
-			fmt.Sprintf("`package.zip` 内有 %d 个 `.tmp` 文件，例如 %s。思源的数据同步会忽略 `*.tmp`，这些文件在其它设备上不会存在。请从 `package.zip` 中删除临时文件。", count, examplesZh),
+			fmt.Sprintf("`package.zip` 内有 %d 个 `.tmp` 文件，例如 %s。思源的数据同步会忽略 `*.tmp`，这些文件在其他设备上不会存在。请从 `package.zip` 中删除临时文件。", count, examplesZh),
 			fmt.Sprintf("`package.zip` has %d files ending in `.tmp`, e.g. %s. SiYuan's data sync ignores `*.tmp`, so they won't exist on other devices. Please remove these temporary files from `package.zip`.", count, examplesEn),
 		)
 	default:
 		return issue(
-			fmt.Sprintf("`package.zip` 内有 %d 个文件的路径以 `data/storage/local.json`、`data/storage/recent-doc.json` 或 `data/storage/ref-used.json` 结尾，例如 %s。思源的数据同步为兼容旧目录结构按后缀排除这些路径，它们在其它设备上不会存在。请避免在包内使用 `data/storage/` 这一目录结构。", count, examplesZh),
+			fmt.Sprintf("`package.zip` 内有 %d 个文件的路径以 `data/storage/local.json`、`data/storage/recent-doc.json` 或 `data/storage/ref-used.json` 结尾，例如 %s。思源的数据同步为兼容旧目录结构按后缀排除这些路径，它们在其他设备上不会存在。请避免在包内使用 `data/storage/` 这一目录结构。", count, examplesZh),
 			fmt.Sprintf("`package.zip` has %d files whose paths end with `data/storage/local.json`, `data/storage/recent-doc.json` or `data/storage/ref-used.json`, e.g. %s. SiYuan's data sync excludes those paths by suffix for backward compatibility, so they won't exist on other devices. Please avoid using the `data/storage/` layout inside the package.", count, examplesEn),
 		)
 	}

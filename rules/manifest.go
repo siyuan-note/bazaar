@@ -906,7 +906,7 @@ func validHTTPFundingURL(value string) bool {
 //
 // 禁止：
 //   - javascript: / data: / file: / vbscript: / blob: 等可被当作可执行或本地资源的协议
-//   - 其它带 :// 的非 http(s) 协议（如 ftp://）
+//   - 其他带 :// 的非 http(s) 协议（如 ftp://）
 func unsafeFundingURI(s string) bool {
 	s = strings.TrimSpace(s)
 	if s == "" {
@@ -1305,7 +1305,7 @@ func checkOptionalLocaleStrings(m map[string]any, key string) []Issue {
 	return issues
 }
 
-// allExclusiveArrayKeys 支持用 "all" 表示不限制的字段；若含 "all" 则不得再混入其它值。
+// allExclusiveArrayKeys 支持用 "all" 表示不限制的字段；若含 "all" 则不得再混入其他值。
 var allExclusiveArrayKeys = map[string]struct{}{
 	"backends":  {},
 	"frontends": {},

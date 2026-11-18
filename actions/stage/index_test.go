@@ -19,14 +19,18 @@ import (
 
 func TestResolveStageCheckLegacy(t *testing.T) {
 	alice := &util.StageRepo{
-		URL: "alice/transfer@abc",
+		URL:     "alice/transfer@abc",
+		Created: "2024-01-01T00:00:00Z",
+		Updated: "2024-06-01T00:00:00Z",
 		Package: rules.Package{
 			Name:    "transfer-pkg",
 			Version: "1.2.3",
 		},
 	}
 	samePath := &util.StageRepo{
-		URL: "bob/keep@def",
+		URL:     "bob/keep@def",
+		Created: "2024-02-01T00:00:00Z",
+		Updated: "2024-07-01T00:00:00Z",
 		Package: rules.Package{
 			Name:    "keep-pkg",
 			Version: "0.1.0",
@@ -40,42 +44,45 @@ func TestResolveStageCheckLegacy(t *testing.T) {
 
 	t.Run("同路径更新", func(t *testing.T) {
 		listed := Set{"bob/keep": {}}
-		exact, name, ver := resolveStageCheckLegacy("bob/keep", oldStageData, oldByRepoName, listed)
-		if exact != samePath {
-			t.Fatalf("exactOld = %v, want samePath", exact)
+		legacy := resolveStageCheckLegacy("bob/keep", oldStageData, oldByRepoName, listed)
+		if legacy.exact != samePath || legacy.inherit != samePath {
+			t.Fatalf("exact/inherit = %v/%v, want samePath", legacy.exact, legacy.inherit)
 		}
-		if name != "keep-pkg" || ver != "0.1.0" {
-			t.Fatalf("oldName/version = %q/%q, want keep-pkg/0.1.0", name, ver)
+		if legacy.name != "keep-pkg" || legacy.version != "0.1.0" {
+			t.Fatalf("oldName/version = %q/%q, want keep-pkg/0.1.0", legacy.name, legacy.version)
 		}
 	})
 
 	t.Run("换维护者继承 OldName 与 OldVersion", func(t *testing.T) {
 		listed := Set{"bob/transfer": {}}
-		exact, name, ver := resolveStageCheckLegacy("bob/transfer", oldStageData, oldByRepoName, listed)
-		if exact != nil {
-			t.Fatalf("exactOld = %v, want nil for maintainer change", exact)
+		legacy := resolveStageCheckLegacy("bob/transfer", oldStageData, oldByRepoName, listed)
+		if legacy.exact != nil {
+			t.Fatalf("exact = %v, want nil for maintainer change", legacy.exact)
 		}
-		if name != "transfer-pkg" {
-			t.Fatalf("oldName = %q, want transfer-pkg", name)
+		if legacy.inherit != alice {
+			t.Fatalf("inherit = %v, want alice entry", legacy.inherit)
 		}
-		if ver != "1.2.3" {
-			t.Fatalf("oldVersion = %q, want 1.2.3", ver)
+		if legacy.name != "transfer-pkg" {
+			t.Fatalf("oldName = %q, want transfer-pkg", legacy.name)
+		}
+		if legacy.version != "1.2.3" {
+			t.Fatalf("oldVersion = %q, want 1.2.3", legacy.version)
 		}
 	})
 
 	t.Run("旧路径仍在列表则不按换维护者处理", func(t *testing.T) {
 		listed := Set{"alice/transfer": {}, "bob/transfer": {}}
-		exact, name, ver := resolveStageCheckLegacy("bob/transfer", oldStageData, oldByRepoName, listed)
-		if exact != nil || name != "" || ver != "" {
-			t.Fatalf("got exact=%v name=%q ver=%q, want all empty", exact, name, ver)
+		legacy := resolveStageCheckLegacy("bob/transfer", oldStageData, oldByRepoName, listed)
+		if legacy.exact != nil || legacy.inherit != nil || legacy.name != "" || legacy.version != "" {
+			t.Fatalf("got %+v, want all empty", legacy)
 		}
 	})
 
 	t.Run("纯新包", func(t *testing.T) {
 		listed := Set{"carol/new": {}}
-		exact, name, ver := resolveStageCheckLegacy("carol/new", oldStageData, oldByRepoName, listed)
-		if exact != nil || name != "" || ver != "" {
-			t.Fatalf("got exact=%v name=%q ver=%q, want all empty", exact, name, ver)
+		legacy := resolveStageCheckLegacy("carol/new", oldStageData, oldByRepoName, listed)
+		if legacy.exact != nil || legacy.inherit != nil || legacy.name != "" || legacy.version != "" {
+			t.Fatalf("got %+v, want all empty", legacy)
 		}
 	})
 }
@@ -205,5 +212,3 @@ func TestCloneStageRepoWithRepoRef(t *testing.T) {
 		t.Fatal("empty new repoRef should reuse the original entry")
 	}
 }
-
-
