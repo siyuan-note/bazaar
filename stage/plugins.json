@@ -1,6 +1,221 @@
 {
   "repos": [
     {
+      "created": "2026-11-18T08:09:41Z",
+      "installSize": 214702,
+      "openIssues": 0,
+      "package": {
+        "author": "lamp3721",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Tint doc-tree rows per notebook (one color per notebook) and color the tag panel. Text and icons untouched.",
+          "zh-CN": "按笔记本一色给文档树行染底（块状连续、块间留缝），标签面板按标签名染色；文字与图标一律不动。"
+        },
+        "displayName": {
+          "default": "Colorful Doc Tree",
+          "zh-CN": "彩色文档树"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "文档树",
+          "彩色",
+          "笔记本",
+          "doc tree",
+          "color"
+        ],
+        "minAppVersion": "3.7.1",
+        "name": "colorful-doc-tree",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/lamp3721/colorful-doc-tree",
+        "version": "0.2.6"
+      },
+      "packageZipAssetId": 762432648,
+      "packageZipSha256": "60baf28f42d10242db56380e064216e1b3f6cbace2b0d05cec976d3ddd2774bc",
+      "repoRef": "v0.2.6",
+      "size": 170458,
+      "stars": 0,
+      "updated": "2026-11-18T08:09:41Z",
+      "url": "lamp3721/colorful-doc-tree@60baf28"
+    },
+    {
+      "created": "2026-11-18T07:54:24Z",
+      "installSize": 138625,
+      "openIssues": 0,
+      "package": {
+        "author": "mnyon",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Discover connections between your notes. Normal uninstall keeps graph data for reinstallation; deleting plugin storage removes it. Export a backup first. Original notes are unaffected.",
+          "zh-CN": "让笔记片段彼此照见，连接想法，留下思考。普通卸载保留图谱与设置，重新安装可继续使用；手动清理插件数据目录会删除记录。建议卸载前导出备份，笔记原文不受影响。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "PairSentence"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "关联",
+          "随机漫游",
+          "思考图谱"
+        ],
+        "minAppVersion": "3.8.5",
+        "name": "pairsentence",
+        "preview": "",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/mnyon/pairsentence",
+        "version": "0.1.14"
+      },
+      "packageZipAssetId": 762122807,
+      "packageZipSha256": "46b411a230d6715af8307d9e5691ea06e332e93ca9ba286b65d9280f4081fa73",
+      "repoRef": "v0.1.14",
+      "size": 135443,
+      "stars": 0,
+      "updated": "2026-11-18T07:54:24Z",
+      "url": "mnyon/pairsentence@46b411a"
+    },
+    {
+      "created": "2026-11-18T07:47:59Z",
+      "installSize": 103021,
+      "openIssues": 0,
+      "package": {
+        "author": "rushplayer",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "android",
+          "ios",
+          "harmony"
+        ],
+        "description": {
+          "default": "还你一个正常的搜索。标题正文一起搜，结果按篇展示，点中就到原文。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "顺手搜索",
+          "en": "Easy Search"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "icon": "",
+        "keywords": [
+          "搜索",
+          "全局搜索",
+          "篇内查找",
+          "search",
+          "find"
+        ],
+        "name": "siyuan-easy-search",
+        "preview": "",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/rushplayer/siyuan-easy-search",
+        "version": "0.1.14"
+      },
+      "packageZipAssetId": 761520557,
+      "packageZipSha256": "b6bed2302dcd628dfb13793fc26e16aa38547b2e827e7fad86b8a4e966cd343d",
+      "repoRef": "v0.1.14",
+      "size": 24931,
+      "stars": 0,
+      "updated": "2026-11-18T07:47:59Z",
+      "url": "rushplayer/siyuan-easy-search@b6bed23"
+    },
+    {
+      "created": "2026-11-03T02:56:17Z",
+      "installSize": 342188,
+      "openIssues": 0,
+      "package": {
+        "author": "dudull",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Visual settings for the Mist theme: per-region colours and opacity, background image, floating-panel glass and pop animation, fonts, sizes and weights, table width fitting, doc-tree icons, global contrast. Works only while the Mist theme is active and unloads itself on theme switch.",
+          "zh-CN": "为「薄雾」主题提供可视化设置：分区颜色与透明度、背景图、浮动面板玻璃与弹出动画、字体字号与字重、表格宽度自适应、文档树图标、全局对比度。仅在薄雾主题下生效，切换主题自动停用。"
+        },
+        "displayName": {
+          "default": "Mist Settings",
+          "zh-CN": "薄雾设置"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "mobile",
+          "browser-desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "mist",
+          "薄雾",
+          "theme settings",
+          "主题设置",
+          "opacity",
+          "透明度",
+          "background",
+          "背景图",
+          "font",
+          "字体",
+          "icon",
+          "图标",
+          "contrast",
+          "对比度",
+          "floating panel",
+          "浮动面板",
+          "glass",
+          "玻璃",
+          "table",
+          "表格",
+          "weight",
+          "字重",
+          "font weight"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "mist-enhancer",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/dudull852/mist-enhancer",
+        "version": "0.2.37"
+      },
+      "packageZipAssetId": 761231232,
+      "packageZipSha256": "f06cd6c9a31e42cf7324c2ed5417bbec38b80dffd331d792c46d80927e50b9fb",
+      "repoRef": "0.2.37",
+      "size": 161687,
+      "stars": 0,
+      "updated": "2026-11-18T00:33:47Z",
+      "url": "dudull852/mist-enhancer@f06cd6c"
+    },
+    {
       "created": "2026-09-26T07:04:34Z",
       "installSize": 555894,
       "openIssues": 0,
@@ -5297,73 +5512,6 @@
       "stars": 0,
       "updated": "2026-11-10T01:52:09Z",
       "url": "We-Sky/siyuan-auto-card-link@3650d92"
-    },
-    {
-      "created": "2026-11-03T02:56:17Z",
-      "installSize": 339877,
-      "openIssues": 0,
-      "package": {
-        "author": "dudull",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Visual settings for the Mist theme: per-region colours and opacity, background image, floating-panel glass and pop animation, fonts, sizes and weights, table width fitting, doc-tree icons, global contrast. Works only while the Mist theme is active and unloads itself on theme switch.",
-          "zh-CN": "为「薄雾」主题提供可视化设置：分区颜色与透明度、背景图、浮动面板玻璃与弹出动画、字体字号与字重、表格宽度自适应、文档树图标、全局对比度。仅在薄雾主题下生效，切换主题自动停用。"
-        },
-        "displayName": {
-          "default": "Mist Settings",
-          "zh-CN": "薄雾设置"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "mobile",
-          "browser-desktop"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "mist",
-          "薄雾",
-          "theme settings",
-          "主题设置",
-          "opacity",
-          "透明度",
-          "background",
-          "背景图",
-          "font",
-          "字体",
-          "icon",
-          "图标",
-          "contrast",
-          "对比度",
-          "floating panel",
-          "浮动面板",
-          "glass",
-          "玻璃",
-          "table",
-          "表格",
-          "weight",
-          "字重",
-          "font weight"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "mist-enhancer",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/dudull852/mist-enhancer",
-        "version": "0.2.34"
-      },
-      "packageZipAssetId": 729549433,
-      "packageZipSha256": "a9d34a4211ff2e17fba41cbc4b91fa5127012dc580ceedfe30ec2f09c3a10803",
-      "repoRef": "0.2.34",
-      "size": 160792,
-      "stars": 0,
-      "updated": "2026-11-10T00:41:26Z",
-      "url": "dudull852/mist-enhancer@a9d34a4"
     },
     {
       "created": "2026-10-05T10:17:54Z",
