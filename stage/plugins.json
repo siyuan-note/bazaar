@@ -1,6 +1,387 @@
 {
   "repos": [
     {
+      "created": "2026-11-09T10:26:54Z",
+      "installSize": 423977,
+      "openIssues": 0,
+      "package": {
+        "author": "ttChen",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "Auto-number SiYuan child documents and body headings, plus built-in document merge/split. Set a scope once; renumber on create/delete/drag/rename. Custom seven-level document-tree templates, exclusions and undo. Split/merge strips existing numbers and renumbers only affected documents; plugin numbers live in block attributes, isolated from your text. Tree-numbering events never touch body headings; body numbering only affects the current document. Titles only — IDs, body and backlinks untouched.",
+          "zh_CN": "给文档树的子文档标题和文档内标题块一套联动编号，并内置文档合并与拆分。右键设好范围后新建、删除、拖动、改名自动重排；文档树七级模板可自定义，支持排除、撤销。拆合前统一剔除编号、拆合后只给相关文档补编号；插件编号写入块属性，与用户正文严格隔离。树编号事件不碰正文，正文编号只作用当前文档。只改标题，文档 ID、正文与反链不动。"
+        },
+        "displayName": {
+          "default": "tree-doc numbering",
+          "zh_CN": "树文联动编号"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "子文档",
+          "编号",
+          "文档树",
+          "第1部",
+          "第1章",
+          "第1.1节",
+          "parentN",
+          "按上上级重排",
+          "笔记本",
+          "排除",
+          "自定义排序",
+          "自定义格式",
+          "层级",
+          "计数方式",
+          "正文标题编号",
+          "Ctrl+Alt",
+          "savedoc",
+          "自动化",
+          "numbering",
+          "document tree",
+          "文档合并",
+          "文档拆分",
+          "树文拆合管理",
+          "编号隔离",
+          "批量写入"
+        ],
+        "minAppVersion": "3.8.9",
+        "name": "tree-doc-numbering",
+        "preview": "",
+        "readme": {
+          "default": "README_en.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/taotaochen86/tree-doc-numbering",
+        "version": "1.2.6"
+      },
+      "packageZipAssetId": 767084416,
+      "packageZipSha256": "9616820b1fdac2b1202157417f8988d592d46b5d7845077955675fa8bfa127d9",
+      "repoRef": "v1.2.6",
+      "size": 138858,
+      "stars": 1,
+      "updated": "2026-11-19T09:39:24Z",
+      "url": "taotaochen86/tree-doc-numbering@9616820"
+    },
+    {
+      "created": "2026-11-18T08:09:41Z",
+      "installSize": 123335,
+      "openIssues": 0,
+      "package": {
+        "author": "lamp3721",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Tint doc-tree rows per notebook (one color per notebook) and color the tag panel. Text and icons untouched.",
+          "zh-CN": "按笔记本一色给文档树行染底（块状连续、块间留缝），标签面板按标签名染色；文字与图标一律不动。"
+        },
+        "displayName": {
+          "default": "Colorful Doc Tree",
+          "zh-CN": "彩色文档树"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "文档树",
+          "彩色",
+          "笔记本",
+          "doc tree",
+          "color"
+        ],
+        "minAppVersion": "3.7.1",
+        "name": "colorful-doc-tree",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/lamp3721/colorful-doc-tree",
+        "version": "0.7.6"
+      },
+      "packageZipAssetId": 766958853,
+      "packageZipSha256": "e252f913480b8774168d34ef01c81181fd87d6a424906df05ecfaa497b3a7d6e",
+      "repoRef": "v0.7.6",
+      "size": 89814,
+      "stars": 1,
+      "updated": "2026-11-19T08:59:35Z",
+      "url": "lamp3721/colorful-doc-tree@e252f91"
+    },
+    {
+      "created": "2026-10-24T06:07:15Z",
+      "installSize": 22494755,
+      "openIssues": 0,
+      "package": {
+        "author": "LongDarkroom",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A standalone EPUB/PDF reader for SiYuan: shelf and progress, immersive typography, highlights and offline dictionaries, bilingual reading, TTS, and an AI reading assistant that cites passages and saves answers as notes — all stored locally.",
+          "zh-CN": "思源里的独立 EPUB/PDF 阅读器：书架与进度、沉浸排版、六色高亮与离线词典、腾讯机翻双语对照、四引擎朗读，还有一个能按页/章提问、引用回跳、存成思源笔记的 AI 阅读助手。批注、进度与设置全部本地存储。"
+        },
+        "displayName": {
+          "default": "RE Reader",
+          "zh-CN": "RE 阅读器"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "mobile",
+          "browser-mobile"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/3435d"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "reader",
+          "epub",
+          "pdf",
+          "mobi",
+          "azw3",
+          "dictionary",
+          "tts",
+          "bilingual",
+          "阅读器",
+          "电子书",
+          "词典",
+          "划词",
+          "双语",
+          "朗读",
+          "批注",
+          "AI 阅读助手"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-reader",
+        "preview": "preview.jpg",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/LongDarkroom/siyuan-plugin-reader",
+        "version": "0.9.0"
+      },
+      "packageZipAssetId": 766851388,
+      "packageZipSha256": "eb54dbcd5f8934297367ab21f022a069d22e3db49360c6dbea40aac08804223d",
+      "repoRef": "v0.9.0",
+      "size": 15087457,
+      "stars": 2,
+      "updated": "2026-11-19T08:23:33Z",
+      "url": "LongDarkroom/siyuan-plugin-reader@eb54dbc"
+    },
+    {
+      "created": "2026-02-08T18:58:44Z",
+      "installSize": 20182070,
+      "openIssues": 0,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Manage SiYuan tasks across documents with checklist, table, timeline, Kanban, calendar and whiteboard views, an AI assistant, quick editing and focus statistics.",
+          "zh-CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Horizon",
+          "zh-CN": "任务管理器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "task",
+          "manager",
+          "filter"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-plugin-task-horizon",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
+        "version": "3.5.1"
+      },
+      "packageZipAssetId": 766474161,
+      "packageZipSha256": "944221f82c2e03318193f97d4519dcf2cb1408c2ef3460d7e8ac3f7ee4538bf3",
+      "repoRef": "v3.5.1",
+      "size": 4186374,
+      "stars": 38,
+      "updated": "2026-11-19T06:08:32Z",
+      "url": "5kyfkr/siyuan-plugin-task-horizon@944221f"
+    },
+    {
+      "created": "2025-11-26T14:43:52Z",
+      "installSize": 47404198,
+      "openIssues": 5,
+      "package": {
+        "author": "mm-o",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "专业电子书阅读器，支持 EPUB/PDF/MOBI/TXT/在线小说；PDF 支持高亮、墨迹、形状、表单、印章、签名、图片、截图、搜索、打印、导出和回链，并提供标注笔记、词典、翻译、主题与书架管理",
+          "en_US": "Professional eBook reader for EPUB/PDF/MOBI/TXT/online novels. PDFs support highlights, ink, shapes, forms, stamps, signatures, images, screenshots, search, printing, export, and backlinks, with annotation notes, dictionary, translation, themes, and bookshelf management."
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiReader",
+          "zh_CN": "思阅-思源 EPUB/PDF 阅读器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://745201.xyz/pay.jpg"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "阅读",
+          "reading",
+          "电子书",
+          "ebook",
+          "pdf",
+          "epub",
+          "mobi",
+          "txt",
+          "azw3",
+          "fb2",
+          "cbz",
+          "sireader",
+          "思阅",
+          "标注",
+          "annotation",
+          "笔记",
+          "note",
+          "书签",
+          "bookmark",
+          "词典",
+          "dictionary",
+          "书源",
+          "book source",
+          "在线小说",
+          "online novel",
+          "主题",
+          "theme"
+        ],
+        "minAppVersion": "3.6.5",
+        "name": "siyuan-sireader",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/mm-o/siyuan-sireader",
+        "version": "2.8.2"
+      },
+      "packageZipAssetId": 766280309,
+      "packageZipSha256": "6e753060e66ab0954b9ba4d6361136d6dbcfc79a6fabd394292fb99d2f93d311",
+      "repoRef": "v2.8.2",
+      "size": 17337683,
+      "stars": 32,
+      "updated": "2026-11-19T04:55:13Z",
+      "url": "mm-o/siyuan-sireader@6e75306"
+    },
+    {
+      "created": "2026-11-11T11:27:56Z",
+      "installSize": 399100,
+      "openIssues": 0,
+      "package": {
+        "author": "lsqingfeng",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "Zero-Python multi-platform publisher for SiYuan Note. Direct WeChat Official Account draft API push (AppID/AppSecret) + browser session dispatch to Zhihu, Juejin, CSDN, Toutiao, Bilibili, Feishu, X (Twitter) &amp; Threads.",
+          "zh_CN": "思源笔记多平台矩阵一键分发套件。支持微信公众号官方草稿箱 API 直连推送 (AppID/AppSecret)，并安全复用浏览器登录态一键打入知乎、稀土掘金、CSDN、今日头条、B站专栏、飞书文档及海外 X (Twitter) / Threads 草稿箱。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Metrix: Multi-Platform Matrix Publisher",
+          "zh_CN": "Metrix 自媒体矩阵一键分发"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/item/e617d03cddba11f1bb3552540025c377"
+          ],
+          "links": [
+            {
+              "label": "爱发电 · 升级 Metrix 终身专业版",
+              "url": "https://afdian.com/item/e617d03cddba11f1bb3552540025c377"
+            }
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "publish",
+          "matrix",
+          "zhihu",
+          "juejin",
+          "csdn",
+          "toutiao",
+          "bilibili",
+          "wechat",
+          "twitter",
+          "x",
+          "threads",
+          "publisher"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-metrix",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/lsqingfeng/siyuan-metrix",
+        "version": "2.2.0"
+      },
+      "packageZipAssetId": 765946514,
+      "packageZipSha256": "de17cf72aa215505a0e43c844195c65fe7395200fe1a02798ab979ddfc1c65f3",
+      "repoRef": "v2.2.0",
+      "size": 270629,
+      "stars": 0,
+      "updated": "2026-11-19T02:48:09Z",
+      "url": "lsqingfeng/siyuan-metrix@de17cf7"
+    },
+    {
       "created": "2026-09-26T07:04:34Z",
       "installSize": 538118,
       "openIssues": 1,
@@ -207,59 +588,6 @@
       "stars": 0,
       "updated": "2026-11-18T15:49:31Z",
       "url": "mnyon/pairsentence@90590dc"
-    },
-    {
-      "created": "2026-02-08T18:58:44Z",
-      "installSize": 20174388,
-      "openIssues": 0,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Manage SiYuan tasks across documents with checklist, table, timeline, Kanban, calendar and whiteboard views, an AI assistant, quick editing and focus statistics.",
-          "zh-CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Horizon",
-          "zh-CN": "任务管理器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "task",
-          "manager",
-          "filter"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-plugin-task-horizon",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "3.5.0"
-      },
-      "packageZipAssetId": 763892652,
-      "packageZipSha256": "b98d00b6d5d404a7601b14f5a3f8260bb57dae110925b61b6492df62c3e2cc6c",
-      "repoRef": "v3.5.0",
-      "size": 4184830,
-      "stars": 38,
-      "updated": "2026-11-18T15:22:27Z",
-      "url": "5kyfkr/siyuan-plugin-task-horizon@b98d00b"
     },
     {
       "created": "2026-01-18T23:53:59Z",
@@ -596,53 +924,6 @@
       "stars": 1,
       "updated": "2026-11-18T11:38:08Z",
       "url": "jiangeeeeee/siyuan-native-handwriting@2235a01"
-    },
-    {
-      "created": "2026-11-18T08:09:41Z",
-      "installSize": 117454,
-      "openIssues": 0,
-      "package": {
-        "author": "lamp3721",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Tint doc-tree rows per notebook (one color per notebook) and color the tag panel. Text and icons untouched.",
-          "zh-CN": "按笔记本一色给文档树行染底（块状连续、块间留缝），标签面板按标签名染色；文字与图标一律不动。"
-        },
-        "displayName": {
-          "default": "Colorful Doc Tree",
-          "zh-CN": "彩色文档树"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "文档树",
-          "彩色",
-          "笔记本",
-          "doc tree",
-          "color"
-        ],
-        "minAppVersion": "3.7.1",
-        "name": "colorful-doc-tree",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/lamp3721/colorful-doc-tree",
-        "version": "0.5.4"
-      },
-      "packageZipAssetId": 763026747,
-      "packageZipSha256": "48a26161f0321e23d0a09ba180076dfb5efa60cf67fc14d8f0327f4eaae4fe76",
-      "repoRef": "v0.5.4",
-      "size": 88169,
-      "stars": 0,
-      "updated": "2026-11-18T10:54:36Z",
-      "url": "lamp3721/colorful-doc-tree@48a2616"
     },
     {
       "created": "2026-10-10T01:30:12Z",
@@ -1231,73 +1512,6 @@
       "url": "Glaube-TY/siyuan-homepage@28cba90"
     },
     {
-      "created": "2026-10-24T06:07:15Z",
-      "installSize": 22477923,
-      "openIssues": 0,
-      "package": {
-        "author": "LongDarkroom",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A standalone EPUB/PDF reader for SiYuan: shelf and progress, immersive typography, highlights and offline dictionaries, bilingual reading, TTS, and an AI reading assistant that cites passages and saves answers as notes — all stored locally.",
-          "zh-CN": "思源里的独立 EPUB/PDF 阅读器：书架与进度、沉浸排版、六色高亮与离线词典、腾讯机翻双语对照、四引擎朗读，还有一个能按页/章提问、引用回跳、存成思源笔记的 AI 阅读助手。批注、进度与设置全部本地存储。"
-        },
-        "displayName": {
-          "default": "RE Reader",
-          "zh-CN": "RE 阅读器"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "mobile",
-          "browser-mobile"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/3435d"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "reader",
-          "epub",
-          "pdf",
-          "mobi",
-          "azw3",
-          "dictionary",
-          "tts",
-          "bilingual",
-          "阅读器",
-          "电子书",
-          "词典",
-          "划词",
-          "双语",
-          "朗读",
-          "批注",
-          "AI 阅读助手"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-reader",
-        "preview": "preview.jpg",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/LongDarkroom/siyuan-plugin-reader",
-        "version": "0.8.0"
-      },
-      "packageZipAssetId": 761917342,
-      "packageZipSha256": "a78a9be9e9f357b82887be44b030950250fca3f6c5668197092441f5af586652",
-      "repoRef": "v0.8.0",
-      "size": 15082260,
-      "stars": 2,
-      "updated": "2026-11-18T04:36:33Z",
-      "url": "LongDarkroom/siyuan-plugin-reader@a78a9be"
-    },
-    {
       "created": "2026-11-15T10:31:38Z",
       "installSize": 248359,
       "openIssues": 1,
@@ -1858,71 +2072,6 @@
       "url": "wave789/siyuan-search@51343c8"
     },
     {
-      "created": "2026-11-11T11:27:56Z",
-      "installSize": 391023,
-      "openIssues": 0,
-      "package": {
-        "author": "lsqingfeng",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Zero-Python multi-platform publisher for SiYuan Note. Direct WeChat Official Account draft API push (AppID/AppSecret) + browser session dispatch to Zhihu, Juejin, CSDN, Toutiao, Bilibili &amp; Feishu.",
-          "zh_CN": "思源笔记多平台矩阵一键分发套件。支持微信公众号官方草稿箱 API 直连推送 (AppID/AppSecret)，并安全复用浏览器登录态一键打入知乎、稀土掘金、CSDN、今日头条、B站专栏与飞书文档。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Metrix: Multi-Platform Matrix Publisher",
-          "zh_CN": "Metrix 自媒体矩阵一键分发"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/item/e617d03cddba11f1bb3552540025c377"
-          ],
-          "links": [
-            {
-              "label": "爱发电 · 升级 Metrix 终身专业版",
-              "url": "https://afdian.com/item/e617d03cddba11f1bb3552540025c377"
-            }
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "publish",
-          "matrix",
-          "zhihu",
-          "juejin",
-          "csdn",
-          "toutiao",
-          "bilibili",
-          "wechat",
-          "publisher"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-metrix",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/lsqingfeng/siyuan-metrix",
-        "version": "2.1.3"
-      },
-      "packageZipAssetId": 758748615,
-      "packageZipSha256": "32be336c45b361442578f0dee8e7dcadf6d0bdf5f77bbce40da25ce50c7b357f",
-      "repoRef": "v2.1.3",
-      "size": 263953,
-      "stars": 0,
-      "updated": "2026-11-17T11:16:28Z",
-      "url": "lsqingfeng/siyuan-metrix@32be336"
-    },
-    {
       "created": "2026-11-15T06:58:38Z",
       "installSize": 276674,
       "openIssues": 0,
@@ -2034,83 +2183,6 @@
       "stars": 5,
       "updated": "2026-11-17T10:48:32Z",
       "url": "mm-o/siyuan-cloud@704735c"
-    },
-    {
-      "created": "2025-11-26T14:43:52Z",
-      "installSize": 47400593,
-      "openIssues": 5,
-      "package": {
-        "author": "mm-o",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "专业电子书阅读器，支持 EPUB/PDF/MOBI/TXT/在线小说；PDF 支持高亮、墨迹、形状、表单、印章、签名、图片、截图、搜索、打印、导出和回链，并提供标注笔记、词典、翻译、主题与书架管理",
-          "en_US": "Professional eBook reader for EPUB/PDF/MOBI/TXT/online novels. PDFs support highlights, ink, shapes, forms, stamps, signatures, images, screenshots, search, printing, export, and backlinks, with annotation notes, dictionary, translation, themes, and bookshelf management."
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiReader",
-          "zh_CN": "思阅-思源 EPUB/PDF 阅读器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://745201.xyz/pay.jpg"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "阅读",
-          "reading",
-          "电子书",
-          "ebook",
-          "pdf",
-          "epub",
-          "mobi",
-          "txt",
-          "azw3",
-          "fb2",
-          "cbz",
-          "sireader",
-          "思阅",
-          "标注",
-          "annotation",
-          "笔记",
-          "note",
-          "书签",
-          "bookmark",
-          "词典",
-          "dictionary",
-          "书源",
-          "book source",
-          "在线小说",
-          "online novel",
-          "主题",
-          "theme"
-        ],
-        "minAppVersion": "3.6.5",
-        "name": "siyuan-sireader",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/mm-o/siyuan-sireader",
-        "version": "2.8.0"
-      },
-      "packageZipAssetId": 758626748,
-      "packageZipSha256": "fff448e83c68ba0dcf9bc28c21905082974e52751b726892cf2d08c7b8a6fe6a",
-      "repoRef": "v2.8.0",
-      "size": 17337081,
-      "stars": 32,
-      "updated": "2026-11-17T10:35:52Z",
-      "url": "mm-o/siyuan-sireader@fff448e"
     },
     {
       "created": "2023-12-24T01:26:16Z",
@@ -2805,75 +2877,6 @@
       "stars": 0,
       "updated": "2026-11-17T08:28:40Z",
       "url": "Gt841/plugin-todoocard@75ec80f"
-    },
-    {
-      "created": "2026-11-09T10:26:54Z",
-      "installSize": 419968,
-      "openIssues": 0,
-      "package": {
-        "author": "ttChen",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Auto-number SiYuan child documents and body headings, plus built-in document merge/split. Set a scope once; renumber on create/delete/drag/rename. Custom seven-level document-tree templates, exclusions and undo. Split/merge strips existing numbers and renumbers only affected documents; plugin numbers live in block attributes, isolated from your text. Tree-numbering events never touch body headings; body numbering only affects the current document. Titles only — IDs, body and backlinks untouched.",
-          "zh_CN": "给文档树的子文档标题和文档内标题块一套联动编号，并内置文档合并与拆分。右键设好范围后新建、删除、拖动、改名自动重排；文档树七级模板可自定义，支持排除、撤销。拆合前统一剔除编号、拆合后只给相关文档补编号；插件编号写入块属性，与用户正文严格隔离。树编号事件不碰正文，正文编号只作用当前文档。只改标题，文档 ID、正文与反链不动。"
-        },
-        "displayName": {
-          "default": "tree-doc numbering",
-          "zh_CN": "树文联动编号"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "子文档",
-          "编号",
-          "文档树",
-          "第1部",
-          "第1章",
-          "第1.1节",
-          "parentN",
-          "按上上级重排",
-          "笔记本",
-          "排除",
-          "自定义排序",
-          "自定义格式",
-          "层级",
-          "计数方式",
-          "正文标题编号",
-          "Ctrl+Alt",
-          "savedoc",
-          "自动化",
-          "numbering",
-          "document tree",
-          "文档合并",
-          "文档拆分",
-          "树文拆合管理",
-          "编号隔离",
-          "批量写入"
-        ],
-        "minAppVersion": "3.8.9",
-        "name": "tree-doc-numbering",
-        "preview": "",
-        "readme": {
-          "default": "README_en.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/taotaochen86/tree-doc-numbering",
-        "version": "1.2.5"
-      },
-      "packageZipAssetId": 757810577,
-      "packageZipSha256": "3134b1ea289d16ff3f743723b747d1a016b3302180fe59865cae1ea01c19038f",
-      "repoRef": "v1.2.5",
-      "size": 137355,
-      "stars": 1,
-      "updated": "2026-11-17T05:44:02Z",
-      "url": "taotaochen86/tree-doc-numbering@3134b1e"
     },
     {
       "created": "2025-11-24T02:47:39Z",
