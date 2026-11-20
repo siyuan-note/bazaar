@@ -15,6 +15,8 @@ import (
 	"path/filepath"
 	"strings"
 	"testing"
+
+	"github.com/siyuan-note/bazaar/actions/util"
 )
 
 var stageJSONFiles = []string{
@@ -45,7 +47,7 @@ func bazaarRoot(t *testing.T) string {
 	}
 }
 
-// normalizeJSONText 统一换行符，便于与 marshalSortedIndentedJSON 输出（LF）对比。
+// normalizeJSONText 统一换行符，便于与 util.MarshalSortedIndentedJSON 输出（LF）对比。
 // 仓库中的 stage 文件在 Windows 检出后可能带 CRLF。
 func normalizeJSONText(s string) string {
 	return strings.ReplaceAll(s, "\r\n", "\n")
@@ -61,7 +63,7 @@ func TestMarshalSortedIndentedJSON_stageFiles(t *testing.T) {
 				t.Fatal(err)
 			}
 
-			got, err := marshalSortedIndentedJSON(original)
+			got, err := util.MarshalSortedIndentedJSON(original)
 			if err != nil {
 				t.Fatal(err)
 			}
@@ -69,7 +71,7 @@ func TestMarshalSortedIndentedJSON_stageFiles(t *testing.T) {
 			want := normalizeJSONText(string(original))
 			gotStr := string(got)
 			if gotStr != want {
-				t.Fatalf("marshalSortedIndentedJSON output differs from stage file\nlength: got %d, want %d", len(gotStr), len(want))
+				t.Fatalf("MarshalSortedIndentedJSON output differs from stage file\nlength: got %d, want %d", len(gotStr), len(want))
 			}
 		})
 	}
@@ -83,15 +85,15 @@ func TestMarshalSortedIndentedJSON_idempotent(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	first, err := marshalSortedIndentedJSON(original)
+	first, err := util.MarshalSortedIndentedJSON(original)
 	if err != nil {
 		t.Fatal(err)
 	}
-	second, err := marshalSortedIndentedJSON(first)
+	second, err := util.MarshalSortedIndentedJSON(first)
 	if err != nil {
 		t.Fatal(err)
 	}
 	if string(first) != string(second) {
-		t.Fatal("marshalSortedIndentedJSON is not idempotent")
+		t.Fatal("MarshalSortedIndentedJSON is not idempotent")
 	}
 }

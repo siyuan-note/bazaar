@@ -369,7 +369,7 @@ func writeArchivedSection(w io.Writer, title string, states []repoState, note st
 
 // writeUnarchivedSection 输出「已登记弃用但仓库已不再归档」一节。
 // 归档可被作者取消，取消后仓库可能已恢复维护，对应的弃用条目就该复核是否删除。
-// 这一节包含因其它原因（如不兼容新版本）而弃用的包，属正常情况，需要人工看 `reason` 判定。
+// 这一节包含因其他原因（如不兼容新版本）而弃用的包，属正常情况，需要人工看 `reason` 判定。
 func writeUnarchivedSection(w io.Writer, states []repoState) {
 	fmt.Fprintf(w, "## 已登记弃用但仓库未归档（%d）\n\n", len(states))
 	if len(states) == 0 {
@@ -378,7 +378,7 @@ func writeUnarchivedSection(w io.Writer, states []repoState) {
 		return
 	}
 	fmt.Fprintln(w, "归档状态可被作者取消，本节列出所有「已登记弃用、但仓库当前未归档」的包。")
-	fmt.Fprintln(w, "因其它原因（如不兼容新版本）而弃用的包出现在这里是正常的；需要处理的是 `reason` 声称")
+	fmt.Fprintln(w, "因其他原因（如不兼容新版本）而弃用的包出现在这里是正常的；需要处理的是 `reason` 声称")
 	fmt.Fprintln(w, "「作者已归档仓库并停止维护」、而仓库现已恢复且「最后推送」较近的条目——")
 	fmt.Fprintln(w, "应按 AGENTS.md「弃用集市包」流程提独立 PR 删除对应注册表条目。")
 	fmt.Fprintln(w)

@@ -7,7 +7,7 @@
 1. 确认仓库已有 GitHub Release，且附件含 `package.zip`；缺失时 PR Check 必然失败
 2. 确认 PR 正文已满足模板要求
 3. 从 `main` 拉分支 `add-<type>-<name>`（插件 `add-plugin-<name>`，其他类型同理）
-4. 只改对应的 `plugins.txt` / `themes.txt` / `icons.txt` / `templates.txt` / `widgets.txt`，追加一行 `owner/repo`，保持 LF（不要把新行与旧行隔开：空行只允许出现在文件末尾且最多一行）；一个 PR 只加一个包，不要夹带其他改动
+4. 只改对应的 `plugins.txt` / `themes.txt` / `icons.txt` / `templates.txt` / `widgets.txt`，追加一行 `owner/repo`，保持 LF（不要把新行与旧行隔开：空行只允许出现在文件末尾且最多一行，同一 `owner/repo` 不得重复出现）；一个 PR 只加一个包，不要夹带其他改动
 5. 提交信息 `Add owner/repo`，推送到自己的 fork 后开 PR 到 `siyuan-note/bazaar:main`，标题同为 `Add owner/repo`
 6. PR 正文用 `.github/PULL_REQUEST_TEMPLATE.md` 的内容，末尾附 `仓库：https://github.com/owner/repo`；Windows 上把正文写入 UTF-8 无 BOM 临时文件后用 `--body-file`，勿提交临时文件
 7. 人工审阅通过后合并；Stage 会重建索引，无需手改 `stage/*.json`
@@ -16,11 +16,11 @@
 
 弃用用于仍上架、仍可安装和更新，但已不建议新用户选用的包。它不承担安全封禁或下架职责；需要移除分发时走下方「下架集市包」流程。
 
-`deprecated.json` 由集市维护者集中维护。作者或社区成员可以提议，但维护者负责核实停止维护、替代关系等事实并做最终决定。弃用变更使用独立 PR，只能修改根目录的 `deprecated.json`，不得同时修改包列表、Stage 索引或其它文件。
+`deprecated.json` 由集市维护者集中维护。作者或社区成员可以提议，但维护者负责核实停止维护、替代关系等事实并做最终决定。弃用变更使用独立 PR，只能修改根目录的 `deprecated.json`，不得同时修改包列表、Stage 索引或其他文件。
 
 - 根对象固定包含 `plugins` / `themes` / `icons` / `templates` / `widgets`
 - 每项键使用对应 TXT 列表中精确的 `owner/repo`；键存在即表示弃用，空对象表示使用通用原因
-- `reason` 可省略；存在时必须包含非空 `default`，其它键为 locale，内容应简洁、可验证
+- `reason` 可省略；存在时必须包含非空 `default`，其他键为 locale，内容应简洁、可验证
 - `alternatives` 可省略；存在时填写仍上架的 `owner/repo`，可以跨类型（例如挂件指向插件），按推荐顺序排列，不得包含自身或重复项；同一 `owner/repo` 只能属于一个类型列表
 - 不要在包清单中加入 `deprecated`、`deprecatedReason`、`alternatives` 或 `choices`，也不要手改 `stage/*.json`
 - 跨类型替代包依靠 Stage 写出的 `choices`（类型 + 包名）生效：Stage 会同时输出 `alternatives`（仅同类型目标包名，供旧客户端按源包类型跳转，跨类型目标写进去只会查到「未找到集市包」）与 `choices`（全部目标，含类型）；`deprecated.json` 侧始终只写 `alternatives`
@@ -83,7 +83,7 @@ cc @author
 
 确认 issue 已创建并记下编号，再改对应列表：`plugins.txt` / `themes.txt` / `icons.txt` / `templates.txt` / `widgets.txt`。只删目标 `owner/repo` 那一行，保持 LF，不要夹带新增或其他下架。
 
-若目标包已在 `deprecated.json` 中，同一维护动作还需删除对应弃用条目，避免留下过期注册表数据；除此之外不要夹带其它变更。
+若目标包已在 `deprecated.json` 中，同一维护动作还需删除对应弃用条目，避免留下过期注册表数据；除此之外不要夹带其他变更。
 
 提交信息（第一行用 `because` 写清英文原因，不要只写 `Delist owner/repo`）：
 
