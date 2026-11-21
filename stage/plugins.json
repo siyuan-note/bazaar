@@ -1,6 +1,128 @@
 {
   "repos": [
     {
+      "created": "2025-04-22T14:02:50Z",
+      "installSize": 2239298,
+      "openIssues": 0,
+      "package": {
+        "author": "Misuzu2027",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "description": {
+          "default": "Replace the native image viewer with a floating pin preview, including database images.",
+          "zh_CN": "替代原生图片查看功能，支持文档和数据库图片的悬浮预览"
+        },
+        "displayName": {
+          "default": "Image Pin Preview",
+          "zh_CN": "图片悬浮预览"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "image",
+          "preview",
+          "pin",
+          "float",
+          "图片",
+          "预览",
+          "悬浮"
+        ],
+        "minAppVersion": "3.0.12",
+        "name": "syplugin-image-pin-preview",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/Misuzu2027/syplugin-image-pin-preview",
+        "version": "0.0.18"
+      },
+      "packageZipAssetId": 776348266,
+      "packageZipSha256": "3e25be142633e1fb35143cc04334d004da3a76a66a523399cc355cc14d0ce461",
+      "repoRef": "v0.0.18",
+      "size": 673245,
+      "stars": 1,
+      "updated": "2026-11-21T17:38:11Z",
+      "url": "Misuzu2027/syplugin-image-pin-preview@3e25be1"
+    },
+    {
+      "created": "2026-11-15T10:31:38Z",
+      "installSize": 248731,
+      "openIssues": 1,
+      "package": {
+        "author": "wmy2981",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "View storage, object count, traffic and request usage of object storage buckets in SiYuan.",
+          "zh-CN": "在思源中查看对象存储桶的存储量、对象数、流量与请求数。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "S3 Bucket Usage",
+          "zh-CN": "S3 桶用量"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/wmy2981"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "s3",
+          "bucket",
+          "usage",
+          "object storage",
+          "oss",
+          "cos",
+          "obs",
+          "tos",
+          "qiniu",
+          "minio",
+          "r2",
+          "aws",
+          "存储用量",
+          "桶用量",
+          "对象存储",
+          "存储容量",
+          "云存储"
+        ],
+        "minAppVersion": "3.1.20",
+        "name": "s3-usage-siyuan",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/wmy2981/s3-usage-siyuan",
+        "version": "1.0.4"
+      },
+      "packageZipAssetId": 776327461,
+      "packageZipSha256": "3d5c74efba3c57c6e72c29cd386c4005553f6bfc847363cc241b578c836d032b",
+      "repoRef": "v1.0.4",
+      "size": 102815,
+      "stars": 1,
+      "updated": "2026-11-21T17:31:10Z",
+      "url": "wmy2981/s3-usage-siyuan@3d5c74e"
+    },
+    {
       "created": "2026-11-14T16:53:07Z",
       "installSize": 26801716,
       "openIssues": 0,
@@ -317,70 +439,6 @@
       "stars": 1,
       "updated": "2026-11-21T13:58:19Z",
       "url": "LongDarkroom/siyuan-excali-studio@6875d57"
-    },
-    {
-      "created": "2026-11-15T10:31:38Z",
-      "installSize": 250370,
-      "openIssues": 1,
-      "package": {
-        "author": "wmy2981",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "View storage, object count, traffic and request usage of object storage buckets in SiYuan.",
-          "zh-CN": "在思源中查看对象存储桶的存储量、对象数、流量与请求数。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "S3 Bucket Usage",
-          "zh-CN": "S3 桶用量"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/wmy2981"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "s3",
-          "bucket",
-          "usage",
-          "object storage",
-          "oss",
-          "cos",
-          "obs",
-          "tos",
-          "qiniu",
-          "minio",
-          "r2",
-          "aws",
-          "存储用量",
-          "桶用量",
-          "对象存储",
-          "存储容量",
-          "云存储"
-        ],
-        "minAppVersion": "3.1.20",
-        "name": "s3-usage-siyuan",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/wmy2981/s3-usage-siyuan",
-        "version": "1.0.3"
-      },
-      "packageZipAssetId": 775673100,
-      "packageZipSha256": "a764562c8e6342c59360175a0ce1732b7ce040a4f397cbb080c632b21bc7c8eb",
-      "repoRef": "v1.0.3",
-      "size": 103220,
-      "stars": 1,
-      "updated": "2026-11-21T13:27:54Z",
-      "url": "wmy2981/s3-usage-siyuan@a764562"
     },
     {
       "created": "2025-12-19T05:02:32Z",
@@ -10848,64 +10906,6 @@
       "stars": 0,
       "updated": "2026-10-24T08:26:27Z",
       "url": "spring-admin/siyuan-plugin-feishu-todo-sync@68829f2"
-    },
-    {
-      "created": "2025-04-22T14:02:50Z",
-      "installSize": 2216413,
-      "openIssues": 0,
-      "package": {
-        "author": "Misuzu2027",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "description": {
-          "default": "Replace the native image viewer with a floating pin preview, including database images.",
-          "zh_CN": "替代原生图片查看功能，支持文档和数据库图片的悬浮预览"
-        },
-        "displayName": {
-          "default": "Image Pin Preview",
-          "zh_CN": "图片悬浮预览"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "image",
-          "preview",
-          "pin",
-          "float",
-          "图片",
-          "预览",
-          "悬浮"
-        ],
-        "minAppVersion": "3.0.12",
-        "name": "syplugin-image-pin-preview",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/Misuzu2027/syplugin-image-pin-preview",
-        "version": "0.0.17"
-      },
-      "packageZipAssetId": 671477717,
-      "packageZipSha256": "ae3282f8dba2652d18b24eedf46d3aa046f94bbe628c32d1839a6aed77aa8bb6",
-      "repoRef": "v0.0.17",
-      "size": 665136,
-      "stars": 1,
-      "updated": "2026-10-24T06:27:15Z",
-      "url": "Misuzu2027/syplugin-image-pin-preview@ae3282f"
     },
     {
       "created": "2026-10-24T06:12:47Z",
