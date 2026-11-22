@@ -1,6 +1,328 @@
 {
   "repos": [
     {
+      "created": "2026-11-21T05:18:48Z",
+      "installSize": 15712019,
+      "openIssues": 0,
+      "package": {
+        "author": "DJYDN",
+        "backends": [
+          "windows"
+        ],
+        "description": {
+          "default": "PDF reader with PDF++ style excerpts, local OCR (Pix2Text / UniMERNet / Texo), free selection translation, local whole-document PDF2zh translation, Zotero citations, literature matrix, note templates, PDF Q&amp;A and AI automation.",
+          "zh-CN": "PDF 阅读与 PDF++ 式摘录回跳、本地 OCR（Pix2Text / UniMERNet / Texo）、免费划词翻译、本地 PDF2zh 整篇翻译、Zotero 引文、文献矩阵、笔记模板、PDF 问答与 AI 自动化。"
+        },
+        "displayName": {
+          "default": "PDF × Zotero"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "pdf",
+          "zotero",
+          "annotation",
+          "ocr",
+          "formula",
+          "translation",
+          "citation",
+          "csl",
+          "matrix",
+          "template"
+        ],
+        "minAppVersion": "3.8.7",
+        "name": "siyuan-pdf-zotero",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/DJYDN/siyuan-pdf-zotero",
+        "version": "0.9.64"
+      },
+      "packageZipAssetId": 778507804,
+      "packageZipSha256": "892c20c9410bc9184de85ae933b88fd2e1b7431b29f7cc1d31e0148a3d5aae7c",
+      "repoRef": "v0.9.64",
+      "size": 9684996,
+      "stars": 1,
+      "updated": "2026-11-22T09:16:27Z",
+      "url": "DJYDN/siyuan-pdf-zotero@892c20c"
+    },
+    {
+      "created": "2026-01-18T23:53:59Z",
+      "installSize": 3031749,
+      "openIssues": 0,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Pomodoro timer and focus stopwatch for SiYuan, with a timeline, task reminders, background audio, focus statistics, and device synchronization.",
+          "zh-CN": "思源底栏番茄钟：支持时间轴视图/任务提醒/日常事务记录/多端状态同步/移动端/数据库联动/块绑定/历史记录/任务管理器联动/移动端原生通知提醒"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Dock Tomato",
+          "zh-CN": "底栏番茄钟"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "tomato",
+          "timer",
+          "pomodoro",
+          "dock"
+        ],
+        "minAppVersion": "3.8.1",
+        "name": "siyuan-plugin-docktomato",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-docktomato",
+        "version": "2.4.5"
+      },
+      "packageZipAssetId": 778490260,
+      "packageZipSha256": "de1c339bb2514fcd4c2d336141e8e5f2f62572f6ba697c4a52f8b4b84f7ac5a4",
+      "repoRef": "v2.4.5",
+      "size": 707446,
+      "stars": 8,
+      "updated": "2026-11-22T09:09:39Z",
+      "url": "5kyfkr/siyuan-plugin-docktomato@de1c339"
+    },
+    {
+      "created": "2026-02-08T18:58:44Z",
+      "installSize": 20196089,
+      "openIssues": 0,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Manage SiYuan tasks across documents with checklist, table, timeline, Kanban, calendar and whiteboard views, an AI assistant, quick editing and focus statistics.",
+          "zh-CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Horizon",
+          "zh-CN": "任务管理器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "task",
+          "manager",
+          "filter"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-plugin-task-horizon",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
+        "version": "3.5.4"
+      },
+      "packageZipAssetId": 778471483,
+      "packageZipSha256": "2d493ff82400938e2a804d2ab5395ecb33bb4fb95e62fe5f282538a46393c8b9",
+      "repoRef": "v3.5.4",
+      "size": 4189605,
+      "stars": 38,
+      "updated": "2026-11-22T09:01:40Z",
+      "url": "5kyfkr/siyuan-plugin-task-horizon@2d493ff"
+    },
+    {
+      "created": "2026-09-26T07:04:34Z",
+      "installSize": 562804,
+      "openIssues": 1,
+      "package": {
+        "author": "wmy2981",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A batch of independently toggleable desktop and mobile enhancements and optimized styles",
+          "zh-CN": "一批可独立启停的桌面端与移动端增强功能和优化后的样式",
+          "zh-TW": "一批可獨立啟停的桌面端與行動端增強功能和最佳化後的樣式"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Some Settings",
+          "zh-CN": "一些设置",
+          "zh-TW": "一些設定"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/wmy2981"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "settings",
+          "style",
+          "custom",
+          "ui",
+          "enhancement"
+        ],
+        "minAppVersion": "3.8.6-alpha.4",
+        "name": "some-settings-siyuan",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md",
+          "zh-TW": "README.zh-TW.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/wmy2981/some-settings-siyuan",
+        "version": "1.1.9"
+      },
+      "packageZipAssetId": 778446458,
+      "packageZipSha256": "98a45ea46a9b1fa864312c903acd3746a88dba45de852265b1ef17b059de27d4",
+      "repoRef": "v1.1.9",
+      "size": 193029,
+      "stars": 2,
+      "updated": "2026-11-22T08:50:37Z",
+      "url": "wmy2981/some-settings-siyuan@98a45ea"
+    },
+    {
+      "created": "2025-11-03T22:13:05Z",
+      "installSize": 2194042,
+      "openIssues": 13,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "SiYuan AI Assistant, supports dragging blocks and tabs to get note context, enabling Q&amp;A and editing based on SiYuan note content",
+          "zh_CN": "思源笔记 AI 助手,支持拖动块、页签获取笔记上下文，实现基于思源笔记内容进行问答和编辑"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan Copilot"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://pancake.waffo.ai/store/achuan-2-fdbho4ye/product/PROD_3F7Aa7c2NQlz9KmxcgxjQ7?type=onetime&amp;currency=USD",
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ]
+        },
+        "icon": "icon.png",
+        "minAppVersion": "3.7.2",
+        "name": "siyuan-plugin-copilot",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README_en_US.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-copilot",
+        "version": "2.8.23"
+      },
+      "packageZipAssetId": 778372426,
+      "packageZipSha256": "3b6d8518a634a515047ea8c687ffb7c5793f65e9693775ccf2dbd38554efbc61",
+      "repoRef": "v2.8.23",
+      "size": 741652,
+      "stars": 161,
+      "updated": "2026-11-22T08:18:57Z",
+      "url": "Achuan-2/siyuan-plugin-copilot@3b6d851"
+    },
+    {
+      "created": "2025-06-12T01:51:36Z",
+      "installSize": 9439371,
+      "openIssues": 1,
+      "package": {
+        "author": "Achuan-2",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
+          "zh_CN": "一款在思源笔记里实现任务管理功能的插件，为了践行「防弹笔记法」而开发。支持电脑端和移动端系统通知提醒任务执行、日历视图查看行事历、项目管理、四象限面板、番茄钟专注、习惯打卡等功能"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Note Management",
+          "zh_CN": "任务笔记管理"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://pancake.waffo.ai/store/achuan-2-fdbho4ye/product/PROD_3F7Aa7c2NQlz9KmxcgxjQ7?type=onetime&amp;currency=USD",
+            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "reminder",
+          "time",
+          "calendar",
+          "notification",
+          "提醒",
+          "时间",
+          "日历",
+          "通知",
+          "番茄钟",
+          "四象限",
+          "任务管理",
+          "项目管理",
+          "习惯打卡"
+        ],
+        "minAppVersion": "3.8.11",
+        "name": "siyuan-plugin-task-note-management",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README_en.md",
+          "zh_CN": "README.md"
+        },
+        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
+        "version": "7.3.1"
+      },
+      "packageZipAssetId": 778364005,
+      "packageZipSha256": "917d3795f0d7ab013be9a8c2b74c8300732a5ceef960e6899068265cbefbdaa0",
+      "repoRef": "v7.3.1",
+      "size": 4401819,
+      "stars": 232,
+      "updated": "2026-11-22T08:15:31Z",
+      "url": "Achuan-2/siyuan-plugin-task-note-management@917d379"
+    },
+    {
       "created": "2026-11-22T06:17:49Z",
       "installSize": 3089626,
       "openIssues": 0,
@@ -54,6 +376,123 @@
       "stars": 0,
       "updated": "2026-11-22T06:17:49Z",
       "url": "famotime/siyuan-live-slides@cb7d7cb"
+    },
+    {
+      "created": "2026-11-08T07:10:15Z",
+      "installSize": 63571,
+      "openIssues": 0,
+      "package": {
+        "author": "wmy2981",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Edit the SiYuan ignore files, including the asset cleanup exclusions.",
+          "zh-CN": "编辑思源的各种忽略文件，包括资源清理排除规则。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Edit Ignore Files",
+          "zh-CN": "编辑忽略文件"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/wmy2981"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "syncignore",
+          "indexignore",
+          "assets-cleanup-ignore",
+          "unused assets",
+          "searchignore",
+          "embeddingignore",
+          "gitignore",
+          "忽略文件",
+          "忽略规则",
+          "同步忽略",
+          "排除",
+          "资源清理",
+          "未引用资源"
+        ],
+        "minAppVersion": "3.1.20",
+        "name": "edit-ignore-files-siyuan",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/wmy2981/edit-ignore-files-siyuan",
+        "version": "0.2.1"
+      },
+      "packageZipAssetId": 778082355,
+      "packageZipSha256": "f09a4ffe38b1ef186ff92d8fea245f2458050a1d6125ed230c0a5bba6b822567",
+      "repoRef": "v0.2.1",
+      "size": 29684,
+      "stars": 0,
+      "updated": "2026-11-22T06:11:31Z",
+      "url": "wmy2981/edit-ignore-files-siyuan@f09a4ff"
+    },
+    {
+      "created": "2026-11-20T14:15:32Z",
+      "installSize": 1468298,
+      "openIssues": 0,
+      "package": {
+        "author": "ccztao",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A clean task and project manager for SiYuan: tasks bound to blocks, projects, kanban, calendar, Gantt, reminders and optional Mankeep contact mentions.",
+          "zh_CN": "简洁的思源事项与项目管理：任务绑定文档块，支持项目、看板、日历、甘特图、提醒和可选的 Mankeep 联系人提及。"
+        },
+        "displayName": {
+          "default": "Task Manager",
+          "zh_CN": "事项管理"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "task",
+          "todo",
+          "project",
+          "kanban",
+          "calendar",
+          "gantt",
+          "reminder",
+          "mankeep",
+          "事项",
+          "任务",
+          "项目",
+          "看板",
+          "日历",
+          "甘特图",
+          "提醒"
+        ],
+        "minAppVersion": "3.1.0",
+        "name": "sy-task-manage",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/ccztao/sy-task-manage",
+        "version": "0.2.5"
+      },
+      "packageZipAssetId": 777947679,
+      "packageZipSha256": "150f034c9962ea596cab90c79605e894051583df79209170eb3e646606661492",
+      "repoRef": "v0.2.5",
+      "size": 874396,
+      "stars": 1,
+      "updated": "2026-11-22T05:08:27Z",
+      "url": "ccztao/sy-task-manage@150f034"
     },
     {
       "created": "2026-11-14T15:22:56Z",
@@ -319,177 +758,6 @@
       "stars": 0,
       "updated": "2026-11-21T15:52:53Z",
       "url": "jiangeeeeee/siyuan-image-label@e501181"
-    },
-    {
-      "created": "2026-02-08T18:58:44Z",
-      "installSize": 20195058,
-      "openIssues": 0,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Manage SiYuan tasks across documents with checklist, table, timeline, Kanban, calendar and whiteboard views, an AI assistant, quick editing and focus statistics.",
-          "zh-CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Horizon",
-          "zh-CN": "任务管理器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "task",
-          "manager",
-          "filter"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-plugin-task-horizon",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "3.5.3"
-      },
-      "packageZipAssetId": 776060894,
-      "packageZipSha256": "2796235b9e0d507de366fb3b04f217a1d3b35f3602f2054c82e580e9665d12b0",
-      "repoRef": "v3.5.3",
-      "size": 4189419,
-      "stars": 38,
-      "updated": "2026-11-21T15:51:47Z",
-      "url": "5kyfkr/siyuan-plugin-task-horizon@2796235"
-    },
-    {
-      "created": "2026-01-18T23:53:59Z",
-      "installSize": 3025390,
-      "openIssues": 0,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Pomodoro timer and focus stopwatch for SiYuan, with a timeline, task reminders, background audio, focus statistics, and device synchronization.",
-          "zh-CN": "思源底栏番茄钟：支持时间轴视图/任务提醒/日常事务记录/多端状态同步/移动端/数据库联动/块绑定/历史记录/任务管理器联动/移动端原生通知提醒"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Dock Tomato",
-          "zh-CN": "底栏番茄钟"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "tomato",
-          "timer",
-          "pomodoro",
-          "dock"
-        ],
-        "minAppVersion": "3.8.1",
-        "name": "siyuan-plugin-docktomato",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-docktomato",
-        "version": "2.4.4"
-      },
-      "packageZipAssetId": 775997508,
-      "packageZipSha256": "fe57c8402cb3e9914f2cf64537681b0a68a020625444c9226c983d7398f359ad",
-      "repoRef": "v2.4.4",
-      "size": 706330,
-      "stars": 8,
-      "updated": "2026-11-21T15:27:51Z",
-      "url": "5kyfkr/siyuan-plugin-docktomato@fe57c84"
-    },
-    {
-      "created": "2025-06-12T01:51:36Z",
-      "installSize": 9428180,
-      "openIssues": 2,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A plugin for SiYuan Note that implements task management features, developed to practice the Bullet Journal method. It supports document and block reminders, calendar view for scheduling, Pomodoro focus timer, and more.",
-          "zh_CN": "一款在思源笔记里实现任务管理功能的插件，为了践行「防弹笔记法」而开发。支持电脑端和移动端系统通知提醒任务执行、日历视图查看行事历、项目管理、四象限面板、番茄钟专注、习惯打卡等功能"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Note Management",
-          "zh_CN": "任务笔记管理"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://pancake.waffo.ai/store/achuan-2-fdbho4ye/product/PROD_3F7Aa7c2NQlz9KmxcgxjQ7?type=onetime&amp;currency=USD",
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "reminder",
-          "time",
-          "calendar",
-          "notification",
-          "提醒",
-          "时间",
-          "日历",
-          "通知",
-          "番茄钟",
-          "四象限",
-          "任务管理",
-          "项目管理",
-          "习惯打卡"
-        ],
-        "minAppVersion": "3.8.11",
-        "name": "siyuan-plugin-task-note-management",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README_en.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-task-note-management",
-        "version": "7.3.0"
-      },
-      "packageZipAssetId": 775799260,
-      "packageZipSha256": "416815322a12bfa44b9e762152d9f8488ad144a4fe0e3f79779c80a85effbe97",
-      "repoRef": "v7.3.0",
-      "size": 4397775,
-      "stars": 232,
-      "updated": "2026-11-21T14:15:16Z",
-      "url": "Achuan-2/siyuan-plugin-task-note-management@4168153"
     },
     {
       "created": "2026-11-06T10:54:51Z",
@@ -808,112 +1076,6 @@
       "url": "gradypark86/siyuan-plugin-calendar@1390dd4"
     },
     {
-      "created": "2026-11-20T14:15:32Z",
-      "installSize": 857077,
-      "openIssues": 0,
-      "package": {
-        "author": "ccztao",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A clean task and project manager for SiYuan: tasks bound to blocks, projects, kanban, calendar, Gantt, reminders and optional Mankeep contact mentions.",
-          "zh_CN": "简洁的思源事项与项目管理：任务绑定文档块，支持项目、看板、日历、甘特图、提醒和可选的 Mankeep 联系人提及。"
-        },
-        "displayName": {
-          "default": "Task Manager",
-          "zh_CN": "事项管理"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "task",
-          "todo",
-          "project",
-          "kanban",
-          "calendar",
-          "gantt",
-          "reminder",
-          "mankeep",
-          "事项",
-          "任务",
-          "项目",
-          "看板",
-          "日历",
-          "甘特图",
-          "提醒"
-        ],
-        "minAppVersion": "3.1.0",
-        "name": "sy-task-manage",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/ccztao/sy-task-manage",
-        "version": "0.2.3"
-      },
-      "packageZipAssetId": 774704029,
-      "packageZipSha256": "a3c4284cb84ef230e53db7ddb5dba81495af9fb4c7a76cb32132ffd0f3ad6502",
-      "repoRef": "v0.2.3",
-      "size": 296738,
-      "stars": 1,
-      "updated": "2026-11-21T06:47:12Z",
-      "url": "ccztao/sy-task-manage@a3c4284"
-    },
-    {
-      "created": "2026-11-21T05:18:48Z",
-      "installSize": 15711854,
-      "openIssues": 0,
-      "package": {
-        "author": "DJYDN",
-        "backends": [
-          "windows"
-        ],
-        "description": {
-          "default": "PDF reader with PDF++ style excerpts, local OCR (Pix2Text / UniMERNet / Texo), free selection translation, local whole-document PDF2zh translation, Zotero citations, literature matrix, note templates, PDF Q&amp;A and AI automation.",
-          "zh-CN": "PDF 阅读与 PDF++ 式摘录回跳、本地 OCR（Pix2Text / UniMERNet / Texo）、免费划词翻译、本地 PDF2zh 整篇翻译、Zotero 引文、文献矩阵、笔记模板、PDF 问答与 AI 自动化。"
-        },
-        "displayName": {
-          "default": "PDF × Zotero"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "pdf",
-          "zotero",
-          "annotation",
-          "ocr",
-          "formula",
-          "translation",
-          "citation",
-          "csl",
-          "matrix",
-          "template"
-        ],
-        "minAppVersion": "3.8.7",
-        "name": "siyuan-pdf-zotero",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/DJYDN/siyuan-pdf-zotero",
-        "version": "0.9.63"
-      },
-      "packageZipAssetId": 774361902,
-      "packageZipSha256": "49b0381482b1b46f94112170c4c1fc61ebdeb750b54a7de80e2e6b723b2bbbc9",
-      "repoRef": "v0.9.63",
-      "size": 9684895,
-      "stars": 0,
-      "updated": "2026-11-21T05:18:48Z",
-      "url": "DJYDN/siyuan-pdf-zotero@49b0381"
-    },
-    {
       "created": "2026-08-14T14:15:18Z",
       "installSize": 498007,
       "openIssues": 0,
@@ -1194,62 +1356,6 @@
       "stars": 20,
       "updated": "2026-11-21T01:24:53Z",
       "url": "LunaNorth/siyuan-lumina@9cfac00"
-    },
-    {
-      "created": "2026-09-26T07:04:34Z",
-      "installSize": 560355,
-      "openIssues": 1,
-      "package": {
-        "author": "wmy2981",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A batch of independently toggleable desktop and mobile enhancements and optimized styles",
-          "zh-CN": "一批可独立启停的桌面端与移动端增强功能和优化后的样式",
-          "zh-TW": "一批可獨立啟停的桌面端與行動端增強功能和最佳化後的樣式"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Some Settings",
-          "zh-CN": "一些设置",
-          "zh-TW": "一些設定"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/wmy2981"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "settings",
-          "style",
-          "custom",
-          "ui",
-          "enhancement"
-        ],
-        "minAppVersion": "3.8.6-alpha.4",
-        "name": "some-settings-siyuan",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md",
-          "zh-TW": "README.zh-TW.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/wmy2981/some-settings-siyuan",
-        "version": "1.1.7"
-      },
-      "packageZipAssetId": 773158694,
-      "packageZipSha256": "a69f62bb507407533c35a1769d325f24828a6dcdd9a5268058a13b364a2824aa",
-      "repoRef": "v1.1.7",
-      "size": 192191,
-      "stars": 2,
-      "updated": "2026-11-20T20:01:29Z",
-      "url": "wmy2981/some-settings-siyuan@a69f62b"
     },
     {
       "created": "2026-10-24T07:15:28Z",
@@ -4266,51 +4372,6 @@
       "url": "Demisse233/LimitRSS@25acf1c"
     },
     {
-      "created": "2025-11-03T22:13:05Z",
-      "installSize": 2193274,
-      "openIssues": 13,
-      "package": {
-        "author": "Achuan-2",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "SiYuan AI Assistant, supports dragging blocks and tabs to get note context, enabling Q&amp;A and editing based on SiYuan note content",
-          "zh_CN": "思源笔记 AI 助手,支持拖动块、页签获取笔记上下文，实现基于思源笔记内容进行问答和编辑"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiYuan Copilot"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://pancake.waffo.ai/store/achuan-2-fdbho4ye/product/PROD_3F7Aa7c2NQlz9KmxcgxjQ7?type=onetime&amp;currency=USD",
-            "https://fastly.jsdelivr.net/gh/Achuan-2/PicBed/assets/20241128221208-2024-11-28.png"
-          ]
-        },
-        "icon": "icon.png",
-        "minAppVersion": "3.7.2",
-        "name": "siyuan-plugin-copilot",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README_en_US.md",
-          "zh_CN": "README.md"
-        },
-        "url": "https://github.com/Achuan-2/siyuan-plugin-copilot",
-        "version": "2.8.22"
-      },
-      "packageZipAssetId": 750887507,
-      "packageZipSha256": "bb20a2158dc771b288a0c696140ec4bcf7ac81a8b5b24431d3dab3f988b2a914",
-      "repoRef": "v2.8.22",
-      "size": 741439,
-      "stars": 162,
-      "updated": "2026-11-15T12:11:35Z",
-      "url": "Achuan-2/siyuan-plugin-copilot@bb20a21"
-    },
-    {
       "created": "2026-11-15T10:23:22Z",
       "installSize": 1451200,
       "openIssues": 0,
@@ -4477,67 +4538,6 @@
       "stars": 52,
       "updated": "2026-11-15T02:58:41Z",
       "url": "terwer/siyuan-plugin-importer@d8ce506"
-    },
-    {
-      "created": "2026-11-08T07:10:15Z",
-      "installSize": 63521,
-      "openIssues": 0,
-      "package": {
-        "author": "wmy2981",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Edit the SiYuan ignore files, including the asset cleanup exclusions.",
-          "zh-CN": "编辑思源的各种忽略文件，包括资源清理排除规则。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Edit Ignore Files",
-          "zh-CN": "编辑忽略文件"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/wmy2981"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "syncignore",
-          "indexignore",
-          "assets-cleanup-ignore",
-          "unused assets",
-          "searchignore",
-          "embeddingignore",
-          "gitignore",
-          "忽略文件",
-          "忽略规则",
-          "同步忽略",
-          "排除",
-          "资源清理",
-          "未引用资源"
-        ],
-        "minAppVersion": "3.1.20",
-        "name": "edit-ignore-files-siyuan",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/wmy2981/edit-ignore-files-siyuan",
-        "version": "0.2.0"
-      },
-      "packageZipAssetId": 749270773,
-      "packageZipSha256": "c96a7f09dffd6e1707b7c33777ab01598bd5e1da7206f917162dfb1eba16c1cb",
-      "repoRef": "v0.2.0",
-      "size": 29651,
-      "stars": 0,
-      "updated": "2026-11-15T00:32:36Z",
-      "url": "wmy2981/edit-ignore-files-siyuan@c96a7f0"
     },
     {
       "created": "2026-11-14T19:01:11Z",
