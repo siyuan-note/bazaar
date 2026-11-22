@@ -906,7 +906,7 @@ func validHTTPFundingURL(value string) bool {
 //
 // 禁止：
 //   - javascript: / data: / file: / vbscript: / blob: 等可被当作可执行或本地资源的协议
-//   - 其它带 :// 的非 http(s) 协议（如 ftp://）
+//   - 其他带 :// 的非 http(s) 协议（如 ftp://）
 func unsafeFundingURI(s string) bool {
 	s = strings.TrimSpace(s)
 	if s == "" {
@@ -999,8 +999,8 @@ func checkCommonOptionalTypedFields(m map[string]any) []Issue {
 }
 
 // checkPluginOptionalTypedFields 校验插件专用可选字段。
-// backends / frontends / kernels（[]string，含 all 互斥；集市开发示例仓库豁免）、bootAppearances、
-// disabledInPublish / settingsWindow（bool）、publish（发布服务资源与公开数据声明）。
+// backends / frontends / kernels（[]string，取值限固定枚举，含 all 互斥；集市开发示例仓库豁免 all 互斥）、
+// bootAppearances、disabledInPublish / settingsWindow（bool）、publish（发布服务资源与公开数据声明）。
 func checkPluginOptionalTypedFields(m map[string]any, in ManifestInput) []Issue {
 	var issues []Issue
 	allowAllMix := isBazaarSampleRepo(in.Owner, in.Repo)
@@ -1274,7 +1274,7 @@ func checkBootAppearances(m map[string]any) []Issue {
 }
 
 // checkThemeOptionalTypedFields 校验主题专用可选字段。
-// modes / frontends（[]string）
+// modes / frontends 均为 []string，取值限固定枚举（modes 只有 light / dark）
 func checkThemeOptionalTypedFields(m map[string]any) []Issue {
 	issues := checkOptionalStringArray(m, "modes", false)
 	return append(issues, checkOptionalStringArray(m, "frontends", false)...)
@@ -1305,11 +1305,88 @@ func checkOptionalLocaleStrings(m map[string]any, key string) []Issue {
 	return issues
 }
 
-// allExclusiveArrayKeys 支持用 "all" 表示不限制的字段；若含 "all" 则不得再混入其它值。
+// allExclusiveArrayKeys 支持用 "all" 表示不限制的字段；若含 "all" 则不得再混入其他值。
 var allExclusiveArrayKeys = map[string]struct{}{
 	"backends":  {},
 	"frontends": {},
 	"kernels":   {},
+}
+
+// 平台 / 前端标识的固定取值，顺序即报错信息中的展示顺序（与集市文档一致）。
+// 这些字段由内核与前端按字符串精确匹配：写错不会报错，只会让包在对应环境下静默不加载，
+// 作者很难从现象上定位，因此在集市检查阶段直接拦截（见 bazaar#2544 的 `win32`）。
+var (
+	backendPlatformValues  = []string{"windows", "linux", "darwin", "ios", "android", "harmony", "docker", "all"}
+	frontendPlatformValues = []string{"desktop", "desktop-window", "mobile", "browser-desktop", "browser-mobile", "all"}
+	// 主题外观模式：内核 LoadThemes 的 switch 只处理 light / dark，集市列表的亮 / 暗筛选也只认这两个值，
+	// 其他取值既不参与自动切换，也不会命中筛选。主题自带的自定义配色应通过 theme.js / CSS 实现，不要写进 modes。
+	themeModeValues = []string{"light", "dark"}
+)
+
+// arrayValueRule 描述一个取值有固定枚举的数组字段：允许值，以及报错文案里代表该字段的主语。
+type arrayValueRule struct {
+	values  []string
+	labelZh string
+	labelEn string
+}
+
+// arrayValueRules 为取值有固定枚举的数组字段；未列出的字段（如 keywords）只校验元素类型与空值。
+// 取值与文案主语都挂在这张表上，避免再按字段名分支、用 default 兜底把新字段静默当旧字段处理。
+var arrayValueRules = map[string]arrayValueRule{
+	"backends":  {values: backendPlatformValues, labelZh: "后端平台标识", labelEn: "backend platform id"},
+	"kernels":   {values: backendPlatformValues, labelZh: "内核平台标识", labelEn: "kernel platform id"},
+	"frontends": {values: frontendPlatformValues, labelZh: "前端标识", labelEn: "frontend id"},
+	"modes":     {values: themeModeValues, labelZh: "外观模式", labelEn: "appearance mode"},
+}
+
+// arrayValueAliases 把其他生态的惯用平台名映射到思源标识，让常见笔误的报错直接给出可用改法。
+// 只收录与目标值没有公共英文前缀的名字：像 win / win32 这类写法已被 suggestArrayValue 的
+// 公共前缀规则覆盖（与 windows 共享 win），写进来只是重复；而 macos / osx / ipad 与
+// darwin / ios 连一个字符都不共享，别名表是它们唯一的提示来源。
+var arrayValueAliases = map[string]string{
+	"mac":    "darwin",
+	"macos":  "darwin",
+	"osx":    "darwin",
+	"ipad":   "ios",
+	"ipados": "ios",
+	"iphone": "ios",
+}
+
+// suggestArrayValue 为不在取值集合内的值给出建议：已知别名优先，其次仅大小写不同，
+// 最后取与 allowed 共享英文前缀最长（至少 3 个字符）的取值。找不到时返回空串。
+// 别名命中要求目标值确实在该字段的取值集合里，否则继续走前缀匹配（例如 frontends 里的 `ios`）。
+func suggestArrayValue(v string, allowed []string) string {
+	lower := strings.ToLower(strings.TrimSpace(v))
+	if alias, ok := arrayValueAliases[lower]; ok && slices.Contains(allowed, alias) {
+		return alias
+	}
+	best, bestPrefix := "", 2
+	for _, candidate := range allowed {
+		if strings.EqualFold(candidate, v) {
+			return candidate
+		}
+		if n := sharedPrefixLength(lower, candidate); n > bestPrefix {
+			best, bestPrefix = candidate, n
+		}
+	}
+	return best
+}
+
+func sharedPrefixLength(a, b string) int {
+	n := 0
+	for n < len(a) && n < len(b) && a[n] == b[n] {
+		n++
+	}
+	return n
+}
+
+// quotedValues 把取值列表渲染成 `a`、`b` 形式；sep 用于区分中英文标点。
+func quotedValues(values []string, sep string) string {
+	quoted := make([]string, len(values))
+	for i, v := range values {
+		quoted[i] = "`" + v + "`"
+	}
+	return strings.Join(quoted, sep)
 }
 
 func stringArrayExample(key string) string {
@@ -1324,6 +1401,8 @@ func stringArrayExample(key string) string {
 }
 
 // checkOptionalStringArray 校验可选的字符串数组字段。
+// backends / frontends / kernels / modes 的取值有固定枚举，未知取值会被拒绝并尽量给出改法；
+// 其余字段只校验元素类型与空值。
 // allowAllMix 为 true 时跳过 all 互斥（供集市开发示例仓库展示全部合法取值）。
 func checkOptionalStringArray(m map[string]any, key string, allowAllMix bool) []Issue {
 	raw, ok := m[key]
@@ -1338,6 +1417,7 @@ func checkOptionalStringArray(m map[string]any, key string, allowAllMix bool) []
 			fmt.Sprintf("If you include `%s`, it must be an array of strings, e.g. `\"%s\": %s`.", key, key, ex),
 		)}
 	}
+	rule, restricted := arrayValueRules[key]
 	var issues []Issue
 	hasAll := false
 	for i, item := range arr {
@@ -1347,6 +1427,34 @@ func checkOptionalStringArray(m map[string]any, key string, allowAllMix bool) []
 				fmt.Sprintf("`%s[%d]` 必须是字符串。请检查数组元素类型。", key, i),
 				fmt.Sprintf("`%s[%d]` must be a string. Please check the array element types.", key, i),
 			))
+			continue
+		}
+		if strings.TrimSpace(s) == "" {
+			if restricted {
+				issues = append(issues, issue(
+					fmt.Sprintf("`%s[%d]` 当前为空或仅含空白字符，不是有效的%s。可选值：%s。", key, i, rule.labelZh, quotedValues(rule.values, "、")),
+					fmt.Sprintf("`%s[%d]` is empty or whitespace-only, which isn't a valid %s. Supported values: %s.", key, i, rule.labelEn, quotedValues(rule.values, ", ")),
+				))
+			} else {
+				issues = append(issues, issue(
+					fmt.Sprintf("`%s[%d]` 当前为空或仅含空白字符，不是有效取值。请填写实际取值，或删除该数组项。", key, i),
+					fmt.Sprintf("`%s[%d]` is empty or whitespace-only, which isn't a valid value. Please fill in a real value, or remove this array entry.", key, i),
+				))
+			}
+			continue
+		}
+		if restricted && !slices.Contains(rule.values, s) {
+			if suggestion := suggestArrayValue(s, rule.values); suggestion != "" {
+				issues = append(issues, issue(
+					fmt.Sprintf("`%s[%d]` 的值 `%s` 不是支持的%s，是否想写 `%s`？可选值：%s。", key, i, s, rule.labelZh, suggestion, quotedValues(rule.values, "、")),
+					fmt.Sprintf("`%s[%d]` value `%s` isn't a supported %s — did you mean `%s`? Supported values: %s.", key, i, s, rule.labelEn, suggestion, quotedValues(rule.values, ", ")),
+				))
+			} else {
+				issues = append(issues, issue(
+					fmt.Sprintf("`%s[%d]` 的值 `%s` 不是支持的%s。可选值：%s。", key, i, s, rule.labelZh, quotedValues(rule.values, "、")),
+					fmt.Sprintf("`%s[%d]` value `%s` isn't a supported %s. Supported values: %s.", key, i, s, rule.labelEn, quotedValues(rule.values, ", ")),
+				))
+			}
 			continue
 		}
 		if s == "all" {

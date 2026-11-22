@@ -27,7 +27,7 @@
    根目录下按类型有五个包列表文件：`plugins.txt`、`themes.txt`、`icons.txt`、`templates.txt`、`widgets.txt`。
    在**对应类型**的文件中新增一行，格式为：`owner/repo`（owner 是指 GitHub 用户名或组织名，repo 是指集市包仓库名）。
 
-   - 每行一个 `owner/repo`，不要有多余逗号或空行。
+   - 每行一个 `owner/repo`，不要有多余逗号或空行，同一 `owner/repo` 不要重复出现。
    - 示例：`siyuan-note/plugin-sample`。
    - 每个 PR 仅允许以下之一：仅添加 1 个新包；更换维护者（添加 1 个新 `owner/repo` 并删除同类型、同 GitHub 仓库名的旧 `owner/repo`）；或仅下架一个或多个包。不要把添加/更换与无关下架混在同一个 PR。
 
@@ -57,7 +57,7 @@
 
 弃用是一种推荐状态，适用于仍可使用、但已不适合作为默认选择的包，例如包已停止维护或已有持续维护的替代品。弃用不同于下架或安全封禁：弃用包仍保留在对应类型的 TXT 列表中，并继续参与索引、发布、安装、更新和启用。
 
-集市维护者负责维护集中的 [`deprecated.json`](./deprecated.json) 注册表，并对每项弃用做最终决定。包作者和社区成员可以通过独立 PR 提议变更，但包不得在 `plugin.json`、`theme.json` 或其它包清单中自行声明弃用元数据。
+集市维护者负责维护集中的 [`deprecated.json`](./deprecated.json) 注册表，并对每项弃用做最终决定。包作者和社区成员可以通过独立 PR 提议变更，但包不得在 `plugin.json`、`theme.json` 或其他包清单中自行声明弃用元数据。
 
 弃用 PR 只能修改 `deprecated.json`。根对象包含 `plugins`、`themes`、`icons`、`templates` 和 `widgets`，各对象以列表中精确的 `owner/repo` 为键；键存在即表示该包已弃用。空对象使用客户端通用提示；可选的多语言 `reason` 必须包含 `default`；可选的 `alternatives` 是有序的 `owner/repo` 列表，每一项都必须恰属于一个类型列表，可以跨类型（例如挂件指向插件）。
 

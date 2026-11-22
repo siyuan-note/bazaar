@@ -91,8 +91,8 @@ func (s ListSource) fixableByContributor() bool {
 // bazaar head 与合并基点都是 main 上的历史内容，贡献者既无权也无从修改。
 func (s ListSource) Hint() string {
 	if s.fixableByContributor() {
-		return "请修正本 PR 中的该文件（每行一个 `owner/repo`，不要有多余空行），然后推送新提交。\n\n" +
-			"Fix this file in the PR (one `owner/repo` per line, no extra blank lines), then push a new commit."
+		return "请修正本 PR 中的该文件（每行一个 `owner/repo`，不要有多余空行或重复行），然后推送新提交。\n\n" +
+			"Fix this file in the PR (one `owner/repo` per line, with no extra blank lines or repeated entries), then push a new commit."
 	}
 	return "这不是本 PR 引入的问题：这份副本由 bazaar 维护者维护。请在本 PR 中留言说明，等待维护者修复；修复后维护者会打 `Check` 标签重跑检查。\n\n" +
 		"This is not caused by this PR: bazaar maintainers own this copy. Please leave a comment and wait for a maintainer to fix it; afterwards a maintainer will add the `Check` label to rerun the check."

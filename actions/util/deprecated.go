@@ -248,16 +248,23 @@ func ValidateDeprecatedRegistry(registry *DeprecatedRegistry, reposByType map[ru
 	return ValidateDeprecatedRegistryTypes(registry, reposByType, rules.AllPackageTypes())
 }
 
-// ValidateDeprecatedRegistryTypes 只校验指定包类型，供 PR Check 避免被其它类型的既有防御性警告阻断。
+// ValidateDeprecatedRegistryTypes 只校验指定包类型，供 PR Check 避免被其他类型的既有防御性警告阻断。
 func ValidateDeprecatedRegistryTypes(registry *DeprecatedRegistry, reposByType map[rules.PackageType][]string, packageTypes []rules.PackageType) []rules.Issue {
 	if registry == nil {
 		return []rules.Issue{deprecatedIssue("弃用注册表为空。", "The deprecation registry is empty.")}
 	}
 	// 替代包允许跨类型，故按全部五个列表建立 owner/repo → 所属类型 的反查表；
 	// 与本次只校验的类型无关，必须取全量，否则跨类型替代包会被误判为不存在。
+	// 同一类型内重复出现的 owner/repo 只登记一次：反查表表达的是「属于哪些类型」，
+	// 一条重复行不该被当成「出现在多个类型列表」。
 	typesByOwnerRepo := make(map[string][]rules.PackageType, len(reposByType))
 	for _, packageType := range rules.AllPackageTypes() {
+		seen := make(map[string]struct{}, len(reposByType[packageType]))
 		for _, ownerRepo := range reposByType[packageType] {
+			if _, duplicated := seen[ownerRepo]; duplicated {
+				continue
+			}
+			seen[ownerRepo] = struct{}{}
 			typesByOwnerRepo[ownerRepo] = append(typesByOwnerRepo[ownerRepo], packageType)
 		}
 	}
