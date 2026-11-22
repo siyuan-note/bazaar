@@ -1,6 +1,181 @@
 {
   "repos": [
     {
+      "created": "2026-10-24T18:53:04Z",
+      "installSize": 411028,
+      "openIssues": 0,
+      "package": {
+        "author": "Laniakea Kamasylvia",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "android",
+          "ios",
+          "harmony"
+        ],
+        "description": {
+          "default": "Save online content to your SiYuan workspace, utilize embedded template engine and organize your reading list to your needs. Supports Zhihu answers/articles via a self-hosted browser service. Preserve the web with ReadItLater.",
+          "zh-CN": "将网页内容保存为思源笔记,利用内置模板引擎按需整理你的阅读列表。支持经自建浏览器服务剪藏知乎回答与专栏文章。Preserve the web with ReadItLater."
+        },
+        "displayName": {
+          "default": "ReadItLater",
+          "zh-CN": "稍后读"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "read-it-later",
+          "clipping",
+          "web-clipper"
+        ],
+        "minAppVersion": "3.2.0",
+        "name": "siyuan-read-it-later",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/kamasylvia/SiYuan-ReadItLater",
+        "version": "0.13.7"
+      },
+      "packageZipAssetId": 780735500,
+      "packageZipSha256": "b9f569d8772fb82f5a6ae378df991dc28f28d9e9105d9ba83bf89c075052e507",
+      "repoRef": "v0.13.7",
+      "size": 197848,
+      "stars": 0,
+      "updated": "2026-11-22T22:55:19Z",
+      "url": "kamasylvia/SiYuan-ReadItLater@b9f569d"
+    },
+    {
+      "created": "2026-11-22T14:19:09Z",
+      "installSize": 195427,
+      "openIssues": 0,
+      "package": {
+        "author": "chen",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Shows a live child-document and referenced-document tree above every document, with per-level pinning and #tags, without writing to the document.",
+          "zh-CN": "在当前文档上方显示真实子文档与逐篇引用目录，支持层级置顶、文档 #标签、拖拽排序、移动确认和多选删除，不写入正文。"
+        },
+        "displayName": {
+          "default": "Auto Directory",
+          "zh-CN": "自动目录"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "目录",
+          "文档树",
+          "子文档",
+          "自动目录",
+          "directory",
+          "outline",
+          "toc",
+          "置顶",
+          "标签"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "siyuan-auto-directory",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/chenrongchaogiveme/siyuan-auto-directory",
+        "version": "1.1.0"
+      },
+      "packageZipAssetId": 780364288,
+      "packageZipSha256": "8de222c6d41e46b635e5caf25b0cb3bc6959688dc18ea44992e1c78addc6d7bb",
+      "repoRef": "v1.1.0",
+      "size": 88607,
+      "stars": 0,
+      "updated": "2026-11-22T20:29:02Z",
+      "url": "chenrongchaogiveme/siyuan-auto-directory@8de222c"
+    },
+    {
+      "created": "2023-11-17T00:43:06Z",
+      "installSize": 4112275,
+      "openIssues": 0,
+      "package": {
+        "author": "IAliceBobI",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "🔓 Open source · Finally finish what you read — and what you write: progressive reading digests long-form input day by day (excerpts, slicing, cloze, flashcards, AI knowledge maps), progressive writing queues your material into finished drafts (writing books, structure tree, compile-to-draft). A full loop from reading to writing.",
+          "zh_CN": "🔓 已开源 · 让长文读得完，让作品写得完：渐进阅读消化输入（摘抄、分片、挖空、闪卡、AI 知识地图），渐进写作排队产出（写作书素材入槽、结构树看进度、汇编成稿）——从阅读到写作的完整闭环"
+        },
+        "displayName": {
+          "default": "Progressive Learning",
+          "zh_CN": "渐进学习"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "ios",
+          "android",
+          "harmony"
+        ],
+        "keywords": [
+          "渐进学习",
+          "渐进阅读",
+          "Progressive Reading",
+          "挖空",
+          "Cloze",
+          "闪卡",
+          "Flashcard",
+          "摘抄",
+          "断句",
+          "Sentence Split",
+          "拼音",
+          "Pinyin",
+          "Daily Card",
+          "渐进写作",
+          "Progressive Writing",
+          "知识地图",
+          "结构树",
+          "写作书",
+          "Knowledge Map",
+          "Structure Tree",
+          "Writing Book"
+        ],
+        "minAppVersion": "2.12.6",
+        "name": "sy-progressive-plugin",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/IAliceBobI/sy-progressive-plugin",
+        "version": "3.38.5"
+      },
+      "packageZipAssetId": 779922135,
+      "packageZipSha256": "2573606993a573fbae5c6df40359614344fb53e99e42b7d4e373cf9c8c04e699",
+      "repoRef": "v3.38.5",
+      "size": 1151887,
+      "stars": 32,
+      "updated": "2026-11-22T17:50:08Z",
+      "url": "IAliceBobI/sy-progressive-plugin@2573606"
+    },
+    {
       "created": "2026-11-22T09:54:28Z",
       "installSize": 175878,
       "openIssues": 0,
@@ -97,54 +272,6 @@
       "stars": 0,
       "updated": "2026-11-22T14:21:23Z",
       "url": "zx2021210538/siyuan-personal-home@5b762a7"
-    },
-    {
-      "created": "2026-11-22T14:19:09Z",
-      "installSize": 184456,
-      "openIssues": 0,
-      "package": {
-        "author": "chen",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Shows a live child-document and referenced-document tree above every document without writing to the document.",
-          "zh-CN": "在当前文档上方显示真实子文档与逐篇引用目录，引用行内折叠展示，支持拖拽排序、移动确认和多选删除，不写入正文。"
-        },
-        "displayName": {
-          "default": "Auto Directory",
-          "zh-CN": "自动目录"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "目录",
-          "文档树",
-          "子文档",
-          "自动目录",
-          "directory",
-          "outline",
-          "toc"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "siyuan-auto-directory",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/chenrongchaogiveme/siyuan-auto-directory",
-        "version": "1.0.1"
-      },
-      "packageZipAssetId": 779056848,
-      "packageZipSha256": "53510a0144f4ad176f4a43fbb0583fa7483b198d831f25a20d8eee267329abb7",
-      "repoRef": "v1.0.1",
-      "size": 86431,
-      "stars": 0,
-      "updated": "2026-11-22T14:19:09Z",
-      "url": "chenrongchaogiveme/siyuan-auto-directory@53510a0"
     },
     {
       "created": "2026-11-14T15:22:56Z",
@@ -4345,77 +4472,6 @@
       "stars": 6,
       "updated": "2026-11-16T00:29:02Z",
       "url": "HaoCeans/siyuan-comment@1da934b"
-    },
-    {
-      "created": "2023-11-17T00:43:06Z",
-      "installSize": 4110735,
-      "openIssues": 0,
-      "package": {
-        "author": "IAliceBobI",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "🔓 Open source · Finally finish what you read — and what you write: progressive reading digests long-form input day by day (excerpts, slicing, cloze, flashcards, AI knowledge maps), progressive writing queues your material into finished drafts (writing books, structure tree, compile-to-draft). A full loop from reading to writing.",
-          "zh_CN": "🔓 已开源 · 让长文读得完，让作品写得完：渐进阅读消化输入（摘抄、分片、挖空、闪卡、AI 知识地图），渐进写作排队产出（写作书素材入槽、结构树看进度、汇编成稿）——从阅读到写作的完整闭环"
-        },
-        "displayName": {
-          "default": "Progressive Learning",
-          "zh_CN": "渐进学习"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "ios",
-          "android",
-          "harmony"
-        ],
-        "keywords": [
-          "渐进学习",
-          "渐进阅读",
-          "Progressive Reading",
-          "挖空",
-          "Cloze",
-          "闪卡",
-          "Flashcard",
-          "摘抄",
-          "断句",
-          "Sentence Split",
-          "拼音",
-          "Pinyin",
-          "Daily Card",
-          "渐进写作",
-          "Progressive Writing",
-          "知识地图",
-          "结构树",
-          "写作书",
-          "Knowledge Map",
-          "Structure Tree",
-          "Writing Book"
-        ],
-        "minAppVersion": "2.12.6",
-        "name": "sy-progressive-plugin",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/IAliceBobI/sy-progressive-plugin",
-        "version": "3.38.4"
-      },
-      "packageZipAssetId": 751511623,
-      "packageZipSha256": "0199fcff6dd87504549557b8637571b5db5563be956f84240bc4e48c201793ba",
-      "repoRef": "v3.38.4",
-      "size": 1151467,
-      "stars": 32,
-      "updated": "2026-11-15T15:59:46Z",
-      "url": "IAliceBobI/sy-progressive-plugin@0199fcf"
     },
     {
       "created": "2026-11-04T09:06:00Z",
@@ -9398,60 +9454,6 @@
       "stars": 18,
       "updated": "2026-11-03T05:18:22Z",
       "url": "svchord/siyuan-arco-calendar@f3da533"
-    },
-    {
-      "created": "2026-10-24T18:53:04Z",
-      "installSize": 402423,
-      "openIssues": 0,
-      "package": {
-        "author": "Laniakea Kamasylvia",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "android",
-          "ios",
-          "harmony"
-        ],
-        "description": {
-          "default": "Save online content to your SiYuan workspace, utilize embedded template engine and organize your reading list to your needs. Supports Zhihu answers/articles via a self-hosted browser service. Preserve the web with ReadItLater.",
-          "zh-CN": "将网页内容保存为思源笔记,利用内置模板引擎按需整理你的阅读列表。支持经自建浏览器服务剪藏知乎回答与专栏文章。Preserve the web with ReadItLater."
-        },
-        "displayName": {
-          "default": "ReadItLater",
-          "zh-CN": "稍后读"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "read-it-later",
-          "clipping",
-          "web-clipper"
-        ],
-        "minAppVersion": "3.2.0",
-        "name": "siyuan-read-it-later",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/kamasylvia/SiYuan-ReadItLater",
-        "version": "0.12.1"
-      },
-      "packageZipAssetId": 703983507,
-      "packageZipSha256": "0f55e33f1ee368059e5ced99815bf8ab59a1c1f58e0782a02d8b073a50cead6d",
-      "repoRef": "v0.12.1",
-      "size": 194803,
-      "stars": 0,
-      "updated": "2026-11-03T02:33:07Z",
-      "url": "kamasylvia/SiYuan-ReadItLater@0f55e33"
     },
     {
       "created": "2026-08-31T12:24:51Z",
