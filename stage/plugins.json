@@ -1,6 +1,52 @@
 {
   "repos": [
     {
+      "created": "2026-11-22T09:54:28Z",
+      "installSize": 175878,
+      "openIssues": 0,
+      "package": {
+        "author": "shuishuishui018",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Type a keyword and see all matching notes on a vertical timeline, newest first. Click any hit to jump to it.",
+          "zh-CN": "输入关键词，以垂直时间线展示所有包含它的笔记与命中片段，按时间倒序，点击即可跳转。"
+        },
+        "displayName": {
+          "default": "Keyword Time Search",
+          "zh-CN": "关键词时间搜索"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "search",
+          "time",
+          "搜索",
+          "时间",
+          "关键词"
+        ],
+        "minAppVersion": "3.1.0",
+        "name": "keyword-time-search",
+        "preview": "",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/shuishuishui018/keyword-time-search",
+        "version": "1.0.2"
+      },
+      "packageZipAssetId": 779477401,
+      "packageZipSha256": "27574af868e61a93cbeff9b681c2ab6f7b0fdcd5d8d15585f894fde08bad9a89",
+      "repoRef": "v1.0.2",
+      "size": 147028,
+      "stars": 0,
+      "updated": "2026-11-22T15:20:38Z",
+      "url": "shuishuishui018/keyword-time-search@27574af"
+    },
+    {
       "created": "2026-11-22T14:21:23Z",
       "installSize": 577605,
       "openIssues": 0,
@@ -101,50 +147,106 @@
       "url": "chenrongchaogiveme/siyuan-auto-directory@53510a0"
     },
     {
-      "created": "2026-11-22T09:54:28Z",
-      "installSize": 115054,
+      "created": "2026-11-14T15:22:56Z",
+      "installSize": 322223516,
       "openIssues": 0,
       "package": {
-        "author": "shuishuishui018",
+        "author": "Voice Notes contributors",
         "backends": [
           "all"
         ],
         "description": {
-          "default": "Type a keyword and see all matching notes on a vertical timeline, newest first. Click any hit to jump to it.",
-          "zh-CN": "输入关键词，以垂直时间线展示所有包含它的笔记与命中片段，按时间倒序，点击即可跳转。"
+          "default": "Record, annotate and replay audio in notes, with local transcription and speaker models.",
+          "zh-CN": "正文录音、时间标记、原音回听与逐字稿整理，附本地转写及发言人模型。"
         },
+        "disabledInPublish": true,
         "displayName": {
-          "default": "Keyword Time Search",
-          "zh-CN": "关键词时间搜索"
+          "default": "SiYuan Voice Notes Full",
+          "zh-CN": "思源语音 Full"
         },
         "frontends": [
-          "all"
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
         ],
         "icon": "icon.png",
         "keywords": [
-          "search",
-          "time",
-          "搜索",
-          "时间",
-          "关键词"
+          "audio",
+          "transcript",
+          "语音",
+          "字幕"
         ],
-        "minAppVersion": "3.1.0",
-        "name": "keyword-time-search",
-        "preview": "",
+        "minAppVersion": "3.8.9",
+        "name": "siyuan-voice-notes",
+        "preview": "preview.png",
         "readme": {
           "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
+          "zh-CN": "README_zh_CN.md"
         },
-        "url": "https://github.com/shuishuishui018/keyword-time-search",
-        "version": "1.0.1"
+        "settingsWindow": true,
+        "url": "https://github.com/jiangeeeeee/siyuan-voice-notes",
+        "version": "0.8.6"
       },
-      "packageZipAssetId": 778525877,
-      "packageZipSha256": "1588ad312a5fa3fc211c0425443f99130e04c319627031054cbeca493cd715f4",
-      "repoRef": "v1.0.1",
-      "size": 87349,
+      "packageZipAssetId": 779234467,
+      "packageZipSha256": "99fd9bc55a49aba956cae872cb4b5d346914831e0ef387a7a4b009f2f7827a32",
+      "repoRef": "v0.8.6",
+      "size": 222072230,
       "stars": 0,
-      "updated": "2026-11-22T09:54:28Z",
-      "url": "shuishuishui018/keyword-time-search@1588ad3"
+      "updated": "2026-11-22T13:57:01Z",
+      "url": "jiangeeeeee/siyuan-voice-notes@99fd9bc"
+    },
+    {
+      "created": "2026-11-15T09:20:05Z",
+      "installSize": 12789030,
+      "openIssues": 0,
+      "package": {
+        "author": "Voice Notes contributors",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Audio recording, timed markers, subtitles and linked notes without recognition models.",
+          "zh-CN": "轻量录音、时间标记、字幕整理与原音回听，不含识别模型。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan Voice Notes Lite",
+          "zh-CN": "思源语音 Lite"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "audio",
+          "transcript",
+          "语音",
+          "字幕"
+        ],
+        "minAppVersion": "3.8.9",
+        "name": "siyuan-voice-notes-lite",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/jiangeeeeee/siyuan-voice-notes-lite",
+        "version": "0.8.6"
+      },
+      "packageZipAssetId": 779228924,
+      "packageZipSha256": "d16e4517fb877fe92b84aafa80330bfa606a006376b0522444db670d3063fffc",
+      "repoRef": "v0.8.6",
+      "size": 11945185,
+      "stars": 0,
+      "updated": "2026-11-22T13:55:33Z",
+      "url": "jiangeeeeee/siyuan-voice-notes-lite@d16e451"
     },
     {
       "created": "2026-11-21T05:18:48Z",
@@ -639,108 +741,6 @@
       "stars": 1,
       "updated": "2026-11-22T05:08:27Z",
       "url": "ccztao/sy-task-manage@150f034"
-    },
-    {
-      "created": "2026-11-14T15:22:56Z",
-      "installSize": 322220856,
-      "openIssues": 0,
-      "package": {
-        "author": "Voice Notes contributors",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Record, annotate and replay audio in notes, with local transcription and speaker models.",
-          "zh-CN": "正文录音、时间标记、原音回听与逐字稿整理，附本地转写及发言人模型。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiYuan Voice Notes Full",
-          "zh-CN": "思源语音 Full"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "audio",
-          "transcript",
-          "语音",
-          "字幕"
-        ],
-        "minAppVersion": "3.8.9",
-        "name": "siyuan-voice-notes",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/jiangeeeeee/siyuan-voice-notes",
-        "version": "0.8.5"
-      },
-      "packageZipAssetId": 777450321,
-      "packageZipSha256": "62025415caff0fd98f56585e8ae2a400ff40ee2a9f629cb33bb08bbf80bd27dd",
-      "repoRef": "v0.8.5",
-      "size": 222072048,
-      "stars": 0,
-      "updated": "2026-11-22T01:20:36Z",
-      "url": "jiangeeeeee/siyuan-voice-notes@6202541"
-    },
-    {
-      "created": "2026-11-15T09:20:05Z",
-      "installSize": 12786616,
-      "openIssues": 0,
-      "package": {
-        "author": "Voice Notes contributors",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Audio recording, timed markers, subtitles and linked notes without recognition models.",
-          "zh-CN": "轻量录音、时间标记、字幕整理与原音回听，不含识别模型。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiYuan Voice Notes Lite",
-          "zh-CN": "思源语音 Lite"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "audio",
-          "transcript",
-          "语音",
-          "字幕"
-        ],
-        "minAppVersion": "3.8.9",
-        "name": "siyuan-voice-notes-lite",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/jiangeeeeee/siyuan-voice-notes-lite",
-        "version": "0.8.5"
-      },
-      "packageZipAssetId": 777443896,
-      "packageZipSha256": "bacf2e1456fbc86975b23b3bb25e5c2971f52e2e1a85ed5ef6d8754815368820",
-      "repoRef": "v0.8.5",
-      "size": 11944984,
-      "stars": 0,
-      "updated": "2026-11-22T01:19:29Z",
-      "url": "jiangeeeeee/siyuan-voice-notes-lite@bacf2e1"
     },
     {
       "created": "2025-04-22T14:02:50Z",
