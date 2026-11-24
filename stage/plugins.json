@@ -1,11 +1,57 @@
 {
   "repos": [
     {
-      "created": "2026-11-24T14:28:23Z",
-      "installSize": 144704,
+      "created": "2026-11-24T09:14:34Z",
+      "installSize": 174051,
       "openIssues": 0,
       "package": {
-        "author": "79117",
+        "author": "Amin",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin"
+        ],
+        "description": {
+          "default": "Paste a URL as a titled link or an expandable preview card"
+        },
+        "displayName": {
+          "default": "Link Paste"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "link",
+          "paste",
+          "title",
+          "card"
+        ],
+        "minAppVersion": "3.8.11",
+        "name": "siyuan-link-paste",
+        "preview": "preview.jpg",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/rezgi/Siyuan-Link-Paste",
+        "version": "0.1.6"
+      },
+      "packageZipAssetId": 788364966,
+      "packageZipSha256": "e6028734858e673a9cf0e99370cdfce2b4ef92fe001bfe07cf8178a1c02c28a7",
+      "repoRef": "v0.1.6",
+      "size": 122211,
+      "stars": 0,
+      "updated": "2026-11-24T18:31:11Z",
+      "url": "rezgi/Siyuan-Link-Paste@e602873"
+    },
+    {
+      "created": "2026-11-24T14:28:23Z",
+      "installSize": 157235,
+      "openIssues": 0,
+      "package": {
+        "author": "Myisking",
         "backends": [
           "windows",
           "linux",
@@ -48,15 +94,391 @@
           "default": "README.md"
         },
         "url": "https://github.com/SuperShinningFinger/siyuan-douban-media-importer",
-        "version": "0.1.2"
+        "version": "0.1.5"
       },
-      "packageZipAssetId": 787501855,
-      "packageZipSha256": "7be659caeb620c3edc3ac188d17fe9e7b650f5aff2eaf3fdc29bb4a2e288a9f3",
-      "repoRef": "v0.1.2",
-      "size": 98780,
+      "packageZipAssetId": 788193683,
+      "packageZipSha256": "59ffd02e9aeb747fca11f08771825b0808d74af62780a4fa3a719c4a3618daa9",
+      "repoRef": "v0.1.5",
+      "size": 103017,
       "stars": 0,
-      "updated": "2026-11-24T14:28:23Z",
-      "url": "SuperShinningFinger/siyuan-douban-media-importer@7be659c"
+      "updated": "2026-11-24T17:40:02Z",
+      "url": "SuperShinningFinger/siyuan-douban-media-importer@59ffd02"
+    },
+    {
+      "created": "2026-09-26T07:04:34Z",
+      "installSize": 566738,
+      "openIssues": 1,
+      "package": {
+        "author": "wmy2981",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A batch of independently toggleable desktop and mobile enhancements and optimized styles",
+          "zh-CN": "一批可独立启停的桌面端与移动端增强功能和优化后的样式",
+          "zh-TW": "一批可獨立啟停的桌面端與行動端增強功能和最佳化後的樣式"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Some Settings",
+          "zh-CN": "一些设置",
+          "zh-TW": "一些設定"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/wmy2981"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "settings",
+          "style",
+          "custom",
+          "ui",
+          "enhancement"
+        ],
+        "minAppVersion": "3.8.6-alpha.4",
+        "name": "some-settings-siyuan",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md",
+          "zh-TW": "README.zh-TW.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/wmy2981/some-settings-siyuan",
+        "version": "1.1.10"
+      },
+      "packageZipAssetId": 787813461,
+      "packageZipSha256": "0a8229cb29dcfa5f7d4dbec26adb33f1667137beb05e7a7c0b19d568a464471e",
+      "repoRef": "v1.1.10",
+      "size": 194376,
+      "stars": 2,
+      "updated": "2026-11-24T15:50:10Z",
+      "url": "wmy2981/some-settings-siyuan@0a8229c"
+    },
+    {
+      "created": "2026-11-14T17:20:27Z",
+      "installSize": 1329007,
+      "openIssues": 0,
+      "package": {
+        "author": "Clymer-git",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "在思源笔记里给图片画箭头、序号、文字、形状、马赛克与模糊，还能旋转、翻转、裁剪；保存后覆盖原图，一张 PNG 既是成品也是可继续编辑的工程，不产生多余资源。",
+          "en": "Annotate and crop images right inside SiYuan — saving overwrites the same PNG with the artwork and editable data embedded, so the image stays re-editable and no extra assets pile up."
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "勾画阁·猫抓"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "mobile"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "图片",
+          "标注",
+          "箭头",
+          "马赛克",
+          "裁剪",
+          "annotate",
+          "image",
+          "png",
+          "annotation",
+          "crop"
+        ],
+        "minAppVersion": "3.0.12",
+        "name": "siyuan-plugin-annotate",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/Clymer-git/siyuan-plugin-annotate",
+        "version": "1.4.3"
+      },
+      "packageZipAssetId": 787829357,
+      "packageZipSha256": "aa5095e903643115169e0fd4435ac0e9df3c586b0f95d6465125983814a4c3b1",
+      "repoRef": "v1.4.3",
+      "size": 750207,
+      "stars": 1,
+      "updated": "2026-11-24T15:40:23Z",
+      "url": "Clymer-git/siyuan-plugin-annotate@aa5095e"
+    },
+    {
+      "created": "2025-04-22T14:02:50Z",
+      "installSize": 2253996,
+      "openIssues": 0,
+      "package": {
+        "author": "Misuzu2027",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "description": {
+          "default": "Replace the native image viewer with a floating pin preview, including database images.",
+          "zh_CN": "替代原生图片查看功能，支持文档和数据库图片的悬浮预览"
+        },
+        "displayName": {
+          "default": "Image Pin Preview",
+          "zh_CN": "图片悬浮预览"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "image",
+          "preview",
+          "pin",
+          "float",
+          "图片",
+          "预览",
+          "悬浮"
+        ],
+        "minAppVersion": "3.0.12",
+        "name": "syplugin-image-pin-preview",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/Misuzu2027/syplugin-image-pin-preview",
+        "version": "0.0.19"
+      },
+      "packageZipAssetId": 787690164,
+      "packageZipSha256": "d72deb8b19710bf3f4e5c0aed7b7f3650fd602e2e943d401e86e65c232831d4d",
+      "repoRef": "v0.0.19",
+      "size": 677679,
+      "stars": 1,
+      "updated": "2026-11-24T15:15:44Z",
+      "url": "Misuzu2027/syplugin-image-pin-preview@d72deb8"
+    },
+    {
+      "created": "2026-11-20T14:15:32Z",
+      "installSize": 1487096,
+      "openIssues": 0,
+      "package": {
+        "author": "ccztao",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A clean task and project manager for SiYuan: tasks bound to blocks, projects, kanban, calendar, Gantt, reminders and optional Mankeep contact mentions.",
+          "zh_CN": "简洁的思源事项与项目管理：任务绑定文档块，支持项目、看板、日历、甘特图、提醒和可选的 Mankeep 联系人提及。"
+        },
+        "displayName": {
+          "default": "Task Manager",
+          "zh_CN": "事项管理"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "task",
+          "todo",
+          "project",
+          "kanban",
+          "calendar",
+          "gantt",
+          "reminder",
+          "mankeep",
+          "事项",
+          "任务",
+          "项目",
+          "看板",
+          "日历",
+          "甘特图",
+          "提醒"
+        ],
+        "minAppVersion": "3.1.0",
+        "name": "sy-task-manage",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/ccztao/sy-task-manage",
+        "version": "0.2.6"
+      },
+      "packageZipAssetId": 787633126,
+      "packageZipSha256": "bb630698c98fa206cb2c34fda86cf3bda03f21f56e5f46c2ddaf74d509e636a8",
+      "repoRef": "v0.2.6",
+      "size": 878926,
+      "stars": 1,
+      "updated": "2026-11-24T14:59:34Z",
+      "url": "ccztao/sy-task-manage@bb63069"
+    },
+    {
+      "created": "2026-11-18T07:54:24Z",
+      "installSize": 141815,
+      "openIssues": 0,
+      "package": {
+        "author": "mnyon",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Deep randomness, intuitive thinking, rich effects, easy to use.",
+          "zh-CN": "深刻的随机、直观的思考、丰富的效果、简单的使用。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "PairSentence"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "关联",
+          "随机漫游",
+          "思考图谱"
+        ],
+        "minAppVersion": "3.8.5",
+        "name": "pairsentence",
+        "preview": "",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/mnyon/pairsentence",
+        "version": "0.1.16"
+      },
+      "packageZipAssetId": 787474318,
+      "packageZipSha256": "844bcd1cb559bd6434a9e9357abe02c4301ef80d100de88249d4c9260521f4ca",
+      "repoRef": "v0.1.16",
+      "size": 138633,
+      "stars": 0,
+      "updated": "2026-11-24T14:50:41Z",
+      "url": "mnyon/pairsentence@844bcd1"
+    },
+    {
+      "created": "2026-02-08T18:58:44Z",
+      "installSize": 20258122,
+      "openIssues": 0,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Manage SiYuan tasks across documents with checklist, table, timeline, Kanban, calendar and whiteboard views, an AI assistant, quick editing and focus statistics.",
+          "zh-CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Horizon",
+          "zh-CN": "任务管理器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "task",
+          "manager",
+          "filter"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-plugin-task-horizon",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
+        "version": "3.5.6"
+      },
+      "packageZipAssetId": 787584979,
+      "packageZipSha256": "6f4716bd504bf9f012b20cdcdc2b2f6dbdcb001ac458cfe198e949d1dd6d6099",
+      "repoRef": "v3.5.6",
+      "size": 4205214,
+      "stars": 38,
+      "updated": "2026-11-24T14:45:52Z",
+      "url": "5kyfkr/siyuan-plugin-task-horizon@6f4716b"
+    },
+    {
+      "created": "2026-11-02T01:20:16Z",
+      "installSize": 1345300,
+      "openIssues": 0,
+      "package": {
+        "author": "ccztao",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Mankeep — relationships, dated organization history, birthdays and notes in SiYuan: one person, one document, backed by a native database.",
+          "zh_CN": "Mankeep：在思源笔记里管理联系人、关系、组织经历、生日与备注；一人一文档，原生数据库作主干。"
+        },
+        "displayName": {
+          "default": "Mankeep人脉"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "Mankeep",
+          "人脉",
+          "联系人",
+          "通讯录",
+          "CRM",
+          "生日",
+          "关系"
+        ],
+        "minAppVersion": "3.8.5",
+        "name": "siyuan-mankeep",
+        "preview": "preview.jpg",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/ccztao/siyuan-mankeep",
+        "version": "0.55.2"
+      },
+      "packageZipAssetId": 787560923,
+      "packageZipSha256": "0e3eed6183984e764f54dbabfaf052519db75712065394ad2d398a4d4d1d9552",
+      "repoRef": "0.55.2",
+      "size": 716955,
+      "stars": 2,
+      "updated": "2026-11-24T14:40:18Z",
+      "url": "ccztao/siyuan-mankeep@0e3eed6"
     },
     {
       "created": "2026-08-22T07:04:02Z",
@@ -200,52 +622,6 @@
       "stars": 42,
       "updated": "2026-11-24T09:51:18Z",
       "url": "Glaube-TY/siyuan-homepage@19922b3"
-    },
-    {
-      "created": "2026-11-24T09:14:34Z",
-      "installSize": 41043,
-      "openIssues": 0,
-      "package": {
-        "author": "Amin",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin"
-        ],
-        "description": {
-          "default": "Paste a URL as a titled link or an expandable preview card"
-        },
-        "displayName": {
-          "default": "Link Paste"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop"
-        ],
-        "icon": "",
-        "keywords": [
-          "link",
-          "paste",
-          "title",
-          "card"
-        ],
-        "minAppVersion": "3.8.11",
-        "name": "siyuan-link-paste",
-        "preview": "",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/rezgi/Siyuan-Link-Paste",
-        "version": "0.1.3"
-      },
-      "packageZipAssetId": 784670985,
-      "packageZipSha256": "7b6a6236e1d5dc331e9740f8061a8ba5c0a87cba53c2840bf57dac27181da7b6",
-      "repoRef": "v0.1.3",
-      "size": 12187,
-      "stars": 0,
-      "updated": "2026-11-24T09:14:34Z",
-      "url": "rezgi/Siyuan-Link-Paste@7b6a623"
     },
     {
       "created": "2026-04-25T19:19:41Z",
@@ -393,61 +769,6 @@
       "stars": 0,
       "updated": "2026-11-24T07:51:01Z",
       "url": "WyattYuan/siyuan-codex-ask@6bd4665"
-    },
-    {
-      "created": "2026-11-14T17:20:27Z",
-      "installSize": 1328591,
-      "openIssues": 0,
-      "package": {
-        "author": "Clymer-git",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "在思源笔记里给图片画箭头、序号、文字、形状、马赛克与模糊，还能旋转、翻转、裁剪；保存后覆盖原图，一张 PNG 既是成品也是可继续编辑的工程，不产生多余资源。",
-          "en": "Annotate and crop images right inside SiYuan — saving overwrites the same PNG with the artwork and editable data embedded, so the image stays re-editable and no extra assets pile up."
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "勾画阁·猫抓"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "mobile"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "图片",
-          "标注",
-          "箭头",
-          "马赛克",
-          "裁剪",
-          "annotate",
-          "image",
-          "png",
-          "annotation",
-          "crop"
-        ],
-        "minAppVersion": "3.0.12",
-        "name": "siyuan-plugin-annotate",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/Clymer-git/siyuan-plugin-annotate",
-        "version": "1.4.2"
-      },
-      "packageZipAssetId": 787045303,
-      "packageZipSha256": "d0256b27cd837dffee7e87cb33bd1dbbbad412ee802b554a6097e1cc164a30d9",
-      "repoRef": "v1.4.2",
-      "size": 750087,
-      "stars": 1,
-      "updated": "2026-11-24T06:16:43Z",
-      "url": "Clymer-git/siyuan-plugin-annotate@d0256b2"
     },
     {
       "created": "2026-10-24T06:07:15Z",
@@ -784,59 +1105,6 @@
       "stars": 0,
       "updated": "2026-11-23T19:20:45Z",
       "url": "shuishuishui018/siyuan-ai-weekly-report@77a9e26"
-    },
-    {
-      "created": "2026-02-08T18:58:44Z",
-      "installSize": 20251084,
-      "openIssues": 0,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Manage SiYuan tasks across documents with checklist, table, timeline, Kanban, calendar and whiteboard views, an AI assistant, quick editing and focus statistics.",
-          "zh-CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Horizon",
-          "zh-CN": "任务管理器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "task",
-          "manager",
-          "filter"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-plugin-task-horizon",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "3.5.5"
-      },
-      "packageZipAssetId": 783846364,
-      "packageZipSha256": "b4f38f0ba668aa2c25c93dcea8a5e008fad7106f7853e3c150d9448387600eca",
-      "repoRef": "v3.5.5",
-      "size": 4202737,
-      "stars": 38,
-      "updated": "2026-11-23T17:20:30Z",
-      "url": "5kyfkr/siyuan-plugin-task-horizon@b4f38f0"
     },
     {
       "created": "2026-11-23T11:48:44Z",
@@ -2346,62 +2614,6 @@
       "url": "5kyfkr/siyuan-plugin-docktomato@de1c339"
     },
     {
-      "created": "2026-09-26T07:04:34Z",
-      "installSize": 562804,
-      "openIssues": 1,
-      "package": {
-        "author": "wmy2981",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A batch of independently toggleable desktop and mobile enhancements and optimized styles",
-          "zh-CN": "一批可独立启停的桌面端与移动端增强功能和优化后的样式",
-          "zh-TW": "一批可獨立啟停的桌面端與行動端增強功能和最佳化後的樣式"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Some Settings",
-          "zh-CN": "一些设置",
-          "zh-TW": "一些設定"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/wmy2981"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "settings",
-          "style",
-          "custom",
-          "ui",
-          "enhancement"
-        ],
-        "minAppVersion": "3.8.6-alpha.4",
-        "name": "some-settings-siyuan",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md",
-          "zh-TW": "README.zh-TW.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/wmy2981/some-settings-siyuan",
-        "version": "1.1.9"
-      },
-      "packageZipAssetId": 778446458,
-      "packageZipSha256": "98a45ea46a9b1fa864312c903acd3746a88dba45de852265b1ef17b059de27d4",
-      "repoRef": "v1.1.9",
-      "size": 193029,
-      "stars": 2,
-      "updated": "2026-11-22T08:50:37Z",
-      "url": "wmy2981/some-settings-siyuan@98a45ea"
-    },
-    {
       "created": "2025-11-03T22:13:05Z",
       "installSize": 2194042,
       "openIssues": 13,
@@ -2570,120 +2782,6 @@
       "stars": 0,
       "updated": "2026-11-22T06:11:31Z",
       "url": "wmy2981/edit-ignore-files-siyuan@f09a4ff"
-    },
-    {
-      "created": "2026-11-20T14:15:32Z",
-      "installSize": 1468298,
-      "openIssues": 0,
-      "package": {
-        "author": "ccztao",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A clean task and project manager for SiYuan: tasks bound to blocks, projects, kanban, calendar, Gantt, reminders and optional Mankeep contact mentions.",
-          "zh_CN": "简洁的思源事项与项目管理：任务绑定文档块，支持项目、看板、日历、甘特图、提醒和可选的 Mankeep 联系人提及。"
-        },
-        "displayName": {
-          "default": "Task Manager",
-          "zh_CN": "事项管理"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "task",
-          "todo",
-          "project",
-          "kanban",
-          "calendar",
-          "gantt",
-          "reminder",
-          "mankeep",
-          "事项",
-          "任务",
-          "项目",
-          "看板",
-          "日历",
-          "甘特图",
-          "提醒"
-        ],
-        "minAppVersion": "3.1.0",
-        "name": "sy-task-manage",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/ccztao/sy-task-manage",
-        "version": "0.2.5"
-      },
-      "packageZipAssetId": 777947679,
-      "packageZipSha256": "150f034c9962ea596cab90c79605e894051583df79209170eb3e646606661492",
-      "repoRef": "v0.2.5",
-      "size": 874396,
-      "stars": 1,
-      "updated": "2026-11-22T05:08:27Z",
-      "url": "ccztao/sy-task-manage@150f034"
-    },
-    {
-      "created": "2025-04-22T14:02:50Z",
-      "installSize": 2239298,
-      "openIssues": 0,
-      "package": {
-        "author": "Misuzu2027",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
-        ],
-        "description": {
-          "default": "Replace the native image viewer with a floating pin preview, including database images.",
-          "zh_CN": "替代原生图片查看功能，支持文档和数据库图片的悬浮预览"
-        },
-        "displayName": {
-          "default": "Image Pin Preview",
-          "zh_CN": "图片悬浮预览"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "image",
-          "preview",
-          "pin",
-          "float",
-          "图片",
-          "预览",
-          "悬浮"
-        ],
-        "minAppVersion": "3.0.12",
-        "name": "syplugin-image-pin-preview",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/Misuzu2027/syplugin-image-pin-preview",
-        "version": "0.0.18"
-      },
-      "packageZipAssetId": 776348266,
-      "packageZipSha256": "3e25be142633e1fb35143cc04334d004da3a76a66a523399cc355cc14d0ce461",
-      "repoRef": "v0.0.18",
-      "size": 673245,
-      "stars": 1,
-      "updated": "2026-11-21T17:38:11Z",
-      "url": "Misuzu2027/syplugin-image-pin-preview@3e25be1"
     },
     {
       "created": "2026-11-15T10:31:38Z",
@@ -3551,54 +3649,6 @@
       "url": "taotaochen86/tree-doc-numbering@9616820"
     },
     {
-      "created": "2026-11-18T07:54:24Z",
-      "installSize": 136410,
-      "openIssues": 0,
-      "package": {
-        "author": "mnyon",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Discover connections between your notes. Normal uninstall keeps graph data for reinstallation; deleting plugin storage removes it. Export a backup first. Original notes are unaffected.",
-          "zh-CN": "让笔记片段彼此照见，连接想法，留下思考。普通卸载保留图谱与设置，重新安装可继续使用；手动清理插件数据目录会删除记录。建议卸载前导出备份，笔记原文不受影响。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "PairSentence"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "关联",
-          "随机漫游",
-          "思考图谱"
-        ],
-        "minAppVersion": "3.8.5",
-        "name": "pairsentence",
-        "preview": "",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/mnyon/pairsentence",
-        "version": "0.1.15"
-      },
-      "packageZipAssetId": 763977598,
-      "packageZipSha256": "90590dcc64c4f262208cc84ad1c7a8d3a90bee3c604f0af95683ab47bc2883de",
-      "repoRef": "v0.1.15",
-      "size": 133228,
-      "stars": 0,
-      "updated": "2026-11-18T15:49:31Z",
-      "url": "mnyon/pairsentence@90590dc"
-    },
-    {
       "created": "2025-01-19T15:19:54Z",
       "installSize": 4541731,
       "openIssues": 5,
@@ -4360,56 +4410,6 @@
       "stars": 1,
       "updated": "2026-11-17T15:19:55Z",
       "url": "alexremi666/siyuan-clock@651fd5e"
-    },
-    {
-      "created": "2026-11-02T01:20:16Z",
-      "installSize": 924686,
-      "openIssues": 0,
-      "package": {
-        "author": "ccztao",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Mankeep — relationships, dated organization history, birthdays and notes in SiYuan: one person, one document, backed by a native database.",
-          "zh_CN": "Mankeep：在思源笔记里管理联系人、关系、组织经历、生日与备注；一人一文档，原生数据库作主干。"
-        },
-        "displayName": {
-          "default": "Mankeep人脉"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "Mankeep",
-          "人脉",
-          "联系人",
-          "通讯录",
-          "CRM",
-          "生日",
-          "关系"
-        ],
-        "minAppVersion": "3.8.5",
-        "name": "siyuan-mankeep",
-        "preview": "preview.jpg",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/ccztao/siyuan-mankeep",
-        "version": "0.52.4"
-      },
-      "packageZipAssetId": 759485188,
-      "packageZipSha256": "06673b80d26da7313e6927b4e9ce8e93debc99e44bb80bdb99c6138c3d853115",
-      "repoRef": "0.52.4",
-      "size": 376730,
-      "stars": 2,
-      "updated": "2026-11-17T15:00:35Z",
-      "url": "ccztao/siyuan-mankeep@06673b8"
     },
     {
       "created": "2026-11-01T05:29:22Z",
