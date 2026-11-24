@@ -1,6 +1,149 @@
 {
   "repos": [
     {
+      "created": "2026-08-22T07:04:02Z",
+      "installSize": 358954,
+      "openIssues": 0,
+      "package": {
+        "author": "Jeffrey Chen",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Reload the window, open plugin-related directories, and toggle developer tools (uses vConsole on mobile and HarmonyOS).",
+          "zh-CN": "支持重载窗口、打开插件相关目录、切换开发者工具（移动端与鸿蒙端使用 vConsole）。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "DevTools",
+          "zh-CN": "开发者工具"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "links": [
+            {
+              "label": "个人网站",
+              "url": "https://mytemos.com/"
+            },
+            {
+              "label": "爱发电",
+              "url": "https://afdian.com/a/JeffreyChen"
+            }
+          ]
+        },
+        "icon": "icon.png",
+        "minAppVersion": "3.8.2-alpha.3",
+        "name": "devtools",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/TCOTC/devtools",
+        "version": "1.0.2"
+      },
+      "packageZipAssetId": 787083019,
+      "packageZipSha256": "5c7ff89110b721f97674f8577214926e7c845ef633e09029194b8f48268528f9",
+      "repoRef": "v1.0.2",
+      "size": 113165,
+      "stars": 1,
+      "updated": "2026-11-24T12:21:09Z",
+      "url": "TCOTC/devtools@5c7ff89"
+    },
+    {
+      "created": "2025-06-12T13:50:30Z",
+      "installSize": 15325342,
+      "openIssues": 2,
+      "package": {
+        "author": "Glaube-TY",
+        "backends": [
+          "windows",
+          "linux",
+          "ios",
+          "android",
+          "harmony",
+          "docker",
+          "darwin"
+        ],
+        "description": {
+          "en_US": "Provides personalized homepage layout and rich functional modules, as well as AI knowledge base.",
+          "zh_CN": "提供个性化首页布局和丰富的功能模块以及 AI 知识库功能。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "en_US": "HOME",
+          "zh_CN": "主页"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://glaube-ty.top/da-shang/"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "keywords": [
+          "homepage",
+          "home",
+          "主页",
+          "首页",
+          "task",
+          "task manager",
+          "任务",
+          "任务管理",
+          "SQL",
+          "sql",
+          "查询",
+          "widget",
+          "widget manager",
+          "挂件",
+          "挂件管理",
+          "组件",
+          "组件管理",
+          "Pomodoro",
+          "Pomodoro timer",
+          "番茄钟",
+          "番茄",
+          "heat map",
+          "热力图",
+          "热搜",
+          "搜索",
+          "AI",
+          "智能助手",
+          "agent",
+          "智能体"
+        ],
+        "minAppVersion": "3.8.6",
+        "name": "siyuan-homepage",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/Glaube-TY/siyuan-homepage",
+        "version": "5.1.23"
+      },
+      "packageZipAssetId": 786589291,
+      "packageZipSha256": "19922b3ea9049c995b4014fa799f8077630e9918a31c8107b750d824ad3f774b",
+      "repoRef": "v5.1.23",
+      "size": 5473257,
+      "stars": 42,
+      "updated": "2026-11-24T09:51:18Z",
+      "url": "Glaube-TY/siyuan-homepage@19922b3"
+    },
+    {
       "created": "2026-11-24T09:14:34Z",
       "installSize": 41043,
       "openIssues": 0,
@@ -45,6 +188,275 @@
       "stars": 0,
       "updated": "2026-11-24T09:14:34Z",
       "url": "rezgi/Siyuan-Link-Paste@7b6a623"
+    },
+    {
+      "created": "2026-04-25T19:19:41Z",
+      "installSize": 2869570,
+      "openIssues": 3,
+      "package": {
+        "author": "LunaNorth",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A lightweight note-taking plugin for SiYuan, inspired by Flomo",
+          "zh-CN": "记录每一个轻闪而过的念头",
+          "zh_CN": "记录每一个轻闪而过的念头"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Lumina",
+          "zh-CN": "轻语",
+          "zh_CN": "轻语"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://testingcf.jsdelivr.net/gh/LunaNorth/north-img/images/20260519195219305.png"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "碎碎念",
+          "记录",
+          "回顾"
+        ],
+        "minAppVersion": "3.3.3",
+        "name": "siyuan-lumina",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md",
+          "zh_CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/LunaNorth/siyuan-lumina",
+        "version": "2.5.8"
+      },
+      "packageZipAssetId": 786349313,
+      "packageZipSha256": "71a5e14cdc9b2c091acc50acd7e5b229ad9daeef3a110ef74013b4df8dd74ca6",
+      "repoRef": "v2.5.8",
+      "size": 781540,
+      "stars": 20,
+      "updated": "2026-11-24T08:34:01Z",
+      "url": "LunaNorth/siyuan-lumina@71a5e14"
+    },
+    {
+      "created": "2026-11-18T09:17:40Z",
+      "installSize": 45565433,
+      "openIssues": 0,
+      "package": {
+        "author": "yzc",
+        "backends": [
+          "windows",
+          "darwin"
+        ],
+        "description": {
+          "default": "Documents, library and RSS in one SiYuan plugin",
+          "zh-CN": "文档导航、书房与 RSS 一体化阅读增强"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "yzc阅读"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "INL",
+          "Notion",
+          "Anthropic"
+        ],
+        "minAppVersion": "3.8.10",
+        "name": "yzc-Siyuan-reading",
+        "preview": "",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/q924620169-cell/yzc-Siyuan-reading",
+        "version": "1.0.5"
+      },
+      "packageZipAssetId": 786272281,
+      "packageZipSha256": "f600e8029384acc4cb97098a25d725576c656eeae45bd5d0ded5bc184f78cd07",
+      "repoRef": "v1.0.5",
+      "size": 27096242,
+      "stars": 0,
+      "updated": "2026-11-24T08:07:44Z",
+      "url": "q924620169-cell/yzc-Siyuan-reading@f600e80"
+    },
+    {
+      "created": "2026-11-23T10:08:36Z",
+      "installSize": 589337,
+      "openIssues": 0,
+      "package": {
+        "author": "WyattYuan",
+        "backends": [
+          "windows"
+        ],
+        "description": {
+          "default": "Ask an existing Codex chat about selected text or blocks in SiYuan.",
+          "zh-CN": "选中文字或块，输入问题，发送到已有的 Codex 聊天。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Ask Codex (Windows)",
+          "zh-CN": "向 Codex 提问"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "Codex",
+          "OpenAI",
+          "selection",
+          "question",
+          "划词",
+          "提问"
+        ],
+        "minAppVersion": "3.8.7",
+        "name": "siyuan-codex-ask",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/WyattYuan/siyuan-codex-ask",
+        "version": "0.2.2"
+      },
+      "packageZipAssetId": 786223560,
+      "packageZipSha256": "6bd46654cc5022a62d0fb5e672fb15261684c097dc9ee0d0b5f257cb9b904138",
+      "repoRef": "v0.2.2",
+      "size": 543592,
+      "stars": 0,
+      "updated": "2026-11-24T07:51:01Z",
+      "url": "WyattYuan/siyuan-codex-ask@6bd4665"
+    },
+    {
+      "created": "2026-11-14T17:20:27Z",
+      "installSize": 1328591,
+      "openIssues": 0,
+      "package": {
+        "author": "Clymer-git",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "在思源笔记里给图片画箭头、序号、文字、形状、马赛克与模糊，还能旋转、翻转、裁剪；保存后覆盖原图，一张 PNG 既是成品也是可继续编辑的工程，不产生多余资源。",
+          "en": "Annotate and crop images right inside SiYuan — saving overwrites the same PNG with the artwork and editable data embedded, so the image stays re-editable and no extra assets pile up."
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "勾画阁·猫抓"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "mobile"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "图片",
+          "标注",
+          "箭头",
+          "马赛克",
+          "裁剪",
+          "annotate",
+          "image",
+          "png",
+          "annotation",
+          "crop"
+        ],
+        "minAppVersion": "3.0.12",
+        "name": "siyuan-plugin-annotate",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/Clymer-git/siyuan-plugin-annotate",
+        "version": "1.4.2"
+      },
+      "packageZipAssetId": 787045303,
+      "packageZipSha256": "d0256b27cd837dffee7e87cb33bd1dbbbad412ee802b554a6097e1cc164a30d9",
+      "repoRef": "v1.4.2",
+      "size": 750087,
+      "stars": 1,
+      "updated": "2026-11-24T06:16:43Z",
+      "url": "Clymer-git/siyuan-plugin-annotate@d0256b2"
+    },
+    {
+      "created": "2026-10-24T06:07:15Z",
+      "installSize": 22618040,
+      "openIssues": 0,
+      "package": {
+        "author": "LongDarkroom",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A standalone EPUB/PDF reader for SiYuan: shelf and progress, immersive typography, highlights and offline dictionaries, bilingual reading, TTS, and an AI reading assistant that cites passages and saves answers as notes — all stored locally.",
+          "zh-CN": "思源里的独立 EPUB/PDF 阅读器：书架与进度、沉浸排版、六色高亮与离线词典、腾讯机翻双语对照、四引擎朗读，还有一个能按页/章提问、引用回跳、存成思源笔记的 AI 阅读助手。批注、进度与设置全部本地存储。"
+        },
+        "displayName": {
+          "default": "RE Reader",
+          "zh-CN": "RE 阅读器"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "mobile",
+          "browser-mobile"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/3435d"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "reader",
+          "epub",
+          "pdf",
+          "mobi",
+          "azw3",
+          "dictionary",
+          "tts",
+          "bilingual",
+          "阅读器",
+          "电子书",
+          "词典",
+          "划词",
+          "双语",
+          "朗读",
+          "批注",
+          "AI 阅读助手"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-reader",
+        "preview": "preview.jpg",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/LongDarkroom/siyuan-plugin-reader",
+        "version": "0.11.2"
+      },
+      "packageZipAssetId": 785874020,
+      "packageZipSha256": "cbc41a87aa8f520370f0eaec7c34faa9f8def63cbd545e63eef3f6462c288d2b",
+      "repoRef": "v0.11.2",
+      "size": 15121713,
+      "stars": 3,
+      "updated": "2026-11-24T05:44:51Z",
+      "url": "LongDarkroom/siyuan-plugin-reader@cbc41a8"
     },
     {
       "created": "2026-11-23T07:46:15Z",
@@ -674,54 +1086,6 @@
       "url": "jieyangzhang023/siyuan-moqi-trainer@7315eb8"
     },
     {
-      "created": "2026-11-23T10:08:36Z",
-      "installSize": 263550,
-      "openIssues": 0,
-      "package": {
-        "author": "WyattYuan",
-        "backends": [
-          "windows"
-        ],
-        "description": {
-          "default": "Ask an existing Codex chat about selected text or blocks in SiYuan.",
-          "zh-CN": "选中文字或块，输入问题，发送到已有的 Codex 聊天。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Ask Codex (Windows)",
-          "zh-CN": "向 Codex 提问"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "Codex",
-          "OpenAI",
-          "selection",
-          "question",
-          "划词",
-          "提问"
-        ],
-        "minAppVersion": "3.8.7",
-        "name": "siyuan-codex-ask",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/WyattYuan/siyuan-codex-ask",
-        "version": "0.2.1"
-      },
-      "packageZipAssetId": 782353767,
-      "packageZipSha256": "bc7ae34a1996f5032872d5e8d49ec00f7deb1c31f2648f23a2134471d3429b96",
-      "repoRef": "v0.2.1",
-      "size": 213029,
-      "stars": 0,
-      "updated": "2026-11-23T10:08:36Z",
-      "url": "WyattYuan/siyuan-codex-ask@bc7ae34"
-    },
-    {
       "created": "2026-10-20T13:24:48Z",
       "installSize": 33665528,
       "openIssues": 1,
@@ -1004,114 +1368,6 @@
       "stars": 0,
       "updated": "2026-11-23T07:41:17Z",
       "url": "Forgo7ten/siyuan-plugin-omnikit@686a307"
-    },
-    {
-      "created": "2026-04-25T19:19:41Z",
-      "installSize": 2684270,
-      "openIssues": 3,
-      "package": {
-        "author": "LunaNorth",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A lightweight note-taking plugin for SiYuan, inspired by Flomo",
-          "zh-CN": "记录每一个轻闪而过的念头",
-          "zh_CN": "记录每一个轻闪而过的念头"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Lumina",
-          "zh-CN": "轻语",
-          "zh_CN": "轻语"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://testingcf.jsdelivr.net/gh/LunaNorth/north-img/images/20260519195219305.png"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "碎碎念",
-          "记录",
-          "回顾"
-        ],
-        "minAppVersion": "3.3.3",
-        "name": "siyuan-lumina",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md",
-          "zh_CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/LunaNorth/siyuan-lumina",
-        "version": "2.5.7"
-      },
-      "packageZipAssetId": 781795640,
-      "packageZipSha256": "6fd5b4bd3eba1c7c8c03e44d5ce9da825c2741dcac5ae7c924d58a6b8c9c6ca3",
-      "repoRef": "v2.5.7",
-      "size": 746642,
-      "stars": 20,
-      "updated": "2026-11-23T06:20:42Z",
-      "url": "LunaNorth/siyuan-lumina@6fd5b4b"
-    },
-    {
-      "created": "2026-11-14T17:20:27Z",
-      "installSize": 1326402,
-      "openIssues": 0,
-      "package": {
-        "author": "Clymer-git",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "在思源笔记里给图片画箭头、序号、文字、形状、马赛克与模糊，还能旋转、翻转、裁剪；保存后覆盖原图，一张 PNG 既是成品也是可继续编辑的工程，不产生多余资源。",
-          "en": "Annotate and crop images right inside SiYuan — saving overwrites the same PNG with the artwork and editable data embedded, so the image stays re-editable and no extra assets pile up."
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "勾画阁·猫抓"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "mobile"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "图片",
-          "标注",
-          "箭头",
-          "马赛克",
-          "裁剪",
-          "annotate",
-          "image",
-          "png",
-          "annotation",
-          "crop"
-        ],
-        "minAppVersion": "3.0.12",
-        "name": "siyuan-plugin-annotate",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/Clymer-git/siyuan-plugin-annotate",
-        "version": "1.4.1"
-      },
-      "packageZipAssetId": 781589927,
-      "packageZipSha256": "2a243eaa7579f3049a287ce294742572d3597f92939d07194ac499327b71a468",
-      "repoRef": "v1.4.1",
-      "size": 748793,
-      "stars": 1,
-      "updated": "2026-11-23T04:58:42Z",
-      "url": "Clymer-git/siyuan-plugin-annotate@2a243ea"
     },
     {
       "created": "2025-11-26T14:43:52Z",
@@ -2849,73 +3105,6 @@
       "url": "HaoCeans/siyuan-toolbar-customizer@2767b18"
     },
     {
-      "created": "2026-10-24T06:07:15Z",
-      "installSize": 22617216,
-      "openIssues": 0,
-      "package": {
-        "author": "LongDarkroom",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A standalone EPUB/PDF reader for SiYuan: shelf and progress, immersive typography, highlights and offline dictionaries, bilingual reading, TTS, and an AI reading assistant that cites passages and saves answers as notes — all stored locally.",
-          "zh-CN": "思源里的独立 EPUB/PDF 阅读器：书架与进度、沉浸排版、六色高亮与离线词典、腾讯机翻双语对照、四引擎朗读，还有一个能按页/章提问、引用回跳、存成思源笔记的 AI 阅读助手。批注、进度与设置全部本地存储。"
-        },
-        "displayName": {
-          "default": "RE Reader",
-          "zh-CN": "RE 阅读器"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "mobile",
-          "browser-mobile"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/3435d"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "reader",
-          "epub",
-          "pdf",
-          "mobi",
-          "azw3",
-          "dictionary",
-          "tts",
-          "bilingual",
-          "阅读器",
-          "电子书",
-          "词典",
-          "划词",
-          "双语",
-          "朗读",
-          "批注",
-          "AI 阅读助手"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-reader",
-        "preview": "preview.jpg",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/LongDarkroom/siyuan-plugin-reader",
-        "version": "0.11.1"
-      },
-      "packageZipAssetId": 774027496,
-      "packageZipSha256": "6ab8f753482d1a8f6168731782b3f0c5ff936b1a181beee65393a4c1949de202",
-      "repoRef": "v0.11.1",
-      "size": 15121330,
-      "stars": 2,
-      "updated": "2026-11-21T01:35:04Z",
-      "url": "LongDarkroom/siyuan-plugin-reader@6ab8f75"
-    },
-    {
       "created": "2026-10-24T07:15:28Z",
       "installSize": 1091618,
       "openIssues": 0,
@@ -3021,52 +3210,6 @@
       "url": "QYLexpired/Neo-Plus@edf8746"
     },
     {
-      "created": "2026-11-18T09:17:40Z",
-      "installSize": 45549015,
-      "openIssues": 0,
-      "package": {
-        "author": "yzc",
-        "backends": [
-          "windows",
-          "darwin"
-        ],
-        "description": {
-          "default": "Documents, library and RSS in one SiYuan plugin",
-          "zh-CN": "文档导航、书房与 RSS 一体化阅读增强"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "yzc阅读"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "INL",
-          "Notion",
-          "Anthropic"
-        ],
-        "minAppVersion": "3.8.10",
-        "name": "yzc-Siyuan-reading",
-        "preview": "",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/q924620169-cell/yzc-Siyuan-reading",
-        "version": "1.0.4"
-      },
-      "packageZipAssetId": 771310199,
-      "packageZipSha256": "35fbfe8c56ce437d054f5fa23f6e00632494af945d57b0b65cfb1168aeaa0741",
-      "repoRef": "v1.0.4",
-      "size": 27092264,
-      "stars": 0,
-      "updated": "2026-11-20T10:01:11Z",
-      "url": "q924620169-cell/yzc-Siyuan-reading@35fbfe8"
-    },
-    {
       "created": "2026-11-18T08:09:41Z",
       "installSize": 126352,
       "openIssues": 0,
@@ -3161,97 +3304,6 @@
       "stars": 0,
       "updated": "2026-11-20T06:32:13Z",
       "url": "mnyon/gamifyforsiyuan@61f8009"
-    },
-    {
-      "created": "2025-06-12T13:50:30Z",
-      "installSize": 15317760,
-      "openIssues": 1,
-      "package": {
-        "author": "Glaube-TY",
-        "backends": [
-          "windows",
-          "linux",
-          "ios",
-          "android",
-          "harmony",
-          "docker",
-          "darwin"
-        ],
-        "description": {
-          "en_US": "Provides personalized homepage layout and rich functional modules, as well as AI knowledge base.",
-          "zh_CN": "提供个性化首页布局和丰富的功能模块以及 AI 知识库功能。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "en_US": "HOME",
-          "zh_CN": "主页"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://glaube-ty.top/da-shang/"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker"
-        ],
-        "keywords": [
-          "homepage",
-          "home",
-          "主页",
-          "首页",
-          "task",
-          "task manager",
-          "任务",
-          "任务管理",
-          "SQL",
-          "sql",
-          "查询",
-          "widget",
-          "widget manager",
-          "挂件",
-          "挂件管理",
-          "组件",
-          "组件管理",
-          "Pomodoro",
-          "Pomodoro timer",
-          "番茄钟",
-          "番茄",
-          "heat map",
-          "热力图",
-          "热搜",
-          "搜索",
-          "AI",
-          "智能助手",
-          "agent",
-          "智能体"
-        ],
-        "minAppVersion": "3.8.6",
-        "name": "siyuan-homepage",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/Glaube-TY/siyuan-homepage",
-        "version": "5.1.22"
-      },
-      "packageZipAssetId": 770484151,
-      "packageZipSha256": "7ad7600d440360de2a0c3afa669b94b820f1ee76dc5f50ca439a581b2a94c337",
-      "repoRef": "v5.1.22",
-      "size": 5471003,
-      "stars": 42,
-      "updated": "2026-11-20T04:45:26Z",
-      "url": "Glaube-TY/siyuan-homepage@7ad7600"
     },
     {
       "created": "2026-11-11T11:23:12Z",
@@ -19199,49 +19251,6 @@
       "stars": 1,
       "updated": "2026-08-22T15:23:51Z",
       "url": "TCOTC/fullscreen@74b274e"
-    },
-    {
-      "created": "2026-08-22T07:04:02Z",
-      "installSize": 362915,
-      "openIssues": 0,
-      "package": {
-        "author": "Jeffrey Chen",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Reload the window, open plugin-related directories, and toggle developer tools (uses vConsole on mobile).",
-          "zh-CN": "支持重载窗口、打开插件相关目录、切换开发者工具（移动端使用 vConsole）。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "DevTools",
-          "zh-CN": "开发者工具"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://mytemos.com/"
-          ]
-        },
-        "minAppVersion": "3.8.2-alpha.3",
-        "name": "devtools",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/TCOTC/devtools",
-        "version": "1.0.1"
-      },
-      "packageZipAssetId": 525158932,
-      "packageZipSha256": "875ec6be30249c0785cd0c5aacd1292403a172f7bc4e396b231daf180fc26b52",
-      "repoRef": "v1.0.1",
-      "size": 117540,
-      "stars": 1,
-      "updated": "2026-08-22T15:17:44Z",
-      "url": "TCOTC/devtools@875ec6b"
     },
     {
       "created": "2026-08-21T12:12:38Z",
