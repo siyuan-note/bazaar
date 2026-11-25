@@ -1,6 +1,167 @@
 {
   "repos": [
     {
+      "created": "2026-11-24T14:28:23Z",
+      "installSize": 156065,
+      "openIssues": 0,
+      "package": {
+        "author": "Myisking",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker"
+        ],
+        "description": {
+          "en_US": "Import book, movie, TV/anime, music and game info from Douban into SiYuan databases, and generate note templates.",
+          "zh_CN": "从豆瓣导入书籍、电影、电视剧/动画、音乐、游戏信息到思源数据库，并生成感想笔记模板。"
+        },
+        "displayName": {
+          "en_US": "Douban Media Import Assistant",
+          "zh_CN": "豆瓣媒体导入助手"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "豆瓣",
+          "媒体",
+          "书籍",
+          "电影",
+          "电视剧",
+          "动画",
+          "音乐",
+          "游戏",
+          "数据库"
+        ],
+        "minAppVersion": "3.0.12",
+        "name": "siyuan-media-importer",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/SuperShinningFinger/siyuan-douban-media-importer",
+        "version": "0.1.7"
+      },
+      "packageZipAssetId": 792371334,
+      "packageZipSha256": "dd4f1fc3a0b75b1ead7c0c47d984ca20559f6de67b0e9e95a30108bfe22dc82d",
+      "repoRef": "v0.1.7",
+      "size": 101154,
+      "stars": 0,
+      "updated": "2026-11-25T17:01:55Z",
+      "url": "SuperShinningFinger/siyuan-douban-media-importer@dd4f1fc"
+    },
+    {
+      "created": "2026-02-08T18:58:44Z",
+      "installSize": 20274261,
+      "openIssues": 0,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Manage SiYuan tasks across documents with checklist, table, timeline, Kanban, calendar and whiteboard views, an AI assistant, quick editing and focus statistics.",
+          "zh-CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Horizon",
+          "zh-CN": "任务管理器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "task",
+          "manager",
+          "filter"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-plugin-task-horizon",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
+        "version": "3.5.7"
+      },
+      "packageZipAssetId": 792349917,
+      "packageZipSha256": "e7e582edfc3fc1959041eaabb696cf91008cfa4c3dbdb0fb60143faf48b08883",
+      "repoRef": "v3.5.7",
+      "size": 4210533,
+      "stars": 38,
+      "updated": "2026-11-25T16:55:14Z",
+      "url": "5kyfkr/siyuan-plugin-task-horizon@e7e582e"
+    },
+    {
+      "created": "2026-11-18T15:25:40Z",
+      "installSize": 2556497,
+      "openIssues": 0,
+      "package": {
+        "author": "mnyon",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Your Habitica companion, alongside your notes.",
+          "zh-CN": "你的 Habitica 角色，与你的笔记同行。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Gamify for SiYuan"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "Habitica",
+          "TODO",
+          "gamification",
+          "productivity"
+        ],
+        "minAppVersion": "3.8.5",
+        "name": "gamify-for-siyuan",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/mnyon/gamifyforsiyuan",
+        "version": "0.4.0"
+      },
+      "packageZipAssetId": 792259106,
+      "packageZipSha256": "1df2015798a8b6c2c24b8df1c2e0bb8d80ecdceb6c5af9c6e12599af7b1719b5",
+      "repoRef": "v0.4.0",
+      "size": 2542683,
+      "stars": 0,
+      "updated": "2026-11-25T16:31:04Z",
+      "url": "mnyon/gamifyforsiyuan@1df2015"
+    },
+    {
       "created": "2026-11-25T15:46:05Z",
       "installSize": 11774301,
       "openIssues": 0,
@@ -54,19 +215,262 @@
       "url": "ljq29/univer@597d407"
     },
     {
+      "created": "2026-11-06T10:54:51Z",
+      "installSize": 1980023,
+      "openIssues": 1,
+      "package": {
+        "author": "jiangeeeeee",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "android",
+          "ios",
+          "harmony"
+        ],
+        "description": {
+          "default": "Write in notes and PDFs. Keep imported papers in a dedicated notebook and link a handwritten excerpt to the passage where you are writing.",
+          "zh_CN": "在正文、白板和 PDF 上写画。导入的 PDF 收进资料本，圈住公式和批注即可引用到正文，两边都能点回去。"
+        },
+        "displayName": {
+          "default": "源生笔迹"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-native-handwriting",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/jiangeeeeee/siyuan-native-handwriting",
+        "version": "0.16.0"
+      },
+      "packageZipAssetId": 792047182,
+      "packageZipSha256": "96eac98dd32fafdceb01f98e994a11c039fea15b66e288aecee6bf8882eec453",
+      "repoRef": "v0.16.0",
+      "size": 676963,
+      "stars": 1,
+      "updated": "2026-11-25T15:18:29Z",
+      "url": "jiangeeeeee/siyuan-native-handwriting@96eac98"
+    },
+    {
+      "created": "2025-01-19T15:19:54Z",
+      "installSize": 4545481,
+      "openIssues": 5,
+      "package": {
+        "author": "mm-o",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker",
+          "darwin"
+        ],
+        "description": {
+          "en_US": "Professional media player for SiYuan Note with multi-platform support, smart note integration, timestamp jumps, loop segments, and extensible script architecture",
+          "zh_CN": "专业的思源笔记媒体播放器插件，集成本地媒体、网盘、BBLL、TTVV、多窗口播放、时间戳、循环片段、媒体助手与可扩展架构。"
+        },
+        "displayName": {
+          "en_US": "SiYuan Media Player",
+          "zh_CN": "思播-思源媒体播放器"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://745201.xyz/pay.jpg"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "media player",
+          "audio",
+          "video",
+          "timestamp",
+          "playlist",
+          "note integration",
+          "extensible",
+          "播放器",
+          "音频",
+          "视频",
+          "时间戳",
+          "播放列表",
+          "笔记集成",
+          "多平台"
+        ],
+        "minAppVersion": "3.8.3",
+        "name": "siyuan-media-player",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/mm-o/siyuan-media-player",
+        "version": "2.3.8"
+      },
+      "packageZipAssetId": 791989164,
+      "packageZipSha256": "283261254bca0a0ecf586a7ec8ef9cdff0eb400c8e71ec017e8e1b4c95e87d71",
+      "repoRef": "v2.3.8",
+      "size": 1647317,
+      "stars": 55,
+      "updated": "2026-11-25T15:01:28Z",
+      "url": "mm-o/siyuan-media-player@2832612"
+    },
+    {
+      "created": "2026-10-24T06:07:15Z",
+      "installSize": 22649354,
+      "openIssues": 0,
+      "package": {
+        "author": "LongDarkroom",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A standalone EPUB/PDF reader for SiYuan: shelf and progress, immersive typography, highlights and offline dictionaries, bilingual reading, TTS, and an AI reading assistant that cites passages and saves answers as notes — all stored locally.",
+          "zh-CN": "思源里的独立 EPUB/PDF 阅读器：书架与进度、沉浸排版、六色高亮与离线词典、腾讯机翻双语对照、四引擎朗读，还有一个能按页/章提问、引用回跳、存成思源笔记的 AI 阅读助手。批注、进度与设置全部本地存储。"
+        },
+        "displayName": {
+          "default": "RE Reader",
+          "zh-CN": "RE 阅读器"
+        },
+        "frontends": [
+          "desktop",
+          "browser-desktop",
+          "mobile",
+          "browser-mobile"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/3435d"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "reader",
+          "epub",
+          "pdf",
+          "mobi",
+          "azw3",
+          "dictionary",
+          "tts",
+          "bilingual",
+          "阅读器",
+          "电子书",
+          "词典",
+          "划词",
+          "双语",
+          "朗读",
+          "批注",
+          "AI 阅读助手"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-reader",
+        "preview": "preview.jpg",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/LongDarkroom/siyuan-plugin-reader",
+        "version": "0.11.4"
+      },
+      "packageZipAssetId": 791927056,
+      "packageZipSha256": "f9263bba8e289dd9043d1fb909aabae7943c09f471316d0fa7d1b0f04b397c2a",
+      "repoRef": "v0.11.4",
+      "size": 15135394,
+      "stars": 3,
+      "updated": "2026-11-25T14:42:38Z",
+      "url": "LongDarkroom/siyuan-plugin-reader@f9263bb"
+    },
+    {
+      "created": "2026-11-02T01:20:16Z",
+      "installSize": 1463851,
+      "openIssues": 0,
+      "package": {
+        "author": "ccztao",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Mankeep — relationships, dated organization history, birthdays and notes in SiYuan: one person, one document, backed by a native database.",
+          "en_US": "Mankeep Contacts — manage contacts, relationships, dated organization history, birthdays, interactions and ledgers in SiYuan: one person, one document, backed by a native database.",
+          "zh_CN": "Mankeep：在思源笔记里管理联系人、关系、组织经历、生日与备注；一人一文档，原生数据库作主干。"
+        },
+        "displayName": {
+          "default": "Mankeep人脉",
+          "en_US": "Mankeep Contacts"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "Mankeep",
+          "人脉",
+          "联系人",
+          "通讯录",
+          "CRM",
+          "生日",
+          "关系"
+        ],
+        "minAppVersion": "3.8.5",
+        "name": "siyuan-mankeep",
+        "preview": "preview.jpg",
+        "readme": {
+          "default": "README.md",
+          "en_US": "README.en.md"
+        },
+        "url": "https://github.com/ccztao/siyuan-mankeep",
+        "version": "0.56.0"
+      },
+      "packageZipAssetId": 791904562,
+      "packageZipSha256": "166a6b934ba12dde5dec9c80c882b2afc4fd4743d421ddd2a74c0af54041d0a9",
+      "repoRef": "0.56.0",
+      "size": 786769,
+      "stars": 3,
+      "updated": "2026-11-25T14:18:20Z",
+      "url": "ccztao/siyuan-mankeep@166a6b9"
+    },
+    {
       "created": "2026-11-25T08:42:52Z",
-      "installSize": 696035,
+      "installSize": 744910,
       "openIssues": 0,
       "package": {
         "author": "ShiShiBits",
         "backends": [
           "windows",
           "linux",
-          "darwin"
+          "darwin",
+          "android",
+          "ios",
+          "harmony"
         ],
         "description": {
-          "default": "Manage your authorized Biandan cloud tasks, subplans, calendar and focus sessions in a SiYuan desktop tab. Independent third-party client.",
-          "zh-CN": "在思源文档区管理便单云端待办、子计划、日历与专注，支持整系列预览和核查续写的独立第三方客户端。"
+          "default": "Mobile candidate for Android, iOS and HarmonyOS SiYuan: Biandan tasks, subplans, calendar and focus. Independent third-party plugin; device acceptance pending.",
+          "zh-CN": "管理便单待办、子计划、日历与专注的第三方插件；Android/iOS及鸿蒙版思源候选适配，手机功能验收待完成。"
         },
         "disabledInPublish": true,
         "displayName": {
@@ -74,7 +478,8 @@
           "zh-CN": "便单伴侣 · 第三方"
         },
         "frontends": [
-          "desktop"
+          "desktop",
+          "mobile"
         ],
         "icon": "icon.png",
         "keywords": [
@@ -86,7 +491,7 @@
           "番茄钟",
           "云同步"
         ],
-        "minAppVersion": "3.8.9",
+        "minAppVersion": "3.8.11",
         "name": "siyuan-biandan",
         "preview": "preview.png",
         "readme": {
@@ -94,74 +499,311 @@
           "zh-CN": "README.zh-CN.md"
         },
         "url": "https://github.com/ShiShiBits1/siyuan-biandan",
-        "version": "0.3.3"
+        "version": "0.4.0-rc.2"
       },
-      "packageZipAssetId": 790333192,
-      "packageZipSha256": "c800f351d182dbcacb794948cdf8ff8db134d93408c857237fdd2326ae41a431",
-      "repoRef": "v0.3.3",
-      "size": 537330,
+      "packageZipAssetId": 791832990,
+      "packageZipSha256": "ebcbcc414882b073ef3af870ea91289a787afa5faa3b5464ae867c3d8ecdde02",
+      "repoRef": "v0.4.0-rc.2",
+      "size": 553456,
       "stars": 0,
-      "updated": "2026-11-25T08:42:52Z",
-      "url": "ShiShiBits1/siyuan-biandan@c800f35"
+      "updated": "2026-11-25T14:15:10Z",
+      "url": "ShiShiBits1/siyuan-biandan@ebcbcc4"
     },
     {
-      "created": "2026-11-24T14:28:23Z",
-      "installSize": 155311,
+      "created": "2024-03-05T16:19:53Z",
+      "installSize": 15001518,
       "openIssues": 0,
       "package": {
-        "author": "Myisking",
+        "author": "Jeffrey Chen",
         "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker"
+          "all"
         ],
         "description": {
-          "en_US": "Import book, movie, TV/anime, music and game info from Douban into SiYuan databases, and generate note templates.",
-          "zh_CN": "从豆瓣导入书籍、电影、电视剧/动画、音乐、游戏信息到思源数据库，并生成感想笔记模板。"
+          "default": "Use LXGW WenKai and Twemoji in SiYuan",
+          "zh-CN": "在思源笔记中使用霞鹜文楷和 Twemoji"
         },
         "displayName": {
-          "en_US": "Douban Media Import Assistant",
-          "zh_CN": "豆瓣媒体导入助手"
+          "default": "LXGW WenKai &amp; Twemoji",
+          "zh-CN": "霞鹜文楷 &amp; Twemoji"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "links": [
+            {
+              "label": "个人网站",
+              "url": "https://mytemos.com/"
+            },
+            {
+              "label": "爱发电",
+              "url": "https://afdian.com/a/JeffreyChen"
+            }
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "font",
+          "字体",
+          "Twitter Emoji",
+          "表情包",
+          "表情符号",
+          "图标",
+          "icon"
+        ],
+        "minAppVersion": "3.8.10",
+        "name": "siyuan-ttf-LXGWWenKaiGB-and-Twemoji",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/TCOTC/siyuan-ttf-LXGWWenKaiGB-and-Twemoji",
+        "version": "2.4.2"
+      },
+      "packageZipAssetId": 791336563,
+      "packageZipSha256": "44feb7d692cf93bc791f1a13ae258e01c4218ba5510b5df752270031309291c7",
+      "repoRef": "v2.4.2",
+      "size": 14967434,
+      "stars": 5,
+      "updated": "2026-11-25T11:47:50Z",
+      "url": "TCOTC/siyuan-ttf-LXGWWenKaiGB-and-Twemoji@44feb7d"
+    },
+    {
+      "created": "2024-03-05T11:43:10Z",
+      "installSize": 12449820,
+      "openIssues": 0,
+      "package": {
+        "author": "Jeffrey Chen",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Use HarmonyOS Sans and Twemoji in SiYuan",
+          "zh-CN": "在思源笔记中使用鸿蒙黑体和 Twemoji"
+        },
+        "displayName": {
+          "default": "HarmonyOS Sans &amp; Twemoji",
+          "zh-CN": "鸿蒙黑体 &amp; Twemoji"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "links": [
+            {
+              "label": "个人网站",
+              "url": "https://mytemos.com/"
+            },
+            {
+              "label": "爱发电",
+              "url": "https://afdian.com/a/JeffreyChen"
+            }
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "font",
+          "Twitter Emoji",
+          "鸿蒙字体",
+          "表情包",
+          "表情符号",
+          "图标",
+          "icon"
+        ],
+        "minAppVersion": "3.8.10",
+        "name": "siyuan-ttf-HarmonyOS_Sans_SC-and-Twemoji",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/TCOTC/siyuan-ttf-HarmonyOS_Sans_SC-and-Twemoji",
+        "version": "2.4.2"
+      },
+      "packageZipAssetId": 791336207,
+      "packageZipSha256": "512613289f0b61d13b6b784ee9194112d223fca47ea87c0ea04ff2c9769bd3fc",
+      "repoRef": "v2.4.2",
+      "size": 12270210,
+      "stars": 7,
+      "updated": "2026-11-25T11:47:45Z",
+      "url": "TCOTC/siyuan-ttf-HarmonyOS_Sans_SC-and-Twemoji@5126132"
+    },
+    {
+      "created": "2024-02-02T01:44:18Z",
+      "installSize": 1038204,
+      "openIssues": 0,
+      "package": {
+        "author": "Jeffrey Chen",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Use OpenMoji in SiYuan",
+          "zh-CN": "在思源笔记中使用 OpenMoji"
+        },
+        "displayName": {
+          "default": "OpenMoji emoji",
+          "zh-CN": "OpenMoji 表情符号"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "links": [
+            {
+              "label": "个人网站",
+              "url": "https://mytemos.com/"
+            },
+            {
+              "label": "爱发电",
+              "url": "https://afdian.com/a/JeffreyChen"
+            }
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "emoji",
+          "表情包",
+          "图标",
+          "icon"
+        ],
+        "minAppVersion": "3.8.3",
+        "name": "siyuan-plugin-openmoji-emoji",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/TCOTC/siyuan-plugin-openmoji-emoji",
+        "version": "1.1.2"
+      },
+      "packageZipAssetId": 791335939,
+      "packageZipSha256": "3c0dcf811b34bc910750166425bf762e30ba3321fb84dac1742d2a7a619f7f46",
+      "repoRef": "v1.1.2",
+      "size": 1015358,
+      "stars": 1,
+      "updated": "2026-11-25T11:47:40Z",
+      "url": "TCOTC/siyuan-plugin-openmoji-emoji@3c0dcf8"
+    },
+    {
+      "created": "2026-10-20T13:24:48Z",
+      "installSize": 33667472,
+      "openIssues": 1,
+      "package": {
+        "author": "LongDarkroom",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A hand-drawn whiteboard and presenter for SiYuan: native Excalidraw, one-line AI drawing, frames as slides, re-editable SVG.",
+          "zh-CN": "思源里的手绘白板与演示工具：Excalidraw 原生画布、AI 一句话成图、画框即幻灯片，SVG 内嵌可再编辑。"
+        },
+        "displayName": {
+          "default": "Excali Studio",
+          "zh-CN": "Excali 白板"
         },
         "frontends": [
           "desktop",
           "mobile",
           "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
+          "browser-mobile"
         ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/3435d"
+          ]
+        },
         "icon": "icon.png",
-        "keywords": [
-          "豆瓣",
-          "媒体",
-          "书籍",
-          "电影",
-          "电视剧",
-          "动画",
-          "音乐",
-          "游戏",
-          "数据库"
+        "kernels": [
+          "all"
         ],
-        "minAppVersion": "3.0.12",
-        "name": "siyuan-media-importer",
+        "keywords": [
+          "excalidraw",
+          "whiteboard",
+          "svg",
+          "白板",
+          "手绘",
+          "画图",
+          "演示",
+          "AI 绘图",
+          "presentation"
+        ],
+        "minAppVersion": "3.8.0",
+        "name": "siyuan-excali-studio",
         "preview": "preview.png",
         "readme": {
           "default": "README.md"
         },
-        "url": "https://github.com/SuperShinningFinger/siyuan-douban-media-importer",
-        "version": "0.1.6"
+        "url": "https://github.com/LongDarkroom/siyuan-excali-studio",
+        "version": "0.12.2"
       },
-      "packageZipAssetId": 790139359,
-      "packageZipSha256": "69295e576cc012e8521e42a8fec36f8cf3c549b58aaef76d6c3f742fe106f750",
-      "repoRef": "v0.1.6",
-      "size": 100820,
+      "packageZipAssetId": 791016092,
+      "packageZipSha256": "99e823a2bf8ce3e3bb7775c082794acf511c33ac86111abcae7d57bce7c6830c",
+      "repoRef": "v0.12.2",
+      "size": 27067786,
+      "stars": 1,
+      "updated": "2026-11-25T10:05:53Z",
+      "url": "LongDarkroom/siyuan-excali-studio@99e823a"
+    },
+    {
+      "created": "2026-10-10T14:24:44Z",
+      "installSize": 218639,
+      "openIssues": 0,
+      "package": {
+        "author": "Asyntai",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Turn your SiYuan notes into the knowledge of an AI chatbot for your website. Ask questions about them, and read website chats and leads in a dock.",
+          "zh-CN": "将思源笔记变成网站 AI 聊天机器人的知识库。就笔记内容提问，并在侧栏中查看网站对话和线索。"
+        },
+        "displayName": {
+          "default": "Asyntai AI Chatbot",
+          "zh-CN": "Asyntai AI 聊天机器人"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop",
+          "mobile",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "ai",
+          "chatbot",
+          "ai chatbot",
+          "website chatbot",
+          "knowledge base",
+          "customer support",
+          "asyntai",
+          "聊天机器人",
+          "知识库",
+          "客服",
+          "人工智能"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-ai-chatbot",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/asyntai/siyuan-ai-chatbot",
+        "version": "1.1.0"
+      },
+      "packageZipAssetId": 790661011,
+      "packageZipSha256": "272607fc972d7259285f34e25a7cdc41d03b43aabdc0a990520e042f02834f94",
+      "repoRef": "1.1.0",
+      "size": 154793,
       "stars": 0,
-      "updated": "2026-11-25T05:04:57Z",
-      "url": "SuperShinningFinger/siyuan-douban-media-importer@69295e5"
+      "updated": "2026-11-25T08:10:34Z",
+      "url": "asyntai/siyuan-ai-chatbot@272607f"
     },
     {
       "created": "2026-04-25T19:19:41Z",
@@ -536,109 +1178,6 @@
       "url": "mnyon/pairsentence@844bcd1"
     },
     {
-      "created": "2026-02-08T18:58:44Z",
-      "installSize": 20258122,
-      "openIssues": 0,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Manage SiYuan tasks across documents with checklist, table, timeline, Kanban, calendar and whiteboard views, an AI assistant, quick editing and focus statistics.",
-          "zh-CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Horizon",
-          "zh-CN": "任务管理器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "task",
-          "manager",
-          "filter"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-plugin-task-horizon",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "3.5.6"
-      },
-      "packageZipAssetId": 787584979,
-      "packageZipSha256": "6f4716bd504bf9f012b20cdcdc2b2f6dbdcb001ac458cfe198e949d1dd6d6099",
-      "repoRef": "v3.5.6",
-      "size": 4205214,
-      "stars": 38,
-      "updated": "2026-11-24T14:45:52Z",
-      "url": "5kyfkr/siyuan-plugin-task-horizon@6f4716b"
-    },
-    {
-      "created": "2026-11-02T01:20:16Z",
-      "installSize": 1345300,
-      "openIssues": 0,
-      "package": {
-        "author": "ccztao",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Mankeep — relationships, dated organization history, birthdays and notes in SiYuan: one person, one document, backed by a native database.",
-          "zh_CN": "Mankeep：在思源笔记里管理联系人、关系、组织经历、生日与备注；一人一文档，原生数据库作主干。"
-        },
-        "displayName": {
-          "default": "Mankeep人脉"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "Mankeep",
-          "人脉",
-          "联系人",
-          "通讯录",
-          "CRM",
-          "生日",
-          "关系"
-        ],
-        "minAppVersion": "3.8.5",
-        "name": "siyuan-mankeep",
-        "preview": "preview.jpg",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/ccztao/siyuan-mankeep",
-        "version": "0.55.2"
-      },
-      "packageZipAssetId": 787560923,
-      "packageZipSha256": "0e3eed6183984e764f54dbabfaf052519db75712065394ad2d398a4d4d1d9552",
-      "repoRef": "0.55.2",
-      "size": 716955,
-      "stars": 2,
-      "updated": "2026-11-24T14:40:18Z",
-      "url": "ccztao/siyuan-mankeep@0e3eed6"
-    },
-    {
       "created": "2026-08-22T07:04:02Z",
       "installSize": 358954,
       "openIssues": 0,
@@ -935,73 +1474,6 @@
       "stars": 0,
       "updated": "2026-11-24T07:51:01Z",
       "url": "WyattYuan/siyuan-codex-ask@6bd4665"
-    },
-    {
-      "created": "2026-10-24T06:07:15Z",
-      "installSize": 22618040,
-      "openIssues": 0,
-      "package": {
-        "author": "LongDarkroom",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A standalone EPUB/PDF reader for SiYuan: shelf and progress, immersive typography, highlights and offline dictionaries, bilingual reading, TTS, and an AI reading assistant that cites passages and saves answers as notes — all stored locally.",
-          "zh-CN": "思源里的独立 EPUB/PDF 阅读器：书架与进度、沉浸排版、六色高亮与离线词典、腾讯机翻双语对照、四引擎朗读，还有一个能按页/章提问、引用回跳、存成思源笔记的 AI 阅读助手。批注、进度与设置全部本地存储。"
-        },
-        "displayName": {
-          "default": "RE Reader",
-          "zh-CN": "RE 阅读器"
-        },
-        "frontends": [
-          "desktop",
-          "browser-desktop",
-          "mobile",
-          "browser-mobile"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/3435d"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "reader",
-          "epub",
-          "pdf",
-          "mobi",
-          "azw3",
-          "dictionary",
-          "tts",
-          "bilingual",
-          "阅读器",
-          "电子书",
-          "词典",
-          "划词",
-          "双语",
-          "朗读",
-          "批注",
-          "AI 阅读助手"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-reader",
-        "preview": "preview.jpg",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/LongDarkroom/siyuan-plugin-reader",
-        "version": "0.11.2"
-      },
-      "packageZipAssetId": 785874020,
-      "packageZipSha256": "cbc41a87aa8f520370f0eaec7c34faa9f8def63cbd545e63eef3f6462c288d2b",
-      "repoRef": "v0.11.2",
-      "size": 15121713,
-      "stars": 3,
-      "updated": "2026-11-24T05:44:51Z",
-      "url": "LongDarkroom/siyuan-plugin-reader@cbc41a8"
     },
     {
       "created": "2026-11-23T07:46:15Z",
@@ -1377,52 +1849,6 @@
       "url": "DJYDN/siyuan-pdf-zotero@1e9e39e"
     },
     {
-      "created": "2026-11-06T10:54:51Z",
-      "installSize": 1956936,
-      "openIssues": 1,
-      "package": {
-        "author": "jiangeeeeee",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "android",
-          "ios",
-          "harmony"
-        ],
-        "description": {
-          "default": "Write in notes, sketch on a whiteboard and annotate PDFs. Browse pages and outlines, or choose your own toolbar colors.",
-          "zh_CN": "在正文和 PDF 上手写批注，打开白板画图。按大纲或缩略图翻页，给工具栏挑一套配色。"
-        },
-        "displayName": {
-          "default": "源生笔迹"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-native-handwriting",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/jiangeeeeee/siyuan-native-handwriting",
-        "version": "0.15.0"
-      },
-      "packageZipAssetId": 783346633,
-      "packageZipSha256": "47f2394eb0f855d5a28f8c0525a1fa428ae3129bca6f09cb4f83fa9457a8ce25",
-      "repoRef": "v0.15.0",
-      "size": 670043,
-      "stars": 1,
-      "updated": "2026-11-23T14:54:39Z",
-      "url": "jiangeeeeee/siyuan-native-handwriting@47f2394"
-    },
-    {
       "created": "2026-11-22T06:17:49Z",
       "installSize": 3110696,
       "openIssues": 0,
@@ -1576,66 +2002,6 @@
       "stars": 0,
       "updated": "2026-11-23T12:10:24Z",
       "url": "jieyangzhang023/siyuan-moqi-trainer@7315eb8"
-    },
-    {
-      "created": "2026-10-20T13:24:48Z",
-      "installSize": 33665528,
-      "openIssues": 1,
-      "package": {
-        "author": "LongDarkroom",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A hand-drawn whiteboard and presenter for SiYuan: native Excalidraw, one-line AI drawing, frames as slides, re-editable SVG.",
-          "zh-CN": "思源里的手绘白板与演示工具：Excalidraw 原生画布、AI 一句话成图、画框即幻灯片，SVG 内嵌可再编辑。"
-        },
-        "displayName": {
-          "default": "Excali Studio",
-          "zh-CN": "Excali 白板"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/3435d"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "excalidraw",
-          "whiteboard",
-          "svg",
-          "白板",
-          "手绘",
-          "画图",
-          "演示",
-          "AI 绘图",
-          "presentation"
-        ],
-        "minAppVersion": "3.8.0",
-        "name": "siyuan-excali-studio",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/LongDarkroom/siyuan-excali-studio",
-        "version": "0.12.0"
-      },
-      "packageZipAssetId": 782408664,
-      "packageZipSha256": "007925fd2018adb13ec0bfde3dd1da6708d44bada02d7110ea69e68aee1d0d1a",
-      "repoRef": "v0.12.0",
-      "size": 27066912,
-      "stars": 1,
-      "updated": "2026-11-23T09:56:26Z",
-      "url": "LongDarkroom/siyuan-excali-studio@007925f"
     },
     {
       "created": "2023-11-17T00:43:06Z",
@@ -3518,55 +3884,6 @@
       "url": "lamp3721/colorful-doc-tree@4b180fd"
     },
     {
-      "created": "2026-11-18T15:25:40Z",
-      "installSize": 2515666,
-      "openIssues": 0,
-      "package": {
-        "author": "mnyon",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Your Habitica companion, alongside your notes.",
-          "zh-CN": "你的 Habitica 角色，与你的笔记同行。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Gamify for SiYuan"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "Habitica",
-          "TODO",
-          "gamification",
-          "productivity"
-        ],
-        "minAppVersion": "3.8.5",
-        "name": "gamify-for-siyuan",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/mnyon/gamifyforsiyuan",
-        "version": "0.3.0"
-      },
-      "packageZipAssetId": 770742014,
-      "packageZipSha256": "61f80095f7f2822a3ecf4e6dabec1957ab9a120c2cd0062caa06528c3c004057",
-      "repoRef": "v0.3.0",
-      "size": 2505938,
-      "stars": 0,
-      "updated": "2026-11-20T06:32:13Z",
-      "url": "mnyon/gamifyforsiyuan@61f8009"
-    },
-    {
       "created": "2026-11-11T11:23:12Z",
       "installSize": 215339,
       "openIssues": 0,
@@ -3752,80 +4069,6 @@
       "stars": 1,
       "updated": "2026-11-19T09:39:24Z",
       "url": "taotaochen86/tree-doc-numbering@9616820"
-    },
-    {
-      "created": "2025-01-19T15:19:54Z",
-      "installSize": 4541731,
-      "openIssues": 5,
-      "package": {
-        "author": "mm-o",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker",
-          "darwin"
-        ],
-        "description": {
-          "en_US": "Professional media player for SiYuan Note with multi-platform support, smart note integration, timestamp jumps, loop segments, and extensible script architecture",
-          "zh_CN": "专业的思源笔记媒体播放器插件，集成本地媒体、网盘、BBLL、TTVV、多窗口播放、时间戳、循环片段、媒体助手与可扩展架构。"
-        },
-        "displayName": {
-          "en_US": "SiYuan Media Player",
-          "zh_CN": "思播-思源媒体播放器"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://745201.xyz/pay.jpg"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "media player",
-          "audio",
-          "video",
-          "timestamp",
-          "playlist",
-          "note integration",
-          "extensible",
-          "播放器",
-          "音频",
-          "视频",
-          "时间戳",
-          "播放列表",
-          "笔记集成",
-          "多平台"
-        ],
-        "minAppVersion": "3.8.3",
-        "name": "siyuan-media-player",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/mm-o/siyuan-media-player",
-        "version": "2.3.7"
-      },
-      "packageZipAssetId": 763826186,
-      "packageZipSha256": "31a22bc571e65d250e481c7ec5766410b11d870a45320105e829ffef78248834",
-      "repoRef": "v2.3.7",
-      "size": 1646151,
-      "stars": 54,
-      "updated": "2026-11-18T15:02:39Z",
-      "url": "mm-o/siyuan-media-player@31a22bc"
     },
     {
       "created": "2026-10-10T01:30:12Z",
@@ -6197,128 +6440,6 @@
       "stars": 3,
       "updated": "2026-11-11T08:43:03Z",
       "url": "QMike0/siyuan-plugin-callout-enhance@3d7ae01"
-    },
-    {
-      "created": "2024-03-05T16:19:53Z",
-      "installSize": 15001463,
-      "openIssues": 0,
-      "package": {
-        "author": "Jeffrey Chen",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Use LXGW WenKai and Twemoji in SiYuan",
-          "zh-CN": "在思源笔记中使用霞鹜文楷和 Twemoji"
-        },
-        "displayName": {
-          "default": "LXGW WenKai &amp; Twemoji",
-          "zh-CN": "霞鹜文楷 &amp; Twemoji"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "links": [
-            {
-              "label": "个人网站",
-              "url": "https://mytemos.com/"
-            },
-            {
-              "label": "爱发电",
-              "url": "https://afdian.com/a/JeffreyChen"
-            }
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "font",
-          "字体",
-          "Twitter Emoji",
-          "表情包",
-          "表情符号",
-          "图标",
-          "icon"
-        ],
-        "minAppVersion": "3.8.10",
-        "name": "siyuan-ttf-LXGWWenKaiGB-and-Twemoji",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/TCOTC/siyuan-ttf-LXGWWenKaiGB-and-Twemoji",
-        "version": "2.4.1"
-      },
-      "packageZipAssetId": 734591199,
-      "packageZipSha256": "6a0caac4cf6344f1d7bafab06e957211739fb875aa5a664ed26af3eaf1cf39cd",
-      "repoRef": "v2.4.1",
-      "size": 14967381,
-      "stars": 5,
-      "updated": "2026-11-11T07:33:56Z",
-      "url": "TCOTC/siyuan-ttf-LXGWWenKaiGB-and-Twemoji@6a0caac"
-    },
-    {
-      "created": "2024-03-05T11:43:10Z",
-      "installSize": 12449653,
-      "openIssues": 0,
-      "package": {
-        "author": "Jeffrey Chen",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Use HarmonyOS Sans and Twemoji in SiYuan",
-          "zh-CN": "在思源笔记中使用鸿蒙黑体和 Twemoji"
-        },
-        "displayName": {
-          "default": "HarmonyOS Sans &amp; Twemoji",
-          "zh-CN": "鸿蒙黑体 &amp; Twemoji"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "links": [
-            {
-              "label": "个人网站",
-              "url": "https://mytemos.com/"
-            },
-            {
-              "label": "爱发电",
-              "url": "https://afdian.com/a/JeffreyChen"
-            }
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "font",
-          "Twitter Emoji",
-          "鸿蒙字体",
-          "表情包",
-          "表情符号",
-          "图标",
-          "icon"
-        ],
-        "minAppVersion": "3.8.10",
-        "name": "siyuan-ttf-HarmonyOS_Sans_SC-and-Twemoji",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/TCOTC/siyuan-ttf-HarmonyOS_Sans_SC-and-Twemoji",
-        "version": "2.4.1"
-      },
-      "packageZipAssetId": 734590960,
-      "packageZipSha256": "8a61bf66e36dfdea553e8bc126e6269384a41afd22169ce3283c3cd1776d5423",
-      "repoRef": "v2.4.1",
-      "size": 12270158,
-      "stars": 7,
-      "updated": "2026-11-11T07:33:51Z",
-      "url": "TCOTC/siyuan-ttf-HarmonyOS_Sans_SC-and-Twemoji@8a61bf6"
     },
     {
       "created": "2026-07-28T07:08:28Z",
@@ -12340,57 +12461,6 @@
       "url": "Fly1018/zcode-note@bf3870e"
     },
     {
-      "created": "2024-02-02T01:44:18Z",
-      "installSize": 1039148,
-      "openIssues": 0,
-      "package": {
-        "author": "Jeffrey Chen",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Use OpenMoji in SiYuan",
-          "zh-CN": "在思源笔记中使用 OpenMoji"
-        },
-        "displayName": {
-          "default": "OpenMoji emoji",
-          "zh-CN": "OpenMoji 表情符号"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://mytemos.com/"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "emoji",
-          "表情包",
-          "图标",
-          "icon"
-        ],
-        "minAppVersion": "3.8.3",
-        "name": "siyuan-plugin-openmoji-emoji",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/TCOTC/siyuan-plugin-openmoji-emoji",
-        "version": "1.1.1"
-      },
-      "packageZipAssetId": 660039023,
-      "packageZipSha256": "fcf417588522409061b6c541a6f5ecf1907f265e24c7c5353dd0c40c9066d3a7",
-      "repoRef": "v1.1.1",
-      "size": 1015834,
-      "stars": 1,
-      "updated": "2026-10-20T17:48:37Z",
-      "url": "TCOTC/siyuan-plugin-openmoji-emoji@fcf4175"
-    },
-    {
       "created": "2024-10-29T05:20:25Z",
       "installSize": 61965063,
       "openIssues": 2,
@@ -14320,60 +14390,6 @@
       "stars": 158,
       "updated": "2026-10-11T06:27:02Z",
       "url": "zxkmm/siyuan_doctree_compress@35660f6"
-    },
-    {
-      "created": "2026-10-10T14:24:44Z",
-      "installSize": 216337,
-      "openIssues": 0,
-      "package": {
-        "author": "Asyntai",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Turn your SiYuan notes into the knowledge of an AI chatbot for your website. Ask questions about them, and read website chats and leads in a dock.",
-          "zh-CN": "将思源笔记变成网站 AI 聊天机器人的知识库。就笔记内容提问，并在侧栏中查看网站对话和线索。"
-        },
-        "displayName": {
-          "default": "Asyntai AI Chatbot",
-          "zh-CN": "Asyntai AI 聊天机器人"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "ai",
-          "chatbot",
-          "ai chatbot",
-          "website chatbot",
-          "knowledge base",
-          "customer support",
-          "asyntai",
-          "聊天机器人",
-          "知识库",
-          "客服",
-          "人工智能"
-        ],
-        "minAppVersion": "3.0.0",
-        "name": "siyuan-ai-chatbot",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/asyntai/siyuan-ai-chatbot",
-        "version": "1.0.0"
-      },
-      "packageZipAssetId": 628145769,
-      "packageZipSha256": "945be3372636240a88e4432e325a9b48b8644760d6e615c39cd70b3332e70368",
-      "repoRef": "1.0.0",
-      "size": 154132,
-      "stars": 0,
-      "updated": "2026-10-10T14:24:40Z",
-      "url": "asyntai/siyuan-ai-chatbot@945be33"
     },
     {
       "created": "2024-02-23T09:08:51Z",
