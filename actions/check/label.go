@@ -163,14 +163,13 @@ func sameLabelNames(a, b []string) bool {
 // syncPRLabels 同步类型标签与 CI 状态标签：缺则补、多则删；不改动其他标签。
 // 须在检查结果产出后调用，以便按 ParseError / FlowError / Issues 打 ci-failed 或 ci-passed。
 // 用 Replace 一次写回，尽量减少 API 调用；失败只记日志，不中断检查。
-func syncPRLabels(plans []typeCheckPlan, checkResult *CheckResult) {
+func syncPRLabels(expectedTypes Set, checkResult *CheckResult) {
 	owner, repo, prNumber, ok := prIdentity()
 	if !ok {
 		logger.Infof("skip PR labels sync: PR_NUMBER or GITHUB_REPOSITORY not set / invalid")
 		return
 	}
 
-	expectedTypes := typeLabelSyncPlan(plans, checkResult)
 	ciPassed := checkResultCIPassed(checkResult)
 	current, err := listPRLabelNames(owner, repo, prNumber)
 	if err != nil {

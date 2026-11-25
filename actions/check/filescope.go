@@ -14,7 +14,6 @@ import (
 	"context"
 	"fmt"
 	"os/exec"
-	"path/filepath"
 	"strings"
 
 	"github.com/siyuan-note/bazaar/actions/util"
@@ -23,7 +22,7 @@ import (
 
 // normalizeRepoRelPath 将变更路径规范为仓库根相对、正斜杠形式，便于黑白名单匹配。
 func normalizeRepoRelPath(p string) string {
-	return strings.TrimPrefix(filepath.ToSlash(strings.TrimSpace(p)), "./")
+	return strings.TrimPrefix(strings.ReplaceAll(strings.TrimSpace(p), "\\", "/"), "./")
 }
 
 // isWhitelistedPath 判断是否为社区可改的集市包列表文件（五个根目录 *.txt）。p 须已 normalize。
@@ -99,6 +98,9 @@ func gitRevParseHEAD(ctx context.Context, dir string) (string, error) {
 // listPRChangedFiles 列出本 PR（merge base → head）变更的文件路径。
 // 在 bazaar head 工作区执行 diff：该检出含完整历史且已 fetch PR head，能同时解析两侧 SHA。
 func listPRChangedFiles(ctx context.Context) ([]string, error) {
+	if prSnapshots != nil {
+		return diffPRFiles(ctx, prSnapshots.base, prSnapshots.head)
+	}
 	baseSHA, err := gitRevParseHEAD(ctx, PR_BASE_PATH)
 	if err != nil {
 		return nil, fmt.Errorf("resolve PR base SHA: %w", err)
@@ -107,17 +109,21 @@ func listPRChangedFiles(ctx context.Context) ([]string, error) {
 	if err != nil {
 		return nil, fmt.Errorf("resolve PR head SHA: %w", err)
 	}
+	return diffPRFiles(ctx, baseSHA, headSHA)
+}
+
+func diffPRFiles(ctx context.Context, baseSHA, headSHA string) ([]string, error) {
 	bazaarDir := BAZAAR_HEAD_PATH
 	if bazaarDir == "" {
 		bazaarDir = "."
 	}
-	cmd := exec.CommandContext(ctx, "git", "-C", bazaarDir, "diff", "--name-only", baseSHA, headSHA)
+	cmd := exec.CommandContext(ctx, "git", "-C", bazaarDir, "diff", "--no-renames", "--name-only", "-z", baseSHA, headSHA, "--")
 	out, err := cmd.Output()
 	if err != nil {
 		return nil, fmt.Errorf("git diff --name-only %s %s in %s: %w", baseSHA, headSHA, bazaarDir, err)
 	}
 	var paths []string
-	for line := range strings.SplitSeq(string(out), "\n") {
+	for line := range strings.SplitSeq(string(out), "\x00") {
 		if p := normalizeRepoRelPath(line); p != "" {
 			paths = append(paths, p)
 		}

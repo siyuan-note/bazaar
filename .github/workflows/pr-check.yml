@@ -47,7 +47,7 @@ jobs:
   # 产出待检 PR 矩阵：事件 PR 一条，或定时/手动筛选开放非 ci-passed
   prepare:
     if: |
-      github.repository_owner == 'siyuan-note' &&
+      github.repository == 'siyuan-note/bazaar' && github.ref == 'refs/heads/main' &&
       (
         (
           github.event_name == 'pull_request_target' &&
@@ -91,6 +91,9 @@ jobs:
       - name: Check out bazaar (select)
         if: github.event_name != 'pull_request_target'
         uses: actions/checkout@v7
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
 
       - name: Setup Golang (select)
         if: github.event_name != 'pull_request_target'
@@ -102,7 +105,6 @@ jobs:
         id: build-select
         if: github.event_name != 'pull_request_target'
         env:
-          PAT: ${{ secrets.PAT }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # workflow_dispatch：强制纳入全部开放非 ci-passed（仍受 SELECT_LIMIT）
           SELECT_FORCE_ALL: ${{ github.event_name == 'workflow_dispatch' }}
@@ -111,99 +113,124 @@ jobs:
   check:
     needs: prepare
     if: needs.prepare.outputs.any == 'true'
-    # 覆盖默认矩阵名（会把 sha 拼进去）；显示 PR 号与 fork owner/repo
-    name: "#${{ matrix.number }} ${{ matrix.head_repo }}"
+    name: "Check #${{ matrix.number }} ${{ matrix.head_repo }}"
     runs-on: ubuntu-latest
-    # 正常单 PR 检查约 1 分钟；用于尽快杀掉卡在 Starting job 的幽灵占用，避免 concurrency 互等
     timeout-minutes: 5
     strategy:
       fail-fast: false
       matrix: ${{ fromJSON(needs.prepare.outputs.matrix) }}
-    # 同一 PR 只保留最新一次检查，避免 synchronize / 定时复检重叠写评论
-    # （与 workflow 级 concurrency 互补：覆盖 schedule 与 PR 事件撞同一 PR 的情况）
     concurrency:
       group: pr-check-${{ matrix.number }}
       cancel-in-progress: true
-    # 改 PR 标题 / 同步标签 / 请求审查 / 发评论 / 去掉 Check 标签；Release 与签出 fork 仍用 PAT
+    permissions:
+      contents: read
+    steps:
+      - name: Check out trusted Bazaar revision
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Setup Golang
+        uses: actions/setup-go@v7
+        with:
+          go-version-file: go.mod
+          cache: false
+      - name: Analyze PR data without write credentials
+        env:
+          BAZAAR_HEAD_PATH: .
+          PR_NUMBER: ${{ matrix.number }}
+          PR_HEAD_SHA: ${{ matrix.head_sha }}
+          PR_TARGET_SHA: ${{ matrix.base_sha }}
+          GITHUB_TOKEN: ${{ github.token }}
+          CHECK_RESULT_OUTPUT: ${{ runner.temp }}/bazaar-check.json
+        run: |
+          set -euo pipefail
+          [[ "$PR_NUMBER" =~ ^[1-9][0-9]*$ && "$PR_HEAD_SHA" =~ ^[0-9a-f]{40}$ && "$PR_TARGET_SHA" =~ ^[0-9a-f]{40}$ ]]
+          git fetch --no-tags origin "refs/pull/$PR_NUMBER/head:refs/bazaar/check-head"
+          if [[ "$(git rev-parse refs/bazaar/check-head)" != "$PR_HEAD_SHA" ]]; then
+            echo "PR changed since selection; skipping this revision"
+            exit 0
+          fi
+          PR_BASE_SHA="$(git merge-base "$PR_TARGET_SHA" "$PR_HEAD_SHA")"
+          export PR_BASE_SHA
+          export GOWORK=off
+          stop_token="$(cat /proc/sys/kernel/random/uuid)"
+          echo "::stop-commands::$stop_token"
+          env -u GITHUB_ENV -u GITHUB_OUTPUT -u GITHUB_PATH -u GITHUB_STATE go run ./actions/check -analyze
+          echo "::$stop_token::"
+      - name: Upload structured check result
+        uses: actions/upload-artifact@v7
+        with:
+          name: bazaar-check-${{ github.run_attempt }}-${{ matrix.number }}-${{ matrix.head_sha }}
+          path: ${{ runner.temp }}/bazaar-check.json
+          if-no-files-found: ignore
+          retention-days: 2
+
+  publish:
+    needs: [prepare, check]
+    if: "!cancelled() && needs.prepare.outputs.any == 'true'"
+    name: "Publish #${{ matrix.number }}"
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.prepare.outputs.matrix) }}
+    concurrency:
+      group: pr-check-publish-${{ matrix.number }}
+      cancel-in-progress: false
     permissions:
       contents: read
       issues: write
       pull-requests: write
-    env:
-      PAT: ${{ secrets.PAT }}
-      # 须显式传入；仅写 permissions 不会自动注入到进程环境，否则 Go 会回退 PAT
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      # 检查通过后请求审查；名单在仓库 Actions Variables（勿写死在代码里）
-      BAZAAR_REVIEWERS: ${{ vars.BAZAAR_REVIEWERS }}
-      BAZAAR_HEAD_PATH: .
-      PR_HEAD_PATH: ./pr-head
-      PR_BASE_PATH: ./pr-base
-      CHECK_RESULT_OUTPUT: ./check-result.md
-      PR_NUMBER: ${{ matrix.number }}
+      actions: read
     steps:
-      # 签出 bazaar main 分支最新提交，用于过滤与 name 唯一性检查；fetch-depth: 0 以便后续计算 merge base
-      - name: Check out bazaar head
+      - name: Check out trusted Bazaar revision
         uses: actions/checkout@v7
         with:
-          ref: main
-          fetch-depth: 0
-
-      # 获取 PR 的 merge base（与 GitHub "Files changed" 一致），避免 PR 分支未同步最新 main 时 diff 错位
-      # REF https://docs.github.com/zh/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-comparing-branches-in-pull-requests
-      - name: Get PR merge base
-        id: merge-base
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Find report from this run
+        id: report
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ARTIFACT_NAME: bazaar-check-${{ github.run_attempt }}-${{ matrix.number }}-${{ matrix.head_sha }}
         run: |
-          set -e
-          git fetch origin "pull/${{ matrix.number }}/head:pr-head-ref"
-          merge_base_sha=$(git merge-base "${{ matrix.base_sha }}" pr-head-ref) || {
-            echo "::error::Failed to find merge base (e.g. PR branch has no common history with base)."
-            exit 1
-          }
-          if [ -z "$merge_base_sha" ] || [ ${#merge_base_sha} -ne 40 ]; then
-            echo "::error::Invalid merge base SHA: $merge_base_sha"
-            exit 1
+          set -euo pipefail
+          id=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/artifacts" \
+            --method GET -f name="$ARTIFACT_NAME" \
+            --jq '.artifacts[] | select(.expired == false) | .id')
+          if [[ -n "$id" ]]; then
+            [[ "$id" =~ ^[0-9]+$ ]]
+            echo "id=$id" >> "$GITHUB_OUTPUT"
+          else
+            echo "No report for this PR revision"
           fi
-          echo "sha=$merge_base_sha" >> $GITHUB_OUTPUT
-
-      # 签出 PR 的 head 提交（PR 分支当前提交）
-      # checkout@v7 默认拒绝在 pull_request_target 中签出 fork PR 代码；此处仅将列表文件与 deprecated.json 当数据读取，不执行 PR 代码
-      # REF https://github.com/marketplace/actions/checkout#checkout-multiple-repos-nested
-      # REF https://github.com/marketplace/actions/checkout#checkout-pull-request-head-commit-instead-of-merge-commit
-      # REF https://gh.io/securely-using-pull_request_target
-      - name: Check out PR head
-        uses: actions/checkout@v7
-        with:
-          path: ${{ env.PR_HEAD_PATH }}
-          ref: ${{ matrix.head_sha }}
-          repository: ${{ matrix.head_repo }}
-          token: ${{ env.PAT }}
-          allow-unsafe-pr-checkout: true
-
-      # 签出 PR 的 merge base 提交（与 GitHub "Files changed" 的基准一致，确保检查的 diff 即本 PR 实际改动）
-      - name: Check out PR base (merge base)
-        uses: actions/checkout@v7
-        with:
-          path: ${{ env.PR_BASE_PATH }}
-          ref: ${{ steps.merge-base.outputs.sha }}
-
       - name: Setup Golang
+        if: steps.report.outputs.id != ''
         uses: actions/setup-go@v7
         with:
-          go-version-file: 'go.mod'
-
-      - name: Go Check
-        id: go-check
-        run: go run ./actions/check
-        # 结果未变：编辑当前检查评论；结果变了：旧评折叠为「过时」并新建。无实际变更且 PR 已合并/关闭时跳过发评（skip_side_effects）
-
-      # REF https://docs.github.com/zh/rest/issues/labels?apiVersion=2022-11-28#remove-all-labels-from-an-issue
-      # REF https://docs.github.com/zh/actions/tutorials/authenticate-with-github_token#example-2-calling-the-rest-api
-      - name: Remove "Check" label
-        if: always() && github.event_name == 'pull_request_target' && github.event.action == 'labeled' && github.event.label.name == 'Check'
+          go-version-file: go.mod
+          cache: false
+      - name: Download this run's JSON result
+        if: steps.report.outputs.id != ''
+        uses: actions/download-artifact@v8
+        with:
+          artifact-ids: ${{ steps.report.outputs.id }}
+          path: ${{ runner.temp }}/bazaar-result
+      - name: Publish check results
+        if: steps.report.outputs.id != ''
+        env:
+          BAZAAR_HEAD_PATH: .
+          PR_NUMBER: ${{ matrix.number }}
+          PR_HEAD_SHA: ${{ matrix.head_sha }}
+          GITHUB_TOKEN: ${{ github.token }}
+          BAZAAR_REVIEWERS: ${{ vars.BAZAAR_REVIEWERS }}
+          CHECK_REPORT_INPUT: ${{ runner.temp }}/bazaar-result/bazaar-check.json
+          REMOVE_CHECK_LABEL: ${{ github.event_name == 'pull_request_target' && github.event.action == 'labeled' && github.event.label.name == 'Check' }}
         run: |
-          curl -L \
-            -X DELETE \
-            -H "Accept: application/vnd.github+json" \
-            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            "https://api.github.com/repos/${{ github.repository }}/issues/${{ matrix.number }}/labels/Check"
+          set -euo pipefail
+          stop_token="$(cat /proc/sys/kernel/random/uuid)"
+          echo "::stop-commands::$stop_token"
+          GOWORK=off go run ./actions/check -publish
+          echo "::$stop_token::"

@@ -167,26 +167,47 @@ func main() {
 	githubContext, stop = signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer stop()
 
+	mode := ""
+	if len(os.Args) > 1 {
+		mode = os.Args[1]
+	}
+	if mode == "-publish" {
+		if err := publishReport(); err != nil {
+			logger.Fatalf("publish PR check: %s", err)
+		}
+		return
+	}
+	analyzeOnly := mode == "-analyze"
+	readToken := PAT
+	if analyzeOnly {
+		if PAT != "" || GITHUB_TOKEN == "" {
+			logger.Fatalf("analysis requires the read-only Actions token and no PAT")
+		}
+		readToken = GITHUB_TOKEN
+		cleanup, err := preparePRSnapshots(githubContext)
+		if err != nil {
+			logger.Fatalf("prepare PR data: %s", err)
+		}
+		defer cleanup()
+	}
 	var err error
-	githubClient, patRateObs, err = util.NewGitHubClientWithRateObserver(PAT, REQUEST_TIMEOUT)
+	githubClient, patRateObs, err = util.NewGitHubClientWithRateObserver(readToken, REQUEST_TIMEOUT)
 	if err != nil {
 		logger.Fatalf("create github client failed: %s", err)
 	}
-	repoToken := GITHUB_TOKEN
-	if repoToken == "" {
-		repoToken = PAT
-		logger.Infof("GITHUB_TOKEN empty, fall back to PAT for PR title/labels/reviewers")
+	if !analyzeOnly {
+		repoToken := GITHUB_TOKEN
+		if repoToken == "" {
+			repoToken = PAT
+			logger.Infof("GITHUB_TOKEN empty, fall back to PAT for PR title/labels/reviewers")
+		}
+		githubRepoClient, repoRateObs, err = util.NewGitHubClientWithRateObserver(repoToken, REQUEST_TIMEOUT)
+		if err != nil {
+			logger.Fatalf("create github repo client failed: %s", err)
+		}
+		seedRateHeaderBaselines()
 	}
-	githubRepoClient, repoRateObs, err = util.NewGitHubClientWithRateObserver(repoToken, REQUEST_TIMEOUT)
-	if err != nil {
-		logger.Fatalf("create github repo client failed: %s", err)
-	}
-	seedRateHeaderBaselines()
-
-	checkResultTemplate, err := parseCheckResultTemplate(githubContext)
-	if err != nil {
-		logger.Fatalf("load check result template failed: %s", err)
-	}
+	var suggestedTitle string
 
 	checkResult := &CheckResult{}
 	var plans []typeCheckPlan
@@ -213,7 +234,7 @@ func main() {
 		} else {
 			logger.Infof("deprecation registry check: types=%d changes=%d issues=%d", len(checkResult.Deprecation.Types), len(checkResult.Deprecation.Changes), len(checkResult.Deprecation.Issues))
 			if title, ok := conventionalDeprecationPRTitle(checkResult.Deprecation); ok {
-				maybeUpdatePRTitle(title)
+				suggestedTitle = title
 			}
 		}
 	case len(whiteFiles) > 0 && len(otherFiles) > 0:
@@ -250,7 +271,7 @@ func main() {
 		} else {
 			// 流程通过后：自动改 PR 标题（含纯下架；多仓下架为 Delist N packages）
 			if title, ok := conventionalPRTitle(plans); ok {
-				maybeUpdatePRTitle(title)
+				suggestedTitle = title
 			}
 
 			occupiedNames, err := util.LoadOccupiedNames(BAZAAR_HEAD_PATH)
@@ -271,6 +292,17 @@ func main() {
 		logger.Infof("no whitelisted package-list or deprecation-registry changes; skip package checks")
 	}
 
+	expectedTypes := typeLabelSyncPlan(plans, checkResult)
+	if analyzeOnly {
+		if err := writeReport(checkResult, expectedTypes, suggestedTitle); err != nil {
+			logger.Fatalf("write check report: %s", err)
+		}
+		return
+	}
+	publishResult(checkResult, expectedTypes, suggestedTitle)
+}
+
+func publishResult(checkResult *CheckResult, expectedTypes Set, title string) {
 	// 无实际变更且 PR 已合并/关闭：多为解冲突后立刻合并，检查相对最新 main 滤空；跳过评论与标签，避免误打 ci-failed
 	if isNoActualChange(checkResult) && prIsMergedOrClosed() {
 		logger.Infof("no actual list change and PR already merged/closed; skip result comment and label sync")
@@ -281,6 +313,11 @@ func main() {
 		return
 	}
 
+	checkResultTemplate, err := parseCheckResultTemplate(githubContext)
+	if err != nil {
+		logger.Fatalf("load check result template failed: %s", err)
+	}
+	maybeUpdatePRTitle(title)
 	resultChanged := attachCheckMeta(checkResult)
 
 	var resultBuf bytes.Buffer
@@ -303,7 +340,7 @@ func main() {
 	}
 
 	// 类型标签 + CI 状态标签对账（失败只记日志）
-	syncPRLabels(plans, checkResult)
+	syncPRLabels(expectedTypes, checkResult)
 
 	// 检查通过后请求审查者（名单来自仓库 Variables，失败只记日志）
 	maybeRequestReviewers(checkResult)
