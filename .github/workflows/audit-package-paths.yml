@@ -1,0 +1,30 @@
+name: Audit package ZIP paths
+
+on:
+  workflow_dispatch:
+    inputs:
+      package:
+        description: Listed package repository (owner/repo)
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    if: ${{ github.repository == 'siyuan-note/bazaar' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Setup Golang
+        uses: actions/setup-go@v7
+        with:
+          go-version-file: 'go.mod'
+      - name: Check distributed ZIP paths
+        env:
+          BAZAAR_PACKAGE: ${{ inputs.package }}
+        run: go run ./actions/audit-package-paths
