@@ -112,6 +112,19 @@ func TestClassifyPRFiles(t *testing.T) {
 	}
 }
 
+func TestTypeLabelsFromListPaths(t *testing.T) {
+	got := typeLabelsFromListPaths([]string{"plugins.txt", "themes.txt", "plugins.txt", "README.md", " config/deprecated.json"})
+	want := Set{"plugin": {}, "theme": {}}
+	if len(got) != len(want) {
+		t.Fatalf("got %v, want %v", got, want)
+	}
+	for name := range want {
+		if _, ok := got[name]; !ok {
+			t.Fatalf("missing %q in %v", name, got)
+		}
+	}
+}
+
 func TestFormatBlacklistFlowError(t *testing.T) {
 	got := formatBlacklistFlowError()
 	for _, want := range []string{

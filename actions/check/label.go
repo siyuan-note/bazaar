@@ -22,6 +22,7 @@ import (
 const (
 	labelCIFailed = "ci-failed"
 	labelCIPassed = "ci-passed"
+	labelCheck    = "Check"
 )
 
 // labelColors 仓库尚无该标签时创建用的默认颜色。
@@ -133,12 +134,16 @@ func ciStatusLabel(passed bool) string {
 }
 
 // buildPRLabelsAfterSync 保留非托管标签，再接上 expected 类型标签与唯一 CI 状态标签。
-// 托管范围：类型标签 + ci-failed / ci-passed；其他标签（如 Check、ci-skip）原样保留。
+// 托管范围：类型标签 + ci-failed / ci-passed。Check 是触发标签，同步时去掉，以便维护者可再次打标重跑，
+// 并清掉此前失败/跳过检查留下的残留；其他标签（如 ci-skip）原样保留。
 func buildPRLabelsAfterSync(current []string, expectedTypes Set, ciPassed bool) []string {
 	managed := managedLabelSet()
 	next := make([]string, 0, len(current)+len(expectedTypes)+1)
 	for _, name := range current {
 		if _, ok := managed[name]; ok {
+			continue
+		}
+		if name == labelCheck {
 			continue
 		}
 		next = append(next, name)

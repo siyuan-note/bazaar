@@ -123,7 +123,17 @@ func TestBuildPRLabelsAfterSync_Passed(t *testing.T) {
 	current := []string{"Check", "plugin", "bug", "theme", "ci-failed"}
 	expected := Set{"icon": {}, "plugin": {}}
 	got := buildPRLabelsAfterSync(current, expected, true)
-	want := []string{"Check", "bug", "plugin", "icon", "ci-passed"}
+	want := []string{"bug", "plugin", "icon", "ci-passed"}
+	if !slices.Equal(got, want) {
+		t.Fatalf("got %v, want %v", got, want)
+	}
+}
+
+func TestBuildPRLabelsAfterSync_RemovesLeftoverCheck(t *testing.T) {
+	current := []string{"Check", "plugin", "ci-failed"}
+	expected := Set{"plugin": {}}
+	got := buildPRLabelsAfterSync(current, expected, false)
+	want := []string{"plugin", "ci-failed"}
 	if !slices.Equal(got, want) {
 		t.Fatalf("got %v, want %v", got, want)
 	}

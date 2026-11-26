@@ -11,7 +11,7 @@ name: PR Check
 #   - 同时带 ci-passed 与 manual-review（维护者已要求修改，作者未跟进）
 #
 # 标签：
-# - Check：维护者打标以立即重跑本检查（打标后会自动去掉）
+# - Check：维护者打标以立即重跑本检查（本 run 结束时一定会去掉，即使分析失败、跳过或未产出报告；后续成功发布的检查也会清掉残留的 Check）
 # - ci-skip：维护者打标则跳过检查（与 Check 同时存在时以 ci-skip 为准）；亦跳过超龄自动关闭
 on:
   pull_request_target:
@@ -227,10 +227,52 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           BAZAAR_REVIEWERS: ${{ vars.BAZAAR_REVIEWERS }}
           CHECK_REPORT_INPUT: ${{ runner.temp }}/bazaar-result/bazaar-check.json
-          REMOVE_CHECK_LABEL: ${{ github.event_name == 'pull_request_target' && github.event.action == 'labeled' && github.event.label.name == 'Check' }}
         run: |
           set -euo pipefail
           stop_token="$(cat /proc/sys/kernel/random/uuid)"
           echo "::stop-commands::$stop_token"
           GOWORK=off go run ./actions/check -publish
           echo "::$stop_token::"
+
+  # 由打 Check 标签触发时，无论分析是否成功、是否产出报告，都在 run 结束时去掉该标签，
+  # 以便维护者再次打标重跑。prepare 因 ci-skip 被跳过时也会执行。
+  # 后续成功发布的检查会在标签同步时去掉残留的 Check（见 buildPRLabelsAfterSync）。
+  remove-check-label:
+    needs: [prepare, check, publish]
+    if: |
+      always() && !cancelled() &&
+      github.repository == 'siyuan-note/bazaar' && github.ref == 'refs/heads/main' &&
+      github.event_name == 'pull_request_target' &&
+      github.event.action == 'labeled' &&
+      github.event.label.name == 'Check'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+      - name: Remove Check trigger label
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          set -euo pipefail
+          [[ "$PR_NUMBER" =~ ^[1-9][0-9]*$ ]]
+          set +e
+          err=$(gh api --silent -X DELETE "repos/${GITHUB_REPOSITORY}/issues/${PR_NUMBER}/labels/Check" 2>&1)
+          status=$?
+          set -e
+          if [[ "$status" -eq 0 ]]; then
+            echo "Removed Check label from #$PR_NUMBER"
+            exit 0
+          fi
+          if names=$(gh api --silent "repos/${GITHUB_REPOSITORY}/issues/${PR_NUMBER}/labels" --jq '.[].name'); then
+            if grep -Fxq 'Check' <<<"$names"; then
+              echo "failed to remove Check label from #$PR_NUMBER: $err" >&2
+              exit 1
+            fi
+            echo "Check label already absent on #$PR_NUMBER"
+            exit 0
+          fi
+          echo "failed to list labels for #$PR_NUMBER after Check removal error: $err" >&2
+          exit 1

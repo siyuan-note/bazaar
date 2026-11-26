@@ -35,7 +35,7 @@ type CheckResult struct {
 	// 每条都带出错副本的来源（本 PR 的提交 / 合并基点 / bazaar 主分支），据此决定提示谁去修
 	ParseError []ListParseError
 
-	// FlowError 流程层规则失败说明（如一次只能添加/更改一个包，或新增与无关下架混用）；非空时在评论中展示，跳过包检查且不展示下架列表
+	// FlowError 流程层规则失败说明（如一次只能添加/更改一个包，新增与无关下架混用，或包列表文件形态不合法）；非空时在评论中展示，跳过包检查且不展示下架列表
 	FlowError string
 
 	PluginsDeleted   []string

@@ -35,10 +35,11 @@ import (
 /*
 路径黑白名单（最先执行）：
 1. git diff（PR merge base → head）得到变更文件
-2. 黑名单（stage/**、config/themes-theme-js-allowlist.txt）：写 FlowError，跳过包检查
-3. 白名单（五个 *.txt）：进入下方 Diff / Check；若同时改了白名单以外的文件则 FlowError
-4. deprecated.json：独立进入弃用注册表校验，不访问包仓库 API；与其他文件混改则 FlowError。有有效变更时自动改 PR 标题（Deprecate / Restore / Update deprecation）
-5. 命中黑名单时优先失败；无白名单或弃用注册表改动（含纯灰区）时模板展示「无实际变更」，ci-failed
+2. 五个包列表文件必须是普通的不可执行 100644 文件且不超过 2MiB；否则写 FlowError，仍发布检查评论与 ci-failed（不中止分析）
+3. 黑名单（stage/**、config/themes-theme-js-allowlist.txt）：写 FlowError，跳过包检查
+4. 白名单（五个 *.txt）：进入下方 Diff / Check；若同时改了白名单以外的文件则 FlowError
+5. deprecated.json：独立进入弃用注册表校验，不访问包仓库 API；与其他文件混改则 FlowError。有有效变更时自动改 PR 标题（Deprecate / Restore / Update deprecation）
+6. 命中黑名单时优先失败；无白名单或弃用注册表改动（含纯灰区）时模板展示「无实际变更」，ci-failed
 
 Diff 流程（以 plugins.txt 为例）：
 1. 签出 bazaar head（主分支最新）：读 plugins.txt，得到 bazaar head 的 owner/repo 集合，用于过滤
@@ -179,16 +180,18 @@ func main() {
 	}
 	analyzeOnly := mode == "-analyze"
 	readToken := PAT
+	var pendingListFileProblems []listFileProblem
 	if analyzeOnly {
 		if PAT != "" || GITHUB_TOKEN == "" {
 			logger.Fatalf("analysis requires the read-only Actions token and no PAT")
 		}
 		readToken = GITHUB_TOKEN
-		cleanup, err := preparePRSnapshots(githubContext)
+		cleanup, listFileProblems, err := preparePRSnapshots(githubContext)
 		if err != nil {
 			logger.Fatalf("prepare PR data: %s", err)
 		}
 		defer cleanup()
+		pendingListFileProblems = listFileProblems
 	}
 	var err error
 	githubClient, patRateObs, err = util.NewGitHubClientWithRateObserver(readToken, REQUEST_TIMEOUT)
@@ -211,88 +214,102 @@ func main() {
 
 	checkResult := &CheckResult{}
 	var plans []typeCheckPlan
+	var expectedTypes Set
 
-	changedFiles, err := listPRChangedFiles(githubContext)
-	if err != nil {
-		logger.Fatalf("list PR changed files failed: %s", err)
-	}
-	blackFiles, whiteFiles, deprecatedFiles, otherFiles := classifyPRFiles(changedFiles)
-	logger.Infof("PR path scope: changed=%d black=%d white=%d deprecated=%d other=%d", len(changedFiles), len(blackFiles), len(whiteFiles), len(deprecatedFiles), len(otherFiles))
-
-	switch {
-	case len(blackFiles) > 0:
-		// 黑名单优先：固定 FlowError，跳过包列表 diff 与包检查
-		checkResult.FlowError = formatBlacklistFlowError()
-		logger.Errorf("blacklisted path changes: %s", strings.Join(blackFiles, ", "))
-	case len(deprecatedFiles) > 0 && (len(whiteFiles) > 0 || len(otherFiles) > 0):
-		checkResult.FlowError = formatMixedDeprecationFlowError()
-		logger.Errorf("deprecation registry change mixed with other paths")
-	case len(deprecatedFiles) > 0:
-		checkResult.Deprecation = checkDeprecationRegistry()
-		if checkResult.Deprecation == nil {
-			logger.Infof("deprecation registry has no actual change relative to bazaar head")
+	if len(pendingListFileProblems) > 0 {
+		checkResult.FlowError = formatInvalidListFileFlowError(pendingListFileProblems)
+		logger.Errorf("invalid package list files; skip remaining analysis")
+		changedFiles, listErr := listPRChangedFiles(githubContext)
+		if listErr != nil {
+			logger.Errorf("list PR changed files failed: %s", listErr)
+			expectedTypes = typeLabelsFromListPaths(listFileProblemNames(pendingListFileProblems))
 		} else {
-			logger.Infof("deprecation registry check: types=%d changes=%d issues=%d", len(checkResult.Deprecation.Types), len(checkResult.Deprecation.Changes), len(checkResult.Deprecation.Issues))
-			if title, ok := conventionalDeprecationPRTitle(checkResult.Deprecation); ok {
-				suggestedTitle = title
-			}
+			_, whiteFiles, _, _ := classifyPRFiles(changedFiles)
+			expectedTypes = typeLabelsFromListPaths(append(listFileProblemNames(pendingListFileProblems), whiteFiles...))
 		}
-	case len(whiteFiles) > 0 && len(otherFiles) > 0:
-		// 改了列表文件时不允许再改其他路径（例如 .github/workflows）
-		checkResult.FlowError = formatBlacklistFlowError()
-		logger.Errorf("whitelist changes mixed with other paths: %s", strings.Join(otherFiles, ", "))
-	case len(whiteFiles) > 0:
-		// 第一阶段：各类型并行算 diff（不下载、不跑 Pkg Check）
-		packageTypes := rules.AllPackageTypes()
-		plans = make([]typeCheckPlan, len(packageTypes))
-		var planWg sync.WaitGroup
-		for i, packageType := range packageTypes {
-			planWg.Go(func() {
-				plans[i] = prepareTypeCheckPlan(packageType)
-			})
+	} else {
+		changedFiles, err := listPRChangedFiles(githubContext)
+		if err != nil {
+			logger.Fatalf("list PR changed files failed: %s", err)
 		}
-		planWg.Wait()
+		blackFiles, whiteFiles, deprecatedFiles, otherFiles := classifyPRFiles(changedFiles)
+		logger.Infof("PR path scope: changed=%d black=%d white=%d deprecated=%d other=%d", len(changedFiles), len(blackFiles), len(whiteFiles), len(deprecatedFiles), len(otherFiles))
 
-		for _, plan := range plans {
-			if plan.parseError != nil {
-				checkResult.ParseError = append(checkResult.ParseError, *plan.parseError)
-				continue
+		switch {
+		case len(blackFiles) > 0:
+			// 黑名单优先：固定 FlowError，跳过包列表 diff 与包检查
+			checkResult.FlowError = formatBlacklistFlowError()
+			logger.Errorf("blacklisted path changes: %s", strings.Join(blackFiles, ", "))
+		case len(deprecatedFiles) > 0 && (len(whiteFiles) > 0 || len(otherFiles) > 0):
+			checkResult.FlowError = formatMixedDeprecationFlowError()
+			logger.Errorf("deprecation registry change mixed with other paths")
+		case len(deprecatedFiles) > 0:
+			checkResult.Deprecation = checkDeprecationRegistry()
+			if checkResult.Deprecation == nil {
+				logger.Infof("deprecation registry has no actual change relative to bazaar head")
+			} else {
+				logger.Infof("deprecation registry check: types=%d changes=%d issues=%d", len(checkResult.Deprecation.Types), len(checkResult.Deprecation.Changes), len(checkResult.Deprecation.Issues))
+				if title, ok := conventionalDeprecationPRTitle(checkResult.Deprecation); ok {
+					suggestedTitle = title
+				}
 			}
-			// 将本 PR 的删除列表写入检查结果（流程失败时模板不展示）
-			if !checkResult.setDeleted(plan.packageType, plan.diff.Deleted) {
-				panic("main: invalid package type")
+		case len(whiteFiles) > 0 && len(otherFiles) > 0:
+			// 改了列表文件时不允许再改其他路径（例如 .github/workflows）
+			checkResult.FlowError = formatBlacklistFlowError()
+			logger.Errorf("whitelist changes mixed with other paths: %s", strings.Join(otherFiles, ", "))
+		case len(whiteFiles) > 0:
+			// 第一阶段：各类型并行算 diff（不下载、不跑 Pkg Check）
+			packageTypes := rules.AllPackageTypes()
+			plans = make([]typeCheckPlan, len(packageTypes))
+			var planWg sync.WaitGroup
+			for i, packageType := range packageTypes {
+				planWg.Go(func() {
+					plans[i] = prepareTypeCheckPlan(packageType)
+				})
 			}
-		}
+			planWg.Wait()
 
-		// 流程规则：仅允许纯新增 1 个 / 更换维护者 / 纯下架
-		if flowErr := validatePRListChangeFlow(plans); flowErr != "" {
-			checkResult.FlowError = flowErr
-			logger.Errorf("PR list-change flow rule violated")
-		} else {
-			// 流程通过后：自动改 PR 标题（含纯下架；多仓下架为 Delist N packages）
-			if title, ok := conventionalPRTitle(plans); ok {
-				suggestedTitle = title
-			}
-
-			occupiedNames, err := util.LoadOccupiedNames(BAZAAR_HEAD_PATH)
-			if err != nil {
-				logger.Fatalf("load occupied names failed: %s", err)
-			}
-
-			// 流程通过后最多只有一个类型含新增，顺序检查即可
 			for _, plan := range plans {
-				if plan.parseError != nil || len(plan.diff.New) == 0 {
+				if plan.parseError != nil {
+					checkResult.ParseError = append(checkResult.ParseError, *plan.parseError)
 					continue
 				}
-				runTypePackageChecks(plan, checkResult, occupiedNames)
+				// 将本 PR 的删除列表写入检查结果（流程失败时模板不展示）
+				if !checkResult.setDeleted(plan.packageType, plan.diff.Deleted) {
+					panic("main: invalid package type")
+				}
 			}
-		}
-	default:
-		// 无包列表或弃用注册表改动（且未命中黑名单）：不跑包检查，模板展示「无实际变更」，ci-failed
-		logger.Infof("no whitelisted package-list or deprecation-registry changes; skip package checks")
-	}
 
-	expectedTypes := typeLabelSyncPlan(plans, checkResult)
+			// 流程规则：仅允许纯新增 1 个 / 更换维护者 / 纯下架
+			if flowErr := validatePRListChangeFlow(plans); flowErr != "" {
+				checkResult.FlowError = flowErr
+				logger.Errorf("PR list-change flow rule violated")
+			} else {
+				// 流程通过后：自动改 PR 标题（含纯下架；多仓下架为 Delist N packages）
+				if title, ok := conventionalPRTitle(plans); ok {
+					suggestedTitle = title
+				}
+
+				occupiedNames, err := util.LoadOccupiedNames(BAZAAR_HEAD_PATH)
+				if err != nil {
+					logger.Fatalf("load occupied names failed: %s", err)
+				}
+
+				// 流程通过后最多只有一个类型含新增，顺序检查即可
+				for _, plan := range plans {
+					if plan.parseError != nil || len(plan.diff.New) == 0 {
+						continue
+					}
+					runTypePackageChecks(plan, checkResult, occupiedNames)
+				}
+			}
+		default:
+			// 无包列表或弃用注册表改动（且未命中黑名单）：不跑包检查，模板展示「无实际变更」，ci-failed
+			logger.Infof("no whitelisted package-list or deprecation-registry changes; skip package checks")
+		}
+
+		expectedTypes = typeLabelSyncPlan(plans, checkResult)
+	}
 	if analyzeOnly {
 		if err := writeReport(checkResult, expectedTypes, suggestedTitle); err != nil {
 			logger.Fatalf("write check report: %s", err)

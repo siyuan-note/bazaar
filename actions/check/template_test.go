@@ -293,6 +293,44 @@ func TestCheckResultTemplate_BlacklistFlowError(t *testing.T) {
 	}
 }
 
+func TestCheckResultTemplate_InvalidListFileFlowError(t *testing.T) {
+	tmpl, err := parseCheckResultTemplate(context.Background())
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	sample := CheckResult{
+		FlowError: formatInvalidListFileFlowError([]listFileProblem{
+			{Name: "plugins.txt", Side: "head", Kind: prDataBlobIrregular, Mode: "120000"},
+		}),
+		PluginsDeleted: []string{"x/old"},
+	}
+
+	var buf bytes.Buffer
+	if err := tmpl.Execute(&buf, sample); err != nil {
+		t.Fatal(err)
+	}
+	out := buf.String()
+	for _, want := range []string{
+		"流程规则未通过",
+		"`plugins.txt`（本 PR 的提交）：是符号链接，而不是普通文件",
+		"`plugins.txt` (this PR's commit): is a symbolic link, not a regular file",
+	} {
+		if !strings.Contains(out, want) {
+			t.Fatalf("output missing %q\n%s", want, out)
+		}
+	}
+	if strings.Contains(out, "集市包列表无实际变更") {
+		t.Fatalf("empty-change message should not appear when FlowError is set\n%s", out)
+	}
+	if strings.Contains(out, "### 下架") || strings.Contains(out, "x/old") {
+		t.Fatalf("deleted repos should be hidden when FlowError is set\n%s", out)
+	}
+	if checkResultCIPassed(&sample) {
+		t.Fatal("invalid list file FlowError should be ci-failed")
+	}
+}
+
 func TestCheckResultTemplate_MaintainerChangeNotice(t *testing.T) {
 	sha, err := gitRevParseHEAD(context.Background(), BAZAAR_HEAD_PATH)
 	if err != nil {

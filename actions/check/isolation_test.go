@@ -13,6 +13,7 @@ package main
 import (
 	"context"
 	"encoding/json"
+	"errors"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -20,6 +21,8 @@ import (
 	"testing"
 
 	"github.com/google/go-github/v89/github"
+	"github.com/siyuan-note/bazaar/actions/util"
+	"github.com/siyuan-note/bazaar/rules"
 )
 
 func TestCopyRegularBlob(t *testing.T) {
@@ -66,17 +69,32 @@ func TestCopyRegularBlob(t *testing.T) {
 	if err := os.Symlink("fixture", file); err != nil {
 		t.Fatal(err)
 	}
-	if err := copyRegularBlob(ctx, repo, commit(), name, dst); err == nil {
-		t.Fatal("symbolic links must not be materialized")
+	var symlinkErr *prDataBlobError
+	if err := copyRegularBlob(ctx, repo, commit(), name, dst); err == nil || !errors.As(err, &symlinkErr) || symlinkErr.Kind != prDataBlobIrregular || symlinkErr.Mode != "120000" {
+		t.Fatalf("symbolic links must not be materialized: %v", err)
 	}
 	if err := os.Remove(file); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(file, []byte("test-owner/test-plugin\n"), 0644); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.Chmod(file, 0755); err != nil {
+		t.Fatal(err)
+	}
+	var irregular *prDataBlobError
+	if err := copyRegularBlob(ctx, repo, commit(), name, dst); err == nil || !errors.As(err, &irregular) || irregular.Kind != prDataBlobIrregular || irregular.Mode != "100755" {
+		t.Fatalf("executable blobs must not be materialized: %v", err)
+	}
+	if err := os.Chmod(file, 0644); err != nil {
 		t.Fatal(err)
 	}
 	if err := os.WriteFile(file, []byte(strings.Repeat("x", maxInputSize+1)), 0644); err != nil {
 		t.Fatal(err)
 	}
-	if err := copyRegularBlob(ctx, repo, commit(), name, dst); err == nil {
-		t.Fatal("oversized blobs must not be materialized")
+	var oversized *prDataBlobError
+	if err := copyRegularBlob(ctx, repo, commit(), name, dst); err == nil || !errors.As(err, &oversized) || oversized.Kind != prDataBlobOversized {
+		t.Fatalf("oversized blobs must not be materialized: %v", err)
 	}
 }
 
@@ -140,5 +158,159 @@ func TestReportMatchesPR(t *testing.T) {
 	pr.State = new("closed")
 	if reportMatchesPR(report, pr) {
 		t.Fatal("closed PR must not publish")
+	}
+}
+
+func TestFormatInvalidListFileFlowError(t *testing.T) {
+	got := formatInvalidListFileFlowError([]listFileProblem{
+		{Name: "themes.txt", Side: "head", Kind: prDataBlobOversized},
+		{Name: "plugins.txt", Side: "head", Kind: prDataBlobIrregular, Mode: "120000"},
+		{Name: "plugins.txt", Side: "base", Kind: prDataBlobIrregular, Mode: "100755"},
+	})
+	for _, want := range []string{
+		"本 PR 的集市包列表文件必须是普通的、不可执行的文件（Git 模式 100644）",
+		"`plugins.txt`（本 PR 的提交）：是符号链接，而不是普通文件",
+		"`plugins.txt`（本 PR 的合并基点）：是可执行文件，而不是普通的不可执行文件",
+		"`themes.txt`（本 PR 的提交）：大小超过 2MiB",
+		"The package list files in this PR must be regular, non-executable files (Git mode 100644)",
+		"`plugins.txt` (this PR's commit): is a symbolic link, not a regular file",
+		"`plugins.txt` (this PR's merge base): is an executable file, not a regular non-executable file",
+		"`themes.txt` (this PR's commit): exceeds the 2MiB size limit",
+		"Please restore the listed files to regular text files and push again.",
+	} {
+		if !strings.Contains(got, want) {
+			t.Fatalf("missing %q in:\n%s", want, got)
+		}
+	}
+	pluginsAt := strings.Index(got, "`plugins.txt`（本 PR 的提交）")
+	themesAt := strings.Index(got, "`themes.txt`（本 PR 的提交）")
+	if pluginsAt < 0 || themesAt < 0 || pluginsAt > themesAt {
+		t.Fatalf("problems should be sorted by file name then side:\n%s", got)
+	}
+}
+
+func TestPreparePRSnapshots_InvalidListFileIsProblemNotFatal(t *testing.T) {
+	ctx := context.Background()
+	repo := t.TempDir()
+	git := func(args ...string) string {
+		t.Helper()
+		cmd := exec.Command("git", append([]string{"-C", repo}, args...)...)
+		cmd.Env = append(os.Environ(), "GIT_CONFIG_NOSYSTEM=1", "GIT_CONFIG_GLOBAL=/dev/null")
+		out, err := cmd.CombinedOutput()
+		if err != nil {
+			t.Fatalf("git %v: %v: %s", args, err, out)
+		}
+		return strings.TrimSpace(string(out))
+	}
+	git("init")
+	writeChecked := func() {
+		t.Helper()
+		if err := os.WriteFile(filepath.Join(repo, util.DeprecatedRegistryRelPath), []byte("{}\n"), 0644); err != nil {
+			t.Fatal(err)
+		}
+		for _, pt := range rules.AllPackageTypes() {
+			if err := os.WriteFile(filepath.Join(repo, pt.ReposListFile()), []byte("test-owner/test-pkg\n"), 0644); err != nil {
+				t.Fatal(err)
+			}
+		}
+	}
+	writeChecked()
+	git("add", ".")
+	git("-c", "user.name=test", "-c", "user.email=test@example.invalid", "commit", "-m", "base")
+	base := git("rev-parse", "HEAD")
+
+	plugin := filepath.Join(repo, "plugins.txt")
+	if err := os.Remove(plugin); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.Symlink("fixture", plugin); err != nil {
+		t.Fatal(err)
+	}
+	git("add", "-A", "plugins.txt")
+	git("-c", "user.name=test", "-c", "user.email=test@example.invalid", "commit", "-m", "symlink list")
+	head := git("rev-parse", "HEAD")
+
+	origHead, origBase, origSnapshots, origBazaar := PR_HEAD_PATH, PR_BASE_PATH, prSnapshots, BAZAAR_HEAD_PATH
+	t.Cleanup(func() {
+		PR_HEAD_PATH, PR_BASE_PATH = origHead, origBase
+		prSnapshots = origSnapshots
+		BAZAAR_HEAD_PATH = origBazaar
+	})
+	t.Setenv("PR_HEAD_SHA", head)
+	t.Setenv("PR_BASE_SHA", base)
+	BAZAAR_HEAD_PATH = repo
+
+	cleanup, problems, err := preparePRSnapshots(ctx)
+	if err != nil {
+		t.Fatalf("invalid list file should not abort snapshot preparation: %v", err)
+	}
+	t.Cleanup(cleanup)
+	if len(problems) != 1 || problems[0].Name != "plugins.txt" || problems[0].Side != "head" || problems[0].Kind != prDataBlobIrregular || problems[0].Mode != "120000" {
+		t.Fatalf("problems=%v", problems)
+	}
+	if _, err := os.Stat(filepath.Join(PR_HEAD_PATH, "plugins.txt")); !os.IsNotExist(err) {
+		t.Fatalf("invalid list file must not be materialized: %v", err)
+	}
+	if _, err := os.Stat(filepath.Join(PR_HEAD_PATH, "themes.txt")); err != nil {
+		t.Fatalf("valid list files should still be materialized: %v", err)
+	}
+	if _, err := os.Stat(filepath.Join(PR_BASE_PATH, "plugins.txt")); err != nil {
+		t.Fatalf("valid base list file should still be materialized: %v", err)
+	}
+}
+
+func TestPreparePRSnapshots_InvalidDeprecatedStillFatal(t *testing.T) {
+	ctx := context.Background()
+	repo := t.TempDir()
+	git := func(args ...string) string {
+		t.Helper()
+		cmd := exec.Command("git", append([]string{"-C", repo}, args...)...)
+		cmd.Env = append(os.Environ(), "GIT_CONFIG_NOSYSTEM=1", "GIT_CONFIG_GLOBAL=/dev/null")
+		out, err := cmd.CombinedOutput()
+		if err != nil {
+			t.Fatalf("git %v: %v: %s", args, err, out)
+		}
+		return strings.TrimSpace(string(out))
+	}
+	git("init")
+	if err := os.WriteFile(filepath.Join(repo, util.DeprecatedRegistryRelPath), []byte("{}\n"), 0644); err != nil {
+		t.Fatal(err)
+	}
+	for _, pt := range rules.AllPackageTypes() {
+		if err := os.WriteFile(filepath.Join(repo, pt.ReposListFile()), []byte("test-owner/test-pkg\n"), 0644); err != nil {
+			t.Fatal(err)
+		}
+	}
+	git("add", ".")
+	git("-c", "user.name=test", "-c", "user.email=test@example.invalid", "commit", "-m", "base")
+	base := git("rev-parse", "HEAD")
+
+	deprecated := filepath.Join(repo, util.DeprecatedRegistryRelPath)
+	if err := os.Remove(deprecated); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.Symlink("fixture", deprecated); err != nil {
+		t.Fatal(err)
+	}
+	git("add", "-A", util.DeprecatedRegistryRelPath)
+	git("-c", "user.name=test", "-c", "user.email=test@example.invalid", "commit", "-m", "symlink deprecated")
+	head := git("rev-parse", "HEAD")
+
+	origHead, origBase, origSnapshots, origBazaar := PR_HEAD_PATH, PR_BASE_PATH, prSnapshots, BAZAAR_HEAD_PATH
+	t.Cleanup(func() {
+		PR_HEAD_PATH, PR_BASE_PATH = origHead, origBase
+		prSnapshots = origSnapshots
+		BAZAAR_HEAD_PATH = origBazaar
+	})
+	t.Setenv("PR_HEAD_SHA", head)
+	t.Setenv("PR_BASE_SHA", base)
+	BAZAAR_HEAD_PATH = repo
+
+	cleanup, problems, err := preparePRSnapshots(ctx)
+	if cleanup != nil {
+		t.Cleanup(cleanup)
+	}
+	if err == nil || len(problems) != 0 {
+		t.Fatalf("invalid deprecated.json must still abort: err=%v problems=%v", err, problems)
 	}
 }
