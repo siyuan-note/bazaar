@@ -1,6 +1,59 @@
 {
   "repos": [
     {
+      "created": "2023-07-31T13:22:08Z",
+      "installSize": 19280877,
+      "openIssues": 40,
+      "package": {
+        "author": "terwer",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker",
+          "android",
+          "ios"
+        ],
+        "description": {
+          "default": "Publish articles from siyuan-note to 30+ platforms.Free and open source.",
+          "zh_CN": "将思源笔记的文章发布到30+平台，开源、免费。"
+        },
+        "displayName": {
+          "default": "Publisher",
+          "zh_CN": "发布工具"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/terwer"
+          ]
+        },
+        "icon": "icon.png",
+        "minAppVersion": "2.9.0",
+        "name": "siyuan-plugin-publisher",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/terwer/siyuan-plugin-publisher",
+        "version": "2.5.0"
+      },
+      "packageZipAssetId": 801868699,
+      "packageZipSha256": "be7cf76ca2b3316bb933c1dd622f00713cbb17053eb74c3a17fbb6aca57d97f5",
+      "repoRef": "siyuan-plugin-publisher-v2.5.0",
+      "size": 19250317,
+      "stars": 213,
+      "updated": "2026-11-27T19:59:44Z",
+      "url": "terwer/siyuan-plugin-publisher@be7cf76"
+    },
+    {
       "created": "2026-11-27T17:44:02Z",
       "installSize": 165236,
       "openIssues": 0,
@@ -56,6 +109,165 @@
       "stars": 0,
       "updated": "2026-11-27T17:44:02Z",
       "url": "JUDESTRAHM/siyuan-empty-sweep@dc7ce63"
+    },
+    {
+      "created": "2026-09-13T09:10:53Z",
+      "installSize": 159862,
+      "openIssues": 0,
+      "package": {
+        "author": "wmy2981",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Generate note titles with the Chat Completions, Responses, Anthropic Messages or Gemini Interactions API",
+          "zh-CN": "用 Chat Completions、Responses API、Anthropic Messages 或 Gemini Interactions 接口为笔记生成标题"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "AI Title",
+          "zh-CN": "AI 标题生成"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://afdian.com/a/wmy2981"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "ai",
+          "title",
+          "deepseek",
+          "生成",
+          "标题",
+          "generate"
+        ],
+        "minAppVersion": "3.8.3",
+        "name": "ai-title-siyuan",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/wmy2981/ai-title-siyuan",
+        "version": "1.4.0"
+      },
+      "packageZipAssetId": 801314534,
+      "packageZipSha256": "b176750bbd51d54f28c565a3453c0acb7279c7e34735d2d6a1a2bafe15c15ddd",
+      "repoRef": "v1.4.0",
+      "size": 73347,
+      "stars": 4,
+      "updated": "2026-11-27T17:00:48Z",
+      "url": "wmy2981/ai-title-siyuan@b176750"
+    },
+    {
+      "created": "2026-11-18T15:25:40Z",
+      "installSize": 2581152,
+      "openIssues": 0,
+      "package": {
+        "author": "mnyon",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Your Habitica companion, alongside your notes.",
+          "zh-CN": "你的 Habitica 角色，与你的笔记同行。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Gamify for SiYuan"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "Habitica",
+          "TODO",
+          "gamification",
+          "productivity"
+        ],
+        "minAppVersion": "3.8.5",
+        "name": "gamify-for-siyuan",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/mnyon/gamifyforsiyuan",
+        "version": "0.5.0"
+      },
+      "packageZipAssetId": 800812791,
+      "packageZipSha256": "5902ff1e0cc948609ec27e32b2dd3bfb91b1f2f94ba1d2443f34cb962eff7468",
+      "repoRef": "v0.5.0",
+      "size": 2567338,
+      "stars": 1,
+      "updated": "2026-11-27T14:35:12Z",
+      "url": "mnyon/gamifyforsiyuan@5902ff1"
+    },
+    {
+      "created": "2026-11-27T09:59:21Z",
+      "installSize": 890773,
+      "openIssues": 0,
+      "package": {
+        "author": "mm-o",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "SiPage turns one SiYuan tab into a card desk — a browser-tab-like page holding 16 live cards (calendar, clock, weather, daily note, agenda, doc stats and more); drag freely, tidy in one click, embed into documents",
+          "zh-CN": "思页：把思源的一个页签变成一屏卡片桌面——像浏览器标签页那样装得下日历 / 时钟 / 天气 / 日记 / 日程 / 统计等 16 张活卡片，可自由拖拽、一键整理，也能插进文档"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiPage",
+          "zh-CN": "思页"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "SiPage",
+          "思页",
+          "page",
+          "tab",
+          "desk",
+          "dashboard",
+          "widget",
+          "card",
+          "页签",
+          "卡片",
+          "日历",
+          "待办",
+          "日记",
+          "calendar",
+          "todo"
+        ],
+        "minAppVersion": "2.10.14",
+        "name": "siyuan-sipage",
+        "preview": "preview.webp",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/mm-o/siyuan-sipage",
+        "version": "1.0.3"
+      },
+      "packageZipAssetId": 800564480,
+      "packageZipSha256": "9bbef6ecc4a44856fa25803932a1e71f4ef54e3d45ff91f034c8aef8eb0fad53",
+      "repoRef": "v1.0.3",
+      "size": 308742,
+      "stars": 0,
+      "updated": "2026-11-27T13:15:48Z",
+      "url": "mm-o/siyuan-sipage@9bbef6e"
     },
     {
       "created": "2026-11-27T13:12:13Z",
@@ -409,63 +621,6 @@
       "stars": 0,
       "updated": "2026-11-27T10:00:16Z",
       "url": "JUDESTRAHM/siyuan-tag-tidy@c82923a"
-    },
-    {
-      "created": "2026-11-27T09:59:21Z",
-      "installSize": 898406,
-      "openIssues": 0,
-      "package": {
-        "author": "mm-o",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "SiPage turns one SiYuan tab into a card desk — a browser-tab-like page holding 16 live cards (calendar, clock, weather, daily note, agenda, doc stats and more); drag freely, tidy in one click, embed into documents",
-          "zh-CN": "思页：把思源的一个页签变成一屏卡片桌面——像浏览器标签页那样装得下日历 / 时钟 / 天气 / 日记 / 日程 / 统计等 16 张活卡片，可自由拖拽、一键整理，也能插进文档"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiPage",
-          "zh-CN": "思页"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "SiPage",
-          "思页",
-          "page",
-          "tab",
-          "desk",
-          "dashboard",
-          "widget",
-          "card",
-          "页签",
-          "卡片",
-          "日历",
-          "待办",
-          "日记",
-          "calendar",
-          "todo"
-        ],
-        "minAppVersion": "2.10.14",
-        "name": "siyuan-sipage",
-        "preview": "preview.webp",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/mm-o/siyuan-sipage",
-        "version": "1.0.2"
-      },
-      "packageZipAssetId": 796504234,
-      "packageZipSha256": "7e539dcd7ad910434e05f7c68039509b62766f10ba51aede61df5b59c62064ff",
-      "repoRef": "v1.0.2",
-      "size": 309963,
-      "stars": 0,
-      "updated": "2026-11-27T09:59:21Z",
-      "url": "mm-o/siyuan-sipage@7e539dc"
     },
     {
       "created": "2026-11-27T09:57:17Z",
@@ -2926,55 +3081,6 @@
       "stars": 0,
       "updated": "2026-11-25T17:01:55Z",
       "url": "SuperShinningFinger/siyuan-douban-media-importer@dd4f1fc"
-    },
-    {
-      "created": "2026-11-18T15:25:40Z",
-      "installSize": 2556497,
-      "openIssues": 0,
-      "package": {
-        "author": "mnyon",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Your Habitica companion, alongside your notes.",
-          "zh-CN": "你的 Habitica 角色，与你的笔记同行。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Gamify for SiYuan"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "Habitica",
-          "TODO",
-          "gamification",
-          "productivity"
-        ],
-        "minAppVersion": "3.8.5",
-        "name": "gamify-for-siyuan",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/mnyon/gamifyforsiyuan",
-        "version": "0.4.0"
-      },
-      "packageZipAssetId": 792259106,
-      "packageZipSha256": "1df2015798a8b6c2c24b8df1c2e0bb8d80ecdceb6c5af9c6e12599af7b1719b5",
-      "repoRef": "v0.4.0",
-      "size": 2542683,
-      "stars": 0,
-      "updated": "2026-11-25T16:31:04Z",
-      "url": "mnyon/gamifyforsiyuan@1df2015"
     },
     {
       "created": "2026-11-25T15:46:05Z",
@@ -5448,59 +5554,6 @@
       "stars": 0,
       "updated": "2026-11-18T09:11:34Z",
       "url": "Gt841/plugin-todoocard-general@4d92261"
-    },
-    {
-      "created": "2023-07-31T13:22:08Z",
-      "installSize": 17497985,
-      "openIssues": 68,
-      "package": {
-        "author": "terwer",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker",
-          "android",
-          "ios"
-        ],
-        "description": {
-          "default": "Publish articles from siyuan-note to 30+ platforms.Free and open source.",
-          "zh_CN": "将思源笔记的文章发布到30+平台，开源、免费。"
-        },
-        "displayName": {
-          "default": "Publisher",
-          "zh_CN": "发布工具"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/terwer"
-          ]
-        },
-        "icon": "icon.png",
-        "minAppVersion": "2.9.0",
-        "name": "siyuan-plugin-publisher",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/terwer/siyuan-plugin-publisher",
-        "version": "2.4.0"
-      },
-      "packageZipAssetId": 762704572,
-      "packageZipSha256": "41cff2b2c68c8e0f5bc00f0901379f88617ebea368f597f25ba380624912048e",
-      "repoRef": "siyuan-plugin-publisher-v2.4.0",
-      "size": 17467425,
-      "stars": 212,
-      "updated": "2026-11-18T09:09:32Z",
-      "url": "terwer/siyuan-plugin-publisher@41cff2b"
     },
     {
       "created": "2026-11-18T07:47:59Z",
@@ -9482,59 +9535,6 @@
       "stars": 2,
       "updated": "2026-11-08T02:12:07Z",
       "url": "wmy2981/button-in-siyuan@4d558ca"
-    },
-    {
-      "created": "2026-09-13T09:10:53Z",
-      "installSize": 155387,
-      "openIssues": 1,
-      "package": {
-        "author": "wmy2981",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Generate note titles with the Chat Completions, Responses, Anthropic Messages or Gemini Interactions API",
-          "zh-CN": "用 Chat Completions、Responses API、Anthropic Messages 或 Gemini Interactions 接口为笔记生成标题"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "AI Title",
-          "zh-CN": "AI 标题生成"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://afdian.com/a/wmy2981"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "ai",
-          "title",
-          "deepseek",
-          "生成",
-          "标题",
-          "generate"
-        ],
-        "minAppVersion": "3.8.3",
-        "name": "ai-title-siyuan",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/wmy2981/ai-title-siyuan",
-        "version": "1.3.0"
-      },
-      "packageZipAssetId": 722533615,
-      "packageZipSha256": "51b13d13f21f1e73cf4a0c17bcddf587d706001fab17d2fc8ad71f318d394cab",
-      "repoRef": "v1.3.0",
-      "size": 71584,
-      "stars": 4,
-      "updated": "2026-11-08T01:37:36Z",
-      "url": "wmy2981/ai-title-siyuan@51b13d1"
     },
     {
       "created": "2026-11-04T09:08:37Z",
