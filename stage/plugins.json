@@ -1,6 +1,896 @@
 {
   "repos": [
     {
+      "created": "2026-11-27T09:57:17Z",
+      "installSize": 70722,
+      "openIssues": 0,
+      "package": {
+        "author": "JUDESTRAHM",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Find broken block references, dead siyuan:// links and orphan documents across your notebooks, then jump straight to them.",
+          "zh_CN": "找出所有笔记本中的失效块引用、失效 siyuan:// 链接和孤立文档，点击即可跳转。"
+        },
+        "displayName": {
+          "default": "Link Health: Broken Links &amp; Orphans",
+          "zh_CN": "链接健康：失效链接与孤立文档"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "broken link",
+          "dead link",
+          "orphan",
+          "backlinks",
+          "link checker",
+          "maintenance",
+          "失效链接",
+          "孤立文档",
+          "引用检查"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-link-health",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/JUDESTRAHM/siyuan-link-health",
+        "version": "0.1.0"
+      },
+      "packageZipAssetId": 796487491,
+      "packageZipSha256": "f0707e0ba0e37133bd96a10a655102abb508f8ad16bb9165da458680e6e044f7",
+      "repoRef": "v0.1.0",
+      "size": 49676,
+      "stars": 0,
+      "updated": "2026-11-27T09:57:17Z",
+      "url": "JUDESTRAHM/siyuan-link-health@f0707e0"
+    },
+    {
+      "created": "2026-11-27T09:53:49Z",
+      "installSize": 211957,
+      "openIssues": 0,
+      "package": {
+        "author": "JUDESTRAHM",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "GitHub-style heatmap and streaks for the habits you check off in a SiYuan database. Insert as an image.",
+          "zh-CN": "为数据库中打卡的习惯生成 GitHub 风格热力图和连续天数，可作为图片插入。"
+        },
+        "displayName": {
+          "default": "Habit Heatmap &amp; Streaks",
+          "zh-CN": "习惯热力图与连续打卡"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://sd-start.judestrahm.workers.dev/gx/sy/checkout?plugin=siyuan-habit-heatmap"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "habit",
+          "heatmap",
+          "streak",
+          "tracker",
+          "check-in",
+          "习惯",
+          "打卡",
+          "热力图"
+        ],
+        "minAppVersion": "3.2.0",
+        "name": "siyuan-habit-heatmap",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/JUDESTRAHM/siyuan-habit-heatmap",
+        "version": "0.2.1"
+      },
+      "packageZipAssetId": 796480778,
+      "packageZipSha256": "2de361c61c24392e530e7d052847ce2864a1d19932de20a936216cf7fd4f9b82",
+      "repoRef": "v0.2.1",
+      "size": 111495,
+      "stars": 0,
+      "updated": "2026-11-27T09:53:49Z",
+      "url": "JUDESTRAHM/siyuan-habit-heatmap@2de361c"
+    },
+    {
+      "created": "2026-11-27T09:52:51Z",
+      "installSize": 143724,
+      "openIssues": 0,
+      "package": {
+        "author": "JUDESTRAHM",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Live word count, reading time and per-document word goals in the status bar, plus words per notebook.",
+          "zh_CN": "状态栏实时显示字数、阅读时长和单文档字数目标，并统计各笔记本字数。"
+        },
+        "displayName": {
+          "default": "Document Stats &amp; Reading Time",
+          "zh_CN": "文档统计与阅读时长"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://sd-start.judestrahm.workers.dev/gx/sy/checkout?plugin=siyuan-doc-stats"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "word count",
+          "reading time",
+          "statistics",
+          "writing goal",
+          "字数统计",
+          "阅读时长",
+          "写作目标"
+        ],
+        "minAppVersion": "3.0.0",
+        "name": "siyuan-doc-stats",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/JUDESTRAHM/siyuan-doc-stats",
+        "version": "0.2.0"
+      },
+      "packageZipAssetId": 796480614,
+      "packageZipSha256": "0e5206bb58e9314d6d6a186f852dc71682fdeaaedb8ed1e5e3a52d2b3de6dc5f",
+      "repoRef": "v0.2.0",
+      "size": 49918,
+      "stars": 0,
+      "updated": "2026-11-27T09:52:51Z",
+      "url": "JUDESTRAHM/siyuan-doc-stats@0e5206b"
+    },
+    {
+      "created": "2026-02-08T18:58:44Z",
+      "installSize": 20319258,
+      "openIssues": 0,
+      "package": {
+        "author": "5kyfkr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Manage SiYuan tasks across documents with checklist, table, timeline, Kanban, calendar and whiteboard views, an AI assistant, quick editing and focus statistics.",
+          "zh-CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Task Horizon",
+          "zh-CN": "任务管理器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "task",
+          "manager",
+          "filter"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-plugin-task-horizon",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
+        "version": "3.5.8"
+      },
+      "packageZipAssetId": 798594472,
+      "packageZipSha256": "dccf4666b366e098d9a8e58900cb7fa9e3944e5bfa49846732a7e2f9cf8ab3b8",
+      "repoRef": "v3.5.8",
+      "size": 4218568,
+      "stars": 38,
+      "updated": "2026-11-27T02:20:26Z",
+      "url": "5kyfkr/siyuan-plugin-task-horizon@dccf466"
+    },
+    {
+      "created": "2026-08-24T07:18:51Z",
+      "installSize": 3593519,
+      "openIssues": 0,
+      "package": {
+        "author": "verygoodwu",
+        "backends": [
+          "windows",
+          "linux",
+          "docker",
+          "darwin"
+        ],
+        "description": {
+          "default": "Create, edit, preview, and export documents, text files, spreadsheets, mind maps, and whiteboards in SiYuan.",
+          "zh-CN": "在思源中创建、编辑、预览和导出文档、纯文本文件、表格、脑图与白板。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Cloud Document Suite",
+          "zh-CN": "云文档套件"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "windows",
+          "linux",
+          "docker",
+          "darwin"
+        ],
+        "keywords": [
+          "document",
+          "text",
+          "html",
+          "office",
+          "excel",
+          "word",
+          "pdf",
+          "mindmap",
+          "whiteboard",
+          "云文档",
+          "办公套件",
+          "文本编辑器",
+          "白板",
+          "拖放"
+        ],
+        "minAppVersion": "3.7.4",
+        "name": "siyuan-cloud-document-suite",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/verygoodwu/siyuan-cloud-document-suite",
+        "version": "2.3.8"
+      },
+      "packageZipAssetId": 798378468,
+      "packageZipSha256": "90c13c34ad75185aabe25586a900a494e231ceb72dc158a6a0aca10555fbb42f",
+      "repoRef": "v2.3.8",
+      "size": 1059349,
+      "stars": 1,
+      "updated": "2026-11-27T01:02:42Z",
+      "url": "verygoodwu/siyuan-cloud-document-suite@90c13c3"
+    },
+    {
+      "created": "2026-11-11T11:23:12Z",
+      "installSize": 217083,
+      "openIssues": 0,
+      "package": {
+        "author": "wujiaqi &amp; Forge",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Browse notebooks and find documents.",
+          "zh_CN": "知识库导航、文档搜索与快捷访问"
+        },
+        "displayName": {
+          "default": "Cloud Docs Home",
+          "zh_CN": "云文档"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "首页",
+          "云文档",
+          "飞书",
+          "homepage",
+          "卡片"
+        ],
+        "minAppVersion": "3.8.2",
+        "name": "cloud-docs-home",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/verygoodwu/cloud-docs-home",
+        "version": "0.13.6"
+      },
+      "packageZipAssetId": 798377971,
+      "packageZipSha256": "3f93459e45aa73ee7bcb68b33dca928f5a8ba2a4a3b45719cc4dce12f92ab56d",
+      "repoRef": "v0.13.6",
+      "size": 86056,
+      "stars": 0,
+      "updated": "2026-11-27T01:02:31Z",
+      "url": "verygoodwu/cloud-docs-home@3f93459"
+    },
+    {
+      "created": "2026-11-06T10:54:51Z",
+      "installSize": 1980142,
+      "openIssues": 1,
+      "package": {
+        "author": "jiangeeeeee",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "android",
+          "ios",
+          "harmony"
+        ],
+        "description": {
+          "default": "Write in notes and PDFs. Keep imported papers in a dedicated notebook and link a handwritten excerpt to the passage where you are writing.",
+          "zh_CN": "在正文、白板和 PDF 上写画。导入的 PDF 收进资料本，圈住公式和批注即可引用到正文，两边都能点回去。"
+        },
+        "displayName": {
+          "default": "源生笔迹"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-native-handwriting",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/jiangeeeeee/siyuan-native-handwriting",
+        "version": "0.16.1"
+      },
+      "packageZipAssetId": 798151987,
+      "packageZipSha256": "bf65602ba8766583059469d3ea96fd0385cb577fef7dd23503fad590ad4cd057",
+      "repoRef": "v0.16.1",
+      "size": 677009,
+      "stars": 1,
+      "updated": "2026-11-26T23:37:11Z",
+      "url": "jiangeeeeee/siyuan-native-handwriting@bf65602"
+    },
+    {
+      "created": "2025-11-24T02:47:39Z",
+      "installSize": 533928,
+      "openIssues": 2,
+      "package": {
+        "author": "notesynchelper",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "从微信同步到思源笔记，支持文字、图片、聊天记录、文章"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "笔记同步助手"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "docker"
+        ],
+        "keywords": [
+          "wechat",
+          "template",
+          "企微",
+          "模板",
+          "微信",
+          "速记",
+          "剪藏",
+          "搜集",
+          "日记",
+          "闪念",
+          "memo",
+          "备忘",
+          "公众号",
+          "小红书",
+          "得到"
+        ],
+        "minAppVersion": "3.3.0",
+        "name": "siyuan-notehelper",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/notesynchelper/siyuan-notehelper",
+        "version": "1.8.58"
+      },
+      "packageZipAssetId": 797273679,
+      "packageZipSha256": "f8eeccee96306e8fa04b82d04dad7e142ef915ce36db27c8b52fdc32fb9391e4",
+      "repoRef": "v1.8.58",
+      "size": 212979,
+      "stars": 2,
+      "updated": "2026-11-26T18:53:20Z",
+      "url": "notesynchelper/siyuan-notehelper@f8eecce"
+    },
+    {
+      "created": "2026-11-23T07:41:17Z",
+      "installSize": 853143,
+      "openIssues": 0,
+      "package": {
+        "author": "Forgo7ten",
+        "description": {
+          "default": "A modular personal toolkit for SiYuan, supporting automatic hyperlink titles, image compression, remote image localization, and side-by-side document diff",
+          "zh-CN": "思源笔记个人工具箱插件，支持自动标题链接、图片压缩、外链图片转存与差异文档比较等功能"
+        },
+        "displayName": {
+          "default": "OmniKit"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "工具箱",
+          "toolkit",
+          "图片压缩",
+          "图片优化",
+          "webp",
+          "外链转存",
+          "image compression",
+          "链接标题",
+          "网页标题",
+          "自动标题",
+          "超链接",
+          "link title",
+          "titled link",
+          "文档差异",
+          "文档对比",
+          "差异",
+          "对比",
+          "差异对比",
+          "冲突对比",
+          "diff",
+          "document diff"
+        ],
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-plugin-omnikit",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/Forgo7ten/siyuan-plugin-omnikit",
+        "version": "0.2.1"
+      },
+      "packageZipAssetId": 797045458,
+      "packageZipSha256": "8eef67137c7c8d74bb39fb4fc9c89dbc6eacc3301d4dae3a2137f1a8933947a4",
+      "repoRef": "v0.2.1",
+      "size": 446694,
+      "stars": 0,
+      "updated": "2026-11-26T17:47:46Z",
+      "url": "Forgo7ten/siyuan-plugin-omnikit@8eef671"
+    },
+    {
+      "created": "2026-11-14T17:20:27Z",
+      "installSize": 1331048,
+      "openIssues": 0,
+      "package": {
+        "author": "Clymer-git",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "在思源笔记里给图片画箭头、序号、文字、形状、马赛克与模糊，还能旋转、翻转、裁剪；保存后覆盖原图，一张 PNG 既是成品也是可继续编辑的工程，不产生多余资源。",
+          "en": "Annotate and crop images right inside SiYuan — saving overwrites the same PNG with the artwork and editable data embedded, so the image stays re-editable and no extra assets pile up."
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "勾画阁·猫抓"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "mobile"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "图片",
+          "标注",
+          "箭头",
+          "马赛克",
+          "裁剪",
+          "annotate",
+          "image",
+          "png",
+          "annotation",
+          "crop"
+        ],
+        "minAppVersion": "3.0.12",
+        "name": "siyuan-plugin-annotate",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/Clymer-git/siyuan-plugin-annotate",
+        "version": "1.4.4"
+      },
+      "packageZipAssetId": 796712113,
+      "packageZipSha256": "011221cc8843609c9ee5d6f0b1fbea7ab31ff58cc3f793deede0b1739d97705d",
+      "repoRef": "v1.4.4",
+      "size": 750811,
+      "stars": 2,
+      "updated": "2026-11-26T15:38:11Z",
+      "url": "Clymer-git/siyuan-plugin-annotate@011221c"
+    },
+    {
+      "created": "2026-11-20T14:15:32Z",
+      "installSize": 1512392,
+      "openIssues": 0,
+      "package": {
+        "author": "ccztao",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A clean task and project manager for SiYuan: tasks bound to blocks, projects, kanban, calendar, Gantt, reminders and optional Mankeep contact mentions.",
+          "zh_CN": "简洁的思源事项与项目管理：任务绑定文档块，支持项目、看板、日历、甘特图、提醒和可选的 Mankeep 联系人提及。"
+        },
+        "displayName": {
+          "default": "Task Manager",
+          "zh_CN": "事项管理"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "task",
+          "todo",
+          "project",
+          "kanban",
+          "calendar",
+          "gantt",
+          "reminder",
+          "mankeep",
+          "事项",
+          "任务",
+          "项目",
+          "看板",
+          "日历",
+          "甘特图",
+          "提醒"
+        ],
+        "minAppVersion": "3.1.0",
+        "name": "sy-task-manage",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/ccztao/sy-task-manage",
+        "version": "0.2.7"
+      },
+      "packageZipAssetId": 796444855,
+      "packageZipSha256": "7d295d65d5b7f3dd47625099467842c7ac2dc1e020d61c9f6998b4c6386dbe16",
+      "repoRef": "v0.2.7",
+      "size": 884977,
+      "stars": 1,
+      "updated": "2026-11-26T15:11:22Z",
+      "url": "ccztao/sy-task-manage@7d295d6"
+    },
+    {
+      "created": "2025-11-26T14:43:52Z",
+      "installSize": 21791009,
+      "openIssues": 4,
+      "package": {
+        "author": "mm-o",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "专业电子书阅读器，支持 EPUB/PDF/MOBI/TXT/在线小说；PDF 支持高亮、墨迹、形状、表单、印章、签名、图片、截图、搜索、打印、导出和回链，并提供标注笔记、词典、翻译、主题与书架管理",
+          "en_US": "Professional eBook reader for EPUB/PDF/MOBI/TXT/online novels. PDFs support highlights, ink, shapes, forms, stamps, signatures, images, screenshots, search, printing, export, and backlinks, with annotation notes, dictionary, translation, themes, and bookshelf management."
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiReader",
+          "zh_CN": "思阅-思源 EPUB/PDF 阅读器"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://745201.xyz/pay.jpg"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "阅读",
+          "reading",
+          "电子书",
+          "ebook",
+          "pdf",
+          "epub",
+          "mobi",
+          "txt",
+          "azw3",
+          "fb2",
+          "cbz",
+          "sireader",
+          "思阅",
+          "标注",
+          "annotation",
+          "笔记",
+          "note",
+          "书签",
+          "bookmark",
+          "词典",
+          "dictionary",
+          "书源",
+          "book source",
+          "在线小说",
+          "online novel",
+          "主题",
+          "theme"
+        ],
+        "minAppVersion": "3.6.5",
+        "name": "siyuan-sireader",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/mm-o/siyuan-sireader",
+        "version": "2.8.5"
+      },
+      "packageZipAssetId": 796285621,
+      "packageZipSha256": "b21707bc3196cfce720fcd5e30b3c114f02dc8e12a22cd1c4c3b35e7db2c9aab",
+      "repoRef": "v2.8.5",
+      "size": 8399704,
+      "stars": 34,
+      "updated": "2026-11-26T14:31:04Z",
+      "url": "mm-o/siyuan-sireader@b21707b"
+    },
+    {
+      "created": "2025-01-19T15:19:54Z",
+      "installSize": 4551988,
+      "openIssues": 5,
+      "package": {
+        "author": "mm-o",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "ios",
+          "android",
+          "harmony",
+          "docker",
+          "darwin"
+        ],
+        "description": {
+          "en_US": "Professional media player for SiYuan Note with multi-platform support, smart note integration, timestamp jumps, loop segments, and extensible script architecture",
+          "zh_CN": "专业的思源笔记媒体播放器插件，集成本地媒体、网盘、BBLL、TTVV、多窗口播放、时间戳、循环片段、媒体助手与可扩展架构。"
+        },
+        "displayName": {
+          "en_US": "SiYuan Media Player",
+          "zh_CN": "思播-思源媒体播放器"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://745201.xyz/pay.jpg"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "media player",
+          "audio",
+          "video",
+          "timestamp",
+          "playlist",
+          "note integration",
+          "extensible",
+          "播放器",
+          "音频",
+          "视频",
+          "时间戳",
+          "播放列表",
+          "笔记集成",
+          "多平台"
+        ],
+        "minAppVersion": "3.8.3",
+        "name": "siyuan-media-player",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/mm-o/siyuan-media-player",
+        "version": "2.4.0"
+      },
+      "packageZipAssetId": 795838829,
+      "packageZipSha256": "e66a370c32e1e383f102617d015d0384c5c82a7675bb8bb47d2d8970e3d490fb",
+      "repoRef": "v2.4.0",
+      "size": 1649727,
+      "stars": 55,
+      "updated": "2026-11-26T12:39:51Z",
+      "url": "mm-o/siyuan-media-player@e66a370"
+    },
+    {
+      "created": "2026-11-26T09:42:27Z",
+      "installSize": 181888,
+      "openIssues": 0,
+      "package": {
+        "author": "JUDESTRAHM",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Turn any database into bar, line and pie charts. Pro: Excel and printable reports.",
+          "zh-CN": "把任意数据库变成柱状图、折线图、饼图；专业版支持 Excel 与可打印报表。"
+        },
+        "displayName": {
+          "default": "Database Charts &amp; Reports",
+          "zh-CN": "数据库图表与报表"
+        },
+        "frontends": [
+          "all"
+        ],
+        "funding": {
+          "custom": [
+            "https://sd-start.judestrahm.workers.dev/gx/sy/checkout?p=siyuan-db-reports"
+          ]
+        },
+        "icon": "icon.png",
+        "keywords": [
+          "database",
+          "chart",
+          "report",
+          "excel",
+          "数据库",
+          "图表",
+          "报表"
+        ],
+        "minAppVersion": "3.2.0",
+        "name": "siyuan-db-reports",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/JUDESTRAHM/siyuan-db-reports",
+        "version": "0.1.1"
+      },
+      "packageZipAssetId": 795756125,
+      "packageZipSha256": "37d589d152e42c21e00973b0ad4417586b80628c227bef3e9fa4babe63d8e8ef",
+      "repoRef": "v0.1.1",
+      "size": 81088,
+      "stars": 0,
+      "updated": "2026-11-26T12:17:45Z",
+      "url": "JUDESTRAHM/siyuan-db-reports@37d589d"
+    },
+    {
+      "created": "2026-09-21T09:34:13Z",
+      "installSize": 1295722,
+      "openIssues": 0,
+      "package": {
+        "author": "LunaNorth",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "SiYuan Note · time-tracking visualization plugin",
+          "zh_CN": "思源笔记 · 时间记录可视化插件"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "QingTrail",
+          "zh_CN": "轻迹"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "轻迹",
+          "时间记录",
+          "可视化"
+        ],
+        "minAppVersion": "3.3.3",
+        "name": "QingTrail",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/LunaNorth/QingTrail",
+        "version": "1.2.1"
+      },
+      "packageZipAssetId": 795672232,
+      "packageZipSha256": "957bffb003f7b4a37d03ddc42041bd50afe291c7853fb6cb5672e6d9659f4da3",
+      "repoRef": "v1.2.1",
+      "size": 478812,
+      "stars": 0,
+      "updated": "2026-11-26T11:55:11Z",
+      "url": "LunaNorth/QingTrail@957bffb"
+    },
+    {
+      "created": "2025-08-03T16:06:10Z",
+      "installSize": 1290970,
+      "openIssues": 6,
+      "package": {
+        "author": "Hug-Zephyr",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "让你的搜索更简单, 更优雅, 参考简易搜索"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Simple Search HZ",
+          "zh_CN": "简搜"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop"
+        ],
+        "icon": "icon.png",
+        "minAppVersion": "3.8.7",
+        "name": "HZ-syplugin-simple-search",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/Hug-Zephyr/HZ-syplugin-simple-search",
+        "version": "1.4.0"
+      },
+      "packageZipAssetId": 795560308,
+      "packageZipSha256": "dac1c0c88f69bad71c65e4d999c8bdd42ebaa6419199306846c5935a8610bfa3",
+      "repoRef": "v1.4.0",
+      "size": 926409,
+      "stars": 2,
+      "updated": "2026-11-26T11:23:43Z",
+      "url": "Hug-Zephyr/HZ-syplugin-simple-search@dac1c0c"
+    },
+    {
       "created": "2026-11-26T11:19:04Z",
       "installSize": 584097,
       "openIssues": 0,
@@ -53,6 +943,47 @@
       "stars": 0,
       "updated": "2026-11-26T11:19:04Z",
       "url": "ZZUGeneral/siyuan-juejin-sync@697e48d"
+    },
+    {
+      "created": "2026-11-14T16:53:07Z",
+      "installSize": 27060847,
+      "openIssues": 0,
+      "package": {
+        "author": "jiangeeeeee",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Annotate images with linked notes and handwriting. Labels follow images across notes.",
+          "zh-CN": "给思源里的导图和截图贴便签、挂资料、写批注。复制或移动图片，便签随图同行。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "TuJian · Image Label",
+          "zh-CN": "图笺"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop"
+        ],
+        "icon": "icon.png",
+        "minAppVersion": "3.8.5",
+        "name": "siyuan-image-label",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/jiangeeeeee/siyuan-image-label",
+        "version": "0.3.5"
+      },
+      "packageZipAssetId": 795501004,
+      "packageZipSha256": "f1852b3a0466d5da873bba86aee725cbd352cec280b08b660018cf4b4e031c66",
+      "repoRef": "v0.3.5",
+      "size": 25950830,
+      "stars": 0,
+      "updated": "2026-11-26T11:05:23Z",
+      "url": "jiangeeeeee/siyuan-image-label@f1852b3"
     },
     {
       "created": "2026-10-31T10:56:17Z",
@@ -324,59 +1255,6 @@
       "stars": 1,
       "updated": "2026-11-26T09:42:31Z",
       "url": "xiaolv-suite/siyuan-exam@3bbc0df"
-    },
-    {
-      "created": "2026-11-26T09:42:27Z",
-      "installSize": 181359,
-      "openIssues": 0,
-      "package": {
-        "author": "JUDESTRAHM",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Turn any database into bar, line and pie charts. Pro: Excel and printable reports.",
-          "zh-CN": "把任意数据库变成柱状图、折线图、饼图；专业版支持 Excel 与可打印报表。"
-        },
-        "displayName": {
-          "default": "Database Charts &amp; Reports",
-          "zh-CN": "数据库图表与报表"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://sd-start.judestrahm.workers.dev/gx/sy/checkout?p=siyuan-db-reports"
-          ]
-        },
-        "icon": "icon.png",
-        "keywords": [
-          "database",
-          "chart",
-          "report",
-          "excel",
-          "数据库",
-          "图表",
-          "报表"
-        ],
-        "minAppVersion": "3.2.0",
-        "name": "siyuan-db-reports",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/JUDESTRAHM/siyuan-db-reports",
-        "version": "0.1.0"
-      },
-      "packageZipAssetId": 795190979,
-      "packageZipSha256": "260835ef73e43803893b55faf9ad1277ddf78005126252f7476328a4d64d5846",
-      "repoRef": "v0.1.0",
-      "size": 80888,
-      "stars": 0,
-      "updated": "2026-11-26T09:42:27Z",
-      "url": "JUDESTRAHM/siyuan-db-reports@260835e"
     },
     {
       "created": "2026-10-10T01:59:12Z",
@@ -1025,83 +1903,6 @@
       "url": "jiangeeeeee/siyuan-voice-notes-lite@b7fc9d4"
     },
     {
-      "created": "2025-11-26T14:43:52Z",
-      "installSize": 21770931,
-      "openIssues": 4,
-      "package": {
-        "author": "mm-o",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "专业电子书阅读器，支持 EPUB/PDF/MOBI/TXT/在线小说；PDF 支持高亮、墨迹、形状、表单、印章、签名、图片、截图、搜索、打印、导出和回链，并提供标注笔记、词典、翻译、主题与书架管理",
-          "en_US": "Professional eBook reader for EPUB/PDF/MOBI/TXT/online novels. PDFs support highlights, ink, shapes, forms, stamps, signatures, images, screenshots, search, printing, export, and backlinks, with annotation notes, dictionary, translation, themes, and bookshelf management."
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiReader",
-          "zh_CN": "思阅-思源 EPUB/PDF 阅读器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://745201.xyz/pay.jpg"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "阅读",
-          "reading",
-          "电子书",
-          "ebook",
-          "pdf",
-          "epub",
-          "mobi",
-          "txt",
-          "azw3",
-          "fb2",
-          "cbz",
-          "sireader",
-          "思阅",
-          "标注",
-          "annotation",
-          "笔记",
-          "note",
-          "书签",
-          "bookmark",
-          "词典",
-          "dictionary",
-          "书源",
-          "book source",
-          "在线小说",
-          "online novel",
-          "主题",
-          "theme"
-        ],
-        "minAppVersion": "3.6.5",
-        "name": "siyuan-sireader",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/mm-o/siyuan-sireader",
-        "version": "2.8.4"
-      },
-      "packageZipAssetId": 794514312,
-      "packageZipSha256": "e22925432ab64bedfd1658d935f64b39d8d4005c7531e7d3fcb47841abcb3b85",
-      "repoRef": "v2.8.4",
-      "size": 8392034,
-      "stars": 34,
-      "updated": "2026-11-26T05:51:23Z",
-      "url": "mm-o/siyuan-sireader@e229254"
-    },
-    {
       "created": "2026-11-02T01:20:16Z",
       "installSize": 1550357,
       "openIssues": 1,
@@ -1332,59 +2133,6 @@
       "url": "SuperShinningFinger/siyuan-douban-media-importer@dd4f1fc"
     },
     {
-      "created": "2026-02-08T18:58:44Z",
-      "installSize": 20274261,
-      "openIssues": 0,
-      "package": {
-        "author": "5kyfkr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Manage SiYuan tasks across documents with checklist, table, timeline, Kanban, calendar and whiteboard views, an AI assistant, quick editing and focus statistics.",
-          "zh-CN": "思源笔记任务管理器：汇总多文档任务，支持AI助手/白板/时间轴/日历/看板/清单/表格视图/四象限分组/悬浮条快速编辑/自定义加权排序。支持与底栏番茄钟联动、移动端原生日程通知"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Task Horizon",
-          "zh-CN": "任务管理器"
-        },
-        "frontends": [
-          "all"
-        ],
-        "funding": {
-          "custom": [
-            "https://free.picui.cn/free/2026/02/25/699f05ad97ce4.png"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "task",
-          "manager",
-          "filter"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-plugin-task-horizon",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/5kyfkr/siyuan-plugin-task-horizon",
-        "version": "3.5.7"
-      },
-      "packageZipAssetId": 792349917,
-      "packageZipSha256": "e7e582edfc3fc1959041eaabb696cf91008cfa4c3dbdb0fb60143faf48b08883",
-      "repoRef": "v3.5.7",
-      "size": 4210533,
-      "stars": 38,
-      "updated": "2026-11-25T16:55:14Z",
-      "url": "5kyfkr/siyuan-plugin-task-horizon@e7e582e"
-    },
-    {
       "created": "2026-11-18T15:25:40Z",
       "installSize": 2556497,
       "openIssues": 0,
@@ -1485,126 +2233,6 @@
       "stars": 0,
       "updated": "2026-11-25T15:46:05Z",
       "url": "ljq29/univer@597d407"
-    },
-    {
-      "created": "2026-11-06T10:54:51Z",
-      "installSize": 1980023,
-      "openIssues": 1,
-      "package": {
-        "author": "jiangeeeeee",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "android",
-          "ios",
-          "harmony"
-        ],
-        "description": {
-          "default": "Write in notes and PDFs. Keep imported papers in a dedicated notebook and link a handwritten excerpt to the passage where you are writing.",
-          "zh_CN": "在正文、白板和 PDF 上写画。导入的 PDF 收进资料本，圈住公式和批注即可引用到正文，两边都能点回去。"
-        },
-        "displayName": {
-          "default": "源生笔迹"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-native-handwriting",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/jiangeeeeee/siyuan-native-handwriting",
-        "version": "0.16.0"
-      },
-      "packageZipAssetId": 792047182,
-      "packageZipSha256": "96eac98dd32fafdceb01f98e994a11c039fea15b66e288aecee6bf8882eec453",
-      "repoRef": "v0.16.0",
-      "size": 676963,
-      "stars": 1,
-      "updated": "2026-11-25T15:18:29Z",
-      "url": "jiangeeeeee/siyuan-native-handwriting@96eac98"
-    },
-    {
-      "created": "2025-01-19T15:19:54Z",
-      "installSize": 4545481,
-      "openIssues": 5,
-      "package": {
-        "author": "mm-o",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "ios",
-          "android",
-          "harmony",
-          "docker",
-          "darwin"
-        ],
-        "description": {
-          "en_US": "Professional media player for SiYuan Note with multi-platform support, smart note integration, timestamp jumps, loop segments, and extensible script architecture",
-          "zh_CN": "专业的思源笔记媒体播放器插件，集成本地媒体、网盘、BBLL、TTVV、多窗口播放、时间戳、循环片段、媒体助手与可扩展架构。"
-        },
-        "displayName": {
-          "en_US": "SiYuan Media Player",
-          "zh_CN": "思播-思源媒体播放器"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://745201.xyz/pay.jpg"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "media player",
-          "audio",
-          "video",
-          "timestamp",
-          "playlist",
-          "note integration",
-          "extensible",
-          "播放器",
-          "音频",
-          "视频",
-          "时间戳",
-          "播放列表",
-          "笔记集成",
-          "多平台"
-        ],
-        "minAppVersion": "3.8.3",
-        "name": "siyuan-media-player",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/mm-o/siyuan-media-player",
-        "version": "2.3.8"
-      },
-      "packageZipAssetId": 791989164,
-      "packageZipSha256": "283261254bca0a0ecf586a7ec8ef9cdff0eb400c8e71ec017e8e1b4c95e87d71",
-      "repoRef": "v2.3.8",
-      "size": 1647317,
-      "stars": 55,
-      "updated": "2026-11-25T15:01:28Z",
-      "url": "mm-o/siyuan-media-player@2832612"
     },
     {
       "created": "2026-11-25T08:42:52Z",
@@ -2113,61 +2741,6 @@
       "url": "wmy2981/some-settings-siyuan@0a8229c"
     },
     {
-      "created": "2026-11-14T17:20:27Z",
-      "installSize": 1329007,
-      "openIssues": 0,
-      "package": {
-        "author": "Clymer-git",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "在思源笔记里给图片画箭头、序号、文字、形状、马赛克与模糊，还能旋转、翻转、裁剪；保存后覆盖原图，一张 PNG 既是成品也是可继续编辑的工程，不产生多余资源。",
-          "en": "Annotate and crop images right inside SiYuan — saving overwrites the same PNG with the artwork and editable data embedded, so the image stays re-editable and no extra assets pile up."
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "勾画阁·猫抓"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "mobile"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "图片",
-          "标注",
-          "箭头",
-          "马赛克",
-          "裁剪",
-          "annotate",
-          "image",
-          "png",
-          "annotation",
-          "crop"
-        ],
-        "minAppVersion": "3.0.12",
-        "name": "siyuan-plugin-annotate",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/Clymer-git/siyuan-plugin-annotate",
-        "version": "1.4.3"
-      },
-      "packageZipAssetId": 787829357,
-      "packageZipSha256": "aa5095e903643115169e0fd4435ac0e9df3c586b0f95d6465125983814a4c3b1",
-      "repoRef": "v1.4.3",
-      "size": 750207,
-      "stars": 1,
-      "updated": "2026-11-24T15:40:23Z",
-      "url": "Clymer-git/siyuan-plugin-annotate@aa5095e"
-    },
-    {
       "created": "2025-04-22T14:02:50Z",
       "installSize": 2253996,
       "openIssues": 0,
@@ -2224,62 +2797,6 @@
       "stars": 1,
       "updated": "2026-11-24T15:15:44Z",
       "url": "Misuzu2027/syplugin-image-pin-preview@d72deb8"
-    },
-    {
-      "created": "2026-11-20T14:15:32Z",
-      "installSize": 1487096,
-      "openIssues": 0,
-      "package": {
-        "author": "ccztao",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A clean task and project manager for SiYuan: tasks bound to blocks, projects, kanban, calendar, Gantt, reminders and optional Mankeep contact mentions.",
-          "zh_CN": "简洁的思源事项与项目管理：任务绑定文档块，支持项目、看板、日历、甘特图、提醒和可选的 Mankeep 联系人提及。"
-        },
-        "displayName": {
-          "default": "Task Manager",
-          "zh_CN": "事项管理"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "task",
-          "todo",
-          "project",
-          "kanban",
-          "calendar",
-          "gantt",
-          "reminder",
-          "mankeep",
-          "事项",
-          "任务",
-          "项目",
-          "看板",
-          "日历",
-          "甘特图",
-          "提醒"
-        ],
-        "minAppVersion": "3.1.0",
-        "name": "sy-task-manage",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/ccztao/sy-task-manage",
-        "version": "0.2.6"
-      },
-      "packageZipAssetId": 787633126,
-      "packageZipSha256": "bb630698c98fa206cb2c34fda86cf3bda03f21f56e5f46c2ddaf74d509e636a8",
-      "repoRef": "v0.2.6",
-      "size": 878926,
-      "stars": 1,
-      "updated": "2026-11-24T14:59:34Z",
-      "url": "ccztao/sy-task-manage@bb63069"
     },
     {
       "created": "2026-11-18T07:54:24Z",
@@ -2784,63 +3301,6 @@
       "url": "jieyangzhang023/siyuan-plugin-task-gantt@faa8848"
     },
     {
-      "created": "2025-11-24T02:47:39Z",
-      "installSize": 533928,
-      "openIssues": 2,
-      "package": {
-        "author": "notesynchelper",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "从微信同步到思源笔记，支持文字、图片、聊天记录、文章"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "笔记同步助手"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "docker"
-        ],
-        "keywords": [
-          "wechat",
-          "template",
-          "企微",
-          "模板",
-          "微信",
-          "速记",
-          "剪藏",
-          "搜集",
-          "日记",
-          "闪念",
-          "memo",
-          "备忘",
-          "公众号",
-          "小红书",
-          "得到"
-        ],
-        "minAppVersion": "3.3.0",
-        "name": "siyuan-notehelper",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/notesynchelper/siyuan-notehelper",
-        "version": "1.8.57"
-      },
-      "packageZipAssetId": 784520709,
-      "packageZipSha256": "dcfff19c5e841e87e084ec076c23a88387caa7c071836e78124850fae0a6c751",
-      "repoRef": "v1.8.57",
-      "size": 212979,
-      "stars": 2,
-      "updated": "2026-11-23T20:59:13Z",
-      "url": "notesynchelper/siyuan-notehelper@dcfff19"
-    },
-    {
       "created": "2026-11-23T13:46:05Z",
       "installSize": 191891,
       "openIssues": 0,
@@ -3324,62 +3784,6 @@
       "url": "shijianjs/siyuan-plugin-iconify-emoji@e24e29c"
     },
     {
-      "created": "2026-11-23T07:41:17Z",
-      "installSize": 671107,
-      "openIssues": 0,
-      "package": {
-        "author": "Forgo7ten",
-        "description": {
-          "default": "A modular personal toolkit for SiYuan",
-          "zh-CN": "思源笔记模块化个人工具箱插件"
-        },
-        "displayName": {
-          "default": "OmniKit"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "toolkit",
-          "工具箱",
-          "image compression",
-          "图片压缩",
-          "webp",
-          "图片优化",
-          "外链转存",
-          "titled link",
-          "链接标题",
-          "网页标题",
-          "自动标题",
-          "超链接",
-          "link title",
-          "Svelte"
-        ],
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-plugin-omnikit",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/Forgo7ten/siyuan-plugin-omnikit",
-        "version": "0.1.0"
-      },
-      "packageZipAssetId": 779750736,
-      "packageZipSha256": "686a307ca721788af871916b75bef78c3c4f2fa223a72bafed3c322d06a1b98f",
-      "repoRef": "v0.1.0",
-      "size": 325289,
-      "stars": 0,
-      "updated": "2026-11-23T07:41:17Z",
-      "url": "Forgo7ten/siyuan-plugin-omnikit@686a307"
-    },
-    {
       "created": "2026-10-24T18:53:04Z",
       "installSize": 411028,
       "openIssues": 0,
@@ -3756,47 +4160,6 @@
       "url": "wmy2981/edit-ignore-files-siyuan@f09a4ff"
     },
     {
-      "created": "2026-11-14T16:53:07Z",
-      "installSize": 26801716,
-      "openIssues": 0,
-      "package": {
-        "author": "jiangeeeeee",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Annotate images with linked notes and handwriting. Labels follow images across notes.",
-          "zh-CN": "给思源里的导图和截图贴便签、挂资料、写批注。复制或移动图片，便签随图同行。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "TuJian · Image Label",
-          "zh-CN": "图笺"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop"
-        ],
-        "icon": "icon.png",
-        "minAppVersion": "3.8.5",
-        "name": "siyuan-image-label",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/jiangeeeeee/siyuan-image-label",
-        "version": "0.3.4"
-      },
-      "packageZipAssetId": 776060730,
-      "packageZipSha256": "e501181c694deef097edbf4b9c4506d4102a090e40124a93805d807c4077ffbc",
-      "repoRef": "v0.3.4",
-      "size": 25692275,
-      "stars": 0,
-      "updated": "2026-11-21T15:52:53Z",
-      "url": "jiangeeeeee/siyuan-image-label@e501181"
-    },
-    {
       "created": "2025-12-19T05:02:32Z",
       "installSize": 3646124,
       "openIssues": 2,
@@ -4150,53 +4513,6 @@
       "stars": 1,
       "updated": "2026-11-20T06:35:23Z",
       "url": "lamp3721/colorful-doc-tree@4b180fd"
-    },
-    {
-      "created": "2026-11-11T11:23:12Z",
-      "installSize": 215339,
-      "openIssues": 0,
-      "package": {
-        "author": "wujiaqi &amp; Forge",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Browse notebooks and find documents.",
-          "zh_CN": "知识库导航、文档搜索与快捷访问"
-        },
-        "displayName": {
-          "default": "Cloud Docs Home",
-          "zh_CN": "云文档"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "首页",
-          "云文档",
-          "飞书",
-          "homepage",
-          "卡片"
-        ],
-        "minAppVersion": "3.8.2",
-        "name": "cloud-docs-home",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/verygoodwu/cloud-docs-home",
-        "version": "0.13.5"
-      },
-      "packageZipAssetId": 770313796,
-      "packageZipSha256": "89739033152fc2034781bb247675a6f1ff483b75ffbc93708def15f5cd0c7320",
-      "repoRef": "v0.13.5",
-      "size": 85619,
-      "stars": 0,
-      "updated": "2026-11-20T03:37:27Z",
-      "url": "verygoodwu/cloud-docs-home@8973903"
     },
     {
       "created": "2026-11-11T11:27:56Z",
@@ -5243,74 +5559,6 @@
       "stars": 23,
       "updated": "2026-11-17T09:54:51Z",
       "url": "Misuzu2027/syplugin-document-search@7d2103c"
-    },
-    {
-      "created": "2026-08-24T07:18:51Z",
-      "installSize": 3587060,
-      "openIssues": 0,
-      "package": {
-        "author": "verygoodwu",
-        "backends": [
-          "windows",
-          "linux",
-          "docker",
-          "darwin"
-        ],
-        "description": {
-          "default": "Create, edit, preview, and export documents, text files, spreadsheets, mind maps, and whiteboards in SiYuan.",
-          "zh-CN": "在思源中创建、编辑、预览和导出文档、纯文本文件、表格、脑图与白板。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Cloud Document Suite",
-          "zh-CN": "云文档套件"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "windows",
-          "linux",
-          "docker",
-          "darwin"
-        ],
-        "keywords": [
-          "document",
-          "text",
-          "html",
-          "office",
-          "excel",
-          "word",
-          "pdf",
-          "mindmap",
-          "whiteboard",
-          "云文档",
-          "办公套件",
-          "文本编辑器",
-          "白板",
-          "拖放"
-        ],
-        "minAppVersion": "3.7.4",
-        "name": "siyuan-cloud-document-suite",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/verygoodwu/siyuan-cloud-document-suite",
-        "version": "2.3.7"
-      },
-      "packageZipAssetId": 758328761,
-      "packageZipSha256": "8af15d3a83be144c85bacc83f5fc88cfe0c840ed214813a91b2d9bd933513d9d",
-      "repoRef": "v2.3.7",
-      "size": 1057160,
-      "stars": 1,
-      "updated": "2026-11-17T08:56:54Z",
-      "url": "verygoodwu/siyuan-cloud-document-suite@8af15d3"
     },
     {
       "created": "2026-11-17T06:00:21Z",
@@ -12314,50 +12562,6 @@
       "stars": 6,
       "updated": "2026-10-23T14:02:57Z",
       "url": "famotime/siyuan-sou-easy@9e4a777"
-    },
-    {
-      "created": "2026-09-21T09:34:13Z",
-      "installSize": 1160571,
-      "openIssues": 0,
-      "package": {
-        "author": "LunaNorth",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "SiYuan Note · time-tracking visualization plugin",
-          "zh_CN": "思源笔记 · 时间记录可视化插件"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "QingTrail",
-          "zh_CN": "轻迹"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "轻迹",
-          "时间记录",
-          "可视化"
-        ],
-        "minAppVersion": "3.3.3",
-        "name": "QingTrail",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/LunaNorth/QingTrail",
-        "version": "1.2.0"
-      },
-      "packageZipAssetId": 668076318,
-      "packageZipSha256": "550d9ba20f7c1b0fb11ba135341539472bd3e39be4f7ff47ff0afc63954f15ff",
-      "repoRef": "v1.2.0",
-      "size": 443941,
-      "stars": 0,
-      "updated": "2026-10-23T05:27:55Z",
-      "url": "LunaNorth/QingTrail@550d9ba"
     },
     {
       "created": "2026-10-22T11:05:37Z",
@@ -27186,44 +27390,6 @@
       "stars": 2,
       "updated": "2025-11-28T21:13:31Z",
       "url": "Macavity/siyuan-rag-assistant@a763d49"
-    },
-    {
-      "created": "2025-08-03T16:06:10Z",
-      "installSize": 995244,
-      "openIssues": 7,
-      "package": {
-        "author": "Hug-Zephyr",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "让你的搜索更简单, 更优雅, 参考简易搜索"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Simple Search HZ",
-          "zh_CN": "简搜"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop"
-        ],
-        "minAppVersion": "3.2.1",
-        "name": "HZ-syplugin-simple-search",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/Hug-Zephyr/HZ-syplugin-simple-search",
-        "version": "1.3.6"
-      },
-      "packageZipAssetId": 321487847,
-      "packageZipSha256": "8d22c37524e77775527c2e1ae8c8dff2e917c463cf120e1b9d916cd0d2c97bfe",
-      "repoRef": "v1.3.6",
-      "size": 827032,
-      "stars": 2,
-      "updated": "2025-11-27T13:09:53Z",
-      "url": "Hug-Zephyr/HZ-syplugin-simple-search@8d22c37"
     },
     {
       "created": "2025-10-06T14:28:39Z",
