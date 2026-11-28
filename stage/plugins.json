@@ -1,6 +1,349 @@
 {
   "repos": [
     {
+      "created": "2026-11-06T10:54:51Z",
+      "installSize": 1961577,
+      "openIssues": 1,
+      "package": {
+        "author": "jiangeeeeee",
+        "backends": [
+          "windows",
+          "linux",
+          "darwin",
+          "android",
+          "ios",
+          "harmony"
+        ],
+        "description": {
+          "default": "Write in notes and PDFs. Keep imported papers in a dedicated notebook and link a handwritten excerpt to the passage where you are writing.",
+          "zh_CN": "在正文、白板和 PDF 上写画。导入的 PDF 收进资料本，圈住公式和批注即可引用到正文，两边都能点回去。"
+        },
+        "displayName": {
+          "default": "源生笔迹"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile"
+        ],
+        "icon": "icon.png",
+        "minAppVersion": "3.8.4",
+        "name": "siyuan-native-handwriting",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/jiangeeeeee/siyuan-native-handwriting",
+        "version": "0.16.3"
+      },
+      "packageZipAssetId": 804203503,
+      "packageZipSha256": "a41e0451c3e622db8fc1abfa931678b22adc4175bab40464a6a0f243ecf4a442",
+      "repoRef": "v0.16.3",
+      "size": 670723,
+      "stars": 1,
+      "updated": "2026-11-28T10:44:53Z",
+      "url": "jiangeeeeee/siyuan-native-handwriting@a41e045"
+    },
+    {
+      "created": "2026-11-14T16:53:07Z",
+      "installSize": 27056282,
+      "openIssues": 0,
+      "package": {
+        "author": "jiangeeeeee",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Annotate images with linked notes and handwriting. Labels follow images across notes.",
+          "zh-CN": "给思源里的导图和截图贴便签、挂资料、写批注。复制或移动图片，便签随图同行。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "TuJian · Image Label",
+          "zh-CN": "图笺"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window",
+          "browser-desktop"
+        ],
+        "icon": "icon.png",
+        "minAppVersion": "3.8.5",
+        "name": "siyuan-image-label",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/jiangeeeeee/siyuan-image-label",
+        "version": "0.3.6"
+      },
+      "packageZipAssetId": 804201384,
+      "packageZipSha256": "6476085ab5244ab7e9bcf8a255b76224eb9ede877bb4e02382be3a5f42c0b87a",
+      "repoRef": "v0.3.6",
+      "size": 25949278,
+      "stars": 0,
+      "updated": "2026-11-28T10:44:37Z",
+      "url": "jiangeeeeee/siyuan-image-label@6476085"
+    },
+    {
+      "created": "2026-11-15T09:20:05Z",
+      "installSize": 12828681,
+      "openIssues": 0,
+      "package": {
+        "author": "Voice Notes contributors",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Record microphone or meeting audio, import subtitles and link notes to the original recording.",
+          "zh-CN": "录下会议声音和麦克风，导入字幕、标记重点，从正文回到原话。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan Voice Notes Lite",
+          "zh-CN": "思源语音 Lite"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "audio",
+          "transcript",
+          "语音",
+          "字幕"
+        ],
+        "minAppVersion": "3.8.9",
+        "name": "siyuan-voice-notes-lite",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/jiangeeeeee/siyuan-voice-notes-lite",
+        "version": "0.9.1"
+      },
+      "packageZipAssetId": 804199414,
+      "packageZipSha256": "88d590ea2d59525460f22c8961d5257fe8a784688fb975414e02b10e08126c51",
+      "repoRef": "v0.9.1",
+      "size": 11963944,
+      "stars": 0,
+      "updated": "2026-11-28T10:43:50Z",
+      "url": "jiangeeeeee/siyuan-voice-notes-lite@88d590e"
+    },
+    {
+      "created": "2026-11-14T15:22:56Z",
+      "installSize": 322315140,
+      "openIssues": 0,
+      "package": {
+        "author": "Voice Notes contributors",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Record microphone or meeting audio, transcribe locally, and link notes to the original recording.",
+          "zh-CN": "录下会议声音和麦克风，边听边转写，从正文回到原话。附本地转写及发言人模型。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan Voice Notes Full",
+          "zh-CN": "思源语音 Full"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "audio",
+          "transcript",
+          "语音",
+          "字幕"
+        ],
+        "minAppVersion": "3.8.9",
+        "name": "siyuan-voice-notes",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md"
+        },
+        "settingsWindow": true,
+        "url": "https://github.com/jiangeeeeee/siyuan-voice-notes",
+        "version": "0.9.1"
+      },
+      "packageZipAssetId": 804195045,
+      "packageZipSha256": "25f6d3ae6fef329bc79b4b6aa74166f229010309802e20c80afc3fe2223f95dc",
+      "repoRef": "v0.9.1",
+      "size": 222138270,
+      "stars": 0,
+      "updated": "2026-11-28T10:43:05Z",
+      "url": "jiangeeeeee/siyuan-voice-notes@25f6d3a"
+    },
+    {
+      "created": "2026-08-10T05:11:18Z",
+      "installSize": 770157,
+      "openIssues": 1,
+      "package": {
+        "author": "kx1356",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Floating ball review for Flashcard V2 (SiYuan 3.9+); Alt+F current doc; dock filter entry; review-set management (create / rename / batch move cards); flashcard manager (search / filter / batch suspend-bury-delete / add to review set); blur cloze; card notes with timeline and a note summary list; tag filter; built-in card check-in stats with doc path; real undo of last rating.",
+          "zh-CN": "面向思源 3.9 新版闪卡（Flashcard V2）的复习助手：悬浮球复习；Alt+F 复习当前文档；Dock 栏筛选入口；复习集管理（新建 / 改名 / 批量移卡）；闪卡管理面板（搜索 / 状态筛选 / 按来源分组 / 批量暂停埋藏删除 / 加入复习集）；模糊答案遮挡；卡片点评（多条想法按时间线累积 + 汇总列表）；按标签筛选；内置卡片打卡统计（复习/遗忘/上次时间/文档路径）；评分可真正撤销。"
+        },
+        "displayName": {
+          "default": "Flashcard Assistant",
+          "zh-CN": "闪卡小助手（ZY）"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "flashcard",
+          "review",
+          "notebook",
+          "statistics",
+          "manage",
+          "batch"
+        ],
+        "minAppVersion": "3.9.0-alpha.6",
+        "name": "siyuan-flashcard-zy",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/kx1356/siyuan-flashcard-zy",
+        "version": "22.0.3"
+      },
+      "packageZipAssetId": 803816156,
+      "packageZipSha256": "e47ce02231c74b239559eaf371c876af325f2e3de5b7e0f2baa55e40c1421e21",
+      "repoRef": "22.0.3",
+      "size": 380816,
+      "stars": 1,
+      "updated": "2026-11-28T08:22:50Z",
+      "url": "kx1356/siyuan-flashcard-zy@e47ce02"
+    },
+    {
+      "created": "2026-07-24T03:29:36Z",
+      "installSize": 892760,
+      "openIssues": 0,
+      "package": {
+        "author": "alvisliu818",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A full-featured browser inside SiYuan, powered by Electron &lt;webview&gt;. Supports multi-tab, bookmarks, history, downloads.",
+          "zh-CN": "思源浏览器，基于 Electron &lt;webview&gt;，支持多页签、书签、历史、下载。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "Browser",
+          "zh-CN": "思源浏览器"
+        },
+        "frontends": [
+          "desktop",
+          "desktop-window"
+        ],
+        "icon": "icon.png",
+        "kernels": [
+          "all"
+        ],
+        "keywords": [
+          "browser",
+          "webview",
+          "浏览器"
+        ],
+        "minAppVersion": "3.7.0",
+        "name": "siyuan-plugin-browser",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README.zh-CN.md"
+        },
+        "url": "https://github.com/alvisliu818/siyuan-plugin-browser",
+        "version": "0.3.15"
+      },
+      "packageZipAssetId": 803738643,
+      "packageZipSha256": "416e3985b65ca2f81c8482d6833c42b903fa64671817408fa0539835fc73194a",
+      "repoRef": "0.3.15",
+      "size": 401824,
+      "stars": 1,
+      "updated": "2026-11-28T07:55:14Z",
+      "url": "alvisliu818/siyuan-plugin-browser@416e398"
+    },
+    {
+      "created": "2026-11-20T14:15:32Z",
+      "installSize": 2095003,
+      "openIssues": 0,
+      "package": {
+        "author": "ccztao",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "A clean task and project manager for SiYuan: tasks bound to blocks, projects, kanban, calendar, Gantt, reminders and optional Mankeep contact mentions.",
+          "zh_CN": "简洁的思源事项与项目管理：任务绑定文档块，支持项目、看板、日历、甘特图、提醒和可选的 Mankeep 联系人提及。"
+        },
+        "displayName": {
+          "default": "Task Manager",
+          "zh_CN": "事项管理"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "task",
+          "todo",
+          "project",
+          "kanban",
+          "calendar",
+          "gantt",
+          "reminder",
+          "mankeep",
+          "事项",
+          "任务",
+          "项目",
+          "看板",
+          "日历",
+          "甘特图",
+          "提醒"
+        ],
+        "minAppVersion": "3.1.0",
+        "name": "sy-task-manage",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh_CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/ccztao/sy-task-manage",
+        "version": "0.2.9"
+      },
+      "packageZipAssetId": 803282327,
+      "packageZipSha256": "c41ead7512d9d735d5d771ee57309f393f60b2e68882b72ea4c6e20d7d800819",
+      "repoRef": "v0.2.9",
+      "size": 1437416,
+      "stars": 1,
+      "updated": "2026-11-28T04:53:53Z",
+      "url": "ccztao/sy-task-manage@c41ead7"
+    },
+    {
       "created": "2026-11-28T04:45:02Z",
       "installSize": 455749,
       "openIssues": 0,
@@ -54,6 +397,97 @@
       "url": "zgp2686/siyuan-db-number-format@fb84a60"
     },
     {
+      "created": "2025-06-12T13:50:30Z",
+      "installSize": 15342712,
+      "openIssues": 2,
+      "package": {
+        "author": "Glaube-TY",
+        "backends": [
+          "windows",
+          "linux",
+          "ios",
+          "android",
+          "harmony",
+          "docker",
+          "darwin"
+        ],
+        "description": {
+          "en_US": "Provides personalized homepage layout and rich functional modules, as well as AI knowledge base.",
+          "zh_CN": "提供个性化首页布局和丰富的功能模块以及 AI 知识库功能。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "en_US": "HOME",
+          "zh_CN": "主页"
+        },
+        "frontends": [
+          "desktop",
+          "mobile",
+          "browser-desktop",
+          "browser-mobile",
+          "desktop-window"
+        ],
+        "funding": {
+          "custom": [
+            "https://glaube-ty.top/da-shang/"
+          ]
+        },
+        "icon": "icon.png",
+        "kernels": [
+          "windows",
+          "linux",
+          "darwin",
+          "docker"
+        ],
+        "keywords": [
+          "homepage",
+          "home",
+          "主页",
+          "首页",
+          "task",
+          "task manager",
+          "任务",
+          "任务管理",
+          "SQL",
+          "sql",
+          "查询",
+          "widget",
+          "widget manager",
+          "挂件",
+          "挂件管理",
+          "组件",
+          "组件管理",
+          "Pomodoro",
+          "Pomodoro timer",
+          "番茄钟",
+          "番茄",
+          "heat map",
+          "热力图",
+          "热搜",
+          "搜索",
+          "AI",
+          "智能助手",
+          "agent",
+          "智能体"
+        ],
+        "minAppVersion": "3.8.6",
+        "name": "siyuan-homepage",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md"
+        },
+        "url": "https://github.com/Glaube-TY/siyuan-homepage",
+        "version": "5.1.25"
+      },
+      "packageZipAssetId": 803076217,
+      "packageZipSha256": "4dbcd53af4404bfcee1f4da57aee85b4698490e853eb58a6a81439de0095f3ee",
+      "repoRef": "v5.1.25",
+      "size": 5478294,
+      "stars": 42,
+      "updated": "2026-11-28T03:37:14Z",
+      "url": "Glaube-TY/siyuan-homepage@4dbcd53"
+    },
+    {
       "created": "2026-11-02T01:20:16Z",
       "installSize": 1558086,
       "openIssues": 1,
@@ -105,6 +539,67 @@
       "stars": 3,
       "updated": "2026-11-28T02:49:46Z",
       "url": "ccztao/siyuan-mankeep@2860675"
+    },
+    {
+      "created": "2026-01-18T03:23:07Z",
+      "installSize": 6821395,
+      "openIssues": 1,
+      "package": {
+        "author": "whale🐋",
+        "backends": [
+          "all"
+        ],
+        "description": {
+          "default": "Quick note on app switch, click automation, quick access to built-in features, date templates, mobile shortcuts. Supports both mobile and desktop! Replace Quicker, FV, Notion automation within SiYuan!",
+          "zh-CN": "一键记事，手机端全流程解决方案。操作一步到位，重塑思源笔记移动端体验。自启动一键记事、一键按钮直达、定制化工具栏按钮、自动化模拟点击、手机快捷键使用、手写模板插入、思源内置功能选择等。手机端、电脑端均支持。可在思源内基本替换Quicker、FV悬浮球、notion自动化、宏命令等。"
+        },
+        "disabledInPublish": true,
+        "displayName": {
+          "default": "SiYuan Mobile Enhancer",
+          "zh-CN": "思源手机端增强"
+        },
+        "frontends": [
+          "all"
+        ],
+        "icon": "icon.png",
+        "keywords": [
+          "toolbar",
+          "customization",
+          "mobile",
+          "automation",
+          "buttons",
+          "工具栏",
+          "自定义",
+          "手机端",
+          "手机端增强",
+          "移动端",
+          "移动端增强",
+          "模拟点击",
+          "自动化",
+          "按钮",
+          "鲸鱼",
+          "工具箱",
+          "鲸鱼工具箱",
+          "一键记事",
+          "快速记事"
+        ],
+        "minAppVersion": "3.8.10",
+        "name": "siyuan-toolbar-customizer",
+        "preview": "preview.png",
+        "readme": {
+          "default": "README.md",
+          "zh-CN": "README_zh_CN.md"
+        },
+        "url": "https://github.com/HaoCeans/siyuan-toolbar-customizer",
+        "version": "4.0.4"
+      },
+      "packageZipAssetId": 802855455,
+      "packageZipSha256": "49678cb4153897521a5b6111ea5a3b20f25ff3a7493488d7057f1a3f372ed152",
+      "repoRef": "v4.0.4",
+      "size": 2245456,
+      "stars": 9,
+      "updated": "2026-11-28T02:11:32Z",
+      "url": "HaoCeans/siyuan-toolbar-customizer@49678cb"
     },
     {
       "created": "2026-11-27T09:59:21Z",
@@ -696,67 +1191,6 @@
       "url": "xiaolv-suite/siyuan-checkin@4a6771c"
     },
     {
-      "created": "2026-01-18T03:23:07Z",
-      "installSize": 6814350,
-      "openIssues": 1,
-      "package": {
-        "author": "whale🐋",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Quick note on app switch, click automation, quick access to built-in features, date templates, mobile shortcuts. Supports both mobile and desktop! Replace Quicker, FV, Notion automation within SiYuan!",
-          "zh-CN": "一键记事，手机端全流程解决方案。操作一步到位，重塑思源笔记移动端体验。自启动一键记事、一键按钮直达、定制化工具栏按钮、自动化模拟点击、手机快捷键使用、手写模板插入、思源内置功能选择等。手机端、电脑端均支持。可在思源内基本替换Quicker、FV悬浮球、notion自动化、宏命令等。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiYuan Mobile Enhancer",
-          "zh-CN": "思源手机端增强"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "toolbar",
-          "customization",
-          "mobile",
-          "automation",
-          "buttons",
-          "工具栏",
-          "自定义",
-          "手机端",
-          "手机端增强",
-          "移动端",
-          "移动端增强",
-          "模拟点击",
-          "自动化",
-          "按钮",
-          "鲸鱼",
-          "工具箱",
-          "鲸鱼工具箱",
-          "一键记事",
-          "快速记事"
-        ],
-        "minAppVersion": "3.8.10",
-        "name": "siyuan-toolbar-customizer",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/HaoCeans/siyuan-toolbar-customizer",
-        "version": "4.0.3"
-      },
-      "packageZipAssetId": 802487790,
-      "packageZipSha256": "6beb6bae68e34102e4545416ead77fbbe8b1c617f09b49ae4bf0769e5749a5b7",
-      "repoRef": "v4.0.3",
-      "size": 2243840,
-      "stars": 9,
-      "updated": "2026-11-27T23:49:40Z",
-      "url": "HaoCeans/siyuan-toolbar-customizer@6beb6ba"
-    },
-    {
       "created": "2023-07-31T13:22:08Z",
       "installSize": 19280877,
       "openIssues": 40,
@@ -1067,97 +1501,6 @@
       "stars": 0,
       "updated": "2026-11-27T11:03:34Z",
       "url": "fu1fan/siyuan-pele@3523ad2"
-    },
-    {
-      "created": "2025-06-12T13:50:30Z",
-      "installSize": 15336723,
-      "openIssues": 2,
-      "package": {
-        "author": "Glaube-TY",
-        "backends": [
-          "windows",
-          "linux",
-          "ios",
-          "android",
-          "harmony",
-          "docker",
-          "darwin"
-        ],
-        "description": {
-          "en_US": "Provides personalized homepage layout and rich functional modules, as well as AI knowledge base.",
-          "zh_CN": "提供个性化首页布局和丰富的功能模块以及 AI 知识库功能。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "en_US": "HOME",
-          "zh_CN": "主页"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "funding": {
-          "custom": [
-            "https://glaube-ty.top/da-shang/"
-          ]
-        },
-        "icon": "icon.png",
-        "kernels": [
-          "windows",
-          "linux",
-          "darwin",
-          "docker"
-        ],
-        "keywords": [
-          "homepage",
-          "home",
-          "主页",
-          "首页",
-          "task",
-          "task manager",
-          "任务",
-          "任务管理",
-          "SQL",
-          "sql",
-          "查询",
-          "widget",
-          "widget manager",
-          "挂件",
-          "挂件管理",
-          "组件",
-          "组件管理",
-          "Pomodoro",
-          "Pomodoro timer",
-          "番茄钟",
-          "番茄",
-          "heat map",
-          "热力图",
-          "热搜",
-          "搜索",
-          "AI",
-          "智能助手",
-          "agent",
-          "智能体"
-        ],
-        "minAppVersion": "3.8.6",
-        "name": "siyuan-homepage",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/Glaube-TY/siyuan-homepage",
-        "version": "5.1.24"
-      },
-      "packageZipAssetId": 799985765,
-      "packageZipSha256": "b78081e1b39b186476a48a86c3edff8bc1d42fe461d5ed3afe4bad5e72290346",
-      "repoRef": "v5.1.24",
-      "size": 5476204,
-      "stars": 42,
-      "updated": "2026-11-27T10:16:46Z",
-      "url": "Glaube-TY/siyuan-homepage@b78081e"
     },
     {
       "created": "2026-11-27T10:02:21Z",
@@ -1975,52 +2318,6 @@
       "url": "5kyfkr/siyuan-plugin-task-horizon@dccf466"
     },
     {
-      "created": "2026-11-06T10:54:51Z",
-      "installSize": 1980142,
-      "openIssues": 1,
-      "package": {
-        "author": "jiangeeeeee",
-        "backends": [
-          "windows",
-          "linux",
-          "darwin",
-          "android",
-          "ios",
-          "harmony"
-        ],
-        "description": {
-          "default": "Write in notes and PDFs. Keep imported papers in a dedicated notebook and link a handwritten excerpt to the passage where you are writing.",
-          "zh_CN": "在正文、白板和 PDF 上写画。导入的 PDF 收进资料本，圈住公式和批注即可引用到正文，两边都能点回去。"
-        },
-        "displayName": {
-          "default": "源生笔迹"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile"
-        ],
-        "icon": "icon.png",
-        "minAppVersion": "3.8.4",
-        "name": "siyuan-native-handwriting",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/jiangeeeeee/siyuan-native-handwriting",
-        "version": "0.16.1"
-      },
-      "packageZipAssetId": 798151987,
-      "packageZipSha256": "bf65602ba8766583059469d3ea96fd0385cb577fef7dd23503fad590ad4cd057",
-      "repoRef": "v0.16.1",
-      "size": 677009,
-      "stars": 1,
-      "updated": "2026-11-26T23:37:11Z",
-      "url": "jiangeeeeee/siyuan-native-handwriting@bf65602"
-    },
-    {
       "created": "2025-11-24T02:47:39Z",
       "installSize": 533928,
       "openIssues": 2,
@@ -2194,62 +2491,6 @@
       "stars": 2,
       "updated": "2026-11-26T15:38:11Z",
       "url": "Clymer-git/siyuan-plugin-annotate@011221c"
-    },
-    {
-      "created": "2026-11-20T14:15:32Z",
-      "installSize": 1512392,
-      "openIssues": 0,
-      "package": {
-        "author": "ccztao",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A clean task and project manager for SiYuan: tasks bound to blocks, projects, kanban, calendar, Gantt, reminders and optional Mankeep contact mentions.",
-          "zh_CN": "简洁的思源事项与项目管理：任务绑定文档块，支持项目、看板、日历、甘特图、提醒和可选的 Mankeep 联系人提及。"
-        },
-        "displayName": {
-          "default": "Task Manager",
-          "zh_CN": "事项管理"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "task",
-          "todo",
-          "project",
-          "kanban",
-          "calendar",
-          "gantt",
-          "reminder",
-          "mankeep",
-          "事项",
-          "任务",
-          "项目",
-          "看板",
-          "日历",
-          "甘特图",
-          "提醒"
-        ],
-        "minAppVersion": "3.1.0",
-        "name": "sy-task-manage",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh_CN": "README_zh_CN.md"
-        },
-        "url": "https://github.com/ccztao/sy-task-manage",
-        "version": "0.2.7"
-      },
-      "packageZipAssetId": 796444855,
-      "packageZipSha256": "7d295d65d5b7f3dd47625099467842c7ac2dc1e020d61c9f6998b4c6386dbe16",
-      "repoRef": "v0.2.7",
-      "size": 884977,
-      "stars": 1,
-      "updated": "2026-11-26T15:11:22Z",
-      "url": "ccztao/sy-task-manage@7d295d6"
     },
     {
       "created": "2025-11-26T14:43:52Z",
@@ -2594,47 +2835,6 @@
       "url": "ZZUGeneral/siyuan-juejin-sync@697e48d"
     },
     {
-      "created": "2026-11-14T16:53:07Z",
-      "installSize": 27060847,
-      "openIssues": 0,
-      "package": {
-        "author": "jiangeeeeee",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Annotate images with linked notes and handwriting. Labels follow images across notes.",
-          "zh-CN": "给思源里的导图和截图贴便签、挂资料、写批注。复制或移动图片，便签随图同行。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "TuJian · Image Label",
-          "zh-CN": "图笺"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window",
-          "browser-desktop"
-        ],
-        "icon": "icon.png",
-        "minAppVersion": "3.8.5",
-        "name": "siyuan-image-label",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/jiangeeeeee/siyuan-image-label",
-        "version": "0.3.5"
-      },
-      "packageZipAssetId": 795501004,
-      "packageZipSha256": "f1852b3a0466d5da873bba86aee725cbd352cec280b08b660018cf4b4e031c66",
-      "repoRef": "v0.3.5",
-      "size": 25950830,
-      "stars": 0,
-      "updated": "2026-11-26T11:05:23Z",
-      "url": "jiangeeeeee/siyuan-image-label@f1852b3"
-    },
-    {
       "created": "2026-10-31T10:56:17Z",
       "installSize": 930216,
       "openIssues": 0,
@@ -2916,108 +3116,6 @@
       "stars": 40,
       "updated": "2026-11-26T07:06:44Z",
       "url": "terwer/siyuan-plugin-picgo@a6987a7"
-    },
-    {
-      "created": "2026-11-14T15:22:56Z",
-      "installSize": 322296015,
-      "openIssues": 0,
-      "package": {
-        "author": "Voice Notes contributors",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Record microphone or meeting audio, transcribe locally, and link notes to the original recording.",
-          "zh-CN": "录下会议声音和麦克风，边听边转写，从正文回到原话。附本地转写及发言人模型。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiYuan Voice Notes Full",
-          "zh-CN": "思源语音 Full"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "audio",
-          "transcript",
-          "语音",
-          "字幕"
-        ],
-        "minAppVersion": "3.8.9",
-        "name": "siyuan-voice-notes",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/jiangeeeeee/siyuan-voice-notes",
-        "version": "0.9.0"
-      },
-      "packageZipAssetId": 794802003,
-      "packageZipSha256": "88d273164eed5e0ccf33be464f3cc802fb785873d83daac72f1ff15c34f3f165",
-      "repoRef": "v0.9.0",
-      "size": 222133451,
-      "stars": 0,
-      "updated": "2026-11-26T06:34:56Z",
-      "url": "jiangeeeeee/siyuan-voice-notes@88d2731"
-    },
-    {
-      "created": "2026-11-15T09:20:05Z",
-      "installSize": 12810648,
-      "openIssues": 0,
-      "package": {
-        "author": "Voice Notes contributors",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Record microphone or meeting audio, import subtitles and link notes to the original recording.",
-          "zh-CN": "录下会议声音和麦克风，导入字幕、标记重点，从正文回到原话。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "SiYuan Voice Notes Lite",
-          "zh-CN": "思源语音 Lite"
-        },
-        "frontends": [
-          "desktop",
-          "mobile",
-          "browser-desktop",
-          "browser-mobile",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "keywords": [
-          "audio",
-          "transcript",
-          "语音",
-          "字幕"
-        ],
-        "minAppVersion": "3.8.9",
-        "name": "siyuan-voice-notes-lite",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README_zh_CN.md"
-        },
-        "settingsWindow": true,
-        "url": "https://github.com/jiangeeeeee/siyuan-voice-notes-lite",
-        "version": "0.9.0"
-      },
-      "packageZipAssetId": 794792797,
-      "packageZipSha256": "b7fc9d4ff8e176d2b4f56c46f1c47149e89ddcc7b3fb5d36492475c8839013b1",
-      "repoRef": "v0.9.0",
-      "size": 11957375,
-      "stars": 0,
-      "updated": "2026-11-26T06:34:42Z",
-      "url": "jiangeeeeee/siyuan-voice-notes-lite@b7fc9d4"
     },
     {
       "created": "2026-11-15T10:31:38Z",
@@ -13750,55 +13848,6 @@
       "url": "famotime/siyuan-time-spent@d5ad413"
     },
     {
-      "created": "2026-07-24T03:29:36Z",
-      "installSize": 670211,
-      "openIssues": 0,
-      "package": {
-        "author": "alvisliu818",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "A full-featured browser inside SiYuan, powered by Electron &lt;webview&gt;. Supports multi-tab, bookmarks, history, downloads.",
-          "zh-CN": "思源浏览器，基于 Electron &lt;webview&gt;，支持多页签、书签、历史、下载。"
-        },
-        "disabledInPublish": true,
-        "displayName": {
-          "default": "Browser",
-          "zh-CN": "思源浏览器"
-        },
-        "frontends": [
-          "desktop",
-          "desktop-window"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "browser",
-          "webview",
-          "浏览器"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-plugin-browser",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md",
-          "zh-CN": "README.zh-CN.md"
-        },
-        "url": "https://github.com/alvisliu818/siyuan-plugin-browser",
-        "version": "0.2.0"
-      },
-      "packageZipAssetId": 653840179,
-      "packageZipSha256": "6c563c0155ba80a62b108f11e57819fa11118f55706ec7c00319d424228e762c",
-      "repoRef": "0.2.0",
-      "size": 328912,
-      "stars": 1,
-      "updated": "2026-10-18T15:50:19Z",
-      "url": "alvisliu818/siyuan-plugin-browser@6c563c0"
-    },
-    {
       "created": "2023-07-02T09:53:56Z",
       "installSize": 2970473,
       "openIssues": 20,
@@ -19137,53 +19186,6 @@
       "stars": 1,
       "updated": "2026-09-02T14:34:03Z",
       "url": "Cloudquill-Z/siyuan-dida@7220fda"
-    },
-    {
-      "created": "2026-08-10T05:11:18Z",
-      "installSize": 237267,
-      "openIssues": 0,
-      "package": {
-        "author": "kx1356",
-        "backends": [
-          "all"
-        ],
-        "description": {
-          "default": "Floating ball review; Alt+F current doc; dock filter entry; blur cloze; built-in card check-in stats with doc path.",
-          "zh-CN": "悬浮球复习；Alt+F 复习当前文档；Dock 栏筛选入口；模糊答案遮挡；按标签筛选；内置卡片打卡统计（复习/遗忘/上次时间/文档路径）。"
-        },
-        "displayName": {
-          "default": "Flashcard Assistant",
-          "zh-CN": "闪卡小助手（ZY）"
-        },
-        "frontends": [
-          "all"
-        ],
-        "icon": "icon.png",
-        "kernels": [
-          "all"
-        ],
-        "keywords": [
-          "flashcard",
-          "review",
-          "notebook",
-          "statistics"
-        ],
-        "minAppVersion": "3.7.0",
-        "name": "siyuan-flashcard-zy",
-        "preview": "preview.png",
-        "readme": {
-          "default": "README.md"
-        },
-        "url": "https://github.com/kx1356/siyuan-flashcard-zy",
-        "version": "19.0.3"
-      },
-      "packageZipAssetId": 540271096,
-      "packageZipSha256": "7b7f63de52fa6ab2c2e7692ad12b9100ac6960bdc0457062e2a578404c4e4fc2",
-      "repoRef": "19.0.3",
-      "size": 82716,
-      "stars": 1,
-      "updated": "2026-09-01T23:10:24Z",
-      "url": "kx1356/siyuan-flashcard-zy@7b7f63d"
     },
     {
       "created": "2026-07-20T14:12:02Z",
